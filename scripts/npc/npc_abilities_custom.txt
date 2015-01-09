@@ -470,9 +470,18 @@
 				}
 				"Burn"
 				{
-					"Properties"
+					"IsPurgable"		"0"
+					"IsDebuff"			"1"
+					"IsHidden"			"0"
+					"ThinkInterval"		"%tick_rate"
+					"OnIntervalThink"
 					{
-						"modifier_warlock_golem_permanent_immolation_debuff"
+						"Damage"
+						{
+							"Damage"	"%aura_damage"
+							"Target"	"TARGET"
+							"Type"		"DAMAGE_TYPE_MAGICAL"
+						}
 					}
 				}
 		}
