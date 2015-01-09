@@ -1,0 +1,102 @@
+"dota_shops"
+{
+	"consumables"
+	{
+		"item"		"item_boat_flint"
+		"item"		"item_boat_crystal_mana"
+		"item"		"item_boat_stone"
+		"item"		"item_boat_bone"
+		"item"		"item_boat_ingot_iron"
+		"item"		"item_boat_ingot_steel"
+		"item"		"item_boat_clay_living"
+		"item"		"item_boat_meat_cooked"
+	}
+
+	"attributes"
+	{
+		
+	
+	}
+
+	"weapons_armor"
+	{
+		
+
+	}
+
+	"misc"
+	{
+		
+
+	}	
+
+	// Level 1 - Green Recipes
+	"basics"
+	{
+
+	}
+
+	// Level 2 - Blue Recipes
+	"support"
+	{
+		
+	}
+
+	"magics"
+	{
+		
+	}
+
+	// Level 3 - Purple Recipes
+	"defense"
+	{
+
+	}
+
+	"weapons"
+	{
+
+	}
+
+	// Level 4 - Orange / Orb / Artifacts
+	"artifacts"
+	{
+
+	}
+
+	"sideshop1"
+	{
+		"item"		"item_boat_kit_armory"
+		"item"		"item_boat_kit_camp_fire"
+		"item"		"item_boat_kit_mud_hut"
+		"item"		"item_boat_kit_omnidefender"
+		"item"		"item_boat_kit_smokehouse"
+		"item"		"item_boat_kit_tannery"
+		"item"		"item_boat_kit_tent"
+		"item"		"item_boat_kit_trap_ensnare"
+	}
+
+	"sideshop2"
+	{
+		"item"		"item_boat_kit_armory"
+		"item"		"item_boat_kit_camp_fire"
+		"item"		"item_boat_kit_mud_hut"
+		"item"		"item_boat_kit_omnidefender"
+		"item"		"item_boat_kit_smokehouse"
+		"item"		"item_boat_kit_tannery"
+		"item"		"item_boat_kit_tent"
+		"item"		"item_boat_kit_trap_ensnare"
+	}
+
+	"secretshop"
+	{
+		"item"		"item_boat_axe_iron"
+		"item"		"item_boat_boots_iron"
+		"item"		"item_boat_gloves_iron"
+		"item"		"item_boat_coat_iron"
+		"item"		"item_boat_spear_basic"
+		"item"		"item_boat_spear_iron"
+		"item"		"item_boat_shield_basic"
+		"item"		"item_boat_scroll_fireball"
+	}
+}
