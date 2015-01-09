@@ -169,7 +169,7 @@
 
 	}
 
-	"Ability_Pack_up"
+	"ability_pack_up"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
@@ -190,7 +190,7 @@
 
 	}
 
-	"Ability_Pack_up_magefire"
+	"ability_pack_up_magefire"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
@@ -333,7 +333,7 @@
 
 	}
 
-	"Ability_Burn_Building"
+	"ability_burn_building"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"ability_building_burnbuilding"
@@ -421,7 +421,7 @@
 
 	}
 
-	"Ability_Burn_Building_Magic"
+	"ability_burn_building_magic"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"Burn_Building_Magic"
@@ -495,7 +495,7 @@
 
 	}
 
-	"Ability_Rest_Small"
+	"ability_rest_small"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_MOVEMENT"
@@ -620,7 +620,7 @@
 
 	}
 
-	"Ability_Rest_Big"
+	"ability_rest_big"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_MOVEMENT"
@@ -745,7 +745,7 @@
 
 	}
 
-	"Ability_Rest_Troll"
+	"ability_rest_troll"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
@@ -877,31 +877,31 @@
 
 	}
 
-	"Ability_Get_Corpse"
+	"ability_get_corpse"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"Get_Corpse"
 	}
 
-	"Ability_Smoke_Meat"
+	"ability_smoke_meat"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"Smoke_Meat"
 	}
 
-	"Ability_Quick_Build_Armory"
+	"ability_quick_build_armory"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"Quick_Build"
 	}
 
-	"Ability_Quick_Build_WD_Hut"
+	"ability_quick_build_wd_hut"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"Quick_Build"
 	}
 
-	"Ability_Quick_Build_Workshop"
+	"ability_quick_build_workshop"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"Quick_Build"
@@ -925,67 +925,67 @@
 
 	}
 
-	"Ability_Mix"
+	"ability_mix"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"Mix"
 	}
 
-	"Ability_Enemy_Target"
+	"ability_enemy_target"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"Enemy_Target"
 	}
 
-	"Ability_Make_Gloves"
+	"ability_make_gloves"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"Make_Gloves"
 	}
 
-	"Ability_Make_Coat"
+	"ability_make_coat"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"Make_Coat"
 	}
 
-	"Ability_Make_Boots"
+	"ability_make_boots"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"Make_Boots"
 	}
 
-	"Ability_Ensnare"
+	"ability_ensnare"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"Ensnare"
 	}
 
-	"Ability_Revive"
+	"ability_revive"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"Revive"
 	}
 
-	"Ability_Teleport"
+	"ability_teleport"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"Teleport"
 	}
 
-	"Ability_Hatch_Egg"
+	"ability_hatch_egg"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"Hatch_Egg"
 	}
 
-	"Ability_Hawks_Evolution"
+	"ability_hawks_evolution"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"Hawks_Evolution"
 	}
 
-	"Ability_Duel"
+	"ability_duel"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"Duel"
@@ -9644,7 +9644,7 @@
 
 	}
 
-	"Ability_Pack_up"
+	"ability_pack_up"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
@@ -9665,7 +9665,7 @@
 
 	}
 
-	"Ability_Pack_up_magefire"
+	"ability_pack_up_magefire"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
@@ -9808,7 +9808,7 @@
 
 	}
 
-	"Ability_Burn_Building"
+	"ability_burn_building"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"ability_building_burnbuilding"
@@ -9896,7 +9896,7 @@
 
 	}
 
-	"Ability_Burn_Building_Magic"
+	"ability_burn_building_magic"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"Burn_Building_Magic"
@@ -9970,7 +9970,7 @@
 
 	}
 
-	"Ability_Rest_Small"
+	"ability_rest_small"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_MOVEMENT"
@@ -10095,7 +10095,7 @@
 
 	}
 
-	"Ability_Rest_Big"
+	"ability_rest_big"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_MOVEMENT"
@@ -10220,7 +10220,7 @@
 
 	}
 
-	"Ability_Rest_Troll"
+	"ability_rest_troll"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
@@ -10352,31 +10352,31 @@
 
 	}
 
-	"Ability_Get_Corpse"
+	"ability_get_corpse"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"Get_Corpse"
 	}
 
-	"Ability_Smoke_Meat"
+	"ability_smoke_meat"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"Smoke_Meat"
 	}
 
-	"Ability_Quick_Build_Armory"
+	"ability_quick_build_armory"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"Quick_Build"
 	}
 
-	"Ability_Quick_Build_WD_Hut"
+	"ability_quick_build_wd_hut"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"Quick_Build"
 	}
 
-	"Ability_Quick_Build_Workshop"
+	"ability_quick_build_workshop"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"Quick_Build"
@@ -10400,67 +10400,67 @@
 
 	}
 
-	"Ability_Mix"
+	"ability_mix"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"Mix"
 	}
 
-	"Ability_Enemy_Target"
+	"ability_enemy_target"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"Enemy_Target"
 	}
 
-	"Ability_Make_Gloves"
+	"ability_make_gloves"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"Make_Gloves"
 	}
 
-	"Ability_Make_Coat"
+	"ability_make_coat"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"Make_Coat"
 	}
 
-	"Ability_Make_Boots"
+	"ability_make_boots"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"Make_Boots"
 	}
 
-	"Ability_Ensnare"
+	"ability_ensnare"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"Ensnare"
 	}
 
-	"Ability_Revive"
+	"ability_revive"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"Revive"
 	}
 
-	"Ability_Teleport"
+	"ability_teleport"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"Teleport"
 	}
 
-	"Ability_Hatch_Egg"
+	"ability_hatch_egg"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"Hatch_Egg"
 	}
 
-	"Ability_Hawks_Evolution"
+	"ability_hawks_evolution"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"Hawks_Evolution"
 	}
 
-	"Ability_Duel"
+	"ability_duel"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"Duel"
