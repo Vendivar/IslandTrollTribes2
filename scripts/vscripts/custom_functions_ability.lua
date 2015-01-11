@@ -843,6 +843,7 @@ function GrowPet(keys)
             end
         end 
     end
+end
 
 function PetCommand(keys)
 	local caster = keys.caster
