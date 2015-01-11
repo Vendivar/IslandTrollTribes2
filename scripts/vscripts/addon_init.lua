@@ -7,6 +7,47 @@ THIEF = "npc_dota_hero_riki"
 SCOUT = "npc_dota_hero_lion"
 GATHERER = "npc_dota_hero_shadow_shaman"
 
+local subclasses = {
+    npc_dota_hero_huskar = {        "npc_hero_hunter_tracker",
+                                    "npc_hero_hunter_warrior",
+                                    "npc_hero_hunter_juggernaught"},
+
+    npc_dota_hero_dazzle = {          "npc_hero_priest_booster",
+                        "npc_hero_priest_master_healer",
+                        "npc_hero_priest_sage"},
+
+    npc_dota_hero_witch_doctor = {            "npc_hero_mage_elementalist",
+                        "npc_hero_mage_hypnotist",
+                        "npc_hero_mage_dementia_master"},
+
+    npc_dota_hero_lycan = {     "npc_hero_beastmaster_packleader",
+                        "npc_hero_beastmaster_shapeshifter",
+                        "npc_hero_beastmaster_form_chicken"},
+
+    npc_dota_hero_riki = {           "npc_hero_thief_escape_artist", 
+                        "npc_hero_thief_contortionist", 
+                        "npc_hero_thief_assassin"},
+
+    npc_dota_hero_lion = {           "npc_hero_scout_observer",
+                        "npc_hero_scout_radar",
+                        "npc_hero_scout_spy"},
+
+    npc_dota_hero_shadow_shaman = {        "npc_hero_douchebag",
+                        "npc_hero_crackaddict",
+                        "npc_hero_catpicture"},
+}
+
+
+
+
+
+
+
+
+
+
+
+
 --[[
 	This is where the meat of the addon is defined and modified
 	This file exists mostly because addon_game_mode can't be dynamically reloaded
@@ -96,7 +137,7 @@ PATH_LIST = {PATH1, PATH2, PATH3, PATH4}
 SHOP_UNIT_NAME_LIST = {"npc_ship_merchant_1", "npc_ship_merchant_2", "npc_ship_merchant_3"}
 TOTAL_SHOPS = #SHOP_UNIT_NAME_LIST
 MAX_SHOPS_ON_MAP = 1
-
+ 
 --[[
     Default cruft to set everything up
     In the game creation trace, this runs after 
@@ -290,11 +331,13 @@ function ITT_GameMode:InitGameMode()
     Convars:RegisterCommand( "DropMeat", function(...) return self:_DropMeat( ... ) end, "Player drops one raw meat", 0 )
     Convars:RegisterCommand( "DropAllMeat", function(...) return self:_DropAllMeat( ... ) end, "Player drops all raw meat", 0)
     Convars:RegisterCommand( "Panic", function(...) return self:_Panic( ... ) end, "Player panics!", 0)
-
+    Convars:RegisterCommand( "sub_select", function(cmdname, num) self:_SubSelect(Convars:GetCommandClient(), tonumber(num)) end, "Select Subclass", 0)
+    Convars:RegisterCommand( "try_6", function(cmdname, class) print("Trying.."); FireGameEvent("fl_level_6", {pid = -1, gameclass = class}) end, "Select First Subclass", 0)
     --prepare neutral spawns
     self.NumPassiveNeutrals = 0
     self.NumAggressiveNeutrals = 0
 end
+
 
 --Handlers for commands from custom UI
 function ITT_GameMode:_Sleep(cmdName)
@@ -377,6 +420,27 @@ function ITT_GameMode:_DropAllMeat(cmdName)
                 hero:SetModifierStackCount("modifier_meat_passive", nil, 0)
             end
         end
+    end
+end
+
+function ITT_GameMode:_SubSelect(player, n)
+    print("Setting up " .. n)
+    local playerUnitEnt = player:GetAssignedHero()
+    local playerUnit = playerUnitEnt:GetUnitName()
+    local pid = player:GetPlayerID()
+    print("I'm " .. playerUnit)
+    local choices = subclasses[playerUnit]
+    if choices then
+        local choice = choices[n + 1]
+        print("Well, some guy wants to be a " .. choice)
+        print("I guess I'll try this madness")
+       -- playerUnitEnt:SetUnitName(choice)
+        local currentPlace = playerUnitEnt:GetOrigin()
+        local guy = CreateUnitByName(choice, currentPlace, true, nil, nil, player:GetTeamNumber())
+        guy:SetControllableByPlayer(pid, true)
+        
+     --   FindClearSpaceForUnit(guy, currentPlace, false)
+        print("umm")
     end
 end
 
@@ -1274,13 +1338,6 @@ function make(cmdname, unitname)
     CreateUnitByName(unitname, hero:GetOrigin(), true, hero, hero, 2)
 end
 
-function sub_select(cmdname, choice)
-    local player = Convars:GetCommandClient()
-    local hero = player:GetAssignedHero() --danger
-    print(player:GetPlayerID() .. " chose " .. choice)
-end
-
-Convars:RegisterCommand("sub_select", function(cmdname, choice) sub_select(cmdname, choice) end, "Give any item", 0)
 Convars:RegisterCommand("make", function(cmdname, unitname) make(cmdname, unitname) end, "Give any item", 0)
 Convars:RegisterCommand("test_ack_sec", function(cmdname) test_ack_sec(cmdname) end, "Give any item", 0)
 Convars:RegisterCommand("test_ack", function(cmdname) test_ack(cmdname) end, "Give any item", 0)
