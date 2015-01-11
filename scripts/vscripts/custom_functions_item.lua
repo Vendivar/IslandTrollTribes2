@@ -660,7 +660,7 @@ function DebugSpawnAllHeroes(keys)
 		local spawnLocationX = (key-1)%4
 		spawnLocationY = math.floor((key-1)/4)
 		spawnLocation = Vector(1,0,0)*spawnLocationX*200 + Vector(0,-1,0)*spawnLocationY*300 + Vector(1,0,0)*200
-		local unit = CreateUnitByName(value, caster:GetOrigin() + spawnLocation, true, caster:GetOwner(), caster:GetOwner(), caster:GetTeam())
+		local unit = CreateUnitByName(value, caster:GetOrigin() + spawnLocation, true, nil, nil, caster:GetTeam())
 		unit.vOwner = caster:GetOwner()
 		unit:SetControllableByPlayer(caster:GetOwner():GetPlayerID(), true )
 		unit:SetForwardVector(Vector(0,-1,0))
@@ -668,8 +668,10 @@ function DebugSpawnAllHeroes(keys)
 end
 
 function DebugSpawnAllCreeps(keys)
+	print("Debug: Spawn All Creeps")
 	local caster = keys.caster
-	local unitTable = {		
+	local owner = caster:GetOwner()
+	local unitTable = {
 		"npc_creep_fawn",
 		"npc_creep_wolf_pup",
 		"npc_creep_bear_cub",
@@ -687,20 +689,19 @@ function DebugSpawnAllCreeps(keys)
 		"npc_creep_hawk",
 		"npc_creep_wolf_jungle",
 		"npc_creep_wolf_ice",
-		"npc_creep_wolf_adult_jungle",
+		"npc_creep_wolf_jungle_adult",
 		"npc_creep_bear_jungle",
 		"npc_creep_lizard",
 		"npc_creep_panther",
 		"npc_creep_panther_elder"
 }
-
-	for key,value in pairs(unitTable) do
+	for key,npcName in pairs(unitTable) do
 		local spawnLocationX = (key-1)%6
 		spawnLocationY = math.floor((key-1)/6)
 		spawnLocation = Vector(1,0,0)*spawnLocationX*200 + Vector(0,-1,0)*spawnLocationY*300 + Vector(1,0,0)*200
-		local unit = CreateUnitByName(value, caster:GetOrigin() + spawnLocation, true, caster:GetOwner(), caster:GetOwner(), caster:GetTeam())
+		local unit = CreateUnitByName(npcName, caster:GetOrigin() + spawnLocation, true, nil, nil, caster:GetTeam())
 		if unit == nil then
-			print(value)
+			print(npcName)
 		end
 		unit.vOwner = caster:GetOwner()
 		unit:SetControllableByPlayer(caster:GetOwner():GetPlayerID(), true )
