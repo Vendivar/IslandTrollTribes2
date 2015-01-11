@@ -55,7 +55,7 @@ function AggressiveNeutralThink()
             ability:ApplyDataDrivenModifier(thisEntity, thisEntity, "modifier_sleep", {duration = -1})
 
 			thisEntity.state = "sleep"
-			--print("wander -> sleep")
+			print("wander -> sleep")
 		end
 	elseif (thisEntity.state == "attack") then
 		--attacking until killed
@@ -64,7 +64,7 @@ function AggressiveNeutralThink()
 		if GameRules:IsDaytime() then
 			thisEntity:RemoveModifierByName("modifier_sleep")
 			thisEntity.state = "wander"
-			--print("sleep -> wander")
+			print("sleep -> wander")
 			return 0.05
 		end
 
@@ -80,9 +80,10 @@ function AggressiveNeutralThink()
 
 		if #targets > 0 then
 			--print(targets[1]:GetUnitName())
+			thisEntity:RemoveModifierByName("modifier_sleep")
 			thisEntity:MoveToTargetToAttack(targets[1])
 			thisEntity.state = "attack"
-			--print("wander -> attack")
+			print("wander -> attack")
 		end
 
 	elseif (thisEntity.state == "flee") then
