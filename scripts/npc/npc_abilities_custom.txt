@@ -2252,7 +2252,11 @@
 				"Function"	"SwapSpellBook"
 				"activeBook"	"1"
 			}
-
+			"FireSound"
+			{
+				"EffectName"	"Hero_BountyHunter.Track"
+				"Target"	"CASTER"
+			}
 		}
 
 	}
@@ -9475,7 +9479,7 @@
 			}
 
 		}
-
+		}
 	}
 
 	"tool_rot_x"
@@ -11336,7 +11340,7 @@
 		{
 			"particle_folder"	"particles/units/heroes/hero_razor"
 			"particle_folder"	"particles/units/heroes/hero_disruptor"
-			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_queenofpain.vsndevts"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_bountyhunter.vsndevts"
 		}
 
 		"Modifiers"
@@ -11364,7 +11368,11 @@
 								"ModifierName"	"modifier_block_effect"
 								"Target"	"CASTER"
 							}
-
+							"FireSound"
+							{
+								"EffectName"	"Hero_BountyHunter.Shuriken.Impact"
+								"Target"		"TARGET"
+							}
 						}
 
 					}
@@ -18917,40 +18925,34 @@
 
 	"dummy_increasing_vision"
 	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		
 		"Modifiers"
 		{
 			"thinker_channel_vision"
 			{
-				"Passive"	"1"
-				"ThinkInterval"	"1"
+				"Passive"					"1"
+				"ThinkInterval"				"1"
 				"OnIntervalThink"
 				{
 					"ApplyModifier"
 					{
-						"Target"	"CASTER"
-						"ModifierName"	"modifier_vision_increase"
+						"Target"			"CASTER"
+						"ModifierName"		"modifier_vision_increase"
 					}
-
 				}
-
 			}
-
 			"modifier_vision_increase"
 			{
-				"Duration"	"9999.0"
+				"Duration"		"9999.0"
 				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_BONUS_DAY_VISION"	"150"
-					"MODIFIER_PROPERTY_BONUS_NIGHT_VISION"	"150"
-				}
-
-			}
-
+					"MODIFIER_PROPERTY_BONUS_DAY_VISION"		"150"
+					"MODIFIER_PROPERTY_BONUS_NIGHT_VISION"		"150"
+ 				}
+			}			
 		}
-
 	}
-
 }
