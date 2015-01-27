@@ -491,7 +491,6 @@ function ITT_GameMode:OnPlayerPicked( keys )
                 spawnedUnit:AddItem(CreateItem("item_slot_locked", spawnedUnit, spawnedUnit))
             end
             for i = 0, (freeslots-1) do
-                print("removing", i)
                 local removeMe = spawnedUnit:GetItemInSlot(i)
                 spawnedUnit:RemoveItem(removeMe)
             end
