@@ -37,17 +37,6 @@ local subclasses = {
                         "npc_hero_catpicture"},
 }
 
-
-
-
-
-
-
-
-
-
-
-
 --[[
 	This is where the meat of the addon is defined and modified
 	This file exists mostly because addon_game_mode can't be dynamically reloaded
@@ -491,12 +480,21 @@ function ITT_GameMode:OnPlayerPicked( keys )
 	
 	local class = spawnedUnit:GetClassname()
 	
-	-- lock slots
+    -- This handles locking a number of inventory slots for some classes
+    -- Fills all slots with locks then removes them to leave the correct number
+    -- This means that players do not need to manually reshuffle them to craft
 	for _,slotList in pairs(lockedSlots) do
 		if slotList[1] == class then
-			for i = 1, slotList[2] do
-				spawnedUnit:AddItem(itemslotlock)
-			end
+            local freeslots = 6 - slotList[2]
+            --print("slots free are", freeslots)
+            for i = 1, 6 do
+                spawnedUnit:AddItem(CreateItem("item_slot_locked", spawnedUnit, spawnedUnit))
+            end
+            for i = 0, (freeslots-1) do
+                print("removing", i)
+                local removeMe = spawnedUnit:GetItemInSlot(i)
+                spawnedUnit:RemoveItem(removeMe)
+            end
 		end		
 	end
 	
