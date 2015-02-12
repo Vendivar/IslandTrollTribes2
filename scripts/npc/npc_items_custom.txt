@@ -22613,7 +22613,7 @@
 
 		"Custom"
 		{
-			"ModelScale"	"5.0"
+			"ModelScale"	"0.8"
 		}
 
 	}
@@ -23185,7 +23185,7 @@
 
 		"Custom"
 		{
-			"ModelScale"	"5.0"
+			"ModelScale"	"1.0"
 		}
 
 	}
