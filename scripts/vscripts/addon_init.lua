@@ -853,28 +853,6 @@ function acknowledge_flash_event(cmdname, eventname, pid, id)
     end
 end
 
---
--- This handles spawning items
---
--- Code by Till Elton
---
-function ITT_GameMode:OnItemThink()
-    --print("Item think tick started")
-    if REL_TINDER_RATE == 0 then
-        ITT_UpdateRelativePool()
-    else
-        ITT_AdjustItemSpawns()
-    end
-    --print("hit mid of spawn items")
-    for i=1, #REGIONS, 1 do
-        for ii=1, math.floor(ITEM_BASE * REGIONS[i][5]), 1 do
-            --print("Spawning an item on island" .. i)
-            item = ITT_SpawnItem(REGIONS[i])
-        end
-    end
-    --print("Item think tick ended")
-    return GAME_ITEM_TICK_TIME
-end
 
 function ITT_GameMode:OnBushThink()
     -- Find all bushes
@@ -1020,6 +998,30 @@ function ITT_GameMode:OnBoatThink()
     end
 
     return 0.1
+end
+
+
+--
+-- This handles spawning items
+--
+-- Code by Till Elton
+--
+function ITT_GameMode:OnItemThink()
+    --print("Item think tick started")
+    if REL_TINDER_RATE == 0 then
+        ITT_UpdateRelativePool()
+    else
+        ITT_AdjustItemSpawns()
+    end
+    --print("hit mid of spawn items")
+    for i=1, #REGIONS, 1 do
+        for ii=1, math.floor(ITEM_BASE * REGIONS[i][5]), 1 do
+            --print("Spawning an item on island" .. i)
+            item = ITT_SpawnItem(REGIONS[i])
+        end
+    end
+    --print("Item think tick ended")
+    return GAME_ITEM_TICK_TIME
 end
 
 function ITT_SpawnItem(island)
