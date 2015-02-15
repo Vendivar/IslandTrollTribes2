@@ -1269,7 +1269,7 @@ function ITT_GameMode:OnPlayerGainedLevel(event)
 			local skills = skillList[level]
 			if skills ~= nil then
 				for _,skill in pairs(skills) do
-					hero:FindAbilityByName(skill):UpgradeAbility()
+					hero:FindAbilityByName(skill):UpgradeAbility(true)
 				end
 			end
 		end
