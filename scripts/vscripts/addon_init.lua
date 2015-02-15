@@ -336,7 +336,7 @@ function ITT_GameMode:_Sleep(cmdName)
         local nPlayerID = cmdPlayer:GetPlayerID()
         local hero = cmdPlayer:GetAssignedHero()
 
-        local abilityName = "Ability_Rest_Troll"
+        local abilityName = "ability_rest_troll"
         local ability = hero:FindAbilityByName(abilityName)
         if ability == nil then
             hero:AddAbility(abilityName)
