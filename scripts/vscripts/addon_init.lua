@@ -452,8 +452,13 @@ function ITT_GameMode:_Panic(cmdName)
     end
 end
 
+-- This was missing, added a placeholder to at least remove crashes
+function ITT_GameMode:_PickUpMeat(cmdName)
+    print("Pick up meat button not implemented, this added to remove crashes")
+end
+
 -- This code is written by Internet Veteran, handle with care.
---Distribute slot locked item based off of the class.
+--Distribute slot locked items based off of the class.
 function ITT_GameMode:OnPlayerPicked( keys ) 
     local spawnedUnit = EntIndexToHScript( keys.heroindex )
     local itemslotlock = CreateItem("item_slot_locked", spawnedUnit, spawnedUnit)
