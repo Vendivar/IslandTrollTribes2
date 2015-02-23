@@ -412,24 +412,77 @@ function ITT_GameMode:_DropAllMeat(cmdName)
     end
 end
 
+unitskeys = LoadKeyValues("scripts/npc/npc_units_custom.txt")
+itemskeys = LoadKeyValues("scripts/items/items_game.txt").items
+heroeskeys = LoadKeyValues("scripts/npc/npc_heroes.txt")
+
+function ModelForItemID(itemid)
+    return itemskeys[tostring(itemid)].model_player
+end
+
+function SlotForItemID(itemid)
+    return itemskeys[tostring(itemid)].item_slot
+end
+
+modelmap = {}
+
+function MapModels()
+    for k,v in pairs(itemskeys) do
+        if v.model_player and v.item_slot then
+            modelmap[v.model_player] = v.item_slot
+        end
+    end
+end
+
+MapModels()
+
+function SlotForModel(model)
+    return modelmap[model]
+end
+
+function CosmeticsForUnit(unit)
+    local retn = {}
+    
+    for i=unit:entindex(), 9999 do --heh, probably want to switch this to a while loop. I'm aware of the FindByClassname function taking an iterator (the entity to lookafter), which would be greater prefered, but it was spewing nils at me
+        local ent = EntIndexToHScript(i)
+        if ent:GetClassname() == "dota_item_wearable" then
+            retn[#retn + 1] = ent
+        elseif #retn > 0 then break
+        end
+    end
+    return retn
+end
+
+function GetModelForSlot(clothes, slot)
+    for k,v in pairs(clothes) do
+        local _, itemid = next(v)
+        local newslot = SlotForItemID(itemid)
+        if newslot == slot then return ModelForItemID(itemid) end
+    end
+end
+
 function ITT_GameMode:_SubSelect(player, n)
-    print("Setting up " .. n)
+
     local playerUnitEnt = player:GetAssignedHero()
     local playerUnit = playerUnitEnt:GetUnitName()
     local pid = player:GetPlayerID()
-    print("I'm " .. playerUnit)
+
     local choices = subclasses[playerUnit]
     if choices then
         local choice = choices[n + 1]
-        print("Well, some guy wants to be a " .. choice)
-        print("I guess I'll try this madness")
-       -- playerUnitEnt:SetUnitName(choice)
-        local currentPlace = playerUnitEnt:GetOrigin()
-        local guy = CreateUnitByName(choice, currentPlace, true, nil, nil, player:GetTeamNumber())
-        guy:SetControllableByPlayer(pid, true)
         
-     --   FindClearSpaceForUnit(guy, currentPlace, false)
-        print("umm")
+        local oldClothes = CosmeticsForUnit(playerUnitEnt)
+
+        local newClothes = unitskeys[choice].Creature.AttachWearables
+
+        for _,v in pairs(oldClothes) do
+            local oldmodel = v:GetModelName()
+            local matchingNew = GetModelForSlot(newClothes, SlotForModel(oldmodel))
+            if matchingNew then
+                print("I'm changing " .. oldmodel .. " to " .. matchingNew )
+                v:SetModel(matchingNew)
+            end
+        end
     end
 end
 
