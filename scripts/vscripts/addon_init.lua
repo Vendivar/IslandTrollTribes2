@@ -442,14 +442,17 @@ end
 
 function CosmeticsForUnit(unit)
     local retn = {}
-    
-    for i=unit:entindex(), 9999 do --heh, probably want to switch this to a while loop. I'm aware of the FindByClassname function taking an iterator (the entity to lookafter), which would be greater prefered, but it was spewing nils at me
-        local ent = EntIndexToHScript(i)
+    local i = unit:entindex()
+
+    while true do  -- I'm aware of the FindByClassname function taking an iterator (the entity to lookafter), which would be greater prefered, but it was spewing nils at me
+        local ent = EntIndexToHScript(i) 
         if ent:GetClassname() == "dota_item_wearable" then
             retn[#retn + 1] = ent
         elseif #retn > 0 then break
         end
+        i = i + 1
     end
+
     return retn
 end
 
@@ -460,6 +463,19 @@ function GetModelForSlot(clothes, slot)
         if newslot == slot then return ModelForItemID(itemid) end
     end
 end
+
+--[[
+    This fixes the Cosmetics issue by model-swapping the naturally assigned hero's cosmetics with the chosen subclass models. It does this by looking at the currect setup in
+    npc_units_custom.txt. This is strange because this method implies that hero -> unit swapping is no longer intended. We will need to do the Ability shuffling manually later.
+
+    Sticking with the player's assigned heroes as a number of player-usuability wins. It doesn't destroy Multiteam callouts, introduce 
+    selectin wonkiness, break your control groups or hero-snap key, and probably some other stuff I'm forgetting.
+
+    The biggest problem is that the unit's name on the UI no longer changes on its own. Off the top of my head, the only way to patch this up would be to rig some shit up in 
+    scaleform, which isn't so bad because the gamemode could use some other gameui patches -- such as a better implementation of the inventory slot-blockers that you can
+    move around.
+
+]]
 
 function ITT_GameMode:_SubSelect(player, n)
 
