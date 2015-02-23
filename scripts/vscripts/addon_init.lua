@@ -458,7 +458,7 @@ end
 
 function GetModelForSlot(clothes, slot)
     for k,v in pairs(clothes) do
-        local _, itemid = next(v)
+        local itemid = v["ItemDef"]
         local newslot = SlotForItemID(itemid)
         if newslot == slot then return ModelForItemID(itemid) end
     end
