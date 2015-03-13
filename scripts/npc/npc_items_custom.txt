@@ -9027,7 +9027,7 @@
 		"Model"	"models/props_gameplay/gem01.vmdl"
 		"Effect"	""
 		"AbilityCastPoint"	"0.5"
-		"ItemCost"	"52s"
+		"ItemCost"	"52"
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE_STACKING"
@@ -10699,7 +10699,7 @@
 	"item_clay_explosion"
 	{
 		"ID"	"1098"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_POINT"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"item_clay_living"
 		"Model"	"models/particle/lion_attack_sphere.vmdl"
@@ -12501,7 +12501,7 @@
 	"item_boat_clay_living"
 	{
 		"ID"	"1217"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_POINT"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"clay_living"
 		"Model"	"models/props_gameplay/branch.vmdl"
