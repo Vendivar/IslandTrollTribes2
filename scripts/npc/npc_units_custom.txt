@@ -4444,7 +4444,7 @@
 		"Level"	"1"
 		"ModelScale"	"1.5"
 		"SelectionGroup"	""
-		"Ability1"	"ability_bush_passive"
+		"Ability1"	"ability_bush_scout_passive"
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
