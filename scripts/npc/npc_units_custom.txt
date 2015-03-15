@@ -3361,8 +3361,8 @@
 	{
 		"BaseClass"	"npc_dota_creature"
 		"ConsideredHero"	"0"
-		"ModelScale"	"1.10"
-		"Model"	"models/props_wildlife/wildlife_fish002.vmdl"
+		"ModelScale"	"0.60"
+		"Model"	"models/items/hex/fish_hex/fish_hex.vmdl"
 		"Level"	"0"
 		"vscripts"	"passive_neutral_ai.lua"
 		"Ability1"	""

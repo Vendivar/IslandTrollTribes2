@@ -18618,7 +18618,30 @@
 		}
 
 	}
-
+	
+	"ability_fish_passive"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"Modifiers"
+		{
+			"modifier_fish_passive"
+			{
+				"Passive"	"1"
+				"Hidden"	"1"	
+				 "AttachEffect"
+							{
+								"Target" 				"TARGET"
+								//"EffectName"   "particles/units/heroes/hero_pugna/pugna_netherblast.vpcf"
+								"StatusEffectName"     "particles/status_fx/status_effect_poison_venomancer.vpcf"
+								"StatusEffectPriority" "10"
+								"EffectAttachType" 			"follow_origin"
+								//"EffectLifeDurationScale" 	"1"
+								//"EffectColorA" 				"0 0 255"
+							}
+				}
+		}
+	}	
 	"ability_lizard_poisonattack"
 	{
 		"BaseClass"	"ability_datadriven"
