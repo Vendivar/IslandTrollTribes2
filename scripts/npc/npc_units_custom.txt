@@ -8844,10 +8844,10 @@
 	"npc_bush_mushroom"
 	{
 		"BaseClass"	"npc_dota_creature"
-		"Model"	"models/props_nature/mushroom_morel.vmdl"
+		"Model"	"models/props_nature/mushroom_wild_00.vmdl"
 		"SoundSet"	"0"
 		"Level"	"1"
-		"ModelScale"	"2.0"
+		"ModelScale"	"1.5"
 		"SelectionGroup"	""
 		"Ability1"	"ability_bush_passive"
 		"Ability2"	""
