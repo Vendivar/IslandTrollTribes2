@@ -1532,3 +1532,56 @@ function CookFood(keys)
         end
     end
 end
+
+function BushZoneMajority(users, default)
+    local good = users[DOTA_TEAM_GOODGUYS]
+    local bad = users[DOTA_TEAM_BADGUYS]
+    local custom = users[DOTA_TEAM_CUSTOM_1]
+
+    local majority = default
+    if good > bad and good > custom then majority = DOTA_TEAM_GOODGUYS
+    elseif bad > good and bad > custom then majority = DOTA_TEAM_BADGUYS
+    elseif custom > good and custom > bad then majority = DOTA_TEAM_CUSTOM_1
+    end
+    if good == 0 and bad == 0 and custom == 0 then majority = DOTA_TEAM_NEUTRALS end
+
+    return majority
+end
+
+function BushZoneIn(keys)   
+    local target = keys.target
+    local me = keys.ability
+    local bush = me:GetOwner()
+    local team = target:GetTeamNumber()
+
+    if not me.users then 
+        me.users = {}; 
+        me.users[DOTA_TEAM_GOODGUYS] = 0; 
+        me.users[DOTA_TEAM_BADGUYS] = 0; 
+        me.users[DOTA_TEAM_CUSTOM_1] = 0; 
+    end
+    
+    me.users[team] = me.users[team] + 1
+
+    local majority = BushZoneMajority(me.users, bush:GetTeamNumber())
+    -- print(tostring(majority) .. " has the majority in")
+    -- DeepPrintTable(me.users)
+    bush:SetTeam(majority)
+end
+
+function BushZoneOut(keys)
+    local target = keys.target
+    local me = keys.ability
+    local bush = me:GetOwner()
+    local team = target:GetTeamNumber()
+
+    local dist = (target:GetOrigin() - bush:GetOrigin()):Length2D()
+        
+    me.users[team] = me.users[team] - 1
+    local majority = BushZoneMajority(me.users, bush:GetTeamNumber())
+    -- print(tostring(majority) .. " has the majority out")
+    -- DeepPrintTable(me.users)
+
+    bush:SetTeam(majority)
+
+end

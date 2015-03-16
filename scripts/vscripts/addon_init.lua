@@ -1587,3 +1587,15 @@ function ITT_GameMode:OnThink()
         
     return 1
 end
+
+function eval(...)
+    local contents = {...}
+    local str = ""
+    for i,v in ipairs(contents) do
+        str = str .. " " .. v  --assumes space separated this arg and the last
+    end
+    print(loadstring(str)())
+end
+
+Convars:RegisterCommand("reload_kv", function() GameRules:Playtesting_UpdateAddOnKeyValues() end, "aa", 0)
+Convars:RegisterCommand("eval", function(cmdname, ...) eval(...) end, "aaa", 0)
