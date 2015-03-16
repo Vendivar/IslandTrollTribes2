@@ -1574,9 +1574,7 @@ function BushZoneOut(keys)
     local me = keys.ability
     local bush = me:GetOwner()
     local team = target:GetTeamNumber()
-
-    local dist = (target:GetOrigin() - bush:GetOrigin()):Length2D()
-        
+    
     me.users[team] = me.users[team] - 1
     local majority = BushZoneMajority(me.users, bush:GetTeamNumber())
     -- print(tostring(majority) .. " has the majority out")
