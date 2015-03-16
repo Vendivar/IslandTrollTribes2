@@ -1959,9 +1959,9 @@
 		}
 
 		"Ability1"	"ability_building_cookmeat"
-		"Ability2"	"Ability_Pack_up"
+		"Ability2"	"ability_pack_up"
 		"Ability3"	"ability_building_restoreheat"
-		"Ability4"	"Ability_Burn_Building"
+		"Ability4"	"ability_burn_building"
 		"ArmorPhysical"	"5"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
@@ -1999,9 +1999,9 @@
 		}
 
 		"Ability1"	"ability_building_cookmeat"
-		"Ability2"	"Ability_Pack_up_magefire"
+		"Ability2"	"ability_pack_up_magefire"
 		"Ability3"	"ability_building_restoreheat_magic"
-		"Ability4"	"Ability_Burn_Building_Magic"
+		"Ability4"	"ability_burn_building_Magic"
 		"ArmorPhysical"	"5"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
@@ -2039,7 +2039,7 @@
 		}
 
 		"Ability1"	"Ability_Rest_Small"
-		"Ability2"	"Ability_Pack_up"
+		"Ability2"	"ability_pack_up"
 		"ArmorPhysical"	"0"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
@@ -6669,9 +6669,9 @@
 		}
 
 		"Ability1"	"ability_building_cookmeat"
-		"Ability2"	"Ability_Pack_up"
+		"Ability2"	"ability_pack_up"
 		"Ability3"	"ability_building_restoreheat"
-		"Ability4"	"Ability_Burn_Building"
+		"Ability4"	"ability_burn_building"
 		"ArmorPhysical"	"5"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
@@ -6709,9 +6709,9 @@
 		}
 
 		"Ability1"	"ability_building_cookmeat"
-		"Ability2"	"Ability_Pack_up_magefire"
+		"Ability2"	"ability_pack_up_magefire"
 		"Ability3"	"ability_building_restoreheat_magic"
-		"Ability4"	"Ability_Burn_Building_Magic"
+		"Ability4"	"ability_burn_building_Magic"
 		"ArmorPhysical"	"5"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
@@ -6749,7 +6749,7 @@
 		}
 
 		"Ability1"	"Ability_Rest_Small"
-		"Ability2"	"Ability_Pack_up"
+		"Ability2"	"ability_pack_up"
 		"ArmorPhysical"	"0"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
