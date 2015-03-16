@@ -10960,7 +10960,6 @@
 				"ScriptFile"	"scripts/vscripts/buildings.lua"
 				"Function"	"getTrollHutPoint"
 			}
-
 		}
 
 		"OnOwnerDied"
@@ -10985,7 +10984,6 @@
 			}
 
 		}
-
 	}
 
 	"item_building_kit_hut_mud"
@@ -13870,7 +13868,7 @@
 
 	"item_debug_spawn_all_heroes"
 	{
-		"ID"	"1901"
+		"ID"	"2001"
 		"AbilityBehavior"	"BEHAVIOR DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"item_sphere"
@@ -13900,7 +13898,7 @@
 
 	"item_debug_spawn_all_creeps"
 	{
-		"ID"	"1902"
+		"ID"	"2002"
 		"AbilityBehavior"	"BEHAVIOR DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"item_sphere"

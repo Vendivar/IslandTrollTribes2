@@ -84,7 +84,7 @@ function getTrollHutPoint(keys)
 	local caster = keys.caster
 	local point = BuildingHelper:AddBuildingToGrid(keys.target_points[1], 2, caster)
 	if point ~= -1 then
-		local Hut = CreateUnitByName("npc_building_troll_hut", point, false, nil, nil, caster:GetTeam())
+		local Hut = CreateUnitByName("npc_building_hut_troll", point, false, nil, nil, caster:GetTeam())
 		BuildingHelper:AddBuilding(Hut)
 		Hut:UpdateHealth(BUILD_TIME_10,true,.5)
 		Hut:SetHullRadius(64)
