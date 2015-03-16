@@ -2038,7 +2038,7 @@
 			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
 		}
 
-		"Ability1"	"Ability_Rest_Small"
+		"Ability1"	"ability_rest_small"
 		"Ability2"	"ability_pack_up"
 		"ArmorPhysical"	"0"
 		"MagicalResistance"	"0"
@@ -2077,7 +2077,7 @@
 			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
 		}
 
-		"Ability1"	"Ability_Rest_Big"
+		"Ability1"	"ability_rest_big"
 		"ArmorPhysical"	"5"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
@@ -2115,7 +2115,7 @@
 			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
 		}
 
-		"Ability1"	"Ability_Rest_Big"
+		"Ability1"	"ability_rest_big"
 		"ArmorPhysical"	"5"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
@@ -6748,7 +6748,7 @@
 			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
 		}
 
-		"Ability1"	"Ability_Rest_Small"
+		"Ability1"	"ability_rest_small"
 		"Ability2"	"ability_pack_up"
 		"ArmorPhysical"	"0"
 		"MagicalResistance"	"0"
@@ -6787,7 +6787,7 @@
 			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
 		}
 
-		"Ability1"	"Ability_Rest_Big"
+		"Ability1"	"ability_rest_big"
 		"ArmorPhysical"	"5"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
@@ -6825,7 +6825,7 @@
 			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
 		}
 
-		"Ability1"	"Ability_Rest_Big"
+		"Ability1"	"ability_rest_big"
 		"ArmorPhysical"	"5"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
