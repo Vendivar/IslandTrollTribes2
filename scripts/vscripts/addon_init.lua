@@ -7,6 +7,36 @@ THIEF = "npc_dota_hero_riki"
 SCOUT = "npc_dota_hero_lion"
 GATHERER = "npc_dota_hero_shadow_shaman"
 
+local subclasses = {
+    npc_dota_hero_huskar = {        "npc_hero_hunter_tracker",
+                                    "npc_hero_hunter_warrior",
+                                    "npc_hero_hunter_juggernaught"},
+
+    npc_dota_hero_dazzle = {          "npc_hero_priest_booster",
+                        "npc_hero_priest_master_healer",
+                        "npc_hero_priest_sage"},
+
+    npc_dota_hero_witch_doctor = {            "npc_hero_mage_elementalist",
+                        "npc_hero_mage_hypnotist",
+                        "npc_hero_mage_dementia_master"},
+
+    npc_dota_hero_lycan = {     "npc_hero_beastmaster_packleader",
+                        "npc_hero_beastmaster_shapeshifter",
+                        "npc_hero_beastmaster_form_chicken"},
+
+    npc_dota_hero_riki = {           "npc_hero_thief_escape_artist", 
+                        "npc_hero_thief_contortionist", 
+                        "npc_hero_thief_assassin"},
+
+    npc_dota_hero_lion = {           "npc_hero_scout_observer",
+                        "npc_hero_scout_radar",
+                        "npc_hero_scout_spy"},
+
+    npc_dota_hero_shadow_shaman = {        "npc_hero_douchebag",
+                        "npc_hero_crackaddict",
+                        "npc_hero_catpicture"},
+}
+
 --[[
 	This is where the meat of the addon is defined and modified
 	This file exists mostly because addon_game_mode can't be dynamically reloaded
@@ -96,7 +126,7 @@ PATH_LIST = {PATH1, PATH2, PATH3, PATH4}
 SHOP_UNIT_NAME_LIST = {"npc_ship_merchant_1", "npc_ship_merchant_2", "npc_ship_merchant_3"}
 TOTAL_SHOPS = #SHOP_UNIT_NAME_LIST
 MAX_SHOPS_ON_MAP = 1
-
+ 
 --[[
     Default cruft to set everything up
     In the game creation trace, this runs after 
@@ -290,11 +320,13 @@ function ITT_GameMode:InitGameMode()
     Convars:RegisterCommand( "DropMeat", function(...) return self:_DropMeat( ... ) end, "Player drops one raw meat", 0 )
     Convars:RegisterCommand( "DropAllMeat", function(...) return self:_DropAllMeat( ... ) end, "Player drops all raw meat", 0)
     Convars:RegisterCommand( "Panic", function(...) return self:_Panic( ... ) end, "Player panics!", 0)
-
+    Convars:RegisterCommand( "sub_select", function(cmdname, num) self:_SubSelect(Convars:GetCommandClient(), tonumber(num)) end, "Select Subclass", 0)
+    Convars:RegisterCommand( "try_6", function(cmdname, class) print("Trying.."); FireGameEvent("fl_level_6", {pid = -1, gameclass = class}) end, "Select First Subclass", 0)
     --prepare neutral spawns
     self.NumPassiveNeutrals = 0
     self.NumAggressiveNeutrals = 0
 end
+
 
 --Handlers for commands from custom UI
 function ITT_GameMode:_Sleep(cmdName)
@@ -380,6 +412,96 @@ function ITT_GameMode:_DropAllMeat(cmdName)
     end
 end
 
+unitskeys = LoadKeyValues("scripts/npc/npc_units_custom.txt")
+itemskeys = LoadKeyValues("scripts/items/items_game.txt").items
+heroeskeys = LoadKeyValues("scripts/npc/npc_heroes.txt")
+
+function ModelForItemID(itemid)
+    return itemskeys[tostring(itemid)].model_player
+end
+
+function SlotForItemID(itemid)
+    return itemskeys[tostring(itemid)].item_slot
+end
+
+modelmap = {}
+
+function MapModels()
+    for k,v in pairs(itemskeys) do
+        if v.model_player and v.item_slot then
+            modelmap[v.model_player] = v.item_slot
+        end
+    end
+end
+
+MapModels()
+
+function SlotForModel(model)
+    return modelmap[model]
+end
+
+function CosmeticsForUnit(unit)
+    local retn = {}
+    local i = unit:entindex()
+
+    while true do  -- I'm aware of the FindByClassname function taking an iterator (the entity to lookafter), which would be greater prefered, but it was spewing nils at me
+        local ent = EntIndexToHScript(i) 
+        if ent:GetClassname() == "dota_item_wearable" then
+            retn[#retn + 1] = ent
+        elseif #retn > 0 then break
+        end
+        i = i + 1
+    end
+
+    return retn
+end
+
+function GetModelForSlot(clothes, slot)
+    for k,v in pairs(clothes) do
+        local itemid = v["ItemDef"]
+        local newslot = SlotForItemID(itemid)
+        if newslot == slot then return ModelForItemID(itemid) end
+    end
+end
+
+--[[
+    This fixes the Cosmetics issue by model-swapping the naturally assigned hero's cosmetics with the chosen subclass models. It does this by looking at the currect setup in
+    npc_units_custom.txt. This is strange because this method implies that hero -> unit swapping is no longer intended. We will need to do the Ability shuffling manually later.
+
+    Sticking with the player's assigned heroes as a number of player-usuability wins. It doesn't destroy Multiteam callouts, introduce 
+    selectin wonkiness, break your control groups or hero-snap key, and probably some other stuff I'm forgetting.
+
+    The biggest problem is that the unit's name on the UI no longer changes on its own. Off the top of my head, the only way to patch this up would be to rig some shit up in 
+    scaleform, which isn't so bad because the gamemode could use some other gameui patches -- such as a better implementation of the inventory slot-blockers that you can
+    move around.
+
+]]
+
+function ITT_GameMode:_SubSelect(player, n)
+
+    local playerUnitEnt = player:GetAssignedHero()
+    local playerUnit = playerUnitEnt:GetUnitName()
+    local pid = player:GetPlayerID()
+
+    local choices = subclasses[playerUnit]
+    if choices then
+        local choice = choices[n + 1]
+        
+        local oldClothes = CosmeticsForUnit(playerUnitEnt)
+
+        local newClothes = unitskeys[choice].Creature.AttachWearables
+
+        for _,v in pairs(oldClothes) do
+            local oldmodel = v:GetModelName()
+            local matchingNew = GetModelForSlot(newClothes, SlotForModel(oldmodel))
+            if matchingNew then
+                print("I'm changing " .. oldmodel .. " to " .. matchingNew )
+                v:SetModel(matchingNew)
+            end
+        end
+    end
+end
+
 function ITT_GameMode:_Panic(cmdName)
     print("Panic Command")
     local cmdPlayer = Convars:GetCommandClient()  -- returns the player who issued the console command
@@ -399,8 +521,13 @@ function ITT_GameMode:_Panic(cmdName)
     end
 end
 
+-- This was missing, added a placeholder to at least remove crashes
+function ITT_GameMode:_PickUpMeat(cmdName)
+    print("Pick up meat button not implemented, this added to remove crashes")
+end
+
 -- This code is written by Internet Veteran, handle with care.
---Distribute slot locked item based off of the class.
+--Distribute slot locked items based off of the class.
 function ITT_GameMode:OnPlayerPicked( keys ) 
     local spawnedUnit = EntIndexToHScript( keys.heroindex )
     local itemslotlock = CreateItem("item_slot_locked", spawnedUnit, spawnedUnit)
@@ -427,12 +554,20 @@ function ITT_GameMode:OnPlayerPicked( keys )
 	
 	local class = spawnedUnit:GetClassname()
 	
-	-- lock slots
+    -- This handles locking a number of inventory slots for some classes
+    -- Fills all slots with locks then removes them to leave the correct number
+    -- This means that players do not need to manually reshuffle them to craft
 	for _,slotList in pairs(lockedSlots) do
 		if slotList[1] == class then
-			for i = 1, slotList[2] do
-				spawnedUnit:AddItem(itemslotlock)
-			end
+            local freeslots = 6 - slotList[2]
+            --print("slots free are", freeslots)
+            for i = 1, 6 do
+                spawnedUnit:AddItem(CreateItem("item_slot_locked", spawnedUnit, spawnedUnit))
+            end
+            for i = 0, (freeslots-1) do
+                local removeMe = spawnedUnit:GetItemInSlot(i)
+                spawnedUnit:RemoveItem(removeMe)
+            end
 		end		
 	end
 	
@@ -792,28 +927,6 @@ function acknowledge_flash_event(cmdname, eventname, pid, id)
     end
 end
 
---
--- This handles spawning items
---
--- Code by Till Elton
---
-function ITT_GameMode:OnItemThink()
-    --print("Item think tick started")
-    if REL_TINDER_RATE == 0 then
-        ITT_UpdateRelativePool()
-    else
-        ITT_AdjustItemSpawns()
-    end
-    --print("hit mid of spawn items")
-    for i=1, #REGIONS, 1 do
-        for ii=1, math.floor(ITEM_BASE * REGIONS[i][5]), 1 do
-            --print("Spawning an item on island" .. i)
-            item = ITT_SpawnItem(REGIONS[i])
-        end
-    end
-    --print("Item think tick ended")
-    return GAME_ITEM_TICK_TIME
-end
 
 function ITT_GameMode:OnBushThink()
     -- Find all bushes
@@ -959,6 +1072,30 @@ function ITT_GameMode:OnBoatThink()
     end
 
     return 0.1
+end
+
+
+--
+-- This handles spawning items
+--
+-- Code by Till Elton
+--
+function ITT_GameMode:OnItemThink()
+    --print("Item think tick started")
+    if REL_TINDER_RATE == 0 then
+        ITT_UpdateRelativePool()
+    else
+        ITT_AdjustItemSpawns()
+    end
+    --print("hit mid of spawn items")
+    for i=1, #REGIONS, 1 do
+        for ii=1, math.floor(ITEM_BASE * REGIONS[i][5]), 1 do
+            --print("Spawning an item on island" .. i)
+            item = ITT_SpawnItem(REGIONS[i])
+        end
+    end
+    --print("Item think tick ended")
+    return GAME_ITEM_TICK_TIME
 end
 
 function ITT_SpawnItem(island)
@@ -1206,7 +1343,7 @@ function ITT_GameMode:OnPlayerGainedLevel(event)
 			local skills = skillList[level]
 			if skills ~= nil then
 				for _,skill in pairs(skills) do
-					hero:FindAbilityByName(skill):UpgradeAbility()
+					hero:FindAbilityByName(skill):UpgradeAbility(true)
 				end
 			end
 		end
@@ -1274,13 +1411,6 @@ function make(cmdname, unitname)
     CreateUnitByName(unitname, hero:GetOrigin(), true, hero, hero, 2)
 end
 
-function sub_select(cmdname, choice)
-    local player = Convars:GetCommandClient()
-    local hero = player:GetAssignedHero() --danger
-    print(player:GetPlayerID() .. " chose " .. choice)
-end
-
-Convars:RegisterCommand("sub_select", function(cmdname, choice) sub_select(cmdname, choice) end, "Give any item", 0)
 Convars:RegisterCommand("make", function(cmdname, unitname) make(cmdname, unitname) end, "Give any item", 0)
 Convars:RegisterCommand("test_ack_sec", function(cmdname) test_ack_sec(cmdname) end, "Give any item", 0)
 Convars:RegisterCommand("test_ack", function(cmdname) test_ack(cmdname) end, "Give any item", 0)

@@ -2252,7 +2252,11 @@
 				"Function"	"SwapSpellBook"
 				"activeBook"	"1"
 			}
-
+			"FireSound"
+			{
+				"EffectName"	"Hero_BountyHunter.Track"
+				"Target"	"CASTER"
+			}
 		}
 
 	}
@@ -9158,6 +9162,7 @@
 					"MODIFIER_STATE_NO_HEALTH_BAR"	"MODIFIER_STATE_VALUE_ENABLED"
 					"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
 					"MODIFIER_STATE_NOT_ON_MINIMAP"	"MODIFIER_STATE_VALUE_ENABLED"
+					
 				}
 
 				"Properties"
@@ -9180,7 +9185,47 @@
 		}
 
 	}
+"ability_bush_scout_passive"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"AbilityTextureName"	"razor_plasma_field"
+		"Modifiers"
+		{
+			"modifier_bush_passive"
+			{
+				"Passive"	"1"
+				"Hidden"	"1"
+				"States"
+				{
+					"MODIFIER_STATE_MAGIC_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_HEALTH_BAR"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NOT_ON_MINIMAP"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_INVISIBLE "	"MODIFIER_STATE_VALUE_ENABLED"
+					
+				}
 
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE"	"-100"
+				}
+
+				"OnAttacked"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
+						"Function"	"DropAllItems"
+					}
+
+				}
+
+			}
+
+		}
+
+	}
 	"ability_skeleton_passive"
 	{
 		"BaseClass"	"ability_datadriven"
@@ -9475,7 +9520,7 @@
 			}
 
 		}
-
+		}
 	}
 
 	"tool_rot_x"
@@ -11336,7 +11381,7 @@
 		{
 			"particle_folder"	"particles/units/heroes/hero_razor"
 			"particle_folder"	"particles/units/heroes/hero_disruptor"
-			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_queenofpain.vsndevts"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_bountyhunter.vsndevts"
 		}
 
 		"Modifiers"
@@ -11364,7 +11409,11 @@
 								"ModifierName"	"modifier_block_effect"
 								"Target"	"CASTER"
 							}
-
+							"FireSound"
+							{
+								"EffectName"	"Hero_BountyHunter.Shuriken.Impact"
+								"Target"		"TARGET"
+							}
 						}
 
 					}
@@ -18569,7 +18618,30 @@
 		}
 
 	}
-
+	
+	"ability_fish_passive"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"Modifiers"
+		{
+			"modifier_fish_passive"
+			{
+				"Passive"	"1"
+				"Hidden"	"1"	
+				 "AttachEffect"
+							{
+								"Target" 				"TARGET"
+								//"EffectName"   "particles/units/heroes/hero_pugna/pugna_netherblast.vpcf"
+								"StatusEffectName"     "particles/status_fx/status_effect_poison_venomancer.vpcf"
+								"StatusEffectPriority" "10"
+								"EffectAttachType" 			"follow_origin"
+								//"EffectLifeDurationScale" 	"1"
+								//"EffectColorA" 				"0 0 255"
+							}
+				}
+		}
+	}	
 	"ability_lizard_poisonattack"
 	{
 		"BaseClass"	"ability_datadriven"
@@ -18917,40 +18989,34 @@
 
 	"dummy_increasing_vision"
 	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		
 		"Modifiers"
 		{
 			"thinker_channel_vision"
 			{
-				"Passive"	"1"
-				"ThinkInterval"	"1"
+				"Passive"					"1"
+				"ThinkInterval"				"1"
 				"OnIntervalThink"
 				{
 					"ApplyModifier"
 					{
-						"Target"	"CASTER"
-						"ModifierName"	"modifier_vision_increase"
+						"Target"			"CASTER"
+						"ModifierName"		"modifier_vision_increase"
 					}
-
 				}
-
 			}
-
 			"modifier_vision_increase"
 			{
-				"Duration"	"9999.0"
+				"Duration"		"9999.0"
 				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_BONUS_DAY_VISION"	"150"
-					"MODIFIER_PROPERTY_BONUS_NIGHT_VISION"	"150"
-				}
-
-			}
-
+					"MODIFIER_PROPERTY_BONUS_DAY_VISION"		"150"
+					"MODIFIER_PROPERTY_BONUS_NIGHT_VISION"		"150"
+ 				}
+			}			
 		}
-
 	}
-
 }

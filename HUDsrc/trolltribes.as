@@ -87,71 +87,46 @@
 		private var dotaButtonClass;
 
 		private var subclip:MovieClip;
-		
-		
+
+		private var SubMage:MovieClip;
+		private var SubPriest:MovieClip;
+		private var SubBM:MovieClip;
+		private var SubHunter:MovieClip;
+		private var SubScout:MovieClip;
+		private var SubThief:MovieClip;
+		private var SubGatherer:MovieClip;
+
+		private function loadSubs() { //ugh
+			var cls = getDefinitionByName("SubBM");
+			SubBM = new cls();
+			cls = getDefinitionByName("SubHunter");
+			SubHunter = new cls();
+			cls = getDefinitionByName("SubMage");
+			SubMage = new cls();
+			cls = getDefinitionByName("SubPriest");
+			SubPriest = new cls();
+			cls = getDefinitionByName("SubScout");
+			SubScout = new cls();
+			cls = getDefinitionByName("SubThief");
+			SubThief = new cls();
+			cls = getDefinitionByName("SubGatherer");
+			SubGatherer = new cls();
+		}
+
 		public function  trolltribes() {
 			// constructor code
 			// Note this DOES run for some reason.
 			trace("## trolltribes Hello World from the Constructor. 2222");
+			loadSubs();
+			
+			
 	//		SFTest_showSubclassMenu();
 		}
 				
-		public function onItemClick(item:String){
-			trace("AS " + item);
-			gameAPI.SendServerCommand("tae_buy_item " + item);
-		}
-		
-		public function onBuildingClick(building:String){
-			trace("Building " + building);
-			gameAPI.SendServerCommand("tae_wants_to_build " + building);
-		}
-		
-        public function onPanelClose(obj:Object){
-        	obj.target.parent.visible = false;
-        }
-
-        public function onMouseClickItem(keys:MouseEvent){
-        	trace("click");
-       		var s:Object = keys.target;
-
-       		trace("Bought " + s.itemName);
-
-        }
-
-       	public function onMouseRollOver(keys:MouseEvent){
-       		
-       		var s:Object = keys.target;
-       		trace("roll over! " + s.itemName);
-            // Workout where to put it
-            var lp:Point = s.localToGlobal(new Point(0, 0));
-
-            // Decide how to show the info
-            if(lp.x < realScreenWidth/2) {
-                // Workout how much to move it
-                var offset:Number = 16*scalingFactor;
-
-                // Face to the right
-                globals.Loader_rad_mode_panel.gameAPI.OnShowAbilityTooltip(lp.x+offset, lp.y, s.getResourceName());
-            } else {
-                // Face to the left
-                globals.Loader_heroselection.gameAPI.OnSkillRollOver(lp.x, lp.y, s.getResourceName());
-            }
-       	}
-
-       	public function onMouseRollOut(keys:Object){
-       		 globals.Loader_heroselection.gameAPI.OnSkillRollOut();
-       	}
-		public function tempEvent1(args:Object) : void {
-			trace("WE ARE FREE, FREE AS A BIRD, A CYBER BIRD");
-		}
-		public function tempEvent2(args:Object) : void {
-			trace("EXTERMINATE, EXTERMINATE");
-		}
-		
 		public function onLoaded() : void {
 			//trace('globals:');
 			//PrintTable(globals, 1);
-			trace("## trolltribes Fixing healthbar");
+	//		trace(this.SubBM);
 			
 			// constructor code
 			//trace("### trolltribes killing inventory UI");
@@ -160,167 +135,55 @@
 			trace("## trolltribes Starting  trolltribes HUD");
 			visible = true;
 			
-			Translate = Globals.instance.GameInterface.Translate;
-			
-			globals.scaleX = 0.5;
-			globals.scaleY = 0.5;
-			
-			trace("Loading kv..");
-
 			gameAPI.SubscribeToGameEvent("fl_level_6", this.showSubclassMenu);
 
-			dotaButtonClass = getDefinitionByName("button_big");
-			subclip = new subSelect();
-			//Resizing is blitz
-			Globals.instance.resizeManager.AddListener(this);
 			trace("###DONE");
-			
 		}
 
 		public function showSubclassMenu(keys:Object){
 	//		PrintTable(keys);
+			trace("Hello!");
 			if (globals.Players.GetLocalPlayer() == keys.pid || keys.pid == -1)
 			{
 				trace("Got my thing!");
-				gameAPI.SendServerCommand("acknowledge_flash_event " + "fl_level_6" + " " + globals.Players.GetLocalPlayer() + " " + keys.id);
-				trace("Sent server cmd!\n\n\n");
 				var gameclass:String = keys.gameclass;
-				trace("Got gameclass");
-				//Class is in the event. Class select movieclip is filled with assets for all classes. Find any not for this class and invis them.
-				for(var i = 0; i < subclip.numChildren; i++)
+				if(gameclass != null)
 				{
-					var child = subclip.getChildAt(i);
-					trace("Child: " + child);
-					if(child == null){
-						continue;
-					}
-					var childName:String = child.name
-					trace("Name: +" + childName);
-					if(childName != null && childName != "" && childName.indexOf("expbox") == -1 && childName.indexOf(gameclass) == -1 ){
-						child.visible = false;
-					}
+					var targ:String = "Sub" + gameclass; //be careful of this
+					trace("I want to open" + targ);
+					activateSub(targ);
 				}
-				trace("Making buttons..");
-		//		makeButton("1", subclip.getChildByName(gameclass + "1") as MovieClip, subclip.getChildByName("selectsub1") as MovieClip);
-		//		makeButton("2", subclip.getChildByName(gameclass + "2") as MovieClip, subclip.getChildByName("selectsub2") as MovieClip);
-		//		makeButton("3", subclip.getChildByName(gameclass + "3") as MovieClip, subclip.getChildByName("selectsub3") as MovieClip);
-				var txt1 = subclip.getChildByName(gameclass + "1");
-				var txt2 = subclip.getChildByName(gameclass + "2");
-				var txt3 = subclip.getChildByName(gameclass + "3");
-				txt1.visible = true;
-				txt2.visible = true;
-				txt3.visible = true;
-				txt1.addEventListener(MouseEvent.CLICK, subSelectButtonClick);
-				txt2.addEventListener(MouseEvent.CLICK, subSelectButtonClick);
-				txt3.addEventListener(MouseEvent.CLICK, subSelectButtonClick);
-				txt1.choice = "1";
-				txt2.choice = "2";
-				txt3.choice = "3";
-				txt1.buttonMode = true;
-				txt2.buttonMode = true;
-				txt3.buttonMode = true;
-				subclip.getChildByName("clip_headerText").visible = true;
-				subclip.getChildByName("clip_baseClip").visible = true;
-				subclip.getChildByName("clip_headerClip").visible = true;
-				subclip.getChildByName("clip_picframe1").visible = true;
-				subclip.getChildByName("clip_picframe2").visible = true;
-				subclip.getChildByName("clip_picframe3").visible = true;
-				subclip.getChildByName("clip_divider1").visible = true;
-				subclip.getChildByName("clip_divider2").visible = true;
-				subclip.getChildByName("clip_divider3").visible = true;
-				var btn1:MovieClip = subclip.getChildByName("clip_btn1") as MovieClip;
-				var btn2:MovieClip = subclip.getChildByName("clip_btn2") as MovieClip;
-				var btn3:MovieClip = subclip.getChildByName("clip_btn3") as MovieClip;
-				btn1.buttonMode = true;
-				btn2.buttonMode = true;
-				btn3.buttonMode = true;
-				btn1.visible = true;
-				btn1.choice = "1";
-				btn1.addEventListener(MouseEvent.CLICK, subSelectButtonClick);
-				btn2.addEventListener(MouseEvent.CLICK, subSelectButtonClick);
-				btn2.visible = true;
-				btn2.choice = "2";
-				btn3.addEventListener(MouseEvent.CLICK, subSelectButtonClick);
-				btn3.visible = true;
-				btn3.choice = "3";
-				subclip.getChildByName("clip_patch").visible = true;
-				subclip.visible = true;
-				addChild(subclip);
+				
 			}
 		}
 
-		public function makeButton(pname:String, textclip:MovieClip, anchor:MovieClip){
-			trace("Makebutton!");
-			var button:MovieClip = new dotaButtonClass();
-			trace("Adding..!");
-			subclip.addChild(button);
-			trace("Added!");
-			button.name = pname;
-			button.x = anchor.x;
-			button.text = "";
-			button.y = anchor.y;
-			trace("Aligned!");
-			button.addEventListener(ButtonEvent.CLICK, subSelectButtonClick);	
-			button.visible = true;
-			trace("Swapping..");
-			if(textclip == null){
-				trace("null textchilp?");
-			}
-			subclip.swapChildren(textclip, button);
-		//	button.addChild(textclip);
-		}
-		
-		public function subSelectButtonClick(e:MouseEvent){
-			trace("BEV!")
-			gameAPI.SendServerCommand("select_sub " + e.target.choice);
-			
-			subclip.visible = false;
+		public function activateSub(subname:String){
+			var mysub:MovieClip = this[subname];
+
+			mysub.Option00.addEventListener(MouseEvent.CLICK, Option1Clicked);
+			mysub.Option01.addEventListener(MouseEvent.CLICK, Option2Clicked);
+			mysub.Option02.addEventListener(MouseEvent.CLICK, Option3Clicked);
+			mysub.ExitB.addEventListener(MouseEvent.CLICK, ExitClicked);
+
+
+			mysub.visible = true;
+			mysub.x = 350;
+			mysub.y = 180;
+			addChild(mysub);
+			trace("This is new!");
 		}
 
-		public function SFTest_showSubclassMenu(){
-			subclip = new subSelect();
-			trace("Got my thing!\n\n\n");
-			var gameclass:String = "gatherer";
-			//Class is in the event. Class select movieclip is filled with assets for all classes. Find any not for this class and invis them.
-			trace("Entering loop..");
-			trace("Num children? " + subclip.numChildren);
-			for(var i = 0; i < subclip.numChildren; i++)
-			{
-				trace("Loop " + i);
-				var child:MovieClip = subclip.getChildAt(i) as MovieClip;
-				trace("Got child! " + child);
-				if(child == null){
-					continue;
-				}
-				var childName:String = child.name
-				trace("Got child: " + childName);
-				if(childName != null && childName != "" && childName.indexOf("expbox") == -1 && childName.indexOf(gameclass) == -1){
-					child.visible = false;
-				}
-			}
-			subclip.visible = true;
-			addChild(subclip);
-			trace("Done with loop..");
-			SFTest_makeButton("1", subclip.getChildByName(gameclass + "1") as MovieClip, subclip.getChildByName("selectsub1") as MovieClip);
-			SFTest_makeButton("2", subclip.getChildByName(gameclass + "1") as MovieClip, subclip.getChildByName("selectsub2") as MovieClip);
-			SFTest_makeButton("3", subclip.getChildByName(gameclass + "1") as MovieClip, subclip.getChildByName("selectsub3") as MovieClip);
-
-			trace("INVISME vis? " + subclip.clip_invisme.visible);
-			trace("gathererthing vis? " + subclip.clip_gatherersub2_exp.visible);
+		public function ExitClicked(ev:MouseEvent){
+			ev.target.parent.visible = false;
 		}
-
-		public function SFTest_makeButton(pname:String,  textclip:MovieClip, anchor:MovieClip){
-			trace("Making!");
-			var button:MovieClip = new MovieClip();
-			subclip.addChild(button);
-			trace("Added!");
-			button.name = pname;
-			button.x = anchor.x;
-			button.y = anchor.y;
-			trace("X: " + button.x + " Y: " + button.y);
-		//	button.addEventListener(ButtonEvent.CLICK, subSelectButtonClick);	
-			button.visible = true;
-			subclip.swapChildren(button, textclip);
+		public function Option1Clicked(ev:MouseEvent){
+			gameAPI.SendServerCommand("sub_select 1");
+		}
+		public function Option2Clicked(ev:MouseEvent){
+			gameAPI.SendServerCommand("sub_select 2");
+		}
+		public function Option3Clicked(ev:MouseEvent){
+			gameAPI.SendServerCommand("sub_select 3");
 		}
 
 		public function onResize(re:ResizeManager) : * {
