@@ -56,7 +56,7 @@ maxPlayerID = 0
 
 GAME_TICK_TIME              = 0.1  	-- The game should update every tenth second
 GAME_CREATURE_TICK_TIME     = 120    -- Time for each creature spawn
-GAME_BUSH_TICK_TIME         = 60
+GAME_BUSH_TICK_TIME         = 10
 GAME_TROLL_TICK_TIME        = 0.5  	-- Its really like its wc3!
 GAME_ITEM_TICK_TIME         = 30  	-- Spawn items every 30?
 FLASH_ACK_THINK             = 2
@@ -169,15 +169,15 @@ function ITT_GameMode:InitGameMode()
     -- This is the creature thinker. All neutral creature spawn logic goes here
     GameMode:SetThink( "OnCreatureThink", ITT_GameMode, "CreatureThink", 2 )
     GameMode.neutralCurNum = {}
-        GameMode.neutralCurNum["npc_creep_elk_wild"] = 0
-        GameMode.neutralCurNum["npc_creep_hawk"] = 0
-        GameMode.neutralCurNum["npc_creep_fish"] = 0
-        GameMode.neutralCurNum["npc_creep_fish_green"] = 0
-        GameMode.neutralCurNum["npc_creep_wolf_jungle"] = 0
-        GameMode.neutralCurNum["npc_creep_bear_jungle"] = 0
-        GameMode.neutralCurNum["npc_creep_lizard"] = 0
-        GameMode.neutralCurNum["npc_creep_panther"] = 0
-        GameMode.neutralCurNum["npc_creep_panther_elder"] = 0
+    GameMode.neutralCurNum["npc_creep_elk_wild"] = 0
+    GameMode.neutralCurNum["npc_creep_hawk"] = 0
+    GameMode.neutralCurNum["npc_creep_fish"] = 0
+    GameMode.neutralCurNum["npc_creep_fish_green"] = 0
+    GameMode.neutralCurNum["npc_creep_wolf_jungle"] = 0
+    GameMode.neutralCurNum["npc_creep_bear_jungle"] = 0
+    GameMode.neutralCurNum["npc_creep_lizard"] = 0
+    GameMode.neutralCurNum["npc_creep_panther"] = 0
+    GameMode.neutralCurNum["npc_creep_panther_elder"] = 0
 
     -- This is the troll thinker. All logic on the player's heros should be checked here
     GameMode:SetThink( "OnTrollThink", ITT_GameMode, "TrollThink", 0 )
@@ -206,10 +206,11 @@ function ITT_GameMode:InitGameMode()
 
     
     GameRules:GetGameModeEntity():ClientLoadGridNav()
+    GameRules:SetSameHeroSelectionEnabled( true )
     GameRules:SetTimeOfDay( 0.75 )
     GameRules:SetHeroRespawnEnabled( false )
-    GameRules:SetHeroSelectionTime( 30.0 )
-    GameRules:SetPreGameTime( 60.0 )
+    GameRules:SetHeroSelectionTime(0)
+    GameRules:SetPreGameTime( 0)
     GameRules:SetPostGameTime( 60.0 )
     GameRules:SetTreeRegrowTime( 60.0 )
 --    GameRules:SetHeroMinimapIconSize( 400 )
@@ -930,14 +931,14 @@ end
 
 function ITT_GameMode:OnBushThink()
     -- Find all bushes
-    --print("bush think")
+    print("bush think")
     units = FindUnitsInRadius(DOTA_TEAM_BADGUYS,
                                   Vector(0, 0, 0),
                                   nil,
                                   FIND_UNITS_EVERYWHERE,
                                   DOTA_UNIT_TARGET_TEAM_BOTH,
                                   DOTA_UNIT_TARGET_ALL,
-                                  DOTA_UNIT_TARGET_FLAG_NONE + DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES,
+                                  DOTA_UNIT_TARGET_FLAG_NONE + DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES + DOTA_UNIT_TARGET_FLAG_INVULNERABLE,
                                   FIND_ANY_ORDER,
                                   false)
     for i=1, #units do
@@ -946,9 +947,11 @@ function ITT_GameMode:OnBushThink()
             if units[i]:GetUnitName() == "npc_bush_herb" then
                 local newItem = CreateItem("item_herb_butsu", nil, nil)
                 units[i]:AddItem(newItem)
+                print("adding butsu")
             elseif units[i]:GetUnitName() == "npc_bush_thistle" then
                 local newItem = CreateItem("item_thistles", nil, nil)
                 units[i]:AddItem(newItem)
+                print("adding thistle")
             elseif units[i]:GetUnitName() == "npc_bush_river" then
                 if RandomInt(0, 1) == 1 then
                     local newItem = CreateItem("item_river_root", nil, nil)
@@ -957,6 +960,7 @@ function ITT_GameMode:OnBushThink()
                     local newItem = CreateItem("item_river_stem", nil, nil)
                     units[i]:AddItem(newItem)
                 end
+                print("adding river")
             elseif units[i]:GetUnitName() == "npc_bush_stash" then
                 local random = RandomInt(0, 3)
                 if random == 0 then
@@ -972,6 +976,7 @@ function ITT_GameMode:OnBushThink()
                     local newItem = CreateItem("item_mushroom", nil, nil)
                     units[i]:AddItem(newItem)
                 end
+                print("adding stash")
             elseif units[i]:GetUnitName() == "npc_bush_thief" then
                 local random = RandomInt(0, 6)
                 if random == 1 then
@@ -993,6 +998,7 @@ function ITT_GameMode:OnBushThink()
                     local newItem = CreateItem("item_medallion_thief", nil, nil)
                     units[i]:AddItem(newItem)
                 end
+                print("adding theif")
             elseif units[i]:GetUnitName() == "npc_bush_scout" then
                 if RandomInt(0, 1) == 1 then
                     local newItem = CreateItem("item_clay_living", nil, nil)
@@ -1001,21 +1007,27 @@ function ITT_GameMode:OnBushThink()
                     local newItem = CreateItem("item_clay_explosion", nil, nil)
                     units[i]:AddItem(newItem)
                 end
+                print("adding scout")
             elseif units[i]:GetUnitName() == "npc_bush_mushroom" then
                 local newItem = CreateItem("item_mushroom", nil, nil)
                 units[i]:AddItem(newItem)
+                print("adding mushroom")
             elseif units[i]:GetUnitName() == "npc_bush_herb_yellow" then
                 local newItem = CreateItem("item_herb_yellow", nil, nil)
                 units[i]:AddItem(newItem)
+                print("adding yellow")
             elseif units[i]:GetUnitName() == "npc_bush_herb_orange" then
                 local newItem = CreateItem("item_herb_orange", nil, nil)
                 units[i]:AddItem(newItem)
+                print("adding orange")
             elseif units[i]:GetUnitName() == "npc_bush_herb_blue" then
                 local newItem = CreateItem("item_herb_blue", nil, nil)
                 units[i]:AddItem(newItem)
+                print("adding blue")
             elseif units[i]:GetUnitName() == "npc_bush_herb_purple" then
                 local newItem = CreateItem("item_herb_purple", nil, nil)
                 units[i]:AddItem(newItem)
+                print("adding purple")
             end
         end
     end
