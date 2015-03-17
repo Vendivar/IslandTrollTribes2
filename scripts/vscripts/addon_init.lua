@@ -931,7 +931,7 @@ end
 
 function ITT_GameMode:OnBushThink()
     -- Find all bushes
-    print("bush think")
+    --print("bush think")
     units = FindUnitsInRadius(DOTA_TEAM_BADGUYS,
                                   Vector(0, 0, 0),
                                   nil,
@@ -947,11 +947,11 @@ function ITT_GameMode:OnBushThink()
             if units[i]:GetUnitName() == "npc_bush_herb" then
                 local newItem = CreateItem("item_herb_butsu", nil, nil)
                 units[i]:AddItem(newItem)
-                print("adding butsu")
+                --print("adding butsu")
             elseif units[i]:GetUnitName() == "npc_bush_thistle" then
                 local newItem = CreateItem("item_thistles", nil, nil)
                 units[i]:AddItem(newItem)
-                print("adding thistle")
+                --print("adding thistle")
             elseif units[i]:GetUnitName() == "npc_bush_river" then
                 if RandomInt(0, 1) == 1 then
                     local newItem = CreateItem("item_river_root", nil, nil)
@@ -960,7 +960,7 @@ function ITT_GameMode:OnBushThink()
                     local newItem = CreateItem("item_river_stem", nil, nil)
                     units[i]:AddItem(newItem)
                 end
-                print("adding river")
+                --print("adding river")
             elseif units[i]:GetUnitName() == "npc_bush_stash" then
                 local random = RandomInt(0, 3)
                 if random == 0 then
@@ -976,7 +976,7 @@ function ITT_GameMode:OnBushThink()
                     local newItem = CreateItem("item_mushroom", nil, nil)
                     units[i]:AddItem(newItem)
                 end
-                print("adding stash")
+                --print("adding stash")
             elseif units[i]:GetUnitName() == "npc_bush_thief" then
                 local random = RandomInt(0, 6)
                 if random == 1 then
@@ -998,7 +998,7 @@ function ITT_GameMode:OnBushThink()
                     local newItem = CreateItem("item_medallion_thief", nil, nil)
                     units[i]:AddItem(newItem)
                 end
-                print("adding theif")
+                --print("adding theif")
             elseif units[i]:GetUnitName() == "npc_bush_scout" then
                 if RandomInt(0, 1) == 1 then
                     local newItem = CreateItem("item_clay_living", nil, nil)
@@ -1007,27 +1007,27 @@ function ITT_GameMode:OnBushThink()
                     local newItem = CreateItem("item_clay_explosion", nil, nil)
                     units[i]:AddItem(newItem)
                 end
-                print("adding scout")
+                --print("adding scout")
             elseif units[i]:GetUnitName() == "npc_bush_mushroom" then
                 local newItem = CreateItem("item_mushroom", nil, nil)
                 units[i]:AddItem(newItem)
-                print("adding mushroom")
+                --print("adding mushroom")
             elseif units[i]:GetUnitName() == "npc_bush_herb_yellow" then
                 local newItem = CreateItem("item_herb_yellow", nil, nil)
                 units[i]:AddItem(newItem)
-                print("adding yellow")
+                --print("adding yellow")
             elseif units[i]:GetUnitName() == "npc_bush_herb_orange" then
                 local newItem = CreateItem("item_herb_orange", nil, nil)
                 units[i]:AddItem(newItem)
-                print("adding orange")
+                --print("adding orange")
             elseif units[i]:GetUnitName() == "npc_bush_herb_blue" then
                 local newItem = CreateItem("item_herb_blue", nil, nil)
                 units[i]:AddItem(newItem)
-                print("adding blue")
+                --print("adding blue")
             elseif units[i]:GetUnitName() == "npc_bush_herb_purple" then
                 local newItem = CreateItem("item_herb_purple", nil, nil)
                 units[i]:AddItem(newItem)
-                print("adding purple")
+                --print("adding purple")
             end
         end
     end
