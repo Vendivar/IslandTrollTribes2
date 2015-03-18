@@ -343,7 +343,7 @@ function ITT_GameMode:_SelectClass(cmdName, arg1)
         if classNum == 0 then
             CreateHeroForPlayer("npc_dota_hero_huskar", cmdPlayer)
         elseif classNum == 1 then
-            CreateHeroForPlayer("npc_dota_hero_gatherer", cmdPlayer)
+            CreateHeroForPlayer("npc_dota_hero_shadow_shaman", cmdPlayer)
         elseif classNum == 2 then
             CreateHeroForPlayer("npc_dota_hero_lion", cmdPlayer)
         elseif classNum == 3 then
@@ -368,7 +368,9 @@ function ITT_GameMode:_Sleep(cmdName)
     if cmdPlayer then
         local nPlayerID = cmdPlayer:GetPlayerID()
         local hero = cmdPlayer:GetAssignedHero()
-
+        if hero == nil then
+            return
+        end
         local abilityName = "ability_rest_troll"
         local ability = hero:FindAbilityByName(abilityName)
         if ability == nil then
@@ -387,6 +389,10 @@ function ITT_GameMode:_EatMeat(cmdName)
     if cmdPlayer then
         local nPlayerID = cmdPlayer:GetPlayerID()
         local hero = cmdPlayer:GetAssignedHero()
+
+        if hero == nil then
+            return
+        end
 
         local meatStacks = hero:GetModifierStackCount("modifier_meat_passive", nil)
         if meatStacks > 0 then
@@ -411,11 +417,14 @@ function ITT_GameMode:_DropMeat(cmdName)
     if cmdPlayer then
         local nPlayerID = cmdPlayer:GetPlayerID()
         local hero = cmdPlayer:GetAssignedHero()
+        if hero == nil then
+            return
+        end
         print("COMMAND FROM PLAYER: " .. nPlayerID)
         print("Drop one meat from hero " .. hero:GetName())
 
         local meatStacks = hero:GetModifierStackCount("modifier_meat_passive", nil)
-        if meatStacks > 0 then
+        if meatStacks > 0 and hero ~= nil then
             local newItem = CreateItem("item_meat_raw", nil, nil)
             CreateItemOnPositionSync(hero:GetOrigin() + RandomVector(RandomInt(50,100)), newItem)
 
@@ -430,11 +439,14 @@ function ITT_GameMode:_DropAllMeat(cmdName)
     if cmdPlayer then
         local nPlayerID = cmdPlayer:GetPlayerID()
         local hero = cmdPlayer:GetAssignedHero()
+        if hero == nil then
+            return
+        end
         print("COMMAND FROM PLAYER: " .. nPlayerID)
         print("Drop all meat hero " .. hero:GetName())
 
         local meatStacks = hero:GetModifierStackCount("modifier_meat_passive", nil)
-        if meatStacks > 0 then
+        if meatStacks > 0 and hero ~= nil then
             for i = 1,meatStacks do
                 local newItem = CreateItem("item_meat_raw", nil, nil)
                 CreateItemOnPositionSync(hero:GetOrigin() + RandomVector(RandomInt(50,100)), newItem)
@@ -443,6 +455,32 @@ function ITT_GameMode:_DropAllMeat(cmdName)
             end
         end
     end
+end
+
+function ITT_GameMode:_Panic(cmdName)
+    print("Panic Command")
+    local cmdPlayer = Convars:GetCommandClient()  -- returns the player who issued the console command
+    if cmdPlayer then
+        local nPlayerID = cmdPlayer:GetPlayerID()
+        local hero = cmdPlayer:GetAssignedHero()
+        if hero == nil then
+            return
+        end
+        local abilityName = "ability_panic"
+        local ability = hero:FindAbilityByName(abilityName)
+        if ability == nil and hero ~= nil then
+            hero:AddAbility(abilityName)
+            ability = hero:FindAbilityByName( abilityName )
+            ability:SetLevel(1)
+        end
+        print("trying to cast ability ", abilityName)
+        hero:CastAbilityNoTarget(ability, -1)
+    end
+end
+
+-- This was missing, added a placeholder to at least remove crashes
+function ITT_GameMode:_PickUpMeat(cmdName)
+    print("Pick up meat button not implemented, this added to remove crashes")
 end
 
 unitskeys = LoadKeyValues("scripts/npc/npc_units_custom.txt")
@@ -533,30 +571,6 @@ function ITT_GameMode:_SubSelect(player, n)
             end
         end
     end
-end
-
-function ITT_GameMode:_Panic(cmdName)
-    print("Panic Command")
-    local cmdPlayer = Convars:GetCommandClient()  -- returns the player who issued the console command
-    if cmdPlayer then
-        local nPlayerID = cmdPlayer:GetPlayerID()
-        local hero = cmdPlayer:GetAssignedHero()
-
-        local abilityName = "ability_panic"
-        local ability = hero:FindAbilityByName(abilityName)
-        if ability == nil then
-            hero:AddAbility(abilityName)
-            ability = hero:FindAbilityByName( abilityName )
-            ability:SetLevel(1)
-        end
-        print("trying to cast ability ", abilityName)
-        hero:CastAbilityNoTarget(ability, -1)
-    end
-end
-
--- This was missing, added a placeholder to at least remove crashes
-function ITT_GameMode:_PickUpMeat(cmdName)
-    print("Pick up meat button not implemented, this added to remove crashes")
 end
 
 -- This code is written by Internet Veteran, handle with care.
