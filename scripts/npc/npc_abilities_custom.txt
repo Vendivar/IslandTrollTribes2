@@ -5333,12 +5333,91 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"ability_thief_jump"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityCastRange"	"600"
+		"AbilityCastPoint"	"0.4"
+		"AbilityCooldown"	"30.0"
+		"AbilityManaCost"	"15"
+		"RequiredLevel"	"2"
+		"MaxLevel"	"1"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"custom_functions_ability.lua"
+				"Function"	"Jump"
+				"Target"	"POINT"
+			}
+
+		}
+
 	}
 
 	"ability_thief_camouflage"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"ability_thief_camouflage"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_TREE"
+		"AbilityCastRange"	"150"
+		"AbilityCastPoint"	"0.0"
+		"AbilityCooldown"	"30.0"
+		"AbilityManaCost"	"15"
+		"RequiredLevel"	"3"
+		"MaxLevel"	"1"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+				"Function"	"CloakCamouflageInvis"
+			}
+
+		}
+
+		"Modifiers"
+		{
+			"modifier_coat_camouflage"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%all_stats"
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%all_stats"
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%all_stats"
+				}
+
+				"ThinkInterval"	"%tick_rate"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+						"Function"	"AddHeat"
+						"Heat"	"%heat"
+					}
+
+				}
+
+				"EffectName"	"particles/status_fx/status_effect_medusa_stone_gaze.vpcf"
+			}
+
+			"modifier_coat_camouflage_invis"
+			{
+				"IsHidden"	"0"
+				"IsPurgable"	"0"
+				"IsDebuff"	"0"
+				"States"
+				{
+					"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+
+			}
+
+		}
+
 	}
 
 	"ability_thief_blur"
@@ -9161,7 +9240,7 @@
 				"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_BOTH"
 				"Aura_Types"	"DOTA_UNIT_TARGET_HERO"
 
-				
+
 
 				"States"
 				{
@@ -9197,7 +9276,7 @@
 					}
 				}
 			}
-		}	
+		}
 	}
 
 "ability_bush_scout_passive"
