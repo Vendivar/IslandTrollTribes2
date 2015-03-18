@@ -154,6 +154,7 @@ end
         GameRules:SetHeroSelectionTime( [time] )
 ]]--
 function ITT_GameMode:InitGameMode()
+    PrintTable(Entities)
     print( "Game mode setup." )
 	BuildingHelper:BlockGridNavSquares(16384)
 
@@ -210,7 +211,7 @@ function ITT_GameMode:InitGameMode()
     GameRules:SetTimeOfDay( 0.75 )
     GameRules:SetHeroRespawnEnabled( false )
     GameRules:SetHeroSelectionTime(0)
-    GameRules:SetPreGameTime( 0)
+    GameRules:SetPreGameTime( 45.0 )
     GameRules:SetPostGameTime( 60.0 )
     GameRules:SetTreeRegrowTime( 60.0 )
 --    GameRules:SetHeroMinimapIconSize( 400 )
@@ -323,11 +324,42 @@ function ITT_GameMode:InitGameMode()
     Convars:RegisterCommand( "Panic", function(...) return self:_Panic( ... ) end, "Player panics!", 0)
     Convars:RegisterCommand( "sub_select", function(cmdname, num) self:_SubSelect(Convars:GetCommandClient(), tonumber(num)) end, "Select Subclass", 0)
     Convars:RegisterCommand( "try_6", function(cmdname, class) print("Trying.."); FireGameEvent("fl_level_6", {pid = -1, gameclass = class}) end, "Select First Subclass", 0)
+    
+    --select class commands
+    Convars:RegisterCommand( "SelectClass", function(...) return self:_SelectClass( ... ) end, "Player is selecting a class", 0 )
+
     --prepare neutral spawns
     self.NumPassiveNeutrals = 0
     self.NumAggressiveNeutrals = 0
 end
 
+--Handler for class selection at the beginning of the game
+function ITT_GameMode:_SelectClass(cmdName, arg1)
+    local cmdPlayer = Convars:GetCommandClient()  -- returns the player who issued the console command
+    local classNum = tonumber(arg1)
+    --print("Class selected "..classNum)
+    if cmdPlayer then
+        --0=hunter, 1=gatherer, 2=scout, 3=thief, 4=priest, 5=mage 6=bm
+        if classNum == 0 then
+            CreateHeroForPlayer("npc_dota_hero_huskar", cmdPlayer)
+        elseif classNum == 1 then
+            CreateHeroForPlayer("npc_dota_hero_gatherer", cmdPlayer)
+        elseif classNum == 2 then
+            CreateHeroForPlayer("npc_dota_hero_lion", cmdPlayer)
+        elseif classNum == 3 then
+            CreateHeroForPlayer("npc_dota_hero_riki", cmdPlayer)
+        elseif classNum == 4 then
+            CreateHeroForPlayer("npc_dota_hero_dazzle", cmdPlayer)
+        elseif classNum == 5 then
+            CreateHeroForPlayer("npc_dota_hero_witch_doctor", cmdPlayer)
+        elseif classNum == 6 then
+            CreateHeroForPlayer("npc_dota_hero_lycan", cmdPlayer)
+        else
+            print("wtf class selected isn't 0-6, spawning hunter as default")
+            CreateHeroForPlayer("npc_dota_hero_huskar", cmdPlayer)
+        end
+    end
+end
 
 --Handlers for commands from custom UI
 function ITT_GameMode:_Sleep(cmdName)
