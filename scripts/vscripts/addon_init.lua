@@ -657,6 +657,12 @@ function ITT_GameMode:OnNPCSpawned( keys )
     local itemslotlock2 = CreateItem("item_slot_locked", spawnedUnit, spawnedUnit)
     local itemslotlock3 = CreateItem("item_slot_locked", spawnedUnit, spawnedUnit)
     print("spawned unit: ", spawnedUnit:GetUnitName(), spawnedUnit:GetClassname(), spawnedUnit:GetName(), spawnedUnit:GetEntityIndex())
+    
+    -- Remove starting gold
+    if not spawnedUnit:IsIllusion() and spawnedUnit:IsHero() and spawnedUnit:GetDeaths() == 0 then
+        spawnedUnit:SetGold(0, false)
+    end
+
     if string.find(spawnedUnit:GetUnitName(), "mage") then
     	spawnedUnit:AddItem(itemslotlock1)
     	spawnedUnit:AddItem(itemslotlock2)
@@ -1131,8 +1137,6 @@ function ITT_GameMode:OnBoatThink()
 
     return 0.1
 end
-
-
 --
 -- This handles spawning items
 --
