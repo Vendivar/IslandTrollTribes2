@@ -2190,8 +2190,8 @@
 			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
 		}
 
-		"Ability1"	"Ability_Get_Corpse"
-		"Ability2"	"Ability_Smoke_Meat"
+		"Ability1"	"ability_get_corpse"
+		"Ability2"	"ability_smoke_meat"
 		"ArmorPhysical"	"5"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
@@ -2229,7 +2229,7 @@
 			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
 		}
 
-		"Ability1"	"Ability_Quick_Build_Armory"
+		"Ability1"	"ability_quick_build_armory"
 		"ArmorPhysical"	"5"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
@@ -2267,9 +2267,9 @@
 			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
 		}
 
-		"Ability1"	"Ability_Make_Gloves"
-		"Ability2"	"Ability_Make_Boots"
-		"Ability3"	"Ability_Make_Coat"
+		"Ability1"	"ability_make_gloves"
+		"Ability2"	"ability_make_boots"
+		"Ability3"	"ability_make_coat"
 		"ArmorPhysical"	"5"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
@@ -2307,7 +2307,7 @@
 			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
 		}
 
-		"Ability1"	"Ability_Quick_Build_Workshop"
+		"Ability1"	"ability_quick_build_workshop"
 		"ArmorPhysical"	"2"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
@@ -2345,7 +2345,7 @@
 			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
 		}
 
-		"Ability1"	"Ability_Quick_Build_WD_Hut"
+		"Ability1"	"ability_quick_build_wd_hut"
 		"ArmorPhysical"	"5"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
@@ -2383,7 +2383,7 @@
 			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
 		}
 
-		"Ability1"	"Ability_Mix"
+		"Ability1"	"ability_mix"
 		"ArmorPhysical"	"2"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
@@ -2421,7 +2421,7 @@
 			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
 		}
 
-		"Ability1"	"Ability_Enemy_Target"
+		"Ability1"	"ability_enemy_target"
 		"ArmorPhysical"	"5"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
@@ -2458,8 +2458,8 @@
 			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
 		}
 
-		"Ability1"	"Ability_Ensnare"
-		"Ability2"	"Ability_Get_Corpse"
+		"Ability1"	"ability_ensnare"
+		"Ability2"	"ability_get_corpse"
 		"ArmorPhysical"	"3"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
@@ -2496,7 +2496,7 @@
 			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
 		}
 
-		"Ability1"	"Ability_Revive"
+		"Ability1"	"ability_revive"
 		"ArmorPhysical"	"5"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
@@ -2533,7 +2533,7 @@
 			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
 		}
 
-		"Ability1"	"Ability_Teleport"
+		"Ability1"	"ability_teleport"
 		"ArmorPhysical"	"5"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
@@ -2571,8 +2571,8 @@
 			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
 		}
 
-		"Ability1"	"Ability_Hatch_Egg"
-		"Ability2"	"Ability_Hawks_Evolution"
+		"Ability1"	"ability_hatch_egg"
+		"Ability2"	"ability_hawks_evolution"
 		"ArmorPhysical"	"2"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
@@ -2610,7 +2610,7 @@
 			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
 		}
 
-		"Ability1"	"Ability_Duel"
+		"Ability1"	"ability_duel"
 		"ArmorPhysical"	"0"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
