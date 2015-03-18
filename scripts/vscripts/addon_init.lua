@@ -1273,11 +1273,9 @@ function ITT_GameMode:OnPlayerConnectFull(keys)
     local playerID = keys.index + 1
     --local player = PlayerInstanceFromIndex(playerID)
     print( "Player " .. playerID .. " connected")
-
+    
     playerList[playerID] = playerID
     maxPlayerID = maxPlayerID + 1
-
-    local creature = CreateUnitByName("npc_dota_creature_elk", RandomVector(RandomFloat(0,200)), true, nil, nil, DOTA_TEAM_BADGUYS)
 end
 
 --Listener to handle telegather events from item pickup and picking up raw meat
