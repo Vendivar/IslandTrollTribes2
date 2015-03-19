@@ -1552,7 +1552,7 @@ function BushZoneMajority(users, default)
     elseif bad > good and bad > custom then majority = DOTA_TEAM_BADGUYS
     elseif custom > good and custom > bad then majority = DOTA_TEAM_CUSTOM_1
     end
-    if good == 0 and bad == 0 and custom == 0 then majority = DOTA_TEAM_NEUTRALS end
+    if good + bad + custom == 0 then majority = DOTA_TEAM_NEUTRALS end
 
     return majority
 end

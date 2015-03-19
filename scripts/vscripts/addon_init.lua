@@ -732,7 +732,7 @@ function ITT_GameMode:OnEntityKilled(keys)
 						{"npc_creep_bear_jungle_adult","npc_creep_bear_cub"}}
        
     local killedUnit = EntIndexToHScript(keys.entindex_killed)
-    local killer = EntIndexToHScript(keys.entindex_attacker)
+    local killer = EntIndexToHScript(keys.entindex_attacker or 0)
     -- local keys.entindex_inflictor --long
     -- local keys.damagebits --long
     local unitName = killedUnit:GetUnitName() 
@@ -742,7 +742,7 @@ function ITT_GameMode:OnEntityKilled(keys)
     end
 
     --deal with killed heros
-    if killedUnit:IsHero() then
+    if killedUnit.IsHero and killedUnit:IsHero() then
         --if it's a hero, drop all carried raw meat, plus 3, and a bone
         meatStacks = killedUnit:GetModifierStackCount("modifier_meat_passive", nil)
         for i= 1, meatStacks+3, 1 do
@@ -751,44 +751,44 @@ function ITT_GameMode:OnEntityKilled(keys)
         end
         local newItem = CreateItem("item_bone", nil, nil)
         CreateItemOnPositionSync(killedUnit:GetOrigin() + RandomVector(RandomInt(20,100)), newItem) 
-    end
+    else
+        --drop system
+        for _,v in pairs(dropTable) do
+            if unitName == v[1] then
+                for itemNum = 2,#v,1 do
+                    itemName = v[itemNum][1]
+                    itemChance = v[itemNum][2]
 
-    --drop system
-    for _,v in pairs(dropTable) do
-        if unitName == v[1] then
-            for itemNum = 2,#v,1 do
-                itemName = v[itemNum][1]
-                itemChance = v[itemNum][2]
-
-                if RandomInt(0, 100) <= itemChance then
-                    local newItem = CreateItem(itemName, nil, nil)
-                    CreateItemOnPositionSync(killedUnit:GetOrigin() + RandomVector(RandomInt(20,100)), newItem) 
+                    if RandomInt(0, 100) <= itemChance then
+                        local newItem = CreateItem(itemName, nil, nil)
+                        CreateItemOnPositionSync(killedUnit:GetOrigin() + RandomVector(RandomInt(20,100)), newItem) 
+                    end
                 end
             end
         end
-    end
-	
-	--spawn young animals
-	local dieRoll = RandomInt(1,20)
-	local chance = 1
-	local bonusChance = killedUnit:GetModifierStackCount("modifier_spawn_chance",nil)
-	if bonusChance ~= nil then
-		chance = chance + bonusChance
-	end
-	
-	if dieRoll <= chance then
-		print("Success! Spawning young animal")
-		for _,v in pairs(spawnTable) do
-			if unitName == v[1] then
-				CreateUnitByName(v[2],killedUnit:GetOrigin(), true,nil,nil,killer:GetTeam()) 
-			end
-		end
-	end
+    	
+    	--spawn young animals
+    	local dieRoll = RandomInt(1,20)
+    	local chance = 1
+    	local bonusChance = killedUnit:GetModifierStackCount("modifier_spawn_chance",nil)
+    	if bonusChance ~= nil then
+    		chance = chance + bonusChance
+    	end
+    	
+    	if dieRoll <= chance then
+    		print("Success! Spawning young animal")
+    		for _,v in pairs(spawnTable) do
+    			if unitName == v[1] then
+    				CreateUnitByName(v[2],killedUnit:GetOrigin(), true,nil,nil,killer:GetTeam()) 
+    			end
+    		end
+    	end
 
-    --tracking number of neutrals
-    --local numOfUnit = GameMode.neutralCurNum[unitName]
-    if GameMode.neutralCurNum[unitName] ~= nil then
-        GameMode.neutralCurNum[unitName] = GameMode.neutralCurNum[unitName] - 1
+        --tracking number of neutrals
+        --local numOfUnit = GameMode.neutralCurNum[unitName]
+        if GameMode.neutralCurNum[unitName] ~= nil then
+            GameMode.neutralCurNum[unitName] = GameMode.neutralCurNum[unitName] - 1
+        end
     end
 end
 
