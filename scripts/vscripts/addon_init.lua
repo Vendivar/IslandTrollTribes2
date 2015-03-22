@@ -60,6 +60,7 @@ GAME_BUSH_TICK_TIME         = 30    --1in2 chance any bush will actually spawn s
 GAME_TROLL_TICK_TIME        = 0.5  	-- Its really like its wc3!
 GAME_ITEM_TICK_TIME         = 30  	-- Spawn items every 30?
 FLASH_ACK_THINK             = 2
+WIN_GAME_THINK              = 0.25
 
 BUILDING_TICK_TIME 			= 0.03
 DROPMODEL_TICK_TIME         = 0.03
@@ -205,7 +206,8 @@ function ITT_GameMode:InitGameMode()
 
     GameMode:SetThink("FlashAckThink", ITT_GameMode, "FlashAckThink", 0)
 
-    
+    GameMode:SetThink("OnCheckWinThink", ITT_GameMode, "CheckWinThink", 0)
+
     GameRules:GetGameModeEntity():ClientLoadGridNav()
     GameRules:SetSameHeroSelectionEnabled( true )
     GameRules:SetTimeOfDay( 0.75 )
@@ -888,7 +890,7 @@ function ITT_GameMode:OnCreatureThink()
 
     MAXIMUM_PASSIVE_NEUTRALS    = 300 --this isn't implemented yet
     MAXIMUM_AGGRESSIVE_NEUTRALS = 20
-    if GameRules:GetGameTime()>900 then --after 21min
+    if math.floor(GameRules:GetGameTime())>900 then --after 21min
     neutralSpawnTable = {
         --{"creep_name", "spawner_name", spawn_chance, number_to_spawn},
         {"npc_creep_elk_wild",      "spawner_neutral_elk",      100, 2},
@@ -901,7 +903,7 @@ function ITT_GameMode:OnCreatureThink()
         {"npc_creep_panther",       "spawner_neutral_panther",  100, 1},
     --   {"npc_creep_panther_elder", "spawner_neutral_panther",  100, 1},
     }
-        elseif GameRules:GetGameTime()>420 then --after 7 min
+        elseif math.floor(GameRules:GetGameTime())>420 then --after 7 min
         neutralSpawnTable = {
         --{"creep_name", "spawner_name", spawn_chance, number_to_spawn},
         {"npc_creep_elk_wild",      "spawner_neutral_elk",      100, 2},
@@ -1301,6 +1303,10 @@ function ITT_GameMode:OnStateThink()
     --print(player:GetAssignedHero())
     --player:SetTeam(2)
     --print(player:GetTeam())
+end
+--This function checks if you won the game or not
+function ITT_GameMode:OnCheckWinThink()
+    return WIN_GAME_THINK
 end
 
 -- When players connect, add them to the players list and begin operations on them
