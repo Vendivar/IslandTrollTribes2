@@ -888,7 +888,7 @@ function ITT_GameMode:OnCreatureThink()
 
     MAXIMUM_PASSIVE_NEUTRALS    = 300 --this isn't implemented yet
     MAXIMUM_AGGRESSIVE_NEUTRALS = 20
-
+    if GameRules:GetGameTime()>900 then --after 21min
     neutralSpawnTable = {
         --{"creep_name", "spawner_name", spawn_chance, number_to_spawn},
         {"npc_creep_elk_wild",      "spawner_neutral_elk",      100, 2},
@@ -899,9 +899,37 @@ function ITT_GameMode:OnCreatureThink()
         {"npc_creep_bear_jungle",   "spawner_neutral_bear",     100, 1},
         {"npc_creep_lizard",        "spawner_neutral_lizard",   100, 1},
         {"npc_creep_panther",       "spawner_neutral_panther",  100, 1},
-        {"npc_creep_panther_elder", "spawner_neutral_panther",  100, 1},
+    --   {"npc_creep_panther_elder", "spawner_neutral_panther",  100, 1},
     }
-    neutralMaxTable = {}
+        elseif GameRules:GetGameTime()>420 then --after 7 min
+        neutralSpawnTable = {
+        --{"creep_name", "spawner_name", spawn_chance, number_to_spawn},
+        {"npc_creep_elk_wild",      "spawner_neutral_elk",      100, 2},
+        {"npc_creep_hawk",          "spawner_neutral_hawk",     100, 2},
+        {"npc_creep_fish",          "spawner_neutral_fish",     100, 5},
+        {"npc_creep_fish_green",    "spawner_neutral_fish",     100, 2},
+        {"npc_creep_wolf_jungle",   "spawner_neutral_wolf",     100, 1},
+        {"npc_creep_bear_jungle",   "spawner_neutral_bear",     66, 1},
+        {"npc_creep_lizard",        "spawner_neutral_lizard",   33, 1},
+        {"npc_creep_panther",       "spawner_neutral_panther",  5, 1},
+    --   {"npc_creep_panther_elder", "spawner_neutral_panther",  100, 1},
+    }
+    else --at the start
+        neutralSpawnTable = {
+        --{"creep_name", "spawner_name", spawn_chance, number_to_spawn},
+        {"npc_creep_elk_wild",      "spawner_neutral_elk",      100, 2},
+        {"npc_creep_hawk",          "spawner_neutral_hawk",     60, 2},
+        {"npc_creep_fish",          "spawner_neutral_fish",     0, 5},
+        {"npc_creep_fish_green",    "spawner_neutral_fish",     0, 2},
+        {"npc_creep_wolf_jungle",   "spawner_neutral_wolf",     25, 1},
+        {"npc_creep_bear_jungle",   "spawner_neutral_bear",     0, 1},
+        {"npc_creep_lizard",        "spawner_neutral_lizard",   0, 1},
+        {"npc_creep_panther",       "spawner_neutral_panther",  0, 1},
+    --   {"npc_creep_panther_elder", "spawner_neutral_panther",  100, 1},
+    }
+    end
+
+        neutralMaxTable = {}
         neutralMaxTable["npc_creep_elk_wild"] = 20
         neutralMaxTable["npc_creep_hawk"] = 8
         neutralMaxTable["npc_creep_fish"] = 20
@@ -910,7 +938,7 @@ function ITT_GameMode:OnCreatureThink()
         neutralMaxTable["npc_creep_bear_jungle"] = 8
         neutralMaxTable["npc_creep_lizard"] = 8
         neutralMaxTable["npc_creep_panther"] = 4
-        neutralMaxTable["npc_creep_panther_elder"] = 4
+        --neutralMaxTable["npc_creep_panther_elder"] = 4
 
     for _,v in pairs(neutralSpawnTable) do
         local creepName = v[1]
