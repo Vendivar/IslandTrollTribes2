@@ -60,10 +60,11 @@ GAME_BUSH_TICK_TIME         = 30    --1in2 chance any bush will actually spawn s
 GAME_TROLL_TICK_TIME        = 0.5  	-- Its really like its wc3!
 GAME_ITEM_TICK_TIME         = 30  	-- Spawn items every 30?
 FLASH_ACK_THINK             = 2
-WIN_GAME_THINK              = 0.25
+WIN_GAME_THINK              = 0.5 -- checks if you've won every x seconds
 
 BUILDING_TICK_TIME 			= 0.03
 DROPMODEL_TICK_TIME         = 0.03
+
 
 itemKeyValues = LoadKeyValues("scripts/npc/npc_items_custom.txt")
 
@@ -845,10 +846,10 @@ end
 
 function ITT_GameMode:OnTrollThink()
 
-    if GameRules:State_Get() ~= DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
+    --if GameRules:State_Get() ~= DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
         -- Will not run until pregame ends
-        return 1
-    end
+       -- return 1
+    --end
     
     -- This will run on every player, do stuff here
     for i=1, maxPlayerID, 1 do
@@ -1314,7 +1315,8 @@ end
 --This function checks if you won the game or not
 
 function ITT_GameMode:OnCheckWinThink()
-    if math.floor(GameRules:GetGameTime())>420 then
+    if GameRules:State_Get() ~= DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then --waits for pregame to end before you can win
+    --win code here
     end
         --GameRules:SetSafeToLeave( true )
         --GameRules:SetGameWinner( DOTA_TEAM_BADGUYS )
@@ -1375,6 +1377,7 @@ function ITT_GameMode:OnPlayerGainedLevel(event)
 	local hero = player:GetAssignedHero()
 	local class = hero:GetClassname()
 	local level = event.level
+    hero:SetAbilityPoints(0)
 	
 	-- contains skill progression for all classes
 	-- first list denotes level 2 skills, since level 1 skills are automatically granted on spawning
