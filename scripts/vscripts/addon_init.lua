@@ -910,8 +910,8 @@ function ITT_GameMode:OnCreatureThink()
         {"npc_creep_hawk",          "spawner_neutral_hawk",     100, 2},
         {"npc_creep_fish",          "spawner_neutral_fish",     100, 5},
         {"npc_creep_fish_green",    "spawner_neutral_fish",     100, 2},
-        {"npc_creep_wolf_jungle",   "spawner_neutral_wolf",     100, 1},
-        {"npc_creep_bear_jungle",   "spawner_neutral_bear",     66, 1},
+        {"npc_creep_wolf_jungle",   "spawner_neutral_wolf",     66, 1},
+        {"npc_creep_bear_jungle",   "spawner_neutral_bear",     50, 1},
         {"npc_creep_lizard",        "spawner_neutral_lizard",   33, 1},
         {"npc_creep_panther",       "spawner_neutral_panther",  5, 1},
     --   {"npc_creep_panther_elder", "spawner_neutral_panther",  100, 1},
@@ -920,10 +920,10 @@ function ITT_GameMode:OnCreatureThink()
         neutralSpawnTable = {
         --{"creep_name", "spawner_name", spawn_chance, number_to_spawn},
         {"npc_creep_elk_wild",      "spawner_neutral_elk",      100, 2},
-        {"npc_creep_hawk",          "spawner_neutral_hawk",     60, 2},
+        {"npc_creep_hawk",          "spawner_neutral_hawk",     10, 2},
         {"npc_creep_fish",          "spawner_neutral_fish",     0, 5},
         {"npc_creep_fish_green",    "spawner_neutral_fish",     0, 2},
-        {"npc_creep_wolf_jungle",   "spawner_neutral_wolf",     25, 1},
+        {"npc_creep_wolf_jungle",   "spawner_neutral_wolf",     10, 1},
         {"npc_creep_bear_jungle",   "spawner_neutral_bear",     0, 1},
         {"npc_creep_lizard",        "spawner_neutral_lizard",   0, 1},
         {"npc_creep_panther",       "spawner_neutral_panther",  0, 1},
@@ -1306,6 +1306,11 @@ function ITT_GameMode:OnStateThink()
 end
 --This function checks if you won the game or not
 function ITT_GameMode:OnCheckWinThink()
+    if math.floor(GameRules:GetGameTime())>420 then
+    end
+        --GameRules:SetSafeToLeave( true )
+        --GameRules:SetGameWinner( DOTA_TEAM_BADGUYS )
+        --DOTA_TEAM_GOODGUYS
     return WIN_GAME_THINK
 end
 
