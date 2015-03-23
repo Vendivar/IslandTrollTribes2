@@ -102,7 +102,7 @@ TINDER_RATE                 = 5.00
 FLINT_RATE                  = 3.00
 STICK_RATE                  = 3.00
 CLAYBALL_RATE               = 1.00
-STONE_RATE                   = 1.00
+STONE_RATE                  = 1.00
 MANACRYSTAL_RATE            = 0.00
 MAGIC_RATE                  = 0.5
 
@@ -111,9 +111,15 @@ REL_TINDER_RATE             = 0
 REL_FLINT_RATE              = 0
 REL_STICK_RATE              = 0
 REL_CLAYBALL_RATE           = 0
-REL_STONE_RATE               = 0
+REL_STONE_RATE              = 0
 REL_MANACRYSTAL_RATE        = 0
 REL_MAGIC_RATE              = 0
+
+--Game periods determine what is allowed to spawn, from start (0) to X seconds in
+GAME_PERIOD_GRACE           = 420
+GAME_PERIOD_EARLY           = 900
+
+
 
 -- Controls the base item spawn rate 
 ITEM_BASE                   = 2
@@ -206,14 +212,14 @@ function ITT_GameMode:InitGameMode()
 
     GameMode:SetThink("FlashAckThink", ITT_GameMode, "FlashAckThink", 0)
 
-    GameMode:SetThink("OnCheckWinThink", ITT_GameMode, "CheckWinThink", 0)
+    GameMode:SetThink("OnCheckWinThink", ITT_GameMode,"CheckWinThink",0)
 
     GameRules:GetGameModeEntity():ClientLoadGridNav()
     GameRules:SetSameHeroSelectionEnabled( true )
     GameRules:SetTimeOfDay( 0.75 )
     GameRules:SetHeroRespawnEnabled( false )
     GameRules:SetHeroSelectionTime(0)
-    GameRules:SetPreGameTime( 420.0 )
+    GameRules:SetPreGameTime(GAME_PERIOD_GRACE)
     GameRules:SetPostGameTime( 60.0 )
     GameRules:SetTreeRegrowTime( 60.0 )
 --    GameRules:SetHeroMinimapIconSize( 400 )
@@ -890,7 +896,8 @@ function ITT_GameMode:OnCreatureThink()
 
     MAXIMUM_PASSIVE_NEUTRALS    = 300 --this isn't implemented yet
     MAXIMUM_AGGRESSIVE_NEUTRALS = 20
-    if math.floor(GameRules:GetGameTime())>900 then --after 21min
+
+    if math.floor(GameRules:GetGameTime())>GAME_PERIOD_EARLY then
     neutralSpawnTable = {
         --{"creep_name", "spawner_name", spawn_chance, number_to_spawn},
         {"npc_creep_elk_wild",      "spawner_neutral_elk",      100, 2},
@@ -903,7 +910,7 @@ function ITT_GameMode:OnCreatureThink()
         {"npc_creep_panther",       "spawner_neutral_panther",  100, 1},
     --   {"npc_creep_panther_elder", "spawner_neutral_panther",  100, 1},
     }
-        elseif math.floor(GameRules:GetGameTime())>420 then --after 7 min
+        elseif math.floor(GameRules:GetGameTime())>GAME_PERIOD_GRACE then
         neutralSpawnTable = {
         --{"creep_name", "spawner_name", spawn_chance, number_to_spawn},
         {"npc_creep_elk_wild",      "spawner_neutral_elk",      100, 2},
@@ -1305,6 +1312,7 @@ function ITT_GameMode:OnStateThink()
     --print(player:GetTeam())
 end
 --This function checks if you won the game or not
+
 function ITT_GameMode:OnCheckWinThink()
     if math.floor(GameRules:GetGameTime())>420 then
     end
