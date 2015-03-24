@@ -3808,10 +3808,10 @@
 
 	}
 
-	"ability_mage_spitfire"
+	"ability_mage_splittingfire"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"ability_mage_spitfire"
+		"AbilityTextureName"	"ability_mage_splittingfire"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityCastPoint"	"0.0"
 		"AbilityCooldown"	"50"
