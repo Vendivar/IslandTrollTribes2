@@ -24,8 +24,8 @@ local subclasses = {
                         "npc_hero_beastmaster_shapeshifter",
                         "npc_hero_beastmaster_form_chicken"},
 
-    npc_dota_hero_riki = {           "npc_hero_thief_escape_artist", 
-                        "npc_hero_thief_contortionist", 
+    npc_dota_hero_riki = {           "npc_hero_thief_escape_artist",
+                        "npc_hero_thief_contortionist",
                         "npc_hero_thief_assassin"},
 
     npc_dota_hero_lion = {           "npc_hero_scout_observer",
@@ -38,14 +38,15 @@ local subclasses = {
 }
 
 --[[
-	This is where the meat of the addon is defined and modified
-	This file exists mostly because addon_game_mode can't be dynamically reloaded
+    This is where the meat of the addon is defined and modified
+    This file exists mostly because addon_game_mode can't be dynamically reloaded
 ]]--
 
 print("addon_init invoked")
 
-require( 'util' )
+require("util")
 require("recipe_list")
+require("timers")
 
 --[[
     Global variables
@@ -54,15 +55,15 @@ require("recipe_list")
 playerList = {}
 maxPlayerID = 0
 
-GAME_TICK_TIME              = 0.1  	-- The game should update every tenth second
+GAME_TICK_TIME              = 0.1   -- The game should update every tenth second
 GAME_CREATURE_TICK_TIME     = 120    -- Time for each creature spawn
 GAME_BUSH_TICK_TIME         = 30    --1in2 chance any bush will actually spawn so average timer is 2x
-GAME_TROLL_TICK_TIME        = 0.5  	-- Its really like its wc3!
-GAME_ITEM_TICK_TIME         = 30  	-- Spawn items every 30?
+GAME_TROLL_TICK_TIME        = 0.5   -- Its really like its wc3!
+GAME_ITEM_TICK_TIME         = 30    -- Spawn items every 30?
 FLASH_ACK_THINK             = 2
 WIN_GAME_THINK              = 0.5 -- checks if you've won every x seconds
 
-BUILDING_TICK_TIME 			= 0.03
+BUILDING_TICK_TIME          = 0.03
 DROPMODEL_TICK_TIME         = 0.03
 
 
@@ -92,7 +93,7 @@ REGIONS[4]                  = BOTTOMLEFT
 
 -- Tick time is 300s
 -- https://github.com/island-troll-tribes/wc3-client/blob/1562854dd098180752f0f4a99df0c4968697b38b/src/systems/spawning/Spawn%20Normal.j#L3
--- GAME_ITEM_TICK_TIME         = 300    
+-- GAME_ITEM_TICK_TIME         = 300
 
 -- Using a shorter time for testing's sake
 --GAME_ITEM_TICK_TIME         = 15
@@ -108,7 +109,7 @@ MANACRYSTAL_RATE            = 0.00
 MAGIC_RATE                  = 0.5
 
 -- Relative rates start at 0 but get set such that all should sum to one on first call
-REL_TINDER_RATE             = 0 
+REL_TINDER_RATE             = 0
 REL_FLINT_RATE              = 0
 REL_STICK_RATE              = 0
 REL_CLAYBALL_RATE           = 0
@@ -116,13 +117,14 @@ REL_STONE_RATE              = 0
 REL_MANACRYSTAL_RATE        = 0
 REL_MAGIC_RATE              = 0
 
---Game periods determine what is allowed to spawn, from start (0) to X seconds in
+-- Game periods determine what is allowed to spawn, from start (0) to X seconds in
 GAME_PERIOD_GRACE           = 420
 GAME_PERIOD_EARLY           = 900
 
+-- Grace period respawn time in seconds
+GRACE_PERIOD_RESPAWN_TIME    = 3
 
-
--- Controls the base item spawn rate 
+-- Controls the base item spawn rate
 ITEM_BASE                   = 2
 
 --Merchant Boat paths, and other lists
@@ -134,13 +136,13 @@ PATH_LIST = {PATH1, PATH2, PATH3, PATH4}
 SHOP_UNIT_NAME_LIST = {"npc_ship_merchant_1", "npc_ship_merchant_2", "npc_ship_merchant_3"}
 TOTAL_SHOPS = #SHOP_UNIT_NAME_LIST
 MAX_SHOPS_ON_MAP = 1
- 
+
 --[[
     Default cruft to set everything up
-    In the game creation trace, this runs after 
+    In the game creation trace, this runs after
         S:Gamerules: entering state 'DOTA_GAMERULES_STATE_INIT' - base DOTA2 rules that we can't change are loaded here
         SV:  Spawn Server: template_map - where the map is loaded on the server
-    It runs before any of these events: 
+    It runs before any of these events:
         Precaching
         CL:  CWaitForGameServerStartupPrerequisite - this is where the sever signals it is ready to be connected to
         CL:  CCreateGameClientJob - this creates the creating client connection to server
@@ -149,7 +151,7 @@ MAX_SHOPS_ON_MAP = 1
 if ITT_GameMode == nil then
     print("ITT Script execution begin")
     ITT_GameMode = class({})
-    -- LoadKeyValues(filename a) 
+    -- LoadKeyValues(filename a)
 end
 
 --[[
@@ -164,11 +166,11 @@ end
 function ITT_GameMode:InitGameMode()
     PrintTable(Entities)
     print( "Game mode setup." )
-	BuildingHelper:BlockGridNavSquares(16384)
+    BuildingHelper:BlockGridNavSquares(16384)
 
-	Convars:RegisterConvar('itt_set_game_mode', nil, 'Set to the game mode', FCVAR_PROTECTED)
+    Convars:RegisterConvar('itt_set_game_mode', nil, 'Set to the game mode', FCVAR_PROTECTED)
 
-	GameMode = GameRules:GetGameModeEntity()
+    GameMode = GameRules:GetGameModeEntity()
 
     -- Set the game's thinkers up
 
@@ -215,10 +217,14 @@ function ITT_GameMode:InitGameMode()
 
     GameMode:SetThink("OnCheckWinThink", ITT_GameMode,"CheckWinThink",0)
 
+    -- Disable buybacks to stop instant respawning.
+    GameMode:SetBuybackEnabled( false )
+
+
     GameRules:GetGameModeEntity():ClientLoadGridNav()
     GameRules:SetSameHeroSelectionEnabled( true )
     GameRules:SetTimeOfDay( 0.75 )
-    GameRules:SetHeroRespawnEnabled( false )
+    GameRules:SetHeroRespawnEnabled( true )
     GameRules:SetHeroSelectionTime(0)
     GameRules:SetPreGameTime(GAME_PERIOD_GRACE)
     GameRules:SetPostGameTime( 60.0 )
@@ -234,25 +240,25 @@ function ITT_GameMode:InitGameMode()
     -- A bunch of those are broken, so be warned
     -- Custom events can be made in /scripts/custom_events.txt
     -- BROKEN:
-    -- dota_item_drag_end dota_item_drag_begin dota_inventory_changed dota_inventory_item_changed  
+    -- dota_item_drag_end dota_item_drag_begin dota_inventory_changed dota_inventory_item_changed
     -- dota_inventory_changed_query_unit dota_inventory_item_added
     -- WORK:
     -- dota_item_picked_up dota_item_purchased
-    ListenToGameEvent('player_connect_full', Dynamic_Wrap(ITT_GameMode, 'OnPlayerConnectFull'), self) 
-   
-	-- Use this for assigning items to heroes initially once they pick their hero.
-	ListenToGameEvent( "dota_player_pick_hero", Dynamic_Wrap( ITT_GameMode, "OnPlayerPicked" ), self )
-	
-	-- Use this for dealing with subclass spawning
-   	ListenToGameEvent( "npc_spawned", Dynamic_Wrap( ITT_GameMode, "OnNPCSpawned" ), self )	
+    ListenToGameEvent('player_connect_full', Dynamic_Wrap(ITT_GameMode, 'OnPlayerConnectFull'), self)
+
+    -- Use this for assigning items to heroes initially once they pick their hero.
+    ListenToGameEvent( "dota_player_pick_hero", Dynamic_Wrap( ITT_GameMode, "OnPlayerPicked" ), self )
+
+    -- Use this for dealing with subclass spawning
+    ListenToGameEvent( "npc_spawned", Dynamic_Wrap( ITT_GameMode, "OnNPCSpawned" ), self )
 
     --Listener for items picked up, used for telegather abilities
     ListenToGameEvent('dota_item_picked_up', Dynamic_Wrap(ITT_GameMode, 'OnItemPickedUp'), self)
 
-    ListenToGameEvent('dota_player_gained_level', Dynamic_Wrap(ITT_GameMode, 'OnPlayerGainedLevel'), self) 
-	
-	--Listener for storing hero information and revive
-	ListenToGameEvent("dota_player_killed", Dynamic_Wrap(ITT_GameMode, 'OnDotaPlayerKilled'), self)
+    ListenToGameEvent('dota_player_gained_level', Dynamic_Wrap(ITT_GameMode, 'OnPlayerGainedLevel'), self)
+
+    --Listener for storing hero information and revive
+    ListenToGameEvent("dota_player_killed", Dynamic_Wrap(ITT_GameMode, 'OnDotaPlayerKilled'), self)
 
     -- Listener for drops and for removing buildings from block table
     ListenToGameEvent("entity_killed", Dynamic_Wrap( ITT_GameMode, "OnEntityKilled" ), self )
@@ -280,7 +286,7 @@ function ITT_GameMode:InitGameMode()
 
     self:GatherValidTeams()
 
-    GameRules:GetGameModeEntity():SetThink( "OnThink", self, 1 ) 
+    GameRules:GetGameModeEntity():SetThink( "OnThink", self, 1 )
 
     --initial bush spawns
     --place "npc_dota_spawner" entities on the map with the appropriate name to spawn to corresponding bush on game start
@@ -333,13 +339,26 @@ function ITT_GameMode:InitGameMode()
     Convars:RegisterCommand( "Panic", function(...) return self:_Panic( ... ) end, "Player panics!", 0)
     Convars:RegisterCommand( "sub_select", function(cmdname, num) self:_SubSelect(Convars:GetCommandClient(), tonumber(num)) end, "Select Subclass", 0)
     Convars:RegisterCommand( "try_6", function(cmdname, class) print("Trying.."); FireGameEvent("fl_level_6", {pid = -1, gameclass = class}) end, "Select First Subclass", 0)
-    
+
     --select class commands
     Convars:RegisterCommand( "SelectClass", function(...) return self:_SelectClass( ... ) end, "Player is selecting a class", 0 )
 
     --prepare neutral spawns
     self.NumPassiveNeutrals = 0
     self.NumAggressiveNeutrals = 0
+
+    -- Timer Init
+    Timers:start()
+
+    -- Grace Period
+    GameMode:SetFixedRespawnTime(GRACE_PERIOD_RESPAWN_TIME)
+    Timers:CreateTimer({
+        endTime = GAME_PERIOD_GRACE,
+        callback = function()
+            print("End of grace period.")
+            GameRules:SetHeroRespawnEnabled( false )
+        end
+    })
 end
 
 --Handler for class selection at the beginning of the game
@@ -525,7 +544,7 @@ function CosmeticsForUnit(unit)
     local i = unit:entindex()
 
     while true do  -- I'm aware of the FindByClassname function taking an iterator (the entity to lookafter), which would be greater prefered, but it was spewing nils at me
-        local ent = EntIndexToHScript(i) 
+        local ent = EntIndexToHScript(i)
         if ent:GetClassname() == "dota_item_wearable" then
             retn[#retn + 1] = ent
         elseif #retn > 0 then break
@@ -548,10 +567,10 @@ end
     This fixes the Cosmetics issue by model-swapping the naturally assigned hero's cosmetics with the chosen subclass models. It does this by looking at the currect setup in
     npc_units_custom.txt. This is strange because this method implies that hero -> unit swapping is no longer intended. We will need to do the Ability shuffling manually later.
 
-    Sticking with the player's assigned heroes as a number of player-usuability wins. It doesn't destroy Multiteam callouts, introduce 
+    Sticking with the player's assigned heroes as a number of player-usuability wins. It doesn't destroy Multiteam callouts, introduce
     selectin wonkiness, break your control groups or hero-snap key, and probably some other stuff I'm forgetting.
 
-    The biggest problem is that the unit's name on the UI no longer changes on its own. Off the top of my head, the only way to patch this up would be to rig some shit up in 
+    The biggest problem is that the unit's name on the UI no longer changes on its own. Off the top of my head, the only way to patch this up would be to rig some shit up in
     scaleform, which isn't so bad because the gamemode could use some other gameui patches -- such as a better implementation of the inventory slot-blockers that you can
     move around.
 
@@ -566,7 +585,7 @@ function ITT_GameMode:_SubSelect(player, n)
     local choices = subclasses[playerUnit]
     if choices then
         local choice = choices[n + 1]
-        
+
         local oldClothes = CosmeticsForUnit(playerUnitEnt)
 
         local newClothes = unitskeys[choice].Creature.AttachWearables
@@ -584,37 +603,37 @@ end
 
 -- This code is written by Internet Veteran, handle with care.
 --Distribute slot locked items based off of the class.
-function ITT_GameMode:OnPlayerPicked( keys ) 
+function ITT_GameMode:OnPlayerPicked( keys )
     local spawnedUnit = EntIndexToHScript( keys.heroindex )
     local itemslotlock = CreateItem("item_slot_locked", spawnedUnit, spawnedUnit)
-	
-	local innateSkills = {
-		{HUNTER,"ability_hunter_ensnare"},
-		{PRIEST,"ability_priest_theglow"},
-		{MAGE,"ability_mage_nulldamage"},
-		{BEASTMASTER,"ability_beastmaster_tamepet","ability_beastmaster_spiritofthebeast","ability_beastmaster_pet_release",
-						"ability_beastmaster_pet_follow","ability_beastmaster_pet_stay","ability_beastmaster_pet_sleep","ability_beastmaster_pet_attack"},
-		{THIEF,"ability_thief_teleport"},
-		{SCOUT,"ability_scout_enemyradar"},
-		{GATHERER,"ability_gatherer_itemradar"}
-	}
-	local lockedSlots = {
-		{HUNTER,3},
-		{PRIEST,2},
-		{MAGE,2},
-		{BEASTMASTER,2},
-		{THIEF,1},
-		{SCOUT,1},
-		{GATHERER,0}
-	}
-	
-	local class = spawnedUnit:GetClassname()
-	
+
+    local innateSkills = {
+        {HUNTER,"ability_hunter_ensnare"},
+        {PRIEST,"ability_priest_theglow"},
+        {MAGE,"ability_mage_nulldamage"},
+        {BEASTMASTER,"ability_beastmaster_tamepet","ability_beastmaster_spiritofthebeast","ability_beastmaster_pet_release",
+                        "ability_beastmaster_pet_follow","ability_beastmaster_pet_stay","ability_beastmaster_pet_sleep","ability_beastmaster_pet_attack"},
+        {THIEF,"ability_thief_teleport"},
+        {SCOUT,"ability_scout_enemyradar"},
+        {GATHERER,"ability_gatherer_itemradar"}
+    }
+    local lockedSlots = {
+        {HUNTER,3},
+        {PRIEST,2},
+        {MAGE,2},
+        {BEASTMASTER,2},
+        {THIEF,1},
+        {SCOUT,1},
+        {GATHERER,0}
+    }
+
+    local class = spawnedUnit:GetClassname()
+
     -- This handles locking a number of inventory slots for some classes
     -- Fills all slots with locks then removes them to leave the correct number
     -- This means that players do not need to manually reshuffle them to craft
-	for _,slotList in pairs(lockedSlots) do
-		if slotList[1] == class then
+    for _,slotList in pairs(lockedSlots) do
+        if slotList[1] == class then
             local freeslots = 6 - slotList[2]
             --print("slots free are", freeslots)
             for i = 1, 6 do
@@ -624,20 +643,20 @@ function ITT_GameMode:OnPlayerPicked( keys )
                 local removeMe = spawnedUnit:GetItemInSlot(i)
                 spawnedUnit:RemoveItem(removeMe)
             end
-		end		
-	end
-	
-	-- add innate skills
-	spawnedUnit:SetAbilityPoints(0)
-	for _,spellList in pairs(innateSkills) do
-		if spellList[1] == class then
-			for i = 2, #spellList do
+        end
+    end
+
+    -- add innate skills
+    spawnedUnit:SetAbilityPoints(0)
+    for _,spellList in pairs(innateSkills) do
+        if spellList[1] == class then
+            for i = 2, #spellList do
                 print("adding innate spell " .. spellList[i])
-				local ability = spawnedUnit:FindAbilityByName(spellList[i])
-				ability:UpgradeAbility(true)
-			end
-		end
-	end
+                local ability = spawnedUnit:FindAbilityByName(spellList[i])
+                ability:UpgradeAbility(true)
+            end
+        end
+    end
 
     --heat handling
     if string.find(spawnedUnit:GetClassname(), "hero") then
@@ -657,54 +676,54 @@ function ITT_GameMode:OnPlayerPicked( keys )
         spawnedUnit:SetModifierStackCount("modifier_meat_passive", nil, 0)
     end
 end
-	
+
 -- This code is written by Internet Veteran, handle with care.
 --Do the same now for the subclasses
-function ITT_GameMode:OnNPCSpawned( keys ) 
+function ITT_GameMode:OnNPCSpawned( keys )
     local spawnedUnit = EntIndexToHScript( keys.entindex )
     local itemslotlock1 = CreateItem("item_slot_locked", spawnedUnit, spawnedUnit)
     local itemslotlock2 = CreateItem("item_slot_locked", spawnedUnit, spawnedUnit)
     local itemslotlock3 = CreateItem("item_slot_locked", spawnedUnit, spawnedUnit)
     print("spawned unit: ", spawnedUnit:GetUnitName(), spawnedUnit:GetClassname(), spawnedUnit:GetName(), spawnedUnit:GetEntityIndex())
-    
+
     -- Remove starting gold
     if not spawnedUnit:IsIllusion() and spawnedUnit:IsHero() and spawnedUnit:GetDeaths() == 0 then
         spawnedUnit:SetGold(0, false)
     end
 
     if string.find(spawnedUnit:GetUnitName(), "mage") then
-    	spawnedUnit:AddItem(itemslotlock1)
-    	spawnedUnit:AddItem(itemslotlock2)
-     --	if spawnedUnit:GetClassname() == "hunter" then
+        spawnedUnit:AddItem(itemslotlock1)
+        spawnedUnit:AddItem(itemslotlock2)
+     -- if spawnedUnit:GetClassname() == "hunter" then
     elseif string.find(spawnedUnit:GetUnitName(), "hunter") then
-    	spawnedUnit:AddItem(itemslotlock1)
+        spawnedUnit:AddItem(itemslotlock1)
         spawnedUnit:AddItem(itemslotlock2)
-    	spawnedUnit:AddItem(itemslotlock3)
-     --	if spawnedUnit:GetClassname() == "scout" then
+        spawnedUnit:AddItem(itemslotlock3)
+     -- if spawnedUnit:GetClassname() == "scout" then
     elseif string.find(spawnedUnit:GetUnitName(), "scout") and string.find(spawnedUnit:GetUnitName(), "hero") then
-    	spawnedUnit:AddItem(itemslotlock1)
-     --	if spawnedUnit:GetClassname() == "priest" then
-     -- if spawnedUnit:(string.find(targetName,"priest") ~= nil) then 
+        spawnedUnit:AddItem(itemslotlock1)
+     -- if spawnedUnit:GetClassname() == "priest" then
+     -- if spawnedUnit:(string.find(targetName,"priest") ~= nil) then
     elseif string.find(spawnedUnit:GetUnitName(), "priest") then
-    	spawnedUnit:AddItem(itemslotlock1)
+        spawnedUnit:AddItem(itemslotlock1)
         spawnedUnit:AddItem(itemslotlock2)
-     --	if spawnedUnit:GetClassname() == "theif" then
-     -- if spawnedUnit:(string.find(targetName,"thief") ~= nil) then 
+     -- if spawnedUnit:GetClassname() == "theif" then
+     -- if spawnedUnit:(string.find(targetName,"thief") ~= nil) then
      elseif string.find(spawnedUnit:GetUnitName(), "thief") and string.find(spawnedUnit:GetUnitName(), "hero") then
-    	spawnedUnit:AddItem(itemslotlock1)
-     --	if spawnedUnit:GetClassname() == "beastmaster" then
-     -- if spawnedUnit:(string.find(targetName,"beastmaster") ~= nil) then 
+        spawnedUnit:AddItem(itemslotlock1)
+     -- if spawnedUnit:GetClassname() == "beastmaster" then
+     -- if spawnedUnit:(string.find(targetName,"beastmaster") ~= nil) then
     elseif string.find(spawnedUnit:GetUnitName(), "beastmaster") then
-    	spawnedUnit:AddItem(itemslotlock1)
+        spawnedUnit:AddItem(itemslotlock1)
         spawnedUnit:AddItem(itemslotlock2)
-    else  
+    else
         print(spawnedUnit:GetUnitName() .. " is not a subclass")
-    end 
+    end
 
     --heat handling
     if string.find(spawnedUnit:GetUnitName(), "hero") then
         print("HEAT2!")
-        spawnedUnit:RemoveModifierByName("modifier_heat_passive") 
+        spawnedUnit:RemoveModifierByName("modifier_heat_passive")
         local heatApplier = CreateItem("item_heat_modifier_applier", spawnedUnit, spawnedUnit)
         heatApplier:ApplyDataDrivenModifier(spawnedUnit, spawnedUnit, "modifier_heat_passive", {duration=-1})
         spawnedUnit:SetModifierStackCount("modifier_heat_passive", nil, 100)
@@ -734,17 +753,17 @@ function ITT_GameMode:OnEntityKilled(keys)
         {"npc_creep_fish", {"item_meat_raw", 100}},
         {"npc_creep_hawk", {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_bone", 100}, {"item_egg_hawk", 10}}
     }
-	local spawnTable = { 
-						{"npc_creep_elk_wild","npc_creep_fawn"}, 
-						{"npc_creep_wolf_jungle","npc_creep_wolf_pup"},
-						{"npc_creep_bear_jungle","npc_creep_bear_cub"},
-						{"npc_creep_bear_jungle_adult","npc_creep_bear_cub"}}
-       
+    local spawnTable = {
+                        {"npc_creep_elk_wild","npc_creep_fawn"},
+                        {"npc_creep_wolf_jungle","npc_creep_wolf_pup"},
+                        {"npc_creep_bear_jungle","npc_creep_bear_cub"},
+                        {"npc_creep_bear_jungle_adult","npc_creep_bear_cub"}}
+
     local killedUnit = EntIndexToHScript(keys.entindex_killed)
     local killer = EntIndexToHScript(keys.entindex_attacker or 0)
     -- local keys.entindex_inflictor --long
     -- local keys.damagebits --long
-    local unitName = killedUnit:GetUnitName() 
+    local unitName = killedUnit:GetUnitName()
     print(unitName .. " has been killed")
     if string.find(unitName, "building") then
         killedUnit:RemoveBuilding(2, false)
@@ -756,47 +775,47 @@ function ITT_GameMode:OnEntityKilled(keys)
         meatStacks = killedUnit:GetModifierStackCount("modifier_meat_passive", nil)
         for i= 1, meatStacks+3, 1 do
             local newItem = CreateItem("item_meat_raw", nil, nil)
-            CreateItemOnPositionSync(killedUnit:GetOrigin() + RandomVector(RandomInt(20,100)), newItem) 
+            CreateItemOnPositionSync(killedUnit:GetOrigin() + RandomVector(RandomInt(20,100)), newItem)
         end
         local newItem = CreateItem("item_bone", nil, nil)
-        CreateItemOnPositionSync(killedUnit:GetOrigin() + RandomVector(RandomInt(20,100)), newItem) 
+        CreateItemOnPositionSync(killedUnit:GetOrigin() + RandomVector(RandomInt(20,100)), newItem)
     else
-        --drop system
-        for _,v in pairs(dropTable) do
-            if unitName == v[1] then
-                for itemNum = 2,#v,1 do
-                    itemName = v[itemNum][1]
-                    itemChance = v[itemNum][2]
+    --drop system
+    for _,v in pairs(dropTable) do
+        if unitName == v[1] then
+            for itemNum = 2,#v,1 do
+                itemName = v[itemNum][1]
+                itemChance = v[itemNum][2]
 
-                    if RandomInt(0, 100) <= itemChance then
-                        local newItem = CreateItem(itemName, nil, nil)
-                        CreateItemOnPositionSync(killedUnit:GetOrigin() + RandomVector(RandomInt(20,100)), newItem) 
-                    end
+                if RandomInt(0, 100) <= itemChance then
+                    local newItem = CreateItem(itemName, nil, nil)
+                    CreateItemOnPositionSync(killedUnit:GetOrigin() + RandomVector(RandomInt(20,100)), newItem)
                 end
             end
         end
-    	
-    	--spawn young animals
-    	local dieRoll = RandomInt(1,20)
-    	local chance = 1
-    	local bonusChance = killedUnit:GetModifierStackCount("modifier_spawn_chance",nil)
-    	if bonusChance ~= nil then
-    		chance = chance + bonusChance
-    	end
-    	
-    	if dieRoll <= chance then
-    		print("Success! Spawning young animal")
-    		for _,v in pairs(spawnTable) do
-    			if unitName == v[1] then
-    				CreateUnitByName(v[2],killedUnit:GetOrigin(), true,nil,nil,killer:GetTeam()) 
-    			end
-    		end
-    	end
+    end
 
-        --tracking number of neutrals
-        --local numOfUnit = GameMode.neutralCurNum[unitName]
-        if GameMode.neutralCurNum[unitName] ~= nil then
-            GameMode.neutralCurNum[unitName] = GameMode.neutralCurNum[unitName] - 1
+    --spawn young animals
+    local dieRoll = RandomInt(1,20)
+    local chance = 1
+    local bonusChance = killedUnit:GetModifierStackCount("modifier_spawn_chance",nil)
+    if bonusChance ~= nil then
+        chance = chance + bonusChance
+    end
+
+    if dieRoll <= chance then
+        print("Success! Spawning young animal")
+        for _,v in pairs(spawnTable) do
+            if unitName == v[1] then
+                CreateUnitByName(v[2],killedUnit:GetOrigin(), true,nil,nil,killer:GetTeam())
+            end
+        end
+    end
+
+    --tracking number of neutrals
+    --local numOfUnit = GameMode.neutralCurNum[unitName]
+    if GameMode.neutralCurNum[unitName] ~= nil then
+        GameMode.neutralCurNum[unitName] = GameMode.neutralCurNum[unitName] - 1
         end
     end
 end
@@ -825,11 +844,11 @@ function ITT_GameMode:FixDropModels(dt)
             v.ModelFixInit = true
             v.OriginalOrigin = v:GetOrigin()
             v.OriginalAngles = v:GetAngles()
-            local custom = itemKeyValues[v:GetContainedItem():GetAbilityName()].Custom 
+            local custom = itemKeyValues[v:GetContainedItem():GetAbilityName()].Custom
             if custom then
                 --print("found custom")
                 if custom.ModelOffsets then
-                    local offsets = itemKeyValues[v:GetContainedItem():GetAbilityName()].Custom.ModelOffsets          
+                    local offsets = itemKeyValues[v:GetContainedItem():GetAbilityName()].Custom.ModelOffsets
                     v:SetOrigin( v.OriginalOrigin - Vector(offsets.Origin.x, offsets.Origin.y, offsets.Origin.z))
                     v:SetAngles( v.OriginalAngles.x - offsets.Angles.x, v.OriginalAngles.y - offsets.Angles.y, v.OriginalAngles.z - offsets.Angles.z)
                 end
@@ -850,11 +869,11 @@ function ITT_GameMode:OnTrollThink()
         -- Will not run until pregame ends
        -- return 1
     --end
-    
+
     -- This will run on every player, do stuff here
     for i=1, maxPlayerID, 1 do
         Hunger(i)
-		Energy(i)
+        Energy(i)
         Heat(i)
         InventoryCheck(i)
         --print("burn")
@@ -868,7 +887,7 @@ function ITT_GameMode:OnBuildingThink()
         -- Will not run until pregame ends
         return 1
     end
-            
+
     -- Find all buildings
     buildings = FindUnitsInRadius(DOTA_TEAM_BADGUYS,
                                   Vector(0, 0, 0),
@@ -939,7 +958,7 @@ function ITT_GameMode:OnCreatureThink()
     }
     end
 
-        neutralMaxTable = {}
+    neutralMaxTable = {}
         neutralMaxTable["npc_creep_elk_wild"] = 20
         neutralMaxTable["npc_creep_hawk"] = 8
         neutralMaxTable["npc_creep_fish"] = 20
@@ -974,7 +993,7 @@ function ITT_GameMode:FlashAckThink()
         if player and player.eventQueue then
             for k,v in pairs(player.eventQueue) do
 
-                if v then 
+                if v then
                     print(k)
                     self:HandleFlashMessage(v.eventname, v.data, i, v.id)
                 end
@@ -990,10 +1009,10 @@ function ITT_GameMode:HandleFlashMessage(eventname, data, pid, id)
     print("Setting ID to .." .. id)
     data.id = id
     if pid then
-        print("Forcing ACK for only.. " .. pid) 
+        print("Forcing ACK for only.. " .. pid)
         local player = PlayerResource:GetPlayer(pid)
         self:PrepFlashMessage(player, eventname, data, id)
-    else 
+    else
         data.pid = -1
         for i=0,9 do
             local player = PlayerResource:GetPlayer(i)
@@ -1011,10 +1030,10 @@ end
 function acknowledge_flash_event(cmdname, eventname, pid, id)
     print("Got an ack from .." .. pid)
     local player = PlayerResource:GetPlayer(tonumber(pid))
-    if player.eventQueue then 
+    if player.eventQueue then
         print("nilling then.." .. id)
         print(player.eventQueue[id])
-        player.eventQueue[id] = nil 
+        player.eventQueue[id] = nil
     end
 end
 
@@ -1035,91 +1054,91 @@ function ITT_GameMode:OnBushThink()
         if units[i]:GetItemInSlot(5) == nil then
             local rand1 = RandomInt(0,2)
             if rand1 == 0 then
-                --print(units[i]:GetUnitName(), units[i]:GetName())
-                if units[i]:GetUnitName() == "npc_bush_herb" then
-                    local newItem = CreateItem("item_herb_butsu", nil, nil)
+            --print(units[i]:GetUnitName(), units[i]:GetName())
+            if units[i]:GetUnitName() == "npc_bush_herb" then
+                local newItem = CreateItem("item_herb_butsu", nil, nil)
+                units[i]:AddItem(newItem)
+                --print("adding butsu")
+            elseif units[i]:GetUnitName() == "npc_bush_thistle" then
+                local newItem = CreateItem("item_thistles", nil, nil)
+                units[i]:AddItem(newItem)
+                --print("adding thistle")
+            elseif units[i]:GetUnitName() == "npc_bush_river" then
+                if RandomInt(0, 1) == 1 then
+                    local newItem = CreateItem("item_river_root", nil, nil)
                     units[i]:AddItem(newItem)
-                    --print("adding butsu")
-                elseif units[i]:GetUnitName() == "npc_bush_thistle" then
-                    local newItem = CreateItem("item_thistles", nil, nil)
+                else
+                    local newItem = CreateItem("item_river_stem", nil, nil)
                     units[i]:AddItem(newItem)
-                    --print("adding thistle")
-                elseif units[i]:GetUnitName() == "npc_bush_river" then
-                    if RandomInt(0, 1) == 1 then
-                        local newItem = CreateItem("item_river_root", nil, nil)
-                        units[i]:AddItem(newItem)
-                    else
-                        local newItem = CreateItem("item_river_stem", nil, nil)
-                        units[i]:AddItem(newItem)
-                    end
-                    --print("adding river")
-                elseif units[i]:GetUnitName() == "npc_bush_stash" then
-                    local random = RandomInt(0, 3)
-                    if random == 0 then
-                        local newItem = CreateItem("item_acorn", nil, nil)
-                        units[i]:AddItem(newItem)
-                    elseif  random == 1 then
-                        local newItem = CreateItem("item_acorn_magic", nil, nil)
-                        units[i]:AddItem(newItem)
-                    elseif  random == 2 then
-                        local newItem = CreateItem("item_ball_clay", nil, nil)
-                        units[i]:AddItem(newItem)
-                    else
-                        local newItem = CreateItem("item_mushroom", nil, nil)
-                        units[i]:AddItem(newItem)
-                    end
-                    --print("adding stash")
-                elseif units[i]:GetUnitName() == "npc_bush_thief" then
-                    local random = RandomInt(0, 6)
-                    if random == 1 then
-                        local newItem = CreateItem("item_meat_cooked", nil, nil)
-                        units[i]:AddItem(newItem)
-                    elseif  random == 2 then
-                        local newItem = CreateItem("item_net_basic", nil, nil)
-                        units[i]:AddItem(newItem)
-                    elseif  random == 3 then
-                        local newItem = CreateItem("item_potion_manai", nil, nil)
-                        units[i]:AddItem(newItem)
-                    elseif  random == 4 then
-                        local newItem = CreateItem("item_crystal_mana", nil, nil)
-                        units[i]:AddItem(newItem)
-                    elseif  random == 5 then
-                        local newItem = CreateItem("item_bomb_smoke", nil, nil)
-                        units[i]:AddItem(newItem)
-                    else
-                        local newItem = CreateItem("item_medallion_thief", nil, nil)
-                        units[i]:AddItem(newItem)
-                    end
-                    --print("adding theif")
-                elseif units[i]:GetUnitName() == "npc_bush_scout" then
-                    if RandomInt(0, 1) == 1 then
-                        local newItem = CreateItem("item_clay_living", nil, nil)
-                        units[i]:AddItem(newItem)
-                    else
-                        local newItem = CreateItem("item_clay_explosion", nil, nil)
-                        units[i]:AddItem(newItem)
-                    end
-                    --print("adding scout")
-                elseif units[i]:GetUnitName() == "npc_bush_mushroom" then
+                end
+                --print("adding river")
+            elseif units[i]:GetUnitName() == "npc_bush_stash" then
+                local random = RandomInt(0, 3)
+                if random == 0 then
+                    local newItem = CreateItem("item_acorn", nil, nil)
+                    units[i]:AddItem(newItem)
+                elseif  random == 1 then
+                    local newItem = CreateItem("item_acorn_magic", nil, nil)
+                    units[i]:AddItem(newItem)
+                elseif  random == 2 then
+                    local newItem = CreateItem("item_ball_clay", nil, nil)
+                    units[i]:AddItem(newItem)
+                else
                     local newItem = CreateItem("item_mushroom", nil, nil)
                     units[i]:AddItem(newItem)
-                    --print("adding mushroom")
-                elseif units[i]:GetUnitName() == "npc_bush_herb_yellow" then
-                    local newItem = CreateItem("item_herb_yellow", nil, nil)
+                end
+                --print("adding stash")
+            elseif units[i]:GetUnitName() == "npc_bush_thief" then
+                local random = RandomInt(0, 6)
+                if random == 1 then
+                    local newItem = CreateItem("item_meat_cooked", nil, nil)
                     units[i]:AddItem(newItem)
-                    --print("adding yellow")
-                elseif units[i]:GetUnitName() == "npc_bush_herb_orange" then
-                    local newItem = CreateItem("item_herb_orange", nil, nil)
+                elseif  random == 2 then
+                    local newItem = CreateItem("item_net_basic", nil, nil)
                     units[i]:AddItem(newItem)
-                    --print("adding orange")
-                elseif units[i]:GetUnitName() == "npc_bush_herb_blue" then
-                    local newItem = CreateItem("item_herb_blue", nil, nil)
+                elseif  random == 3 then
+                    local newItem = CreateItem("item_potion_manai", nil, nil)
                     units[i]:AddItem(newItem)
-                    --print("adding blue")
-                elseif units[i]:GetUnitName() == "npc_bush_herb_purple" then
-                    local newItem = CreateItem("item_herb_purple", nil, nil)
+                elseif  random == 4 then
+                    local newItem = CreateItem("item_crystal_mana", nil, nil)
                     units[i]:AddItem(newItem)
-                    --print("adding purple")
+                elseif  random == 5 then
+                    local newItem = CreateItem("item_bomb_smoke", nil, nil)
+                    units[i]:AddItem(newItem)
+                else
+                    local newItem = CreateItem("item_medallion_thief", nil, nil)
+                    units[i]:AddItem(newItem)
+                end
+                --print("adding theif")
+            elseif units[i]:GetUnitName() == "npc_bush_scout" then
+                if RandomInt(0, 1) == 1 then
+                    local newItem = CreateItem("item_clay_living", nil, nil)
+                    units[i]:AddItem(newItem)
+                else
+                    local newItem = CreateItem("item_clay_explosion", nil, nil)
+                    units[i]:AddItem(newItem)
+                end
+                --print("adding scout")
+            elseif units[i]:GetUnitName() == "npc_bush_mushroom" then
+                local newItem = CreateItem("item_mushroom", nil, nil)
+                units[i]:AddItem(newItem)
+                --print("adding mushroom")
+            elseif units[i]:GetUnitName() == "npc_bush_herb_yellow" then
+                local newItem = CreateItem("item_herb_yellow", nil, nil)
+                units[i]:AddItem(newItem)
+                --print("adding yellow")
+            elseif units[i]:GetUnitName() == "npc_bush_herb_orange" then
+                local newItem = CreateItem("item_herb_orange", nil, nil)
+                units[i]:AddItem(newItem)
+                --print("adding orange")
+            elseif units[i]:GetUnitName() == "npc_bush_herb_blue" then
+                local newItem = CreateItem("item_herb_blue", nil, nil)
+                units[i]:AddItem(newItem)
+                --print("adding blue")
+            elseif units[i]:GetUnitName() == "npc_bush_herb_purple" then
+                local newItem = CreateItem("item_herb_purple", nil, nil)
+                units[i]:AddItem(newItem)
+                --print("adding purple")
                 end
             end
         end
@@ -1151,13 +1170,13 @@ function ITT_GameMode:OnBoatThink()
 
     for _,shopUnit in pairs(GameMode.spawnedShops) do
         local shopent = nil
-        for _,entity in pairs(GameMode.shopEntities) do 
+        for _,entity in pairs(GameMode.shopEntities) do
             local nameToFind = string.sub(shopUnit:GetUnitName(), 5)
             if string.find(entity:GetName(), nameToFind) then
                 shopent = entity
             end
         end
-        
+
         if shopent == nil then
             print("No Shop Ent Found!")
             return 0.1
@@ -1265,7 +1284,7 @@ function ITT_GetItemFromPool()
     if rand <= cumulProb then
         return "item_magic_raw"
     end
-    
+
     print("Should never happen, error in item spawning, commulative probability higher than items")
     print("cummulprob = " .. cumulProb)
     print("rand is " .. rand)
@@ -1329,7 +1348,7 @@ function ITT_GameMode:OnPlayerConnectFull(keys)
     local playerID = keys.index + 1
     --local player = PlayerInstanceFromIndex(playerID)
     print( "Player " .. playerID .. " connected")
-    
+
     playerList[playerID] = playerID
     maxPlayerID = maxPlayerID + 1
 end
@@ -1364,7 +1383,7 @@ function ITT_GameMode:OnItemPickedUp(event)
     end
 
     local hasTelegather = hero:HasModifier("modifier_telegather")
-    
+
     if hasTelegather then
         RadarTelegather(event)
     end
@@ -1372,150 +1391,150 @@ end
 
 --Listener to handle level up
 function ITT_GameMode:OnPlayerGainedLevel(event)
-	print("PlayerGainedLevel")
-	local player = EntIndexToHScript(event.player)
-	local hero = player:GetAssignedHero()
-	local class = hero:GetClassname()
-	local level = event.level
+    print("PlayerGainedLevel")
+    local player = EntIndexToHScript(event.player)
+    local hero = player:GetAssignedHero()
+    local class = hero:GetClassname()
+    local level = event.level
     hero:SetAbilityPoints(0)
-	
-	-- contains skill progression for all classes
-	-- first list denotes level 2 skills, since level 1 skills are automatically granted on spawning
-	local skillProgression = {
-		{HUNTER,
-			{"ability_hunter_track"},
-			{"ability_hunter_track"},
-			{"ability_hunter_track"}
-		},
-		{WARRIOR,
-			{"ability_hunter_giantswing"},
-			{"ability_hunter_giantswing"},
-			{"ability_hunter_giantswing"}
-		},
-		{TRACKER,
-			{"ability_hunter_greatertrack"},
-			{"ability_hunter_dysenterytrack, ability_hunter_sniff"},
-			{"ability_hunter_hidebeacon, ability_hunter_querybeacon"}
-		},
-		{JUGGERNAUT,
-			{"ability_hunter_stayingpower"},
-			{"ability_hunter_stayingpower"},
-			{"ability_hunter_stayingpower"}
-		},
-		{MAGE,
-			{"ability_mage_swap1","ability_mage_swap2","ability_mage_pumpup","ability_mage_flamespray","ability_mage_negativeblast"},
-			{"ability_mage_reducefood","ability_mage_magefire","ability_mage_depress"},
-			{"ability_mage_metronome"}
-		},
-		{ELEMENTALIST,
-			{"ability_mage_swap1","ability_mage_swap2","ability_mage_eruption","ability_mage_splittingfire","ability_mage_defenderenergy"},
-			{"ability_mage_electromagnet","ability_mage_chainlightning","ability_mage_freezingblast"},
-			{"ability_mage_stormearthfire"}
-		},
-		{HYPNOTIST,
-			{"ability_mage_swap1","ability_mage_swap2","ability_mage_hypnosis","ability_mage_dreameater","ability_mage_anger"},
-			{"ability_mage_depressionaura", "ability_mage_depressionorb"},
-			{"ability_mage_jealousy", "ability_mage_seizures", "ability_mage_stupefyingfield"}
-		},
-		{DEMENTIA_MASTER,
-			{"ability_mage_swap1","ability_mage_swap2","ability_mage_metronome","ability_mage_maddeningdischarge"},
-			{"ability_mage_dementiarunes", "ability_mage_activaterunes"},
-			{"ability_mage_dementiasummoning", "ability_mage_darkgate"}
-		},		
-		{PRIEST,
-			{"ability_priest_cureall","ability_priest_pumpup","ability_priest_resistall"},
-			{"ability_priest_swap1","ability_priest_swap2","ability_priest_sprayhealing","ability_priest_pacifyingsmoke"},
-			{"ability_priest_mixheat","ability_priest_mixhealth","ability_priest_mixenergy"}
-		},
-		{BOOSTER
-			{"ability_priest_pumpup", "ability_priest_lightningshield", "ability_priest_fortitude"},
-			{"ability_priest_trollbattlecall", "ability_priest_spiritlink"},
-			{"ability_priest_mapmagic", "ability_priest_angelicelemental"},			
-		},
-		{MASTER_HEALER
-			{"ability_priest_sprayhealing", "ability_priest_healingwave", "ability_priest_selfpreservation"},
-			{"ability_priest_mixhealth", "ability_priest_rangedheal"},
-			{"ability_priest_mixenergy", "ability_priest_mixheat", "ability_priest_replenish"},
-		},
-		{SHAMAN
-			{"ability_priest_pacifyingsmoke", "ability_priest_spiritwalk", "ability_priest_enhancingherbalbalm"},
-			{"ability_priest_maximumfervor", "ability_priest_painkillerbalm"},
-			{"ability_priest_spiritgate", "ability_priest_increasemetabolism"},
-		,}
-		{BEASTMASTER,
-			{},
-			{},
-			{},
-			{},
-			{},
-		},
-		{CHICKEN_FORM,
-			{"ability_beastmaster_shortness"},
-			{},
-			{"ability_beastmaster_fowlplay"},
-			{},
-		},
-		{PACK_LEADER,
-			{"ability_beastmaster_calltobattle"},
-			{},
-			{"ability_beastmaster_empathicrage"},
-		},
-		{SHAPESHIFTER,
-			{"ability_beastmaster_wolfform"},
-			{},
-			{"ability_beastmaster_bearform"},
-		},		
-		{THIEF,
-			{"ability_thief_cloak"},
-			{"ability_thief_cloak"},
-			{"ability_thief_cloak"},
-		},
-		{ESCAPE_ARTIST,
-			{"ability_theif_jump"},
-			{"ability_theif_camoflage"},
-			{"ability_theif_blur"},
-		},
-		{CONTORTIONIST,
-			{"ability_theif_smokestream"},
-			{"ability_theif_teletheif"},
-			{"ability_theif_netherfade"},
-		}
-		{ASSASSIN,
-			{"ability_theif_throwingknife"},
-			{"ability_theif_planningphase"},
-			{"ability_theif_assasinate"},
-		},
-		{SCOUT,
-			{"ability_scout_reveal"},
-			{"ability_scout_reveal"},
-			{},
-			{"ability_scout_reveal"}
-		},
-		--{OBSERVER,}
-		--{RADAR_SCOUT,}
-		--{SPY,}
-		
-		{GATHERER,
-			{"ability_gatherer_radarmanipulations"},
-			{"ability_gatherer_radarmanipulations"},
-			{"ability_gatherer_radarmanipulations"}
-		}
-		--{HERB_MASTER_TELEGATHERER,}
-		--{RADAR_TELEGATHERER,}
-		--{REMOTE_TELEGATHERER,}	
-	}
 
-	-- grant skills 
-	for _,skillList in pairs(skillProgression) do
-		if skillList[1] == class then
-			local skills = skillList[level]
-			if skills ~= nil then
-				for _,skill in pairs(skills) do
-					hero:FindAbilityByName(skill):UpgradeAbility(true)
-				end
-			end
-		end
-	end
+    -- contains skill progression for all classes
+    -- first list denotes level 2 skills, since level 1 skills are automatically granted on spawning
+    local skillProgression = {
+        {HUNTER,
+            {"ability_hunter_track"},
+            {"ability_hunter_track"},
+            {"ability_hunter_track"}
+        },
+        {WARRIOR,
+            {"ability_hunter_giantswing"},
+            {"ability_hunter_giantswing"},
+            {"ability_hunter_giantswing"}
+        },
+        {TRACKER,
+            {"ability_hunter_greatertrack"},
+            {"ability_hunter_dysenterytrack, ability_hunter_sniff"},
+            {"ability_hunter_hidebeacon, ability_hunter_querybeacon"}
+        },
+        {JUGGERNAUT,
+            {"ability_hunter_stayingpower"},
+            {"ability_hunter_stayingpower"},
+            {"ability_hunter_stayingpower"}
+        },
+        {MAGE,
+            {"ability_mage_swap1","ability_mage_swap2","ability_mage_pumpup","ability_mage_flamespray","ability_mage_negativeblast"},
+            {"ability_mage_reducefood","ability_mage_magefire","ability_mage_depress"},
+            {"ability_mage_metronome"}
+        },
+        {ELEMENTALIST,
+            {"ability_mage_swap1","ability_mage_swap2","ability_mage_eruption","ability_mage_splittingfire","ability_mage_defenderenergy"},
+            {"ability_mage_electromagnet","ability_mage_chainlightning","ability_mage_freezingblast"},
+            {"ability_mage_stormearthfire"}
+        },
+        {HYPNOTIST,
+            {"ability_mage_swap1","ability_mage_swap2","ability_mage_hypnosis","ability_mage_dreameater","ability_mage_anger"},
+            {"ability_mage_depressionaura", "ability_mage_depressionorb"},
+            {"ability_mage_jealousy", "ability_mage_seizures", "ability_mage_stupefyingfield"}
+        },
+        {DEMENTIA_MASTER,
+            {"ability_mage_swap1","ability_mage_swap2","ability_mage_metronome","ability_mage_maddeningdischarge"},
+            {"ability_mage_dementiarunes", "ability_mage_activaterunes"},
+            {"ability_mage_dementiasummoning", "ability_mage_darkgate"}
+        },
+        {PRIEST,
+            {"ability_priest_cureall","ability_priest_pumpup","ability_priest_resistall"},
+            {"ability_priest_swap1","ability_priest_swap2","ability_priest_sprayhealing","ability_priest_pacifyingsmoke"},
+            {"ability_priest_mixheat","ability_priest_mixhealth","ability_priest_mixenergy"}
+        },
+        {BOOSTER,
+            {"ability_priest_pumpup", "ability_priest_lightningshield", "ability_priest_fortitude"},
+            {"ability_priest_trollbattlecall", "ability_priest_spiritlink"},
+            {"ability_priest_mapmagic", "ability_priest_angelicelemental"},
+        },
+        {MASTER_HEALER,
+            {"ability_priest_sprayhealing", "ability_priest_healingwave", "ability_priest_selfpreservation"},
+            {"ability_priest_mixhealth", "ability_priest_rangedheal"},
+            {"ability_priest_mixenergy", "ability_priest_mixheat", "ability_priest_replenish"},
+        },
+        {SHAMAN,
+            {"ability_priest_pacifyingsmoke", "ability_priest_spiritwalk", "ability_priest_enhancingherbalbalm"},
+            {"ability_priest_maximumfervor", "ability_priest_painkillerbalm"},
+            {"ability_priest_spiritgate", "ability_priest_increasemetabolism"},
+        },
+        {BEASTMASTER,
+            {},
+            {},
+            {},
+            {},
+            {},
+        },
+        {CHICKEN_FORM,
+            {"ability_beastmaster_shortness"},
+            {},
+            {"ability_beastmaster_fowlplay"},
+            {},
+        },
+        {PACK_LEADER,
+            {"ability_beastmaster_calltobattle"},
+            {},
+            {"ability_beastmaster_empathicrage"},
+        },
+        {SHAPESHIFTER,
+            {"ability_beastmaster_wolfform"},
+            {},
+            {"ability_beastmaster_bearform"},
+        },
+        {THIEF,
+            {"ability_thief_cloak"},
+            {"ability_thief_cloak"},
+            {"ability_thief_cloak"},
+        },
+        {ESCAPE_ARTIST,
+            {"ability_theif_jump"},
+            {"ability_theif_camoflage"},
+            {"ability_theif_blur"},
+        },
+        {CONTORTIONIST,
+            {"ability_theif_smokestream"},
+            {"ability_theif_teletheif"},
+            {"ability_theif_netherfade"},
+        },
+        {ASSASSIN,
+            {"ability_theif_throwingknife"},
+            {"ability_theif_planningphase"},
+            {"ability_theif_assasinate"},
+        },
+        {SCOUT,
+            {"ability_scout_reveal"},
+            {"ability_scout_reveal"},
+            {},
+            {"ability_scout_reveal"}
+        },
+        --{OBSERVER,}
+        --{RADAR_SCOUT,}
+        --{SPY,}
+
+        {GATHERER,
+            {"ability_gatherer_radarmanipulations"},
+            {"ability_gatherer_radarmanipulations"},
+            {"ability_gatherer_radarmanipulations"}
+        }
+        --{HERB_MASTER_TELEGATHERER,}
+        --{RADAR_TELEGATHERER,}
+        --{REMOTE_TELEGATHERER,}
+    }
+
+    -- grant skills
+    for _,skillList in pairs(skillProgression) do
+        if skillList[1] == class then
+            local skills = skillList[level]
+            if skills ~= nil then
+                for _,skill in pairs(skills) do
+                    hero:FindAbilityByName(skill):UpgradeAbility(true)
+                end
+            end
+        end
+    end
 end
 
 function give_item(cmdname, itemname)
@@ -1638,7 +1657,7 @@ function ITT_GameMode:GatherValidTeams()
     end
 
   print( "GatherValidTeams - Found spawns for a total of " .. TableCount(foundTeams) .. " teams" )
-    
+
     local foundTeamsList = {}
     for t, _ in pairs( foundTeams ) do
         table.insert( foundTeamsList, t )
@@ -1689,7 +1708,7 @@ function ITT_GameMode:GetNextTeamAssignment()
 
     -- haven't assigned this player to a team yet
     print( "m_NumAssignedPlayers = " .. self.m_NumAssignedPlayers )
-    
+
     -- If the number of players per team doesn't divide evenly (ie. 10 players on 4 teams => 2.5 players per team)
     -- Then this floor will round that down to 2 players per team
     -- If you want to limit the number of players per team, you could just set this to eg. 1
@@ -1704,7 +1723,7 @@ function ITT_GameMode:GetNextTeamAssignment()
         teamIndexForPlayer = teamIndexForPlayer - #self.m_GatheredShuffledTeams
         print( "teamIndexForPlayer => " .. teamIndexForPlayer )
     end
-    
+
     teamAssignment = self.m_GatheredShuffledTeams[ 1 + teamIndexForPlayer ]
     print( "teamAssignment = " .. teamAssignment )
 
@@ -1752,7 +1771,7 @@ function ITT_GameMode:OnThink()
     for nPlayerID = 0, (DOTA_MAX_TEAM_PLAYERS-1) do
         self:MakeLabelForPlayer( nPlayerID )
     end
-        
+
     return 1
 end
 
