@@ -204,6 +204,9 @@ function ITT_GameMode:InitGameMode()
 
      -- This is the boat thinker. All boat logic goes here
     GameMode:SetThink( "OnBoatThink", ITT_GameMode, "BoatThink", 0 )
+
+    GameMode:SetThink("OnCheckWinThink", ITT_GameMode,"CheckWinThink",0)
+    
     boatStartTime = math.floor(GameRules:GetGameTime())
     GameMode.spawnedShops = {}
     GameMode.shopEntities = Entities:FindAllByName("entity_ship_merchant_*")
@@ -215,7 +218,6 @@ function ITT_GameMode:InitGameMode()
 
     GameMode:SetThink("FlashAckThink", ITT_GameMode, "FlashAckThink", 0)
 
-    GameMode:SetThink("OnCheckWinThink", ITT_GameMode,"CheckWinThink",0)
 
     -- Disable buybacks to stop instant respawning.
     GameMode:SetBuybackEnabled( false )
@@ -1334,8 +1336,8 @@ end
 --This function checks if you won the game or not
 
 function ITT_GameMode:OnCheckWinThink()
-    if GameRules:State_Get() ~= DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then --waits for pregame to end before you can win
-    --win code here
+    if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then --waits for pregame to end before you can win
+    --win check here
     end
         --GameRules:SetSafeToLeave( true )
         --GameRules:SetGameWinner( DOTA_TEAM_BADGUYS )
