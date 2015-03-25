@@ -4164,7 +4164,7 @@
 
 	}
 
-	"ability_mage_pumpup"
+	"ability_mage_anger"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
@@ -9489,7 +9489,63 @@
 		}
 
 	}
+	"ability_npc_bash"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"AbilityTextureName"	"ability_beastmaster_bash"
+		"MaxLevel"	"1"
+		"Modifiers"
+		{
+			"modifier_bash_passive"
+			{
+				"Passive"	"1"
+				"OnAttackLanded"
+				{
+					"Random"
+					{
+						"Chance"	"%bash_chance"
+						"OnSuccess"
+						{
+							"ApplyModifier"
+							{
+								"Target"	"TARGET"
+								"ModifierName"	"modifier_bash"
+							}
 
+						}
+
+					}
+
+				}
+
+			}
+
+			"modifier_bash"
+			{
+				"EffectName"	"generic_stunned"
+				"EffectAttachType"	"follow_overhead"
+				"Duration"	"1.0"
+				"OverrideAnimation"	"ACT_DOTA_DISABLED"
+				"States"
+				{
+					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+
+			}
+
+		}
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"bash_chance"	"15"
+			}
+
+		}
+	}
 	"ability_empty1"
 	{
 		"BaseClass"	"ability_datadriven"
