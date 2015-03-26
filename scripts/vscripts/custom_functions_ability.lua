@@ -7,8 +7,12 @@ THIEF = "npc_dota_hero_riki"
 SCOUT = "npc_dota_hero_lion"
 GATHERER = "npc_dota_hero_shadow_shaman"
 
+--general "ping minimap" function
+function PingMap(playerID,pos,r,g,b)
+    --(PlayerID, position(vector), R, G, B, SizeofDot, Duration)
+    GameRules:AddMinimapDebugPoint(playerID,pos, r, g, b, 500, 6)
+end
 --Gatherer Ability Functions
-
 --[[Pings the items in parameter ItemTable with their corresponding color]]
 function PingItemInRange(keys)
     --PrintTable(keys)
@@ -39,6 +43,7 @@ function PingItemInRange(keys)
                 local thisParticle = ParticleManager:CreateParticle("particles/ui_mouseactions/ping_world.vpcf", PATTACH_ABSORIGIN, ent)
                 ParticleManager:SetParticleControl(thisParticle, 0, ent:GetAbsOrigin())
                 ParticleManager:SetParticleControl(thisParticle, 1, Vector(redVal, greenVal, blueVal))
+                PingMap(caster:GetPlayerID(),ent:GetAbsOrigin(),redVal*255,greenVal*255,blueVal*255)
                 print(itemName, redVal, greenVal, blueVal)
                 ParticleManager:ReleaseParticleIndex(thisParticle)
                 ent:EmitSound("General.Ping")   --may be deafening
@@ -703,6 +708,7 @@ function EnemyRadar(keys)
         local thisParticle = ParticleManager:CreateParticle("particles/ui_mouseactions/ping_world.vpcf", PATTACH_ABSORIGIN, caster:GetOwner())
         ParticleManager:SetParticleControl(thisParticle, 0, unit:GetAbsOrigin())
         ParticleManager:SetParticleControl(thisParticle, 1, Vector(redVal, greenVal, blueVal))
+        PingMap(caster:GetPlayerID(),unit:GetAbsOrigin(),redVal,greenVal,blueVal)
         ParticleManager:ReleaseParticleIndex(thisParticle)
         unit:EmitSound("General.Ping")   --may be deafening
     end
