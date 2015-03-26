@@ -130,7 +130,7 @@ ITEM_BASE                   = 2
 -- If this is enabled the game is in testing mode, and as a result nobody can win
 GAME_TESTING_CHECK          = true 
 -- Use this variable for anything that can ONLY happen during testing
---REMEMBER TO DISABLE BEFORE PUBLIC RELEASE
+-- REMEMBER TO DISABLE BEFORE PUBLIC RELEASE
 
 --Merchant Boat paths, and other lists
 PATH1 = {"path_ship_waypoint_1","path_ship_waypoint_2","path_ship_waypoint_3","path_ship_waypoint_4","path_ship_waypoint_5", "path_ship_waypoint_6", "path_ship_waypoint_7"}
@@ -867,7 +867,7 @@ function ITT_GameMode:FixDropModels(dt)
 end
 
 -- This updates state on each troll
--- Every half second it updates heat, checks e t for items, etc
+-- Every half second it updates heat, checks inveotry for items, etc
 -- Add anything you want to run regularly on each troll to this
 
 function ITT_GameMode:OnTrollThink()
