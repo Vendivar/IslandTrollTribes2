@@ -127,6 +127,11 @@ GRACE_PERIOD_RESPAWN_TIME    = 3
 -- Controls the base item spawn rate
 ITEM_BASE                   = 2
 
+-- If this is enabled the game is in testing mode, and as a result nobody can win
+GAME_TESTING_CHECK          = true 
+-- Use this variable for anything that can ONLY happen during testing
+--REMEMBER TO DISABLE BEFORE PUBLIC RELEASE
+
 --Merchant Boat paths, and other lists
 PATH1 = {"path_ship_waypoint_1","path_ship_waypoint_2","path_ship_waypoint_3","path_ship_waypoint_4","path_ship_waypoint_5", "path_ship_waypoint_6", "path_ship_waypoint_7"}
 PATH2 = {"path_ship_waypoint_8","path_ship_waypoint_9","path_ship_waypoint_4","path_ship_waypoint_5", "path_ship_waypoint_6", "path_ship_waypoint_7"}
@@ -862,7 +867,7 @@ function ITT_GameMode:FixDropModels(dt)
 end
 
 -- This updates state on each troll
--- Every half second it updates heat, checks inventory for items, etc
+-- Every half second it updates heat, checks e t for items, etc
 -- Add anything you want to run regularly on each troll to this
 
 function ITT_GameMode:OnTrollThink()
@@ -1336,12 +1341,60 @@ end
 --This function checks if you won the game or not
 
 function ITT_GameMode:OnCheckWinThink()
-    if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then --waits for pregame to end before you can win
+   if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then --waits for pregame to end before you can win
     --win check here
+        local goodteam = 0 --tallies for the 3 teams, X = players alive
+        local badteam  = 0
+        local cust1team = 0
+        for playerID = 0, (DOTA_MAX_TEAM_PLAYERS-1) do
+            local player = PlayerResource:GetPlayer(playerID)
+            if PlayerResource:IsValidPlayer(playerID) then
+                local hero = player:GetAssignedHero()
+                if nil ~= hero then
+                    if hero:IsAlive() then
+                        local team = PlayerResource:GetTeam(playerID)
+                        if team == DOTA_TEAM_GOODGUYS then
+                            goodteam = goodteam + 1
+                        elseif team == DOTA_TEAM_BADGUYS then
+                            badteam = badteam + 1
+                        elseif team == DOTA_TEAM_CUSTOM_1 then
+                            cust1team = cust1team + 1
+                        else
+                            print("Error 21232: Faction not found")
+                        end
+                    end
+                end
+            end
+        end
+        if goodteam==0 and badteam==0 and cust1team==0 then
+            print("Draw")
+            if not GAME_TESTING_CHECK then
+                GameRules:SetSafeToLeave( true )
+                --GameRules:SetGameWinner( DOTA_TEAM_BADGUYS )
+            end
+
+        elseif cust1team==0 and badteam==0 then
+            print("Team 1 wins")
+            if not GAME_TESTING_CHECK then
+                GameRules:SetSafeToLeave( true )
+                GameRules:SetGameWinner( DOTA_TEAM_GOODGUYS )
+            end
+
+        elseif goodteam==0 and cust1team==0 then
+            print("Team 2 wins")     
+            if not GAME_TESTING_CHECK then
+                GameRules:SetSafeToLeave( true )
+                GameRules:SetGameWinner( DOTA_TEAM_BADGUYS )
+            end
+
+        elseif goodteam==0 and badteam==0 then
+            print("Team 3 wins")
+            if not GAME_TESTING_CHECK then
+                GameRules:SetSafeToLeave( true )
+                GameRules:SetGameWinner( DOTA_TEAM_CUSTOM_1 )
+            end
+        end
     end
-        --GameRules:SetSafeToLeave( true )
-        --GameRules:SetGameWinner( DOTA_TEAM_BADGUYS )
-        --DOTA_TEAM_GOODGUYS
     return WIN_GAME_THINK
 end
 
