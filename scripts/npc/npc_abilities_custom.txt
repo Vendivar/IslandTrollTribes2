@@ -7725,13 +7725,13 @@
 			"03"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"heat"	"5"
+				"heat"	"1"
 			}
 
 			"04"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"tick_rate"	"8"
+				"tick_rate"	"9"
 			}
 
 			"05"

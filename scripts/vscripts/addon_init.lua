@@ -867,7 +867,7 @@ function ITT_GameMode:FixDropModels(dt)
 end
 
 -- This updates state on each troll
--- Every half second it updates heat, checks inveotry for items, etc
+-- Every half second it updates heat, checks inventory for items, etc
 -- Add anything you want to run regularly on each troll to this
 
 function ITT_GameMode:OnTrollThink()
