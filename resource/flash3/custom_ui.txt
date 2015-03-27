@@ -15,6 +15,11 @@
 		"File"		"SelectClass"
 		"Depth"		"254"
 	}
+	"4"
+	{
+		"File"		"subclasspromotion"
+		"Depth"		"254"
+	}
 }
 
 // =============================================
