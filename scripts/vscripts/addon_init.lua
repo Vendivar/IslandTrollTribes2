@@ -226,7 +226,7 @@ function ITT_GameMode:InitGameMode()
 
     -- Disable buybacks to stop instant respawning.
     GameMode:SetBuybackEnabled( false )
-
+    GameMode:SetStashPurchasingDisabled(true)
 
     GameRules:GetGameModeEntity():ClientLoadGridNav()
     GameRules:SetSameHeroSelectionEnabled( true )
