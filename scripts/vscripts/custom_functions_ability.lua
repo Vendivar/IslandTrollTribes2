@@ -1580,6 +1580,14 @@ function BushZoneIn(keys)
         me.users[DOTA_TEAM_CUSTOM_1] = 0;
     end
 
+    if(bush:GetUnitName() =="npc_bush_scout" and target:GetClassname() ~="npc_dota_hero_lion") then
+        return --exits if bush is used by anything other than a scout
+    end
+
+
+    if(bush:GetUnitName() =="npc_bush_thief" and target:GetClassname() ~="npc_dota_hero_riki") then
+        return --exits if bush is used by anything other than a thief
+    end
     me.users[team] = me.users[team] + 1
 
     local majority = BushZoneMajority(me.users, bush:GetTeamNumber())

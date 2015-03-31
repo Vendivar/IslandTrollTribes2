@@ -194,6 +194,7 @@ function ITT_GameMode:InitGameMode()
     GameMode.neutralCurNum["npc_creep_lizard"] = 0
     GameMode.neutralCurNum["npc_creep_panther"] = 0
     GameMode.neutralCurNum["npc_creep_panther_elder"] = 0
+    GameMode.neutralCurNum["npc_creep_mammoth"] = 0
 
     -- This is the troll thinker. All logic on the player's heros should be checked here
     GameMode:SetThink( "OnTrollThink", ITT_GameMode, "TrollThink", 0 )
@@ -935,6 +936,7 @@ function ITT_GameMode:OnCreatureThink()
         {"npc_creep_bear_jungle",   "spawner_neutral_bear",     100, 1},
         {"npc_creep_lizard",        "spawner_neutral_lizard",   100, 1},
         {"npc_creep_panther",       "spawner_neutral_panther",  100, 1},
+        {"npc_creep_mammoth",       "spawner_neutral_mammoth",  0, 0},
     --   {"npc_creep_panther_elder", "spawner_neutral_panther",  100, 1},
     }
         elseif math.floor(GameRules:GetGameTime())>GAME_PERIOD_GRACE then
@@ -948,6 +950,7 @@ function ITT_GameMode:OnCreatureThink()
         {"npc_creep_bear_jungle",   "spawner_neutral_bear",     50, 1},
         {"npc_creep_lizard",        "spawner_neutral_lizard",   33, 1},
         {"npc_creep_panther",       "spawner_neutral_panther",  5, 1},
+        {"npc_creep_mammoth",       "spawner_neutral_mammoth",  0, 0},
     --   {"npc_creep_panther_elder", "spawner_neutral_panther",  100, 1},
     }
     else --at the start
@@ -961,6 +964,7 @@ function ITT_GameMode:OnCreatureThink()
         {"npc_creep_bear_jungle",   "spawner_neutral_bear",     0, 1},
         {"npc_creep_lizard",        "spawner_neutral_lizard",   0, 1},
         {"npc_creep_panther",       "spawner_neutral_panther",  0, 1},
+        {"npc_creep_mammoth",       "spawner_neutral_mammoth",  100, 1},
     --   {"npc_creep_panther_elder", "spawner_neutral_panther",  100, 1},
     }
     end
@@ -974,6 +978,7 @@ function ITT_GameMode:OnCreatureThink()
         neutralMaxTable["npc_creep_bear_jungle"] = 8
         neutralMaxTable["npc_creep_lizard"] = 8
         neutralMaxTable["npc_creep_panther"] = 4
+        neutralMaxTable["npc_creep_mammoth"] = 1
         --neutralMaxTable["npc_creep_panther_elder"] = 4
 
     for _,v in pairs(neutralSpawnTable) do
@@ -982,9 +987,17 @@ function ITT_GameMode:OnCreatureThink()
         local spawnChance = v[3]
         local numToSpawn = v[4]
 
+        if(creepName=="npc_creep_mammoth")then
+           if((GameMode.neutralCurNum[creepName] < neutralMaxTable[creepName])) then
+                SpawnCreature(creepName, spawnerName)
+               -- local mammy = FindAllByName("npc_creep_mammoth")
+           end
+        end
+
         for i=1,numToSpawn do
             if (spawnChance >= RandomInt(1, 100)) and (GameMode.neutralCurNum[creepName] < neutralMaxTable[creepName]) then
                 SpawnCreature(creepName, spawnerName)
+                
             end
         end
     end
@@ -1370,29 +1383,31 @@ function ITT_GameMode:OnCheckWinThink()
             print("Draw")
             if not GAME_TESTING_CHECK then
                 GameRules:SetSafeToLeave( true )
-                --GameRules:SetGameWinner( DOTA_TEAM_BADGUYS )
+                --GameRules:SetGameWinner( DOTA_TEAM_BADGUYS )     
             end
-
+            return -1
         elseif cust1team==0 and badteam==0 then
             print("Team 1 wins")
             if not GAME_TESTING_CHECK then
                 GameRules:SetSafeToLeave( true )
                 GameRules:SetGameWinner( DOTA_TEAM_GOODGUYS )
-            end
 
+            end
+            return -1
         elseif goodteam==0 and cust1team==0 then
             print("Team 2 wins")     
             if not GAME_TESTING_CHECK then
                 GameRules:SetSafeToLeave( true )
                 GameRules:SetGameWinner( DOTA_TEAM_BADGUYS )
             end
-
+            return -1
         elseif goodteam==0 and badteam==0 then
             print("Team 3 wins")
             if not GAME_TESTING_CHECK then
                 GameRules:SetSafeToLeave( true )
                 GameRules:SetGameWinner( DOTA_TEAM_CUSTOM_1 )
             end
+            return -1
         end
     end
     return WIN_GAME_THINK
