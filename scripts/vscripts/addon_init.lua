@@ -693,7 +693,10 @@ function ITT_GameMode:OnNPCSpawned( keys )
     local itemslotlock2 = CreateItem("item_slot_locked", spawnedUnit, spawnedUnit)
     local itemslotlock3 = CreateItem("item_slot_locked", spawnedUnit, spawnedUnit)
     print("spawned unit: ", spawnedUnit:GetUnitName(), spawnedUnit:GetClassname(), spawnedUnit:GetName(), spawnedUnit:GetEntityIndex())
-
+    
+    -- add it to the gridnav to stop people building on it
+    BuildingHelper:AddUnit(spawnedUnit)
+    
     -- Remove starting gold
     if not spawnedUnit:IsIllusion() and spawnedUnit:IsHero() and spawnedUnit:GetDeaths() == 0 then
         spawnedUnit:SetGold(0, false)
@@ -776,6 +779,12 @@ function ITT_GameMode:OnEntityKilled(keys)
     if string.find(unitName, "building") then
         killedUnit:RemoveBuilding(2, false)
     end
+    
+    -- remove from gridnav
+    -- cannot get this to work properly, have not found any side effects to not removing units
+    -- but it seems like it should happen
+    -- print("unit is ", killedUnit)
+    -- BuildingHelper:RemoveUnit(killedUnit)
 
     --deal with killed heros
     if killedUnit.IsHero and killedUnit:IsHero() then
