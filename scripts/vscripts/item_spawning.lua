@@ -1,6 +1,18 @@
+--[[
 
--- Spawnrates of items, seeded with initial rates from
--- https://github.com/island-troll-tribes/wc3-client/blob/1562854dd098180752f0f4a99df0c4968697b38b/src/init/objects/Globals.j
+This handles spawning items randomly over the map at intervals
+Code by Till Elton (Iced Coffee)
+
+Globals related to item spawns, mostly taken from
+https://github.com/island-troll-tribes/wc3-client/blob/1562854dd098180752f0f4a99df0c4968697b38b/src/lib/PublicLibrary.j
+and
+https://github.com/island-troll-tribes/wc3-client/blob/1562854dd098180752f0f4a99df0c4968697b38b/src/init/objects/Globals.j
+]]--
+
+-- How often a spawn wave occurs in seconds
+GAME_ITEM_TICK_TIME         = 30
+
+-- Spawnrates of items, seeded with initial rates from ITT1 globals file
 TINDER_RATE                 = 5.00
 FLINT_RATE                  = 3.00
 STICK_RATE                  = 3.00
@@ -9,7 +21,7 @@ STONE_RATE                  = 1.00
 MANACRYSTAL_RATE            = 0.00
 MAGIC_RATE                  = 0.5
 
--- Relative rates start at 0 but get set such that all should sum to one on first call
+-- Relative rates start at 0 but will be set such that all should sum to one on first call of ITT_UpdateRelativePool
 REL_TINDER_RATE             = 0
 REL_FLINT_RATE              = 0
 REL_STICK_RATE              = 0
@@ -18,30 +30,13 @@ REL_STONE_RATE              = 0
 REL_MANACRYSTAL_RATE        = 0
 REL_MAGIC_RATE              = 0
 
--- Game periods determine what is allowed to spawn, from start (0) to X seconds in
-GAME_PERIOD_GRACE           = 420
-GAME_PERIOD_EARLY           = 900
-
--- Grace period respawn time in seconds
-GRACE_PERIOD_RESPAWN_TIME    = 3
-
 -- Controls the base item spawn rate
 ITEM_BASE                   = 2
 
---[[
-    This is all used for item spawning
-
-    Globals related to item spawns, mostly taken from
-    https://github.com/island-troll-tribes/wc3-client/blob/1562854dd098180752f0f4a99df0c4968697b38b/src/lib/PublicLibrary.j
-    and
-    https://github.com/island-troll-tribes/wc3-client/blob/1562854dd098180752f0f4a99df0c4968697b38b/src/init/objects/Globals.j
-]]--
-
--- Regions of the map in xmin xmax, ymin, ymax as a box, and an int as a spawnrate
--- Currently just a placeholder region called CENTER till I get a proper map
+-- Regions of the map, each has independant spawning to mitigate RNG
 REGIONS                     = {}
--- CENTER                      = {}
-TOPLEFT                     = {-8000, -600, 8000, 500, 1}  --{xmin, xmax, ymin, ymax, spawnrate}
+--                            {xmin, xmax, ymin, ymax, spawnrate}
+TOPLEFT                     = {-8000, -600, 8000, 500, 1}  
 TOPRIGHT                    = {550, 8000, 8000, 800, 1}
 BOTTOMRIGHT                 = {-1100, -8000, -600, -8000, 1}
 BOTTOMLEFT                  = {950, 8000, -350, -8000, 1}
@@ -50,41 +45,35 @@ REGIONS[2]                  = TOPRIGHT
 REGIONS[3]                  = BOTTOMRIGHT
 REGIONS[4]                  = BOTTOMLEFT
 
--- This handles spawning items
---
--- Code by Till Elton
---
+-- Handles one spawn wave
 function ITT_GameMode:OnItemThink()
-    --print("Item think tick started")
+    -- if its the first time, we need to set the relative values
     if REL_TINDER_RATE == 0 then
         ITT_UpdateRelativePool()
+    -- over time the spawnrates change, tending from simple fire components, to components for more complex buildings, update these every spawn wave
     else
         ITT_AdjustItemSpawns()
     end
-    --print("hit mid of spawn items")
     for i=1, #REGIONS, 1 do
         for ii=1, math.floor(ITEM_BASE * REGIONS[i][5]), 1 do
-            --print("Spawning an item on island" .. i)
             item = ITT_SpawnItem(REGIONS[i])
         end
     end
-    --print("Item think tick ended")
     return GAME_ITEM_TICK_TIME
 end
 
+-- Handles spawning in one region
 function ITT_SpawnItem(island)
     local itemSpawned = ITT_GetItemFromPool()
-    --print(itemSpawned)
     local item = CreateItem(itemSpawned, nil, nil)
     --item:SetPurchaseTime(Time)
     local randomVector = GetRandomVectorGivenBounds(island[1], island[2], island[3], island[4])
-    --print(item:GetName().." spawned at " .. randomVector.x .. ", " .. randomVector.y)
     CreateItemOnPositionSync(randomVector, item)
     item:SetOrigin(randomVector)
 end
 
 -- Updates the relative probabilties, called only when the actual probabilties are changed
--- They from the point in which they are generated, sum to 1
+-- They should always sum to one
 function ITT_UpdateRelativePool()
     --print("Updating relative item probabilties")
     local Total = TINDER_RATE + FLINT_RATE + STICK_RATE + CLAYBALL_RATE + STONE_RATE + MANACRYSTAL_RATE + MAGIC_RATE
@@ -144,7 +133,6 @@ end
 
 -- Item spawn distribution changes, later in the game it tends to a different ratio
 -- From https://github.com/island-troll-tribes/wc3-client/blob/1562854dd098180752f0f4a99df0c4968697b38b/src/lib/PublicLibrary.j#L271-L292
-
 function ITT_AdjustItemSpawns()
     --print("adjusting item spawns")
     FLINT_RATE = math.max(2.0,(FLINT_RATE-0.4))
@@ -153,10 +141,12 @@ function ITT_AdjustItemSpawns()
     STICK_RATE = math.min(4.5,(STICK_RATE+0.5))
     TINDER_RATE = math.max(.7,(TINDER_RATE-0.6))
     CLAYBALL_RATE = math.min(1.85,(CLAYBALL_RATE+0.3))
-    -- I don't get how item base works, it always seems too low in the wc3 file disabled for the moment since it breaks everything, any help?
+    -- I don't get how item base works, it always seems too low in the wc3 file, it is disabled for the moment since it breaks everything, any help?
     -- ITEM_BASE = math.max(1.15,(ITEM_BASE-0.2))
     ITT_UpdateRelativePool()
 end
+
+-- HELPER METHODS
 
 -- Gets a random vector in a specific area
 function GetRandomVectorGivenBounds(minx, miny, maxx, maxy)
@@ -168,6 +158,4 @@ function GetRandomVectorInBounds()
     return Vector(RandomFloat(GetWorldMinX(), GetWorldMaxX()),RandomFloat(GetWorldMinY(), GetWorldMaxY()),0)
 end
 
---
--- END OF ITEM SPAWNING
---
+-- END OF HELPER METHODS

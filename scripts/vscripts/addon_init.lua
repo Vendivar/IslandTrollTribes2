@@ -47,7 +47,6 @@ require("util")
 require("recipe_list")
 require("timers")
 
-
 --[[
     Global variables
 ]]--
@@ -59,7 +58,6 @@ GAME_TICK_TIME              = 0.1   -- The game should update every tenth second
 GAME_CREATURE_TICK_TIME     = 120    -- Time for each creature spawn
 GAME_BUSH_TICK_TIME         = 30    --1in2 chance any bush will actually spawn so average timer is 2x
 GAME_TROLL_TICK_TIME        = 0.5   -- Its really like its wc3!
-GAME_ITEM_TICK_TIME         = 30    -- Spawn items every 30?
 FLASH_ACK_THINK             = 2
 WIN_GAME_THINK              = 0.5 -- checks if you've won every x seconds
 
@@ -68,6 +66,13 @@ DROPMODEL_TICK_TIME         = 0.03
 
 
 itemKeyValues = LoadKeyValues("scripts/npc/npc_items_custom.txt")
+
+-- Game periods determine what is allowed to spawn, from start (0) to X seconds in
+GAME_PERIOD_GRACE           = 420
+GAME_PERIOD_EARLY           = 900
+
+-- Grace period respawn time in seconds
+GRACE_PERIOD_RESPAWN_TIME    = 3
 
 -- Tick time is 300s
 -- https://github.com/island-troll-tribes/wc3-client/blob/1562854dd098180752f0f4a99df0c4968697b38b/src/systems/spawning/Spawn%20Normal.j#L3
