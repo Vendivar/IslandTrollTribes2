@@ -718,7 +718,8 @@ function ITT_GameMode:OnEntityKilled(keys)
         {"npc_creep_lizard", {"item_meat_raw", 100}},
         {"npc_creep_fish_green", {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}},
         {"npc_creep_fish", {"item_meat_raw", 100}},
-        {"npc_creep_hawk", {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_bone", 100}, {"item_egg_hawk", 10}}
+        {"npc_creep_hawk", {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_bone", 100}, {"item_egg_hawk", 10}},
+        {"npc_creep_mammoth", {"item_bone", 100},{"item_bone", 100},{"item_bone", 100},{"item_bone", 100},{"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_horn_mammoth", 100}, {"item_horn_mammoth", 50}}
     }
     local spawnTable = {
                         {"npc_creep_elk_wild","npc_creep_fawn"},
@@ -951,13 +952,6 @@ function ITT_GameMode:OnCreatureThink()
         local spawnerName = v[2]
         local spawnChance = v[3]
         local numToSpawn = v[4]
-
-        if(creepName=="npc_creep_mammoth")then
-           if((GameMode.neutralCurNum[creepName] < neutralMaxTable[creepName])) then
-                SpawnCreature(creepName, spawnerName)
-               -- local mammy = FindAllByName("npc_creep_mammoth")
-           end
-        end
 
         for i=1,numToSpawn do
             if (spawnChance >= RandomInt(1, 100)) and (GameMode.neutralCurNum[creepName] < neutralMaxTable[creepName]) then
