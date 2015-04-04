@@ -73,7 +73,7 @@ function InventoryCheck(playerID)
     local player = PlayerInstanceFromIndex(playerID)
     local hero =   player:GetAssignedHero()
     if hero == nil then
-        print("hero " .. playerID .. " doesn't exist!")
+        --print("hero " .. playerID .. " doesn't exist!")
     else
         CraftItems(hero, TROLL_RECIPE_TABLE, ITEM_ALIAS_TABLE)
         --craftinghelper.lua explains how to format the tables

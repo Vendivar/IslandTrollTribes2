@@ -145,17 +145,3 @@ function ITT_AdjustItemSpawns()
     -- ITEM_BASE = math.max(1.15,(ITEM_BASE-0.2))
     ITT_UpdateRelativePool()
 end
-
--- HELPER METHODS
-
--- Gets a random vector in a specific area
-function GetRandomVectorGivenBounds(minx, miny, maxx, maxy)
-    return Vector(RandomFloat(minx, miny),RandomFloat(maxx, maxy),0)
-end
-
--- Gets a random vector on the map
-function GetRandomVectorInBounds()
-    return Vector(RandomFloat(GetWorldMinX(), GetWorldMaxX()),RandomFloat(GetWorldMinY(), GetWorldMaxY()),0)
-end
-
--- END OF HELPER METHODS

@@ -952,8 +952,9 @@ function ITT_GameMode:OnCreatureThink()
         local spawnerName = v[2]
         local spawnChance = v[3]
         local numToSpawn = v[4]
-
-        for i=1,numToSpawn do
+        
+        -- more for testing
+        for i=1,numToSpawn + 35 do
             if (spawnChance >= RandomInt(1, 100)) and (GameMode.neutralCurNum[creepName] < neutralMaxTable[creepName]) then
                 SpawnCreature(creepName, spawnerName)
                 
