@@ -1,6 +1,4 @@
 *.vpk
-*.vmat_c
-*.vtex_c
 *.vpcf_c
 *.bin
 *.txt
