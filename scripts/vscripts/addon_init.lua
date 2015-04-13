@@ -956,7 +956,7 @@ function ITT_GameMode:OnCreatureThink()
         -- more for testing
         for i=1,numToSpawn + 35 do
             if (spawnChance >= RandomInt(1, 100)) and (GameMode.neutralCurNum[creepName] < neutralMaxTable[creepName]) then
-                SpawnCreature(creepName, spawnerName)
+                SpawnRandomCreature(creepName, spawnerName)
                 
             end
         end
