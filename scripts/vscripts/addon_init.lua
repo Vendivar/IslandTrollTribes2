@@ -902,7 +902,7 @@ function ITT_GameMode:OnCreatureThink()
         {"npc_creep_bear_jungle",   "spawner_neutral_bear",     100, 1},
         {"npc_creep_lizard",        "spawner_neutral_lizard",   100, 1},
         {"npc_creep_panther",       "spawner_neutral_panther",  100, 1},
-        {"npc_creep_mammoth",       "spawner_neutral_mammoth",  0, 0},
+    --  {"npc_creep_mammoth",       "spawner_neutral_mammoth",  0, 0},
     --   {"npc_creep_panther_elder", "spawner_neutral_panther",  100, 1},
     }
         elseif math.floor(GameRules:GetGameTime())>GAME_PERIOD_GRACE then
@@ -916,7 +916,7 @@ function ITT_GameMode:OnCreatureThink()
         {"npc_creep_bear_jungle",   "spawner_neutral_bear",     50, 1},
         {"npc_creep_lizard",        "spawner_neutral_lizard",   33, 1},
         {"npc_creep_panther",       "spawner_neutral_panther",  5, 1},
-        {"npc_creep_mammoth",       "spawner_neutral_mammoth",  0, 0},
+    --  {"npc_creep_mammoth",       "spawner_neutral_mammoth",  0, 0},
     --   {"npc_creep_panther_elder", "spawner_neutral_panther",  100, 1},
     }
     else --at the start
@@ -930,9 +930,18 @@ function ITT_GameMode:OnCreatureThink()
         {"npc_creep_bear_jungle",   "spawner_neutral_bear",     0, 1},
         {"npc_creep_lizard",        "spawner_neutral_lizard",   0, 1},
         {"npc_creep_panther",       "spawner_neutral_panther",  0, 1},
-        {"npc_creep_mammoth",       "spawner_neutral_mammoth",  100, 1},
+    --  {"npc_creep_mammoth",       "spawner_neutral_mammoth",  100, 1},
     --   {"npc_creep_panther_elder", "spawner_neutral_panther",  100, 1},
-    }
+        }
+        
+        -- Spawn the mammoth at start
+        -- This needs to go on its spot
+        if (GameMode.neutralCurNum["npc_creep_mammoth"] == 0) then
+            SpawnCreature("npc_creep_mammoth", "spawner_neutral_panther")
+        end
+            
+        
+    
     end
 
     neutralMaxTable = {}
@@ -944,7 +953,7 @@ function ITT_GameMode:OnCreatureThink()
         neutralMaxTable["npc_creep_bear_jungle"] = 8
         neutralMaxTable["npc_creep_lizard"] = 8
         neutralMaxTable["npc_creep_panther"] = 4
-        neutralMaxTable["npc_creep_mammoth"] = 1
+        --neutralMaxTable["npc_creep_mammoth"] = 1
         --neutralMaxTable["npc_creep_panther_elder"] = 4
 
     for _,v in pairs(neutralSpawnTable) do

@@ -35,7 +35,7 @@ end
 -- Kinda messy and uses a shotgun approach
 -- Unlikely to be perfect, but hard to do so without some of the methods working properly
 
-function SpawnRandomCreature(unitName, spawnerName)
+function SpawnRandomCreature(unitName)
     spawn = false
     -- repeats for each spawn till it finds a clear spot
     while (spawn == false) do
