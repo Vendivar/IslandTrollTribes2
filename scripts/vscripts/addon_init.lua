@@ -937,7 +937,7 @@ function ITT_GameMode:OnCreatureThink()
         -- Spawn the mammoth at start
         -- This needs to go on its spot
         if (GameMode.neutralCurNum["npc_creep_mammoth"] == 0) then
-            SpawnCreature("npc_creep_mammoth", "spawner_neutral_panther")
+            SpawnCreature("npc_creep_mammoth", "spawner_neutral_mammoth")
         end
             
         
