@@ -1039,95 +1039,101 @@ function ITT_GameMode:OnBushThink()
                                   FIND_ANY_ORDER,
                                   false)
     for i=1, #units do
+        if units[i].RngWeight == nil then --rng weight maks it so there's a chance a bush won't spawn but you won't get rng fucked
+            units[i].RngWeight = 0 --if rng weight doesnt exist declare it to a value that's unlikely to spawn for the first few ticks
+        end
         if units[i]:GetItemInSlot(5) == nil then
-            local rand1 = RandomInt(0,2)
-            if rand1 == 0 then
-            --print(units[i]:GetUnitName(), units[i]:GetName())
-            if units[i]:GetUnitName() == "npc_bush_herb" then
-                local newItem = CreateItem("item_herb_butsu", nil, nil)
-                units[i]:AddItem(newItem)
-                --print("adding butsu")
-            elseif units[i]:GetUnitName() == "npc_bush_thistle" then
-                local newItem = CreateItem("item_thistles", nil, nil)
-                units[i]:AddItem(newItem)
-                --print("adding thistle")
-            elseif units[i]:GetUnitName() == "npc_bush_river" then
-                if RandomInt(0, 1) == 1 then
-                    local newItem = CreateItem("item_river_root", nil, nil)
+            local rand1 = RandomInt(-4,4) --randomize between -4 and +4, since the min is 0 with the best rng on the minimum number you will still not get a spawn
+            if rand1+ units[i].RngWeight >= 5 then 
+                units[i].RngWeight = units[i].RngWeight -1 --if spawn succeeds reduce the odds of the next spawn
+            --print(units[i]:GetUnitName(), units[i]:Ge
+                if units[i]:GetUnitName() == "npc_bush_herb" then
+                    local newItem = CreateItem("item_herb_butsu", nil, nil)
                     units[i]:AddItem(newItem)
-                else
-                    local newItem = CreateItem("item_river_stem", nil, nil)
+                    --print("adding butsu")
+                elseif units[i]:GetUnitName() == "npc_bush_thistle" then
+                    local newItem = CreateItem("item_thistles", nil, nil)
                     units[i]:AddItem(newItem)
-                end
-                --print("adding river")
-            elseif units[i]:GetUnitName() == "npc_bush_stash" then
-                local random = RandomInt(0, 3)
-                if random == 0 then
-                    local newItem = CreateItem("item_acorn", nil, nil)
-                    units[i]:AddItem(newItem)
-                elseif  random == 1 then
-                    local newItem = CreateItem("item_acorn_magic", nil, nil)
-                    units[i]:AddItem(newItem)
-                elseif  random == 2 then
-                    local newItem = CreateItem("item_ball_clay", nil, nil)
-                    units[i]:AddItem(newItem)
-                else
+                    --print("adding thistle")
+                elseif units[i]:GetUnitName() == "npc_bush_river" then
+                    if RandomInt(0, 1) == 1 then
+                        local newItem = CreateItem("item_river_root", nil, nil)
+                        units[i]:AddItem(newItem)
+                    else
+                        local newItem = CreateItem("item_river_stem", nil, nil)
+                        units[i]:AddItem(newItem)
+                    end
+                    --print("adding river")
+                elseif units[i]:GetUnitName() == "npc_bush_stash" then
+                    local random = RandomInt(0, 3)
+                    if random == 0 then
+                        local newItem = CreateItem("item_acorn", nil, nil)
+                        units[i]:AddItem(newItem)
+                    elseif  random == 1 then
+                        local newItem = CreateItem("item_acorn_magic", nil, nil)
+                        units[i]:AddItem(newItem)
+                    elseif  random == 2 then
+                        local newItem = CreateItem("item_ball_clay", nil, nil)
+                        units[i]:AddItem(newItem)
+                    else
+                        local newItem = CreateItem("item_mushroom", nil, nil)
+                        units[i]:AddItem(newItem)
+                    end
+                    --print("adding stash")
+                elseif units[i]:GetUnitName() == "npc_bush_thief" then
+                    local random = RandomInt(0, 6)
+                    if random == 1 then
+                        local newItem = CreateItem("item_meat_cooked", nil, nil)
+                        units[i]:AddItem(newItem)
+                    elseif  random == 2 then
+                        local newItem = CreateItem("item_net_basic", nil, nil)
+                        units[i]:AddItem(newItem)
+                    elseif  random == 3 then
+                        local newItem = CreateItem("item_potion_manai", nil, nil)
+                        units[i]:AddItem(newItem)
+                    elseif  random == 4 then
+                        local newItem = CreateItem("item_crystal_mana", nil, nil)
+                        units[i]:AddItem(newItem)
+                    elseif  random == 5 then
+                        local newItem = CreateItem("item_bomb_smoke", nil, nil)
+                        units[i]:AddItem(newItem)
+                    else
+                        local newItem = CreateItem("item_medallion_thief", nil, nil)
+                        units[i]:AddItem(newItem)
+                    end
+                    --print("adding theif")
+                elseif units[i]:GetUnitName() == "npc_bush_scout" then
+                    if RandomInt(0, 1) == 1 then
+                        local newItem = CreateItem("item_clay_living", nil, nil)
+                        units[i]:AddItem(newItem)
+                    else
+                        local newItem = CreateItem("item_clay_explosion", nil, nil)
+                        units[i]:AddItem(newItem)
+                    end
+                    --print("adding scout")
+                elseif units[i]:GetUnitName() == "npc_bush_mushroom" then
                     local newItem = CreateItem("item_mushroom", nil, nil)
                     units[i]:AddItem(newItem)
+                    --print("adding mushroom")
+                elseif units[i]:GetUnitName() == "npc_bush_herb_yellow" then
+                    local newItem = CreateItem("item_herb_yellow", nil, nil)
+                    units[i]:AddItem(newItem)
+                    --print("adding yellow")
+                elseif units[i]:GetUnitName() == "npc_bush_herb_orange" then
+                    local newItem = CreateItem("item_herb_orange", nil, nil)
+                    units[i]:AddItem(newItem)
+                    --print("adding orange")
+                elseif units[i]:GetUnitName() == "npc_bush_herb_blue" then
+                    local newItem = CreateItem("item_herb_blue", nil, nil)
+                    units[i]:AddItem(newItem)
+                    --print("adding blue")
+                elseif units[i]:GetUnitName() == "npc_bush_herb_purple" then
+                    local newItem = CreateItem("item_herb_purple", nil, nil)
+                    units[i]:AddItem(newItem)
+                    --print("adding purple")
                 end
-                --print("adding stash")
-            elseif units[i]:GetUnitName() == "npc_bush_thief" then
-                local random = RandomInt(0, 6)
-                if random == 1 then
-                    local newItem = CreateItem("item_meat_cooked", nil, nil)
-                    units[i]:AddItem(newItem)
-                elseif  random == 2 then
-                    local newItem = CreateItem("item_net_basic", nil, nil)
-                    units[i]:AddItem(newItem)
-                elseif  random == 3 then
-                    local newItem = CreateItem("item_potion_manai", nil, nil)
-                    units[i]:AddItem(newItem)
-                elseif  random == 4 then
-                    local newItem = CreateItem("item_crystal_mana", nil, nil)
-                    units[i]:AddItem(newItem)
-                elseif  random == 5 then
-                    local newItem = CreateItem("item_bomb_smoke", nil, nil)
-                    units[i]:AddItem(newItem)
-                else
-                    local newItem = CreateItem("item_medallion_thief", nil, nil)
-                    units[i]:AddItem(newItem)
-                end
-                --print("adding theif")
-            elseif units[i]:GetUnitName() == "npc_bush_scout" then
-                if RandomInt(0, 1) == 1 then
-                    local newItem = CreateItem("item_clay_living", nil, nil)
-                    units[i]:AddItem(newItem)
-                else
-                    local newItem = CreateItem("item_clay_explosion", nil, nil)
-                    units[i]:AddItem(newItem)
-                end
-                --print("adding scout")
-            elseif units[i]:GetUnitName() == "npc_bush_mushroom" then
-                local newItem = CreateItem("item_mushroom", nil, nil)
-                units[i]:AddItem(newItem)
-                --print("adding mushroom")
-            elseif units[i]:GetUnitName() == "npc_bush_herb_yellow" then
-                local newItem = CreateItem("item_herb_yellow", nil, nil)
-                units[i]:AddItem(newItem)
-                --print("adding yellow")
-            elseif units[i]:GetUnitName() == "npc_bush_herb_orange" then
-                local newItem = CreateItem("item_herb_orange", nil, nil)
-                units[i]:AddItem(newItem)
-                --print("adding orange")
-            elseif units[i]:GetUnitName() == "npc_bush_herb_blue" then
-                local newItem = CreateItem("item_herb_blue", nil, nil)
-                units[i]:AddItem(newItem)
-                --print("adding blue")
-            elseif units[i]:GetUnitName() == "npc_bush_herb_purple" then
-                local newItem = CreateItem("item_herb_purple", nil, nil)
-                units[i]:AddItem(newItem)
-                --print("adding purple")
-                end
+            else
+                units[i].RngWeight = units[i].RngWeight + 1 --if spawn fails increase odds for next run
             end
         end
     end
