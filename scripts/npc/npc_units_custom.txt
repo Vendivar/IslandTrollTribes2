@@ -3639,7 +3639,7 @@
 		"Level"	"15"
 		"vscripts"	"boss_neutral_ai.lua"
 		"Ability1"	"ability_mammoth_passive_invul"
-		"Ability2"	""
+		"Ability2"	"ability_mammoth_passive_hardened_skin"
 		"Ability3"	""
 		"Ability4"	""
 		"Ability5"	""

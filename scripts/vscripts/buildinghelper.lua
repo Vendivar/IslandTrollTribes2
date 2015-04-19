@@ -220,10 +220,12 @@ function BuildingHelper:AddBuildingToGrid(vPoint, nSize, vOwnersHero)
 	-- Remember, our blocked squares are defined according to the square's center.
 	local startX = snapToGrid32(vPoint.x)
 	local startY = snapToGrid32(vPoint.y)
+	local startZ = snapToGrid32(vPoint.z)
 	
 	-- This is the place where you should SetAbsOrigin the building.
 	local centerX = snapToGrid64(vPoint.x)
 	local centerY = snapToGrid64(vPoint.y)
+	local centerZ = snapToGrid64(vPoint.z)
 	-- Buildings are centered differently when the size is odd.
 	if nSize%2 ~= 0 then
 		centerX=startX
@@ -239,6 +241,19 @@ function BuildingHelper:AddBuildingToGrid(vPoint, nSize, vOwnersHero)
 		
 	if BuildingHelper:IsRectangularAreaBlocked(buildingRect) then
 		print("Building location blocked. Returning -1")
+		-- It'd be wise to fire a game event when this returns -1 and use Actionscript to notify the player that the spot is blocked.
+		return -1
+	end
+	if startZ <128 or centerZ <128 then
+		print("Building cannot be placed in water. Returning -1")
+		-- It'd be wise to fire a game event when this returns -1 and use Actionscript to notify the player that the spot is blocked.
+		return -1
+	end
+
+	local distance = math.sqrt(centerX * centerX + centerY *centerY)
+
+	if distance < 1700 then
+		print("Building cannot be placed in mammoth pit. Returning -1")
 		-- It'd be wise to fire a game event when this returns -1 and use Actionscript to notify the player that the spot is blocked.
 		return -1
 	end
