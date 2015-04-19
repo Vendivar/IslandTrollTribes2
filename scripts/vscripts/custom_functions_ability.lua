@@ -24,7 +24,8 @@ function PingItemInRange(keys)
     local range = keys.Range
     local itemTable = keys.ItemTable
 
-    PingMap(caster:GetPlayerID(),caster:GetOrigin(),1,1,1)
+    --PingMap(caster:GetPlayerID(),caster:GetOrigin(),1,1,1)
+    --code above for checking your position.
 
     for itemName,itemColor in pairs(itemTable) do
         if itemColor == nil then
