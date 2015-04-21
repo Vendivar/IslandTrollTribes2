@@ -684,7 +684,7 @@ function ITT_GameMode:OnNPCSpawned( keys )
         spawnedUnit:AddItem(itemslotlock1)
         spawnedUnit:AddItem(itemslotlock2)
     else
-        print(spawnedUnit:GetUnitName() .. " is not a subclass")
+        --print(spawnedUnit:GetUnitName() .. " is not a subclass")
     end
 
     --heat handling
@@ -814,7 +814,7 @@ end
 function ITT_GameMode:FixDropModels(dt)
     for _,v in pairs(Entities:FindAllByClassname("dota_item_drop")) do
         if not v.ModelFixInit then
-            print("initing.. " .. v:GetContainedItem():GetAbilityName())
+            --print("initing.. " .. v:GetContainedItem():GetAbilityName())
             v.ModelFixInit = true
             v.OriginalOrigin = v:GetOrigin()
             v.OriginalAngles = v:GetAngles()
@@ -961,11 +961,14 @@ function ITT_GameMode:OnCreatureThink()
         local spawnerName = v[2]
         local spawnChance = v[3]
         local numToSpawn = v[4]
-        
         for i=1,numToSpawn do
             if (spawnChance >= RandomInt(1, 100)) and (GameMode.neutralCurNum[creepName] < neutralMaxTable[creepName]) then
-                SpawnRandomCreature(creepName, spawnerName)
-                
+                -- Don't spawn fish on land
+                if creepName == "npc_creep_fish_green" or creepName == "npc_creep_fish" then
+                    SpawnRandomCreature(creepName, true)
+                else
+                    SpawnRandomCreature(creepName, false)
+                end
             end
         end
     end
