@@ -303,6 +303,7 @@ function ITT_GameMode:InitGameMode()
     Convars:RegisterCommand( "Panic", function(...) return self:_Panic( ... ) end, "Player panics!", 0)
     Convars:RegisterCommand( "sub_select", function(cmdname, num) self:_SubSelect(Convars:GetCommandClient(), tonumber(num)) end, "Select Subclass", 0)
     Convars:RegisterCommand( "try_6", function(cmdname, class) print("Trying.."); FireGameEvent("fl_level_6", {pid = -1, gameclass = class}) end, "Select First Subclass", 0)
+    Convars:RegisterCommand( "try_delete_ent", function(...) self:_testRemove( ... ) end, "testing", 0)
 
     --select class commands
     Convars:RegisterCommand( "SelectClass", function(...) return self:_SelectClass( ... ) end, "Player is selecting a class", 0 )
@@ -314,6 +315,17 @@ function ITT_GameMode:InitGameMode()
     -- Timer Init
     Timers:start()
 
+    
+    
+
+    --for i,v in pairs(Entities:FindAllByClassname("ent_blocker")) do
+    --    print(v:GetClassname())
+    --    v:RemoveSelf()
+    --    v:Destroy()
+    --    v:Kill()
+    --    v:SetAbsOrigin(Vector(10000,10000,10000))
+    --end
+    
     -- Grace Period
     GameMode:SetFixedRespawnTime(GRACE_PERIOD_RESPAWN_TIME)
     Timers:CreateTimer({
@@ -321,8 +333,29 @@ function ITT_GameMode:InitGameMode()
         callback = function()
             print("End of grace period.")
             GameRules:SetHeroRespawnEnabled( false )
+            UnblockMammoth()
         end
     })
+end
+
+ --disables rosh pit
+function UnblockMammoth()
+    print("Trying to delete ent_blockers")
+    local ent = Entities:FindAllByName("ent_blocker")
+    if table.getn(ent) > 0 then
+        type(ent)
+        for i,v in pairs(ent) do
+            print("deleting ent"..i)
+            v:SetEnabled(false,false)
+            v:RemoveSelf()
+        end
+    else
+        print("name entblocker doesn't exist")
+    end
+end
+--disables mammoth pit manually via try_delete_ent command
+function ITT_GameMode:_testRemove(cmdName, arg1)
+    UnblockMammoth()
 end
 
 --Handler for class selection at the beginning of the game
