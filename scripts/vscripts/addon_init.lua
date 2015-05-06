@@ -672,6 +672,15 @@ function ITT_GameMode:OnPlayerPicked( keys )
         heatApplier:ApplyDataDrivenModifier(spawnedUnit, spawnedUnit, "modifier_meat_passive", {duration=-1})
         spawnedUnit:SetModifierStackCount("modifier_meat_passive", nil, 0)
     end
+    --anti-regen
+    if string.find(spawnedUnit:GetClassname(), "hero") then
+        print("REGEN!")
+        spawnedUnit:SetBaseHealthRegen(0.00)
+        spawnedUnit:SetBaseManaRegen(0.00)
+        spawnedUnit:RemoveModifierByName("modifier_regen_passive")
+        local heatApplier = CreateItem("item_regen_modifier_applier", spawnedUnit, spawnedUnit)
+        heatApplier:ApplyDataDrivenModifier(spawnedUnit, spawnedUnit, "modifier_regen_passive", {duration=-1})
+    end
 end
 
 -- This code is written by Internet Veteran, handle with care.
@@ -736,6 +745,13 @@ function ITT_GameMode:OnNPCSpawned( keys )
         local heatApplier = CreateItem("item_meat_modifier_applier", spawnedUnit, spawnedUnit)
         heatApplier:ApplyDataDrivenModifier(spawnedUnit, spawnedUnit, "modifier_meat_passive", {duration=-1})
         spawnedUnit:SetModifierStackCount("modifier_meat_passive", nil, 0)
+    end
+    --anti-regen
+    if string.find(spawnedUnit:GetClassname(), "hero") then
+        print("REGEN!")
+        spawnedUnit:RemoveModifierByName("modifier_regen_passive")
+        local heatApplier = CreateItem("item_regen_modifier_applier", spawnedUnit, spawnedUnit)
+        heatApplier:ApplyDataDrivenModifier(spawnedUnit, spawnedUnit, "modifier_regen_passive", {duration=-1})
     end
 end
 
