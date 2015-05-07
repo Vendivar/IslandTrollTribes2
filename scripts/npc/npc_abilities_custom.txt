@@ -138,7 +138,44 @@
 		}
 
 	}
+	
+	"ability_hawk_flight"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"	"ability_hawk_flight"
+		"MaxLevel"	"1"
+		"precache"
+		{
+			"particle_folder"	"particles/units/heroes/hero_phantom_assassin"
+		}
 
+		"Modifiers"
+		{
+			"modifier_hawk_flight"
+			{
+				"Passive"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_AVOID_CONSTANT"	"%chance"
+				}
+
+			}
+
+		}
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"chance"	"100"
+			}
+
+		}
+
+	}
+	
 	"ability_building_cookmeat"
 	{
 		"BaseClass"	"ability_datadriven"

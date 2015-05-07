@@ -3474,7 +3474,7 @@
 		"Model"	"models/heroes/beastmaster/beastmaster_bird.vmdl"
 		"Level"	"5"
 		"vscripts"	"passive_neutral_ai.lua"
-		"Ability1"	""
+		"Ability1"	"ability_hawk_flight"
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""
@@ -3508,7 +3508,7 @@
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
 		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
-		"MovementSpeed"	"400"
+		"MovementSpeed"	"100" --400
 		"MovementTurnRate"	"0.5"
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
         "BountyXP"                    "30"
