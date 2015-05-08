@@ -9458,16 +9458,29 @@
 		"WorldDropSound"	"Item.DropGemWorld"
 		"OnSpellStart"
 		{
-			"RunScript"
+			"TrackingProjectile"
 			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"NetEnsnare"
+				"Target"	"TARGET"
+				"EffectName"	"particles/units/heroes/hero_meepo/meepo_earthbind_projectile_fx.vpcf"
+				"Dodgeable"	"false"
+				"ProvidesVision"	"false"
+				"MoveSpeed"	"600"
 			}
+			
 			
 			"SpendCharge"
 			{
 			}
 
+		}
+		
+		"OnProjectileHitUnit"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+				"Function"	"NetEnsnare"
+			}
 		}
 
 		"AbilitySpecial"
