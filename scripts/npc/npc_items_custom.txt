@@ -1256,7 +1256,7 @@
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
-		"OnChannelFinish"
+		"OnChannelSucceeded"
 		{
 			"DestroyTrees"
 			{
@@ -1353,7 +1353,7 @@
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
-		"OnChannelFinish"
+		"OnChannelSucceeded"
 		{
 			"DestroyTrees"
 			{
@@ -1450,7 +1450,7 @@
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
-		"OnChannelFinish"
+		"OnChannelSucceeded"
 		{
 			"DestroyTrees"
 			{
@@ -1547,7 +1547,7 @@
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
-		"OnChannelFinish"
+		"OnChannelSucceeded"
 		{
 			"DestroyTrees"
 			{
@@ -1643,7 +1643,7 @@
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
-		"OnChannelFinish"
+		"OnChannelSucceeded"
 		{
 			"DestroyTrees"
 			{
@@ -9424,8 +9424,8 @@
 	{
 		"ID"	"1105"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
-		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"net_basic"
 		"Model"	"models/particle/net.vmdl"
@@ -9458,29 +9458,16 @@
 		"WorldDropSound"	"Item.DropGemWorld"
 		"OnSpellStart"
 		{
-			"TrackingProjectile"
+			"RunScript"
 			{
-				"Target"	"TARGET"
-				"EffectName"	"particles/units/heroes/hero_meepo/meepo_earthbind_projectile_fx.vpcf"
-				"Dodgeable"	"false"
-				"ProvidesVision"	"false"
-				"MoveSpeed"	"600"
+				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+				"Function"	"item_net_use"
 			}
-			
-			
+
 			"SpendCharge"
 			{
 			}
 
-		}
-		
-		"OnProjectileHitUnit"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"NetEnsnare"
-			}
 		}
 
 		"AbilitySpecial"
@@ -14083,32 +14070,5 @@
 
 		}
 
-	}
-	"item_regen_modifier_applier"
-	{
-		"ID"	"1906"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_regen_modifier_applier"
-		"ItemBaseLevel"	"1"
-		"AbilityCastRange"	"9999"
-		"AbilityCastPoint"	"0.0"
-		"Modifiers"
-		{
-			"modifier_regen_passive"
-			{
-				"Passive"	"1"
-				"IsHidden"	"0"
-				"IsDebuff"	"0"
-				"TextureName"	"item_regen_modifier_applier"
-				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
-				"Properties" 
-				{
-					"MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE" "-100"
-					"MODIFIER_PROPERTY_MANA_REGEN_PERCENTAGE" "-100"
-				}
-			}
-
-		}
 	}
 }
