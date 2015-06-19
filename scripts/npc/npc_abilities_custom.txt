@@ -1488,6 +1488,10 @@
 		"AbilityCastRange"	"300"
 		"AbilityCooldown"	"120 120 120"
 		"AbilityManaCost"	"20 25 30"
+		"precache"
+		{
+		"soundfile"				"soundevents/game_sounds_heroes/game_sounds_shadowshaman.vsndevts"
+		}
 		"OnSpellStart"
 		{
 			"ApplyModifier"
@@ -1502,6 +1506,11 @@
 				"ScriptFile"	"custom_functions_ability.lua"
 				"Function"	"RadarTelegatherInit"
 				"Target"	"TARGET"
+			}
+			"FireSound"
+			{
+				"EffectName"	"Hero_ShadowShaman.Shackles.Cast"
+				"Target"	"CASTER"
 			}
 
 		}
@@ -1546,8 +1555,17 @@
 		"AbilityTextureName"	"ability_gatherer_itemwarp"
 		"MaxLevel"	"1"
 		"AbilityCastPoint"	"0"
+		"precache"
+		{
+		"soundfile"				"soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts"
+		}
 		"OnSpellStart"
 		{
+		"FireSound"
+		{
+		"EffectName"	"Hero_Zuus.LightningBolt"
+		"Target"		"CASTER"
+		}
 		}
 
 	}
@@ -1567,6 +1585,7 @@
 		"precache"
 		{
 			"particle_folder"	"particles/units/heroes/hero_meepo"
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_meepo.vsndevts"
 		}
 
 		"OnSpellStart"
@@ -1579,6 +1598,11 @@
 				"ProvidesVision"	"false"
 				"MoveSpeed"	"600"
 			}
+			"FireSound"
+			{
+				"EffectName"	"Hero_Meepo.Earthbind.Cast"
+				"Target"		"CASTER"
+			}
 
 		}
 
@@ -1589,6 +1613,11 @@
 				"ScriptFile"	"custom_functions_ability.lua"
 				"Function"	"EnsnareUnit"
 				"Target"	"TARGET"
+			}
+			"FireSound"
+			{
+				"EffectName"	"Hero_Meepo.Earthbind.Target"
+				"Target"		"TARGET"
 			}
 
 		}
@@ -1640,6 +1669,7 @@
 		{
 			"particle_folder"	"particles/units/heroes/hero_bounty_hunter"
 			"particle_folder"	"particles/units/heroes/hero_tinker"
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_bounty_hunter.vsndevts"
 		}
 
 		"OnSpellStart"
@@ -1689,6 +1719,11 @@
 				"Function"	"TrackUnit"
 				"Target"	"TARGET"
 				"Duration"	"%duration"
+			}
+			"FireSound"
+			{
+				"EffectName"		"Hero_BountyHunter.Target"
+				"Target"			"TARGET"
 			}
 
 		}
@@ -1780,6 +1815,7 @@
 		{
 			"particle_folder"	"particles/units/heroes/hero_bounty_hunter"
 			"particle_folder"	"particles/units/heroes/hero_tinker"
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_bounty_hunter.vsndevts"
 		}
 
 		"OnSpellStart"
@@ -1829,6 +1865,11 @@
 				"Function"	"TrackUnit"
 				"Target"	"TARGET"
 				"Duration"	"%duration"
+			}
+			"FireSound"
+			{
+				"EffectName"		"Hero_BountyHunter.Target"
+				"Target"			"TARGET"
 			}
 
 		}
@@ -2123,6 +2164,7 @@
 		{
 			"particle_folder"	"particles/units/heroes/hero_bounty_hunter"
 			"particle_folder"	"particles/units/heroes/hero_tinker"
+			"soundfile"			"sounds/weapons/hero/huskar/life_break_impact.vsnd"
 		}
 
 		"OnAttackLanded"
@@ -2162,7 +2204,7 @@
 
 					"FireSound"
 					{
-						"EffectName"	"Roshan.Slam"
+						"EffectName"	"Hero_Huskar.Life_Break.Impact"
 						"Target"	"TARGET"
 					}
 
@@ -2225,6 +2267,7 @@
 		{
 			"particle_folder"	"particles/econ/courier/courier_trail_fungal"
 			"particle_folder"	"particles/units/heroes/hero_tinker"
+			"soundfile"			"sounds/weapons/hero/venomancer/venomancer_poison_nova.vsnd"
 		}
 
 		"OnSpellStart"
@@ -2237,7 +2280,11 @@
 				"ProvidesVision"	"false"
 				"MoveSpeed"	"2000"
 			}
-
+			"FireSound"
+			{
+				"EffectName"		"Hero_Venomancer.PoisonNova"
+				"Target"			"TARGET"
+			}
 		}
 
 		"OnProjectileHitUnit"
@@ -2253,8 +2300,8 @@
 
 			"FireSound"
 			{
-				"EffectName"	"Hero_BountyHunter.Track"
-				"Target"	"CASTER"
+				"EffectName"	"Hero_Venomancer.PoisonNova"
+				"Target"	"TARGET"
 			}
 
 		}
@@ -2337,6 +2384,10 @@
 		"AbilityCooldown"	"150"
 		"AbilityManaCost"	"40"
 		"MaxLevel"	"1"
+		"precache"
+		{
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_pugna.vsndevts"
+		}
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -2344,7 +2395,11 @@
 				"ScriptFile"	"custom_functions_ability.lua"
 				"Function"	"SpawnMageFire"
 			}
-
+			"FireSound"
+			{
+				"EffectName"	"Hero_Pugna.NetherBlastPreCast"
+				"Target"		"CASTER"
+			}
 		}
 
 	}
@@ -2366,6 +2421,7 @@
 		{
 			"particle_folder"	"particles/units/heroes/hero_bounty_hunter"
 			"particle_folder"	"particles/units/heroes/hero_tinker"
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_necrolyte.vsndevts"
 		}
 
 		"OnSpellStart"
@@ -2407,6 +2463,11 @@
 				}
 
 				"Duration"	"%null_duration_creep"
+			}
+			"FireSound"
+			{
+				"EffectName"	"Hero_Necrolyte.ProjectileImpact"
+				"Target"		"TARGET"
 			}
 
 		}
@@ -2500,6 +2561,7 @@
 		{
 			"particle_folder"	"particles/units/heroes/hero_bounty_hunter"
 			"particle_folder"	"particles/units/heroes/hero_tinker"
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_necrolyte.vsndevts"
 		}
 
 		"OnSpellStart"
@@ -2541,6 +2603,11 @@
 				}
 
 				"Duration"	"%quantum_null_duration_creep"
+			}
+			"FireSound"
+			{
+				"EffectName"	"Hero_Necrolyte.DeathPulse"
+				"Target"		"TARGET"
 			}
 
 		}
@@ -2884,7 +2951,7 @@
 		{
 			"particle_folder"	"particles/units/heroes/hero_night_stalker"
 			"particle_folder"	"particles/units/heroes/hero_bane"
-			"soundfile"	"sounds/weapons/hero/nightstalker/dota_nightstalker_void.vsnd"
+			"soundfile"			"sounds/weapons/hero/silencer/last_word_target.vsnd"
 		}
 
 		"OnSpellStart"
@@ -2900,7 +2967,7 @@
 
 			"FireSound"
 			{
-				"EffectName"	"Hero_Nightstalker.Void"
+				"EffectName"	"Hero_Silencer.LastWord.Target"
 				"Target"	"CASTER"
 			}
 
@@ -2919,6 +2986,11 @@
 				}
 
 				"Duration"	"%maddening_discharge_duration"
+			}
+			"FireSound"
+			{
+				"EffectName"	"Hero_Silencer.LastWord.Target"
+				"Target"	"TARGET"
 			}
 
 		}
@@ -3016,6 +3088,7 @@
 		"Precache"
 		{
 			"Particle"	"particles/units/heroes/hero_lina/lina_base_attack.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_dragon_knight.vsndevts"
 		}
 
 		"OnSpellStart"
@@ -3046,6 +3119,11 @@
 
 				}
 
+			}
+			"FireSound"
+			{
+				"EffectName"		"Hero_DragonKnight.BreathFire"
+				"Target"			"CASTER"
 			}
 
 		}
@@ -3080,7 +3158,7 @@
 		{
 			"particle_folder"	"particles/units/heroes/hero_night_stalker"
 			"particle_folder"	"particles/units/heroes/hero_bane"
-			"soundfile"	"sounds/weapons/hero/nightstalker/dota_nightstalker_void.vsnd"
+			"soundfile"	"sounds/weapons/hero/ogre_magi/bloodlust_target.vsnd"
 		}
 
 		"OnSpellStart"
@@ -3195,7 +3273,7 @@
 		{
 			"particle_folder"	"particles/units/heroes/hero_night_stalker"
 			"particle_folder"	"particles/units/heroes/hero_bane"
-			"soundfile"	"sounds/weapons/hero/nightstalker/dota_nightstalker_void.vsnd"
+			"soundfile"	"sounds/weapons/hero/visage/grave_chill_target.vsnd"
 		}
 
 		"OnSpellStart"
@@ -3218,7 +3296,7 @@
 
 			"FireSound"
 			{
-				"EffectName"	"Hero_Silencer.LastWord.Cast"
+				"EffectName"	"Hero_Visage.GraveChill.Target"
 				"Target"	"CASTER"
 			}
 
@@ -3237,6 +3315,11 @@
 				}
 
 				"Duration"	"20"
+			}
+			"FireSound"
+			{
+				"EffectName"	"Hero_Visage.GraveChill.Target"
+				"Target"	"TARGET"
 			}
 
 		}
@@ -3358,6 +3441,10 @@
 		"AbilityCastRange"	"800"
 		"AbilityManaCost"	"10"
 		"MaxLevel"	"1"
+		"precache"
+		{
+			"soundfile"			"sounds/weapons/hero/ogre_magi/bloodlust_cast.vsnd"
+		}
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -3365,7 +3452,11 @@
 				"ScriptFile"	"custom_functions_ability.lua"
 				"Function"	"ReduceFood"
 			}
-
+			"FireSound"
+			{
+				"EffectName"		 "Hero_OgreMagi.Bloodlust.Cast"
+				"Target"			 "TARGET"	
+			}
 		}
 
 	}
@@ -3382,12 +3473,20 @@
 		"AbilityCastRange"	"700"
 		"AbilityManaCost"	"20"
 		"MaxLevel"	"1"
+		"precache"
+		{
+			"soundfile"			"sounds/weapons/hero/faceless_void/chronosphere_tick.vsnd"
+		}
 		"OnSpellStart"
 		{
 			"RunScript"
 			{
 				"ScriptFile"	"custom_functions_ability.lua"
 				"Function"	"Metronome"
+			}
+			"FireSound"
+			{
+				"EffectName"			
 			}
 
 		}
@@ -3797,6 +3896,10 @@
 		"AbilityCooldown"	"10"
 		"AbilityManaCost"	"60"
 		"MaxLevel"	"1"
+		"precache"
+		{
+			"soundfile"			"sounds/weapons/hero/lina/lightstrikearray.vsnd"
+		}
 		"OnSpellStart"
 		{
 			"ActOnTargets"
@@ -3833,6 +3936,11 @@
 				"EffectColorA"	"25 50 200"
 				"EffectColorB"	"25 50 200"
 			}
+			"FireSound"
+			{
+				"EffectName"		"Ability.LightStrikeArray"
+				"Target"		"CASTER"
+			}
 
 		}
 
@@ -3863,6 +3971,10 @@
 		"AbilityCooldown"	"50"
 		"AbilityManaCost"	"25"
 		"MaxLevel"	"1"
+		"precache"
+		{
+			"soundfile"			"sounds/weapons/hero/skeleton_king/hellfire_blast.vsnd"
+		}
 		"OnSpellStart"
 		{
 			"ActOnTargets"
@@ -3905,6 +4017,11 @@
 			}
 
 		}
+		"FireSound"
+		{
+			"EffectName"		"Hero_SkeletonKing.Hellfire_Blast"
+			"Target"		"CASTER"
+		}
 
 	}
 
@@ -3918,8 +4035,17 @@
 		"AbilityCastRange"	""
 		"AbilityManaCost"	"0"
 		"MaxLevel"	"1"
+		"precache"
+		{
+			"soundfile"			"sounds/weapons/hero/storm_spirit/electric_vortex.vsnd"
+		}
 		"OnSpellStart"
 		{
+			"FireSound"
+			{
+				"EffectName"		"Hero_StormSpirit.ElectricVortex"
+				"Target"			"CASTER"
+			}
 		}
 
 	}
@@ -3936,6 +4062,7 @@
 		"MaxLevel"	"1"
 		"Precache"
 		{
+			"soundfile"	"sounds/weapons/hero/disruptor/static_storm.vsnd"
 			"Particle"	"particles/units/heroes/hero_razor/razor_static_link_beam.vpcf"
 		}
 
@@ -3962,6 +4089,11 @@
 
 				}
 
+			}
+			"FireSound"
+			{
+				"EffectName"		"Hero_Disruptor.StaticStorm"
+				"Target"		"TARGET"
 			}
 
 		}
@@ -4025,6 +4157,7 @@
 		"MaxLevel"	"1"
 		"Precache"
 		{
+			"soundfile"	"sounds/weapons/hero/zuus/static_field.vsnd"
 			"particle"	"particles/units/heroes/hero_zuus/zuus_arc_lightning.vpcf"
 		}
 
@@ -4038,6 +4171,11 @@
 				"Bounces"	"3"
 				"BounceRadius"	"1500"
 				"BounceDamageFactor"	"0.9"
+			}
+			"FireSound"
+			{
+				"EffectName"	"Hero_Zuus.StaticField"
+				"Target"		"CASTER"
 			}
 
 		}
@@ -4055,6 +4193,10 @@
 		"AbilityCastRange"	"800"
 		"AbilityManaCost"	"25"
 		"MaxLevel"	"1"
+		"precache"
+		{
+			"soundfile"		"sounds/weapons/hero/crystal_maiden/crystal_nova.vsnd"
+		}
 		"OnSpellStart"
 		{
 			"ActOnTargets"
@@ -4085,6 +4227,11 @@
 
 				}
 
+			}
+			"FireSound"
+			{
+				"EffectName"	"Hero_Crystal.CrystalNova"
+				"Target"		"TARGET"
 			}
 
 		}
@@ -4129,6 +4276,10 @@
 		"AbilityCastRange"	""
 		"AbilityManaCost"	"0"
 		"MaxLevel"	"1"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts"
+		}
 		"OnSpellStart"
 		{
 			"ActOnTargets"
@@ -4149,6 +4300,10 @@
 						"Damage"	"%damage"
 						"Target"	"TARGET"
 					}
+
+				}
+				"FireSound"
+				{
 
 				}
 
