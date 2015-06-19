@@ -1454,6 +1454,10 @@
 		"AbilityTextureName"	"ability_gatherer_mixherbs"
 		"MaxLevel"	"1"
 		"AbilityCastPoint"	"0"
+		"precache"
+		{
+		"soundfile"				"soundevents/game_sounds_heroes/game_sounds_witchdoctor.vsndevts"
+		}
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -1462,6 +1466,11 @@
 				"Function"	"MixHerbs"
 				"Target"	"CASTER"
 			}
+			"FireSound"
+		{
+		"EffectName"	"Hero_WitchDoctor.Voodoo_Restoration"
+		"Target"		"CASTER"
+		}
 
 		}
 
