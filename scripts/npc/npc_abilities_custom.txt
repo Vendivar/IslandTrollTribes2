@@ -183,6 +183,10 @@
 		"AbilityTextureName"	"ability_building_cookmeat"
 		"AbilityCooldown"	"1.0"
 		"AbilityManaCost"	"0"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_lina.vsndevts"
+		}
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -190,6 +194,21 @@
 				"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
 				"Function"	"CookFood"
 				"Range"	"%radius"
+			}
+			"FireSound"
+			{
+				"EffectName"	"Hero_Lina.PreAttack"
+				"Target"		"CASTER"
+			}
+				"FireSound"
+			{
+				"EffectName"	"Hero_Lina.attack"
+				"Target"		"CASTER"
+			}
+				"FireSound"
+			{
+				"EffectName"	"Hero_Lina.ProjectileImpact"
+				"Target"		"CASTER"
 			}
 
 		}
@@ -214,6 +233,10 @@
 		"AbilityCooldown"	"0.0"
 		"AbilityCastPoint"	"0.5"
 		"AbilityManaCost"	"0"
+		"precache"
+		{
+			"soundfile"		"sounds/items/smoke_of_deceit.vsnd"
+		}
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -221,6 +244,11 @@
 				"Target"	"CASTER"
 				"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
 				"Function"	"PackUp"
+			}
+			"FireSound"
+			{
+				"EffectName"	"DOTA_Item.SmokeOfDeceit.Activate"
+				"Target"		"CASTER"
 			}
 
 		}
@@ -3486,7 +3514,8 @@
 			}
 			"FireSound"
 			{
-				"EffectName"			
+				"EffectName"	"Hero_FacelessVoid.Chronosphere.Tick"
+				"Target"		"CASTER"			
 			}
 
 		}
@@ -4279,6 +4308,8 @@
 		"precache"
 		{
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts"
+			"soundfile"	"sounds/weapons/hero/leshrac/split_earth.vsnd"
+
 		}
 		"OnSpellStart"
 		{
@@ -4304,7 +4335,8 @@
 				}
 				"FireSound"
 				{
-
+					"EffectName"		
+					"Target"			"CASTER"
 				}
 
 			}
@@ -4319,6 +4351,11 @@
 				"EffectLifeDurationScale"	"1"
 				"EffectColorA"	"25 50 200"
 				"EffectColorB"	"25 50 200"
+				"FireSound"
+				{
+					"EffectName"
+					"Target"
+				}
 			}
 
 			"FireEffect"
@@ -4331,6 +4368,11 @@
 				"EffectLifeDurationScale"	"1"
 				"EffectColorA"	"205 50 200"
 				"EffectColorB"	"205 50 200"
+				"FireSound"
+				{
+					"EffectName"
+					"Target"
+				}
 			}
 
 			"FireEffect"
@@ -4343,6 +4385,11 @@
 				"EffectLifeDurationScale"	"1"
 				"EffectColorA"	"255 0 0"
 				"EffectColorB"	"255 0 0"
+				"FireSound"
+				{
+					"EffectName"
+					"Target"
+				}
 			}
 
 		}
@@ -4382,7 +4429,7 @@
 		{
 			"particle_folder"	"particles/units/heroes/hero_night_stalker"
 			"particle_folder"	"particles/units/heroes/hero_bane"
-			"soundfile"	"sounds/weapons/hero/nightstalker/dota_nightstalker_void.vsnd"
+			"soundfile"	"sounds/weapons/hero/axe/battle_hunger.vsnd"
 		}
 
 		"OnSpellStart"
@@ -4402,7 +4449,7 @@
 
 			"FireSound"
 			{
-				"EffectName"	"Hero_TrollWarlord.BattleTrance.Cast"
+				"EffectName"	"Hero_Axe.Battle_Hunger"
 				"Target"	"TARGET"
 			}
 
@@ -4689,6 +4736,10 @@
 		"AbilityManaCost"	"10"
 		"MaxLevel"	"1"
 		"RequiredLevel"	"4"
+		"precache"
+		{
+			"soundfile"				"soundevents/game_sounds_heroes/game_sounds_visage.vsndevts"
+		}
 		"OnSpellStart"
 		{
 			"ApplyModifier"
@@ -4714,10 +4765,10 @@
 
 			}
 
-			"FireSound"
+				"FireSound"
 			{
-				"EffectName"	"Hero_Gyrocopter.CallDown.Fire"
-				"Target"	"CASTER"
+				"EffectName"		"Hero_Visage.GraveChill.Cast"
+				"Target"			"CASTER"
 			}
 
 		}
@@ -4750,6 +4801,11 @@
 			{
 				"Target"	"CASTER"
 				"ModifierName"	"modifier_stupefyself"
+			}
+			"FireSound"
+			{
+				"EffectName"	"Hero_Visage.GraveChill.Target"
+				"Target"		"TARGET"
 			}
 
 		}
@@ -5043,6 +5099,10 @@
 		"AbilityCooldown"	"20"
 		"AbilityManaCost"	"0"
 		"MaxLevel"	"1"
+		"precache"
+		{
+			"soundfile"	"sounds/ui/ping.vsnd"		
+		}
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -5069,6 +5129,7 @@
 		{
 			"particle_folder"	"particles/units/heroes/hero_night_stalker"
 			"particle_folder"	"particles/units/heroes/hero_bane"
+			"soundfile"			"sounds/weapons/hero/spectre/haunt_cast.vsnd"
 		}
 
 		"OnSpellStart"
@@ -5101,6 +5162,11 @@
 				"SpawnRadius"	"0"
 				"Duration"	"8"
 				"Target"	"CASTER"
+			}
+			"FireSound"
+			{
+				"EffectName"			"Hero_Spectre.HauntCast"
+				"Target"				"CASTER"
 			}
 
 		}
@@ -5206,6 +5272,7 @@
 		{
 			"particle_folder"	"particles/units/heroes/hero_night_stalker"
 			"particle_folder"	"particles/units/heroes/hero_bane"
+			"soundfile"			"sounds/weapons/hero/spectre/haunt_cast.vsnd"
 		}
 
 		"OnSpellStart"
@@ -5218,6 +5285,11 @@
 				"SpawnRadius"	"0"
 				"Duration"	"10"
 				"Target"	"CASTER"
+			}
+				"FireSound"
+			{
+				"EffectName"		"Hero_Spectre.HauntCast"
+				"Target"			"CASTER"
 			}
 
 		}
@@ -5233,6 +5305,10 @@
 		"AbilityCooldown"	"70 60 50"
 		"AbilityManaCost"	"10 10 10"
 		"MaxLevel"	"3"
+		"precache"
+		{
+			"soundfile"			"sounds/weapons/hero/techies/stasis_trap_plant.vsnd"		
+		}
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -5240,6 +5316,11 @@
 				"ScriptFile"	"custom_functions_ability.lua"
 				"Function"	"WardArea"
 				"Radius"	"800"
+			}
+				"FireSound"
+			{
+				"EffectName"		"Hero_Techies.StasisCast"
+				"Target"			"CASTER"
 			}
 
 		}
@@ -5347,6 +5428,10 @@
 		"AbilityCooldown"	"30.0"
 		"AbilityManaCost"	"15"
 		"MaxLevel"	"1"
+		"precache"
+		{
+			"soundfile"		"sounds/weapons/hero/antimage/blink_out.vsn"
+		}
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -5355,7 +5440,11 @@
 				"Function"	"Teleport"
 				"Target"	"POINT"
 			}
-
+			"FireSound"
+			{
+				"EffectName"		"Hero_Antimage.Blink_out"
+				"Target"			"POINT"
+			}
 		}
 
 	}
@@ -5369,6 +5458,11 @@
 		"AbilityCooldown"	"60.0 60.0 60.0"
 		"AbilityManaCost"	"0 0 0"
 		"MaxLevel"	"3"
+		"precache"
+		{
+			"soundfile"			
+		}
+
 		"OnSpellStart"
 		{
 			"ApplyModifier"
@@ -5385,6 +5479,11 @@
 				"SpawnRadius"	"0"
 				"Duration"	"4.0"
 				"Target"	"CASTER"
+			}
+			"FireSound"
+			{
+				"EffectName"		"DOTA_Item.ShadowAmulet.Activate"
+				"Target"			"CASTER"
 			}
 
 		}
@@ -5541,6 +5640,11 @@
 		"AbilityManaCost"	"15"
 		"RequiredLevel"	"2"
 		"MaxLevel"	"1"
+		"precache"
+		{
+			"soundfile"			"sounds/weapons/hero/riki/riki_blinkstrike.vsnd"
+		}
+
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -5548,6 +5652,11 @@
 				"ScriptFile"	"custom_functions_ability.lua"
 				"Function"	"Jump"
 				"Target"	"POINT"
+			}
+			"FireSound"
+			{
+				"EffectName"		"Hero_Riki.Blink_Strike"
+				"Target"			"POINT"
 			}
 
 		}
@@ -5566,12 +5675,22 @@
 		"AbilityManaCost"	"15"
 		"RequiredLevel"	"3"
 		"MaxLevel"	"1"
+		"precache"
+		{
+			"soundfile"				"sounds/weapons/hero/treant/natures_guise.vsnd"
+		}
+
 		"OnSpellStart"
 		{
 			"RunScript"
 			{
 				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
 				"Function"	"CloakCamouflageInvis"
+			}
+			"FireSound"
+			{
+				"EffectName"			"Hero_Treant.NaturesGuise.On"
+				"Target"				"CASTER"
 			}
 
 		}
@@ -5630,6 +5749,11 @@
 		"AbilityCooldown"	"60.0"
 		"AbilityManaCost"	"10"
 		"MaxLevel"	"1"
+		"precache"
+		{
+			"soundfile"					"sounds/items/rod_of_atos.vsnd"
+		}
+
 		"OnSpellStart"
 		{
 			"ApplyModifier"
@@ -5637,6 +5761,11 @@
 				"Target"	"CASTER"
 				"ModifierName"	"modifier_blur"
 				"Duration"	"%duration"
+			}
+			"FireSound"
+			{
+				"EffectName"		"DOTA_Item.RodOfAtos.Activate"
+				"Target"			"CASTER"
 			}
 
 		}
@@ -5790,6 +5919,11 @@
 		"AbilityCooldown"	"75.0"
 		"AbilityManaCost"	"0"
 		"MaxLevel"	"1"
+		"precache"
+		{
+			"soundfile"				"sounds/weapons/hero/riki/riki_smokescreen.vsnd"
+		}
+
 		"OnSpellStart"
 		{
 			"ApplyModifier"
@@ -5797,6 +5931,11 @@
 				"Target"	"CASTER"
 				"ModifierName"	"modifier_smoketrail"
 				"Duration"	"7.0"
+			}
+			"FireSound"
+			{
+				"EffectName"		"Hero_Riki.Smoke_Screen"
+				"Target"			"CASTER"
 			}
 
 		}
@@ -5912,6 +6051,15 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"ability_thief_tele-thief"
+		"precache"
+		{
+			"soundfile"				"sounds/weapons/hero/queenofpain/blink_in.vsnd"
+		}
+		"FireSound"
+		{
+			"EffectName"	"Hero_Antimage.Blink_in"
+			"Target"		"CASTER"
+		}
 	}
 
 	"ability_thief_netherfade"
@@ -5923,7 +6071,8 @@
 		"AbilityCooldown"	"90.0"
 		"AbilityManaCost"	"15"
 		"Precache"
-		{
+		{	
+			"soundfile"	"sounds/weapons/hero/clinkz/windwalk.vsnd"
 			"particle"	"particles\units\heroes\hero_pugna\pugna_decrepify.vpcf"
 		}
 
@@ -5935,6 +6084,11 @@
 				"Target"	"CASTER"
 				"Duration"	"%duration"
 				"ModifierName"	"modifier_netherfade"
+			}
+			"FireSound"
+			{
+				"EffectName"	"Hero_Clinkz.WindWalk"
+				"Target"		"CASTER"		
 			}
 
 		}
@@ -5986,6 +6140,7 @@
 		"AbilityManaCost"	"10"
 		"Precache"
 		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_phantom_assassin.vsndevts"
 			"particle"	"particles\econ\items\mirana\mirana_crescent_arrow\mirana_spell_crescent_arrow.vpcf"
 		}
 
@@ -6007,6 +6162,11 @@
 				"MoveSpeed"	"%projectile_speed"
 				"ProvidesVision"	"false"
 			}
+			"FireSound"
+			{
+				"EffectName" "Hero_PhantomAssassin.Dagger.Cast"
+				"Target"	"CASTER"
+			}
 
 		}
 
@@ -6025,6 +6185,11 @@
 				"Target"	"TARGET"
 				"ModifierName"	"modifier_knife_slow"
 				"Duration"	"%slow_duration"
+			}
+				"FireSound"
+			{
+				"EffectName"	"Hero_PhantomAssassin.Dagger.Target"
+				"Target"		"TARGET"
 			}
 
 		}
@@ -6284,6 +6449,11 @@
 		"AbilityCooldown"	"60.0"
 		"AbilityManaCost"	"30"
 		"MaxLevel"	"1"
+		"precache"
+		{
+			"soundfile"				"sounds/weapons/hero/spectre/reality.vsnd"
+		}
+
 		"OnSpellStart"
 		{
 			"ApplyModifier"
@@ -6298,6 +6468,11 @@
 				"Target"	"CASTER"
 				"Duration"	"%duration"
 				"ModifierName"	"modifier_invisible"
+			}
+			"FireSound"
+			{
+				"EffectName"	"Hero_Spectre.Reality"
+				"Target"		"CASTER"
 			}
 
 		}
@@ -6496,6 +6671,10 @@
 		"AbilityCastRange"	"200"
 		"AbilityManaCost"	"0"
 		"MaxLevel"	"1"
+		"precache"
+		{
+			"soundfile"			"sounds/weapons/hero/enchantress/enchant_creep.vsnd"
+		}
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -6504,6 +6683,11 @@
 				"Function"	"TamePet"
 				"MaxPets"	"1"
 				"Growth"	"Normal"
+			}
+			"FireSound"
+			{
+				"EffectName"	"Hero_Enchantress.EnchantCreep"
+				"Target"		"TARGET"
 			}
 
 		}
@@ -6580,6 +6764,10 @@
 		"AbilityCooldown"	"0"
 		"AbilityManaCost"	"0"
 		"MaxLevel"	"1"
+		"precache"
+		{
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_beastmaster.vsndevts"
+		}
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -6587,6 +6775,16 @@
 				"ScriptFile"	"custom_functions_ability.lua"
 				"Function"	"PetCommand"
 				"Command"	"release"
+			}
+			"FireSound"
+			{
+				"EffectName"	"Hero_Beastmaster.Call.Boar"
+				"Target"		"CASTER"
+			}
+			"FireSound"
+			{
+				"EffectName"	"Hero_Beastmaster.Call.Hawk"
+				"Target"		"CASTER"
 			}
 
 		}
@@ -6941,6 +7139,10 @@
 		"AbilityCastRange"	"0"
 		"AbilityManaCost"	"20"
 		"MaxLevel"	"1"
+		"precache"
+		{
+			"soundfile"			"sounds/weapons/hero/lycan/howl.vsnd"
+		}
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -6952,7 +7154,7 @@
 
 			"FireSound"
 			{
-				"EffectName"	"Hero_LoneDruid.BattleCry"
+				"EffectName"	"Hero_Lycan.Howl.Team"
 				"Target"	"CASTER"
 			}
 
@@ -7244,6 +7446,10 @@
 		"AbilityCastRange"	"0"
 		"AbilityManaCost"	"30"
 		"MaxLevel"	"1"
+		"precache"
+		{
+			"soundfile"			"sounds/weapons/hero/lycan/summon_wolves.vsnd"
+		}
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -7261,7 +7467,7 @@
 
 			"FireSound"
 			{
-				"EffectName"	"Hero_Lycan.Howl.Team"
+				"EffectName"	"Hero_Lycan.SummonWolves"
 				"Target"	"TARGET"
 			}
 
@@ -7397,6 +7603,10 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"AbilityTextureName"	"ability_beastmaster_bash"
 		"MaxLevel"	"1"
+		"precache"
+		{
+			"soundfile"			"sounds/weapons/hero/ursa/ursa_earthshock.vsnd"
+		}
 		"Modifiers"
 		{
 			"modifier_bear_bash_passive"
@@ -7419,6 +7629,11 @@
 
 					}
 
+				}
+				"FireSound"
+				{
+					"EffectName"	"Hero_Ursa.Earthshock"
+					"Target"		"TARGET"
 				}
 
 			}
@@ -7460,6 +7675,7 @@
 		"MaxLevel"	"1"
 		"Precache"
 		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_earthshaker.vsndevts"
 			"particle"	"particles/econ/generic/generic_aoe_explosion_sphere_1/generic_aoe_explosion_sphere_1.vpcf"
 		}
 
@@ -7492,6 +7708,11 @@
 					}
 
 				}
+				"FireSound"
+				{
+					"EffectName"	"Hero_EarthShaker.Totem"
+					"Target"		"TARGET"
+				}
 
 			}
 
@@ -7501,6 +7722,12 @@
 				"EffectName"	"particles/econ/generic/generic_aoe_explosion_sphere_1/generic_aoe_explosion_sphere_1.vpcf"
 				"EffectAttachType"	"follow_origin"
 				"EffectRadius"	"%slam_radius"
+					"FireSound"
+				{
+					"EffectName"	"Hero_EarthShaker.Totem"
+					"Target"		"POINT"
+				}
+
 			}
 
 		}
@@ -7553,6 +7780,10 @@
 		"AbilityCastRange"	"0"
 		"AbilityManaCost"	"30"
 		"MaxLevel"	"1"
+		"precache"
+		{
+			"soundfile"			"sounds/weapons/hero/lycan/howl.vsnd"
+		}
 		"OnSpellStart"
 		{
 			"ActOnTargets"
@@ -7632,6 +7863,10 @@
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_PHYSICAL"
 		"AbilityTextureName"	"ability_beastmaster_criticalstrike"
 		"MaxLevel"	"1"
+		"precache"
+		{
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_skeletonking.vsndevts"
+		}
 		"Modifiers"
 		{
 			"modifier_wolf_crit"
@@ -7672,6 +7907,11 @@
 						"EffectName"	"particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
 						"EffectAttachType"	"follow_origin"
 						"Target"	"TARGET"
+					}
+					"FireSound"
+					{
+						"EffectName"		"Hero_SkeletonKing.CriticalStrike"
+						"Target"			"CASTER"
 					}
 
 					"RemoveModifier"
@@ -7779,6 +8019,10 @@
 		"AbilityCooldown"	"20"
 		"AbilityManaCost"	"30"
 		"MaxLevel"	"1"
+		"precache"
+		{
+			"soundfile"			"sounds/weapons/hero/centaur/stampede_cast.vsnd"
+		}
 		"OnSpellStart"
 		{
 			"ApplyModifier"
@@ -7786,6 +8030,11 @@
 				"Target"	"TARGET"
 				"ModifierName"	"modifier_charged"
 				"Duration"	"2"
+			}
+			"FireSound"
+			{
+				"EffectName"	"Hero_Centaur.Stampede.Cast"
+				"Target"		"TARGET"
 			}
 
 		}
@@ -8029,7 +8278,7 @@
 		{
 			"particle_folder"	"particles/units/heroes/hero_night_stalker"
 			"particle_folder"	"particles/units/heroes/hero_bane"
-			"soundfile"	"sounds/weapons/hero/nightstalker/dota_nightstalker_void.vsnd"
+			"soundfile"	"sounds/weapons/hero/ogre_magi/bloodlust_target.vsnd"
 		}
 
 		"OnSpellStart"
