@@ -5326,6 +5326,31 @@
 		}
 
 	}
+    
+    
+
+	"ability_scout_placeward"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityTextureName"	"ability_scout_placeward"
+        "AbilityCastRange"	"600"
+		"AbilityCastPoint"	"0.4"
+		"AbilityCooldown"	"35.0"
+		"AbilityManaCost"	"20"
+		"MaxLevel"	"1"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"custom_functions_ability.lua"
+				"Function"	"PlaceWard"
+                "Target"	"POINT"
+			}
+
+		}
+
+	}
 
 	"ability_scout_ward_collision"
 	{

@@ -732,14 +732,23 @@ function WardArea(keys)
     local abilityLevel = caster:FindAbilityByName("ability_scout_wardthearea"):GetLevel()
     local wards = abilityLevel + 1
     local casterPosition = caster:GetAbsOrigin()
-
+    local team = caster:GetTeam()
+    
     for i = 1, wards do
-        local team = caster:GetTeam()
         local randomLocation = casterPosition + RandomVector(RandomInt(0,800))
         local ward = CreateUnitByName("scout_ward",randomLocation,true,nil,nil,team)
         local lifetime = ward:FindAbilityByName("ability_scout_ward_lifetime")
         lifetime:SetLevel(abilityLevel)
     end
+end
+
+function PlaceWard(keys)
+    local caster = keys.caster
+    local point = keys.target_points[1]
+    local team = caster:GetTeam()
+    local ward = CreateUnitByName("scout_ward",point,true,nil,nil,team)
+    local lifetime = ward:FindAbilityByName("ability_scout_ward_lifetime")
+    lifetime:SetLevel(600)
 end
 
 -- Beast Master Ability Functions
