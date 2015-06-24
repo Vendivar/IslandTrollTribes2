@@ -2730,7 +2730,7 @@
 		{
 			"particle_folder"	"particles/units/heroes/hero_night_stalker"
 			"particle_folder"	"particles/units/heroes/hero_bane"
-			"soundfile"	"sounds/weapons/hero/nightstalker/dota_nightstalker_void.vsnd"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_nightstalker.vsndevts"
 		}
 
 		"OnSpellStart"
@@ -2744,10 +2744,10 @@
 				"MoveSpeed"	"400"
 			}
 
-			"FireSound"
+						"FireSound"
 			{
 				"EffectName"	"Hero_Nightstalker.Void"
-				"Target"	"CASTER"
+				"Target"	"TARGET"
 			}
 
 		}
@@ -2855,7 +2855,7 @@
 		{
 			"particle_folder"	"particles/units/heroes/hero_night_stalker"
 			"particle_folder"	"particles/units/heroes/hero_bane"
-			"soundfile"	"sounds/weapons/hero/nightstalker/dota_nightstalker_void.vsnd"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_nightstalker.vsndevts"
 		}
 
 		"OnSpellStart"
@@ -2869,10 +2869,10 @@
 				"MoveSpeed"	"400"
 			}
 
-			"FireSound"
+						"FireSound"
 			{
 				"EffectName"	"Hero_Nightstalker.Void"
-				"Target"	"CASTER"
+				"Target"	"TARGET"
 			}
 
 		}
@@ -3186,7 +3186,7 @@
 		{
 			"particle_folder"	"particles/units/heroes/hero_night_stalker"
 			"particle_folder"	"particles/units/heroes/hero_bane"
-			"soundfile"	"sounds/weapons/hero/ogre_magi/bloodlust_target.vsnd"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_ogre_magi.vsndevts"
 		}
 
 		"OnSpellStart"
@@ -3200,11 +3200,12 @@
 				"MoveSpeed"	"400"
 			}
 
-			"FireSound"
-			{
-				"EffectName"	"Hero_OgreMagi.Bloodlust.Cast"
-				"Target"	"CASTER"
-			}
+				"FireSound"
+				{
+					"EffectName"	 "Hero_OgreMagi.Bloodlust.Cast"
+					"Target"	"CASTER"
+				}
+
 
 		}
 
@@ -3319,12 +3320,6 @@
 			{
 				"EffectName"	"axe_counterhelix_unused2"
 				"EffectAttachType"	"follow_origin"
-				"Target"	"CASTER"
-			}
-
-			"FireSound"
-			{
-				"EffectName"	"Hero_Visage.GraveChill.Target"
 				"Target"	"CASTER"
 			}
 
@@ -3471,7 +3466,7 @@
 		"MaxLevel"	"1"
 		"precache"
 		{
-			"soundfile"			"sounds/weapons/hero/ogre_magi/bloodlust_cast.vsnd"
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_ogre_magi.vsndevts"
 		}
 		"OnSpellStart"
 		{
@@ -4617,7 +4612,7 @@
 		{
 			"particle_folder"	"particles/units/heroes/hero_night_stalker"
 			"particle_folder"	"particles/units/heroes/hero_enigma"
-			"sound_folder"	"sounds/weapons/hero/enigma/"
+			"soundfile"	"sounds/weapons/hero/silencer/last_word_target.vsnd"
 		}
 
 		"OnSpellStart"
@@ -4637,7 +4632,7 @@
 
 			"FireSound"
 			{
-				"EffectName"	"Hero_Shredder.Chakram.Tree"
+				"EffectName"	"Hero_Silencer.LastWord.Target"
 				"Target"	"TARGET"
 			}
 
