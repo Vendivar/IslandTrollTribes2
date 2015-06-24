@@ -1144,6 +1144,7 @@
 		{
 			"soundfile"	"sounds/ui/ping.vsnd"
 			"particle_folder"	"particles/ui_mouseactions"
+			"soundfile"				"soundevents/game_sounds_heroes/game_sounds_witchdoctor.vsndevts"
 		}
 
 		"OnSpellStart"
@@ -1169,6 +1170,12 @@
 				"Function"	"RadarManipulations"
 				"isOpening"	"false"
 			}
+				"FireSound"
+		{
+		"EffectName"	"Hero_WitchDoctor.Voodoo_Restoration"
+		"Target"		"CASTER"
+		}
+
 
 		}
 
@@ -1202,6 +1209,7 @@
 		{
 			"soundfile"	"sounds/ui/ping.vsnd"
 			"particle_folder"	"particles/ui_mouseactions"
+			"soundfile"				"soundevents/game_sounds_heroes/game_sounds_witchdoctor.vsndevts"
 		}
 
 		"OnSpellStart"
@@ -1227,6 +1235,12 @@
 				"Function"	"RadarManipulations"
 				"isOpening"	"false"
 			}
+				"FireSound"
+		{
+		"EffectName"	"Hero_WitchDoctor.Voodoo_Restoration"
+		"Target"		"CASTER"
+		}
+
 
 		}
 
@@ -1260,6 +1274,7 @@
 		{
 			"soundfile"	"sounds/ui/ping.vsnd"
 			"particle_folder"	"particles/ui_mouseactions"
+			"soundfile"				"soundevents/game_sounds_heroes/game_sounds_witchdoctor.vsndevts"
 		}
 
 		"OnSpellStart"
@@ -1285,6 +1300,12 @@
 				"Function"	"RadarManipulations"
 				"isOpening"	"false"
 			}
+				"FireSound"
+		{
+		"EffectName"	"Hero_WitchDoctor.Voodoo_Restoration"
+		"Target"		"CASTER"
+		}
+
 
 		}
 
@@ -1318,6 +1339,7 @@
 		{
 			"soundfile"	"sounds/ui/ping.vsnd"
 			"particle_folder"	"particles/ui_mouseactions"
+			"soundfile"				"soundevents/game_sounds_heroes/game_sounds_witchdoctor.vsndevts"
 		}
 
 		"OnSpellStart"
@@ -1342,6 +1364,12 @@
 				"Function"	"RadarManipulations"
 				"isOpening"	"false"
 			}
+				"FireSound"
+		{
+		"EffectName"	"Hero_WitchDoctor.Voodoo_Restoration"
+		"Target"		"CASTER"
+		}
+
 
 		}
 
@@ -1375,6 +1403,7 @@
 		{
 			"soundfile"	"sounds/ui/ping.vsnd"
 			"particle_folder"	"particles/ui_mouseactions"
+			"soundfile"				"soundevents/game_sounds_heroes/game_sounds_witchdoctor.vsndevts"
 		}
 
 		"OnSpellStart"
@@ -1398,6 +1427,12 @@
 				"Function"	"RadarManipulations"
 				"isOpening"	"false"
 			}
+				"FireSound"
+		{
+		"EffectName"	"Hero_WitchDoctor.Voodoo_Restoration"
+		"Target"		"CASTER"
+		}
+
 
 		}
 
@@ -1431,6 +1466,7 @@
 		{
 			"soundfile"	"sounds/ui/ping.vsnd"
 			"particle_folder"	"particles/ui_mouseactions"
+			"soundfile"				"soundevents/game_sounds_heroes/game_sounds_witchdoctor.vsndevts"
 		}
 
 		"OnSpellStart"
@@ -1454,6 +1490,12 @@
 				"Function"	"RadarManipulations"
 				"isOpening"	"false"
 			}
+				"FireSound"
+		{
+		"EffectName"	"Hero_WitchDoctor.Voodoo_Restoration"
+		"Target"		"CASTER"
+		}
+
 
 		}
 
