@@ -688,7 +688,7 @@
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"crystal_mana"
 		"Model"	"models/particle/ice_shards.vmdl"
-		"Effect"	"particles/econ/items/crystal_maiden/crystal_maiden_cowl_of_ice/crystal_maiden_cowl_ambient_b.vpcf"
+		"Effect"	"particles/mana_crystal.vpcf"
 		"ItemCost"	"6"
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
