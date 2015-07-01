@@ -1028,8 +1028,15 @@
 
 	"ability_revive"
 	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"Revive"
+	    "BaseClass"             "ability_lua"
+	    "AbilityCooldown"       "1.0"
+	    "MaxLevel"              "1"
+	    "AbilityManaCost"       "0"
+	    "AbilityCastPoint"      "0.0"
+	    "AbilityChannelTime"	"4"
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+	    "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	    "ScriptFile"  			"ability_revive.lua"
 	}
 
 	"ability_teleport"
