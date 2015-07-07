@@ -1484,18 +1484,44 @@ function ITT_GameMode:OnPlayerGainedLevel(event)
             {},
             {"ability_scout_reveal"}
         },
-        --{OBSERVER,}
-        --{RADAR_SCOUT,}
-        --{SPY,}
-
+        {OBSERVER,
+			{"ability_scout_wardthearea"},
+			{"ability_scout_wardthearea"},
+			{},
+			{"ability_scout_wardthearea"},
+		},
+        {RADAR_SCOUT,
+			{"ability_scout_motionsensorradar"},
+			{"ability_scout_motionsensorradar"},
+			{},
+			{"ability_scout_motionsensorradar"},
+		},
+        {SPY,
+			{"ability_scout_chainreveal"},
+			{"ability_scout_chainreveal"},
+			{},
+			{"ability_scout_chainreveal"},
+		},
         {GATHERER,
             {"ability_gatherer_radarmanipulations"},
             {"ability_gatherer_radarmanipulations"},
-            {"ability_gatherer_radarmanipulations"}
-        }
-        --{HERB_MASTER_TELEGATHERER,}
-        --{RADAR_TELEGATHERER,}
-        --{REMOTE_TELEGATHERER,}
+            {"ability_gatherer_radarmanipulations"},
+        },
+        {HERB_MASTER_TELEGATHERER,
+			{"ability_gatherer_telegather_herb"},
+			{"ability_gatherer_telegather_herb"},
+			{"ability_gatherer_telegather_herb"},
+		},
+        {RADAR_TELEGATHERER,
+			{"ability_gatherer_telegather_radar"},
+			{"ability_gatherer_telegather_radar"},
+			{"ability_gatherer_telegather_radar"},
+		},
+        {REMOTE_TELEGATHERER,
+			{"ability_gatherer_telegather_omni"},
+			{"ability_gatherer_telegather_omni"},
+			{"ability_gatherer_telegather_omni"},
+		},
     }
 
     -- grant skills
