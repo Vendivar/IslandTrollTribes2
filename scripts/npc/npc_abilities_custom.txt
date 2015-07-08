@@ -4560,7 +4560,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
-		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityTextureName"	"ability_mage_depressionaura"
 		"MaxLevel"	"1"
@@ -4580,7 +4580,7 @@
 				"Aura_Radius"	"600"
 				"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 				"Aura_Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
-				"Aura_ApplyToCaster"	"1"
+				"Aura_ApplyToCaster"	"0"
 			}
 
 			"depression_aura"
@@ -4612,7 +4612,7 @@
 					{
 						"ScriptFile"	"custom_functions_ability.lua"
 						"Function"	"DepressionAura"
-						"Target"	"SELF"
+						"Target"	"TARGET"
 					}
 
 				}

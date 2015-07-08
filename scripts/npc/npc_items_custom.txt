@@ -259,7 +259,7 @@
 	"item_bone"
 	{
 		"ID"	"1005"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"bone"
 		"Model"	"models/props_bones/bone002.vmdl"
@@ -727,7 +727,7 @@
 		"AbilityTextureName"	"ingot_steel"
 		"Model"	"models/props_magic/bad_crystals002.vmdl"
 		"Effect"	""
-		"ItemCost"	"28"
+		"ItemCost"	"28" 
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
@@ -753,7 +753,7 @@
 		"WorldDropSound"	"Item.DropGemWorld"
 		"Custom"
 		{
-			"ModelScale"	"0.5"
+			"ModelScale"	"0.65"
 		}
 
 	}
@@ -1845,7 +1845,7 @@
 		"ID"	"1028"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY | DOTA_UNIT_TARGET_CREEP"
-		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"spear_basic"
 		"Model"	"models/particle/legion_arrow.vmdl"
@@ -4943,7 +4943,7 @@
 			"modifier_gloves_elk"
 			{
 				"Passive"	"1"
-				"IsHidden"	"1"
+				"IsHidden"	"0"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
@@ -5055,7 +5055,7 @@
 			"modifier_gloves_wolf"
 			{
 				"Passive"	"1"
-				"IsHidden"	"1"
+				"IsHidden"	"0"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
@@ -5167,7 +5167,7 @@
 			"modifier_gloves_bear"
 			{
 				"Passive"	"1"
-				"IsHidden"	"1"
+				"IsHidden"	"0"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
@@ -5279,7 +5279,7 @@
 			"modifier_gloves_bone"
 			{
 				"Passive"	"1"
-				"IsHidden"	"1"
+				"IsHidden"	"0"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
@@ -5369,7 +5369,7 @@
 			"modifier_gloves_iron"
 			{
 				"Passive"	"1"
-				"IsHidden"	"1"
+				"IsHidden"	"0"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
@@ -5459,7 +5459,7 @@
 			"modifier_gloves_steel"
 			{
 				"Passive"	"1"
-				"IsHidden"	"1"
+				"IsHidden"	"0"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
@@ -5549,7 +5549,7 @@
 			"modifier_gloves_battle"
 			{
 				"Passive"	"1"
-				"IsHidden"	"1"
+				"IsHidden"	"0"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
@@ -5727,7 +5727,7 @@
 			"modifier_coat_elk"
 			{
 				"Passive"	"1"
-				"IsHidden"	"1"
+				"IsHidden"	"0"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
@@ -5759,7 +5759,7 @@
 
 			"02"
 			{
-				"var_type"	"FIELD_INTEGER"
+				"var_type"	"FIELD_FLOAT"
 				"tick_rate"	"35"
 			}
 
@@ -5832,7 +5832,7 @@
 			"modifier_coat_wolf"
 			{
 				"Passive"	"1"
-				"IsHidden"	"1"
+				"IsHidden"	"0"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
@@ -5937,7 +5937,7 @@
 			"modifier_coat_bear"
 			{
 				"Passive"	"1"
-				"IsHidden"	"1"
+				"IsHidden"	"0"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
@@ -6042,7 +6042,7 @@
 			"modifier_coat_bone"
 			{
 				"Passive"	"1"
-				"IsHidden"	"1"
+				"IsHidden"	"0"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
@@ -6125,7 +6125,7 @@
 			"modifier_coat_iron"
 			{
 				"Passive"	"1"
-				"IsHidden"	"1"
+				"IsHidden"	"0"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
@@ -6205,10 +6205,10 @@
 		"WorldDropSound"	"Item.DropGemWorld"
 		"Modifiers"
 		{
-			"modifier_coat_wolf"
+			"modifier_coat_steel"
 			{
 				"Passive"	"1"
-				"IsHidden"	"1"
+				"IsHidden"	"0"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
@@ -6291,7 +6291,7 @@
 			"modifier_armor_battle"
 			{
 				"Passive"	"1"
-				"IsHidden"	"1"
+				"IsHidden"	"0"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
@@ -6402,7 +6402,7 @@
 			"modifier_coat_camouflage"
 			{
 				"Passive"	"1"
-				"IsHidden"	"1"
+				"IsHidden"	"0"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
@@ -6509,7 +6509,7 @@
 			"modifier_cloakprotect_passive"
 			{
 				"Passive"	"1"
-				"IsHidden"	"1"
+				"IsHidden"	"0"
 				"OnAttacked"
 				{
 					"Random"
@@ -7867,7 +7867,7 @@
 			"modifier_boots_anabolic"
 			{
 				"Passive"	"1"
-				"IsHidden"	"1"
+				"IsHidden"	"0"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"

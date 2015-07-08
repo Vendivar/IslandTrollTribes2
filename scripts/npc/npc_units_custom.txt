@@ -4090,6 +4090,8 @@
 		"VisionDaytimeRange"	"800"
 		"VisionNighttimeRange"	"800"
 		"HasInventory"	"0"
+		"MinimapIconSize"           "0"
+
 	}
 
 	"npc_ship_merchant_2"
@@ -4124,6 +4126,7 @@
 		"VisionDaytimeRange"	"800"
 		"VisionNighttimeRange"	"800"
 		"HasInventory"	"0"
+		"MinimapIconSize"           "0"
 	}
 
 	"npc_ship_merchant_3"
@@ -4158,6 +4161,7 @@
 		"VisionDaytimeRange"	"800"
 		"VisionNighttimeRange"	"800"
 		"HasInventory"	"0"
+		"MinimapIconSize"           "0"
 	}
 
 	"npc_bush_herb"
