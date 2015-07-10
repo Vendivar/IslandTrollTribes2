@@ -185,7 +185,7 @@ function ITT_GameMode:InitGameMode()
     GameMode:SetBuybackEnabled( false )
     GameMode:SetStashPurchasingDisabled(true)
 
-    GameRules:GetGameModeEntity():ClientLoadGridNav()
+    --GameRules:GetGameModeEntity():ClientLoadGridNav()
     GameRules:SetSameHeroSelectionEnabled( true )
     GameRules:SetTimeOfDay( 0.75 )
     GameRules:SetHeroRespawnEnabled( true )
@@ -673,14 +673,14 @@ function ITT_GameMode:OnPlayerPicked( keys )
         spawnedUnit:SetModifierStackCount("modifier_meat_passive", nil, 0)
     end
     --anti-regen
-    if string.find(spawnedUnit:GetClassname(), "hero") then
-        print("REGEN!")
-        spawnedUnit:SetBaseHealthRegen(0.00)
-        spawnedUnit:SetBaseManaRegen(0.00)
-        spawnedUnit:RemoveModifierByName("modifier_regen_passive")
-        local heatApplier = CreateItem("item_regen_modifier_applier", spawnedUnit, spawnedUnit)
-        heatApplier:ApplyDataDrivenModifier(spawnedUnit, spawnedUnit, "modifier_regen_passive", {duration=-1})
-    end
+    -- if string.find(spawnedUnit:GetClassname(), "hero") then
+    --     print("REGEN!")
+    --     spawnedUnit:SetBaseHealthRegen(0.00)
+    --     spawnedUnit:SetBaseManaRegen(0.00)
+    --     spawnedUnit:RemoveModifierByName("modifier_regen_passive")
+    --     local heatApplier = CreateItem("item_regen_modifier_applier", spawnedUnit, spawnedUnit)
+    --     heatApplier:ApplyDataDrivenModifier(spawnedUnit, spawnedUnit, "modifier_regen_passive", {duration=-1})
+    -- end
 end
 
 -- This code is written by Internet Veteran, handle with care.
@@ -747,12 +747,12 @@ function ITT_GameMode:OnNPCSpawned( keys )
         spawnedUnit:SetModifierStackCount("modifier_meat_passive", nil, 0)
     end
     --anti-regen
-    if string.find(spawnedUnit:GetClassname(), "hero") then
-        print("REGEN!")
-        spawnedUnit:RemoveModifierByName("modifier_regen_passive")
-        local heatApplier = CreateItem("item_regen_modifier_applier", spawnedUnit, spawnedUnit)
-        heatApplier:ApplyDataDrivenModifier(spawnedUnit, spawnedUnit, "modifier_regen_passive", {duration=-1})
-    end
+    -- if string.find(spawnedUnit:GetClassname(), "hero") then
+    --     print("REGEN!")
+    --     spawnedUnit:RemoveModifierByName("modifier_regen_passive")
+    --     local heatApplier = CreateItem("item_regen_modifier_applier", spawnedUnit, spawnedUnit)
+    --     heatApplier:ApplyDataDrivenModifier(spawnedUnit, spawnedUnit, "modifier_regen_passive", {duration=-1})
+    -- end
 end
 
 function ITT_GameMode:OnEntityKilled(keys)
