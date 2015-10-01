@@ -689,7 +689,7 @@
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"crystal_mana"
 		"Model"	"models/particle/ice_shards.vmdl"
-		"Effect"	"particles/mana_crystal.vpcf"
+		"Effect"	"particles/econ/courier/courier_mei_nei_rabbit/courier_mei_nei_rabbit_sparkles.vpcf"
 		"ItemCost"	"6"
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
