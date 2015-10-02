@@ -16,6 +16,11 @@ function PingMap(playerID,pos,r,g,b)
     print("z:", pos.z)
     --NEWEST PING ALWAYS CLEARS LAST PING, ONLY ONE PING AT A TIME, THIS FUNCTION SUCKS DICK BUT IT'S ALL WE HAVE TO WORK WITH
 end
+--another "ping minimap" fn
+function PingMap2(teamNum, caster, posX, posY, duration)
+    --	
+    MinimapEvent( teamNum, caster, posX, posY, DOTA_MINIMAP_EVENT_HINT_LOCATION, duration )
+end
 --Gatherer Ability Functions
 --[[Pings the items in parameter ItemTable with their corresponding color]]
 function PingItemInRange(keys)
@@ -56,9 +61,7 @@ function PingItemInRange(keys)
         item:EmitSound("General.Ping")   --may be deafening
         print("ping color: ", itemColor)
         --Ping Minimap
-        --MinimapEvent( team, caster, item:GetAbsOrigin().x, item:GetAbsOrigin().y, DOTA_MINIMAP_EVENT_HINT_LOCATION, 3 )
-        GameRules:AddMinimapDebugPointForTeam(id,item:GetAbsOrigin(), redVal*255, greenVal*255, blueVal*255, 500, 3, team)
-        GameRules:AddMinimapDebugPointForTeam(id,item:GetAbsOrigin(), 255, 0, 0, 500, 3, team)
+        PingMap2(team, caster, item:GetAbsOrigin().x, item:GetAbsOrigin().y, 3)
     end
 end
 
