@@ -55,9 +55,9 @@ function PingItemInRange(keys)
         item:EmitSound("General.Ping")   --may be deafening
         print("ping color: ", itemColor)
         --Ping Minimap
-        local team = caster:GetTeamNumber()
-        MinimapEvent( team, caster, item:GetAbsOrigin().x, item:GetAbsOrigin().y, DOTA_MINIMAP_EVENT_HINT_LOCATION, 3 )
-        GameRules:AddMinimapDebugPoint(id, item:GetAbsOrigin(), 255, 0, 0, 500, 6)
+        --local team = caster:GetTeamNumber()
+        --MinimapEvent( team, caster, item:GetAbsOrigin().x, item:GetAbsOrigin().y, DOTA_MINIMAP_EVENT_HINT_LOCATION, 3 )
+        --GameRules:AddMinimapDebugPoint(id, item:GetAbsOrigin(), 255, 0, 0, 500, 6)
     end
 end
 
