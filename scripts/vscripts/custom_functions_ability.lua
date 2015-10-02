@@ -22,7 +22,6 @@ function PingItemInRange(keys)
     --PrintTable(keys)
     local caster = keys.caster
     local id = caster:GetPlayerID()
-    local team = caster:GetTeamNumber()
     local range = keys.Range
     local itemTable = keys.ItemTable
 
@@ -56,7 +55,8 @@ function PingItemInRange(keys)
         item:EmitSound("General.Ping")   --may be deafening
         print("ping color: ", itemColor)
         --Ping Minimap
-        --PingMap2(team, caster, item:GetAbsOrigin().x, item:GetAbsOrigin().y, 3)
+        local team = caster:GetTeamNumber()
+        MinimapEvent( team, caster, item:GetAbsOrigin().x, item:GetAbsOrigin().y, DOTA_MINIMAP_EVENT_HINT_LOCATION, 3 )
     end
 end
 
