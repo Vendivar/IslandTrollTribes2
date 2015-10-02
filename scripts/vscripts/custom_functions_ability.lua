@@ -58,6 +58,7 @@ function PingItemInRange(keys)
         --Ping Minimap
         --MinimapEvent( team, caster, item:GetAbsOrigin().x, item:GetAbsOrigin().y, DOTA_MINIMAP_EVENT_HINT_LOCATION, 3 )
         GameRules:AddMinimapDebugPointForTeam(id,item:GetAbsOrigin(), redVal*255, greenVal*255, blueVal*255, 500, 3, team)
+        GameRules:AddMinimapDebugPointForTeam(id,item:GetAbsOrigin(), 255, 0, 0, 500, 3, team)
     end
 end
 
