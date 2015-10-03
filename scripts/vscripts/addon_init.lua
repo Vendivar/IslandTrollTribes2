@@ -51,6 +51,32 @@ require("timers")
     Global variables
 ]]--
 
+
+TEAM_COLORS = {}
+TEAM_COLORS[DOTA_TEAM_GOODGUYS] = { 52, 85, 255 } -- Blue
+TEAM_COLORS[DOTA_TEAM_BADGUYS] = { 255, 52, 85 } -- Red
+TEAM_COLORS[DOTA_TEAM_CUSTOM_1] = { 61, 210, 150 } -- Teal
+TEAM_COLORS[DOTA_TEAM_CUSTOM_2] = { 140, 42, 244 } -- Purple
+TEAM_COLORS[DOTA_TEAM_CUSTOM_3] = { 243, 201, 9 } -- Yellow
+TEAM_COLORS[DOTA_TEAM_CUSTOM_4] = { 255, 108, 0 } -- Orange
+TEAM_COLORS[DOTA_TEAM_CUSTOM_5] = { 101, 212, 19 } -- Green
+TEAM_COLORS[DOTA_TEAM_CUSTOM_6] = { 197, 77, 168 } -- Pink
+TEAM_COLORS[DOTA_TEAM_CUSTOM_7] = { 129, 83, 54 } -- Brown
+TEAM_COLORS[DOTA_TEAM_CUSTOM_8] = { 199, 228, 13 } -- Olive
+PLAYER_COLORS = {}
+PLAYER_COLORS[0] = { 52, 85, 255 } -- Blue
+PLAYER_COLORS[1] = { 255, 52, 85 } -- Red
+PLAYER_COLORS[2] = { 61, 210, 150 } -- Teal
+PLAYER_COLORS[3] = { 140, 42, 244 } -- Purple
+PLAYER_COLORS[4] = { 243, 201, 9 } -- Yellow
+PLAYER_COLORS[5] = { 255, 108, 0 } -- Orange
+PLAYER_COLORS[6] = { 101, 212, 19 } -- Green
+PLAYER_COLORS[7] = { 197, 77, 168 } -- Pink
+PLAYER_COLORS[8] = { 129, 83, 54 } -- Brown
+PLAYER_COLORS[9] = { 199, 228, 13 } -- Olive
+PLAYER_COLORS[10] = { 105, 105, 255 } -- Light Blue
+PLAYER_COLORS[11] = { 128, 128, 128 } -- Gray
+
 playerList = {}
 maxPlayerID = 0
 
@@ -179,6 +205,8 @@ function ITT_GameMode:InitGameMode()
     GameMode:SetThink("FixDropModels", ITT_GameMode, "FixDropModels", 0)
 
     GameMode:SetThink("FlashAckThink", ITT_GameMode, "FlashAckThink", 0)
+
+	GameMode:SetCustomHeroMaxLevel ( 6 ) -- No accidental overleveling
 
 
     -- Disable buybacks to stop instant respawning.
