@@ -4489,6 +4489,8 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
+		"ItemInitialCharges"	"20"
+		
 		"OnOwnerDied"
 		{
 			"RunScript"
@@ -4506,22 +4508,7 @@
 		{
 			"ModelScale"	"2.5"
 		}
-
-		"OnSpellStart"
-		{
-			"ApplyModifier"
-			{
-				"Target"	"CASTER"
-				"ModifierName"	"modifier_omniknight_repel"
-				"Duration"	"anti_magic_duration"
-			}
-
-			"SpendCharge"
-			{
-			}
-
-		}
-
+		
 		"AbilitySpecial"
 		{
 			"01"
@@ -4532,18 +4519,61 @@
 
 			"02"
 			{
-				"var_type"	"FIELD_INTEGER"
-				"anti_magic_charges"	"20"
-			}
-
-			"03"
-			{
 				"var_type"	"FIELD_FLOAT"
 				"anti_magic_duration"	"15.0"
 			}
 
 		}
-
+		
+		"OnSpellStart"
+		{
+			"SpendCharge"
+			{}
+			"ApplyModifier"
+			{
+				"Target"	"CASTER"
+				"ModifierName"	"modifier_rage_ability"
+				"Duration"	"%anti_magic_duration"
+			}
+			"RunScript"
+        	{
+            	"ScriptFile"    "scripts/vscripts/custom_functions_item.lua"
+            	"Function"        "AntiMagicPotionUse"
+        	}	
+		}
+		
+		"Modifiers"
+    	{
+	        "modifier_rage_ability"
+	        {
+	            "Passive"           "0"
+	            "IsHidden"          "0"
+	            "IsDebuff"          "0"
+	
+	            "StatusEffectName"         "particles/status_fx/status_effect_life_stealer_rage.vpcf"        
+	            "StatusEffectPriority"  "10"
+	    
+	            "OnCreated"
+	            {
+	                "AttachEffect"
+	                {
+	                    "EffectName"        "particles/units/heroes/hero_life_stealer/life_stealer_rage.vpcf"
+	                    "EffectAttachType"  "attach_hitloc"
+	                    "Target"            "CASTER"
+	                    "ControlPointEntities"
+	                    {
+	                        "CASTER"    "attach_hitloc"
+	                        "CASTER"    "attach_hitloc"
+	                        "CASTER"    "attach_hitloc"
+	                    }
+	                }
+	            }
+	            "States"
+	            {
+	                "MODIFIER_STATE_MAGIC_IMMUNE"        "MODIFIER_STATE_VALUE_ENABLED"
+	            }
+	        }
+		}
 	}
 
 	"item_potion_cure_all"
@@ -4670,7 +4700,8 @@
 			"RunScript"
 			{
 				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"potion_twin_use"
+				"Function"	"PotionTwinUse"
+				"Range"	"2500"
 			}
 
 			"SpendCharge"
