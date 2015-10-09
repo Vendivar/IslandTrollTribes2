@@ -1671,25 +1671,20 @@
 				"IsHidden"			"1"
 
 				"OnAttacked"
-				// "%attack_damage" is set to the damage value after mitigation
 				{
 					"Random"
 					{
-						"Chance"			"%chance"
+						"Chance"			"%block_chance"
 
 						"OnSuccess"
 						{
-							"FireSound"
-							{
-								"EffectName"	"particles/units/heroes/hero_bounty_hunter/bounty_hunter_track_shield.vpcf"
-								"Target" 		"TARGET"
-							}
 							"ApplyModifier"
 							{
 								"ModifierName"	"modifier_block"
 								"Target" 		"CASTER"
 							}
 						}
+
 						"OnFailure"
 						{
 							"RemoveModifier"
@@ -1753,7 +1748,7 @@
 			"04"
 			{
 				"var_type"		"FIELD_INTEGER"
-				"chance"		"40"
+				"block_chance"	"40"
 			}
 			"05"
 			{
