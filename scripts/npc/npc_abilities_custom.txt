@@ -4216,18 +4216,90 @@
 
 	"ability_mage_defenderenergy"
 	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"ability_mage_defenderenergy"
-		"AbilityBehavior"	""
-		"AbilityCastPoint"	"0.0"
-		"AbilityCooldown"	"0"
-		"AbilityCastRange"	""
-		"AbilityManaCost"	"0"
-		"MaxLevel"	"1"
+		"BaseClass"					"ability_datadriven"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"	
+		"AbilityTextureName"		"ability_mage_defenderenergy"
+
+		"AbilityCastPoint"			"0"
+		"AOERadius"					"%radius"
+
+		"AbilityCooldown"			"50"
+		"AbilityDuration"			"%duration"
+
+		"AbilityCastRange"			"300"
+		"AbilityManaCost"			"25"
+		"MaxLevel"					"1"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"stun"				"0.5"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"damage"			"20"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"duration"			"10"
+			}
+			"04"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"radius"			"500"
+			}
+			"05"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"think_interval"	"0.03"
+			}
+			"06"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"num_defenders"		"1"
+			}
+			"07"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"summon_interval"	"1.0"
+			}
+			"08"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"turn_rate"			"336"
+			}
+			"09"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"movement_rate"		"600"
+			}
+			"10"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"hit_radius"		"100"
+			}
+			"11"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"collide_interval"	"1.2"		// == 360 / %spirit_turn_rate / %num_spirits
+			}
+			"12"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"revolution_time"	"1.0"
+			}
+		}
+
 		"precache"
 		{
-			"soundfile"			"sounds/weapons/hero/storm_spirit/electric_vortex.vsnd"
+			"soundfile"				"sounds/weapons/hero/storm_spirit/electric_vortex.vsnd"
 		}
+
 		"OnSpellStart"
 		{
 			"FireSound"
@@ -4235,8 +4307,172 @@
 				"EffectName"		"Hero_StormSpirit.ElectricVortex"
 				"Target"			"CASTER"
 			}
+
+			"RemoveModifier"
+			{
+				"ModifierName"		"modifer_mage_defender_caster"
+				"Target" 			"CASTER"
+			}
+
+			"ApplyModifier"
+			{
+				"ModifierName"		"modifer_mage_defender_caster"
+				"Target" 			"CASTER"
+			}
+
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
+				"Function"		"DefenderEnergyOnSpellStart"
+
+				"Target"		"POINT"
+			}
 		}
 
+		"Modifiers"
+		{
+			"modifer_mage_defender_caster"
+			{
+				"Duration"	"%duration"
+
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"		"scripts/vscripts/custom_functions_ability.lua"
+						"Function"			"DefenderEnergyCast"
+
+						"radius"			"%radius"
+					}
+				}
+
+				"ThinkInterval"		"%think_interval"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
+						"Function"		"DefenderEnergyThink"
+
+						"think_interval"		"%think_interval"
+
+						"num_defenders"			"%num_defenders"
+						"summon_interval"		"%summon_interval"
+						"turn_rate"				"%turn_rate"
+						"movement_rate"			"%movement_rate"
+
+						"caster_modifier"		"modifer_mage_defender_caster"
+
+						"defender_particle"		"particles/units/heroes/hero_wisp/wisp_guardian_.vpcf"
+						"defender_modifier"		"modifier_mage_defender"
+					}
+				}
+
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
+						"Function"		"DefenderEnergyEnd"
+
+						"defender_modifier"	"modifier_mage_defender"
+					}
+				}
+
+			}
+
+			"modifier_mage_defender"
+			{
+				"Aura"			"modifier_mage_defender_collide"
+				"Aura_Radius"	"%hit_radius"
+				"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Aura_Types"	"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+				"IsHidden"		"0"
+
+				"OnDestroy"
+				{
+					"FireSound"
+					{
+						"EffectName"		"Hero_Wisp.Spirits.Destroy"
+						"Target"			"TARGET"
+					}
+				}
+
+				"States"
+				{
+					"MODIFIER_STATE_INVULNERABLE"			"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_HEALTH_BAR"			"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_UNIT_COLLISION"		"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NOT_ON_MINIMAP"			"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_UNSELECTABLE"			"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+
+			"modifier_mage_defender_collide"
+			{
+				"Duration"		"0.03"
+				"IsHidden"		"0"
+
+				"OnCreated"
+				{
+					"FireSound"
+					{
+						"EffectName"		"Hero_Wisp.Spirits.TargetCreep"
+						"Target"			"TARGET"
+					}
+					
+					"FireEffect"
+					{
+						"EffectName"		"particles/units/heroes/hero_wisp/wisp_base_attack_explosion.vpc"
+						"EffectAttachType"	"attach_hitloc"
+						"Target"			"TARGET"
+					}
+
+					"Damage"
+					{
+						"Target"	"TARGET"
+						"Type"		"DAMAGE_TYPE_MAGICAL"
+						"Damage"	"%damage"
+					}
+
+					"Stun"
+					{
+						"Target" 	 "TARGET"
+						"Duration"   "%stun"
+					}
+				}
+
+				"ThinkInterval"		"%collide_interval"
+				"OnIntervalThink"
+				{
+					"FireSound"
+					{
+						"EffectName"		"Hero_Wisp.Spirits.TargetCreep"
+						"Target"			"TARGET"
+					}
+					
+					"FireEffect"
+					{
+						"EffectName"		"particles/units/heroes/hero_wisp/wisp_guardian_explosion_small.vpcf"
+						"EffectAttachType"	"attach_hitloc"
+						"Target"			"TARGET"
+					}
+
+					"Damage"
+					{
+						"Target"	"TARGET"
+						"Type"		"DAMAGE_TYPE_MAGICAL"
+						"Damage"	"%damage"
+					}
+
+					"Stun"
+					{
+						"Target" 	 "TARGET"
+						"Duration"   "%stun"
+					}
+				}
+			}
+		}
 	}
 
 	"ability_mage_electromagnet"

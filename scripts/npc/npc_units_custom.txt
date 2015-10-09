@@ -3,6 +3,56 @@
 
 "DOTAUnits"
 {
+	"npc_mage_defender"
+	{
+		"BaseClass"             "npc_dota_creature"
+		"Model"					"models/heroes/wisp/wisp.vmdl"
+		"ModelScale"			"1"
+		"VisionDaytimeRange"	"0"
+		"VisionNighttimeRange"	"0"
+	}
+
+	//for testing out spells
+	"npc_ghost"
+	{
+		"BaseClass"	"npc_dota_creature"
+		"ConsideredHero"	"1"
+		"ModelScale"	"1"
+		"Model"	"models/creeps/neutral_creeps/n_creep_ghost_b/n_creep_ghost_frost.vmdl"
+		"Ability1"	"ability_mage_defenderenergy"
+		"Ability2"	""
+		"Ability3"	""
+		"Ability4"	""
+		"ArmorPhysical"	"0"
+		"AttackCapabilities"	"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"	"25"
+		"AttackDamageMax"	"25"
+		"AttackRate"	"1"
+		"AttackAnimationPoint"	"0.840"
+		"AttackAcquisitionRange"	"600"
+		"AttackRange"	"100"
+		"ProjectileModel"	""
+		"ProjectileSpeed"	"0"
+		"AttributePrimary"	"DOTA_ATTRIBUTE_AGILITY"
+		"AttributeBaseStrength"	"1"
+		"AttributeStrengthGain"	"1"
+		"AttributeBaseIntelligence"	"1"
+		"AttributeIntelligenceGain"	"1"
+		"AttributeBaseAgility"	"1"
+		"AttributeAgilityGain"	"1"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementSpeed"	"522"
+		"MovementTurnRate"	"0.5"
+		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
+		"HealthBarOffset"	"140"
+		"StatusHealth"	"500"
+		"StatusHealthRegen"	"0.0"
+		"StatusMana"	"500"
+		"StatusManaRegen"	"0.0"
+		"VisionDaytimeRange"	"1800"
+		"VisionNighttimeRange"	"1800"
+	}
+
 	"npc_hero_herbmaster_tele_gatherer"
 	{
 		"BaseClass"	"npc_dota_creature"

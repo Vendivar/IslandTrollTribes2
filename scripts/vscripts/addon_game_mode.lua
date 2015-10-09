@@ -254,7 +254,8 @@ function Precache( context )
 	PrecacheUnitByNameSync( "npc_hero_priest_booster", context )
 	PrecacheUnitByNameSync( "npc_hero_priest_master_healer", context )
 	PrecacheUnitByNameSync( "npc_hero_priest_sage", context )
-	PrecacheUnitByNameSync(	"scout_ward", context)
+	PrecacheUnitByNameSync( "npc_mage_defender", context )
+	PrecacheUnitByNameSync(	"scout_ward", context )
 
 	PrecacheResource("model", "models/props_debris/camp_fire001.vmdl",context)
 	PrecacheResource("model", "models/props_structures/tent_dk_small.vmdl",context)
@@ -276,12 +277,17 @@ function Precache( context )
 	PrecacheResource("model", "models/courier/skippy_parrot/skippy_parrot_flying_rowboat.vmdl",context)
 	PrecacheResource("model", "models/props_structures/boat_dragonknight.vmdl",context)	
 	PrecacheResource("model", "models/items/warlock/warlocks_summoning_scroll/warlocks_summoning_scroll.vmdl",context)
-	
+	PrecacheResource("model", "models/heroes/wisp/wisp.vmdl", context)
+
 	PrecacheResource("particle_folder","particles/dire_fx",context)
 	PrecacheResource("particle_folder","particles/winter_fx",context)
 	PrecacheResource("particle_folder","particles/rain_fx",context)
 	PrecacheResource("particle_folder","particles/rain_storm_fx",context)
 	PrecacheResource("particle_folder","particles/world_environmental_fx",context)
+	PrecacheResource("particle_folder","particles/units/heroes/hero_wisp",context)
+	
+	PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_wisp.vsndevts",context)
+	PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_stormspirit.vsndevts",context)
 	
 	PrecacheResource("model", "models/props_destruction/lion_groundspikes.vmdl",context)
 	PrecacheResource("model", "models/items/abaddon/alliance_abba_weapon/alliance_abba_weapon_fx.vmdl",context)
