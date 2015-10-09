@@ -55,11 +55,12 @@ function PassiveNeutralThink()
 	if string.find(thisEntity:GetUnitName(), "hawk") then
 		if(not thisEntity:HasModifier("modifier_meepo_earthbind") and not thisEntity:HasAbility("ability_hawk_flight"))
 		then
-			thisEntity:AddAbility("ability_hawk_flight")
-			thisEntity:AddNewModifier(thisEntity, nil, "modifier_hawk_flight", {duration = -1})
+			ability = thisEntity:AddAbility("ability_hawk_flight")
+			if(not thisEntity:HasModifier("modifier_hawk_flight")) then
+				ability:ApplyDataDrivenModifier(thisEntity, thisEntity, "modifier_hawk_flight", {duration=-1})
+			end
 		end
 	end
-	
 	
 	return 0.5
 end
