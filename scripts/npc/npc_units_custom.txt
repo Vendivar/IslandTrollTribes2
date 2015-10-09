@@ -2993,7 +2993,7 @@
 		"ModelScale"	"0.85"
 		"Model"	"models/items/lycan/ultimate/sirius_curse/sirius_curse.vmdl"
 		"Level"	"12"
-		"Ability1"	"npc_lifesteal"
+		"Ability1"	"ability_wolf_lifesteal"
 		"Ability2"	"ability_wander"
 		"Ability3"	"ability_pet_sleep"
 		"Ability4"	""
