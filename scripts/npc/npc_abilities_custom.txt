@@ -4286,7 +4286,7 @@
 			"11"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"collide_interval"	"1.2"		// == 360 / %spirit_turn_rate / %num_spirits
+				"collide_interval"	"1.2"		// == 360 / %turn_rate
 			}
 			"12"
 			{
@@ -4491,6 +4491,32 @@
 			"Particle"	"particles/units/heroes/hero_razor/razor_static_link_beam.vpcf"
 		}
 
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"min_range"		"150"
+			}
+			"02"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"max_range"		"700"
+			}
+			"03"
+			//How often should I pull?
+			{
+				"var_type"		"FIELD_FLOAT"
+				"pull_interval"	"0.01"
+			}
+			"04"
+			//How close should I pull?
+			{
+				"var_type"		"FIELD_FLOAT"
+				"pull_scale"	"1"
+			}
+		}
+
 		"OnSpellStart"
 		{
 			"ActOnTargets"
@@ -4498,44 +4524,64 @@
 				"Target"
 				{
 					"Center"	"CASTER"
-					"Radius"	"700"
-					"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Types"	"DOTA_UNIT_TARGET_HERO"
+					"Radius"	"%max_range"
+					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types"		"DOTA_UNIT_TARGET_HERO"
 				}
 
 				"Action"
 				{
 					"ApplyModifier"
 					{
-						"Target"	"TARGET"
+						"Target"		"TARGET"
 						"ModifierName"	"modifier_pulled"
-						"Duration"	"2"
+						"Duration"		"2"
 					}
 
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
+						"Function"		"ElectroMagnetStart"
+						"Target"		"TARGET"
+						
+						"pfx"			"particles/units/heroes/hero_razor/razor_static_link_beam.vpcf"
+					}
 				}
 
 			}
 			"FireSound"
 			{
-				"EffectName"		"Hero_Disruptor.StaticStorm"
-				"Target"		"TARGET"
+				"EffectName"	"Hero_Disruptor.StaticStorm"
+				"Target"		"CASTER"
 			}
-
 		}
 
 		"OnChannelFinish"
 		{
-			"RemoveModifier"
+			"ActOnTargets"
 			{
 				"Target"
 				{
 					"Center"	"CASTER"
-					"Radius"	"700"
-					"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Types"	"DOTA_UNIT_TARGET_HERO"
+					"Radius"	"%max_range"
+					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types"		"DOTA_UNIT_TARGET_HERO"
 				}
-
-				"ModifierName"	"modifier_pulled"
+				"Action"
+				{
+					"RemoveModifier"
+					{
+						"ModifierName"	"modifier_pulled"
+						"Target"		"TARGET"
+					}
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
+						"Function"		"ElectroMagnetEnd"
+						"Target"		"TARGET"
+						
+					}
+				}
 			}
 
 		}
@@ -4546,13 +4592,16 @@
 			{
 				"IsHidden"	"1"
 				"IsPurgable"	"0"
-				"ThinkInterval"	"0.1"
+				"ThinkInterval"	"%pull_interval"
 				"OnIntervalThink"
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"custom_functions_ability"
-						"Function"	"PullCloser"
+						"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
+						"Function"		"ElectroMagnetThink"
+
+						"min_range"		"%min_range"
+						"pull_scale" 	"%pull_scale"
 					}
 
 				}

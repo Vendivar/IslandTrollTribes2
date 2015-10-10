@@ -616,22 +616,35 @@ function MetronomeManaBurn(keys)
     target:EmitSound("Hero_NyxAssassin.ManaBurn.Target")
 end
 
-function PullCloser(keys)
+function ElectroMagnetStart(keys)
     local caster = keys.caster
-    local casterPosition = caster:GetAbsOrigin()
     local target = keys.target
     local targetPosition = target:GetAbsOrigin()
+    local pfx = keys.pfx
+    target.pull_pfx = ParticleManager:CreateParticle(pfx, PATTACH_ABSORIGIN_FOLLOW, caster)
+end
 
-    local pull = ParticleManager:CreateParticle("particles/units/heroes/hero_razor/razor_static_link_beam.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster)
-    ParticleManager:SetParticleControl(pull,1,Vector(target:GetAbsOrigin().x,target:GetAbsOrigin().y,target:GetAbsOrigin().z+((target:GetBoundingMaxs().z - target:GetBoundingMins().z)/2)))
+function ElectroMagnetThink(keys)
+    local ability = keys.ability
+    local caster = keys.caster
+    local origin = caster:GetAbsOrigin()
+    local target = keys.target
+    local targetPosition = target:GetAbsOrigin()
+    local minimumPullRange = keys.min_range
+    local pullMultiplier = keys.pull_scale
 
-    local direction = casterPosition - targetPosition
-    local vec = direction:Normalized() * 30.0
-    target:SetAbsOrigin(targetPosition + vec)
-    FindClearSpaceForUnit(target,target:GetAbsOrigin(),true)
+    local difference = origin - targetPosition
+    if math.sqrt( math.pow(difference.x, 2 ) + math.pow( difference.y, 2 ) ) > minimumPullRange then
+        local displacement = difference:Normalized() * pullMultiplier
+        target:SetAbsOrigin( targetPosition + displacement )
+        FindClearSpaceForUnit( target, target:GetAbsOrigin(), true )
+        ParticleManager:SetParticleControl(target.pull_pfx, 1, Vector( targetPosition.x, targetPosition.y, targetPosition.z + ( target:GetBoundingMaxs().z - target:GetBoundingMins().z ) / 2 ) )
+    end
+end
 
-    -- disabled particle, stays infinitely in current implementation, causing huge lag
-    ParticleManager:DestroyParticle(pull,false)
+function ElectroMagnetEnd(keys)
+    local target = keys.target
+    ParticleManager:DestroyParticle(target.pull_pfx, false)
 end
 
 function ChainLightning(keys)

@@ -20,7 +20,7 @@
 		"ModelScale"	"1"
 		"Model"	"models/creeps/neutral_creeps/n_creep_ghost_b/n_creep_ghost_frost.vmdl"
 		"Ability1"	"ability_mage_defenderenergy"
-		"Ability2"	""
+		"Ability2"	"ability_mage_electromagnet"
 		"Ability3"	""
 		"Ability4"	""
 		"ArmorPhysical"	"0"

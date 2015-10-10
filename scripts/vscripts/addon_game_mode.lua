@@ -285,10 +285,12 @@ function Precache( context )
 	PrecacheResource("particle_folder","particles/rain_storm_fx",context)
 	PrecacheResource("particle_folder","particles/world_environmental_fx",context)
 	PrecacheResource("particle_folder","particles/units/heroes/hero_wisp",context)
-	
+	PrecacheResource("particle_folder","particles/units/heroes/hero_razor",context)
+
 	PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_wisp.vsndevts",context)
 	PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_stormspirit.vsndevts",context)
-	
+	PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_disrupter.vsndevts",context)
+
 	PrecacheResource("model", "models/props_destruction/lion_groundspikes.vmdl",context)
 	PrecacheResource("model", "models/items/abaddon/alliance_abba_weapon/alliance_abba_weapon_fx.vmdl",context)
 	PrecacheResource("model", "models/particle/tiny_simrocks.vmdl",context)
