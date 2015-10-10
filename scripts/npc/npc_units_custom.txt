@@ -21,7 +21,7 @@
 		"Model"	"models/creeps/neutral_creeps/n_creep_ghost_b/n_creep_ghost_frost.vmdl"
 		"Ability1"	"ability_mage_defenderenergy"
 		"Ability2"	"ability_mage_electromagnet"
-		"Ability3"	""
+		"Ability3"	"ability_mage_stormearthfire"
 		"Ability4"	""
 		"ArmorPhysical"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_MELEE_ATTACK"
@@ -4758,6 +4758,17 @@
 		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
 		"MovementSpeed"	"2000"
 		"Ability1"	"dummy_passive"
+	}
+	"dummy_caster_stormearthfire"
+	{
+		"BaseClass"	"npc_dota_creature"
+		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
+		"VisionDaytimeRange"	"0"
+		"VisionNighttimeRange"	"0"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementSpeed"	"2000"
+		"Ability1"	"dummy_passive"
+		"Ability2"	"ability_mage_stonethrow"
 	}
 
 	"blur_illusion"

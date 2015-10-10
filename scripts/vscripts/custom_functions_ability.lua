@@ -619,9 +619,8 @@ end
 function ElectroMagnetStart(keys)
     local caster = keys.caster
     local target = keys.target
-    local targetPosition = target:GetAbsOrigin()
     local pfx = keys.pfx
-    target.pull_pfx = ParticleManager:CreateParticle(pfx, PATTACH_ABSORIGIN_FOLLOW, caster)
+    target.pull_pfx = ParticleManager:CreateParticle(pfx, PATTACH_POINT_FOLLOW, caster)
 end
 
 function ElectroMagnetThink(keys)
@@ -638,8 +637,8 @@ function ElectroMagnetThink(keys)
         local displacement = difference:Normalized() * pullMultiplier
         target:SetAbsOrigin( targetPosition + displacement )
         FindClearSpaceForUnit( target, target:GetAbsOrigin(), true )
-        ParticleManager:SetParticleControl(target.pull_pfx, 1, Vector( targetPosition.x, targetPosition.y, targetPosition.z + ( target:GetBoundingMaxs().z - target:GetBoundingMins().z ) / 2 ) )
     end
+    ParticleManager:SetParticleControl(target.pull_pfx, 1, Vector( targetPosition.x, targetPosition.y, targetPosition.z + ( target:GetBoundingMaxs().z - target:GetBoundingMins().z ) / 2 ) )
 end
 
 function ElectroMagnetEnd(keys)
@@ -702,6 +701,19 @@ function ChainLightning(keys)
             end
         end
     end
+end
+
+function StormEarthFire(event)
+    local caster    = event.caster
+    local target    = event.target
+    local dur       = event.duration
+
+    local entangle  = CreateItem( "item_scroll_entangling", caster, caster)
+    entangle:ApplyDataDrivenModifier( caster, target, "modifier_scroll_entanglingroots", {duration=dur})
+    local ability = event.stone_throw
+    local dummy = CreateUnitByName("dummy_caster_stormearthfire", caster:GetAbsOrigin() , false, caster, caster, caster:GetTeam())
+    dummy:CastAbilityOnTarget(target, ability, caster:GetPlayerID())
+    dummy:Kill()
 end
 
 function DefenderEnergyOnSpellStart(event)
