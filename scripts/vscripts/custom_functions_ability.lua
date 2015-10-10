@@ -646,6 +646,46 @@ function ElectroMagnetEnd(keys)
     ParticleManager:DestroyParticle(target.pull_pfx, false)
 end
 
+function Hypnosis(keys)
+    local ability = keys.ability
+    local caster  = keys.caster
+    local target  = keys.target
+
+    local heat = keys.heat_removed
+    local mana = keys.mana_restored
+    local hypnosis = keys.hypnosis
+
+    local dur = keys.duration_creep
+    if string.find(target:GetName(), "hero") then
+        dur = keys.duration
+        AddHeat(keys)
+    end
+    target:GiveMana(mana)
+
+    ability:ApplyDataDrivenModifier(caster, target, hypnosis, {duration = dur})
+end
+
+function DreamEater(keys)
+    local ability = keys.ability
+    local caster = keys.caster
+    local target = keys.target
+
+    local hypnosis = keys.hypnosis
+    local heal = keys.heal
+    local mana = keys.mana
+    local dmg = keys.damage
+    local damageTable = {victim = target, attacker = caster, damage = dmg, damage_type = DAMAGE_TYPE_MAGICAL}
+        
+    if string.find(target:GetName(), "hero") and target:HasModifier(hypnosis) then
+        caster:Heal(heal, caster)
+        caster:GiveMana(mana)
+        ApplyDamage(damageTable)
+        target:ReduceMana(mana)
+        target:RemoveModifierByName(hypnosis)
+    end
+
+end
+
 function ChainLightning(keys)
     local caster = keys.caster
     local target = keys.target
@@ -1875,4 +1915,22 @@ function MammothBlockSuccess(keys)
     end
 
     caster:SetHealth(caster:GetHealth() + block)
+end
+
+function AddHeat(keys)
+    local caster = keys.caster
+    local target = keys.target
+
+    if target == nil then
+        target = caster
+    end
+    local heatToAdd = keys.Heat
+    local heatStackCount = target:GetModifierStackCount("modifier_heat_passive", nil) + heatToAdd
+    if heatStackCount > 100 then
+        heatStackCount = 100
+    end
+    if heatStackCount <= 0 then
+        heatStackCount = 1
+    end
+    target:SetModifierStackCount("modifier_heat_passive", nil, heatStackCount)
 end
