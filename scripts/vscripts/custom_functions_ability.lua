@@ -469,6 +469,18 @@ function ChallengeEnd( event )
 end
 
 -- Mage Ability Functons
+
+function Grow(keys)
+local target = keys.target
+
+if target == nil then
+target = keys.caster
+end
+
+target:SetModelScale(keys.GrowAmmt)
+print("grew")
+end
+
 function SpawnMageFire(keys)
     local caster = keys.caster
     local spawnPosition = caster:GetAbsOrigin() + (caster:GetForwardVector() * 150)

@@ -3690,105 +3690,99 @@
 	
 	}
 	"ability_mage_anger"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY | DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	"AbilityTextureName"	"ability_mage_anger"
+	"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
+	"AbilityCastPoint"	"0.5"
+	"AbilityCooldown"	"12"
+	"AbilityCastRange"	"500"
+	"AbilityManaCost"	"20"
+	"MaxLevel"	"1"
+	"precache"
 	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY | DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityTextureName"	"ability_mage_anger"
-		"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
-		"AbilityCastPoint"	"1.0"
-		"AbilityCooldown"	"12"
-		"AbilityCastRange"	"500"
-		"AbilityManaCost"	"20"
-		"MaxLevel"	"1"
-		"precache"
+		"particles"	"particles/econ/items/drow/drow_head_mania/mask_of_madness_mania_glow.vpcf"
+		"particles"	"particles/econ/items/drow/drow_head_mania/mask_of_madness_mania_glow.vpcf"
+		"soundfile"	"sounds/weapons/hero/axe/battle_hunger.vsnd"
+	}
+
+	"OnSpellStart"
+	{
+		"ApplyModifier"
 		{
-			"particles"	"particles/econ/items/drow/drow_head_mania/mask_of_madness_mania_glow.vpcf"
-			"particles"	"particles/econ/items/drow/drow_head_mania/mask_of_madness_mania_glow.vpcf"
-			"soundfile"	"sounds/weapons/hero/axe/battle_hunger.vsnd"
+		"Target" "TARGET"
+		"ModifierName" "modifier_anger"
 		}
-	
-		"OnSpellStart"
+
+		"FireSound"
 		{
-			"ApplyModifier"
+			"EffectName"	"Hero_Axe.Battle_Hunger"
+			"Target"	"TARGET"
+		}
+
+	}
+
+	"Modifiers"
+	{
+		"modifier_anger"
+		{
+			"IsDebuff"			"0"
+			"IsPurgable"		"1"
+			"EffectName" 		"particles/items2_fx/mask_of_madness.vpcf"
+			"EffectAttachType" 	"follow_origin"
+			"Duration" 			"%duration"
+			"OnCreated"
 			{
-				"ModifierName"	"modifier_anger"
-				"Duration"	"%duration"
-				"Target"
+				"AttachEffect"
 				{
 					"Target"	"TARGET"
-					"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+					"EffectName"	"particles/econ/items/drow/drow_head_mania/mask_of_madness_mania_glow.vpcf"
+					"EffectAttachType"	"follow_overhead"
 				}
-	
-			}
-	
-			"FireSound"
-			{
-				"EffectName"	"Hero_Axe.Battle_Hunger"
-				"Target"	"TARGET"
-			}
-	
-		}
-	
-		"Modifiers"
-		{
-			"modifier_anger"
-			{
-				"IsDebuff"			"0"
-				"IsPurgable"		"1"
-				"EffectName" 		"particles/items2_fx/mask_of_madness.vpcf"
-				"EffectAttachType" 	"follow_origin"
-				"OnCreated"
+
+				"ThinkInterval"	"1"
+				"OnIntervalThink"
 				{
-					"AttachEffect"
+					"Damage"
 					{
+						"Type"	"DAMAGE_TYPE_MAGICAL"
+						"Damage"	"10"
 						"Target"	"TARGET"
-						"EffectName"	"particles/econ/items/drow/drow_head_mania/mask_of_madness_mania_glow.vpcf"
-						"EffectAttachType"	"follow_overhead"
 					}
-	
-					"ThinkInterval"	"1"
-					"OnIntervalThink"
-					{
-						"Damage"
-						{
-							"Type"	"DAMAGE_TYPE_MAGICAL"
-							"Damage"	"10"
-							"Target"	"TARGET"
-						}
-	
-					}
-	
-					"Properties"
-					{
-						"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed_bonus"
-					}
-	
+
 				}
-	
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed_bonus"
+				}
+
 			}
-	
+
 		}
-	
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_FLOAT"
-				"duration"	"10"
-			}
-	
-			"02"
-			{
-				"var_type"	"FIELD_FLOAT"
-				"attack_speed_bonus"	"75"
-			}
-	
-		}
-	
+
 	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"duration"	"10"
+		}
+
+		"02"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"attack_speed_bonus"	"75"
+		}
+
+	}
+
+}
 	"ability_mage_chainlightning"
 	{
 		"BaseClass"	"ability_datadriven"
@@ -4407,7 +4401,7 @@
 			}
 		}
 	}
-	"ability_mage_electromagnet"
+		"ability_mage_electromagnet"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"ability_mage_electromagnet"
@@ -4421,7 +4415,8 @@
 	
 		"precache"
 		{
-			"soundfile"		"sounds/weapons/hero/disruptor/static_storm.vsnd"
+			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_disrupter.vsndevts"
+			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_stormspirit.vsndevts"
 			"particle_folder"	"particles/units/heroes/hero_magnataur"
 		}
 	
@@ -4447,7 +4442,7 @@
 			//How close should I pull?
 			{
 				"var_type"		"FIELD_FLOAT"
-				"pull_scale"	"1"
+				"pull_scale"	".3"
 			}
 		}
 	
@@ -4458,7 +4453,11 @@
 				"EffectName"		"Hero_Disruptor.StaticStorm"
 				"Target"			"CASTER"
 			}
-	
+			"FireSound"
+			{
+				"EffectName"		"Hero_StormSpirit.ElectricVortex"
+				"Target"			"CASTER"
+			}
 			"ActOnTargets"
 			{
 				"Target"
