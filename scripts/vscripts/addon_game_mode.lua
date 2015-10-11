@@ -287,6 +287,7 @@ function Precache( context )
 	PrecacheResource("particle_folder","particles/units/heroes/hero_wisp",context)
 	PrecacheResource("particle_folder","particles/units/heroes/hero_razor",context)
 	PrecacheResource("particle_folder","particles/units/heroes/hero_magnataur",context)
+	PrecacheResource("particle_folder","particles/units/heroes/hero_rubick",context)
 
 	PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_wisp.vsndevts",context)
 	PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_stormspirit.vsndevts",context)
@@ -294,6 +295,7 @@ function Precache( context )
 	PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts",context)
 	PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_leshrac.vsndevts",context)
 	PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_bane.vsndevts",context)
+	PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_enigma.vsndevts",context)
 
 
 	PrecacheResource("model", "models/props_destruction/lion_groundspikes.vmdl",context)
