@@ -2596,24 +2596,28 @@
 		{
 			"particle_folder"	"particles/units/heroes/hero_bounty_hunter"
 			"particle_folder"	"particles/units/heroes/hero_tinker"
+			"particle" "particles/units/heroes/hero_beastmaster/beastmaster_primal_roar.vpcf"
+			"particle" "particles/units/heroes/hero_beastmaster/beastmaster_primal_target.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_beastmaster.vsndevts"
 		}
 	
 		"OnSpellStart"
 		{
-			"TrackingProjectile"
+			"FireSound"
 			{
-				"Target"	"TARGET"
-				"EffectName"	"particles/units/heroes/hero_tinker/tinker_missile.vpcf"
-				"Dodgeable"	"false"
-				"ProvidesVision"	"false"
-				"MoveSpeed"	"1000"
+				"EffectName"		"Hero_Beastmaster.Primal_Roar"
+				"Target"			"TARGET"
 			}
-	
 			"FireEffect"
 			{
-				"EffectName"	"axe_counterhelix_unused2"
-				"EffectAttachType"	"follow_origin"
-				"Target"	"CASTER"
+				"EffectName" "particles/units/heroes/hero_beastmaster/beastmaster_primal_roar.vpcf"
+				"EffectAttachType" "start_at_customorigin"
+				"Target" "TARGET"
+				"ControlPointEntities"
+				{
+				"CASTER" "attach_cast4_primal_roar"
+				"TARGET" "attach_hitloc"
+				}
 			}
 	
 		}
@@ -2661,7 +2665,7 @@
 	
 				}
 	
-				"Properties"
+				"States"
 				{
 					"MODIFIER_STATE_DISARMED"	"MODIFIER_STATE_VALUE_ENABLED"
 				}
@@ -2809,9 +2813,10 @@
 		"MaxLevel"	"1"
 		"precache"
 		{
-			"particle_folder"	"particles/units/heroes/hero_razor"
-			"particle_folder"	"particles/units/heroes/hero_disruptor"
+			"particle_folder"	"particles/econ/items/templar_assassin/templar_assassin_butterfly/templar_assassin_meld_hit_arcs_butterfly.vpcf"
+			"particles"	"particles/units/heroes/hero_disruptor"
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_queenofpain.vsndevts"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_lion.vsndevts"
 		}
 	
 		"Modifiers"
@@ -2839,7 +2844,19 @@
 								"ModifierName"	"modifier_block_effect"
 								"Target"	"CASTER"
 							}
-	
+							"FireSound"
+							{
+								"EffectName"		"Hero_Lion.ProjectileImpact"
+								"Target"			"TARGET"
+							}
+							"FireEffect"
+							{
+								"EffectName" "particles/econ/items/templar_assassin/templar_assassin_butterfly/templar_assassin_meld_hit_arcs_butterfly.vpcf"
+								"Target" "CASTER"
+								"EffectAttachType" "follow_origin"
+								"EffectColorA"		"000 000 000"
+								"EffectColorB"		"000 000 000"
+							}
 						}
 	
 					}
@@ -2927,7 +2944,7 @@
 			"modifier_ensnare"
 			{
 				"IsHidden"	"1"
-				"Duration"	"3.5"
+				"Duration"	"%duration"
 				"IsPurgable"	"1"
 				"States"
 				{
@@ -2948,7 +2965,14 @@
 			}
 	
 		}
-	
+	"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"duration"	"3.5"
+			}
+		}
 	}
 	"ability_hunter_giantswing"
 	{
@@ -3211,7 +3235,12 @@
 		"AbilityTextureName"			"troll_warlord_fervor"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"MaxLevel"						"3"
-	
+		"precache"
+		{
+			"particle_folder"	"particles/units/heroes/hero_razor"
+			"particles"	"particles/neutral_fx/roshan_spawn_flare.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_lion.vsndevts"
+		}
 		"Modifiers"
 		{
 			"modifier_hunter_stayingpower"
@@ -3232,6 +3261,7 @@
 								"ModifierName"	"modifier_block"
 								"Target" 		"CASTER"
 							}
+	
 						}
 	
 						"OnFailure"
@@ -3268,6 +3298,17 @@
 	
 			    "OnAttacked"
 			    {
+					"FireSound"
+					{
+						"EffectName"		"Hero_Lion.ProjectileImpact"
+						"Target"			"TARGET"
+					}
+					"FireEffect"
+					{
+						"EffectName" "particles/neutral_fx/roshan_spawn_flare.vpcf"
+						"Target" "CASTER"
+						"EffectAttachType" "follow_origin"
+					}
 			        "RemoveModifier"
 			        {
 			            "Target" "CASTER"
@@ -3505,20 +3546,20 @@
 	"ability_mage_anger"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY | DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityTextureName"	"ability_mage_anger"
 		"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
-		"AbilityCastPoint"	"0.0"
+		"AbilityCastPoint"	"1.0"
 		"AbilityCooldown"	"12"
 		"AbilityCastRange"	"500"
 		"AbilityManaCost"	"20"
 		"MaxLevel"	"1"
 		"precache"
 		{
-			"particle_folder"	"particles/units/heroes/hero_night_stalker"
-			"particle_folder"	"particles/units/heroes/hero_bane"
+			"particles"	"particles/econ/items/drow/drow_head_mania/mask_of_madness_mania_glow.vpcf"
+			"particles"	"particles/econ/items/drow/drow_head_mania/mask_of_madness_mania_glow.vpcf"
 			"soundfile"	"sounds/weapons/hero/axe/battle_hunger.vsnd"
 		}
 	
@@ -3549,15 +3590,16 @@
 		{
 			"modifier_anger"
 			{
-				"IsDebuff"	"0"
-				"IsPurgable"	"1"
-				"EffectName"	"particles/units/heroes/hero_alchemist/alchemist_acid_spray_debuff.vpcf"
+				"IsDebuff"			"0"
+				"IsPurgable"		"1"
+				"EffectName" 		"particles/items2_fx/mask_of_madness.vpcf"
+				"EffectAttachType" 	"follow_origin"
 				"OnCreated"
 				{
 					"AttachEffect"
 					{
 						"Target"	"TARGET"
-						"EffectName"	"particles/econ/wards/bane/bane_ward/bane_ward_droplets.vpcf"
+						"EffectName"	"particles/econ/items/drow/drow_head_mania/mask_of_madness_mania_glow.vpcf"
 						"EffectAttachType"	"follow_overhead"
 					}
 	
@@ -3656,6 +3698,12 @@
 		"AbilityManaCost"			"25"
 		"MaxLevel"					"1"
 	
+			"precache"
+		{
+			"particle_folder"	"particles/units/heroes/hero_wisp"
+			"soundfile"	"sounds/weapons/hero/axe/battle_hunger.vsnd"
+		}
+		
 		"AbilitySpecial"
 		{
 			"01"
@@ -4085,6 +4133,7 @@
 			{
 				"IsDebuff"	"1"
 				"IsPurgable"	"1"
+				"Aura_ApplyToCaster"	"0"
 				"EffectName"	"particles/units/heroes/hero_alchemist/alchemist_acid_spray_debuff.vpcf"
 				"OnCreated"
 				{
