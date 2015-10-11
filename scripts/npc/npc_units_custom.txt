@@ -2616,7 +2616,7 @@
 		"Ability1"	"ability_hunter_challenge"
 		"Ability2"	"ability_mage_seizures"
 		"Ability3"	"ability_mage_electromagnet"
-		"Ability4"	""
+		"Ability4"	"ability_mage_jealousy"
 		"Ability5"	""
 		"Ability6"	""
 		"ArmorPhysical"	"0"
