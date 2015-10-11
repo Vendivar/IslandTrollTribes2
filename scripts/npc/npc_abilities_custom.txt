@@ -3734,6 +3734,10 @@
 			"EffectName" 		"particles/items2_fx/mask_of_madness.vpcf"
 			"EffectAttachType" 	"follow_origin"
 			"Duration" 			"%duration"
+			"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed_bonus"
+				}
 			"OnCreated"
 			{
 				"AttachEffect"
@@ -3742,7 +3746,7 @@
 					"EffectName"	"particles/econ/items/drow/drow_head_mania/mask_of_madness_mania_glow.vpcf"
 					"EffectAttachType"	"follow_overhead"
 				}
-
+			}
 				"ThinkInterval"	"1"
 				"OnIntervalThink"
 				{
@@ -3754,14 +3758,6 @@
 					}
 
 				}
-
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed_bonus"
-				}
-
-			}
-
 		}
 
 	}
@@ -4415,8 +4411,11 @@
 	
 		"precache"
 		{
-			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_disrupter.vsndevts"
-			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_stormspirit.vsndevts"
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_disrupter.vsndevts"
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_stormspirit.vsndevts"
+			"particles"			"particles/econ/items/slardar/slardar_takoyaki/slardar_crush_tako_shockwave_ring.vpcf"
+			"particles"			"particles/units/heroes/hero_stormspirit/stormspirit_electric_vortex_recipient_b.vpcf"
+			"particles"			"particles/units/heroes/hero_stormspirit/stormspirit_electric_vortex.vpcf"
 			"particle_folder"	"particles/units/heroes/hero_magnataur"
 		}
 	
@@ -4448,6 +4447,7 @@
 	
 		"OnSpellStart"
 		{
+			
 			"FireSound"
 			{
 				"EffectName"		"Hero_Disruptor.StaticStorm"
@@ -4476,7 +4476,12 @@
 						"ModifierName"	"modifier_pulled"
 						"Duration"		"2"
 					}
-	
+						"ApplyModifier"
+					{
+						"Target"		"CASTER"
+						"ModifierName"	"modifier_shockwave"
+						"Duration"		"2"
+					}
 					"RunScript"
 					{
 						"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
@@ -4487,6 +4492,7 @@
 					}
 				}
 			}
+				
 		}
 	
 		"OnChannelFinish"
@@ -4526,6 +4532,21 @@
 				"IsHidden"	"1"
 				"IsPurgable"	"0"
 				"ThinkInterval"	"%pull_interval"
+				 "OnCreated"
+				{
+					"AttachEffect"
+					{
+							"EffectName"    "particles/units/heroes/hero_stormspirit/stormspirit_electric_vortex_recipient_b.vpcf"
+							"Target"        "TARGET"
+							"EffectAttachType"      "attach_customorigin"
+							"ControlPointEntities"
+							{
+								"TARGET" "attach_hitloc"
+								"TARGET" "attach_hitloc"
+								"TARGET" "attach_hitloc" //CP2
+							}
+					}
+				}        
 				"OnIntervalThink"
 				{
 					"RunScript"
@@ -4536,16 +4557,34 @@
 						"min_range"		"%min_range"
 						"pull_scale" 	"%pull_scale"
 					}
-	
+				
 				}
-	
 				"States"
 				{
 					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
 				}
 	
 			}
-	
+			"modifier_shockwave"
+			{
+				"IsHidden"	"1"
+				"ThinkInterval"	"0.5"
+				"OnIntervalThink"
+				{
+					"FireEffect"
+					{
+						"EffectName" "particles/econ/items/slardar/slardar_takoyaki/slardar_crush_tako_shockwave_ring.vpcf"
+						"Target" "CASTER"
+						"EffectAttachType" "follow_origin"
+					}	
+				}
+				"AttachEffect"
+			{
+				"EffectName" "particles/units/heroes/hero_stormspirit/stormspirit_electric_vortex.vpcf"
+				"Target" "CASTER"
+				"EffectAttachType" "follow_origin"
+			}	
+			}
 		}
 	
 	}
@@ -6282,8 +6321,7 @@
 			}
 		}
 	}
-
-	"ability_mage_jealousy"
+"ability_mage_jealousy"
 	{
 		"BaseClass"             		"ability_datadriven"
 		"AbilityTextureName"			"ability_hunter_challenge"
@@ -6434,7 +6472,7 @@
 			}
 		}
 	}
-
+	
 	"ability_mage_seizures"
 	{
 		"BaseClass"             		"ability_datadriven"
