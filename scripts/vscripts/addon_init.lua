@@ -1357,8 +1357,8 @@ end
 
 --Listener to handle telegather events from item pickup and picking up raw meat
 function ITT_GameMode:OnItemPickedUp(event)
+    DeepPrintTable(event)
     local hero = EntIndexToHScript( event.HeroEntityIndex )
-
     if event.itemname == "item_meat_raw" then
         local meatStacks = hero:GetModifierStackCount("modifier_meat_passive", nil)
         if meatStacks < 10 then
@@ -1385,9 +1385,13 @@ function ITT_GameMode:OnItemPickedUp(event)
     end
 
     local hasTelegather = hero:HasModifier("modifier_telegather")
+    local hasTelethief = hero:HasModifier("modifier_thief_telethief")
 
     if hasTelegather then
         RadarTelegather(event)
+    end
+    if hasTelethief then
+        TeleThief(event)
     end
 end
 

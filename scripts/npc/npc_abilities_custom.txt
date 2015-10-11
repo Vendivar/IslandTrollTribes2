@@ -6427,14 +6427,6 @@
 					}
 				}
 
-				"OnDestroy"
-				{
-					"States"
-					{
-						"MODIFIER_STATE_SPECIALLY_DENIABLE"		"MODIFIER_STATE_VALUE_DISABLED"
-					}
-				}
-
 				"States"
 				{
 					"MODIFIER_STATE_SPECIALLY_DENIABLE"		"MODIFIER_STATE_VALUE_ENABLED"
@@ -11100,6 +11092,68 @@
 		}
 	
 	}
+
+	"ability_thief_telethief"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"ability_thief_tele_thief"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BUILDING"
+
+		"AbilityCooldown"				"120"
+		"AbilityManaCost"				"30"
+		"AbilityCastRange"				"100"
+
+		"precache"
+		{
+			"soundfile"				"sounds/weapons/hero/queenofpain/blink_in.vsnd"
+		}
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"radius"		"300"
+			}
+			"02"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"duration"		"140"
+			}
+		}
+
+		"FireSound"
+		{
+			"EffectName"	"Hero_Antimage.Blink_in"
+			"Target"		"CASTER"
+		}
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
+				"Function"		"TeleThiefStart"
+
+				"modifier"		"modifier_thief_telethief"
+				"duration"		"%duration"
+				"mana_cost"		"%AbilityManaCost"
+				"radius"		"%radius"
+			}
+		}
+
+		"Modifiers"
+		{
+			"modifier_thief_telethief"
+			{
+				"IsHidden"			"0"
+				"IsBuff"			"1"
+			}
+		}
+	}
+
 	"ability_thief_teleport"
 	{
 		"BaseClass"	"ability_datadriven"
@@ -11130,20 +11184,7 @@
 		}
 	
 	}
-	"ability_thief_telethief"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"ability_thief_tele_thief"
-		"precache"
-		{
-			"soundfile"				"sounds/weapons/hero/queenofpain/blink_in.vsnd"
-		}
-		"FireSound"
-		{
-			"EffectName"	"Hero_Antimage.Blink_in"
-			"Target"		"CASTER"
-		}
-	}
+
 	"ability_thief_throwingknife"
 	{
 		"BaseClass"	"ability_datadriven"

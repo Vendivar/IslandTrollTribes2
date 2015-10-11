@@ -1480,6 +1480,47 @@ function Jump(keys)
     FindClearSpaceForUnit(caster, point, false)
 end
 
+function TeleThiefStart( event )
+    local ability = event.ability
+    local caster = event.caster
+    local target = event.target
+
+    local modifier = event.modifier
+    local manaCost = event.mana_cost
+    local dur = event.duration
+
+    if string.find(target:GetUnitName(), "building_fire") then
+        caster.fire_location = target:GetAbsOrigin()
+        caster.radius = event.radius
+        caster:RemoveModifierByName(modifier)
+        ability:ApplyDataDrivenModifier(caster, caster, modifier, {duration = dur})
+    else
+        caster:GiveMana(manaCost)
+        ability:EndCooldown()
+    end
+end
+
+function TeleThief( event )
+    local hero = EntIndexToHScript( event.HeroEntityIndex )
+
+    local newItem = CreateItem(originalItem:GetName(), nil, nil)
+    local fireLocation = hero.fire_location
+
+    local radius = hero.radius
+    local teamNumber = hero:GetTeamNumber()
+    local buildings = FindUnitsInRadius(teamNumber, caster:GetAbsOrigin(), nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BUILDING, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
+    
+    if buildings ~= null then
+        print("Teleporting Item", originalItem:GetName())
+        hero:RemoveItem(originalItem)
+        local itemPosition = targetFire:GetAbsOrigin() + RandomVector(RandomInt(100,150))
+        CreateItemOnPositionSync(itemPosition,newItem)
+        newItem:SetOrigin(itemPosition)
+    else
+        print("Did not find enemy buildings")
+    end
+end
+
 -- Priest Ability Functions
 
 function MixHeat(keys)
