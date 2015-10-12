@@ -970,6 +970,8 @@
 		"Model"	"models/props_structures/shop_newplayerexperience_01.vmdl"
 		"SoundSet"	"Creep_Good_Melee"
 		"HasInventory"	"1"
+		"ConsideredHero"	"1"
+		"Level"	"1"
 		"MinimapIconSize"	"250"
 		"HealthBarOffset"	"400"
 		"BoundsHullName"	"DOTA_HULL_SIZE_BUILDING"

@@ -933,11 +933,11 @@ function ITT_GameMode:OnTrollThink()
 end
 
 function ITT_GameMode:OnBuildingThink()
-
-    if GameRules:State_Get() ~= DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
-        -- Will not run until pregame ends
-        return 1
-    end
+    --RE-ENABLE AFTER TESTING
+    --if GameRules:State_Get() ~= DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
+        --Will not run until pregame ends
+        --return 1
+    --end
 
     -- Find all buildings
     buildings = FindUnitsInRadius(DOTA_TEAM_BADGUYS,
@@ -950,13 +950,13 @@ function ITT_GameMode:OnBuildingThink()
                                   FIND_ANY_ORDER,
                                   false)
     --check each for their type, and run crafting with the corresponding table
-    for i=1, #buildings do
-        if buildings[i]:GetUnitName() == "npc_building_armory" then
-            CraftItems(buildings[i], ARMORY_RECIPE_TABLE, ITEM_ALIAS_TABLE)
-        elseif buildings[i]:GetUnitName() == "npc_building_workshop" then
-            CraftItems(buildings[i], WORKSHOP_RECIPE_TABLE, ITEM_ALIAS_TABLE)
-        elseif buildings[i]:GetUnitName() == "npc_building_hut_witch_doctor" then
-            CraftItems(buildings[i], WDHUT_RECIPE_TABLE, ITEM_ALIAS_TABLE)
+    for i, building in pairs(buildings) do
+        if building:GetUnitName() == "npc_building_armory" then
+            CraftItems(building, ARMORY_RECIPE_TABLE, ITEM_ALIAS_TABLE)
+        elseif building:GetUnitName() == "npc_building_workshop" then
+            CraftItems(building, WORKSHOP_RECIPE_TABLE, ITEM_ALIAS_TABLE)
+        elseif building:GetUnitName() == "npc_building_hut_witch_doctor" then
+            CraftItems(building, WDHUT_RECIPE_TABLE, ITEM_ALIAS_TABLE)
         end
     end
     return GAME_TROLL_TICK_TIME

@@ -755,7 +755,6 @@ end
 
 function JealousyEnd( event )
     local target = event.target
-    PrintTable(event) 
     target:SetForceAttackTarget(nil)
 end
 
