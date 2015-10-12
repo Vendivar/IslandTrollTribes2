@@ -515,6 +515,15 @@ function ReduceFood(keys)
     end
 end
 
+function DepressionAura( event )
+    target = event.target
+    minMana = event.mana_loss_min
+    maxMana = event.mana_loss_max
+
+    mana = RandomInt(minMana, maxMana)
+    target:ReduceMana(mana)
+end
+
 function Metronome(keys)
     local caster = keys.caster
     local target = keys.target
