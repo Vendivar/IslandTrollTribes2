@@ -2020,6 +2020,68 @@ function CookFood(keys)
     end
 end
 
+function QuickCraftWorkshop(keys)
+    print("QuickCrafting")
+    local caster = keys.caster
+    --Table to identify ingredients
+    local workshopTable = {"item_ingot_iron", "item_flint", "item_ball_clay", "item_stick", "item_spirit_wind", "item_tinder", "item_herb_blue"}
+    --Table used to look up herb recipes, can move this if other functions need it
+    local recipeTable = {
+        {"item_compass_sonar", {item_ingot_iron = 1, item_flint = 1}},
+        {"item_spirit_water", {item_river_root = 2}},
+    }
+
+    local myMaterials = {}
+    local itemTable = {}
+
+    --loop through inventory slots
+        local item = Entities:FindAllByClassnameWithin("dota_item_drop", caster:GetAbsOrigin(), 600)  --get the item in the slot
+		print(item)
+        if item ~= nil then --if the slot is not empty
+            local itemName = item:GetName()--get the item's name
+            print(i, itemName)  --debug
+            --loop through list of possible ingredients to see if the inventory item is one
+            for i,workName in pairs(workshopTable) do
+                if itemName == workName then  --if the item is an herb ingredient
+                    print("Adding to table", itemName)
+                    if myMaterials[itemName] == nil then  --add it to our internal list
+                        myMaterials[itemName] = 0
+                    end
+                    myMaterials[itemName] = myMaterials[itemName] + 1   --increment the count
+                    table.insert(itemTable, item)
+                end
+            end
+        else
+            print(i, "empty")  --more debug, print empty slot
+        end
+
+    print("Check for match")
+    --check if player materials matches any recipes
+    for i,value in pairs(recipeTable) do  --loop through the recipe table
+        local recipeName = recipeTable[i][1]    --get the name of the recipe
+        local recipeIngredients = recipeTable[i][2] --get the items needed for the recipe
+        if CompareTables(recipeIngredients, myMaterials) then    --if a recipe matches
+            print("Match!", i)
+            local newItem = CreateItem(recipeName, nil, nil)   --create the resulting item
+            for i,removeMe in pairs(itemTable) do   --delete the materials
+            UTIL_RemoveImmediate(removeMe)
+            UTIL_RemoveImmediate(item)
+            end
+            caster:AddItem(newItem) --add the new item
+            return  --end the function, only one item per mix
+        end
+    end
+
+
+    print("sort it!")
+
+    for key,val in pairs (myMaterials) do
+        if val == 0 then
+            myMaterials[key] = nil
+        end
+    end
+end
+
 function BushZoneMajority(users, default)
     local good = users[DOTA_TEAM_GOODGUYS]
     local bad = users[DOTA_TEAM_BADGUYS]

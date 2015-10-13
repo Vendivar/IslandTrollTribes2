@@ -371,7 +371,7 @@
 		"Precache"
 		{
 			"particle"	"particles/units/heroes/hero_weaver/weaver_base_attack.vpcf"
-			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_lone_druid.vsndevts"
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_shadow_demon.vsndevts"
 		}
 	
 		"OnProjectileFinish"
@@ -381,6 +381,11 @@
 				"ScriptFile"	"custom_functions_ability.lua"
 				"Function"	"FleaAttackDamage"
 			}
+			"FireSound"
+				{
+					"EffectName"	"Hero_ShadowDemon.projectileImpact"
+					"Target"		"TARGET"
+				}
 	
 		}
 	
@@ -400,12 +405,8 @@
 						"Function"	"FleaAttack"
 						"Particle"	"particles/units/heroes/hero_weaver/weaver_base_attack.vpcf"
 					}
-					"FireSound"
-				{
-					"EffectName"	"Hero_ShadowDemon.projectileImpact"
-					"Target"		"TARGET"
+					
 				}
-					}
 	
 			}
 	
@@ -4962,7 +4963,7 @@
 	"ability_mage_giganegativeblast"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityTextureName"	"ability_mage_giganegativeblast"
@@ -4977,6 +4978,7 @@
 		{
 			"particle_folder"	"particles/units/heroes/hero_night_stalker"
 			"particle_folder"	"particles/units/heroes/hero_bane"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_oracle.vsndevts"
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_nightstalker.vsndevts"
 		}
 	
@@ -4985,22 +4987,32 @@
 			"TrackingProjectile"
 			{
 				"Target"	"TARGET"
-				"EffectName"	"particles/units/heroes/hero_bane/bane_fiendsgrip_hand_holes.vpcf"
+				"EffectName"	"particles/units/heroes/hero_bane/bane_projectile.vpcf"
 				"Dodgeable"	"false"
 				"ProvidesVision"	"false"
-				"MoveSpeed"	"400"
+				"MoveSpeed"	"900"
 			}
-	
-						"FireSound"
+			"FireSound"
 			{
-				"EffectName"	"Hero_Nightstalker.Void"
-				"Target"	"TARGET"
+			"EffectName" "Hero_Oracle.PreAttack"
+			"Target"	"CASTER"
 			}
 	
 		}
 	
 		"OnProjectileHitUnit"
 		{
+		"FireEffect"
+				{
+					"EffectName" 		"particles/econ/items/nightstalker/nightstalker_black_nihility/nightstalker_black_nihility_void_hit.vpcf"
+					"Target" "TARGET"
+					"EffectAttachType"      "follow_origin"
+				}
+		"FireSound"
+			{
+				"EffectName"	"Hero_Nightstalker.Void"
+				"Target"	"TARGET"
+			}
 			"Damage"
 			{
 				"Type"	"DAMAGE_TYPE_MAGICAL"
@@ -5061,7 +5073,21 @@
 				{
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"-15"
 				}
-	
+			"OnCreated"
+				{
+					"AttachEffect"
+					{
+						"Target"	"TARGET"
+						"EffectName"	"particles/econ/items/nightstalker/nightstalker_black_nihility/nightstalker_black_nihility_void_swarm.vpcf"
+						"EffectAttachType"	"follow_origin"
+					}
+					"AttachEffect"
+					{
+						"Target"	"TARGET"
+						"EffectName"	"particles/units/heroes/hero_bane/bane_nightmare_inkblots_thick.vpcf"
+						"EffectAttachType"	"follow_origin"
+					}
+				}
 			}
 	
 		}
@@ -5515,21 +5541,22 @@
 	"ability_mage_negativeblast"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityTextureName"	"ability_mage_negativeblast"
 		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_YES"
 		"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
 		"AbilityCastPoint"	"0.0"
-		"AbilityCooldown"	"20"
+		"AbilityCooldown"	"18"
 		"AbilityCastRange"	"800"
 		"AbilityManaCost"	"10"
 		"MaxLevel"	"1"
 		"precache"
 		{
-			"particle_folder"	"particles/units/heroes/hero_night_stalker"
+			"particle_folder"	"particles/units/heroes/hero_nightstalker"
 			"particle_folder"	"particles/units/heroes/hero_bane"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_oracle.vsndevts"
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_nightstalker.vsndevts"
 		}
 	
@@ -5538,37 +5565,47 @@
 			"TrackingProjectile"
 			{
 				"Target"	"TARGET"
-				"EffectName"	"particles/units/heroes/hero_bane/bane_fiendsgrip_hand_holes.vpcf"
+				"EffectName"	"particles/units/heroes/hero_bane/bane_projectile.vpcf"
 				"Dodgeable"	"false"
 				"ProvidesVision"	"false"
-				"MoveSpeed"	"400"
+				"MoveSpeed"	"900"
 			}
-	
-						"FireSound"
+			"FireSound"
 			{
-				"EffectName"	"Hero_Nightstalker.Void"
-				"Target"	"TARGET"
+			"EffectName" "Hero_Oracle.PreAttack"
+			"Target"	"CASTER"
 			}
 	
 		}
 	
 		"OnProjectileHitUnit"
 		{
+		"FireEffect"
+				{
+					"EffectName" 		"particles/units/heroes/hero_night_stalker/nightstalker_void_hit.vpcf"
+					"Target" "TARGET"
+					"EffectAttachType"      "follow_origin"
+				}
+		"FireSound"
+			{
+				"EffectName"	"Hero_Nightstalker.Void"
+				"Target"	"TARGET"
+			}
 			"Damage"
 			{
 				"Type"	"DAMAGE_TYPE_MAGICAL"
-				"Damage"	"30"
+				"Damage"	"45"
 				"Target"	"TARGET"
 			}
 	
 			"Damage"
 			{
 				"Type"	"DAMAGE_TYPE_MAGICAL"
-				"Damage"	"5"
+				"Damage"	"15"
 				"Target"
 				{
 					"Center"	"TARGET"
-					"Radius"	"200"
+					"Radius"	"250"
 					"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 					"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
 				}
@@ -5581,7 +5618,7 @@
 				"Target"
 				{
 					"Center"	"TARGET"
-					"Radius"	"200"
+					"Radius"	"250"
 					"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 					"Types"	"DOTA_UNIT_TARGET_HERO"
 				}
@@ -5595,7 +5632,7 @@
 				"Target"
 				{
 					"Center"	"TARGET"
-					"Radius"	"200"
+					"Radius"	"250"
 					"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 					"Types"	"DOTA_UNIT_TARGET_CREEP"
 				}
@@ -5612,9 +5649,23 @@
 				"IsDebuff"	"1"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"-10"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"-15"
 				}
-	
+			"OnCreated"
+				{
+					"AttachEffect"
+					{
+						"Target"	"TARGET"
+						"EffectName"	"particles/econ/items/nightstalker/nightstalker_black_nihility/nightstalker_black_nihility_void_swarm_pnt.vpcf"
+						"EffectAttachType"	"follow_origin"
+					}
+					"AttachEffect"
+					{
+						"Target"	"TARGET"
+						"EffectName"	"particles/units/heroes/hero_bane/bane_nightmare_inkblots_thick.vpcf"
+						"EffectAttachType"	"follow_origin"
+					}
+				}
 			}
 	
 		}
@@ -5631,6 +5682,11 @@
 			{
 				"var_type"	"FIELD_FLOAT"
 				"negative_blast_duration_creep"	"5"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"%radius"	"250"
 			}
 	
 		}
@@ -5720,9 +5776,17 @@
 		"MaxLevel"	"1"
 		"precache"
 		{
-			"particle_folder"	"particles/units/heroes/hero_bounty_hunter"
-			"particle_folder"	"particles/units/heroes/hero_tinker"
+			"particle_folder"	"particles/units/heroes/hero_night_stalker"
+			"particle_folder"	"particles/units/heroes/hero_bane"
+			"particle_folder"	"particles/units/heroes/hero_riki"
+			"particle_folder"	"particles/units/heroes/hero_slark"
+			"particle"			"particles/econ/items/nightstalker/nightstalker_black_nihility/nightstalker_black_nihility_void_hit_ray.vpcf"
+			"particle"			"particles/units/heroes/hero_riki/riki_blink_strike_end_glow.vpcf"
+			"particle"			"particles/units/heroes/hero_slark/slark_dark_pact_pulses_edge_sml.vpcf"
 			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_necrolyte.vsndevts"
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_bane.vsndevts"
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_nightstalker.vsndevts"
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_shadow_demon.vsndevts"
 		}
 	
 		"OnSpellStart"
@@ -5730,16 +5794,39 @@
 			"TrackingProjectile"
 			{
 				"Target"	"TARGET"
-				"EffectName"	"particles/units/heroes/hero_tinker/tinker_missile.vpcf"
+				"EffectName"	"particles/units/heroes/hero_bane/bane_projectile.vpcf"
 				"Dodgeable"	"false"
 				"ProvidesVision"	"false"
 				"MoveSpeed"	"1000"
 			}
-	
 		}
 	
 		"OnProjectileHitUnit"
 		{
+		//BROKEN PLEASE FIX
+			"FireEffect"
+				{
+					"EffectName" "particles/units/heroes/hero_riki/riki_blink_strike_end_glow.vpcf"
+					"Target" "TARGET"
+					"EffectAttachType"      "attach_customorigin"
+							"ControlPointEntities"
+							{
+								"TARGET" "attach_hitloc"
+								"TARGET" "attach_hitloc"
+								"TARGET" "attach_hitloc" //CP2
+							}
+				}
+				"FireSound"
+				{
+					"EffectName"	 "Hero_ShadowDemon.ShadowPoison.Impact"
+					"Target"	"CASTER"
+				}
+			"FireEffect"
+				{
+					"EffectName" "particles/econ/items/nightstalker/nightstalker_black_nihility/nightstalker_black_nihility_void_hit_ray.vpcf"
+					"Target" "TARGET"
+					"EffectAttachType"      "follow_origin"
+				}
 			"ApplyModifier"
 			{
 				"ModifierName"	"modifier_nulldamage_troll"
@@ -5784,15 +5871,25 @@
 					"AttachEffect"
 					{
 						"Target"	"TARGET"
-						"EffectName"	"particles/units/heroes/hero_bounty_hunter/bounty_hunter_track_shield.vpcf"
-						"EffectAttachType"	"follow_overhead"
+						"EffectName"	"particles/units/heroes/hero_bane/bane_nightmare_worms.vpcf"
+						"EffectAttachType"      "attach_customorigin"
+							"ControlPointEntities"
+							{
+								"TARGET" "attach_hitloc"
+								"TARGET" "attach_hitloc"
+								"TARGET" "attach_hitloc" //CP2
+							}
 					}
-	
+					"AttachEffect"
+					{
+						"Target"	"TARGET"
+						"EffectName"	"particles/units/heroes/hero_bane/bane_nightmare_inkblots_thick.vpcf"
+						"EffectAttachType"	"follow_origin"
+					}
 				}
 	
 				"Properties"
 				{
-					"MODIFIER_STATE_DISARMED"	"MODIFIER_STATE_VALUE_ENABLED"
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"-10"
 					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"-25"
 					"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"	"-55"
@@ -5809,15 +5906,25 @@
 					"AttachEffect"
 					{
 						"Target"	"TARGET"
-						"EffectName"	"particles/units/heroes/hero_bounty_hunter/bounty_hunter_track_shield.vpcf"
-						"EffectAttachType"	"follow_overhead"
+						"EffectName"	"particles/units/heroes/hero_bane/bane_nightmare_worms.vpcf"
+						"EffectAttachType"      "attach_customorigin"
+							"ControlPointEntities"
+							{
+								"TARGET" "attach_hitloc"
+								"TARGET" "attach_hitloc"
+								"TARGET" "attach_hitloc" //CP2
+							}
 					}
-	
+				"AttachEffect"
+					{
+						"Target"	"TARGET"
+						"EffectName"	"particles/units/heroes/hero_bane/bane_nightmare_inkblots_thick.vpcf"
+						"EffectAttachType"	"follow_origin"
+					}
 				}
 	
 				"Properties"
 				{
-					"MODIFIER_STATE_DISARMED"	"MODIFIER_STATE_VALUE_ENABLED"
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"-10"
 					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"-25"
 					"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"	"-55"
@@ -5839,6 +5946,202 @@
 			{
 				"var_type"	"FIELD_FLOAT"
 				"null_duration_creep"	"20"
+			}
+	
+		}
+	
+	}
+	
+	"ability_mage_quantum_nulldamage"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityTextureName"	"ability_mage_quantumnulldamage"
+		"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
+		"AbilityCastPoint"	"0.0 0.0 0.0 0.0"
+		"AbilityCooldown"	"30"
+		"AbilityCastRange"	"600"
+		"AbilityManaCost"	"30"
+		"MaxLevel"	"1"
+		"precache"
+		{
+			"particle_folder"	"particles/units/heroes/hero_night_stalker"
+			"particle_folder"	"particles/units/heroes/hero_bane"
+			"particle_folder"	"particles/units/heroes/hero_riki"
+			"particle_folder"	"particles/units/heroes/hero_slark"
+			"particle"			"particles/econ/items/nightstalker/nightstalker_black_nihility/nightstalker_black_nihility_void_hit_body_flash.vpcf"
+			"particle"			"particles/units/heroes/hero_nevermore/nevermore_shadowraze_g.vpcf"
+			"particle"			"particles/units/heroes/hero_riki/riki_blink_strike_end_glow.vpcf"
+			"particle"			"particles/units/heroes/hero_slark/slark_dark_pact_pulses_edge_sml.vpcf"
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_necrolyte.vsndevts"
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_bane.vsndevts"
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_nightstalker.vsndevts"
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_shadow_demon.vsndevts"
+		}
+	
+		"OnSpellStart"
+		{
+			"TrackingProjectile"
+			{
+				"Target"	"TARGET"
+				"EffectName"	"particles/units/heroes/hero_bane/bane_projectile.vpcf"
+				"Dodgeable"	"false"
+				"ProvidesVision"	"false"
+				"MoveSpeed"	"1000"
+			}
+	
+		}
+	
+		"OnProjectileHitUnit"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_quantum_nulldamage_troll"
+				"Target"
+				{
+					"Center"	"TARGET"
+					"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types"	"DOTA_UNIT_TARGET_HERO"
+				}
+	
+				"Duration"	"%quantum_null_duration_troll"
+			}
+	
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_quantum_nulldamage_creep"
+				"Target"
+				{
+					"Center"	"TARGET"
+					"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types"	"DOTA_UNIT_TARGET_CREEP"
+				}
+	
+				"Duration"	"%quantum_null_duration_creep"
+			}
+			"FireEffect"
+				{
+					"EffectName" "particles/units/heroes/hero_riki/riki_blink_strike_end_glow.vpcf"
+					"Target" "TARGET"
+					"EffectAttachType"      "attach_customorigin"
+							"ControlPointEntities"
+							{
+								"TARGET" "attach_hitloc"
+								"TARGET" "attach_hitloc"
+								"TARGET" "attach_hitloc" //CP2
+							}
+				}
+				"FireEffect"
+				{
+					"EffectName" "particles/econ/items/nightstalker/nightstalker_black_nihility/nightstalker_black_nihility_void_hit_ray.vpcf"
+					"Target" "TARGET"
+					"EffectAttachType"      "follow_origin"
+				}
+			"FireEffect"
+				{
+					"EffectName" "particles/econ/items/nightstalker/nightstalker_black_nihility/nightstalker_black_nihility_void_hit_body_flash.vpcf"
+					"Target" "TARGET"
+					"EffectAttachType"      "follow_origin"
+				}
+			"FireSound"
+			{
+				"EffectName"	"Hero_ShadowDemon.DemonicPurge.Cast"
+				"Target"		"TARGET"
+			}
+	
+		}
+	
+		"Modifiers"
+		{
+			"modifier_quantum_nulldamage_troll"
+			{
+				"IsDebuff"	"true"
+				"Duration"	"15"
+				"OnCreated"
+				{
+					"AttachEffect"
+					{
+						"Target"	"TARGET"
+						"EffectName"	"particles/units/heroes/hero_bane/bane_nightmare_worms.vpcf"
+						"EffectAttachType"      "attach_customorigin"
+							"ControlPointEntities"
+							{
+								"TARGET" "attach_hitloc"
+								"TARGET" "attach_hitloc"
+								"TARGET" "attach_hitloc" //CP2
+							}
+					}
+				"AttachEffect"
+					{
+						"Target"	"TARGET"
+						"EffectName"	"particles/units/heroes/hero_bane/bane_nightmare_inkblots_thick.vpcf"
+						"EffectAttachType"	"follow_origin"
+					}
+	
+				}
+	
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"-15"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"-35"
+					"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"	"-60"
+				}
+	
+			}
+	
+			"modifier_quantum_nulldamage_creep"
+			{
+				"IsDebuff"	"true"
+				"Duration"	"20"
+				"OnCreated"
+				{
+					"AttachEffect"
+					{
+						"Target"	"TARGET"
+						"EffectName"	"particles/units/heroes/hero_bane/bane_nightmare_worms.vpcf"
+						"EffectAttachType"      "attach_customorigin"
+							"ControlPointEntities"
+							{
+								"TARGET" "attach_hitloc"
+								"TARGET" "attach_hitloc"
+								"TARGET" "attach_hitloc" //CP2
+							}
+					}
+					"AttachEffect"
+					{
+						"Target"	"TARGET"
+						"EffectName"	"particles/units/heroes/hero_bane/bane_nightmare_inkblots_thick.vpcf"
+						"EffectAttachType"	"follow_origin"
+					}
+	
+				}
+	
+				"Properties"
+				{
+					"MODIFIER_STATE_DISARMED"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"-15"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"-35"
+					"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"	"-60"
+				}
+	
+			}
+	
+		}
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"quantum_null_duration_troll"	"15"
+			}
+	
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"quantum_null_duration_creep"	"20"
 			}
 	
 		}
@@ -6001,145 +6304,7 @@
 		}
 	
 	}
-	"ability_mage_quantum_nulldamage"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
-		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityTextureName"	"ability_mage_quantumnulldamage"
-		"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
-		"AbilityCastPoint"	"0.0 0.0 0.0 0.0"
-		"AbilityCooldown"	"30"
-		"AbilityCastRange"	"600"
-		"AbilityManaCost"	"30"
-		"MaxLevel"	"1"
-		"precache"
-		{
-			"particle_folder"	"particles/units/heroes/hero_bounty_hunter"
-			"particle_folder"	"particles/units/heroes/hero_tinker"
-			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_necrolyte.vsndevts"
-		}
-	
-		"OnSpellStart"
-		{
-			"TrackingProjectile"
-			{
-				"Target"	"TARGET"
-				"EffectName"	"particles/units/heroes/hero_tinker/tinker_missile.vpcf"
-				"Dodgeable"	"false"
-				"ProvidesVision"	"false"
-				"MoveSpeed"	"1000"
-			}
-	
-		}
-	
-		"OnProjectileHitUnit"
-		{
-			"ApplyModifier"
-			{
-				"ModifierName"	"modifier_quantum_nulldamage_troll"
-				"Target"
-				{
-					"Center"	"TARGET"
-					"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Types"	"DOTA_UNIT_TARGET_HERO"
-				}
-	
-				"Duration"	"%quantum_null_duration_troll"
-			}
-	
-			"ApplyModifier"
-			{
-				"ModifierName"	"modifier_quantum_nulldamage_creep"
-				"Target"
-				{
-					"Center"	"TARGET"
-					"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Types"	"DOTA_UNIT_TARGET_CREEP"
-				}
-	
-				"Duration"	"%quantum_null_duration_creep"
-			}
-			"FireSound"
-			{
-				"EffectName"	"Hero_Necrolyte.DeathPulse"
-				"Target"		"TARGET"
-			}
-	
-		}
-	
-		"Modifiers"
-		{
-			"modifier_quantum_nulldamage_troll"
-			{
-				"IsDebuff"	"true"
-				"Duration"	"15"
-				"OnCreated"
-				{
-					"AttachEffect"
-					{
-						"Target"	"TARGET"
-						"EffectName"	"particles/units/heroes/hero_bounty_hunter/bounty_hunter_track_shield.vpcf"
-						"EffectAttachType"	"follow_overhead"
-					}
-	
-				}
-	
-				"Properties"
-				{
-					"MODIFIER_STATE_DISARMED"	"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"-15"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"-35"
-					"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"	"-60"
-				}
-	
-			}
-	
-			"modifier_quantum_nulldamage_creep"
-			{
-				"IsDebuff"	"true"
-				"Duration"	"20"
-				"OnCreated"
-				{
-					"AttachEffect"
-					{
-						"Target"	"TARGET"
-						"EffectName"	"particles/units/heroes/hero_bounty_hunter/bounty_hunter_track_shield.vpcf"
-						"EffectAttachType"	"follow_overhead"
-					}
-	
-				}
-	
-				"Properties"
-				{
-					"MODIFIER_STATE_DISARMED"	"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"-15"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"-35"
-					"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"	"-60"
-				}
-	
-			}
-	
-		}
-	
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_FLOAT"
-				"quantum_null_duration_troll"	"15"
-			}
-	
-			"02"
-			{
-				"var_type"	"FIELD_FLOAT"
-				"quantum_null_duration_creep"	"20"
-			}
-	
-		}
-	
-	}
+
 	"ability_mage_reducefood"
 	{
 		"BaseClass"	"ability_datadriven"
@@ -9154,17 +9319,31 @@
 	"ability_quick_build_armory"
 	{
 		"BaseClass"	"ability_datadriven"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityTextureName"	"ability_building_quickbuildarmory"
+		"MaxLevel"	"1"
 	}
 	"ability_quick_build_wd_hut"
 	{
 		"BaseClass"	"ability_datadriven"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityTextureName"	"ability_building_quickbuildwitchdoctorshut"
+		"MaxLevel"	"1"
 	}
 	"ability_quick_build_workshop"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"ability_building_quickbuildworkshop"
+		"MaxLevel"	"1"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"custom_functions_ability.lua"
+				"Function"	"QuickCraftWorkshop"
+			}
+	
+		}
 	}
 	"ability_quick_drop"
 	{

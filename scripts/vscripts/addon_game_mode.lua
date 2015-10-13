@@ -409,6 +409,7 @@ function Precache( context )
 		"npc_bush_herb_purple",
 		"npc_bush_thistle",
 		"npc_bush_stash",
+		"npc_bush_mushroom",
 		"npc_bush_river",
 		"npc_bush_thief",
 		"npc_bush_scout",}
