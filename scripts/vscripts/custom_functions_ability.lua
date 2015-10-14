@@ -547,7 +547,7 @@ function DepressionOrbHit( event )
     local distanceFromOrb = math.sqrt(math.pow(orbLocation.x - targetLocation.x, 2) + math.pow(orbLocation.y - targetLocation.y, 2))
 
     local distanceFromOrb = distanceFromOrb - 25 --the value seems to be offset by about 25 units, likly due to using caster location as starting location.
-    print(distanceFromOrb)
+
     if distanceFromOrb <= event.radius_small + 25 then
         target:RemoveModifierByName("modifier_depress")
         target:RemoveModifierByName("modifier_depress_mana_loss")
@@ -1810,6 +1810,25 @@ function Omnicure(keys)
             unit:RemoveModifierByName("modifier_disease1")
             unit:RemoveModifierByName("modifier_disease2")
             unit:RemoveModifierByName("modifier_disease3")
+    end
+end
+
+function SpiritWalkStart( event )
+    event = event.ability
+    caster = event.caster
+    casterOrigin = caster:GetAbsOrigin()
+    print("Start")
+    ability.spirit = CreateUnitByName( "npc_hero_priest_sage_spirit", casterOriginO, false, caster, caster, caster:GetTeamNumber() )
+end
+
+function SpiritWalkEnd( event )
+    damage = event.attack_damage
+    if damage > 10 or damage == -1 then
+        ability = event.ability
+        ability.spirit:ForceKill(true)
+        caster = event.caster
+        caster:RemoveModifierByName("ability_priest_spiritwalk_channel")
+        print("End")
     end
 end
 

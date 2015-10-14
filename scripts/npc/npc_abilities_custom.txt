@@ -936,7 +936,7 @@
 	"ability_beastmaster_ram"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELED | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
 		"AbilityTextureName"	"ability_beastmaster_ram"
@@ -9316,6 +9316,131 @@
 		}
 	
 	}
+	"ability_priest_spiritwalk"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"ability_priest_spiritwalk"
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+		"AbilityChannelTime"			"90"
+
+		"AbilityCooldown"				"90"
+		"AbilityManaCost"				"40"
+
+		"MaxLevel" 						"1"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"day_vision"		"-1050"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"night_vision"		"-600"
+			}
+		}
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
+				"Function"		"SpiritWalkStart"
+			}
+		}
+
+		"OnChannelFinish"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
+				"Function"		"SpiritWalkEnd"
+
+				"attack_damage" "-1"
+			}
+		}
+
+		"Modifiers"
+		{
+			"ability_priest_spiritwalk_channel"
+			{
+				"IsHidden"			"0"
+				"IsBuff"			"1"
+				
+				"OnTakeDamage"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
+						"Function"		"SpiritWalkEnd"
+
+						"attack_damage" "%attack_damage"
+					}
+				}
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_BONUS_DAY_VISION" 	"%day_vision"
+				    "MODIFIER_PROPERTY_BONUS_NIGHT_VISION" 	"%night_vision" 
+				}
+			}
+		}
+
+	}
+	"ability_priest_spiritbreak"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"ability_priest_spiritbreak"
+		"MaxLevel" 						"1"
+	}
+	"ability_priest_tearspirit"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"ability_priest_tearspirit"
+		"MaxLevel" 						"1"
+	}
+	"ability_priest_return"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"ability_priest_return"
+		"MaxLevel" 						"1"
+	}
+	"ability_priest_spiritpassive"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"MaxLevel" 						"1"
+
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_priest_spiritpassive"
+				"Target" 		"CASTER"
+			}
+		}
+
+		"Modifiers"
+		{
+			"modifier_priest_spiritpassive"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+		
+				"States"
+				{
+					"MODIFIER_STATE_MAGIC_IMMUNE"		"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_ATTACK_IMMUNE"		"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_INVISIBLE"			"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+		}
+	}
+
+
 	"ability_quick_build_armory"
 	{
 		"BaseClass"	"ability_datadriven"
@@ -10734,79 +10859,105 @@
 	}
 	"ability_thief_camouflage"
 	{
-		"BaseClass"	"ability_datadriven"
+		"BaseClass"				"ability_datadriven"
 		"AbilityTextureName"	"ability_thief_camouflage"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_TREE"
-		"AbilityCastRange"	"150"
-		"AbilityCastPoint"	"0.0"
-		"AbilityCooldown"	"30.0"
-		"AbilityManaCost"	"15"
-		"RequiredLevel"	"3"
-		"MaxLevel"	"1"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+
+		"AbilityCooldown"				"0"
+		"AbilityManaCost"				"20"
+
 		"precache"
 		{
 			"soundfile"				"sounds/weapons/hero/treant/natures_guise.vsnd"
 		}
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"heat_increase"		"8"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"heat_interval"		"35"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"stat_multiplier"	"3"
+			}
+			"04"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"duration"			"-1"
+			}
+		}
+
 	
 		"OnSpellStart"
 		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"CloakCamouflageInvis"
-			}
 			"FireSound"
 			{
-				"EffectName"			"Hero_Treant.NaturesGuise.On"
-				"Target"				"CASTER"
+				"EffectName"	"Hero_Treant.NaturesGuise.On"
+				"Target"		"CASTER"
 			}
-	
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_thief_camouflage"
+				"Target" 		"CASTER"
+				"Duration"		"%duration"
+			}
 		}
-	
+		
+		"OnUnitMoved"
+		{
+			"RemoveModifier"
+			{
+				"ModifierName"	"modifier_thief_camouflage"
+				"Target" 		"CASTER"
+			}
+		}
+
 		"Modifiers"
 		{
-			"modifier_coat_camouflage"
+			"modifier_thief_camouflage"
 			{
-				"Passive"	"1"
-				"IsHidden"	"1"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%all_stats"
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%all_stats"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%all_stats"
-				}
-	
-				"ThinkInterval"	"%tick_rate"
+				"IsHidden"	"0"
+				"IsBuff"	"1"
+
+				"EffectName"	"particles/status_fx/status_effect_medusa_stone_gaze.vpcf"
+
+				"ThinkInterval"  "3.0"
 				"OnIntervalThink"
 				{
 					"RunScript"
 					{
 						"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-						"Function"	"AddHeat"
-						"Heat"	"%heat"
+						"Function"		"AddHeat"
+						"Heat"			"-2"
 					}
-	
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+						"Function"		"RemoveMana"
+						"ManaRemoved"	"2"
+					}
+					"Damage"
+					{
+						"Target"		"TARGET"
+						"Type"			"DAMAGE_TYPE_MAGICAL"
+						"Damage"		"2"
+					}
 				}
-	
-				"EffectName"	"particles/status_fx/status_effect_medusa_stone_gaze.vpcf"
-			}
-	
-			"modifier_coat_camouflage_invis"
-			{
-				"IsHidden"	"0"
-				"IsPurgable"	"0"
-				"IsDebuff"	"0"
+
 				"States"
 				{
 					"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_ENABLED"
 				}
-	
 			}
-	
 		}
-	
 	}
 	"ability_thief_cloak"
 	{
