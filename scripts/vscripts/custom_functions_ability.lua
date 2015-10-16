@@ -577,6 +577,7 @@ function DepressionAura( event )
     target:ReduceMana(mana)
 end
 
+--ISNT WORKING, CANT GETPLAYERID
 function Metronome(keys)
     local caster = keys.caster
     local target = keys.target
@@ -610,7 +611,8 @@ function Metronome(keys)
     manaburn:SetLevel(1)
     impale:SetLevel(1)
     poisonthistle:SetLevel(1)
-
+	--start tick noise
+	target:EmitSound("Tick")
     if dieroll <=49 then
         Timers:CreateTimer(0.1, function()
                 dummy:CastAbilityOnTarget(target, frostnova, caster:GetPlayerID())
@@ -625,12 +627,14 @@ function Metronome(keys)
         dummy.startTime = GameRules:GetGameTime()
         dummy:SetContextThink("dummy_thinker"..dummy:GetEntityIndex(), MetronomeSpell, 0.7)
     end
+	target:StopSound("tick")
+	--should stop playing when metronome script finishes
 end
 
 function MetronomeSpell(dummy)
-    local target = dummy.tar
-    local duration = dummy.dur
-    local caster = dummy.cas
+    local target = dummy.target
+    local duration = dummy.duration
+    local caster = dummy.caster
 
     local frostnova = dummy:FindAbilityByName("ability_metronome_frostnova")
     local cyclone = dummy:FindAbilityByName("ability_metronome_cyclone")

@@ -4732,7 +4732,10 @@
 		"MaxLevel"	"1"
 		"precache"
 		{
-			"soundfile"			"sounds/weapons/hero/lina/lightstrikearray.vsnd"
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_lina.vsndevts"
+			"particle"			"particles/units/heroes/hero_lina/lina_spell_light_strike_array.vpcf"
+			"particle"			"particles/units/heroes/hero_lina/lina_spell_light_strike_array_explosion.vpcf"
+			"particle"			"particles/units/heroes/hero_invoker/invoker_sun_strike_flame.vpcf"
 		}
 		"OnSpellStart"
 		{
@@ -4759,16 +4762,35 @@
 	
 			}
 	
-			"FireEffect"
+		"FireEffect"
 			{
-				"TargetPoint"	"POINT"
-				"EffectName"	"generic_aoe_explosion_sphere_1_a"
-				"EffectAttachType"	"follow_origin"
-				"EffectRadius"	"260"
-				"EffectDurationScale"	"1"
-				"EffectLifeDurationScale"	"1"
-				"EffectColorA"	"25 50 200"
-				"EffectColorB"	"25 50 200"
+			"TargetPoint" "CASTER"
+			"EffectName" "particles/units/heroes/hero_lina/lina_spell_light_strike_array.vpcf"
+			"EffectAttachType" "world_origin"
+				"ControlPoints"
+				{
+				"01" "%radius 2 %radius*2"
+				}
+			}
+					"FireEffect"
+			{
+			"TargetPoint" "CASTER"
+			"EffectName" "particles/units/heroes/hero_lina/lina_spell_light_strike_array_explosion.vpcf"
+			"EffectAttachType" "world_origin"
+				"ControlPoints"
+				{
+				"01" "%radius 2 %radius*2"
+				}
+			}
+					"FireEffect"
+			{
+			"TargetPoint" "CASTER"
+			"EffectName" "particles/units/heroes/hero_invoker/invoker_sun_strike_flame.vpcf"
+			"EffectAttachType" "world_origin"
+				"ControlPoints"
+				{
+				"01" "%radius 2 %radius*2"
+				}
 			}
 			"FireSound"
 			{
@@ -4890,10 +4912,61 @@
 		"MaxLevel"	"1"
 		"precache"
 		{
-			"soundfile"		"sounds/weapons/hero/crystal_maiden/crystal_nova.vsnd"
+			"soundfile" 		"soundevents/game_sounds_heroes/game_sounds_crystalmaiden.vsndevts"
+			"particle" 			"particles/units/heroes/hero_crystalmaiden/maiden_crystal_nova.vpcf"
+			"particle" 			"particles/econ/items/crystal_maiden/crystal_maiden_cowl_of_ice/maiden_crystal_nova_f_cowlofice.vpcf"
+			"particle" 			"particles/econ/items/crystal_maiden/crystal_maiden_cowl_of_ice/maiden_crystal_nova_e_cowlofice.vpcf"
+			"particle" 			"particles/econ/items/crystal_maiden/crystal_maiden_cowl_of_ice/maiden_crystal_nova_flash_b_cowlofice.vpcf"
+			"particle" 			"particles/generic_gameplay/generic_slowed_cold.vpcf"
 		}
 		"OnSpellStart"
 		{
+			"FireSound"
+			{
+			"EffectName" "Hero_Crystal.CrystalNova"
+			"Target" "CASTER"
+			}
+			"FireEffect"
+			{
+			"TargetPoint" "POINT"
+			"EffectName" "particles/units/heroes/hero_crystalmaiden/maiden_crystal_nova.vpcf"
+			"EffectAttachType" "world_origin"
+				"ControlPoints"
+				{
+				"01" "%radius 2 %radius*2"
+				}
+			}
+			"FireEffect"
+			{
+			"TargetPoint" "POINT"
+			"EffectName" "particles/econ/items/crystal_maiden/crystal_maiden_cowl_of_ice/maiden_crystal_nova_f_cowlofice.vpcf"
+			"EffectAttachType" "world_origin"
+				"ControlPoints"
+				{
+				"01" "%radius 2 %radius*2"
+				}
+			}
+			"FireEffect"
+			{
+			"TargetPoint" "POINT"
+			"EffectName" "particles/econ/items/crystal_maiden/crystal_maiden_cowl_of_ice/maiden_crystal_nova_e_cowlofice.vpcf"
+			"EffectAttachType" "world_origin"
+				"ControlPoints"
+				{
+				"01" "%radius 2 %radius*2"
+				}
+			}
+			"FireEffect"
+			{
+			"TargetPoint" "POINT"
+			"EffectName" "particles/econ/items/crystal_maiden/crystal_maiden_cowl_of_ice/maiden_crystal_nova_flash_b_cowlofice.vpcf"
+			"EffectAttachType" "world_origin"
+				"ControlPoints"
+				{
+				"01" "%radius 2 %radius*2"
+				}
+			}
+			
 			"ActOnTargets"
 			{
 				"Target"
@@ -4935,6 +5008,8 @@
 		{
 			"modifier_cold"
 			{
+			"EffectName" "particles/generic_gameplay/generic_slowed_cold.vpcf"
+			"StatusEffectName" "particles/status_fx/status_effect_frost_lich.vpcf"
 				"IsDebuff"	"1"
 				"IsPurgable"	"0"
 				"Properties"
@@ -4950,7 +5025,7 @@
 					{
 						"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
 						"Function"	"AddHeat"
-						"Heat"	"-1"
+						"Heat"	"-20"
 					}
 	
 				}
@@ -4958,7 +5033,21 @@
 			}
 	
 		}
+	"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"Moveslow"	"10"
+			}
 	
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"AttackSlow"	"10"
+			}
+	
+		}
 	}
 	"ability_mage_giganegativeblast"
 	{
@@ -4976,6 +5065,7 @@
 		"MaxLevel"	"1"
 		"precache"
 		{
+			"particle"			"particle/negative_blast.vpcf"
 			"particle_folder"	"particles/units/heroes/hero_night_stalker"
 			"particle_folder"	"particles/units/heroes/hero_bane"
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_oracle.vsndevts"
@@ -5008,6 +5098,19 @@
 					"Target" "TARGET"
 					"EffectAttachType"      "follow_origin"
 				}
+				"FireEffect"
+				{
+					"EffectName" 		"particles/negative_blast.vpcf"
+					"Target" "TARGET"
+					"EffectAttachType"      "attach_customorigin"
+							"ControlPointEntities"
+							{
+								"TARGET" "attach_hitloc"
+								"TARGET" "attach_hitloc"
+								"TARGET" "attach_hitloc" //CP2
+							}
+				}
+				
 		"FireSound"
 			{
 				"EffectName"	"Hero_Nightstalker.Void"
@@ -5357,53 +5460,103 @@
 	"ability_mage_maddeningdischarge"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityTextureName"	"ability_mage_seizures"
+		"AbilityTextureName"	"ability_mage_maddeningdischarge"
 		"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
-		"AbilityCastPoint"	"1"
-		"AbilityCooldown"	"8"
-		"AbilityCastRange"	"500"
-		"AbilityManaCost"	"20"
+		"AbilityCastPoint"	"0.2"
+		"AbilityCooldown"	"30"
+		"AbilityCastRange"	"600"
+		"AbilityManaCost"	"30"
 		"MaxLevel"	"1"
 		"precache"
 		{
 			"particle_folder"	"particles/units/heroes/hero_night_stalker"
+			"particle_folder"	"particles/units/heroes/hero_bane"
+			"particle"			"particles/econ/items/queen_of_pain/qop_navi_mace/queen_base_attack_navi_mace.vpcf"
+			"particle"			"particles/econ/items/antimage/antimage_weapon_basher_ti5_gold/antimage_ambient_skullbasher_f_gold.vpcf"			
 			"particle_folder"	"particles/units/heroes/hero_enigma"
-			"soundfile"	"sounds/weapons/hero/silencer/last_word_target.vsnd"
+			"particle"			"particles/units/heroes/hero_witchdoctor/witchdoctor_ward_skull.vpcf"
+			"particle"			"particles/econ/items/drow/drow_head_mania/mask_of_madness_mania_pulse.vpcf"
+			"particle"			"particles/generic_gameplay/generic_stunned.vpcf"
+			"particle"			"particles/econ/items/shadow_fiend/sf_desolation/sf_base_attack_desolation_launch_ember.vpcf"
+			"particle"			"particles/units/heroes/hero_templar_assassin/templar_assassin_meld_attack_plasma.vpcf"
+			"particle"			"particles/units/heroes/hero_slark/slark_dark_pact_pulses_edge_sml.vpcf"
+			"particle"			"particles/econ/items/shadow_fiend/sf_desolation/sf_base_attack_desolation_arc.vpcf"
+			"particle"			"particles/units/heroes/hero_chaos_knight/chaos_knight_chaos_bolt_impact_burst.vpcf"
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_necrolyte.vsndevts"
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_bane.vsndevts"
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_nightstalker.vsndevts"
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_shadow_demon.vsndevts"
+			"soundfile"			"sounds/weapons/hero/silencer/last_word_target.vsnd"
 		}
 	
 		"OnSpellStart"
 		{
+			"TrackingProjectile"
+			{
+				"Target"	"TARGET"
+				"EffectName"	"particles/econ/items/queen_of_pain/qop_navi_mace/queen_base_attack_navi_mace.vpcf"
+				"Dodgeable"	"false"
+				"ProvidesVision"	"false"
+				"MoveSpeed"	"1500"
+			}
+		}
+	
+		"OnProjectileHitUnit"
+		{
+				"FireSound"
+				{
+					"EffectName"	 "Hero_Silencer.LastWord.Target"
+					"Target"	"TARGET"
+				}
+			"FireEffect"
+				{
+					"EffectName" "particles/units/heroes/hero_chaos_knight/chaos_knight_chaos_bolt_impact_burst.vpcf"
+					"Target" "TARGET"
+					"EffectAttachType"      "follow_origin"
+				}
 			"ApplyModifier"
 			{
-				"ModifierName"	"modifier_seizures"
-				"Duration"	"%duration"
+				"ModifierName"	"modifier_maddeningdischarge"
 				"Target"
 				{
-					"Target"	"TARGET"
+					"Center"	"TARGET"
 					"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+					"Types"	"DOTA_UNIT_TARGET_HERO"
 				}
 	
+				"Duration"	"%duration"
 			}
 	
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_maddeningdischarge"
+				"Target"
+				{
+					"Center"	"TARGET"
+					"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types"	"DOTA_UNIT_TARGET_CREEP"
+				}
+	
+				"Duration"	"%duration"
+			}
 			"FireSound"
 			{
-				"EffectName"	"Hero_Silencer.LastWord.Target"
-				"Target"	"TARGET"
+				"EffectName"	"Hero_Necrolyte.ProjectileImpact"
+				"Target"		"TARGET"
 			}
 	
 		}
 	
 		"Modifiers"
 		{
-			"modifier_seizures"
+			"modifier_maddeningdischarge"
 			{
 				"IsDebuff"	"1"
 				"IsPurgable"	"1"
-				"EffectName"	"particles/units/heroes/hero_alchemist/alchemist_acid_spray_debuff.vpcf"
+				"EffectName"	"particles/econ/items/antimage/antimage_weapon_basher_ti5_gold/antimage_ambient_skullbasher_f_gold.vpcf"
 				"OnCreated"
 				{
 					"AttachEffect"
@@ -5411,10 +5564,27 @@
 						"Target"	"TARGET"
 						"EffectName"	"particles/econ/wards/bane/bane_ward/bane_ward_droplets.vpcf"
 						"EffectAttachType"	"follow_overhead"
+					}					
+					"AttachEffect"
+					{
+						"Target"	"TARGET"
+						"EffectName"	"particles/econ/items/shadow_fiend/sf_desolation/sf_base_attack_desolation_arc.vpcf"
+						"EffectAttachType"	"follow_overhead"
 					}
-	
-				}
-	
+					"AttachEffect"
+					{
+						"Target"	"TARGET"
+						"EffectName"	"particles/econ/items/shadow_fiend/sf_desolation/sf_base_attack_desolation_launch_ember.vpcf"
+						"EffectAttachType"	"follow_origin"
+					}
+					"AttachEffect"
+					{
+						"Target"	"TARGET"
+						"EffectName"	"particles/units/heroes/hero_templar_assassin/templar_assassin_meld_attack_plasma.vpcf"
+						"EffectAttachType"	"follow_origin"
+					}
+
+				}	
 				"ThinkInterval"	"0.5"
 				"OnIntervalThink"
 				{
@@ -5425,7 +5595,7 @@
 						{
 							"ApplyModifier"
 							{
-								"ModifierName"	"modifier_seizure"
+								"ModifierName"	"modifier_dischargestun"
 								"Target"	"TARGET"
 								"Duration"	"0.1"
 							}
@@ -5433,6 +5603,12 @@
 							"FireSound"
 							{
 								"EffectName"	"Hero_Enigma.MaleficeTick"
+								"Target"	"TARGET"
+							}
+							"Damage"
+							{
+								"Type"	"DAMAGE_TYPE_MAGICAL"
+								"Damage"	"15"
 								"Target"	"TARGET"
 							}
 	
@@ -5444,12 +5620,13 @@
 	
 			}
 	
-			"modifier_seizure"
+			"modifier_dischargestun"
 			{
 				"Duration"	"0.1"
-				"EffectName"	"generic_stunned"
+				"EffectName"	"particles/generic_gameplay/generic_stunned.vpcf"
 				"EffectAttachType"	"follow_overhead"
 				"Duration"	"0.1"
+				"IsDebuff"	"1"
 				"OverrideAnimation"	"ACT_DOTA_DISABLED"
 				"States"
 				{
@@ -5471,12 +5648,17 @@
 			"02"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"seizure_ministun"	"0.1"
+				"modifier_dischargestun"	"0.1"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"damage"	"15"
 			}
 	
 		}
-	
 	}
+	
 	"ability_mage_magefire"
 	{
 		"BaseClass"	"ability_datadriven"
@@ -5513,14 +5695,16 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
 		"AbilityTextureName"	"ability_mage_metronome"
-		"AbilityCastPoint"	"1.0"
+		"AbilityCastPoint"	"0.5"
 		"AbilityCooldown"	"45"
 		"AbilityCastRange"	"700"
 		"AbilityManaCost"	"20"
 		"MaxLevel"	"1"
 		"precache"
 		{
-			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_faceless_void.vsndevts"
+			"particle"	"particles/metronome.vpcf"
+			"soundfile"	"soundevents/tick.vsndevts"
+			"soundfile"	"soundevents/game_sounds_items.vsndevts"
 		}
 		"OnSpellStart"
 		{
@@ -5531,12 +5715,42 @@
 			}
 			"FireSound"
 			{
-				"EffectName"	"Hero_FacelessVoid.Chronosphere.Tick"
-				"Target"		"CASTER"			
+				"EffectName"	"DOTA_Item.HotD.Activate"
+				"Target"		"TARGET"			
+			}	
+			
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_metronome"
+				"Target"
+				{
+					"Center"	"TARGET"
+					"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types"	"DOTA_UNIT_TARGET_HERO"
+				}
+	
+	
+				"Duration"	"10"
 			}
-	
 		}
+		"Modifiers"
+		{
+			"modifier_metronome"
+			{
+				"IsDebuff"	"1"
+				"IsHidden"  "1"
+				"OnCreated"
+				{
+					"AttachEffect"
+					{
+						"Target"	"TARGET"
+						"EffectName"	"particles/metronome.vpcf"
+						"EffectAttachType"	"follow_origin"
+					}
 	
+				}
+			}
+		}
 	}
 	"ability_mage_negativeblast"
 	{
@@ -5554,6 +5768,7 @@
 		"MaxLevel"	"1"
 		"precache"
 		{
+			"particle"			"particles/negative_blast.vpcf"
 			"particle_folder"	"particles/units/heroes/hero_nightstalker"
 			"particle_folder"	"particles/units/heroes/hero_bane"
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_oracle.vsndevts"
@@ -5580,11 +5795,24 @@
 	
 		"OnProjectileHitUnit"
 		{
+
 		"FireEffect"
 				{
 					"EffectName" 		"particles/units/heroes/hero_night_stalker/nightstalker_void_hit.vpcf"
 					"Target" "TARGET"
 					"EffectAttachType"      "follow_origin"
+				}
+						"FireEffect"
+				{
+					"EffectName" 		"particles/negative_blast.vpcf"
+					"Target" "TARGET"
+					"EffectAttachType"      "attach_customorigin"
+							"ControlPointEntities"
+							{
+								"TARGET" "attach_hitloc"
+								"TARGET" "attach_hitloc"
+								"TARGET" "attach_hitloc" //CP2
+							}
 				}
 		"FireSound"
 			{
@@ -5764,12 +5992,12 @@
 	"ability_mage_nulldamage"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityTextureName"	"ability_mage_nulldamage"
 		"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
-		"AbilityCastPoint"	"0.0 0.0 0.0 0.0"
+		"AbilityCastPoint"	"0.0"
 		"AbilityCooldown"	"30"
 		"AbilityCastRange"	"600"
 		"AbilityManaCost"	"30"
@@ -6318,7 +6546,9 @@
 		"MaxLevel"	"1"
 		"precache"
 		{
-			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_ogre_magi.vsndevts"
+			"particle"			"particles/units/heroes/hero_enchantress/enchantress_enchant_transform.vpcf"
+			"particle"			"particles/units/heroes/hero_oracle/oracle_fatesedict_hit.vpcf"
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_doombringer.vsndevts"
 		}
 		"OnSpellStart"
 		{
@@ -6329,9 +6559,22 @@
 			}
 			"FireSound"
 			{
-				"EffectName"		 "Hero_OgreMagi.Bloodlust.Cast"
+				"EffectName"		 "Hero_DoomBringer.LvlDeath"
 				"Target"			 "TARGET"	
 			}
+			"FireEffect"
+			{
+				"EffectName" "particles/units/heroes/hero_enchantress/enchantress_enchant_transform.vpcf"
+				"Target" "TARGET"
+				"EffectAttachType" "follow_origin"
+			}
+			"FireEffect"
+			{
+				"EffectName" "particles/units/heroes/hero_oracle/oracle_fatesedict_hit.vpcf"
+				"Target" "TARGET"
+				"EffectAttachType" "follow_origin"
+			}
+			
 		}
 	
 	}
@@ -6346,10 +6589,46 @@
 		"MaxLevel"	"1"
 		"precache"
 		{
+			"particle"			"particles/units/heroes/hero_lina/lina_base_attack.vpcf"
+			"particle"			"particles/units/heroes/hero_lina/lina_taunt_01_d.vpcf"
+			"particle"			"particles/neutral_fx/roshan_slam_debris_small.vpcf"
 			"soundfile"			"sounds/weapons/hero/skeleton_king/hellfire_blast.vsnd"
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_dragon_knight.vsndevts"
 		}
 		"OnSpellStart"
 		{
+		"FireEffect"
+			{
+			"Target"
+				{
+				"Center" "CASTER"
+				}
+				"EffectName" "particles/units/heroes/hero_lina/lina_taunt_01_d.vpcf"
+				"EffectAttachType" "follow_origin"
+			}	
+			"FireEffect"
+			{
+			"Target"
+				{
+				"Center" "CASTER"
+				}
+				"EffectName" "particles/units/heroes/hero_doom_bringer/doom_loadout_char.vpcf"
+				"EffectAttachType" "follow_origin"
+			}
+						"FireEffect"
+			{
+			"Target"
+				{
+				"Center" "CASTER"
+				}
+				"EffectName" "particles/neutral_fx/roshan_slam_debris_small.vpcf"
+				"EffectAttachType" "follow_origin"
+			}
+		"FireSound"
+			{
+				"EffectName"		"Hero_DragonKnight.BreathFire"
+				"Target"			"CASTER"
+			}
 			"ActOnTargets"
 			{
 				"Target"
@@ -6361,8 +6640,20 @@
 					"MaxTargets"	"6"
 					"Random"	"true"
 				}
-	
 				"Action"
+				{
+					"TrackingProjectile"
+					{
+						"Target"	"TARGET"
+						"EffectName"	"particles/units/heroes/hero_lina/lina_base_attack.vpcf"
+						"Dodgeable"	"false"
+						"ProvidesVision"	"false"
+						"MoveSpeed"	"600"
+					}	
+				}
+			}
+		}
+				"OnProjectileHitUnit"
 				{
 					"Damage"
 					{
@@ -6384,18 +6675,7 @@
 						}
 	
 					}
-	
 				}
-	
-			}
-	
-		}
-		"FireSound"
-		{
-			"EffectName"		"Hero_SkeletonKing.Hellfire_Blast"
-			"Target"		"CASTER"
-		}
-	
 	}
 	"ability_mage_stonethrow"
 	{

@@ -1600,6 +1600,28 @@
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
+		
+		"Custom"
+		{
+			"ModelOffsets"
+			{
+				"Origin"
+				{
+					"x"	"0"
+					"y"	"0"
+					"z"	"62"
+				}
+	
+				"Angles"
+				{
+					"x"	"0"
+					"y"	"0"
+					"z"	"0"
+				}
+	
+			}
+	
+		}
 	}
 	"item_boat_flint"
 	{
@@ -6218,7 +6240,25 @@
 		"WorldDropSound"	"Item.DropGemWorld"
 		"Custom"
 		{
-			"ModelScale"	"2.5"
+			"ModelScale"	"3"
+			"ModelOffsets"
+			{
+				"Origin"
+				{
+					"x"	"0"
+					"y"	"10"
+					"z"	"0"
+				}
+	
+				"Angles"
+				{
+					"x"	"0"
+					"y"	"0"
+					"z"	"0"
+				}
+	
+			}
+	
 		}
 	
 	}
