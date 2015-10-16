@@ -9601,7 +9601,7 @@
 		"BaseClass"             		"ability_datadriven"
 		"AbilityTextureName"			"ability_priest_spiritwalk"
 
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityChannelTime"			"90"
 
 		"AbilityCooldown"				"90"
@@ -9614,29 +9614,62 @@
 			"01"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"day_vision"		"-1050"
+				"vision"			"200"
 			}
 			"02"
 			{
+				"var_type"			"FIELD_FLOAT"
+				"drain_interval"	"3.0"
+			}
+			"03"
+			{
 				"var_type"			"FIELD_INTEGER"
-				"night_vision"		"-600"
+				"energy_rate"		"1"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"per_unit"			"1000"
 			}
 		}
 
 		"OnSpellStart"
 		{
-			"RunScript"
+			"ApplyModifier"
 			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
-				"Function"		"SpiritWalkStart"
+				"ModifierName"	"modifier_priest_spiritwalk"
+				"Target" 		"CASTER"
+			}
+			"SpawnUnit"
+			{
+				"UnitName"		"npc_hero_priest_sage_spirit"
+				"Target" 		"CASTER"
+				"Duration"		"90"
+				"UnitCount"		"1"
+				"SpawnRadius"	"10"
+				"OnSpawn"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"custom_functions_item.lua"
+						"Function"		"SpiritWalkStart"
+
+						"vision"		"%vision"
+					}
+				}
 			}
 		}
 
 		"OnChannelFinish"
 		{
+			"RemoveModifier"
+			{
+				"ModifierName"	"ability_priest_spiritwalk_channel"
+				"Target" 		"CASTER"
+			}
 			"RunScript"
 			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
+				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
 				"Function"		"SpiritWalkEnd"
 
 				"attack_damage" "-1"
@@ -9645,11 +9678,24 @@
 
 		"Modifiers"
 		{
-			"ability_priest_spiritwalk_channel"
+			"modifier_priest_spiritwalk"
 			{
 				"IsHidden"			"0"
 				"IsBuff"			"1"
 				
+				"ThinkInterval"  "%drain_interval"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+						"Function"		"SpiritWalkThink"
+
+						"energy_rate"	"%energy_rate"
+						"per_unit"		"%per_unit"
+					}
+				}
+
 				"OnTakeDamage"
 				{
 					"RunScript"
@@ -9660,12 +9706,6 @@
 						"attack_damage" "%attack_damage"
 					}
 				}
-
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_BONUS_DAY_VISION" 	"%day_vision"
-				    "MODIFIER_PROPERTY_BONUS_NIGHT_VISION" 	"%night_vision" 
-				}
 			}
 		}
 
@@ -9674,19 +9714,115 @@
 	{
 		"BaseClass"             		"ability_datadriven"
 		"AbilityTextureName"			"ability_priest_spiritbreak"
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+
+		"AOERadius"						"%radius"
+
 		"MaxLevel" 						"1"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"radius"			"250"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"movement_speed"	"-30"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"attack_speed"		"-25"
+			}
+		}
+
+		"Modifiers"
+		{
+			"modifier_priest_spiritbreak"
+			{
+				"Passive"			"1"
+				"Aura"			"aura_priest_spiritbreak"
+				"Aura_Radius"	"%radius"
+				"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_BOTH"
+				"Aura_Types"	"DOTA_UNIT_TARGET_HERO"
+
+				"Aura_ApplyToCaster"	"0"
+			}
+			"aura_priest_spiritbreak"
+			{
+				"IsDebuff"	"1"
+				"IsHidden"	"0"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%attack_speed"
+				    "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%movement_speed" 
+				}
+			}
+		}
 	}
 	"ability_priest_tearspirit"
 	{
 		"BaseClass"             		"ability_datadriven"
 		"AbilityTextureName"			"ability_priest_tearspirit"
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+
+		"AbilityCooldown"				"90"
+		"AbilityManaCost"				"0"
+		"AbilityDuration"				"%duration"
+		"AbilityCastRange"				"%range"
+		"AOERadius"						"%range"
 		"MaxLevel" 						"1"
-	}
-	"ability_priest_return"
-	{
-		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"ability_priest_return"
-		"MaxLevel" 						"1"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"range"				"300"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"duration"			"3.0"
+			}
+		}
+
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_priest_tearspirit"
+				"Target" 		"TARGET"
+				"Duration"		"%duration"
+			}
+		}
+
+		"Modifiers"
+		{
+			"modifier_priest_tearspirit"
+			{
+				"Passive"			"0"
+				"IsHidden"			"0"
+				"IsDebuff"			"1"
+				
+				"States"
+				{
+					"MODIFIER_STATE_ROOTED"			"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_SILENCED"		"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_DISARMED"		"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+		}
 	}
 	"ability_priest_spiritpassive"
 	{
@@ -9694,27 +9830,26 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"MaxLevel" 						"1"
 
-		"OnSpellStart"
-		{
-			"ApplyModifier"
-			{
-				"ModifierName"	"modifier_priest_spiritpassive"
-				"Target" 		"CASTER"
-			}
-		}
-
 		"Modifiers"
 		{
 			"modifier_priest_spiritpassive"
 			{
 				"Passive"			"1"
-				"IsHidden"			"1"
-		
+				"IsHidden"			"0"
+				
+				"OnCreated"
+				{
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_invisible"
+						"Target" 		"TARGET"
+					}
+				}
+
 				"States"
 				{
 					"MODIFIER_STATE_MAGIC_IMMUNE"		"MODIFIER_STATE_VALUE_ENABLED"
 					"MODIFIER_STATE_ATTACK_IMMUNE"		"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_INVISIBLE"			"MODIFIER_STATE_VALUE_ENABLED"
 				}
 			}
 		}

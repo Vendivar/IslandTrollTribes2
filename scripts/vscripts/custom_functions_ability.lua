@@ -342,8 +342,8 @@ function EnsnareUnit(keys)
     if (string.find(targetName,"hero") ~= nil) then --if the target's name includes "hero"
         dur = 3.5   --then we use the hero only duration
 	elseif string.find(target:GetUnitName(), "hawk") then --if the target's name includes "hawk"
-	target:RemoveModifierByName("modifier_hawk_flight")
-	target:RemoveAbility("ability_hawk_flight")
+    	target:RemoveModifierByName("modifier_hawk_flight")
+    	target:RemoveAbility("ability_hawk_flight")
 	end
     target:AddNewModifier(caster, nil, "modifier_meepo_earthbind", { duration = dur})
     --target:AddNewModifier(caster, nil, "modifier_ensnare", { duration = dur})   --I could call a modifier applier, but Valve should fix this soon
@@ -1818,11 +1818,35 @@ function Omnicure(keys)
 end
 
 function SpiritWalkStart( event )
-    event = event.ability
+    ability = event.ability
     caster = event.caster
-    casterOrigin = caster:GetAbsOrigin()
-    print("Start")
-    ability.spirit = CreateUnitByName( "npc_hero_priest_sage_spirit", casterOriginO, false, caster, caster, caster:GetTeamNumber() )
+    target = event.target
+    vision = event.vision
+
+    ability.day_vision = caster:GetDayTimeVisionRange()
+    ability.night_vision = caster:GetNightTimeVisionRange()
+    caster:SetDayTimeVisionRange(vision)
+    caster:SetNightTimeVisionRange(vision)
+
+    target:SetControllableByPlayer(caster:GetMainControllingPlayer(), true)
+ --SetOverrideSelectionEntity(int nPlayerID, handle hEntity) ????
+    ability.spirit = target
+    ability.caster_origin = caster:GetAbsOrigin()
+end
+
+function SpiritWalkThink( event )
+    ability = event.ability
+    caster = event.caster
+    casterOrigin = ability.caster_origin
+    spiritOrigin = ability.spirit:GetAbsOrigin()
+    
+    difference = math.sqrt(math.pow(spiritOrigin.x - casterOrigin.x, 2) + math.pow(spiritOrigin.y - casterOrigin.y, 2))
+
+    energyRate = event.energy_rate
+    perUnit = event.per_unit
+    manaSpent = difference / perUnit * energyRate
+
+    caster:SetMana( caster:GetMana() - manaSpent )
 end
 
 function SpiritWalkEnd( event )
@@ -1831,8 +1855,10 @@ function SpiritWalkEnd( event )
         ability = event.ability
         ability.spirit:ForceKill(true)
         caster = event.caster
-        caster:RemoveModifierByName("ability_priest_spiritwalk_channel")
-        print("End")
+        caster:RemoveModifierByName("modifier_priest_spiritwalk")
+        ability:ApplyDataDrivenModifier(caster, caster, "modifier_stunned", {duration=0.1})
+        caster:SetDayTimeVisionRange(ability.day_vision)
+        caster:SetNightTimeVisionRange(ability.night_vision)
     end
 end
 
