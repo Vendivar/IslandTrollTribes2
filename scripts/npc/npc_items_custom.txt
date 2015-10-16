@@ -41,22 +41,6 @@
 	
 		}
 	
-		"OnAbilityEndChannel"
-		{
-			"RemoveModifier"
-			{
-				"Target"	"CASTER"
-				"ModifierName"	"modifier_eat_meat_raw"
-			}
-	
-			"RemoveAbility"
-			{
-				"Target"	"CASTER"
-				"AbilityName"	"ability_item_eat_meat_raw"
-			}
-	
-		}
-	
 		"OnChannelFinish"
 		{
 			"RemoveModifier"
@@ -80,18 +64,15 @@
 				"ThinkInterval"	".2"
 				"OnIntervalThink"
 				{
-					"Heal"
+					"RunScript"
 					{
-						"Target"	"CASTER"
-						"HealAmount"	"1"
+						"ScriptFile"	"heroes/hero_name/ability_name.lua"
+						"Function"		"EatMeat"
+						"heal_amount"	"1"
 					}
-	
 				}
-	
 			}
-	
 		}
-	
 	}
 	"ability_magic_raw_meteor"
 	{
@@ -8466,14 +8447,15 @@
 				"EffectName"	"Hero_Pudge.Dismember"
 				"Target"		"CASTER"
 			}
-			"Heal"
+			"RunScript"
 			{
-				"Target"	"CASTER"
-				"HealAmount"	"%heal_amount"
+				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+				"Function"		"EatCookedMeat"
+				"heal_amount"	"%heal_amount"
 			}
-	
 			"SpendCharge"
 			{
+
 			}
 		}
 	
@@ -8700,18 +8682,19 @@
 		"WorldDropSound"	"Item.DropGemWorld"
 		"OnSpellStart"
 		{
-			"Heal"
+			"RunScript"
 			{
-				"Target"	"CASTER"
-				"HealAmount"	"40"
+				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+				"Function"		"EatCookedMeat"
+				"heal_amount"	"40"
 			}
 	
 			"SpendCharge"
 			{
+
 			}
 	
 		}
-	
 		"Custom"
 		{
 			"ModelScale"	"5.0"

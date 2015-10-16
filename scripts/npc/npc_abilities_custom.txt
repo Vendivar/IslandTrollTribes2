@@ -9854,8 +9854,124 @@
 			}
 		}
 	}
+	"ability_priest_increasemetabolism"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"ability_priest_increasemetabolism"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
 
+		"AbilityCastRange"				"700"
+		"AbilityDuration"				"%duration"
 
+		"AbilityCooldown"				"30"
+		"AbilityManaCost"				"30"
+
+		"MaxLevel" 						"1"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"duration"			"15"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"movement_speed"	"10"
+			}
+		}
+
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_priest_increasemetabolism"
+				"Target" 		"TARGET"
+				"Duration"		"%duration"
+			}
+		}
+
+		"Modifiers"
+		{
+			"modifier_priest_increasemetabolism"
+			{
+				"Passive"			"0"
+				"IsHidden"			"0"
+				"IsBuff"			"1"
+				
+				"Properties"
+				{
+				    "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%movement_speed" 
+				}
+			}
+		}
+	}
+	"ability_priest_enhancingherbalbalm"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"ability_priest_enhancingherbalbalm"
+		"MaxLevel" 						"1"
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		
+
+		"AbilityCooldown"				"30"
+		"AbilityManaCost"				"30"
+		"AbilityDuration"				"%duration"
+		"AbilityChannelTime"			"2"
+		"AbilityCastRange"				"300"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"health_per"		"2"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"duration"			"60"
+			}
+		}
+
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_priest_enhancingherbalbalm"
+				"Target" 		"TARGET"
+				"Duration"		"%duration"
+			}
+		}
+
+		"Modifiers"
+		{
+			"modifier_priest_enhancingherbalbalm"
+			{
+				"IsHidden"			"0"
+				"IsBuff"			"1"
+		
+				"OnCreated"
+				{
+					"ThinkInterval"  "1.0"
+					"OnIntervalThink"
+					{
+						"Heal"
+						{
+							"Target"        "TARGET"
+							"HealAmount"	"%health_per"
+						}
+					}
+				}
+			}
+		}
+	}
 	"ability_quick_build_armory"
 	{
 		"BaseClass"	"ability_datadriven"
