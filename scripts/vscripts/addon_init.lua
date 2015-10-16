@@ -386,6 +386,10 @@ function ITT_GameMode:_testRemove(cmdName, arg1)
     UnblockMammoth()
 end
 
+function ITT_GameMode:FilterDamage( filterTable )
+    
+end
+
 --Handler for class selection at the beginning of the game
 function ITT_GameMode:_SelectClass(cmdName, arg1)
     local cmdPlayer = Convars:GetCommandClient()  -- returns the player who issued the console command
