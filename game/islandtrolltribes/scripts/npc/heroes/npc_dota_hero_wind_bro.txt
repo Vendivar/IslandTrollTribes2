@@ -1,0 +1,10 @@
+"npc_dota_hero_wind_bro"
+{
+	"override_hero"	"npc_dota_hero_windrunner"
+	"Ability1"	"tool_rot_x"
+	"Ability2"	"tool_rot_y"
+	"Ability3"	"tool_rot_z"
+	"Ability4"	"tool_toggle_rot"
+	"Ability5"	"tool_reverse"
+	"AbilityLayout"	"5"
+}

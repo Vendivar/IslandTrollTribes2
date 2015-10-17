@@ -1,0 +1,146 @@
+"item_scroll_entangling"
+{
+	"ID"	"1086"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+	"BaseClass"	"item_datadriven"
+	"AbilityTextureName"	"scroll_entangling"
+	"Model"	"models/props_gameplay/tpscroll01.vmdl"
+	"Effect"	"particles/units/heroes/hero_enchantress/enchantress_enchant_slow_grass_long.vpcf"
+	"AbilityCastRange"	"%range"
+	"AbilityCastPoint"	"0.5"
+	"AbilityCooldown"	"60.0"
+	"ItemCost"	"6"
+	"ItemShopTags"	"consumable"
+	"ItemQuality"	"consumable"
+	"ItemShareability"	"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemStackable"	"0"
+	"ItemPermanent"	"0"
+	"ItemDroppable"	"1"
+	"ItemInitialCharges"	"1"
+	"ItemAliases"	"quicktype"
+	"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+	"ItemKillable"	"1"
+	"ItemSellable"	"0"
+	"OnOwnerDied"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+			"Function"	"DropItemOnDeath"
+		}
+
+	}
+
+	"UIPickupSound"	"Item.PickUpGemShop"
+	"UIDropSound"	"Item.DropGemShop"
+	"WorldDropSound"	"Item.DropRecipeWorld"
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"Duration"	"%duration_hero"
+			"ModifierName"	"modifier_scroll_entanglingroots"
+			"Target"
+			{
+				"Center"	"TARGET"
+				"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Types"	"DOTA_UNIT_TARGET_HERO"
+			}
+
+		}
+
+		"ApplyModifier"
+		{
+			"Duration"	"%duration_creep"
+			"ModifierName"	"modifier_scroll_entanglingroots"
+			"Target"
+			{
+				"Center"	"TARGET"
+				"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Types"	"DOTA_UNIT_TARGET_CREEP"
+			}
+
+		}
+
+	}
+
+	"Modifiers"
+	{
+		"modifier_scroll_entanglingroots"
+		{
+			"States"
+			{
+				"MODIFIER_STATE_ROOTED"	"MODIFIER_STATE_VALUE_ENABLED"
+			}
+
+			"ThinkInterval"	"%tick_duration"
+			"OnIntervalThink"
+			{
+				"Damage"
+				{
+					"Damage"	"%damage_per_second"
+					"Type"	"DAMAGE_TYPE_MAGICAL"
+					"Target"	"TARGET"
+				}
+
+				"FireSound"
+				{
+					"EffectName"	"Hero_Treant.Overgrowth.Target"
+					"Target"	"TARGET"
+				}
+
+			}
+
+			"EffectName"	"particles/units/heroes/hero_treant/treant_overgrowth_vines.vpcf"
+			"EffectAttachType"	"follow_origin"
+			"OnCreated"
+			{
+				"FireSound"
+				{
+					"EffectName"	"Hero_Treant.Overgrowth.Cast"
+					"Target"	"TARGET"
+				}
+
+			}
+
+		}
+
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"range"	"450"
+		}
+
+		"02"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"duration_hero"	"4"
+		}
+
+		"03"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"duration_creep"	"8"
+		}
+
+		"04"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"damage_per_second"	"5"
+		}
+
+		"05"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"tick_duration"	"1.0"
+		}
+
+	}
+
+}

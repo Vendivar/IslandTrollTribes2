@@ -1,0 +1,28 @@
+"item_empathicrage_modifier_applier"
+{
+	"ID"	"1905"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"BaseClass"	"item_datadriven"
+	"ItemBaseLevel"	"1"
+	"AbilityCastRange"	"9999"
+	"AbilityCastPoint"	"0.0"
+	"Modifiers"
+	{
+		"modifier_empathicrage"
+		{
+			"Passive"	"1"
+			"IsHidden"	"0"
+			"IsDebuff"	"0"
+			"IsPurgable"	"0"
+			"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"10"
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"20"
+			}
+
+		}
+
+	}
+
+}

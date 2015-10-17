@@ -1,0 +1,114 @@
+"ability_metronome_poisonthistle"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+	"AbilityCastPoint"	"0.0"
+	"AbilityCooldown"	"0"
+	"AbilityCastRange"	"9999"
+	"AbilityManaCost"	"0"
+	"MaxLevel"	"1"
+	"OnSpellStart"
+	{
+		"TrackingProjectile"
+		{
+			"Target"	"TARGET"
+			"EffectName"	"particles/base_attacks/ranged_siege_bad.vpcf"
+			"MoveSpeed"	"800"
+			"Dodgeable"	"1"
+			"ProvidesVision"	"0"
+		}
+
+		"FireSound"
+		{
+			"EffectName"	"Creep_Bad_Engine.Attack"
+		}
+
+	}
+
+	"OnProjectileHitUnit"
+	{
+		"ApplyModifier"
+		{
+			"Duration"	"7.5"
+			"ModifierName"	"modifier_gun_blow_thistles"
+			"Target"
+			{
+				"Center"	"TARGET"
+				"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Types"	"DOTA_UNIT_TARGET_HERO"
+			}
+
+		}
+
+		"ApplyModifier"
+		{
+			"Duration"	"12"
+			"ModifierName"	"modifier_gun_blow_thistles"
+			"Target"
+			{
+				"Center"	"TARGET"
+				"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Types"	"DOTA_UNIT_TARGET_CREEP"
+			}
+
+		}
+
+		"Damage"
+		{
+			"Damage"	"10"
+			"Type"	"DAMAGE_TYPE_PHYSICAL"
+			"Target"	"TARGET"
+		}
+
+	}
+
+	"Modifiers"
+	{
+		"modifier_gun_blow_thistles"
+		{
+			"IsHidden"	"0"
+			"IsPurgable"	"0"
+			"IsDebuff"	"1"
+			"TextureName"	"item_gun_blow_thistles"
+			"ThinkInterval"	"3"
+			"OnIntervalThink"
+			{
+				"Damage"
+				{
+					"Damage"	"1"
+					"Type"	"DAMAGE_TYPE_MAGICAL"
+					"Target"	"TARGET"
+				}
+
+			}
+
+			"OnCreated"
+			{
+				"FireSound"
+				{
+					"EffectName"	"Hero_Venomancer.VenomousGaleImpact"
+					"Target"	"TARGET"
+				}
+
+			}
+
+			"AttachEffect"
+			{
+				"Target"	"TARGET"
+				"EffectName"	"particles/units/heroes/hero_viper/viper_poison_debuff.vpcf"
+				"EffectAttachType"	"follow_origin"
+			}
+
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"-40"
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"-30"
+			}
+
+		}
+
+	}
+
+}

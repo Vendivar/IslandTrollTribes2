@@ -1,0 +1,90 @@
+"ability_mage_anger"
+{
+"BaseClass"	"ability_datadriven"
+"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY | DOTA_UNIT_TARGET_TEAM_ENEMY"
+"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+"AbilityTextureName"	"ability_mage_anger"
+"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
+"AbilityCastPoint"	"0.5"
+"AbilityCooldown"	"12"
+"AbilityCastRange"	"500"
+"AbilityManaCost"	"20"
+"MaxLevel"	"1"
+"precache"
+{
+	"particles"	"particles/econ/items/drow/drow_head_mania/mask_of_madness_mania_glow.vpcf"
+	"particles"	"particles/econ/items/drow/drow_head_mania/mask_of_madness_mania_glow.vpcf"
+	"soundfile"	"sounds/weapons/hero/axe/battle_hunger.vsnd"
+}
+
+"OnSpellStart"
+{
+	"ApplyModifier"
+	{
+	"Target" "TARGET"
+	"ModifierName" "modifier_anger"
+	}
+
+	"FireSound"
+	{
+		"EffectName"	"Hero_Axe.Battle_Hunger"
+		"Target"	"TARGET"
+	}
+
+}
+
+"Modifiers"
+{
+	"modifier_anger"
+	{
+		"IsDebuff"			"0"
+		"IsPurgable"		"1"
+		"EffectName" 		"particles/items2_fx/mask_of_madness.vpcf"
+		"EffectAttachType" 	"follow_origin"
+		"Duration" 			"%duration"
+		"Properties"
+			{
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed_bonus"
+			}
+		"OnCreated"
+		{
+			"AttachEffect"
+			{
+				"Target"	"TARGET"
+				"EffectName"	"particles/econ/items/drow/drow_head_mania/mask_of_madness_mania_glow.vpcf"
+				"EffectAttachType"	"follow_overhead"
+			}
+		}
+			"ThinkInterval"	"1"
+			"OnIntervalThink"
+			{
+				"Damage"
+				{
+					"Type"	"DAMAGE_TYPE_MAGICAL"
+					"Damage"	"10"
+					"Target"	"TARGET"
+				}
+
+			}
+	}
+
+}
+
+"AbilitySpecial"
+{
+	"01"
+	{
+		"var_type"	"FIELD_FLOAT"
+		"duration"	"10"
+	}
+
+	"02"
+	{
+		"var_type"	"FIELD_FLOAT"
+		"attack_speed_bonus"	"75"
+	}
+
+}
+
+}

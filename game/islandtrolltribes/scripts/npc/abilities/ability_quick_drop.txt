@@ -1,0 +1,17 @@
+"ability_quick_drop"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityTextureName"	"ability_building_quickdrop"
+	"MaxLevel"	"1"
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"custom_functions_ability.lua"
+			"Function"	"QuickDrop"
+		}
+
+	}
+
+}

@@ -1,0 +1,14 @@
+"scout_ward"
+{
+	"BaseClass"	"npc_dota_creature"
+	"Model"	"models/items/wards/dire_ward_eye/dire_ward_eye.mdl"
+	"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
+        "ModelScale"	"1"
+	"VisionDaytimeRange"	"500"
+	"VisionNighttimeRange"	"500"
+	"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
+	"Ability1"	"ability_scout_ward_collision"
+	"Ability2"	"ability_the_one_truesight"
+	"Ability3"	"ability_scout_ward_lifetime"
+	"Ability4"	"dummy_passive"
+}

@@ -1,0 +1,5 @@
+"ability_enemy_target"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityTextureName"	"ability_building_enemytargetting"
+}

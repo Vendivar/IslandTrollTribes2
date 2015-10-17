@@ -1,0 +1,25 @@
+"ability_priest_pacifyingsmoke"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	"AbilityTextureName"	"ability_priest_magicmist"
+	"AbilityCastPoint"	"0.3"
+	"AbilityCooldown"	"35"
+	"AbilityCastRange"	"200"
+	"AbilityManaCost"	"20"
+	"MaxLevel"	"1"
+	"OnSpellStart"
+	{
+		"SpawnUnit"
+		{
+			"Target"	"CASTER"
+			"UnitName"	"dummy_caster_pacifyingsmoke"
+			"UnitCount"	"1"
+			"UnitLimit"	"64"
+			"SpawnRadius"	"0"
+			"Duration"	"10"
+		}
+
+	}
+
+}

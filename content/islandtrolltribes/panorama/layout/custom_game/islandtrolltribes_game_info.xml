@@ -1,0 +1,42 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/dotastyles.css" />
+		<include src="file://{resources}/styles/custom_game/islandtrolltribes_game_info.css" />
+	</styles>
+	<Panel class="IttGameInfo">
+		<Panel id="Title">
+			<Label id="TitleName" text="#addonname" />
+		</Panel>
+		<Label id="ObjectiveHeader" class="Header" html="true" text="#itt_game_info_header_objective" />
+		<Label id="BriefDescription" text="#itt_brief_description" />
+		<Label id="HowToPlayHeader" class="Header" html="true" text="#itt_game_info_header_how_to_play" />
+		<Panel id="FireRow" class="InfoRow">
+			<Label id="FireText" html="true" text="#itt_game_info_fire" />
+			<Image id="FireImage" src="file://{images}/custom_game/game_info/fire.psd" />
+		</Panel>
+		<Panel id="ResourcesRow" class="InfoRow">
+			<Image id="ResourcesImage" src="file://{images}/custom_game/game_info/resources.psd" />
+			<Label id="ResourcesText" html="true" text="#itt_game_info_resources" />
+		</Panel>
+		<Panel id="ItemsRow" class="InfoRow">
+			<Label id="ItemsText" html="true" text="#itt_game_info_items" />
+			<Image id="ItemsImage" src="file://{images}/custom_game/game_info/itemx.psd" />
+		</Panel>
+		<Label id="TipsHeader" class="Header" html="true" text="#itt_game_info_tips_header" />
+		<Panel id="TipsRow" class="InfoRow">
+			<Label id="TipText01" class="TipText" html="true" text="#itt_game_info_tip01" />
+			<Label id="TipText02" class="TipText" html="true" text="#itt_game_info_tip02" />
+			<Label id="TipText03" class="TipText" html="true" text="#itt_game_info_tip03" />
+			<Label id="TipText04" class="TipText" html="true" text="#itt_game_info_tip04" />
+			<Label id="TipText05" class="TipText" html="true" text="#itt_game_info_tip05" />
+			<Label id="TipText06" class="TipText" html="true" text="#itt_game_info_tip06" />
+			<Label id="TipText07" class="TipText" html="true" text="#itt_game_info_tip07" />
+			<Label id="TipText08" class="TipText" html="true" text="#itt_game_info_tip08" />
+			<Label id="TipText09" class="TipText" html="true" text="#itt_game_info_tip09" />
+			<Label id="TipText10" class="TipText" html="true" text="#itt_game_info_tip10" />
+			<Label id="TipText11" class="TipText" html="true" text="#itt_game_info_tip11" />
+			<Label id="TipText12" class="TipText" html="true" text="#itt_game_info_tip12" />
+		</Panel>
+	</Panel>
+</root>
+

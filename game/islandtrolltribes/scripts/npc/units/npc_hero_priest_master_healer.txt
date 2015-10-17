@@ -1,0 +1,90 @@
+"npc_hero_priest_master_healer"
+{
+	"BaseClass"	"npc_dota_creature"
+	"ConsideredHero"	"1"
+	"Model"	"models/heroes/dazzle/dazzle.mdl"
+	"Portrait"	"vgui/hud/heroportraits/portrait_dazzle"
+	"IdleExpression"	"scenes/dazzle/dazzle_exp_idle_01.vcd"
+	"SoundSet"	"Hero_Dazzle"
+	"ParticleFile"	"particles/units/heroes/hero_dazzle.pcf"
+	"GameSoundsFile"	"scripts/game_sounds_heroes/game_sounds_dazzle.txt"
+	"VoiceFile"	"scripts/voscripts/game_sounds_vo_dazzle.txt"
+	"ModelScale"	"0.79"
+	"Ability1"	"ability_priest_theglow"
+	"Ability2"	"ability_priest_resistall"
+	"Ability3"	"ability_priest_cureall"
+	"Ability4"	"ability_priest_omnicure"
+	"Ability5"	"ability_priest_spellbook"
+	"Ability6"	"ability_priest_healingspray"
+	"Ability7"	"ability_priest_healingwave"
+	"Ability8"	"ability_priest_selfpreservation"
+	"Ability9"	"ability_priest_mixhealth"
+	"Ability10"	"ability_priest_rangedheal"
+	"Ability11"	"ability_priest_replenish"
+	"Ability12"	""
+	"Ability13"	""
+	"Ability14"	""
+	"Ability15"	""
+	"Ability16"	""
+	"ArmorPhysical"	"0"
+	"AttackCapabilities"	"DOTA_UNIT_CAP_MELEE_ATTACK"
+	"AttackDamageMin"	"14"
+	"AttackDamageMax"	"14"
+	"AttackRate"	"1.75"
+	"AttackAnimationPoint"	"0.840"
+	"AttackAcquisitionRange"	"600"
+	"AttackRange"	"100"
+	"ProjectileModel"	""
+	"ProjectileSpeed"	"0"
+	"AttributePrimary"	"DOTA_ATTRIBUTE_AGILITY"
+	"AttributeBaseStrength"	"1"
+	"AttributeStrengthGain"	"1"
+	"AttributeBaseIntelligence"	"1"
+	"AttributeIntelligenceGain"	"1"
+	"AttributeBaseAgility"	"1"
+	"AttributeAgilityGain"	"1"
+	"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
+	"MovementSpeed"	"300"
+	"MovementTurnRate"	"0.5"
+	"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
+	"HealthBarOffset"	"140"
+	"StatusHealth"	"192"
+	"StatusHealthRegen"	"0.0"
+	"StatusMana"	"200"
+	"StatusManaRegen"	"0.0"
+	"VisionDaytimeRange"	"1250"
+	"VisionNighttimeRange"	"800"
+	"Creature"
+	{
+		"AttachWearables"
+		{
+			"Wearable1"
+			{
+				"ItemDef"	"6353"
+			}
+
+			"Wearable2"
+			{
+				"ItemDef"	"6354"
+			}
+
+			"Wearable3"
+			{
+				"ItemDef"	"6355"
+			}
+
+			"Wearable4"
+			{
+				"ItemDef"	"6356"
+			}
+
+			"Wearable5"
+			{
+				"ItemDef"	"6359"
+			}
+
+		}
+
+	}
+
+}

@@ -1,0 +1,83 @@
+"ability_priest_painkillerbalm"
+{
+	"BaseClass"             		"ability_datadriven"
+	"AbilityTextureName"			"ability_priest_painkillerbalm"
+
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	//CANNOT BE USED ON SELF
+	"AbilityChannelTime"			"2"
+	"AbilityCooldown"				"70"
+	"AbilityManaCost"				"35"
+	"AbilityDuration"				"%duration"
+
+	"AbilityCastRange"				"300"
+
+	"MaxLevel" 						"1"
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"stacks"			"20"
+		}
+		"02"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"duration"			"40"
+		}
+		"03"
+		{
+			"var_type"			"FIELD_FLOAT"
+			"remove_interval"	"2.0"
+		}
+	}
+
+	"OnChannelSucceeded"
+	{
+		"ApplyModifier"
+		{
+			"ModifierName"	"ability_priest_painkillerbalm"
+			"Target" 		"TARGET"
+
+			"Duration"		"%duration"
+		}
+	}
+
+	"Modifiers"
+	{
+		"ability_priest_painkillerbalm"
+		{
+			"IsHidden"			"0"
+			"IsBuff"			"1"
+			
+			"OnCreated"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"custom_functions_ability.lua"
+					"Function"		"PainKillerBalmStart"
+					"Target"		"TARGET"
+
+					"stacks"		"%stacks"
+				}
+				"ThinkInterval"  "remove_interval"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"custom_functions_ability.lua"
+						"Function"		"PainKillerBalmThink"
+					}
+				}
+			}
+
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE" "20"
+			}
+		}
+	}
+}

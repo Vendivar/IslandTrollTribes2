@@ -1,0 +1,104 @@
+"item_boat_spear_poison"
+{
+	"ID"	"1226"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"BaseClass"	"item_datadriven"
+	"AbilityTextureName"	"spear_poison"
+	"Model"	"models/props_gameplay/branch.vmdl"
+	"Effect"	""
+	"ItemCost"	"10"
+	"ItemShopTags"	"consumable"
+	"ItemQuality"	"consumable"
+	"ItemShareability"	"ITEM_NOT_SHAREABLE"
+	"ItemStackable"	"0"
+	"ItemPermanent"	"1"
+	"ItemDroppable"	"0"
+	"ItemAliases"	"quicktype"
+	"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+	"ItemKillable"	"1"
+	"ItemSellable"	"0"
+	"OnOwnerDied"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+			"Function"	"DropItemOnDeath"
+		}
+
+	}
+
+	"UIPickupSound"	"Item.PickUpGemShop"
+	"UIDropSound"	"Item.DropGemShop"
+	"WorldDropSound"	"Item.DropGemWorld"
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"projectile_speed"	"1000"
+		}
+
+		"02"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"max_stacks"	"5"
+		}
+
+		"03"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"hurl_damage"	"40"
+			"Type"	"DAMAGE_TYPE_PHYSICAL"
+		}
+
+		"04"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"poison_damage"	"2"
+		}
+
+		"05"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"poison_duration"	"60"
+		}
+
+		"06"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"poison_tick_time"	"3"
+		}
+
+		"07"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"recover_chance"	"50"
+		}
+
+		"08"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"attack_speed_slow"	"30"
+		}
+
+		"09"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"move_speed_slow"	"20"
+		}
+
+		"10"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"slow_duration"	"15.0"
+		}
+
+		"11"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"slow_tick_time"	"0.5"
+		}
+
+	}
+
+}

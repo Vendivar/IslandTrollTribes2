@@ -1,0 +1,128 @@
+"item_potion_fervor"
+{
+	"ID"	"1045"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"BaseClass"	"item_datadriven"
+	"AbilityTextureName"	"item_bottle_haste"
+	"Model"	"models/items/brewmaster/offhand_jug/offhand_jug.vmdl"
+	"Effect"	"particles/econ/items/bounty_hunter/bounty_hunter_weapon_right_darksteel/bounty_hunter_hand_r_darksteel_d.vpcf"
+	"AbilityCastRange"	"100"
+	"AbilityCastPoint"	"0.0"
+	"ItemCost"	"32"
+	"ItemShopTags"	"consumable"
+	"ItemQuality"	"consumable"
+	"ItemShareability"	"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemStackable"	"1"
+	"ItemPermanent"	"0"
+	"ItemDroppable"	"1"
+	"ItemInitialCharges"	"1"
+	"ItemAliases"	"quicktype"
+	"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+	"ItemKillable"	"1"
+	"ItemSellable"	"0"
+	"OnOwnerDied"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+			"Function"	"DropItemOnDeath"
+		}
+
+	}
+
+	"UIPickupSound"	"Item.PickUpGemShop"
+	"UIDropSound"	"Item.DropGemShop"
+	"WorldDropSound"	"Hero_Alchemist.Foley"
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+			"Function"	"PotionFervorUse"
+		}
+
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_potion_fervor_stun"
+			"Target"
+			{
+				"Center"	"CASTER"
+				"Radius"	"200"
+				"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+			}
+
+			"Duration"	"1"
+		}
+
+		"Random"
+		{
+			"Chance"	"50"
+			"OnSuccess"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+					"Function"	"PotionFervorSecondary"
+				}
+
+			}
+
+		}
+
+		"SpendCharge"
+		{
+		}
+
+	}
+
+	"Modifiers"
+	{
+		"modifier_potion_fervor_stun"
+		{
+			"EffectName"	"particles/generic_gameplay/generic_stunned.vpcf"
+			"EffectAttachType"	"follow_overhead"
+			"OverrideAnimation"	"ACT_DOTA_DISABLED"
+			"States"
+			{
+				"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
+			}
+
+			"OnCreated"
+			{
+				"Damage"
+				{
+					"Target"	"TARGET"
+					"Damage"	"25"
+					"Type"	"DAMAGE_TYPE_PHYSICAL"
+				}
+
+			}
+
+		}
+
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"max_stacks"	"2"
+		}
+
+		"02"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"energy_restore"	"120"
+		}
+
+		"02"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"chance"	"50"
+		}
+
+	}
+
+}

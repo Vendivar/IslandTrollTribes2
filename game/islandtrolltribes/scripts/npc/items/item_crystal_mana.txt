@@ -1,0 +1,55 @@
+"item_crystal_mana"
+{
+	"ID"	"1008"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"BaseClass"	"item_datadriven"
+	"AbilityTextureName"	"crystal_mana"
+	"Model"	"models/particle/ice_shards.vmdl"
+	"Effect"	"particles/econ/courier/courier_faceless_rex/cour_rex_weapon_glow.vpcf"
+	"ItemCost"	"6"
+	"ItemShopTags"	"consumable"
+	"ItemQuality"	"consumable"
+	"ItemShareability"	"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemPermanent"	"1"
+	"ItemDroppable"	"1"
+	"ItemAliases"	"quicktype"
+	"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+	"ItemKillable"	"1"
+	"ItemSellable"	"0"
+	"OnOwnerDied"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+			"Function"	"DropItemOnDeath"
+		}
+
+	}
+
+	"UIPickupSound"	"Item.PickUpGemShop"
+	"UIDropSound"	"Item.DropGemShop"
+	"WorldDropSound"	"Item.DropGemWorld"
+	"Custom"
+	{
+		"ModelScale"	"3"
+		"ModelOffsets"
+		{
+			"Origin"
+			{
+				"x"	"0"
+				"y"	"10"
+				"z"	"0"
+			}
+
+			"Angles"
+			{
+				"x"	"0"
+				"y"	"0"
+				"z"	"0"
+			}
+
+		}
+
+	}
+
+}

@@ -1,0 +1,244 @@
+"item_spear_poison_refined"
+{
+	"ID"	"1033"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+	"BaseClass"	"item_datadriven"
+	"AbilityTextureName"	"spear_poison_refined"
+	"Model"	"models/heroes/enchantress/enchantress_spear.vmdl"
+	"Effect"	""
+	"AbilityCastRange"	"800"
+	"AbilityCastPoint"	"0.5"
+	"AbilityCooldown"	"2"
+	"ItemCost"	"18"
+	"ItemShopTags"	"consumable"
+	"ItemQuality"	"consumable"
+	"ItemShareability"	"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemStackable"	"1"
+	"ItemPermanent"	"0"
+	"ItemDroppable"	"1"
+	"ItemInitialCharges"	"1"
+	"ItemAliases"	"quicktype"
+	"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+	"ItemKillable"	"1"
+	"ItemSellable"	"0"
+	"OnOwnerDied"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+			"Function"	"DropItemOnDeath"
+		}
+
+	}
+
+	"UIPickupSound"	"Item.PickUpGemShop"
+	"UIDropSound"	"Item.DropGemShop"
+	"WorldDropSound"	"ui.inv_drop_metalblade"
+	"precache"
+	{
+		"particle_folder"	"particles/units/heroes/hero_venomancer"
+		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_venomancer.vsndevts"
+	}
+
+	"OnSpellStart"
+	{
+		"TrackingProjectile"
+		{
+			"Target"	"TARGET"
+			"EffectName"	"particles/units/heroes/hero_huskar/huskar_base_attack.vpcf"
+			"MoveSpeed"	"%projectile_speed"
+			"ProvidesVision"	"0"
+		}
+
+		"FireSound"
+		{
+			"EffectName"	"Creep_Bad_Engine.Attack"
+			"Target"	"TARGET"
+		}
+
+	}
+
+	"OnProjectileHitUnit"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+			"Function"	"SpearPoisonThrowInit"
+			"MoveSpeedSlow"	"%move_speed_slow"
+			"AttackSpeedSlow"	"%attack_speed_slow"
+		}
+
+		"Damage"
+		{
+			"Target"	"TARGET"
+			"Damage"	"%hurl_damage"
+			"Type"	"DAMAGE_TYPE_PHYSICAL"
+		}
+
+		"ApplyModifier"
+		{
+			"Target"	"TARGET"
+			"ModifierName"	"modifier_poison_spear_refined_dot_debuff"
+			"Duration"	"%poison_duration"
+		}
+
+		"ApplyModifier"
+		{
+			"Target"	"TARGET"
+			"ModifierName"	"modifier_poison_spear_slow_debuff"
+			"Duration"	"%slow_duration"
+		}
+
+		"FireSound"
+		{
+			"EffectName"	"Creep_Bad_Engine.ProjectileImpact"
+			"Target"	"TARGET"
+		}
+
+		"Random"
+		{
+			"Chance"	"%recover_chance"
+			"OnFailure"
+			{
+				"SpendCharge"
+				{
+				}
+
+			}
+
+		}
+
+	}
+
+	"OnProjectileFinish"
+	{
+		"SpendCharge"
+		{
+		}
+
+	}
+
+	"Modifiers"
+	{
+		"modifier_poison_spear_refined_dot_debuff"
+		{
+			"IsDebuff"	"1"
+			"ThinkInterval"	"%poison_tick_time"
+			"OnIntervalThink"
+			{
+				"Damage"
+				{
+					"Target"	"TARGET"
+					"Damage"	"%poison_damage"
+					"Type"	"DAMAGE_TYPE_MAGICAL"
+				}
+
+			}
+
+		}
+
+		"modifier_poison_spear_slow_debuff"
+		{
+			"IsDebuff"	"1"
+			"ThinkInterval"	"%slow_tick_time"
+			"OnIntervalThink"
+			{
+				"RunScript"
+				{
+					"Target"	"TARGET"
+					"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+					"Function"	"SpearPoisonThrowTick"
+				}
+
+			}
+
+			"EffectName"	"particles/units/heroes/hero_venomancer/venomancer_gale_poison_debuff.vpcf"
+			"EffectAttachType"	"follow_origin"
+			"OnDestroy"
+			{
+				"RunScript"
+				{
+					"Target"	"TARGET"
+					"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+					"Function"	"SpearPoisonEnd"
+				}
+
+			}
+
+		}
+
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"projectile_speed"	"1000"
+		}
+
+		"02"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"max_stacks"	"4"
+		}
+
+		"03"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"hurl_damage"	"40"
+		}
+
+		"04"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"poison_damage"	"4"
+		}
+
+		"05"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"poison_duration"	"60"
+		}
+
+		"06"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"poison_tick_time"	"3"
+		}
+
+		"07"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"recover_chance"	"50"
+		}
+
+		"08"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"attack_speed_slow"	"40"
+		}
+
+		"09"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"move_speed_slow"	"30"
+		}
+
+		"10"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"slow_duration"	"15.0"
+		}
+
+		"11"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"slow_tick_time"	"0.5"
+		}
+
+	}
+
+}

@@ -1,0 +1,77 @@
+"ability_thief_blur_collision"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"TargetTeams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"TargetTypes"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+	"AbilityTextureName"	"ability_thief_blur"
+	"Precache"
+	{
+		"particle"	"particles/units/heroes/hero_riki/riki_smokebomb_b.vpcf"
+	}
+
+	"Modifiers"
+	{
+		"modifier_collision_check"
+		{
+			"Passive"	"1"
+			"ThinkInterval"	"0.2"
+			"OnIntervalThink"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"custom_functions_ability.lua"
+					"Function"	"DieOnEnemyCollision"
+					"Radius"	"100"
+				}
+
+			}
+
+			"OnDeath"
+			{
+				"ApplyModifier"
+				{
+					"ModifierName"	"modifier_blur_miss"
+					"Target"
+					{
+						"Center"	"CASTER"
+						"Radius"	"100"
+						"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+						"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+					}
+
+				}
+
+			}
+
+		}
+
+		"modifier_blur_miss"
+		{
+			"Duration"	"%miss_duration"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MISS_PERCENTAGE"	"%miss_chance"
+			}
+
+		}
+
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"miss_duration"	"20"
+		}
+
+		"02"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"miss_chance"	"20"
+		}
+
+	}
+
+}

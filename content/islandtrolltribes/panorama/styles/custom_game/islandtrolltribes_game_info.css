@@ -1,0 +1,167 @@
+.IttGameInfo
+{
+    width:100%;
+    flow-children: down;
+}
+ 
+Label
+{
+    font-size: 18px;
+    color: #999999;
+    vertical-align: top;
+}
+ 
+#Title
+{
+    flow-children: right;
+}
+
+#TitleIcon
+{
+    width: 64px;
+    height: 64px;
+    vertical-align: center;
+}
+
+#TitleName
+{
+    color: #cccccc;
+    font-size: 64px;
+    margin-left: 16px;
+    margin-top: -50px;
+    text-transform: uppercase;
+    vertical-align: center;
+}
+
+#BriefDescription
+{
+}
+
+#FireText,
+#ResourcesText,
+#ItemsText
+{
+    width: 50%;
+}
+
+.Header
+{
+	font-size: 18px;
+    font-weight: bold;
+	margin-top: 36px;
+	text-transform: uppercase;
+}
+
+#ObjectiveHeader
+{
+	margin-top: 25px;
+}
+
+#FireRow
+{
+    margin-top: -40px;
+}
+
+#FireText
+{
+    margin-top: 60px;
+	text-align: left;
+}
+
+#FireImage
+{
+    margin-top: -20px;
+    width: 240px;
+    height: 240px;
+}
+
+#ResourcesRow
+{
+    margin-top: 40px;
+}
+
+#ResourcesImage
+{
+    width: 340px;
+    height: 256px;
+	margin-left: -35px;
+}
+
+#ResourcesText
+{
+    margin-bottom: 150px;
+	margin-left: -25px;
+	margin-top: 10px;
+	text-align: left;
+}
+
+#ItemsRow
+{
+    margin-top: 0px;
+}
+
+#ItemsImage
+{
+    width: 300px;
+    height: 300px;
+	margin-left: -50px;
+}
+
+#ItemsText
+{
+    margin-top: 50px;
+	text-align: left;
+}
+
+#TipsHeader
+{
+	margin-top: 28px;
+}
+
+#TipsRow
+{
+	flow-children: down;
+	margin-right: 92px;
+	margin-top: 18px;
+}
+
+.TipText
+{
+	margin-left: 16px;
+    margin-top: 0px;
+}
+
+.InfoRow
+{
+    flow-children: right;
+    width: 100%;
+}
+
+
+Label .midas_Fire,
+Label .overboss,
+Label .treasure
+{
+    color: #cccccc;
+    font-weight: bold;
+}
+
+Label .items,
+Label .gold,
+Label .xp
+{
+    color: #fcaf3d;
+    font-weight: bold;
+}
+
+Label .red,
+{
+    color: #f00000;
+    font-weight: bold;
+}
+
+Label .blue,
+{
+    color: #3333FF;
+    font-weight: bold;
+}

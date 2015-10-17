@@ -1,0 +1,113 @@
+"ability_mage_hypnosis"
+{
+	"BaseClass"             		"ability_datadriven"
+	"AbilityTextureName"			"ability_mage_hypnosis"
+
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
+	"AbilityCastRange"				"300"
+
+	"AbilityCooldown"				"20"
+	"AbilityManaCost"				"10"
+	"MaxLevel" 						"1"
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"duration"			"5"
+		}
+		"02"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"duration_creep"	"7"
+		}
+		"03"
+		{
+			"var_type"		"FIELD_INTEGER"
+			"mana_restored"	"75"
+		}
+		"04"
+		{
+			"var_type"		"FIELD_INTEGER"
+			"heat_removed"	"-8"
+		}
+		"05"
+		{
+			"var_type"		"FIELD_INTEGER"
+			"damage"		"20"
+		}
+	}
+
+	"OnSpellStart"
+	{
+
+		"FireSound"
+		{
+			"EffectName"	Hero_Bane.Nightmare
+			"Target" 		"TARGET"
+		}
+
+		"Damage"
+		{
+			"Target"		"TARGET"
+			"Type"			"DAMAGE_TYPE_PURE"
+			"Damage"		"%damage"
+		}
+
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
+			"Function"		"Hypnosis"
+
+			"hypnosis"			"modifier_mage_hypnosis"
+
+			"Heat"				"%heat_removed"
+			"mana_restored"		"%mana_restored"
+
+			"duration"			"%duration"
+			"duration_creep"	"%duration_creep"
+
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_mage_hypnosis"
+		{
+			"IsHidden"			"0"
+			"IsDebuff"			"1"
+
+			"AttachEffect"
+			{
+				"EffectName"			"particles/generic_gameplay/generic_sleep.vpcf"
+				"EffectAttachType"		"follow_overhead"
+				"Target"            	"TARGET"
+			}
+
+			"AttachEffect"
+			{
+				"EffectName"        	"particles/generic_gameplay/generic_sleep_b.vpcf"
+				"EffectAttachType"  	"follow_overhead"
+				"Target"            	"TARGET"
+			}
+
+			"AttachEffect"
+			{
+				"EffectName"        	"particles/units/heroes/hero_bane/bane_enfeeble_grand.vpcf"
+				"EffectAttachType"  	"follow_origin"
+				"Target"            	"TARGET"
+			}
+
+			"States"
+			{
+				"MODIFIER_STATE_ATTACK_IMMUNE"		"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_MAGIC_IMMUNE"		"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_STUNNED"			"MODIFIER_STATE_VALUE_ENABLED"
+			}
+		}
+	}
+}

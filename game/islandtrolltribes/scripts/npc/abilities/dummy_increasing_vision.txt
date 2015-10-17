@@ -1,0 +1,36 @@
+"dummy_increasing_vision"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"Modifiers"
+	{
+		"thinker_channel_vision"
+		{
+			"Passive"	"1"
+			"ThinkInterval"	"1"
+			"OnIntervalThink"
+			{
+				"ApplyModifier"
+				{
+					"Target"	"CASTER"
+					"ModifierName"	"modifier_vision_increase"
+				}
+
+			}
+
+		}
+
+		"modifier_vision_increase"
+		{
+			"Duration"	"9999.0"
+			"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_BONUS_DAY_VISION"	"150"
+				"MODIFIER_PROPERTY_BONUS_NIGHT_VISION"	"150"
+			}
+
+		}
+
+	}
+}

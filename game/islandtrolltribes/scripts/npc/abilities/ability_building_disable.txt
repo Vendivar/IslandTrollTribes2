@@ -1,0 +1,44 @@
+"ability_building_disable"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
+	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_BUILDING"
+	"AbilityTextureName"	"razor_plasma_field"
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"Duration"	"10"
+			"Target"	"TARGET"
+			"ModifierName"	"modifier_building_disabled"
+		}
+
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+			"Function"	"DisablePassives"
+			"Target"	"TARGET"
+		}
+
+	}
+
+	"Modifiers"
+	{
+		"modifier_building_disabled"
+		{
+			"IsPurgable"	"0"
+			"IsDebuff"	"1"
+			"IsHidden"	"0"
+			"States"
+			{
+				"MODIFIER_STATE_PASSIVES_DISABLED"	"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_DISARMED"	"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_SILENCED"	"MODIFIER_STATE_VALUE_ENABLED"
+			}
+
+		}
+
+	}
+
+}

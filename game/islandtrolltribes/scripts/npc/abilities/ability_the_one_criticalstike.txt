@@ -1,0 +1,77 @@
+"ability_the_one_criticalstike"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityUnitDamageType"	"DAMAGE_TYPE_PHYSICAL"
+	"AbilityTextureName"	"slardar_bash"
+	"Modifiers"
+	{
+		"the_one_criticalstrike_passive"
+		{
+			"Passive"	"1"
+			"OnAttackStart"
+			{
+				"Random"
+				{
+					"Chance"	"%crit_chance"
+					"OnSuccess"
+					{
+						"ApplyModifier"
+						{
+							"Target"	"CASTER"
+							"ModifierName"	"the_one_critical"
+						}
+
+					}
+
+				}
+
+			}
+
+		}
+
+		"the_one_critical"
+		{
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"	"%crit_bonus"
+			}
+
+			"OnAttackLanded"
+			{
+				"FireEffect"
+				{
+					"EffectName"	"particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
+					"EffectAttachType"	"follow_origin"
+					"Target"	"TARGET"
+				}
+
+				"RemoveModifier"
+				{
+					"ModifierName"	"the_one_critical"
+					"Target"	"CASTER"
+				}
+
+			}
+
+		}
+
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"crit_chance"	"15"
+		}
+
+		"02"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"crit_bonus"	"200"
+		}
+
+	}
+
+}

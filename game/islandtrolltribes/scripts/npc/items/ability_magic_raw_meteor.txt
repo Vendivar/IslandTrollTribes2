@@ -1,0 +1,140 @@
+"ability_magic_raw_meteor"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
+	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_ALL"
+	"AbilityUnitDamageType"	"DAMAGE_TYPE_COMPOSITE"
+	"AbilityTextureName"	""
+	"AbilityCastPoint"	"0.0"
+	"AbilityCooldown"	"0"
+	"AbilityManaCost"	"0"
+	"OnSpellStart"
+	{
+		"CreateThinker"
+		{
+			"ModifierName"	"meteor_thinker"
+			"Target"	"POINT"
+		}
+
+		"RunScript"
+		{
+			"Target"	"CASTER"
+			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+			"Function"	"RawMagicMeteor"
+		}
+
+	}
+
+	"Modifiers"
+	{
+		"meteor_thinker"
+		{
+			"Duration"	"1"
+			"ThinkInterval"	"0.65"
+			"OnIntervalThink"
+			{
+				"DestroyTrees"
+				{
+					"Target"	"TARGET"
+					"Radius"	"1000"
+				}
+
+				"RunScript"
+				{
+					"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+					"Function"	"PrintTest"
+				}
+
+				"FireEffect"
+				{
+					"Target"	"TARGET"
+					"EffectName"	"particles/units/heroes/hero_gyrocopter/gyro_calldown_explosion.vpcf"
+					"EffectAttachType"	"world_origin"
+					"ControlPoints"
+					{
+						"05"	"1000 1000 1000"
+					}
+
+				}
+
+				"ApplyModifier"
+				{
+					"ModifierName"	"modifier_magic_raw_meteor_debuff"
+					"Target"
+					{
+						"Center"	"TARGET"
+						"Radius"	"1000"
+						"Teams"	"DOTA_UNIT_TARGET_TEAM_BOTH"
+						"Types"	"DOTA_UNIT_TARGET_ALL"
+					}
+
+				}
+
+			}
+
+		}
+
+		"modifier_magic_raw_meteor_debuff"
+		{
+			"IsDebuff"	"1"
+			"Duration"	"5.0"
+			"ThinkInterval"	"0.50"
+			"OnIntervalThink"
+			{
+				"Damage"
+				{
+					"Type"	"DAMAGE_TYPE_COMPOSITE"
+					"Damage"	"40"
+					"Target"	"TARGET"
+				}
+
+			}
+
+			"EffectName"	"particles/units/heroes/hero_invoker/invoker_chaos_meteor_burn_debuff.vpcf"
+			"EffectAttachType"	"follow_origin"
+		}
+
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"land_time"	"0.5"
+		}
+
+		"02"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"area_of_effect"	"1000"
+		}
+
+		"03"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"damage_interval"	"0.5"
+		}
+
+		"04"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"main_damage"	"100"
+		}
+
+		"05"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"burn_duration"	"5.0"
+		}
+
+		"06"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"burn_dps"	"40"
+		}
+
+	}
+
+}

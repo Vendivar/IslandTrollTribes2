@@ -1,0 +1,49 @@
+"item_magic_raw"
+{
+	"ID"	"1092"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"BaseClass"	"item_datadriven"
+	"AbilityTextureName"	"magic_raw"
+	"Model"	"models/items/abaddon/alliance_abba_weapon/alliance_abba_weapon_fx.vmdl"
+	"Effect"	"particles/econ/items/faceless_void/faceless_void_weapon_viridus/faceless_void_weapon_glow_viridus.vpcf"
+	"AbilityCastPoint"	"0.5"
+	"ItemCost"	"8"
+	"ItemShopTags"	"consumable"
+	"ItemQuality"	"consumable"
+	"ItemShareability"	"ITEM_FULLY_SHAREABLE"
+	"ItemStackable"	"0"
+	"ItemPermanent"	"0"
+	"ItemDroppable"	"1"
+	"ItemInitialCharges"	"1"
+	"ItemAliases"	"quicktype"
+	"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+	"ItemKillable"	"1"
+	"ItemSellable"	"0"
+	"OnOwnerDied"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+			"Function"	"DropItemOnDeath"
+		}
+
+	}
+
+	"UIPickupSound"	"Item.PickUpGemShop"
+	"UIDropSound"	"Item.DropGemShop"
+	"WorldDropSound"	"Item.DropGemWorld"
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+			"Function"	"RawMagicUse"
+		}
+
+		"SpendCharge"
+		{
+		}
+
+	}
+
+}

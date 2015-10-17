@@ -1,0 +1,9 @@
+dota_pvp
+{
+	material materials/overviews/dota_pvp.vmat
+	pos_x -7824
+	pos_y 8649
+	scale 16.000
+	zoom 1.050
+}
+

@@ -1,0 +1,111 @@
+"item_gloves_bone"
+{
+	"ID"	"1059"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"BaseClass"	"item_datadriven"
+	"AbilityTextureName"	"gloves_bone"
+	"Model"	"models/items/clinkz/clinkz_skeleton_hands/clinkz_skeleton_hands.vmdl"
+	"Effect"	""
+	"ItemCost"	"54"
+	"ItemShopTags"	"consumable"
+	"ItemQuality"	"consumable"
+	"ItemShareability"	"ITEM_FULLY_SHAREABLE"
+	"ItemStackable"	"0"
+	"ItemPermanent"	"1"
+	"ItemDroppable"	"1"
+	"ItemAliases"	"quicktype"
+	"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+	"ItemKillable"	"1"
+	"ItemSellable"	"1"
+	"OnOwnerDied"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+			"Function"	"DropItemOnDeath"
+		}
+
+	}
+
+	"UIPickupSound"	"Item.PickUpGemShop"
+	"UIDropSound"	"Item.DropGemShop"
+	"WorldDropSound"	"Hero_WitchDoctor.Skulls"
+	"Custom"
+	{
+		"ModelOffsets"
+		{
+			"Origin"
+			{
+				"x"	"0"
+				"y"	"0"
+				"z"	"20"
+			}
+
+			"Angles"
+			{
+				"x"	"30"
+				"y"	"30"
+				"z"	"5"
+			}
+
+		}
+
+	}
+
+	"Modifiers"
+	{
+		"modifier_gloves_bone"
+		{
+			"Passive"	"1"
+			"IsHidden"	"0"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed"
+			}
+
+			"ThinkInterval"	"%tick_rate"
+			"OnIntervalThink"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+					"Function"	"AddHeat"
+					"Heat"	"%heat"
+				}
+
+			}
+
+		}
+
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"armor"	"4"
+		}
+
+		"02"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"attack_speed"	"20"
+		}
+
+		"03"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"heat"	"2"
+		}
+
+		"04"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"tick_rate"	"35"
+		}
+
+	}
+
+}

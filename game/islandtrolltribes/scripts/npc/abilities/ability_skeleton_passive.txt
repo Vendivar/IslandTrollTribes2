@@ -1,0 +1,23 @@
+"ability_skeleton_passive"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"	"razor_plasma_field"
+	"Modifiers"
+	{
+		"modifier_skeleton_passive"
+		{
+			"Passive"	"1"
+			"States"
+			{
+				"MODIFIER_STATE_INVULNERABLE"	"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_NO_HEALTH_BAR"	"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_UNSELECTABLE"	"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
+			}
+
+		}
+
+	}
+
+}

@@ -1,0 +1,36 @@
+"ability_building_cookmeat"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityTextureName"	"ability_building_cookmeat"
+	"AbilityCooldown"	"1.0"
+	"AbilityManaCost"	"0"
+	"precache"
+	{
+		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_lina.vsndevts"
+	}
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
+			"Function"	"CookFood"
+			"Range"	"%radius"
+		}
+			"FireSound"
+		{
+			"EffectName"	"Hero_Lina.attack"
+			"Target"		"CASTER"
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"radius"	"600"
+		}
+
+	}
+
+}

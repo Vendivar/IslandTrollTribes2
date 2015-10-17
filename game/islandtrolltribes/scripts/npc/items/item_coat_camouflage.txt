@@ -1,0 +1,116 @@
+"item_coat_camouflage"
+{
+	"ID"	"1070"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_MOVEMENT"
+	"BaseClass"	"item_datadriven"
+	"AbilityTextureName"	"item_hood_of_defiance"
+	"Model"	"models/items/alchemist/armor/armor.vmdl"
+	"Effect"	""
+	"AbilityCastPoint"	"0.1"
+	"AbilityCooldown"	"30.0"
+	"ItemCost"	"104"
+	"ItemShopTags"	"consumable"
+	"ItemQuality"	"consumable"
+	"ItemShareability"	"ITEM_FULLY_SHAREABLE"
+	"ItemStackable"	"0"
+	"ItemPermanent"	"1"
+	"ItemDroppable"	"1"
+	"ItemAliases"	"quicktype"
+	"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+	"ItemKillable"	"1"
+	"ItemSellable"	"1"
+	"OnOwnerDied"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+			"Function"	"DropItemOnDeath"
+		}
+
+	}
+
+	"UIPickupSound"	"Item.PickUpGemShop"
+	"UIDropSound"	"Item.DropGemShop"
+	"WorldDropSound"	"ui.inv_pickup_leather"
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+			"Function"	"CloakCamouflageInvis"
+		}
+
+	}
+
+	"Modifiers"
+	{
+		"modifier_coat_camouflage"
+		{
+			"Passive"	"1"
+			"IsHidden"	"0"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
+				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%all_stats"
+				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%all_stats"
+				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%all_stats"
+			}
+
+			"ThinkInterval"	"%tick_rate"
+			"OnIntervalThink"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+					"Function"	"AddHeat"
+					"Heat"	"%heat"
+				}
+
+			}
+
+			"EffectName"	"particles/status_fx/status_effect_medusa_stone_gaze.vpcf"
+		}
+
+		"modifier_coat_camouflage_invis"
+		{
+			"IsHidden"	"0"
+			"IsPurgable"	"0"
+			"IsDebuff"	"0"
+			"States"
+			{
+				"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_ENABLED"
+			}
+
+		}
+
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"armor"	"8"
+		}
+
+		"02"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"all_stats"	"2"
+		}
+
+		"03"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"heat"	"8"
+		}
+
+		"04"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"tick_rate"	"35"
+		}
+
+	}
+
+}

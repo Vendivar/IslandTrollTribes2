@@ -1,0 +1,29 @@
+"ability_pack_up"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityTextureName"	"ability_building_packup"
+	"AbilityCooldown"	"0.0"
+	"AbilityCastPoint"	"0.5"
+	"AbilityManaCost"	"0"
+	"precache"
+	{
+		"soundfile"		"sounds/items/smoke_of_deceit.vsnd"
+	}
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"Target"	"CASTER"
+			"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
+			"Function"	"PackUp"
+		}
+		"FireSound"
+		{
+			"EffectName"	"DOTA_Item.SmokeOfDeceit.Activate"
+			"Target"		"CASTER"
+		}
+
+	}
+
+}

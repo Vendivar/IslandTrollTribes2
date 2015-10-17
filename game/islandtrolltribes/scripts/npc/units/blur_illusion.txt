@@ -1,0 +1,10 @@
+"blur_illusion"
+{
+	"BaseClass"	"npc_dota_creature"
+	"Model"	"models/heroes/rikimaru/rikimaru.mdl"
+	"Ability1"	"dummy_passive"
+	"Ability2"	"ability_thief_blur_collision"
+	"VisionDaytimeRange"	"0"
+	"VisionNighttimeRange"	"0"
+	"ModelScale"	"0.87"
+}

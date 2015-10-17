@@ -1,0 +1,127 @@
+"ability_mage_stormearthfire"
+{
+	"BaseClass"				"ability_datadriven"
+	"AbilityTextureName"	"ability_mage_stormearthfire"
+	"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityCastPoint"		"0.0"
+	"AbilityChannelTime"	"1"
+	"AbilityCooldown"		"300"
+	"AbilityManaCost"		"50"
+	"MaxLevel"	"1"
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"radius"	"512"
+		}
+		"02"
+		{
+			"var_type"		"FIELD_INTEGER"
+			"damage"		"20"
+		}
+		"03"
+		{
+			"var_type"		"FIELD_FLOAT"
+			"duration"		"4.0"
+		}
+		"04"
+		{
+			"var_type"		"FIELD_INTEGER"
+			"damage_per_sec"	"5"
+		}
+	}
+
+	"OnChannelSucceeded"
+	{
+		"ActOnTargets"
+		{
+			"Target"
+			{
+				"Center"	"CASTER"
+				"Radius"	"%radius"
+				"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Types"		"DOTA_UNIT_TARGET_HERO"
+			}
+
+			"Action"
+			{
+				"Damage"
+				{
+					"Type"	"DAMAGE_TYPE_MAGICAL"
+					"Damage"	"%damage"
+					"Target"	"TARGET"
+				}
+				"RunScript"
+				{
+					"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
+					"Function"		"StormEarthFire"
+					"Target"		"TARGET"
+
+					"stone_throw"	"ability_mage_stonethrow"
+					"duration"		"%duration"
+				}
+
+			}
+
+			"FireSound"
+			{
+				"EffectName"		"Hero_Zuus.GodsWrath"
+				"Target"			"CASTER"
+			}
+
+		}
+
+		"FireEffect"
+		{
+			"TargetPoint"	"POINT"
+			"EffectName"	"generic_aoe_explosion_sphere_1_a"
+			"EffectAttachType"	"follow_origin"
+			"EffectRadius"	"320"
+			"EffectDurationScale"	"1"
+			"EffectLifeDurationScale"	"1"
+			"EffectColorA"	"25 50 200"
+			"EffectColorB"	"25 50 200"
+			"FireSound"
+			{
+				"EffectName"	"Hero_Zuus.GodsWrath.Target"
+				"Target"		"POINT"
+			}
+		}
+
+		"FireEffect"
+		{
+			"TargetPoint"	"POINT"
+			"EffectName"	"generic_aoe_explosion_sphere_1_a"
+			"EffectAttachType"	"follow_origin"
+			"EffectRadius"	"320"
+			"EffectDurationScale"	"1"
+			"EffectLifeDurationScale"	"1"
+			"EffectColorA"	"205 50 200"
+			"EffectColorB"	"205 50 200"
+			"FireSound"
+			{
+				"EffectName"	"Hero_Leshrac.Split_Earth"
+				"Target"		"POINT"
+			}
+		}
+
+		"FireEffect"
+		{
+			"TargetPoint"	"POINT"
+			"EffectName"	"generic_aoe_explosion_sphere_1_a"
+			"EffectAttachType"	"follow_origin"
+			"EffectRadius"	"320"
+			"EffectDurationScale"	"1"
+			"EffectLifeDurationScale"	"1"
+			"EffectColorA"	"255 0 0"
+			"EffectColorB"	"255 0 0"
+			"FireSound"
+			{
+				"EffectName"	"Hero_Zuus.GodsWrath.PreCast"
+				"Target"		"POINT"
+			}
+		}
+	}
+}

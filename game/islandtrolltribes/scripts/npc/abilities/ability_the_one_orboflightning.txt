@@ -1,0 +1,86 @@
+"ability_the_one_orboflightning"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+	"AbilityTextureName"	"razor_plasma_field"
+	"precache"
+	{
+		"particle_folder"	"particles/units/heroes/hero_razor"
+		"particle_folder"	"particles/units/heroes/hero_disruptor"
+		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_queenofpain.vsndevts"
+	}
+
+	"Modifiers"
+	{
+		"the_one_orboflightning_passive"
+		{
+			"Passive"	"1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"	"%bonus_damage"
+			}
+
+			"OnAttackLanded"
+			{
+				"Random"
+				{
+					"Chance"	"%chance"
+					"OnSuccess"
+					{
+						"ApplyModifier"
+						{
+							"Target"	"TARGET"
+							"Duration"	"%purge_duration"
+							"ModifierName"	"modifier_satyr_trickster_purge"
+						}
+
+						"RunScript"
+						{
+							"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+							"Function"	"CastPurge"
+							"Target"	"TARGET"
+						}
+
+						"FireEffect"
+						{
+							"Target"	"TARGET"
+							"EffectName"	"particles/units/heroes/hero_disruptor/disruptor_thunder_strike_bolt.vpcf"
+							"EffectAttachType"	"follow_origin"
+						}
+
+					}
+
+				}
+
+			}
+
+		}
+
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"chance"	"15"
+		}
+
+		"02"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"bonus_damage"	"5"
+		}
+
+		"03"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"purge_duration"	"3.5"
+		}
+
+	}
+
+}

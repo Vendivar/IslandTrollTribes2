@@ -1,0 +1,60 @@
+"ability_building_restoreheat"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"	"ability_building_restoreheat"
+	"Modifiers"
+	{
+		"modifier_restore_heat_aura"
+		{
+			"Passive"	"1"
+			"Aura"	"modifier_restore_heat_effect"
+			"Aura_Radius"	"290"
+			"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY | DOTA_UNIT_TARGET_TEAM_ENEMY"
+			"Aura_Types"	"DOTA_UNIT_TARGET_HERO"
+			"Aura_ApplyToCaster"	"0"
+		}
+
+		"modifier_restore_heat_effect"
+		{
+			"IsHidden"	"0"
+			"IsPurgable"	"0"
+			"ThinkInterval"	"%tick_rate"
+			"OnIntervalThink"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+					"Function"	"AddHeat"
+					"Heat"	"%heat"
+				}
+
+				"RemoveModifier"
+				{
+					"Target"	"TARGET"
+					"ModifierName"	"modifier_cold"
+				}
+
+			}
+
+		}
+
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"heat"	"8"
+		}
+
+		"02"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"tick_rate"	"3"
+		}
+
+	}
+
+}

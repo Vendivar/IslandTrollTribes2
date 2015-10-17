@@ -1,0 +1,78 @@
+"ability_metronome_frostnova"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+	"AbilityCastPoint"	"0.0"
+	"AbilityCooldown"	"0"
+	"AbilityCastRange"	"9999"
+	"AbilityManaCost"	"0"
+	"MaxLevel"	"1"
+	"Precache"
+	{
+		"particle"	"particles/units/heroes/hero_crystalmaiden/maiden_crystal_nova.vpcf"
+	}
+
+	"OnSpellStart"
+	{
+		"FireEffect"
+		{
+			"EffectName"	"particles/units/heroes/hero_crystalmaiden/maiden_crystal_nova.vpcf"
+			"EffectAttachType"	"follow_origin"
+			"Target"	"TARGET"
+		}
+
+		"Damage"
+		{
+			"Type"	"DAMAGE_TYPE_MAGICAL"
+			"Damage"	"15"
+			"Target"	"TARGET"
+		}
+
+		"Damage"
+		{
+			"Type"	"DAMAGE_TYPE_MAGICAL"
+			"Damage"	"10"
+			"Target"
+			{
+				"Center"	"TARGET"
+				"Radius"	"200"
+				"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+			}
+
+		}
+
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_frostnova"
+			"Target"
+			{
+				"Center"	"TARGET"
+				"Radius"	"200"
+				"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+			}
+
+			"Duration"	"4"
+		}
+
+	}
+
+	"Modifiers"
+	{
+		"modifier_frostnova"
+		{
+			"IsDebuff"	"1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"-10"
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"-10"
+			}
+
+		}
+
+	}
+
+}

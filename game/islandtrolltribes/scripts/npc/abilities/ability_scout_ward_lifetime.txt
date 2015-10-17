@@ -1,0 +1,45 @@
+"ability_scout_ward_lifetime"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"MaxLevel"	"3"
+	"Modifiers"
+	{
+		"modifier_lifetime"
+		{
+			"Passive"	"1"
+			"IsHidden"	"1"
+			"OnCreated"
+			{
+				"DelayedAction"
+				{
+					"Delay"	"%lifetime"
+					"Action"
+					{
+						"RunScript"
+						{
+							"ScriptFile"	"custom_functions_ability.lua"
+							"Function"	"RemoveEntity"
+						}
+
+					}
+
+				}
+
+			}
+
+		}
+
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"lifetime"	"360 480 600"
+		}
+
+	}
+
+}

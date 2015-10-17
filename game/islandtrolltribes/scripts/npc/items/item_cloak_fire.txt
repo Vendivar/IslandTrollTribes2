@@ -1,0 +1,79 @@
+"item_cloak_fire"
+{
+	"ID"	"1073"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"BaseClass"	"item_datadriven"
+	"AbilityTextureName"	"cloak_fire"
+	"Model"	"models/items/windrunner/falconcloak/falconcloak.vmdl"
+	"Effect"	""
+	"ItemCost"	"88"
+	"ItemShopTags"	"consumable"
+	"ItemQuality"	"consumable"
+	"ItemShareability"	"ITEM_FULLY_SHAREABLE"
+	"ItemStackable"	"0"
+	"ItemPermanent"	"1"
+	"ItemDroppable"	"1"
+	"ItemAliases"	"quicktype"
+	"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+	"ItemKillable"	"1"
+	"ItemSellable"	"1"
+	"OnOwnerDied"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+			"Function"	"DropItemOnDeath"
+		}
+
+	}
+
+	"UIPickupSound"	"Item.PickUpGemShop"
+	"UIDropSound"	"Item.DropGemShop"
+	"WorldDropSound"	"ui.inv_pickup_leather"
+	"Modifiers"
+	{
+		"cloak_fire_aura_aura"
+		{
+			"Passive"	"1"
+			"ThinkInterval"	"%tick_rate"
+			"OnIntervalThink"
+			{
+				"Damage"
+				{
+					"Damage"	"%immolation_damage"
+					"Type"	"DAMAGE_TYPE_MAGICAL"
+					"Target"
+					{
+						"Center"	"CASTER"
+						"Radius"	"300"
+						"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+						"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+					}
+
+				}
+
+			}
+
+			"EffectName"	"particles/econ/courier/courier_trail_international_2013_se/courier_international_2013_se_b.vpcf"
+			"EffectAttachType"	"follow_origin"
+		}
+
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"immolation_damage"	"7"
+		}
+
+		"02"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"tick_rate"	"1"
+		}
+
+	}
+
+}

@@ -1,0 +1,82 @@
+"ability_metronome_impale"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+	"AbilityCastPoint"	"0.0"
+	"AbilityCooldown"	"0"
+	"AbilityCastRange"	"9999"
+	"AbilityManaCost"	"0"
+	"Precache"
+	{
+		"particle"	"particles/units/heroes/hero_lion/lion_spell_impale.vpcf"
+	}
+
+	"MaxLevel"	"1"
+	"OnSpellStart"
+	{
+		"LinearProjectile"
+		{
+			"Target"	"TARGET"
+			"TargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+			"TargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+			"EffectName"	"particles/units/heroes/hero_lion/lion_spell_impale.vpcf"
+			"MoveSpeed"	"1200"
+			"StartRadius"	"50"
+			"EndRadius"	"50"
+			"FixedDistance"	"500"
+			"ProvidesVision"	"0"
+		}
+
+	}
+
+	"OnProjectileHitUnit"
+	{
+		"DeleteOnHit"	"0"
+		"Damage"
+		{
+			"Target"	"TARGET"
+			"Damage"	"10"
+			"Type"	"DAMAGE_TYPE_MAGICAL"
+		}
+
+		"ApplyModifier"
+		{
+			"Target"	"TARGET"
+			"ModifierName"	"modifier_lion_impale"
+			"Duration"	"1"
+		}
+
+		"DelayedAction"
+		{
+			"Delay"	"1"
+			"Action"
+			{
+				"ApplyModifier"
+				{
+					"Target"	"TARGET"
+					"ModifierName"	"modifier_stun"
+					"Duration"	"0.5"
+				}
+
+			}
+
+		}
+
+	}
+
+	"Modifiers"
+	{
+		"modifier_impale"
+		{
+			"States"
+			{
+				"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
+			}
+
+		}
+
+	}
+
+}

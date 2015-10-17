@@ -1,0 +1,56 @@
+"item_building_kit_storage_chest"
+{
+	"ID"	"1122"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
+	"BaseClass"	"item_datadriven"
+	"AbilityTextureName"	"building_kit_chest_storage"
+	"Model"	"models/props_debris/creep_camp001j.vmdl"
+	"Effect"	""
+	"AbilityCastRange"	"300"
+	"AbilityCastPoint"	"0.5"
+	"ItemCost"	"9"
+	"ItemShopTags"	"consumable"
+	"ItemQuality"	"consumable"
+	"ItemShareability"	"ITEM_FULLY_SHAREABLE"
+	"ItemStackable"	"0"
+	"ItemPermanent"	"0"
+	"ItemDroppable"	"1"
+	"ItemAliases"	"quicktype"
+	"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+	"ItemKillable"	"1"
+	"ItemSellable"	"0"
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"Target"	"POINT"
+			"ScriptFile"	"scripts/vscripts/buildings.lua"
+			"Function"	"getChestPoint"
+		}
+
+	}
+
+	"OnOwnerDied"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+			"Function"	"DropItemOnDeath"
+		}
+
+	}
+
+	"UIPickupSound"	"Item.PickUpGemShop"
+	"UIDropSound"	"Item.DropGemShop"
+	"WorldDropSound"	"Item.DropGemWorld"
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"build_duration"	"12.0"
+		}
+
+	}
+
+}

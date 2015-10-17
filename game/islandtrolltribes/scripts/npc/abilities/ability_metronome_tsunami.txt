@@ -1,0 +1,56 @@
+"ability_metronome_tsunami"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+	"AbilityCastPoint"	"0.0"
+	"AbilityCooldown"	"0"
+	"AbilityCastRange"	"9999"
+	"AbilityManaCost"	"0"
+	"MaxLevel"	"1"
+	"OnSpellStart"
+	{
+		"LinearProjectile"
+		{
+			"EffectName"	""
+			"MoveSpeed"	"600"
+			"StartPosition"	"attach_attack1"
+			"FixedDistance"	"300"
+			"StartRadius"	"100"
+			"EndRadius"	"300"
+			"TargetTeams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+			"TargetTypes"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+			"TargetFlags"	"DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS"
+			"HasFrontalCone"	"0"
+			"ProvidesVision"	"1"
+			"VisionRadius"	"300"
+		}
+
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+			"Function"	"TsunamiProjectiles"
+		}
+
+		"FireSound"
+		{
+			"Target"	"CASTER"
+			"EffectName"	"Hero_Morphling.Waveform"
+		}
+
+	}
+
+	"OnProjectileHitUnit"
+	{
+		"DeleteOnHit"	"0"
+		"Damage"
+		{
+			"Damage"	"25"
+			"Target"	"TARGET"
+			"Type"	"DAMAGE_TYPE_MAGICAL"
+		}
+
+	}
+
+}

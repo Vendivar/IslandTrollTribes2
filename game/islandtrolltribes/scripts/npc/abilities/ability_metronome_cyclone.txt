@@ -1,0 +1,35 @@
+"ability_metronome_cyclone"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+	"AbilityCastPoint"	"0.0"
+	"AbilityCooldown"	"0"
+	"AbilityCastRange"	"9999"
+	"AbilityManaCost"	"0"
+	"MaxLevel"	"1"
+	"OnSpellStart"
+	{
+		"FireSound"
+		{
+			"Target"	"TARGET"
+			"EffectName"	"Brewmaster_Storm.Cyclone"
+		}
+
+		"ApplyModifier"
+		{
+			"Duration"	"6"
+			"Target"
+			{
+				"Center"	"TARGET"
+				"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY | DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+			}
+
+			"ModifierName"	"modifier_brewmaster_storm_cyclone"
+		}
+
+	}
+
+}

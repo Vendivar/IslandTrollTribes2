@@ -1,0 +1,57 @@
+"item_building_kit_hatchery"
+{
+	"ID"	"1133"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
+	"BaseClass"	"item_datadriven"
+	"AbilityTextureName"	"building_kit_hatchery"
+	"Model"	"models/props_debris/battle_debris2.vmdl"
+	"Effect"	""
+	"AbilityCastRange"	"300"
+	"AbilityCastPoint"	"0.5"
+	"ItemCost"	"1"
+	"ItemSellable"	"0"
+	"ItemShopTags"	"consumable"
+	"ItemQuality"	"consumable"
+	"ItemShareability"	"ITEM_FULLY_SHAREABLE"
+	"ItemStackable"	"0"
+	"ItemPermanent"	"0"
+	"ItemDroppable"	"1"
+	"ItemAliases"	"quicktype"
+	"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+	"ItemKillable"	"1"
+	"ItemSellable"	"0"
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"Target"	"POINT"
+			"ScriptFile"	"scripts/vscripts/buildings.lua"
+			"Function"	"getHatcheryPoint"
+		}
+
+	}
+
+	"OnOwnerDied"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+			"Function"	"DropItemOnDeath"
+		}
+
+	}
+
+	"UIPickupSound"	"Item.PickUpGemShop"
+	"UIDropSound"	"Item.DropGemShop"
+	"WorldDropSound"	"Item.DropGemWorld"
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"build_duration"	"10.0"
+		}
+
+	}
+
+}

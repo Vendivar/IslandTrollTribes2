@@ -1,0 +1,19 @@
+"ability_priest_swap1"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityTextureName"	"ability_mage_swap"
+	"MaxLevel"	"1"
+	"AbilityCastPoint"	"0"
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"custom_functions_ability.lua"
+			"Function"	"SwapSpellBook"
+			"activeBook"	"1"
+		}
+
+	}
+
+}

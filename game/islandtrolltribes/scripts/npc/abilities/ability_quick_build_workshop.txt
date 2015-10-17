@@ -1,0 +1,15 @@
+"ability_quick_build_workshop"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityTextureName"	"ability_building_quickbuildworkshop"
+	"MaxLevel"	"1"
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"custom_functions_ability.lua"
+			"Function"	"QuickCraftWorkshop"
+		}
+
+	}
+}

@@ -1,0 +1,97 @@
+"item_scroll_cyclone"
+{
+	"ID"	"1088"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY | DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
+	"BaseClass"	"item_datadriven"
+	"AbilityTextureName"	"scroll_cyclone"
+	"Model"	"models/props_gameplay/tpscroll01.vmdl"
+	"Effect"	"particles/items_fx/cyclone_d.vpcf"
+	"AbilityCastRange"	"%range"
+	"AbilityCastPoint"	"0.5"
+	"AbilityCooldown"	"30.0"
+	"ItemCost"	"10"
+	"ItemShopTags"	"consumable"
+	"ItemQuality"	"consumable"
+	"ItemShareability"	"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemStackable"	"0"
+	"ItemPermanent"	"0"
+	"ItemDroppable"	"1"
+	"ItemInitialCharges"	"1"
+	"ItemAliases"	"quicktype"
+	"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+	"ItemKillable"	"1"
+	"ItemSellable"	"0"
+	"OnOwnerDied"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+			"Function"	"DropItemOnDeath"
+		}
+
+	}
+
+	"UIPickupSound"	"Item.PickUpGemShop"
+	"UIDropSound"	"Item.DropGemShop"
+	"WorldDropSound"	"Item.DropRecipeWorld"
+	"OnSpellStart"
+	{
+		"FireSound"
+		{
+			"Target"	"TARGET"
+			"EffectName"	"Brewmaster_Storm.Cyclone"
+		}
+
+		"ApplyModifier"
+		{
+			"Duration"	"%duration_hero"
+			"Target"
+			{
+				"Center"	"TARGET"
+				"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY | DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Types"	"DOTA_UNIT_TARGET_HERO"
+			}
+
+			"ModifierName"	"modifier_brewmaster_storm_cyclone"
+		}
+
+		"ApplyModifier"
+		{
+			"Duration"	"%duration_creep"
+			"Target"
+			{
+				"Center"	"TARGET"
+				"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY | DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Types"	"DOTA_UNIT_TARGET_CREEP"
+			}
+
+			"ModifierName"	"modifier_brewmaster_storm_cyclone"
+		}
+
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"range"	"500"
+		}
+
+		"02"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"duration_hero"	"6.0"
+		}
+
+		"03"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"duration_creep"	"10.0"
+		}
+
+	}
+
+}

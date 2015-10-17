@@ -1,0 +1,35 @@
+"ability_beastmaster_pet_grow1"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	"MaxLevel"	"1"
+	"Modifiers"
+	{
+		"modifier_grow"
+		{
+			"Passive"	"1"
+			"IsHidden"	"1"
+			"OnCreated"
+			{
+				"DelayedAction"
+				{
+					"Delay"	"180"
+					"Action"
+					{
+						"RunScript"
+						{
+							"ScriptFile"	"custom_functions_ability.lua"
+							"Function"	"GrowPet"
+						}
+
+					}
+
+				}
+
+			}
+
+		}
+
+	}
+
+}

@@ -1,0 +1,68 @@
+"ability_panic"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityTextureName"	"razor_plasma_field"
+	"AbilityCastPoint"	"0.0"
+	"AbilityCooldown"	"15"
+	"AbilityCastRange"	"0"
+	"AbilityManaCost"	"20"
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"Target"	"CASTER"
+			"ModifierName"	"modifier_panic"
+			"Duration"	"15"
+		}
+
+		"FireSound"
+		{
+			"EffectName"	"Hero_Undying.FleshGolem.Cast"
+			"Target"	"CASTER"
+		}
+
+	}
+
+	"Modifiers"
+	{
+		"modifier_panic"
+		{
+			"Passive"	"1"
+			"Hidden"	"0"
+			"IsDebuff"	"0"
+			"IsPurgable"	"0"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE"	"%incoming_damage"
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%move_speed"
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed"
+			}
+
+		}
+
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"attack_speed"	"20"
+		}
+
+		"02"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"move_speed"	"30"
+		}
+
+		"03"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"incoming_damage"	"110"
+		}
+
+	}
+
+}

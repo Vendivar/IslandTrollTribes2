@@ -1,0 +1,24 @@
+"ability_priest_cureall"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	"AbilityTextureName"	"ability_priest_cureall"
+	"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
+	"AbilityCastPoint"	"0.2"
+	"AbilityCooldown"	"20"
+	"AbilityCastRange"	"400"
+	"AbilityManaCost"	"15"
+	"MaxLevel"	"1"
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"custom_functions_ability.lua"
+			"Function"	"CureAll"
+		}
+
+	}
+
+}

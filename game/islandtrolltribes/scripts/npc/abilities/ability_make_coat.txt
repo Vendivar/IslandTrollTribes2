@@ -1,0 +1,5 @@
+"ability_make_coat"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityTextureName"	"ability_building_makecloak"
+}

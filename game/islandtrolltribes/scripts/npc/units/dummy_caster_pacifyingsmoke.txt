@@ -1,0 +1,12 @@
+"dummy_caster_pacifyingsmoke"
+{
+	"BaseClass"	"npc_dota_creature"
+	"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
+	"VisionDaytimeRange"	"0"
+	"VisionNighttimeRange"	"0"
+	"Ability1"	"ability_priest_smokecombatprevention"
+	"Ability2"	""
+	"Ability3"	""
+	"Ability4"	""
+	"Ability5"	""
+}

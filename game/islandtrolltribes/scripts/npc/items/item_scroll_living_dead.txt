@@ -1,0 +1,52 @@
+"item_scroll_living_dead"
+{
+	"ID"	"1084"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"BaseClass"	"item_datadriven"
+	"AbilityTextureName"	"scroll_living_dead"
+	"Model"	"models/items/warlock/warlocks_summoning_scroll/warlocks_summoning_scroll.vmdl"
+	"Effect"	""
+	"AbilityCastPoint"	"0.5"
+	"AbilityCooldown"	"60"
+	"ItemCost"	"8"
+	"ItemShopTags"	"consumable"
+	"ItemQuality"	"consumable"
+	"ItemShareability"	"ITEM_FULLY_SHAREABLE"
+	"ItemStackable"	"0"
+	"ItemPermanent"	"0"
+	"ItemDroppable"	"1"
+	"ItemInitialCharges"	"1"
+	"ItemAliases"	"quicktype"
+	"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+	"ItemKillable"	"1"
+	"ItemSellable"	"0"
+	"OnOwnerDied"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+			"Function"	"DropItemOnDeath"
+		}
+
+	}
+
+	"UIPickupSound"	"Item.PickUpGemShop"
+	"UIDropSound"	"Item.DropGemShop"
+	"WorldDropSound"	"Item.DropRecipeWorld"
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+			"Function"	"SummonSkeleton"
+		}
+
+		"FireSound"
+		{
+			"EffectName"	"Hero_TrollWarlord.BattleTrance.Cast"
+			"Target"	"CASTER"
+		}
+
+	}
+
+}

@@ -1,0 +1,45 @@
+"ability_lizard_poisonattack"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+	"Precache"
+	{
+		"particle"	"particles/neutral_fx/gnoll_poison_debuff.vpcf"
+	}
+
+	"Modifiers"
+	{
+		"lizard_poison_attack"
+		{
+			"Passive"	"1"
+			"OnAttackLanded"
+			{
+				"ApplyModifier"
+				{
+					"Target"	"TARGET"
+					"Duration"	"300"
+					"ModifierName"	"modifier_lizard_slow"
+				}
+
+			}
+
+		}
+
+		"modifier_lizard_slow"
+		{
+			"IsDebuff"	"1"
+			"IsPurgable"	"0"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"-7"
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"-35"
+			}
+
+		}
+
+	}
+
+}

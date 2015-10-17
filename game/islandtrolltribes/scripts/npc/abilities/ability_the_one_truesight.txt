@@ -1,0 +1,30 @@
+"ability_the_one_truesight"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"	"life_stealer_rage"
+	"Modifiers"
+	{
+		"the_one_truesight_passive"
+		{
+			"Passive"	"1"
+			"OnCreated"
+			{
+				"ApplyModifier"
+				{
+					"Target"	"CASTER"
+					"ModifierName"	"modifier_greevil_truesight"
+				}
+				"ApplyModifier"
+				{
+					"Target" 		"CASTER"
+					"ModifierName"	"modifier_item_gem_of_true_sight"
+				}
+
+			}
+
+		}
+
+	}
+
+}

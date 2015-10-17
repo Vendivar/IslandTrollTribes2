@@ -1,0 +1,21 @@
+"ability_gatherer_itemwarp"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityTextureName"	"ability_gatherer_itemwarp"
+	"MaxLevel"	"1"
+	"AbilityCastPoint"	"0"
+	"precache"
+	{
+	"soundfile"				"soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts"
+	}
+	"OnSpellStart"
+	{
+		"FireSound"
+		{
+		"EffectName"	"Hero_Zuus.LightningBolt"
+		"Target"		"CASTER"
+		}
+	}
+
+}

@@ -1,0 +1,104 @@
+"ability_thief_assassinate"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+	"AbilityTextureName"	"ability_thief_assassinate"
+	"AbilityCastPoint"	"0.4"
+	"AbilityCooldown"	"60.0"
+	"AbilityManaCost"	"30"
+	"MaxLevel"	"1"
+	"precache"
+	{
+		"soundfile"				"soundevents/game_sounds_heroes/game_sounds_spectre.vsndevts"
+	}
+
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"Target"	"CASTER"
+			"Duration"	"%duration"
+			"ModifierName"	"modifier_assassinate"
+		}
+
+		"ApplyModifier"
+		{
+			"Target"	"CASTER"
+			"Duration"	"%duration"
+			"ModifierName"	"modifier_invisible"
+		}
+		"FireSound"
+		{
+			"EffectName"	"Hero_Spectre.Reality"
+			"Target"		"CASTER"
+		}
+
+	}
+
+	"Modifiers"
+	{
+		"modifier_assassinate"
+		{
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"50"
+				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"65"
+			}
+
+			"OnAbilityExecuted"
+			{
+				"RemoveModifier"
+				{
+					"Target"	"CASTER"
+					"ModifierName"	"modifier_assassinate"
+				}
+
+			}
+
+			"OnAttackLanded"
+			{
+				"RemoveModifier"
+				{
+					"Target"	"CASTER"
+					"ModifierName"	"modifier_assassinate"
+				}
+
+			}
+
+			"OnDestroy"
+			{
+				"RemoveModifier"
+				{
+					"Target"	"CASTER"
+					"ModifierName"	"modifier_invisible"
+				}
+
+			}
+
+		}
+
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"duration"	"4.0"
+		}
+
+		"02"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"speed_bonus"	"50"
+		}
+
+		"03"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"damage_bonus"	"65"
+		}
+
+	}
+
+}

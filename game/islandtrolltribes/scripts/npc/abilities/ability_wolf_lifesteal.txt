@@ -1,0 +1,33 @@
+"ability_wolf_lifesteal"
+{
+	"BaseClass"             		"ability_datadriven"
+	"AbilityTextureName"			"bloodseeker_thirst"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"MaxLevel" 						"1"
+
+	"Modifiers"
+	{
+		"modifier_wolf_lifesteal"
+		{
+			"Passive"			"1"
+			"IsHidden"			"0"
+			
+			"OnAttackLanded"
+			{
+		        "Lifesteal"
+		        {
+		            "Target" "ATTACKER"
+		            "LifestealPercent" "%lifesteal"
+		        }
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"		"FIELD_INTEGER"
+			"lifesteal"		"15"
+		}
+	}
+}

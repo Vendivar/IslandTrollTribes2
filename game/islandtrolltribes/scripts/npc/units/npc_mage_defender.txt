@@ -1,0 +1,8 @@
+"npc_mage_defender"
+{
+	"BaseClass"             "npc_dota_creature"
+	"Model"					"models/heroes/wisp/wisp.vmdl"
+	"ModelScale"			"1"
+	"VisionDaytimeRange"	"0"
+	"VisionNighttimeRange"	"0"
+}

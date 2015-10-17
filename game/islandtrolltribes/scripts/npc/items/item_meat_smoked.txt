@@ -1,0 +1,54 @@
+"item_meat_smoked"
+{
+	"ID"	"1099"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"BaseClass"	"item_datadriven"
+	"AbilityTextureName"	"meat_smoked"
+	"Model"	"models/props_gameplay/cheese.vmdl"
+	"Effect"	"particles/econ/items/spirit_breaker/spirit_breaker_weapon_fury/spirit_breaker_ambient_flame_fury_smoke.vpcf"
+	"AbilityCastPoint"	"0.5"
+	"ItemCost"	"2"
+	"ItemShopTags"	"consumable"
+	"ItemQuality"	"consumable"
+	"ItemShareability"	"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemStackable"	"1"
+	"ItemPermanent"	"0"
+	"ItemDroppable"	"1"
+	"ItemAliases"	"quicktype"
+	"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+	"ItemKillable"	"1"
+	"ItemSellable"	"0"
+	"OnOwnerDied"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+			"Function"	"DropItemOnDeath"
+		}
+
+	}
+
+	"UIPickupSound"	"Item.PickUpGemShop"
+	"UIDropSound"	"Item.DropGemShop"
+	"WorldDropSound"	"Item.DropGemWorld"
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+			"Function"		"EatCookedMeat"
+			"heal_amount"	"40"
+		}
+
+		"SpendCharge"
+		{
+
+		}
+
+	}
+	"Custom"
+	{
+		"ModelScale"	"5.0"
+	}
+
+}

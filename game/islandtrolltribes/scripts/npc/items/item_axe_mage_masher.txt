@@ -1,0 +1,185 @@
+"item_axe_mage_masher"
+{
+	"ID"	"1026"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_TREE | DOTA_UNIT_TARGET_CUSTOM"
+	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_CUSTOM"
+	"AbilityCastRange"	"125"
+	"AbilityCastPoint"	"0.5"
+	"AbilityCooldown"	"10.0"
+	"AbilityChannelTime"	"1.5"
+	"BaseClass"	"item_datadriven"
+	"AbilityTextureName"	"axe_mage_masher"
+	"Model"	"models/items/antimage/arc_of_manta/arc_of_manta.vmdl"
+	"Effect"	""
+	"ItemCost"	"52"
+	"ItemShopTags"	"consumable"
+	"ItemQuality"	"consumable"
+	"ItemShareability"	"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemStackable"	"0"
+	"ItemPermanent"	"0"
+	"ItemDroppable"	"1"
+	"ItemAliases"	"quicktype"
+	"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+	"ItemKillable"	"1"
+	"ItemSellable"	"0"
+	"Custom"
+	{
+		"ModelOffsets"
+		{
+			"Origin"
+			{
+				"x"	"0"
+				"y"	"0"
+				"z"	"62"
+			}
+
+			"Angles"
+			{
+				"x"	"0"
+				"y"	"0"
+				"z"	"0"
+			}
+
+		}
+
+	}
+
+	"OnOwnerDied"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+			"Function"	"DropItemOnDeath"
+		}
+
+	}
+
+	"UIPickupSound"	"Item.PickUpGemShop"
+	"UIDropSound"	"Item.DropGemShop"
+	"WorldDropSound"	"ui.inv_pickup_metalheavy"
+	"OnChannelSucceeded"
+	{
+		"DestroyTrees"
+		{
+			"Target"	"POINT"
+		}
+
+	}
+
+	"Modifiers"
+	{
+		"modifier_axe_mage_masher_damage"
+		{
+			"IsHidden"	"1"
+			"Passive"	"1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%bonus_damage"
+			}
+
+		}
+
+		"modifier_axe_mage_masher_passive"
+		{
+			"IsHidden"	"1"
+			"Passive"	"1"
+			"OnAttackLanded"
+			{
+				"Random"
+				{
+					"Chance"	"%mage_masher_silent_strike_chance"
+					"OnSuccess"
+					{
+						"ApplyModifier"
+						{
+							"Target"	"TARGET"
+							"ModifierName"	"modifier_axe_mage_masher_silent_strike"
+							"Duration"	"%mage_masher_silent_strike_duration"
+						}
+
+					}
+
+				}
+
+				"Random"
+				{
+					"Chance"	"%mage_masher_mana_burn_chance"
+					"OnSuccess"
+					{
+						"RunScript"
+						{
+							"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+							"Function"	"MageMasherManaBurn"
+							"Target"	"TARGET"
+							"Damage"	"%mage_masher_mana_burn_damage"
+						}
+
+					}
+
+				}
+
+			}
+
+		}
+
+		"modifier_axe_mage_masher_silent_strike"
+		{
+			"IsDebuff"	"1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%mage_masher_silent_strike_dot"
+			}
+
+			"States"
+			{
+				"MODIFIER_STATE_SILENCED"	"MODIFIER_STATE_VALUE_ENABLED"
+			}
+
+			"EffectName"	"particles/generic_gameplay/generic_silence.vpcf"
+			"EffectAttachType"	"follow_overhead"
+		}
+
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"bonus_damage"	"9"
+		}
+
+		"02"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"mage_masher_silent_strike_chance"	"21"
+		}
+
+		"03"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"mage_masher_silent_strike_dot"	"-2"
+		}
+
+		"04"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"mage_masher_silent_strike_duration"	"5"
+		}
+
+		"04"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"mage_masher_mana_burn_chance"	"29"
+		}
+
+		"05"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"mage_masher_mana_burn_damage"	"29"
+		}
+
+	}
+
+}

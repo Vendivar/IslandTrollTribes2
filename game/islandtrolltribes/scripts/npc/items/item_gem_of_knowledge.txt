@@ -1,0 +1,67 @@
+"item_gem_of_knowledge"
+{
+	"ID"	"1096"
+	"BaseClass"	"item_datadriven"
+	"AbilityTextureName"	"item_gem_of_true_sight"
+	"Model"	"models/props_gameplay/gem01.vmdl"
+	"Effect"	""
+	"AbilityCastPoint"	"0.5"
+	"ItemCost"	"52"
+	"ItemShopTags"	"consumable"
+	"ItemQuality"	"consumable"
+	"ItemShareability"	"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemStackable"	"1"
+	"ItemPermanent"	"0"
+	"ItemDroppable"	"1"
+	"ItemAliases"	"quicktype"
+	"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+	"ItemKillable"	"1"
+	"ItemSellable"	"0"
+	"OnOwnerDied"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+			"Function"	"DropItemOnDeath"
+		}
+
+	}
+
+	"UIPickupSound"	"Item.PickUpGemShop"
+	"UIDropSound"	"Item.DropGemShop"
+	"WorldDropSound"	"Item.DropGemWorld"
+	"Modifiers"
+	{
+		"modifier_gem_knolwedge_stats"
+		{
+			"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"IsHidden"	"1"
+			"Passive"	"1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%all_stats"
+				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%all_stats"
+				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%all_stats"
+			}
+
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+				"Function"	"item_gem_knowledge"
+			}
+
+		}
+
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"all_stats"	"1"
+		}
+
+	}
+
+}

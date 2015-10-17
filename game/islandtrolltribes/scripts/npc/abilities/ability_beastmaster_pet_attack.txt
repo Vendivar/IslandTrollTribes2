@@ -1,0 +1,21 @@
+"ability_beastmaster_pet_attack"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	"AbilityTextureName"	"ability_beastmaster_attack"
+	"AbilityCastPoint"	"0"
+	"AbilityCooldown"	"0"
+	"AbilityManaCost"	"0"
+	"MaxLevel"	"1"
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"custom_functions_ability.lua"
+			"Function"	"PetCommand"
+			"Command"	"attack"
+		}
+
+	}
+
+}

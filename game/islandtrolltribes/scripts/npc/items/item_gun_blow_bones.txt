@@ -1,0 +1,130 @@
+"item_gun_blow_bones"
+{
+	"ID"	"1134"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+	"BaseClass"	"item_datadriven"
+	"AbilityTextureName"	"gun_blow_bones"
+	"Model"	"models/items/sniper/machine_gun_charlie/machine_gun_charlie_bullet.vmdl"
+	"Effect"	""
+	"AbilityCastRange"	"450"
+	"AbilityCastPoint"	"0.1"
+	"AbilityCooldown"	"6.0"
+	"ItemCost"	"1"
+	"ItemShopTags"	"consumable"
+	"ItemQuality"	"consumable"
+	"ItemShareability"	"ITEM_FULLY_SHAREABLE"
+	"ItemStackable"	"1"
+	"ItemPermanent"	"1"
+	"ItemInitialCharges"	"1"
+	"ItemDroppable"	"1"
+	"ItemAliases"	"quicktype"
+	"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_ALWAYS"
+	"ItemKillable"	"1"
+	"ItemSellable"	"0"
+	"OnOwnerDied"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+			"Function"	"DropItemOnDeath"
+		}
+
+	}
+
+	"UIPickupSound"	"Item.PickUpGemShop"
+	"UIDropSound"	"Item.DropGemShop"
+	"WorldDropSound"	"Item.DropGemWorld"
+	"OnSpellStart"
+	{
+		"TrackingProjectile"
+		{
+			"Target"	"TARGET"
+			"EffectName"	"particles/base_attacks/ranged_siege_bad.vpcf"
+			"MoveSpeed"	"%projectile_speed"
+			"Dodgeable"	"1"
+			"ProvidesVision"	"0"
+		}
+
+		"FireSound"
+		{
+			"EffectName"	"Creep_Bad_Engine.Attack"
+		}
+
+	}
+
+	"OnProjectileHitUnit"
+	{
+		"ApplyModifier"
+		{
+			"Duration"	"0.75"
+			"ModifierName"	"modifier_stunned"
+			"TextureName"	"item_gun_blow_bones"
+			"Target"
+			{
+				"Center"	"TARGET"
+				"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Types"	"DOTA_UNIT_TARGET_HERO"
+			}
+
+		}
+
+		"ApplyModifier"
+		{
+			"Duration"	"3"
+			"ModifierName"	"modifier_stunned"
+			"TextureName"	"item_gun_blow_bones"
+			"Target"
+			{
+				"Center"	"TARGET"
+				"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Types"	"DOTA_UNIT_TARGET_CREEP"
+			}
+
+		}
+
+		"Damage"
+		{
+			"Damage"	"30"
+			"Type"	"DAMAGE_TYPE_PHYSICAL"
+			"Target"	"TARGET"
+		}
+
+		"SpendCharge"
+		{
+		}
+
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+			"Function"	"GunBlowCheckEmpty"
+		}
+
+	}
+
+	"OnProjectileFinish"
+	{
+		"SpendCharge"
+		{
+		}
+
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"projectile_speed"	"1000"
+		}
+
+		"02"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"max_stacks"	"3"
+		}
+
+	}
+
+}

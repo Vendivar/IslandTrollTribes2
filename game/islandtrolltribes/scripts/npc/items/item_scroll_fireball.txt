@@ -1,0 +1,112 @@
+"item_scroll_fireball"
+{
+	"ID"	"1085"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+	"BaseClass"	"item_datadriven"
+	"AbilityTextureName"	"scroll_fireball"
+	"Model"	"models/props_gameplay/recipe.vmdl"
+	"Effect"	"particles/units/heroes/hero_clinkz/clinkz_body_arm_fire.vpcf"
+	"AbilityCastRange"	"%range"
+	"AbilityCooldown"	"32.0"
+	"AbilityCastPoint"	"0.2"
+	"ItemCost"	"8"
+	"ItemShopTags"	"consumable"
+	"ItemQuality"	"consumable"
+	"ItemShareability"	"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemStackable"	"0"
+	"ItemPermanent"	"0"
+	"ItemDroppable"	"1"
+	"ItemInitialCharges"	"1"
+	"ItemAliases"	"quicktype"
+	"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+	"ItemKillable"	"1"
+	"ItemSellable"	"0"
+	"OnOwnerDied"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+			"Function"	"DropItemOnDeath"
+		}
+
+	}
+
+	"UIPickupSound"	"Item.PickUpGemShop"
+	"UIDropSound"	"Item.DropGemShop"
+	"WorldDropSound"	"Item.DropRecipeWorld"
+	"OnSpellStart"
+	{
+		"TrackingProjectile"
+		{
+			"Target"	"TARGET"
+			"Dodgeable"	"1"
+			"EffectName"	"particles/units/heroes/hero_dragon_knight/dragon_knight_elder_dragon_fire.vpcf"
+			"ProvidesVision"	"1"
+			"VisionRadius"	"100"
+			"MoveSpeed"	"1000"
+		}
+
+		"FireSound"
+		{
+			"EffectName"	"Hero_DragonKnight.ElderDragonShoot2.Attack"
+			"Target"	"CASTER"
+		}
+
+	}
+
+	"OnProjectileHitUnit"
+	{
+		"Damage"
+		{
+			"Target"	"TARGET"
+			"Damage"	"%damage"
+			"Type"	"DAMAGE_TYPE_MAGICAL"
+		}
+
+		"ApplyModifier"
+		{
+			"Duration"	"%stun_duration"
+			"Target"	"TARGET"
+			"ModifierName"	"modifier_stunned"
+		}
+
+		"FireEffect"
+		{
+			"Target"	"POINT"
+			"EffectName"	"particles/units/heroes/hero_dragon_knight/dragon_knight_elder_dragon_fire_explosion.vpcf"
+			"EffectAttachType"	"follow_origin"
+		}
+
+		"FireSound"
+		{
+			"EffectName"	"Hero_DragonKnight.ProjectileImpact"
+			"Target"	"TARGET"
+		}
+
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"range"	"800"
+		}
+
+		"02"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"damage"	"40"
+		}
+
+		"03"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"stun_duration"	"1.5"
+		}
+
+	}
+
+}

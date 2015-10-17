@@ -1,0 +1,88 @@
+"ability_priest_lightningshield"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
+	"AbilityTextureName"	"ability_priest_lightningshield"
+	"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_2"
+	"AbilityCastPoint"	"0.2"
+	"AbilityCooldown"	"30"
+	"AbilityCastRange"	"300"
+	"AbilityManaCost"	"30"
+	"MaxLevel"	"1"
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_lightning_shield_damage_aura"
+			"Duration"	"%lightning_duration"
+			"Target"	"TARGET"
+		}
+
+		"FireSound"
+		{
+			"Target"	"TARGET"
+			"FireSound"	"Hero_Zuus.GodsWrath.PreCast"
+		}
+
+	}
+
+	"Modifiers"
+	{
+		"modifier_lightning_shield_damage_aura"
+		{
+			"ThinkInterval"	"%lightning_think_time"
+			"OnIntervalThink"
+			{
+				"Damage"
+				{
+					"Damage"	"%lightning_damage"
+					"Type"	"DAMAGE_TYPE_MAGICAL"
+					"Target"
+					{
+						"Center"	"CASTER"
+						"Radius"	"%lightning_radius"
+						"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+						"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+					}
+
+				}
+
+			}
+
+			"EffectName"	"particles/items2_fx/mjollnir_shield.vpcf"
+			"EffectAttachType"	"follow_origin"
+		}
+
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"lightning_damage"	"7"
+		}
+
+		"02"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"lightning_radius"	"160"
+		}
+
+		"03"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"lightning_duration"	"20"
+		}
+
+		"04"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"lightning_think_time"	"1"
+		}
+
+	}
+
+}

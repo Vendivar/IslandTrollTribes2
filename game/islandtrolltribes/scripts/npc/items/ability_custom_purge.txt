@@ -1,0 +1,21 @@
+"ability_custom_purge"
+{
+	"BaseClass"	"satyr_trickster_purge"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY | DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+	"AbilityCastRange"	"24000"
+	"AbilityCooldown"	"0"
+	"AbilityCastPoint"	"0"
+	"AbilityManaCost"	"0"
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"duration"	"0.1"
+		}
+
+	}
+
+}

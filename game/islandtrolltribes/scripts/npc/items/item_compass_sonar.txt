@@ -1,0 +1,53 @@
+"item_compass_sonar"
+{
+	"ID"	"1103"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"BaseClass"	"item_datadriven"
+	"AbilityTextureName"	"compass_sonar"
+	"Model"	"models/items/rattletrap/cog_tesla/cog_tesla.vmdl"
+	"Effect"	""
+	"AbilityCooldown"	"35"
+	"AbilityCastPoint"	"0.5"
+	"ItemCost"	"18"
+	"ItemShopTags"	"consumable"
+	"ItemQuality"	"consumable"
+	"ItemShareability"	"ITEM_FULLY_SHAREABLE"
+	"ItemStackable"	"0"
+	"ItemPermanent"	"1"
+	"ItemDroppable"	"1"
+	"ItemAliases"	"quicktype"
+	"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+	"ItemKillable"	"1"
+	"ItemSellable"	"0"
+	"OnOwnerDied"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+			"Function"	"DropItemOnDeath"
+		}
+
+	}
+
+	"UIPickupSound"	"Item.PickUpGemShop"
+	"UIDropSound"	"Item.DropGemShop"
+	"WorldDropSound"	"Item.DropGemWorld"
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+			"Function"	"SonarCompassUse"
+			"UnitTable"
+			{
+				"npc_ship_merchant_1"	"255 255 255"
+				"npc_ship_merchant_2"	"255 255 255"
+				"npc_ship_merchant_3"	"255 255 255"
+				"npc_ship_transport"	"255 0   0"
+			}
+
+		}
+
+	}
+
+}

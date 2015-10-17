@@ -1,0 +1,5 @@
+"ability_make_boots"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityTextureName"	"ability_building_makeboots"
+}

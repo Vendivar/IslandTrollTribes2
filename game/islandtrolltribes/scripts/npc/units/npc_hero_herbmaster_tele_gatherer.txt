@@ -1,0 +1,115 @@
+"npc_hero_herbmaster_tele_gatherer"
+{
+	"BaseClass"	"npc_dota_creature"
+	"ConsideredHero"	"1"
+	"Portrait"	"vgui/hud/heroportraits/portrait_shadow_shaman"
+	"IdleExpression"	"scenes/shadowshaman/shadowshaman_exp_idle_01.vcd"
+	"SoundSet"	"Hero_ShadowShaman"
+	"VoiceFile"	"scripts/voscripts/game_sounds_vo_shadowshaman.txt"
+	"ParticleFile"	"particles/units/heroes/hero_shadowshaman.pcf"
+	"GameSoundsFile"	"scripts/game_sounds_heroes/game_sounds_shadowshaman.txt"
+	"ModelScale"	"0.91"
+	"Model"	"models/heroes/shadowshaman/shadowshaman.vmdl"
+	"Ability1"	"ability_gatherer_itemradar"
+	"Ability2"	"ability_gatherer_radarmanipulations"
+	"Ability3"	"ability_gatherer_mixherbs"
+	"Ability4"	"ability_gatherer_telegather_herb"
+	"Ability5"	"ability_empty5"
+	"Ability6"	"ability_empty6"
+	"Ability7"	""
+	"Ability8"	""
+	"Ability9"	""
+	"Ability10"	""
+	"Ability11"	"ability_gatherer_findhide"
+	"Ability12"	"ability_gatherer_findclayballcookedmeatorbone"
+	"Ability13"	"ability_gatherer_findmushroomstickortinder"
+	"Ability14"	""
+	"Ability15"	""
+	"Ability16"	""
+	"ArmorPhysical"	"0"
+	"AttackCapabilities"	"DOTA_UNIT_CAP_MELEE_ATTACK"
+	"AttackDamageMin"	"14"
+	"AttackDamageMax"	"14"
+	"AttackRate"	"1.75"
+	"AttackAnimationPoint"	"0.840"
+	"AttackAcquisitionRange"	"600"
+	"AttackRange"	"100"
+	"ProjectileModel"	""
+	"ProjectileSpeed"	"0"
+	"AttributePrimary"	"DOTA_ATTRIBUTE_AGILITY"
+	"AttributeBaseStrength"	"1"
+	"AttributeStrengthGain"	"1"
+	"AttributeBaseIntelligence"	"1"
+	"AttributeIntelligenceGain"	"1"
+	"AttributeBaseAgility"	"1"
+	"AttributeAgilityGain"	"1"
+	"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
+	"MovementSpeed"	"325"
+	"MovementTurnRate"	"0.5"
+	"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
+	"HealthBarOffset"	"140"
+	"StatusHealth"	"192"
+	"StatusHealthRegen"	"0.0"
+	"StatusMana"	"200"
+	"StatusManaRegen"	"0.0"
+	"VisionDaytimeRange"	"1800"
+	"VisionNighttimeRange"	"1800"
+	"Creature"
+	{
+		"AttachWearables"
+		{
+			"Wearable1"
+			{
+				"ItemDef"	"246"
+			}
+
+			"Wearable2"
+			{
+				"ItemDef"	"247"
+			}
+
+			"Wearable3"
+			{
+				"ItemDef"	"248"
+			}
+
+			"Wearable4"
+			{
+				"ItemDef"	"249"
+			}
+
+			"Wearable5"
+			{
+				"ItemDef"	"250"
+			}
+
+			"Wearable6"
+			{
+				"ItemDef"	"251"
+			}
+
+			"Wearable7"
+			{
+				"ItemDef"	"4412"
+			}
+
+			"Wearable8"
+			{
+				"ItemDef"	"4416"
+			}
+
+			"Wearable9"
+			{
+				"ItemDef"	"4417"
+			}
+
+			"Wearable10"
+			{
+				"ItemDef"	"4419"
+			}
+
+		}
+
+	}
+
+}

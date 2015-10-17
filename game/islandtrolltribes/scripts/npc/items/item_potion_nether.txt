@@ -1,0 +1,114 @@
+"item_potion_nether"
+{
+	"ID"	"1047"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"BaseClass"	"item_datadriven"
+	"AbilityTextureName"	"item_smoke_of_deceit"
+	"Model"	"models/props_gameplay/smoke.vmdl"
+	"Effect"	""
+	"AbilityCastRange"	"800"
+	"AbilityCastPoint"	"0.5"
+	"ItemCost"	"8"
+	"ItemShopTags"	"consumable"
+	"ItemQuality"	"consumable"
+	"ItemShareability"	"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemStackable"	"1"
+	"ItemPermanent"	"0"
+	"ItemDroppable"	"1"
+	"ItemInitialCharges"	"2"
+	"ItemAliases"	"quicktype"
+	"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+	"ItemKillable"	"1"
+	"ItemSellable"	"0"
+	"OnOwnerDied"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+			"Function"	"DropItemOnDeath"
+		}
+
+	}
+
+	"UIPickupSound"	"Item.PickUpGemShop"
+	"UIDropSound"	"Item.DropGemShop"
+	"WorldDropSound"	"Hero_Alchemist.Foley"
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+			"Function"	"potion_nether_use"
+		}
+
+		"ApplyModifier"
+		{
+			"Target"	"CASTER"
+			"Duration"	"%nether_duration"
+			"ModifierName"	"modifier_potion_nether"
+		}
+
+		"SpendCharge"
+		{
+		}
+
+	}
+
+	"Modifiers"
+	{
+		"modifier_potion_nether"
+		{
+			"OnCreated"
+			{
+				"AttachEffect"
+				{
+					"EffectName"	"particles/units/heroes/hero_pugna/pugna_decrepify.vpcf"
+					"EffectAttachType"	"follow_origin"
+					"Target"	"TARGET"
+				}
+
+				"FireSound"
+				{
+					"EffectName"	"Hero_Pugna.Decrepify"
+					"Target"	"TARGET"
+				}
+
+			}
+
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"-50"
+			}
+
+			"States"
+			{
+				"MODIFIER_STATE_ATTACK_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
+			}
+
+		}
+
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"max_stacks"	"2"
+		}
+
+		"02"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"charges"	"2"
+		}
+
+		"03"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"nether_duration"	"5"
+		}
+
+	}
+
+}

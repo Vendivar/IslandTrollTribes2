@@ -1,0 +1,102 @@
+"ability_thief_cloakadvanced"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+	"AbilityTextureName"	"ability_thief_cloak"
+	"AbilityCastPoint"	"0.4"
+	"AbilityCooldown"	"60.0"
+	"AbilityManaCost"	"0"
+	"MaxLevel"	"1"
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"Target"	"CASTER"
+			"ModifierName"	"modifier_cloak_fade"
+		}
+
+		"SpawnUnit"
+		{
+			"UnitName"	"dummy_cloak_vision"
+			"UnitCount"	"1"
+			"UnitLimit"	"10"
+			"SpawnRadius"	"0"
+			"Duration"	"4.0"
+			"Target"	"CASTER"
+		}
+
+	}
+
+	"Modifiers"
+	{
+		"modifier_cloak_fade"
+		{
+			"Duration"	"%fade_time"
+			"OnDestroy"
+			{
+				"ApplyModifier"
+				{
+					"Target"	"CASTER"
+					"Duration"	"%duration"
+					"ModifierName"	"modifier_invisible"
+				}
+
+				"ApplyModifier"
+				{
+					"Target"	"CASTER"
+					"Duration"	"%duration"
+					"ModifierName"	"modifier_cloak_speed"
+				}
+
+			}
+
+		}
+
+		"modifier_cloak_speed"
+		{
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"10"
+			}
+
+			"OnAbilityExecuted"
+			{
+				"RemoveModifier"
+				{
+					"Target"	"CASTER"
+					"ModifierName"	"modifier_cloak_speed"
+				}
+
+			}
+
+			"OnAttackLanded"
+			{
+				"RemoveModifier"
+				{
+					"Target"	"CASTER"
+					"ModifierName"	"modifier_cloak_speed"
+				}
+
+			}
+
+		}
+
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"duration"	"10.0"
+		}
+
+		"02"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"fade_time"	"0.4"
+		}
+
+	}
+
+}

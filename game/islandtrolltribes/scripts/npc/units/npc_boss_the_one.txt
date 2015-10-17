@@ -1,0 +1,67 @@
+"npc_boss_the_one"
+{
+	"BaseClass"	"npc_dota_creature"
+	"Model"	"models/heroes/juggernaut/juggernaut.vmdl"
+	"AbilityLayout"	"5"
+	"Ability1"	"ability_the_one_criticalstike"
+	"Ability2"	"ability_the_one_pulverize"
+	"Ability3"	"ability_the_one_truesight"
+	"Ability4"	"ability_the_one_ensnare"
+	"Ability5"	"ability_the_one_orboflightning"
+	"ArmorPhysical"	"-1"
+	"AttackCapabilities"	"DOTA_UNIT_CAP_MELEE_ATTACK"
+	"AttackDamageMin"	"19"
+	"AttackDamageMax"	"28"
+	"AttackRate"	"1.25"
+	"AttackAnimationPoint"	"0.840"
+	"AttackAcquisitionRange"	"600"
+	"AttackRange"	"100"
+	"ProjectileModel"	""
+	"ProjectileSpeed"	"0"
+	"AttributePrimary"	"DOTA_ATTRIBUTE_AGILITY"
+	"AttributeBaseStrength"	"1"
+	"AttributeStrengthGain"	"1"
+	"AttributeBaseIntelligence"	"1"
+	"AttributeIntelligenceGain"	"1"
+	"AttributeBaseAgility"	"1"
+	"AttributeAgilityGain"	"1"
+	"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
+	"MovementSpeed"	"270"
+	"MovementTurnRate"	"0.5"
+	"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
+	"HealthBarOffset"	"140"
+	"StatusHealth"	"908"
+	"StatusHealthRegen"	"0.0"
+	"StatusMana"	"200"
+	"StatusManaRegen"	"0.0"
+	"VisionDaytimeRange"	"1800"
+	"VisionNighttimeRange"	"1800"
+	"Creature"
+	{
+		"AttachWearables"
+		{
+			"Wearable1"
+			{
+				"ItemDef"	"6056"
+			}
+
+			"Wearable2"
+			{
+				"ItemDef"	"62"
+			}
+
+			"Wearable3"
+			{
+				"ItemDef"	"6072"
+			}
+
+			"Wearable4"
+			{
+				"ItemDef"	"5440"
+			}
+
+		}
+
+	}
+
+}

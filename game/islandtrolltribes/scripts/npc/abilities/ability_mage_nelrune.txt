@@ -1,0 +1,69 @@
+"ability_mage_nelrune"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	"AbilityTextureName"	"ability_mage_nelrune"
+	"AbilityCastAnimation"	""
+	"AbilityCastPoint"	"0.0"
+	"AbilityCooldown"	"1"
+	"AbilityChannelTime"	"0"
+	"AbilityManaCost"	"0"
+	"MaxLevel"	"1"
+	"RequiredLevel"	"4"
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_nelrune"
+			"Duration"	"0"
+			"Target"
+			{
+				"Target"	"CASTER"
+			}
+
+		}
+
+		"FireSound"
+		{
+			"EffectName"	"Hero_ElderTitan.AncestralSpirit.Damage"
+			"Target"	"CASTER"
+		}
+
+		"RunScript"
+		{
+			"ScriptFile"	"custom_functions_ability.lua"
+			"Function"	"NelRune"
+			"Target"	"SELF"
+		}
+
+	}
+
+	"Modifiers"
+	{
+		"modifier_nelrune"
+		{
+			"Duration"	"0"
+			"Passive"	"1"
+			"IsHidden"	"0"
+			"IsBuff"	"1"
+		}
+
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"nel_slow"	"+15"
+		}
+
+		"02"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"nel_seconds"	"5"
+		}
+
+	}
+
+}

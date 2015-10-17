@@ -1,0 +1,65 @@
+"item_spirit_wind"
+{
+	"ID"	"1034"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"BaseClass"	"item_datadriven"
+	"AbilityTextureName"	"spirit_wind"
+	"Model"	"models/heroes/batrider/batrider_weapon.vmdl"
+	"Effect"	"particles/units/heroes/hero_razor/razor_plasmafield_glow.vpcf"
+	"ItemCost"	"6"
+	"ItemShopTags"	"consumable"
+	"ItemQuality"	"consumable"
+	"ItemShareability"	"ITEM_FULLY_SHAREABLE"
+	"ItemStackable"	"0"
+	"ItemPermanent"	"1"
+	"ItemDroppable"	"1"
+	"ItemAliases"	"quicktype"
+	"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+	"ItemKillable"	"1"
+	"ItemSellable"	"0"
+	"OnOwnerDied"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+			"Function"	"DropItemOnDeath"
+		}
+
+	}
+
+	"UIPickupSound"	"Item.PickUpGemShop"
+	"UIDropSound"	"Item.DropGemShop"
+	"WorldDropSound"	"Hero_Alchemist.Foley"
+	"Custom"
+	{
+		"ModelScale"	"1.3"
+	}
+
+	"Modifiers"
+	{
+		"modifier_spirit_wind_stats"
+		{
+			"IsHidden"	"1"
+			"Passive"	"1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%all_stats"
+				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%all_stats"
+				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%all_stats"
+			}
+
+		}
+
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"all_stats"	"1"
+		}
+
+	}
+
+}

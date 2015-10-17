@@ -1,0 +1,191 @@
+"ability_mage_electromagnet"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityTextureName"	"ability_mage_electromagnet"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityCastPoint"	"0.0"
+	"AbilityChannelTime"	"2"
+	"AbilityCooldown"	"90"
+	"AbilityManaCost"	"30"
+	"AOERadius"			"%max_range"
+	"MaxLevel"	"1"
+
+	"precache"
+	{
+		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_disrupter.vsndevts"
+		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_stormspirit.vsndevts"
+		"particles"			"particles/econ/items/slardar/slardar_takoyaki/slardar_crush_tako_shockwave_ring.vpcf"
+		"particles"			"particles/units/heroes/hero_stormspirit/stormspirit_electric_vortex_recipient_b.vpcf"
+		"particles"			"particles/units/heroes/hero_stormspirit/stormspirit_electric_vortex.vpcf"
+		"particle_folder"	"particles/units/heroes/hero_magnataur"
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"		"FIELD_INTEGER"
+			"min_range"		"150"
+		}
+		"02"
+		{
+			"var_type"		"FIELD_INTEGER"
+			"max_range"		"700"
+		}
+		"03"
+		//How often should I pull?
+		{
+			"var_type"		"FIELD_FLOAT"
+			"pull_interval"	"0.01"
+		}
+		"04"
+		//How close should I pull?
+		{
+			"var_type"		"FIELD_FLOAT"
+			"pull_scale"	"1.5"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		
+		"FireSound"
+		{
+			"EffectName"		"Hero_Disruptor.StaticStorm"
+			"Target"			"CASTER"
+		}
+		"FireSound"
+		{
+			"EffectName"		"Hero_StormSpirit.ElectricVortex"
+			"Target"			"CASTER"
+		}
+		"ActOnTargets"
+		{
+			"Target"
+			{
+				"Center"	"CASTER"
+				"Radius"	"%max_range"
+				"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Types"		"DOTA_UNIT_TARGET_HERO"
+			}
+
+			"Action"
+			{
+				"ApplyModifier"
+				{
+					"Target"		"TARGET"
+					"ModifierName"	"modifier_pulled"
+					"Duration"		"2"
+				}
+					"ApplyModifier"
+				{
+					"Target"		"CASTER"
+					"ModifierName"	"modifier_shockwave"
+					"Duration"		"2"
+				}
+				"RunScript"
+				{
+					"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
+					"Function"		"ElectroMagnetStart"
+					"Target"		"TARGET"
+					
+					"pfx"			"particles/units/heroes/hero_razor/razor_static_link_beam.vpcf"
+				}
+			}
+		}
+			
+	}
+
+	"OnChannelFinish"
+	{
+		"ActOnTargets"
+		{
+			"Target"
+			{
+				"Center"	"CASTER"
+				"Radius"	"%max_range"
+				"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Types"		"DOTA_UNIT_TARGET_HERO"
+			}
+			"Action"
+			{
+				"RemoveModifier"
+				{
+					"ModifierName"	"modifier_pulled"
+					"Target"		"TARGET"
+				}
+				"RunScript"
+				{
+					"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
+					"Function"		"ElectroMagnetEnd"
+					"Target"		"TARGET"
+
+				}
+			}
+		}
+
+	}
+
+	"Modifiers"
+	{
+		"modifier_pulled"
+		{
+			"IsHidden"	"1"
+			"IsPurgable"	"0"
+			 "OnCreated"
+			{
+				"AttachEffect"
+				{
+						"EffectName"    "particles/units/heroes/hero_stormspirit/stormspirit_electric_vortex_recipient_b.vpcf"
+						"Target"        "TARGET"
+						"EffectAttachType"      "attach_customorigin"
+						"ControlPointEntities"
+						{
+							"TARGET" "attach_hitloc"
+							"TARGET" "attach_hitloc"
+							"TARGET" "attach_hitloc" //CP2
+						}
+				}
+			}       
+			"ThinkInterval"	"%pull_interval" 
+			"OnIntervalThink"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
+					"Function"		"ElectroMagnetThink"
+
+					"min_range"		"%min_range"
+					"pull_scale" 	"%pull_scale"
+				}
+			
+			}
+			"States"
+			{
+				"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
+			}
+
+		}
+		"modifier_shockwave"
+		{
+			"IsHidden"	"1"
+			"ThinkInterval"	"0.5"
+			"OnIntervalThink"
+			{
+				"FireEffect"
+				{
+					"EffectName" "particles/econ/items/slardar/slardar_takoyaki/slardar_crush_tako_shockwave_ring.vpcf"
+					"Target" "CASTER"
+					"EffectAttachType" "follow_origin"
+				}	
+			}
+			"AttachEffect"
+		{
+			"EffectName" "particles/units/heroes/hero_stormspirit/stormspirit_electric_vortex.vpcf"
+			"Target" "CASTER"
+			"EffectAttachType" "follow_origin"
+		}	
+		}
+	}
+
+}

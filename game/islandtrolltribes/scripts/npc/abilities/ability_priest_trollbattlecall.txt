@@ -1,0 +1,81 @@
+"ability_priest_trollbattlecall"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityTextureName"	"ability_priest_trollbattlecall"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_4"
+	"AbilityCastPoint"	"1.0"
+	"AbilityCooldown"	"20"
+	"AbilityCastRange"	"0"
+	"AbilityManaCost"	"30"
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_troll_battle_call"
+			"Target"
+			{
+				"Center"	"CASTER"
+				"Radius"	"500"
+			}
+
+		}
+
+		"FireSound"
+		{
+			"EffectName"	"DOTA_Item.Buckler.Activate"
+			"Target"	"TARGET"
+		}
+
+		"FireSound"
+		{
+			"EffectName"	"DOTA_Item.DoE.Activate"
+			"Target"	"TARGET"
+		}
+
+	}
+
+	"Modifiers"
+	{
+		"modifier_troll_battle_call"
+		{
+			"Duration"	"%duration"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor_bonus"
+				"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"	"%damage_bonus"
+			}
+
+		}
+
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"radius"	"2000"
+		}
+
+		"02"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"armor_bonus"	"1.0"
+		}
+
+		"03"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"damage_bonus"	"20"
+		}
+
+		"04"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"duration"	"20"
+		}
+
+	}
+
+}

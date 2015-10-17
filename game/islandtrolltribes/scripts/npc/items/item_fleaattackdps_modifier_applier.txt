@@ -1,0 +1,20 @@
+"item_fleaattackdps_modifier_applier"
+{
+	"ID"	"1904"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"BaseClass"	"item_datadriven"
+	"ItemBaseLevel"	"1"
+	"AbilityCastRange"	"9999"
+	"AbilityCastPoint"	"0.0"
+	"Modifiers"
+	{
+		"modifier_fleadps"
+		{
+			"Passive"	"1"
+			"IsHidden"	"1"
+			"IsDebuff"	"0"
+		}
+
+	}
+
+}

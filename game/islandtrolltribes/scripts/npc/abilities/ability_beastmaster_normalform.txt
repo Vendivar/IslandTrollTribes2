@@ -1,0 +1,31 @@
+"ability_beastmaster_normalform"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityTextureName"	"ability_beastmaster_normalform"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityCastPoint"	"0.0"
+	"AbilityCooldown"	"5"
+	"AbilityCastRange"	"0"
+	"AbilityManaCost"	"0"
+	"MaxLevel"	"1"
+	"precache"
+	{
+		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_lone_druid.vsndevts"
+	}
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"custom_functions_ability.lua"
+			"Function"	"Shapeshift"
+			"Form"	"Normal"
+		}
+				"FireSound"
+		{
+			"EffectName"			"Hero_LoneDruid.TrueForm.Cast"
+			"Target"			"CASTER"
+		}
+
+	}
+
+}

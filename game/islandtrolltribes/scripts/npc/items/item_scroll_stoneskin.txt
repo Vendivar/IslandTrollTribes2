@@ -1,0 +1,149 @@
+"item_scroll_stoneskin"
+{
+	"ID"	"1087"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
+	"BaseClass"	"item_datadriven"
+	"AbilityTextureName"	"scroll_stoneskin"
+	"Model"	"models/props_gameplay/recipe.vmdl"
+	"AbilityCastRange"	"%range"
+	"AbilityCastPoint"	"0.5"
+	"AbilityCooldown"	"60.0"
+	"ItemCost"	"10"
+	"ItemShopTags"	"consumable"
+	"ItemQuality"	"consumable"
+	"ItemShareability"	"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemStackable"	"0"
+	"ItemPermanent"	"0"
+	"ItemDroppable"	"1"
+	"ItemInitialCharges"	"1"
+	"ItemAliases"	"quicktype"
+	"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+	"ItemKillable"	"1"
+	"ItemSellable"	"0"
+	"OnOwnerDied"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+			"Function"	"DropItemOnDeath"
+		}
+
+	}
+
+	"UIPickupSound"	"Item.PickUpGemShop"
+	"UIDropSound"	"Item.DropGemShop"
+	"WorldDropSound"	"Item.DropRecipeWorld"
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_scroll_stoneskin_buff"
+			"Target"	"TARGET"
+			"Duration"	"%duration"
+		}
+
+	}
+
+	"Modifiers"
+	{
+		"modifier_scroll_stoneskin_buff"
+		{
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor_bonus"
+			}
+
+			"OnAttacked"
+			{
+				"ApplyModifier"
+				{
+					"ModifierName"	"modifier_scroll_stoneskin_debuff"
+					"Target"	"ATTACKER"
+					"Duration"	"%slow_debuff_duration"
+				}
+
+			}
+
+			"OnCreated"
+			{
+				"AttachEffect"
+				{
+					"Target"	"CASTER"
+					"EffectName"	"particles/econ/generic/generic_buff_1/generic_buff_1.vpcf"
+					"EffectAttachType"	"follow_overhead"
+					"EffectLifeDurationScale"	"1"
+					"EffectColorA"	"100 100 100"
+				}
+
+				"FireSound"
+				{
+					"Target"	"TARGET"
+					"EffectName"	"Hero_EarthSpirit.StoneRemnant.Impact"
+				}
+
+			}
+
+		}
+
+		"modifier_scroll_stoneskin_debuff"
+		{
+			"IsDebuff"	"1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed_slow"
+			}
+
+			"OnCreated"
+			{
+				"AttachEffect"
+				{
+					"Target"	"TARGET"
+					"EffectName"	"particles/econ/generic/generic_buff_1/generic_buff_1.vpcf"
+					"EffectAttachType"	"follow_overhead"
+					"EffectLifeDurationScale"	"1"
+					"EffectColorA"	"200 100 100"
+				}
+
+			}
+
+		}
+
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"range"	"450"
+		}
+
+		"02"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"duration"	"45.0"
+		}
+
+		"02"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"armor_bonus"	"15"
+		}
+
+		"03"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"attack_speed_slow"	"-10"
+		}
+
+		"04"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"slow_debuff_duration"	"2.0"
+		}
+
+	}
+
+}

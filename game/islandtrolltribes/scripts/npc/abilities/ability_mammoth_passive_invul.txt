@@ -1,0 +1,21 @@
+"ability_mammoth_passive_invul"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	"AbilityTextureName"	"razor_plasma_field"
+	"Modifiers"
+	{
+		"modifier_mammoth_passive"
+		{
+			"Passive"	"1"
+			"IsHidden"	"1"
+
+			"States"
+			{
+				"MODIFIER_STATE_MAGIC_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_NO_HEALTH_BAR"	"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_INVULNERABLE"	"MODIFIER_STATE_VALUE_ENABLED"
+			}
+		}
+	}
+}

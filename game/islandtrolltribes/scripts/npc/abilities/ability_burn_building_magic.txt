@@ -1,0 +1,73 @@
+"ability_burn_building_magic"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityTextureName"	"Burn_Building_Magic"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"ModifierName"	"aura_burn"
+			"Target"
+			{
+				"Center"	"CASTER"
+				"Radius"	"%burn_radius"
+				"Teams"	"DOTA_UNIT_TARGET_TEAM_BOTH"
+				"Types"	"DOTA_UNIT_TARGET_BUILDING"
+			}
+
+		}
+
+	}
+
+	"Modifiers"
+	{
+		"aura_burn"
+		{
+			"IsHidden"	"0"
+			"Passive"	"1"
+			"Aura"	"Burn"
+			"Aura_Radius"	"%burn_radius"
+			"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_BOTH"
+			"Aura_Types"	"DOTA_UNIT_TARGET_BUILDING"
+			"Aura_ApplyToCaster"	"0"
+		}
+
+		"Burn"
+		{
+			"IsPurgable"	"0"
+			"IsDebuff"	"1"
+			"IsHidden"	"0"
+			"ThinkInterval"	"%tick_rate"
+			"OnIntervalThink"
+			{
+				"Damage"
+				{
+					"Damage"	"%aura_damage"
+					"Target"	"TARGET"
+					"Type"	"DAMAGE_TYPE_MAGICAL"
+				}
+
+			}
+
+		}
+
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"burn_radius"	"360"
+		}
+
+		"02"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"aura_damage"	"20"
+		}
+
+	}
+
+}

@@ -1,0 +1,7 @@
+"ability_empty6"
+{
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	"MaxLevel"	"0"
+	"BaseClass"	"ability_datadriven"
+	"AbilityTextureName"	"rubick_empty1"
+}

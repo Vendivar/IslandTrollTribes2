@@ -1,0 +1,87 @@
+"ability_burn_building"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityTextureName"	"ability_building_burnbuilding"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"precache"
+	{
+		"particle_folder"	"particles/dire_fx"
+	}
+
+	"Modifiers"
+	{
+		"aura_burn"
+		{
+			"IsHidden"	"0"
+			"Passive"	"1"
+			"Aura"	"Burn"
+			"Aura_Radius"	"%burn_radius"
+			"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_BOTH"
+			"Aura_Types"	"DOTA_UNIT_TARGET_BUILDING"
+			"Aura_ApplyToCaster"	"0"
+			"OnCreated"
+			{
+				"AttachEffect"
+				{
+					"Target"	"CASTER"
+					"EffectName"	"particles/world_environmental_fx/fire_camp_01.vpcf"
+					"EffectAttachType"	"follow_origin"
+				}
+
+				"AttachEffect"
+				{
+					"Target"	"CASTER"
+					"EffectName"	"particles/econ/generic/generic_buff_1/generic_buff_1.vpcf"
+					"EffectAttachType"	"follow_overhead"
+					"EffectLifeDurationScale"	"1"
+					"EffectColorA"	"100 100 100"
+				}
+
+			}
+
+		}
+
+		"Burn"
+		{
+			"IsPurgable"	"0"
+			"IsDebuff"	"1"
+			"IsHidden"	"0"
+			"ThinkInterval"	"%tick_rate"
+			"OnIntervalThink"
+			{
+				"Damage"
+				{
+					"Damage"	"%aura_damage"
+					"Target"	"TARGET"
+					"Type"	"DAMAGE_TYPE_MAGICAL"
+				}
+
+			}
+
+		}
+
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"burn_radius"	"125"
+		}
+
+		"02"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"aura_damage"	"7"
+		}
+
+		"02"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"tick_rate"	"1.0"
+		}
+
+	}
+
+}

@@ -1,0 +1,5 @@
+"ability_mix"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityTextureName"	"ability_building_mix"
+}

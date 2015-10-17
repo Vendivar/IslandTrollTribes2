@@ -1,0 +1,116 @@
+"ability_hunter_giantswing"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	"AbilityTextureName"	"ability_hunter_giantswing"
+	"MaxLevel"	"3"
+	"precache"
+	{
+		"particles"			"particles/econ/items/axe/axe_weapon_bloodchaser/axe_attack_blur_counterhelix_bloodchaser_b.vpcf"
+		"particles"			"particles/units/heroes/hero_legion_commander/legion_weapon_blur.vpcf"
+		"soundfile"			"sounds/weapons/hero/huskar/life_break_impact.vsnd"
+		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_tinker.vsndevts"
+	}
+
+	"OnDealDamage"
+	{
+		"Random"
+		{
+			"Chance"	"%chance"
+			"OnSuccess"
+			{
+				"Damage"
+				{
+					"Type"	"DAMAGE_TYPE_PHYSICAL"
+					"Damage"	"%damage"
+					"Target"
+					{
+						"Center"	"TARGET"
+						"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+						"Type"	"DOTA_UNIT_TARGET_ALL"
+						"Radius"	"%radius"
+					}
+
+				}
+
+				"Damage"
+				{
+					"Type"	"DAMAGE_TYPE_PHYSICAL"
+					"Damage"	"%damagehalf"
+					"Target"
+					{
+						"Center"	"TARGET"
+						"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+						"Type"	"DOTA_UNIT_TARGET_ALL"
+						"Radius"	"%radiushalf"
+					}
+
+				}
+
+				"FireSound"
+				{
+					"EffectName"	"Hero_Huskar.Life_Break.Impact"
+					"Target"	"TARGET"
+				}
+				"FireEffect"
+				{
+					"EffectName"	"particles/units/heroes/hero_legion_commander/legion_weapon_blur.vpcf"
+					"EffectAttachType"	"follow_origin"
+					"Target"	"CASTER"
+				}
+				"FireEffect"
+				{
+					"EffectName"	"particles/econ/items/axe/axe_weapon_bloodchaser/axe_attack_blur_counterhelix_bloodchaser_b.vpcf"
+					"EffectAttachType"	"follow_origin"
+					"Target"	"CASTER"
+				}
+			}
+			"OnFailure"
+			{
+				"FireSound"
+				{
+					"EffectName"	"Hero_Tinker.Laser"
+					"Target"	"TARGET"
+				}
+			}
+		}
+
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"radius"	"200 225 250"
+		}
+
+		"02"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"radiushalf"	"400 450 500"
+		}
+
+		"03"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"damage"	"5 7.5 10"
+		}
+
+		"04"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"damagehalf"	"5 7.5 10"
+		}
+
+		"04"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"chance"	"20 22.5 25"
+		}
+
+	}
+
+}

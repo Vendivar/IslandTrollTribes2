@@ -1,0 +1,157 @@
+"item_shield_battle"
+{
+	"ID"	"1075"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
+	"BaseClass"	"item_datadriven"
+	"AbilityTextureName"	"shield_battle"
+	"Model"	"models/heroes/chaos_knight/chaos_knight_shield.vmdl"
+	"Effect"	""
+	"AbilityCastRange"	"800"
+	"AbilityCastPoint"	"0.5"
+	"ItemCost"	"106"
+	"ItemShopTags"	"consumable"
+	"ItemQuality"	"consumable"
+	"ItemShareability"	"ITEM_FULLY_SHAREABLE"
+	"ItemStackable"	"0"
+	"ItemPermanent"	"1"
+	"ItemDroppable"	"1"
+	"ItemAliases"	"quicktype"
+	"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+	"ItemKillable"	"1"
+	"ItemSellable"	"1"
+	"OnOwnerDied"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+			"Function"	"DropItemOnDeath"
+		}
+
+	}
+
+	"UIPickupSound"	"Item.PickUpGemShop"
+	"UIDropSound"	"Item.DropGemShop"
+	"WorldDropSound"	"ui.inv_drop_staff"
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+			"Function"	"shield_battle_active"
+		}
+
+	}
+
+	"Modifiers"
+	{
+		"modifier_shield_battle_block"
+		{
+			"Passive"	"1"
+			"IsHidden"	"1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
+				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%bonus_str"
+				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_int"
+				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%bonus_agi"
+			}
+
+			"OnCreated"
+			{
+				"ApplyModifier"
+				{
+					"Target"	"CASTER"
+					"ModifierName"	"modifier_item_vanguard"
+				}
+
+				"ApplyModifier"
+				{
+					"Target"	"CASTER"
+					"ModifierName"	"modifier_item_sphere"
+				}
+
+				"ApplyModifier"
+				{
+					"Target"	"CASTER"
+					"ModifierName"	"modifier_item_sphere_target"
+				}
+
+			}
+
+		}
+
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"armor"	"10"
+		}
+
+		"02"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"block_chance"	"10"
+		}
+
+		"03"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"block_amount"	"20"
+		}
+
+		"04"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"spell_block"	"1"
+		}
+
+		"05"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"bonus_int"	"1"
+		}
+
+		"06"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"bonus_agi"	"1"
+		}
+
+		"07"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"bonus_str"	"2"
+		}
+
+		"08"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"block_chance"	"10"
+		}
+
+		"09"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"block_damage_melee"	"20"
+		}
+
+		"10"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"block_damage_ranged"	"20"
+		}
+
+		"11"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"block_cooldown"	"10.0"
+		}
+
+	}
+
+}

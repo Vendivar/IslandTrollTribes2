@@ -1,0 +1,25 @@
+"tool_reverse"
+{
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE"
+	"BaseClass"	"ability_datadriven"
+	"OnToggleOn"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/toolhero.lua"
+			"Function"	"reverse"
+		}
+
+	}
+
+	"OnToggleOff"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/toolhero.lua"
+			"Function"	"reverse"
+		}
+
+	}
+
+}

@@ -1,0 +1,183 @@
+"item_cloak_protection"
+{
+	"ID"	"1071"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
+	"BaseClass"	"item_datadriven"
+	"AbilityTextureName"	"cloak_protection"
+	"Model"	"models/items/windrunner/falconcloak/falconcloak.vmdl"
+	"Effect"	""
+	"ItemCost"	"88"
+	"ItemShopTags"	"consumable"
+	"ItemQuality"	"consumable"
+	"ItemShareability"	"ITEM_FULLY_SHAREABLE"
+	"ItemStackable"	"0"
+	"ItemPermanent"	"1"
+	"ItemDroppable"	"1"
+	"ItemAliases"	"quicktype"
+	"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+	"ItemKillable"	"1"
+	"ItemSellable"	"1"
+	"OnOwnerDied"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+			"Function"	"DropItemOnDeath"
+		}
+
+	}
+
+	"UIPickupSound"	"Item.PickUpGemShop"
+	"UIDropSound"	"Item.DropGemShop"
+	"WorldDropSound"	"ui.inv_pickup_leather"
+	"Modifiers"
+	{
+		"modifier_cloakprotect_passive"
+		{
+			"Passive"	"1"
+			"IsHidden"	"0"
+			"OnAttacked"
+			{
+				"Random"
+				{
+					"Chance"	"%chance"
+					"OnSuccess"
+					{
+						"ApplyModifier"
+						{
+							"ModifierName"	"modifier_cloakprotect"
+							"Target"	"CASTER"
+							"Duration"	"%protect_duration"
+						}
+
+						"FireSound"
+						{
+							"EffectName"	"Roshan.Slam"
+							"Target"	"CASTER"
+						}
+
+					}
+
+					"OnFailure"
+					{
+						"RemoveModifier"
+						{
+							"Target"	"CASTER"
+							"ModifierName"	"modifier_item_vanguard"
+						}
+
+						"RunScript"
+						{
+							"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+							"Function"	"CloakProtectFail"
+							"Attacker"	"ATTACKER"
+						}
+
+						"ApplyModifier"
+						{
+							"Target"	"CASTER"
+							"ModifierName"	"modifier_item_vanguard"
+						}
+
+					}
+
+				}
+
+			}
+
+			"OnCreated"
+			{
+				"ApplyModifier"
+				{
+					"Target"	"CASTER"
+					"ModifierName"	"modifier_item_vanguard"
+				}
+
+			}
+
+			"OnDestroy"
+			{
+				"RemoveModifier"
+				{
+					"Target"	"CASTER"
+					"ModifierName"	"modifier_item_vanguard"
+				}
+
+			}
+
+		}
+
+		"modifier_cloakprotect"
+		{
+			"IsDebuff"	"0"
+			"TextureName"	"cloak_protection"
+			"OnCreated"
+			{
+				"AttachEffect"
+				{
+					"Target"	"CASTER"
+					"EffectName"	"particles/units/heroes/hero_omniknight/omniknight_guardian_angel_ally.vpcf"
+					"EffectAttachType"	"follow_origin"
+				}
+
+			}
+
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
+				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%bonus_damage"
+			}
+
+		}
+
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"armor"	"6"
+		}
+
+		"02"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"chance"	"20"
+		}
+
+		"03"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"bonus_damage"	"1"
+		}
+
+		"04"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"protect_duration"	"4"
+		}
+
+		"05"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"block_chance"	"100"
+		}
+
+		"06"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"block_damage_melee"	"10000"
+		}
+
+		"07"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"block_damage_ranged"	"10000"
+		}
+
+	}
+
+}

@@ -1,0 +1,133 @@
+"item_potion_acid"
+{
+	"ID"	"1053"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+	"BaseClass"	"item_datadriven"
+	"AbilityTextureName"	"potion_acid"
+	"Model"	"models/items/alchemist/toxic_siege_corrosive_flasks/toxic_siege_corrosive_flasks.vmdl"
+	"Effect"	"units/heroes/hero_alchemist/alchemist_unstableconc_bottlesright.vpcf"
+	"AbilityCastRange"	"800"
+	"AbilityCastPoint"	"0.25"
+	"AbilityCooldown"	"10"
+	"ItemCost"	"38"
+	"ItemShopTags"	"consumable"
+	"ItemQuality"	"consumable"
+	"ItemShareability"	"ITEM_FULLY_SHAREABLE"
+	"ItemStackable"	"1"
+	"ItemPermanent"	"0"
+	"ItemDroppable"	"1"
+	"ItemInitialCharges"	"1"
+	"ItemAliases"	"quicktype"
+	"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+	"ItemKillable"	"1"
+	"ItemSellable"	"0"
+	"OnOwnerDied"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+			"Function"	"DropItemOnDeath"
+		}
+
+	}
+
+	"UIPickupSound"	"Item.PickUpGemShop"
+	"UIDropSound"	"Item.DropGemShop"
+	"WorldDropSound"	"Hero_Alchemist.Foley"
+	"OnSpellStart"
+	{
+		"TrackingProjectile"
+		{
+			"Target"	"TARGET"
+			"EffectName"	"particles/units/heroes/hero_bristleback/bristleback_viscous_nasal_goo.vpcf"
+			"MoveSpeed"	"1500"
+		}
+
+	}
+
+	"OnProjectileHitUnit"
+	{
+		"ApplyModifier"
+		{
+			"Target"	"TARGET"
+			"Duration"	"%acid_duration"
+			"ModifierName"	"modifier_potion_acid_debuff"
+		}
+
+		"FireSound"
+		{
+			"EffectName"	"Hero_Alchemist.AcidSpray.Damage"
+			"Target"	"TARGET"
+		}
+
+		"SpendCharge"
+		{
+		}
+
+	}
+
+	"OnProjectileFinish"
+	{
+		"SpendCharge"
+		{
+		}
+
+	}
+
+	"Modifiers"
+	{
+		"modifier_potion_acid_debuff"
+		{
+			"IsDebuff"	"1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%acid_reduction"
+			}
+
+			"ThinkInterval"	"%acid_think_time"
+			"OnIntervalThink"
+			{
+				"Damage"
+				{
+					"Damage"	"16"
+					"Target"	"TARGET"
+					"Type"	"DAMAGE_TYPE_PHYSICAL"
+				}
+
+			}
+
+		}
+
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"acid_damage"	"150"
+		}
+
+		"02"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"acid_reduction"	"-6"
+		}
+
+		"03"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"acid_duration"	"5"
+		}
+
+		"04"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"acid_think_time"	".5"
+		}
+
+	}
+
+}

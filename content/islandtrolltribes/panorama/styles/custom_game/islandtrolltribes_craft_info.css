@@ -1,0 +1,73 @@
+.IttGameInfo
+{
+    width:100%;
+    flow-children: down;
+}
+ 
+Label
+{
+    font-size: 18px;
+    color: #999999;
+    vertical-align: top;
+}
+ 
+#Title
+{
+    flow-children: right;
+}
+
+#TitleIcon
+{
+    width: 64px;
+    height: 64px;
+    vertical-align: center;
+}
+
+#TitleName
+{
+    color: #cccccc;
+    font-size: 64px;
+    margin-left: 16px;
+    margin-top: -50px;
+    text-transform: uppercase;
+    vertical-align: center;
+}
+
+#BriefDescription
+{
+}
+
+#CraftInfoRow,
+{
+    width: 50%;
+}
+
+.Header
+{
+	font-size: 18px;
+    font-weight: bold;
+	margin-top: 36px;
+	text-transform: uppercase;
+}
+
+#ObjectiveHeader
+{
+	margin-top: 25px;
+}
+
+#CraftInfoRow
+{
+    margin-top: -40px;
+}
+
+Label .red,
+{
+    color: #f00000;
+    font-weight: bold;
+}
+
+Label .blue,
+{
+    color: #3333FF;
+    font-weight: bold;
+}

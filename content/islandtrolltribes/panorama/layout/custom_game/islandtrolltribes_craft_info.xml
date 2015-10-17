@@ -1,0 +1,19 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/dotastyles.css" />
+		<include src="file://{resources}/styles/custom_game/islandtrolltribes_craft_info.css" />
+	</styles>
+	<Panel class="IttCraftInfo">
+		<Panel id="Title">
+			<Label id="TitleName" text="#addonname" />
+		</Panel>
+		<Label id="ObjectiveHeader" class="Header" html="true" text="#itt_game_info_header_crafting" />
+		<Label id="BriefDescription" text="#itt_crafting_description" />
+		<Label id="HowToPlayHeader" class="Header" html="true" text="#itt_game_info_header_how_to_craft" />
+		<Panel id="CraftInfoRow" class="InfoRow">
+			<Label id="CraftInfoText" html="true" text="#itt_game_info_fire" />
+			<Image id="CraftImage" src="file://{images}/custom_game/game_info/craftingex.psd" />
+		</Panel>
+	</Panel>
+</root>
+

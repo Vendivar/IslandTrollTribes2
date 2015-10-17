@@ -1,0 +1,36 @@
+"ability_beastmaster_shortness"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"	"ability_beastmaster_shortness"
+	"MaxLevel"	"1"
+	"precache"
+	{
+		"particle_folder"	"particles/units/heroes/hero_phantom_assassin"
+	}
+
+	"Modifiers"
+	{
+		"modifier_beastmaster_shortness_evasion"
+		{
+			"Passive"	"1"
+			"States"
+			{
+				"MODIFIER_PROPERTY_AVOID_CONSTANT"	"%chance"
+			}
+
+		}
+
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"chance"	"18"
+		}
+
+	}
+
+}

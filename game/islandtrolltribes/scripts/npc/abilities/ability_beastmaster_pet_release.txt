@@ -1,0 +1,35 @@
+"ability_beastmaster_pet_release"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	"AbilityTextureName"	"ability_beastmaster_releasepet"
+	"AbilityCastPoint"	"0"
+	"AbilityCooldown"	"0"
+	"AbilityManaCost"	"0"
+	"MaxLevel"	"1"
+	"precache"
+	{
+		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_beastmaster.vsndevts"
+	}
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"custom_functions_ability.lua"
+			"Function"	"PetCommand"
+			"Command"	"release"
+		}
+		"FireSound"
+		{
+			"EffectName"	"Hero_Beastmaster.Call.Boar"
+			"Target"		"CASTER"
+		}
+		"FireSound"
+		{
+			"EffectName"	"Hero_Beastmaster.Call.Hawk"
+			"Target"		"CASTER"
+		}
+
+	}
+
+}

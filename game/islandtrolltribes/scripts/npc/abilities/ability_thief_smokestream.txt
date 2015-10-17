@@ -1,0 +1,70 @@
+"ability_thief_smokestream"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityTextureName"	"ability_thief_smokestream"
+	"AbilityCastPoint"	"0.1"
+	"AbilityCooldown"	"75.0"
+	"AbilityManaCost"	"0"
+	"MaxLevel"	"1"
+	"precache"
+	{
+		"soundfile"				"sounds/weapons/hero/riki/riki_smokescreen.vsnd"
+	}
+
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"Target"	"CASTER"
+			"ModifierName"	"modifier_smoketrail"
+			"Duration"	"7.0"
+		}
+		"FireSound"
+		{
+			"EffectName"		"Hero_Riki.Smoke_Screen"
+			"Target"			"CASTER"
+		}
+
+	}
+
+	"Modifiers"
+	{
+		"modifier_smoketrail"
+		{
+			"OnUnitMoved"
+			{
+				"ApplyModifier"
+				{
+					"Target"	"CASTER"
+					"ModifierName"	"modifier_moving"
+					"Duration"	"0.4"
+				}
+
+			}
+
+		}
+
+		"modifier_moving"
+		{
+			"IsHidden"	"1"
+			"ThinkInterval"	"0.4"
+			"OnIntervalThink"
+			{
+				"SpawnUnit"
+				{
+					"Target"	"CASTER"
+					"UnitName"	"dummy_caster_smokestream"
+					"UnitCount"	"1"
+					"UnitLimit"	"64"
+					"SpawnRadius"	"0"
+					"Duration"	"2"
+				}
+
+			}
+
+		}
+
+	}
+
+}

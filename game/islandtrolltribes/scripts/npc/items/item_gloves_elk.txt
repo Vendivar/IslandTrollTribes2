@@ -1,0 +1,111 @@
+"item_gloves_elk"
+{
+	"ID"	"1056"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"BaseClass"	"item_datadriven"
+	"AbilityTextureName"	"item_gloves_of_haste"
+	"Model"	"models/items/kunkka/singsingkunkkaset_gloves/singsingkunkkaset_gloves.vmdl"
+	"Effect"	""
+	"ItemCost"	"38"
+	"ItemShopTags"	"consumable"
+	"ItemQuality"	"consumable"
+	"ItemShareability"	"ITEM_FULLY_SHAREABLE"
+	"ItemStackable"	"0"
+	"ItemPermanent"	"1"
+	"ItemDroppable"	"1"
+	"ItemAliases"	"quicktype"
+	"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+	"ItemKillable"	"1"
+	"ItemSellable"	"1"
+	"OnOwnerDied"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+			"Function"	"DropItemOnDeath"
+		}
+
+	}
+
+	"UIPickupSound"	"Item.PickUpGemShop"
+	"UIDropSound"	"Item.DropGemShop"
+	"WorldDropSound"	"ui.inv_equip_leather"
+	"Custom"
+	{
+		"ModelOffsets"
+		{
+			"Origin"
+			{
+				"x"	"-81"
+				"y"	"-81"
+				"z"	"31"
+			}
+
+			"Angles"
+			{
+				"x"	"59"
+				"y"	"59"
+				"z"	"-14"
+			}
+
+		}
+
+	}
+
+	"Modifiers"
+	{
+		"modifier_gloves_elk"
+		{
+			"Passive"	"1"
+			"IsHidden"	"0"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed"
+			}
+
+			"ThinkInterval"	"%tick_rate"
+			"OnIntervalThink"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+					"Function"	"AddHeat"
+					"Heat"	"%heat"
+				}
+
+			}
+
+		}
+
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"armor"	"1"
+		}
+
+		"02"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"attack_speed"	"10"
+		}
+
+		"03"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"heat"	"2"
+		}
+
+		"04"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"tick_rate"	"35"
+		}
+
+	}
+
+}

@@ -1,0 +1,20 @@
+"item_fleaattackcooldown_modifier_applier"
+{
+	"ID"	"1903"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"BaseClass"	"item_datadriven"
+	"ItemBaseLevel"	"1"
+	"AbilityCastRange"	"9999"
+	"AbilityCastPoint"	"0.0"
+	"Modifiers"
+	{
+		"modifier_fleacooldown"
+		{
+			"Passive"	"1"
+			"IsHidden"	"1"
+			"IsDebuff"	"0"
+		}
+
+	}
+
+}

@@ -1,0 +1,78 @@
+"item_beehive"
+{
+	"ID"	"1107"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
+	"BaseClass"	"item_datadriven"
+	"AbilityTextureName"	"item_aegis"
+	"Model"	"models/props_winter/nest_01.vmdl"
+	"Effect"	"particles/econ/items/windrunner/windrunner_cape_cascade/windrunner_windrun_magic_trail_cascade.vpcf"
+	"AbilityCastRange"	"800"
+	"AbilityCastPoint"	"0.5"
+	"ItemCost"	"14"
+	"ItemShopTags"	"consumable"
+	"ItemQuality"	"consumable"
+	"ItemShareability"	"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemStackable"	"1"
+	"ItemPermanent"	"0"
+	"ItemDroppable"	"1"
+	"ItemAliases"	"quicktype"
+	"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+	"ItemKillable"	"1"
+	"ItemSellable"	"0"
+	"OnOwnerDied"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+			"Function"	"DropItemOnDeath"
+		}
+
+	}
+
+	"UIPickupSound"	"Item.PickUpGemShop"
+	"UIDropSound"	"Item.DropGemShop"
+	"WorldDropSound"	"Item.DropGemWorld"
+	"OnSpellStart"
+	{
+		"TrackingProjectile"
+		{
+			"Target"	"TARGET"
+			"EffectName"	"particles/units/heroes/hero_bristleback/bristleback_viscous_nasal_goo.vpcf"
+			"MoveSpeed"	"500"
+		}
+
+		"SpendCharge"
+		{
+		}
+
+	}
+
+	"OnProjectileHitUnit"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+			"Function"	"item_beehive_throw"
+		}
+
+	}
+
+	"FireSound"
+	{
+		"EffectName"	"Creep_Bad_Engine.Attack"
+		"Target"	"TARGET"
+	}
+
+	"OnProjectileFinish"
+	{
+		"FireSound"
+		{
+			"EffectName"	"Creep_Bad_Engine.ProjectileImpact"
+			"Target"	"TARGET"
+		}
+
+	}
+
+}

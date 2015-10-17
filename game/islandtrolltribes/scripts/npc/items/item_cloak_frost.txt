@@ -1,0 +1,109 @@
+"item_cloak_frost"
+{
+	"ID"	"1072"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"BaseClass"	"item_datadriven"
+	"AbilityTextureName"	"item_shivas_guard"
+	"Model"	"models/items/windrunner/falconcloak/falconcloak.vmdl"
+	"Effect"	""
+	"ItemCost"	"96"
+	"ItemShopTags"	"consumable"
+	"ItemQuality"	"consumable"
+	"ItemShareability"	"ITEM_FULLY_SHAREABLE"
+	"ItemStackable"	"0"
+	"ItemPermanent"	"1"
+	"ItemDroppable"	"1"
+	"ItemAliases"	"quicktype"
+	"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+	"ItemKillable"	"1"
+	"ItemSellable"	"1"
+	"OnOwnerDied"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+			"Function"	"DropItemOnDeath"
+		}
+
+	}
+
+	"UIPickupSound"	"Item.PickUpGemShop"
+	"UIDropSound"	"Item.DropGemShop"
+	"WorldDropSound"	"ui.inv_pickup_leather"
+	"Modifiers"
+	{
+		"cloak_frost_buff"
+		{
+			"Passive"	"1"
+			"OnAttacked"
+			{
+				"Random"
+				{
+					"Chance"	"%chance"
+					"OnSuccess"
+					{
+						"Damage"
+						{
+							"Target"	"ATTACKER"
+							"Damage"	"%damage"
+							"Type"	"DAMAGE_TYPE_MAGICAL"
+						}
+
+						"ApplyModifier"
+						{
+							"ModifierName"	"cloak_frost_debuff"
+							"Duration"	"1.5"
+							"Target"
+							{
+								"Center"	"ATTACKER"
+								"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+								"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+							}
+
+						}
+
+					}
+
+				}
+
+			}
+
+		}
+
+		"cloak_frost_debuff"
+		{
+			"IsDebuff"	"1"
+			"Duration"	"1.5"
+			"TextureName"	"item_shivas_guard"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%slow"
+			}
+
+		}
+
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"chance"	"30"
+		}
+
+		"02"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"slow"	"20"
+		}
+
+		"03"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"damage"	"16"
+		}
+
+	}
+
+}

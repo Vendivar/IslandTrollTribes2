@@ -1,0 +1,30 @@
+"ability_thief_teleport"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
+	"AbilityTextureName"	"ability_thief_teleport"
+	"AbilityCastRange"	"600"
+	"AbilityCastPoint"	"0.4"
+	"AbilityCooldown"	"30.0"
+	"AbilityManaCost"	"15"
+	"MaxLevel"	"1"
+	"precache"
+	{
+		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_antimage.vsndevts"		
+	}
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"custom_functions_ability.lua"
+			"Function"	"Teleport"
+			"Target"	"POINT"
+		}
+		"FireSound"
+		{
+			"EffectName"		"Hero_Antimage.Blink_in"
+			"Target"			"CASTER"
+		}
+	}
+
+}

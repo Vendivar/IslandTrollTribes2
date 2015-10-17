@@ -1,0 +1,66 @@
+"ability_the_one_pulverize"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	"AbilityUnitDamageType"	"DAMAGE_TYPE_PHYSICAL"
+	"AbilityTextureName"	"lone_druid_rabid"
+	"precache"
+	{
+		"particle_folder"	"particles/units/heroes/hero_magnataur"
+		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_queenofpain.vsndevts"
+	}
+
+	"Modifiers"
+	{
+		"the_one_pulverize_passive"
+		{
+			"Passive"	"1"
+			"OnAttackLanded"
+			{
+				"Random"
+				{
+					"Chance"	"%pulverize_chance"
+					"OnSuccess"
+					{
+						"CleaveAttack"
+						{
+							"CleavePercent"	"%cleave_damage"
+							"CleaveRadius"	"%cleave_radius"
+							"CleaveEffect"	"particles/units/heroes/hero_magnataur/magnataur_empower_cleave_effect.vpcf"
+						}
+
+					}
+
+				}
+
+			}
+
+		}
+
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"pulverize_chance"	"20"
+		}
+
+		"02"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"cleave_damage"	"200"
+		}
+
+		"03"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"cleave_radius"	"500"
+		}
+
+	}
+
+}

@@ -1,0 +1,74 @@
+"ability_neutral_sleep"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	"AbilityUnitTargetFlags"	"DOTA_UNIT_TARGET_ALL"
+	"AbilityTextureName"	"ability_building_rest"
+	"AbilityCastPoint"	"0.0"
+	"AbilityCooldown"	"0"
+	"AbilityCastRange"	"1000"
+	"AbilityManaCost"	"0"
+	"Precache"
+	{
+		"particle_folder"	"particles/newplayer_fx"
+	}
+
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_sleep"
+			"Duration"	"%rest_duration"
+			"Target"	"CASTER"
+		}
+
+	}
+
+	"Modifiers"
+	{
+		"modifier_sleep"
+		{
+			"IsDebuff"	"0"
+			"IsPurgable"	"0"
+			"States"
+			{
+				"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
+			}
+
+			"OnCreated"
+			{
+				"AttachEffect"
+				{
+					"Target"	"TARGET"
+					"EffectName"	"particles/newplayer_fx/npx_sleeping.vpcf"
+					"EffectAttachType"	"follow_overhead"
+					"EffectLifeDurationScale"	"1"
+				}
+
+			}
+
+			"OnTakeDamage"
+			{
+				"RemoveModifier"
+				{
+					"ModifierName"	"modifier_sleep"
+					"Target"	"TARGET"
+				}
+
+			}
+
+			"OnAttacked"
+			{
+				"RemoveModifier"
+				{
+					"ModifierName"	"modifier_sleep"
+					"Target"	"TARGET"
+				}
+
+			}
+
+		}
+
+	}
+
+}

@@ -1,0 +1,88 @@
+"item_scroll_tsunami"
+{
+	"ID"	"1089"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+	"BaseClass"	"item_datadriven"
+	"AbilityTextureName"	"scroll_tsunami"
+	"Model"	"models/props_gameplay/tpscroll01.vmdl"
+	"Effect"	"particles/econ/items/kunkka/kunkka_weapon_whaleblade/kunkka_tidebringer_whaleblade_glow.vpcf"
+	"AbilityCastRange"	"600"
+	"AbilityCooldown"	"8"
+	"AbilityCastPoint"	"0.5"
+	"ItemCost"	"10"
+	"ItemShopTags"	"consumable"
+	"ItemQuality"	"consumable"
+	"ItemShareability"	"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemStackable"	"0"
+	"ItemPermanent"	"0"
+	"ItemDroppable"	"1"
+	"ItemInitialCharges"	"1"
+	"ItemAliases"	"quicktype"
+	"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+	"ItemKillable"	"1"
+	"ItemSellable"	"0"
+	"OnOwnerDied"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+			"Function"	"DropItemOnDeath"
+		}
+
+	}
+
+	"UIPickupSound"	"Item.PickUpGemShop"
+	"UIDropSound"	"Item.DropGemShop"
+	"WorldDropSound"	"Item.DropRecipeWorld"
+	"OnSpellStart"
+	{
+		"LinearProjectile"
+		{
+			"EffectName"	""
+			"MoveSpeed"	"600"
+			"StartPosition"	"attach_attack1"
+			"FixedDistance"	"300"
+			"StartRadius"	"100"
+			"EndRadius"	"300"
+			"TargetTeams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+			"TargetTypes"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+			"TargetFlags"	"DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS"
+			"HasFrontalCone"	"0"
+			"ProvidesVision"	"1"
+			"VisionRadius"	"300"
+		}
+
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+			"Function"	"TsunamiProjectiles"
+		}
+
+		"FireSound"
+		{
+			"Target"	"CASTER"
+			"EffectName"	"Hero_Morphling.Waveform"
+		}
+
+	}
+
+	"OnProjectileHitUnit"
+	{
+		"DeleteOnHit"	"0"
+		"Damage"
+		{
+			"Damage"	"25"
+			"Target"	"TARGET"
+			"Type"	"DAMAGE_TYPE_MAGICAL"
+		}
+
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+			"Function"	"TsunamiDestroyFire"
+			"Target"	"TARGET"
+		}
+
+	}
+
+}

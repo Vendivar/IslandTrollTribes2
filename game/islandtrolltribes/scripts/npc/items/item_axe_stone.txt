@@ -1,0 +1,96 @@
+"item_axe_stone"
+{
+	"ID"	"1023"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_TREE | DOTA_UNIT_TARGET_CUSTOM"
+	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_CUSTOM"
+	"AbilityCastRange"	"125"
+	"AbilityCastPoint"	"0.5"
+	"AbilityCooldown"	"10.0"
+	"AbilityChannelTime"	"2.0"
+	"BaseClass"	"item_datadriven"
+	"AbilityTextureName"	"axe_stone"
+	"Model"	"models/items/axe/axe_executioner.vmdl"
+	"Effect"	""
+	"ItemCost"	"14"
+	"ItemShopTags"	"consumable"
+	"ItemQuality"	"consumable"
+	"ItemShareability"	"ITEM_FULLY_SHAREABLE"
+	"ItemStackable"	"0"
+	"ItemPermanent"	"1"
+	"ItemDroppable"	"1"
+	"ItemAliases"	"quicktype"
+	"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+	"ItemKillable"	"1"
+	"ItemSellable"	"0"
+	"Custom"
+	{
+		"ModelScale"	"0.6"
+		"ModelOffsets"
+		{
+			"Origin"
+			{
+				"x"	"0"
+				"y"	"0"
+				"z"	"5"
+			}
+
+			"Angles"
+			{
+				"x"	"83"
+				"y"	"0"
+				"z"	"40"
+			}
+
+		}
+
+	}
+
+	"OnOwnerDied"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+			"Function"	"DropItemOnDeath"
+		}
+
+	}
+
+	"UIPickupSound"	"Item.PickUpGemShop"
+	"UIDropSound"	"Item.DropGemShop"
+	"WorldDropSound"	"ui.inv_pickup_metalheavy"
+	"OnChannelSucceeded"
+	{
+		"DestroyTrees"
+		{
+			"Target"	"POINT"
+		}
+
+	}
+
+	"Modifiers"
+	{
+		"modifier_axe_stone_damage"
+		{
+			"IsHidden"	"1"
+			"Passive"	"1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%bonus_damage"
+			}
+
+		}
+
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"bonus_damage"	"6"
+		}
+
+	}
+
+}

@@ -1,0 +1,115 @@
+"npc_hero_hunter_juggernaught"
+{
+	"BaseClass"	"npc_dota_creature"
+	"ConsideredHero"	"1"
+	"Model"	"models/heroes/huskar/huskar.mdl"
+	"Portrait"	"vgui/hud/heroportraits/portrait_huskar"
+	"IdleExpression"	"scenes/huskar/huskar_exp_idle_01.vcd"
+	"SoundSet"	"Hero_Huskar"
+	"VoiceFile"	"scripts/voscripts/game_sounds_vo_huskar.txt"
+	"ParticleFile"	"particles/units/heroes/hero_huskar.pcf"
+	"GameSoundsFile"	"scripts/game_sounds_heroes/game_sounds_huskar.txt"
+	"ModelScale"	"0.79"
+	"Ability1"	"ability_hunter_ensnare"
+	"Ability2"	"ability_hunter_endurance"
+	"Ability3"	"ability_hunter_gaintswing"
+	"Ability4"	"ability_hunter_demoralizingwarcry"
+	"Ability5"	"ability_hunter_stayingpower"
+	"Ability6"	"ability_blank"
+	"Ability7"	""
+	"Ability8"	""
+	"Ability9"	""
+	"Ability10"	""
+	"Ability11"	""
+	"Ability12"	""
+	"Ability13"	""
+	"Ability14"	""
+	"Ability15"	""
+	"Ability16"	""
+	"ArmorPhysical"	"0"
+	"AttackCapabilities"	"DOTA_UNIT_CAP_MELEE_ATTACK"
+	"AttackDamageMin"	"23"
+	"AttackDamageMax"	"23"
+	"AttackRate"	"1.65"
+	"AttackAnimationPoint"	"0.840"
+	"AttackAcquisitionRange"	"600"
+	"AttackRange"	"100"
+	"ProjectileModel"	""
+	"ProjectileSpeed"	"0"
+	"AttributePrimary"	"DOTA_ATTRIBUTE_AGILITY"
+	"AttributeBaseStrength"	"1"
+	"AttributeStrengthGain"	"1"
+	"AttributeBaseIntelligence"	"1"
+	"AttributeIntelligenceGain"	"1"
+	"AttributeBaseAgility"	"1"
+	"AttributeAgilityGain"	"1"
+	"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
+	"MovementSpeed"	"300"
+	"MovementTurnRate"	"0.5"
+	"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
+	"HealthBarOffset"	"140"
+	"StatusHealth"	"192"
+	"StatusHealthRegen"	"0.0"
+	"StatusMana"	"200"
+	"StatusManaRegen"	"0.0"
+	"VisionDaytimeRange"	"1700"
+	"VisionNighttimeRange"	"1400"
+	"Creature"
+	{
+		"AttachWearables"
+		{
+			"Wearable1"
+			{
+				"ItemDef"	"268"
+			}
+
+			"Wearable2"
+			{
+				"ItemDef"	"269"
+			}
+
+			"Wearable3"
+			{
+				"ItemDef"	"270"
+			}
+
+			"Wearable4"
+			{
+				"ItemDef"	"271"
+			}
+
+			"Wearable5"
+			{
+				"ItemDef"	"272"
+			}
+
+			"Wearable6"
+			{
+				"ItemDef"	"4906"
+			}
+
+			"Wearable7"
+			{
+				"ItemDef"	"4907"
+			}
+
+			"Wearable8"
+			{
+				"ItemDef"	"4908"
+			}
+
+			"Wearable9"
+			{
+				"ItemDef"	"4909"
+			}
+
+			"Wearable10"
+			{
+				"ItemDef"	"4910"
+			}
+
+		}
+
+	}
+
+}
