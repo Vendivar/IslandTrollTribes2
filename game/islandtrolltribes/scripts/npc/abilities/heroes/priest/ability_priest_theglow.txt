@@ -26,11 +26,10 @@
 			{
 				"RunScript"
 				{
-					"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-					"Function"	"AddHeat"
-					"Heat"	"%heat"
+					"ScriptFile"   "buildings/heat.lua"
+					"Function"     "AddHeat"
+					"Heat"         "%heat"
 				}
-
 			}
 
 			"Properties"

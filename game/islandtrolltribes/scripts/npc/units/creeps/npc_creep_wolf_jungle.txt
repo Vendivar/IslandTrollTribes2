@@ -5,7 +5,7 @@
 	"ModelScale"	"1.25"
 	"Model"	"models/heroes/lycan/summon_wolves.vmdl"
 	"Level"	"6"
-	"vscripts"	"aggressive_neutral_ai.lua"
+	"vscripts"	"units/ai/aggressive_neutral_ai.lua"
 	"Ability1"	"ability_wander"
 	"Ability2"	"ability_pet_sleep"
 	"Ability3"	""

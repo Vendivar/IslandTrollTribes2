@@ -137,16 +137,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
+		
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -180,16 +171,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
+		
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -223,16 +205,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
+		
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -256,16 +229,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
+		
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -289,16 +253,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
+		
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -346,16 +301,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
+		
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -395,16 +341,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
+		
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -428,16 +365,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
+		
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -483,16 +411,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
+		
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -538,16 +457,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
+		
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -571,16 +481,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
+		
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -632,16 +533,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
+		
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -665,16 +557,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
+		
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -698,16 +581,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
+		
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -731,16 +605,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
+		
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -764,16 +629,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
+		
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -797,16 +653,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
+		
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -830,16 +677,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
+		
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -863,16 +701,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
+		
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -896,16 +725,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
+		
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -929,16 +749,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
+		
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -962,16 +773,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
+		
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -995,16 +797,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
+		
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -1028,16 +821,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
+		
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -1061,16 +845,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
+		
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -1094,16 +869,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
+		
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -1143,16 +909,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
+		
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -1176,16 +933,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
+		
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -1219,16 +967,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
+		
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -1268,16 +1007,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
+		
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -1317,16 +1047,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
+		
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -1350,16 +1071,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
+		
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -1405,16 +1117,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
+		
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -1472,16 +1175,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
+		
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -1527,16 +1221,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
+		
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -1560,16 +1245,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
+		
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -1627,16 +1303,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
+		
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -1660,16 +1327,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
+		
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -1739,16 +1397,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
+		
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -1818,16 +1467,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
+		
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -1873,16 +1513,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
+		
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -1928,16 +1559,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
+		
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -2032,16 +1654,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
+		
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -2075,16 +1688,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
+		
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -2133,16 +1737,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
+		
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -2194,16 +1789,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
+		
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -2232,16 +1818,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
+		
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -2293,16 +1870,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
+		
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -2342,16 +1910,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
+		
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"ui.inv_pickup_quiver"
@@ -2409,16 +1968,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
+		
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -2462,16 +2012,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
+		
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -2515,16 +2056,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
+		
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -2577,16 +2109,6 @@
 	
 		}
 	
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -2631,16 +2153,6 @@
 				"Target"	"POINT"
 				"ScriptFile"	"scripts/vscripts/buildings.lua"
 				"Function"	"getCampFirePoint"
-			}
-	
-		}
-	
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
 			}
 	
 		}
@@ -2692,16 +2204,6 @@
 	
 		}
 	
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -2745,16 +2247,6 @@
 				"Target"	"POINT"
 				"ScriptFile"	"scripts/vscripts/buildings.lua"
 				"Function"	"getHatcheryPoint"
-			}
-	
-		}
-	
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
 			}
 	
 		}
@@ -2805,16 +2297,6 @@
 	
 		}
 	
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -2860,16 +2342,6 @@
 			}
 		}
 	
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -2911,16 +2383,6 @@
 				"Target"	"POINT"
 				"ScriptFile"	"scripts/vscripts/buildings.lua"
 				"Function"	"getWDHutPoint"
-			}
-	
-		}
-	
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
 			}
 	
 		}
@@ -2971,16 +2433,6 @@
 	
 		}
 	
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -3023,16 +2475,6 @@
 				"Target"	"POINT"
 				"ScriptFile"	"scripts/vscripts/buildings.lua"
 				"Function"	"getSmokePoint"
-			}
-	
-		}
-	
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
 			}
 	
 		}
@@ -3084,16 +2526,6 @@
 	
 		}
 	
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -3136,16 +2568,6 @@
 				"Target"	"POINT"
 				"ScriptFile"	"scripts/vscripts/buildings.lua"
 				"Function"	"getChestPoint"
-			}
-	
-		}
-	
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
 			}
 	
 		}
@@ -3196,16 +2618,6 @@
 	
 		}
 	
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -3248,16 +2660,6 @@
 				"Target"	"POINT"
 				"ScriptFile"	"scripts/vscripts/buildings.lua"
 				"Function"	"getTeleportPoint"
-			}
-	
-		}
-	
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
 			}
 	
 		}
@@ -3308,16 +2710,6 @@
 	
 		}
 	
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -3360,16 +2752,6 @@
 				"Target"	"POINT"
 				"ScriptFile"	"scripts/vscripts/buildings.lua"
 				"Function"	"getOmnitowerPoint"
-			}
-	
-		}
-	
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
 			}
 	
 		}
@@ -3420,16 +2802,6 @@
 	
 		}
 	
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -3472,16 +2844,6 @@
 				"Target"	"POINT"
 				"ScriptFile"	"scripts/vscripts/buildings.lua"
 				"Function"	"getWorkshopPoint"
-			}
-	
-		}
-	
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
 			}
 	
 		}
@@ -3551,12 +2913,10 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+				"ScriptFile"	"items/debug.lua"
 				"Function"	"DebugSpawnAllHeroes"
 			}
-	
 		}
-	
 	}
 	"item_axe_battle"
 	{
@@ -3579,16 +2939,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
+		
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"ui.inv_pickup_metalheavy"
@@ -3674,16 +3025,6 @@
 					"z"	"80"
 				}
 	
-			}
-	
-		}
-	
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
 			}
 	
 		}
@@ -3774,15 +3115,6 @@
 	
 		}
 	
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -3869,15 +3201,6 @@
 	
 		}
 	
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -4055,15 +3378,6 @@
 	
 		}
 	
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -4151,15 +3465,6 @@
 	
 		}
 	
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -4357,16 +3662,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"1"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"ui.inv_equip_leather"
@@ -4422,16 +3717,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"1"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"ui.inv_equip_leather"
@@ -4487,16 +3772,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"1"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"ui.inv_equip_metalarmour"
@@ -4552,16 +3827,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"1"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"ui.inv_equip_metalarmour"
@@ -4619,16 +3884,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"1"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"ui.inv_equip_leather"
@@ -4684,15 +3939,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"1"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -4763,15 +4009,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"1"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -4874,15 +4111,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"1"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -5055,15 +4283,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"1"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -5153,15 +4372,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"1"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -5257,15 +4467,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"1"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -5363,15 +4564,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"1"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -5477,15 +4669,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"1"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -5581,15 +4764,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"1"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -5663,15 +4837,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"1"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -5745,15 +4910,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"1"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -5849,15 +5005,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"1"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -6004,15 +5151,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"1"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -6115,15 +5253,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"1"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -6226,15 +5355,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"1"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -6337,15 +5457,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"1"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -6426,15 +5537,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"1"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -6515,15 +5617,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"1"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -6626,15 +5719,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -6659,15 +5743,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -6692,15 +5767,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -6780,15 +5846,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -6841,15 +5898,6 @@
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
 		"ItemInitialCharges"	"1"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -6899,15 +5947,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -6934,15 +5973,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -6992,15 +6022,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -7061,15 +6082,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -7113,15 +6125,6 @@
 		"precache"
 		{
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_pudge.vsndevts"
-		}
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
 		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
@@ -7189,15 +6192,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -7354,15 +6348,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -7407,15 +6392,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -7460,15 +6436,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -7612,15 +6579,6 @@
 	
 		}
 	
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -7690,17 +6648,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"ItemInitialCharges"	"20"
-		
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
+		"ItemInitialCharges"	"20"	
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -7799,15 +6747,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -7862,15 +6801,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -8120,15 +7050,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -8277,15 +7198,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -8408,15 +7320,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -8535,15 +7438,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -8600,15 +7494,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -8665,15 +7550,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -8730,15 +7606,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -8796,15 +7663,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -8862,15 +7720,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -8929,15 +7778,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -9042,15 +7882,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -9077,15 +7908,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -9112,15 +7934,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -9176,15 +7989,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -9273,15 +8077,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -9419,15 +8214,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -9528,15 +8314,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -9582,15 +8359,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -9730,15 +8498,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -9816,15 +8575,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"1"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -9924,15 +8674,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"1"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -10058,8 +8799,7 @@
 		}
 	
 	}
-	"item_shield_bone"
-	{
+	"item_shield_bone"{
 		"ID"	"1139"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
@@ -10080,15 +8820,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"1"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -10187,15 +8918,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"1"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -10293,15 +9015,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"1"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -10403,15 +9116,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -10494,15 +9198,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -10639,15 +9334,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -10741,15 +9427,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -10986,15 +9663,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -11230,15 +9898,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -11479,14 +10138,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -11575,15 +10226,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -11645,15 +10287,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -11713,15 +10346,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -11746,15 +10370,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"inv_pickup_bone"
 		"UIDropSound"	"inv_pickup_bone"
@@ -11835,15 +10450,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -11891,15 +10497,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"ui.inv_pickup_robes"
 		"UIDropSound"	"ui.inv_drop_robes"
@@ -11929,15 +10526,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -11962,15 +10550,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -11995,15 +10574,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -12028,15 +10598,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -12061,15 +10622,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -12094,15 +10646,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -12141,15 +10684,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -12179,15 +10713,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -12219,15 +10744,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -12256,15 +10772,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -12312,15 +10819,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -12345,15 +10843,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -12382,15 +10871,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -12434,15 +10914,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -12499,15 +10970,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -12565,15 +11027,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -12630,15 +11083,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
 	
 		"UIPickupSound"	"inv_drop_wood"
 		"UIDropSound"	"inv_drop_wood"
@@ -12697,16 +11141,6 @@
 		{
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_earth_spirit.vsndevts"
 		}
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
 		"UIPickupSound"	"ui.inv_drop_stone"
 		"UIDropSound"	"ui.inv_drop_stone"
 		"WorldDropSound"	"ui.inv_drop_stone"
@@ -12814,16 +11248,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -12869,16 +11293,6 @@
 		{
 			"soundfile"	"soundevents/game_sounds_ui.vsndevts"
 		}
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
 		"UIPickupSound"	"ui.inv_pickup_robes"
 		"UIDropSound"	"ui.inv_drop_robes"
 		"WorldDropSound"	"ui.inv_equip_robes"
@@ -12906,16 +11320,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -12982,16 +11386,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -13039,16 +11433,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_ALWAYS"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -13163,16 +11547,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_ALWAYS"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -13202,16 +11576,6 @@
 		"ItemKillable"	"1"
 		"ItemInitialCharges"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -13382,16 +11746,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_ALWAYS"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -13574,16 +11928,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -13633,16 +11977,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -13704,16 +12038,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -13756,16 +12080,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnOwnerDied"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DropItemOnDeath"
-			}
-	
-		}
-	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"

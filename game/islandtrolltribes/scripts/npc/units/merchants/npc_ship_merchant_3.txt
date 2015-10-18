@@ -6,7 +6,7 @@
 	"Level"	"1"
 	"ModelScale"	"0.7"
 	"SelectionGroup"	""
-	"vscripts"	"boat_merchant_ai.lua"
+	"vscripts"	"units/ai/boat_merchant_ai.lua"
 	"Ability1"	"ability_boat_passive"
 	"Ability2"	""
 	"Ability3"	""

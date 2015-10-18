@@ -6,7 +6,7 @@
 	"GameSoundsFile"	"soundevents/game_sounds_creeps.vsndevts"
 	"Level"	"1"
 	"ModelScale"	"1.25"
-	"vscripts"	"scroll_skeleton_ai.lua"
+	"vscripts"	"units/ai/scroll_skeleton_ai.lua"
 	"AbilityLayout"	"4"
 	"Ability1"	"ability_skeleton_passive"
 	"Ability2"	""

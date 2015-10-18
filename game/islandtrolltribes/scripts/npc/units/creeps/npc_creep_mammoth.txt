@@ -5,7 +5,7 @@
 	"ModelScale"	"1.70"
 	"Model"	"models\heroes\magnataur\magnataur.vmdl"
 	"Level"	"15"
-	"vscripts"	"boss_neutral_ai.lua"
+	"vscripts"	"units/ai/boss_neutral_ai.lua"
 	"Ability1"	"ability_mammoth_passive_invul"
 	"Ability2"	"ability_mammoth_passive_hardened_skin"
 	"Ability3"	""

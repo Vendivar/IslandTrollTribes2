@@ -5,7 +5,7 @@
 	"ModelScale"	"1.10"
 	"Model"	"models/heroes/beastmaster/beastmaster_bird.vmdl"
 	"Level"	"5"
-	"vscripts"	"passive_neutral_ai.lua"
+	"vscripts"	"units/ai/passive_neutral_ai.lua"
 	"Ability1"	"ability_hawk_flight"
 	"Ability2"	""
 	"Ability3"	""

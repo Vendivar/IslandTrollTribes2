@@ -5,7 +5,7 @@
 	"ModelScale"	"0.40"
 	"Model"	"models/creeps/neutral_creeps/n_creep_thunder_lizard/n_creep_thunder_lizard_big.vmdl"
 	"Level"	"7"
-	"vscripts"	"aggressive_neutral_ai.lua"
+	"vscripts"	"units/ai/aggressive_neutral_ai.lua"
 	"Ability1"	"ability_lizard_poisonattack"
 	"Ability2"	""
 	"Ability3"	""

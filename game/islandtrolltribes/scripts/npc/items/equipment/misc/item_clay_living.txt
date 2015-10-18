@@ -20,15 +20,6 @@
 	"ItemKillable"	"1"
 	"ItemSellable"	"0"
 	"ItemInitialCharges"	"1"
-	"OnOwnerDied"
-	{
-		"RunScript"
-		{
-			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-			"Function"	"DropItemOnDeath"
-		}
-
-	}
 
 	"UIPickupSound"	"Item.PickUpGemShop"
 	"UIDropSound"	"Item.DropGemShop"

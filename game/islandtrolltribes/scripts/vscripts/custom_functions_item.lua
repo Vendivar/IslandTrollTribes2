@@ -1,23 +1,5 @@
---[[
-if itemFunctions == nil then
-	print ( '[ItemFunctions] creating itemFunctions' )
-	itemFunctions = {} -- Creates an array to let us be able to index itemFunctions when creating new functions
-	itemFunctions.__index = itemFunctions
-end
-
-function itemFunctions:new() -- Creates the new class
-	print ( '[ItemFunctions] itemFunctions:new' )
-	o = o or {}
-	setmetatable( o, itemFunctions )
-	return o
-end
-
-function itemFunctions:start() -- Runs whenever the itemFunctions.lua is ran
-	print('[ItemFunctions] itemFunctions started!')
-end
-]]--
 function DropItemOnDeath(keys) -- keys is the information sent by the ability
-	print( '[ItemFunctions] DropItemOnDeath Called' )
+	--[[print( '[ItemFunctions] DropItemOnDeath Called' )
 	local killedUnit = EntIndexToHScript( keys.caster_entindex ) -- EntIndexToHScript takes the keys.caster_entindex, which is the number assigned to the entity that ran the function from the ability, and finds the actual entity from it.
 	local itemName = tostring(keys.ability:GetAbilityName()) -- In order to drop only the item that ran the ability, the name needs to be grabbed. keys.ability gets the actual ability and then GetAbilityName() gets the configname of that ability such as juggernaut_blade_dance.
 	if killedUnit:IsHero() or killedUnit:HasInventory() then -- In order to make sure that the unit that died actually has items, it checks if it is either a hero or if it has an inventory.
@@ -33,7 +15,7 @@ function DropItemOnDeath(keys) -- keys is the information sent by the ability
 				end
 			end
 		end
-	end
+	end]]
 end
 
 function NetEnsnare(keys)
@@ -692,113 +674,9 @@ function SonarCompassUse(keys)
     		end
     	end
 	end
-
-
 end
 
-function AddHeat(keys)
-	local caster = keys.caster
-	local target = keys.target
-
-	if target == nil then
-		target = caster
-	end
-	local heatToAdd = keys.Heat
-	local heatStackCount = target:GetModifierStackCount("modifier_heat_passive", nil) + heatToAdd
-	if heatStackCount > 100 then
-		heatStackCount = 100
-	end
-	if heatStackCount <= 0 then
-		heatStackCount = 1
-	end
-    target:SetModifierStackCount("modifier_heat_passive", nil, heatStackCount)
-end
 
 function PrintTest(keys)
 	print("Test ")
-end
-
-function DebugSpawnAllHeroes(keys)
-	local caster = keys.caster
-	local unitTable = {		
-		"npc_dota_hero_shadow_shaman",
-		"npc_hero_herbmaster_tele_gatherer",
-		"npc_hero_radar_tele_gatherer",
-		"npc_hero_remote_tele_gatherer",
-		"npc_dota_hero_huskar",
-		"npc_hero_hunter_tracker",
-		"npc_hero_hunter_warrior",
-		"npc_hero_hunter_juggernaught",
-		"npc_dota_hero_witch_doctor",
-		"npc_hero_mage_elementalist",
-		"npc_hero_mage_hypnotist",
-		"npc_hero_mage_dementia_master",
-		"npc_dota_hero_lion",
-		"npc_hero_scout_observer",
-		"npc_hero_scout_radar",
-		"npc_hero_scout_spy",
-		"npc_dota_hero_riki",
-		"npc_hero_thief_escape_artist",
-		"npc_hero_thief_contortionist",
-		"npc_hero_thief_assassin",
-		"npc_dota_hero_lycan",
-		"npc_hero_beastmaster_packleader",
-		"npc_hero_beastmaster_form_chicken",
-		"npc_hero_beastmaster_shapeshifter",
-		"npc_dota_hero_dazzle",
-		"npc_hero_priest_booster",
-		"npc_hero_priest_master_healer",
-		"npc_hero_priest_sage"}
-
-	for key,value in pairs(unitTable) do
-		local spawnLocationX = (key-1)%4
-		spawnLocationY = math.floor((key-1)/4)
-		spawnLocation = Vector(1,0,0)*spawnLocationX*200 + Vector(0,-1,0)*spawnLocationY*300 + Vector(1,0,0)*200
-		local unit = CreateUnitByName(value, caster:GetOrigin() + spawnLocation, true, nil, nil, caster:GetTeam())
-		unit.vOwner = caster:GetOwner()
-		unit:SetControllableByPlayer(caster:GetOwner():GetPlayerID(), true )
-		unit:SetForwardVector(Vector(0,-1,0))
-	end
-end
-
-function DebugSpawnAllCreeps(keys)
-	print("Debug: Spawn All Creeps")
-	local caster = keys.caster
-	local owner = caster:GetOwner()
-	local unitTable = {
-		"npc_creep_fawn",
-		"npc_creep_wolf_pup",
-		"npc_creep_bear_cub",
-		"npc_creep_mammoth_baby",
-		"npc_creep_elk_pet",
-		"npc_creep_elk_adult",
-		"npc_creep_bear_jungle_adult",
-		"npc_creep_drake_bone",
-		"npc_creep_harpy_red",
-		"npc_creep_bat_forest",
-		"npc_creep_drake_nether",
-		"npc_creep_fish",
-		"npc_creep_fish_green",
-		"npc_creep_elk_wild",
-		"npc_creep_hawk",
-		"npc_creep_wolf_jungle",
-		"npc_creep_wolf_ice",
-		"npc_creep_wolf_jungle_adult",
-		"npc_creep_bear_jungle",
-		"npc_creep_lizard",
-		"npc_creep_panther",
-		"npc_creep_panther_elder"
-}
-	for key,npcName in pairs(unitTable) do
-		local spawnLocationX = (key-1)%6
-		spawnLocationY = math.floor((key-1)/6)
-		spawnLocation = Vector(1,0,0)*spawnLocationX*200 + Vector(0,-1,0)*spawnLocationY*300 + Vector(1,0,0)*200
-		local unit = CreateUnitByName(npcName, caster:GetOrigin() + spawnLocation, true, nil, nil, caster:GetTeam())
-		if unit == nil then
-			print(npcName)
-		end
-		unit.vOwner = caster:GetOwner()
-		unit:SetControllableByPlayer(caster:GetOwner():GetPlayerID(), true )
-		unit:SetForwardVector(Vector(0,-1,0))
-	end
 end

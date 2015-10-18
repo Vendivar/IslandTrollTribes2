@@ -45,16 +45,6 @@
 
 	}
 
-	"OnOwnerDied"
-	{
-		"RunScript"
-		{
-			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-			"Function"	"DropItemOnDeath"
-		}
-
-	}
-
 	"UIPickupSound"	"Item.PickUpGemShop"
 	"UIDropSound"	"Item.DropGemShop"
 	"WorldDropSound"	"ui.inv_pickup_metalheavy"

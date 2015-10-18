@@ -23,15 +23,6 @@
 	{
 		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_pudge.vsndevts"
 	}
-	"OnOwnerDied"
-	{
-		"RunScript"
-		{
-			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-			"Function"	"DropItemOnDeath"
-		}
-
-	}
 
 	"UIPickupSound"	"Item.PickUpGemShop"
 	"UIDropSound"	"Item.DropGemShop"

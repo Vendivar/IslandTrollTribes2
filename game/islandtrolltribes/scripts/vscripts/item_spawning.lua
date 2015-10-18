@@ -21,7 +21,7 @@ STONE_RATE                  = 1.00
 MANACRYSTAL_RATE            = 0.00
 MAGIC_RATE                  = 0.5
 
--- Relative rates start at 0 but will be set such that all should sum to one on first call of ITT_UpdateRelativePool
+-- Relative rates start at 0 but will be set such that all should sum to one on first call of ITT:UpdateRelativePool
 REL_TINDER_RATE             = 0
 REL_FLINT_RATE              = 0
 REL_STICK_RATE              = 0
@@ -46,25 +46,25 @@ REGIONS[3]                  = BOTTOMRIGHT
 REGIONS[4]                  = BOTTOMLEFT
 
 -- Handles one spawn wave
-function ITT_GameMode:OnItemThink()
+function ITT:OnItemThink()
     -- if its the first time, we need to set the relative values
     if REL_TINDER_RATE == 0 then
-        ITT_UpdateRelativePool()
+        ITT:UpdateRelativePool()
     -- over time the spawnrates change, tending from simple fire components, to components for more complex buildings, update these every spawn wave
     else
-        ITT_AdjustItemSpawns()
+        ITT:AdjustItemSpawns()
     end
     for i=1, #REGIONS, 1 do
         for ii=1, math.floor(ITEM_BASE * REGIONS[i][5]), 1 do
-            item = ITT_SpawnItem(REGIONS[i])
+            item = ITT:SpawnItem(REGIONS[i])
         end
     end
     return GAME_ITEM_TICK_TIME
 end
 
 -- Handles spawning in one region
-function ITT_SpawnItem(island)
-    local itemSpawned = ITT_GetItemFromPool()
+function ITT:SpawnItem(island)
+    local itemSpawned = ITT:GetItemFromPool()
     local item = CreateItem(itemSpawned, nil, nil)
     --item:SetPurchaseTime(Time)
     local randomVector = GetRandomVectorGivenBounds(island[1], island[2], island[3], island[4])
@@ -74,7 +74,7 @@ end
 
 -- Updates the relative probabilties, called only when the actual probabilties are changed
 -- They should always sum to one
-function ITT_UpdateRelativePool()
+function ITT:UpdateRelativePool()
     --print("Updating relative item probabilties")
     local Total = TINDER_RATE + FLINT_RATE + STICK_RATE + CLAYBALL_RATE + STONE_RATE + MANACRYSTAL_RATE + MAGIC_RATE
     REL_TINDER_RATE      = TINDER_RATE      / Total
@@ -87,7 +87,7 @@ function ITT_UpdateRelativePool()
 end
 
 -- Go though each item, order should not be relevant
-function ITT_GetItemFromPool()
+function ITT:GetItemFromPool()
     local cumulProb = 0.0
     local rand      = RandomFloat(0,1)
 
@@ -133,7 +133,7 @@ end
 
 -- Item spawn distribution changes, later in the game it tends to a different ratio
 -- From https://github.com/island-troll-tribes/wc3-client/blob/1562854dd098180752f0f4a99df0c4968697b38b/src/lib/PublicLibrary.j#L271-L292
-function ITT_AdjustItemSpawns()
+function ITT:AdjustItemSpawns()
     --print("adjusting item spawns")
     FLINT_RATE = math.max(2.0,(FLINT_RATE-0.4))
     MANACRYSTAL_RATE = math.min(1.6,(MANACRYSTAL_RATE+0.5))
@@ -143,5 +143,5 @@ function ITT_AdjustItemSpawns()
     CLAYBALL_RATE = math.min(1.85,(CLAYBALL_RATE+0.3))
     -- I don't get how item base works, it always seems too low in the wc3 file, it is disabled for the moment since it breaks everything, any help?
     -- ITEM_BASE = math.max(1.15,(ITEM_BASE-0.2))
-    ITT_UpdateRelativePool()
+    ITT:UpdateRelativePool()
 end

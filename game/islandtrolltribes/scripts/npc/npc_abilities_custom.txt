@@ -407,9 +407,9 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
-				"Function"	"CookFood"
-				"Range"	"%radius"
+				"ScriptFile"	"buildings/cook.lua"
+				"Function"      "CookFood"
+				"Range"         "%radius"
 			}
 				"FireSound"
 			{
@@ -497,11 +497,11 @@
 				"OnIntervalThink"
 				{
 					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-						"Function"	"AddHeat"
-						"Heat"	"%heat"
-					}
+	                {
+	                    "ScriptFile"   "buildings/heat.lua"
+	                    "Function"     "AddHeat"
+	                    "Heat"         "%heat"
+	                }
 	
 					"RemoveModifier"
 					{
@@ -558,9 +558,9 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-						"Function"	"AddHeat"
-						"Heat"	"%heat"
+						"ScriptFile"   "buildings/heat.lua"
+						"Function"     "AddHeat"
+						"Heat"         "%heat"
 					}
 	
 					"RemoveModifier"
@@ -9168,9 +9168,9 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"AddHeat"
-				"Heat"	"50"
+				"ScriptFile"   "buildings/heat.lua"
+				"Function"     "AddHeat"
+				"Heat"         "%heat"
 			}
 	
 			"Heal"
@@ -9661,11 +9661,10 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-						"Function"	"AddHeat"
-						"Heat"	"%heat"
+						"ScriptFile"   "buildings/heat.lua"
+						"Function"     "AddHeat"
+						"Heat"         "%heat"
 					}
-	
 				}
 	
 				"Properties"
@@ -10494,9 +10493,9 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-						"Function"		"AddHeat"
-						"Heat"			"-2"
+						"ScriptFile"   "buildings/heat.lua"
+						"Function"     "AddHeat"
+						"Heat"         "-2"
 					}
 					"RunScript"
 					{

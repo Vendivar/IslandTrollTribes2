@@ -17,16 +17,7 @@
 	"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 	"ItemKillable"	"1"
 	"ItemSellable"	"0"
-	"OnOwnerDied"
-	{
-		"RunScript"
-		{
-			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-			"Function"	"DropItemOnDeath"
-		}
-
-	}
-
+	
 	"UIPickupSound"	"Item.PickUpGemShop"
 	"UIDropSound"	"Item.DropGemShop"
 	"WorldDropSound"	"Item.DropGemWorld"

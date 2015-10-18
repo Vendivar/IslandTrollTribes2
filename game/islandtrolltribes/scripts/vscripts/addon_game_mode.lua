@@ -1,22 +1,23 @@
---[[
-	The purpose of this file is mostly to exist because it is required.
-	Deal with all precaching here, to keep it out of the way.
-]]--
-print("addon_game_mode invoked")
-require('timers')
+---------------------------------------------------------------------------
+if ITT == nil then
+	_G.ITT = class({})
+end
+---------------------------------------------------------------------------
 
---[[
-	We want to precache resources we want to use, so they are ready for loading when the engine requires
-	Precache things we know we"ll use.  Possible file types include (but not limited to):
-		PrecacheResource( "model", "*.vmdl", context )
-		PrecacheResource( "soundfile", "*.vsndevts", context )
-		PrecacheResource( "particle", "*.vpcf", context )
-		PrecacheResource( "particle_folder", "particles/folder", context )
-	This is called before the game is activated, but after the "cruft" has run.
-]]--
-function Precache( context )
-	print("Precache Begin")
-	
+require('libraries/timers')
+require('itt')
+
+require('custom_functions_item' )
+require('custom_functions_ability' )
+require('logic_creature' )
+require('logic_troll' )
+require('item_spawning')
+require('util')
+require('recipe_list')
+
+---------------------------------------------------------------------------
+
+function Precache( context )	
 	PrecacheItemByNameSync( "item_acorn", context )
 	PrecacheItemByNameSync( "item_acorn_magic", context )
 	PrecacheItemByNameSync( "item_armour_battle", context )
@@ -419,33 +420,12 @@ function Precache( context )
 
 	PrecacheItemByNameSync("item_building_kit_fire_basic", context)
 
-	print("Precache Finish")
 end
 
---[[
-    Create the game mode and our custom rules
-    This is run once the engine has launched
-]]--
+-- Create our game mode and initialize it
 function Activate()
-    print("Activate Called")
-
-	require( 'custom_functions_item' )
-	require( 'custom_functions_ability' )
-	require( 'logic_creature' )
-	require( 'logic_troll' )
-
-	require( 'buildinghelper' )
-
-
-    GameRules.AddonTemplate = ITT_GameMode()
-    GameRules.AddonTemplate:InitGameMode()
-
-    BuildingHelper = BuildingHelper()
+	print ( '[ITT] Creating Game Mode' )
+	ITT:InitGameMode()
 end
 
-
-
-
-
-
-
+---------------------------------------------------------------------------

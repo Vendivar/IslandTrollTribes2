@@ -13,9 +13,9 @@
 	{
 		"RunScript"
 		{
-			"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
-			"Function"	"CookFood"
-			"Range"	"%radius"
+			"ScriptFile"	"buildings/cook.lua"
+			"Function"      "CookFood"
+			"Range"         "%radius"
 		}
 			"FireSound"
 		{

@@ -17,9 +17,9 @@
 	{
 		"RunScript"
 		{
-			"ScriptFile"	"custom_functions_ability.lua"
-			"Function"	"AddHeat"
-			"Heat"	"50"
+			"ScriptFile"   "buildings/heat.lua"
+			"Function"     "AddHeat"
+			"Heat"         "%heat"
 		}
 
 		"Heal"

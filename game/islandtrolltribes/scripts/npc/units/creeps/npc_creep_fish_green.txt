@@ -5,7 +5,7 @@
 	"ModelScale"	"0.60"
 	"Model"	"models/items/hex/fish_hex/fish_hex.vmdl"
 	"Level"	"0"
-	"vscripts"	"passive_neutral_ai.lua"
+	"vscripts"	"units/ai/passive_neutral_ai.lua"
 	"Ability1"	"ability_fish_passive"
 	"Ability2"	""
 	"Ability3"	""

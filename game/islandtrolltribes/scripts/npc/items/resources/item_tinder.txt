@@ -22,16 +22,6 @@
 	{
 		"soundfile"	"soundevents/game_sounds_ui.vsndevts"
 	}
-	"OnOwnerDied"
-	{
-		"RunScript"
-		{
-			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-			"Function"	"DropItemOnDeath"
-		}
-
-	}
-
 	"UIPickupSound"	"ui.inv_pickup_robes"
 	"UIDropSound"	"ui.inv_drop_robes"
 	"WorldDropSound"	"ui.inv_equip_robes"

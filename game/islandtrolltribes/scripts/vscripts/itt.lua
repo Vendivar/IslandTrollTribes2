@@ -1,56 +1,4 @@
--- Global variables
-HUNTER = "npc_dota_hero_huskar"
-PRIEST = "npc_dota_hero_dazzle"
-MAGE = "npc_dota_hero_witch_doctor"
-BEASTMASTER = "npc_dota_hero_lycan"
-THIEF = "npc_dota_hero_riki"
-SCOUT = "npc_dota_hero_lion"
-GATHERER = "npc_dota_hero_shadow_shaman"
-
-local subclasses = {
-    npc_dota_hero_huskar = {        "npc_hero_hunter_tracker",
-                                    "npc_hero_hunter_warrior",
-                                    "npc_hero_hunter_juggernaught"},
-
-    npc_dota_hero_dazzle = {          "npc_hero_priest_booster",
-                        "npc_hero_priest_master_healer",
-                        "npc_hero_priest_sage"},
-
-    npc_dota_hero_witch_doctor = {            "npc_hero_mage_elementalist",
-                        "npc_hero_mage_hypnotist",
-                        "npc_hero_mage_dementia_master"},
-
-    npc_dota_hero_lycan = {     "npc_hero_beastmaster_packleader",
-                        "npc_hero_beastmaster_shapeshifter",
-                        "npc_hero_beastmaster_form_chicken"},
-
-    npc_dota_hero_riki = {           "npc_hero_thief_escape_artist",
-                        "npc_hero_thief_contortionist",
-                        "npc_hero_thief_assassin"},
-
-    npc_dota_hero_lion = {           "npc_hero_scout_observer",
-                        "npc_hero_scout_radar",
-                        "npc_hero_scout_spy"},
-
-    npc_dota_hero_shadow_shaman = {        "npc_hero_douchebag",
-                        "npc_hero_crackaddict",
-                        "npc_hero_catpicture"},
-}
-
---[[
-    This is where the meat of the addon is defined and modified
-    This file exists mostly because addon_game_mode can't be dynamically reloaded
-]]--
-
-print("addon_init invoked")
-require("util")
-require("recipe_list")
-require("timers")
-
---[[
-    Global variables
-]]--
-
+print ('[ITT] itt.lua' )
 
 TEAM_COLORS = {}
 TEAM_COLORS[DOTA_TEAM_GOODGUYS] = { 52, 85, 255 } -- Blue
@@ -90,7 +38,6 @@ WIN_GAME_THINK              = 0.5 -- checks if you've won every x seconds
 BUILDING_TICK_TIME          = 0.03
 DROPMODEL_TICK_TIME         = 0.03
 
-
 itemKeyValues = LoadKeyValues("scripts/npc/npc_items_custom.txt")
 
 -- Game periods determine what is allowed to spawn, from start (0) to X seconds in
@@ -123,23 +70,6 @@ TOTAL_SHOPS = #SHOP_UNIT_NAME_LIST
 MAX_SHOPS_ON_MAP = 1
 
 --[[
-    Default cruft to set everything up
-    In the game creation trace, this runs after
-        S:Gamerules: entering state 'DOTA_GAMERULES_STATE_INIT' - base DOTA2 rules that we can't change are loaded here
-        SV:  Spawn Server: template_map - where the map is loaded on the server
-    It runs before any of these events:
-        Precaching
-        CL:  CWaitForGameServerStartupPrerequisite - this is where the sever signals it is ready to be connected to
-        CL:  CCreateGameClientJob - this creates the creating client connection to server
-]]--
-
-if ITT_GameMode == nil then
-    print("ITT Script execution begin")
-    ITT_GameMode = class({})
-    -- LoadKeyValues(filename a)
-end
-
---[[
     Here is where we run the code that occurs when the game starts
     This is run once the engine has launched
 
@@ -148,12 +78,14 @@ end
     Set the hero selection time. Make this 0.0 if you have you rown hero selection system (like wc3 taverns)
         GameRules:SetHeroSelectionTime( [time] )
 ]]--
-require("item_spawning")
 
-function ITT_GameMode:InitGameMode()
+
+-- This function initializes the game mode and is called before anyone loads into the game
+-- It can be used to pre-initialize any values/tables that will be needed later
+function ITT:InitGameMode()
     PrintTable(Entities)
     print( "Game mode setup." )
-    BuildingHelper:BlockGridNavSquares(16384)
+    --BuildingHelper:BlockGridNavSquares(16384)
 
     Convars:RegisterConvar('itt_set_game_mode', nil, 'Set to the game mode', FCVAR_PROTECTED)
 
@@ -162,10 +94,10 @@ function ITT_GameMode:InitGameMode()
     -- Set the game's thinkers up
 
     -- This is the global thinker. It should only manage game state
-    GameMode:SetThink( "OnStateThink", ITT_GameMode, "StateThink", 2 )
+    GameMode:SetThink( "OnStateThink", ITT, "StateThink", 2 )
 
     -- This is the creature thinker. All neutral creature spawn logic goes here
-    GameMode:SetThink( "OnCreatureThink", ITT_GameMode, "CreatureThink", 2 )
+    GameMode:SetThink( "OnCreatureThink", ITT, "CreatureThink", 2 )
     GameMode.neutralCurNum = {}
     GameMode.neutralCurNum["npc_creep_elk_wild"] = 0
     GameMode.neutralCurNum["npc_creep_hawk"] = 0
@@ -179,34 +111,34 @@ function ITT_GameMode:InitGameMode()
     GameMode.neutralCurNum["npc_creep_mammoth"] = 0
 
     -- This is the troll thinker. All logic on the player's heros should be checked here
-    GameMode:SetThink( "OnTrollThink", ITT_GameMode, "TrollThink", 0 )
+    GameMode:SetThink( "OnTrollThink", ITT, "TrollThink", 0 )
 
     -- This is the building thinker. All logic on building crafting goes here
-    GameMode:SetThink( "OnBuildingThink", ITT_GameMode, "BuildingThink", 0 )
+    GameMode:SetThink( "OnBuildingThink", ITT, "BuildingThink", 0 )
 
     -- This is the item thinker. All random item spawn logic goes here
-    GameMode:SetThink( "OnItemThink", ITT_GameMode, "ItemThink", 0 )
+    GameMode:SetThink( "OnItemThink", ITT, "ItemThink", 0 )
 
      -- This is the herb bush thinker. All herb spawn logic goes here
-    GameMode:SetThink( "OnBushThink", ITT_GameMode, "BushThink", 0 )
+    GameMode:SetThink( "OnBushThink", ITT, "BushThink", 0 )
 
      -- This is the boat thinker. All boat logic goes here
-    GameMode:SetThink( "OnBoatThink", ITT_GameMode, "BoatThink", 0 )
+    GameMode:SetThink( "OnBoatThink", ITT, "BoatThink", 0 )
 
-    GameMode:SetThink("OnCheckWinThink", ITT_GameMode,"CheckWinThink",0)
+    GameMode:SetThink("OnCheckWinThink", ITT,"CheckWinThink",0)
     
     boatStartTime = math.floor(GameRules:GetGameTime())
     GameMode.spawnedShops = {}
     GameMode.shopEntities = Entities:FindAllByName("entity_ship_merchant_*")
 
     -- This is the thinker that checks building placement
-    GameMode:SetThink("Think", BuildingHelper, "buildinghelper", 0)
+    --GameMode:SetThink("Think", BuildingHelper, "buildinghelper", 0)
 
-    GameMode:SetThink("FixDropModels", ITT_GameMode, "FixDropModels", 0)
+    GameMode:SetThink("FixDropModels", ITT, "FixDropModels", 0)
 
-    GameMode:SetThink("FlashAckThink", ITT_GameMode, "FlashAckThink", 0)
+    GameMode:SetThink("FlashAckThink", ITT, "FlashAckThink", 0)
 
-	GameMode:SetCustomHeroMaxLevel ( 6 ) -- No accidental overleveling
+    GameMode:SetCustomHeroMaxLevel ( 6 ) -- No accidental overleveling
 
 
     -- Disable buybacks to stop instant respawning.
@@ -236,29 +168,29 @@ function ITT_GameMode:InitGameMode()
     -- dota_inventory_changed_query_unit dota_inventory_item_added
     -- WORK:
     -- dota_item_picked_up dota_item_purchased
-    ListenToGameEvent('player_connect_full', Dynamic_Wrap(ITT_GameMode, 'OnPlayerConnectFull'), self)
+    ListenToGameEvent('player_connect_full', Dynamic_Wrap(ITT, 'OnPlayerConnectFull'), self)
 
     -- Use this for assigning items to heroes initially once they pick their hero.
-    ListenToGameEvent( "dota_player_pick_hero", Dynamic_Wrap( ITT_GameMode, "OnPlayerPicked" ), self )
+    ListenToGameEvent( "dota_player_pick_hero", Dynamic_Wrap( ITT, "OnPlayerPicked" ), self )
 
     -- Use this for dealing with subclass spawning
-    ListenToGameEvent( "npc_spawned", Dynamic_Wrap( ITT_GameMode, "OnNPCSpawned" ), self )
+    ListenToGameEvent( "npc_spawned", Dynamic_Wrap( ITT, "OnNPCSpawned" ), self )
 
     --Listener for items picked up, used for telegather abilities
-    ListenToGameEvent('dota_item_picked_up', Dynamic_Wrap(ITT_GameMode, 'OnItemPickedUp'), self)
+    ListenToGameEvent('dota_item_picked_up', Dynamic_Wrap(ITT, 'OnItemPickedUp'), self)
 
-    ListenToGameEvent('dota_player_gained_level', Dynamic_Wrap(ITT_GameMode, 'OnPlayerGainedLevel'), self)
+    ListenToGameEvent('dota_player_gained_level', Dynamic_Wrap(ITT, 'OnPlayerGainedLevel'), self)
 
     --Listener for storing hero information and revive
-    ListenToGameEvent("dota_player_killed", Dynamic_Wrap(ITT_GameMode, 'OnDotaPlayerKilled'), self)
+    ListenToGameEvent("dota_player_killed", Dynamic_Wrap(ITT, 'OnDotaPlayerKilled'), self)
 
     -- Listener for drops and for removing buildings from block table
-    ListenToGameEvent("entity_killed", Dynamic_Wrap( ITT_GameMode, "OnEntityKilled" ), self )
+    ListenToGameEvent("entity_killed", Dynamic_Wrap( ITT, "OnEntityKilled" ), self )
 
-    ListenToGameEvent("entity_hurt", Dynamic_Wrap(ITT_GameMode, 'On_entity_hurt'), self)
+    ListenToGameEvent("entity_hurt", Dynamic_Wrap(ITT, 'On_entity_hurt'), self)
 
     --for multiteam
-    ListenToGameEvent( "game_rules_state_change", Dynamic_Wrap( ITT_GameMode, 'OnGameRulesStateChange' ), self )
+    ListenToGameEvent( "game_rules_state_change", Dynamic_Wrap( ITT, 'OnGameRulesStateChange' ), self )
 
     --multiteam stuff
     self.m_TeamColors = {}
@@ -382,16 +314,16 @@ function UnblockMammoth()
     end
 end
 --disables mammoth pit manually via try_delete_ent command
-function ITT_GameMode:_testRemove(cmdName, arg1)
+function ITT:_testRemove(cmdName, arg1)
     UnblockMammoth()
 end
 
-function ITT_GameMode:FilterDamage( filterTable )
+function ITT:FilterDamage( filterTable )
     
 end
 
 --Handler for class selection at the beginning of the game
-function ITT_GameMode:_SelectClass(cmdName, arg1)
+function ITT:_SelectClass(cmdName, arg1)
     local cmdPlayer = Convars:GetCommandClient()  -- returns the player who issued the console command
     local classNum = tonumber(arg1)
     --print("Class selected "..classNum)
@@ -419,7 +351,7 @@ function ITT_GameMode:_SelectClass(cmdName, arg1)
 end
 
 --Handlers for commands from custom UI
-function ITT_GameMode:_Sleep(cmdName)
+function ITT:_Sleep(cmdName)
     print("Sleep Command")
     local cmdPlayer = Convars:GetCommandClient()  -- returns the player who issued the console command
     if cmdPlayer then
@@ -440,7 +372,7 @@ function ITT_GameMode:_Sleep(cmdName)
     end
 end
 
-function ITT_GameMode:_EatMeat(cmdName)
+function ITT:_EatMeat(cmdName)
     print("EatMeat Command")
     local cmdPlayer = Convars:GetCommandClient()  -- returns the player who issued the console command
     if cmdPlayer then
@@ -468,7 +400,7 @@ function ITT_GameMode:_EatMeat(cmdName)
     end
 end
 
-function ITT_GameMode:_DropMeat(cmdName)
+function ITT:_DropMeat(cmdName)
     print("DropMeat Command")
     local cmdPlayer = Convars:GetCommandClient()  -- returns the player who issued the console command
     if cmdPlayer then
@@ -490,7 +422,7 @@ function ITT_GameMode:_DropMeat(cmdName)
     end
 end
 
-function ITT_GameMode:_DropAllMeat(cmdName)
+function ITT:_DropAllMeat(cmdName)
     print("DropAllMeat Command")
     local cmdPlayer = Convars:GetCommandClient()  -- returns the player who issued the console command
     if cmdPlayer then
@@ -514,7 +446,7 @@ function ITT_GameMode:_DropAllMeat(cmdName)
     end
 end
 
-function ITT_GameMode:_Panic(cmdName)
+function ITT:_Panic(cmdName)
     print("Panic Command")
     local cmdPlayer = Convars:GetCommandClient()  -- returns the player who issued the console command
     if cmdPlayer then
@@ -536,7 +468,7 @@ function ITT_GameMode:_Panic(cmdName)
 end
 
 -- This was missing, added a placeholder to at least remove crashes
-function ITT_GameMode:_PickUpMeat(cmdName)
+function ITT:_PickUpMeat(cmdName)
     print("Pick up meat button not implemented, this added to remove crashes")
 end
 
@@ -605,7 +537,7 @@ end
 
 ]]
 
-function ITT_GameMode:_SubSelect(player, n)
+function ITT:_SubSelect(player, n)
 
     local playerUnitEnt = player:GetAssignedHero()
     local playerUnit = playerUnitEnt:GetUnitName()
@@ -632,7 +564,7 @@ end
 
 -- This code is written by Internet Veteran, handle with care.
 --Distribute slot locked items based off of the class.
-function ITT_GameMode:OnPlayerPicked( keys )
+function ITT:OnPlayerPicked( keys )
     local spawnedUnit = EntIndexToHScript( keys.heroindex )
     local itemslotlock = CreateItem("item_slot_locked", spawnedUnit, spawnedUnit)
 
@@ -717,7 +649,7 @@ end
 
 -- This code is written by Internet Veteran, handle with care.
 --Do the same now for the subclasses
-function ITT_GameMode:OnNPCSpawned( keys )
+function ITT:OnNPCSpawned( keys )
     local spawnedUnit = EntIndexToHScript( keys.entindex )
     local itemslotlock1 = CreateItem("item_slot_locked", spawnedUnit, spawnedUnit)
     local itemslotlock2 = CreateItem("item_slot_locked", spawnedUnit, spawnedUnit)
@@ -725,7 +657,7 @@ function ITT_GameMode:OnNPCSpawned( keys )
     print("spawned unit: ", spawnedUnit:GetUnitName(), spawnedUnit:GetClassname(), spawnedUnit:GetName(), spawnedUnit:GetEntityIndex())
     
     -- add it to the gridnav to stop people building on it
-    BuildingHelper:AddUnit(spawnedUnit)
+    --BuildingHelper:AddUnit(spawnedUnit)
     
     -- Remove starting gold
     if not spawnedUnit:IsIllusion() and spawnedUnit:IsHero() and spawnedUnit:GetDeaths() == 0 then
@@ -787,7 +719,7 @@ function ITT_GameMode:OnNPCSpawned( keys )
     -- end
 end
 
-function ITT_GameMode:OnEntityKilled(keys)
+function ITT:OnEntityKilled(keys)
     local dropTable = {
         --{"unit_name", {"item_1", drop_chance}, {"mutually_exclusive_item_1", "mutually_exclusive_item_2", drop_chance}},
         {"npc_creep_elk_wild", {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_hide_elk", 100}, {"item_bone", 100}},
@@ -834,6 +766,19 @@ function ITT_GameMode:OnEntityKilled(keys)
         end
         local newItem = CreateItem("item_bone", nil, nil)
         CreateItemOnPositionSync(killedUnit:GetOrigin() + RandomVector(RandomInt(20,100)), newItem)
+
+        -- Launch all carried items excluding the fillers
+        for i=0,5 do
+            local item = killedUnit:GetItemInSlot(i)
+            if item and item:GetAbilityName() ~= "item_slot_locked" then
+                killedUnit:DropItemAtPositionImmediate(item, killedUnit:GetAbsOrigin())
+                local pos = killedUnit:GetAbsOrigin()
+                local pos_launch = pos+RandomVector(RandomFloat(100,150))
+                item:LaunchLoot(false, 200, 0.75, pos_launch)
+            end
+        end
+
+
     else
     --drop system
     for _,v in pairs(dropTable) do
@@ -875,13 +820,13 @@ function ITT_GameMode:OnEntityKilled(keys)
     end
 end
 
-function ITT_GameMode:OnDotaPlayerKilled(keys)
+function ITT:OnDotaPlayerKilled(keys)
     local playerId = keys.PlayerID
     print(playerId)
     --print(PlayerResource:GetPlayer(playerID):GetAssignedHero())
 end
 
-function ITT_GameMode:On_entity_hurt(data)
+function ITT:On_entity_hurt(data)
     --print("entity_hurt")
     local attacker = EntIndexToHScript(data.entindex_attacker)
     local killed = EntIndexToHScript(data.entindex_killed)
@@ -892,7 +837,7 @@ function ITT_GameMode:On_entity_hurt(data)
 
 end
 
-function ITT_GameMode:FixDropModels(dt)
+function ITT:FixDropModels(dt)
     for _,v in pairs(Entities:FindAllByClassname("dota_item_drop")) do
         if not v.ModelFixInit then
             --print("initing.. " .. v:GetContainedItem():GetAbilityName())
@@ -918,7 +863,7 @@ end
 -- Every half second it updates heat, checks inventory for items, etc
 -- Add anything you want to run regularly on each troll to this
 
-function ITT_GameMode:OnTrollThink()
+function ITT:OnTrollThink()
 
     --if GameRules:State_Get() ~= DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
         -- Will not run until pregame ends
@@ -936,7 +881,7 @@ function ITT_GameMode:OnTrollThink()
     return GAME_TROLL_TICK_TIME
 end
 
-function ITT_GameMode:OnBuildingThink()
+function ITT:OnBuildingThink()
     --RE-ENABLE AFTER TESTING
     --if GameRules:State_Get() ~= DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
         --Will not run until pregame ends
@@ -967,7 +912,7 @@ function ITT_GameMode:OnBuildingThink()
 end
 
 -- This is similar, but handles spawning creatures
-function ITT_GameMode:OnCreatureThink()
+function ITT:OnCreatureThink()
 
     MAXIMUM_PASSIVE_NEUTRALS    = 300 --this isn't implemented yet
     MAXIMUM_AGGRESSIVE_NEUTRALS = 20
@@ -1058,7 +1003,7 @@ function ITT_GameMode:OnCreatureThink()
 end
 
 -- The only real way of triggering code in Scaleform, events, are not reliable. Require acknowledgement of all events fired for this purpose.
-function ITT_GameMode:FlashAckThink()
+function ITT:FlashAckThink()
     --print("ackthink!")
     for i=0,9 do
         local player = PlayerResource:GetPlayer(i)
@@ -1076,7 +1021,7 @@ function ITT_GameMode:FlashAckThink()
 end
 
 -- pid and id optional
-function ITT_GameMode:HandleFlashMessage(eventname, data, pid, id)
+function ITT:HandleFlashMessage(eventname, data, pid, id)
     local id = id or DoUniqueString("")
     print("Setting ID to .." .. id)
     data.id = id
@@ -1094,7 +1039,7 @@ function ITT_GameMode:HandleFlashMessage(eventname, data, pid, id)
     FireGameEvent(eventname, data)
 end
 
-function ITT_GameMode:PrepFlashMessage(player, eventname, data, id)
+function ITT:PrepFlashMessage(player, eventname, data, id)
     if not player.eventQueue then player.eventQueue = {} end
     player.eventQueue[id] = {eventname = eventname, data = data, id = id}
 end
@@ -1110,7 +1055,7 @@ function acknowledge_flash_event(cmdname, eventname, pid, id)
 end
 
 
-function ITT_GameMode:OnBushThink()
+function ITT:OnBushThink()
     -- Find all bushes
     --print("bush think")
     units = FindUnitsInRadius(DOTA_TEAM_BADGUYS,
@@ -1225,7 +1170,7 @@ function ITT_GameMode:OnBushThink()
     return GAME_BUSH_TICK_TIME
 end
 
-function ITT_GameMode:OnBoatThink()
+function ITT:OnBoatThink()
     local currentTime = math.floor(GameRules:GetGameTime())
     local numShopsSpawned = 0
     for k,_ in pairs(GameMode.spawnedShops) do
@@ -1277,7 +1222,7 @@ function ITT_GameMode:OnBoatThink()
 end
 
 -- This will handle anything gamestate related that is not covered under other thinkers
-function ITT_GameMode:OnStateThink()
+function ITT:OnStateThink()
     --print(GameRules:State_Get())
     return GAME_TICK_TIME
     --GameRules:MakeTeamLose(3)
@@ -1289,7 +1234,7 @@ function ITT_GameMode:OnStateThink()
 end
 --This function checks if you won the game or not
 
-function ITT_GameMode:OnCheckWinThink()
+function ITT:OnCheckWinThink()
    if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then --waits for pregame to end before you can win
     --win check here
         local goodteam = 0 --tallies for the 3 teams, X = players alive
@@ -1350,7 +1295,7 @@ function ITT_GameMode:OnCheckWinThink()
 end
 
 -- When players connect, add them to the players list and begin operations on them
-function ITT_GameMode:OnPlayerConnectFull(keys)
+function ITT:OnPlayerConnectFull(keys)
     local playerID = keys.index + 1
     --local player = PlayerInstanceFromIndex(playerID)
     print( "Player " .. playerID .. " connected")
@@ -1360,7 +1305,7 @@ function ITT_GameMode:OnPlayerConnectFull(keys)
 end
 
 --Listener to handle telegather events from item pickup and picking up raw meat
-function ITT_GameMode:OnItemPickedUp(event)
+function ITT:OnItemPickedUp(event)
     DeepPrintTable(event)
     local hero = EntIndexToHScript( event.HeroEntityIndex )
     if event.itemname == "item_meat_raw" then
@@ -1400,7 +1345,7 @@ function ITT_GameMode:OnItemPickedUp(event)
 end
 
 --Listener to handle level up
-function ITT_GameMode:OnPlayerGainedLevel(event)
+function ITT:OnPlayerGainedLevel(event)
     print("PlayerGainedLevel")
     local player = EntIndexToHScript(event.player)
     local hero = player:GetAssignedHero()
@@ -1521,43 +1466,43 @@ function ITT_GameMode:OnPlayerGainedLevel(event)
             {"ability_scout_reveal"}
         },
         {OBSERVER,
-			{"ability_scout_wardthearea"},
-			{"ability_scout_wardthearea"},
-			{},
-			{"ability_scout_wardthearea"},
-		},
+            {"ability_scout_wardthearea"},
+            {"ability_scout_wardthearea"},
+            {},
+            {"ability_scout_wardthearea"},
+        },
         {RADAR_SCOUT,
-			{"ability_scout_motionsensorradar"},
-			{"ability_scout_motionsensorradar"},
-			{},
-			{"ability_scout_motionsensorradar"},
-		},
+            {"ability_scout_motionsensorradar"},
+            {"ability_scout_motionsensorradar"},
+            {},
+            {"ability_scout_motionsensorradar"},
+        },
         {SPY,
-			{"ability_scout_chainreveal"},
-			{"ability_scout_chainreveal"},
-			{},
-			{"ability_scout_chainreveal"},
-		},
+            {"ability_scout_chainreveal"},
+            {"ability_scout_chainreveal"},
+            {},
+            {"ability_scout_chainreveal"},
+        },
         {GATHERER,
             {"ability_gatherer_radarmanipulations"},
             {"ability_gatherer_radarmanipulations"},
             {"ability_gatherer_radarmanipulations"},
         },
         {HERB_MASTER_TELEGATHERER,
-			{"ability_gatherer_telegather_herb"},
-			{"ability_gatherer_telegather_herb"},
-			{"ability_gatherer_telegather_herb"},
-		},
+            {"ability_gatherer_telegather_herb"},
+            {"ability_gatherer_telegather_herb"},
+            {"ability_gatherer_telegather_herb"},
+        },
         {RADAR_TELEGATHERER,
-			{"ability_gatherer_telegather_radar"},
-			{"ability_gatherer_telegather_radar"},
-			{"ability_gatherer_telegather_radar"},
-		},
+            {"ability_gatherer_telegather_radar"},
+            {"ability_gatherer_telegather_radar"},
+            {"ability_gatherer_telegather_radar"},
+        },
         {REMOTE_TELEGATHERER,
-			{"ability_gatherer_telegather_omni"},
-			{"ability_gatherer_telegather_omni"},
-			{"ability_gatherer_telegather_omni"},
-		},
+            {"ability_gatherer_telegather_omni"},
+            {"ability_gatherer_telegather_omni"},
+            {"ability_gatherer_telegather_omni"},
+        },
     }
 
     -- grant skills
@@ -1621,11 +1566,11 @@ function reload_ikv(cmdname)
 end
 
 function test_ack(cmdname)
-    ITT_GameMode:HandleFlashMessage("fl_level_6", {pid = -1, gameclass = "gatherer"})
+    ITT:HandleFlashMessage("fl_level_6", {pid = -1, gameclass = "gatherer"})
 end
 
 function test_ack_sec(cmdname)
-    ITT_GameMode:HandleFlashMessage("fl_level_6", {pid = Convars:GetCommandClient():GetPlayerID()})
+    ITT:HandleFlashMessage("fl_level_6", {pid = Convars:GetCommandClient():GetPlayerID()})
 end
 
 function make(cmdname, unitname)
@@ -1648,7 +1593,7 @@ Convars:RegisterCommand("give_item", function(cmdname, itemname) give_item(cmdna
 ---------------------------------------------------------------------------
 -- Game state change handler
 ---------------------------------------------------------------------------
-function ITT_GameMode:OnGameRulesStateChange()
+function ITT:OnGameRulesStateChange()
     local nNewState = GameRules:State_Get()
 --  print( "OnGameRulesStateChange: " .. nNewState )
 
@@ -1684,7 +1629,7 @@ end
 ---------------------------------------------------------------------------
 -- Scan the map to see which teams have spawn points
 ---------------------------------------------------------------------------
-function ITT_GameMode:GatherValidTeams()
+function ITT:GatherValidTeams()
   print( "GatherValidTeams:" )
 
     local foundTeams = {}
@@ -1711,7 +1656,7 @@ end
 ---------------------------------------------------------------------------
 -- Assign all real players to a team
 ---------------------------------------------------------------------------
-function ITT_GameMode:AssignAllPlayersToTeams()
+function ITT:AssignAllPlayersToTeams()
   print( "Assigning players to teams..." )
     for playerID = 0, (DOTA_MAX_TEAM_PLAYERS-1) do
         if nil ~= PlayerResource:GetPlayer( playerID ) then
@@ -1725,7 +1670,7 @@ end
 ---------------------------------------------------------------------------
 -- Get the color associated with a given teamID
 ---------------------------------------------------------------------------
-function ITT_GameMode:ColorForTeam( teamID )
+function ITT:ColorForTeam( teamID )
     local color = self.m_TeamColors[teamID]
     if color == nil then
         color = { 255, 255, 255 } -- default to white
@@ -1736,7 +1681,7 @@ end
 ---------------------------------------------------------------------------
 -- Determine a good team assignment for the next player
 ---------------------------------------------------------------------------
-function ITT_GameMode:GetNextTeamAssignment()
+function ITT:GetNextTeamAssignment()
     if #self.m_GatheredShuffledTeams == 0 then
       print( "CANNOT ASSIGN PLAYER - NO KNOWN TEAMS" )
         return DOTA_TEAM_NOTEAM
@@ -1772,7 +1717,7 @@ end
 ---------------------------------------------------------------------------
 -- Put a label over a player's hero so people know who is on what team
 ---------------------------------------------------------------------------
-function ITT_GameMode:MakeLabelForPlayer( nPlayerID )
+function ITT:MakeLabelForPlayer( nPlayerID )
     if not PlayerResource:HasSelectedHero( nPlayerID ) then
         return
     end
@@ -1790,7 +1735,7 @@ end
 ---------------------------------------------------------------------------
 -- Tell everyone the team assignments during hero selection
 ---------------------------------------------------------------------------
-function ITT_GameMode:BroadcastPlayerTeamAssignments()
+function ITT:BroadcastPlayerTeamAssignments()
     print("BroadcastPlayerTeamAssignments")
     for nPlayerID = 0, (DOTA_MAX_TEAM_PLAYERS-1) do
         local nTeamID = PlayerResource:GetTeam( nPlayerID )
@@ -1803,7 +1748,7 @@ end
 ---------------------------------------------------------------------------
 -- Update player labels and the scoreboard
 ---------------------------------------------------------------------------
-function ITT_GameMode:OnThink()
+function ITT:OnThink()
     for nPlayerID = 0, (DOTA_MAX_TEAM_PLAYERS-1) do
         self:MakeLabelForPlayer( nPlayerID )
     end

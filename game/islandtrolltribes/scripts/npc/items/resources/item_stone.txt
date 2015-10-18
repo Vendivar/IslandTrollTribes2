@@ -27,16 +27,6 @@
 	{
 		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_earth_spirit.vsndevts"
 	}
-	"OnOwnerDied"
-	{
-		"RunScript"
-		{
-			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-			"Function"	"DropItemOnDeath"
-		}
-
-	}
-
 	"UIPickupSound"	"ui.inv_drop_stone"
 	"UIDropSound"	"ui.inv_drop_stone"
 	"WorldDropSound"	"ui.inv_drop_stone"

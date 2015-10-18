@@ -5,7 +5,7 @@
 	"ModelScale"	"1.00"
 	"Model"	"models/heroes/lone_druid/spirit_bear.vmdl"
 	"Level"	"7"
-	"vscripts"	"aggressive_neutral_ai.lua"
+	"vscripts"	"units/ai/aggressive_neutral_ai.lua"
 	"Ability1"	"ability_wander"
 	"Ability2"	"ability_pet_sleep"
 	"Ability3"	""
