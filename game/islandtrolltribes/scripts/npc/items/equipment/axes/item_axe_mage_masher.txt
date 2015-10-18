@@ -100,7 +100,7 @@
 					{
 						"RunScript"
 						{
-							"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+							"ScriptFile"	"items/mage_masher.lua"
 							"Function"	"MageMasherManaBurn"
 							"Target"	"TARGET"
 							"Damage"	"%mage_masher_mana_burn_damage"

@@ -60,9 +60,9 @@
 	{
 		"RunScript"
 		{
-			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-			"Function"	"StoneStun"
-			"Target"	"TARGET"
+			"ScriptFile"	"items/stone.lua"
+			"Function"		"StoneStun"
+			"Target"		"TARGET"
 		}
 
 		"SpendCharge"

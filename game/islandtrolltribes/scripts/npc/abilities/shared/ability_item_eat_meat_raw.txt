@@ -43,7 +43,7 @@
 			{
 				"RunScript"
 				{
-					"ScriptFile"	"heroes/hero_name/ability_name.lua"
+					"ScriptFile"	"items/meat.lua"
 					"Function"		"EatMeat"
 					"heal_amount"	"1"
 				}

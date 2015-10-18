@@ -27,9 +27,9 @@
 	{
 		"RunScript"
 		{
-			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-			"Function"	"PotionManaUse"
-			"ManaRestored"	"%energy_restore"
+			"ScriptFile"     "items/potions.lua"
+			"Function"       "PotionManaUse"
+			"ManaRestored"   "%energy_restore"
 		}
 
 		"SpendCharge"

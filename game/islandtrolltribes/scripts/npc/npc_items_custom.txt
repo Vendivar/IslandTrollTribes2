@@ -3256,7 +3256,7 @@
 						{
 							"RunScript"
 							{
-								"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+								"ScriptFile"	"items/mage_masher.lua"
 								"Function"	"MageMasherManaBurn"
 								"Target"	"TARGET"
 								"Damage"	"%mage_masher_mana_burn_damage"
@@ -4153,7 +4153,7 @@
 	
 							"RunScript"
 							{
-								"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+								"ScriptFile"	"items/protection.lua"
 								"Function"	"CloakProtectFail"
 								"Attacker"	"ATTACKER"
 							}
@@ -4572,8 +4572,8 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"CloakCamouflageInvis"
+				"ScriptFile" "items/cloak.lua"
+				"Function"   "CloakCamouflageInvis"
 			}
 	
 		}
@@ -5772,59 +5772,6 @@
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"ui.inv_pickup_robes"
 	}
-	"ability_item_eat_meat_raw"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
-		"AbilityTextureName"	"life_stealer_open_wounds"
-		"AbilityCastPoint"	"0.0"
-		"AbilityCastAnimation"	"ACT_DOTA_CHANNEL_ABILITY_4"
-		"AbilityChannelTime"	"2.0"
-		"AbilityCooldown"	"0"
-		"AbilityManaCost"	"0"
-		"OnSpellStart"
-		{
-			"ApplyModifier"
-			{
-				"Target"	"CASTER"
-				"ModifierName"	"modifier_eat_meat_raw"
-			}
-	
-		}
-	
-		"OnChannelFinish"
-		{
-			"RemoveModifier"
-			{
-				"Target"	"CASTER"
-				"ModifierName"	"modifier_eat_meat_raw"
-			}
-	
-			"RemoveAbility"
-			{
-				"Target"	"CASTER"
-				"AbilityName"	"ability_item_eat_meat_raw"
-			}
-	
-		}
-	
-		"Modifiers"
-		{
-			"modifier_eat_meat_raw"
-			{
-				"ThinkInterval"	".2"
-				"OnIntervalThink"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"heroes/hero_name/ability_name.lua"
-						"Function"		"EatMeat"
-						"heal_amount"	"1"
-					}
-				}
-			}
-		}
-	}
 	"item_clay_explosion"
 	{
 		"ID"	"1098"
@@ -6040,7 +5987,7 @@
 					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%all_stats"
 				}
 	
-				"RunScript"
+				"RunScript" //TODO
 				{
 					"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
 					"Function"	"item_gem_knowledge"
@@ -6090,8 +6037,8 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"RawMagicUse"
+				"ScriptFile" "items/magic.lua"
+				"Function"   "RawMagicUse"
 			}
 	
 			"SpendCharge"
@@ -6139,8 +6086,8 @@
 			}
 			"RunScript"
 			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"		"EatCookedMeat"
+				"ScriptFile"	"items/meat.lua"
+				"Function"		"EatCookedMeat" //TODO
 				"heal_amount"	"%heal_amount"
 			}
 			"SpendCharge"
@@ -6273,8 +6220,8 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"EatMeatRaw"
+				"ScriptFile"	"items/meat.lua"
+				"Function"		"EatMeatRaw"
 			}
 	
 			"SpendCharge"
@@ -6356,8 +6303,8 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"		"EatCookedMeat"
+				"ScriptFile"	"items/meat.lua"
+				"Function"		"EatCookedMeat" //TODO
 				"heal_amount"	"40"
 			}
 	
@@ -6398,10 +6345,10 @@
 		"WorldDropSound"	"Item.DropGemWorld"
 		"OnSpellStart"
 		{
-			"RunScript"
+			"RunScript" //TODO
 			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"item_medallion_theif_use"
+				"ScriptFile" "scripts/vscripts/custom_functions_item.lua"
+				"Function"   "item_medallion_theif_use"
 			}
 	
 			"SpendCharge"
@@ -6686,8 +6633,8 @@
 			}
 			"RunScript"
 	        	{
-	            	"ScriptFile"    "scripts/vscripts/custom_functions_item.lua"
-	            	"Function"        "AntiMagicPotionUse"
+	            	"ScriptFile"   "items/potions.lua"
+	            	"Function"     "AntiMagicPotionUse"
 	        	}	
 		}
 		
@@ -6755,8 +6702,8 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"CastPurge"
+				"ScriptFile"	"items/potions.lua"
+				"Function"		"CastPurge"
 				"Target"	"CASTER"
 			}
 	
@@ -6829,8 +6776,8 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"PotionDiseaseUse"
+				"ScriptFile" "items/potions.lua"
+				"Function"   "PotionDiseaseUse"
 			}
 	
 			"FireSound"
@@ -7328,7 +7275,7 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+				"ScriptFile" "items/potions.lua"
 				"Function"	"PotionFervorUse"
 			}
 	
@@ -7614,9 +7561,9 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"PotionManaUse"
-				"ManaRestored"	"%energy_restore"
+				"ScriptFile"     "items/potions.lua"
+				"Function"       "PotionManaUse"
+				"ManaRestored"   "%energy_restore"
 			}
 	
 			"SpendCharge"
@@ -7671,9 +7618,9 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"PotionManaUse"
-				"ManaRestored"	"%energy_restore"
+				"ScriptFile"     "items/potions.lua"
+				"Function"       "PotionManaUse"
+				"ManaRestored"   "%energy_restore"
 			}
 	
 			"SpendCharge"
@@ -7728,9 +7675,9 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"PotionManaUse"
-				"ManaRestored"	"%energy_restore"
+				"ScriptFile"     "items/potions.lua"
+				"Function"       "PotionManaUse"
+				"ManaRestored"   "%energy_restore"
 			}
 	
 			"SpendCharge"
@@ -7784,10 +7731,10 @@
 		"WorldDropSound"	"Hero_Alchemist.Foley"
 		"OnSpellStart"
 		{
-			"RunScript"
+			"RunScript" //TODO
 			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"potion_nether_use"
+				"ScriptFile"	"items/potions.lua"
+				"Function"		"potion_nether_use"
 			}
 	
 			"ApplyModifier"
@@ -7942,9 +7889,9 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"PotionTwinUse"
-				"Range"	"2500"
+				"ScriptFile"     "items/potions.lua"
+				"Function"       "PotionTwinUse"
+				"Range"          "2500"
 			}
 	
 			"SpendCharge"
@@ -8322,7 +8269,7 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+				"ScriptFile"	"items/scroll_living_dead.lua"
 				"Function"	"SummonSkeleton"
 			}
 	
@@ -8522,7 +8469,7 @@
 	
 			"RunScript"
 			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+				"ScriptFile"	"items/tsunami.lua"
 				"Function"	"TsunamiProjectiles"
 			}
 	
@@ -8546,7 +8493,7 @@
 	
 			"RunScript"
 			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+				"ScriptFile"	"items/tsunami.lua"
 				"Function"	"TsunamiDestroyFire"
 				"Target"	"TARGET"
 			}
@@ -9142,7 +9089,7 @@
 	
 		"OnProjectileHitUnit"
 		{
-			"RunScript"
+			"RunScript" //TODO
 			{
 				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
 				"Function"	"ability_spear_basic_throw"
@@ -9233,7 +9180,7 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+				"ScriptFile" "items/spears.lua"
 				"Function"	"SpearDarkThrow"
 				"DamageMin"	"%mana_zap_min"
 				"DamageMax"	"%mana_zap_max"
@@ -9459,7 +9406,7 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+				"ScriptFile"	"items/spear_poison.lua"
 				"Function"	"SpearPoisonThrowInit"
 				"MoveSpeedSlow"	"%move_speed_slow"
 				"AttackSpeedSlow"	"%attack_speed_slow"
@@ -9543,7 +9490,7 @@
 					"RunScript"
 					{
 						"Target"	"TARGET"
-						"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+						"ScriptFile"	"items/spear_poison.lua"
 						"Function"	"SpearPoisonThrowTick"
 					}
 	
@@ -9556,7 +9503,7 @@
 					"RunScript"
 					{
 						"Target"	"TARGET"
-						"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+						"ScriptFile"	"items/spear_poison.lua"
 						"Function"	"SpearPoisonEnd"
 					}
 	
@@ -9695,7 +9642,7 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+				"ScriptFile"	"items/spear_poison.lua"
 				"Function"	"SpearPoisonThrowInit"
 				"MoveSpeedSlow"	"%move_speed_slow"
 				"AttackSpeedSlow"	"%attack_speed_slow"
@@ -9779,7 +9726,7 @@
 					"RunScript"
 					{
 						"Target"	"TARGET"
-						"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+						"ScriptFile"	"items/spear_poison.lua"
 						"Function"	"SpearPoisonThrowTick"
 					}
 	
@@ -9792,7 +9739,7 @@
 					"RunScript"
 					{
 						"Target"	"TARGET"
-						"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+						"ScriptFile"	"items/spear_poison.lua"
 						"Function"	"SpearPoisonEnd"
 					}
 	
@@ -9935,7 +9882,7 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+				"ScriptFile"	"items/spear_poison.lua"
 				"Function"	"SpearPoisonThrowInit"
 				"MoveSpeedSlow"	"%move_speed_slow"
 				"AttackSpeedSlow"	"%attack_speed_slow"
@@ -10019,7 +9966,7 @@
 					"RunScript"
 					{
 						"Target"	"TARGET"
-						"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+						"ScriptFile"	"items/spear_poison.lua"
 						"Function"	"SpearPoisonThrowTick"
 					}
 	
@@ -10032,7 +9979,7 @@
 					"RunScript"
 					{
 						"Target"	"TARGET"
-						"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+						"ScriptFile"	"items/spear_poison.lua"
 						"Function"	"SpearPoisonEnd"
 					}
 	
@@ -11174,9 +11121,9 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"StoneStun"
-				"Target"	"TARGET"
+				"ScriptFile"	"items/stone.lua"
+				"Function"		"StoneStun"
+				"Target"		"TARGET"
 			}
 	
 			"SpendCharge"
@@ -11393,8 +11340,8 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"SonarCompassUse"
+				"ScriptFile"	 "items/sonar.lua"
+				"Function"       "SonarCompassUse"
 				"UnitTable"
 				{
 					"npc_ship_merchant_1"	"255 255 255"
@@ -11497,7 +11444,7 @@
 	
 			"RunScript"
 			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+				"ScriptFile"	"items/gun.lua"
 				"Function"	"GunBlowCheckEmpty"
 			}
 	
@@ -11643,8 +11590,8 @@
 	
 			"RunScript"
 			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"GunBlowCheckEmpty"
+				"ScriptFile" "items/gun.lua"
+				"Function"	 "GunBlowCheckEmpty"
 			}
 	
 		}
@@ -11827,8 +11774,8 @@
 	
 			"RunScript"
 			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"GunBlowCheckEmpty"
+				"ScriptFile"	"items/gun.lua"
+				"Function"		"GunBlowCheckEmpty"
 			}
 	
 		}

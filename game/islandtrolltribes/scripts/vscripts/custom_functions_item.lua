@@ -32,49 +32,6 @@ function NetEnsnare(keys)
 	target:AddNewModifier(caster, nil, "modifier_meepo_earthbind", {duration = dur})
 end
 
-function StoneStun(keys)
-	local caster = keys.caster
-	local target = keys.target
-	local targetName = target:GetName()
-	local dur = 7.0	--default duration for anything besides heros
-	if (target:IsHero()) then --if the target's name includes "hero"
-		dur = 1.0	--then we use the hero only duration
-	end
-	print("Stone Stunned!")
-	target:AddNewModifier(caster, nil, "modifier_stunned", { duration = dur})
-end
-
-function EatMeatRaw(keys)	--triggers the meat eating channel ability
-	---[[
-	local caster = keys.caster
-	local abilityName = "ability_item_eat_meat_raw"
-	local ability = caster:FindAbilityByName(abilityName)
-	if ability == nil then
-		caster:AddAbility(abilityName)
-		ability = caster:FindAbilityByName( abilityName )
-		ability:SetLevel(1)		
-	end
-	print("trying to cast ability ", abilityName)
-	caster:CastAbilityNoTarget(ability, -1)
-	--caster:RemoveAbility(abilityName)
-	--]]
-end
-
-function EatMeat( event )
-	local ability = event.ability
-	local caster = event.caster
-	local heal = event.heal_amount
-
-	if caster:HasModifier("modifier_priest_increasemetabolism") then
-		if ability:GetName() == "ability_item_eat_meat_raw" then
-			caster:Heal(1, caster)
-		else
-			caster:Heal(10, caster)
-		end
-	end
-	caster:Heal(heal, caster)
-end
-
 function MageMasherManaBurn(keys)
 	local caster = keys.caster
 	local target = keys.target

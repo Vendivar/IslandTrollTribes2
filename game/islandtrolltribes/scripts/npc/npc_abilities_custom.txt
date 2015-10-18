@@ -10493,7 +10493,7 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"   "buildings/heat.lua"
+						"ScriptFile"   "mechanics/heat.lua"
 						"Function"     "AddHeat"
 						"Heat"         "-2"
 					}
@@ -11773,6 +11773,59 @@
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"ability_building_getcorpse"
 	}
+	"ability_item_eat_meat_raw"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+		"AbilityTextureName"	"life_stealer_open_wounds"
+		"AbilityCastPoint"	"0.0"
+		"AbilityCastAnimation"	"ACT_DOTA_CHANNEL_ABILITY_4"
+		"AbilityChannelTime"	"2.0"
+		"AbilityCooldown"	"0"
+		"AbilityManaCost"	"0"
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"Target"	"CASTER"
+				"ModifierName"	"modifier_eat_meat_raw"
+			}
+	
+		}
+	
+		"OnChannelFinish"
+		{
+			"RemoveModifier"
+			{
+				"Target"	"CASTER"
+				"ModifierName"	"modifier_eat_meat_raw"
+			}
+	
+			"RemoveAbility"
+			{
+				"Target"	"CASTER"
+				"AbilityName"	"ability_item_eat_meat_raw"
+			}
+	
+		}
+	
+		"Modifiers"
+		{
+			"modifier_eat_meat_raw"
+			{
+				"ThinkInterval"	".2"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/meat.lua"
+						"Function"		"EatMeat"
+						"heal_amount"	"1"
+					}
+				}
+			}
+		}
+	}
 	"ability_magic_raw_meteor"
 	{
 		"BaseClass"	"ability_datadriven"
@@ -11794,9 +11847,9 @@
 	
 			"RunScript"
 			{
-				"Target"	"CASTER"
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"RawMagicMeteor"
+				"Target"         "CASTER"
+				"ScriptFile"     "items/magic.lua"
+				"Function"       "RawMagicMeteor"
 			}
 	
 		}
@@ -11813,12 +11866,6 @@
 					{
 						"Target"	"TARGET"
 						"Radius"	"1000"
-					}
-	
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-						"Function"	"PrintTest"
 					}
 	
 					"FireEffect"

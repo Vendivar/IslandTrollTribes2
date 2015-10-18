@@ -49,7 +49,7 @@
 
 	"OnProjectileHitUnit"
 	{
-		"RunScript"
+		"RunScript" //TODO
 		{
 			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
 			"Function"	"ability_spear_basic_throw"

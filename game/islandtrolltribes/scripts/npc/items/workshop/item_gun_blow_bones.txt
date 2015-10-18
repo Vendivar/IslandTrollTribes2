@@ -87,7 +87,7 @@
 
 		"RunScript"
 		{
-			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+			"ScriptFile"	"items/gun.lua"
 			"Function"	"GunBlowCheckEmpty"
 		}
 

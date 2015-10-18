@@ -23,10 +23,10 @@
 	"WorldDropSound"	"Item.DropGemWorld"
 	"OnSpellStart"
 	{
-		"RunScript"
+		"RunScript" //TODO
 		{
-			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-			"Function"	"item_medallion_theif_use"
+			"ScriptFile" "scripts/vscripts/custom_functions_item.lua"
+			"Function"   "item_medallion_theif_use"
 		}
 
 		"SpendCharge"

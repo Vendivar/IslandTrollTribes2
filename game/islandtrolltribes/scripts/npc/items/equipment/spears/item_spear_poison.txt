@@ -55,7 +55,7 @@
 	{
 		"RunScript"
 		{
-			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+			"ScriptFile"	"items/spear_poison.lua"
 			"Function"	"SpearPoisonThrowInit"
 			"MoveSpeedSlow"	"%move_speed_slow"
 			"AttackSpeedSlow"	"%attack_speed_slow"
@@ -139,7 +139,7 @@
 				"RunScript"
 				{
 					"Target"	"TARGET"
-					"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+					"ScriptFile"	"items/spear_poison.lua"
 					"Function"	"SpearPoisonThrowTick"
 				}
 
@@ -152,7 +152,7 @@
 				"RunScript"
 				{
 					"Target"	"TARGET"
-					"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+					"ScriptFile"	"items/spear_poison.lua"
 					"Function"	"SpearPoisonEnd"
 				}
 

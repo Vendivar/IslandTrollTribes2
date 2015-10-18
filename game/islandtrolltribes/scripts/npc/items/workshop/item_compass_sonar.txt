@@ -26,8 +26,8 @@
 	{
 		"RunScript"
 		{
-			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-			"Function"	"SonarCompassUse"
+			"ScriptFile"	 "items/sonar.lua"
+			"Function"       "SonarCompassUse"
 			"UnitTable"
 			{
 				"npc_ship_merchant_1"	"255 255 255"

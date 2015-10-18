@@ -56,8 +56,8 @@
 		}
 		"RunScript"
         	{
-            	"ScriptFile"    "scripts/vscripts/custom_functions_item.lua"
-            	"Function"        "AntiMagicPotionUse"
+            	"ScriptFile"   "items/potions.lua"
+            	"Function"     "AntiMagicPotionUse"
         	}	
 	}
 	

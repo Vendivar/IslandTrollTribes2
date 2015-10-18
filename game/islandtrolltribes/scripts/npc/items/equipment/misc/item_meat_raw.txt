@@ -22,8 +22,8 @@
 	{
 		"RunScript"
 		{
-			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-			"Function"	"EatMeatRaw"
+			"ScriptFile"	"items/meat.lua"
+			"Function"		"EatMeatRaw"
 		}
 
 		"SpendCharge"

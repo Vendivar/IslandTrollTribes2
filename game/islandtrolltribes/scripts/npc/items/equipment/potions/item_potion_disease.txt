@@ -50,8 +50,8 @@
 	{
 		"RunScript"
 		{
-			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-			"Function"	"PotionDiseaseUse"
+			"ScriptFile" "items/potions.lua"
+			"Function"   "PotionDiseaseUse"
 		}
 
 		"FireSound"

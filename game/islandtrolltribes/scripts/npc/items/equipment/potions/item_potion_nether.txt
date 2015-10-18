@@ -26,10 +26,10 @@
 	"WorldDropSound"	"Hero_Alchemist.Foley"
 	"OnSpellStart"
 	{
-		"RunScript"
+		"RunScript" //TODO
 		{
-			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-			"Function"	"potion_nether_use"
+			"ScriptFile"	"items/potions.lua"
+			"Function"		"potion_nether_use"
 		}
 
 		"ApplyModifier"

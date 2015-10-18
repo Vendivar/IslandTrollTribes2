@@ -27,9 +27,9 @@
 	{
 		"RunScript"
 		{
-			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-			"Function"	"PotionTwinUse"
-			"Range"	"2500"
+			"ScriptFile"     "items/potions.lua"
+			"Function"       "PotionTwinUse"
+			"Range"          "2500"
 		}
 
 		"SpendCharge"

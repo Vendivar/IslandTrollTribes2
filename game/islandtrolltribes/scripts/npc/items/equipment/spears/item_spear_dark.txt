@@ -58,7 +58,7 @@
 	{
 		"RunScript"
 		{
-			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+			"ScriptFile" "items/spears.lua"
 			"Function"	"SpearDarkThrow"
 			"DamageMin"	"%mana_zap_min"
 			"DamageMax"	"%mana_zap_max"

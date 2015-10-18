@@ -19,9 +19,9 @@
 
 		"RunScript"
 		{
-			"Target"	"CASTER"
-			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-			"Function"	"RawMagicMeteor"
+			"Target"         "CASTER"
+			"ScriptFile"     "items/magic.lua"
+			"Function"       "RawMagicMeteor"
 		}
 
 	}
@@ -38,12 +38,6 @@
 				{
 					"Target"	"TARGET"
 					"Radius"	"1000"
-				}
-
-				"RunScript"
-				{
-					"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-					"Function"	"PrintTest"
 				}
 
 				"FireEffect"

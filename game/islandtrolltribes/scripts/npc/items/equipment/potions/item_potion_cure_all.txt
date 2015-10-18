@@ -29,8 +29,8 @@
 	{
 		"RunScript"
 		{
-			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-			"Function"	"CastPurge"
+			"ScriptFile"	"items/potions.lua"
+			"Function"		"CastPurge"
 			"Target"	"CASTER"
 		}
 

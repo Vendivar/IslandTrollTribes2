@@ -45,7 +45,7 @@
 
 		"RunScript"
 		{
-			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+			"ScriptFile"	"items/tsunami.lua"
 			"Function"	"TsunamiProjectiles"
 		}
 
@@ -69,7 +69,7 @@
 
 		"RunScript"
 		{
-			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+			"ScriptFile"	"items/tsunami.lua"
 			"Function"	"TsunamiDestroyFire"
 			"Target"	"TARGET"
 		}

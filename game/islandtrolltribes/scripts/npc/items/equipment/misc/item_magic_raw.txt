@@ -27,8 +27,8 @@
 	{
 		"RunScript"
 		{
-			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-			"Function"	"RawMagicUse"
+			"ScriptFile" "items/magic.lua"
+			"Function"   "RawMagicUse"
 		}
 
 		"SpendCharge"

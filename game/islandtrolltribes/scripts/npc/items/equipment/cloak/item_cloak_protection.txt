@@ -61,7 +61,7 @@
 
 						"RunScript"
 						{
-							"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+							"ScriptFile"	"items/protection.lua"
 							"Function"	"CloakProtectFail"
 							"Attacker"	"ATTACKER"
 						}

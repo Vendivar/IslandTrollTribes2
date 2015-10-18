@@ -27,8 +27,8 @@
 	{
 		"RunScript"
 		{
-			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-			"Function"	"CloakCamouflageInvis"
+			"ScriptFile" "items/cloak.lua"
+			"Function"   "CloakCamouflageInvis"
 		}
 
 	}

@@ -36,8 +36,8 @@
 		}
 		"RunScript"
 		{
-			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-			"Function"		"EatCookedMeat"
+			"ScriptFile"	"items/meat.lua"
+			"Function"		"EatCookedMeat" //TODO
 			"heal_amount"	"%heal_amount"
 		}
 		"SpendCharge"
