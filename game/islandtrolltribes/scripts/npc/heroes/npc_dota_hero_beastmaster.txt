@@ -1,5 +1,7 @@
 "npc_dota_hero_beastmaster"
 {
+	"UnitLabel"    "beastmaster"
+
 	"override_hero"	"npc_dota_hero_lycan"
 	"url"	"Lycan"
 	"AbilityLayout"	"6"

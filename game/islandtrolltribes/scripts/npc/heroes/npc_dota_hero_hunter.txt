@@ -1,5 +1,7 @@
 "npc_dota_hero_hunter"
 {
+	"UnitLabel"    "hunter"
+
 	"override_hero"	"npc_dota_hero_huskar"
 	"url"	"Huskar"
 	"AbilityLayout"	"4"

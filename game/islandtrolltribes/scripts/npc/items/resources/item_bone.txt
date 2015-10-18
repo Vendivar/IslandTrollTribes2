@@ -25,10 +25,10 @@
 	{
 		"RunScript"
 		{
-			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-			"Function"	"ReloadItem"
-			"EmptyItem"	"item_gun_blow_empty"
-			"LoadedItem"	"item_gun_blow_bones"
+			"ScriptFile" "items/gun.lua"
+			"Function"   "ReloadItem"
+			"EmptyItem"  "item_gun_blow_empty"
+			"LoadedItem" "item_gun_blow_bones"
 		}
 
 	}

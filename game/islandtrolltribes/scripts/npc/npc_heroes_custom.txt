@@ -2,6 +2,8 @@
 {
 	"npc_dota_hero_beastmaster"
 	{
+		"UnitLabel"    "beastmaster"
+	
 		"override_hero"	"npc_dota_hero_lycan"
 		"url"	"Lycan"
 		"AbilityLayout"	"6"
@@ -45,6 +47,8 @@
 	}
 	"npc_dota_hero_gatherer"
 	{
+		"UnitLabel"    "gatherer"
+	
 		"override_hero"	"npc_dota_hero_shadow_shaman"
 		"url"	"Shadow Shaman"
 		"AbilityLayout"	"2"
@@ -90,6 +94,8 @@
 	}
 	"npc_dota_hero_hunter"
 	{
+		"UnitLabel"    "hunter"
+	
 		"override_hero"	"npc_dota_hero_huskar"
 		"url"	"Huskar"
 		"AbilityLayout"	"4"
@@ -129,6 +135,8 @@
 	}
 	"npc_dota_hero_mage"
 	{
+		"UnitLabel"    "mage"
+	
 		"override_hero"	"npc_dota_hero_witch_doctor"
 		"url"	"Witch Doctor"
 		"AbilityLayout"	"5"
@@ -174,6 +182,8 @@
 	}
 	"npc_dota_hero_priest"
 	{
+		"UnitLabel"    "priest"
+	
 		"override_hero"	"npc_dota_hero_dazzle"
 		"url"	"Dazzle"
 		"AbilityLayout"	"6"
@@ -220,6 +230,8 @@
 	}
 	"npc_dota_hero_scout"
 	{
+		"UnitLabel"    "scout"
+	
 		"override_hero"	"npc_dota_hero_lion"
 		"url"	"Witch Doctor"
 		"AbilityLayout"	"2"
@@ -303,6 +315,9 @@
 	}
 	"npc_dota_hero_thief"
 	{
+	
+		"UnitLabel"    "thief"
+	
 		"override_hero"	"npc_dota_hero_riki"
 		"url"	"Rikimaru"
 		"AbilityLayout"	"2"

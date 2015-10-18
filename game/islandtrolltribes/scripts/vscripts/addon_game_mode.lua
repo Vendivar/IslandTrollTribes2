@@ -6,7 +6,7 @@ end
 
 require('libraries/timers')
 require('itt')
-
+require('mechanics')
 require('custom_functions_item' )
 require('custom_functions_ability' )
 require('logic_creature' )

@@ -18,18 +18,18 @@
 	"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 	"ItemKillable"	"1"
 	"ItemSellable"	"0"
+
+	"ItemCastOnPickup"	"1"
 	"OnSpellStart"
 	{
+		"SpendCharge"
+      {}
+
 		"RunScript"
 		{
 			"ScriptFile"	"items/meat.lua"
 			"Function"		"EatMeatRaw"
 		}
-
-		"SpendCharge"
-		{
-		}
-
 	}
 
 	"Custom"

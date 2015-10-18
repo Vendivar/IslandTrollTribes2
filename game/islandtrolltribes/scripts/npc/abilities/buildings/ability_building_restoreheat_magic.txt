@@ -24,7 +24,7 @@
 			{
 				"RunScript"
 				{
-					"ScriptFile"   "buildings/heat.lua"
+					"ScriptFile"   "mechanics/heat.lua"
 					"Function"     "AddHeat"
 					"Heat"         "%heat"
 				}

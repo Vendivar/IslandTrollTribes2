@@ -1,0 +1,28 @@
+"item_apply_modifiers"
+{
+    "ID"               "1900"
+    "AbilityBehavior"  "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "BaseClass"         "item_datadriven"
+
+    "Modifiers"
+    {
+        "modifier_heat_passive"
+        {
+            "TextureName"   "item_heat_modifier_applier"
+        }
+
+        "modifier_meat_passive"
+        {
+            "TextureName"   "item_meat_modifier_applier"
+        }
+
+        "modifier_hunger"
+        {
+            "IsHidden"  "1"
+            "Properties"
+            {
+                "MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT" "-1"
+            }
+        }
+    }
+}

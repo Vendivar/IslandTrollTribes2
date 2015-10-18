@@ -1,5 +1,7 @@
 "npc_dota_hero_priest"
 {
+	"UnitLabel"    "priest"
+
 	"override_hero"	"npc_dota_hero_dazzle"
 	"url"	"Dazzle"
 	"AbilityLayout"	"6"

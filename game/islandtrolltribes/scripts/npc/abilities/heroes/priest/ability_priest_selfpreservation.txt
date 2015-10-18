@@ -19,7 +19,7 @@
 		{
 			"ScriptFile"   "buildings/heat.lua"
 			"Function"     "AddHeat"
-			"Heat"         "%heat"
+			"Heat"         "%heat" //TODO: AbilitySpecial
 		}
 
 		"Heal"

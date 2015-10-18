@@ -77,7 +77,7 @@
 				{
 					"ScriptFile"   "mechanics/heat.lua"
 					"Function"     "AddHeat"
-					"Heat"         "-2"
+					"Heat"         "-2" //TODO: AbilitySpecials
 				}
 				"RunScript"
 				{

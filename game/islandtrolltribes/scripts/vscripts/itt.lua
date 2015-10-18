@@ -272,11 +272,12 @@ function ITT:InitGameMode()
     self.NumPassiveNeutrals = 0
     self.NumAggressiveNeutrals = 0
 
-    -- Timer Init
-    Timers:start()
+    
+    GameRules.APPLIER = CreateItem("item_apply_modifiers", nil, nil)
 
-    
-    
+    -- KV Tables
+    GameRules.ClassInfo = LoadKeyValues("scripts/kv/class_info.kv")
+    GameRules.AbilityKV = LoadKeyValues("scripts/npc/npc_abilities_custom.txt")
 
     --for i,v in pairs(Entities:FindAllByClassname("ent_blocker")) do
     --    print(v:GetClassname())
@@ -566,150 +567,43 @@ end
 --Distribute slot locked items based off of the class.
 function ITT:OnPlayerPicked( keys )
     local spawnedUnit = EntIndexToHScript( keys.heroindex )
-    local itemslotlock = CreateItem("item_slot_locked", spawnedUnit, spawnedUnit)
-
-    local innateSkills = {
-        {HUNTER,"ability_hunter_ensnare"},
-        {PRIEST,"ability_priest_theglow"},
-        {MAGE,"ability_mage_nulldamage"},
-        {BEASTMASTER,"ability_beastmaster_tamepet","ability_beastmaster_spiritofthebeast","ability_beastmaster_pet_release",
-                        "ability_beastmaster_pet_follow","ability_beastmaster_pet_stay","ability_beastmaster_pet_sleep","ability_beastmaster_pet_attack"},
-        {THIEF,"ability_thief_teleport"},
-        {SCOUT,"ability_scout_enemyradar"},
-        {GATHERER,"ability_gatherer_itemradar"}
-    }
-    local lockedSlots = {
-        {HUNTER,3},
-        {PRIEST,2},
-        {MAGE,2},
-        {BEASTMASTER,2},
-        {THIEF,1},
-        {SCOUT,1},
-        {GATHERER,0}
-    }
 
     local class = spawnedUnit:GetClassname()
-
-    -- This handles locking a number of inventory slots for some classes
-    -- Fills all slots with locks then removes them to leave the correct number
-    -- This means that players do not need to manually reshuffle them to craft
-    for _,slotList in pairs(lockedSlots) do
-        if slotList[1] == class then
-            local freeslots = 6 - slotList[2]
-            --print("slots free are", freeslots)
-            for i = 1, 6 do
-                spawnedUnit:AddItem(CreateItem("item_slot_locked", spawnedUnit, spawnedUnit))
-            end
-            for i = 0, (freeslots-1) do
-                local removeMe = spawnedUnit:GetItemInSlot(i)
-                spawnedUnit:RemoveItem(removeMe)
-            end
-        end
-    end
-
-    -- add innate skills
-    spawnedUnit:SetAbilityPoints(0)
-    for _,spellList in pairs(innateSkills) do
-        if spellList[1] == class then
-            for i = 2, #spellList do
-                print("adding innate spell " .. spellList[i])
-                local ability = spawnedUnit:FindAbilityByName(spellList[i])
-                ability:UpgradeAbility(true)
-            end
-        end
-    end
-
-    --heat handling
-    if string.find(spawnedUnit:GetClassname(), "hero") then
-        print("HEAT1!")
-        spawnedUnit:RemoveModifierByName("modifier_heat_passive")
-        local heatApplier = CreateItem("item_heat_modifier_applier", spawnedUnit, spawnedUnit)
-        heatApplier:ApplyDataDrivenModifier(spawnedUnit, spawnedUnit, "modifier_heat_passive", {duration=-1})
-        spawnedUnit:SetModifierStackCount("modifier_heat_passive", nil, 100)
-    end
-
-     --meat handling
-    if string.find(spawnedUnit:GetClassname(), "hero") then
-        print("MEAT!")
-        spawnedUnit:RemoveModifierByName("modifier_meat_passive")
-        local heatApplier = CreateItem("item_meat_modifier_applier", spawnedUnit, spawnedUnit)
-        heatApplier:ApplyDataDrivenModifier(spawnedUnit, spawnedUnit, "modifier_meat_passive", {duration=-1})
-        spawnedUnit:SetModifierStackCount("modifier_meat_passive", nil, 0)
-    end
-    --anti-regen
-    -- if string.find(spawnedUnit:GetClassname(), "hero") then
-    --     print("REGEN!")
-    --     spawnedUnit:SetBaseHealthRegen(0.00)
-    --     spawnedUnit:SetBaseManaRegen(0.00)
-    --     spawnedUnit:RemoveModifierByName("modifier_regen_passive")
-    --     local heatApplier = CreateItem("item_regen_modifier_applier", spawnedUnit, spawnedUnit)
-    --     heatApplier:ApplyDataDrivenModifier(spawnedUnit, spawnedUnit, "modifier_regen_passive", {duration=-1})
-    -- end
 end
 
 -- This code is written by Internet Veteran, handle with care.
 --Do the same now for the subclasses
 function ITT:OnNPCSpawned( keys )
     local spawnedUnit = EntIndexToHScript( keys.entindex )
-    local itemslotlock1 = CreateItem("item_slot_locked", spawnedUnit, spawnedUnit)
-    local itemslotlock2 = CreateItem("item_slot_locked", spawnedUnit, spawnedUnit)
-    local itemslotlock3 = CreateItem("item_slot_locked", spawnedUnit, spawnedUnit)
     print("spawned unit: ", spawnedUnit:GetUnitName(), spawnedUnit:GetClassname(), spawnedUnit:GetName(), spawnedUnit:GetEntityIndex())
     
     -- add it to the gridnav to stop people building on it
     --BuildingHelper:AddUnit(spawnedUnit)
-    
+
+    if spawnedUnit:IsRealHero() and spawnedUnit.bFirstSpawned == nil then
+        spawnedUnit.bFirstSpawned = true
+        ITT:OnHeroInGame(spawnedUnit)
+    end
+end
+
+function ITT:OnHeroInGame( hero )
+
     -- Remove starting gold
-    if not spawnedUnit:IsIllusion() and spawnedUnit:IsHero() and spawnedUnit:GetDeaths() == 0 then
-        spawnedUnit:SetGold(0, false)
-    end
+    hero:SetGold(0, false)
 
-    if string.find(spawnedUnit:GetUnitName(), "mage") then
-        spawnedUnit:AddItem(itemslotlock1)
-        spawnedUnit:AddItem(itemslotlock2)
-     -- if spawnedUnit:GetClassname() == "hunter" then
-    elseif string.find(spawnedUnit:GetUnitName(), "hunter") then
-        spawnedUnit:AddItem(itemslotlock1)
-        spawnedUnit:AddItem(itemslotlock2)
-        spawnedUnit:AddItem(itemslotlock3)
-     -- if spawnedUnit:GetClassname() == "scout" then
-    elseif string.find(spawnedUnit:GetUnitName(), "scout") and string.find(spawnedUnit:GetUnitName(), "hero") then
-        spawnedUnit:AddItem(itemslotlock1)
-     -- if spawnedUnit:GetClassname() == "priest" then
-     -- if spawnedUnit:(string.find(targetName,"priest") ~= nil) then
-    elseif string.find(spawnedUnit:GetUnitName(), "priest") then
-        spawnedUnit:AddItem(itemslotlock1)
-        spawnedUnit:AddItem(itemslotlock2)
-     -- if spawnedUnit:GetClassname() == "theif" then
-     -- if spawnedUnit:(string.find(targetName,"thief") ~= nil) then
-     elseif string.find(spawnedUnit:GetUnitName(), "thief") and string.find(spawnedUnit:GetUnitName(), "hero") then
-        spawnedUnit:AddItem(itemslotlock1)
-     -- if spawnedUnit:GetClassname() == "beastmaster" then
-     -- if spawnedUnit:(string.find(targetName,"beastmaster") ~= nil) then
-    elseif string.find(spawnedUnit:GetUnitName(), "beastmaster") then
-        spawnedUnit:AddItem(itemslotlock1)
-        spawnedUnit:AddItem(itemslotlock2)
-    else
-        --print(spawnedUnit:GetUnitName() .. " is not a subclass")
-    end
+    -- Create locked slots
+    ITT:CreateLockedSlots(hero)
 
-    --heat handling
-    if string.find(spawnedUnit:GetUnitName(), "hero") then
-        print("HEAT2!")
-        spawnedUnit:RemoveModifierByName("modifier_heat_passive")
-        local heatApplier = CreateItem("item_heat_modifier_applier", spawnedUnit, spawnedUnit)
-        heatApplier:ApplyDataDrivenModifier(spawnedUnit, spawnedUnit, "modifier_heat_passive", {duration=-1})
-        spawnedUnit:SetModifierStackCount("modifier_heat_passive", nil, 100)
-    end
+    -- Add Innate Skills
+    ITT:AddInnateSkills(hero)
 
-    --meat handling
-    if string.find(spawnedUnit:GetClassname(), "hero") then
-        print("MEAT!")
-        spawnedUnit:RemoveModifierByName("modifier_meat_passive")
-        local heatApplier = CreateItem("item_meat_modifier_applier", spawnedUnit, spawnedUnit)
-        heatApplier:ApplyDataDrivenModifier(spawnedUnit, spawnedUnit, "modifier_meat_passive", {duration=-1})
-        spawnedUnit:SetModifierStackCount("modifier_meat_passive", nil, 0)
-    end
+    -- Initial Heat and Meat
+    ITT:SetHeat(hero, 100)
+    ITT:SetMeat(hero, 100)
+
+    -- Hunger (TODO: Review values and intended behavior)
+    --ApplyModifier(hero, "modifier_hunger")
+
     --anti-regen
     -- if string.find(spawnedUnit:GetClassname(), "hero") then
     --     print("REGEN!")
@@ -718,6 +612,53 @@ function ITT:OnNPCSpawned( keys )
     --     heatApplier:ApplyDataDrivenModifier(spawnedUnit, spawnedUnit, "modifier_regen_passive", {duration=-1})
     -- end
 end
+
+-- This handles locking a number of inventory slots for some classes
+-- This means that players do not need to manually reshuffle them to craft
+function ITT:CreateLockedSlots(hero)
+    
+    local lockedSlotsTable = GameRules.ClassInfo['LockedSlots']
+    local className = GetHeroClass(hero)
+    DeepPrintTable(lockedSlotsTable)
+    local lockedSlotNumber = lockedSlotsTable[className]
+    
+    local lockN = 5
+    for n=0,lockedSlotNumber-1 do
+        hero:AddItem(CreateItem("item_slot_locked", hero, spawnedUnit))
+        hero:SwapItems(0, lockN)
+        lockN = lockN -1
+    end
+end
+
+function ITT:SetHeat( hero, amount )
+    if not hero:HasModifier("modifier_heat_passive") then
+        ApplyModifier(hero, "modifier_heat_passive")
+    end            
+    
+    hero:SetModifierStackCount("modifier_heat_passive", nil, amount )
+end
+
+function ITT:SetMeat( hero, amount )
+    if not hero:HasModifier("modifier_meat_passive") then
+        ApplyModifier(hero, "modifier_meat_passive")
+    end            
+        
+    hero:SetModifierStackCount("modifier_heat_passive", nil, amount )
+end
+
+function ITT:AddInnateSkills( hero )
+    local innatesTable = GameRules.ClassInfo['InnateSkills']
+    for i=0,15 do
+        local ability = hero:GetAbilityByIndex(i)
+        if ability then
+            local abilityName = ability:GetAbilityName()
+            if innatesTable[abilityName] then
+                ability:SetLevel(ability:GetMaxLevel())
+            end
+        end
+    end
+end
+
 
 function ITT:OnEntityKilled(keys)
     local dropTable = {
@@ -862,7 +803,6 @@ end
 -- This updates state on each troll
 -- Every half second it updates heat, checks inventory for items, etc
 -- Add anything you want to run regularly on each troll to this
-
 function ITT:OnTrollThink()
 
     --if GameRules:State_Get() ~= DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
@@ -878,7 +818,7 @@ function ITT:OnTrollThink()
         InventoryCheck(i)
         --print("burn")
     end
-    return GAME_TROLL_TICK_TIME
+    return GAME_TROLL_TICK_TIME]]
 end
 
 function ITT:OnBuildingThink()

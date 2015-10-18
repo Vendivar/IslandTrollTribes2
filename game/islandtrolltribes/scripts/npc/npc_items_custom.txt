@@ -1,5 +1,33 @@
 "DOTAAbilities"
 {
+	"item_apply_modifiers"
+	{
+	    "ID"               "1900"
+	    "AbilityBehavior"  "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	    "BaseClass"         "item_datadriven"
+	
+	    "Modifiers"
+	    {
+	        "modifier_heat_passive"
+	        {
+	            "TextureName"   "item_heat_modifier_applier"
+	        }
+	
+	        "modifier_meat_passive"
+	        {
+	            "TextureName"   "item_meat_modifier_applier"
+	        }
+	
+	        "modifier_hunger"
+	        {
+	            "IsHidden"  "1"
+	            "Properties"
+	            {
+	                "MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT" "-1"
+	            }
+	        }
+	    }
+	}
 	"item_calltobattle_modifier_applier"
 	{
 		"ID"	"1902"
@@ -91,28 +119,6 @@
 				"Passive"	"1"
 				"IsHidden"	"1"
 				"IsDebuff"	"0"
-			}
-	
-		}
-	
-	}
-	"item_heat_modifier_applier"
-	{
-		"ID"	"1900"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"heat_modifier_applier"
-		"ItemBaseLevel"	"1"
-		"AbilityCastRange"	"9999"
-		"AbilityCastPoint"	"0.0"
-		"Modifiers"
-		{
-			"modifier_heat_passive"
-			{
-				"Passive"	"1"
-				"IsHidden"	"0"
-				"IsDebuff"	"0"
-				"TextureName"	"item_heat_modifier_applier"
 			}
 	
 		}
@@ -2862,62 +2868,6 @@
 		}
 	
 	}
-	"item_debug_spawn_all_creeps"
-	{
-		"ID"	"2002"
-		"AbilityBehavior"	"BEHAVIOR DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_sphere"
-		"Effect"	""
-		"ItemCost"	"1"
-		"ItemShopTags"	"consumable"
-		"ItemQuality"	"consumable"
-		"ItemShareability"	"ITEM_NOT_SHAREABLE"
-		"ItemStackable"	"0"
-		"ItemPermanent"	"1"
-		"ItemDroppable"	"1"
-		"ItemAliases"	"quicktype"
-		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
-		"ItemKillable"	"1"
-		"ItemSellable"	"0"
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"DebugSpawnAllCreeps"
-			}
-	
-		}
-	
-	}
-	"item_debug_spawn_all_heroes"
-	{
-		"ID"	"2001"
-		"AbilityBehavior"	"BEHAVIOR DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_sphere"
-		"Effect"	""
-		"ItemCost"	"1"
-		"ItemShopTags"	"consumable"
-		"ItemQuality"	"consumable"
-		"ItemShareability"	"ITEM_NOT_SHAREABLE"
-		"ItemStackable"	"0"
-		"ItemPermanent"	"1"
-		"ItemDroppable"	"1"
-		"ItemAliases"	"quicktype"
-		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
-		"ItemKillable"	"1"
-		"ItemSellable"	"0"
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"items/debug.lua"
-				"Function"	"DebugSpawnAllHeroes"
-			}
-		}
-	}
 	"item_axe_battle"
 	{
 		"ID"	"1027"
@@ -4307,9 +4257,9 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-						"Function"	"AddHeat"
-						"Heat"	"%heat"
+						"ScriptFile"   "mechanics/heat.lua"
+						"Function"     "AddHeat"
+						"Heat"         "%heat"
 					}
 	
 				}
@@ -4414,9 +4364,9 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-						"Function"	"AddHeat"
-						"Heat"	"%heat"
+						"ScriptFile"   "mechanics/heat.lua"
+						"Function"     "AddHeat"
+						"Heat"         "%heat"
 					}
 	
 				}
@@ -4509,9 +4459,9 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-						"Function"	"AddHeat"
-						"Heat"	"%heat"
+						"ScriptFile"   "mechanics/heat.lua"
+						"Function"     "AddHeat"
+						"Heat"         "%heat"
 					}
 	
 				}
@@ -4597,9 +4547,9 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-						"Function"	"AddHeat"
-						"Heat"	"%heat"
+						"ScriptFile"   "mechanics/heat.lua"
+						"Function"     "AddHeat"
+						"Heat"         "%heat"
 					}
 	
 				}
@@ -4711,9 +4661,9 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-						"Function"	"AddHeat"
-						"Heat"	"%heat"
+						"ScriptFile"   "mechanics/heat.lua"
+						"Function"     "AddHeat"
+						"Heat"         "%heat"
 					}
 	
 				}
@@ -4784,9 +4734,9 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-						"Function"	"AddHeat"
-						"Heat"	"%heat"
+						"ScriptFile"   "mechanics/heat.lua"
+						"Function"     "AddHeat"
+						"Heat"         "%heat"
 					}
 	
 				}
@@ -4857,9 +4807,9 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-						"Function"	"AddHeat"
-						"Heat"	"%heat"
+						"ScriptFile"   "mechanics/heat.lua"
+						"Function"     "AddHeat"
+						"Heat"         "%heat"
 					}
 	
 				}
@@ -4952,9 +4902,9 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-						"Function"	"AddHeat"
-						"Heat"	"%heat"
+						"ScriptFile"   "mechanics/heat.lua"
+						"Function"     "AddHeat"
+						"Heat"         "%heat"
 					}
 	
 				}
@@ -5194,9 +5144,9 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-						"Function"	"AddHeat"
-						"Heat"	"%heat"
+						"ScriptFile"   "mechanics/heat.lua"
+						"Function"     "AddHeat"
+						"Heat"         "%heat"
 					}
 	
 				}
@@ -5296,9 +5246,9 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-						"Function"	"AddHeat"
-						"Heat"	"%heat"
+						"ScriptFile"   "mechanics/heat.lua"
+						"Function"     "AddHeat"
+						"Heat"         "%heat"
 					}
 	
 				}
@@ -5398,9 +5348,9 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-						"Function"	"AddHeat"
-						"Heat"	"%heat"
+						"ScriptFile"   "mechanics/heat.lua"
+						"Function"     "AddHeat"
+						"Heat"         "%heat"
 					}
 	
 				}
@@ -5478,9 +5428,9 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-						"Function"	"AddHeat"
-						"Heat"	"%heat"
+						"ScriptFile"   "mechanics/heat.lua"
+						"Function"     "AddHeat"
+						"Heat"         "%heat"
 					}
 	
 				}
@@ -5558,9 +5508,9 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-						"Function"	"AddHeat"
-						"Heat"	"%heat"
+						"ScriptFile"   "mechanics/heat.lua"
+						"Function"     "AddHeat"
+						"Heat"         "%heat"
 					}
 	
 				}
@@ -5660,9 +5610,9 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-						"Function"	"AddHeat"
-						"Heat"	"%heat"
+						"ScriptFile"   "mechanics/heat.lua"
+						"Function"     "AddHeat"
+						"Heat"         "%heat"
 					}
 	
 				}
@@ -6174,28 +6124,6 @@
 		}
 	
 	}
-	"item_meat_modifier_applier"
-	{
-		"ID"	"1901"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_meat_modifier_applier"
-		"ItemBaseLevel"	"1"
-		"AbilityCastRange"	"9999"
-		"AbilityCastPoint"	"0.0"
-		"Modifiers"
-		{
-			"modifier_meat_passive"
-			{
-				"Passive"	"1"
-				"IsHidden"	"0"
-				"IsDebuff"	"0"
-				"TextureName"	"item_meat_modifier_applier"
-			}
-	
-		}
-	
-	}
 	"item_meat_raw"
 	{
 		"ID"	"1006"
@@ -6216,18 +6144,18 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
+	
+		"ItemCastOnPickup"	"1"
 		"OnSpellStart"
 		{
+			"SpendCharge"
+	      {}
+	
 			"RunScript"
 			{
 				"ScriptFile"	"items/meat.lua"
 				"Function"		"EatMeatRaw"
 			}
-	
-			"SpendCharge"
-			{
-			}
-	
 		}
 	
 		"Custom"
@@ -10325,10 +10253,10 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"ReloadItem"
-				"EmptyItem"	"item_gun_blow_empty"
-				"LoadedItem"	"item_gun_blow_bones"
+				"ScriptFile" "items/gun.lua"
+				"Function"   "ReloadItem"
+				"EmptyItem"  "item_gun_blow_empty"
+				"LoadedItem" "item_gun_blow_bones"
 			}
 	
 		}
@@ -11202,10 +11130,10 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"ReloadItem"
-				"EmptyItem"	"item_gun_blow_empty"
-				"LoadedItem"	"item_gun_blow_thistles"
+				"ScriptFile" "items/gun.lua"
+				"Function"   "ReloadItem"
+				"EmptyItem"  "item_gun_blow_empty"
+				"LoadedItem" "item_gun_blow_thistles"
 			}
 	
 		}
@@ -11992,10 +11920,10 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"ReloadItem"
-				"EmptyItem"	"item_gun_blow_empty"
-				"LoadedItem"	"item_gun_blow_thistles"
+				"ScriptFile" "items/gun.lua"
+				"Function"   "ReloadItem"
+				"EmptyItem"  "item_gun_blow_empty"
+				"LoadedItem" "item_gun_blow_thistles"
 			}
 	
 		}

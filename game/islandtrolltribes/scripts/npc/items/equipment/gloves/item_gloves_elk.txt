@@ -60,9 +60,9 @@
 			{
 				"RunScript"
 				{
-					"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-					"Function"	"AddHeat"
-					"Heat"	"%heat"
+					"ScriptFile"   "mechanics/heat.lua"
+					"Function"     "AddHeat"
+					"Heat"         "%heat"
 				}
 
 			}

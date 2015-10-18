@@ -23,11 +23,11 @@
 			"OnIntervalThink"
 			{
 				"RunScript"
-                {
-                    "ScriptFile"   "buildings/heat.lua"
-                    "Function"     "AddHeat"
-                    "Heat"         "%heat"
-                }
+				{
+					"ScriptFile"   "mechanics/heat.lua"
+					"Function"     "AddHeat"
+					"Heat"         "%heat"
+				}
 
 				"RemoveModifier"
 				{

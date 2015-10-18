@@ -497,11 +497,11 @@
 				"OnIntervalThink"
 				{
 					"RunScript"
-	                {
-	                    "ScriptFile"   "buildings/heat.lua"
-	                    "Function"     "AddHeat"
-	                    "Heat"         "%heat"
-	                }
+					{
+						"ScriptFile"   "mechanics/heat.lua"
+						"Function"     "AddHeat"
+						"Heat"         "%heat"
+					}
 	
 					"RemoveModifier"
 					{
@@ -558,7 +558,7 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"   "buildings/heat.lua"
+						"ScriptFile"   "mechanics/heat.lua"
 						"Function"     "AddHeat"
 						"Heat"         "%heat"
 					}
@@ -3822,6 +3822,7 @@
 		"AbilityCastRange"	"700"
 		"AbilityManaCost"	"0"
 		"MaxLevel"	"1"
+	
 		"precache"
 		{
 			"particle_folder"	"particles/units/heroes/hero_meepo"
@@ -5753,9 +5754,9 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-						"Function"	"AddHeat"
-						"Heat"	"-20"
+						"ScriptFile"   "mechanics/heat.lua"
+						"Function"     "AddHeat"
+						"Heat"         "-20" //TODO: Ability Special
 					}
 	
 				}
@@ -9170,7 +9171,7 @@
 			{
 				"ScriptFile"   "buildings/heat.lua"
 				"Function"     "AddHeat"
-				"Heat"         "%heat"
+				"Heat"         "%heat" //TODO: AbilitySpecial
 			}
 	
 			"Heal"
@@ -9661,7 +9662,7 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"   "buildings/heat.lua"
+						"ScriptFile"   "mechanics/heat.lua"
 						"Function"     "AddHeat"
 						"Heat"         "%heat"
 					}
@@ -10495,7 +10496,7 @@
 					{
 						"ScriptFile"   "mechanics/heat.lua"
 						"Function"     "AddHeat"
-						"Heat"         "-2"
+						"Heat"         "-2" //TODO: AbilitySpecials
 					}
 					"RunScript"
 					{
@@ -12415,10 +12416,9 @@
 	
 			"RunScript"
 			{
-				"Target"	"CASTER"
-				"ScriptFile"	"custom_functions_item.lua"
-				"Function"	"AddHeat"
-				"Heat"	"-20"
+				"ScriptFile"   "mechanics/heat.lua"
+				"Function"     "AddHeat"
+				"Heat"         "-20" //TODO: AbilitySpecial
 			}
 	
 			"Damage"

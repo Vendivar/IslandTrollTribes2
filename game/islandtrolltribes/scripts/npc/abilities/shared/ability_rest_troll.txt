@@ -26,10 +26,9 @@
 
 		"RunScript"
 		{
-			"Target"	"CASTER"
-			"ScriptFile"	"custom_functions_item.lua"
-			"Function"	"AddHeat"
-			"Heat"	"-20"
+			"ScriptFile"   "mechanics/heat.lua"
+			"Function"     "AddHeat"
+			"Heat"         "-20" //TODO: AbilitySpecial
 		}
 
 		"Damage"
