@@ -53,7 +53,7 @@
 			{
 				"RunScript"
 				{
-					"ScriptFile"	"custom_functions_item.lua"
+					"ScriptFile"	"heroes/priest/spirit_walk.lua"
 					"Function"		"SpiritWalkStart"
 
 					"vision"		"%vision"
@@ -71,7 +71,7 @@
 		}
 		"RunScript"
 		{
-			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+			"ScriptFile"	"heroes/priest/spirit_walk.lua"
 			"Function"		"SpiritWalkEnd"
 
 			"attack_damage" "-1"
@@ -90,7 +90,7 @@
 			{
 				"RunScript"
 				{
-					"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+					"ScriptFile"	"heroes/priest/spirit_walk.lua"
 					"Function"		"SpiritWalkThink"
 
 					"energy_rate"	"%energy_rate"
@@ -102,7 +102,7 @@
 			{
 				"RunScript"
 				{
-					"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
+					"ScriptFile"	"heroes/priest/spirit_walk.lua"
 					"Function"		"SpiritWalkEnd"
 
 					"attack_damage" "%attack_damage"

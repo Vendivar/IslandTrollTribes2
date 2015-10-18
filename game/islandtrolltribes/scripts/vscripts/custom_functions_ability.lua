@@ -1589,8 +1589,7 @@ function TeleThief( event )
     end
 end]]
 
--- Priest Ability Functions
-
+--[[ Priest Ability Functions (Moved to heroes/priest folder)
 function MixHeat(keys)
     local caster = keys.caster
     local target = keys.target
@@ -1877,7 +1876,7 @@ function PainKillerBalmThink( event )
     local stacks = target:GetModifierStackCount("ability_priest_painkillerbalm", target)
 
     target:SetModifierStackCount("ability_priest_painkillerbalm", target, stacks - 1)
-end
+end]]
 
 --utility functions
 function SwapSpellBook(keys)

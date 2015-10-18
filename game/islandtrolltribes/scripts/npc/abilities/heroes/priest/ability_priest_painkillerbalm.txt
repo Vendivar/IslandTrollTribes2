@@ -57,7 +57,7 @@
 			{
 				"RunScript"
 				{
-					"ScriptFile"	"custom_functions_ability.lua"
+					"ScriptFile"	"heroes/priest/pain_killer.lua"
 					"Function"		"PainKillerBalmStart"
 					"Target"		"TARGET"
 
@@ -68,7 +68,7 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"custom_functions_ability.lua"
+						"ScriptFile"	"heroes/priest/pain_killer.lua"
 						"Function"		"PainKillerBalmThink"
 					}
 				}

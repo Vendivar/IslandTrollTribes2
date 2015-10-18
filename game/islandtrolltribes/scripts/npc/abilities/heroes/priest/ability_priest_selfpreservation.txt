@@ -30,8 +30,8 @@
 
 		"RunScript"
 		{
-			"ScriptFile"	"custom_functions_ability.lua"
-			"Function"	"RestoreMana"
+			"ScriptFile"	"mechanics/mana.lua"
+			"Function"		"RestoreMana"
 			"ManaRestored"	"50"
 		}
 

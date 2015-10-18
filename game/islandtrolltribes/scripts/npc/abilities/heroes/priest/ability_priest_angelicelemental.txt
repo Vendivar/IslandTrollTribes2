@@ -71,7 +71,7 @@
 	{
 		"RunScript"
 		{
-			"ScriptFile"	"custom_functions_ability.lua"
+			"ScriptFile"	"heroes/priest/element_orb.lua"
 			"Function"		"CastAngelicElementalOrb"
 			"Target"		"POINT"
 		
@@ -136,7 +136,7 @@
 			{
 				"RunScript"
 				{
-					"ScriptFile"	"custom_functions_ability.lua"
+					"ScriptFile"	"heroes/priest/element_orb.lua"
 					"Function"		"StopSound"
 					"Target"		"TARGET"
 					"sound_name"	"Hero_Puck.Illusory_Orb"

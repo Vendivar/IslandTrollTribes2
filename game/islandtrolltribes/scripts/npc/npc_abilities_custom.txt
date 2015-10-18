@@ -6107,8 +6107,8 @@
 	
 			"RunScript"
 			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
-				"Function"		"Hypnosis"
+				"ScriptFile" "heroes/mage/hypnosis.lua"
+				"Function"   "Hypnosis"
 	
 				"hypnosis"			"modifier_mage_hypnosis"
 	
@@ -8275,7 +8275,7 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
+				"ScriptFile"	"heroes/priest/element_orb.lua"
 				"Function"		"CastAngelicElementalOrb"
 				"Target"		"POINT"
 			
@@ -8340,7 +8340,7 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"custom_functions_ability.lua"
+						"ScriptFile"	"heroes/priest/element_orb.lua"
 						"Function"		"StopSound"
 						"Target"		"TARGET"
 						"sound_name"	"Hero_Puck.Illusory_Orb"
@@ -8466,8 +8466,8 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"CureAll"
+				"ScriptFile" "heroes/priest/cure_all.lua"
+				"Function"	 "CureAll"
 			}
 	
 		}
@@ -8623,9 +8623,10 @@
 	
 		"OnSpellStart"
 		{
+			// TODO: Ability Specials and take yellow recolor particle from dotacraft
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
+				"ScriptFile" "heroes/priest/healing_wave.lua"
 				"Function"	"HealingWave"
 				"Healing"	"30"
 				"Bounces"	"7"
@@ -8865,8 +8866,8 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"MixEnergy"
+				"ScriptFile" "heroes/priest/mix.lua"
+				"Function"	 "MixEnergy"
 			}
 	
 		}
@@ -8888,8 +8889,8 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"MixHealth"
+				"ScriptFile" "heroes/priest/mix.lua"
+				"Function"   "MixHealth"
 			}
 	
 		}
@@ -8911,8 +8912,8 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"MixHeat"
+				"ScriptFile" "heroes/priest/mix.lua"
+				"Function"   "MixHeat"
 			}
 	
 		}
@@ -8938,9 +8939,9 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Radius"	"400"
-				"Function"	"Omnicure"
+				"ScriptFile" "heroes/priest/omnicure.lua"
+				"Radius"     "400"
+				"Function"   "Omnicure"
 			}
 	
 		}
@@ -9029,7 +9030,7 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"custom_functions_ability.lua"
+						"ScriptFile"	"heroes/priest/pain_killer.lua"
 						"Function"		"PainKillerBalmStart"
 						"Target"		"TARGET"
 	
@@ -9040,7 +9041,7 @@
 					{
 						"RunScript"
 						{
-							"ScriptFile"	"custom_functions_ability.lua"
+							"ScriptFile"	"heroes/priest/pain_killer.lua"
 							"Function"		"PainKillerBalmThink"
 						}
 					}
@@ -9375,8 +9376,8 @@
 	
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"RestoreMana"
+				"ScriptFile"	"mechanics/mana.lua"
+				"Function"		"RestoreMana"
 				"ManaRestored"	"50"
 			}
 	
@@ -9605,7 +9606,7 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"custom_functions_item.lua"
+						"ScriptFile"	"heroes/priest/spirit_walk.lua"
 						"Function"		"SpiritWalkStart"
 	
 						"vision"		"%vision"
@@ -9623,7 +9624,7 @@
 			}
 			"RunScript"
 			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+				"ScriptFile"	"heroes/priest/spirit_walk.lua"
 				"Function"		"SpiritWalkEnd"
 	
 				"attack_damage" "-1"
@@ -9642,7 +9643,7 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+						"ScriptFile"	"heroes/priest/spirit_walk.lua"
 						"Function"		"SpiritWalkThink"
 	
 						"energy_rate"	"%energy_rate"
@@ -9654,7 +9655,7 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
+						"ScriptFile"	"heroes/priest/spirit_walk.lua"
 						"Function"		"SpiritWalkEnd"
 	
 						"attack_damage" "%attack_damage"

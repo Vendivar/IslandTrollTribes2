@@ -17,9 +17,10 @@
 
 	"OnSpellStart"
 	{
+		// TODO: Ability Specials and take yellow recolor particle from dotacraft
 		"RunScript"
 		{
-			"ScriptFile"	"custom_functions_ability.lua"
+			"ScriptFile" "heroes/priest/healing_wave.lua"
 			"Function"	"HealingWave"
 			"Healing"	"30"
 			"Bounces"	"7"

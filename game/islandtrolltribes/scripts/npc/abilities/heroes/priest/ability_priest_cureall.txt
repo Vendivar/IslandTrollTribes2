@@ -15,8 +15,8 @@
 	{
 		"RunScript"
 		{
-			"ScriptFile"	"custom_functions_ability.lua"
-			"Function"	"CureAll"
+			"ScriptFile" "heroes/priest/cure_all.lua"
+			"Function"	 "CureAll"
 		}
 
 	}

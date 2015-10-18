@@ -18,9 +18,9 @@
 	{
 		"RunScript"
 		{
-			"ScriptFile"	"custom_functions_ability.lua"
-			"Radius"	"400"
-			"Function"	"Omnicure"
+			"ScriptFile" "heroes/priest/omnicure.lua"
+			"Radius"     "400"
+			"Function"   "Omnicure"
 		}
 
 	}

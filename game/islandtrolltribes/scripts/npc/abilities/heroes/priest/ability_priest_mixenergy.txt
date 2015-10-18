@@ -14,8 +14,8 @@
 	{
 		"RunScript"
 		{
-			"ScriptFile"	"custom_functions_ability.lua"
-			"Function"	"MixEnergy"
+			"ScriptFile" "heroes/priest/mix.lua"
+			"Function"	 "MixEnergy"
 		}
 
 	}
