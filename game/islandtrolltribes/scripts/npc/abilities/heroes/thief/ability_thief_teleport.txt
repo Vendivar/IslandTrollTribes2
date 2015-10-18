@@ -16,9 +16,9 @@
 	{
 		"RunScript"
 		{
-			"ScriptFile"	"custom_functions_ability.lua"
-			"Function"	"Teleport"
-			"Target"	"POINT"
+			"ScriptFile" "heroes/thief/teleport.lua"
+			"Function"   "Teleport"
+			"Target"     "POINT"
 		}
 		"FireSound"
 		{

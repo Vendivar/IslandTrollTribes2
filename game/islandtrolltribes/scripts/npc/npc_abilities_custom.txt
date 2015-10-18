@@ -10558,9 +10558,9 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"custom_functions_ability.lua"
-						"Function"	"DieOnEnemyCollision"
-						"Radius"	"100"
+						"ScriptFile"   "heroes/thief/blur.lua"
+						"Function"     "DieOnEnemyCollision"
+						"Radius"       "100"
 					}
 	
 				}
@@ -10694,11 +10694,9 @@
 						"Function"     "AddHeat"
 						"Heat"         "-2" //TODO: AbilitySpecials
 					}
-					"RunScript"
+					"SpendMana"
 					{
-						"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-						"Function"		"RemoveMana"
-						"ManaRemoved"	"2"
+						"Mana"		"2"
 					}
 					"Damage"
 					{
@@ -10913,9 +10911,9 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"Jump"
-				"Target"	"POINT"
+				"ScriptFile" "heroes/thief/jump.lua"
+				"Function"   "Jump"
+				"Target"     "POINT"
 			}
 			"FireSound"
 			{
@@ -11328,9 +11326,9 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"Teleport"
-				"Target"	"POINT"
+				"ScriptFile" "heroes/thief/teleport.lua"
+				"Function"   "Teleport"
+				"Target"     "POINT"
 			}
 			"FireSound"
 			{
@@ -11381,7 +11379,7 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
+				"ScriptFile"	"heroes/thief/telethief.lua"
 				"Function"		"TeleThiefStart"
 	
 				"modifier"		"modifier_thief_telethief"

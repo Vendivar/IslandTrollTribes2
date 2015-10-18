@@ -1253,7 +1253,10 @@ end
 --Listener to handle telegather events from item pickup and picking up raw meat
 function ITT:OnItemPickedUp(event)
     DeepPrintTable(event)
+    
     local hero = EntIndexToHScript( event.HeroEntityIndex )
+    local originalItem = EntIndexToHScript(keys.ItemEntityIndex)
+
     if event.itemname == "item_meat_raw" then
         local meatStacks = hero:GetModifierStackCount("modifier_meat_passive", nil)
         if meatStacks < 10 then
@@ -1282,11 +1285,43 @@ function ITT:OnItemPickedUp(event)
     local hasTelegather = hero:HasModifier("modifier_telegather")
     local hasTelethief = hero:HasModifier("modifier_thief_telethief")
 
+    -- Related to RadarTelegathererInit
     if hasTelegather then
-        RadarTelegather(event)
+
+        local targetFire = hero.targetFire
+        local newItem = CreateItem(originalItem:GetName(), nil, nil)
+
+        local itemList = {"item_tinder", "item_flint", "item_stone", "item_stick", "item_bone", "item_meat_raw", "item_crystal_mana", "item_clay_ball", "item_river_root", "item_river_stem", "item_thistles", "item_acorn", "item_acorn_magic", "item_mushroom"}
+        for key,value in pairs(itemList) do
+            if value == originalItem:GetName() then
+                print( "Teleporting Item", originalItem:GetName())
+                hero:RemoveItem(originalItem)
+                local itemPosition = targetFire:GetAbsOrigin() + RandomVector(RandomInt(100,150))
+                CreateItemOnPositionSync(itemPosition,newItem)
+                newItem:SetOrigin(itemPosition)
+            end
+        end
     end
+
+    -- Related to TeleThiefInit
     if hasTelethief then
-        TeleThief(event)
+        
+        local newItem = CreateItem(originalItem:GetName(), nil, nil)
+        local fireLocation = hero.fire_location
+
+        local radius = hero.radius
+        local teamNumber = hero:GetTeamNumber()
+        local buildings = FindUnitsInRadius(teamNumber, caster:GetAbsOrigin(), nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BUILDING, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
+        
+        if buildings ~= null then
+            print("Teleporting Item", originalItem:GetName())
+            hero:RemoveItem(originalItem)
+            local itemPosition = targetFire:GetAbsOrigin() + RandomVector(RandomInt(100,150))
+            CreateItemOnPositionSync(itemPosition,newItem)
+            newItem:SetOrigin(itemPosition)
+        else
+            print("Did not find enemy buildings")
+        end
     end
 end
 

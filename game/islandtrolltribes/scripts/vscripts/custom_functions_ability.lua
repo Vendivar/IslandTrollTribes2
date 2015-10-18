@@ -1500,8 +1500,7 @@ function RamTarget(keys)
 end
 ]]
 
--- Thief Ability Functions
-
+--[[ Thief Ability Functions (Moved to /heroes/thief.lua)
 function Teleport(keys)
     local caster = keys.caster
     local point = keys.target_points[1]
@@ -1591,7 +1590,7 @@ function TeleThief( event )
     else
         print("Did not find enemy buildings")
     end
-end
+end]]
 
 -- Priest Ability Functions
 

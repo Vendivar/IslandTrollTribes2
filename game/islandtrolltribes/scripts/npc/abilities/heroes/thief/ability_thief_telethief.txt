@@ -39,7 +39,7 @@
 	{
 		"RunScript"
 		{
-			"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
+			"ScriptFile"	"heroes/thief/telethief.lua"
 			"Function"		"TeleThiefStart"
 
 			"modifier"		"modifier_thief_telethief"
