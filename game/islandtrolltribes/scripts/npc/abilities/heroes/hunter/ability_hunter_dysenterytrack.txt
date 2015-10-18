@@ -39,11 +39,11 @@
 	{
 		"RunScript"
 		{
-			"ScriptFile"	"custom_functions_ability.lua"
-			"Function"	"DysenteryTrackUnit"
-			"Target"	"TARGET"
-			"Duration"	"%duration"
-			"TrailFadeTime"	"%trail_fade_time"
+			"ScriptFile"    "heroes/hunter/dysentery.lua"
+			"Function"      "DysenteryTrackUnit"
+			"Target"        "TARGET"
+			"Duration"      "%duration"
+			"TrailFadeTime" "%trail_fade_time"
 		}
 
 		"FireSound"

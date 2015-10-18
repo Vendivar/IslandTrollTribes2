@@ -3591,7 +3591,7 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
+						"ScriptFile"	"heroes/hunter/challenge.lua"
 						"Function"		"Challenge"
 					}
 				}
@@ -3600,7 +3600,7 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
+						"ScriptFile"	"heroes/hunter/challenge.lua"
 						"Function"		"ChallengeEnd"
 					}
 				}
@@ -3795,11 +3795,11 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"DysenteryTrackUnit"
-				"Target"	"TARGET"
-				"Duration"	"%duration"
-				"TrailFadeTime"	"%trail_fade_time"
+				"ScriptFile"    "heroes/hunter/dysentery.lua"
+				"Function"      "DysenteryTrackUnit"
+				"Target"        "TARGET"
+				"Duration"      "%duration"
+				"TrailFadeTime" "%trail_fade_time"
 			}
 	
 			"FireSound"
@@ -3862,9 +3862,9 @@
 						{
 							"RunScript"
 							{
-								"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-								"Function"	"EnduranceSuccess"
-								"Attacker"	"ATTACKER"
+								"ScriptFile" "heroes/hunter/endurance.lua"
+								"Function"   "EnduranceSuccess"
+								"Attacker"   "ATTACKER"
 							}
 	
 							"ApplyModifier"
@@ -3956,9 +3956,9 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"EnsnareUnit"
-				"Target"	"TARGET"
+				"ScriptFile" "heroes/hunter/ensnare.lua"
+				"Function"   "EnsnareUnit"
+				"Target"     "TARGET"
 			}
 			"FireSound"
 			{
@@ -4182,10 +4182,10 @@
 	
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"TrackUnit"
-				"Target"	"TARGET"
-				"Duration"	"%duration"
+				"ScriptFile" "heroes/hunter/track.lua"
+				"Function"   "TrackUnit"
+				"Target"     "TARGET"
+				"Duration"   "%duration"
 			}
 			"FireSound"
 			{
@@ -4444,7 +4444,7 @@
 	
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
+				"ScriptFile" "heroes/hunter/track.lua"
 				"Function"	"TrackUnit"
 				"Target"	"TARGET"
 				"Duration"	"%duration"

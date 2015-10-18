@@ -282,8 +282,7 @@ function MixHerbs(keys)
 end
 
 
---Hunter Ability Functions
-
+--[[Hunter Ability Functions (Moved to /heroes/hunter folder)
 function EnsnareUnit(keys)
     local caster = keys.caster
     local target = keys.target
@@ -473,7 +472,7 @@ function ChallengeEnd( event )
     local target = event.target
 
     target:SetForceAttackTarget(nil)
-end
+end]]
 
 -- Mage Ability Functons
 

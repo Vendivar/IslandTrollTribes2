@@ -39,9 +39,9 @@
 	{
 		"RunScript"
 		{
-			"ScriptFile"	"custom_functions_ability.lua"
-			"Function"	"EnsnareUnit"
-			"Target"	"TARGET"
+			"ScriptFile" "heroes/hunter/ensnare.lua"
+			"Function"   "EnsnareUnit"
+			"Target"     "TARGET"
 		}
 		"FireSound"
 		{

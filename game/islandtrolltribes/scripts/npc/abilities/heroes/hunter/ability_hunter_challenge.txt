@@ -127,7 +127,7 @@
 			{
 				"RunScript"
 				{
-					"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
+					"ScriptFile"	"heroes/hunter/challenge.lua"
 					"Function"		"Challenge"
 				}
 			}
@@ -136,7 +136,7 @@
 			{
 				"RunScript"
 				{
-					"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
+					"ScriptFile"	"heroes/hunter/challenge.lua"
 					"Function"		"ChallengeEnd"
 				}
 			}

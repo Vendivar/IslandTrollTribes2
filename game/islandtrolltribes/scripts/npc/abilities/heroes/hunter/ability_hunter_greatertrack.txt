@@ -61,10 +61,10 @@
 
 		"RunScript"
 		{
-			"ScriptFile"	"custom_functions_ability.lua"
-			"Function"	"TrackUnit"
-			"Target"	"TARGET"
-			"Duration"	"%duration"
+			"ScriptFile" "heroes/hunter/track.lua"
+			"Function"   "TrackUnit"
+			"Target"     "TARGET"
+			"Duration"   "%duration"
 		}
 		"FireSound"
 		{
