@@ -19,8 +19,8 @@
 	{
 		"RunScript"
 		{
-			"ScriptFile"	"custom_functions_ability.lua"
-			"Function"	"ReduceFood"
+			"ScriptFile" "heroes/mage/reduce_food.lua"
+			"Function"   "ReduceFood"
 		}
 		"FireSound"
 		{

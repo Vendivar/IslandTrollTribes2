@@ -19,8 +19,9 @@
 	"OnSpellStart"
 	{
 		"RunScript"
-		{
-			"ScriptFile"	"custom_functions_ability.lua"
+		{	
+			// TODO: A bunch of ability specials
+			"ScriptFile"	"heroes/mage/chain_lightning.lua"
 			"Function"	"ChainLightning"
 			"Damage"	"45"
 			"Bounces"	"3"

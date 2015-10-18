@@ -71,7 +71,7 @@
 			{
 				"RunScript"
 				{
-					"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
+					"ScriptFile"	"heroes/mage/depression.lua"
 					"Function"		"DepressionAura"
 
 					"mana_loss_min"		"%mana_loss_min"

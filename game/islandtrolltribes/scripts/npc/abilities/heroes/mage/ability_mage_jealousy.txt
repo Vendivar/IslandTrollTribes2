@@ -35,7 +35,7 @@
 	{
 		"FireSound"
 		{
-			"EffectName"	Hero_Silencer.LastWord.Target
+			"EffectName"	"Hero_Silencer.LastWord.Target"
 			"Target" 		"TARGET"
 		}
 		
@@ -54,8 +54,8 @@
 
 		"RunScript"
 		{
-			"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
-			"Function"		"JealousyStart"
+			"ScriptFile" "heroes/mage/jealousy.lua"
+			"Function"   "JealousyStart"
 		}
 
 		"ActOnTargets"
@@ -123,8 +123,8 @@
 			{
 				"RunScript"
 				{
-					"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
-					"Function"		"Jealousy"
+					"ScriptFile"   "heroes/mage/jealousy.lua"
+					"Function"     "Jealousy"
 
 					"modifier"		"modifier_mage_jealousy_enemy"
 				}
@@ -134,8 +134,8 @@
 			{
 				"RunScript"
 				{
-					"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
-					"Function"		"JealousyEnd"
+					"ScriptFile"   "heroes/mage/jealousy.lua"
+					"Function"     "JealousyEnd"
 				}
 			}
 		}

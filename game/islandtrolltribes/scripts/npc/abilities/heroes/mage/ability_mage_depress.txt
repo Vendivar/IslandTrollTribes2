@@ -72,7 +72,7 @@
 			{
 				"RunScript"
 				{
-					"ScriptFile"	"custom_functions_ability.lua"
+					"ScriptFile"	"mechanics/mana.lua"
 					"Function"		"RemoveMana"
 					"ManaRemoved"	"10"
 				}
@@ -121,7 +121,7 @@
 			{
 				"RunScript"
 				{
-					"ScriptFile"	"custom_functions_ability.lua"
+					"ScriptFile"	"mechanics/mana.lua"
 					"Function"		"RemoveMana"
 					"ManaRemoved"	"5"
 				}
@@ -136,7 +136,7 @@
 			{
 				"RunScript"
 				{
-					"ScriptFile"	"custom_functions_ability.lua"
+					"ScriptFile"	"mechanics/mana.lua"
 					"Function"		"RemoveMana"
 					"ManaRemoved"	"5"
 				}

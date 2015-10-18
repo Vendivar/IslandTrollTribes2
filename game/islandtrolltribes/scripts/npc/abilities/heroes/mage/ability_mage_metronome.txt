@@ -20,8 +20,8 @@
 	{
 		"RunScript"
 		{
-			"ScriptFile"	"custom_functions_ability.lua"
-			"Function"	"Metronome"
+			"ScriptFile" "heroes/mage/metronome.lua"
+			"Function"	 "Metronome"
 		}
 		"FireSound"
 		{

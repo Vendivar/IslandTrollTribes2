@@ -474,8 +474,7 @@ function ChallengeEnd( event )
     target:SetForceAttackTarget(nil)
 end]]
 
--- Mage Ability Functons
-
+--[[ Mage Ability Functons (Moved to heroes/mage/)
 function Grow(keys)
 local target = keys.target
 
@@ -980,7 +979,7 @@ function DefenderEnergyEnd(event)
         v:RemoveModifierByName( defenderModifier )
         v:Destroy()
     end
-end
+end]]
 
 --[[ Scout Ability Functions (Moved to /heroes/scout folder)
 function EnemyRadar(keys)
@@ -1951,26 +1950,6 @@ function callModApplier( caster, modName, abilityLevel)
     end
     caster:CastAbilityNoTarget(ab, -1)
     caster:RemoveAbility(applier)
-end
-
-function RestoreMana(keys)
-    local target = keys.target
-    if target == nil then
-        target = keys.caster
-    end
-    target:GiveMana(keys.ManaRestored)
-end
-
-function RemoveMana(keys)
-    local target = keys.target
-    local manaloss = keys.ManaRemoved
-
-    if target == nil then
-        target = keys.caster
-    end
-
-    local mana = target:GetMana()
-    target:SetMana(mana-manaloss)
 end
 
 function ToggleAbility(keys)

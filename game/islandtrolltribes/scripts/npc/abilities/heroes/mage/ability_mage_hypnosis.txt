@@ -47,7 +47,7 @@
 
 		"FireSound"
 		{
-			"EffectName"	Hero_Bane.Nightmare
+			"EffectName"	"Hero_Bane.Nightmare"
 			"Target" 		"TARGET"
 		}
 
@@ -60,8 +60,8 @@
 
 		"RunScript"
 		{
-			"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
-			"Function"		"Hypnosis"
+			"ScriptFile" "heroes/mage/hypnosis.lua"
+			"Function"   "Hypnosis"
 
 			"hypnosis"			"modifier_mage_hypnosis"
 

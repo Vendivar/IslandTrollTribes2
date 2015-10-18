@@ -16,8 +16,8 @@
 	{
 		"RunScript"
 		{
-			"ScriptFile"	"custom_functions_ability.lua"
-			"Function"	"SpawnMageFire"
+			""ScriptFile"    "heroes/mage/mage_fire.lua"
+			"Function"       "SpawnMageFire"
 		}
 		"FireSound"
 		{

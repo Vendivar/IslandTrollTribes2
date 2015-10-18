@@ -4637,8 +4637,9 @@
 		"OnSpellStart"
 		{
 			"RunScript"
-			{
-				"ScriptFile"	"custom_functions_ability.lua"
+			{	
+				// TODO: A bunch of ability specials
+				"ScriptFile"	"heroes/mage/chain_lightning.lua"
 				"Function"	"ChainLightning"
 				"Damage"	"45"
 				"Bounces"	"3"
@@ -4763,9 +4764,8 @@
 	
 			"RunScript"
 			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
+				"ScriptFile"	"heroes/mage/defender.lua"
 				"Function"		"DefenderEnergyOnSpellStart"
-	
 				"Target"		"POINT"
 			}
 		}
@@ -4780,9 +4780,8 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"		"scripts/vscripts/custom_functions_ability.lua"
+						"ScriptFile"		"heroes/mage/defender.lua"
 						"Function"			"DefenderEnergyCast"
-	
 						"radius"			"%radius"
 					}
 				}
@@ -4792,7 +4791,7 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
+						"ScriptFile"	"heroes/mage/defender.lua"
 						"Function"		"DefenderEnergyThink"
 	
 						"think_interval"		"%think_interval"
@@ -4813,7 +4812,7 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
+						"ScriptFile"	"heroes/mage/defender.lua"
 						"Function"		"DefenderEnergyEnd"
 	
 						"defender_modifier"	"modifier_mage_defender"
@@ -4989,7 +4988,7 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"custom_functions_ability.lua"
+						"ScriptFile"	"mechanics/mana.lua"
 						"Function"		"RemoveMana"
 						"ManaRemoved"	"10"
 					}
@@ -5038,7 +5037,7 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"custom_functions_ability.lua"
+						"ScriptFile"	"mechanics/mana.lua"
 						"Function"		"RemoveMana"
 						"ManaRemoved"	"5"
 					}
@@ -5053,7 +5052,7 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"custom_functions_ability.lua"
+						"ScriptFile"	"mechanics/mana.lua"
 						"Function"		"RemoveMana"
 						"ManaRemoved"	"5"
 					}
@@ -5134,7 +5133,7 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
+						"ScriptFile"	"heroes/mage/depression.lua"
 						"Function"		"DepressionAura"
 	
 						"mana_loss_min"		"%mana_loss_min"
@@ -5245,11 +5244,10 @@
 			}
 			"RunScript"
 			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
+				"ScriptFile"	"heroes/mage/depression.lua"
 				"Function"		"DepressionOrbStart"
 				"Target"		"POINT"
-	
-				"proj_speed"		"%proj_speed"
+				"proj_speed"	"%proj_speed"
 			}
 		}
 	
@@ -5259,7 +5257,7 @@
 	
 			"RunScript"
 			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
+				"ScriptFile"	"heroes/mage/depression.lua"
 				"Function"		"DepressionOrbHit"
 				"Target"		"TARGET"
 	
@@ -5286,9 +5284,8 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
+						"ScriptFile"	"mechanics/mana.lua"
 						"Function"		"RemoveMana"
-	
 						"ManaRemoved" "%mana_per_sec"
 					}
 				}
@@ -5335,7 +5332,7 @@
 		{
 			"FireSound"
 			{
-				"EffectName"	Hero_Bane.Enfeeble.Cast
+				"EffectName"	"Hero_Bane.Enfeeble.Cast"
 				"Target" 		"TARGET"
 			}
 	
@@ -5355,7 +5352,7 @@
 	
 			"RunScript"
 			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
+				"ScriptFile"	"heroes/mage/dream_eater.lua"
 				"Function"		"DreamEater"
 	
 				"hypnosis"	"modifier_mage_hypnosis"
@@ -5453,7 +5450,7 @@
 					}
 					"RunScript"
 					{
-						"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
+						"ScriptFile"	"heroes/mage/electro_magnet.lua"
 						"Function"		"ElectroMagnetStart"
 						"Target"		"TARGET"
 						
@@ -5484,7 +5481,7 @@
 					}
 					"RunScript"
 					{
-						"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
+						"ScriptFile"	"heroes/mage/electro_magnet.lua"
 						"Function"		"ElectroMagnetEnd"
 						"Target"		"TARGET"
 	
@@ -5520,7 +5517,7 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
+						"ScriptFile"	"heroes/mage/electro_magnet.lua"
 						"Function"		"ElectroMagnetThink"
 	
 						"min_range"		"%min_range"
@@ -6097,7 +6094,7 @@
 	
 			"FireSound"
 			{
-				"EffectName"	Hero_Bane.Nightmare
+				"EffectName"	"Hero_Bane.Nightmare"
 				"Target" 		"TARGET"
 			}
 	
@@ -6198,7 +6195,7 @@
 		{
 			"FireSound"
 			{
-				"EffectName"	Hero_Silencer.LastWord.Target
+				"EffectName"	"Hero_Silencer.LastWord.Target"
 				"Target" 		"TARGET"
 			}
 			
@@ -6217,8 +6214,8 @@
 	
 			"RunScript"
 			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
-				"Function"		"JealousyStart"
+				"ScriptFile" "heroes/mage/jealousy.lua"
+				"Function"   "JealousyStart"
 			}
 	
 			"ActOnTargets"
@@ -6286,8 +6283,8 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
-						"Function"		"Jealousy"
+						"ScriptFile"   "heroes/mage/jealousy.lua"
+						"Function"     "Jealousy"
 	
 						"modifier"		"modifier_mage_jealousy_enemy"
 					}
@@ -6297,8 +6294,8 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
-						"Function"		"JealousyEnd"
+						"ScriptFile"   "heroes/mage/jealousy.lua"
+						"Function"     "JealousyEnd"
 					}
 				}
 			}
@@ -6655,8 +6652,8 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"SpawnMageFire"
+				""ScriptFile"    "heroes/mage/mage_fire.lua"
+				"Function"       "SpawnMageFire"
 			}
 			"FireSound"
 			{
@@ -6688,8 +6685,8 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"Metronome"
+				"ScriptFile" "heroes/mage/metronome.lua"
+				"Function"	 "Metronome"
 			}
 			"FireSound"
 			{
@@ -7186,9 +7183,9 @@
 				}
 				"RunScript"
 				{
-					"ScriptFile"	"custom_functions_ability.lua"
-					"Function"	"Grow"
-					"GrowAmmt"	"1.3"
+					"ScriptFile"    "heroes/mage/grow.lua"
+					"Function"      "Grow"
+					"GrowAmmt"      "1.3"
 				}
 				"FireSound"
 				{
@@ -7249,9 +7246,9 @@
 				{
 					"RunScript"
 				{
-					"ScriptFile"	"custom_functions_ability.lua"
-					"Function"	"Grow"
-					"GrowAmmt"	"1.0"
+					"ScriptFile"    "heroes/mage/grow.lua"
+					"Function"      "Grow"
+					"GrowAmmt"      "1.0"
 				}
 				"FireSound"
 				{
@@ -7530,8 +7527,8 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"ReduceFood"
+				"ScriptFile" "heroes/mage/reduce_food.lua"
+				"Function"   "ReduceFood"
 			}
 			"FireSound"
 			{
@@ -7930,7 +7927,7 @@
 					}
 					"RunScript"
 					{
-						"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
+						"ScriptFile"	"heroes/mage/storm_earth_fire.lua"
 						"Function"		"StormEarthFire"
 						"Target"		"TARGET"
 	

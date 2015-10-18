@@ -38,7 +38,7 @@
 	{
 		"FireSound"
 		{
-			"EffectName"	Hero_Bane.Enfeeble.Cast
+			"EffectName"	"Hero_Bane.Enfeeble.Cast"
 			"Target" 		"TARGET"
 		}
 
@@ -58,7 +58,7 @@
 
 		"RunScript"
 		{
-			"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
+			"ScriptFile"	"heroes/mage/dream_eater.lua"
 			"Function"		"DreamEater"
 
 			"hypnosis"	"modifier_mage_hypnosis"

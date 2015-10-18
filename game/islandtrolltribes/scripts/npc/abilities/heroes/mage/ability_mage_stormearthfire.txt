@@ -55,7 +55,7 @@
 				}
 				"RunScript"
 				{
-					"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
+					"ScriptFile"	"heroes/mage/storm_earth_fire.lua"
 					"Function"		"StormEarthFire"
 					"Target"		"TARGET"
 

@@ -85,7 +85,7 @@
 				}
 				"RunScript"
 				{
-					"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
+					"ScriptFile"	"heroes/mage/electro_magnet.lua"
 					"Function"		"ElectroMagnetStart"
 					"Target"		"TARGET"
 					
@@ -116,7 +116,7 @@
 				}
 				"RunScript"
 				{
-					"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
+					"ScriptFile"	"heroes/mage/electro_magnet.lua"
 					"Function"		"ElectroMagnetEnd"
 					"Target"		"TARGET"
 
@@ -152,7 +152,7 @@
 			{
 				"RunScript"
 				{
-					"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
+					"ScriptFile"	"heroes/mage/electro_magnet.lua"
 					"Function"		"ElectroMagnetThink"
 
 					"min_range"		"%min_range"

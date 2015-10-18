@@ -107,9 +107,8 @@
 
 		"RunScript"
 		{
-			"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
+			"ScriptFile"	"heroes/mage/defender.lua"
 			"Function"		"DefenderEnergyOnSpellStart"
-
 			"Target"		"POINT"
 		}
 	}
@@ -124,9 +123,8 @@
 			{
 				"RunScript"
 				{
-					"ScriptFile"		"scripts/vscripts/custom_functions_ability.lua"
+					"ScriptFile"		"heroes/mage/defender.lua"
 					"Function"			"DefenderEnergyCast"
-
 					"radius"			"%radius"
 				}
 			}
@@ -136,7 +134,7 @@
 			{
 				"RunScript"
 				{
-					"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
+					"ScriptFile"	"heroes/mage/defender.lua"
 					"Function"		"DefenderEnergyThink"
 
 					"think_interval"		"%think_interval"
@@ -157,7 +155,7 @@
 			{
 				"RunScript"
 				{
-					"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
+					"ScriptFile"	"heroes/mage/defender.lua"
 					"Function"		"DefenderEnergyEnd"
 
 					"defender_modifier"	"modifier_mage_defender"
