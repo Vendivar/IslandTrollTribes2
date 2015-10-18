@@ -15,9 +15,9 @@
 	{
 		"RunScript"
 		{
-			"ScriptFile"	"custom_functions_ability.lua"
-			"Function"	"EnemyRadar"
-			"Range"	"2500"
+			"ScriptFile" "heroes/scout/radar.lua"
+			"Function"   "EnemyRadar"
+			"Range"      "2500"
 		}
 
 	}

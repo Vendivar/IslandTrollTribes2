@@ -15,9 +15,9 @@
 	{
 		"RunScript"
 		{
-			"ScriptFile"	"custom_functions_ability.lua"
-			"Function"	"WardArea"
-			"Radius"	"800"
+			"ScriptFile" "heroes/scout/ward.lua"
+			"Function"   "WardArea"
+			"Radius"     "800"
 		}
 			"FireSound"
 		{

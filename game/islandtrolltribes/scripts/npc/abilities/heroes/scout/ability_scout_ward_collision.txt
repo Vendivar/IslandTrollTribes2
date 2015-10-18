@@ -12,9 +12,9 @@
 			{
 				"RunScript"
 				{
-					"ScriptFile"	"custom_functions_ability.lua"
-					"Function"	"DieOnEnemyCollision"
-					"Radius"	"50"
+					"ScriptFile"   "mechanics/collision.lua"
+					"Function"     "DieOnEnemyCollision"
+					"Radius"       "50"
 				}
 
 			}

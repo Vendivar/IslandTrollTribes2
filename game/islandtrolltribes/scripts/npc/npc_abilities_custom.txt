@@ -10007,9 +10007,9 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"EnemyRadar"
-				"Range"	"2500"
+				"ScriptFile" "heroes/scout/radar.lua"
+				"Function"   "EnemyRadar"
+				"Range"      "2500"
 			}
 	
 		}
@@ -10069,9 +10069,9 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"PlaceWard"
-	                "Target"	"POINT"
+				"ScriptFile" "heroes/scout/ward.lua"
+				"Function"   "PlaceWard"
+	            "Target"     "POINT"
 			}
 			"FireSound"
 			{
@@ -10239,9 +10239,9 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"WardArea"
-				"Radius"	"800"
+				"ScriptFile" "heroes/scout/ward.lua"
+				"Function"   "WardArea"
+				"Radius"     "800"
 			}
 				"FireSound"
 			{
@@ -10266,9 +10266,9 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"custom_functions_ability.lua"
-						"Function"	"DieOnEnemyCollision"
-						"Radius"	"50"
+						"ScriptFile"   "mechanics/collision.lua"
+						"Function"     "DieOnEnemyCollision"
+						"Radius"       "50"
 					}
 	
 				}
@@ -10309,21 +10309,12 @@
 				"IsHidden"	"1"
 				"OnCreated"
 				{
-					"DelayedAction"
+					"ApplyModifier"
 					{
-						"Delay"	"%lifetime"
-						"Action"
-						{
-							"RunScript"
-							{
-								"ScriptFile"	"custom_functions_ability.lua"
-								"Function"	"RemoveEntity"
-							}
-	
-						}
-	
+						"ModifierName"	"modifier_kill"
+						"Target" 		"TARGET"
+						"Duration"		"%lifetime"
 					}
-	
 				}
 	
 			}
@@ -10558,7 +10549,7 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"   "heroes/thief/blur.lua"
+						"ScriptFile"   "mechanics/collision.lua"
 						"Function"     "DieOnEnemyCollision"
 						"Radius"       "100"
 					}

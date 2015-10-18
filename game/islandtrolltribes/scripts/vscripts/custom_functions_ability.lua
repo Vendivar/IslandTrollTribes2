@@ -982,8 +982,7 @@ function DefenderEnergyEnd(event)
     end
 end
 
--- Scout Ability Functions
-
+--[[ Scout Ability Functions (Moved to /heroes/scout folder)
 function EnemyRadar(keys)
     local caster = keys.caster
     local range = keys.Range
@@ -1043,7 +1042,7 @@ function PlaceWard(keys)
     local ward = CreateUnitByName("scout_ward",point,true,nil,nil,team)
     local lifetime = ward:FindAbilityByName("ability_scout_ward_lifetime")
     lifetime:SetLevel(600)
-end
+end]]
 
 --[[ Beast Master Ability Functions (Moved to heroes/beastmaster folder)
 function TamePet(keys)

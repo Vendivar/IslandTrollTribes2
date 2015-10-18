@@ -11,21 +11,12 @@
 			"IsHidden"	"1"
 			"OnCreated"
 			{
-				"DelayedAction"
+				"ApplyModifier"
 				{
-					"Delay"	"%lifetime"
-					"Action"
-					{
-						"RunScript"
-						{
-							"ScriptFile"	"custom_functions_ability.lua"
-							"Function"	"RemoveEntity"
-						}
-
-					}
-
+					"ModifierName"	"modifier_kill"
+					"Target" 		"TARGET"
+					"Duration"		"%lifetime"
 				}
-
 			}
 
 		}

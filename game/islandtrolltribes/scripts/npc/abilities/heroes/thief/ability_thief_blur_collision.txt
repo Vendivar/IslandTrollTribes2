@@ -20,7 +20,7 @@
 			{
 				"RunScript"
 				{
-					"ScriptFile"   "heroes/thief/blur.lua"
+					"ScriptFile"   "mechanics/collision.lua"
 					"Function"     "DieOnEnemyCollision"
 					"Radius"       "100"
 				}

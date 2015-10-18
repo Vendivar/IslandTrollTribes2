@@ -16,9 +16,9 @@
 	{
 		"RunScript"
 		{
-			"ScriptFile"	"custom_functions_ability.lua"
-			"Function"	"PlaceWard"
-                "Target"	"POINT"
+			"ScriptFile" "heroes/scout/ward.lua"
+			"Function"   "PlaceWard"
+            "Target"     "POINT"
 		}
 		"FireSound"
 		{
