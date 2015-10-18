@@ -1267,6 +1267,51 @@
 			}
 		}
 	}
+	"ability_creep_corpse"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"ability_creep_corpse"
+		"MaxLevel" 						"1"
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"decay_time"		"180"
+			}
+		}
+
+		"Modifiers"
+		{
+			"modifier_creep_corpse"
+			{
+				"Passive"			"1"
+				"IsHidden"			"0"
+				
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/units/creeps/corpse.lua"
+						"Function"		"Corpse"
+
+						"decay_time"	"%decay_time"
+					}
+				}
+
+				"States"
+				{
+					"MODIFIER_STATE_ATTACK_IMMUNE"		"MODIFIER_STATE_VALUE_ENABLED"
+					//"MODIFIER_STATE_MAGIC_IMMUNE"		"MODIFIER_STATE_VALUE_ENABLED" //sniff pierce spellimmunity not working
+				}
+			}
+		}
+	}
 	"dummy_increasing_vision"
 	{
 		"BaseClass"	"ability_datadriven"
@@ -2918,22 +2963,19 @@
 					"item_meat_cooked"	"178 34 34"
 					"item_bone"	"255 255 255"
 				}
-	
 			}
 	
 			"RunScript"
 			{
 				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"RadarManipulations"
-				"isOpening"	"false"
+				"Function"		"RadarManipulations"
+				"isOpening"		"false"
 			}
-				"FireSound"
-		{
-		"EffectName"	"Hero_WitchDoctor.Voodoo_Restoration"
-		"Target"		"CASTER"
-		}
-	
-	
+			"FireSound"
+			{
+				"EffectName"	"Hero_WitchDoctor.Voodoo_Restoration"
+				"Target"		"CASTER"
+			}
 		}
 	
 		"AbilitySpecial"
@@ -2989,11 +3031,11 @@
 				"Function"	"RadarManipulations"
 				"isOpening"	"false"
 			}
-				"FireSound"
-		{
-		"EffectName"	"Hero_WitchDoctor.Voodoo_Restoration"
-		"Target"		"CASTER"
-		}
+			"FireSound"
+			{
+				"EffectName"	"Hero_WitchDoctor.Voodoo_Restoration"
+				"Target"		"CASTER"
+			}
 	
 	
 		}
@@ -3829,9 +3871,64 @@
 				"var_type"	"FIELD_FLOAT"
 				"cooldown"	"35.0"
 			}
-	
 		}
-	
+	}
+	"ability_hunter_sniff"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"ability_hunter_sniff"
+		"MaxLevel" 						"1"
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC"
+
+		"AbilityCooldown"				"60" //missing
+		"AbilityManaCost"				"%mana_cost"
+		"AbilityCastRange"				"100" //missing
+
+		//"SpellImmunityType" 			"SPELL_IMMUNITY_ENEMIES_YES" //not working
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"mana_cost"			"10" //missing
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"sniff_duration"	"60" //missing
+			}
+			"03"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"trail_interval"	"1.0" //missing
+			}
+			"04"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"footprint_duration"	"15.0" //missing
+			}
+		}
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"custom_functions_ability.lua"
+				"Function"		"Sniff"
+
+				"mana_cost"		"%mana_cost"
+
+				"footprint_duration"	"%footprint_duration"
+				"sniff_duration"	"%sniff_duration"
+				"trail_interval"	"%trail_interval"
+
+				"footprint_pfx"		"particles/econ/courier/courier_trail_fungal/courier_trail_fungal_f.vpcf"
+			}
+		}
 	}
 	"ability_hunter_endurance"
 	{

@@ -687,6 +687,12 @@ function ITT:OnEntityKilled(keys)
     -- local keys.damagebits --long
     local unitName = killedUnit:GetUnitName()
     print(unitName .. " has been killed")
+
+    if string.find(unitName, "creep") then
+        corpse = CreateUnitByName("npc_creep_corpse", killedUnit:GetAbsOrigin(), false, nil, nil, 0)
+        corpse.killer = killer
+    end
+
     if string.find(unitName, "building") then
         killedUnit:RemoveBuilding(2, false)
     end

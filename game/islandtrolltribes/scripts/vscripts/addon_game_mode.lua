@@ -279,7 +279,9 @@ function Precache( context )
 	PrecacheResource("model", "models/props_structures/boat_dragonknight.vmdl",context)	
 	PrecacheResource("model", "models/items/warlock/warlocks_summoning_scroll/warlocks_summoning_scroll.vmdl",context)
 	PrecacheResource("model", "models/heroes/wisp/wisp.vmdl", context)
-
+	PrecacheResource("model", "models/items/lifestealer/bonds_of_madness/bonds_of_madness.vmdl", context)
+	PrecacheResource("particle_folder", "particles/units/heroes/hero_terrorblade", context)
+	
 	PrecacheResource("particle_folder","particles/dire_fx",context)
 	PrecacheResource("particle_folder","particles/winter_fx",context)
 	PrecacheResource("particle_folder","particles/rain_fx",context)
