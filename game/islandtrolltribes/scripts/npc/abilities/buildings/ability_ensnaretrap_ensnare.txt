@@ -1,0 +1,105 @@
+"ability_ensnaretrap_ensnare"
+{
+	"BaseClass"             		"ability_datadriven"
+	"AbilityTextureName"			"ability_ensnaretrap_ensnare"
+	"MaxLevel" 						"1"
+
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+
+	"AbilityCooldown"				"10"
+	"AbilityManaCost"				"0"
+
+	"AbilityCastRange"				"700"
+
+	"precache"
+	{
+		"particle"	"particles/units/heroes/hero_meepo/meepo_earthbind.vpcf"
+		"particle"	"particles/units/heroes/hero_meepo/meepo_earthbind_flash.vpcf"
+		"particle"  "particles/units/heroes/hero_meepo/meepo_earthbind_projectile_fx.vpcf"
+		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_meepo.vsndevts"
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"			"FIELD_FLOAT"
+			"duration_hero"		"3.25"
+		}
+		"02"
+		{
+			"var_type"			"FIELD_FLOAT"
+			"duration_animal"	"8.0"
+		}
+		"03"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"projectile_speed"	"700"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"FireSound"
+		{
+			"EffectName"	"Hero_Meepo.Earthbind.Cast"
+			"Target"		"CASTER"
+		}
+
+		"FireEffect"
+		{
+			"EffectName"        "particles/units/heroes/hero_meepo/meepo_earthbind_flash.vpcf"
+			"EffectAttachType"  "follow_origin"
+			"Target"            "CASTER"
+		}
+
+		"TrackingProjectile"
+		{
+			"Target"           	"TARGET"
+			"EffectName"		"particles/units/heroes/hero_meepo/meepo_earthbind_projectile_fx.vpcf"
+			"Dodgeable"			"1"
+			"ProvidesVision"	"0"
+			"MoveSpeed"        	"%projectile_speed"
+			"SourceAttachment"	"DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
+		}
+	}
+
+	"OnProjectileHitUnit"
+	{
+		"FireSound"
+		{
+			"EffectName"	"Hero_Meepo.Earthbind.Target"
+			"Target"		"TARGET"
+		}
+
+		"RunScript"
+		{
+			"ScriptFile"	"/scripts/vscripts/buildings/ensnare.lua"
+			"Function"		"Ensnare"
+
+			"modifier"			"modifier_ensnaretrap_ensnare"
+			"duration_hero"		"%duration_hero"
+			"duration_animal"	"%duration_animal"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_ensnaretrap_ensnare"
+		{
+			"IsHidden"			"0"
+			"IsDebuff"			"1"
+			"IsPurgable"		"1"
+	
+			"EffectName"		"particles/units/heroes/hero_meepo/meepo_earthbind.vpcf"
+			"EffectAttachType"	"follow_origin"
+	
+			"States"
+			{
+				"MODIFIER_STATE_ROOTED"	"MODIFIER_STATE_VALUE_ENABLED"
+			}
+		}
+	}
+}

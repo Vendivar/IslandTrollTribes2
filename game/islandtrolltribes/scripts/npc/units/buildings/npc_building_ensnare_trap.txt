@@ -14,7 +14,7 @@
 		"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
 	}
 
-	"Ability1"	"ability_ensnare"
+	"Ability1"	"ability_ensnaretrap_ensnare"
 	"Ability2"	"ability_get_corpse"
 	"ArmorPhysical"	"3"
 	"MagicalResistance"	"0"

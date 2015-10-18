@@ -818,7 +818,7 @@ function ITT:OnTrollThink()
         InventoryCheck(i)
         --print("burn")
     end
-    return GAME_TROLL_TICK_TIME]]
+    return GAME_TROLL_TICK_TIME
 end
 
 function ITT:OnBuildingThink()
