@@ -25,9 +25,9 @@
 
 		"RunScript"
 		{
-			"ScriptFile"	"custom_functions_ability.lua"
-			"Function"	"RadarTelegatherInit"
-			"Target"	"TARGET"
+			"ScriptFile" "heroes/gatherer/radar.lua"
+			"Function"   "RadarTelegatherInit"
+			"Target"     "TARGET"
 		}
 		"FireSound"
 		{

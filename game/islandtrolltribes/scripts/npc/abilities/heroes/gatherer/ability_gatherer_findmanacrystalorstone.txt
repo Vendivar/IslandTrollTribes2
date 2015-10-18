@@ -17,10 +17,10 @@
 	{
 		"RunScript"
 		{
-			"ScriptFile"	"custom_functions_ability.lua"
-			"Function"	"PingItemInRange"
-			"Target"	"CASTER"
-			"Range"	"%range"
+			"ScriptFile" "heroes/gatherer/ping.lua"
+			"Function"   "PingItemInRange"
+			"Target"     "CASTER"
+			"Range"	     "%range"
 			"ItemTable"
 			{
 				"item_crystal_mana"	"0 0 255"
@@ -31,9 +31,9 @@
 
 		"RunScript"
 		{
-			"ScriptFile"	"custom_functions_ability.lua"
-			"Function"	"RadarManipulations"
-			"isOpening"	"false"
+			"ScriptFile" "heroes/gatherer/radar.lua"
+			"Function"   "RadarManipulations"
+			"isOpening"  "false"
 		}
 			"FireSound"
 	{

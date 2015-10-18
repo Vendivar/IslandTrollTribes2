@@ -11,9 +11,9 @@
 	{
 		"RunScript"
 		{
-			"ScriptFile"	"custom_functions_ability.lua"
-			"Function"	"RadarManipulations"
-			"isOpening"	"true"
+			"ScriptFile" "heroes/gatherer/radar.lua"
+			"Function"   "RadarManipulations"
+			"isOpening"  "true"
 		}
 
 	}

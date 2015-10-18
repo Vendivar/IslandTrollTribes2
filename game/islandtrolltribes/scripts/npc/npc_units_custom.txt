@@ -239,7 +239,7 @@
 			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
 		}
 	
-		"Ability1"	"ability_ensnare"
+		"Ability1"	"ability_ensnaretrap_ensnare"
 		"Ability2"	"ability_get_corpse"
 		"ArmorPhysical"	"3"
 		"MagicalResistance"	"0"
@@ -2427,43 +2427,6 @@
 		"VisionDaytimeRange"	"1800"
 		"VisionNighttimeRange"	"1800"
 	}
-	"npc_creep_corpse"
-	{
-		"BaseClass"		"npc_dota_creature"
-		"ConsideredHero"	"0"
-		"ModelScale"	"1"
-		"Model"	"models/items/lifestealer/bonds_of_madness/bonds_of_madness.vmdl"
-		"Level"	"1"
-		"Ability1"	"ability_creep_corpse"
-		"RingRadius"	"35"
-		"ArmorPhysical"	"0"
-		"MagicalResistance"	"0"
-		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_NONE"
-		"MovementSpeed"	"0"
-		"MovementTurnRate"	"0"
-		"StatusHealth"	"250"
-		"StatusHealthRegen"	"0"
-		"VisionDaytimeRange"	"0"
-		"VisionNighttimeRange"	"0"
-	}
-	"dummy_hunter_sniff"
-	{
-		"BaseClass"		"npc_dota_creature"
-		"ConsideredHero"	"0"
-		"Level"	"1"
-		"Ability1"	"dummy_passive"
-		"ArmorPhysical"	"0"
-		"MagicalResistance"	"0"
-		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"	"250" //this affects the footprints spacing
-		"MovementTurnRate"	"0"
-		"StatusHealth"	"9999"
-		"StatusHealthRegen"	"0"
-		"VisionDaytimeRange"	"0"
-		"VisionNighttimeRange"	"0"
-	}
 	"dummy_caster"
 	{
 		"BaseClass"	"npc_dota_creature"
@@ -2633,7 +2596,7 @@
 		"Model"	"models/creeps/neutral_creeps/n_creep_ghost_b/n_creep_ghost_frost.vmdl"
 		"Ability1"	"ability_priest_bloodfrenzy"
 		"Ability2"	"ability_ensnaretrap_ensnare"
-		"Ability3"	"ability_hunter_sniff"
+		"Ability3"	""
 		"Ability4"	""
 		"Ability5"	""
 		"Ability6"	""

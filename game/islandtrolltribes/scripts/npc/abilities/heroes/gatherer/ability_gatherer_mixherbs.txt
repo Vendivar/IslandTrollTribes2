@@ -13,9 +13,9 @@
 	{
 		"RunScript"
 		{
-			"ScriptFile"	"custom_functions_ability.lua"
-			"Function"	"MixHerbs"
-			"Target"	"CASTER"
+			"ScriptFile" "heroes/gatherer/mix_herbs.lua"
+			"Function"   "MixHerbs"
+			"Target"     "CASTER"
 		}
 		"FireSound"
 	{

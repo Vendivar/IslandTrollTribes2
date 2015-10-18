@@ -428,111 +428,6 @@
 		}
 	
 	}
-	"ability_ensnaretrap_ensnare"
-	{
-		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"ability_ensnaretrap_ensnare"
-		"MaxLevel" 						"1"
-
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-
-		"AbilityCooldown"				"10"
-		"AbilityManaCost"				"0"
-
-		"AbilityCastRange"				"700"
-
-		"precache"
-		{
-			"particle"	"particles/units/heroes/hero_meepo/meepo_earthbind.vpcf"
-			"particle"	"particles/units/heroes/hero_meepo/meepo_earthbind_flash.vpcf"
-			"particle"  "particles/units/heroes/hero_meepo/meepo_earthbind_projectile_fx.vpcf"
-			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_meepo.vsndevts"
-		}
-
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"			"FIELD_FLOAT"
-				"duration_hero"		"3.25"
-			}
-			"02"
-			{
-				"var_type"			"FIELD_FLOAT"
-				"duration_animal"	"8.0"
-			}
-			"03"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"projectile_speed"	"700"
-			}
-		}
-
-		"OnSpellStart"
-		{
-			"FireSound"
-			{
-				"EffectName"	"Hero_Meepo.Earthbind.Cast"
-				"Target"		"CASTER"
-			}
-
-			"FireEffect"
-			{
-				"EffectName"        "particles/units/heroes/hero_meepo/meepo_earthbind_flash.vpcf"
-				"EffectAttachType"  "follow_origin"
-				"Target"            "CASTER"
-			}
-
-			"TrackingProjectile"
-			{
-				"Target"           	"TARGET"
-				"EffectName"		"particles/units/heroes/hero_meepo/meepo_earthbind_projectile_fx.vpcf"
-				"Dodgeable"			"1"
-				"ProvidesVision"	"0"
-				"MoveSpeed"        	"%projectile_speed"
-				"SourceAttachment"	"DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
-			}
-		}
-
-		"OnProjectileHitUnit"
-		{
-			"FireSound"
-			{
-				"EffectName"	"Hero_Meepo.Earthbind.Target"
-				"Target"		"TARGET"
-			}
-
-			"RunScript"
-			{
-				"ScriptFile"	"/scripts/vscripts/buildings/ensnare.lua"
-				"Function"		"Ensnare"
-
-				"modifier"			"modifier_ensnaretrap_ensnare"
-				"duration_hero"		"%duration_hero"
-				"duration_animal"	"%duration_animal"
-			}
-		}
-
-		"Modifiers"
-		{
-			"modifier_ensnaretrap_ensnare"
-			{
-				"IsHidden"			"0"
-				"IsDebuff"			"1"
-				"IsPurgable"		"1"
-		
-				"EffectName"		"particles/units/heroes/hero_meepo/meepo_earthbind.vpcf"
-				"EffectAttachType"	"follow_origin"
-		
-				"States"
-				{
-					"MODIFIER_STATE_ROOTED"	"MODIFIER_STATE_VALUE_ENABLED"
-				}
-			}
-		}
-}
 	"ability_building_disable"
 	{
 		"BaseClass"	"ability_datadriven"
@@ -856,6 +751,111 @@
 	
 		}
 	
+	}
+	"ability_ensnaretrap_ensnare"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"ability_ensnaretrap_ensnare"
+		"MaxLevel" 						"1"
+	
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	
+		"AbilityCooldown"				"10"
+		"AbilityManaCost"				"0"
+	
+		"AbilityCastRange"				"700"
+	
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_meepo/meepo_earthbind.vpcf"
+			"particle"	"particles/units/heroes/hero_meepo/meepo_earthbind_flash.vpcf"
+			"particle"  "particles/units/heroes/hero_meepo/meepo_earthbind_projectile_fx.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_meepo.vsndevts"
+		}
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"duration_hero"		"3.25"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"duration_animal"	"8.0"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"projectile_speed"	"700"
+			}
+		}
+	
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"	"Hero_Meepo.Earthbind.Cast"
+				"Target"		"CASTER"
+			}
+	
+			"FireEffect"
+			{
+				"EffectName"        "particles/units/heroes/hero_meepo/meepo_earthbind_flash.vpcf"
+				"EffectAttachType"  "follow_origin"
+				"Target"            "CASTER"
+			}
+	
+			"TrackingProjectile"
+			{
+				"Target"           	"TARGET"
+				"EffectName"		"particles/units/heroes/hero_meepo/meepo_earthbind_projectile_fx.vpcf"
+				"Dodgeable"			"1"
+				"ProvidesVision"	"0"
+				"MoveSpeed"        	"%projectile_speed"
+				"SourceAttachment"	"DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
+			}
+		}
+	
+		"OnProjectileHitUnit"
+		{
+			"FireSound"
+			{
+				"EffectName"	"Hero_Meepo.Earthbind.Target"
+				"Target"		"TARGET"
+			}
+	
+			"RunScript"
+			{
+				"ScriptFile"	"/scripts/vscripts/buildings/ensnare.lua"
+				"Function"		"Ensnare"
+	
+				"modifier"			"modifier_ensnaretrap_ensnare"
+				"duration_hero"		"%duration_hero"
+				"duration_animal"	"%duration_animal"
+			}
+		}
+	
+		"Modifiers"
+		{
+			"modifier_ensnaretrap_ensnare"
+			{
+				"IsHidden"			"0"
+				"IsDebuff"			"1"
+				"IsPurgable"		"1"
+		
+				"EffectName"		"particles/units/heroes/hero_meepo/meepo_earthbind.vpcf"
+				"EffectAttachType"	"follow_origin"
+		
+				"States"
+				{
+					"MODIFIER_STATE_ROOTED"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+		}
 	}
 	"ability_bush_passive"
 	{
@@ -1264,51 +1264,6 @@
 			{
 				"var_type"		"FIELD_INTEGER"
 				"lifesteal"		"15"
-			}
-		}
-	}
-	"ability_creep_corpse"
-	{
-		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"ability_creep_corpse"
-		"MaxLevel" 						"1"
-
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"decay_time"		"180"
-			}
-		}
-
-		"Modifiers"
-		{
-			"modifier_creep_corpse"
-			{
-				"Passive"			"1"
-				"IsHidden"			"0"
-				
-				"OnCreated"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/units/creeps/corpse.lua"
-						"Function"		"Corpse"
-
-						"decay_time"	"%decay_time"
-					}
-				}
-
-				"States"
-				{
-					"MODIFIER_STATE_ATTACK_IMMUNE"		"MODIFIER_STATE_VALUE_ENABLED"
-					//"MODIFIER_STATE_MAGIC_IMMUNE"		"MODIFIER_STATE_VALUE_ENABLED" //sniff pierce spellimmunity not working
-				}
 			}
 		}
 	}
@@ -2140,8 +2095,8 @@
 						{
 							"RunScript"
 							{
-								"ScriptFile" "heroes/beastmaster/pets.lua"
-								"Function"   "GrowPet"
+								"ScriptFile"	"custom_functions_ability.lua"
+								"Function"	"GrowPet"
 							}
 	
 						}
@@ -2245,8 +2200,8 @@
 						{
 							"RunScript"
 							{
-								"ScriptFile"	"custom_functions_ability.lua"
-								"Function"	"GrowPet"
+								"ScriptFile" "heroes/beastmaster/pets.lua"
+								"Function"   "GrowPet"
 							}
 	
 						}
@@ -2953,29 +2908,32 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"PingItemInRange"
-				"Target"	"CASTER"
-				"Range"	"%range"
+				"ScriptFile" "heroes/gatherer/ping.lua"
+				"Function"   "PingItemInRange"
+				"Target"     "CASTER"
+				"Range"	     "%range"
 				"ItemTable"
 				{
 					"item_clay_ball"	"100 100 100"
 					"item_meat_cooked"	"178 34 34"
 					"item_bone"	"255 255 255"
 				}
+	
 			}
 	
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"		"RadarManipulations"
-				"isOpening"		"false"
+				"ScriptFile" "heroes/gatherer/radar.lua"
+				"Function"   "RadarManipulations"
+				"isOpening"  "false"
 			}
-			"FireSound"
-			{
-				"EffectName"	"Hero_WitchDoctor.Voodoo_Restoration"
-				"Target"		"CASTER"
-			}
+				"FireSound"
+		{
+		"EffectName"	"Hero_WitchDoctor.Voodoo_Restoration"
+		"Target"		"CASTER"
+		}
+	
+	
 		}
 	
 		"AbilitySpecial"
@@ -3014,10 +2972,10 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"PingItemInRange"
-				"Target"	"CASTER"
-				"Range"	"%range"
+				"ScriptFile" "heroes/gatherer/ping.lua"
+				"Function"   "PingItemInRange"
+				"Target"     "CASTER"
+				"Range"	     "%range"
 				"ItemTable"
 				{
 					"item_flint"	"255 0 0"
@@ -3027,15 +2985,15 @@
 	
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"RadarManipulations"
-				"isOpening"	"false"
+				"ScriptFile" "heroes/gatherer/radar.lua"
+				"Function"   "RadarManipulations"
+				"isOpening"  "false"
 			}
-			"FireSound"
-			{
-				"EffectName"	"Hero_WitchDoctor.Voodoo_Restoration"
-				"Target"		"CASTER"
-			}
+				"FireSound"
+		{
+		"EffectName"	"Hero_WitchDoctor.Voodoo_Restoration"
+		"Target"		"CASTER"
+		}
 	
 	
 		}
@@ -3076,10 +3034,10 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"PingItemInRange"
-				"Target"	"CASTER"
-				"Range"	"%range"
+				"ScriptFile" "heroes/gatherer/ping.lua"
+				"Function"   "PingItemInRange"
+				"Target"     "CASTER"
+				"Range"	     "%range"
 				"ItemTable"
 				{
 					"item_hide_elk"	"165 42 42"
@@ -3091,9 +3049,9 @@
 	
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"RadarManipulations"
-				"isOpening"	"false"
+				"ScriptFile" "heroes/gatherer/radar.lua"
+				"Function"   "RadarManipulations"
+				"isOpening"  "false"
 			}
 				"FireSound"
 		{
@@ -3140,10 +3098,10 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"PingItemInRange"
-				"Target"	"CASTER"
-				"Range"	"%range"
+				"ScriptFile" "heroes/gatherer/ping.lua"
+				"Function"   "PingItemInRange"
+				"Target"     "CASTER"
+				"Range"      "%range"
 				"ItemTable"
 				{
 					"item_magic_raw"	"255 0 255"
@@ -3153,9 +3111,9 @@
 	
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"RadarManipulations"
-				"isOpening"	"false"
+				"ScriptFile" "heroes/gatherer/radar.lua"
+				"Function"   "RadarManipulations"
+				"isOpening"  "false"
 			}
 				"FireSound"
 		{
@@ -3202,10 +3160,10 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"PingItemInRange"
-				"Target"	"CASTER"
-				"Range"	"%range"
+				"ScriptFile" "heroes/gatherer/ping.lua"
+				"Function"   "PingItemInRange"
+				"Target"     "CASTER"
+				"Range"	     "%range"
 				"ItemTable"
 				{
 					"item_crystal_mana"	"0 0 255"
@@ -3216,9 +3174,9 @@
 	
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"RadarManipulations"
-				"isOpening"	"false"
+				"ScriptFile" "heroes/gatherer/radar.lua"
+				"Function"   "RadarManipulations"
+				"isOpening"  "false"
 			}
 				"FireSound"
 		{
@@ -3265,10 +3223,10 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"PingItemInRange"
-				"Target"	"CASTER"
-				"Range"	"%range"
+				"ScriptFile" "heroes/gatherer/ping.lua"
+				"Function"   "PingItemInRange"
+				"Target"     "CASTER"
+				"Range"	     "%range"
 				"ItemTable"
 				{
 					"item_mushroom"	"200 0 200"
@@ -3280,9 +3238,9 @@
 	
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"RadarManipulations"
-				"isOpening"	"false"
+				"ScriptFile" "heroes/gatherer/radar.lua"
+				"Function"   "RadarManipulations"
+				"isOpening"  "false"
 			}
 				"FireSound"
 		{
@@ -3328,10 +3286,10 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"PingItemInRange"
-				"Target"	"CASTER"
-				"Range"	"%range"
+				"ScriptFile" "heroes/gatherer/ping.lua"
+				"Function"   "PingItemInRange"
+				"Target"     "CASTER"
+				"Range"	     "%range"
 				"ItemTable"
 				{
 					"item_flint"	"255 0 0"
@@ -3399,9 +3357,9 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"MixHerbs"
-				"Target"	"CASTER"
+				"ScriptFile" "heroes/gatherer/mix_herbs.lua"
+				"Function"   "MixHerbs"
+				"Target"     "CASTER"
 			}
 			"FireSound"
 		{
@@ -3425,9 +3383,9 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"RadarManipulations"
-				"isOpening"	"true"
+				"ScriptFile" "heroes/gatherer/radar.lua"
+				"Function"   "RadarManipulations"
+				"isOpening"  "true"
 			}
 	
 		}
@@ -3460,9 +3418,9 @@
 	
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"RadarTelegatherInit"
-				"Target"	"TARGET"
+				"ScriptFile" "heroes/gatherer/radar.lua"
+				"Function"   "RadarTelegatherInit"
+				"Target"     "TARGET"
 			}
 			"FireSound"
 			{
@@ -3871,64 +3829,9 @@
 				"var_type"	"FIELD_FLOAT"
 				"cooldown"	"35.0"
 			}
+	
 		}
-	}
-	"ability_hunter_sniff"
-	{
-		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"ability_hunter_sniff"
-		"MaxLevel" 						"1"
-
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC"
-
-		"AbilityCooldown"				"60" //missing
-		"AbilityManaCost"				"%mana_cost"
-		"AbilityCastRange"				"100" //missing
-
-		//"SpellImmunityType" 			"SPELL_IMMUNITY_ENEMIES_YES" //not working
-
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"mana_cost"			"10" //missing
-			}
-			"02"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"sniff_duration"	"60" //missing
-			}
-			"03"
-			{
-				"var_type"			"FIELD_FLOAT"
-				"trail_interval"	"1.0" //missing
-			}
-			"04"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"footprint_duration"	"15.0" //missing
-			}
-		}
-
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"		"Sniff"
-
-				"mana_cost"		"%mana_cost"
-
-				"footprint_duration"	"%footprint_duration"
-				"sniff_duration"	"%sniff_duration"
-				"trail_interval"	"%trail_interval"
-
-				"footprint_pfx"		"particles/econ/courier/courier_trail_fungal/courier_trail_fungal_f.vpcf"
-			}
-		}
+	
 	}
 	"ability_hunter_endurance"
 	{
@@ -8463,15 +8366,15 @@
 		"BaseClass"             		"ability_datadriven"
 		"AbilityTextureName"			"ability_priest_bloodfrenzy"
 		"MaxLevel" 						"1"
-
+	
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
-
+	
 		"AbilityCooldown"				"120"
 		"AbilityManaCost"				"50"
 		"AOERadius"						"%radius"
-
+	
 		"AbilitySpecial"
 		{
 			"01"
@@ -8500,7 +8403,7 @@
 				"lifesteal"			"15"
 			}
 		}
-
+	
 		"OnSpellStart"
 		{
 			"ActOnTargets"
@@ -8524,7 +8427,7 @@
 				}
 			}
 		}
-
+	
 		"Modifiers"
 		{
 			"modifier_priest_bloodfrenzy"
@@ -8540,7 +8443,7 @@
 						"LifestealPercent"	"%lifesteal"
 					}
 				}
-
+	
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%attack_speed"

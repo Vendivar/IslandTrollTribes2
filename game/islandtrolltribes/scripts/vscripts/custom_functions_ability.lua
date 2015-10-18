@@ -7,17 +7,9 @@ THIEF = "npc_dota_hero_riki"
 SCOUT = "npc_dota_hero_lion"
 GATHERER = "npc_dota_hero_shadow_shaman"
 
---general "ping minimap" function
-function PingMap(playerID,pos,r,g,b)
-    --(PlayerID, position(vector), R, G, B, SizeofDot, Duration)
-    GameRules:AddMinimapDebugPoint(5,pos, r, g, b, 500, 6)
-    print("x:", pos.x)
-    print("y:", pos.y)
-    print("z:", pos.z)
-    --NEWEST PING ALWAYS CLEARS LAST PING, ONLY ONE PING AT A TIME, THIS FUNCTION SUCKS DICK BUT IT'S ALL WE HAVE TO WORK WITH
-end
---Gatherer Ability Functions
---[[Pings the items in parameter ItemTable with their corresponding color]]
+--Gatherer Ability Functions (Moved to /heroes/gatherer/ folder)
+--[[
+Pings the items in parameter ItemTable with their corresponding color
 function PingItemInRange(keys)
     --PrintTable(keys)
     local caster = keys.caster
@@ -60,6 +52,90 @@ function PingItemInRange(keys)
         GameRules:AddMinimapDebugPointForTeam(id,item:GetAbsOrigin(), redVal*255, greenVal*255, blueVal*255, 500, 3, team)
     end
 end
+
+function RadarManipulations(keys)
+    local caster = keys.caster
+    local isOpening = (keys.isOpening == "true")
+    local ABILITY_radarManipulations = caster:FindAbilityByName("ability_gatherer_radarmanipulations")
+
+    local abilityLevel = ABILITY_radarManipulations:GetLevel()
+    print("abilityLevel", abilityLevel)
+    local unitName = caster:GetUnitName()
+    print(unitName)
+
+    local tableDefaultSkillBook ={
+        "ability_gatherer_itemradar",
+        "ability_gatherer_radarmanipulations",
+        "ability_empty3",
+        "ability_empty4",
+        "ability_empty5",
+        "ability_empty6",
+        "ability_empty7"}
+
+    local tableRadarBook ={
+        "ability_gatherer_findmushroomstickortinder",
+        "ability_gatherer_findhide",
+        "ability_gatherer_findclayballcookedmeatorbone",
+        "ability_gatherer_findmanacrystalorstone",
+        "ability_gatherer_findflint",
+        "ability_gatherer_findmagic"
+    }
+
+    local numAbilities = abilityLevel + 1
+
+    for i=1,numAbilities do
+        print(tableDefaultSkillBook[i], tableRadarBook[i])
+        local ability1 = caster:FindAbilityByName(tableDefaultSkillBook[i])
+        local ability2 = caster:FindAbilityByName(tableRadarBook[i])
+        if ability2:GetLevel() == 0 then
+            ability2:SetLevel(1)
+        end
+        print("isopening",isOpening)
+        if isOpening == true then
+            print("ability1:", ability1:GetName(), "ability2:", ability2:GetName())
+            SwapAbilities(caster, ability1, ability2, false, true)
+            caster:FindAbilityByName("ability_gatherer_radarmanipulations"):SetHidden(true)
+        else
+            SwapAbilities(caster, ability1, ability2, true, false)
+            caster:FindAbilityByName("ability_gatherer_radarmanipulations"):SetHidden(false)
+            caster:FindAbilityByName("ability_empty3"):SetHidden(true)
+            caster:FindAbilityByName("ability_empty4"):SetHidden(true)
+            caster:FindAbilityByName("ability_empty5"):SetHidden(true)
+            caster:FindAbilityByName("ability_empty6"):SetHidden(true)
+        end
+    end
+
+end
+
+function RadarTelegatherInit(keys)
+    local caster = keys.caster
+    local target = keys.target
+
+    keys.caster.targetFire = target
+
+end
+
+function RadarTelegather (keys)
+        local hero = EntIndexToHScript( keys.HeroEntityIndex )
+        local hasTelegather = hero:HasModifier("modifier_telegather")
+        local targetFire = hero.targetFire
+
+        local originalItem = EntIndexToHScript(keys.ItemEntityIndex)
+        local newItem = CreateItem(originalItem:GetName(), nil, nil)
+
+        local itemList = {"item_tinder", "item_flint", "item_stone", "item_stick", "item_bone", "item_meat_raw", "item_crystal_mana", "item_clay_ball", "item_river_root", "item_river_stem", "item_thistles", "item_acorn", "item_acorn_magic", "item_mushroom"}
+        for key,value in pairs(itemList) do
+            if value == originalItem:GetName() then
+                print( "Teleporting Item", originalItem:GetName())
+                hero:RemoveItem(originalItem)
+                local itemPosition = targetFire:GetAbsOrigin() + RandomVector(RandomInt(100,150))
+                CreateItemOnPositionSync(itemPosition,newItem)
+                newItem:SetOrigin(itemPosition)
+            end
+        end
+end
+
+]]
 
 --[[Checks unit inventory for matching recipes. If there's a match, remove all items and add the corresponding potion
     Matches must have the exact number of each ingredient
@@ -203,134 +279,8 @@ function MixHerbs(keys)
             return  --end the function, only one item per mix
         end
     end
-
 end
 
---Compares two tables to see if they have the same values
-function CompareTables(table1, table2)
-    print("Comparing tables")
-    if type(table1) ~= "table" or type(table2) ~= "table" then
-        return false
-    end
-
-    for key,value in pairs(table1) do
-        print(key, table1[key], table2[key])
-        if table2[key] == nil then
-            return false
-        elseif table2[key] ~= table1[key] then
-            return false
-        end
-    end
-
-    print("check other table, just in case")
-
-    for key,value in pairs(table2) do
-        print(key, table2[key], table1[key])
-        if table1[key] == nil then
-            return false
-        elseif table1[key] ~= table2[key] then
-            return false
-        end
-    end
-
-    print("Match!")
-    return true
-end
-
-function compareHelper(a,b)
-    return a[2] > b[2]
-end
-
-function SwapAbilities(unit, ability1, ability2, enable1, enable2)
-
-    --swaps ability1 and ability2, disables 1 and enables 2
-    print("swap", ability1:GetName(), ability2:GetName() )
-    unit:SwapAbilities(ability1:GetName(), ability2:GetName(), enable1, enable2)
-    ability1:SetHidden(enable2)
-    ability2:SetHidden(enable1)
-end
-
-function RadarManipulations(keys)
-    local caster = keys.caster
-    local isOpening = (keys.isOpening == "true")
-    local ABILITY_radarManipulations = caster:FindAbilityByName("ability_gatherer_radarmanipulations")
-
-    local abilityLevel = ABILITY_radarManipulations:GetLevel()
-    print("abilityLevel", abilityLevel)
-    local unitName = caster:GetUnitName()
-    print(unitName)
-
-    local tableDefaultSkillBook ={
-        "ability_gatherer_itemradar",
-        "ability_gatherer_radarmanipulations",
-        "ability_empty3",
-        "ability_empty4",
-        "ability_empty5",
-        "ability_empty6",
-        "ability_empty7"}
-
-    local tableRadarBook ={
-        "ability_gatherer_findmushroomstickortinder",
-        "ability_gatherer_findhide",
-        "ability_gatherer_findclayballcookedmeatorbone",
-        "ability_gatherer_findmanacrystalorstone",
-        "ability_gatherer_findflint",
-        "ability_gatherer_findmagic"
-    }
-
-    local numAbilities = abilityLevel + 1
-
-    for i=1,numAbilities do
-        print(tableDefaultSkillBook[i], tableRadarBook[i])
-        local ability1 = caster:FindAbilityByName(tableDefaultSkillBook[i])
-        local ability2 = caster:FindAbilityByName(tableRadarBook[i])
-        if ability2:GetLevel() == 0 then
-            ability2:SetLevel(1)
-        end
-        print("isopening",isOpening)
-        if isOpening == true then
-            print("ability1:", ability1:GetName(), "ability2:", ability2:GetName())
-            SwapAbilities(caster, ability1, ability2, false, true)
-            caster:FindAbilityByName("ability_gatherer_radarmanipulations"):SetHidden(true)
-        else
-            SwapAbilities(caster, ability1, ability2, true, false)
-            caster:FindAbilityByName("ability_gatherer_radarmanipulations"):SetHidden(false)
-            caster:FindAbilityByName("ability_empty3"):SetHidden(true)
-            caster:FindAbilityByName("ability_empty4"):SetHidden(true)
-            caster:FindAbilityByName("ability_empty5"):SetHidden(true)
-            caster:FindAbilityByName("ability_empty6"):SetHidden(true)
-        end
-    end
-
-end
-
-function RadarTelegatherInit(keys)
-    local caster = keys.caster
-    local target = keys.target
-
-    keys.caster.targetFire = target
-
-end
-
-function RadarTelegather (keys)
-        local hero = EntIndexToHScript( keys.HeroEntityIndex )
-        local hasTelegather = hero:HasModifier("modifier_telegather")
-        local targetFire = hero.targetFire
-
-        local originalItem = EntIndexToHScript(keys.ItemEntityIndex)
-        local newItem = CreateItem(originalItem:GetName(), nil, nil)
-
-        local itemList = {"item_tinder", "item_flint", "item_stone", "item_stick", "item_bone", "item_meat_raw", "item_crystal_mana", "item_clay_ball", "item_river_root", "item_river_stem", "item_thistles", "item_acorn", "item_acorn_magic", "item_mushroom"}
-        for key,value in pairs(itemList) do
-            if value == originalItem:GetName() then
-                print( "Teleporting Item", originalItem:GetName())
-                hero:RemoveItem(originalItem)
-                local itemPosition = targetFire:GetAbsOrigin() + RandomVector(RandomInt(100,150))
-                CreateItemOnPositionSync(itemPosition,newItem)
-                newItem:SetOrigin(itemPosition)
-            end
-        end
-end
 
 --Hunter Ability Functions
 
