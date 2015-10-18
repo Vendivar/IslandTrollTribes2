@@ -14,8 +14,8 @@
 	{
 		"RunScript"
 		{
-			"ScriptFile"	"custom_functions_ability.lua"
-			"Function"	"FleaAttackDamage"
+			"ScriptFile" "heroes/beastmaster/flea.lua"
+			"Function"   "FleaAttackDamage"
 		}
 		"FireSound"
 			{
@@ -37,9 +37,9 @@
 			{
 				"RunScript"
 				{
-					"ScriptFile"	"custom_functions_ability.lua"
-					"Function"	"FleaAttack"
-					"Particle"	"particles/units/heroes/hero_weaver/weaver_base_attack.vpcf"
+					"ScriptFile"   "heroes/beastmaster/flea.lua"
+					"Function"     "FleaAttack"
+					"Particle"     "particles/units/heroes/hero_weaver/weaver_base_attack.vpcf"
 				}
 				
 			}

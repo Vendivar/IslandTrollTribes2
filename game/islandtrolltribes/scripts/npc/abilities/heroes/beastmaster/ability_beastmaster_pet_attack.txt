@@ -11,9 +11,9 @@
 	{
 		"RunScript"
 		{
-			"ScriptFile"	"custom_functions_ability.lua"
-			"Function"	"PetCommand"
-			"Command"	"attack"
+			"ScriptFile" "heroes/beastmaster/pets.lua"
+			"Function"   "PetCommand"
+			"Command"    "attack"
 		}
 
 	}

@@ -67,8 +67,8 @@
 			{
 				"RunScript"
 				{
-					"ScriptFile"	"custom_functions_ability.lua"
-					"Function"	"HealPet"
+					"ScriptFile"   "heroes/beastmaster/pets.lua"
+					"Function"     "HealPet"
 				}
 
 			}

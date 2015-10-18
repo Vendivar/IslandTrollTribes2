@@ -16,9 +16,9 @@
 	{
 		"RunScript"
 		{
-			"ScriptFile"	"custom_functions_ability.lua"
-			"Function"	"Shapeshift"
-			"Form"	"Normal"
+			"ScriptFile" "heroes/beastmaster/shapeshift.lua"
+			"Function"   "Shapeshift"
+			"Form"       "Normal"
 		}
 				"FireSound"
 		{

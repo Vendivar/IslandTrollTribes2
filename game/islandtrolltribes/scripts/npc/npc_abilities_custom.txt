@@ -1489,9 +1489,9 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"Shapeshift"
-				"Form"	"Bear"
+				"ScriptFile" "heroes/beastmaster/shapeshift.lua"
+				"Function"   "Shapeshift"
+				"Form"       "Bear"
 			}
 	
 			"ApplyModifier"
@@ -1513,7 +1513,7 @@
 			"modifier_bearform"
 			{
 				"EffectName"	"shadowshaman_voodoo"
-				"ModelName"	"models/heroes/lone_druid/spirit_bear.vmdl"
+				"ModelName"	"models/heroes/lone_druid/spirit_bear.vmdl" //DOES THIS WORK?
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"-1"
@@ -1574,9 +1574,9 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"CallToBattle"
-				"Duration"	"6"
+				"ScriptFile" "heroes/beastmaster/pets.lua"
+				"Function"   "CallToBattle"
+				"Duration"   "6"
 			}
 	
 			"FireSound"
@@ -1693,9 +1693,9 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"Shapeshift"
-				"Form"	"Elk"
+				"ScriptFile" "heroes/beastmaster/shapeshift.lua"
+				"Function"   "Shapeshift"
+				"Form"       "Elk"
 			}
 	
 			"ApplyModifier"
@@ -1782,8 +1782,8 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"FleaAttackDamage"
+				"ScriptFile" "heroes/beastmaster/flea.lua"
+				"Function"   "FleaAttackDamage"
 			}
 			"FireSound"
 				{
@@ -1805,9 +1805,9 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"custom_functions_ability.lua"
-						"Function"	"FleaAttack"
-						"Particle"	"particles/units/heroes/hero_weaver/weaver_base_attack.vpcf"
+						"ScriptFile"   "heroes/beastmaster/flea.lua"
+						"Function"     "FleaAttack"
+						"Particle"     "particles/units/heroes/hero_weaver/weaver_base_attack.vpcf"
 					}
 					
 				}
@@ -2065,9 +2065,9 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"Shapeshift"
-				"Form"	"Normal"
+				"ScriptFile" "heroes/beastmaster/shapeshift.lua"
+				"Function"   "Shapeshift"
+				"Form"       "Normal"
 			}
 					"FireSound"
 			{
@@ -2091,9 +2091,9 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"PetCommand"
-				"Command"	"attack"
+				"ScriptFile" "heroes/beastmaster/pets.lua"
+				"Function"   "PetCommand"
+				"Command"    "attack"
 			}
 	
 		}
@@ -2112,9 +2112,9 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"PetCommand"
-				"Command"	"follow"
+				"ScriptFile" "heroes/beastmaster/pets.lua"
+				"Function"   "PetCommand"
+				"Command"    "follow"
 			}
 	
 		}
@@ -2140,8 +2140,8 @@
 						{
 							"RunScript"
 							{
-								"ScriptFile"	"custom_functions_ability.lua"
-								"Function"	"GrowPet"
+								"ScriptFile" "heroes/beastmaster/pets.lua"
+								"Function"   "GrowPet"
 							}
 	
 						}
@@ -2175,8 +2175,8 @@
 						{
 							"RunScript"
 							{
-								"ScriptFile"	"custom_functions_ability.lua"
-								"Function"	"GrowPet"
+								"ScriptFile" "heroes/beastmaster/pets.lua"
+								"Function"   "GrowPet"
 							}
 	
 						}
@@ -2210,8 +2210,8 @@
 						{
 							"RunScript"
 							{
-								"ScriptFile"	"custom_functions_ability.lua"
-								"Function"	"GrowPet"
+								"ScriptFile" "heroes/beastmaster/pets.lua"
+								"Function"   "GrowPet"
 							}
 	
 						}
@@ -2277,9 +2277,9 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"PetCommand"
-				"Command"	"release"
+				"ScriptFile" "heroes/beastmaster/pets.lua"
+				"Function"   "PetCommand"
+				"Command"    "release"
 			}
 			"FireSound"
 			{
@@ -2308,9 +2308,9 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"PetCommand"
-				"Command"	"sleep"
+				"ScriptFile" "heroes/beastmaster/pets.lua"
+				"Function"   "PetCommand"
+				"Command"    "sleep"
 			}
 	
 		}
@@ -2329,9 +2329,9 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"PetCommand"
-				"Command"	"stay"
+				"ScriptFile" "heroes/beastmaster/pets.lua"
+				"Function"   "PetCommand"
+				"Command"    "stay"
 			}
 	
 		}
@@ -2391,10 +2391,10 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"custom_functions_ability.lua"
-						"Function"	"RamTarget"
-						"Damage"	"20"
-						"StunDuration"	"2"
+						"ScriptFile"   "heroes/beastmaster/ram.lua"
+						"Function"     "RamTarget"
+						"Damage"       "20"
+						"StunDuration" "2"
 					}
 	
 				}
@@ -2592,8 +2592,8 @@
 						{
 							"RunScript"
 							{
-								"ScriptFile"	"custom_functions_ability.lua"
-								"Function"	"AttractAnimal"
+								"ScriptFile" "heroes/beastmaster/pets.lua"
+								"Function"   "AttractAnimal"
 							}
 	
 						}
@@ -2631,10 +2631,10 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"custom_functions_ability.lua"
-						"Function"	"SetSpawnChance"
-						"target"	"TARGET"
-						"Remove"	"0"
+						"ScriptFile"   "heroes/beastmaster/pets.lua"
+						"Function"     "SetSpawnChance"
+						"target"       "TARGET"
+						"Remove"       "0"
 					}
 	
 				}
@@ -2643,10 +2643,10 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"custom_functions_ability.lua"
-						"Function"	"SetSpawnChance"
-						"target"	"TARGET"
-						"Remove"	"1"
+						"ScriptFile"   "heroes/beastmaster/pets.lua"
+						"Function"     "SetSpawnChance"
+						"target"       "TARGET"
+						"Remove"       "1"
 					}
 	
 				}
@@ -2677,10 +2677,10 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"TamePet"
-				"MaxPets"	"1"
-				"Growth"	"Normal"
+				"ScriptFile" "heroes/beastmaster/pets.lua"
+				"Function"   "TamePet"
+				"MaxPets"    "1"
+				"Growth"     "Normal"
 			}
 			"FireSound"
 			{
@@ -2712,10 +2712,10 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"TamePet"
-				"MaxPets"	"2"
-				"Growth"	"Fast"
+				"ScriptFile" "heroes/beastmaster/pets.lua"
+				"Function"   "TamePet"
+				"MaxPets"    "2"
+				"Growth"     "Fast"
 			}
 					"FireSound"
 			{
@@ -2744,9 +2744,9 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"Shapeshift"
-				"Form"	"Wolf"
+				"ScriptFile" "heroes/beastmaster/shapeshift.lua"
+				"Function"   "Shapeshift"
+				"Form"       "Wolf"
 			}
 	
 			"ApplyModifier"
@@ -2818,8 +2818,8 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"custom_functions_ability.lua"
-						"Function"	"PetDeath"
+						"ScriptFile"   "heroes/beastmaster/pets.lua"
+						"Function"     "PetDeath"
 					}
 	
 				}
@@ -2898,8 +2898,8 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"custom_functions_ability.lua"
-						"Function"	"HealPet"
+						"ScriptFile"   "heroes/beastmaster/pets.lua"
+						"Function"     "HealPet"
 					}
 	
 				}

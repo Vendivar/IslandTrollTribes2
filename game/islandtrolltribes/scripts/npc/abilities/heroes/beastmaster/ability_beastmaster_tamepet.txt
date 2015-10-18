@@ -19,10 +19,10 @@
 	{
 		"RunScript"
 		{
-			"ScriptFile"	"custom_functions_ability.lua"
-			"Function"	"TamePet"
-			"MaxPets"	"1"
-			"Growth"	"Normal"
+			"ScriptFile" "heroes/beastmaster/pets.lua"
+			"Function"   "TamePet"
+			"MaxPets"    "1"
+			"Growth"     "Normal"
 		}
 		"FireSound"
 		{

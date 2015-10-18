@@ -18,8 +18,8 @@
 					{
 						"RunScript"
 						{
-							"ScriptFile"	"custom_functions_ability.lua"
-							"Function"	"GrowPet"
+							"ScriptFile" "heroes/beastmaster/pets.lua"
+							"Function"   "GrowPet"
 						}
 
 					}

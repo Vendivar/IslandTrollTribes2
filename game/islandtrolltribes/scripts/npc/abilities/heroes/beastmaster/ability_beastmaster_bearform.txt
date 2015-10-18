@@ -16,9 +16,9 @@
 	{
 		"RunScript"
 		{
-			"ScriptFile"	"custom_functions_ability.lua"
-			"Function"	"Shapeshift"
-			"Form"	"Bear"
+			"ScriptFile" "heroes/beastmaster/shapeshift.lua"
+			"Function"   "Shapeshift"
+			"Form"       "Bear"
 		}
 
 		"ApplyModifier"
@@ -40,7 +40,7 @@
 		"modifier_bearform"
 		{
 			"EffectName"	"shadowshaman_voodoo"
-			"ModelName"	"models/heroes/lone_druid/spirit_bear.vmdl"
+			"ModelName"	"models/heroes/lone_druid/spirit_bear.vmdl" //DOES THIS WORK?
 			"Properties"
 			{
 				"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"-1"

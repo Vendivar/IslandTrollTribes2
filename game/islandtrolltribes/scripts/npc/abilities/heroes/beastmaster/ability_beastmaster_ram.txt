@@ -52,10 +52,10 @@
 			{
 				"RunScript"
 				{
-					"ScriptFile"	"custom_functions_ability.lua"
-					"Function"	"RamTarget"
-					"Damage"	"20"
-					"StunDuration"	"2"
+					"ScriptFile"   "heroes/beastmaster/ram.lua"
+					"Function"     "RamTarget"
+					"Damage"       "20"
+					"StunDuration" "2"
 				}
 
 			}

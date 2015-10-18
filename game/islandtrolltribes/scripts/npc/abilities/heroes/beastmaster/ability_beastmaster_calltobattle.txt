@@ -16,9 +16,9 @@
 	{
 		"RunScript"
 		{
-			"ScriptFile"	"custom_functions_ability.lua"
-			"Function"	"CallToBattle"
-			"Duration"	"6"
+			"ScriptFile" "heroes/beastmaster/pets.lua"
+			"Function"   "CallToBattle"
+			"Duration"   "6"
 		}
 
 		"FireSound"

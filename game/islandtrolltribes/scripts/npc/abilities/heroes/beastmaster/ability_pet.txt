@@ -12,8 +12,8 @@
 			{
 				"RunScript"
 				{
-					"ScriptFile"	"custom_functions_ability.lua"
-					"Function"	"PetDeath"
+					"ScriptFile"   "heroes/beastmaster/pets.lua"
+					"Function"     "PetDeath"
 				}
 
 			}

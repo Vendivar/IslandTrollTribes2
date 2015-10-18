@@ -1096,8 +1096,7 @@ function PlaceWard(keys)
     lifetime:SetLevel(600)
 end
 
--- Beast Master Ability Functions
-
+--[[ Beast Master Ability Functions (Moved to heroes/beastmaster folder)
 function TamePet(keys)
     local caster = keys.caster
     local target = keys.target
@@ -1549,6 +1548,7 @@ function RamTarget(keys)
         end
     end
 end
+]]
 
 -- Thief Ability Functions
 
