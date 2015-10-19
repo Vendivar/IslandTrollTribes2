@@ -47,8 +47,12 @@ function ITT:SetDefaultCosmetics(hero)
             local wearableName = wearable:GetModelName()
             if wearableName ~= "" then
                 local slot = modelmap[wearableName] or "weapon" --Default main weapons don't have an item_slot in items_game.txt
+                local defaultWearableName = defaultWearables[slot]
                 print(wearableName,"at",slot)
-                print("Default item at",slot,"is:",defaultWearables[slot],"\n-------------------------")
+                print("Default item at",slot,"is:",defaultWearableName,"\n-------------------------")
+                if wearableName ~= defaultWearableName then
+                    SwapWearable(hero, wearableName, defaultWearableName)
+                end
             end
         end
         wearable = wearable:NextMovePeer()
