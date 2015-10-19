@@ -188,6 +188,7 @@ function ITT:InitGameMode()
     ListenToGameEvent("entity_killed", Dynamic_Wrap( ITT, "OnEntityKilled" ), self )
 
     ListenToGameEvent("entity_hurt", Dynamic_Wrap(ITT, 'On_entity_hurt'), self)
+    ListenToGameEvent('player_chat', Dynamic_Wrap(ITT, 'OnPlayerChat'), self)
 
     --for multiteam
     ListenToGameEvent( "game_rules_state_change", Dynamic_Wrap( ITT, 'OnGameRulesStateChange' ), self )
@@ -209,6 +210,9 @@ function ITT:InitGameMode()
     self.m_NumAssignedPlayers = 0
 
     self:GatherValidTeams()
+
+    self.vUserIds = {}
+    self.vPlayerUserIds = {}
 
     GameRules:GetGameModeEntity():SetThink( "OnThink", self, 1 )
 
@@ -278,6 +282,9 @@ function ITT:InitGameMode()
     -- KV Tables
     GameRules.ClassInfo = LoadKeyValues("scripts/kv/class_info.kv")
     GameRules.AbilityKV = LoadKeyValues("scripts/npc/npc_abilities_custom.txt")
+
+    -- Allow cosmetic swapping
+    SendToServerConsole( "dota_combine_models 0" )
 
     --for i,v in pairs(Entities:FindAllByClassname("ent_blocker")) do
     --    print(v:GetClassname())
@@ -1242,12 +1249,21 @@ end
 
 -- When players connect, add them to the players list and begin operations on them
 function ITT:OnPlayerConnectFull(keys)
-    local playerID = keys.index + 1
-    --local player = PlayerInstanceFromIndex(playerID)
-    print( "Player " .. playerID .. " connected")
+    print ('[ITT] OnConnectFull')
+
+    local entIndex = keys.index+1
+    -- The Player entity of the joining user
+    local ply = EntIndexToHScript(entIndex)
+
+    -- The Player ID of the joining player
+    local playerID = ply:GetPlayerID()
 
     playerList[playerID] = playerID
     maxPlayerID = maxPlayerID + 1
+
+    -- Update the user ID table with this user
+    self.vUserIds[keys.userid] = ply
+    self.vPlayerUserIds[playerID] = keys.userid
 end
 
 --Listener to handle telegather events from item pickup and picking up raw meat

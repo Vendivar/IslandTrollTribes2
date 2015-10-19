@@ -7,17 +7,27 @@ end
 require('libraries/timers')
 require('itt')
 require('mechanics')
+require('developer')
+require('item_spawning')
+require('subclass_system')
+require('util')
+
+-- This needs rewritting asap
+require('logic_troll' )
+
+-- This needs to be reviewed
+require('logic_creature' )
+
+-- This should be a KV Table
+require('recipe_list')
+
+-- These should be gone
 require('custom_functions_item' )
 require('custom_functions_ability' )
-require('logic_creature' )
-require('logic_troll' )
-require('item_spawning')
-require('util')
-require('recipe_list')
 
 ---------------------------------------------------------------------------
 
-function Precache( context )	
+function Precache( context )
 	PrecacheItemByNameSync( "item_acorn", context )
 	PrecacheItemByNameSync( "item_acorn_magic", context )
 	PrecacheItemByNameSync( "item_armour_battle", context )
@@ -421,6 +431,9 @@ function Precache( context )
 	end
 
 	PrecacheItemByNameSync("item_building_kit_fire_basic", context)
+
+
+	ITT:PrecacheSubclassModels(context)
 
 end
 

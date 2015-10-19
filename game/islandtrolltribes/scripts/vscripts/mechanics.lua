@@ -14,6 +14,10 @@ function GetHeroClass( hero )
     return hero:GetUnitLabel()
 end
 
+function GetSubClass( hero )
+    return hero.subclass or 'none'
+end
+
 ------------------------------------------------
 --              Ability functions             --
 ------------------------------------------------

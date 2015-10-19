@@ -27,4 +27,310 @@
         "ability_scout_enemyradar" ""
         "ability_gatherer_itemradar" ""
     }
+
+    "SubClasses"
+    {
+        // Beastmaster Subclasses
+        "beastmaster"
+        {
+            "1" "chicken_form"
+            "2" "pack_leader"
+            "3" "shapeshifter"
+        }
+        "chicken_form"
+        {
+            "Model" "models/items/courier/mighty_chicken/mighty_chicken.vmdl"
+        }
+
+        "pack_leader"
+        {
+            "Model" "models/items/lycan/ultimate/alpha_trueform9/alpha_trueform9.vmdl"
+        }
+
+        "shapeshifter"
+        {
+            "Model" "models/items/lone_druid/true_form/rabid_black_bear/rabid_black_bear.vmdl"
+        }
+
+        // Hunter Subclasses
+        "hunter"
+        {
+            "1" "juggernaut"
+            "2" "tracker"
+            "3" "warrior"
+            "defaults" //These are forced on hero spawn and the rest of the subclasses can just replace them directly
+            {
+                "weapon"         "models/heroes/huskar/huskar_spear.vmdl" //Has no item_slot entry
+                "offhand_weapon" "models/heroes/huskar/huskar_dagger.vmdl"          
+                "head"           "models/heroes/huskar/huskar_helmet.vmdl"
+                "shoulder"       "models/heroes/huskar/huskar_shoulder.vmdl"
+                "arms"           "models/heroes/huskar/huskar_bracer.vmdl"
+            }
+        }
+        "juggernaut"
+        {
+            "Wearables"
+            {        
+                "weapon"         "models/items/huskar/sacred_bones_spear/sacred_bones_spear.vmdl"
+                "offhand_weapon" "models/items/huskar/sacred_bones_offhand_weapon/sacred_bones_offhand_weapon.vmdl"
+                "head"           "models/items/huskar/sacred_bones_helmet/sacred_bones_helmet.vmdl"
+                "shoulder"       "models/items/huskar/sacred_bones_shoulder/sacred_bones_shoulder.vmdl"
+                "arms"           "models/items/huskar/sacred_bones_arms/sacred_bones_arms.vmdl"
+            }
+        }
+
+        "tracker"
+        {
+            "Wearables"
+            {   
+                "weapon"         "models/items/huskar/obsidian_blade_spear/obsidian_blade_spear.vmdl"
+                "offhand_weapon" "models/items/huskar/obsidian_claw_of_the_jaguar_dagger/obsidian_claw_of_the_jaguar_dagger.vmdl"
+                "head"           "models/items/huskar/obsidian_claw_of_the_jaguar_helmet/obsidian_claw_of_the_jaguar_helmet.vmdl"
+                "shoulder"       "models/items/huskar/obsidian_claw_of_the_jaguar_shoulder/obsidian_claw_of_the_jaguar_shoulder.vmdl"
+                "arms"           "models/items/huskar/obsidian_claw_of_the_jaguar_arms/obsidian_claw_of_the_jaguar_arms.vmdl"
+            }
+        }
+
+        "warrior"
+        {
+            "Wearables"
+            {
+                "weapon"         "models/items/huskar/burning_spear/burning_spear.vmdl"
+                "offhand_weapon" "models/heroes/huskar/huskar_dagger.vmdl" //Not many huskar hats
+                "head"           "models/items/huskar/searing_dominator/searing_dominator.vmdl" //No particles without attaching as prop
+                "shoulder"       "models/heroes/huskar/huskar_shoulder.vmdl"
+                "arms"           "models/heroes/huskar/huskar_bracer.vmdl"
+            }
+        }
+
+        // Gatherer Subclasses
+        "gatherer"
+        {
+            "1" "remote_telegatherer"
+            "2" "radar_telegatherer"
+            "3" "herbal_master_telegatherer"
+        }
+        "remote_telegatherer"
+        {
+            "Wearables"
+            {              
+                "offhand_weapon"    "6814" //Tang-Ki Scepter Off-Hand 
+                "weapon"            "6816" //Tang-Ki Scepter (has no actual 'weapon' slot so it will be hard to parse)
+                "arms"              "6817" //Accursed Scrolls of Tang-Ki
+                "belt"              "6818" //Possessed Shrine of Tang-Ki
+                "head"              "6819" //Ornate Headdress of Tang-Ki
+            }
+        }
+
+        "radar_telegatherer"
+        {
+            "Wearables"
+            {             
+                "246" ""
+                "247" ""             
+                "248" ""
+                "249" ""    
+                "250" ""
+                "251" ""
+                "5548" ""
+                "5500" ""
+                "5501" ""
+                "5503" ""
+                "5504" ""
+            }
+        }
+
+        "herbal_master_telegatherer"
+        {
+            "Wearables"
+            {                
+                "246" ""
+                "247" ""            
+                "248" ""
+                "249" ""            
+                "250" ""
+                "251" ""
+                "4412" ""
+                "4416" ""
+                "4417" ""
+                "4419" ""
+            }
+        }
+
+        // Mage
+        "gatherer"
+        {
+            "1" "dementia_master"
+            "2" "elementalist"
+            "3" "hypnotist"
+        }
+        "dementia_master"
+        {
+            "Wearables"
+            {
+                "4707" ""
+                "4708" ""         
+                "4709" ""
+                "4710" ""       
+                "4711" ""
+            }
+        }
+
+        "elementalist"
+        {
+            "Wearables"
+            {             
+                "94" ""
+                "95" ""            
+                "96" ""
+                "97" ""            
+                "4251" ""
+                "4252" ""
+                "4253" ""
+                "4254" ""
+            }
+        }
+
+        "hypnotist"
+        {
+            "Wearables"
+            {
+                
+                "4220" ""
+                "4221" ""
+                "4222" ""
+                "4096" ""
+            }
+        }
+
+        // Priest
+        "gatherer"
+        {
+            "1" "booster"
+            "2" "master_healer"
+            "3" "sage"
+        }
+        "booster"
+        {
+            "Wearables"
+            { 
+                "4681" ""
+                "4682" ""
+                "4683" ""
+                "4684" ""    
+                "4685" ""
+            }
+        }
+
+        "master_healer"
+        {
+            "Wearables"
+            { 
+                "6353" ""
+                "6354" ""          
+                "6355" ""
+                "6356" ""   
+                "6359" ""
+            }
+        }
+
+        "sage"
+        {
+            "Wearables"
+            {              
+                "4707" ""
+                "4708" ""           
+                "4709" ""
+                "4710" ""  
+                "4711" ""
+            }
+        }
+
+        // Scout
+        "gatherer"
+        {
+            "1" "spy"
+            "2" "radar_scout"
+            "3" "observer"
+        }
+        "spy"
+        {
+            "Wearables"
+            { 
+                "4546" ""
+                "4585" ""
+                "4544" ""
+                "4545" ""
+                "4582" ""
+            }
+        }
+
+        "radar_scout"
+        {
+            "Wearables"
+            {  
+                "6141" ""
+                "6142" ""
+                "6143" ""
+                "6144" ""
+                "369" ""
+            }
+        }
+
+        "observer"
+        {
+            "Wearables"
+            { 
+                "5459" ""
+                "5460" ""  
+                "5461" ""
+                "5462" ""
+            }
+        }
+
+
+        // Thief
+        "gatherer"
+        {
+            "1" "scape_artist"
+            "2" "contortionist"
+            "3" "assassin"
+        }
+        "scape_artist"
+        {
+            "Wearables"
+            {
+                "5274" ""
+                "5275" ""
+                "5276" ""
+                "5327" ""
+            }
+        }
+
+        "contortionist"
+        {
+            "Wearables"
+            {
+                "4874" ""
+                "4875" ""
+                "4876" ""
+                "4877" ""
+                "4878" ""
+                "4879" ""
+            }
+        }
+
+        "assassin"
+        {
+            "Wearables"
+            {
+                "6365" ""
+                "6366" ""
+                "6367" ""
+                "6368" ""
+                "6369" ""
+                "6370" ""
+            }
+        }
+    }
 }
