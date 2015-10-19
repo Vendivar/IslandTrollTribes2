@@ -19,17 +19,40 @@ function ITT:PrecacheSubclassModels(context)
         if subTable['defaults'] then
             for k,v in pairs(subTable['defaults']) do
                 PrecacheModel(v, context)
-            end
-            
+            end 
         end
 
         if subTable['Wearables'] then
             for k,v in pairs(subTable['Wearables']) do
-                PrecacheModel(v, context)
+                if string.find(v, ".vmdl") then
+                    PrecacheModel(v, context)
+                end
             end
         end
     end
+end
 
+-- When a hero gets ingame, check its cosmetics, find out the slot and replace by the defaults
+function ITT:SetDefaultCosmetics(hero)
+    local class = GetHeroClass(hero)
+    local subclassInfo = GameRules.ClassInfo['SubClasses']
+    local subclassNames = subclassInfo[class]
+    local defaultWearables = subclassNames['defaults']
+
+    print("SetDefaultCosmetics for "..class)
+
+    local wearable = hero:FirstMoveChild()
+    while wearable ~= nil do
+        if wearable:GetClassname() == "dota_item_wearable" then
+            local wearableName = wearable:GetModelName()
+            if wearableName ~= "" then
+                local slot = modelmap[wearableName] or "weapon" --Default main weapons don't have an item_slot in items_game.txt
+                print(wearableName,"at",slot)
+                print("Default item at",slot,"is:",defaultWearables[slot],"\n-------------------------")
+            end
+        end
+        wearable = wearable:NextMovePeer()
+    end
 end
 
 function ITT:OnSubclassChange(event)
@@ -85,6 +108,8 @@ function ITT:ResetSubclass(playerID)
     end
 end
 
+------------------------------------------------------
+
 -- Swaps a target model for another
 function SwapWearable( unit, target_model, new_model )
     local wearable = unit:FirstMoveChild()
@@ -96,5 +121,35 @@ function SwapWearable( unit, target_model, new_model )
             end
         end
         wearable = wearable:NextMovePeer()
+    end
+end
+
+------------------------------------------------------
+
+function MapModels()
+    for k,v in pairs(itemskeys) do
+        if v.model_player then
+            modelmap[v.model_player] = v.item_slot or "weapon"
+        end
+    end
+end
+
+function ModelForItemID(itemID)
+    return itemskeys[tostring(itemID)].model_player
+end
+
+function SlotForItemID(itemID)
+    return itemskeys[tostring(itemID)].item_slot
+end
+
+function SlotForModel(model)
+    return modelmap[model]
+end
+
+function GetModelForSlot(clothes, slot)
+    for k,v in pairs(clothes) do
+        local itemID = v["ItemDef"]
+        local newslot = SlotForItemID(itemID)
+        if newslot == slot then return ModelForItemID(itemID) end
     end
 end

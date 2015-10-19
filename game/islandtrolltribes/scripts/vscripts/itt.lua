@@ -283,6 +283,12 @@ function ITT:InitGameMode()
     GameRules.ClassInfo = LoadKeyValues("scripts/kv/class_info.kv")
     GameRules.AbilityKV = LoadKeyValues("scripts/npc/npc_abilities_custom.txt")
 
+    -- items_game parsing
+    GameRules.ItemsGame = LoadKeyValues("scripts/items/items_game.txt")
+    modelmap = {}
+    itemskeys = GameRules.ItemsGame['items']
+    MapModels()
+
     -- Allow cosmetic swapping
     SendToServerConsole( "dota_combine_models 0" )
 
@@ -481,56 +487,7 @@ function ITT:_PickUpMeat(cmdName)
 end
 
 unitskeys = LoadKeyValues("scripts/npc/npc_units_custom.txt")
-itemskeys = LoadKeyValues("scripts/items/items_game.txt").items
 heroeskeys = LoadKeyValues("scripts/npc/npc_heroes.txt")
-
-function ModelForItemID(itemid)
-    return itemskeys[tostring(itemid)].model_player
-end
-
-function SlotForItemID(itemid)
-    return itemskeys[tostring(itemid)].item_slot
-end
-
-modelmap = {}
-
-function MapModels()
-    for k,v in pairs(itemskeys) do
-        if v.model_player and v.item_slot then
-            modelmap[v.model_player] = v.item_slot
-        end
-    end
-end
-
-MapModels()
-
-function SlotForModel(model)
-    return modelmap[model]
-end
-
-function CosmeticsForUnit(unit)
-    local retn = {}
-    local i = unit:entindex()
-
-    while true do  -- I'm aware of the FindByClassname function taking an iterator (the entity to lookafter), which would be greater prefered, but it was spewing nils at me
-        local ent = EntIndexToHScript(i)
-        if ent:GetClassname() == "dota_item_wearable" then
-            retn[#retn + 1] = ent
-        elseif #retn > 0 then break
-        end
-        i = i + 1
-    end
-
-    return retn
-end
-
-function GetModelForSlot(clothes, slot)
-    for k,v in pairs(clothes) do
-        local itemid = v["ItemDef"]
-        local newslot = SlotForItemID(itemid)
-        if newslot == slot then return ModelForItemID(itemid) end
-    end
-end
 
 --[[
     This fixes the Cosmetics issue by model-swapping the naturally assigned hero's cosmetics with the chosen subclass models. It does this by looking at the currect setup in
@@ -608,6 +565,9 @@ function ITT:OnHeroInGame( hero )
     ITT:SetHeat(hero, 100)
     ITT:SetMeat(hero, 100)
 
+    -- Set Wearables
+    ITT:SetDefaultCosmetics(hero)
+
     -- Hunger (TODO: Review values and intended behavior)
     --ApplyModifier(hero, "modifier_hunger")
 
@@ -626,7 +586,6 @@ function ITT:CreateLockedSlots(hero)
     
     local lockedSlotsTable = GameRules.ClassInfo['LockedSlots']
     local className = GetHeroClass(hero)
-    DeepPrintTable(lockedSlotsTable)
     local lockedSlotNumber = lockedSlotsTable[className]
     
     local lockN = 5
