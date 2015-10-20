@@ -1247,7 +1247,7 @@ function ITT:OnItemPickedUp(event)
     DeepPrintTable(event)
     
     local hero = EntIndexToHScript( event.HeroEntityIndex )
-    local originalItem = EntIndexToHScript(keys.ItemEntityIndex)
+    local originalItem = EntIndexToHScript(event.ItemEntityIndex)
 
     if event.itemname == "item_meat_raw" then
         local meatStacks = hero:GetModifierStackCount("modifier_meat_passive", nil)
