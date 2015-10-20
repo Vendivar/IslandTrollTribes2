@@ -1,25 +1,31 @@
 "CustomUI"
 {
-	"1"
+	"1" //Necessary to remove the default hero pick screen
 	{
-		"File"		"trolltribes"
-		"Depth"		"50"
-	}
-	"2"
-	{
-		"File"		"RawMeat"
-		"Depth"		"51"
-	}
-	"3"
-	{
-		"File"		"SelectClass"
+		"File"		"heropick_nuke"
 		"Depth"		"254"
 	}
-	"4"
-	{
-		"File"		"subclasspromotion"
-		"Depth"		"254"
-	}
+
+	//"1"
+	//{
+	//	"File"		"trolltribes"
+	//	"Depth"		"50"
+	//}
+	//"2"
+	//{
+	//	"File"		"RawMeat"
+	///	"Depth"		"51"
+	//}
+	//"3"
+	//{
+	//	"File"		"SelectClass"
+	//	"Depth"		"254"
+	//}
+	//"4"
+	//{
+	//	"File"		"subclasspromotion"
+	//	"Depth"		"254"
+	//}
 }
 
 // =============================================
