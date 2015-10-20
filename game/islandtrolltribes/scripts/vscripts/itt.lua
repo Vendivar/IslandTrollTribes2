@@ -190,6 +190,9 @@ function ITT:InitGameMode()
     ListenToGameEvent("entity_hurt", Dynamic_Wrap(ITT, 'On_entity_hurt'), self)
     ListenToGameEvent('player_chat', Dynamic_Wrap(ITT, 'OnPlayerChat'), self)
 
+    -- Panorama Listeners
+    CustomGameEventManager:RegisterListener( "player_selected_class", Dynamic_Wrap( ITT, "OnClassSelected" ) )
+
     --for multiteam
     ListenToGameEvent( "game_rules_state_change", Dynamic_Wrap( ITT, 'OnGameRulesStateChange' ), self )
 
@@ -342,43 +345,18 @@ function ITT:FilterDamage( filterTable )
 end
 
 --Handler for class selection at the beginning of the game
-function ITT:_SelectClass(cmdName, arg1)
-    local cmdPlayer = Convars:GetCommandClient()  -- returns the player who issued the console command
-    local classNum = arg1 or "0"
-    --print("Class selected "..classNum)
-    if cmdPlayer then
-        --0=hunter, 1=gatherer, 2=scout, 3=thief, 4=priest, 5=mage 6=bm
+function ITT:OnClassSelected(event)
+    local playerID = event.PlayerID
+    local class_name = event.selected_class
+    local player = PlayerResource:GetPlayer(playerID)
+    local hero_name = GameRules.ClassInfo['Classes'][class_name]
 
-        local playerID = cmdPlayer:GetPlayerID()
-        local hero_name = GameRules.ClassInfo['Classes'][classNum]
+    print("SelectClass "..hero_name)
 
-        print("SelectClass "..hero_name)
-
-        PrecacheUnitByNameAsync(hero_name, function()
-            local player = PlayerResource:GetPlayer(playerID)
-            CreateHeroForPlayer(hero_name, cmdPlayer)
-            print("[ITT] CreateHeroForPlayer: ",playerID,hero_name)
-        end, playerID)
-
-        --[[if classNum == 0 then
-            CreateHeroForPlayer("npc_dota_hero_huskar", cmdPlayer)
-        elseif classNum == 1 then
-            CreateHeroForPlayer("npc_dota_hero_shadow_shaman", cmdPlayer)
-        elseif classNum == 2 then
-            CreateHeroForPlayer("npc_dota_hero_lion", cmdPlayer)
-        elseif classNum == 3 then
-            CreateHeroForPlayer("npc_dota_hero_riki", cmdPlayer)
-        elseif classNum == 4 then
-            CreateHeroForPlayer("npc_dota_hero_dazzle", cmdPlayer)
-        elseif classNum == 5 then
-            CreateHeroForPlayer("npc_dota_hero_witch_doctor", cmdPlayer)
-        elseif classNum == 6 then
-            CreateHeroForPlayer("npc_dota_hero_lycan", cmdPlayer)
-        else
-            print("wtf class selected isn't 0-6, spawning hunter as default")
-            CreateHeroForPlayer("npc_dota_hero_huskar", cmdPlayer)
-        end]]
-    end
+    PrecacheUnitByNameAsync(hero_name, function()
+        CreateHeroForPlayer(hero_name, player)
+        print("[ITT] CreateHeroForPlayer: ",playerID,hero_name)
+    end, playerID)
 end
 
 --Handlers for commands from custom UI

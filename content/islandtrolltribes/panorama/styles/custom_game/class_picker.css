@@ -1,0 +1,98 @@
+.PicksRoot
+{
+    width: 100%;
+    height: 100%;
+}
+
+#PicksContainer
+{
+    width: 1380px;
+    height: 864px;
+    horizontal-align: center;
+    margin-top: 20px;
+}
+
+#ClassListContainer
+{
+    width: 400px;
+    margin-top: 185px;
+    margin-left: 80px;
+    flow-children: down;
+
+}
+
+#ClassImageContainer
+{
+    width: 400px;
+    height: 415px;
+    horizontal-align: center;
+    margin-top: 158px;
+}
+
+.portrait
+{
+    width: 400px;
+    height: 413px;
+}
+
+#btn_hunter         { background-image: url('file://{images}/class_picker/hunter.png'); }
+#btn_gatherer       { background-image: url('file://{images}/class_picker/gatherer.png'); }
+#btn_scout          { background-image: url('file://{images}/class_picker/scout.png'); }
+#btn_thief          { background-image: url('file://{images}/class_picker/thief.png'); }
+#btn_priest         { background-image: url('file://{images}/class_picker/priest.png'); }
+#btn_mage           { background-image: url('file://{images}/class_picker/mage.png'); }
+#btn_beastmaster    { background-image: url('file://{images}/class_picker/beastmaster.png'); }
+
+#ClassDescription
+{
+    width: 400px;
+    horizontal-align: right;
+    margin-top: 150px;
+    margin-right: 70px;
+
+    padding: 30px 0px 0px 15px; /* Top Right Bottom Left.  Easiest way to remember is TRouBLe*/
+
+    color: white;
+    font-size: 20px;
+    font-family: Radiance;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 0px 0px 3px 3.0 #000000;
+}
+
+#SelectButton
+{
+    horizontal-align: center;
+    margin-top: 692px;
+}
+
+#SelectButton:hover
+{
+    background-image: url('file://{images}/class_picker/pick_hover.png');
+    background-repeat: no-repeat;
+}
+
+#SelectText
+{
+    horizontal-align: center;
+    vertical-align: center;
+    color: white;
+    font-size: 45px;
+    font-family: Radiance;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 0px 0px 3px 3.0 #000000;
+}
+
+#TopTitle
+{
+    horizontal-align: center;
+    vertical-align: top;
+    margin-top: 65px;
+    color: white;
+    font-size: 65px;
+    font-family: Radiance;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 0px 0px 3px 3.0 #000000;
+}

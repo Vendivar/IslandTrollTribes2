@@ -1,0 +1,27 @@
+"addon"
+{
+    "Language"      "English"
+    "Tokens"
+    {   
+        "addon_game_name"   "Island Troll Tribes"
+        "addonname"         "Island Troll Tribes"
+
+        "SelectText"        "Choose a Class"
+
+        "Description_hunter"    "A troll specialized in physical combat.\n\nHis strength is unrivaled by any other troll.\n\nHis abilities allow him to track and ensnare enemies to prevent their escape for easy meat and xp.\n\nSlots: 3\nDifficulty: Easy\n\nPros:\nEasiest to hunt with\nHighest physical damage output\nSome offensive spells\n\nCons:\nVery few slots\nLimited skill library\n"
+        "Description_gatherer"  "A troll specialized in gathering resources.\n\nWeak and slow but makes up for it with a huge carrying capacity.\n\nHis abilities allow him to ping resources on the map to make it easier to obtain what he needs.\n\nSlots: 6\nDifficulty: Medium\n\nPros:\nOnly troll that can make 6-slot items in his inventory\nGreat late-game due to equipment potential\nCan find rarer items with ease\n\nCons:\nLow physical damage\nNo offensive abilities"
+        "Description_scout"     "A troll specialized in finding enemies and animals.\n\nWeak but makes up for it with his ability to level fairly fast by finding things to kill.\n\nHis abilities allow him to ping animals/enemies and reveal large areas.\n\nSlots: 5\nDifficulty: Average\n\nPros:\nCan find animals and enemies easily\nGood number of slots\nCan reveal large areas to gather and hunt more efficiently\n\nCons:\nLow physical damage\nNo damage abilities or status effects"
+        "Description_thief"     "A troll specialized in stealing and escaping.\n\nWeak but is very hard to kill.\n\nHis abilities allow him to blink to an area he can see and go invisible, allowing him to steal items from enemy bases early-on with little risk.\n\nSlots: 5\nDifficulty: Average\n\nPros:\nHigh potential for early-game harassment and theft\nGood number of slots\nBest night vision\n\nCons:\nLow physical damage\nNo damage abilities or status effects"
+        "Description_priest"    "A troll specialized in beneficial magic.\n\nWeak and slow but this can easily be changed by buffing himself.\n\nHis abilities allow him to buff, cure, and protect his allies or himself making him much stronger than his stats imply.\n\nSlots: 4\nDifficulty: Hard\n\nPros:\nBuffs allow him to output more damage than usual\nCan cure poisons and block magical attacks\nPassive aura makes survival easier\n\nCons:\nSpells uses energy which can kill you if used incorrectly\nNo offensive spells"
+        "Description_mage"      "A troll specialized in offensive magic.\n\nWeak and slow but this is easily substituted by huge magical damage output.\n\nHis abilities allow him to debuff and damage enemies.\n\nSlots: 4\nDifficulty: Hard\n\nPros:\nCan slow and damage enemies\nGreat early-game\nEasy to hunt with\n\nCons:\nSpells uses energy which can kill you if used incorrectly\nLow physical damage"
+        "Description_beastmaster" "A troll specialized in animal fury.\n\nPhysically strong and fast.\n\nHis abilities are limited but he can tame creatures to fight for him, and has a passive which slows nearby animals and deals minor damage to them.\n\nSlots: 4\nDifficulty: Easy\n\nPros:\nSecond highest physical damage output\nCan tame creatures for extra damage\nCan slow and damage animals\n\nCons:\nVery few abilities\nDoes not get abilities every level"
+
+        "Select_hunter"        "Select Hunter"
+        "Select_gatherer"      "Select Gatherer"
+        "Select_scout"         "Select Scout"
+        "Select_thief"         "Select Thief"
+        "Select_priest"        "Select Priest"
+        "Select_mage"          "Select Mage"
+        "Select_beastmaster"   "Select Beastmaster"
+    }
+}

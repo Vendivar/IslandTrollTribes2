@@ -1,0 +1,23 @@
+<root>
+    <script>
+        $.Msg( "Images compiled" );
+    </script>     
+    <Panel hittest="false" class="PicksRoot">
+        <!-- Here goes all the images that are not defined in the main xml files and changed dynamically -->
+        <Image opacity='0' src="file://{images}/class_picker/beastmaster_full.png" />
+        <Image opacity='0' src="file://{images}/class_picker/beastmaster_hover.png" />
+        <Image opacity='0' src="file://{images}/class_picker/gatherer_full.png" />
+        <Image opacity='0' src="file://{images}/class_picker/gatherer_hover.png" />
+        <Image opacity='0' src="file://{images}/class_picker/hunter_full.png" />
+        <Image opacity='0' src="file://{images}/class_picker/hunter_hover.png" />
+        <Image opacity='0' src="file://{images}/class_picker/mage_full.png" />
+        <Image opacity='0' src="file://{images}/class_picker/mage_hover.png" />
+        <Image opacity='0' src="file://{images}/class_picker/priest_full.png" />
+        <Image opacity='0' src="file://{images}/class_picker/priest_hover.png" />
+        <Image opacity='0' src="file://{images}/class_picker/scout_full.png" />
+        <Image opacity='0' src="file://{images}/class_picker/scout_hover.png" />
+        <Image opacity='0' src="file://{images}/class_picker/thief_full.png" />
+        <Image opacity='0' src="file://{images}/class_picker/thief_hover.png" />
+        <Image opacity='0' src="file://{images}/class_picker/pick_hover.png" />
+    </Panel>
+</root>

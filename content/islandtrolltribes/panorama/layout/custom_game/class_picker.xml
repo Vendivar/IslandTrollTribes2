@@ -1,0 +1,46 @@
+<root>
+    <styles>
+        <include src="file://{resources}/styles/custom_game/class_picker.css" />
+    </styles>
+    <scripts>
+        <include src="file://{resources}/scripts/class_picker.js" /> 
+    </scripts>
+    <script>
+        $.Msg( "Compiled Panorama Class Picker!" );
+    </script>
+    <Panel hittest="false" class="PicksRoot">
+        <Panel hittest="false" id="PicksContainer" draggable="true">
+            <Image src="file://{images}/class_picker/background.png" />
+            <Label id="TopTitle" text="#SelectText"/>
+            <Panel id="ClassListContainer">
+
+                <Image onactivate="Select('beastmaster')" onmouseover="MouseOver('beastmaster')" onmouseout="MouseOut('beastmaster')" id='btn_beastmaster' src="file://{images}/class_picker/beastmaster.png" />
+                <Image onactivate="Select('gatherer')" onmouseover="MouseOver('gatherer')" onmouseout="MouseOut('gatherer')" id='btn_gatherer' src="file://{images}/class_picker/gatherer.png" />
+                <Image onactivate="Select('hunter')" onmouseover="MouseOver('hunter')" onmouseout="MouseOut('hunter')" id='btn_hunter' src="file://{images}/class_picker/hunter.png" />
+                <Image onactivate="Select('mage')" onmouseover="MouseOver('mage')" onmouseout="MouseOut('mage')" id='btn_mage' src="file://{images}/class_picker/mage.png" />
+                <Image onactivate="Select('priest')" onmouseover="MouseOver('priest')" onmouseout="MouseOut('priest')" id='btn_priest' src="file://{images}/class_picker/priest.png" />
+                <Image onactivate="Select('scout')" onmouseover="MouseOver('scout')" onmouseout="MouseOut('scout')" id='btn_scout' src="file://{images}/class_picker/scout.png" />
+                <Image onactivate="Select('thief')" onmouseover="MouseOver('thief')" onmouseout="MouseOut('thief')" id='btn_thief' src="file://{images}/class_picker/thief.png" />
+            </Panel>
+
+            <Panel id="ClassImageContainer">
+                <Movie id='vid_beastmaster' class='portrait' src="file://{resources}/videos/heroes/npc_dota_hero_lycan.webm" controls="full" repeat="true" autoplay="onload" />
+                <Movie id='vid_gatherer' class='portrait' src="file://{resources}/videos/heroes/npc_dota_hero_shadow_shaman.webm" controls="full" repeat="true" autoplay="onload" visible='false'/>
+                <Movie id='vid_hunter' class='portrait' src="file://{resources}/videos/heroes/npc_dota_hero_huskar.webm" controls="full" repeat="true" autoplay="onload" visible='false'/>
+                <Movie id='vid_mage' class='portrait' src="file://{resources}/videos/heroes/npc_dota_hero_witch_doctor.webm" controls="full" repeat="true" autoplay="onload" visible='false'/>
+                <Movie id='vid_priest' class='portrait' src="file://{resources}/videos/heroes/npc_dota_hero_dazzle.webm" controls="full" repeat="true" autoplay="onload" visible='false'/>
+                <Movie id='vid_scout' class='portrait'  src="file://{resources}/videos/heroes/npc_dota_hero_lion.webm" controls="full" repeat="true" autoplay="onload" visible='false'/>
+                <Movie id='vid_thief' class='portrait' src="file://{resources}/videos/heroes/npc_dota_hero_riki.webm" controls="full" repeat="true" autoplay="onload" visible='false'/>
+            </Panel>
+
+            <Panel id="ClassDescription">
+                <Label id="ClassText" text=""/>
+            </Panel>
+
+            <Panel id="SelectButton">
+                <Image onactivate="ChooseClass()" src="file://{images}/class_picker/pick.png" />
+                <Label onactivate="ChooseClass()" id="SelectText" text="#SelectText"/>
+            </Panel>
+        </Panel>
+    </Panel>
+</root>
