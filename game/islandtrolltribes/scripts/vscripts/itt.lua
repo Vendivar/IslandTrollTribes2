@@ -292,6 +292,11 @@ function ITT:InitGameMode()
     -- Allow cosmetic swapping
     SendToServerConsole( "dota_combine_models 0" )
 
+    -- Lua Modifiers
+    LinkLuaModifier("modifier_chicken_form", "heroes/beastmaster/subclass_modifiers.lua", LUA_MODIFIER_MOTION_NONE)
+    LinkLuaModifier("modifier_pack_leader", "heroes/beastmaster/subclass_modifiers.lua", LUA_MODIFIER_MOTION_NONE)
+    LinkLuaModifier("modifier_shapeshifter", "heroes/beastmaster/subclass_modifiers.lua", LUA_MODIFIER_MOTION_NONE)
+
     --for i,v in pairs(Entities:FindAllByClassname("ent_blocker")) do
     --    print(v:GetClassname())
     --    v:RemoveSelf()
@@ -339,11 +344,23 @@ end
 --Handler for class selection at the beginning of the game
 function ITT:_SelectClass(cmdName, arg1)
     local cmdPlayer = Convars:GetCommandClient()  -- returns the player who issued the console command
-    local classNum = tonumber(arg1)
+    local classNum = arg1 or "0"
     --print("Class selected "..classNum)
     if cmdPlayer then
         --0=hunter, 1=gatherer, 2=scout, 3=thief, 4=priest, 5=mage 6=bm
-        if classNum == 0 then
+
+        local playerID = cmdPlayer:GetPlayerID()
+        local hero_name = GameRules.ClassInfo['Classes'][classNum]
+
+        print("SelectClass "..hero_name)
+
+        PrecacheUnitByNameAsync(hero_name, function()
+            local player = PlayerResource:GetPlayer(playerID)
+            CreateHeroForPlayer(hero_name, cmdPlayer)
+            print("[ITT] CreateHeroForPlayer: ",playerID,hero_name)
+        end, playerID)
+
+        --[[if classNum == 0 then
             CreateHeroForPlayer("npc_dota_hero_huskar", cmdPlayer)
         elseif classNum == 1 then
             CreateHeroForPlayer("npc_dota_hero_shadow_shaman", cmdPlayer)
@@ -360,7 +377,7 @@ function ITT:_SelectClass(cmdName, arg1)
         else
             print("wtf class selected isn't 0-6, spawning hunter as default")
             CreateHeroForPlayer("npc_dota_hero_huskar", cmdPlayer)
-        end
+        end]]
     end
 end
 

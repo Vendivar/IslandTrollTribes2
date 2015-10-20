@@ -28,6 +28,17 @@
         "ability_gatherer_itemradar" ""
     }
 
+    "Classes"
+    {
+        "0" "npc_dota_hero_huskar"          //hunter
+        "1" "npc_dota_hero_shadow_shaman"   //gatherer
+        "2" "npc_dota_hero_lion"            //scout
+        "3" "npc_dota_hero_riki"            //thief
+        "4" "npc_dota_hero_dazzle"          //priest
+        "5" "npc_dota_hero_witch_doctor"    //mage
+        "6" "npc_dota_hero_lycan"           //beastmaster
+    }
+
     "SubClasses"
     {
         // Beastmaster Subclasses
@@ -36,20 +47,28 @@
             "1" "chicken_form"
             "2" "pack_leader"
             "3" "shapeshifter"
+            "defaults"
+            {
+                "armor"         "models/heroes/lycan/lycan_armor.vmdl"
+                "weapon"        "models/heroes/lycan/lycan_blades.vmdl"
+                "shoulder"      "models/heroes/lycan/lycan_fur.vmdl"
+                "belt"          "models/heroes/lycan/lycan_belt.vmdl"
+                "body_head"     "models/heroes/lycan/lycan_head.vmdl"
+            }
         }
         "chicken_form"
         {
-            "Model" "models/items/courier/mighty_chicken/mighty_chicken.vmdl"
+            "modifier_lua"  "modifier_chicken_form"
         }
 
         "pack_leader"
         {
-            "Model" "models/items/lycan/ultimate/alpha_trueform9/alpha_trueform9.vmdl"
+            "modifier_lua"  "modifier_pack_leader"
         }
 
         "shapeshifter"
         {
-            "Model" "models/items/lone_druid/true_form/rabid_black_bear/rabid_black_bear.vmdl"
+            "modifier_lua"  "modifier_shapeshifter"
         }
 
         // Hunter Subclasses
@@ -60,7 +79,14 @@
             "3" "warrior"
             "defaults" //These are forced on hero spawn and the rest of the subclasses can just replace them directly
             {
-                "weapon"         "models/heroes/huskar/huskar_spear.vmdl" //Has no item_slot entry
+                "weapon"         "models/heroes/huskar/huskar_spear.vmdl"
+                "offhand_weapon" "models/heroes/huskar/huskar_dagger.vmdl"          
+                "head"           "models/heroes/huskar/huskar_helmet.vmdl"
+                "shoulder"       "models/heroes/huskar/huskar_shoulder.vmdl"
+                "arms"           "models/heroes/huskar/huskar_bracer.vmdl"
+            }
+            "hide" //Hidden wearables
+            {
                 "offhand_weapon" "hide"          
                 "head"           "hide"
                 "shoulder"       "hide"
@@ -83,7 +109,7 @@
         {
             "Wearables"
             {   
-                "weapon"         "models/heroes/huskar/huskar_spear.vmdl" //Has no item_slot entry
+                "weapon"         "models/heroes/huskar/huskar_spear.vmdl"
                 "offhand_weapon" "models/heroes/huskar/huskar_dagger.vmdl"          
                 "head"           "models/heroes/huskar/huskar_helmet.vmdl"
                 "shoulder"       "models/heroes/huskar/huskar_shoulder.vmdl"
@@ -109,16 +135,24 @@
             "1" "remote_telegatherer"
             "2" "radar_telegatherer"
             "3" "herbal_master_telegatherer"
+            "defaults"
+            {
+                "offhand_weapon" "models/heroes/shadowshaman/weapon_offhand.vmdl"
+                "weapon"         "models/heroes/shadowshaman/weapon.vmdl"
+                "arms"           "models/heroes/shadowshaman/armarmor.vmdl"
+                "belt"           "models/heroes/shadowshaman/belt.vmdl"
+                "head"           "models/heroes/shadowshaman/helmet.vmdl"
+            }
         }
         "remote_telegatherer"
         {
             "Wearables"
             {              
-                "offhand_weapon"    "models/items/shadowshaman/tangki_offhand/tangki_offhand.vmdl" //Tang-Ki Scepter Off-Hand 
-                "weapon"            "models/items/shadowshaman/tangki_weapon/tangki_weapon.vmdl" //Tang-Ki Scepter (has no actual 'weapon' slot so it will be hard to parse)
-                "arms"              "models/items/shadowshaman/tangki_arms/tangki_arms.vmdl" //Accursed Scrolls of Tang-Ki
-                "belt"              "models/items/shadowshaman/tangki_belt/tangki_belt.vmdl" //Possessed Shrine of Tang-Ki
-                "head"              "models/items/shadowshaman/tangki_head/tangki_head.vmdl" //Ornate Headdress of Tang-Ki
+                "offhand_weapon"    "models/items/shadowshaman/tangki_offhand/tangki_offhand.vmdl" 
+                "weapon"            "models/items/shadowshaman/tangki_weapon/tangki_weapon.vmdl"
+                "arms"              "models/items/shadowshaman/tangki_arms/tangki_arms.vmdl"
+                "belt"              "models/items/shadowshaman/tangki_belt/tangki_belt.vmdl"
+                "head"              "models/items/shadowshaman/tangki_head/tangki_head.vmdl"
             }
         }
 
@@ -151,6 +185,14 @@
             "1" "dementia_master"
             "2" "elementalist"
             "3" "hypnotist"
+            "defaults"
+            {
+                "shoulder" "models/heroes/witchdoctor/witchdoctor_bag.vmdl"
+                "head"     "models/heroes/witchdoctor/witchdoctor_head.vmdl"
+                "back"     ""
+                "belt"     "models/heroes/witchdoctor/witchdoctor_belt.vmdl"
+                "weapon"   "models/heroes/witchdoctor/witchdoctor_staff.vmdl"
+            }
         }
         "dementia_master"
         {
@@ -172,18 +214,19 @@
                 "back" "models/items/witchdoctor/tale_tellers_drum.vmdl"
                 "shoulder" "models/items/witchdoctor/tale_tellers_poncho.vmdl"
                 "head" "models/items/witchdoctor/tale_tellers_hairhat.vmdl"
+                "weapon" "models/items/witchdoctor/witchstaff_weapon/witchstaff_weapon.vmdl"
             }
         }
 
         "hypnotist"
         {
             "Wearables"
-            {
-                
+            {           
                 "back" "models/items/witchdoctor/voodoo_backpack.vmdl"
                 "weapon" "models/items/witchdoctor/voodo_staff.vmdl"
                 "head" "models/items/witchdoctor/voodoo_skullmask.vmdl"
                 "belt" "models/items/witchdoctor/voodoo_belt.vmdl"
+                "weapon" "models/items/witchdoctor/demon_skull_staff.vmdl"
             }
         }
 
@@ -192,21 +235,41 @@
         {
             "1" "booster"
             "2" "master_healer"
-            "3" "sage"
+            "3" "shaman"
+            "defaults"
+            {
+                "misc"   "models/heroes/dazzle/dazzle_shoulder.vmdl"
+                "back"   "models/heroes/dazzle/dazzle_mohawk.vmdl"
+                "arms"   "models/heroes/dazzle/dazzle_sleeve.vmdl"
+                "legs"   "models/heroes/dazzle/dazzle_dress.vmdl"
+                "weapon" "models/heroes/dazzle/dazzle_staff.vmdl"
+            }
         }
         "booster"
         {
             "Wearables"
             { 
                 "misc" "models/items/dazzle/dazzleset_misc/dazzleset_misc.vmdl"
-                "back" "models/items/dazzle/dazzleset_back/dazzleset_back.vmdl"
-                "arms" "models/items/dazzle/dazzleset_arm/dazzleset_arm.vmdl"
-                "legs" "models/items/dazzle/dazzleset_legs/dazzleset_legs.vmdl"    
-                "weapon" "models/items/dazzle/dazzleset_weapon/dazzleset_weapon.vmdl"
+                "back" "models/items/dazzle/headdress_of_the_yuwipi/headdress_of_the_yuwipi.vmdl"
+                "arms" "models/items/dazzle/band_of_summoning/band_of_summoning.vmdl"
+                "legs" "models/items/dazzle/bonedress_of_the_yuwipi/bonedress_of_the_yuwipi.vmdl"    
+                "weapon" "models/items/dazzle/staff_of_the_yuwipi/staff_of_the_yuwipi.vmdl"
             }
         }
 
         "master_healer"
+        {
+            "Wearables"
+            {    
+                "misc" "models/items/dazzle/dazzleset_misc/dazzleset_misc.vmdl"
+                "back" "models/items/dazzle/dazzleset_back/dazzleset_back.vmdl"
+                "arms" "models/items/dazzle/dazzleset_arm/dazzleset_arm.vmdl"
+                "legs" "models/items/dazzle/dazzleset_legs/dazzleset_legs.vmdl"    
+                "weapon" "models/items/dazzle/dazzleset_weapon/dazzleset_weapon.vmdl"          
+            }
+        }
+
+        "shaman"
         {
             "Wearables"
             { 
@@ -218,24 +281,20 @@
             }
         }
 
-        "sage"
-        {
-            "Wearables"
-            {              
-                "shoulder" "models/items/witchdoctor/stormcrowbag/stormcrowbag.vmdl"
-                "head" "models/items/witchdoctor/stormcrowmask/stormcrowmask.vmdl"           
-                "back" "models/items/witchdoctor/stormcrowcloak/stormcrowcloak.vmdl"
-                "belt" "models/items/witchdoctor/stormcrow_belt/stormcrow_belt.vmdl"  
-                "weapon" "models/items/witchdoctor/stormcrow_staff/stormcrow_staff.vmdl"
-            }
-        }
-
         // Scout
         "scout"
         {
             "1" "spy"
             "2" "radar_scout"
             "3" "observer"
+            "defaults"
+            {
+                "arms"      "models/heroes/lion/lion_demonarm.vmdl"
+                "back"      "models/heroes/lion/lion_cape.vmdl"
+                "head"      "models/heroes/lion/lion_hat.vmdl"
+                "weapon"    "models/heroes/lion/lion_weapon.vmdl"
+                "shoulder"  "models/heroes/lion/lion_shoulder.vmdl"
+            }
         }
         "spy"
         {
@@ -275,9 +334,18 @@
         // Thief
         "thief"
         {
-            "1" "scape_artist"
+            "1" "escape_artist"
             "2" "contortionist"
             "3" "assassin"
+            "defaults"
+            {
+                "weapon"         "models/heroes/rikimaru/rikimaru_weapon.vmdl"
+                "offhand_weapon" "models/heroes/rikimaru/rikimaru__offhand_weapon.vmdl"
+                "head"           "models/heroes/rikimaru/rikimaru_head.vmdl"
+                "arms"           "models/heroes/rikimaru/rikimaru_gloves.vmdl"
+                "tail"           "models/heroes/rikimaru/rikimaru_tail.vmdl"
+                "shoulder"       "models/heroes/rikimaru/rikimaru_shoulder.vmdl"     
+            }
         }
         "escape_artist"
         {
