@@ -66,12 +66,6 @@
     margin-top: 692px;
 }
 
-#SelectButton:hover
-{
-    background-image: url('file://{images}/class_picker/pick_hover.png');
-    background-repeat: no-repeat;
-}
-
 #SelectText
 {
     horizontal-align: center;
@@ -84,14 +78,47 @@
     text-shadow: 0px 0px 3px 3.0 #000000;
 }
 
+.PlayerText
+{
+    horizontal-align: right;
+    vertical-align: center;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    color: white;
+    font-size: 25px;
+    font-family: Goudy Trajan Medium;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 0px 0px 3px 3.0 #000000;
+}
+
+#gathererPlayers
+{
+    flow-children: down;
+    horizontal-align: right;
+    vertical-align: center;
+    margin-bottom: 10px;
+    color: white;
+    font-size: 20px;
+    font-family: Goudy Trajan Medium;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 0px 0px 3px 3.0 #000000;
+}
+
+.PlayerText2
+{
+    font-size: 20px;
+}
+
 #TopTitle
 {
     horizontal-align: center;
     vertical-align: top;
     margin-top: 65px;
     color: white;
-    font-size: 65px;
-    font-family: Radiance;
+    font-size: 60px;
+    font-family: Goudy Trajan Medium;
     font-weight: bold;
     text-align: center;
     text-shadow: 0px 0px 3px 3.0 #000000;

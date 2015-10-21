@@ -23,5 +23,6 @@
         "Select_priest"        "Select Priest"
         "Select_mage"          "Select Mage"
         "Select_beastmaster"   "Select Beastmaster"
+        "RandomClass"          "Random Class"
     }
 }

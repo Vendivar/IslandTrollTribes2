@@ -344,14 +344,36 @@ function ITT:FilterDamage( filterTable )
     
 end
 
+local classes = { 
+    [1] = "hunter",
+    [2] = "gatherer",
+    [3] = "scout",
+    [4] = "thief",
+    [5] = "priest",
+    [6] = "mage",
+    [7] = "beastmaster",
+}
+
 --Handler for class selection at the beginning of the game
 function ITT:OnClassSelected(event)
     local playerID = event.PlayerID
     local class_name = event.selected_class
     local player = PlayerResource:GetPlayer(playerID)
+    local team = PlayerResource:GetTeam(playerID)
+
+    -- Handle random selection
+    if class_name == "random" then
+        class_name = classes[RandomInt(1,7)]
+    end
+
     local hero_name = GameRules.ClassInfo['Classes'][class_name]
 
+    local player_name = PlayerResource:GetPlayerName(playerID)
+    if player_name == "" then player_name = "Player "..playerID end
+
     print("SelectClass "..hero_name)
+
+    CustomGameEventManager:Send_ServerToTeam(team, "team_update_class", { class_name = class_name, player_name = player_name})
 
     PrecacheUnitByNameAsync(hero_name, function()
         CreateHeroForPlayer(hero_name, player)
