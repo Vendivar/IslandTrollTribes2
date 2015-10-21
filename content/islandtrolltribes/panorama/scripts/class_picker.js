@@ -42,6 +42,8 @@ function MouseOver(argument) {
         $("#btn_"+argument).SetImage( "s2r://panorama/images/class_picker/"+argument+"_hover.png" )
         $("#ClassText").text = $.Localize("Description_"+argument);
         $("#vid_"+argument).visible = true;
+        if (currentlySelected != "")
+            $("#vid_"+currentlySelected).visible = false;
     }
 }
 
@@ -50,7 +52,16 @@ function MouseOut(argument) {
     {
         $("#btn_"+argument).SetImage( "s2r://panorama/images/class_picker/"+argument+".png" )
         $("#vid_"+argument).visible = false;
-        $("#ClassText").text = "";
+
+        if (currentlySelected != "")
+        {
+            $("#ClassText").text = $.Localize("Description_"+currentlySelected);
+            $("#vid_"+currentlySelected).visible = true;
+        }
+        else
+        {
+            $("#ClassText").text = "";
+        }
     }
 }
 

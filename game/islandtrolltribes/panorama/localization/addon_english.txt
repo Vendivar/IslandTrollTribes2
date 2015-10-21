@@ -24,5 +24,16 @@
         "Select_mage"          "Select Mage"
         "Select_beastmaster"   "Select Beastmaster"
         "RandomClass"          "Random Class"
+
+        "SubclassSelectText"   "Select Sub-Class"
+
+        "beastmaster_sub1_name" "Shapeshifter"
+        "beastmaster_sub1_desc" "Shapeshifter so strong, nerf please"
+
+        "beastmaster_sub2_name" "Chicken Form"
+        "beastmaster_sub2_desc" "It's a damn chicken!"
+
+        "beastmaster_sub3_name" "Pack Leader"
+        "beastmaster_sub3_desc" "He's packed"
     }
 }

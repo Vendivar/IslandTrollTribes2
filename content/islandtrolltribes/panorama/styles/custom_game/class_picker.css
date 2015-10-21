@@ -18,7 +18,6 @@
     margin-top: 185px;
     margin-left: 80px;
     flow-children: down;
-
 }
 
 #ClassImageContainer
@@ -33,6 +32,7 @@
 {
     width: 400px;
     height: 413px;
+    opacity-mask: url("s2r://panorama/images/masks/softedge_box_png.vtex");
 }
 
 #btn_hunter         { background-image: url('file://{images}/class_picker/hunter.png'); }
