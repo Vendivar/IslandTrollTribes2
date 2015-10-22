@@ -16,21 +16,21 @@
             <Label id="TopTitle" text="#SubclassSelectText"/>
 
             <Panel class="SubclassesHolder">
-                <Panel class="SubclassContainer">
+                <Panel class="SubclassContainer" onactivate="ChooseSubclass(1)" onmouseover="MouseOver(1)" onmouseout="MouseOut(1)">
                     <Label id="SubclassTitle1" class="SubclassTitle" text="Subclass1"/>
-                    <Image id="SubclassImage1" onmouseover="MouseOver(1)" onmouseout="MouseOut(1)" class="SubclassImage" src="file://{images}/subclass_picker/beastmaster_sub1.png"/>
+                    <Image id="SubclassImage1" class="SubclassImage" src="file://{images}/subclass_picker/beastmaster_sub1.png"/>
                     <Label id="SubclassDesc1" class="SubclassDesc" text="Subclass1 Description"/>
                 </Panel>
 
-                <Panel class="SubclassContainer">
+                <Panel class="SubclassContainer" onactivate="ChooseSubclass(2)" onmouseover="MouseOver(2)" onmouseout="MouseOut(2)">
                     <Label id="SubclassTitle2" class="SubclassTitle" text="Subclass2"/>
-                    <Image id="SubclassImage2" onmouseover="MouseOver(2)" onmouseout="MouseOut(2)" class="SubclassImage" src="file://{images}/subclass_picker/beastmaster_sub2.png"/>
+                    <Image id="SubclassImage2" class="SubclassImage" src="file://{images}/subclass_picker/beastmaster_sub2.png"/>
                     <Label id="SubclassDesc2" class="SubclassDesc" text="Subclass2 Description"/>
                 </Panel>
 
-                <Panel class="SubclassContainer">
+                <Panel class="SubclassContainer" onactivate="ChooseSubclass(3)" onmouseover="MouseOver(3)" onmouseout="MouseOut(3)">
                     <Label id="SubclassTitle3" class="SubclassTitle" text="Subclass3"/>
-                    <Image id="SubclassImage3" onmouseover="MouseOver(3)" onmouseout="MouseOut(3)" class="SubclassImage" src="file://{images}/subclass_picker/beastmaster_sub3.png"/>
+                    <Image id="SubclassImage3" class="SubclassImage" src="file://{images}/subclass_picker/beastmaster_sub3.png"/>
                     <Label id="SubclassDesc3" class="SubclassDesc" text="Subclass3 Description"/>
                 </Panel>
             </Panel>

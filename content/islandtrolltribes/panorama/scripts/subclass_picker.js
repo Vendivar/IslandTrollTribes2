@@ -32,15 +32,17 @@ function ShowSubclassPick() {
     $("#SubclassDesc3").text = $.Localize(class_name+"_sub3_desc")
 }
 
-function MouseOver(num) {
-    $.Msg(num)
+function ChooseSubclass(num) {
+    GameEvents.SendCustomGameEventToServer( "player_selected_subclass", { subclassID : num } );
+    $("#SubclassPicker").AddClass("Hidden")
+    $("#TogglePicker").AddClass("Hidden") //Could be made into a different image/button for subclass-related stuff
+}
 
+function MouseOver(num) {
     $("#SubclassImage"+num).SetImage( "s2r://panorama/images/subclass_picker/"+class_name+"_sub"+num+"_glow.png" )
 }
 
 function MouseOut(num) {
-    $.Msg(num)
-
     $("#SubclassImage"+num).SetImage( "s2r://panorama/images/subclass_picker/"+class_name+"_sub"+num+".png" )
 }
 

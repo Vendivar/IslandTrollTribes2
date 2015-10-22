@@ -90,8 +90,8 @@ function ITT:SetDefaultCosmetics(hero)
 end
 
 function ITT:OnSubclassChange(event)
-    local playerID = event.playerID
-    local subclassID = event.subclassID
+    local playerID = event.PlayerID
+    local subclassID = tostring(event.subclassID)
 
     local hero = PlayerResource:GetSelectedHeroEntity(playerID)
     local class = GetHeroClass(hero)

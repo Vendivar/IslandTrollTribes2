@@ -38,5 +38,45 @@
         <Image style="opacity:0;" src="file://{images}/subclass_picker/hunter_sub2_glow.png" />
         <Image style="opacity:0;" src="file://{images}/subclass_picker/hunter_sub3.png" />
         <Image style="opacity:0;" src="file://{images}/subclass_picker/hunter_sub3_glow.png" />
+
+        <Image style="opacity:0;" src="file://{images}/subclass_picker/gatherer.png" />
+        <Image style="opacity:0;" src="file://{images}/subclass_picker/gatherer_sub1.png" />
+        <Image style="opacity:0;" src="file://{images}/subclass_picker/gatherer_sub1_glow.png" />
+        <Image style="opacity:0;" src="file://{images}/subclass_picker/gatherer_sub2.png" />
+        <Image style="opacity:0;" src="file://{images}/subclass_picker/gatherer_sub2_glow.png" />
+        <Image style="opacity:0;" src="file://{images}/subclass_picker/gatherer_sub3.png" />
+        <Image style="opacity:0;" src="file://{images}/subclass_picker/gatherer_sub3_glow.png" />
+
+        <Image style="opacity:0;" src="file://{images}/subclass_picker/mage.png" />
+        <Image style="opacity:0;" src="file://{images}/subclass_picker/mage_sub1.png" />
+        <Image style="opacity:0;" src="file://{images}/subclass_picker/mage_sub1_glow.png" />
+        <Image style="opacity:0;" src="file://{images}/subclass_picker/mage_sub2.png" />
+        <Image style="opacity:0;" src="file://{images}/subclass_picker/mage_sub2_glow.png" />
+        <Image style="opacity:0;" src="file://{images}/subclass_picker/mage_sub3.png" />
+        <Image style="opacity:0;" src="file://{images}/subclass_picker/mage_sub3_glow.png" />
+
+        <Image style="opacity:0;" src="file://{images}/subclass_picker/priest.png" />
+        <Image style="opacity:0;" src="file://{images}/subclass_picker/priest_sub1.png" />
+        <Image style="opacity:0;" src="file://{images}/subclass_picker/priest_sub1_glow.png" />
+        <Image style="opacity:0;" src="file://{images}/subclass_picker/priest_sub2.png" />
+        <Image style="opacity:0;" src="file://{images}/subclass_picker/priest_sub2_glow.png" />
+        <Image style="opacity:0;" src="file://{images}/subclass_picker/priest_sub3.png" />
+        <Image style="opacity:0;" src="file://{images}/subclass_picker/priest_sub3_glow.png" />
+
+        <Image style="opacity:0;" src="file://{images}/subclass_picker/scout.png" />
+        <Image style="opacity:0;" src="file://{images}/subclass_picker/scout_sub1.png" />
+        <Image style="opacity:0;" src="file://{images}/subclass_picker/scout_sub1_glow.png" />
+        <Image style="opacity:0;" src="file://{images}/subclass_picker/scout_sub2.png" />
+        <Image style="opacity:0;" src="file://{images}/subclass_picker/scout_sub2_glow.png" />
+        <Image style="opacity:0;" src="file://{images}/subclass_picker/scout_sub3.png" />
+        <Image style="opacity:0;" src="file://{images}/subclass_picker/scout_sub3_glow.png" />
+
+        <Image style="opacity:0;" src="file://{images}/subclass_picker/scout.png" />
+        <Image style="opacity:0;" src="file://{images}/subclass_picker/scout_sub1.png" />
+        <Image style="opacity:0;" src="file://{images}/subclass_picker/scout_sub1_glow.png" />
+        <Image style="opacity:0;" src="file://{images}/subclass_picker/scout_sub2.png" />
+        <Image style="opacity:0;" src="file://{images}/subclass_picker/scout_sub2_glow.png" />
+        <Image style="opacity:0;" src="file://{images}/subclass_picker/scout_sub3.png" />
+        <Image style="opacity:0;" src="file://{images}/subclass_picker/scout_sub3_glow.png" />
     </Panel>
 </root>
