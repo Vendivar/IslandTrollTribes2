@@ -37,6 +37,7 @@ function Select (argument) {
 }
 
 function MouseOver(argument) {
+    $.Msg($("#vid_"+argument))
     if (!$("#btn_"+argument).picked)
     {
         $("#btn_"+argument).SetImage( "s2r://panorama/images/class_picker/"+argument+"_hover.png" )
@@ -82,6 +83,16 @@ function ChooseClass() {
     $.Msg("Class Chosen:", currentlySelected)
     if (currentlySelected == "")
         currentlySelected = "random"
+
+    // Stop the videos
+    $("#vid_beastmaster").DeleteAsync( 0 )
+    $("#vid_gatherer").DeleteAsync( 0 )
+    $("#vid_hunter").DeleteAsync( 0 )
+    $("#vid_mage").DeleteAsync( 0 )
+    $("#vid_priest").DeleteAsync( 0 )
+    $("#vid_scout").DeleteAsync( 0 )
+    $("#vid_thief").DeleteAsync( 0 )
+
     GameEvents.SendCustomGameEventToServer( "player_selected_class", { selected_class : currentlySelected } );
 }
 

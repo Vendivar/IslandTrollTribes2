@@ -115,9 +115,21 @@ function ITT:OnSubclassChange(event)
     if modifier_lua then
         print("Adding",modifier_lua)
         hero:AddNewModifier(hero, nil, modifier_lua, {})
-        hero.subclassModifier = modifier_lua
+        hero.modelChangeModifierName = modifier_lua
         return
     end
+
+    -- Change Vision range
+    local stats = subclassInfo[new_name]['Vision']
+    if stats then
+        hero:SetDayTimeVisionRange(stats['VisionDaytimeRange'])
+        hero:SetDayTimeVisionRange(stats['VisionNighttimeRange'])
+    end
+
+    -- Give bonus attack, mana, health, attack rate and MS
+    local modifier_name = "modifier_"..class.."_"..new_name
+    ApplyModifier(hero, modifier_name)
+    hero.subclassModifierName = modifier_name
 
     -- Change the default wearables by new ones for that class
     local defaultWearables = subclassTable['defaults']
@@ -146,11 +158,15 @@ function ITT:ResetSubclass(playerID)
     print("Resetting subclass")
     hero.subclass = "none"
 
-    -- Handle beastmaster wearables/model
-    if hero.subclassModifier then
-        hero:RemoveModifierByName(hero.subclassModifier)
-        hero.subclassModifier = nil
+    -- Handle model change modifier
+    if hero.modelChangeModifierName then
+        hero:RemoveModifierByName(hero.modelChangeModifierName)
+        hero.modelChangeModifierName = nil
     end
+
+    -- Remove subclass stats
+    hero:RemoveModifierByName(hero.subclassModifierName)
+    hero.subclassModifierName = nil
 
     if not defaultWearables or not currentWearables then 
         return

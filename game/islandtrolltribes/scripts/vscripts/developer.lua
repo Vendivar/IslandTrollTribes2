@@ -32,7 +32,7 @@ function ITT:ChangeSubclass( playerID, subclassID )
 
     -- Build an event call (same as the panorama event)
     local event = {}
-    event.playerID = playerID
+    event.PlayerID = playerID
     event.subclassID = subclassID
     ITT:OnSubclassChange(event)
 end
