@@ -71,12 +71,12 @@
         <Image style="opacity:0;" src="file://{images}/subclass_picker/scout_sub3.png" />
         <Image style="opacity:0;" src="file://{images}/subclass_picker/scout_sub3_glow.png" />
 
-        <Image style="opacity:0;" src="file://{images}/subclass_picker/scout.png" />
-        <Image style="opacity:0;" src="file://{images}/subclass_picker/scout_sub1.png" />
-        <Image style="opacity:0;" src="file://{images}/subclass_picker/scout_sub1_glow.png" />
-        <Image style="opacity:0;" src="file://{images}/subclass_picker/scout_sub2.png" />
-        <Image style="opacity:0;" src="file://{images}/subclass_picker/scout_sub2_glow.png" />
-        <Image style="opacity:0;" src="file://{images}/subclass_picker/scout_sub3.png" />
-        <Image style="opacity:0;" src="file://{images}/subclass_picker/scout_sub3_glow.png" />
+        <Image style="opacity:0;" src="file://{images}/subclass_picker/thief.png" />
+        <Image style="opacity:0;" src="file://{images}/subclass_picker/thief_sub1.png" />
+        <Image style="opacity:0;" src="file://{images}/subclass_picker/thief_sub1_glow.png" />
+        <Image style="opacity:0;" src="file://{images}/subclass_picker/thief_sub2.png" />
+        <Image style="opacity:0;" src="file://{images}/subclass_picker/thief_sub2_glow.png" />
+        <Image style="opacity:0;" src="file://{images}/subclass_picker/thief_sub3.png" />
+        <Image style="opacity:0;" src="file://{images}/subclass_picker/thief_sub3_glow.png" />
     </Panel>
 </root>
