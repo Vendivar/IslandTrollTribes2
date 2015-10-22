@@ -19,9 +19,20 @@
         "modifier_hunger"
         {
             "IsHidden"  "1"
+            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
             "Properties"
             {
                 "MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT" "-1"
+                "MODIFIER_PROPERTY_MANA_REGEN_CONSTANT" "-1"
+            }
+            "ThinkInterval" "1.0"
+            "OnIntervalThink"
+            {
+                "RunScript"
+                {
+                    "ScriptFile"    "mechanics/hunger.lua"
+                    "Function"      "HungerCheck"
+                }
             }
         }
 

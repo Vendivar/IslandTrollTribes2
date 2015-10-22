@@ -586,9 +586,12 @@ function ITT:OnHeroInGame( hero )
     -- Add Innate Skills
     ITT:AdjustSkills(hero)
 
-    -- Initial Heat and Meat
+    -- Initial Heat
     ITT:SetHeat(hero, 100)
-    ITT:SetMeat(hero, 100)
+
+    -- Init Meat, Health and Energy Loss
+    ApplyModifier(hero, "modifier_meat_passive")
+    ApplyModifier(hero, "modifier_hunger")
 
     -- Set Wearables
     ITT:SetDefaultCosmetics(hero)
@@ -626,14 +629,6 @@ function ITT:SetHeat( hero, amount )
         ApplyModifier(hero, "modifier_heat_passive")
     end            
     
-    hero:SetModifierStackCount("modifier_heat_passive", nil, amount )
-end
-
-function ITT:SetMeat( hero, amount )
-    if not hero:HasModifier("modifier_meat_passive") then
-        ApplyModifier(hero, "modifier_meat_passive")
-    end            
-        
     hero:SetModifierStackCount("modifier_heat_passive", nil, amount )
 end
 
@@ -855,8 +850,8 @@ function ITT:OnTrollThink()
 
     -- This will run on every player, do stuff here
     for i=1, maxPlayerID, 1 do
-        Hunger(i)
-        Energy(i)
+        --Hunger(i)
+        --Energy(i)
         Heat(i)
         InventoryCheck(i)
         --print("burn")

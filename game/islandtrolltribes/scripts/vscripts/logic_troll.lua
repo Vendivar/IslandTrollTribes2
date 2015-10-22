@@ -27,7 +27,7 @@ allowed_item_combos_two["item_ward_observer"]  = {"item_clarity", "item_tango"}
 -- This reduces each players health by 3, every 3 seconds
 -- The return values ensure it closes when the game ends
 -- Possibly need to detect only living heroes, will test that with more players
-function Hunger(playerID)
+--[[function Hunger(playerID)
     hungerTicks = hungerTicks + 1
     if hungerTicks % TICKS_PER_HUNGER_UNIT == 0 then
         local player = PlayerInstanceFromIndex(playerID)
@@ -50,7 +50,7 @@ function Energy(playerID)
             end
         end
     end
-end
+end]]
 
 function Heat(playerID)
     heatTicks = heatTicks + 1
