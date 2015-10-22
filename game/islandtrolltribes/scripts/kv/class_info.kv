@@ -44,8 +44,8 @@
         // Beastmaster Subclasses
         "beastmaster"
         {
-            "1" "chicken_form"
-            "2" "pack_leader"
+            "1" "pack_leader"
+            "2" "chicken_form"
             "3" "shapeshifter"
             "defaults"
             {
@@ -67,6 +67,30 @@
                 "StatusMana"                "187"
                 "VisionDaytimeRange"        "1400"
                 "VisionNighttimeRange"      "675"
+            }
+        }
+        "pack_leader"
+        {
+            "modifier_lua"  "modifier_pack_leader"
+
+            "Stats"
+            {
+                "AttackDamageMin"       "16"
+                "AttackDamageMax"       "16"
+                "AttackRate"            "1.70"
+                "MovementSpeed"         "340"
+                "StatusHealth"          "192"
+                "StatusMana"            "200"
+                "VisionDaytimeRange"    "1400"
+                "VisionNighttimeRange"  "1800"
+            }
+
+            "Abilities"
+            {
+                "1" "ability_beastmaster_spiritofthebeast_sub2"
+                "2" "ability_beastmaster_tamepet"
+                "3" "ability_beastmaster_calltobattle"
+                "4" "ability_beastmaster_empathicrage"
             }
         }
         "chicken_form"
@@ -92,32 +116,6 @@
                 "3" "ability_beastmaster_fowlplay"
             }
         }
-
-        "pack_leader"
-        {
-            "modifier_lua"  "modifier_pack_leader"
-
-            "Stats"
-            {
-                "AttackDamageMin"       "16"
-                "AttackDamageMax"       "16"
-                "AttackRate"            "1.70"
-                "MovementSpeed"         "340"
-                "StatusHealth"          "192"
-                "StatusMana"            "200"
-                "VisionDaytimeRange"    "1400"
-                "VisionNighttimeRange"  "1800"
-            }
-
-            "Abilities"
-            {
-                "1" "ability_beastmaster_spiritofthebeast_sub2"
-                "2" "ability_beastmaster_tamepet"
-                "3" "ability_beastmaster_calltobattle"
-                "4" "ability_beastmaster_empathicrage"
-            }
-        }
-
         "shapeshifter"
         {
             "modifier_lua"  "modifier_shapeshifter"
@@ -146,9 +144,9 @@
         // Hunter Subclasses
         "hunter"
         {
-            "1" "juggernaut"
-            "2" "tracker"
-            "3" "warrior"
+            "1" "tracker"
+            "2" "warrior"
+            "3" "juggernaut"
             "defaults" //These are forced on hero spawn and the rest of the subclasses can just replace them directly
             {
                 "weapon"         "models/heroes/huskar/huskar_spear.vmdl"
@@ -163,6 +161,72 @@
                 "head"           "hide"
                 "shoulder"       "hide"
                 "arms"           "hide"
+            }
+        }
+        "tracker"
+        {
+            "Wearables"
+            {   
+                "weapon"         "models/heroes/huskar/huskar_spear.vmdl"
+                "offhand_weapon" "models/heroes/huskar/huskar_dagger.vmdl"          
+                "head"           "models/heroes/huskar/huskar_helmet.vmdl"
+                "shoulder"       "models/heroes/huskar/huskar_shoulder.vmdl"
+                "arms"           "models/heroes/huskar/huskar_bracer.vmdl"
+            }
+
+            "Stats"
+            {
+                "AttackDamageMin"       "18"
+                "AttackDamageMax"       "18"
+                "AttackRate"            "1.75"
+                "MovementSpeed"         "325"
+                "StatusHealth"          "192"
+                "StatusMana"            "200"
+                "VisionDaytimeRange"    "1500"
+                "VisionNighttimeRange"  "1100"
+            }
+
+            "Abilities"
+            {
+                "1" "ability_hunter_ensnare"
+                "2" "ability_hunter_greatertrack"
+                "3" "ability_hunter_dysenterytrack"
+                "4" "ability_hunter_sniff"
+                "5" "ability_hunter_hidetrackingbeacon"
+                "6" "ability_hunter_querybeacon"
+            }
+        }
+        "warrior"
+        {
+            "Wearables"
+            {
+                "weapon"         "models/items/huskar/obsidian_blade_spear/obsidian_blade_spear.vmdl"
+                "offhand_weapon" "models/items/huskar/obsidian_claw_of_the_jaguar_dagger/obsidian_claw_of_the_jaguar_dagger.vmdl"
+                "head"           "models/items/huskar/obsidian_claw_of_the_jaguar_helmet/obsidian_claw_of_the_jaguar_helmet.vmdl"
+                "shoulder"       "models/items/huskar/obsidian_claw_of_the_jaguar_shoulder/obsidian_claw_of_the_jaguar_shoulder.vmdl"
+                "arms"           "models/items/huskar/obsidian_claw_of_the_jaguar_arms/obsidian_claw_of_the_jaguar_arms.vmdl"
+            }
+
+            "Stats"
+            {
+                "AttackDamageMin"       "18"
+                "AttackDamageMax"       "18"
+                "AttackRate"            "1.75"
+                "MovementSpeed"         "325"
+                "StatusHealth"          "192"
+                "StatusMana"            "200"
+                "VisionDaytimeRange"    "1500"
+                "VisionNighttimeRange"  "1100"
+            }
+
+            "Abilities"
+            {
+                "1" "ability_hunter_ensnare"
+                "2" "ability_hunter_greatertrack"
+                "3" "ability_hunter_dysenterytrack"
+                "4" "ability_hunter_sniff"
+                "5" "ability_hunter_hidetrackingbeacon"
+                "6" "ability_hunter_querybeacon"
             }
         }
         "juggernaut"
@@ -198,80 +262,12 @@
             }
         }
 
-        "tracker"
-        {
-            "Wearables"
-            {   
-                "weapon"         "models/heroes/huskar/huskar_spear.vmdl"
-                "offhand_weapon" "models/heroes/huskar/huskar_dagger.vmdl"          
-                "head"           "models/heroes/huskar/huskar_helmet.vmdl"
-                "shoulder"       "models/heroes/huskar/huskar_shoulder.vmdl"
-                "arms"           "models/heroes/huskar/huskar_bracer.vmdl"
-            }
-
-            "Stats"
-            {
-                "AttackDamageMin"       "18"
-                "AttackDamageMax"       "18"
-                "AttackRate"            "1.75"
-                "MovementSpeed"         "325"
-                "StatusHealth"          "192"
-                "StatusMana"            "200"
-                "VisionDaytimeRange"    "1500"
-                "VisionNighttimeRange"  "1100"
-            }
-
-            "Abilities"
-            {
-                "1" "ability_hunter_ensnare"
-                "2" "ability_hunter_greatertrack"
-                "3" "ability_hunter_dysenterytrack"
-                "4" "ability_hunter_sniff"
-                "5" "ability_hunter_hidetrackingbeacon"
-                "6" "ability_hunter_querybeacon"
-            }
-        }
-
-        "warrior"
-        {
-            "Wearables"
-            {
-                "weapon"         "models/items/huskar/obsidian_blade_spear/obsidian_blade_spear.vmdl"
-                "offhand_weapon" "models/items/huskar/obsidian_claw_of_the_jaguar_dagger/obsidian_claw_of_the_jaguar_dagger.vmdl"
-                "head"           "models/items/huskar/obsidian_claw_of_the_jaguar_helmet/obsidian_claw_of_the_jaguar_helmet.vmdl"
-                "shoulder"       "models/items/huskar/obsidian_claw_of_the_jaguar_shoulder/obsidian_claw_of_the_jaguar_shoulder.vmdl"
-                "arms"           "models/items/huskar/obsidian_claw_of_the_jaguar_arms/obsidian_claw_of_the_jaguar_arms.vmdl"
-            }
-
-            "Stats"
-            {
-                "AttackDamageMin"       "18"
-                "AttackDamageMax"       "18"
-                "AttackRate"            "1.75"
-                "MovementSpeed"         "325"
-                "StatusHealth"          "192"
-                "StatusMana"            "200"
-                "VisionDaytimeRange"    "1500"
-                "VisionNighttimeRange"  "1100"
-            }
-
-            "Abilities"
-            {
-                "1" "ability_hunter_ensnare"
-                "2" "ability_hunter_greatertrack"
-                "3" "ability_hunter_dysenterytrack"
-                "4" "ability_hunter_sniff"
-                "5" "ability_hunter_hidetrackingbeacon"
-                "6" "ability_hunter_querybeacon"
-            }
-        }
-
         // Gatherer Subclasses
         "gatherer"
         {
-            "1" "remote_telegatherer"
+            "1" "herbal_master_telegatherer"
             "2" "radar_telegatherer"
-            "3" "herbal_master_telegatherer"
+            "3" "remote_telegatherer"
             "defaults"
             {
                 "offhand_weapon" "models/heroes/shadowshaman/weapon_offhand.vmdl"
@@ -279,6 +275,77 @@
                 "arms"           "models/heroes/shadowshaman/armarmor.vmdl"
                 "belt"           "models/heroes/shadowshaman/belt.vmdl"
                 "head"           "models/heroes/shadowshaman/helmet.vmdl"
+            }
+        }
+        "herbal_master_telegatherer"
+        {
+            "Wearables"
+            {                
+                "belt" "models/items/shadowshaman/vagabond_pack/vagabond_pack.vmdl"
+                "weapon" "models/items/shadowshaman/vagabond_packwand/vagabond_wand.vmdl"
+                "head" "models/items/shadowshaman/vagabond_hat/vagabond_hat.vmdl"
+                "offhand_weapon" "models/items/shadowshaman/vagabond_drink/vagabond_drink.vmdl"
+            }
+
+            "Stats"
+            {
+                "AttackDamageMin"       "18"
+                "AttackDamageMax"       "18"
+                "AttackRate"            "1.75"
+                "MovementSpeed"         "325"
+                "StatusHealth"          "192"
+                "StatusMana"            "200"
+                "VisionDaytimeRange"    "1500"
+                "VisionNighttimeRange"  "1100"
+            }
+
+            "Abilities"
+            {
+                "1" "ability_gatherer_itemradar"
+                "2" "ability_gatherer_radarmanipulations"
+                "3" "ability_gatherer_mixherbs"
+                "4" "ability_gatherer_telegather_herb"
+
+                //Subabilities
+                "5" "ability_gatherer_findhide"
+                "6" "ability_gatherer_findclayballcookedmeatorbone"
+                "7" "ability_gatherer_findmushroomstickortinder"
+            }
+        }
+        "radar_telegatherer"
+        {
+            "Wearables"
+            {             
+                "weapon" "models/items/shadowshaman/eki_bukaw_wand/eki_bukaw_wand.vmdl"
+                "head" "models/items/shadowshaman/visage_of_eki_bukaw/visage_of_eki_bukaw.vmdl"
+                "arms" "models/items/shadowshaman/eki_bukaw_bracers/eki_bukaw_bracers.vmdl"
+                "belt" "models/items/shadowshaman/records_of_the_eki_bukaw/records_of_the_eki_bukaw.vmdl"
+                "offhand_weapon" "models/items/shadowshaman/eki_bukaw_wand__offhand/eki_bukaw_wand__offhand.vmdl"
+            }
+
+            "Stats"
+            {
+                "AttackDamageMin"       "14"
+                "AttackDamageMax"       "14"
+                "AttackRate"            "1.75"
+                "MovementSpeed"         "325"
+                "StatusHealth"          "192"
+                "StatusMana"            "200"
+                "VisionDaytimeRange"    "1800"
+                "VisionNighttimeRange"  "1800"
+            }
+
+            "Abilities"
+            {
+                "1" "ability_gatherer_itemradar"
+                "2" "ability_gatherer_radarmanipulations_omni"
+                "3" "ability_gatherer_telegather_omni"
+                "4" "ability_gatherer_itemwarp"
+
+                //Subabilities
+                "5" "ability_gatherer_findhide"
+                "6" "ability_gatherer_findclayballcookedmeatorbone"
+                "7" "ability_gatherer_findmushroomstickortinder"
             }
         }
         "remote_telegatherer"
@@ -317,92 +384,100 @@
             }
         }
 
-        "radar_telegatherer"
-        {
-            "Wearables"
-            {             
-                "weapon" "models/items/shadowshaman/eki_bukaw_wand/eki_bukaw_wand.vmdl"
-                "head" "models/items/shadowshaman/visage_of_eki_bukaw/visage_of_eki_bukaw.vmdl"
-                "arms" "models/items/shadowshaman/eki_bukaw_bracers/eki_bukaw_bracers.vmdl"
-                "belt" "models/items/shadowshaman/records_of_the_eki_bukaw/records_of_the_eki_bukaw.vmdl"
-                "offhand_weapon" "models/items/shadowshaman/eki_bukaw_wand__offhand/eki_bukaw_wand__offhand.vmdl"
-            }
-
-            "Stats"
-            {
-                "AttackDamageMin"       "14"
-                "AttackDamageMax"       "14"
-                "AttackRate"            "1.75"
-                "MovementSpeed"         "325"
-                "StatusHealth"          "192"
-                "StatusMana"            "200"
-                "VisionDaytimeRange"    "1800"
-                "VisionNighttimeRange"  "1800"
-            }
-
-            "Abilities"
-            {
-                "1" "ability_gatherer_itemradar"
-                "2" "ability_gatherer_radarmanipulations_omni"
-                "3" "ability_gatherer_telegather_omni"
-                "4" "ability_gatherer_itemwarp"
-
-                //Subabilities
-                "5" "ability_gatherer_findhide"
-                "6" "ability_gatherer_findclayballcookedmeatorbone"
-                "7" "ability_gatherer_findmushroomstickortinder"
-            }
-        }
-
-        "herbal_master_telegatherer"
-        {
-            "Wearables"
-            {                
-                "belt" "models/items/shadowshaman/vagabond_pack/vagabond_pack.vmdl"
-                "weapon" "models/items/shadowshaman/vagabond_packwand/vagabond_wand.vmdl"
-                "head" "models/items/shadowshaman/vagabond_hat/vagabond_hat.vmdl"
-                "offhand_weapon" "models/items/shadowshaman/vagabond_drink/vagabond_drink.vmdl"
-            }
-
-            "Stats"
-            {
-                "AttackDamageMin"       "18"
-                "AttackDamageMax"       "18"
-                "AttackRate"            "1.75"
-                "MovementSpeed"         "325"
-                "StatusHealth"          "192"
-                "StatusMana"            "200"
-                "VisionDaytimeRange"    "1500"
-                "VisionNighttimeRange"  "1100"
-            }
-
-            "Abilities"
-            {
-                "1" "ability_gatherer_itemradar"
-                "2" "ability_gatherer_radarmanipulations"
-                "3" "ability_gatherer_mixherbs"
-                "4" "ability_gatherer_telegather_herb"
-
-                //Subabilities
-                "5" "ability_gatherer_findhide"
-                "6" "ability_gatherer_findclayballcookedmeatorbone"
-                "7" "ability_gatherer_findmushroomstickortinder"
-            }
-        }
-
         // Mage
         "mage"
         {
-            "1" "dementia_master"
-            "2" "elementalist"
-            "3" "hypnotist"
+            "1" "elementalist"
+            "2" "hypnotist"
+            "3" "dementia_master"
             "defaults"
             {
                 "shoulder" "models/heroes/witchdoctor/witchdoctor_bag.vmdl"
                 "head"     "models/heroes/witchdoctor/witchdoctor_head.vmdl"
-                "back"     ""
+                "back"     "" //Needs attachment
                 "belt"     "models/heroes/witchdoctor/witchdoctor_belt.vmdl"
                 "weapon"   "models/heroes/witchdoctor/witchdoctor_staff.vmdl"
+            }
+        }
+        "elementalist"
+        {
+            "Wearables"
+            {                   
+                "belt" "models/items/witchdoctor/tale_tellers_dress.vmdl"
+                "back" "models/items/witchdoctor/tale_tellers_drum.vmdl"
+                "shoulder" "models/items/witchdoctor/tale_tellers_poncho.vmdl"
+                "head" "models/items/witchdoctor/tale_tellers_hairhat.vmdl"
+                "weapon" "models/items/witchdoctor/witchstaff_weapon/witchstaff_weapon.vmdl"
+            }
+
+            "Stats"
+            {
+                "AttackDamageMin"       "15"
+                "AttackDamageMax"       "15"
+                "AttackRate"            "1.75"
+                "MovementSpeed"         "310"
+                "StatusHealth"          "192"
+                "StatusMana"            "200"
+                "VisionDaytimeRange"    "1250"
+                "VisionNighttimeRange"  "800"
+            }
+
+            "Abilities"
+            {
+                "1" "ability_mage_nulldamage"
+                "2" "ability_mage_negativeblast"
+                "3" "ability_mage_pumpup"
+                "4" "ability_mage_reducefood"
+                "5" "ability_mage_magefire"
+                "6" "ability_mage_spellbook"
+                "7" "ability_mage_eruption"
+                "8" "ability_mage_splittingfire"
+                "9" "ability_mage_defenderenergy"
+                "10" "ability_mage_electromagnet"
+                "11" "ability_mage_chainlightning"
+                "12" "ability_mage_freezingblast"
+                "13" "ability_mage_stormearthfire"
+            }
+        }
+        "hypnotist"
+        {
+            "Wearables"
+            {           
+                "back" "models/items/witchdoctor/voodoo_backpack.vmdl"
+                "weapon" "models/items/witchdoctor/voodo_staff.vmdl"
+                "head" "models/items/witchdoctor/voodoo_skullmask.vmdl"
+                "belt" "models/items/witchdoctor/voodoo_belt.vmdl"
+                "weapon" "models/items/witchdoctor/demon_skull_staff.vmdl"
+            }
+
+            "Stats"
+            {
+                "AttackDamageMin"       "15"
+                "AttackDamageMax"       "15"
+                "AttackRate"            "1.75"
+                "MovementSpeed"         "310"
+                "StatusHealth"          "192"
+                "StatusMana"            "200"
+                "VisionDaytimeRange"    "1250"
+                "VisionNighttimeRange"  "800"
+            }
+
+            "Abilities"
+            {
+                "1" "ability_mage_nulldamage"
+                "2" "ability_mage_negativeblast"
+                "3" "ability_mage_pumpup"
+                "4" "ability_mage_reducefood"
+                "5" "ability_mage_magefire"
+                "6" "ability_mage_dreameater"
+                "7" "ability_mage_anger"
+                "8" "ability_mage_depressionorb"
+                "9" "ability_mage_depressionaura"
+                "10" "ability_mage_jealousy"
+                "11" "ability_mage_seizures"
+                "12" "ability_mage_freezingblast"
+                "13" "ability_mage_stormearthfire"
+                "14" "ability_mage_stupefyingfield"
             }
         }
         "dementia_master"
@@ -445,89 +520,6 @@
                 "13" "ability_mage_stupefyingfield"
                 "14" "ability_mage_dementiasummoning"
                 "15" "ability_mage_summon_runes"
-            }
-        }
-
-        "elementalist"
-        {
-            "Wearables"
-            {                   
-                "belt" "models/items/witchdoctor/tale_tellers_dress.vmdl"
-                "back" "models/items/witchdoctor/tale_tellers_drum.vmdl"
-                "shoulder" "models/items/witchdoctor/tale_tellers_poncho.vmdl"
-                "head" "models/items/witchdoctor/tale_tellers_hairhat.vmdl"
-                "weapon" "models/items/witchdoctor/witchstaff_weapon/witchstaff_weapon.vmdl"
-            }
-
-            "Stats"
-            {
-                "AttackDamageMin"       "15"
-                "AttackDamageMax"       "15"
-                "AttackRate"            "1.75"
-                "MovementSpeed"         "310"
-                "StatusHealth"          "192"
-                "StatusMana"            "200"
-                "VisionDaytimeRange"    "1250"
-                "VisionNighttimeRange"  "800"
-            }
-
-            "Abilities"
-            {
-                "1" "ability_mage_nulldamage"
-                "2" "ability_mage_negativeblast"
-                "3" "ability_mage_pumpup"
-                "4" "ability_mage_reducefood"
-                "5" "ability_mage_magefire"
-                "6" "ability_mage_spellbook"
-                "7" "ability_mage_eruption"
-                "8" "ability_mage_splittingfire"
-                "9" "ability_mage_defenderenergy"
-                "10" "ability_mage_electromagnet"
-                "11" "ability_mage_chainlightning"
-                "12" "ability_mage_freezingblast"
-                "13" "ability_mage_stormearthfire"
-            }
-        }
-
-        "hypnotist"
-        {
-            "Wearables"
-            {           
-                "back" "models/items/witchdoctor/voodoo_backpack.vmdl"
-                "weapon" "models/items/witchdoctor/voodo_staff.vmdl"
-                "head" "models/items/witchdoctor/voodoo_skullmask.vmdl"
-                "belt" "models/items/witchdoctor/voodoo_belt.vmdl"
-                "weapon" "models/items/witchdoctor/demon_skull_staff.vmdl"
-            }
-
-            "Stats"
-            {
-                "AttackDamageMin"       "15"
-                "AttackDamageMax"       "15"
-                "AttackRate"            "1.75"
-                "MovementSpeed"         "310"
-                "StatusHealth"          "192"
-                "StatusMana"            "200"
-                "VisionDaytimeRange"    "1250"
-                "VisionNighttimeRange"  "800"
-            }
-
-            "Abilities"
-            {
-                "1" "ability_mage_nulldamage"
-                "2" "ability_mage_negativeblast"
-                "3" "ability_mage_pumpup"
-                "4" "ability_mage_reducefood"
-                "5" "ability_mage_magefire"
-                "6" "ability_mage_dreameater"
-                "7" "ability_mage_anger"
-                "8" "ability_mage_depressionorb"
-                "9" "ability_mage_depressionaura"
-                "10" "ability_mage_jealousy"
-                "11" "ability_mage_seizures"
-                "12" "ability_mage_freezingblast"
-                "13" "ability_mage_stormearthfire"
-                "14" "ability_mage_stupefyingfield"
             }
         }
 
@@ -584,7 +576,6 @@
                 "11" "ability_priest_angelicelemental"
             }
         }
-
         "master_healer"
         {
             "Wearables"
@@ -623,7 +614,6 @@
                 "11" "ability_priest_replenish"
             }
         }
-
         "shaman" //sage?
         {
             "Wearables"
@@ -671,16 +661,73 @@
         // Scout
         "scout"
         {
-            "1" "spy"
+            "1" "observer"
             "2" "radar_scout"
-            "3" "observer"
+            "3" "spy"
             "defaults"
             {
                 "arms"      "models/heroes/lion/lion_demonarm.vmdl"
                 "back"      "models/heroes/lion/lion_cape.vmdl"
-                "head"      "models/heroes/lion/lion_hat.vmdl"
+                "head"      "" //Needs attachment
                 "weapon"    "models/heroes/lion/lion_weapon.vmdl"
                 "shoulder"  "models/heroes/lion/lion_shoulder.vmdl"
+            }
+        }
+        "observer"
+        {
+            "Wearables"
+            { 
+                "arms" "models/items/lion/hell_arm/hell_arm.vmdl"
+                "back" "models/items/lion/hell_cape/hell_cape.vmdl"  
+                "shoulder" "models/items/lion/hell_shoulders/hell_shoulders.vmdl"
+                "weapon" "models/items/lion/hell_weapon/hell_weapon.vmdl"
+            }
+
+            "Stats"
+            {
+                "AttackDamageMin"       "16"
+                "AttackDamageMax"       "16"
+                "AttackRate"            "1.7"
+                "MovementSpeed"         "325"
+                "StatusHealth"          "192"
+                "StatusMana"            "200"
+                "VisionDaytimeRange"    "1500"
+                "VisionNighttimeRange"  "1600"
+            }
+
+            "Abilities"
+            {
+                "1" "ability_scout_greaterreveal"
+                "2" "ability_scout_wardthearea"
+            }
+        }
+        "radar_scout"
+        {
+            "Wearables"
+            {  
+                "back" "models/items/lion/cowl_of_the_malignant_corruption/cowl_of_the_malignant_corruption.vmdl"
+                "head" "models/items/lion/horns_of_the_malignant_corruption/horns_of_the_malignant_corruption.vmdl"
+                "shoulder" "models/items/lion/shards_of_the_malignant_corruption/shards_of_the_malignant_corruption.vmdl"
+                "weapon" "models/items/lion/scepter_of_corrupted_amber/scepter_of_corrupted_amber.vmdl"
+            }
+
+            "Stats"
+            {
+                "AttackDamageMin"       "16"
+                "AttackDamageMax"       "16"
+                "AttackRate"            "1.7"
+                "MovementSpeed"         "315"
+                "StatusHealth"          "192"
+                "StatusMana"            "200"
+                "VisionDaytimeRange"    "1300"
+                "VisionNighttimeRange"  "1300"
+            }
+
+            "Abilities"
+            {
+                "1" "ability_scout_enemyradar"
+                "2" "ability_scout_shadowsight"
+                "3" "ability_scout_motionsensorradar"
             }
         }
         "spy"
@@ -711,65 +758,6 @@
                 "1" "ability_scout_placeward"
                 "2" "ability_scout_destroyward"
                 "3" "ability_scout_chainreveal"
-            }
-        }
-
-        "radar_scout"
-        {
-            "Wearables"
-            {  
-                "back" "models/items/lion/cowl_of_the_malignant_corruption/cowl_of_the_malignant_corruption.vmdl"
-                "head" "models/items/lion/horns_of_the_malignant_corruption/horns_of_the_malignant_corruption.vmdl"
-                "shoulder" "models/items/lion/shards_of_the_malignant_corruption/shards_of_the_malignant_corruption.vmdl"
-                "weapon" "models/items/lion/scepter_of_corrupted_amber/scepter_of_corrupted_amber.vmdl"
-            }
-
-            "Stats"
-            {
-                "AttackDamageMin"       "16"
-                "AttackDamageMax"       "16"
-                "AttackRate"            "1.7"
-                "MovementSpeed"         "315"
-                "StatusHealth"          "192"
-                "StatusMana"            "200"
-                "VisionDaytimeRange"    "1300"
-                "VisionNighttimeRange"  "1300"
-            }
-
-            "Abilities"
-            {
-                "1" "ability_scout_enemyradar"
-                "2" "ability_scout_shadowsight"
-                "3" "ability_scout_motionsensorradar"
-            }
-        }
-
-        "observer"
-        {
-            "Wearables"
-            { 
-                "arms" "models/items/lion/hell_arm/hell_arm.vmdl"
-                "back" "models/items/lion/hell_cape/hell_cape.vmdl"  
-                "shoulder" "models/items/lion/hell_shoulders/hell_shoulders.vmdl"
-                "weapon" "models/items/lion/hell_weapon/hell_weapon.vmdl"
-            }
-
-            "Stats"
-            {
-                "AttackDamageMin"       "16"
-                "AttackDamageMax"       "16"
-                "AttackRate"            "1.7"
-                "MovementSpeed"         "325"
-                "StatusHealth"          "192"
-                "StatusMana"            "200"
-                "VisionDaytimeRange"    "1500"
-                "VisionNighttimeRange"  "1600"
-            }
-
-            "Abilities"
-            {
-                "1" "ability_scout_greaterreveal"
-                "2" "ability_scout_wardthearea"
             }
         }
 
@@ -821,7 +809,6 @@
                 "5" "ability_thief_blur"
             }
         }
-
         "contortionist"
         {
             "Wearables"
@@ -855,7 +842,6 @@
                 "5" "ability_thief_telethief"
             }
         }
-
         "assassin"
         {
             "Wearables"
