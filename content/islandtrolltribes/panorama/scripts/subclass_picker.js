@@ -1,13 +1,7 @@
 "use strict";
 
-GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_FLYOUT_SCOREBOARD, false );      //Lefthand flyout scoreboard.
-GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_INVENTORY_SHOP, false );     //Shop portion of the Inventory.
-GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_INVENTORY_QUICKBUY, false );     //Quickbuy.
-GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_INVENTORY_COURIER, false );      //Courier controls.
-GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_INVENTORY_PROTECT, false );      //Glyph.
-GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_SHOP_SUGGESTEDITEMS, false );      //Suggested items shop panel.
-
 var subclassPickerVisible;
+var locked = Players.GetLevel(Game.GetLocalPlayerID()) < 6;
 var class_name;
 var heroToClass = [];
 heroToClass['npc_dota_hero_lycan'] = "beastmaster";
@@ -17,6 +11,13 @@ heroToClass['npc_dota_hero_witch_doctor'] = "mage";
 heroToClass['npc_dota_hero_dazzle'] = "priest";
 heroToClass['npc_dota_hero_lion'] = "scout";
 heroToClass['npc_dota_hero_riki'] = "thief";
+
+function UnlockSubclassPick() {
+    $.Msg("Player ",Players.GetLocalPlayer()," unlocked subclass")
+    $("#TogglePicker").RemoveClass("Locked")
+    $("#TogglePicker").AddClass("Unlocked")
+    locked = false;
+}
 
 function ShowSubclassPick() {
     $("#SubclassTitle1").text = $.Localize(class_name+"_sub1_name")
@@ -39,33 +40,67 @@ function ChooseSubclass(num) {
 }
 
 function MouseOver(num) {
+    if (locked) return
+
     $("#SubclassImage"+num).SetImage( "s2r://panorama/images/subclass_picker/"+class_name+"_sub"+num+"_glow.png" )
 }
 
 function MouseOut(num) {
+    if (locked) return
+
     $("#SubclassImage"+num).SetImage( "s2r://panorama/images/subclass_picker/"+class_name+"_sub"+num+".png" )
 }
 
 function TogglePicker() {
+    if (locked) return
+
     subclassPickerVisible = !subclassPickerVisible
 
     $.Msg("TogglePicker, Visible: ",subclassPickerVisible)
     if (subclassPickerVisible)
     {
         $("#SubclassPicker").RemoveClass("Hidden")
+        $("#TogglePicker").AddClass("Hover")
         ShowSubclassPick()
     }
     else
+    {
         $("#SubclassPicker").AddClass("Hidden")
+        $("#TogglePicker").RemoveClass("Hover")
+    }
+}
+
+
+function ClosePicker() {
+    $.Msg("Closed Picker")
+    subclassPickerVisible = false;
+    $("#SubclassPicker").AddClass("Hidden")
+    $("#TogglePicker").RemoveClass("Hover")
+}
+
+function MouseOverPicker() {
+    if (!subclassPickerVisible && !locked)
+    {
+        $("#TogglePicker").AddClass("Hover")
+    }
+}
+
+function MouseOutPicker() {
+    if (!subclassPickerVisible && !locked)
+    {
+        $("#TogglePicker").RemoveClass("Hover")
+    }
 }
 
 (function () {
     $.Msg("Subclass Picker Load")
 
+    $("#TogglePicker").AddClass("Locked")
     $("#SubclassPicker").AddClass("Hidden")
     subclassPickerVisible = false;
+    
     var hero_name = Entities.GetUnitName(Players.GetPlayerHeroEntityIndex( Players.GetLocalPlayer() ))
     class_name = heroToClass[hero_name]
 
-    //GameEvents.Subscribe( "team_update_class", TeamUpdate );
+    GameEvents.Subscribe( "player_unlock_subclass", UnlockSubclassPick );
 })();

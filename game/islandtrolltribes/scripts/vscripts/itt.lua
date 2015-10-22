@@ -1320,12 +1320,19 @@ end
 
 --Listener to handle level up
 function ITT:OnPlayerGainedLevel(event)
-    print("PlayerGainedLevel")
     local player = EntIndexToHScript(event.player)
+    local playerID = player:GetPlayerID()
     local hero = player:GetAssignedHero()
-    local class = hero:GetClassname()
+    local class = GetHeroClass(hero)
     local level = event.level
     hero:SetAbilityPoints(0)
+
+    print("[ITT] OnPlayerLevelUp - Player "..playerID.." ("..class..") has reached level "..level)
+
+    -- If the hero reached level 6 and hasn't unlocked a subclass, make the button clickable
+    if level >= 6 and not HasSubClass(hero) then
+        CustomGameEventManager:Send_ServerToPlayer(player, "player_unlock_subclass", {})
+    end
 
     -- contains skill progression for all classes
     -- first list denotes level 2 skills, since level 1 skills are automatically granted on spawning

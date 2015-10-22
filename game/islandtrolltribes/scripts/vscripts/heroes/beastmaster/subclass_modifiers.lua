@@ -8,7 +8,7 @@ function modifier_chicken_form:GetModifierModelChange()
 end
 
 function modifier_chicken_form:IsHidden() 
-  return false
+  return true
 end
 
 modifier_pack_leader  = class({})
@@ -21,7 +21,7 @@ function modifier_pack_leader:GetModifierModelChange()
 end
 
 function modifier_pack_leader:IsHidden() 
-  return false
+  return true
 end
 
 modifier_shapeshifter = class({})
@@ -34,5 +34,5 @@ function modifier_shapeshifter:GetModifierModelChange()
 end
 
 function modifier_shapeshifter:IsHidden() 
-  return false
+  return true
 end

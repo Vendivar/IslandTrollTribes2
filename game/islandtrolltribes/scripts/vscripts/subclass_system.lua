@@ -110,15 +110,6 @@ function ITT:OnSubclassChange(event)
     print("New Subclass:", new_name)
     hero.subclass = new_name
 
-    -- Handle MODIFIER_PROPERTY_MODEL_CHANGE
-    local modifier_lua = subclassInfo[new_name]['modifier_lua']
-    if modifier_lua then
-        print("Adding",modifier_lua)
-        hero:AddNewModifier(hero, nil, modifier_lua, {})
-        hero.modelChangeModifierName = modifier_lua
-        return
-    end
-
     -- Change Vision range
     local stats = subclassInfo[new_name]['Vision']
     if stats then
@@ -131,9 +122,21 @@ function ITT:OnSubclassChange(event)
     ApplyModifier(hero, modifier_name)
     hero.subclassModifierName = modifier_name
 
+    -- Handle MODIFIER_PROPERTY_MODEL_CHANGE
+    local modifier_lua = subclassInfo[new_name]['modifier_lua']
+    if modifier_lua then
+        print("Adding",modifier_lua)
+        hero:AddNewModifier(hero, nil, modifier_lua, {})
+        hero.modelChangeModifierName = modifier_lua
+    end
+
     -- Change the default wearables by new ones for that class
     local defaultWearables = subclassTable['defaults']
     local newWearables = subclassInfo[new_name]['Wearables']
+
+    if not defaultWearables or not currentWearables then 
+        return
+    end
 
     for slot,modelName in pairs(defaultWearables) do
         SwapWearable(hero, defaultWearables[slot], newWearables[slot])
@@ -165,8 +168,10 @@ function ITT:ResetSubclass(playerID)
     end
 
     -- Remove subclass stats
-    hero:RemoveModifierByName(hero.subclassModifierName)
-    hero.subclassModifierName = nil
+    if (hero.subclassModifierName) then
+        hero:RemoveModifierByName(hero.subclassModifierName)
+        hero.subclassModifierName = nil
+    end
 
     if not defaultWearables or not currentWearables then 
         return

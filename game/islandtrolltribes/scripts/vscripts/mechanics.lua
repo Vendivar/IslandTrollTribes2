@@ -18,6 +18,10 @@ function GetSubClass( hero )
     return hero.subclass or 'none'
 end
 
+function HasSubClass( hero )
+    return GetSubClass(hero) ~= 'none'
+end
+
 ------------------------------------------------
 --              Ability functions             --
 ------------------------------------------------

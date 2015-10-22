@@ -12,10 +12,35 @@
 
 #TogglePicker
 {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     horizontal-align: right;
-    vertical-align: bottom;
+    vertical-align: bottom; 
+}
+
+.Hover
+{
+    border: 2px;
+    brightness: 1.5;
+    //box-shadow: inset 1px 1px 50% gold;
+}
+
+.Locked
+{
+    saturation: 0;
+}
+
+.Unlocked
+{
+    saturation: 1;
+}
+
+#CloseButton
+{
+    width: 42px;
+    height: 42px;
+    horizontal-align: right;
+    vertical-align: top; 
 }
 
 #SubclassPicker
