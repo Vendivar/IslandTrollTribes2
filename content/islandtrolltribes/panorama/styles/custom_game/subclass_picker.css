@@ -83,9 +83,9 @@
 .SubclassTitle
 {
     horizontal-align: center;
-    margin-top: 15px;
+    margin-top: 20px;
     color: gradient( linear, 0% 0%, 0% 100%, from( #C0C0C0  ), to( #686868  ) );
-    font-size: 25px;
+    font-size: 18px;
     font-family: Goudy Trajan Medium;
     font-weight: bold;
     text-align: center;
@@ -107,6 +107,6 @@
     font-family: Ariel;
     font-weight: Thin;
     text-align: left;
-    padding: 20px 20px 10px 10px;
+    padding: 25px 20px 0px 5px;
     text-shadow: 0px 0px 3px 3.0 #000000;
 }

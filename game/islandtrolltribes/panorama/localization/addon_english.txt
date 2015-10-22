@@ -28,11 +28,13 @@
         "SubclassSelectText"   "Choose Subclass"
 		
 		"hunter_sub1_name" "Tracker"
-        "hunter_sub1_desc" "The Tracker is an expert at locating, following, and locking down unsuspecting prey. He can use his several tracking skills to locate and keep tabs on unseen enemies.\n\nFunction: Hunting, Combat, Tracking Enemies Initial Ability: Ensnare\nLearnable Abilities: Greater Track, Dysentery Track, Sniff, Hide Tracking Beacon, Query Beacon\nBase Damage: 18-18\nAttack Cooldown: 1.75\nMovement Speed: 350"
+        "hunter_sub1_desc" "The Tracker is an expert at locating, following, and locking down unsuspecting prey. He can use his several tracking skills to locate and keep tabs on unseen enemies.\n\n\nFunction: Hunting, Combat, Tracking Enemies Initial Ability: Ensnare\nLearnable Abilities: Greater Track, Dysentery Track, Sniff, Hide Tracking Beacon, Query Beacon\nBase Damage: 18-18\nAttack Cooldown: 1.75\nMovement Speed: 350"
+		
 		"hunter_sub2_name" "Warrior"
-        "hunter_sub2_desc" "The Warrior's axes thirst for blood. He excels at beating his foes to a bloody pulp. He is the epitome of offensive combat and is always willing to prove it.\n\nFunction: Offensive Combat\nInitial Abilities: Ensnare, Endurance\nLearnable Ability: Giant Swing\nBase Damage: 20-20\nAttack Cooldown: 1.65\nMovement Speed: 300"
+        "hunter_sub2_desc" "The Warrior's axes thirst for blood. He excels at beating his foes to a bloody pulp. He is the epitome of offensive combat and is always willing to prove it. Through use of his cleave and his endurance he is a foe to be recokned with.\n\n\nFunction: Offensive Combat\nInitial Abilities: Ensnare, Endurance\nLearnable Ability: Giant Swing\nBase Damage: 20-20\nAttack Cooldown: 1.65\nMovement Speed: 300"
+		
 		"hunter_sub3_name" "Juggernaut"
-        "hunter_sub3_desc" "The Juggernaut specializes in taking hits and defensive tactics, while still maintaining the ability to pack a punch. His policy on battle is that the best offense is a good defense.\n\nFunction: Defensive Combat\nInitial Abilities: Ensnare\nLearnable Abilities: Staying Power\nBase Damage: 16-16\nAttack Cooldown: 1.75\nMovement Speed: 300"
+        "hunter_sub3_desc" "The Juggernaut specializes in taking hits and defensive tactics, while still maintaining the ability to pack a punch. His policy on battle is that the best offense is a good defense.\n\n\n\n\nFunction: Defensive Combat\nInitial Abilities: Ensnare\nLearnable Abilities: Staying Power\nBase Damage: 16-16\nAttack Cooldown: 1.75\nMovement Speed: 300"
 
         "beastmaster_sub1_name" "Pack Leader"
         "beastmaster_sub1_desc" "The Pack Leader is a form of true dedication to one's fellow animal, and because of this he can control more than one pet, while focusing on enhancing them rather than himself.\n\n\n\nInitial Abilities: Spirit of the Beast, Tame Pet\nLearnable Abilities: Call to Battle, Empathic Rage\nBase damage: 16-16\nAttack Cooldown: 1.70\nMovement Speed: 340"
@@ -44,22 +46,22 @@
         "beastmaster_sub3_desc" "The Shapeshifter forgoes his bond with the beast and instead chooses to become one. Can shift into several forms, each with it's own set of skills to accomodate any situation.\n\n\n\nInitial Abilities: Shapeshift to Normal Form, Shapeshift to Elk Form\nLearnable Abilities: Shapeshift to Wolf Form, Shapeshift to Bear Form\nBase damage: 18-18\nAttack Cooldown: 1.75\nMovement Speed: 340"
 		
 		"mage_sub1_name" "Elementalist"
-		"mage_sub1_desc"	"The Elementalist is a pure offensive powerhouse that focuses on calling on the destructive forces of nature itself to burn, shock and freeze foes.\n\nFunction: Combat, Nuker\nInitial Abilities: All previous Mage spells\nLearnable Abilities: Eruption, Splitting Fire, Defender Energy, Electromagnet, Chain Lightning, Freezing Blast, Storm Earth and Fire\nBase Damage: 15-15\nAttack Cooldown: 1.75\nMovement Speed: 310" 
+		"mage_sub1_desc"	"The Elementalist is a pure offensive powerhouse that focuses on calling on the destructive forces of nature itself to burn, shock and freeze foes.\n\nFunction: Combat, Nuker\nInitial Abilities: Null Damage, Negative Blast, Pump Up, Reduce Food, Mage Fire.\nLearnable Abilities: Eruption, Splitting Fire, Defender Energy, Electromagnet, Chain Lightning, Freezing Blast, Storm Earth and Fire\nBase Damage: 15-15 / Cooldown: 1.75\nMovement Speed: 310" 
 	
 		"mage_sub2_name" "Hypnotist"
-		"mage_sub2_desc"	"The Hypnotist uses dark magic to attack the minds of his enemies and disable foes into submission while depleting their energy and will to fight.\n\nFunction: Combat, Energy Destruction\nInitial Abilities: Null Damage, Negative Blast, Pump Up, Reduce Food, Mage Fire\nLearnable Abilities: Hypnosis, Dream Eater, Anger, Depression Orb, Depression Aura, Jealousy, Seizures, Stupefying Field\nBase Damage: 15-15\nAttack Cooldown: 1.75\nMovement Speed: 310"
+		"mage_sub2_desc"	"The Hypnotist uses dark magic to attack the minds of his enemies and disable foes into submission while depleting their energy and will to fight.\n\nFunction: Combat, Energy Destruction\nInitial Abilities: Null Damage, Negative Blast, Pump Up, Reduce Food, Mage Fire\nLearnable Abilities: Hypnosis, Dream Eater, Anger, Depression Orb, Depression Aura, Jealousy, Seizures, Stupefying Field\nBase Damage: 15-15 / Cooldown: 1.75\nMovement Speed: 310"
 	
 		"mage_sub3_name"  "Dementia Master"
-		"mage_sub3_desc"	"The Dementia Master does not get many new spells, instead he focuses on increasing the power of his existing spells and creating new spells from raw magical runes, in addition to occasionally summoning help from the other side.\n\nFunction: Combat, Special and RNG\nInitial Abilities: Giga Negative Blast, Quantum Null Damage, Reduce Food, Mage Fire\nLearnable Abilities: Metronome, Maddening Discharge,Dark Gate, Dementia Mastery\nBase Damage: 15-15\nAttack Cooldown: 1.75\nMovement Speed: 310"
+		"mage_sub3_desc"	"The Dementia Master does not get many new spells, instead he focuses on increasing the power of his existing spells and creating new spells from raw magical runes, in addition to summoning help from the other side.\n\nFunction: Combat, Special and RNG\nInitial Abilities: Giga Negative Blast, Quantum Null Damage, Reduce Food\nLearnable Abilities: Metronome, Maddening Discharge,Dementia Mastery\nBase Damage: 15-15 / Cooldown: 1.75\nMovement Speed: 310"
 		
 		"gatherer_sub1_name" "Herbmaster Telegatherer"
-		"gatherer_sub1_desc" "The Herbmaster Telegatherer can mix potions on-the-go and send resources straight to a friendly camp fire from anywhere on the map.\n\n\nFunction: Collecting, and creating items, mixing potions.\nInitial Ability: Mix Herbs\nLearnable Ability: Telegather\nBase Damage: 14-14\nAttack Cooldown: 1.75\nMovement Speed: 325"
+		"gatherer_sub1_desc" "The Herbmaster Telegatherer can mix potions on-the-go and send resources straight to a friendly camp fire from anywhere on the map.\n\n\n\n\nFunction: Collecting, and creating items, mixing potions.\nInitial Ability: Mix Herbs\nLearnable Ability: Telegather\nBase Damage: 14-14\nAttack Cooldown: 1.75\nMovement Speed: 325"
 		
 		"gatherer_sub2_name" "The Radar Telegatherer"
-		"gatherer_sub2_desc" "The Radar Telegatherer can discern different resources on the minimap and send them straight to a friendly camp fire from anywhere on the map.\n\n\nFunction: Finding, collecting, and creating items.\nInitial Abilities: Radar Manipulations, Radar\nLearnable Ability Telegather\nBase Damage: 14-14\nAttack Cooldown: 1.75\nMovement Speed: 325"
+		"gatherer_sub2_desc" "The Radar Telegatherer can discern different resources on the minimap and send them straight to a friendly camp fire from anywhere on the map.\n\n\n\nFunction: Finding, collecting, and creating items.\nInitial Abilities: Radar Manipulations, Radar\nLearnable Ability Telegather\nBase Damage: 14-14\nAttack Cooldown: 1.75\nMovement Speed: 325"
 		
 		"gatherer_sub3_name" "Remote Telegatherer"
-		"gatherer_sub3_desc" "What the Remote Telegatherer lacks in precision, he makes up for in raw gathering power. He can teleport nearby resources to his feet, and then send them all to a friendly camp fire.\n\n\nFunction: Find, collecting, and creating items\nInitial Ability: Item Warp\nLearnable Ability: Telegather\nBase Damage: 14-14\nAttack Cooldown: 1.75\nMovement Speed: 325"
+		"gatherer_sub3_desc" "What the Remote Telegatherer lacks in precision, he makes up for in raw gathering power. He can teleport nearby resources to his feet, and then send them all to a friendly camp fire.\n\n\n\nFunction: Find, collecting, and creating items\nInitial Ability: Item Warp\nLearnable Ability: Telegather\nBase Damage: 14-14\nAttack Cooldown: 1.75\nMovement Speed: 325"
 		
 		"priest_sub1_name" "Booster"
 		"priest_sub1_desc" "The Booster focuses on enhancing his allies with powerful magic so they can charge into battle wielding strength never before thought possible.\n\nFunction: Defensive Buffs, Combat Support\nInitial Abilities: The Glow, Resist All, Omnicure, Cure All\nLearnable Abilities: Pump Up, Lightning Shield, Fortitude, Troll Battle Call, Spirit Link, Map Magic, Angelic Elemental\nBase Damage: 14-14\nAttack Cooldown: 1.75\nMovement Speed: 300"
@@ -68,24 +70,24 @@
 		"priest_sub2_desc" "The Master Healer excels at keeping his allies alive and healthy, while also managing their well-being so that they are ready for battle at any moment.\n\nFunction: Survival, Combat Support\nInitial Abilities: The Glow, Resist All, Omnicure, Cure All\nLearnable Abilities: Healing Spray, Healing Wave, Self\nPreservation, Mix Health, Ranged Heal, Replenish\nBase Damage: 14-14\nAttack Cooldown: 1.75\nMovement Speed: 300"
 		
 		"priest_sub3_name" "Shaman"
-		"priest_sub3_desc" "The Shaman utilizes spiritual magic and herbalism to support his allies. He can also leave his body for short periods of time to scout around in the spiritual realm.\n\nfunction: Defensive Buffs, Combat Support, Healing\nInitial Abilities: The Glow, Resist All, Omnicure, Cure All, Spirit Link, Healing Wave, Mix Health, Mix Energy, Mix Heat, Self Preservation, Map Magic, Troll Battle Call\nLearnable Abilities: Increase Metabolism, Maximum Fervor, Light Gate\nBase Damage: 14-14\nAttack Cooldown: 1.75\nMovement Speed: 300"
+		"priest_sub3_desc" "The Shaman utilizes spiritual magic and herbalism to support his allies. He can also leave his body for short periods of time to scout around.\n\nFunction: Combat Support, Healing\nInitial Abilities: The Glow, Resist All, Cure All, Spirit Link, Healing Wave, Mix Health/Energy/Heat, Self Preservation, Map Magic, Battle Call\nLearnable Abilities: Increase Metabolism, Maximum Fervor, Light Gate\nBase Damage: 14-14 / Cooldown: 1.75\nMovement Speed: 300"
 		
 		"scout_sub1_name" "Observer"
-		"scout_sub1_desc" "The Observer can place wards in a large area around himself, giving vision to his allies of large sections of the map for long periods of time without much setup time, in addition to having a massive reveal.\n\nFunction: Reconnaissance\nInitial Ability: Greater Reveal\nLearnable Ability: Ward the Area\nBase Damage: 16-16\nAttack Cooldown: 1.70\nMovement Speed: 325"
+		"scout_sub1_desc" "The Observer can place wards in a large area around himself, giving vision to his allies of large sections of the map for long periods of time without much setup time, in addition to having a massive reveal.\n\n\n\nFunction: Reconnaissance\nInitial Ability: Greater Reveal\nLearnable Ability: Ward the Area\nBase Damage: 16-16\nAttack Cooldown: 1.70\nMovement Speed: 325"
 		
 		"scout_sub2_name" "The Radar Scout"
-		"scout_sub2_desc" "The Radar Scout is the master of detection, able to automatically spot moving creatures that trigger his radar, as well as see otherwise invisible units.\n\nFunction Enemy: Detection\nInitial Abilities: Enemy Radar, Shadow Sight\nLearnable Ability: Motion Sensor Radar\nBase Damage: 16-16\nAttack Cooldown: 1.70\nMovement Speed: 315"
+		"scout_sub2_desc" "The Radar Scout is the master of detection, able to automatically spot moving creatures that trigger his radar, as well as see otherwise invisible units.\n\n\n\n\nFunction Enemy: Detection\nInitial Abilities: Enemy Radar, Shadow Sight\nLearnable Ability: Motion Sensor Radar\nBase Damage: 16-16\nAttack Cooldown: 1.70\nMovement Speed: 315"
 		
 		"scout_sub3_name" "Spy"
-		"scout_sub3_desc" "The Spy excels at foreseeing assaults by enemy trolls. His vision can bounce from wards to enemies, and can potentially reveal an entire island with careful ward placement.\n\nfunction: Reconnaissance, Enemy Detection\nInitial Abilities: Place ward, Destroy ward\nLearnable Abilities: Chain Reveal\nBase Damage: 16-16\nAttack Cooldown: 1.70\nMovement Speed: 335"
+		"scout_sub3_desc" "The Spy excels at foreseeing assaults by enemy trolls. His vision can bounce from wards to enemies, and can potentially reveal an entire island with careful ward placement.\n\n\nFunction: Reconnaissance, Enemy Detection\nInitial Abilities: Place ward, Destroy ward\nLearnable Abilities: Chain Reveal\nBase Damage: 16-16\nAttack Cooldown: 1.70\nMovement Speed: 335"
 		
 		"thief_sub1_name" "Escape Artist"
-		"theif_sub1_desc" "The Escape Artist is an expert at getting in and out of anywhere, and fast. His mobility-themed skills make him very hard to catch, and very hard to get away from.\n\nFunction: Stealing, Escape\nInitial Abilities: Teleport, Cloak\nLearnable Ability: Jump, Camouflage, Blur\nBase Damage: 16-16\nAttack Cooldown: 1.75\nMovement Speed: 330"
+		"thief_sub1_desc" "The Escape Artist is an expert at getting in and out of anywhere, and fast. His mobility-themed skills make him very hard to catch, and very hard to get away from.\n\n\n\nFunction: Stealing, Escape\nInitial Abilities: Teleport, Cloak\nLearnable Ability: Jump, Camouflage, Blur\nBase Damage: 16-16\nAttack Cooldown: 1.75\nMovement Speed: 330"
 		
 		"thief_sub2_name" "Contortionist"
-		"theif_sub2_desc" "The Contortionist is skilled in the art of infiltration. He can sabotage and steal from enemy bases and disappear before they even know what hit them.\n\nFunction: Harassment, Stealing\nInitial Abilities: Teleport, Cloak\nLearnable Ability: Smoke Stream, Tele-Thief, Nether Fade\nBase Damage: 15-15\nAttack Cooldown: 1.75\nMovement Speed: 310"
+		"thief_sub2_desc" "The Contortionist is skilled in the art of infiltration. He can sabotage and steal from enemy bases and disappear before they even know what hit them.\n\n\n\n\nFunction: Harassment, Stealing\nInitial Abilities: Teleport, Cloak\nLearnable Ability: Smoke Stream, Tele-Thief, Nether Fade\nBase Damage: 15-15\nAttack Cooldown: 1.75\nMovement Speed: 310"
 		
 		"thief_sub3_name" "Assassin"
-		"theif_sub3_desc" "The Assassin has one simple task: to end the lives of enemy trolls. Focused on combat, the Assassin can make an enemy's simple mistake their downfall.\n\nFunction: Harassment, Combat\nInitial Abilities: Teleport, Cloak\nLearnable Ability: Throwing Knife, Planning Phase, Assassinate\nBase Damage: 18-18\nAttack Cooldown: 1.85\nMovement Speed: 310"		
+		"thief_sub3_desc" "The Assassin has one simple task: to end the lives of enemy trolls. Focused on combat, the Assassin can make an enemy's simple mistake their downfall.\n\n\n\n\nFunction: Harassment, Combat\nInitial Abilities: Teleport, Cloak\nLearnable Ability: Throwing Knife, Planning Phase, Assassinate\nBase Damage: 18-18\nAttack Cooldown: 1.85\nMovement Speed: 310"		 
     }
 }
