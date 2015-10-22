@@ -130,6 +130,9 @@ function ITT:OnSubclassChange(event)
         hero.modelChangeModifierName = modifier_lua
     end
 
+    -- Update skills
+    ITT:AdjustSkills( hero )
+
     -- Change the default wearables by new ones for that class
     local defaultWearables = subclassTable['defaults']
     local newWearables = subclassInfo[new_name]['Wearables']
@@ -160,6 +163,9 @@ function ITT:ResetSubclass(playerID)
 
     print("Resetting subclass")
     hero.subclass = "none"
+
+    -- Update skills
+    ITT:AdjustSkills( hero )
 
     -- Handle model change modifier
     if hero.modelChangeModifierName then

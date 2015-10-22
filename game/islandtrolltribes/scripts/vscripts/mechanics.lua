@@ -34,6 +34,42 @@ function SetAbilityVisibility(unit, abilityName, visibility)
     end
 end
 
+function TeachAbility( unit, ability_name, level )
+    if not level then level = 1 end
+    if GameRules.AbilityKV[ability_name] then
+        unit:AddAbility(ability_name)
+        local ability = unit:FindAbilityByName(ability_name)
+        if ability then
+            ability:SetLevel(tonumber(level))
+            return ability
+        end
+    else
+        print("ERROR: ability "..ability_name.." is not defined")
+        return nil
+    end
+end
+
+function PrintAbilities( unit )
+    print("List of Abilities in "..unit:GetUnitName())
+    for i=0,15 do
+        local ability = unit:GetAbilityByIndex(i)
+        if ability then
+            local output = i.." - "..ability:GetAbilityName()
+            if ability:IsHidden() then output = output.." (Hidden)" end
+            print(output)
+        end
+    end
+end
+
+function ClearAbilities( unit )
+    for i=0,15 do
+        local ability = unit:GetAbilityByIndex(i)
+        if ability then
+            unit:RemoveAbility(ability:GetAbilityName())
+        end
+    end
+end
+
 ------------------------------------------------
 
 --Compares two tables to see if they have the same values
@@ -84,3 +120,62 @@ function PingMap(playerID,pos,r,g,b)
 end
 
 ------------------------------------------------
+--               Layout manipulation          --
+------------------------------------------------
+
+function SetAbilityLayout( unit, layout_size )
+    unit:RemoveModifierByName("modifier_ability_layout4")
+    unit:RemoveModifierByName("modifier_ability_layout5")
+    unit:RemoveModifierByName("modifier_ability_layout6")
+    
+    ApplyModifier(unit, "modifier_ability_layout"..layout_size)
+end
+
+function AdjustAbilityLayout( unit )
+    local required_layout_size = GetVisibleAbilityCount(unit)
+
+    if required_layout_size > 6 then
+        required_layout_size = 6
+    elseif required_layout_size < 4 then
+        required_layout_size = 4
+    end
+
+    SetAbilityLayout(unit, required_layout_size)
+end
+
+function GetVisibleAbilityCount( unit )
+    local count = 0
+    for i=0,15 do
+        local ability = unit:GetAbilityByIndex(i)
+        if ability and not ability:IsHidden() and (ability:GetAbilityName() ~= "attribute_bonus") then
+            count = count + 1
+            ability:MarkAbilityButtonDirty()
+        end
+    end
+    print(count)
+    return count
+end
+
+function FindAbilityWithName( unit, ability_name_section )
+    for i=0,15 do
+        local ability = unit:GetAbilityByIndex(i)
+        if ability and string.match(ability:GetAbilityName(), ability_name_section) then
+            return ability
+        end
+    end
+end
+
+function GetAbilityOnVisibleSlot( unit, slot )
+    local visible_slot = 0
+    for i=0,15 do
+        local ability = unit:GetAbilityByIndex(i)
+        if ability and not ability:IsHidden() then
+            visible_slot = visible_slot + 1
+            if visible_slot == slot then
+                return ability
+            end
+        end
+    end
+end
+
+----------------------------------------------

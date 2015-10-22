@@ -28,6 +28,67 @@
         "ability_gatherer_itemradar" ""
     }
 
+    "SkillProgression"
+    {   
+        // This will replace the "InnateSkills" table
+        // Remove the levels that dont have any skills to level up
+        // If an ability has more than 1 rank, it will be auto leveled up if it was already found
+        // If more than 1 ability is to be added/upgraded at some level, split by comma
+        // Format:
+        "class"
+        {
+            "1" ""
+            "2" ""
+            "3" ""
+            "4" ""
+            "5" ""
+        }
+        "subclass"
+        {
+            "6" ""
+            "7" ""
+            "8" ""
+            "9" ""
+            "10" ""
+            "unlearn" //For skills that have to be removed at some level
+            {
+                "7" ""
+            }
+        }
+        //
+
+        "hunter"
+        {
+            "1" "ability_hunter_ensnare"
+            "2" "ability_hunter_track"
+            "3" "ability_hunter_track"
+            "4" "ability_hunter_track"
+        }
+        "warrior"
+        {
+            "6" "ability_hunter_endurance"
+            "7" "ability_hunter_giantswing"
+            "8" "ability_hunter_giantswing"
+            "9" "ability_hunter_giantswing"
+        }
+        "tracker"
+        {
+            "7" "ability_hunter_greatertrack"
+            "8" "ability_hunter_dysenterytrack,ability_hunter_sniff"
+            "9" "ability_hunter_hidebeacon,ability_hunter_querybeacon"
+            "unlearn"
+            {
+                "7" "ability_hunter_track"
+            }
+        }
+        "juggernaut"
+        {
+            "6" "ability_hunter_stayingpower"
+            "7" "ability_hunter_stayingpower"
+            "8" "ability_hunter_stayingpower"
+        }
+    }
+
     "Classes"
     {
         "hunter"        "npc_dota_hero_huskar" 

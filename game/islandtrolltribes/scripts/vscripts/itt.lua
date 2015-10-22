@@ -287,6 +287,13 @@ function ITT:InitGameMode()
     GameRules.ClassInfo = LoadKeyValues("scripts/kv/class_info.kv")
     GameRules.AbilityKV = LoadKeyValues("scripts/npc/npc_abilities_custom.txt")
 
+    -- Check Syntax
+    if not GameRules.AbilityKV then
+        print("--------------------------------------------------\n\n")
+        print("SYNTAX ERROR SOMEWHERE IN npc_abilities_custom.txt")
+        print("--------------------------------------------------\n\n")
+    end
+
     -- items_game parsing
     GameRules.ItemsGame = LoadKeyValues("scripts/items/items_game.txt")
     modelmap = {}
@@ -577,7 +584,7 @@ function ITT:OnHeroInGame( hero )
     ITT:CreateLockedSlots(hero)
 
     -- Add Innate Skills
-    ITT:AddInnateSkills(hero)
+    ITT:AdjustSkills(hero)
 
     -- Initial Heat and Meat
     ITT:SetHeat(hero, 100)
@@ -630,17 +637,63 @@ function ITT:SetMeat( hero, amount )
     hero:SetModifierStackCount("modifier_heat_passive", nil, amount )
 end
 
-function ITT:AddInnateSkills( hero )
-    local innatesTable = GameRules.ClassInfo['InnateSkills']
-    for i=0,15 do
-        local ability = hero:GetAbilityByIndex(i)
-        if ability then
-            local abilityName = ability:GetAbilityName()
-            if innatesTable[abilityName] then
-                ability:SetLevel(ability:GetMaxLevel())
+-- Sets the hero skills for the level as defined in the 'SkillProgression' class_info.kv
+-- Called on spawn and every time a hero gains a level or chooses a subclass
+function ITT:AdjustSkills( hero )
+    local skillProgressionTable = GameRules.ClassInfo['SkillProgression']
+    local class = GetHeroClass(hero)
+    local level = hero:GetLevel() --Level determines what skills to add or levelup
+    hero:SetAbilityPoints(0) --All abilities are learned innately
+
+    -- If the hero has a subclass, use that table instead
+    if HasSubClass(hero) then
+        class = GetSubClass(hero)
+    end
+
+    local class_skills = skillProgressionTable[class]
+    if not class_skills then
+        print("ERROR: No 'SkillProgression' table found for"..class.."!")
+        return
+    end
+
+    -- Check for any skill in the 'unlearn' subtable
+    local unlearn_skills = skillProgressionTable[class]['unlearn']
+    if unlearn_skills then
+        local unlearn_skills_level = unlearn_skills[tostring(level)]
+        if unlearn_skills_level then
+            local unlearn_ability_names = split(unlearn_skills_level, ",")
+
+            for _,abilityName in pairs(unlearn_ability_names) do
+                local ability = hero:FindAbilityByName(abilityName)
+                if ability then
+                    hero:RemoveAbility(abilityName)
+                end
             end
         end
     end
+    
+    -- Learn/Upgrade all abilities for this level    
+    local level_skills = skillProgressionTable[class][tostring(level)]
+    if level_skills and level_skills ~= "" then
+        print("[ITT] AdjustSkills for "..class.." at level "..level..":")
+        local ability_names = split(level_skills, ",")
+
+        -- If the ability already exists, upgrade it otherwide add it at level 1
+        for _,abilityName in pairs(ability_names) do
+            local ability = hero:FindAbilityByName(abilityName)
+            if ability then
+                ability:UpgradeAbility(false)
+            else
+                TeachAbility(hero, abilityName)
+            end
+        end
+        print("------------------------------")
+    else
+        print("No skills to change for "..class.." at level "..level)
+    end
+
+    AdjustAbilityLayout(hero)
+    PrintAbilities(hero)
 end
 
 
@@ -1325,7 +1378,6 @@ function ITT:OnPlayerGainedLevel(event)
     local hero = player:GetAssignedHero()
     local class = GetHeroClass(hero)
     local level = event.level
-    hero:SetAbilityPoints(0)
 
     print("[ITT] OnPlayerLevelUp - Player "..playerID.." ("..class..") has reached level "..level)
 
@@ -1334,169 +1386,8 @@ function ITT:OnPlayerGainedLevel(event)
         CustomGameEventManager:Send_ServerToPlayer(player, "player_unlock_subclass", {})
     end
 
-    -- contains skill progression for all classes
-    -- first list denotes level 2 skills, since level 1 skills are automatically granted on spawning
-    local skillProgression = {
-        {HUNTER,
-            {"ability_hunter_track"},
-            {"ability_hunter_track"},
-            {"ability_hunter_track"}
-        },
-        {WARRIOR,
-            {"ability_hunter_giantswing"},
-            {"ability_hunter_giantswing"},
-            {"ability_hunter_giantswing"}
-        },
-        {TRACKER,
-            {"ability_hunter_greatertrack"},
-            {"ability_hunter_dysenterytrack, ability_hunter_sniff"},
-            {"ability_hunter_hidebeacon, ability_hunter_querybeacon"}
-        },
-        {JUGGERNAUT,
-            {"ability_hunter_stayingpower"},
-            {"ability_hunter_stayingpower"},
-            {"ability_hunter_stayingpower"}
-        },
-        {MAGE,
-            {"ability_mage_swap1","ability_mage_swap2","ability_mage_pumpup","ability_mage_flamespray","ability_mage_negativeblast"},
-            {"ability_mage_reducefood","ability_mage_magefire","ability_mage_depress"},
-            {"ability_mage_metronome"}
-        },
-        {ELEMENTALIST,
-            {"ability_mage_swap1","ability_mage_swap2","ability_mage_eruption","ability_mage_splittingfire","ability_mage_defenderenergy"},
-            {"ability_mage_electromagnet","ability_mage_chainlightning","ability_mage_freezingblast"},
-            {"ability_mage_stormearthfire"}
-        },
-        {HYPNOTIST,
-            {"ability_mage_swap1","ability_mage_swap2","ability_mage_hypnosis","ability_mage_dreameater","ability_mage_anger"},
-            {"ability_mage_depressionaura", "ability_mage_depressionorb"},
-            {"ability_mage_jealousy", "ability_mage_seizures", "ability_mage_stupefyingfield"}
-        },
-        {DEMENTIA_MASTER,
-            {"ability_mage_swap1","ability_mage_swap2","ability_mage_metronome","ability_mage_maddeningdischarge"},
-            {"ability_mage_dementiarunes", "ability_mage_activaterunes"},
-            {"ability_mage_dementiasummoning", "ability_mage_darkgate"}
-        },
-        {PRIEST,
-            {"ability_priest_cureall","ability_priest_pumpup","ability_priest_resistall"},
-            {"ability_priest_swap1","ability_priest_swap2","ability_priest_sprayhealing","ability_priest_pacifyingsmoke"},
-            {"ability_priest_mixheat","ability_priest_mixhealth","ability_priest_mixenergy"}
-        },
-        {BOOSTER,
-            {"ability_priest_pumpup", "ability_priest_lightningshield", "ability_priest_fortitude"},
-            {"ability_priest_trollbattlecall", "ability_priest_spiritlink"},
-            {"ability_priest_mapmagic", "ability_priest_angelicelemental"},
-        },
-        {MASTER_HEALER,
-            {"ability_priest_sprayhealing", "ability_priest_healingwave", "ability_priest_selfpreservation"},
-            {"ability_priest_mixhealth", "ability_priest_rangedheal"},
-            {"ability_priest_mixenergy", "ability_priest_mixheat", "ability_priest_replenish"},
-        },
-        {SHAMAN,
-            {"ability_priest_pacifyingsmoke", "ability_priest_spiritwalk", "ability_priest_enhancingherbalbalm"},
-            {"ability_priest_maximumfervor", "ability_priest_painkillerbalm"},
-            {"ability_priest_spiritgate", "ability_priest_increasemetabolism"},
-        },
-        {BEASTMASTER,
-            {},
-            {},
-            {},
-            {},
-            {},
-        },
-        {CHICKEN_FORM,
-            {"ability_beastmaster_shortness"},
-            {},
-            {"ability_beastmaster_fowlplay"},
-            {},
-        },
-        {PACK_LEADER,
-            {"ability_beastmaster_calltobattle"},
-            {},
-            {"ability_beastmaster_empathicrage"},
-        },
-        {SHAPESHIFTER,
-            {"ability_beastmaster_wolfform"},
-            {},
-            {"ability_beastmaster_bearform"},
-        },
-        {THIEF,
-            {"ability_thief_cloak"},
-            {"ability_thief_cloak"},
-            {"ability_thief_cloak"},
-        },
-        {ESCAPE_ARTIST,
-            {"ability_theif_jump"},
-            {"ability_theif_camoflage"},
-            {"ability_theif_blur"},
-        },
-        {CONTORTIONIST,
-            {"ability_theif_smokestream"},
-            {"ability_theif_teletheif"},
-            {"ability_theif_netherfade"},
-        },
-        {ASSASSIN,
-            {"ability_theif_throwingknife"},
-            {"ability_theif_planningphase"},
-            {"ability_theif_assasinate"},
-        },
-        {SCOUT,
-            {"ability_scout_reveal"},
-            {"ability_scout_reveal"},
-            {},
-            {"ability_scout_reveal"}
-        },
-        {OBSERVER,
-            {"ability_scout_wardthearea"},
-            {"ability_scout_wardthearea"},
-            {},
-            {"ability_scout_wardthearea"},
-        },
-        {RADAR_SCOUT,
-            {"ability_scout_motionsensorradar"},
-            {"ability_scout_motionsensorradar"},
-            {},
-            {"ability_scout_motionsensorradar"},
-        },
-        {SPY,
-            {"ability_scout_chainreveal"},
-            {"ability_scout_chainreveal"},
-            {},
-            {"ability_scout_chainreveal"},
-        },
-        {GATHERER,
-            {"ability_gatherer_radarmanipulations"},
-            {"ability_gatherer_radarmanipulations"},
-            {"ability_gatherer_radarmanipulations"},
-        },
-        {HERB_MASTER_TELEGATHERER,
-            {"ability_gatherer_telegather_herb"},
-            {"ability_gatherer_telegather_herb"},
-            {"ability_gatherer_telegather_herb"},
-        },
-        {RADAR_TELEGATHERER,
-            {"ability_gatherer_telegather_radar"},
-            {"ability_gatherer_telegather_radar"},
-            {"ability_gatherer_telegather_radar"},
-        },
-        {REMOTE_TELEGATHERER,
-            {"ability_gatherer_telegather_omni"},
-            {"ability_gatherer_telegather_omni"},
-            {"ability_gatherer_telegather_omni"},
-        },
-    }
-
-    -- grant skills
-    for _,skillList in pairs(skillProgression) do
-        if skillList[1] == class then
-            local skills = skillList[level]
-            if skills ~= nil then
-                for _,skill in pairs(skills) do
-                    hero:FindAbilityByName(skill):UpgradeAbility(true)
-                end
-            end
-        end
-    end
+    -- Update skills
+    ITT:AdjustSkills( hero )
 end
 
 function give_item(cmdname, itemname)
