@@ -6711,7 +6711,7 @@
 		{
 			"RunScript"
 			{
-				""ScriptFile"    "heroes/mage/mage_fire.lua"
+				"ScriptFile"    "heroes/mage/mage_fire.lua"
 				"Function"       "SpawnMageFire"
 			}
 			"FireSound"

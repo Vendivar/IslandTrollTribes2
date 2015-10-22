@@ -27,12 +27,12 @@
 
         "SubclassSelectText"   "Choose Subclass"
 		
-		"hunter_sub1_name" "Hunter sub 1"
-        "hunter_sub1_desc"
-		"hunter_sub1_name" "Hunter Sub 2"
-        "hunter_sub1_desc" ""
-		"hunter_sub1_name" "Hunter Sub 3"
-        "hunter_sub1_desc" ""
+		"hunter_sub1_name" "Tracker"
+        "hunter_sub1_desc" "The Tracker is an expert at locating, following, and locking down unsuspecting prey. He can use his several tracking skills to locate and keep tabs on unseen enemies.\n\nFunction: Hunting, Combat, Tracking Enemies Initial Ability: Ensnare\nLearnable Abilities: Greater Track, Dysentery Track, Sniff, Hide Tracking Beacon, Query Beacon\nBase Damage: 18-18\nAttack Cooldown: 1.75\nMovement Speed: 350"
+		"hunter_sub1_name" "Warrior"
+        "hunter_sub1_desc" "The Warrior's axes thirst for blood. He excels at beating his foes to a bloody pulp. He is the epitome of offensive combat and is always willing to prove it.\n\nFunction: Offensive Combat\nInitial Abilities: Ensnare, Endurance\nLearnable Ability: Giant Swing\nBase Damage: 20-20\nAttack Cooldown: 1.65\nMovement Speed: 300"
+		"hunter_sub1_name" "Juggernaut"
+        "hunter_sub1_desc" "The Juggernaut specializes in taking hits and defensive tactics, while still maintaining the ability to pack a punch. His policy on battle is that the best offense is a good defense.\n\nFunction: Defensive Combat\nInitial Abilities: Ensnare\nLearnable Abilities: Staying Power\nBase Damage: 16-16\nAttack Cooldown: 1.75\nMovement Speed: 300"
 
         "beastmaster_sub1_name" "Pack Leader"
         "beastmaster_sub1_desc" "The Pack Leader is a form of true dedication to one's fellow animal, and because of this he can control more than one pet, while focusing on enhancing them rather than himself.\n\n\n\nInitial Abilities: Spirit of the Beast, Tame Pet\nLearnable Abilities: Call to Battle, Empathic Rage\nBase damage: 16-16\nAttack Cooldown: 1.70\nMovement Speed: 340"
