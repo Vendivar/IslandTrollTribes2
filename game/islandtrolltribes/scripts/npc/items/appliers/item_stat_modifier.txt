@@ -1,0 +1,119 @@
+"item_stat_modifier"
+{
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "BaseClass"                     "item_datadriven"
+
+    "Modifiers"
+    {
+
+        "modifier_health_bonus"
+        {
+            "IsHidden"  "1"
+            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
+            "Properties"
+            {
+                
+                "MODIFIER_PROPERTY_HEALTH_BONUS"    "1"
+            }
+        }
+
+        "modifier_negative_health_bonus"
+        {
+            "IsHidden"  "1"
+            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
+            "Properties"
+            {
+                
+                "MODIFIER_PROPERTY_HEALTH_BONUS"    "-1"
+            }
+        }
+
+        "modifier_health_regen_constant"
+        {
+            "IsHidden"  "1"
+            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
+            "Properties"
+            {
+                
+                "MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"   "0.01"
+            }
+        }
+
+        "modifier_negative_health_regen_constant"
+        {
+            "IsHidden"  "1"
+            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
+            "Properties"
+            {
+                
+                "MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"   "-0.01"
+            }
+        }
+
+        "modifier_mana_bonus"
+        {
+            "IsHidden"  "1"
+            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
+            "Properties"
+            {
+                
+                "MODIFIER_PROPERTY_MANA_BONUS"  "1"
+            }
+        }
+
+        "modifier_negative_mana_bonus"
+        {
+            "IsHidden"  "1"
+            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
+            "Properties"
+            {
+                
+                "MODIFIER_PROPERTY_MANA_BONUS"  "-1"
+            }
+        }
+
+        "modifier_mana_regen"
+        {
+            "IsHidden"  "1"
+            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
+            "Properties"
+            {
+                
+                "MODIFIER_PROPERTY_MANA_REGEN_CONSTANT" "0.01"
+            }
+        }
+
+        "modifier_negative_mana_regen"
+        {
+            "IsHidden"  "1"
+            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
+            "Properties"
+            {
+                
+                "MODIFIER_PROPERTY_MANA_REGEN_CONSTANT" "-0.01"
+            }
+        }
+
+        "modifier_attackspeed_bonus_constant"
+        {
+            "IsHidden"  "1"
+            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
+            "Properties"
+            {
+                
+                "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "1"
+            }
+        }
+
+        "modifier_negative_attackspeed_bonus_constant"
+        {
+            "IsHidden"  "1"
+            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
+            "Properties"
+            {
+                
+                "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "-1"
+            }
+        }
+    }
+}

@@ -137,7 +137,7 @@ function ITT:OnSubclassChange(event)
     local defaultWearables = subclassTable['defaults']
     local newWearables = subclassInfo[new_name]['Wearables']
 
-    if not defaultWearables or not defaultWearables then
+    if not defaultWearables or not newWearables then
         return
     end
 
@@ -162,7 +162,7 @@ function ITT:ResetSubclass(playerID)
     local currentWearables = subclassInfo[subclass]['Wearables']
 
     print("Resetting subclass")
-    hero.subclass = "none"
+    hero.subclass = nil
 
     -- Update skills
     ITT:AdjustSkills( hero )

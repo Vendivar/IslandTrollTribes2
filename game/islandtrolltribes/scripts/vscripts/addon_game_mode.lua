@@ -5,6 +5,7 @@ end
 ---------------------------------------------------------------------------
 
 require('libraries/timers')
+require('libraries/stats')
 require('itt')
 require('mechanics')
 require('developer')

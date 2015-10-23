@@ -83,7 +83,6 @@ MAX_SHOPS_ON_MAP = 1
 -- This function initializes the game mode and is called before anyone loads into the game
 -- It can be used to pre-initialize any values/tables that will be needed later
 function ITT:InitGameMode()
-    PrintTable(Entities)
     print( "Game mode setup." )
     --BuildingHelper:BlockGridNavSquares(16384)
 
@@ -280,8 +279,10 @@ function ITT:InitGameMode()
     self.NumPassiveNeutrals = 0
     self.NumAggressiveNeutrals = 0
 
-    
     GameRules.APPLIER = CreateItem("item_apply_modifiers", nil, nil)
+
+    -- Custom Stats for STR/AGI/INT
+    Stats:Init()
 
     -- KV Tables
     GameRules.ClassInfo = LoadKeyValues("scripts/kv/class_info.kv")
@@ -595,6 +596,9 @@ function ITT:OnHeroInGame( hero )
 
     -- Set Wearables
     ITT:SetDefaultCosmetics(hero)
+
+    -- Adjust Stats
+    Stats:ModifyBonuses(hero)
 
     -- Hunger (TODO: Review values and intended behavior)
     --ApplyModifier(hero, "modifier_hunger")
