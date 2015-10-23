@@ -52,7 +52,7 @@ function Energy(playerID)
     end
 end]]
 
-function Heat(playerID)
+--[[function Heat(playerID)
     heatTicks = heatTicks + 1
     if heatTicks % TICKS_PER_HEAT_UNIT == 0 then
         local player = PlayerInstanceFromIndex(playerID)
@@ -65,7 +65,7 @@ function Heat(playerID)
             end
         end
     end
-end
+end]]
 
 function InventoryCheck(playerID)
     -- print("Inv testing player " .. playerID)

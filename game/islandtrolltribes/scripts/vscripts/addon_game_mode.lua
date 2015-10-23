@@ -6,6 +6,7 @@ end
 
 require('libraries/timers')
 require('libraries/stats')
+require('mechanics/heat')
 require('itt')
 require('mechanics')
 require('developer')

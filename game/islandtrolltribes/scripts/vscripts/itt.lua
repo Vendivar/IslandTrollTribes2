@@ -571,9 +571,13 @@ function ITT:OnNPCSpawned( keys )
     -- add it to the gridnav to stop people building on it
     --BuildingHelper:AddUnit(spawnedUnit)
 
-    if spawnedUnit:IsRealHero() and spawnedUnit.bFirstSpawned == nil then
-        spawnedUnit.bFirstSpawned = true
-        ITT:OnHeroInGame(spawnedUnit)
+    if spawnedUnit:IsRealHero() then
+        if not spawnedUnit.bFirstSpawned then
+            spawnedUnit.bFirstSpawned = true
+            ITT:OnHeroInGame(spawnedUnit)
+        else
+            ITT:OnHeroRespawn(spawnedUnit)
+        end
     end
 end
 
@@ -589,7 +593,7 @@ function ITT:OnHeroInGame( hero )
     ITT:AdjustSkills(hero)
 
     -- Initial Heat
-    ITT:SetHeat(hero, 100)
+    Heat:Start(hero)
 
     -- Init Meat, Health and Energy Loss
     ApplyModifier(hero, "modifier_meat_passive")
@@ -613,6 +617,12 @@ function ITT:OnHeroInGame( hero )
     -- end
 end
 
+function ITT:OnHeroRespawn( hero )
+
+    -- Restart Heat
+    Heat:Start(hero)
+end
+
 -- This handles locking a number of inventory slots for some classes
 -- This means that players do not need to manually reshuffle them to craft
 function ITT:CreateLockedSlots(hero)
@@ -627,14 +637,6 @@ function ITT:CreateLockedSlots(hero)
         hero:SwapItems(0, lockN)
         lockN = lockN -1
     end
-end
-
-function ITT:SetHeat( hero, amount )
-    if not hero:HasModifier("modifier_heat_passive") then
-        ApplyModifier(hero, "modifier_heat_passive")
-    end            
-    
-    hero:SetModifierStackCount("modifier_heat_passive", nil, amount )
 end
 
 -- Sets the hero skills for the level as defined in the 'SkillProgression' class_info.kv
@@ -857,7 +859,7 @@ function ITT:OnTrollThink()
     for i=1, maxPlayerID, 1 do
         --Hunger(i)
         --Energy(i)
-        Heat(i)
+        --Heat(i)
         InventoryCheck(i)
         --print("burn")
     end
