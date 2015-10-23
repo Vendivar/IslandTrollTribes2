@@ -2048,7 +2048,7 @@ function DropAllItems(keys)
         end
     end
 end
-
+--[[
 function QuickCraftWorkshop(keys)
     print("QuickCrafting")
     local caster = keys.caster
@@ -2110,7 +2110,7 @@ function QuickCraftWorkshop(keys)
         end
     end
 end
-
+]]
 function BushZoneMajority(users, default)
     local good = users[DOTA_TEAM_GOODGUYS]
     local bad = users[DOTA_TEAM_BADGUYS]

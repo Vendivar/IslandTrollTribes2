@@ -1,6 +1,7 @@
 CHEAT_CODES = {
     ["subclass"] = function(...) ITT:ChangeSubclass(...) end,
     ["reset"] = function(...) ITT:ResetSubclass(...) end,
+    ["workshop"] = function(...) ITT:TestWorkshop(...) end,
 }
 
 PLAYER_COMMANDS = {}
@@ -35,4 +36,33 @@ function ITT:ChangeSubclass( playerID, subclassID )
     event.PlayerID = playerID
     event.subclassID = subclassID
     ITT:OnSubclassChange(event)
+end
+
+-- Make a workshop on front and drop many items around it
+function ITT:TestWorkshop( playerID )
+    local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+    local origin = hero:GetAbsOrigin()
+    local fv = hero:GetForwardVector()
+    local position = origin + fv * 500
+
+    local workshop = CreateUnitByName("npc_building_workshop", position, true, hero, hero, hero:GetTeamNumber())
+    workshop:SetControllableByPlayer(playerID, true)
+    workshop:SetOwner(hero)
+    workshop:SetForwardVector(-hero:GetForwardVector())
+
+    local testItems = { 
+        ["item_ingot_iron"] = 3,
+        ["item_flint"] = 6,
+        ["item_river_root"] = 5,
+    }
+
+    local pos = origin + fv * 200
+    for itemName,num in pairs(testItems) do
+        for i=1,num do
+            local item = CreateItem(itemName, nil, nil)
+            local drop = CreateItemOnPositionSync( position, item )
+            local pos_launch = pos+RandomVector(100)
+            item:LaunchLoot(false, 200, 0.75, pos_launch)
+        end     
+    end
 end

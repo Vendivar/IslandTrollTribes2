@@ -857,6 +857,35 @@
 			}
 		}
 	}
+	"ability_quick_build_armory"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityTextureName"	"ability_building_quickbuildarmory"
+		"MaxLevel"	"1"
+	}
+	"ability_quick_build_wd_hut"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityTextureName"	"ability_building_quickbuildwitchdoctorshut"
+		"MaxLevel"	"1"
+	}
+	"ability_quick_build_workshop"
+	{
+	    "BaseClass"            "ability_datadriven"
+	    "AbilityTextureName"   "ability_building_quickbuildworkshop"
+	    "AbilityBehavior"      "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	    "MaxLevel"             "1"
+	    "OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"     "buildings/quick_craft.lua"
+	            "Function"       "QuickCraftWorkshop"
+	        }
+	    }
+	}
 	"ability_bush_passive"
 	{
 		"BaseClass"	"ability_datadriven"
@@ -12324,35 +12353,6 @@
 	
 		}
 	
-	}
-	"ability_quick_build_armory"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityTextureName"	"ability_building_quickbuildarmory"
-		"MaxLevel"	"1"
-	}
-	"ability_quick_build_wd_hut"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityTextureName"	"ability_building_quickbuildwitchdoctorshut"
-		"MaxLevel"	"1"
-	}
-	"ability_quick_build_workshop"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"ability_building_quickbuildworkshop"
-		"MaxLevel"	"1"
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"QuickCraftWorkshop"
-			}
-	
-		}
 	}
 	"ability_quick_drop"
 	{
