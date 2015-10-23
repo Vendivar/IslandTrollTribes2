@@ -152,7 +152,6 @@ function GetVisibleAbilityCount( unit )
             ability:MarkAbilityButtonDirty()
         end
     end
-    print(count)
     return count
 end
 

@@ -670,7 +670,7 @@ function ITT:AdjustSkills( hero )
     -- Learn/Upgrade all abilities for this level    
     local level_skills = skillProgressionTable[class][tostring(level)]
     if level_skills and level_skills ~= "" then
-        print("[ITT] AdjustSkills for "..class.." at level "..level..":")
+        print("[ITT] AdjustSkills for "..class.." at level "..level)
         local ability_names = split(level_skills, ",")
 
         -- If the ability already exists, upgrade it, otherwise add it at level 1

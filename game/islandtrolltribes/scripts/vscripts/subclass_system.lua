@@ -137,7 +137,7 @@ function ITT:OnSubclassChange(event)
     local defaultWearables = subclassTable['defaults']
     local newWearables = subclassInfo[new_name]['Wearables']
 
-    if not defaultWearables or not currentWearables then 
+    if not defaultWearables or not defaultWearables then
         return
     end
 
