@@ -673,7 +673,7 @@ function ITT:AdjustSkills( hero )
         print("[ITT] AdjustSkills for "..class.." at level "..level..":")
         local ability_names = split(level_skills, ",")
 
-        -- If the ability already exists, upgrade it otherwide add it at level 1
+        -- If the ability already exists, upgrade it, otherwise add it at level 1
         for _,abilityName in pairs(ability_names) do
             local ability = hero:FindAbilityByName(abilityName)
             if ability then

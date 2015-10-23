@@ -8,7 +8,7 @@
 	"2"
 	{
 		"File"		"killcam_nuke"
-	/	"Depth"		"1"
+		"Depth"		"255"
 	}
 
 	//"1"
