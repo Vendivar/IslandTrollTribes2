@@ -1382,15 +1382,21 @@ function ITT:OnPlayerGainedLevel(event)
     local level = event.level
 
     print("[ITT] OnPlayerLevelUp - Player "..playerID.." ("..class..") has reached level "..level)
-
+	
     -- If the hero reached level 6 and hasn't unlocked a subclass, make the button clickable
     if level >= 6 and not HasSubClass(hero) then
         CustomGameEventManager:Send_ServerToPlayer(player, "player_unlock_subclass", {})
+    end
+	
+	if level == 6 and not HasSubClass(hero) then
+        hero.subclassAvailableParticle = ParticleManager:CreateParticle("particles/units/heroes/hero_keeper_of_the_light/keeper_of_the_light_spirit_form_ambient.vpcf", PATTACH_ABSORIGIN, hero)
+    		EmitSoundOnClient("SubSelectReady", PlayerResource:GetPlayer(playerID))
     end
 
     -- Update skills
     ITT:AdjustSkills( hero )
 end
+
 
 function give_item(cmdname, itemname)
     local hero = Convars:GetCommandClient():GetAssignedHero()

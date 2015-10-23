@@ -109,7 +109,18 @@ function ITT:OnSubclassChange(event)
 
     print("New Subclass:", new_name)
     hero.subclass = new_name
-
+if hero.subclassAvailableParticle then
+  			ParticleManager:DestroyParticle(hero.subclassAvailableParticle, false)
+			EmitSoundOnClient("SubSelectReady", PlayerResource:GetPlayer(playerID))
+			local endParticle1 = ParticleManager:CreateParticle("subselect", PATTACH_ABSORIGIN_FOLLOW, hero) --not working
+			local endParticle2 = ParticleManager:CreateParticle("subselect2", PATTACH_ABSORIGIN_FOLLOW, hero)  --not working
+			Timers:CreateTimer(2,
+      	function()
+        	ParticleManager:DestroyParticle(endParticle1, false) 
+        	ParticleManager:DestroyParticle(endParticle2, false) 
+      	end
+      )
+    end
     -- Change Vision range
     local stats = subclassInfo[new_name]['Vision']
     if stats then
