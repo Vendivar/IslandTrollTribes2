@@ -2,6 +2,8 @@ CHEAT_CODES = {
     ["subclass"] = function(...) ITT:ChangeSubclass(...) end,
     ["reset"] = function(...) ITT:ResetSubclass(...) end,
     ["workshop"] = function(...) ITT:TestWorkshop(...) end,
+    ["refresh"] = function(...) ITT:Refresh(...) end,
+    ["dev"] = function(...) ITT:Dev(...) end,
 }
 
 PLAYER_COMMANDS = {}
@@ -64,5 +66,27 @@ function ITT:TestWorkshop( playerID )
             local pos_launch = pos+RandomVector(100)
             item:LaunchLoot(false, 200, 0.75, pos_launch)
         end     
+    end
+end
+
+-- Hooks the -refresh to also reset Heat
+function ITT:Refresh( playerID )
+    local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+
+    Heat:Set( hero, 100 )
+end
+
+function ITT:Dev( playerID )
+    GameRules.DevMode = not GameRules.DevMode
+
+    local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+    if GameRules.DevMode then        
+        Heat:Stop(hero)
+        hero:RemoveModifierByName("modifier_hunger")
+        GameRules:GetGameModeEntity():SetFogOfWarDisabled(true)
+    else
+        Heat:Start(hero)
+        ApplyModifier(hero, "modifier_hunger")
+        GameRules:GetGameModeEntity():SetFogOfWarDisabled(false)
     end
 end
