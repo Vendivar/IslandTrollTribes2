@@ -5,6 +5,11 @@
 		"File"		"heropick_nuke"
 		"Depth"		"254"
 	}
+	"2"
+	{
+		"File"		"killcam_nuke"
+	/	"Depth"		"1"
+	}
 
 	//"1"
 	//{
