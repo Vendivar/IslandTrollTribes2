@@ -1,11 +1,4 @@
 function ITT:FilterExecuteOrder( filterTable )
-    --[[
-    print("-----------------------------------------")
-    for k, v in pairs( filterTable ) do
-        print("Order: " .. k .. " " .. tostring(v) )
-    end
-    ]]
-
     ITEM_TRANSFER_RANGE = 500
 
     local units = filterTable["units"]
@@ -35,7 +28,6 @@ function ITT:FilterExecuteOrder( filterTable )
 
         -- If within range of the modified transfer range, and the target has free inventory slots, make the swap
         local rangeToTarget = unit:GetRangeToUnit(target)
-        print("DOTA_UNIT_ORDER_GIVE_ITEM at "..rangeToTarget.." range")
         if rangeToTarget <= ITEM_TRANSFER_RANGE then
 
             local bTargetCanTakeMoreItems = (target:IsRealHero() and target:HasRoomForItem(item:GetAbilityName(), true, false)) 
@@ -46,14 +38,70 @@ function ITT:FilterExecuteOrder( filterTable )
                 return false
             end
 
+        else
+            -- If its a building targeting a hero, order the hero to move towards the building
+
         end
 
         return true
     end
 
-    --order_type == DOTA_UNIT_ORDER_DROP_ITEM
+    ------------------------------------------------
+    --             Drop Range Increase            --
+    ------------------------------------------------
+    if order_type == DOTA_UNIT_ORDER_DROP_ITEM then
+        local item = EntIndexToHScript(abilityIndex)
+        local origin = unit:GetAbsOrigin()
+        
+        -- Drop the item if within the extended range
+        if (origin - point):Length2D() <= ITEM_TRANSFER_RANGE then
+            unit:DropItemAtPositionImmediate(item, point)
+            unit:Stop()
+        else
+            -- For buildings, Best Effort drop
+            if IsCustomBuilding(unit) then
+                local drop_point = origin + (point - origin):Normalized() * ITEM_TRANSFER_RANGE
+                unit:DropItemAtPositionImmediate(item, drop_point)
+                unit:Stop()
+            end
+
+            -- Move towards the position and drop the item at the extended range
+
+        end
+
+
+        return false
+    end
+
+    ------------------------------------------------
+    --       Building Pickup Range Increase       --
+    ------------------------------------------------
+    if order_type == DOTA_UNIT_ORDER_PICKUP_ITEM and IsCustomBuilding(unit) then
+
+        local drop = EntIndexToHScript(targetIndex)
+        local position = drop:GetAbsOrigin()
+        local origin = unit:GetAbsOrigin()
+
+        -- Drop the item if within the extended range
+        if (origin - position):Length2D() <= ITEM_TRANSFER_RANGE then
+            drop:SetAbsOrigin(origin)
+            unit:PickupDroppedItem(drop)            
+        else
+            SendErrorMessage(issuer, "#error_item_out_of_range")
+        end
+
+        return false
+    end
 
     return true
+end
+
+function printOrderTable( filterTable )
+    print(ORDERS[filterTable["order_type"]])
+    for k, v in pairs( filterTable ) do
+        print("Order: " .. k .. " " .. tostring(v) )
+    end
+    print("-----------------------------------------")
 end
 
 

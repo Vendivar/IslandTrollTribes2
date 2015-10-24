@@ -1298,14 +1298,12 @@ function ITT:OnPlayerConnectFull(keys)
 end
 
 --Listener to handle telegather events from item pickup and picking up raw meat
-function ITT:OnItemPickedUp(event)
-    DeepPrintTable(event)
-    
+function ITT:OnItemPickedUp(event)    
     if not event.HeroEntityIndex then
         print("A building just picked an item")
         return
     end
-    
+
     local hero = EntIndexToHScript( event.HeroEntityIndex )
     local originalItem = EntIndexToHScript(event.ItemEntityIndex)
 
