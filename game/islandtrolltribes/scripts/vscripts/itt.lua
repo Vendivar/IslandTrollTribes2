@@ -1389,8 +1389,10 @@ function ITT:OnPlayerGainedLevel(event)
     end
 	
 	if level == 6 and not HasSubClass(hero) then
-        hero.subclassAvailableParticle = ParticleManager:CreateParticle("particles/units/heroes/hero_keeper_of_the_light/keeper_of_the_light_spirit_form_ambient.vpcf", PATTACH_ABSORIGIN, hero)
-    		EmitSoundOnClient("SubSelectReady", PlayerResource:GetPlayer(playerID))
+        local particleName = "particles/units/heroes/hero_keeper_of_the_light/keeper_of_the_light_spirit_form_ambient.vpcf"
+        hero.subclassAvailableParticle = ParticleManager:CreateParticleForTeam(particleName, PATTACH_ABSORIGIN_FOLLOW, hero, hero:GetTeamNumber())
+
+        EmitSoundOnClient("SubSelectReady", PlayerResource:GetPlayer(playerID))
     end
 
     -- Update skills

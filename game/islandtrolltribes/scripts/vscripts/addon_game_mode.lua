@@ -6,8 +6,9 @@ end
 
 require('libraries/timers')
 require('libraries/stats')
-require('itt')
 require('mechanics')
+require('mechanics/heat')
+require('itt')
 require('developer')
 require('item_spawning')
 require('subclass_system')
