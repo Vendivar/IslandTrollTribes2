@@ -13,34 +13,84 @@ function ITT:FilterExecuteOrder( filterTable )
     local queue = (filterTable["queue"]==1 and true) or false
 
     -- Skip Prevents order loops
-    local unit = EntIndexToHScript(units["0"])
+    local unitIndex = units["0"]
+    local unit = EntIndexToHScript(unitIndex)
     if unit and unit.skip then
         unit.skip = false
         return true
     end
 
+    -- Timers Reset
+    unit.dropping = nil
+
+
     ------------------------------------------------
     --          Transfer Range Increase           --
     ------------------------------------------------
     if targetIndex and abilityIndex and order_type == DOTA_UNIT_ORDER_GIVE_ITEM then
+
         local target = EntIndexToHScript(targetIndex)
         local item = EntIndexToHScript(abilityIndex)
 
         -- If within range of the modified transfer range, and the target has free inventory slots, make the swap
         local rangeToTarget = unit:GetRangeToUnit(target)
+
+        if not CanTakeMoreItems(target) then
+            SendErrorMessage(issuer, "#error_inventory_full")
+            return false
+        end
+        
         if rangeToTarget <= ITEM_TRANSFER_RANGE then
-
-            local bTargetCanTakeMoreItems = (target:IsRealHero() and target:HasRoomForItem(item:GetAbilityName(), true, false)) 
-                                            or (IsCustomBuilding(unit) and GetNumItemsInInventory(unit) < 6)
-
-            if bTargetCanTakeMoreItems then
-                TransferItem(unit, target, item)
-                return false
-            end
-
+            TransferItem(unit, target, item)
+            return false
         else
             -- If its a building targeting a hero, order the hero to move towards the building
+            -- The building will transfer the item to the hero inventory as soon as it gets close
+            -- Probably need to check ownership to not be able to order an enemy hero to do things
+            local origin = unit:GetAbsOrigin()
+            local target_origin = target:GetAbsOrigin()
+            if IsCustomBuilding(unit) then
+                local transfer_position = origin + (target_origin - origin):Normalized() * ITEM_TRANSFER_RANGE
+                target.skip = true
+                ExecuteOrderFromTable({ UnitIndex = targetIndex, OrderType = DOTA_UNIT_ORDER_MOVE_TO_POSITION, Position = transfer_position, Queue = queue}) 
+                                
+                -- Transfer the item when the hero gets within the transfer range
+                Timers:CreateTimer(function()
+                    if IsValidAlive(unit) and IsValidAlive(target) and (unit:GetAbsOrigin() - target:GetAbsOrigin()):Length2D() <= ITEM_TRANSFER_RANGE+25 then
+                        if CanTakeMoreItems(target) then
+                            TransferItem(unit, target, item)
+                        else
+                            SendErrorMessage(issuer, "#error_inventory_full")
+                        end
+                        return
+                    end
+                    return 0.1
+                end)
 
+            -- For heroes to buildings, move them towards the building while cancelling the action timer if they execute another order
+            elseif IsCustomBuilding(target) then
+                local transfer_position = target_origin + (origin - target_origin):Normalized() * ITEM_TRANSFER_RANGE
+
+                unit.skip = true
+                ExecuteOrderFromTable({ UnitIndex = unitIndex, OrderType = DOTA_UNIT_ORDER_MOVE_TO_POSITION, Position = transfer_position, Queue = queue}) 
+                unit.dropping = true --Any order will override this, breaking the timer
+                
+                -- Check for drop distance
+                Timers:CreateTimer(function()
+                    if not unit.dropping then return
+                    elseif IsValidAlive(unit) and IsValidAlive(target) and (unit:GetAbsOrigin() - target:GetAbsOrigin()):Length2D() <= ITEM_TRANSFER_RANGE+25 then
+                        if CanTakeMoreItems(target) then
+                            TransferItem(unit, target, item)
+                        else
+                            SendErrorMessage(issuer, "#error_inventory_full")
+                        end
+                        return
+                    end
+                    return 0.1
+                end)
+
+                return false
+            end
         end
 
         return true
@@ -63,9 +113,26 @@ function ITT:FilterExecuteOrder( filterTable )
                 local drop_point = origin + (point - origin):Normalized() * ITEM_TRANSFER_RANGE
                 unit:DropItemAtPositionImmediate(item, drop_point)
                 unit:Stop()
+            else
+                -- Move towards the position and drop the item at the extended range
+                local drop_position = point - (point - origin):Normalized() * ITEM_TRANSFER_RANGE
+                DebugDrawCircle(drop_position, Vector(255,0,0), 100, 100, true, 10)
+                unit.skip = true
+                ExecuteOrderFromTable({ UnitIndex = unitIndex, OrderType = DOTA_UNIT_ORDER_MOVE_TO_POSITION, Position = drop_position, Queue = queue}) 
+                unit.dropping = true --Any order will override this, breaking the timer
+                
+                -- Check for drop distance
+                Timers:CreateTimer(function()
+                    if not unit.dropping then return
+                    elseif IsValidAlive(unit) and unit.dropping and (unit:GetAbsOrigin() - point):Length2D() <= ITEM_TRANSFER_RANGE+25 then
+                        unit:DropItemAtPositionImmediate(item, point)
+                        unit.dropping = nil
+                        return
+                    end
+                    return 0.1
+                end)
             end
 
-            -- Move towards the position and drop the item at the extended range
 
         end
 
@@ -83,7 +150,7 @@ function ITT:FilterExecuteOrder( filterTable )
         local origin = unit:GetAbsOrigin()
 
         -- Drop the item if within the extended range
-        if (origin - position):Length2D() <= ITEM_TRANSFER_RANGE then
+        if (origin - position):Length2D() <= ITEM_TRANSFER_RANGE+25 then
             drop:SetAbsOrigin(origin)
             unit:PickupDroppedItem(drop)            
         else

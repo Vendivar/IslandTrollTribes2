@@ -106,6 +106,12 @@ function GetNumItemsInInventory( unit )
     return count
 end
 
+function CanTakeMoreItems( unit )
+    return (GetNumItemsInInventory(unit) < 6)
+end
+
+
+
 ------------------------------------------------
 
 --Compares two tables to see if they have the same values
@@ -217,6 +223,13 @@ end
 
 function IsCustomBuilding( unit )
     return unit:HasAbility("ability_building")
+end
+
+----------------------------------------------
+
+-- Shortcut for all unit logic
+function IsValidAlive( unit )
+    return IsValidEntity(unit) and unit:IsAlive()
 end
 
 ----------------------------------------------
