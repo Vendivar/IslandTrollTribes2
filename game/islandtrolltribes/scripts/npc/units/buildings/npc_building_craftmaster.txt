@@ -1,6 +1,6 @@
 "npc_building_craftmaster"
 {
-	"BaseClass"	"npc_dota_building"
+	"BaseClass"	"npc_dota_creature"
 	"Model"	"models/courier/smeevil_magic_carpet/smeevil_magic_carpet.vmdl"
 	"SoundSet"	"Creep_Good_Melee"
 	"HasInventory"	"1"
@@ -16,13 +16,15 @@
 	}
 
 	"Ability1"	"ability_duel"
+	"Ability10"	"ability_building"
+	
 	"ArmorPhysical"	"0"
 	"MagicalResistance"	"0"
 	"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
 	"BountyXP"	"0"
 	"BountyGoldMin"	"0"
 	"BountyGoldMax"	"0"
-	"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_NONE"
+	"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 	"MovementSpeed"	"0"
 	"MovementTurnRate"	"0"
 	"StatusHealth"	"0"

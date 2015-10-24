@@ -1,6 +1,6 @@
 "npc_building_storage_chest"
 {
-	"BaseClass"	"npc_dota_building"
+	"BaseClass"	"npc_dota_creature"
 	"Model"	"models/props_debris/secret_shop001.vmdl"
 	"SoundSet"	"Creep_Good_Melee"
 	"HasInventory"	"1"
@@ -15,13 +15,15 @@
 		"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
 	}
 
+	"Ability10"	"ability_building"
+
 	"ArmorPhysical"	"5"
 	"MagicalResistance"	"0"
 	"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
 	"BountyXP"	"0"
 	"BountyGoldMin"	"0"
 	"BountyGoldMax"	"0"
-	"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_NONE"
+	"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 	"MovementSpeed"	"0"
 	"MovementTurnRate"	"0"
 	"StatusHealth"	"230"

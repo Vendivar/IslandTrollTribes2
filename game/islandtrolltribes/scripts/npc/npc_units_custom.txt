@@ -115,7 +115,7 @@
 	}
 	"npc_building_armory"
 	{
-		"BaseClass"	"npc_dota_building"
+		"BaseClass"	"npc_dota_creature"
 		"Model"	"models/props_structures/good_shop001.vmdl"
 		"SoundSet"	"Creep_Good_Melee"
 		"HasInventory"	"1"
@@ -132,13 +132,15 @@
 		}
 	
 		"Ability1"	"ability_quick_build_armory"
+		"Ability10"	"ability_building"
+		
 		"ArmorPhysical"	"5"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
 		"BountyXP"	"0"
 		"BountyGoldMin"	"0"
 		"BountyGoldMax"	"0"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_NONE"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"0"
 		"MovementTurnRate"	"0"
 		"StatusHealth"	"250"
@@ -153,7 +155,7 @@
 	}
 	"npc_building_craftmaster"
 	{
-		"BaseClass"	"npc_dota_building"
+		"BaseClass"	"npc_dota_creature"
 		"Model"	"models/courier/smeevil_magic_carpet/smeevil_magic_carpet.vmdl"
 		"SoundSet"	"Creep_Good_Melee"
 		"HasInventory"	"1"
@@ -169,13 +171,15 @@
 		}
 	
 		"Ability1"	"ability_duel"
+		"Ability10"	"ability_building"
+		
 		"ArmorPhysical"	"0"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
 		"BountyXP"	"0"
 		"BountyGoldMin"	"0"
 		"BountyGoldMax"	"0"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_NONE"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"0"
 		"MovementTurnRate"	"0"
 		"StatusHealth"	"0"
@@ -190,7 +194,7 @@
 	}
 	"npc_building_emp"
 	{
-		"BaseClass"	"npc_dota_building"
+		"BaseClass"	"npc_dota_creature"
 		"Model"	"models/items/rattletrap/clockmaster_cog/clockmaster_cog.vmdl"
 		"SoundSet"	"Creep_Good_Melee"
 		"MinimapIconSize"	"250"
@@ -204,13 +208,15 @@
 		}
 	
 		"Ability1"	""
+		"Ability10"	"ability_building"
+		
 		"ArmorPhysical"	"0"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
 		"BountyXP"	"0"
 		"BountyGoldMin"	"0"
 		"BountyGoldMax"	"0"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_NONE"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"0"
 		"MovementTurnRate"	"0"
 		"StatusHealth"	"0"
@@ -225,7 +231,7 @@
 	}
 	"npc_building_ensnare_trap"
 	{
-		"BaseClass"	"npc_dota_building"
+		"BaseClass"	"npc_dota_creature"
 		"Model"	"models/items/lone_druid/bear_trap/bear_trap.vmdl"
 		"SoundSet"	"Creep_Good_Melee"
 		"MinimapIconSize"	"250"
@@ -241,13 +247,15 @@
 	
 		"Ability1"	"ability_ensnaretrap_ensnare"
 		"Ability2"	"ability_get_corpse"
+		"Ability10"	"ability_building"
+		
 		"ArmorPhysical"	"3"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
 		"BountyXP"	"0"
 		"BountyGoldMin"	"0"
 		"BountyGoldMax"	"0"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_NONE"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"0"
 		"MovementTurnRate"	"0"
 		"StatusHealth"	"80"
@@ -262,7 +270,7 @@
 	}
 	"npc_building_fire_basic"
 	{
-		"BaseClass"	"npc_dota_building"
+		"BaseClass"	"npc_dota_creature"
 		"Model"	"models/props_debris/camp_fire001.vmdl"
 		"SoundSet"	"Creep_Good_Melee"
 		"MinimapIconSize"	"250"
@@ -280,13 +288,15 @@
 		"Ability2"	"ability_pack_up"
 		"Ability3"	"ability_building_restoreheat"
 		"Ability4"	"ability_burn_building"
+		"Ability10"	"ability_building"
+		
 		"ArmorPhysical"	"5"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
 		"BountyXP"	"0"
 		"BountyGoldMin"	"0"
 		"BountyGoldMax"	"0"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_NONE"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"0"
 		"MovementTurnRate"	"0"
 		"StatusHealth"	"125"
@@ -301,7 +311,7 @@
 	}
 	"npc_building_fire_mage"
 	{
-		"BaseClass"	"npc_dota_building"
+		"BaseClass"	"npc_dota_creature"
 		"Model"	"models/props_debris/camp_fire001.vmdl"
 		"SoundSet"	"Creep_Good_Melee"
 		"MinimapIconSize"	"250"
@@ -319,13 +329,15 @@
 		"Ability2"	"ability_pack_up_magefire"
 		"Ability3"	"ability_building_restoreheat_magic"
 		"Ability4"	"ability_burn_building_Magic"
+		"Ability10"	"ability_building"
+	
 		"ArmorPhysical"	"5"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
 		"BountyXP"	"0"
 		"BountyGoldMin"	"0"
 		"BountyGoldMax"	"0"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_NONE"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"0"
 		"MovementTurnRate"	"0"
 		"StatusHealth"	"50"
@@ -340,7 +352,7 @@
 	}
 	"npc_building_hatchery"
 	{
-		"BaseClass"	"npc_dota_building"
+		"BaseClass"	"npc_dota_creature"
 		"Model"	"models/items/furion/staff_eagle_1.vmdl"
 		"SoundSet"	"Creep_Good_Melee"
 		"HasInventory"	"1"
@@ -357,13 +369,15 @@
 	
 		"Ability1"	"ability_hatch_egg"
 		"Ability2"	"ability_hawks_evolution"
+		"Ability10"	"ability_building"
+		
 		"ArmorPhysical"	"2"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
 		"BountyXP"	"0"
 		"BountyGoldMin"	"0"
 		"BountyGoldMax"	"0"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_NONE"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"0"
 		"MovementTurnRate"	"0"
 		"StatusHealth"	"150"
@@ -378,7 +392,7 @@
 	}
 	"npc_building_hut_mud"
 	{
-		"BaseClass"	"npc_dota_building"
+		"BaseClass"	"npc_dota_creature"
 		"Model"	"models/props_structures/tent_dk_small.vmdl"
 		"SoundSet"	"Creep_Good_Melee"
 		"HasInventory"	"0"
@@ -394,13 +408,15 @@
 		}
 	
 		"Ability1"	"ability_rest_big"
+		"Ability10"	"ability_building"
+		
 		"ArmorPhysical"	"5"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
 		"BountyXP"	"0"
 		"BountyGoldMin"	"0"
 		"BountyGoldMax"	"0"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_NONE"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"0"
 		"MovementTurnRate"	"0"
 		"StatusHealth"	"250"
@@ -415,7 +431,7 @@
 	}
 	"npc_building_hut_troll"
 	{
-		"BaseClass"	"npc_dota_building"
+		"BaseClass"	"npc_dota_creature"
 		"Model"	"models/props_structures/sniper_hut.vmdl"
 		"SoundSet"	"Creep_Good_Melee"
 		"HasInventory"	"0"
@@ -431,13 +447,15 @@
 		}
 	
 		"Ability1"	"ability_rest_big"
+		"Ability10"	"ability_building"
+		
 		"ArmorPhysical"	"5"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
 		"BountyXP"	"0"
 		"BountyGoldMin"	"0"
 		"BountyGoldMax"	"0"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_NONE"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"0"
 		"MovementTurnRate"	"0"
 		"StatusHealth"	"250"
@@ -452,7 +470,7 @@
 	}
 	"npc_building_hut_witch_doctor"
 	{
-		"BaseClass"	"npc_dota_building"
+		"BaseClass"	"npc_dota_creature"
 		"Model"	"models/props_structures/sideshop_radiant002.vmdl"
 		"SoundSet"	"Creep_Good_Melee"
 		"HasInventory"	"1"
@@ -468,13 +486,15 @@
 		}
 	
 		"Ability1"	"ability_quick_build_wd_hut"
+		"Ability10"	"ability_building"
+		
 		"ArmorPhysical"	"5"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
 		"BountyXP"	"0"
 		"BountyGoldMin"	"0"
 		"BountyGoldMax"	"0"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_NONE"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"0"
 		"MovementTurnRate"	"0"
 		"StatusHealth"	"325"
@@ -489,7 +509,7 @@
 	}
 	"npc_building_mix_pot"
 	{
-		"BaseClass"	"npc_dota_building"
+		"BaseClass"	"npc_dota_creature"
 		"Model"	"models/props_tree/stump001"
 		"SoundSet"	"Creep_Good_Melee"
 		"HasInventory"	"1"
@@ -505,13 +525,15 @@
 		}
 	
 		"Ability1"	"ability_mix"
+		"Ability10"	"ability_building"
+		
 		"ArmorPhysical"	"2"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
 		"BountyXP"	"0"
 		"BountyGoldMin"	"0"
 		"BountyGoldMax"	"0"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_NONE"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"0"
 		"MovementTurnRate"	"0"
 		"StatusHealth"	"150"
@@ -526,7 +548,7 @@
 	}
 	"npc_building_omnitower"
 	{
-		"BaseClass"	"npc_dota_building"
+		"BaseClass"	"npc_dota_creature"
 		"Model"	"models/props_structures/wooden_sentry_tower001.vmdl"
 		"SoundSet"	"Creep_Good_Melee"
 		"HasInventory"	"0"
@@ -542,13 +564,15 @@
 		}
 	
 		"Ability1"	"ability_enemy_target"
+		"Ability10"	"ability_building"
+		
 		"ArmorPhysical"	"5"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
 		"BountyXP"	"0"
 		"BountyGoldMin"	"0"
 		"BountyGoldMax"	"0"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_NONE"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"0"
 		"MovementTurnRate"	"0"
 		"StatusHealth"	"220"
@@ -563,7 +587,7 @@
 	}
 	"npc_building_smoke_house"
 	{
-		"BaseClass"	"npc_dota_building"
+		"BaseClass"	"npc_dota_creature"
 		"Model"	"models/props_structures/tent_dk_large.vmdl"
 		"SoundSet"	"Creep_Good_Melee"
 		"HasInventory"	"1"
@@ -580,13 +604,15 @@
 	
 		"Ability1"	"ability_get_corpse"
 		"Ability2"	"ability_smoke_meat"
+		"Ability10"	"ability_building"
+		
 		"ArmorPhysical"	"5"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
 		"BountyXP"	"0"
 		"BountyGoldMin"	"0"
 		"BountyGoldMax"	"0"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_NONE"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"0"
 		"MovementTurnRate"	"0"
 		"StatusHealth"	"275"
@@ -601,7 +627,7 @@
 	}
 	"npc_building_spirit_ward"
 	{
-		"BaseClass"	"npc_dota_building"
+		"BaseClass"	"npc_dota_creature"
 		"Model"	"models/heroes/witchdoctor/witchdoctor_ward.vmdl"
 		"SoundSet"	"Creep_Good_Melee"
 		"MinimapIconSize"	"250"
@@ -616,13 +642,15 @@
 		}
 	
 		"Ability1"	"ability_revive"
+		"Ability10"	"ability_building"
+		
 		"ArmorPhysical"	"5"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
 		"BountyXP"	"0"
 		"BountyGoldMin"	"0"
 		"BountyGoldMax"	"0"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_NONE"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"0"
 		"MovementTurnRate"	"0"
 		"StatusHealth"	"200"
@@ -637,7 +665,7 @@
 	}
 	"npc_building_storage_chest"
 	{
-		"BaseClass"	"npc_dota_building"
+		"BaseClass"	"npc_dota_creature"
 		"Model"	"models/props_debris/secret_shop001.vmdl"
 		"SoundSet"	"Creep_Good_Melee"
 		"HasInventory"	"1"
@@ -652,13 +680,15 @@
 			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
 		}
 	
+		"Ability10"	"ability_building"
+	
 		"ArmorPhysical"	"5"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
 		"BountyXP"	"0"
 		"BountyGoldMin"	"0"
 		"BountyGoldMax"	"0"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_NONE"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"0"
 		"MovementTurnRate"	"0"
 		"StatusHealth"	"230"
@@ -673,7 +703,7 @@
 	}
 	"npc_building_tannery"
 	{
-		"BaseClass"	"npc_dota_building"
+		"BaseClass"	"npc_dota_creature"
 		"Model"	"models/props_structures/tent_dk_med.vmdl"
 		"SoundSet"	"Creep_Good_Melee"
 		"HasInventory"	"1"
@@ -691,13 +721,15 @@
 		"Ability1"	"ability_make_gloves"
 		"Ability2"	"ability_make_boots"
 		"Ability3"	"ability_make_coat"
+		"Ability10"	"ability_building"
+		
 		"ArmorPhysical"	"5"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
 		"BountyXP"	"0"
 		"BountyGoldMin"	"0"
 		"BountyGoldMax"	"0"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_NONE"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"0"
 		"MovementTurnRate"	"0"
 		"StatusHealth"	"275"
@@ -712,7 +744,7 @@
 	}
 	"npc_building_teleport_beacon"
 	{
-		"BaseClass"	"npc_dota_building"
+		"BaseClass"	"npc_dota_creature"
 		"Model"	"models/items/wards/nexon_sotdaeward/nexon_sotdaeward.vmdl"
 		"SoundSet"	"Creep_Good_Melee"
 		"MinimapIconSize"	"250"
@@ -727,13 +759,15 @@
 		}
 	
 		"Ability1"	"ability_teleport"
+		"Ability10"	"ability_building"
+		
 		"ArmorPhysical"	"5"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
 		"BountyXP"	"0"
 		"BountyGoldMin"	"0"
 		"BountyGoldMax"	"0"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_NONE"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"0"
 		"MovementTurnRate"	"0"
 		"StatusHealth"	"200"
@@ -748,7 +782,7 @@
 	}
 	"npc_building_tent"
 	{
-		"BaseClass"	"npc_dota_building"
+		"BaseClass"	"npc_dota_creature"
 		"Model"	"models/props_structures/tent_dk_small.vmdl"
 		"SoundSet"	"Creep_Good_Melee"
 		"MinimapIconSize"	"250"
@@ -764,13 +798,15 @@
 	
 		"Ability1"	"ability_rest_small"
 		"Ability2"	"ability_pack_up"
+		"Ability10"	"ability_building"
+		
 		"ArmorPhysical"	"0"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
 		"BountyXP"	"0"
 		"BountyGoldMin"	"0"
 		"BountyGoldMax"	"0"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_NONE"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"0"
 		"MovementTurnRate"	"0"
 		"StatusHealth"	"160"
@@ -803,13 +839,15 @@
 		}
 	
 		"Ability1"	"ability_quick_build_workshop"
+		"Ability10"	"ability_building"
+	
 		"ArmorPhysical"	"2"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
 		"BountyXP"	"0"
 		"BountyGoldMin"	"0"
 		"BountyGoldMax"	"0"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_NONE"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"0"
 		"MovementTurnRate"	"0"
 		"StatusHealth"	"250"
