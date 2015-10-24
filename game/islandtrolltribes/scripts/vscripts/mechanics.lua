@@ -71,6 +71,30 @@ function ClearAbilities( unit )
 end
 
 ------------------------------------------------
+--                Item functions              --
+------------------------------------------------
+
+function TransferItem( unit, target, item )
+    unit:DropItemAtPositionImmediate(item, target:GetAbsOrigin())
+    Timers:CreateTimer(function() 
+        target:PickupDroppedItem(item:GetContainer())
+    end)
+    print("Item "..item:GetAbilityName().." transfered")
+end
+
+function GetNumItemsInInventory( unit )
+    local count = 0
+    for i=0,5 do
+        local item = unit:GetItemInSlot(i)
+        if item then
+            count = count + 1
+        end
+    end
+
+    return count
+end
+
+------------------------------------------------
 
 --Compares two tables to see if they have the same values
 function CompareTables(table1, table2)
@@ -175,6 +199,12 @@ function GetAbilityOnVisibleSlot( unit, slot )
             end
         end
     end
+end
+
+----------------------------------------------
+
+function IsCustomBuilding( unit )
+    return unit:HasAbility("ability_building")
 end
 
 ----------------------------------------------

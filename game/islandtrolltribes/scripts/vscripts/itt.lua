@@ -193,6 +193,9 @@ function ITT:InitGameMode()
     CustomGameEventManager:RegisterListener( "player_selected_class", Dynamic_Wrap( ITT, "OnClassSelected" ) )
     CustomGameEventManager:RegisterListener( "player_selected_subclass", Dynamic_Wrap( ITT, "OnSubclassChange" ) )
 
+    -- Filters
+    GameMode:SetExecuteOrderFilter( Dynamic_Wrap( ITT, "FilterExecuteOrder" ), self )
+
     --for multiteam
     ListenToGameEvent( "game_rules_state_change", Dynamic_Wrap( ITT, 'OnGameRulesStateChange' ), self )
 
@@ -348,10 +351,6 @@ end
 --disables mammoth pit manually via try_delete_ent command
 function ITT:_testRemove(cmdName, arg1)
     UnblockMammoth()
-end
-
-function ITT:FilterDamage( filterTable )
-    
 end
 
 local classes = { 
@@ -1301,6 +1300,11 @@ end
 --Listener to handle telegather events from item pickup and picking up raw meat
 function ITT:OnItemPickedUp(event)
     DeepPrintTable(event)
+    
+    if not event.HeroEntityIndex then
+        print("A building just picked an item")
+        return
+    end
     
     local hero = EntIndexToHScript( event.HeroEntityIndex )
     local originalItem = EntIndexToHScript(event.ItemEntityIndex)
