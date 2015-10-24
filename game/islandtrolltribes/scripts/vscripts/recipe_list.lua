@@ -1,3 +1,5 @@
+-- TODO: Make this a KV Table
+
 TROLL_RECIPE_TABLE = {
         {"item_building_kit_fire_basic",        {"item_tinder", "item_flint", "item_stick"}},
         {"item_building_kit_tent",              {"item_stick", "item_hide_any", "item_stick"}},

@@ -14,10 +14,8 @@ require('item_spawning')
 require('subclass_system')
 require('util')
 
--- This needs rewritting asap
-require('logic_troll' )
-
 -- This needs to be reviewed
+require("craftinghelper")
 require('logic_creature' )
 
 -- This should be a KV Table

@@ -1,3 +1,16 @@
+function InventoryCheck(playerID)
+    -- print("Inv testing player " .. playerID)
+    -- Lets find the hero we want to work with
+    local player = PlayerInstanceFromIndex(playerID)
+    local hero =   player:GetAssignedHero()
+    if hero == nil then
+        --print("hero " .. playerID .. " doesn't exist!")
+    else
+        CraftItems(hero, TROLL_RECIPE_TABLE, ITEM_ALIAS_TABLE)
+        --craftinghelper.lua explains how to format the tables
+        --tables are contained in recipe_list.lua
+    end
+end
 
 --[[recipeTable is a table of tables and should be in the format of:
     {
