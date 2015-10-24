@@ -1,0 +1,38 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/custom_game/toolkit.css" />
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/toolkit.js" />
+	</scripts>
+	<Panel class="ToolkitRoot" hittest="false">
+		<Panel class="ToolkitContainer">
+			<Panel id="sleep" class="ToolkitAbility" onactivate="Cast('sleep')" onmouseover="MouseOver('sleep')" onmouseout="MouseOut('sleep')">
+				<Image class="ToolkitImage" src="file://{images}/toolkit/sleep.png" />
+				<Label id="label_sleep" class="ImageLabel" text="" />
+			</Panel>
+
+			<Panel id="eat_meat" class="ToolkitAbility" onactivate="Cast('eat_meat')" onmouseover="MouseOver('eat_meat')" onmouseout="MouseOut('eat_meat')"  >
+				<Image class="ToolkitImage" src="file://{images}/toolkit/eat_meat.png" />
+				<Label id="label_eat_meat" class="ImageLabel" text="" />
+			</Panel>
+
+			<Panel id="drop_meat" class="ToolkitAbility" onactivate="Cast('drop_meat')" onmouseover="MouseOver('drop_meat')" onmouseout="MouseOut('drop_meat')" >
+				<Image class="ToolkitImage" src="file://{images}/toolkit/drop_meat.png" />
+				<Label id="label_drop_meat" class="ImageLabel" text="" />
+			</Panel>
+
+			<Panel id="drop_all_meat" class="ToolkitAbility" onactivate="Cast('drop_all_meat')" onmouseover="MouseOver('drop_all_meat')" onmouseout="MouseOut('drop_all_meat')" >
+				<Image class="ToolkitImage" src="file://{images}/toolkit/drop_all_meat.png" />
+				<Label id="label_drop_all_meat" class="ImageLabel" text="" />
+			</Panel>
+
+			<Panel id="panic" class="ToolkitAbility" onactivate="Cast('panic')" onmouseover="MouseOver('panic')" onmouseout="MouseOut('panic')" >
+				<Image class="ToolkitImage" src="file://{images}/toolkit/panic.png" />
+				<Label id="label_panic" class="ImageLabel" text="" />
+			</Panel>
+		</Panel>
+	</Panel>
+</root>
+
+

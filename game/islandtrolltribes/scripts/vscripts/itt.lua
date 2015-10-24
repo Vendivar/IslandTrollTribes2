@@ -193,6 +193,12 @@ function ITT:InitGameMode()
     CustomGameEventManager:RegisterListener( "player_selected_class", Dynamic_Wrap( ITT, "OnClassSelected" ) )
     CustomGameEventManager:RegisterListener( "player_selected_subclass", Dynamic_Wrap( ITT, "OnSubclassChange" ) )
 
+    CustomGameEventManager:RegisterListener( "player_sleep", Dynamic_Wrap( ITT, "Sleep" ) )
+    CustomGameEventManager:RegisterListener( "player_eat_meat", Dynamic_Wrap( ITT, "EatMeat" ) )
+    CustomGameEventManager:RegisterListener( "player_drop_meat", Dynamic_Wrap( ITT, "DropMeat" ) )
+    CustomGameEventManager:RegisterListener( "player_drop_all_meat", Dynamic_Wrap( ITT, "DropAllMeat" ) )
+    CustomGameEventManager:RegisterListener( "player_panic", Dynamic_Wrap( ITT, "Panic" ) )
+
     -- Filters
     GameMode:SetExecuteOrderFilter( Dynamic_Wrap( ITT, "FilterExecuteOrder" ), self )
 
@@ -262,18 +268,6 @@ function ITT:InitGameMode()
     -- spawner_npc_bush_herb_orange
     -- spawner_npc_bush_thief
     -- spawner_npc_bush_scout
-
-    --flash ui commands
-    --print("flash ui commands")
-    Convars:RegisterCommand( "Sleep", function(...) return self:_Sleep( ... ) end, "Player is put to sleep", 0 )
-    Convars:RegisterCommand( "PickUpMeat", function(...) return self:_PickUpMeat( ... ) end, "Player drops one raw meat", 0)
-    Convars:RegisterCommand( "EatMeat", function(...) return self:_EatMeat( ... ) end, "Player eats one raw meat", 0 )
-    Convars:RegisterCommand( "DropMeat", function(...) return self:_DropMeat( ... ) end, "Player drops one raw meat", 0 )
-    Convars:RegisterCommand( "DropAllMeat", function(...) return self:_DropAllMeat( ... ) end, "Player drops all raw meat", 0)
-    Convars:RegisterCommand( "Panic", function(...) return self:_Panic( ... ) end, "Player panics!", 0)
-    Convars:RegisterCommand( "sub_select", function(cmdname, num) self:_SubSelect(Convars:GetCommandClient(), tonumber(num)) end, "Select Subclass", 0)
-    Convars:RegisterCommand( "try_6", function(cmdname, class) print("Trying.."); FireGameEvent("fl_level_6", {pid = -1, gameclass = class}) end, "Select First Subclass", 0)
-    Convars:RegisterCommand( "try_delete_ent", function(...) self:_testRemove( ... ) end, "testing", 0)
 
     --select class commands
     Convars:RegisterCommand( "SelectClass", function(...) return self:_SelectClass( ... ) end, "Player is selecting a class", 0 )
@@ -348,10 +342,6 @@ function UnblockMammoth()
         print("name entblocker doesn't exist")
     end
 end
---disables mammoth pit manually via try_delete_ent command
-function ITT:_testRemove(cmdName, arg1)
-    UnblockMammoth()
-end
 
 local classes = { 
     [1] = "hunter",
@@ -388,169 +378,6 @@ function ITT:OnClassSelected(event)
         CreateHeroForPlayer(hero_name, player)
         print("[ITT] CreateHeroForPlayer: ",playerID,hero_name)
     end, playerID)
-end
-
---Handlers for commands from custom UI
-function ITT:_Sleep(cmdName)
-    print("Sleep Command")
-    local cmdPlayer = Convars:GetCommandClient()  -- returns the player who issued the console command
-    if cmdPlayer then
-        local nPlayerID = cmdPlayer:GetPlayerID()
-        local hero = cmdPlayer:GetAssignedHero()
-        if hero == nil then
-            return
-        end
-        local abilityName = "ability_rest_troll"
-        local ability = hero:FindAbilityByName(abilityName)
-        if ability == nil then
-            hero:AddAbility(abilityName)
-            ability = hero:FindAbilityByName( abilityName )
-            ability:SetLevel(1)
-        end
-        print("trying to cast ability ", abilityName)
-        hero:CastAbilityNoTarget(ability, -1)
-    end
-end
-
-function ITT:_EatMeat(cmdName)
-    print("EatMeat Command")
-    local cmdPlayer = Convars:GetCommandClient()  -- returns the player who issued the console command
-    if cmdPlayer then
-        local nPlayerID = cmdPlayer:GetPlayerID()
-        local hero = cmdPlayer:GetAssignedHero()
-
-        if hero == nil then
-            return
-        end
-
-        local meatStacks = hero:GetModifierStackCount("modifier_meat_passive", nil)
-        if meatStacks > 0 then
-            local abilityName = "ability_item_eat_meat_raw"
-            local ability = hero:FindAbilityByName(abilityName)
-            if ability == nil then
-                hero:AddAbility(abilityName)
-                ability = hero:FindAbilityByName( abilityName )
-                ability:SetLevel(1)
-            end
-            print("trying to cast ability ", abilityName)
-            hero:CastAbilityNoTarget(ability, -1)
-
-            hero:SetModifierStackCount("modifier_meat_passive", nil, meatStacks-1)
-        end
-    end
-end
-
-function ITT:_DropMeat(cmdName)
-    print("DropMeat Command")
-    local cmdPlayer = Convars:GetCommandClient()  -- returns the player who issued the console command
-    if cmdPlayer then
-        local nPlayerID = cmdPlayer:GetPlayerID()
-        local hero = cmdPlayer:GetAssignedHero()
-        if hero == nil then
-            return
-        end
-        print("COMMAND FROM PLAYER: " .. nPlayerID)
-        print("Drop one meat from hero " .. hero:GetName())
-
-        local meatStacks = hero:GetModifierStackCount("modifier_meat_passive", nil)
-        if meatStacks > 0 and hero ~= nil then
-            local newItem = CreateItem("item_meat_raw", nil, nil)
-            CreateItemOnPositionSync(hero:GetOrigin() + RandomVector(RandomInt(50,100)), newItem)
-
-            hero:SetModifierStackCount("modifier_meat_passive", nil, meatStacks - 1)
-        end
-    end
-end
-
-function ITT:_DropAllMeat(cmdName)
-    print("DropAllMeat Command")
-    local cmdPlayer = Convars:GetCommandClient()  -- returns the player who issued the console command
-    if cmdPlayer then
-        local nPlayerID = cmdPlayer:GetPlayerID()
-        local hero = cmdPlayer:GetAssignedHero()
-        if hero == nil then
-            return
-        end
-        print("COMMAND FROM PLAYER: " .. nPlayerID)
-        print("Drop all meat hero " .. hero:GetName())
-
-        local meatStacks = hero:GetModifierStackCount("modifier_meat_passive", nil)
-        if meatStacks > 0 and hero ~= nil then
-            for i = 1,meatStacks do
-                local newItem = CreateItem("item_meat_raw", nil, nil)
-                CreateItemOnPositionSync(hero:GetOrigin() + RandomVector(RandomInt(50,100)), newItem)
-
-                hero:SetModifierStackCount("modifier_meat_passive", nil, 0)
-            end
-        end
-    end
-end
-
-function ITT:_Panic(cmdName)
-    print("Panic Command")
-    local cmdPlayer = Convars:GetCommandClient()  -- returns the player who issued the console command
-    if cmdPlayer then
-        local nPlayerID = cmdPlayer:GetPlayerID()
-        local hero = cmdPlayer:GetAssignedHero()
-        if hero == nil then
-            return
-        end
-        local abilityName = "ability_panic"
-        local ability = hero:FindAbilityByName(abilityName)
-        if ability == nil and hero ~= nil then
-            hero:AddAbility(abilityName)
-            ability = hero:FindAbilityByName( abilityName )
-            ability:SetLevel(1)
-        end
-        print("trying to cast ability ", abilityName)
-        hero:CastAbilityNoTarget(ability, -1)
-    end
-end
-
--- This was missing, added a placeholder to at least remove crashes
-function ITT:_PickUpMeat(cmdName)
-    print("Pick up meat button not implemented, this added to remove crashes")
-end
-
-unitskeys = LoadKeyValues("scripts/npc/npc_units_custom.txt")
-heroeskeys = LoadKeyValues("scripts/npc/npc_heroes.txt")
-
---[[
-    This fixes the Cosmetics issue by model-swapping the naturally assigned hero's cosmetics with the chosen subclass models. It does this by looking at the currect setup in
-    npc_units_custom.txt. This is strange because this method implies that hero -> unit swapping is no longer intended. We will need to do the Ability shuffling manually later.
-
-    Sticking with the player's assigned heroes as a number of player-usuability wins. It doesn't destroy Multiteam callouts, introduce
-    selectin wonkiness, break your control groups or hero-snap key, and probably some other stuff I'm forgetting.
-
-    The biggest problem is that the unit's name on the UI no longer changes on its own. Off the top of my head, the only way to patch this up would be to rig some shit up in
-    scaleform, which isn't so bad because the gamemode could use some other gameui patches -- such as a better implementation of the inventory slot-blockers that you can
-    move around.
-
-]]
-
-function ITT:_SubSelect(player, n)
-
-    local playerUnitEnt = player:GetAssignedHero()
-    local playerUnit = playerUnitEnt:GetUnitName()
-    local pid = player:GetPlayerID()
-
-    local choices = subclasses[playerUnit]
-    if choices then
-        local choice = choices[n + 1]
-
-        local oldClothes = CosmeticsForUnit(playerUnitEnt)
-
-        local newClothes = unitskeys[choice].Creature.AttachWearables
-
-        for _,v in pairs(oldClothes) do
-            local oldmodel = v:GetModelName()
-            local matchingNew = GetModelForSlot(newClothes, SlotForModel(oldmodel))
-            if matchingNew then
-                print("I'm changing " .. oldmodel .. " to " .. matchingNew )
-                v:SetModel(matchingNew)
-            end
-        end
-    end
 end
 
 -- This code is written by Internet Veteran, handle with care.
@@ -603,17 +430,6 @@ function ITT:OnHeroInGame( hero )
 
     -- Adjust Stats
     Stats:ModifyBonuses(hero)
-
-    -- Hunger (TODO: Review values and intended behavior)
-    --ApplyModifier(hero, "modifier_hunger")
-
-    --anti-regen
-    -- if string.find(spawnedUnit:GetClassname(), "hero") then
-    --     print("REGEN!")
-    --     spawnedUnit:RemoveModifierByName("modifier_regen_passive")
-    --     local heatApplier = CreateItem("item_regen_modifier_applier", spawnedUnit, spawnedUnit)
-    --     heatApplier:ApplyDataDrivenModifier(spawnedUnit, spawnedUnit, "modifier_regen_passive", {duration=-1})
-    -- end
 end
 
 function ITT:OnHeroRespawn( hero )
