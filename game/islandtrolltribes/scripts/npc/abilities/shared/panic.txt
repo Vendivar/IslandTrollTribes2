@@ -1,12 +1,15 @@
-"ability_panic"
+"panic"
 {
 	"BaseClass"	"ability_datadriven"
-	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 	"AbilityTextureName"	"razor_plasma_field"
 	"AbilityCastPoint"	"0.0"
 	"AbilityCooldown"	"15"
 	"AbilityCastRange"	"0"
 	"AbilityManaCost"	"20"
+
+	"IsCastableWhileHidden"	"1"
+
 	"OnSpellStart"
 	{
 		"ApplyModifier"
@@ -21,7 +24,6 @@
 			"EffectName"	"Hero_Undying.FleshGolem.Cast"
 			"Target"	"CASTER"
 		}
-
 	}
 
 	"Modifiers"
@@ -38,9 +40,7 @@
 				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%move_speed"
 				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed"
 			}
-
 		}
-
 	}
 
 	"AbilitySpecial"
@@ -62,7 +62,5 @@
 			"var_type"	"FIELD_FLOAT"
 			"incoming_damage"	"110"
 		}
-
 	}
-
 }

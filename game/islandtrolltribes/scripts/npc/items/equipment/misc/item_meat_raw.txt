@@ -23,11 +23,11 @@
 	"OnSpellStart"
 	{
 		"SpendCharge"
-      {}
+        {}
 
 		"RunScript"
 		{
-			"ScriptFile"	"items/meat.lua"
+			"ScriptFile"	"mechanics/meat.lua"
 			"Function"		"EatMeatRaw"
 		}
 	}

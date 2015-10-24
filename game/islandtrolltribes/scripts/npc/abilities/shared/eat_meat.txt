@@ -1,13 +1,16 @@
-"ability_item_eat_meat_raw"
+"eat_meat"
 {
 	"BaseClass"	"ability_datadriven"
-	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 	"AbilityTextureName"	"life_stealer_open_wounds"
 	"AbilityCastPoint"	"0.0"
 	"AbilityCastAnimation"	"ACT_DOTA_CHANNEL_ABILITY_4"
 	"AbilityChannelTime"	"2.0"
 	"AbilityCooldown"	"0"
 	"AbilityManaCost"	"0"
+
+	"IsCastableWhileHidden"	"1"
+
 	"OnSpellStart"
 	{
 		"ApplyModifier"
@@ -43,7 +46,7 @@
 			{
 				"RunScript"
 				{
-					"ScriptFile"	"items/meat.lua"
+					"ScriptFile"	"mechanics/meat.lua"
 					"Function"		"EatMeat"
 					"heal_amount"	"1"
 				}

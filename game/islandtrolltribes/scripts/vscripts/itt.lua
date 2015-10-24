@@ -436,6 +436,9 @@ function ITT:OnHeroRespawn( hero )
 
     -- Restart Heat
     Heat:Start(hero)
+
+    -- Restart Meat tracking
+    ApplyModifier(hero, "modifier_meat_passive")
 end
 
 -- This handles locking a number of inventory slots for some classes
@@ -542,9 +545,27 @@ function ITT:OnEntityKilled(keys)
     local unitName = killedUnit:GetUnitName()
     print(unitName .. " has been killed")
 
+    -- Corpses
     if string.find(unitName, "creep") then
         corpse = CreateUnitByName("npc_creep_corpse", killedUnit:GetAbsOrigin(), false, nil, nil, 0)
         corpse.killer = killer
+
+        -- Set the corpse invisible until the dota corpse disappears
+        corpse:AddNoDraw()
+            
+        -- Keep a reference to its name and expire time
+        corpse.corpse_expiration = GameRules:GetGameTime() + 90
+        corpse.unit_name = killedUnit:GetUnitName()
+
+        -- Set custom corpse visible
+        Timers:CreateTimer(3, function() if IsValidEntity(corpse) then corpse:RemoveNoDraw() end end)
+
+        -- Remove itself after the corpse duration
+        Timers:CreateTimer(90, function()
+            if corpse and IsValidEntity(corpse) then
+                corpse:RemoveSelf()
+            end
+        end)
     end
 
     if string.find(unitName, "building") then

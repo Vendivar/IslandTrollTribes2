@@ -1,0 +1,7 @@
+// For Tooltip purposes
+"drop_all_meat"
+{
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	"AbilityTextureName"	"life_stealer_open_wounds"
+}

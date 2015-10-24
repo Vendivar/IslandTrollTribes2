@@ -12108,59 +12108,6 @@
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"ability_building_getcorpse"
 	}
-	"ability_item_eat_meat_raw"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
-		"AbilityTextureName"	"life_stealer_open_wounds"
-		"AbilityCastPoint"	"0.0"
-		"AbilityCastAnimation"	"ACT_DOTA_CHANNEL_ABILITY_4"
-		"AbilityChannelTime"	"2.0"
-		"AbilityCooldown"	"0"
-		"AbilityManaCost"	"0"
-		"OnSpellStart"
-		{
-			"ApplyModifier"
-			{
-				"Target"	"CASTER"
-				"ModifierName"	"modifier_eat_meat_raw"
-			}
-	
-		}
-	
-		"OnChannelFinish"
-		{
-			"RemoveModifier"
-			{
-				"Target"	"CASTER"
-				"ModifierName"	"modifier_eat_meat_raw"
-			}
-	
-			"RemoveAbility"
-			{
-				"Target"	"CASTER"
-				"AbilityName"	"ability_item_eat_meat_raw"
-			}
-	
-		}
-	
-		"Modifiers"
-		{
-			"modifier_eat_meat_raw"
-			{
-				"ThinkInterval"	".2"
-				"OnIntervalThink"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"items/meat.lua"
-						"Function"		"EatMeat"
-						"heal_amount"	"1"
-					}
-				}
-			}
-		}
-	}
 	"ability_magic_raw_meteor"
 	{
 		"BaseClass"	"ability_datadriven"
@@ -12344,74 +12291,6 @@
 				"Target"	"CASTER"
 				"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
 				"Function"	"RemoveEntity"
-			}
-	
-		}
-	
-	}
-	"ability_panic"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityTextureName"	"razor_plasma_field"
-		"AbilityCastPoint"	"0.0"
-		"AbilityCooldown"	"15"
-		"AbilityCastRange"	"0"
-		"AbilityManaCost"	"20"
-		"OnSpellStart"
-		{
-			"ApplyModifier"
-			{
-				"Target"	"CASTER"
-				"ModifierName"	"modifier_panic"
-				"Duration"	"15"
-			}
-	
-			"FireSound"
-			{
-				"EffectName"	"Hero_Undying.FleshGolem.Cast"
-				"Target"	"CASTER"
-			}
-	
-		}
-	
-		"Modifiers"
-		{
-			"modifier_panic"
-			{
-				"Passive"	"1"
-				"Hidden"	"0"
-				"IsDebuff"	"0"
-				"IsPurgable"	"0"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE"	"%incoming_damage"
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%move_speed"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed"
-				}
-	
-			}
-	
-		}
-	
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"attack_speed"	"20"
-			}
-	
-			"02"
-			{
-				"var_type"	"FIELD_FLOAT"
-				"move_speed"	"30"
-			}
-	
-			"03"
-			{
-				"var_type"	"FIELD_FLOAT"
-				"incoming_damage"	"110"
 			}
 	
 		}
@@ -12693,30 +12572,209 @@
 		}
 	
 	}
-	"ability_rest_troll"
+	"ability_revive"
+	{
+	    "BaseClass"             "ability_lua"
+	    "AbilityCooldown"       "1.0"
+	    "MaxLevel"              "1"
+	    "AbilityManaCost"       "0"
+	    "AbilityCastPoint"      "0.0"
+	    "AbilityChannelTime"	"4"
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+	    "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	    "ScriptFile"  			"ability_revive.lua"
+	}
+	"ability_smoke_meat"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityTextureName"	"ability_building_smokemeat"
+	}
+	"ability_teleport"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"ability_building_teleport"
+	}
+	// For Tooltip purposes
+	"drop_all_meat"
+	{
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"AbilityTextureName"	"life_stealer_open_wounds"
+	}
+	// For Tooltip Purposes
+	"drop_meat"
+	{
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"AbilityTextureName"	"life_stealer_open_wounds"
+	}
+	"dummy_passive"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"Modifiers"
+		{
+			"dummy_modifier"
+			{
+				"Passive"	"1"
+				"States"
+				{
+					"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_COMMAND_RESTRICTED"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_ATTACK_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NOT_ON_MINIMAP"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_UNSELECTABLE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_HEALTH_BAR"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+		}
+	}
+	"eat_meat"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"AbilityTextureName"	"life_stealer_open_wounds"
+		"AbilityCastPoint"	"0.0"
+		"AbilityCastAnimation"	"ACT_DOTA_CHANNEL_ABILITY_4"
+		"AbilityChannelTime"	"2.0"
+		"AbilityCooldown"	"0"
+		"AbilityManaCost"	"0"
+	
+		"IsCastableWhileHidden"	"1"
+	
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"Target"	"CASTER"
+				"ModifierName"	"modifier_eat_meat_raw"
+			}
+	
+		}
+	
+		"OnChannelFinish"
+		{
+			"RemoveModifier"
+			{
+				"Target"	"CASTER"
+				"ModifierName"	"modifier_eat_meat_raw"
+			}
+	
+			"RemoveAbility"
+			{
+				"Target"	"CASTER"
+				"AbilityName"	"ability_item_eat_meat_raw"
+			}
+	
+		}
+	
+		"Modifiers"
+		{
+			"modifier_eat_meat_raw"
+			{
+				"ThinkInterval"	".2"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"mechanics/meat.lua"
+						"Function"		"EatMeat"
+						"heal_amount"	"1"
+					}
+				}
+			}
+		}
+	}
+	"panic"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"AbilityTextureName"	"razor_plasma_field"
+		"AbilityCastPoint"	"0.0"
+		"AbilityCooldown"	"15"
+		"AbilityCastRange"	"0"
+		"AbilityManaCost"	"20"
+	
+		"IsCastableWhileHidden"	"1"
+	
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"Target"	"CASTER"
+				"ModifierName"	"modifier_panic"
+				"Duration"	"15"
+			}
+	
+			"FireSound"
+			{
+				"EffectName"	"Hero_Undying.FleshGolem.Cast"
+				"Target"	"CASTER"
+			}
+		}
+	
+		"Modifiers"
+		{
+			"modifier_panic"
+			{
+				"Passive"	"1"
+				"Hidden"	"0"
+				"IsDebuff"	"0"
+				"IsPurgable"	"0"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE"	"%incoming_damage"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%move_speed"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed"
+				}
+			}
+		}
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"attack_speed"	"20"
+			}
+	
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"move_speed"	"30"
+			}
+	
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"incoming_damage"	"110"
+			}
+		}
+	}
+	"sleep_outside"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"AbilityUnitTargetFlags"	"DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
 		"AbilityTextureName"	"ability_building_rest"
 		"AbilityCastPoint"	"0.0"
 		"AbilityCooldown"	"10"
-		"AbilityCastRange"	"%cast_range"
 		"AbilityManaCost"	"0"
-		"Precache"
+	
+		"IsCastableWhileHidden"	"1"
+	
+		"precache"
 		{
-			"particle_folder"	"particles/newplayer_fx"			
-			"soundfile"					"soundevents/game_sounds_items.vsndevts"
+			"particle_folder"	"particles/newplayer_fx"
 		}
 	
 		"OnSpellStart"
 		{
 			"RunScript"
 			{
-				"Target"	"CASTER"
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"RestoreMana"
-				"ManaRestored"	"%mana_restored"
+				"ScriptFile"   "mechanics/mana.lua"
+				"Function"     "RestoreMana"
+				"ManaRestored" "%mana_restored"
 			}
 	
 			"RunScript"
@@ -12755,6 +12813,7 @@
 			{
 				"IsDebuff"	"0"
 				"IsPurgable"	"0"
+				"OverrideAnimation"     "ACT_DOTA_DISABLED"
 				"States"
 				{
 					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
@@ -12795,6 +12854,7 @@
 	
 			"modifier_invuln"
 			{
+				"IsHidden"	"1"
 				"States"
 				{
 					"MODIFIER_STATE_INVULNERABLE"	"MODIFIER_STATE_VALUE_ENABLED"
@@ -12828,52 +12888,6 @@
 			{
 				"var_type"	"FIELD_FLOAT"
 				"invuln_duration"	"1.0"
-			}
-	
-		}
-	
-	}
-	"ability_revive"
-	{
-	    "BaseClass"             "ability_lua"
-	    "AbilityCooldown"       "1.0"
-	    "MaxLevel"              "1"
-	    "AbilityManaCost"       "0"
-	    "AbilityCastPoint"      "0.0"
-	    "AbilityChannelTime"	"4"
-	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
-	    "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	    "ScriptFile"  			"ability_revive.lua"
-	}
-	"ability_smoke_meat"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"ability_building_smokemeat"
-	}
-	"ability_teleport"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"ability_building_teleport"
-	}
-	"dummy_passive"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"Modifiers"
-		{
-			"dummy_modifier"
-			{
-				"Passive"	"1"
-				"States"
-				{
-					"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_COMMAND_RESTRICTED"	"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_ATTACK_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_NOT_ON_MINIMAP"	"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_UNSELECTABLE"	"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_NO_HEALTH_BAR"	"MODIFIER_STATE_VALUE_ENABLED"
-				}
-	
 			}
 	
 		}

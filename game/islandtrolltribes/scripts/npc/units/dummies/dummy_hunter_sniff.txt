@@ -1,0 +1,17 @@
+"dummy_hunter_sniff"
+{
+   "BaseClass"     "npc_dota_creature"
+   "ConsideredHero"    "0"
+   "Level" "1"
+   "Ability1"  "dummy_passive"
+   "ArmorPhysical" "0"
+   "MagicalResistance" "0"
+   "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"
+   "MovementCapabilities"  "DOTA_UNIT_CAP_MOVE_GROUND"
+   "MovementSpeed" "250" //this affects the footprints spacing
+   "MovementTurnRate"  "0"
+   "StatusHealth"  "9999"
+   "StatusHealthRegen" "0"
+   "VisionDaytimeRange"    "0"
+   "VisionNighttimeRange"  "0"
+}

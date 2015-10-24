@@ -1,27 +1,27 @@
-"ability_rest_troll"
+"sleep_outside"
 {
 	"BaseClass"	"ability_datadriven"
-	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 	"AbilityUnitTargetFlags"	"DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
 	"AbilityTextureName"	"ability_building_rest"
 	"AbilityCastPoint"	"0.0"
 	"AbilityCooldown"	"10"
-	"AbilityCastRange"	"%cast_range"
 	"AbilityManaCost"	"0"
-	"Precache"
+
+	"IsCastableWhileHidden"	"1"
+
+	"precache"
 	{
-		"particle_folder"	"particles/newplayer_fx"			
-		"soundfile"					"soundevents/game_sounds_items.vsndevts"
+		"particle_folder"	"particles/newplayer_fx"
 	}
 
 	"OnSpellStart"
 	{
 		"RunScript"
 		{
-			"Target"	"CASTER"
-			"ScriptFile"	"custom_functions_ability.lua"
-			"Function"	"RestoreMana"
-			"ManaRestored"	"%mana_restored"
+			"ScriptFile"   "mechanics/mana.lua"
+			"Function"     "RestoreMana"
+			"ManaRestored" "%mana_restored"
 		}
 
 		"RunScript"
@@ -60,6 +60,7 @@
 		{
 			"IsDebuff"	"0"
 			"IsPurgable"	"0"
+			"OverrideAnimation"     "ACT_DOTA_DISABLED"
 			"States"
 			{
 				"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
@@ -100,6 +101,7 @@
 
 		"modifier_invuln"
 		{
+			"IsHidden"	"1"
 			"States"
 			{
 				"MODIFIER_STATE_INVULNERABLE"	"MODIFIER_STATE_VALUE_ENABLED"

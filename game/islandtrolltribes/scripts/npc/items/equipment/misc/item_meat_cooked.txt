@@ -36,7 +36,7 @@
 		}
 		"RunScript"
 		{
-			"ScriptFile"	"items/meat.lua"
+			"ScriptFile"	"mechanics/meat.lua"
 			"Function"		"EatCookedMeat" //TODO
 			"heal_amount"	"%heal_amount"
 		}
