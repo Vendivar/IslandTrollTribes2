@@ -8,7 +8,11 @@ function modifier_chicken_form:GetModifierModelChange()
 end
 
 function modifier_chicken_form:IsHidden() 
-  return true
+    return true
+end
+
+function modifier_chicken_form:GetAttributes()
+    return MODIFIER_ATTRIBUTE_PERMANENT
 end
 
 modifier_pack_leader  = class({})
@@ -21,7 +25,11 @@ function modifier_pack_leader:GetModifierModelChange()
 end
 
 function modifier_pack_leader:IsHidden() 
-  return true
+    return true
+end
+
+function modifier_pack_leader:GetAttributes()
+    return MODIFIER_ATTRIBUTE_PERMANENT
 end
 
 modifier_shapeshifter = class({})
@@ -34,5 +42,9 @@ function modifier_shapeshifter:GetModifierModelChange()
 end
 
 function modifier_shapeshifter:IsHidden() 
-  return true
+    return true
+end
+
+function modifier_shapeshifter:GetAttributes()
+    return MODIFIER_ATTRIBUTE_PERMANENT
 end

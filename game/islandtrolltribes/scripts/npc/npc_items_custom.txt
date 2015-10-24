@@ -45,6 +45,7 @@
 	
 	        "modifier_beastmaster_pack_leader"
 	        {
+	            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
 	            "Properties"
 	            {
 	                "MODIFIER_PROPERTY_HEALTH_BONUS" "9"
@@ -57,6 +58,7 @@
 	        }
 	        "modifier_beastmaster_chicken_form"
 	        {
+	            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
 	            "Properties"
 	            {
 	                "MODIFIER_PROPERTY_HEALTH_BONUS" "9"
@@ -69,6 +71,7 @@
 	        }
 	        "modifier_beastmaster_shapeshifter"
 	        {
+	            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
 	            "Properties"
 	            {
 	                "MODIFIER_PROPERTY_HEALTH_BONUS" "9"
@@ -82,6 +85,7 @@
 	
 	        "modifier_hunter_tracker"
 	        {
+	            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
 	            "Properties"
 	            {
 	                "MODIFIER_PROPERTY_HEALTH_BONUS" "9"
@@ -94,6 +98,7 @@
 	        }
 	        "modifier_hunter_warrior"
 	        {
+	            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
 	            "Properties"
 	            {
 	                "MODIFIER_PROPERTY_HEALTH_BONUS" "9"
@@ -106,6 +111,7 @@
 	        }
 	        "modifier_hunter_juggernaut"
 	        {
+	            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
 	            "Properties"
 	            {
 	                "MODIFIER_PROPERTY_HEALTH_BONUS" "9"
@@ -119,6 +125,7 @@
 	
 	        "modifier_gatherer_herbal_master_telegatherer"
 	        {
+	            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
 	            "Properties"
 	            {
 	                "MODIFIER_PROPERTY_HEALTH_BONUS" "9"
@@ -131,6 +138,7 @@
 	        }
 	        "modifier_gatherer_radar_telegatherer"
 	        {
+	            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
 	            "Properties"
 	            {
 	                "MODIFIER_PROPERTY_HEALTH_BONUS" "9"
@@ -143,6 +151,7 @@
 	        }
 	        "modifier_gatherer_remote_telegatherer"
 	        {
+	            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
 	            "Properties"
 	            {
 	                "MODIFIER_PROPERTY_HEALTH_BONUS" "9"
@@ -156,6 +165,7 @@
 	
 	        "modifier_mage_elementalist"
 	        {
+	            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
 	            "Properties"
 	            {
 	                "MODIFIER_PROPERTY_HEALTH_BONUS" "9"
@@ -168,6 +178,7 @@
 	        }
 	        "modifier_mage_dementia_master"
 	        {
+	            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
 	            "Properties"
 	            {
 	                "MODIFIER_PROPERTY_HEALTH_BONUS" "9"
@@ -180,6 +191,7 @@
 	        }
 	        "modifier_mage_hypnotist"
 	        {
+	            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
 	            "Properties"
 	            {
 	                "MODIFIER_PROPERTY_HEALTH_BONUS" "9"
@@ -193,6 +205,7 @@
 	
 	        "modifier_priest_booster"
 	        {
+	            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
 	            "Properties"
 	            {
 	                "MODIFIER_PROPERTY_HEALTH_BONUS" "9"
@@ -205,6 +218,7 @@
 	        }
 	        "modifier_priest_master_healer"
 	        {
+	            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
 	            "Properties"
 	            {
 	                "MODIFIER_PROPERTY_HEALTH_BONUS" "9"
@@ -217,6 +231,7 @@
 	        }
 	        "modifier_priest_shaman"
 	        {
+	            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
 	            "Properties"
 	            {
 	                "MODIFIER_PROPERTY_HEALTH_BONUS" "9"
@@ -230,6 +245,7 @@
 	
 	        "modifier_scout_observer"
 	        {
+	            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
 	            "Properties"
 	            {
 	                "MODIFIER_PROPERTY_HEALTH_BONUS" "9"
@@ -242,6 +258,7 @@
 	        }
 	        "modifier_scout_radar_scout"
 	        {
+	            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
 	            "Properties"
 	            {
 	                "MODIFIER_PROPERTY_HEALTH_BONUS" "9"
@@ -254,6 +271,7 @@
 	        }
 	        "modifier_scout_spy"
 	        {
+	            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
 	            "Properties"
 	            {
 	                "MODIFIER_PROPERTY_HEALTH_BONUS" "9"
@@ -267,6 +285,7 @@
 	
 	        "modifier_thief_escape_artist"
 	        {
+	            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
 	            "Properties"
 	            {
 	                "MODIFIER_PROPERTY_HEALTH_BONUS" "9"
@@ -279,6 +298,7 @@
 	        }
 	        "modifier_thief_contortionist"
 	        {
+	            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
 	            "Properties"
 	            {
 	                "MODIFIER_PROPERTY_HEALTH_BONUS" "9"
@@ -291,6 +311,7 @@
 	        }
 	        "modifier_thief_assassin"
 	        {
+	            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
 	            "Properties"
 	            {
 	                "MODIFIER_PROPERTY_HEALTH_BONUS" "9"

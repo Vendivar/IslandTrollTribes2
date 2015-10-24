@@ -116,7 +116,6 @@ function ITT:FilterExecuteOrder( filterTable )
             else
                 -- Move towards the position and drop the item at the extended range
                 local drop_position = point - (point - origin):Normalized() * ITEM_TRANSFER_RANGE
-                DebugDrawCircle(drop_position, Vector(255,0,0), 100, 100, true, 10)
                 unit.skip = true
                 ExecuteOrderFromTable({ UnitIndex = unitIndex, OrderType = DOTA_UNIT_ORDER_MOVE_TO_POSITION, Position = drop_position, Queue = queue}) 
                 unit.dropping = true --Any order will override this, breaking the timer
@@ -132,11 +131,8 @@ function ITT:FilterExecuteOrder( filterTable )
                     return 0.1
                 end)
             end
-
-
         end
-
-
+        
         return false
     end
 
