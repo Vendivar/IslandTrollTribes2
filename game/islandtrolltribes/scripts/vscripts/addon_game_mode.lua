@@ -6,6 +6,7 @@ end
 
 require('libraries/timers')
 require('libraries/stats')
+require('libraries/notifications')
 require('mechanics')
 require('mechanics/heat')
 require('itt')
