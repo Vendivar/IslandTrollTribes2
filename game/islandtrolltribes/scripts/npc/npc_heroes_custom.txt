@@ -51,7 +51,7 @@
 	
 		"override_hero"	"npc_dota_hero_shadow_shaman"
 		"url"	"Shadow Shaman"
-		"AbilityLayout"	"2"
+		"AbilityLayout"	"4"
 		"Ability1"	"ability_gatherer_itemradar"
 		"Ability2"	"ability_gatherer_radarmanipulations"
 		"Ability3"	""
@@ -98,7 +98,7 @@
 	
 		"override_hero"	"npc_dota_hero_huskar"
 		"url"	"Huskar"
-		"AbilityLayout"	"2"
+		"AbilityLayout"	"4"
 		"Ability1"	"ability_hunter_ensnare"
 		"Ability2"	"ability_hunter_track"
 		"Ability3"	""

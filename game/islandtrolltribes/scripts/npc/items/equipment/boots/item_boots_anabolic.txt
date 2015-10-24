@@ -44,9 +44,15 @@
 				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%all_stats"
 				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%all_stats"
 			}
-
 		}
 
+		// Internal Heat mechanic
+		"modifier_boots_heat"
+		{
+			"Passive"    "1"
+			"IsHidden"   "1"
+			"IsPurgable" "0"
+		}
 	}
 
 	"AbilitySpecial"

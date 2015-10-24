@@ -31,21 +31,15 @@
 			{
 				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
 			}
-
-			"ThinkInterval"	"%tick_rate"
-			"OnIntervalThink"
-			{
-				"RunScript"
-				{
-					"ScriptFile"   "mechanics/heat.lua"
-					"Function"     "AddHeat"
-					"Heat"         "%heat"
-				}
-
-			}
-
 		}
 
+		// Internal Heat mechanic
+		"modifier_coat_heat"
+		{
+			"Passive"    "1"
+			"IsHidden"   "1"
+			"IsPurgable" "0"
+		}
 	}
 
 	"AbilitySpecial"

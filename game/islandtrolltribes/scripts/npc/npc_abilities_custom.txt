@@ -477,6 +477,9 @@
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"	"ability_building_restoreheat"
+	
+		"AbilityCastRange"	"290" //To show the range when hovering over the ability
+	
 		"Modifiers"
 		{
 			"modifier_restore_heat_aura"
@@ -496,23 +499,39 @@
 				"ThinkInterval"	"%tick_rate"
 				"OnIntervalThink"
 				{
-					"RunScript"
-					{
-						"ScriptFile"   "mechanics/heat.lua"
-						"Function"     "AddHeat"
-						"Heat"         "%heat"
-					}
-	
 					"RemoveModifier"
 					{
 						"Target"	"TARGET"
 						"ModifierName"	"modifier_cold"
 					}
-	
 				}
 	
+				"OnCreated"
+				{
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_fire_heat"
+						"Target" 		"TARGET"
+					}
+				}
+	
+				"OnDestroy"
+				{
+					"RemoveModifier"
+					{
+						"ModifierName"	"modifier_fire_heat"
+						"Target" 		"TARGET"
+					}
+				}
 			}
 	
+			// Internal Heat mechanic
+			"modifier_fire_heat"
+			{
+				"Passive"    "1"
+				"IsHidden"   "1"
+				"IsPurgable" "0"
+			}
 		}
 	
 		"AbilitySpecial"
@@ -537,6 +556,9 @@
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"	"ability_building_restoreheat"
+	
+		"AbilityCastRange"	"290" //This should be a %radius Ability Special
+	
 		"Modifiers"
 		{
 			"modifier_restore_heat_aura"
@@ -556,23 +578,39 @@
 				"ThinkInterval"	"%tick_rate"
 				"OnIntervalThink"
 				{
-					"RunScript"
-					{
-						"ScriptFile"   "mechanics/heat.lua"
-						"Function"     "AddHeat"
-						"Heat"         "%heat"
-					}
-	
 					"RemoveModifier"
 					{
 						"Target"	"TARGET"
 						"ModifierName"	"modifier_cold"
 					}
-	
 				}
 	
+				"OnCreated"
+				{
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_mage_fire_heat"
+						"Target" 		"TARGET"
+					}
+				}
+	
+				"OnDestroy"
+				{
+					"RemoveModifier"
+					{
+						"ModifierName"	"modifier_mage_fire_heat"
+						"Target" 		"TARGET"
+					}
+				}
 			}
 	
+			// Internal Heat mechanic
+			"modifier_mage_fire_heat"
+			{
+				"Passive"    "1"
+				"IsHidden"   "1"
+				"IsPurgable" "0"
+			}
 		}
 	
 		"AbilitySpecial"
@@ -9939,25 +9977,21 @@
 				"IsHidden"	"0"
 				"TextureName"	"ability_priest_theglow"
 				"IsPurgable"	"0"
-				"ThinkInterval"	"%tick_rate"
-				"OnIntervalThink"
-				{
-					"RunScript"
-					{
-						"ScriptFile"   "mechanics/heat.lua"
-						"Function"     "AddHeat"
-						"Heat"         "%heat"
-					}
-				}
 	
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%move_speed"
 					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed"
 				}
-	
 			}
 	
+			// Internal Heat mechanic
+			"modifier_coat_heat"
+			{
+				"Passive"    "1"
+				"IsHidden"   "1"
+				"IsPurgable" "0"
+			}
 		}
 	
 		"AbilitySpecial"

@@ -1,14 +1,5 @@
--- Base heat loss is -1 every 3 seconds (-0.3333 per second)
--- Coats give +8 every 35 seconds (+0.2286 per second)
--- Gloves/Boots give +2 every 35 seconds (+0.0571 per second)
--- Fire gives +8 per second (modified by cold/heat mode to 5/15)
--- Mage Fire gives +16 per second (modified by cold/heat mode to 10/30)
-
 --[[TODO
     * Tooltip adjustment to show the current heat loss
-    * Handling Items
-    * Handling Fires
-    * Handling Skills
 ]]
 
 if not Heat then
@@ -18,7 +9,7 @@ end
 -- Initial Heat
 function Heat:Start(hero)
     Heat.MAX = 100
-    hero.HeatLoss = (1/3) --Per second
+    hero.HeatLoss = -1/3 --Per second
     ApplyModifier(hero, "modifier_heat_passive")
     Heat:Set(hero, Heat.MAX)
     Heat:Think(hero)
@@ -64,7 +55,8 @@ function Heat:Think( hero )
             return
         end
 
-        Heat:Modify(hero, -hero.HeatLoss)
+        Heat:UpdateLoss(hero)
+        Heat:Modify(hero, hero.HeatLoss)
      
         if Heat:Get( hero ) <= 0 then
             hero:ForceKill(true)
@@ -72,6 +64,54 @@ function Heat:Think( hero )
 
         return 1
     end)
+end
+
+-- Checks if the HeatLoss value needs updating
+function Heat:UpdateLoss(hero)
+    local currentHeatLoss = Heat:CalculateLoss(hero)
+    if hero.HeatLoss ~= currentHeatLoss then
+        --print("Heat Loss Changed, now its ",currentHeatLoss)
+        hero.HeatLoss = currentHeatLoss
+    end
+end
+
+-- Goes through items and modifiers determining the rate at which the hero should lose heat
+function Heat:CalculateLoss(hero)
+    local heatLoss = -1/3
+    
+    -- Boots +2 every 35 seconds
+    if hero:HasModifier("modifier_boots_heat") then
+        heatLoss = heatLoss + 2/35
+    end
+
+    -- Gloves +2 every 35 seconds
+    if hero:HasModifier("modifier_gloves_heat") then
+        heatLoss = heatLoss + 2/35
+    end
+
+    -- Coat +8 every 35 seconds (+0.2 per second)
+    if hero:HasModifier("modifier_coat_heat") then
+        heatLoss = heatLoss + 8/35
+    end
+
+    -- Fire +8 per second (modified by cold/heat mode to 5/15)
+    if hero:HasModifier("modifier_fire_heat") then
+        heatLoss = heatLoss + 8
+    end
+
+    -- Mage Fire +16 per second (modified by cold/heat mode to 10/30)
+    if hero:HasModifier("modifier_mage_fire_heat") then
+        heatLoss = heatLoss + 16
+    end
+
+    -- The Glow aura is +1 every 9 seconds
+    if hero:HasModifier("modifier_glow_heat") then
+        heatLoss = heatLoss + 1/9
+    end
+
+    --print("Heat Per Second: "..heatLoss)
+
+    return heatLoss
 end
 
 function Heat:Stop(hero)

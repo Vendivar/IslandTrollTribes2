@@ -32,21 +32,15 @@
 				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
 				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed"
 			}
-
-			"ThinkInterval"	"%tick_rate"
-			"OnIntervalThink"
-			{
-				"RunScript"
-				{
-					"ScriptFile"   "mechanics/heat.lua"
-					"Function"     "AddHeat"
-					"Heat"         "%heat"
-				}
-
-			}
-
 		}
 
+		// Internal Heat mechanic
+		"modifier_gloves_heat"
+		{
+			"Passive"    "1"
+			"IsHidden"   "1"
+			"IsPurgable" "0"
+		}
 	}
 
 	"AbilitySpecial"

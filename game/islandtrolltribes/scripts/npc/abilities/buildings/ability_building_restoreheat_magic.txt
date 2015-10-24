@@ -3,6 +3,9 @@
 	"BaseClass"	"ability_datadriven"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"AbilityTextureName"	"ability_building_restoreheat"
+
+	"AbilityCastRange"	"290" //This should be a %radius Ability Special
+
 	"Modifiers"
 	{
 		"modifier_restore_heat_aura"
@@ -22,23 +25,39 @@
 			"ThinkInterval"	"%tick_rate"
 			"OnIntervalThink"
 			{
-				"RunScript"
-				{
-					"ScriptFile"   "mechanics/heat.lua"
-					"Function"     "AddHeat"
-					"Heat"         "%heat"
-				}
-
 				"RemoveModifier"
 				{
 					"Target"	"TARGET"
 					"ModifierName"	"modifier_cold"
 				}
-
 			}
 
+			"OnCreated"
+			{
+				"ApplyModifier"
+				{
+					"ModifierName"	"modifier_mage_fire_heat"
+					"Target" 		"TARGET"
+				}
+			}
+
+			"OnDestroy"
+			{
+				"RemoveModifier"
+				{
+					"ModifierName"	"modifier_mage_fire_heat"
+					"Target" 		"TARGET"
+				}
+			}
 		}
 
+		// Internal Heat mechanic
+		"modifier_mage_fire_heat"
+		{
+			"Passive"    "1"
+			"IsHidden"   "1"
+			"IsPurgable" "0"
+		}
 	}
 
 	"AbilitySpecial"

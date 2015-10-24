@@ -36,18 +36,6 @@
 				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%all_stats"
 			}
 
-			"ThinkInterval"	"%tick_rate"
-			"OnIntervalThink"
-			{
-				"RunScript"
-				{
-					"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-					"Function"	"AddHeat"
-					"Heat"	"%heat"
-				}
-
-			}
-
 			"OnAttackStart"
 			{
 				"Random"
@@ -62,11 +50,16 @@
 						}
 
 					}
-
 				}
-
 			}
+		}
 
+		// Internal Heat mechanic
+		"modifier_gloves_heat"
+		{
+			"Passive"    "1"
+			"IsHidden"   "1"
+			"IsPurgable" "0"
 		}
 
 		"critical_strike"

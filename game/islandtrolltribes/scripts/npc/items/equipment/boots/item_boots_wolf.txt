@@ -33,9 +33,15 @@
 				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
 				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%move_speed"
 			}
-
 		}
 
+		// Internal Heat mechanic
+		"modifier_boots_heat"
+		{
+			"Passive"    "1"
+			"IsHidden"   "1"
+			"IsPurgable" "0"
+		}
 	}
 
 	"AbilitySpecial"

@@ -3925,9 +3925,15 @@
 					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%all_stats"
 					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%all_stats"
 				}
-	
 			}
 	
+			// Internal Heat mechanic
+			"modifier_boots_heat"
+			{
+				"Passive"    "1"
+				"IsHidden"   "1"
+				"IsPurgable" "0"
+			}
 		}
 	
 		"AbilitySpecial"
@@ -3996,9 +4002,15 @@
 					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%move_speed"
 				}
-	
 			}
 	
+			// Internal Heat mechanic
+			"modifier_boots_heat"
+			{
+				"Passive"    "1"
+				"IsHidden"   "1"
+				"IsPurgable" "0"
+			}
 		}
 	
 		"AbilitySpecial"
@@ -4051,9 +4063,15 @@
 					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%move_speed"
 				}
-	
 			}
 	
+			// Internal Heat mechanic
+			"modifier_boots_heat"
+			{
+				"Passive"    "1"
+				"IsHidden"   "1"
+				"IsPurgable" "0"
+			}
 		}
 	
 		"AbilitySpecial"
@@ -4106,9 +4124,15 @@
 					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%move_speed"
 				}
-	
 			}
 	
+			// Internal Heat mechanic
+			"modifier_boots_heat"
+			{
+				"Passive"    "1"
+				"IsHidden"   "1"
+				"IsPurgable" "0"
+			}
 		}
 	
 		"AbilitySpecial"
@@ -4161,9 +4185,15 @@
 					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%move_speed"
 				}
-	
 			}
 	
+			// Internal Heat mechanic
+			"modifier_boots_heat"
+			{
+				"Passive"    "1"
+				"IsHidden"   "1"
+				"IsPurgable" "0"
+			}
 		}
 	
 		"AbilitySpecial"
@@ -4216,9 +4246,15 @@
 					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%move_speed"
 				}
-	
 			}
 	
+			// Internal Heat mechanic
+			"modifier_boots_heat"
+			{
+				"Passive"    "1"
+				"IsHidden"   "1"
+				"IsPurgable" "0"
+			}
 		}
 	
 		"AbilitySpecial"
@@ -4273,9 +4309,15 @@
 					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%move_speed"
 				}
-	
 			}
 	
+			// Internal Heat mechanic
+			"modifier_boots_heat"
+			{
+				"Passive"    "1"
+				"IsHidden"   "1"
+				"IsPurgable" "0"
+			}
 		}
 	
 		"AbilitySpecial"
@@ -4676,21 +4718,15 @@
 					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%all_stats"
 					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%magic_resist"
 				}
-	
-				"ThinkInterval"	"%tick_rate"
-				"OnIntervalThink"
-				{
-					"RunScript"
-					{
-						"ScriptFile"   "mechanics/heat.lua"
-						"Function"     "AddHeat"
-						"Heat"         "%heat"
-					}
-	
-				}
-	
 			}
 	
+			// Internal Heat mechanic
+			"modifier_coat_heat"
+			{
+				"Passive"    "1"
+				"IsHidden"   "1"
+				"IsPurgable" "0"
+			}
 		}
 	
 		"AbilitySpecial"
@@ -4783,21 +4819,15 @@
 				{
 					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
 				}
-	
-				"ThinkInterval"	"%tick_rate"
-				"OnIntervalThink"
-				{
-					"RunScript"
-					{
-						"ScriptFile"   "mechanics/heat.lua"
-						"Function"     "AddHeat"
-						"Heat"         "%heat"
-					}
-	
-				}
-	
 			}
 	
+			// Internal Heat mechanic
+			"modifier_coat_heat"
+			{
+				"Passive"    "1"
+				"IsHidden"   "1"
+				"IsPurgable" "0"
+			}
 		}
 	
 		"AbilitySpecial"
@@ -4878,21 +4908,15 @@
 				{
 					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
 				}
-	
-				"ThinkInterval"	"%tick_rate"
-				"OnIntervalThink"
-				{
-					"RunScript"
-					{
-						"ScriptFile"   "mechanics/heat.lua"
-						"Function"     "AddHeat"
-						"Heat"         "%heat"
-					}
-	
-				}
-	
 			}
 	
+			// Internal Heat mechanic
+			"modifier_coat_heat"
+			{
+				"Passive"    "1"
+				"IsHidden"   "1"
+				"IsPurgable" "0"
+			}
 		}
 	
 		"AbilitySpecial"
@@ -4967,18 +4991,6 @@
 					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%all_stats"
 				}
 	
-				"ThinkInterval"	"%tick_rate"
-				"OnIntervalThink"
-				{
-					"RunScript"
-					{
-						"ScriptFile"   "mechanics/heat.lua"
-						"Function"     "AddHeat"
-						"Heat"         "%heat"
-					}
-	
-				}
-	
 				"EffectName"	"particles/status_fx/status_effect_medusa_stone_gaze.vpcf"
 			}
 	
@@ -4991,7 +5003,14 @@
 				{
 					"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_ENABLED"
 				}
+			}
 	
+			// Internal Heat mechanic
+			"modifier_coat_heat"
+			{
+				"Passive"    "1"
+				"IsHidden"   "1"
+				"IsPurgable" "0"
 			}
 	
 		}
@@ -5080,21 +5099,15 @@
 				{
 					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
 				}
-	
-				"ThinkInterval"	"%tick_rate"
-				"OnIntervalThink"
-				{
-					"RunScript"
-					{
-						"ScriptFile"   "mechanics/heat.lua"
-						"Function"     "AddHeat"
-						"Heat"         "%heat"
-					}
-	
-				}
-	
 			}
 	
+			// Internal Heat mechanic
+			"modifier_coat_heat"
+			{
+				"Passive"    "1"
+				"IsHidden"   "1"
+				"IsPurgable" "0"
+			}
 		}
 	
 		"AbilitySpecial"
@@ -5153,21 +5166,15 @@
 				{
 					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
 				}
-	
-				"ThinkInterval"	"%tick_rate"
-				"OnIntervalThink"
-				{
-					"RunScript"
-					{
-						"ScriptFile"   "mechanics/heat.lua"
-						"Function"     "AddHeat"
-						"Heat"         "%heat"
-					}
-	
-				}
-	
 			}
-	
+			
+			// Internal Heat mechanic
+			"modifier_coat_heat"
+			{
+				"Passive"    "1"
+				"IsHidden"   "1"
+				"IsPurgable" "0"
+			}
 		}
 	
 		"AbilitySpecial"
@@ -5226,21 +5233,15 @@
 				{
 					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
 				}
-	
-				"ThinkInterval"	"%tick_rate"
-				"OnIntervalThink"
-				{
-					"RunScript"
-					{
-						"ScriptFile"   "mechanics/heat.lua"
-						"Function"     "AddHeat"
-						"Heat"         "%heat"
-					}
-	
-				}
-	
 			}
 	
+			// Internal Heat mechanic
+			"modifier_coat_heat"
+			{
+				"Passive"    "1"
+				"IsHidden"   "1"
+				"IsPurgable" "0"
+			}
 		}
 	
 		"AbilitySpecial"
@@ -5321,21 +5322,15 @@
 				{
 					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
 				}
-	
-				"ThinkInterval"	"%tick_rate"
-				"OnIntervalThink"
-				{
-					"RunScript"
-					{
-						"ScriptFile"   "mechanics/heat.lua"
-						"Function"     "AddHeat"
-						"Heat"         "%heat"
-					}
-	
-				}
-	
 			}
 	
+			// Internal Heat mechanic
+			"modifier_coat_heat"
+			{
+				"Passive"    "1"
+				"IsHidden"   "1"
+				"IsPurgable" "0"
+			}
 		}
 	
 		"AbilitySpecial"
@@ -5399,18 +5394,6 @@
 					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%all_stats"
 				}
 	
-				"ThinkInterval"	"%tick_rate"
-				"OnIntervalThink"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-						"Function"	"AddHeat"
-						"Heat"	"%heat"
-					}
-	
-				}
-	
 				"OnAttackStart"
 				{
 					"Random"
@@ -5425,11 +5408,16 @@
 							}
 	
 						}
-	
 					}
-	
 				}
+			}
 	
+			// Internal Heat mechanic
+			"modifier_gloves_heat"
+			{
+				"Passive"    "1"
+				"IsHidden"   "1"
+				"IsPurgable" "0"
 			}
 	
 			"critical_strike"
@@ -5563,21 +5551,15 @@
 					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
 					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed"
 				}
-	
-				"ThinkInterval"	"%tick_rate"
-				"OnIntervalThink"
-				{
-					"RunScript"
-					{
-						"ScriptFile"   "mechanics/heat.lua"
-						"Function"     "AddHeat"
-						"Heat"         "%heat"
-					}
-	
-				}
-	
 			}
 	
+			// Internal Heat mechanic
+			"modifier_gloves_heat"
+			{
+				"Passive"    "1"
+				"IsHidden"   "1"
+				"IsPurgable" "0"
+			}
 		}
 	
 		"AbilitySpecial"
@@ -5665,21 +5647,15 @@
 					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
 					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed"
 				}
-	
-				"ThinkInterval"	"%tick_rate"
-				"OnIntervalThink"
-				{
-					"RunScript"
-					{
-						"ScriptFile"   "mechanics/heat.lua"
-						"Function"     "AddHeat"
-						"Heat"         "%heat"
-					}
-	
-				}
-	
 			}
 	
+			// Internal Heat mechanic
+			"modifier_gloves_heat"
+			{
+				"Passive"    "1"
+				"IsHidden"   "1"
+				"IsPurgable" "0"
+			}
 		}
 	
 		"AbilitySpecial"
@@ -5767,21 +5743,15 @@
 					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
 					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed"
 				}
-	
-				"ThinkInterval"	"%tick_rate"
-				"OnIntervalThink"
-				{
-					"RunScript"
-					{
-						"ScriptFile"   "mechanics/heat.lua"
-						"Function"     "AddHeat"
-						"Heat"         "%heat"
-					}
-	
-				}
-	
 			}
 	
+			// Internal Heat mechanic
+			"modifier_gloves_heat"
+			{
+				"Passive"    "1"
+				"IsHidden"   "1"
+				"IsPurgable" "0"
+			}
 		}
 	
 		"AbilitySpecial"
@@ -5847,21 +5817,15 @@
 					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
 					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed"
 				}
-	
-				"ThinkInterval"	"%tick_rate"
-				"OnIntervalThink"
-				{
-					"RunScript"
-					{
-						"ScriptFile"   "mechanics/heat.lua"
-						"Function"     "AddHeat"
-						"Heat"         "%heat"
-					}
-	
-				}
-	
 			}
 	
+			// Internal Heat mechanic
+			"modifier_gloves_heat"
+			{
+				"Passive"    "1"
+				"IsHidden"   "1"
+				"IsPurgable" "0"
+			}
 		}
 	
 		"AbilitySpecial"
@@ -5927,21 +5891,15 @@
 					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
 					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed"
 				}
-	
-				"ThinkInterval"	"%tick_rate"
-				"OnIntervalThink"
-				{
-					"RunScript"
-					{
-						"ScriptFile"   "mechanics/heat.lua"
-						"Function"     "AddHeat"
-						"Heat"         "%heat"
-					}
-	
-				}
-	
 			}
 	
+			// Internal Heat mechanic
+			"modifier_gloves_heat"
+			{
+				"Passive"    "1"
+				"IsHidden"   "1"
+				"IsPurgable" "0"
+			}
 		}
 	
 		"AbilitySpecial"
@@ -6029,21 +5987,15 @@
 					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
 					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed"
 				}
-	
-				"ThinkInterval"	"%tick_rate"
-				"OnIntervalThink"
-				{
-					"RunScript"
-					{
-						"ScriptFile"   "mechanics/heat.lua"
-						"Function"     "AddHeat"
-						"Heat"         "%heat"
-					}
-	
-				}
-	
 			}
 	
+			// Internal Heat mechanic
+			"modifier_gloves_heat"
+			{
+				"Passive"    "1"
+				"IsHidden"   "1"
+				"IsPurgable" "0"
+			}
 		}
 	
 		"AbilitySpecial"

@@ -4,6 +4,7 @@ CHEAT_CODES = {
     ["workshop"] = function(...) ITT:TestWorkshop(...) end,
     ["refresh"] = function(...) ITT:Refresh(...) end,
     ["dev"] = function(...) ITT:Dev(...) end,
+    ["camp"] = function(...) ITT:Camp(...) end,
 }
 
 PLAYER_COMMANDS = {}
@@ -89,4 +90,21 @@ function ITT:Dev( playerID )
         ApplyModifier(hero, "modifier_hunger")
         GameRules:GetGameModeEntity():SetFogOfWarDisabled(false)
     end
+end
+
+function ITT:Camp( playerID )
+    local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+    local origin = hero:GetAbsOrigin()
+
+    -- Put a fire on front
+    local fv = hero:GetForwardVector()
+    local position = origin + fv * 200
+
+    local fire = CreateUnitByName("npc_building_fire_basic", position, true, hero, hero, hero:GetTeamNumber())
+    fire:SetControllableByPlayer(playerID, true)
+    fire:SetOwner(hero)
+    fire:SetForwardVector(-hero:GetForwardVector())
+    fire:RemoveModifierByName("modifier_invulnerable")
+    fire:SetAbsOrigin(position)
+
 end
