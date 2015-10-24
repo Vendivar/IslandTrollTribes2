@@ -56,6 +56,7 @@
 			m_flEndTime_min = 0.000000
 			m_flStartTime_min = 0.000000
 			m_flStartTime_max = 0.000000
+			m_nControlPointNumber = 3
 		},
 		{
 			_class = "C_OP_RampScalarLinearSimple"
@@ -93,6 +94,7 @@
 				1.000000,
 			]
 			m_fRadiusMax = 100.000000
+			m_nControlPointNumber = 3
 		},
 		{
 			_class = "C_INIT_RandomAlpha"
@@ -142,6 +144,12 @@
 	[
 		{
 			m_ChildRef = resource:"particles/units/heroes/hero_chen/chen_holy_persuasion_sparks.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_chen/chen_holy_persuasion_h_b.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_chen/chen_holy_persuasion_h_c.vpcf"
 		},
 	]
 }
