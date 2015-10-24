@@ -1,12 +1,9 @@
 <root>
   <Panel>
-		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/islandtrolltribes_hud_base.xml" />
-		<CustomUIElement type="GameInfo" 			layoutfile="file://{resources}/layout/custom_game/islandtrolltribes_game_info.xml" />
+        <CustomUIElement type="GameInfo"            layoutfile="file://{resources}/layout/custom_game/islandtrolltribes_game_info.xml" />
         <CustomUIElement type="HeroSelection"       layoutfile="file://{resources}/layout/custom_game/class_picker.xml" />
-		<CustomUIElement type="Hud" 				layoutfile="file://{resources}/layout/custom_game/notifications.xml" />
-        <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/barebones_attachments.xml" /> 
-        <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/subclass_picker.xml" /> 
         <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/notifications.xml" />
+        <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/subclass_picker.xml" /> 
         
         <CustomUIElement type="GameInfo"            layoutfile="file://{resources}/layout/custom_game/images.xml" />
   </Panel>
