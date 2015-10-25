@@ -1,5 +1,5 @@
 function ITT:FilterExecuteOrder( filterTable )
-    ITEM_TRANSFER_RANGE = 500
+    ITEM_TRANSFER_RANGE = 300
 
     local units = filterTable["units"]
     local order_type = filterTable["order_type"]
@@ -22,6 +22,7 @@ function ITT:FilterExecuteOrder( filterTable )
 
     -- Timers Reset
     unit.dropping = nil
+    unit.picking = nil
 
 
     ------------------------------------------------
@@ -137,20 +138,44 @@ function ITT:FilterExecuteOrder( filterTable )
     end
 
     ------------------------------------------------
-    --       Building Pickup Range Increase       --
+    --             Pickup Range Increase          --
     ------------------------------------------------
-    if order_type == DOTA_UNIT_ORDER_PICKUP_ITEM and IsCustomBuilding(unit) then
+    if order_type == DOTA_UNIT_ORDER_PICKUP_ITEM  then
 
         local drop = EntIndexToHScript(targetIndex)
         local position = drop:GetAbsOrigin()
         local origin = unit:GetAbsOrigin()
 
-        -- Drop the item if within the extended range
-        if (origin - position):Length2D() <= ITEM_TRANSFER_RANGE+25 then
-            drop:SetAbsOrigin(origin)
-            unit:PickupDroppedItem(drop)            
+        -- Buildings
+        if IsCustomBuilding(unit) then
+            -- Pick up the item if within the extended range
+            if (origin - position):Length2D() <= ITEM_TRANSFER_RANGE+25 then
+                drop:SetAbsOrigin(origin)
+                unit:PickupDroppedItem(drop)            
+            else
+                SendErrorMessage(issuer, "#error_item_out_of_range")
+            end
+
+        -- Units
         else
-            SendErrorMessage(issuer, "#error_item_out_of_range")
+
+            -- Move towards the drop position and pickup the item at the extended range
+            unit.skip = true
+            ExecuteOrderFromTable({ UnitIndex = unitIndex, OrderType = DOTA_UNIT_ORDER_MOVE_TO_POSITION, Position = position, Queue = queue}) 
+            unit.picking = true --Any order will override this, breaking the timer
+                
+            -- Check for drop distance
+            Timers:CreateTimer(function()
+                if not unit.picking then return
+                elseif IsValidAlive(unit) and unit.picking and (unit:GetAbsOrigin() - position):Length2D() <= ITEM_TRANSFER_RANGE+25 then
+                    drop:SetAbsOrigin(unit:GetAbsOrigin())
+                    unit:Stop()
+                    unit:PickupDroppedItem(drop)
+                    unit.picking = nil
+                    return
+                end
+                return 0.1
+            end)
         end
 
         return false
