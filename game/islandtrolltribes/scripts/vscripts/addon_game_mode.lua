@@ -305,6 +305,9 @@ function Precache( context )
 	PrecacheResource("particle_folder","particles/units/heroes/hero_magnataur",context)
 	PrecacheResource("particle_folder","particles/units/heroes/hero_rubick",context)
 
+	-- All custom and modified particles should be dropped to this folder
+	PrecacheResource("particle_folder", "particles/custom", context)
+
 	PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_wisp.vsndevts",context)
 	PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_stormspirit.vsndevts",context)
 	PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_disruptor.vsndevts",context)
