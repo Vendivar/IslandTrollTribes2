@@ -20,7 +20,7 @@ function QuickCraftWorkshop(keys)
     for recipeName,recipeIngredients in pairs(recipeTable) do 
         
         -- If the drop list contains enough of the ingredient items defined in the reciepeTable, it can be crafted and the drops need to be consumed
-        local craftingItems = CanCraft(recipeName, drops)
+        local craftingItems = CanCraft(caster, recipeName, drops)
         if craftingItems then
             match = recipeName
             -- Create the resulting item
@@ -41,8 +41,8 @@ function QuickCraftWorkshop(keys)
 end
 
 -- Returns a list of crafting drops if the itemName can be crafted with the passed drops, false otherwise
-function CanCraft( itemName, droppedContainers )
-    local recipeTable = GameRules.QuickCraft['Recipes']
+function CanCraft( building, itemName, droppedContainers )
+    local recipeTable = GameRules.QuickCraft[building:GetUnitName()]
     local required = recipeTable[itemName]
     
     local craftingItems = {}
