@@ -930,6 +930,27 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityTextureName"	"ability_building_quickbuildarmory"
 		"MaxLevel"	"1"
+	
+	    "AbilityCastRange"     "%radius"
+	
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"     "FIELD_INTEGER"
+	            "radius"       "600"
+	        }
+	    }
+	
+	    "OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"     "buildings/quick_craft.lua"
+	            "Function"       "QuickCraft"
+	            "Range"          "%radius"
+	        }
+	    }
 	}
 	"ability_quick_build_wd_hut"
 	{
@@ -937,6 +958,27 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityTextureName"	"ability_building_quickbuildwitchdoctorshut"
 		"MaxLevel"	"1"
+	
+	    "AbilityCastRange"     "%radius"
+	
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"     "FIELD_INTEGER"
+	            "radius"       "600"
+	        }
+	    }
+	
+	    "OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"     "buildings/quick_craft.lua"
+	            "Function"       "QuickCraft"
+	            "Range"          "%radius"
+	        }
+	    }
 	}
 	"ability_quick_build_workshop"
 	{
@@ -944,12 +986,25 @@
 	    "AbilityTextureName"   "ability_building_quickbuildworkshop"
 	    "AbilityBehavior"      "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	    "MaxLevel"             "1"
+	
+	    "AbilityCastRange"     "%radius"
+	
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"     "FIELD_INTEGER"
+	            "radius"       "600"
+	        }
+	    }
+	
 	    "OnSpellStart"
 	    {
 	        "RunScript"
 	        {
 	            "ScriptFile"     "buildings/quick_craft.lua"
-	            "Function"       "QuickCraftWorkshop"
+	            "Function"       "QuickCraft"
+	            "Range"          "%radius"
 	        }
 	    }
 	}

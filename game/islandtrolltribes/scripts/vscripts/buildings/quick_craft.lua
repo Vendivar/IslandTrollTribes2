@@ -1,19 +1,21 @@
 -- Takes dropped items nearby and checks the quick_craft.kv table for a recipe match
-function QuickCraftWorkshop(keys)
-    print("QuickCrafting")
+function QuickCraft(keys)
     local caster = keys.caster
-    local range = 500--keys.Range, should be an ability special with AbilityCastRange
-       
-    -- Table used to look up herb recipes, can move this if other functions need it
-    local recipeTable = GameRules.QuickCraft['Recipes']
+    local ability = keys.ability
+    local range = ability:GetCastRange()
+    local buildingName = caster:GetAbilityName()
 
-    local myMaterials = {}
-    local itemTable = {}
+    print("QuickCrafting on "..buildingName)
+       
+    local recipeTable = GameRules.QuickCraft[buildingName]
+    print("List of items the building can craft:")
+    for k,v in pairs(recipeTable) do
+        print(k)
+    end
 
     -- Get all items dropped nearby
     local drops = Entities:FindAllByClassnameWithin("dota_item_drop", caster:GetAbsOrigin(), range)  --get the item in the slot
     
-    print("Check for match")
     local match
     -- Check if the items dropped match any recipe
     -- The order that the reciepes are compared might matter in the results, it will be a bit random with this method
@@ -41,8 +43,8 @@ function QuickCraftWorkshop(keys)
 end
 
 -- Returns a list of crafting drops if the itemName can be crafted with the passed drops, false otherwise
-function CanCraft( building, itemName, droppedContainers )
-    local recipeTable = GameRules.QuickCraft[building:GetUnitName()]
+function CanCraft( buildingName, itemName, droppedContainers )
+    local recipeTable = GameRules.QuickCraft[buildingName]
     local required = recipeTable[itemName]
     
     local craftingItems = {}

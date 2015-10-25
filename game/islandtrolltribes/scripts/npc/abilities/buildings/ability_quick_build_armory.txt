@@ -4,4 +4,24 @@
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	"AbilityTextureName"	"ability_building_quickbuildarmory"
 	"MaxLevel"	"1"
+
+    "AbilityCastRange"     "%radius"
+
+    "AbilitySpecial"
+    {
+        "01"
+        {
+            "var_type"     "FIELD_INTEGER"
+            "radius"       "600"
+        }
+    }
+
+    "OnSpellStart"
+    {
+        "RunScript"
+        {
+            "ScriptFile"     "buildings/quick_craft.lua"
+            "Function"       "QuickCraft"
+        }
+    }
 }
