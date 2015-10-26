@@ -4,7 +4,7 @@
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"item_refresher"
-	"Model"	"models/props_items/bloodstone.vmdl"
+	"Model"	"models/items/shadowshaman/vagabond_drink/vagabond_drink.vmdl"
 	"Effect"	""
 	"AbilityCastPoint"	"0.5"
 	"ItemCost"	"20"

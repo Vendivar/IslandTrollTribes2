@@ -4,7 +4,7 @@
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"potion_poison"
-	"Model"	"models/items/shadowshaman/vagabond_drink/vagabond_drink.vmdl"
+	"Model"	"models/props_gameplay/bottle_rejuvenation.vmdl"
 	"Effect"	""
 	"AbilityCastPoint"	"0.5"
 	"ItemCost"	"10"

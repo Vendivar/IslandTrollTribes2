@@ -6,7 +6,7 @@
 	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"potion_cure_all"
-	"Model"	"models/projectiles/projectile_jar.vmdl"
+	"Model"	"models/props_gameplay/bottle_blue.vmdl"
 	"Effect"	""
 	"AbilityCastPoint"	"0.5"
 	"ItemCost"	"6"

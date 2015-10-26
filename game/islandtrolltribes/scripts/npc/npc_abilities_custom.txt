@@ -948,7 +948,6 @@
 	        {
 	            "ScriptFile"     "buildings/quick_craft.lua"
 	            "Function"       "QuickCraft"
-	            "Range"          "%radius"
 	        }
 	    }
 	}
@@ -976,7 +975,6 @@
 	        {
 	            "ScriptFile"     "buildings/quick_craft.lua"
 	            "Function"       "QuickCraft"
-	            "Range"          "%radius"
 	        }
 	    }
 	}
@@ -1004,7 +1002,6 @@
 	        {
 	            "ScriptFile"     "buildings/quick_craft.lua"
 	            "Function"       "QuickCraft"
-	            "Range"          "%radius"
 	        }
 	    }
 	}
