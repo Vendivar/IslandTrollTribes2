@@ -67,31 +67,11 @@ SHOP_UNIT_NAME_LIST = {"npc_ship_merchant_1", "npc_ship_merchant_2", "npc_ship_m
 TOTAL_SHOPS = #SHOP_UNIT_NAME_LIST
 MAX_SHOPS_ON_MAP = 1
 
---[[
-    Here is where we run the code that occurs when the game starts
-    This is run once the engine has launched
-
-    Some useful things to do here:
-
-    Set the hero selection time. Make this 0.0 if you have you rown hero selection system (like wc3 taverns)
-        GameRules:SetHeroSelectionTime( [time] )
-]]--
-
-
 -- This function initializes the game mode and is called before anyone loads into the game
 -- It can be used to pre-initialize any values/tables that will be needed later
 function ITT:InitGameMode()
-    print( "Game mode setup." )
     --BuildingHelper:BlockGridNavSquares(16384)
-
-    Convars:RegisterConvar('itt_set_game_mode', nil, 'Set to the game mode', FCVAR_PROTECTED)
-
     GameMode = GameRules:GetGameModeEntity()
-
-    -- Set the game's thinkers up
-
-    -- This is the global thinker. It should only manage game state
-    GameMode:SetThink( "OnStateThink", ITT, "StateThink", 2 )
 
     -- This is the creature thinker. All neutral creature spawn logic goes here
     GameMode:SetThink( "OnCreatureThink", ITT, "CreatureThink", 2 )
@@ -136,7 +116,6 @@ function ITT:InitGameMode()
     GameMode:SetThink("FlashAckThink", ITT, "FlashAckThink", 0)
 
     GameMode:SetCustomHeroMaxLevel ( 6 ) -- No accidental overleveling
-
 
     -- Disable buybacks to stop instant respawning.
     GameMode:SetBuybackEnabled( false )
@@ -227,34 +206,21 @@ function ITT:InitGameMode()
     GameRules:GetGameModeEntity():SetThink( "OnThink", self, 1 )
 
     --initial bush spawns
-    --place "npc_dota_spawner" entities on the map with the appropriate name to spawn to corresponding bush on game start
-    local bush_herb_spawnpoints = Entities:FindAllByClassname("npc_dota_spawner")
-    print("bush_herb_spawnpoints " .. #bush_herb_spawnpoints)
-    for _,spawnpoint in pairs(bush_herb_spawnpoints) do
-        if string.find(spawnpoint:GetName(), "spawner_npc_bush_herb_yellow") then
-            CreateUnitByName("npc_bush_herb_yellow", spawnpoint:GetOrigin(), false, nil, nil, DOTA_TEAM_NEUTRALS)
-        elseif string.find(spawnpoint:GetName(), "spawner_npc_bush_herb_blue") then
-            CreateUnitByName("npc_bush_herb_blue", spawnpoint:GetOrigin(), false, nil, nil, DOTA_TEAM_NEUTRALS)
-        elseif string.find(spawnpoint:GetName(), "spawner_npc_bush_herb_purple") then
-            CreateUnitByName("npc_bush_herb_purple", spawnpoint:GetOrigin(), false, nil, nil, DOTA_TEAM_NEUTRALS)
-        elseif string.find(spawnpoint:GetName(), "spawner_npc_bush_herb_orange") then
-            CreateUnitByName("npc_bush_herb_orange", spawnpoint:GetOrigin(), false, nil, nil, DOTA_TEAM_NEUTRALS)
-        elseif string.find(spawnpoint:GetName(), "spawner_npc_bush_herb") then
-            CreateUnitByName("npc_bush_herb", spawnpoint:GetOrigin(), false, nil, nil, DOTA_TEAM_NEUTRALS)
-        elseif string.find(spawnpoint:GetName(), "spawner_npc_bush_mushroom") then
-            CreateUnitByName("npc_bush_mushroom", spawnpoint:GetOrigin(), false, nil, nil, DOTA_TEAM_NEUTRALS)
-        elseif string.find(spawnpoint:GetName(), "spawner_npc_bush_thistle") then
-            CreateUnitByName("npc_bush_thistle", spawnpoint:GetOrigin(), false, nil, nil, DOTA_TEAM_NEUTRALS)
-        elseif string.find(spawnpoint:GetName(), "spawner_npc_bush_stash") then
-            CreateUnitByName("npc_bush_stash", spawnpoint:GetOrigin(), false, nil, nil, DOTA_TEAM_NEUTRALS)
-        elseif string.find(spawnpoint:GetName(), "spawner_npc_bush_thief") then
-            CreateUnitByName("npc_bush_thief", spawnpoint:GetOrigin(), false, nil, nil, DOTA_TEAM_NEUTRALS)
-        elseif string.find(spawnpoint:GetName(), "spawner_npc_bush_scout") then
-            CreateUnitByName("npc_bush_scout", spawnpoint:GetOrigin(), false, nil, nil, DOTA_TEAM_NEUTRALS)
-        elseif string.find(spawnpoint:GetName(), "spawner_npc_bush_river") then
-            CreateUnitByName("npc_bush_river", spawnpoint:GetOrigin(), false, nil, nil, DOTA_TEAM_NEUTRALS)
+    --place entities starting with spawner_ plus the appropriate name to spawn to corresponding bush on game start
+    local bush_herb_spawners = Entities:FindAllByClassname("npc_dota_spawner")
+    local bushCount = 0
+    for _,spawner in pairs(bush_herb_spawners) do
+        local spawnerName = spawner:GetName()
+        if string.find(spawnerName, "_bush_") then
+            local bush_name = string.sub(string.gsub(spawner:GetName(), "spawner_", ""), 5)
+            local bush = CreateUnitByName(bush_name, spawner:GetAbsOrigin(), false, nil, nil, DOTA_TEAM_NEUTRALS)
+            if bush then
+                bushCount = bushCount + 1
+            end
         end
     end
+    print("Spawned "..bushCount.." bushes total")
+
     -- spawner_npc_bush_herb
     -- spawner_npc_bush_river
     -- spawner_npc_bush_mushroom
@@ -266,9 +232,6 @@ function ITT:InitGameMode()
     -- spawner_npc_bush_herb_orange
     -- spawner_npc_bush_thief
     -- spawner_npc_bush_scout
-
-    --select class commands
-    Convars:RegisterCommand( "SelectClass", function(...) return self:_SelectClass( ... ) end, "Player is selecting a class", 0 )
 
     --prepare neutral spawns
     self.NumPassiveNeutrals = 0
@@ -291,6 +254,11 @@ function ITT:InitGameMode()
         print("SYNTAX ERROR SOMEWHERE IN npc_abilities_custom.txt")
         print("--------------------------------------------------\n\n")
     end
+    if not GameRules.ItemKV then
+        print("--------------------------------------------------\n\n")
+        print("SYNTAX ERROR SOMEWHERE IN npc_items_custom.txt")
+        print("--------------------------------------------------\n\n")
+    end
 
     -- items_game parsing
     GameRules.ItemsGame = LoadKeyValues("scripts/items/items_game.txt")
@@ -305,14 +273,6 @@ function ITT:InitGameMode()
     LinkLuaModifier("modifier_chicken_form", "heroes/beastmaster/subclass_modifiers.lua", LUA_MODIFIER_MOTION_NONE)
     LinkLuaModifier("modifier_pack_leader", "heroes/beastmaster/subclass_modifiers.lua", LUA_MODIFIER_MOTION_NONE)
     LinkLuaModifier("modifier_shapeshifter", "heroes/beastmaster/subclass_modifiers.lua", LUA_MODIFIER_MOTION_NONE)
-
-    --for i,v in pairs(Entities:FindAllByClassname("ent_blocker")) do
-    --    print(v:GetClassname())
-    --    v:RemoveSelf()
-    --    v:Destroy()
-    --    v:Kill()
-    --    v:SetAbsOrigin(Vector(10000,10000,10000))
-    --end
     
     -- Grace Period
     GameMode:SetFixedRespawnTime(GRACE_PERIOD_RESPAWN_TIME)
@@ -391,7 +351,7 @@ end
 --Do the same now for the subclasses
 function ITT:OnNPCSpawned( keys )
     local spawnedUnit = EntIndexToHScript( keys.entindex )
-    print("spawned unit: ", spawnedUnit:GetUnitName(), spawnedUnit:GetClassname(), spawnedUnit:GetName(), spawnedUnit:GetEntityIndex())
+    --print("spawned unit: ", spawnedUnit:GetUnitName(), spawnedUnit:GetClassname(), spawnedUnit:GetName(), spawnedUnit:GetEntityIndex())
     
     -- add it to the gridnav to stop people building on it
     --BuildingHelper:AddUnit(spawnedUnit)
@@ -822,58 +782,6 @@ function ITT:OnCreatureThink()
     return GAME_CREATURE_TICK_TIME
 end
 
--- The only real way of triggering code in Scaleform, events, are not reliable. Require acknowledgement of all events fired for this purpose.
-function ITT:FlashAckThink()
-    --print("ackthink!")
-    for i=0,9 do
-        local player = PlayerResource:GetPlayer(i)
-        if player and player.eventQueue then
-            for k,v in pairs(player.eventQueue) do
-
-                if v then
-                    print(k)
-                    self:HandleFlashMessage(v.eventname, v.data, i, v.id)
-                end
-            end
-        end
-    end
-    return FLASH_ACK_THINK
-end
-
--- pid and id optional
-function ITT:HandleFlashMessage(eventname, data, pid, id)
-    local id = id or DoUniqueString("")
-    print("Setting ID to .." .. id)
-    data.id = id
-    if pid then
-        print("Forcing ACK for only.. " .. pid)
-        local player = PlayerResource:GetPlayer(pid)
-        self:PrepFlashMessage(player, eventname, data, id)
-    else
-        data.pid = -1
-        for i=0,9 do
-            local player = PlayerResource:GetPlayer(i)
-            if player then self:PrepFlashMessage(player, eventname, data, id) end
-        end
-    end
-    FireGameEvent(eventname, data)
-end
-
-function ITT:PrepFlashMessage(player, eventname, data, id)
-    if not player.eventQueue then player.eventQueue = {} end
-    player.eventQueue[id] = {eventname = eventname, data = data, id = id}
-end
-
-function acknowledge_flash_event(cmdname, eventname, pid, id)
-    print("Got an ack from .." .. pid)
-    local player = PlayerResource:GetPlayer(tonumber(pid))
-    if player.eventQueue then
-        print("nilling then.." .. id)
-        print(player.eventQueue[id])
-        player.eventQueue[id] = nil
-    end
-end
-
 
 function ITT:OnBushThink()
     -- Find all bushes
@@ -1041,19 +949,7 @@ function ITT:OnBoatThink()
     return 0.1
 end
 
--- This will handle anything gamestate related that is not covered under other thinkers
-function ITT:OnStateThink()
-    --print(GameRules:State_Get())
-    return GAME_TICK_TIME
-    --GameRules:MakeTeamLose(3)
-    -- GameRules:SetGameWinner(1)
-    --local player = PlayerInstanceFromIndex(1)
-    --print(player:GetAssignedHero())
-    --player:SetTeam(2)
-    --print(player:GetTeam())
-end
 --This function checks if you won the game or not
-
 function ITT:OnCheckWinThink()
    if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then --waits for pregame to end before you can win
     --win check here
@@ -1238,12 +1134,6 @@ function ITT:OnPlayerGainedLevel(event)
     ITT:AdjustSkills( hero )
 end
 
-
-function give_item(cmdname, itemname)
-    local hero = Convars:GetCommandClient():GetAssignedHero()
-    hero:AddItem(CreateItem(itemname, hero, hero))
-end
-
 function print_dropped_vecs(cmdname)
     local items = Entities:FindAllByClassname("dota_item_drop")
     for _,v in pairs(items) do
@@ -1282,32 +1172,8 @@ function print_fix_diffs(cmdname)
     end
 end
 
-function reload_ikv(cmdname)
-    GameRules.ItemKV = LoadKeyValues("scripts/npc/npc_items_custom.txt")
-end
-
-function test_ack(cmdname)
-    ITT:HandleFlashMessage("fl_level_6", {pid = -1, gameclass = "gatherer"})
-end
-
-function test_ack_sec(cmdname)
-    ITT:HandleFlashMessage("fl_level_6", {pid = Convars:GetCommandClient():GetPlayerID()})
-end
-
-function make(cmdname, unitname)
-    local player = Convars:GetCommandClient()
-    local hero = player:GetAssignedHero()
-    CreateUnitByName(unitname, hero:GetOrigin(), true, hero, hero, 2)
-end
-
-Convars:RegisterCommand("make", function(cmdname, unitname) make(cmdname, unitname) end, "Give any item", 0)
-Convars:RegisterCommand("test_ack_sec", function(cmdname) test_ack_sec(cmdname) end, "Give any item", 0)
-Convars:RegisterCommand("test_ack", function(cmdname) test_ack(cmdname) end, "Give any item", 0)
-Convars:RegisterCommand("acknowledge_flash_event", function(cmdname, eventname, pid, id) acknowledge_flash_event(cmdname, eventname, pid, id) end, "Give any item", 0)
-Convars:RegisterCommand("reload_ikv", function(cmdname) reload_ikv(cmdname) end, "Give any item", 0)
 Convars:RegisterCommand("print_fix_diffs", function(cmdname) print_fix_diffs(cmdname) end, "Give any item", 0)
 Convars:RegisterCommand("print_dropped_vecs", function(cmdname) print_dropped_vecs(cmdname) end, "Give any item", 0)
-Convars:RegisterCommand("give_item", function(cmdname, itemname) give_item(cmdname, itemname) end, "Give any item", 0)
 
 --multiteam stuff
 
@@ -1476,15 +1342,3 @@ function ITT:OnThink()
 
     return 1
 end
-
-function eval(...)
-    local contents = {...}
-    local str = ""
-    for i,v in ipairs(contents) do
-        str = str .. " " .. v  --assumes space separated this arg and the last
-    end
-    print(loadstring(str)())
-end
-
-Convars:RegisterCommand("reload_kv", function() GameRules:Playtesting_UpdateAddOnKeyValues() end, "aa", 0)
-Convars:RegisterCommand("eval", function(cmdname, ...) eval(...) end, "aaa", 0)

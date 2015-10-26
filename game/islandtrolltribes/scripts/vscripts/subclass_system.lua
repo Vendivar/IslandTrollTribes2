@@ -1,11 +1,5 @@
 --[[
-wearableTable = items_game['items'][ID]
-wearableName = wearableTable['name']
-wearableType = wearableTable['prefab'] -- "wearable" or "default_item"
-modelName = wearableTable['model_player']
-
--- If necessary:
-particles = wearableTable['particle_folder'] + wearableTable['visuals'] + items_game['attribute_controlled_attached_particles']
+    TODO: Destroy particles from cosmetics such as immortals
 --]]
 
 function ITT:PrecacheSubclassModels(context)
