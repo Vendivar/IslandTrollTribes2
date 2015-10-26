@@ -94,6 +94,32 @@ function TransferItem( unit, target, item )
     print("Item "..item:GetAbilityName().." transfered")
 end
 
+-- Adds an item to the units inventory taking custom max stack charges into consideration
+function GiveItemStack( unit, itemName )
+    local newItem = CreateItem(itemName, nil, nil)
+
+    if CanTakeMoreItems(unit) then
+        unit:AddItem(newItem)
+        --print("Given "..itemName.." to "..unit:GetUnitName())
+        ResolveInventoryMerge(unit, newItem)
+        return newItem
+    else
+        local itemToStack = CanTakeMoreStacksOfItem(unit, newItem)
+        if itemToStack then
+
+            -- Add the charges
+            local currentCharges = itemToStack:GetCurrentCharges()
+            itemToStack:SetCurrentCharges(currentCharges + newItem:GetCurrentCharges())
+            --print("Given "..itemName.." to "..unit:GetUnitName().." through stacks")
+            newItem:RemoveSelf()
+            return itemToStack
+        end
+    end
+
+    --print("Couldn't add "..itemName.." - Inventory is full and it wont take more stacks")
+    newItem:RemoveSelf()
+end
+
 function GetNumItemsInInventory( unit )
     local count = 0
     for i=0,5 do
@@ -112,12 +138,15 @@ end
 
 function CanTakeMoreStacksOfItem( unit, item )
 
+    -- If the item is stackable with the default dota system, it will be combined and removed by default, making it invalid
+    if not IsValidEntity(item) then return end
+
     -- If the item can be stacked
     local itemName = item:GetAbilityName()
     local maxStacks = GameRules.ItemKV[itemName]["MaxStacks"]
     if maxStacks then
         local currentCharges = item:GetCurrentCharges()
-        print(itemName.." can be stacked up to "..maxStacks.." times, currently at "..currentCharges.." charges")
+        --print(itemName.." can be stacked up to "..maxStacks.." times, currently at "..currentCharges.." charges")
         
         -- Check if there's another item to stack with
         for itemSlot = 0,5 do

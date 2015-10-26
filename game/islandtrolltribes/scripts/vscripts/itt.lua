@@ -174,6 +174,8 @@ function ITT:InitGameMode()
     CustomGameEventManager:RegisterListener( "player_drop_all_meat", Dynamic_Wrap( ITT, "DropAllMeat" ) )
     CustomGameEventManager:RegisterListener( "player_panic", Dynamic_Wrap( ITT, "Panic" ) )
 
+    CustomGameEventManager:RegisterListener( "player_bush_gather", Dynamic_Wrap( ITT, "BushGather" ) )
+
     -- Filters
     GameMode:SetExecuteOrderFilter( Dynamic_Wrap( ITT, "FilterExecuteOrder" ), self )
 
@@ -206,18 +208,23 @@ function ITT:InitGameMode()
     --initial bush spawns
     --place entities starting with spawner_ plus the appropriate name to spawn to corresponding bush on game start
     local bush_herb_spawners = Entities:FindAllByClassname("npc_dota_spawner")
-    local bushCount = 0
+    GameRules.Bushes = {}
     for _,spawner in pairs(bush_herb_spawners) do
         local spawnerName = spawner:GetName()
         if string.find(spawnerName, "_bush_") then
             local bush_name = string.sub(string.gsub(spawner:GetName(), "spawner_", ""), 5)
             local bush = CreateUnitByName(bush_name, spawner:GetAbsOrigin(), false, nil, nil, DOTA_TEAM_NEUTRALS)
             if bush then
-                bushCount = bushCount + 1
+                table.insert(GameRules.Bushes, bush)
             end
         end
     end
+    local bushCount = #GameRules.Bushes
     print("Spawned "..bushCount.." bushes total")
+
+    -- Change random seed
+    local timeTxt = string.gsub(string.gsub(GetSystemTime(), ':', ''), '0','')
+    math.randomseed(tonumber(timeTxt))
 
     -- spawner_npc_bush_herb
     -- spawner_npc_bush_river
@@ -242,6 +249,7 @@ function ITT:InitGameMode()
 
     -- KV Tables
     GameRules.ClassInfo = LoadKeyValues("scripts/kv/class_info.kv")
+    GameRules.BushInfo = LoadKeyValues("scripts/kv/bush_info.kv")
     GameRules.QuickCraft = LoadKeyValues("scripts/kv/quick_craft.kv")
     GameRules.AbilityKV = LoadKeyValues("scripts/npc/npc_abilities_custom.txt")
     GameRules.ItemKV = LoadKeyValues("scripts/npc/npc_items_custom.txt")
@@ -782,114 +790,30 @@ end
 
 
 function ITT:OnBushThink()
-    -- Find all bushes
-    --print("bush think")
-    units = FindUnitsInRadius(DOTA_TEAM_BADGUYS,
-                                  Vector(0, 0, 0),
-                                  nil,
-                                  FIND_UNITS_EVERYWHERE,
-                                  DOTA_UNIT_TARGET_TEAM_BOTH,
-                                  DOTA_UNIT_TARGET_ALL,
-                                  DOTA_UNIT_TARGET_FLAG_NONE + DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES + DOTA_UNIT_TARGET_FLAG_INVULNERABLE,
-                                  FIND_ANY_ORDER,
-                                  false)
-    for i=1, #units do
-        if units[i].RngWeight == nil then --rng weight maks it so there's a chance a bush won't spawn but you won't get rng fucked
-            units[i].RngWeight = 0 --if rng weight doesnt exist declare it to a value that's unlikely to spawn for the first few ticks
+    --print("--Creating Items on Bushes--")
+    
+    local bushes = GameRules.Bushes
+    
+    for k,bush in pairs(bushes) do
+        if bush.RngWeight == nil then --rng weight maks it so there's a chance a bush won't spawn but you won't get rng fucked
+            bush.RngWeight = 0 --if rng weight doesnt exist declare it to a value that's unlikely to spawn for the first few ticks
         end
-        if units[i]:GetItemInSlot(5) == nil then
-            local rand1 = RandomInt(-4,4) --randomize between -4 and +4, since the min is 0 with the best rng on the minimum number you will still not get a spawn
-            if rand1+ units[i].RngWeight >= 5 then 
-                units[i].RngWeight = units[i].RngWeight -1 --if spawn succeeds reduce the odds of the next spawn
-            --print(units[i]:GetUnitName(), units[i]:Ge
-                if units[i]:GetUnitName() == "npc_bush_herb" then
-                    local newItem = CreateItem("item_herb_butsu", nil, nil)
-                    units[i]:AddItem(newItem)
-                    --print("adding butsu")
-                elseif units[i]:GetUnitName() == "npc_bush_thistle" then
-                    local newItem = CreateItem("item_thistles", nil, nil)
-                    units[i]:AddItem(newItem)
-                    --print("adding thistle")
-                elseif units[i]:GetUnitName() == "npc_bush_river" then
-                    if RandomInt(0, 1) == 1 then
-                        local newItem = CreateItem("item_river_root", nil, nil)
-                        units[i]:AddItem(newItem)
-                    else
-                        local newItem = CreateItem("item_river_stem", nil, nil)
-                        units[i]:AddItem(newItem)
-                    end
-                    --print("adding river")
-                elseif units[i]:GetUnitName() == "npc_bush_stash" then
-                    local random = RandomInt(0, 3)
-                    if random == 0 then
-                        local newItem = CreateItem("item_acorn", nil, nil)
-                        units[i]:AddItem(newItem)
-                    elseif  random == 1 then
-                        local newItem = CreateItem("item_acorn_magic", nil, nil)
-                        units[i]:AddItem(newItem)
-                    elseif  random == 2 then
-                        local newItem = CreateItem("item_ball_clay", nil, nil)
-                        units[i]:AddItem(newItem)
-                    else
-                        local newItem = CreateItem("item_mushroom", nil, nil)
-                        units[i]:AddItem(newItem)
-                    end
-                    --print("adding stash")
-                elseif units[i]:GetUnitName() == "npc_bush_thief" then
-                    local random = RandomInt(0, 6)
-                    if random == 1 then
-                        local newItem = CreateItem("item_meat_cooked", nil, nil)
-                        units[i]:AddItem(newItem)
-                    elseif  random == 2 then
-                        local newItem = CreateItem("item_net_basic", nil, nil)
-                        units[i]:AddItem(newItem)
-                    elseif  random == 3 then
-                        local newItem = CreateItem("item_potion_manai", nil, nil)
-                        units[i]:AddItem(newItem)
-                    elseif  random == 4 then
-                        local newItem = CreateItem("item_crystal_mana", nil, nil)
-                        units[i]:AddItem(newItem)
-                    elseif  random == 5 then
-                        local newItem = CreateItem("item_bomb_smoke", nil, nil)
-                        units[i]:AddItem(newItem)
-                    else
-                        local newItem = CreateItem("item_medallion_thief", nil, nil)
-                        units[i]:AddItem(newItem)
-                    end
-                    --print("adding theif")
-                elseif units[i]:GetUnitName() == "npc_bush_scout" then
-                    if RandomInt(0, 1) == 1 then
-                        local newItem = CreateItem("item_clay_living", nil, nil)
-                        units[i]:AddItem(newItem)
-                    else
-                        local newItem = CreateItem("item_clay_explosion", nil, nil)
-                        units[i]:AddItem(newItem)
-                    end
-                    --print("adding scout")
-                elseif units[i]:GetUnitName() == "npc_bush_mushroom" then
-                    local newItem = CreateItem("item_mushroom", nil, nil)
-                    units[i]:AddItem(newItem)
-                    --print("adding mushroom")
-                elseif units[i]:GetUnitName() == "npc_bush_herb_yellow" then
-                    local newItem = CreateItem("item_herb_yellow", nil, nil)
-                    units[i]:AddItem(newItem)
-                    --print("adding yellow")
-                elseif units[i]:GetUnitName() == "npc_bush_herb_orange" then
-                    local newItem = CreateItem("item_herb_orange", nil, nil)
-                    units[i]:AddItem(newItem)
-                    --print("adding orange")
-                elseif units[i]:GetUnitName() == "npc_bush_herb_blue" then
-                    local newItem = CreateItem("item_herb_blue", nil, nil)
-                    units[i]:AddItem(newItem)
-                    --print("adding blue")
-                elseif units[i]:GetUnitName() == "npc_bush_herb_purple" then
-                    local newItem = CreateItem("item_herb_purple", nil, nil)
-                    units[i]:AddItem(newItem)
-                    --print("adding purple")
-                end
-            else
-                units[i].RngWeight = units[i].RngWeight + 1 --if spawn fails increase odds for next run
-            end
+
+        local rand = RandomInt(-4,4) --randomize between -4 and +4, since the min is 0 with the best rng on the minimum number you will still not get a spawn
+        
+        if rand + bush.RngWeight >= 5 then 
+            bush.RngWeight = bush.RngWeight - 1 --if spawn succeeds reduce the odds of the next spawn
+
+            local bush_name = bush:GetUnitName()
+            local bushTable = GameRules.BushInfo[bush_name]
+            local possibleChoices = TableCount(bushTable)
+            local randomN = tostring(RandomInt(1, possibleChoices))
+            local bush_random_item = bushTable[randomN]
+
+            GiveItemStack(bush, bush_random_item)
+
+        else
+            bush.RngWeight = bush.RngWeight + 1 --if spawn fails increase odds for next run
         end
     end
 
