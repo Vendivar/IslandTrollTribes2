@@ -1,5 +1,6 @@
 function ITT:FilterExecuteOrder( filterTable )
     ITEM_TRANSFER_RANGE = 300
+    DEFAULT_TRANSFER_RANGE = 100
 
     local units = filterTable["units"]
     local order_type = filterTable["order_type"]
@@ -150,8 +151,7 @@ function ITT:FilterExecuteOrder( filterTable )
         if IsCustomBuilding(unit) then
             -- Pick up the item if within the extended range
             if (origin - position):Length2D() <= ITEM_TRANSFER_RANGE+25 then
-                drop:SetAbsOrigin(origin)
-                unit:PickupDroppedItem(drop)            
+                ITT:PickupItem(unit, drop)
             else
                 SendErrorMessage(issuer, "#error_item_out_of_range")
             end
@@ -167,10 +167,11 @@ function ITT:FilterExecuteOrder( filterTable )
             -- Check for drop distance
             Timers:CreateTimer(function()
                 if not unit.picking then return
-                elseif IsValidAlive(unit) and unit.picking and (unit:GetAbsOrigin() - position):Length2D() <= ITEM_TRANSFER_RANGE+25 then
-                    drop:SetAbsOrigin(unit:GetAbsOrigin())
+                elseif IsValidAlive(unit) and unit.picking and (unit:GetAbsOrigin() - position):Length2D() <= DEFAULT_TRANSFER_RANGE then
                     unit:Stop()
-                    unit:PickupDroppedItem(drop)
+
+                    ITT:PickupItem( unit, drop )
+
                     unit.picking = nil
                     return
                 end
@@ -182,6 +183,45 @@ function ITT:FilterExecuteOrder( filterTable )
     end
 
     return true
+end
+
+-- This handles picking up items from any range and stacking when the inventory is full but can still handle more stacks of the attempted pickup
+function ITT:PickupItem( unit, drop )
+    local item = drop:GetContainedItem()
+    local itemName = item:GetAbilityName()
+
+    -- If there is 1 slot available, simply pickup the item and check for merges
+    if CanTakeMoreItems(unit) then
+        drop:SetAbsOrigin(unit:GetAbsOrigin())
+        unit:PickupDroppedItem(drop)
+
+        ResolveInventoryMerge(unit, item)
+    else
+        local itemToStack = CanTakeMoreStacksOfItem(unit, item)
+        if itemToStack then
+            local maxStacks = GameRules.ItemKV[itemName]["MaxStacks"]
+            print("Got another of this item to stack with, merging")
+
+            -- Reduce the stacks of the item on the ground and increase the item to stack
+            local inventoryItemCharges = itemToStack:GetCurrentCharges()
+            local currentItemCharges = item:GetCurrentCharges()
+
+            -- If it can be merged completely, add the charges and remove the drop
+            if inventoryItemCharges+currentItemCharges <= maxStacks then
+
+                itemToStack:SetCurrentCharges(inventoryItemCharges+currentItemCharges)
+                UTIL_Remove(drop)
+
+            -- Otherwise add up to maxCharges and keep both items
+            else
+                local transfer_charges = maxStacks - inventoryItemCharges
+                itemToStack:SetCurrentCharges(maxStacks)
+                item:SetCurrentCharges(currentItemCharges - transfer_charges)
+            end
+        else
+            SendErrorMessage(unit:GetPlayerOwnerID(), "#error_inventory_full")
+        end
+    end
 end
 
 function printOrderTable( filterTable )

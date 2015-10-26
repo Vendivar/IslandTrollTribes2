@@ -110,6 +110,51 @@ function CanTakeMoreItems( unit )
     return (GetNumItemsInInventory(unit) < 6)
 end
 
+function CanTakeMoreStacksOfItem( unit, item )
+
+    -- If the item can be stacked
+    local itemName = item:GetAbilityName()
+    local maxStacks = GameRules.ItemKV[itemName]["MaxStacks"]
+    if maxStacks then
+        local currentCharges = item:GetCurrentCharges()
+        print(itemName.." can be stacked up to "..maxStacks.." times, currently at "..currentCharges.." charges")
+        
+        -- Check if there's another item to stack with
+        for itemSlot = 0,5 do
+            local itemInSlot = unit:GetItemInSlot( itemSlot )
+            if itemInSlot and itemInSlot ~= item and itemInSlot:GetAbilityName() == itemName and itemInSlot:GetCurrentCharges() < maxStacks then
+                return itemInSlot --Return the item handle to pass the stacks to
+            end
+        end
+    end
+    return false
+end
+
+-- The unit just picked an item and we want to see if it can be stacked to another item in inventory
+function ResolveInventoryMerge( unit, item )
+    local itemToStack = CanTakeMoreStacksOfItem(unit, item)
+    if itemToStack then
+        local itemName = item:GetAbilityName() 
+        local maxStacks = GameRules.ItemKV[itemName]["MaxStacks"]
+
+        -- Reduce the stacks of the new item and increase the item to stack
+        local inventoryItemCharges = itemToStack:GetCurrentCharges()
+        local currentItemCharges = item:GetCurrentCharges()
+
+        -- If it can be merged completely, add the charges and remove the drop
+        if inventoryItemCharges+currentItemCharges <= maxStacks then
+
+            itemToStack:SetCurrentCharges(inventoryItemCharges+currentItemCharges)
+            UTIL_Remove(item)
+
+        -- Otherwise add up to maxCharges and keep both items
+        else
+            local transfer_charges = maxStacks - inventoryItemCharges
+            itemToStack:SetCurrentCharges(maxStacks)
+            item:SetCurrentCharges(currentItemCharges - transfer_charges)
+        end
+    end
+end
 
 
 ------------------------------------------------

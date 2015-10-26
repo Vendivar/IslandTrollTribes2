@@ -1,10 +1,11 @@
 CHEAT_CODES = {
-    ["subclass"] = function(...) ITT:ChangeSubclass(...) end,
-    ["reset"] = function(...) ITT:ResetSubclass(...) end,
-    ["workshop"] = function(...) ITT:TestWorkshop(...) end,
-    ["refresh"] = function(...) ITT:Refresh(...) end,
-    ["dev"] = function(...) ITT:Dev(...) end,
-    ["camp"] = function(...) ITT:Camp(...) end,
+    ["subclass"] = function(...) ITT:ChangeSubclass(...) end, -- Forces a subclass pick
+    ["reset"] = function(...) ITT:ResetSubclass(...) end, -- Resets subclass choice
+    ["workshop"] = function(...) ITT:TestWorkshop(...) end, -- Makes a workshop with items to test
+    ["refresh"] = function(...) ITT:Refresh(...) end, -- Refreshes heat hp and mana
+    ["dev"] = function(...) ITT:Dev(...) end, -- Reveal map and stop degen
+    ["camp"] = function(...) ITT:Camp(...) end, -- Makes a fire
+    ["acorns"] = function(...) ITT:Acorns(...) end, -- Make an acorn field
 }
 
 PLAYER_COMMANDS = {}
@@ -75,6 +76,8 @@ function ITT:Refresh( playerID )
     local hero = PlayerResource:GetSelectedHeroEntity(playerID)
 
     Heat:Set( hero, 100 )
+    hero:SetHealth(hero:GetMaxHealth())
+    hero:SetMana(hero:GetMaxMana())
 end
 
 function ITT:Dev( playerID )
@@ -107,4 +110,16 @@ function ITT:Camp( playerID )
     fire:RemoveModifierByName("modifier_invulnerable")
     fire:SetAbsOrigin(position)
 
+end
+
+function ITT:Acorns( playerID )
+    local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+    local origin = hero:GetAbsOrigin()
+
+    for i=1,50 do
+        local pos_launch = origin + RandomVector(RandomInt(1,200))
+        local item = CreateItem("item_acorn", nil, nil)
+        local drop = CreateItemOnPositionSync( origin, item )
+        item:LaunchLoot(false, 200, 0.75, pos_launch)
+    end
 end

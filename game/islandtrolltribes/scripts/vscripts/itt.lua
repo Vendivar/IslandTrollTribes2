@@ -38,8 +38,6 @@ WIN_GAME_THINK              = 0.5 -- checks if you've won every x seconds
 BUILDING_TICK_TIME          = 0.03
 DROPMODEL_TICK_TIME         = 0.03
 
-itemKeyValues = LoadKeyValues("scripts/npc/npc_items_custom.txt")
-
 -- Game periods determine what is allowed to spawn, from start (0) to X seconds in
 GAME_PERIOD_GRACE           = 420
 GAME_PERIOD_EARLY           = 900
@@ -285,6 +283,7 @@ function ITT:InitGameMode()
     GameRules.ClassInfo = LoadKeyValues("scripts/kv/class_info.kv")
     GameRules.QuickCraft = LoadKeyValues("scripts/kv/quick_craft.kv")
     GameRules.AbilityKV = LoadKeyValues("scripts/npc/npc_abilities_custom.txt")
+    GameRules.ItemKV = LoadKeyValues("scripts/npc/npc_items_custom.txt")
 
     -- Check Syntax
     if not GameRules.AbilityKV then
@@ -666,11 +665,11 @@ function ITT:FixDropModels(dt)
             v.ModelFixInit = true
             v.OriginalOrigin = v:GetOrigin()
             v.OriginalAngles = v:GetAngles()
-            local custom = itemKeyValues[v:GetContainedItem():GetAbilityName()].Custom
+            local custom = GameRules.ItemKV[v:GetContainedItem():GetAbilityName()].Custom
             if custom then
                 --print("found custom")
                 if custom.ModelOffsets then
-                    local offsets = itemKeyValues[v:GetContainedItem():GetAbilityName()].Custom.ModelOffsets
+                    local offsets = GameRules.ItemKV[v:GetContainedItem():GetAbilityName()].Custom.ModelOffsets
                     v:SetOrigin( v.OriginalOrigin - Vector(offsets.Origin.x, offsets.Origin.y, offsets.Origin.z))
                     v:SetAngles( v.OriginalAngles.x - offsets.Angles.x, v.OriginalAngles.y - offsets.Angles.y, v.OriginalAngles.z - offsets.Angles.z)
                 end
@@ -1143,8 +1142,9 @@ function ITT:OnItemPickedUp(event)
 
     local hero = EntIndexToHScript( event.HeroEntityIndex )
     local originalItem = EntIndexToHScript(event.ItemEntityIndex)
+    local itemName = event.itemname
 
-    if event.itemname == "item_meat_raw" then
+    if itemName == "item_meat_raw" then
         local meatStacks = hero:GetModifierStackCount("modifier_meat_passive", nil)
         if meatStacks < 10 then
             hero:SetModifierStackCount("modifier_meat_passive", nil, meatStacks + 1)
@@ -1283,7 +1283,7 @@ function print_fix_diffs(cmdname)
 end
 
 function reload_ikv(cmdname)
-    itemKeyValues = LoadKeyValues("scripts/npc/npc_items_custom.txt")
+    GameRules.ItemKV = LoadKeyValues("scripts/npc/npc_items_custom.txt")
 end
 
 function test_ack(cmdname)
