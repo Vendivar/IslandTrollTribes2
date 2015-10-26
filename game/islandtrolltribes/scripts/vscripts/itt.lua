@@ -113,8 +113,6 @@ function ITT:InitGameMode()
 
     GameMode:SetThink("FixDropModels", ITT, "FixDropModels", 0)
 
-    GameMode:SetThink("FlashAckThink", ITT, "FlashAckThink", 0)
-
     GameMode:SetCustomHeroMaxLevel ( 6 ) -- No accidental overleveling
 
     -- Disable buybacks to stop instant respawning.

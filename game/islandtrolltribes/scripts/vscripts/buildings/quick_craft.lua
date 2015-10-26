@@ -3,15 +3,20 @@ function QuickCraft(keys)
     local caster = keys.caster
     local ability = keys.ability
     local range = ability:GetCastRange()
-    local buildingName = caster:GetAbilityName()
+    local buildingName = caster:GetUnitName()
+
+    if not CanTakeMoreItems(caster) then
+        SendErrorMessage(caster:GetPlayerOwnerID(), "#error_inventory_full")
+        return false
+    end
 
     print("QuickCrafting on "..buildingName)
        
     local recipeTable = GameRules.QuickCraft[buildingName]
-    print("List of items the building can craft:")
+    --[[print("List of items the building can craft:")
     for k,v in pairs(recipeTable) do
         print(k)
-    end
+    end]]
 
     -- Get all items dropped nearby
     local drops = Entities:FindAllByClassnameWithin("dota_item_drop", caster:GetAbsOrigin(), range)  --get the item in the slot
@@ -22,7 +27,7 @@ function QuickCraft(keys)
     for recipeName,recipeIngredients in pairs(recipeTable) do 
         
         -- If the drop list contains enough of the ingredient items defined in the reciepeTable, it can be crafted and the drops need to be consumed
-        local craftingItems = CanCraft(caster, recipeName, drops)
+        local craftingItems = CanCraft(buildingName, recipeName, drops)
         if craftingItems then
             match = recipeName
             -- Create the resulting item
@@ -68,33 +73,103 @@ function CanCraft( buildingName, itemName, droppedContainers )
         end
     end
 
-    --[[ Debug Prints
-    -- Compare that the craftingItems key & #values  and  required key & value match, that means we have enough ingredients
-    print("Required Items for "..itemName..":")
-    for k,v in pairs(required) do
-        print(" "..k,v)
-    end
-    print("Crafting Items for "..itemName..":")
-    for k,v in pairs(craftingItems) do
-        print(" "..k,#v)
-    end
-    print("------------------------------------")]]
-
     -- Check that the crafting and the required items match, break at first fail
+    local ingredients = ""
     for k,v in pairs(required) do
-        if not craftingItems[k] or (#craftingItems[k] < required[k]) then
+        if type(v)=="number" and (not craftingItems[k] or (#craftingItems[k] < required[k])) then
+            --print("Can't craft ",itemName,"missing ",k)
             return false
+        elseif type(v)=="number" then
+            ingredients = k.."("..v..") "
         end
     end
 
-    return craftingItems
+    print("--------\nPassed the basic requirements to craft "..itemName..": "..ingredients)
+
+    -- Check for alternatives
+    local alternatives = required['alt']
+    if alternatives then
+
+        print("Item has alternatives:")
+        local alts = {}
+        for k,v in pairs(alternatives) do
+            local altString = ""
+            for itemName,num in pairs(v) do
+                altString = altString..itemName.."("..num..") "
+            end
+            alts[k] = altString
+        end
+
+        local altCrafting = {}
+        local match
+        for altNumber,altItems in pairs(alternatives) do
+            if not match then
+                print("Checking alternative "..altNumber..":", alts[altNumber])
+
+                -- Build an alt table
+                for altItemName,number in pairs(altItems) do
+                    local dropFound = DropTableContainsItem(droppedContainers, altItemName)
+                    if dropFound then
+                        print("\tGot "..altItemName)
+                        if not altCrafting[altItemName] then
+                            altCrafting[altItemName] = {}
+                            table.insert(altCrafting[altItemName], dropFound)
+                        elseif #altCrafting[altItemName] < number then
+                            table.insert(altCrafting[altItemName], dropFound)
+                        end
+                    end
+                end
+
+                -- Check that the crafting and the alt required items match, break at first fail
+                match = true
+                for k,v in pairs(altItems) do
+                    if not altCrafting[k] or (#altCrafting[k] < v) then
+                        altCrafting = {} --Clean up the alt table
+                        print("\tFailed, not enough "..k)
+                        match = false
+                        break
+                    end
+                end
+            end
+        end
+        
+        if match then
+            print("\tSucceeded an alternative match")
+            -- Put all the matched alternatives in the final crafting ingredients and return it 
+            for k,itemDropsMatch in pairs(altCrafting) do
+                if not craftingItems[k] then
+                    craftingItems[k] = {}
+                end
+
+                for _,v in pairs(itemDropsMatch) do
+                    table.insert(craftingItems[k], v)
+                end           
+            end
+
+            return craftingItems
+        end
+    else
+        return craftingItems
+    end
+end
+
+-- TODO: Handle charges
+function DropTableContainsItem( droppedContainers, targetItemName )
+    for k,drop in pairs(droppedContainers) do
+        local item = drop:GetContainedItem()
+        local itemName = item:GetAbilityName()
+
+        if itemName == targetItemName then
+            return drop
+        end
+    end
 end
 
 function ClearCraftingItems( droppedIngredients )
     print("Craft succesful, clearing items:")
     for dropNames,dropTable in pairs(droppedIngredients) do
         for k,drop in pairs(dropTable) do
-            print("  Consumed",drop, drop:GetClassname(), drop:GetContainedItem():GetAbilityName())
+            print("\tConsumed",drop, drop:GetClassname(), drop:GetContainedItem():GetAbilityName())
             drop:RemoveSelf()
         end 
     end

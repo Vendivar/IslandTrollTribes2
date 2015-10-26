@@ -6,7 +6,7 @@ CHEAT_CODES = {
     ["dev"] = function(...) ITT:Dev(...) end, -- Reveal map and stop degen
     ["camp"] = function(...) ITT:Camp(...) end, -- Makes a fire
     ["acorns"] = function(...) ITT:Acorns(...) end, -- Make an acorn field
-    ["debug_creeps"] = function(...) ITT:DebugCreeps(..) end, -- Spawn All Creeps
+    ["debug_creeps"] = function(...) ITT:DebugCreeps(...) end, -- Spawn All Creeps
 
 }
 
@@ -51,7 +51,7 @@ function ITT:TestWorkshop( playerID )
     local fv = hero:GetForwardVector()
     local position = origin + fv * 500
 
-    local workshop = CreateUnitByName("npc_building_workshop", position, true, hero, hero, hero:GetTeamNumber())
+    local workshop = CreateUnitByName("npc_building_armory", position, true, hero, hero, hero:GetTeamNumber())
     workshop:SetControllableByPlayer(playerID, true)
     workshop:SetOwner(hero)
     workshop:SetForwardVector(-hero:GetForwardVector())
@@ -59,7 +59,9 @@ function ITT:TestWorkshop( playerID )
     local testItems = { 
         ["item_ingot_iron"] = 3,
         ["item_flint"] = 6,
-        ["item_river_root"] = 5,
+        ["item_ingot_steel"] = 10,
+        ["item_stick"] = 5,
+        ["item_bone"] = 5,
     }
 
     local pos = origin + fv * 200
