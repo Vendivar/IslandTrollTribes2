@@ -11,7 +11,9 @@
 	"ItemShopTags"	"consumable"
 	"ItemQuality"	"consumable"
 	"ItemShareability"	"ITEM_FULLY_SHAREABLE_STACKING"
-	"ItemStackable"	"1"
+	
+    "MaxStacks" "4"
+
 	"ItemPermanent"	"0"
 	"ItemDroppable"	"1"
 	"ItemAliases"	"quicktype"

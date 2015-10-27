@@ -6185,7 +6185,9 @@
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE_STACKING"
-		"ItemStackable"	"1"
+		
+		"MaxStacks" "6"
+	
 		"ItemPermanent"	"0"
 		"ItemDroppable"	"1"
 		"ItemAliases"	"quicktype"
@@ -6409,7 +6411,9 @@
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE_STACKING"
-		"ItemStackable"	"1"
+		
+		"MaxStacks" "10"
+	
 		"ItemPermanent"	"0"
 		"ItemInitialCharges"	"1"
 		"ItemDroppable"	"1"
@@ -6614,7 +6618,9 @@
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE_STACKING"
-		"ItemStackable"	"1"
+		
+		"MaxStacks" "12"
+	
 		"ItemPermanent"	"0"
 		"ItemDroppable"	"1"
 		"ItemAliases"	"quicktype"
@@ -6821,7 +6827,9 @@
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE_STACKING"
-		"ItemStackable"	"1"
+		
+		"MaxStacks" "2"
+	
 		"ItemPermanent"	"0"
 		"ItemDroppable"	"1"
 		"ItemInitialCharges"	"1"
@@ -6914,7 +6922,9 @@
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE_STACKING"
-		"ItemStackable"	"1"
+		
+	    "MaxStacks" "4"
+	
 		"ItemPermanent"	"0"
 		"ItemDroppable"	"1"
 		"ItemAliases"	"quicktype"
@@ -7012,7 +7022,9 @@
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE_STACKING"
-		"ItemStackable"	"1"
+		
+		"MaxStacks" "6"
+	
 		"ItemPermanent"	"0"
 		"ItemDroppable"	"1"
 		"ItemInitialCharges"	"1"
@@ -7066,7 +7078,9 @@
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE_STACKING"
-		"ItemStackable"	"1"
+		
+		"MaxStacks" "2"
+		
 		"ItemPermanent"	"0"
 		"ItemDroppable"	"1"
 		"ItemInitialCharges"	"1"
@@ -7315,7 +7329,9 @@
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE_STACKING"
-		"ItemStackable"	"1"
+		
+		"MaxStacks" "3"
+	
 		"ItemPermanent"	"0"
 		"ItemDroppable"	"1"
 		"ItemInitialCharges"	"1"
@@ -7463,7 +7479,9 @@
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE_STACKING"
-		"ItemStackable"	"1"
+		
+		"MaxStacks" "3"
+	
 		"ItemPermanent"	"0"
 		"ItemDroppable"	"1"
 		"ItemInitialCharges"	"1"
@@ -7585,7 +7603,9 @@
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE_STACKING"
-		"ItemStackable"	"1"
+		
+		"MaxStacks" "2"
+	
 		"ItemPermanent"	"0"
 		"ItemDroppable"	"1"
 		"ItemInitialCharges"	"1"
@@ -7703,7 +7723,9 @@
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE_STACKING"
-		"ItemStackable"	"1"
+		
+		"MaxStacks" "4"
+	
 		"ItemPermanent"	"0"
 		"ItemDroppable"	"1"
 		"ItemInitialCharges"	"1"
@@ -7759,7 +7781,9 @@
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE_STACKING"
-		"ItemStackable"	"1"
+		
+		"MaxStacks" "4"
+		
 		"ItemPermanent"	"0"
 		"ItemDroppable"	"1"
 		"ItemInitialCharges"	"1"
@@ -7815,7 +7839,9 @@
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE_STACKING"
-		"ItemStackable"	"1"
+		
+		"MaxStacks" "4"
+		
 		"ItemPermanent"	"0"
 		"ItemDroppable"	"1"
 		"ItemInitialCharges"	"1"
@@ -7871,7 +7897,9 @@
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE_STACKING"
-		"ItemStackable"	"1"
+		
+		"MaxStacks" "4"
+		
 		"ItemPermanent"	"0"
 		"ItemDroppable"	"1"
 		"ItemInitialCharges"	"1"
@@ -7928,7 +7956,9 @@
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE_STACKING"
-		"ItemStackable"	"1"
+		
+		"MaxStacks" "4"
+		
 		"ItemPermanent"	"0"
 		"ItemDroppable"	"1"
 		"ItemInitialCharges"	"1"
@@ -7985,7 +8015,9 @@
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE_STACKING"
-		"ItemStackable"	"1"
+		
+		"MaxStacks" "4"
+		
 		"ItemPermanent"	"0"
 		"ItemDroppable"	"1"
 		"ItemInitialCharges"	"1"
@@ -8043,7 +8075,9 @@
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE_STACKING"
-		"ItemStackable"	"1"
+		
+		"MaxStacks" "5"
+	
 		"ItemPermanent"	"0"
 		"ItemDroppable"	"1"
 		"ItemInitialCharges"	"2"
@@ -8199,7 +8233,9 @@
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE_STACKING"
-		"ItemStackable"	"1"
+		
+		"MaxStacks" "2"
+	
 		"ItemPermanent"	"0"
 		"ItemDroppable"	"1"
 		"ItemInitialCharges"	"1"
@@ -9381,7 +9417,9 @@
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE_STACKING"
-		"ItemStackable"	"1"
+		
+		"MaxStacks" "6"
+	
 		"ItemPermanent"	"0"
 		"ItemDroppable"	"1"
 		"ItemInitialCharges"	"1"
@@ -9463,7 +9501,9 @@
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE_STACKING"
-		"ItemStackable"	"1"
+		
+		"MaxStacks" "3"
+		
 		"ItemPermanent"	"0"
 		"ItemDroppable"	"1"
 		"ItemInitialCharges"	"1"
@@ -9599,7 +9639,9 @@
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE_STACKING"
-		"ItemStackable"	"1"
+		
+		"MaxStacks" "3"
+	
 		"ItemPermanent"	"0"
 		"ItemDroppable"	"1"
 		"ItemInitialCharges"	"1"
@@ -9692,7 +9734,9 @@
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE_STACKING"
-		"ItemStackable"	"1"
+		
+		"MaxStacks" "5"
+	
 		"ItemPermanent"	"0"
 		"ItemDroppable"	"1"
 		"ItemInitialCharges"	"1"
@@ -9928,7 +9972,9 @@
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE_STACKING"
-		"ItemStackable"	"1"
+		
+		"MaxStacks" "4"
+	
 		"ItemPermanent"	"0"
 		"ItemDroppable"	"1"
 		"ItemInitialCharges"	"1"
@@ -10163,7 +10209,9 @@
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE_STACKING"
-		"ItemStackable"	"1"
+		
+		"MaxStacks" "2"
+	
 		"ItemPermanent"	"0"
 		"ItemDroppable"	"1"
 		"ItemInitialCharges"	"1"
@@ -10403,7 +10451,9 @@
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE_STACKING"
-		"ItemStackable"	"1"
+		
+		"MaxStacks" "2"
+	
 		"ItemPermanent"	"0"
 		"ItemDroppable"	"1"
 		"ItemInitialCharges"	"1"
@@ -11183,7 +11233,9 @@
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
-		"ItemStackable"	"0"
+		
+		"MaxStacks" "6"
+	
 		"ItemPermanent"	"0"
 		"ItemDroppable"	"1"
 		"ItemInitialCharges"	"1"
@@ -11517,7 +11569,9 @@
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
-		"ItemStackable"	"1"
+		
+		"MaxStacks" "3"
+	
 		"ItemPermanent"	"0"
 		"ItemDroppable"	"1"
 		"ItemInitialCharges"	"1"
@@ -12198,7 +12252,9 @@
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
-		"ItemStackable"	"0"
+		
+		"MaxStacks" "8"
+	
 		"ItemPermanent"	"0"
 		"ItemDroppable"	"1"
 		"ItemAliases"	"quicktype"
