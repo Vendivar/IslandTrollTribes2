@@ -1,0 +1,104 @@
+"ability_beastmaster_slam"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityTextureName"	"ability_beastmaster_slam"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	"AbilityCastAnimation"	"1"
+	"AbilityCastPoint"	"0.5"
+	"MaxLevel"	"1"
+	"Precache"
+	{
+		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_earthshaker.vsndevts"
+		"particle"	"particles/econ/generic/generic_aoe_explosion_sphere_1/generic_aoe_explosion_sphere_1.vpcf"
+	}
+
+	"OnSpellStart"
+	{
+		"ActOnTargets"
+		{
+			"Target"
+			{
+				"Center"	"CASTER"
+				"Radius"	"%slam_radius"
+				"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+			}
+
+			"Action"
+			{
+				"Damage"
+				{
+					"Target"	"TARGET"
+					"Type"	"DAMAGE_TYPE_MAGICAL"
+					"Damage"	"%damage"
+				}
+
+				"ApplyModifier"
+				{
+					"Target"	"TARGET"
+					"ModifierName"	"bear_slam_slow"
+					"Duration"	"4"
+				}
+
+			}
+			"FireSound"
+			{
+				"EffectName"	"Hero_EarthShaker.Totem"
+				"Target"		"TARGET"
+			}
+
+		}
+
+		"FireEffect"
+		{
+			"TargetPoint"	"POINT"
+			"EffectName"	"particles/econ/generic/generic_aoe_explosion_sphere_1/generic_aoe_explosion_sphere_1.vpcf"
+			"EffectAttachType"	"follow_origin"
+			"EffectRadius"	"%slam_radius"
+				"FireSound"
+			{
+				"EffectName"	"Hero_EarthShaker.Totem"
+				"Target"		"POINT"
+			}
+
+		}
+
+	}
+
+	"Modifiers"
+	{
+		"bear_slam_slow"
+		{
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%slow"
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%slow"
+			}
+
+		}
+
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"slam_radius"	"315"
+		}
+
+		"02"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"damage"	"65"
+		}
+
+		"02"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"slow"	"-50"
+		}
+
+	}
+
+}

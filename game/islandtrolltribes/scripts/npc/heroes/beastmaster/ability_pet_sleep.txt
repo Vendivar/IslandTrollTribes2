@@ -1,0 +1,105 @@
+"ability_pet_sleep"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	"AbilityCastPoint"	"0"
+	"AbilityCooldown"	"0"
+	"AbilityManaCost"	"0"
+	"Precache"
+	{
+		"particle_folder"	"particles/newplayer_fx"
+	}
+
+	"MaxLevel"	"1"
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_sleep"
+			"Duration"	"%rest_duration"
+			"Target"	"CASTER"
+		}
+
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_invuln"
+			"Duration"	"%invuln_duration"
+			"Target"	"CASTER"
+		}
+
+	}
+
+	"Modifiers"
+	{
+		"modifier_sleep"
+		{
+			"IsDebuff"	"0"
+			"IsPurgable"	"0"
+			"States"
+			{
+				"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
+			}
+
+			"OnCreated"
+			{
+				"AttachEffect"
+				{
+					"Target"	"TARGET"
+					"EffectName"	"particles/newplayer_fx/npx_sleeping.vpcf"
+					"EffectAttachType"	"follow_overhead"
+					"EffectLifeDurationScale"	"1"
+				}
+
+			}
+
+			"OnAttacked"
+			{
+				"RemoveModifier"
+				{
+					"ModifierName"	"modifier_sleep"
+					"Target"	"TARGET"
+				}
+
+			}
+
+			"ThinkInterval"	"0.25"
+			"OnIntervalThink"
+			{
+				"RunScript"
+				{
+					"ScriptFile"   "heroes/beastmaster/pets.lua"
+					"Function"     "HealPet"
+				}
+
+			}
+
+		}
+
+		"modifier_invuln"
+		{
+			"States"
+			{
+				"MODIFIER_STATE_INVULNERABLE"	"MODIFIER_STATE_VALUE_ENABLED"
+			}
+
+		}
+
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"rest_duration"	"10"
+		}
+
+		"02"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"invuln_duration"	"1.0"
+		}
+
+	}
+
+}

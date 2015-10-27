@@ -1,0 +1,131 @@
+"ability_beastmaster_spiritofthebeast"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
+	"AbilityTextureName"	"ability_beastmaster_spiritofthebeast"
+	"MaxLevel"	"1"
+	"Modifiers"
+	{
+		"modifier_spirit"
+		{
+			"Passive"	"1"
+			"Aura"	"modifier_animal_slow"
+			"Aura_Radius"	"400"
+			"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+			"Aura_Types"	"DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_BASIC"
+			"Aura_ApplyToCaster"	"0"
+			"OnAttacked"
+			{
+				"Damage"
+				{
+					"Target"	"ATTACKER"
+					"Damage"	"2"
+					"Type"	"DAMAGE_TYPE_MAGICAL"
+				}
+
+			}
+
+		}
+
+		"modifier_animal_slow"
+		{
+			"IsHidden"	"1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%movespeedslow"
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attackspeedslow"
+			}
+
+			"ThinkInterval"	"2"
+			"OnIntervalThink"
+			{
+				"Random"
+				{
+					"Chance"	"50"
+					"OnSuccess"
+					{
+						"RunScript"
+						{
+							"ScriptFile" "heroes/beastmaster/pets.lua"
+							"Function"   "AttractAnimal"
+						}
+
+					}
+
+				}
+
+			}
+
+			"OnCreated"
+			{
+				"ApplyModifier"
+				{
+					"Target"	"TARGET"
+					"ModifierName"	"modifier_spawn_chance"
+				}
+
+			}
+
+			"OnDestroy"
+			{
+				"RemoveModifier"
+				{
+					"Target"	"TARGET"
+					"ModifierName"	"modifier_spawn_chance"
+				}
+
+			}
+
+		}
+
+		"modifier_spawn_chance"
+		{
+			"Hidden"	"1"
+			"OnCreated"
+			{
+				"RunScript"
+				{
+					"ScriptFile"   "heroes/beastmaster/pets.lua"
+					"Function"     "SetSpawnChance"
+					"target"       "TARGET"
+					"Remove"       "0"
+				}
+
+			}
+
+			"OnDestroy"
+			{
+				"RunScript"
+				{
+					"ScriptFile"   "heroes/beastmaster/pets.lua"
+					"Function"     "SetSpawnChance"
+					"target"       "TARGET"
+					"Remove"       "1"
+				}
+
+			}
+
+		}
+
+	}
+    
+    "AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"damage"	"18"
+		}
+		"02"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"movespeedslow"	"-40"
+		}
+        "03"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"attackspeedslow"	"-5"
+		}
+	}
+
+}

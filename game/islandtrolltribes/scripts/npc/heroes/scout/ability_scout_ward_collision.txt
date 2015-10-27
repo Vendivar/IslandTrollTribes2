@@ -1,0 +1,44 @@
+"ability_scout_ward_collision"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"Modifiers"
+	{
+		"modifier_collision_check"
+		{
+			"Passive"	"1"
+			"ThinkInterval"	"0.2"
+			"OnIntervalThink"
+			{
+				"RunScript"
+				{
+					"ScriptFile"   "mechanics/collision.lua"
+					"Function"     "DieOnEnemyCollision"
+					"Radius"       "50"
+				}
+
+			}
+
+			"OnDeath"
+			{
+				"Damage"
+				{
+					"Target"
+					{
+						"Center"	"CASTER"
+						"Radius"	"50"
+						"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+						"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+					}
+
+					"Type"	"DAMAGE_TYPE_MAGICAL"
+					"Damage"	"10"
+				}
+
+			}
+
+		}
+
+	}
+
+}

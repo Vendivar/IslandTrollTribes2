@@ -1,0 +1,68 @@
+"ability_priest_sprayhealing"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityTextureName"	"ability_priest_sprayhealing"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT"
+	"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
+	"AOERadius"	"400"
+	"AbilityCastPoint"	"0.3"
+	"AbilityCooldown"	"20"
+	"AbilityCastRange"	"600"
+	"AbilityManaCost"	"20"
+	"MaxLevel"	"1"
+	"OnSpellStart"
+	{
+		"LinearProjectile"
+		{
+			"Target"	"POINT"
+			"MoveSpeed"	"600"
+			"ProvidesVision"	"false"
+		}
+
+	}
+
+	"OnProjectileFinish"
+	{
+		"ApplyModifier"
+		{
+			"Target"	"CASTER"
+			"ModifierName"	"modifier_exclude_caster"
+			"Duration"	"5"
+		}
+
+		"Heal"
+		{
+			"Target"
+			{
+				"Center"	"POINT"
+				"Radius"	"400"
+				"Teams"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+			}
+
+			"HealAmount"	"50"
+		}
+
+		"RemoveModifier"
+		{
+			"Target"	"CASTER"
+			"ModifierName"	"modifier_exclude_caster"
+		}
+
+	}
+
+	"Modifiers"
+	{
+		"modifier_exclude_caster"
+		{
+			"IsHidden"	"0"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_DISABLE_HEALING"	"1"
+			}
+
+		}
+
+	}
+
+}

@@ -1,0 +1,53 @@
+"ability_gatherer_itemradar"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityTextureName"	"ability_gatherer_itemradar"
+	"MaxLevel"	"1"
+	"AbilityCastPoint"	"0.1"
+	"AbilityCooldown"	"30"
+	"precache"
+	{
+		"soundfile"	"sounds/ui/ping.vsnd"
+		"particle_folder"	"particles/ui_mouseactions"
+	}
+
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile" "heroes/gatherer/ping.lua"
+			"Function"   "PingItemInRange"
+			"Target"     "CASTER"
+			"Range"	     "%range"
+			"ItemTable"
+			{
+				"item_flint"	"255 0 0"
+				"item_clay_ball"	"100 100 100"
+				"item_stick"	"50 100 100"
+				"item_tinder"	"0 255 0"
+				"item_crystal_mana"	"0 0 255"
+				"item_stone"	"0 0 255"
+			}
+
+		}
+
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"cooldown"	"30"
+		}
+
+		"02"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"range"	"1700"
+		}
+
+	}
+
+}

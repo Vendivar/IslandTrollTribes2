@@ -1,0 +1,31 @@
+"ability_scout_enemyradar"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityTextureName"	"ability_scout_enemyradar"
+	"AbilityCastPoint"	"0.2"
+	"AbilityCooldown"	"20"
+	"AbilityManaCost"	"0"
+	"MaxLevel"	"1"
+	"precache"
+	{
+		"soundfile"	"sounds/ui/ping.vsnd"		
+	}
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile" "heroes/scout/radar.lua"
+			"Function"   "EnemyRadar"
+			"Range"      "2500"
+		}
+	}
+    "AbilitySpecial"
+    {
+        "01"
+        {
+            "var_type"	"FIELD_FLOAT"
+            "range"	"2500"
+        }
+    }
+}

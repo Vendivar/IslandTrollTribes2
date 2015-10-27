@@ -1,0 +1,89 @@
+"ability_beastmaster_elkform"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityTextureName"	"ability_beastmaster_elkform"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityCastPoint"	"0.0"
+	"AbilityCooldown"	"5"
+	"AbilityCastRange"	"0"
+	"AbilityManaCost"	"30"
+	"MaxLevel"	"1"
+		"precache"
+	{
+		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_lone_druid.vsndevts"
+	}
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile" "heroes/beastmaster/shapeshift.lua"
+			"Function"   "Shapeshift"
+			"Form"       "Elk"
+		}
+
+		"ApplyModifier"
+		{
+			"Target"	"CASTER"
+			"ModifierName"	"modifier_elkform"
+		}
+
+		"FireSound"
+		{
+			"EffectName"			"Hero_LoneDruid.TrueForm.Cast"
+			"Target"			"CASTER"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_elkform"
+		{
+			"EffectName"	"shadowshaman_voodoo"
+			"ModelName"	"models/creeps/neutral_creeps/n_creep_worg_small/n_creep_worg_small.vmdl"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"-1"
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed"
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"%move_speed"
+				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%attack_damage"
+				"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%magic_resist"
+			}
+
+		}
+
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"attack_damage"	"-4"
+		}
+
+		"02"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"attack_speed"	"10"
+		}
+
+		"03"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"move_speed"	"35"
+		}
+
+		"04"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"move_speed"	"25"
+		}		
+		"05"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"degen"	"2"
+		}
+
+	}
+
+}

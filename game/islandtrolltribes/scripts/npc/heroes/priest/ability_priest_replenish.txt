@@ -1,0 +1,90 @@
+"ability_priest_replenish"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+	"AbilityTextureName"	"ability_priest_replenish"
+	"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
+	"AbilityCastPoint"	"0.5"
+	"AbilityCooldown"	"50"
+	"AbilityCastRange"	"500"
+	"AbilityManaCost"	"20"
+	"MaxLevel"	"1"
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_replenish"
+			"Duration"	"%replenish_duration"
+			"Target"	"TARGET"
+		}
+
+		"FireSound"
+		{
+			"EffectName"	"Hero_Dazzle.Weave"
+			"Target"	"TARGET"
+		}
+
+	}
+
+	"Modifiers"
+	{
+		"modifier_replenish"
+		{
+			"IsDebuff"	"0"
+			"IsPurgable"	"1"
+			"EffectName"	"particles/units/heroes/hero_alchemist/alchemist_acid_spray_debuff.vpcf"
+			"OnCreated"
+			{
+				"AttachEffect"
+				{
+					"Target"	"TARGET"
+					"EffectName"	"particles/econ/wards/bane/bane_ward/bane_ward_droplets.vpcf"
+					"EffectAttachType"	"follow_overhead"
+				}
+
+			}
+
+			"ThinkInterval"	"1"
+			"OnIntervalThink"
+			{
+				"Heal"
+				{
+					"HealAmount"	"%heal_amount"
+					"Target"	"TARGET"
+				}
+
+			}
+
+			"OnTakeDamage"
+			{
+				"RemoveModifier"
+				{
+					"Target"	"UNIT"
+					"ModifierName"	"modifier_replenish"
+				}
+
+			}
+
+		}
+
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"heal_amount"	"1"
+		}
+
+		"02"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"replenish_duration"	"150"
+		}
+
+	}
+
+}

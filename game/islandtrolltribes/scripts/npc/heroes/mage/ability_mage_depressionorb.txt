@@ -1,0 +1,143 @@
+"ability_mage_depressionorb"
+{
+	"BaseClass"             		"ability_datadriven"
+	"AbilityTextureName"			"ability_mage_depressionorb"
+	"MaxLevel" 						"1"
+
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+
+	"AbilityCooldown"				"30"
+	"AbilityManaCost"				"20"
+	"AbilityCastRange"				"%range"
+	"AOERadius"						"%radius"
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"radius_small"		"100" //the true radius will be this value + 50
+		}
+		"02"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"radius"			"500"
+		}
+		"03"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"duration"			"10"
+		}
+		"04"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"mana"				"100"
+		}
+		"05"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"mana_per_sec"		"20"
+		}
+		"06"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"proj_speed"		"100"
+		}
+		"07"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"range"				"500"
+		}
+		"08"
+		{
+			"var_type"			"FIELD_FLOAT"
+			"drain_interval"	"1.0"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"LinearProjectile"
+		{
+		    "Target"      	 "POINT"
+			"EffectName"	 "particles/econ/items/puck/puck_alliance_set/puck_illusory_orb_aproset.vpcf"
+			"MoveSpeed"		 "%proj_speed"
+			"StartRadius"	 "%radius"
+			"StartPosition"  "attach_origin"
+			"EndRadius"      "%radius"
+			"HasFrontalCone" "0"
+			"FixedDistance"  "%range"
+			"TargetTeams"	 "DOTA_UNIT_TARGET_TEAM_ENEMY"
+			"TargetTypes"	 "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+			"TargetFlags"	 "DOTA_UNIT_TARGET_FLAG_NONE"						
+		    "ProvidesVision" "1"
+		    "VisionRadius" 	 "%radius"
+		}
+		"LinearProjectile"
+		{
+		    "Target"      	 "POINT"
+			"MoveSpeed"		 "%proj_speed"
+			"StartRadius"	 "%radius_small"
+			"StartPosition"  "attach_origin"
+			"EndRadius"      "%radius_small"
+			"HasFrontalCone" "0"
+			"FixedDistance"  "%range"
+			"TargetTeams"	 "DOTA_UNIT_TARGET_TEAM_ENEMY"
+			"TargetTypes"	 "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+			"TargetFlags"	 "DOTA_UNIT_TARGET_FLAG_NONE"						
+		    "ProvidesVision" "1"
+		    "VisionRadius" 	 "0"
+		}
+		"RunScript"
+		{
+			"ScriptFile"	"heroes/mage/depression.lua"
+			"Function"		"DepressionOrbStart"
+			"Target"		"POINT"
+			"proj_speed"	"%proj_speed"
+		}
+	}
+
+	"OnProjectileHitUnit"
+	{
+		"DeleteOnHit"	"0"
+
+		"RunScript"
+		{
+			"ScriptFile"	"heroes/mage/depression.lua"
+			"Function"		"DepressionOrbHit"
+			"Target"		"TARGET"
+
+			"radius_small"		"%radius_small"
+
+			"depress"				"ability_mage_depress"
+			"depress_modifier"		"modifier_depress"
+			"depress_mana_modifier"	"modifier_depress_mana_loss"
+			"modifier"				"modifier_mage_depressionorb"
+			"mana"					"%mana"
+			"duration"				"%duration"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_mage_depressionorb"
+		{
+			"IsHidden"			"0"
+			"IsDebuff"			"1"
+			
+			"ThinkInterval"  "%drain_interval"
+			"OnIntervalThink"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"mechanics/mana.lua"
+					"Function"		"RemoveMana"
+					"ManaRemoved" "%mana_per_sec"
+				}
+			}
+		}
+	}
+}

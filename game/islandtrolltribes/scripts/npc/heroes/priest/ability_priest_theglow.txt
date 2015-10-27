@@ -1,0 +1,75 @@
+"ability_priest_theglow"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"	"ability_priest_theglow"
+	"MaxLevel"	"1"
+	"Modifiers"
+	{
+		"modifier_priestglow"
+		{
+			"Passive"	"1"
+			"Aura"	"modifier_glow_restore"
+			"Aura_Radius"	"%radius"
+			"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+			"Aura_Types"	"DOTA_UNIT_TARGET_HERO"
+			"Aura_ApplyToCaster"	"1"
+		}
+
+		"modifier_glow_restore"
+		{
+			"IsHidden"	"0"
+			"TextureName"	"ability_priest_theglow"
+			"IsPurgable"	"0"
+
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%move_speed"
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed"
+			}
+		}
+
+		// Internal Heat mechanic
+		"modifier_coat_heat"
+		{
+			"Passive"    "1"
+			"IsHidden"   "1"
+			"IsPurgable" "0"
+		}
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"attack_speed"	"5"
+		}
+
+		"02"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"move_speed"	"10"
+		}
+
+		"03"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"heat"	"1"
+		}
+
+		"04"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"tick_rate"	"9"
+		}
+
+		"05"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"radius"	"500"
+		}
+
+	}
+
+}

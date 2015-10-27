@@ -1,0 +1,126 @@
+"ability_mage_seizures"
+{
+	"BaseClass"             		"ability_datadriven"
+	"AbilityTextureName"			"ability_mage_seizures"
+	"MaxLevel" 						"1"
+
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
+
+	"AbilityCooldown"				"30"
+	"AbilityManaCost"				"20"
+	"AbilityDamage"					"4"
+	"AbilityDuration"				"8"
+	"AbilityCastRange"				"500"
+
+	"precache"
+	{
+		"particle_folder"	"particles/units/heroes/hero_rubick"
+		"particle_folder"	"particles/units/heroes/hero_alchemist"
+		"soundfile"		"soundevents/game_sounds_heroes/game_sounds_enigma.vsndevts"
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"			"FIELD_FLOAT"
+			"stun_duration"		"0.1"
+		}
+		"02"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"chance"			"30"
+		}
+		"03"
+		{
+			"var_type"			"FIELD_FLOAT"
+			"think_interval"	"0.5"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"RemoveModifier"
+		{
+			"ModifierName"	"modifier_mage_seizures"
+			"Target" 		"TARGET"
+		}
+
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_mage_seizures"
+			"Target" 		"TARGET"
+			"Duration"		"%AbilityDuration"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_mage_seizures"
+		{
+			"IsHidden"			"0"
+			"IsDebuff"			"1"
+			"OnCreated"
+			{
+				"AttachEffect"
+				{
+					"EffectName"        "particles/units/heroes/hero_rubick/rubick_telekinesis_ground_b.vpcf"
+					"EffectAttachType"  "follow_origin"
+					"Target"            "TARGET"
+				}
+				"AttachEffect"
+				{
+					"EffectName"		"particles/units/heroes/hero_alchemist/alchemist_acid_spray_debuff_b.vpcf"
+					"EffectAttachType"  "follow_origin"
+					"Target"            "TARGET"
+				}
+			}
+
+			"ThinkInterval"  "%think_interval"
+			"OnIntervalThink"
+			{
+				"Random"
+				{
+					"Chance"	"%chance"
+					"OnSuccess"
+					{
+						"FireSound"
+						{
+							"EffectName"	Hero_Enigma.MaleficeTick
+							"Target" 		"TARGET"
+						}
+
+						"AttachEffect"
+						{
+							"EffectName"        "particles/units/heroes/hero_rubick/rubick_fade_bolt_head_flash.vpcf"
+							"EffectAttachType"  "follow_overhead"
+							"Target"            "TARGET"
+						}
+						"AttachEffect"
+						{
+							"EffectName"        "particles/units/heroes/hero_rubick/rubick_fade_bolt_head_b.vpcf"
+							"EffectAttachType"  "follow_origin"
+							"Target"            "TARGET"
+						}
+
+						"Damage"
+						{
+							"Target"		"TARGET"
+							"Type"			"DAMAGE_TYPE_PURE"
+							"Damage"		"%AbilityDamage"
+						}
+
+						"Stun"
+						{
+							"Target" 	 "TARGET"
+							"Duration"   "%stun_duration"
+						}
+					}
+				}
+			}
+		}
+	}
+}

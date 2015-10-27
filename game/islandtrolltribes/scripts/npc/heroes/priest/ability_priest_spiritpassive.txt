@@ -1,0 +1,30 @@
+"ability_priest_spiritpassive"
+{
+	"BaseClass"             		"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	"MaxLevel" 						"1"
+
+	"Modifiers"
+	{
+		"modifier_priest_spiritpassive"
+		{
+			"Passive"			"1"
+			"IsHidden"			"0"
+			
+			"OnCreated"
+			{
+				"ApplyModifier"
+				{
+					"ModifierName"	"modifier_invisible"
+					"Target" 		"TARGET"
+				}
+			}
+
+			"States"
+			{
+				"MODIFIER_STATE_MAGIC_IMMUNE"		"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_ATTACK_IMMUNE"		"MODIFIER_STATE_VALUE_ENABLED"
+			}
+		}
+	}
+}

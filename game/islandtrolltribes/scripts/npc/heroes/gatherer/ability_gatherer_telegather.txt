@@ -1,0 +1,71 @@
+"ability_gatherer_telegather"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_ALL"
+	"AbilityTextureName"	"ability_gatherer_telegather"
+	"MaxLevel"	"3"
+	"AbilityCastPoint"	"0"
+	"AbilityCastRange"	"300"
+	"AbilityCooldown"	"120 120 120"
+	"AbilityManaCost"	"20 25 30"
+	"precache"
+	{
+	"soundfile"				"soundevents/game_sounds_heroes/game_sounds_shadowshaman.vsndevts"
+	}
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_telegather"
+			"Target"	"CASTER"
+			"Duration"	"%duration"
+		}
+
+		"RunScript"
+		{
+			"ScriptFile" "heroes/gatherer/radar.lua"
+			"Function"   "RadarTelegatherInit"
+			"Target"     "TARGET"
+		}
+		"FireSound"
+		{
+			"EffectName"	"Hero_ShadowShaman.Shackles.Cast"
+			"Target"	"CASTER"
+		}
+
+	}
+
+	"Modifiers"
+	{
+		"modifier_telegather"
+		{
+			"OnCreated"
+			{
+				"AttachEffect"
+				{
+					"Target"	"CASTER"
+					"EffectName"	"particles/econ/generic/generic_buff_1/generic_buff_1.vpcf"
+					"EffectAttachType"	"follow_overhead"
+					"EffectLifeDurationScale"	"1"
+					"EffectColorA"	"255 255 0"
+				}
+
+			}
+
+		}
+
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"duration"	"50.0 70.0 90.0"
+		}
+
+	}
+
+}

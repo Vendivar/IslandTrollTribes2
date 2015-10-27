@@ -1,0 +1,167 @@
+"ability_mage_depress"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	"AbilityTextureName"	"ability_mage_depress"
+	"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
+	"AbilityCastPoint"		"0.0"
+	"AbilityCooldown"		"20"
+	"AbilityCastRange"		"700"
+	"AbilityManaCost"		"10"
+	"MaxLevel"	"1"
+	"precache"
+	{
+		"particle_folder"	"particles/units/heroes/hero_visage"
+		"particles"	"particles/depress.vpcf"
+		"soundfile"	"sounds/weapons/hero/visage/grave_chill_target.vsnd"
+	}
+
+	"OnSpellStart"
+	{
+		"AttachEffect"
+		{
+			"EffectName"    "particles/units/heroes/hero_visage/visage_grave_chill_cast_tgt.vpcf"
+			"Target"        "TARGET"
+			"EffectAttachType"      "attach_customorigin"
+			"ControlPointEntities"
+			{
+				"TARGET" "attach_hitloc"
+				"TARGET" "attach_hitloc"
+				"TARGET" "attach_hitloc" //CP2
+			}
+		}
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_depress"
+			"Target"
+			{
+				"Center"	"TARGET"
+				"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+			}
+			"Duration"	"%duration"
+		}
+		"FireSound"
+		{
+			"EffectName"	"Hero_Visage.GraveChill.Target"
+			"Target"	"TARGET"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_depress"
+		{
+			"IsDebuff"	"1"
+			"Aura"	"depression_aura"
+			"Aura_Radius"	"600"
+			"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+			"Aura_Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+			"Aura_ApplyToCaster" "0" 
+			"EffectName" 		"particles/depress.vpcf"
+			"EffectAttachType" 	"attach_origin"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"-20"
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"-10"
+			}
+
+			"OnCreated"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"mechanics/mana.lua"
+					"Function"		"RemoveMana"
+					"ManaRemoved"	"10"
+				}
+
+				"ApplyModifier"
+				{
+					"ModifierName"	"modifier_depress_mana_loss"
+					"Target"		"TARGET"
+					"Duration"		"2"
+				}
+			}
+
+			"OnDestroy"
+			{
+				"RemoveModifier"
+				{
+					"ModifierName"	"modifier_depress_aura"
+					"Target"		"TARGET"
+				}
+
+				"RemoveModifier"
+				{
+					"ModifierName"	"modifier_depress_mana_loss"
+					"Target"		"TARGET"
+				}
+			}
+
+			"ThinkInterval"	"1.0"
+			"OnIntervalThink"
+			{
+				"Damage"
+				{
+					"Damage"	"1"
+					"Type"		"DAMAGE_TYPE_MAGICAL"
+					"Target"	"TARGET"
+				}
+			}
+		}
+		"depression_aura"
+		{
+			"IsDebuff"	"1"
+			"IsPurgable"	"0"
+			"ThinkInterval"	"3"
+			"EffectName"	"particles/depress.vpcf"
+			"OnIntervalThink"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"mechanics/mana.lua"
+					"Function"		"RemoveMana"
+					"ManaRemoved"	"5"
+				}
+			}
+		}
+		"modifier_depress_mana_loss"
+		{
+			"IsDebuff"	"1"
+			"IsHidden"	"1"
+			"ThinkInterval"	"1"
+			"OnIntervalThink"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"mechanics/mana.lua"
+					"Function"		"RemoveMana"
+					"ManaRemoved"	"5"
+				}
+			}
+		}
+	}
+    
+"AbilitySpecial"
+{
+	"01"
+	{
+		"var_type"	"FIELD_FLOAT"
+		"dps"	"1"
+	}
+	"02"
+	{
+		"var_type"	"FIELD_FLOAT"
+		"duration"	"20"
+	}
+
+	"03"
+	{
+		"var_type"	"FIELD_FLOAT"
+		"attack_speed_bonus"	"75"
+	}
+
+}
+}

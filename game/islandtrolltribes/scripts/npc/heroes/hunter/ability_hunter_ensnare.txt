@@ -1,0 +1,88 @@
+"ability_hunter_ensnare"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	"AbilityTextureName"	"ability_hunter_ensnare"
+	"AbilityCastPoint"	"0.0"
+	"AbilityCooldown"	"10"
+	"AbilityCastRange"	"700"
+	"AbilityManaCost"	"0"
+	"MaxLevel"	"1"
+
+	"precache"
+	{
+		"particle_folder"	"particles/units/heroes/hero_meepo"
+		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_meepo.vsndevts"
+	}
+
+	"OnSpellStart"
+	{
+		"TrackingProjectile"
+		{
+			"Target"	"TARGET"
+			"EffectName"	"particles/units/heroes/hero_meepo/meepo_earthbind_projectile_fx.vpcf"
+			"Dodgeable"	"false"
+			"ProvidesVision"	"false"
+			"MoveSpeed"	"750"
+		}
+		"FireSound"
+		{
+			"EffectName"	"Hero_Meepo.Earthbind.Cast"
+			"Target"		"CASTER"
+		}
+
+	}
+
+	"OnProjectileHitUnit"
+	{
+		"RunScript"
+		{
+			"ScriptFile" "heroes/hunter/ensnare.lua"
+			"Function"   "EnsnareUnit"
+			"Target"     "TARGET"
+		}
+		"FireSound"
+		{
+			"EffectName"	"Hero_Meepo.Earthbind.Target"
+			"Target"		"TARGET"
+		}
+
+	}
+
+	"Modifiers"
+	{
+		"modifier_ensnare"
+		{
+			"IsHidden"	"1"
+			"Duration"	"%duration"
+			"IsPurgable"	"1"
+			"States"
+			{
+				"MODIFIER_STATE_ROOTED"	"MODIFIER_STATE_VALUE_ENABLED"
+			}
+
+			"OnCreated"
+			{
+				"AttachEffect"
+				{
+					"Target"	"TARGET"
+					"EffectName"	"particles/units/heroes/hero_meepo/meepo_earthbind.vpcf"
+					"EffectAttachType"	"follow_origin"
+				}
+
+			}
+
+		}
+
+	}
+"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"duration"	"3.5"
+		}
+	}
+}

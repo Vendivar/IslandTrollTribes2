@@ -1,0 +1,57 @@
+"ability_priest_spiritbreak"
+{
+	"BaseClass"             		"ability_datadriven"
+	"AbilityTextureName"			"ability_priest_spiritbreak"
+
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+
+	"AOERadius"						"%radius"
+
+	"MaxLevel" 						"1"
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"radius"			"250"
+		}
+		"02"
+		{
+			"var_type"			"FIELD_FLOAT"
+			"movement_speed"	"-30"
+		}
+		"03"
+		{
+			"var_type"			"FIELD_FLOAT"
+			"attack_speed"		"-25"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_priest_spiritbreak"
+		{
+			"Passive"			"1"
+			"Aura"			"aura_priest_spiritbreak"
+			"Aura_Radius"	"%radius"
+			"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_BOTH"
+			"Aura_Types"	"DOTA_UNIT_TARGET_HERO"
+
+			"Aura_ApplyToCaster"	"0"
+		}
+		"aura_priest_spiritbreak"
+		{
+			"IsDebuff"	"1"
+			"IsHidden"	"0"
+
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%attack_speed"
+			    "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%movement_speed" 
+			}
+		}
+	}
+}

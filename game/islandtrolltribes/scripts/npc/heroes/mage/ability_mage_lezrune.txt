@@ -1,0 +1,69 @@
+"ability_mage_lezrune"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	"AbilityTextureName"	"ability_mage_lezrune"
+	"AbilityCastAnimation"	""
+	"AbilityCastPoint"	"0.0"
+	"AbilityCooldown"	"1"
+	"AbilityChannelTime"	"0"
+	"AbilityManaCost"	"0"
+	"MaxLevel"	"1"
+	"RequiredLevel"	"4"
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_lezrune"
+			"Duration"	"0"
+			"Target"
+			{
+				"Target"	"CASTER"
+			}
+
+		}
+
+		"FireSound"
+		{
+			"EffectName"	"Hero_ElderTitan.AncestralSpirit.Damage"
+			"Target"	"CASTER"
+		}
+
+		"RunScript"
+		{
+			"ScriptFile"	"custom_functions_ability.lua"
+			"Function"	"LezRune"
+			"Target"	"SELF"
+		}
+
+	}
+
+	"Modifiers"
+	{
+		"modifier_lezrune"
+		{
+			"Duration"	"0"
+			"Passive"	"1"
+			"IsHidden"	"0"
+			"IsBuff"	"1"
+		}
+
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"lez_damage"	"35"
+		}
+
+		"02"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"lez_seconds"	"7"
+		}
+
+	}
+
+}

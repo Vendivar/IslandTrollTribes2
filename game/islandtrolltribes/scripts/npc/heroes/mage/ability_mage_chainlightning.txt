@@ -1,0 +1,58 @@
+"ability_mage_chainlightning"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityTextureName"	"ability_mage_chainlightning"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+	"AbilityCastPoint"	"0.0"
+	"AbilityCooldown"	"40"
+	"AbilityCastRange"	"500"
+	"AbilityManaCost"	"30"
+	"MaxLevel"	"1"
+	"Precache"
+	{
+		"soundfile"	"sounds/weapons/hero/zuus/static_field.vsnd"
+		"particle"	"particles/units/heroes/hero_zuus/zuus_arc_lightning.vpcf"
+	}
+
+	"OnSpellStart"
+	{
+		"RunScript"
+		{	
+			// TODO: A bunch of ability specials
+			"ScriptFile"	"heroes/mage/chain_lightning.lua"
+			"Function"	"ChainLightning"
+			"Damage"	"%damage"
+			"Bounces"	"%bounces"
+			"BounceRadius"	"%bounceradius"
+			"BounceDamageFactor"	"0.9"
+		}
+		"FireSound"
+		{
+			"EffectName"	"Hero_Zuus.StaticField"
+			"Target"		"CASTER"
+		}
+
+	}
+
+"AbilitySpecial"
+{
+	"01"
+	{
+		"var_type"	"FIELD_FLOAT"
+		"damage"	"45"
+	}
+	"02"
+	{
+		"var_type"	"FIELD_FLOAT"
+		"bounces"	"3"
+	}
+
+	"03"
+	{
+		"var_type"	"FIELD_FLOAT"
+		"bounceradius"	"1500"
+	}
+}
+}

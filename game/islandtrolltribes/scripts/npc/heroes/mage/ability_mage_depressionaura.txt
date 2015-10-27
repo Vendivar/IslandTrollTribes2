@@ -1,0 +1,89 @@
+"ability_mage_depressionaura"
+{
+	"BaseClass"             		"ability_datadriven"
+	"AbilityTextureName"			"ability_mage_depressionaura"
+	"MaxLevel" 						"1"
+
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AURA"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+
+	"AOERadius"		"%radius"
+
+	"precache"
+	{
+		"particle_folder"  "particles/units/heroes/hero_keeper_of_the_light/"
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"attack_slow"		"-10"
+		}
+		"02"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"move_slow"			"-10"
+		}
+		"03"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"think_interval"	"3"
+		}
+		"04"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"mana_loss_min"		"1"
+		}
+		"05"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"mana_loss_max"		"10"
+		}
+		"06"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"radius"			"600"
+		}
+	}
+	"Modifiers"
+	{
+		"modifier_mage_depressionaura"
+		{
+			"Passive"			"1"
+			"IsHidden"			"0"
+	
+			"Aura"					"aura_mage_depression"
+			"Aura_Radius"			"%radius"
+			"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+			"Aura_Types"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+			"Aura_ApplyToCaster"	"0"
+		}
+		"aura_mage_depression"
+		{
+			"IsHidden"		"0"
+			"IsDebuff"		"1"
+
+			"ThinkInterval"  "%think_interval"
+			"OnIntervalThink"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/mage/depression.lua"
+					"Function"		"DepressionAura"
+
+					"mana_loss_min"		"%mana_loss_min"
+					"mana_loss_max"		"%mana_loss_max"
+				}
+			}
+
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_slow"
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%move_slow"
+			}
+		}
+	}
+}

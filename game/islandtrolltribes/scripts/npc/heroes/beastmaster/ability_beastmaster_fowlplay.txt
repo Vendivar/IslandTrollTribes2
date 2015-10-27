@@ -1,0 +1,85 @@
+"ability_beastmaster_fowlplay"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityTextureName"	"ability_beastmaster_fowlplay"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
+	"AbilityCastPoint"	"0.0"
+	"AbilityCooldown"	"60"
+	"AbilityCastRange"	"0"
+	"AbilityManaCost"	"40"
+	"MaxLevel"	"1"
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_fowlplay"
+			"Target"
+			{
+				"Center"	"CASTER"
+				"Radius"	"%radius"
+				"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Types"	"DOTA_UNIT_TARGET_HERO"
+			}
+
+		}
+
+		"FireSound"
+		{
+			"EffectName"	"General.Chicken"
+			"Target"	"TARGET"
+		}
+
+	}
+
+	"Modifiers"
+	{
+		"modifier_fowlplay"
+		{
+			"EffectName"	"shadowshaman_voodoo"
+			"ModelName"	"models/props_gameplay/chicken.mdl"
+			"Duration"	"%duration"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MOVESPEED_BASE_OVERRIDE"	"%movespeed"
+			}
+
+			"States"
+			{
+				"MODIFIER_STATE_SILENCED"	"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_MUTED"	"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_DISARMED"	"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_PASSIVES_DISABLED"	"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_BLOCK_DISABLED"	"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_EVADE_DISABLED"	"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_HEXED"	"MODIFIER_STATE_VALUE_ENABLED"
+			}
+
+		}
+
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"radius"	"450"
+		}
+
+		"02"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"movespeed"	"100"
+		}
+
+		"03"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"duration"	"2.25"
+		}
+
+	}
+
+}

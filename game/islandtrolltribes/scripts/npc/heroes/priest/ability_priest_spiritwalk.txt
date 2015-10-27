@@ -1,0 +1,114 @@
+"ability_priest_spiritwalk"
+{
+	"BaseClass"             		"ability_datadriven"
+	"AbilityTextureName"			"ability_priest_spiritwalk"
+
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityChannelTime"			"90"
+
+	"AbilityCooldown"				"90"
+	"AbilityManaCost"				"40"
+
+	"MaxLevel" 						"1"
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"vision"			"200"
+		}
+		"02"
+		{
+			"var_type"			"FIELD_FLOAT"
+			"drain_interval"	"3.0"
+		}
+		"03"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"energy_rate"		"1"
+		}
+		"03"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"per_unit"			"1000"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_priest_spiritwalk"
+			"Target" 		"CASTER"
+		}
+		"SpawnUnit"
+		{
+			"UnitName"		"npc_hero_priest_sage_spirit"
+			"Target" 		"CASTER"
+			"Duration"		"90"
+			"UnitCount"		"1"
+			"SpawnRadius"	"10"
+			"OnSpawn"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/priest/spirit_walk.lua"
+					"Function"		"SpiritWalkStart"
+
+					"vision"		"%vision"
+				}
+			}
+		}
+	}
+
+	"OnChannelFinish"
+	{
+		"RemoveModifier"
+		{
+			"ModifierName"	"ability_priest_spiritwalk_channel"
+			"Target" 		"CASTER"
+		}
+		"RunScript"
+		{
+			"ScriptFile"	"heroes/priest/spirit_walk.lua"
+			"Function"		"SpiritWalkEnd"
+
+			"attack_damage" "-1"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_priest_spiritwalk"
+		{
+			"IsHidden"			"0"
+			"IsBuff"			"1"
+			
+			"ThinkInterval"  "%drain_interval"
+			"OnIntervalThink"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/priest/spirit_walk.lua"
+					"Function"		"SpiritWalkThink"
+
+					"energy_rate"	"%energy_rate"
+					"per_unit"		"%per_unit"
+				}
+			}
+
+			"OnTakeDamage"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/priest/spirit_walk.lua"
+					"Function"		"SpiritWalkEnd"
+
+					"attack_damage" "%attack_damage"
+				}
+			}
+		}
+	}
+
+}

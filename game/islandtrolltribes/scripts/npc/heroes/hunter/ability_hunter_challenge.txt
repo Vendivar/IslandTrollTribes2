@@ -1,0 +1,164 @@
+"ability_hunter_challenge"
+{
+	"BaseClass"             		"ability_datadriven"
+	"AbilityTextureName"			"ability_hunter_challenge"
+	"MaxLevel" 						"1"
+
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+
+	"AbilityCooldown"	"30"
+	"AbilityManaCost"	"0"
+
+	"AOERadius"			"%radius"
+	"AbilityDuration"	"4"
+
+	"precache"
+	{
+		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_axe.vsndevts"
+		"particle"  "particles/units/heroes/hero_axe/axe_beserkers_call_owner.vpcf"
+		"particle"  "particles/status_fx/status_effect_beserkers_call.vpcf"
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"movement_decrease"	"-200"
+		}
+		"02"
+		{
+			"var_type"		"FIELD_INTEGER"
+			"radius"		"%radius"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"FireSound"
+		{
+			"EffectName"	"Hero_Axe.Berserkers_Call"
+			"Target" 		"CASTER"
+		}
+		
+		"RemoveModifier"
+		{
+			"ModifierName"	"modifier_hunter_challenge_caster"
+			"Target" 		"CASTER"
+		}
+
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_hunter_challenge_caster"
+			"Target" 		"CASTER"
+			"Duration"		"%AbilityDuration"
+		}
+
+		"ActOnTargets"
+		{
+			"Target"
+			{
+				"Center"  	"CASTER"
+				"Radius" 	"%radius"
+				"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+			}
+		
+			"Action"    
+			{
+				"ApplyModifier"
+				{
+					"Target"		"TARGET"
+					"ModifierName"	"modifier_hunter_challenge_target"
+					"Duration"		"%challengeduration"
+				}
+			}
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_hunter_challenge_caster"
+		{
+			"IsHidden"			"0"
+			"IsBuff"			"1"
+
+			"OnCreated"
+			{
+				
+				"AttachEffect"
+				{
+					"Target"			"CASTER"
+					"EffectName"        "particles/units/heroes/hero_axe/axe_beserkers_call_owner.vpcf"
+					"EffectAttachType" 	"follow_origin"
+
+					"ControlPointEntities"
+					{
+						"CASTER"	"follow_origin"
+						"CASTER"	"follow_origin"
+						"CASTER"	"follow_origin"
+					}
+				}
+			}
+
+			"Properties"
+			{
+			    "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%movement_decrease" 
+			}
+
+			"States"
+			{
+				"MODIFIER_STATE_DISARMED"		"MODIFIER_STATE_VALUE_ENABLED"
+			}
+		}
+
+		"modifier_hunter_challenge_target"
+		{
+			"IsHidden"			"0"
+			"IsDebuff"			"1"
+			
+			"StatusEffectName" 		"particles/status_fx/status_effect_beserkers_call.vpcf" 	   
+			"StatusEffectPriority"  "10"
+
+			"ThinkInterval"  "0.1"
+			"OnIntervalThink"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/hunter/challenge.lua"
+					"Function"		"Challenge"
+				}
+			}
+
+			"OnDestroy"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/hunter/challenge.lua"
+					"Function"		"ChallengeEnd"
+				}
+			}
+		}
+	}
+    "AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"challengeduration"	"5"
+		}
+		"02"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"AbilityDuration"	"5"
+		}
+        "03"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"radius"	"400"
+		}
+	}
+    
+}

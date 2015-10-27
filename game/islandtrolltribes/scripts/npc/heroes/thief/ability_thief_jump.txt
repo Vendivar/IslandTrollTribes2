@@ -1,0 +1,33 @@
+"ability_thief_jump"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityTextureName"	"ability_thief_jump"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
+	"AbilityCastRange"	"600"
+	"AbilityCastPoint"	"0.4"
+	"AbilityCooldown"	"30.0"
+	"AbilityManaCost"	"15"
+	"RequiredLevel"	"2"
+	"MaxLevel"	"1"
+	"precache"
+	{
+		"soundfile"			"sounds/weapons/hero/riki/riki_blinkstrike.vsnd"
+	}
+
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile" "heroes/thief/jump.lua"
+			"Function"   "Jump"
+			"Target"     "POINT"
+		}
+		"FireSound"
+		{
+			"EffectName"		"Hero_Riki.Blink_Strike"
+			"Target"			"POINT"
+		}
+
+	}
+
+}

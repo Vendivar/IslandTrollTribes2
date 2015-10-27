@@ -1,0 +1,39 @@
+"ability_beastmaster_calltobattle"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityTextureName"	"ability_beastmaster_calltobattle"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityCastPoint"	"0.2"
+	"AbilityCooldown"	"20"
+	"AbilityCastRange"	"0"
+	"AbilityManaCost"	"20"
+	"MaxLevel"	"1"
+	"precache"
+	{
+		"soundfile"			"sounds/weapons/hero/lycan/howl.vsnd"
+	}
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile" "heroes/beastmaster/pets.lua"
+			"Function"   "CallToBattle"
+			"Duration"   "6"
+		}
+
+		"FireSound"
+		{
+			"EffectName"	"Hero_Lycan.Howl.Team"
+			"Target"	"CASTER"
+		}
+
+	}
+"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"duration"	"6"
+		}
+	}
+}
