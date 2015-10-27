@@ -15,6 +15,13 @@ function OnRightButtonPressed()
 	
 	var pressedShift = GameUI.IsShiftDown();
 
+    // Builder Right Click
+    if ( IsBuilder( mainSelected ) )
+    {
+        // Cancel BH
+        SendCancelCommand();
+    }
+
     for ( var e of mouseEntities )
     {
         var entityIndex = e.entityIndex
@@ -39,6 +46,11 @@ function IsCustomBuilding( entityIndex ){
     return (ability_building != -1)
 }
 
+// Builders require the "builder" label in its unit definition
+function IsBuilder( entIndex ) {
+    return (Entities.GetUnitLabel( entIndex ) == "builder")
+}
+
 // Main mouse event callback
 GameUI.SetMouseCallback( function( eventName, arg ) {
     var CONSUME_EVENT = true;
@@ -49,6 +61,22 @@ GameUI.SetMouseCallback( function( eventName, arg ) {
         return CONTINUE_PROCESSING_EVENT;
 
     var mainSelected = Players.GetLocalPlayerPortraitUnit()
+
+    // BuildingHelper clicks
+    if ( eventName === "pressed" && IsBuilder(mainSelected))
+    {
+        // Left-click with a builder while BH is active
+        if ( arg === 0 && state == "active")
+        {
+            return SendBuildCommand();
+        }
+
+        // Right-click (Cancel & Repair)
+        if ( arg === 1 )
+        {
+            return OnRightButtonPressed();
+        }
+    }
 
     if ( eventName === "pressed" || eventName === "doublepressed")
     {

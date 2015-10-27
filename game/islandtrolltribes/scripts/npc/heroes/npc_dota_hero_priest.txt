@@ -16,6 +16,9 @@
 	"Ability9"	"ability_priest_mixhealth"
 	"Ability10"	"ability_priest_mixenergy"
 	"Ability11"	"ability_priest_mixheat"
+
+	"UnitLabel"	"builder"
+
 	"ArmorPhysical"	"0"
 	"ArmorResistance"	"0"
 	"AttackCapabilities"	"DOTA_UNIT_CAP_MELEE_ATTACK"

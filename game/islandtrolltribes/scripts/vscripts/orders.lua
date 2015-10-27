@@ -177,6 +177,29 @@ function ITT:FilterExecuteOrder( filterTable )
         return false
     end
 
+    ------------------------------------------------
+    --              ClearQueue Order              --
+    ------------------------------------------------
+    -- Cancel queue on Stop and Hold
+    if order_type == DOTA_UNIT_ORDER_STOP or order_type == DOTA_UNIT_ORDER_HOLD_POSITION then
+        for n, unit_index in pairs(units) do 
+            local unit = EntIndexToHScript(unit_index)
+            --if IsBuilder(unit) then
+                BuildingHelper:ClearQueue(unit)
+            --end
+        end
+        return true
+
+    -- Cancel builder queue when casting non building abilities
+    elseif (abilityIndex and abilityIndex ~= 0) and IsBuilder(unit) then
+        local ability = EntIndexToHScript(abilityIndex)
+        print("ORDER FILTER",ability:GetAbilityName(), IsBuildingAbility(ability))
+        if not IsBuildingAbility(ability) then
+            BuildingHelper:ClearQueue(unit)
+        end
+        return true
+    end
+
     return true
 end
 

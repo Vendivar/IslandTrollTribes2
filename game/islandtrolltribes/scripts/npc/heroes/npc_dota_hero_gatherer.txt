@@ -15,6 +15,9 @@
 	"Ability8"	"ability_gatherer_findhide"
 	"Ability9"	"ability_gatherer_findclayballcookedmeatorbone"
 	"Ability10"	"ability_gatherer_findmanacrystalorstone"
+
+	"UnitLabel"	"builder"
+	
 	"ArmorPhysical"	"0"
 	"ArmorResistance"	"0"
 	"AttackCapabilities"	"DOTA_UNIT_CAP_MELEE_ATTACK"

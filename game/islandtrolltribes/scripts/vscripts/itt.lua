@@ -45,6 +45,8 @@ GAME_PERIOD_EARLY           = 900
 -- Grace period respawn time in seconds
 GRACE_PERIOD_RESPAWN_TIME    = 3
 
+DEBUG_SPEW = 1
+
 -- Tick time is 300s
 -- https://github.com/island-troll-tribes/wc3-client/blob/1562854dd098180752f0f4a99df0c4968697b38b/src/systems/spawning/Spawn%20Normal.j#L3
 -- GAME_ITEM_TICK_TIME         = 300
@@ -70,7 +72,6 @@ MAX_SHOPS_ON_MAP = 1
 -- This function initializes the game mode and is called before anyone loads into the game
 -- It can be used to pre-initialize any values/tables that will be needed later
 function ITT:InitGameMode()
-    --BuildingHelper:BlockGridNavSquares(16384)
     GameMode = GameRules:GetGameModeEntity()
 
     -- This is the creature thinker. All neutral creature spawn logic goes here
@@ -86,6 +87,9 @@ function ITT:InitGameMode()
     GameMode.neutralCurNum["npc_creep_panther"] = 0
     GameMode.neutralCurNum["npc_creep_panther_elder"] = 0
     GameMode.neutralCurNum["npc_creep_mammoth"] = 0
+
+    -- DebugPrint
+    Convars:RegisterConvar('debug_spew', tostring(DEBUG_SPEW), 'Set to 1 to start spewing debug info. Set to 0 to disable.', 0)
 
     -- This is the troll thinker. All logic on the player's heros should be checked here
     GameMode:SetThink( "OnTrollThink", ITT, "TrollThink", 0 )
@@ -108,9 +112,6 @@ function ITT:InitGameMode()
     GameMode.spawnedShops = {}
     GameMode.shopEntities = Entities:FindAllByName("entity_ship_merchant_*")
 
-    -- This is the thinker that checks building placement
-    --GameMode:SetThink("Think", BuildingHelper, "buildinghelper", 0)
-
     GameMode:SetThink("FixDropModels", ITT, "FixDropModels", 0)
 
     GameMode:SetCustomHeroMaxLevel ( 6 ) -- No accidental overleveling
@@ -127,7 +128,6 @@ function ITT:InitGameMode()
     GameRules:SetPreGameTime(GAME_PERIOD_GRACE)
     GameRules:SetPostGameTime( 60.0 )
     GameRules:SetTreeRegrowTime( 60.0 )
---    GameRules:SetHeroMinimapIconSize( 400 )
     GameRules:SetCreepMinimapIconScale( 0.7 )
     GameRules:SetRuneMinimapIconScale( 0.7 )
     GameRules:SetGoldTickTime( 60.0 )
@@ -165,6 +165,7 @@ function ITT:InitGameMode()
     ListenToGameEvent('player_chat', Dynamic_Wrap(ITT, 'OnPlayerChat'), self)
 
     -- Panorama Listeners
+    CustomGameEventManager:RegisterListener( "update_selected_entities", Dynamic_Wrap(ITT, 'OnPlayerSelectedEntities'))
     CustomGameEventManager:RegisterListener( "player_selected_class", Dynamic_Wrap( ITT, "OnClassSelected" ) )
     CustomGameEventManager:RegisterListener( "player_selected_subclass", Dynamic_Wrap( ITT, "OnSubclassChange" ) )
 
@@ -175,6 +176,13 @@ function ITT:InitGameMode()
     CustomGameEventManager:RegisterListener( "player_panic", Dynamic_Wrap( ITT, "Panic" ) )
 
     CustomGameEventManager:RegisterListener( "player_bush_gather", Dynamic_Wrap( ITT, "BushGather" ) )
+
+    -- Building Helper commands
+    CustomGameEventManager:RegisterListener( "building_helper_build_command", Dynamic_Wrap(BuildingHelper, "BuildCommand"))
+    CustomGameEventManager:RegisterListener( "building_helper_cancel_command", Dynamic_Wrap(BuildingHelper, "CancelCommand"))
+    
+    -- Store and update selected units of each pID
+    GameRules.SELECTED_UNITS = {}
 
     -- Filters
     GameMode:SetExecuteOrderFilter( Dynamic_Wrap( ITT, "FilterExecuteOrder" ), self )
@@ -253,16 +261,17 @@ function ITT:InitGameMode()
     GameRules.QuickCraft = LoadKeyValues("scripts/kv/quick_craft.kv")
     GameRules.AbilityKV = LoadKeyValues("scripts/npc/npc_abilities_custom.txt")
     GameRules.ItemKV = LoadKeyValues("scripts/npc/npc_items_custom.txt")
+    GameRules.UnitKV = LoadKeyValues("scripts/npc/npc_units_custom.txt")
+    GameRules.HeroKV = LoadKeyValues("scripts/npc/npc_heroes_custom.txt")
 
     -- Check Syntax
-    if not GameRules.AbilityKV then
+    if (not GameRules.AbilityKV) or (not GameRules.ItemKV) or (not GameRules.UnitKV) or (not GameRules.HeroKV) then
         print("--------------------------------------------------\n\n")
-        print("SYNTAX ERROR SOMEWHERE IN npc_abilities_custom.txt")
-        print("--------------------------------------------------\n\n")
-    end
-    if not GameRules.ItemKV then
-        print("--------------------------------------------------\n\n")
-        print("SYNTAX ERROR SOMEWHERE IN npc_items_custom.txt")
+        print("SYNTAX ERROR IN KEYVALUE FILES")
+        print("npc_abilities_custom: ", GameRules.AbilityKV)
+        print("npc_items_custom:     ", GameRules.ItemKV)
+        print("npc_units_custom:     ", GameRules.UnitKV)
+        print("npc_heroes_custom:    ", GameRules.HeroKV)
         print("--------------------------------------------------\n\n")
     end
 
@@ -1238,4 +1247,21 @@ function ITT:OnThink()
     end
 
     return 1
+end
+
+
+---------------------------------------------------------------------------
+
+-- Called whenever a player changes its current selection, it keeps a list of entity indexes
+function ITT:OnPlayerSelectedEntities( event )
+    local pID = event.pID
+
+    GameRules.SELECTED_UNITS[pID] = event.selected_entities
+
+    -- This is for Building Helper to know which is the currently active builder
+    local mainSelected = GetMainSelectedEntity(pID)
+    if IsValidEntity(mainSelected) and IsBuilder(mainSelected) then
+        local player = PlayerResource:GetPlayer(pID)
+        player.activeBuilder = mainSelected
+    end
 end

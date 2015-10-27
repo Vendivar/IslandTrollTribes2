@@ -16,6 +16,7 @@ require('developer')
 require('item_spawning')
 require('subclass_system')
 require('util')
+require('libraries/buildinghelper')
 
 -- This needs to be reviewed
 require("craftinghelper")
@@ -307,6 +308,9 @@ function Precache( context )
 
 	-- All custom and modified particles should be dropped to this folder
 	PrecacheResource("particle_folder", "particles/custom", context)
+
+	-- Building ghost particles
+	PrecacheResource("particle_folder", "particles/buildinghelper", context)
 
 	PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_wisp.vsndevts",context)
 	PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_stormspirit.vsndevts",context)

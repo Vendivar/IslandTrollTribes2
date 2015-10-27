@@ -9,6 +9,9 @@
 	"Ability2"	"ability_hunter_track"
 	"Ability3"	""
 	"Ability4"	""
+
+	"UnitLabel"	"builder"
+	
 	"ArmorPhysical"	"0"
 	"ArmorResistance"	"0"
 	"AttackCapabilities"	"DOTA_UNIT_CAP_MELEE_ATTACK"

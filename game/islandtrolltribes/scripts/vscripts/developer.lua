@@ -3,7 +3,7 @@ CHEAT_CODES = {
     ["reset"] = function(...) ITT:ResetSubclass(...) end, -- Resets subclass choice
     ["workshop"] = function(...) ITT:TestWorkshop(...) end, -- Makes a workshop with items to test
     ["refresh"] = function(...) ITT:Refresh(...) end, -- Refreshes heat hp and mana
-    ["dev"] = function(...) ITT:Dev(...) end, -- Reveal map and stop degen
+    ["dev"] = function(...) ITT:Dev(...) end, -- Reveal map and stop degen, improves inventory
     ["camp"] = function(...) ITT:Camp(...) end, -- Makes a fire and a ton of meat
     ["acorns"] = function(...) ITT:Acorns(...) end, -- Make an acorn field
     ["debug_creeps"] = function(...) ITT:DebugCreeps(...) end, -- Spawn All Creeps
@@ -97,6 +97,20 @@ function ITT:Dev( playerID )
         ApplyModifier(hero, "modifier_hunger")
         GameRules:GetGameModeEntity():SetFogOfWarDisabled(false)
     end
+
+    for i=0,5 do
+        local item = hero:GetItemInSlot(i)
+        if item and item:GetAbilityName() == "item_slot_locked" then
+            item:RemoveSelf()
+        end
+    end
+
+    hero:SetGold(5000, true)
+    hero:AddItem(CreateItem("item_build_wall", nil, nil))
+    hero:AddItem(CreateItem("item_boots_anabolic", nil, nil))
+    hero:AddItem(CreateItem("item_armor_battle", nil, nil))
+    hero:AddItem(CreateItem("item_gloves_battle", nil, nil))
+    hero:AddItem(CreateItem("item_shield_battle", nil, nil))
 end
 
 function ITT:Camp( playerID )

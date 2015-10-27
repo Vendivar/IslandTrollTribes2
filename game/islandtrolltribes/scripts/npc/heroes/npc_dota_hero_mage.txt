@@ -15,6 +15,9 @@
 	"Ability8"	"ability_mage_flamespray"
 	"Ability9"	"ability_mage_depress"
 	"Ability10"	"ability_mage_metronome"
+
+	"UnitLabel"	"builder"
+	
 	"ArmorPhysical"	"0"
 	"ArmorResistance"	"0"
 	"AttackCapabilities"	"DOTA_UNIT_CAP_MELEE_ATTACK"

@@ -210,3 +210,14 @@ function rgbToHex(rgb)
 
     return hexadecimal
 end
+
+function DebugPrint(...)
+    local spew = Convars:GetInt('debug_spew') or -1
+    if spew == -1 and DEBUG_SPEW then
+        spew = 1
+    end
+
+    if spew == 1 then
+        print(...)
+    end
+end
