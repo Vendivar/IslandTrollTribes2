@@ -258,6 +258,7 @@ function ITT:InitGameMode()
     -- KV Tables
     GameRules.ClassInfo = LoadKeyValues("scripts/kv/class_info.kv")
     GameRules.BushInfo = LoadKeyValues("scripts/kv/bush_info.kv")
+    GameRules.ItemInfo = LoadKeyValues("scripts/kv/item_info.kv")
     GameRules.QuickCraft = LoadKeyValues("scripts/kv/quick_craft.kv")
     GameRules.AbilityKV = LoadKeyValues("scripts/npc/npc_abilities_custom.txt")
     GameRules.ItemKV = LoadKeyValues("scripts/npc/npc_items_custom.txt")
@@ -960,7 +961,7 @@ function ITT:OnPlayerConnectFull(keys)
     self.vPlayerUserIds[playerID] = keys.userid
 end
 
---Listener to handle telegather events from item pickup and picking up raw meat
+-- Listener to handle item pickup (the rest of the pickup logic is tied to the order filter and item function mechanics)
 function ITT:OnItemPickedUp(event)    
     if not event.HeroEntityIndex then
         print("A building just picked an item")
@@ -970,6 +971,22 @@ function ITT:OnItemPickedUp(event)
     local hero = EntIndexToHScript( event.HeroEntityIndex )
     local originalItem = EntIndexToHScript(event.ItemEntityIndex)
     local itemName = event.itemname
+
+    local itemSlotRestriction = GameRules.ItemInfo['ItemSlots'][itemName]
+    if itemSlotRestriction then
+        local maxCarried = GameRules.ItemInfo['MaxCarried'][itemSlotRestriction]
+        local count = GetNumItemsOfSlot(hero, itemSlotRestriction)
+
+        -- Drop the item if the hero exceeds the possible max carried amount
+        if count > maxCarried then
+            local origin = hero:GetAbsOrigin()
+            hero:DropItemAtPositionImmediate(originalItem, origin)
+            local pos_launch = origin+RandomVector(100)
+            originalItem:LaunchLoot(false, 200, 0.75, pos_launch)
+
+            SendErrorMessage(hero:GetPlayerOwnerID(), "#error_cant_carry_more_"..itemSlotRestriction) --Concatenated error message
+        end
+    end
 
     local hasTelegather = hero:HasModifier("modifier_telegather")
     local hasTelethief = hero:HasModifier("modifier_thief_telethief")
