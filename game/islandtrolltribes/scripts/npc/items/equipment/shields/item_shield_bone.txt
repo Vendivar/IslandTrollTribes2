@@ -29,6 +29,7 @@
 		{
 			"Passive"	"1"
 			"IsHidden"	"1"
+			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
 			"Properties"
 			{
 				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"

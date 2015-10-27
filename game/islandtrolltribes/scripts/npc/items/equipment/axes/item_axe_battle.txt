@@ -35,6 +35,7 @@
 		{
 			"IsHidden"	"1"
 			"Passive"	"1"
+			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
 			"Properties"
 			{
 				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%bonus_damage"
