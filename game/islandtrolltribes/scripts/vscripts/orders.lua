@@ -21,10 +21,11 @@ function ITT:FilterExecuteOrder( filterTable )
         return true
     end
 
-    -- Timers Reset
-    unit.dropping = nil
-    unit.picking = nil
-
+    -- Order Timers Reset
+    if unit.orderTimer then
+        Timers:RemoveTimer(unit.orderTimer)
+        unit.orderTimer = nil
+    end
 
     ------------------------------------------------
     --          Transfer Range Increase           --
@@ -57,11 +58,10 @@ function ITT:FilterExecuteOrder( filterTable )
                 ExecuteOrderFromTable({ UnitIndex = targetIndex, OrderType = DOTA_UNIT_ORDER_MOVE_TO_POSITION, Position = transfer_position, Queue = queue}) 
                                 
                 -- Transfer the item when the hero gets within the transfer range
-                Timers:CreateTimer(function()
+                unit.orderTimer = Timers:CreateTimer(function()
                     if IsValidAlive(unit) and IsValidAlive(target) and (unit:GetAbsOrigin() - target:GetAbsOrigin()):Length2D() <= ITEM_TRANSFER_RANGE+25 then
-                        if CanTakeMoreItems(target) then
-                            TransferItem(unit, target, item)
-                        else
+                        local canTransfer = TransferItem(unit, target, item)
+                        if not canTransfer then
                             SendErrorMessage(issuer, "#error_inventory_full")
                         end
                         return
@@ -75,15 +75,12 @@ function ITT:FilterExecuteOrder( filterTable )
 
                 unit.skip = true
                 ExecuteOrderFromTable({ UnitIndex = unitIndex, OrderType = DOTA_UNIT_ORDER_MOVE_TO_POSITION, Position = transfer_position, Queue = queue}) 
-                unit.dropping = true --Any order will override this, breaking the timer
                 
                 -- Check for drop distance
-                Timers:CreateTimer(function()
-                    if not unit.dropping then return
-                    elseif IsValidAlive(unit) and IsValidAlive(target) and (unit:GetAbsOrigin() - target:GetAbsOrigin()):Length2D() <= ITEM_TRANSFER_RANGE+25 then
-                        if CanTakeMoreItems(target) then
-                            TransferItem(unit, target, item)
-                        else
+                unit.orderTimer = Timers:CreateTimer(function()
+                    if IsValidAlive(unit) and IsValidAlive(target) and (unit:GetAbsOrigin() - target:GetAbsOrigin()):Length2D() <= ITEM_TRANSFER_RANGE+25 then
+                        local canTransfer = TransferItem(unit, target, item)
+                        if not canTransfer then
                             SendErrorMessage(issuer, "#error_inventory_full")
                         end
                         return
@@ -120,14 +117,11 @@ function ITT:FilterExecuteOrder( filterTable )
                 local drop_position = point - (point - origin):Normalized() * ITEM_TRANSFER_RANGE
                 unit.skip = true
                 ExecuteOrderFromTable({ UnitIndex = unitIndex, OrderType = DOTA_UNIT_ORDER_MOVE_TO_POSITION, Position = drop_position, Queue = queue}) 
-                unit.dropping = true --Any order will override this, breaking the timer
                 
                 -- Check for drop distance
-                Timers:CreateTimer(function()
-                    if not unit.dropping then return
-                    elseif IsValidAlive(unit) and unit.dropping and (unit:GetAbsOrigin() - point):Length2D() <= ITEM_TRANSFER_RANGE+25 then
+                unit.orderTimer = Timers:CreateTimer(function()
+                    if IsValidAlive(unit) and (unit:GetAbsOrigin() - point):Length2D() <= ITEM_TRANSFER_RANGE+25 then
                         unit:DropItemAtPositionImmediate(item, point)
-                        unit.dropping = nil
                         return
                     end
                     return 0.1
@@ -151,7 +145,7 @@ function ITT:FilterExecuteOrder( filterTable )
         if IsCustomBuilding(unit) then
             -- Pick up the item if within the extended range
             if (origin - position):Length2D() <= ITEM_TRANSFER_RANGE+25 then
-                ITT:PickupItem(unit, drop)
+                PickupItem(unit, drop)
             else
                 SendErrorMessage(issuer, "#error_item_out_of_range")
             end
@@ -162,17 +156,13 @@ function ITT:FilterExecuteOrder( filterTable )
             -- Move towards the drop position and pickup the item at the extended range
             unit.skip = true
             ExecuteOrderFromTable({ UnitIndex = unitIndex, OrderType = DOTA_UNIT_ORDER_MOVE_TO_POSITION, Position = position, Queue = queue}) 
-            unit.picking = true --Any order will override this, breaking the timer
                 
             -- Check for drop distance
-            Timers:CreateTimer(function()
-                if not unit.picking then return
-                elseif IsValidAlive(unit) and unit.picking and (unit:GetAbsOrigin() - position):Length2D() <= DEFAULT_TRANSFER_RANGE then
+            unit.orderTimer = Timers:CreateTimer(function()
+                if IsValidAlive(unit) and (unit:GetAbsOrigin() - position):Length2D() <= DEFAULT_TRANSFER_RANGE then
                     unit:Stop()
 
-                    ITT:PickupItem( unit, drop )
-
-                    unit.picking = nil
+                    PickupItem( unit, drop )
                     return
                 end
                 return 0.1
@@ -185,44 +175,47 @@ function ITT:FilterExecuteOrder( filterTable )
     return true
 end
 
--- This handles picking up items from any range and stacking when the inventory is full but can still handle more stacks of the attempted pickup
-function ITT:PickupItem( unit, drop )
-    local item = drop:GetContainedItem()
-    local itemName = item:GetAbilityName()
+-- Moves towards a bush and extracts items from it
+function ITT:BushGather( event )
+    local playerID = event.PlayerID
+    local bush = EntIndexToHScript(event.entityIndex)
+    local unit = PlayerResource:GetSelectedHeroEntity(playerID)
 
-    -- If there is 1 slot available, simply pickup the item and check for merges
-    if CanTakeMoreItems(unit) then
-        drop:SetAbsOrigin(unit:GetAbsOrigin())
-        unit:PickupDroppedItem(drop)
+    print("Gather from "..bush:GetUnitName())
 
-        ResolveInventoryMerge(unit, item)
-    else
-        local itemToStack = CanTakeMoreStacksOfItem(unit, item)
-        if itemToStack then
-            local maxStacks = GameRules.ItemKV[itemName]["MaxStacks"]
-            print("Got another of this item to stack with, merging")
-
-            -- Reduce the stacks of the item on the ground and increase the item to stack
-            local inventoryItemCharges = itemToStack:GetCurrentCharges()
-            local currentItemCharges = item:GetCurrentCharges()
-
-            -- If it can be merged completely, add the charges and remove the drop
-            if inventoryItemCharges+currentItemCharges <= maxStacks then
-
-                itemToStack:SetCurrentCharges(inventoryItemCharges+currentItemCharges)
-                UTIL_Remove(drop)
-
-            -- Otherwise add up to maxCharges and keep both items
-            else
-                local transfer_charges = maxStacks - inventoryItemCharges
-                itemToStack:SetCurrentCharges(maxStacks)
-                item:SetCurrentCharges(currentItemCharges - transfer_charges)
-            end
-        else
-            SendErrorMessage(unit:GetPlayerOwnerID(), "#error_inventory_full")
-        end
+    -- Order Timers Reset
+    if unit.orderTimer then
+        Timers:RemoveTimer(unit.orderTimer)
     end
+
+    -- Move towards the bush
+    local position = bush:GetAbsOrigin()
+    ExecuteOrderFromTable({ UnitIndex = unit:GetEntityIndex(), OrderType = DOTA_UNIT_ORDER_MOVE_TO_POSITION, Position = position, Queue = false})
+    unit.orderTimer = Timers:CreateTimer(function()
+        if IsValidAlive(unit) and (unit:GetAbsOrigin() - position):Length2D() <= DEFAULT_TRANSFER_RANGE then
+            print("Reached Bush!")
+            unit:Stop()
+            if GetNumItemsInInventory(bush) > 0 then
+                unit:StartGesture(ACT_DOTA_ATTACK)
+
+                -- Transfer items from the bush to the gatherer
+                for i=0,5 do
+                    Timers:CreateTimer(0.1*i, function()
+
+                        local item = bush:GetItemInSlot(i)
+                        if item then
+                            TransferItem(bush, unit, item)
+                        end
+                    end)
+                end
+            end
+
+            return
+        end
+        return 0.1
+    end)
 end
+
 
 function printOrderTable( filterTable )
     print(ORDERS[filterTable["order_type"]])

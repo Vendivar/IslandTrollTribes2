@@ -86,15 +86,58 @@ end
 --                Item functions              --
 ------------------------------------------------
 
-function TransferItem( unit, target, item )
-    unit:DropItemAtPositionImmediate(item, target:GetAbsOrigin())
-    Timers:CreateTimer(function() 
-        target:PickupDroppedItem(item:GetContainer())
-    end)
-    print("Item "..item:GetAbilityName().." transfered")
+-- This attempts to pick up items from any range and stacking when inventory is full but can still handle more stacks of the item
+function PickupItem( unit, drop )
+    local item = drop:GetContainedItem()
+    local itemName = item:GetAbilityName()
+
+    -- If there is 1 slot available, simply pickup the item and check for merges
+    if CanTakeMoreItems(unit) then
+        drop:SetAbsOrigin(unit:GetAbsOrigin())
+        unit:PickupDroppedItem(drop)
+        print("Picking up "..item:GetAbilityName())
+        ResolveInventoryMerge(unit, item)
+    else
+        local itemToStack = CanTakeMoreStacksOfItem(unit, item)
+        if itemToStack then
+            local maxStacks = GameRules.ItemKV[itemName]["MaxStacks"]
+            print("Got another of this item to stack with, merging")
+
+            -- Reduce the stacks of the item on the ground and increase the item to stack
+            local inventoryItemCharges = itemToStack:GetCurrentCharges()
+            local currentItemCharges = item:GetCurrentCharges()
+
+            -- If it can be merged completely, add the charges and remove the drop
+            if inventoryItemCharges+currentItemCharges <= maxStacks then
+
+                itemToStack:SetCurrentCharges(inventoryItemCharges+currentItemCharges)
+                UTIL_Remove(drop)
+
+            -- Otherwise add up to maxCharges and keep both items
+            else
+                local transfer_charges = maxStacks - inventoryItemCharges
+                itemToStack:SetCurrentCharges(maxStacks)
+                item:SetCurrentCharges(currentItemCharges - transfer_charges)
+            end
+        else
+            return false
+        end
+    end
 end
 
--- Adds an item to the units inventory taking custom max stack charges into consideration
+-- This handles transfering an item handle from a unit to a target
+function TransferItem( unit, target, item )
+    if CanTakeItem(target) then
+        unit:DropItemAtPositionImmediate(item, target:GetAbsOrigin())
+        Timers:CreateTimer(function()
+            PickupItem( target, item:GetContainer() )
+        end)
+    else
+        return false
+    end
+end
+
+-- Adds an item by name to the units inventory taking custom max stack charges into consideration
 function GiveItemStack( unit, itemName )
     local newItem = CreateItem(itemName, nil, nil)
 
@@ -111,25 +154,26 @@ function GiveItemStack( unit, itemName )
             local currentCharges = itemToStack:GetCurrentCharges()
             itemToStack:SetCurrentCharges(currentCharges + newItem:GetCurrentCharges())
             --print("Given "..itemName.." to "..unit:GetUnitName().." through stacks")
-            newItem:RemoveSelf()
+            UTIL_Remove(newItem)
             return itemToStack
         end
     end
 
     --print("Couldn't add "..itemName.." - Inventory is full and it wont take more stacks")
-    newItem:RemoveSelf()
+    UTIL_Remove(RemoveSelf)
 end
 
 function GetNumItemsInInventory( unit )
     local count = 0
     for i=0,5 do
         local item = unit:GetItemInSlot(i)
-        if item then
-            count = count + 1
-        end
+        if item then count = count + 1 end
     end
-
     return count
+end
+
+function CanTakeItem( unit, item )
+    return (CanTakeMoreItems(unit) or CanTakeMoreStacksOfItem(unit, item))
 end
 
 function CanTakeMoreItems( unit )
