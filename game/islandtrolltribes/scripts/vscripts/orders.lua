@@ -153,7 +153,7 @@ function ITT:FilterExecuteOrder( filterTable )
         -- Units
         else
 
-            -- Move towards the drop position and pickup the item at the extended range
+            -- Move towards the drop position and pickup the item
             unit.skip = true
             ExecuteOrderFromTable({ UnitIndex = unitIndex, OrderType = DOTA_UNIT_ORDER_MOVE_TO_POSITION, Position = position, Queue = queue}) 
                 

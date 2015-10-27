@@ -4,7 +4,7 @@ CHEAT_CODES = {
     ["workshop"] = function(...) ITT:TestWorkshop(...) end, -- Makes a workshop with items to test
     ["refresh"] = function(...) ITT:Refresh(...) end, -- Refreshes heat hp and mana
     ["dev"] = function(...) ITT:Dev(...) end, -- Reveal map and stop degen
-    ["camp"] = function(...) ITT:Camp(...) end, -- Makes a fire
+    ["camp"] = function(...) ITT:Camp(...) end, -- Makes a fire and a ton of meat
     ["acorns"] = function(...) ITT:Acorns(...) end, -- Make an acorn field
     ["debug_creeps"] = function(...) ITT:DebugCreeps(...) end, -- Spawn All Creeps
 
@@ -113,6 +113,21 @@ function ITT:Camp( playerID )
     fire:SetForwardVector(-hero:GetForwardVector())
     fire:RemoveModifierByName("modifier_invulnerable")
     fire:SetAbsOrigin(position)
+
+    local testItems = { 
+        ["item_meat_raw"] = 30,
+        ["item_meat_cooked"] = 20,
+        ["item_meat_smoked"] = 20,
+    }
+
+    for itemName,num in pairs(testItems) do
+        for i=1,num do
+            local item = CreateItem(itemName, nil, nil)
+            local drop = CreateItemOnPositionSync( position, item )
+            local pos_launch = position+RandomVector(RandomInt(100,200))
+            item:LaunchLoot(false, 200, 0.75, pos_launch)
+        end     
+    end
 
 end
 

@@ -962,31 +962,6 @@ function ITT:OnItemPickedUp(event)
     local originalItem = EntIndexToHScript(event.ItemEntityIndex)
     local itemName = event.itemname
 
-    if itemName == "item_meat_raw" then
-        local meatStacks = hero:GetModifierStackCount("modifier_meat_passive", nil)
-        if meatStacks < 10 then
-            hero:SetModifierStackCount("modifier_meat_passive", nil, meatStacks + 1)
-            for itemSlot = 0, 5, 1 do
-                local Item = hero:GetItemInSlot( itemSlot )
-                if (Item ~= nil) and (Item:GetName() == "item_meat_raw") then
-                    hero:RemoveItem(Item)
-                end
-            end
-        else
-            for itemSlot = 0, 5, 1 do
-                local Item = hero:GetItemInSlot( itemSlot )
-                if (Item ~= nil) and (Item:GetName() == "item_meat_raw") then
-                    local itemCharges = Item:GetCurrentCharges()
-                    local newItem = CreateItem(Item:GetName(), nil, nil)
-                    newItem:SetCurrentCharges(itemCharges)
-                    CreateItemOnPositionSync(hero:GetOrigin() + RandomVector(RandomInt(50,50)), newItem)
-                    hero:RemoveItem(Item)
-                end
-            end
-        end
-
-    end
-
     local hasTelegather = hero:HasModifier("modifier_telegather")
     local hasTelethief = hero:HasModifier("modifier_thief_telethief")
 

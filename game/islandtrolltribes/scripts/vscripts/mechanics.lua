@@ -86,10 +86,23 @@ end
 --                Item functions              --
 ------------------------------------------------
 
--- This attempts to pick up items from any range and stacking when inventory is full but can still handle more stacks of the item
+-- This attempts to pick up items from any range and resolves custom stacking
 function PickupItem( unit, drop )
     local item = drop:GetContainedItem()
     local itemName = item:GetAbilityName()
+
+    -- Raw meat uses modifier stacks instead of inventory slots
+    if itemName == "item_meat_raw" then
+        local meatStacks = unit:GetModifierStackCount("modifier_meat_passive", nil)
+        if meatStacks < 10 then
+            unit:SetModifierStackCount("modifier_meat_passive", nil, meatStacks + 1)
+            UTIL_Remove(drop)
+            return true
+        else
+            SendErrorMessage(unit:GetPlayerOwnerID(), "#error_cant_carry_more_raw_meat")
+            return false
+        end
+    end
 
     -- If there is 1 slot available, simply pickup the item and check for merges
     if CanTakeMoreItems(unit) then
