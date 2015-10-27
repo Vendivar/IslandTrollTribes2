@@ -38,7 +38,7 @@ function ITT:FilterExecuteOrder( filterTable )
         -- If within range of the modified transfer range, and the target has free inventory slots, make the swap
         local rangeToTarget = unit:GetRangeToUnit(target)
 
-        if not CanTakeMoreItems(target) then
+        if not CanTakeItem(target) then
             SendErrorMessage(issuer, "#error_inventory_full")
             return false
         end
@@ -145,7 +145,10 @@ function ITT:FilterExecuteOrder( filterTable )
         if IsCustomBuilding(unit) then
             -- Pick up the item if within the extended range
             if (origin - position):Length2D() <= ITEM_TRANSFER_RANGE+25 then
-                PickupItem(unit, drop)
+                local pickedUp = PickupItem(unit, drop)
+                if not pickedUp then 
+                    SendErrorMessage(issuer, "#error_inventory_full")
+                end
             else
                 SendErrorMessage(issuer, "#error_item_out_of_range")
             end
@@ -161,8 +164,10 @@ function ITT:FilterExecuteOrder( filterTable )
             unit.orderTimer = Timers:CreateTimer(function()
                 if IsValidAlive(unit) and (unit:GetAbsOrigin() - position):Length2D() <= DEFAULT_TRANSFER_RANGE then
                     unit:Stop()
-
-                    PickupItem( unit, drop )
+                    local pickedUp = PickupItem( unit, drop )
+                    if not pickedUp then
+                        SendErrorMessage(issuer, "#error_inventory_full")
+                    end
                     return
                 end
                 return 0.1

@@ -13,6 +13,7 @@
 	"ItemShareability"	"ITEM_FULLY_SHAREABLE_STACKING"
 	
 	"MaxStacks" "12"
+	"ItemInitialCharges"	"1"
 
 	"ItemPermanent"	"0"
 	"ItemDroppable"	"1"
@@ -26,18 +27,15 @@
 	"WorldDropSound"	"Item.DropGemWorld"
 	"OnSpellStart"
 	{
+		"SpendCharge"
+		{}
+
 		"RunScript"
 		{
 			"ScriptFile"	"mechanics/meat.lua"
 			"Function"		"EatCookedMeat" //TODO
 			"heal_amount"	"40"
 		}
-
-		"SpendCharge"
-		{
-
-		}
-
 	}
 	"Custom"
 	{

@@ -110,6 +110,7 @@ function PickupItem( unit, drop )
         unit:PickupDroppedItem(drop)
         print("Picking up "..item:GetAbilityName())
         ResolveInventoryMerge(unit, item)
+        return true
     else
         local itemToStack = CanTakeMoreStacksOfItem(unit, item)
         if itemToStack then
@@ -132,6 +133,7 @@ function PickupItem( unit, drop )
                 itemToStack:SetCurrentCharges(maxStacks)
                 item:SetCurrentCharges(currentItemCharges - transfer_charges)
             end
+            return true
         else
             return false
         end
