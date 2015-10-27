@@ -10,6 +10,7 @@
 		"MaxLevel"						"1"
 	
 		"AbilityManaCost"				"0"
+		"IsCastableWhileHidden"	"1"
 	
 		"OnSpellStart"
 		{
@@ -32,6 +33,7 @@
 		"MaxLevel"						"1"
 	
 		"AbilityManaCost"				"0"
+		"IsCastableWhileHidden"	"1"
 	
 		"OnSpellStart"
 		{
@@ -54,6 +56,7 @@
 		"MaxLevel"						"1"
 	
 		"AbilityManaCost"				"0"
+		"IsCastableWhileHidden"	"1"
 	
 		"OnSpellStart"
 		{
@@ -76,6 +79,7 @@
 		"MaxLevel"						"1"
 	
 		"AbilityManaCost"				"0"
+		"IsCastableWhileHidden"	"1"
 	
 		"OnSpellStart"
 		{
@@ -98,6 +102,7 @@
 		"MaxLevel"						"1"
 	
 		"AbilityManaCost"				"0"
+		"IsCastableWhileHidden"	"1"
 	
 		"OnSpellStart"
 		{
@@ -105,7 +110,7 @@
 			{
 				"Target"		"POINT"
 				"ScriptFile"	"buildings/build.lua"
-				"Function"		"StartBuildingEntity"
+				"Function"		"StartBuilding"
 			}
 		}
 	}

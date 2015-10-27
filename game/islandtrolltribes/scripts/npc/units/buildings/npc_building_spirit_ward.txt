@@ -5,8 +5,9 @@
 	"SoundSet"	"Creep_Good_Melee"
 	"MinimapIconSize"	"250"
 	"HealthBarOffset"	"400"
-	"BoundsHullName"	"DOTA_HULL_SIZE_BUILDING"
+	"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 	"RingRadius"	"100"
+	"ModelScale"	"1.1"
 	"precache"
 	{
 		"model"	"models/props_debris/camp_fire001.vmdl"

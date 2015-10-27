@@ -1,13 +1,11 @@
 "item_building_kit_hut_witch_doctor"
 {
 	"ID"	"1127"
-	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"building_kit_witch_doctor_hut"
 	"Model"	"models/props_debris/creep_camp001j.vmdl"
 	"Effect"	""
-	"AbilityCastRange"	"300"
-	"AbilityCastPoint"	"0.5"
 	"ItemCost"	"30"
 	"ItemShopTags"	"consumable"
 	"ItemQuality"	"consumable"
@@ -19,28 +17,41 @@
 	"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 	"ItemKillable"	"1"
 	"ItemSellable"	"0"
-	"OnSpellStart"
-	{
-		"RunScript"
-		{
-			"Target"	"POINT"
-			"ScriptFile"	"scripts/vscripts/buildings.lua"
-			"Function"	"getWDHutPoint"
-		}
-
-	}
 
 	"UIPickupSound"	"Item.PickUpGemShop"
 	"UIDropSound"	"Item.DropGemShop"
 	"WorldDropSound"	"Item.DropGemWorld"
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"	"FIELD_FLOAT"
-			"build_duration"	"10.0"
-		}
 
-	}
+	// BuildingHelper info
+    "Building"                      "1" //bool
+    "BuildingSize"                  "2" 
+    "BuildTime"                     "10.0"
+    "AbilityCastRange"              "300"
+    "UpdateHealth"                  "1" //bool
+    "Scale"                         "0" //bool
+    "PlayerCanControl"              "1" //bool
 
+    "UnitName"                      "npc_building_hut_witch_doctor"
+    "AbilityCooldown"               "0"
+    "AbilityGoldCost"               "0"
+    "ItemInitialCharges"            "1"
+    // End of BuildingHelper info
+
+    "AbilitySpecial"
+    {
+        "01"
+        {
+            "var_type"              "FIELD_FLOAT"
+            "build_time"            "10.0"
+        }
+    }
+
+	"OnSpellStart"
+    {
+        "RunScript"
+        {
+            "ScriptFile"    "buildings/build.lua"
+            "Function"      "Build"
+        }
+    }
 }

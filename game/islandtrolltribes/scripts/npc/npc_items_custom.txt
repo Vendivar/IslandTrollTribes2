@@ -2532,13 +2532,11 @@
 	"item_building_kit_armory"
 	{
 		"ID"	"1124"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"item_sange_and_yasha"
 		"Model"	"models/props_debris/creep_camp001j.vmdl"
 		"Effect"	""
-		"AbilityCastRange"	"300"
-		"AbilityCastPoint"	"0.5"
 		"ItemCost"	"22"
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
@@ -2550,44 +2548,53 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"Target"	"POINT"
-				"ScriptFile"	"scripts/vscripts/buildings.lua"
-				"Function"	"getArmoryPoint"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_FLOAT"
-				"build_duration"	"10.0"
-			}
 	
-		}
+		// BuildingHelper info
+	    "Building"                      "1" //bool
+	    "BuildingSize"                  "2" 
+	    "BuildTime"                     "10.0"
+	    "AbilityCastRange"              "300"
+	    "UpdateHealth"                  "1" //bool
+	    "Scale"                         "0" //bool
+	    "PlayerCanControl"              "1" //bool
 	
+	    "UnitName"                      "npc_building_armory"
+	    "AbilityCooldown"               "0"
+	    "AbilityGoldCost"               "0"
+	    "ItemInitialCharges"            "1"
+	    // End of BuildingHelper info
+	
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"              "FIELD_FLOAT"
+	            "build_time"            "10.0"
+	        }
+	    }
+	
+		"OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"    "buildings/build.lua"
+	            "Function"      "Build"
+	        }
+	    }
 	}
 	"item_building_kit_fire_basic"
 	{
 		"ID"	"1117"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"item_dagon_5"
 		"Model"	"models/props_debris/battle_debris2.vmdl"
 		"Effect"	""
-		"AbilityCastRange"	"300"
-		"AbilityCastPoint"	"0.0"
-		"AbilityManaCost"	"0"
 		"ItemCost"	"5"
-		"ItemSellable"	"0"
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
@@ -2598,43 +2605,54 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"Target"	"POINT"
-				"ScriptFile"	"scripts/vscripts/buildings.lua"
-				"Function"	"getCampFirePoint"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_FLOAT"
-				"build_duration"	"10.0"
-			}
+		
+		// BuildingHelper info
+	    "Building"                      "1" //bool
+	    "BuildingSize"                  "2" 
+	    "BuildTime"                     "10.0"
+	    "AbilityCastRange"              "300"
+	    "UpdateHealth"                  "1" //bool
+	    "Scale"                         "0" //bool
+	    "PlayerCanControl"              "1" //bool
 	
-		}
+	    "UnitName"                      "npc_building_fire_basic"
+	    "AbilityCooldown"               "0"
+	    "AbilityGoldCost"               "0"
+	    "ItemInitialCharges"            "1"
+	    // End of BuildingHelper info
+	
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"              "FIELD_FLOAT"
+	            "build_time"            "10.0"
+	        }
+	    }
+	
+		"OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"    "buildings/build.lua"
+	            "Function"      "Build"
+	        }
+	    }
 	
 	}
 	"item_building_kit_fire_mage"
 	{
 		"ID"	"1118"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"building_kit_fire_mage"
 		"Model"	"models/props_debris/battle_debris2.vmdl"
 		"Effect"	""
-		"AbilityCastRange"	"300"
-		"AbilityCastPoint"	"0.5"
 		"ItemCost"	"10"
-		"ItemSellable"	"0"
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
@@ -2645,43 +2663,54 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"Target"	"POINT"
-				"ScriptFile"	"scripts/vscripts/buildings.lua"
-				"Function"	"getMageFirePoint"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_FLOAT"
-				"build_duration"	"10.0"
-			}
+		
+		// BuildingHelper info
+	    "Building"                      "1" //bool
+	    "BuildingSize"                  "2" 
+	    "BuildTime"                     "10.0"
+	    "AbilityCastRange"              "300"
+	    "UpdateHealth"                  "1" //bool
+	    "Scale"                         "0" //bool
+	    "PlayerCanControl"              "1" //bool
 	
-		}
+	    "UnitName"                      "npc_building_fire_mage"
+	    "AbilityCooldown"               "0"
+	    "AbilityGoldCost"               "0"
+	    "ItemInitialCharges"            "1"
+	    // End of BuildingHelper info
+	
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"              "FIELD_FLOAT"
+	            "build_time"            "10.0"
+	        }
+	    }
+	
+		"OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"    "buildings/build.lua"
+	            "Function"      "Build"
+	        }
+	    }
 	
 	}
 	"item_building_kit_hatchery"
 	{
 		"ID"	"1133"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"building_kit_hatchery"
 		"Model"	"models/props_debris/battle_debris2.vmdl"
 		"Effect"	""
-		"AbilityCastRange"	"300"
-		"AbilityCastPoint"	"0.5"
 		"ItemCost"	"1"
-		"ItemSellable"	"0"
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
@@ -2692,41 +2721,54 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"Target"	"POINT"
-				"ScriptFile"	"scripts/vscripts/buildings.lua"
-				"Function"	"getHatcheryPoint"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_FLOAT"
-				"build_duration"	"10.0"
-			}
 	
-		}
+		// BuildingHelper info
+	    "Building"                      "1" //bool
+	    "BuildingSize"                  "2" 
+	    "BuildTime"                     "10.0"
+	    "AbilityCastRange"              "300"
+	    "UpdateHealth"                  "1" //bool
+	    "Scale"                         "0" //bool
+	    "PlayerCanControl"              "1" //bool
 	
+	    "UnitName"                      "npc_building_hatchery"
+	    "AbilityCooldown"               "0"
+	    "AbilityGoldCost"               "0"
+	    "ItemInitialCharges"            "1"
+	    // End of BuildingHelper info
+	
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"              "FIELD_FLOAT"
+	            "build_time"            "10.0"
+	        }
+	    }
+	
+		"OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"    "buildings/build.lua"
+	            "Function"      "Build"
+	        }
+	
+	        "SpendCharge" {}
+	    }
 	}
 	"item_building_kit_hut_mud"
 	{
 		"ID"	"1121"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"building_kit_hut_mud"
 		"Model"	"models/props_debris/creep_camp001j.vmdl"
 		"Effect"	""
-		"AbilityCastRange"	"300"
-		"AbilityCastPoint"	"0.5"
 		"ItemCost"	"14"
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
@@ -2738,41 +2780,53 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"Target"	"POINT"
-				"ScriptFile"	"scripts/vscripts/buildings.lua"
-				"Function"	"getMudHutPoint"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_FLOAT"
-				"build_duration"	"10.0"
-			}
 	
-		}
+		// BuildingHelper info
+	    "Building"                      "1" //bool
+	    "BuildingSize"                  "2" 
+	    "BuildTime"                     "10.0"
+	    "AbilityCastRange"              "300"
+	    "UpdateHealth"                  "1" //bool
+	    "Scale"                         "0" //bool
+	    "PlayerCanControl"              "1" //bool
+	
+	    "UnitName"                      "npc_building_hut_mud"
+	    "AbilityCooldown"               "0"
+	    "AbilityGoldCost"               "0"
+	    "ItemInitialCharges"            "1"
+	    // End of BuildingHelper info
+	
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"              "FIELD_FLOAT"
+	            "build_time"            "10.0"
+	        }
+	    }
+	
+		"OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"    "buildings/build.lua"
+	            "Function"      "Build"
+	        }
+	    }
 	
 	}
 	"item_building_kit_hut_troll"
 	{
 		"ID"	"1120"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"building_kit_hut_troll"
 		"Model"	"models/props_debris/creep_camp001j.vmdl"
 		"Effect"	""
-		"AbilityCastRange"	"300"
-		"AbilityCastPoint"	"0.5"
 		"ItemCost"	"10"
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
@@ -2784,39 +2838,53 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"Target"	"POINT"
-				"ScriptFile"	"scripts/vscripts/buildings.lua"
-				"Function"	"getTrollHutPoint"
-			}
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_FLOAT"
-				"build_duration"	"10.0"
-			}
 	
-		}
+		// BuildingHelper info
+	    "Building"                      "1" //bool
+	    "BuildingSize"                  "2" 
+	    "BuildTime"                     "10.0"
+	    "AbilityCastRange"              "300"
+	    "UpdateHealth"                  "1" //bool
+	    "Scale"                         "0" //bool
+	    "PlayerCanControl"              "1" //bool
+	
+	    "UnitName"                      "npc_building_hut_troll"
+	    "AbilityCooldown"               "0"
+	    "AbilityGoldCost"               "0"
+	    "ItemInitialCharges"            "1"
+	    // End of BuildingHelper info
+	
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"              "FIELD_FLOAT"
+	            "build_time"            "10.0"
+	        }
+	    }
+	
+		"OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"    "buildings/build.lua"
+	            "Function"      "Build"
+	        }
+	    }
+	
 	}
 	"item_building_kit_hut_witch_doctor"
 	{
 		"ID"	"1127"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"building_kit_witch_doctor_hut"
 		"Model"	"models/props_debris/creep_camp001j.vmdl"
 		"Effect"	""
-		"AbilityCastRange"	"300"
-		"AbilityCastPoint"	"0.5"
 		"ItemCost"	"30"
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
@@ -2828,41 +2896,52 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"Target"	"POINT"
-				"ScriptFile"	"scripts/vscripts/buildings.lua"
-				"Function"	"getWDHutPoint"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_FLOAT"
-				"build_duration"	"10.0"
-			}
 	
-		}
+		// BuildingHelper info
+	    "Building"                      "1" //bool
+	    "BuildingSize"                  "2" 
+	    "BuildTime"                     "10.0"
+	    "AbilityCastRange"              "300"
+	    "UpdateHealth"                  "1" //bool
+	    "Scale"                         "0" //bool
+	    "PlayerCanControl"              "1" //bool
 	
+	    "UnitName"                      "npc_building_hut_witch_doctor"
+	    "AbilityCooldown"               "0"
+	    "AbilityGoldCost"               "0"
+	    "ItemInitialCharges"            "1"
+	    // End of BuildingHelper info
+	
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"              "FIELD_FLOAT"
+	            "build_time"            "10.0"
+	        }
+	    }
+	
+		"OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"    "buildings/build.lua"
+	            "Function"      "Build"
+	        }
+	    }
 	}
 	"item_building_kit_mixing_pot"
 	{
 		"ID"	"1128"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"building_kit_mixing_pot"
 		"Model"	"models/props_debris/battle_debris2.vmdl"
 		"Effect"	""
-		"AbilityCastRange"	"300"
-		"AbilityCastPoint"	"0.5"
 		"ItemCost"	"14"
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
@@ -2874,41 +2953,52 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"Target"	"POINT"
-				"ScriptFile"	"scripts/vscripts/buildings.lua"
-				"Function"	"getMixingPotPoint"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_FLOAT"
-				"build_duration"	"10.0"
-			}
+	    
+		// BuildingHelper info
+	    "Building"                      "1" //bool
+	    "BuildingSize"                  "2" 
+	    "BuildTime"                     "10.0"
+	    "AbilityCastRange"              "300"
+	    "UpdateHealth"                  "1" //bool
+	    "Scale"                         "0" //bool
+	    "PlayerCanControl"              "1" //bool
 	
-		}
+	    "UnitName"                      "npc_building_mix_pot"
+	    "AbilityCooldown"               "0"
+	    "AbilityGoldCost"               "0"
+	    "ItemInitialCharges"            "1"
+	    // End of BuildingHelper info
 	
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"              "FIELD_FLOAT"
+	            "build_time"            "10.0"
+	        }
+	    }
+	
+		"OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"    "buildings/build.lua"
+	            "Function"      "Build"
+	        }
+	    }
 	}
 	"item_building_kit_smoke_house"
 	{
 		"ID"	"1123"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"building_kit_smoke_house"
 		"Model"	"models/props_debris/creep_camp001j.vmdl"
 		"Effect"	""
-		"AbilityCastRange"	"300"
-		"AbilityCastPoint"	"0.5"
 		"ItemCost"	"14"
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
@@ -2920,43 +3010,54 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"Target"	"POINT"
-				"ScriptFile"	"scripts/vscripts/buildings.lua"
-				"Function"	"getSmokePoint"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_FLOAT"
-				"build_duration"	"10.0"
-			}
+		
+		// BuildingHelper info
+	    "Building"                      "1" //bool
+	    "BuildingSize"                  "2" 
+	    "BuildTime"                     "10.0"
+	    "AbilityCastRange"              "300"
+	    "UpdateHealth"                  "1" //bool
+	    "Scale"                         "0" //bool
+	    "PlayerCanControl"              "1" //bool
 	
-		}
+	    "UnitName"                      "npc_building_smoke_house"
+	    "AbilityCooldown"               "0"
+	    "AbilityGoldCost"               "0"
+	    "ItemInitialCharges"            "1"
+	    // End of BuildingHelper info
+	
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"              "FIELD_FLOAT"
+	            "build_time"            "10.0"
+	        }
+	    }
+	
+		"OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"    "buildings/build.lua"
+	            "Function"      "Build"
+	        }
+	    }
 	
 	}
 	"item_building_kit_spirit_ward"
 	{
 		"ID"	"1131"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"building_kit_Spirit_Ward"
 		"Model"	"models/props_debris/battle_debris2.vmdl"
 		"Effect"	"particles/units/heroes/hero_witchdoctor/witchdoctor_ward_cast_staff_fire_d.vpcf"
-		"AbilityCastRange"	"300"
-		"AbilityCastPoint"	"0.5"
 		"ItemCost"	"1"
-		"ItemSellable"	"0"
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
@@ -2967,41 +3068,53 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"Target"	"POINT"
-				"ScriptFile"	"scripts/vscripts/buildings.lua"
-				"Function"	"getWardPoint"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_FLOAT"
-				"build_duration"	"30.0"
-			}
+		
+		// BuildingHelper info
+	    "Building"                      "1" //bool
+	    "BuildingSize"                  "2" 
+	    "BuildTime"                     "30.0"
+	    "AbilityCastRange"              "300"
+	    "UpdateHealth"                  "1" //bool
+	    "Scale"                         "0" //bool
+	    "PlayerCanControl"              "1" //bool
 	
-		}
+	    "UnitName"                      "npc_building_spirit_ward"
+	    "AbilityCooldown"               "0"
+	    "AbilityGoldCost"               "0"
+	    "ItemInitialCharges"            "1"
+	    // End of BuildingHelper info
+	
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"              "FIELD_FLOAT"
+	            "build_time"            "30.0"
+	        }
+	    }
+	
+		"OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"    "buildings/build.lua"
+	            "Function"      "Build"
+	        }
+	    }
 	
 	}
 	"item_building_kit_storage_chest"
 	{
 		"ID"	"1122"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"building_kit_chest_storage"
 		"Model"	"models/props_debris/creep_camp001j.vmdl"
 		"Effect"	""
-		"AbilityCastRange"	"300"
-		"AbilityCastPoint"	"0.5"
 		"ItemCost"	"9"
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
@@ -3013,41 +3126,53 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"Target"	"POINT"
-				"ScriptFile"	"scripts/vscripts/buildings.lua"
-				"Function"	"getChestPoint"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_FLOAT"
-				"build_duration"	"12.0"
-			}
+		
+		// BuildingHelper info
+	    "Building"                      "1" //bool
+	    "BuildingSize"                  "2" 
+	    "BuildTime"                     "12.0"
+	    "AbilityCastRange"              "300"
+	    "UpdateHealth"                  "1" //bool
+	    "Scale"                         "0" //bool
+	    "PlayerCanControl"              "1" //bool
 	
-		}
+	    "UnitName"                      "npc_building_storage_chest"
+	    "AbilityCooldown"               "0"
+	    "AbilityGoldCost"               "0"
+	    "ItemInitialCharges"            "1"
+	    // End of BuildingHelper info
+	
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"              "FIELD_FLOAT"
+	            "build_time"            "12.0"
+	        }
+	    }
+	
+		"OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"    "buildings/build.lua"
+	            "Function"      "Build"
+	        }
+	    }
 	
 	}
 	"item_building_kit_tannery"
 	{
 		"ID"	"1125"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"building_kit_tannery"
 		"Model"	"models/props_debris/creep_camp001j.vmdl"
 		"Effect"	""
-		"AbilityCastRange"	"300"
-		"AbilityCastPoint"	"0.5"
 		"ItemCost"	"20"
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
@@ -3059,41 +3184,53 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"Target"	"POINT"
-				"ScriptFile"	"scripts/vscripts/buildings.lua"
-				"Function"	"getTanneryPoint"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_FLOAT"
-				"build_duration"	"10.0"
-			}
+		
+		// BuildingHelper info
+	    "Building"                      "1" //bool
+	    "BuildingSize"                  "2" 
+	    "BuildTime"                     "10.0"
+	    "AbilityCastRange"              "300"
+	    "UpdateHealth"                  "1" //bool
+	    "Scale"                         "0" //bool
+	    "PlayerCanControl"              "1" //bool
 	
-		}
+	    "UnitName"                      "npc_building_tannery"
+	    "AbilityCooldown"               "0"
+	    "AbilityGoldCost"               "0"
+	    "ItemInitialCharges"            "1"
+	    // End of BuildingHelper info
+	
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"              "FIELD_FLOAT"
+	            "build_time"            "10.0"
+	        }
+	    }
+	
+		"OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"    "buildings/build.lua"
+	            "Function"      "Build"
+	        }
+	    }
 	
 	}
 	"item_building_kit_teleport_beacon"
 	{
 		"ID"	"1132"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"building_kit_teleport_beacon"
 		"Model"	"models/props_debris/battle_debris2.vmdl"
 		"Effect"	""
-		"AbilityCastRange"	"300"
-		"AbilityCastPoint"	"0.5"
 		"ItemCost"	"26"
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
@@ -3105,41 +3242,52 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"Target"	"POINT"
-				"ScriptFile"	"scripts/vscripts/buildings.lua"
-				"Function"	"getTeleportPoint"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_FLOAT"
-				"build_duration"	"10.0"
-			}
+		
+		// BuildingHelper info
+	    "Building"                      "1" //bool
+	    "BuildingSize"                  "2" 
+	    "BuildTime"                     "10.0"
+	    "AbilityCastRange"              "300"
+	    "UpdateHealth"                  "1" //bool
+	    "Scale"                         "0" //bool
+	    "PlayerCanControl"              "1" //bool
 	
-		}
+	    "UnitName"                      "npc_building_teleport_beacon"
+	    "AbilityCooldown"               "0"
+	    "AbilityGoldCost"               "0"
+	    "ItemInitialCharges"            "1"
+	    // End of BuildingHelper info
 	
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"              "FIELD_FLOAT"
+	            "build_time"            "10.0"
+	        }
+	    }
+	
+		"OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"    "buildings/build.lua"
+	            "Function"      "Build"
+	        }
+	    }
 	}
 	"item_building_kit_tent"
 	{
 		"ID"	"1119"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"item_building_kit_tent_basic"
 		"Model"	"models/props_debris/creep_camp001j.vmdl"
 		"Effect"	""
-		"AbilityCastRange"	"300"
-		"AbilityCastPoint"	"0.5"
 		"ItemCost"	"10"
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
@@ -3151,41 +3299,52 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"Target"	"POINT"
-				"ScriptFile"	"scripts/vscripts/buildings.lua"
-				"Function"	"getTentPoint"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_FLOAT"
-				"build_duration"	"7.0"
-			}
+		
+		// BuildingHelper info
+	    "Building"                      "1" //bool
+	    "BuildingSize"                  "2" 
+	    "BuildTime"                     "7.0"
+	    "AbilityCastRange"              "300"
+	    "UpdateHealth"                  "1" //bool
+	    "Scale"                         "0" //bool
+	    "PlayerCanControl"              "1" //bool
 	
-		}
+	    "UnitName"                      "npc_building_tent"
+	    "AbilityCooldown"               "0"
+	    "AbilityGoldCost"               "0"
+	    "ItemInitialCharges"            "1"
+	    // End of BuildingHelper info
 	
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"              "FIELD_FLOAT"
+	            "build_time"            "7.0"
+	        }
+	    }
+	
+		"OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"    "buildings/build.lua"
+	            "Function"      "Build"
+	        }
+	    }
 	}
 	"item_building_kit_tower_omni"
 	{
 		"ID"	"1129"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"building_kit_tower_omni"
 		"Model"	"models/props_debris/battle_debris2.vmdl"
 		"Effect"	""
-		"AbilityCastRange"	"300"
-		"AbilityCastPoint"	"0.5"
 		"ItemCost"	"18"
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
@@ -3197,41 +3356,54 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"Target"	"POINT"
-				"ScriptFile"	"scripts/vscripts/buildings.lua"
-				"Function"	"getOmnitowerPoint"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_FLOAT"
-				"build_duration"	"10.0"
-			}
+		
+		// BuildingHelper info
+	    "Building"                      "1" //bool
+	    "BuildingSize"                  "2" 
+	    "BuildTime"                     "10.0"
+	    "AbilityCastRange"              "300"
+	    "UpdateHealth"                  "1" //bool
+	    "Scale"                         "0" //bool
+	    "PlayerCanControl"              "1" //bool
 	
-		}
+	    "UnitName"                      "npc_building_omnitower"
+	    "AbilityCooldown"               "0"
+	    "AbilityGoldCost"               "0"
+	    "ItemInitialCharges"            "1"
+	    // End of BuildingHelper info
 	
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"              "FIELD_FLOAT"
+	            "build_time"            "10.0"
+	        }
+	    }
+	
+		"OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"    "buildings/build.lua"
+	            "Function"      "Build"
+	        }
+	
+	        "SpendCharge" {}
+	    }
 	}
 	"item_building_kit_trap_ensnare"
 	{
 		"ID"	"1130"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"building_kit_trap_ensnare"
 		"Model"	"models/props_debris/battle_debris2.vmdl"
 		"Effect"	"particles/units/heroes/hero_templar_assassin/templar_assassin_trap_core_arc.vpcf"
-		"AbilityCastRange"	"300"
-		"AbilityCastPoint"	"0.5"
 		"ItemCost"	"10"
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
@@ -3243,41 +3415,54 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"Target"	"POINT"
-				"ScriptFile"	"scripts/vscripts/buildings.lua"
-				"Function"	"getTrapPoint"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_FLOAT"
-				"build_duration"	"10.0"
-			}
+		
+		// BuildingHelper info
+	    "Building"                      "1" //bool
+	    "BuildingSize"                  "2" 
+	    "BuildTime"                     "10.0"
+	    "AbilityCastRange"              "300"
+	    "UpdateHealth"                  "1" //bool
+	    "Scale"                         "0" //bool
+	    "PlayerCanControl"              "1" //bool
 	
-		}
+	    "UnitName"                      "npc_building_ensnare_trap"
+	    "AbilityCooldown"               "0"
+	    "AbilityGoldCost"               "0"
+	    "ItemInitialCharges"            "1"
+	    // End of BuildingHelper info
 	
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"              "FIELD_FLOAT"
+	            "build_time"            "10.0"
+	        }
+	    }
+	
+		"OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"    "buildings/build.lua"
+	            "Function"      "Build"
+	        }
+	
+	        "SpendCharge" {}
+	    }
 	}
 	"item_building_kit_workshop"
 	{
 		"ID"	"1126"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"building_kit_workshop"
 		"Model"	"models/props_debris/creep_camp001j.vmdl"
 		"Effect"	""
-		"AbilityCastRange"	"300"
-		"AbilityCastPoint"	"0.5"
 		"ItemCost"	"24"
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
@@ -3289,54 +3474,24 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"0"
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"Target"	"POINT"
-				"ScriptFile"	"scripts/vscripts/buildings.lua"
-				"Function"	"getWorkshopPoint"
-			}
-	
-		}
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_FLOAT"
-				"build_duration"	"13.0"
-			}
-	
-		}
-	
-	}
-	"item_build_wall"
-	{
-	    "BaseClass"                     "item_datadriven"
-	    "AbilityTextureName"            "item_build_wall"
-	    "MaxLevel"                      "1"
-	
-	    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-	
-	    "ItemDroppable"                 "0"
-	    "ItemPurchasable"               "0"
-	
-	    // BuildingHelper info
+		
+		// BuildingHelper info
 	    "Building"                      "1" //bool
 	    "BuildingSize"                  "2" 
-	    "BuildTime"                     "10.0"
-	    "AbilityCastRange"              "200"
+	    "BuildTime"                     "13.0"
+	    "AbilityCastRange"              "300"
 	    "UpdateHealth"                  "1" //bool
 	    "Scale"                         "0" //bool
 	    "PlayerCanControl"              "1" //bool
 	
-	    "UnitName"                      "npc_building_fire_basic"
+	    "UnitName"                      "npc_building_workshop"
 	    "AbilityCooldown"               "0"
-	    "AbilityGoldCost"               "10"
+	    "AbilityGoldCost"               "0"
+	    "ItemInitialCharges"            "1"
 	    // End of BuildingHelper info
 	
 	    "AbilitySpecial"
@@ -3344,16 +3499,11 @@
 	        "01"
 	        {
 	            "var_type"              "FIELD_FLOAT"
-	            "build_time"            "10.0"
-	        }
-	        "02"
-	        {
-	            "var_type"              "FIELD_INTEGER"
-	            "gold_cost"             "10"
+	            "build_time"            "13.0"
 	        }
 	    }
 	
-	    "OnSpellStart"
+		"OnSpellStart"
 	    {
 	        "RunScript"
 	        {

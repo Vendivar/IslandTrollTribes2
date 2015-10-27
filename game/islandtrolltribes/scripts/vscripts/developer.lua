@@ -4,7 +4,7 @@ CHEAT_CODES = {
     ["workshop"] = function(...) ITT:TestWorkshop(...) end, -- Makes a workshop with items to test
     ["refresh"] = function(...) ITT:Refresh(...) end, -- Refreshes heat hp and mana
     ["dev"] = function(...) ITT:Dev(...) end, -- Reveal map and stop degen, improves inventory
-    ["camp"] = function(...) ITT:Camp(...) end, -- Makes a fire and a ton of meat
+    ["camp"] = function(...) ITT:Camp(...) end, -- Makes a fire, a ton of meat and building kits
     ["acorns"] = function(...) ITT:Acorns(...) end, -- Make an acorn field
     ["debug_creeps"] = function(...) ITT:DebugCreeps(...) end, -- Spawn All Creeps
 
@@ -106,7 +106,6 @@ function ITT:Dev( playerID )
     end
 
     hero:SetGold(5000, true)
-    hero:AddItem(CreateItem("item_build_wall", nil, nil))
     hero:AddItem(CreateItem("item_boots_anabolic", nil, nil))
     hero:AddItem(CreateItem("item_armor_battle", nil, nil))
     hero:AddItem(CreateItem("item_gloves_battle", nil, nil))
@@ -138,9 +137,40 @@ function ITT:Camp( playerID )
         for i=1,num do
             local item = CreateItem(itemName, nil, nil)
             local drop = CreateItemOnPositionSync( position, item )
-            local pos_launch = position+RandomVector(RandomInt(100,200))
-            item:LaunchLoot(false, 200, 0.75, pos_launch)
+            if itemName == "item_meat_raw" then
+                drop:SetAbsOrigin(position+RandomVector(RandomInt(100,200)))
+            else
+                local pos_launch = position+RandomVector(RandomInt(100,200))
+                item:LaunchLoot(false, 200, 0.75, pos_launch)
+            end
         end     
+    end
+
+    local buildingItems = {
+        "item_building_kit_armory",
+        "item_building_kit_spirit_ward",
+        "item_building_kit_fire_basic",
+        "item_building_kit_storage_chest",
+        "item_building_kit_fire_mage",
+        "item_building_kit_tannery",
+        "item_building_kit_hatchery",
+        "item_building_kit_teleport_beacon",
+        "item_building_kit_hut_mud",
+        "item_building_kit_tent",
+        "item_building_kit_hut_troll",
+        "item_building_kit_tower_omni",
+        "item_building_kit_hut_witch_doctor",
+        "item_building_kit_trap_ensnare",
+        "item_building_kit_mixing_pot",
+        "item_building_kit_workshop",
+        "item_building_kit_smoke_house",
+    }
+
+    for k,itemKit in pairs(buildingItems) do
+        local item = CreateItem(itemKit, nil, nil)
+        local drop = CreateItemOnPositionSync( origin, item )
+        local pos_launch = origin+RandomVector(RandomInt(100,200))
+        item:LaunchLoot(false, 200, 0.75, pos_launch)   
     end
 
 end

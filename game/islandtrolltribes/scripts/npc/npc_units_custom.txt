@@ -122,7 +122,7 @@
 		"MinimapIconSize"	"250"
 		"HealthBarOffset"	"400"		
 		"ModelScale"	"0.50"
-		"BoundsHullName"	"DOTA_HULL_SIZE_BUILDING"
+		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
 		"precache"
 		{
@@ -161,7 +161,7 @@
 		"HasInventory"	"1"
 		"MinimapIconSize"	"250"
 		"HealthBarOffset"	"400"
-		"BoundsHullName"	"DOTA_HULL_SIZE_BUILDING"
+		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
 		"precache"
 		{
@@ -199,7 +199,7 @@
 		"SoundSet"	"Creep_Good_Melee"
 		"MinimapIconSize"	"250"
 		"HealthBarOffset"	"400"
-		"BoundsHullName"	"DOTA_HULL_SIZE_BUILDING"
+		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
 		"precache"
 		{
@@ -236,8 +236,9 @@
 		"SoundSet"	"Creep_Good_Melee"
 		"MinimapIconSize"	"250"
 		"HealthBarOffset"	"400"
-		"BoundsHullName"	"DOTA_HULL_SIZE_BUILDING"
+		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
+		"ModelScale"	"0.5"
 		"precache"
 		{
 			"model"	"models/props_debris/camp_fire001.vmdl"
@@ -275,7 +276,7 @@
 		"SoundSet"	"Creep_Good_Melee"
 		"MinimapIconSize"	"250"
 		"HealthBarOffset"	"100"
-		"BoundsHullName"	"DOTA_HULL_SIZE_TOWER"
+		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
 		"precache"
 		{
@@ -316,7 +317,7 @@
 		"SoundSet"	"Creep_Good_Melee"
 		"MinimapIconSize"	"250"
 		"HealthBarOffset"	"400"
-		"BoundsHullName"	"DOTA_HULL_SIZE_BUILDING"
+		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
 		"precache"
 		{
@@ -358,8 +359,9 @@
 		"HasInventory"	"1"
 		"MinimapIconSize"	"250"
 		"HealthBarOffset"	"400"
-		"BoundsHullName"	"DOTA_HULL_SIZE_BUILDING"
+		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
+		"ModelScale"	"0.8"
 		"precache"
 		{
 			"model"	"models/props_debris/camp_fire001.vmdl"
@@ -398,7 +400,7 @@
 		"HasInventory"	"0"
 		"MinimapIconSize"	"250"
 		"HealthBarOffset"	"400"
-		"BoundsHullName"	"DOTA_HULL_SIZE_BUILDING"
+		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
 		"precache"
 		{
@@ -437,8 +439,9 @@
 		"HasInventory"	"0"
 		"MinimapIconSize"	"250"
 		"HealthBarOffset"	"400"
-		"BoundsHullName"	"DOTA_HULL_SIZE_BUILDING"
+		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
+		"ModelScale"	"0.5"
 		"precache"
 		{
 			"model"	"models/props_debris/camp_fire001.vmdl"
@@ -476,8 +479,9 @@
 		"HasInventory"	"1"
 		"MinimapIconSize"	"250"
 		"HealthBarOffset"	"400"
-		"BoundsHullName"	"DOTA_HULL_SIZE_BUILDING"
+		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
+		"ModelScale"	"0.7"
 		"precache"
 		{
 			"model"	"models/props_debris/camp_fire001.vmdl"
@@ -515,8 +519,9 @@
 		"HasInventory"	"1"
 		"MinimapIconSize"	"250"
 		"HealthBarOffset"	"400"
-		"BoundsHullName"	"DOTA_HULL_SIZE_BUILDING"
+		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
+		"ModelScale"	"1.2"
 		"precache"
 		{
 			"model"	"models/props_debris/camp_fire001.vmdl"
@@ -554,8 +559,9 @@
 		"HasInventory"	"0"
 		"MinimapIconSize"	"250"
 		"HealthBarOffset"	"400"
-		"BoundsHullName"	"DOTA_HULL_SIZE_BUILDING"
+		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
+		"ModelScale"	"0.6"
 		"precache"
 		{
 			"model"	"models/props_debris/camp_fire001.vmdl"
@@ -593,8 +599,9 @@
 		"HasInventory"	"1"
 		"MinimapIconSize"	"250"
 		"HealthBarOffset"	"400"
-		"BoundsHullName"	"DOTA_HULL_SIZE_BUILDING"
+		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
+		"ModelScale"	"0.6"
 		"precache"
 		{
 			"model"	"models/props_debris/camp_fire001.vmdl"
@@ -632,8 +639,9 @@
 		"SoundSet"	"Creep_Good_Melee"
 		"MinimapIconSize"	"250"
 		"HealthBarOffset"	"400"
-		"BoundsHullName"	"DOTA_HULL_SIZE_BUILDING"
+		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
+		"ModelScale"	"1.1"
 		"precache"
 		{
 			"model"	"models/props_debris/camp_fire001.vmdl"
@@ -671,8 +679,9 @@
 		"HasInventory"	"1"
 		"MinimapIconSize"	"250"
 		"HealthBarOffset"	"400"
-		"BoundsHullName"	"DOTA_HULL_SIZE_BUILDING"
+		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
+		"ModelScale"	"0.6"
 		"precache"
 		{
 			"model"	"models/props_debris/camp_fire001.vmdl"
@@ -709,8 +718,9 @@
 		"HasInventory"	"1"
 		"MinimapIconSize"	"250"
 		"HealthBarOffset"	"400"
-		"BoundsHullName"	"DOTA_HULL_SIZE_BUILDING"
+		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
+		"ModelScale"	"0.7"
 		"precache"
 		{
 			"model"	"models/props_debris/camp_fire001.vmdl"
@@ -749,7 +759,7 @@
 		"SoundSet"	"Creep_Good_Melee"
 		"MinimapIconSize"	"250"
 		"HealthBarOffset"	"400"
-		"BoundsHullName"	"DOTA_HULL_SIZE_BUILDING"
+		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
 		"precache"
 		{
@@ -787,7 +797,7 @@
 		"SoundSet"	"Creep_Good_Melee"
 		"MinimapIconSize"	"250"
 		"HealthBarOffset"	"400"
-		"BoundsHullName"	"DOTA_HULL_SIZE_BUILDING"
+		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
 		"precache"
 		{
@@ -829,7 +839,7 @@
 		"Level"	"1"
 		"MinimapIconSize"	"250"
 		"HealthBarOffset"	"400"
-		"BoundsHullName"	"DOTA_HULL_SIZE_BUILDING"
+		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
 		"precache"
 		{

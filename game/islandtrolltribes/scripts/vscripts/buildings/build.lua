@@ -95,6 +95,20 @@ function Build( event )
 	    unit.GoldCost = gold_cost
 	    unit.BuildTime = build_time
 
+	    -- If it's an item-ability and has charges, remove a charge or remove the item if no charges left
+		if ability:IsItem() then
+			local charges = ability:GetCurrentCharges()
+			if charges > 0 then
+				charges = charges-1
+			end
+
+			if charges==0 and not ability:IsPermanent() then
+				ability:RemoveSelf()
+			else
+				ability:SetCurrentCharges(charges)
+			end
+		end
+
 	    -- Units can't attack while building
 	    unit.original_attack = unit:GetAttackCapability()
 		unit:SetAttackCapability(DOTA_UNIT_CAP_NO_ATTACK)

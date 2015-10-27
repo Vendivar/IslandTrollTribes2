@@ -138,6 +138,11 @@ function ITT:FilterExecuteOrder( filterTable )
     if order_type == DOTA_UNIT_ORDER_PICKUP_ITEM  then
 
         local drop = EntIndexToHScript(targetIndex)
+        if not drop then
+            print("INVALID DROP, index was",targetIndex,"ABORT")
+            return
+        end
+        
         local position = drop:GetAbsOrigin()
         local origin = unit:GetAbsOrigin()
 
@@ -184,14 +189,14 @@ function ITT:FilterExecuteOrder( filterTable )
     if order_type == DOTA_UNIT_ORDER_STOP or order_type == DOTA_UNIT_ORDER_HOLD_POSITION then
         for n, unit_index in pairs(units) do 
             local unit = EntIndexToHScript(unit_index)
-            --if IsBuilder(unit) then
+            if IsBuilder(unit) then
                 BuildingHelper:ClearQueue(unit)
-            --end
+            end
         end
         return true
 
     -- Cancel builder queue when casting non building abilities
-    elseif (abilityIndex and abilityIndex ~= 0) and IsBuilder(unit) then
+    elseif (abilityIndex and abilityIndex > 0) and IsBuilder(unit) then
         local ability = EntIndexToHScript(abilityIndex)
         print("ORDER FILTER",ability:GetAbilityName(), IsBuildingAbility(ability))
         if not IsBuildingAbility(ability) then
