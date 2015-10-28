@@ -140,7 +140,7 @@ function ITT:FilterExecuteOrder( filterTable )
         local drop = EntIndexToHScript(targetIndex)
         if not drop then
             print("INVALID DROP, index was",targetIndex,"ABORT")
-            return
+            return false
         end
         
         local position = drop:GetAbsOrigin()
@@ -193,16 +193,13 @@ function ITT:FilterExecuteOrder( filterTable )
                 BuildingHelper:ClearQueue(unit)
             end
         end
-        return true
 
     -- Cancel builder queue when casting non building abilities
     elseif (abilityIndex and abilityIndex > 0) and IsBuilder(unit) then
         local ability = EntIndexToHScript(abilityIndex)
-        print("ORDER FILTER",ability:GetAbilityName(), IsBuildingAbility(ability))
         if not IsBuildingAbility(ability) then
             BuildingHelper:ClearQueue(unit)
         end
-        return true
     end
 
     return true
