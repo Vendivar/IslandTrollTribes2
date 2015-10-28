@@ -419,9 +419,8 @@ function GetAbilityOnVisibleSlot( unit, slot )
 end
 
 ------------------------------------------------
---                Quick Shortcuts             --
+--                 Unit Checks                --
 ------------------------------------------------
-
 
 function IsCustomBuilding( unit )
     return unit:HasAbility("ability_building")
@@ -430,6 +429,10 @@ end
 -- Shortcut for all unit logic
 function IsValidAlive( unit )
     return IsValidEntity(unit) and unit:IsAlive()
+end
+
+function IsFlyingUnit( unit )
+    return unit:HasFlyMovementCapability()
 end
 
 ------------------------------------------------

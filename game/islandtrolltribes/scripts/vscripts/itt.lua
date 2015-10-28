@@ -187,6 +187,7 @@ function ITT:InitGameMode()
 
     -- Filters
     GameMode:SetExecuteOrderFilter( Dynamic_Wrap( ITT, "FilterExecuteOrder" ), self )
+    GameMode:SetDamageFilter( Dynamic_Wrap( ITT, "FilterDamage" ), self )
 
     --for multiteam
     ListenToGameEvent( "game_rules_state_change", Dynamic_Wrap( ITT, 'OnGameRulesStateChange' ), self )
