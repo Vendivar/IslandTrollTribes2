@@ -89,6 +89,10 @@ end
 -- This attempts to pick up items from any range and resolves custom stacking
 function PickupItem( unit, drop )
     local item = drop:GetContainedItem()
+    if not item then
+        print("INVALID ITEM PICKUP, ABORT")
+        return
+    end
     local itemName = item:GetAbilityName()
 
     -- Raw meat uses modifier stacks instead of inventory slots
