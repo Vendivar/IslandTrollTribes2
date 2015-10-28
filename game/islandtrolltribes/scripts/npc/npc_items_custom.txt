@@ -9099,6 +9099,7 @@
 	            "Target"            "TARGET"
 	            "EffectName"        "particles/units/heroes/hero_huskar/huskar_base_attack.vpcf"
 	            "MoveSpeed"         "%projectile_speed"
+	            "ProvidesVision"    "0"
 	            "SourceAttachment"  "DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
 	        }
 	    }
@@ -9275,6 +9276,7 @@
 	            "Target"            "TARGET"
 	            "EffectName"        "particles/units/heroes/hero_huskar/huskar_base_attack.vpcf"
 	            "MoveSpeed"         "%projectile_speed"
+	            "ProvidesVision"    "0"
 	            "SourceAttachment"  "DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
 	        }
 	
@@ -9444,6 +9446,7 @@
 	            "Target"            "TARGET"
 	            "EffectName"        "particles/units/heroes/hero_huskar/huskar_base_attack.vpcf"
 	            "MoveSpeed"         "%projectile_speed"
+	            "ProvidesVision"    "0"
 	            "SourceAttachment"  "DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
 	        }
 	    }
@@ -9642,6 +9645,7 @@
 	            "Target"            "TARGET"
 	            "EffectName"        "particles/units/heroes/hero_huskar/huskar_base_attack.vpcf"
 	            "MoveSpeed"         "%projectile_speed"
+	            "ProvidesVision"    "0"
 	            "SourceAttachment"  "DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
 	        }
 	
@@ -9877,6 +9881,7 @@
 	            "Target"            "TARGET"
 	            "EffectName"        "particles/units/heroes/hero_huskar/huskar_base_attack.vpcf"
 	            "MoveSpeed"         "%projectile_speed"
+	            "ProvidesVision"    "0"
 	            "SourceAttachment"  "DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
 	        }
 	
@@ -10045,11 +10050,11 @@
 	    {
 	        "TrackingProjectile"
 	        {
-	            "Target"    "TARGET"
-	            "EffectName"    "particles/units/heroes/hero_huskar/huskar_base_attack.vpcf"
-	            "MoveSpeed"    "%projectile_speed"
+	            "Target"            "TARGET"
+	            "EffectName"        "particles/units/heroes/hero_huskar/huskar_base_attack.vpcf"
+	            "MoveSpeed"         "%projectile_speed"
 	            "ProvidesVision"    "0"
-	            "SourceAttachment"    "DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
+	            "SourceAttachment"  "DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
 	        }
 	
 	        "FireSound"
@@ -10313,6 +10318,7 @@
 	            "Target"            "TARGET"
 	            "EffectName"        "particles/units/heroes/hero_huskar/huskar_base_attack.vpcf"
 	            "MoveSpeed"         "%projectile_speed"
+	            "ProvidesVision"    "0"
 	            "SourceAttachment"  "DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
 	        }
 	
