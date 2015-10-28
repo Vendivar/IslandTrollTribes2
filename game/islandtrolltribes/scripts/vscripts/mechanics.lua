@@ -108,14 +108,14 @@ function PickupItem( unit, drop )
     if CanTakeMoreItems(unit) then
         drop:SetAbsOrigin(unit:GetAbsOrigin())
         unit:PickupDroppedItem(drop)
-        print("Picking up "..item:GetAbilityName())
+        --print("Picking up "..item:GetAbilityName())
         ResolveInventoryMerge(unit, item)
         return true
     else
         local itemToStack = CanTakeMoreStacksOfItem(unit, item)
         if itemToStack then
             local maxStacks = GameRules.ItemKV[itemName]["MaxStacks"]
-            print("Got another of this item to stack with, merging")
+            --print("Got another of this item to stack with, merging")
 
             -- Reduce the stacks of the item on the ground and increase the item to stack
             local inventoryItemCharges = itemToStack:GetCurrentCharges()
@@ -175,7 +175,7 @@ function GiveItemStack( unit, itemName )
     end
 
     --print("Couldn't add "..itemName.." - Inventory is full and it wont take more stacks")
-    UTIL_Remove(RemoveSelf)
+    UTIL_Remove(newItem)
 end
 
 function GetNumItemsInInventory( unit )
@@ -210,18 +210,26 @@ function CanTakeMoreStacksOfItem( unit, item )
         -- Check if there's another item to stack with
         for itemSlot = 0,5 do
             local itemInSlot = unit:GetItemInSlot( itemSlot )
-            if itemInSlot and itemInSlot ~= item and itemInSlot:GetAbilityName() == itemName and itemInSlot:GetCurrentCharges() < maxStacks then
-                return itemInSlot --Return the item handle to pass the stacks to
+            if itemInSlot then
+                if itemInSlot ~= item and itemInSlot:GetAbilityName() == itemName and itemInSlot:GetCurrentCharges() < maxStacks then
+                    --print(" Unit can take more stacks of "..itemName)
+                    return itemInSlot --Return the item handle to pass the stacks to
+                end
             end
         end
     end
+    --print(" No item to stack "..itemName.." on")
     return false
 end
 
 -- The unit just picked an item and we want to see if it can be stacked to another item in inventory
 function ResolveInventoryMerge( unit, item )
+    --print("Resolving Inventory Merge")
+
     local itemToStack = CanTakeMoreStacksOfItem(unit, item)
+
     if itemToStack then
+        --print(" Got an item to stack with")
         local itemName = item:GetAbilityName() 
         local maxStacks = GameRules.ItemKV[itemName]["MaxStacks"]
 
@@ -232,11 +240,17 @@ function ResolveInventoryMerge( unit, item )
         -- If it can be merged completely, add the charges and remove the drop
         if inventoryItemCharges+currentItemCharges <= maxStacks then
 
+            --print(" It can be merged completely")
+
             itemToStack:SetCurrentCharges(inventoryItemCharges+currentItemCharges)
             UTIL_Remove(item)
 
+            --print(" Removed old item.")
+
         -- Otherwise add up to maxCharges and keep both items
         else
+            --print(" Add max charges and keep both items")
+
             local transfer_charges = maxStacks - inventoryItemCharges
             itemToStack:SetCurrentCharges(maxStacks)
             item:SetCurrentCharges(currentItemCharges - transfer_charges)

@@ -64,7 +64,7 @@ function ITT:FilterExecuteOrder( filterTable )
                         if not canTransfer then
                             SendErrorMessage(issuer, "#error_inventory_full")
                         end
-                        return
+                        return false
                     end
                     return 0.1
                 end)
@@ -83,7 +83,7 @@ function ITT:FilterExecuteOrder( filterTable )
                         if not canTransfer then
                             SendErrorMessage(issuer, "#error_inventory_full")
                         end
-                        return
+                        return false
                     end
                     return 0.1
                 end)
@@ -105,6 +105,7 @@ function ITT:FilterExecuteOrder( filterTable )
         -- Drop the item if within the extended range
         if (origin - point):Length2D() <= ITEM_TRANSFER_RANGE then
             unit:DropItemAtPositionImmediate(item, point)
+            print("unit:DropItemAtPositionImmediate(item, point) <=ITEM_TRANSFER_RANGE")
             unit:Stop()
         else
             -- For buildings, Best Effort drop
@@ -122,7 +123,8 @@ function ITT:FilterExecuteOrder( filterTable )
                 unit.orderTimer = Timers:CreateTimer(function()
                     if IsValidAlive(unit) and (unit:GetAbsOrigin() - point):Length2D() <= ITEM_TRANSFER_RANGE+25 then
                         unit:DropItemAtPositionImmediate(item, point)
-                        return
+                        print("unit:DropItemAtPositionImmediate(item, point)")
+                        return false
                     end
                     return 0.1
                 end)

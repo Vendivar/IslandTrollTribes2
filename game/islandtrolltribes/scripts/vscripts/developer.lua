@@ -6,6 +6,7 @@ CHEAT_CODES = {
     ["dev"] = function(...) ITT:Dev(...) end, -- Reveal map and stop degen, improves inventory
     ["camp"] = function(...) ITT:Camp(...) end, -- Makes a fire, a ton of meat and building kits
     ["acorns"] = function(...) ITT:Acorns(...) end, -- Make an acorn field
+    ["spears"] = function(...) ITT:Spears(...) end, -- Make an spear field
     ["debug_creeps"] = function(...) ITT:DebugCreeps(...) end, -- Spawn All Creeps
 
 }
@@ -182,6 +183,20 @@ function ITT:Acorns( playerID )
     for i=1,50 do
         local pos_launch = origin + RandomVector(RandomInt(1,200))
         local item = CreateItem("item_acorn", nil, nil)
+        local drop = CreateItemOnPositionSync( origin, item )
+        item:LaunchLoot(false, 200, 0.75, pos_launch)
+    end
+end
+
+function ITT:Spears( playerID )
+    local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+    local origin = hero:GetAbsOrigin()
+
+    local spear_types = { "basic", "iron", "dark", "poison", "poison_refined", "poison_ultra" }
+
+    for i=1,50 do
+        local pos_launch = origin + RandomVector(RandomInt(1,200))
+        local item = CreateItem("item_spear_"..spear_types[RandomInt(1,#spear_types)], nil, nil)
         local drop = CreateItemOnPositionSync( origin, item )
         item:LaunchLoot(false, 200, 0.75, pos_launch)
     end
