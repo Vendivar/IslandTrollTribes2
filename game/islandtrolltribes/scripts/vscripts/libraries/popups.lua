@@ -95,6 +95,11 @@ function PopupNumbers(target, pfx, color, lifetime, number, presymbol, postsymbo
     -- msg_gold is dumb and will show '+0' as '++' instead.
     if not number or number == 0 then return end
 
+    if number < 0 then
+        presymbol = POPUP_SYMBOL_PRE_MINUS
+        number = math.abs(number)
+    end
+
     -- bounty particles only show to one team, generally on top of the unit that was just killed
     local pidx
     if pfx == "gold" then

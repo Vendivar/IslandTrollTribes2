@@ -1,95 +1,168 @@
 "item_spear_steel"
 {
-	"ID"	"1030"
-	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
-	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY | DOTA_UNIT_TARGET_CREEP"
-	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
-	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"item_heavens_halberd"
-	"Model"	"models/items/huskar/sacred_bones_spear/sacred_bones_spear.vmdl"
-	"Effect"	""
-	"AbilityCastRange"	"700"
-	"AbilityCastPoint"	"0.5"
-	"AbilityCooldown"	"8.0"
-	"ItemCost"	"28"
-	"ItemShopTags"	"consumable"
-	"ItemQuality"	"consumable"
-	"ItemShareability"	"ITEM_FULLY_SHAREABLE_STACKING"
-	
-	"MaxStacks" "2"
+    "ID"    "1030"
+    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+    "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "BaseClass"    "item_datadriven"
+    "AbilityTextureName"    "item_heavens_halberd"
+    "Model"    "models/items/huskar/sacred_bones_spear/sacred_bones_spear.vmdl"
+    "Effect"    ""
+    "ItemCost"    "28"
+    "ItemShopTags"    "consumable"
+    "ItemQuality"    "consumable"
+    "ItemShareability"    "ITEM_FULLY_SHAREABLE_STACKING"
 
-	"ItemPermanent"	"0"
-	"ItemDroppable"	"1"
-	"ItemInitialCharges"	"1"
-	"ItemAliases"	"quicktype"
-	"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
-	"ItemKillable"	"1"
-	"ItemSellable"	"0"
+    "AbilityCastRange"              "700"
+    "AbilityCastPoint"              "0.5"
+    "AbilityCooldown"               "8"
+    "AbilitySharedCooldown"         "spear"
+    
+    "MaxStacks" "2"
 
-	"UIPickupSound"	"Item.PickUpGemShop"
-	"UIDropSound"	"Item.DropGemShop"
-	"WorldDropSound"	"ui.inv_drop_metalblade"
-	"OnSpellStart"
-	{
-		"TrackingProjectile"
-		{
-			"Target"	"TARGET"
-			"EffectName"	"particles/units/heroes/hero_huskar/huskar_base_attack.vpcf"
-			"MoveSpeed"	"%projectile_speed"
-		}
+    "ItemPermanent"    "0"
+    "ItemDroppable"    "1"
+    "ItemInitialCharges"    "1"
+    "ItemAliases"    "quicktype"
+    "ItemDisassembleRule"    "DOTA_ITEM_DISASSEMBLE_NEVER"
+    "ItemKillable"    "1"
+    "ItemSellable"    "0"
 
-		"SpendCharge"
-		{
-		}
+    "UIPickupSound"    "Item.PickUpGemShop"
+    "UIDropSound"    "Item.DropGemShop"
+    "WorldDropSound"    "ui.inv_drop_metalblade"
 
-	}
+    "AbilitySpecial"
+    {
+        "01"
+        {
+            "var_type"          "FIELD_INTEGER"
+            "projectile_speed"  "900"
+        }
+        "02"
+        {
+            "var_type"          "FIELD_INTEGER"
+            "max_stacks"        "2"
+        }
+        "03"
+        {
+            "var_type"          "FIELD_INTEGER"
+            "hurl_damage"       "100"
+        }
+        "04"
+        {
+            "var_type"          "FIELD_FLOAT"
+            "hero_duration"     "1"
+        }
+        "05"
+        {
+            "var_type"          "FIELD_FLOAT"
+            "creep_duration"    "2"
+        }
+    }
 
-	"OnProjectileHitUnit"
-	{
-		"RunScript"
-		{
-			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-			"Function"	"ability_spear_steel_throw"
-		}
+    "precache"
+    {
+        "particle"     "particles/units/heroes/hero_legion_commander/legion_commander_duel_victory_text.vpcf" //TODO: Make custom Success Sprite
+    }
 
-	}
+    "OnSpellStart"
+    {
+        "TrackingProjectile"
+        {
+            "Target"            "TARGET"
+            "EffectName"        "particles/units/heroes/hero_huskar/huskar_base_attack.vpcf"
+            "MoveSpeed"         "%projectile_speed"
+            "SourceAttachment"  "DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
+        }
 
-	"FireSound"
-	{
-		"EffectName"	"Creep_Bad_Engine.Attack"
-		"Target"	"TARGET"
-	}
+        "FireSound"
+        {
+            "EffectName"    "Creep_Bad_Engine.Attack"
+            "Target"    "TARGET"
+        }
+    }
 
-	"OnProjectileFinish"
-	{
-		"FireSound"
-		{
-			"EffectName"	"Creep_Bad_Engine.ProjectileImpact"
-			"Target"	"TARGET"
-		}
+    "OnProjectileHitUnit"
+    {
+        "ApplyModifier"
+        {
+            "ModifierName"    "modifier_spear_stun"
+            "Target"
+            {
+                "Center"      "TARGET"
+                "Teams"       "DOTA_UNIT_TARGET_TEAM_ENEMY"
+                "Types"       "DOTA_UNIT_TARGET_HERO"
+            }
+            "Duration"        "%hero_duration"
+        }
+        
+        "ApplyModifier"
+        {
+            "ModifierName"    "modifier_spear_stun"
+            "Target"
+            {
+                "Center"      "TARGET"
+                "Teams"       "DOTA_UNIT_TARGET_TEAM_ENEMY"
+                "Types"       "DOTA_UNIT_TARGET_BASIC"
+            }
+            "Duration"        "%creep_duration"
+        }
 
-	}
+        "Damage"
+        {
+            "Target"    "TARGET"
+            "Damage"    "%hurl_damage"
+            "Type"      "DAMAGE_TYPE_PHYSICAL"
+        }
 
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"	"FIELD_INTEGER"
-			"projectile_speed"	"500"
-		}
+        "FireSound"
+        {
+            "EffectName"    "Creep_Bad_Engine.ProjectileImpact"
+            "Target"    "TARGET"
+        }
 
-		"02"
-		{
-			"var_type"	"FIELD_INTEGER"
-			"max_stacks"	"2"
-		}
+        "Random"
+        {
+            "Chance"    "%recover_chance"
+            "OnSuccess"
+            {
+                "FireEffect"
+                {
+                    "EffectName"        "particles/units/heroes/hero_legion_commander/legion_commander_duel_victory_text.vpcf"
+                    "EffectAttachType"  "follow_origin"
+                    "Target"            "CASTER"
+                    "ControlPointEntities"
+                    {
+                        "CASTER"    "attach_origin"
+                        "CASTER"    "attach_origin"
+                        "CASTER"    "attach_origin"
+                        "CASTER"    "attach_origin"
+                    }
+                }   
+            }
+            "OnFailure"
+            {
+                "SpendCharge" {}
+            }
+        }
+    }
 
-		"03"
-		{
-			"var_type"	"FIELD_INTEGER"
-			"hurl_damage"	"100"
-		}
+    "Modifiers"
+    {
+        "modifier_spear_stun"
+        {
+            "IsDebuff"          "1"
+            "TextureName"       "generic_stun"
+            "EffectName"        "particles/generic_gameplay/generic_stunned.vpcf"
+            "EffectAttachType"  "follow_overhead"
+    
+            "OverrideAnimation"     "ACT_DOTA_DISABLED"
 
-	}
-
+            "States"
+            {
+                "MODIFIER_STATE_STUNNED"        "MODIFIER_STATE_VALUE_ENABLED"
+            }
+        }
+    }
 }

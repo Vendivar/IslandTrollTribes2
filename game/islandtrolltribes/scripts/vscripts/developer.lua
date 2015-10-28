@@ -192,7 +192,7 @@ function ITT:Spears( playerID )
     local hero = PlayerResource:GetSelectedHeroEntity(playerID)
     local origin = hero:GetAbsOrigin()
 
-    local spear_types = { "basic", "iron", "dark", "poison", "poison_refined", "poison_ultra" }
+    local spear_types = { "basic", "iron", "dark", "steel", "poison", "poison_refined", "poison_ultra" }
 
     for i=1,50 do
         local pos_launch = origin + RandomVector(RandomInt(1,200))
