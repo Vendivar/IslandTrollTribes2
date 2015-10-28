@@ -163,6 +163,7 @@ function ITT:InitGameMode()
 
     ListenToGameEvent("entity_hurt", Dynamic_Wrap(ITT, 'On_entity_hurt'), self)
     ListenToGameEvent('player_chat', Dynamic_Wrap(ITT, 'OnPlayerChat'), self)
+    ListenToGameEvent("player_reconnected", Dynamic_Wrap(ITT, 'OnPlayerReconnected'), self)
 
     -- Panorama Listeners
     CustomGameEventManager:RegisterListener( "update_selected_entities", Dynamic_Wrap(ITT, 'OnPlayerSelectedEntities'))
@@ -959,6 +960,23 @@ function ITT:OnPlayerConnectFull(keys)
     -- Update the user ID table with this user
     self.vUserIds[keys.userid] = ply
     self.vPlayerUserIds[playerID] = keys.userid
+
+
+    -- If the player reconnected and has a hero, check if the subclass button should be unlocked
+    local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+    if hero then
+        local level = hero:GetLevel()
+        if level >= 6 and not HasSubClass(hero) then
+            CustomGameEventManager:Send_ServerToPlayer(ply, "player_unlock_subclass", {})
+
+            if level == 6 then
+                local particleName = "particles/units/heroes/hero_keeper_of_the_light/keeper_of_the_light_spirit_form_ambient.vpcf"
+                hero.subclassAvailableParticle = ParticleManager:CreateParticleForTeam(particleName, PATTACH_ABSORIGIN_FOLLOW, hero, hero:GetTeamNumber())
+
+                EmitSoundOnClient("SubSelectReady", PlayerResource:GetPlayer(playerID))
+            end
+        end
+    end
 end
 
 -- Listener to handle item pickup (the rest of the pickup logic is tied to the order filter and item function mechanics)
@@ -1044,15 +1062,15 @@ function ITT:OnPlayerGainedLevel(event)
     -- If the hero reached level 6 and hasn't unlocked a subclass, make the button clickable
     if level >= 6 and not HasSubClass(hero) then
         CustomGameEventManager:Send_ServerToPlayer(player, "player_unlock_subclass", {})
+
+        if level == 6 then
+            local particleName = "particles/units/heroes/hero_keeper_of_the_light/keeper_of_the_light_spirit_form_ambient.vpcf"
+            hero.subclassAvailableParticle = ParticleManager:CreateParticleForTeam(particleName, PATTACH_ABSORIGIN_FOLLOW, hero, hero:GetTeamNumber())
+
+            EmitSoundOnClient("SubSelectReady", PlayerResource:GetPlayer(playerID))
+        end
     end
 	
-	if level == 6 and not HasSubClass(hero) then
-        local particleName = "particles/units/heroes/hero_keeper_of_the_light/keeper_of_the_light_spirit_form_ambient.vpcf"
-        hero.subclassAvailableParticle = ParticleManager:CreateParticleForTeam(particleName, PATTACH_ABSORIGIN_FOLLOW, hero, hero:GetTeamNumber())
-
-        EmitSoundOnClient("SubSelectReady", PlayerResource:GetPlayer(playerID))
-    end
-
     -- Update skills
     ITT:AdjustSkills( hero )
 end

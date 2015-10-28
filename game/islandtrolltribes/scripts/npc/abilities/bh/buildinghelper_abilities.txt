@@ -1,6 +1,6 @@
 "move_to_point_100"
 {
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 	"BaseClass"						"ability_datadriven"
 	"AbilityCastPoint"				"0"
 	"AbilityCooldown"				"0"
@@ -23,7 +23,7 @@
 
 "move_to_point_150"
 {
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 	"BaseClass"						"ability_datadriven"
 	"AbilityCastPoint"				"0"
 	"AbilityCooldown"				"0"
@@ -46,7 +46,7 @@
 
 "move_to_point_200"
 {
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 	"BaseClass"						"ability_datadriven"
 	"AbilityCastPoint"				"0"
 	"AbilityCooldown"				"0"
@@ -69,7 +69,7 @@
 
 "move_to_point_250"
 {
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 	"BaseClass"						"ability_datadriven"
 	"AbilityCastPoint"				"0"
 	"AbilityCooldown"				"0"
@@ -92,7 +92,7 @@
 
 "move_to_point_300"
 {
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 	"BaseClass"						"ability_datadriven"
 	"AbilityCastPoint"				"0"
 	"AbilityCooldown"				"0"
