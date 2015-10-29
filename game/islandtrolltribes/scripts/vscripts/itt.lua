@@ -202,7 +202,9 @@ function ITT:InitGameMode()
         if string.find(spawnerName, "_bush_") then
             local bush_name = string.sub(string.gsub(spawner:GetName(), "spawner_", ""), 5)
             local bush = CreateUnitByName(bush_name, spawner:GetAbsOrigin(), false, nil, nil, DOTA_TEAM_NEUTRALS)
-            if bush then
+            if bush then            
+        local bushalert =  ParticleManager:CreateParticle("particles/custom/dropped_item_white.vpcf", PATTACH_ABSORIGIN, bush)
+			ParticleManager:SetParticleControl(bushalert, 15,  Vector(255,255,255))
                 table.insert(GameRules.Bushes, bush)
             end
         end
