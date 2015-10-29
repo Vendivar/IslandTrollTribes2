@@ -166,7 +166,7 @@ function ITT:FilterExecuteOrder( filterTable )
             -- Move towards the drop position and pickup the item
             unit.skip = true
             ExecuteOrderFromTable({ UnitIndex = unitIndex, OrderType = DOTA_UNIT_ORDER_MOVE_TO_POSITION, Position = position, Queue = queue}) 
-                
+            
             -- Check for drop distance
             unit.orderTimer = Timers:CreateTimer(function()
                 if IsValidAlive(unit) and (unit:GetAbsOrigin() - position):Length2D() <= DEFAULT_TRANSFER_RANGE then
@@ -175,7 +175,7 @@ function ITT:FilterExecuteOrder( filterTable )
                     if not pickedUp then
                         SendErrorMessage(issuer, "#error_inventory_full")
                     end
-                    return
+                    return false
                 end
                 return 0.1
             end)

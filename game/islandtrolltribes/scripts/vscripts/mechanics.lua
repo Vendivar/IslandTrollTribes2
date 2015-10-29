@@ -247,9 +247,9 @@ function ResolveInventoryMerge( unit, item )
             --print(" It can be merged completely")
 
             itemToStack:SetCurrentCharges(inventoryItemCharges+currentItemCharges)
-            UTIL_Remove(item)
-
-            --print(" Removed old item.")
+            Timers:CreateTimer(function()
+                UTIL_Remove(item)
+            end)
 
         -- Otherwise add up to maxCharges and keep both items
         else
