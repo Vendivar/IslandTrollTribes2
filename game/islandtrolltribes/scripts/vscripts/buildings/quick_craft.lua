@@ -12,7 +12,7 @@ function QuickCraft(keys)
 
     print("QuickCrafting on "..buildingName)
        
-    local recipeTable = GameRules.QuickCraft[buildingName]
+    local recipeTable = GameRules.Crafting[buildingName]
     --[[print("List of items the building can craft:")
     for k,v in pairs(recipeTable) do
         print(k)
@@ -49,7 +49,7 @@ end
 
 -- Returns a list of crafting drops if the itemName can be crafted with the passed drops, false otherwise
 function CanCraft( buildingName, itemName, droppedContainers )
-    local recipeTable = GameRules.QuickCraft[buildingName]
+    local recipeTable = GameRules.Crafting[buildingName]
     local required = recipeTable[itemName]
     
     local craftingItems = {}
