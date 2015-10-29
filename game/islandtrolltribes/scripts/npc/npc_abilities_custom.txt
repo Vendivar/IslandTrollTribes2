@@ -1119,6 +1119,24 @@
 	        }
 	    }
 	}
+	"ability_revive"
+	{
+	    "BaseClass"             "ability_lua"
+	    "ScriptFile"            "buildings/ability_revive.lua"
+	
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	    "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	    "AbilityUnitTargetType" "DOTA_UNIT_TARGET_BASIC"
+	    "AbilityUnitTargetFlags" "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+	    "MaxLevel"              "1"
+	
+	    "AbilityCooldown"       "1.0"
+	    "AbilityManaCost"       "0"
+	    "AbilityCastPoint"      "0.0"
+	    "AbilityChannelTime"    "4.0"
+	
+	    "AbilitySharedWithTeammates" "1"
+	}
 	"ability_bush_passive"
 	{
 		"BaseClass"	"ability_datadriven"
@@ -12238,6 +12256,27 @@
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"ability_building_getcorpse"
 	}
+	"ability_gravestone"
+	{
+	    "BaseClass"         "ability_datadriven"
+	    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	    "Modifiers"
+	    {
+	        "dummy_modifier"
+	        {
+	            "Passive"   "1"
+	            "States"
+	            {
+	                "MODIFIER_STATE_NO_UNIT_COLLISION"  "MODIFIER_STATE_VALUE_ENABLED"
+	                "MODIFIER_STATE_COMMAND_RESTRICTED" "MODIFIER_STATE_VALUE_ENABLED"
+	                "MODIFIER_STATE_INVULNERABLE"  "MODIFIER_STATE_VALUE_ENABLED"
+	                "MODIFIER_STATE_NOT_ON_MINIMAP" "MODIFIER_STATE_VALUE_ENABLED"
+	                "MODIFIER_STATE_NO_HEALTH_BAR"  "MODIFIER_STATE_VALUE_ENABLED"
+	            }
+	        }
+	    }
+	}
+	
 	"ability_magic_raw_meteor"
 	{
 		"BaseClass"	"ability_datadriven"
@@ -12701,18 +12740,6 @@
 	
 		}
 	
-	}
-	"ability_revive"
-	{
-	    "BaseClass"             "ability_lua"
-	    "AbilityCooldown"       "1.0"
-	    "MaxLevel"              "1"
-	    "AbilityManaCost"       "0"
-	    "AbilityCastPoint"      "0.0"
-	    "AbilityChannelTime"	"4"
-	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
-	    "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	    "ScriptFile"  			"ability_revive.lua"
 	}
 	"ability_smoke_meat"
 	{

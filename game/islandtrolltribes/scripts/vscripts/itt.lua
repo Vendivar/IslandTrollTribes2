@@ -136,9 +136,6 @@ function ITT:InitGameMode()
 
     ListenToGameEvent('dota_player_gained_level', Dynamic_Wrap(ITT, 'OnPlayerGainedLevel'), self)
 
-    --Listener for storing hero information and revive
-    ListenToGameEvent("dota_player_killed", Dynamic_Wrap(ITT, 'OnDotaPlayerKilled'), self)
-
     -- Listener for drops and for removing buildings from block table
     ListenToGameEvent("entity_killed", Dynamic_Wrap( ITT, "OnEntityKilled" ), self )
 
@@ -382,6 +379,12 @@ function ITT:OnHeroRespawn( hero )
 
     -- Restart Meat tracking
     ApplyModifier(hero, "modifier_meat_passive")
+
+    -- Kill grave
+    if hero.grave then
+        UTIL_Remove(hero.grave)
+        hero.grave = nil
+    end
 end
 
 -- This handles locking a number of inventory slots for some classes
@@ -514,14 +517,8 @@ function ITT:OnEntityKilled(keys)
     if string.find(unitName, "building") then
         killedUnit:RemoveBuilding(2, false)
     end
-    
-    -- remove from gridnav
-    -- cannot get this to work properly, have not found any side effects to not removing units
-    -- but it seems like it should happen
-    -- print("unit is ", killedUnit)
-    -- BuildingHelper:RemoveUnit(killedUnit)
 
-    --deal with killed heros
+    -- Heroes
     if killedUnit.IsHero and killedUnit:IsHero() then
         --if it's a hero, drop all carried raw meat, plus 3, and a bone
         meatStacks = killedUnit:GetModifierStackCount("modifier_meat_passive", nil)
@@ -543,7 +540,12 @@ function ITT:OnEntityKilled(keys)
             end
         end
 
-
+        -- Create a grave if respawn is disabled
+        local time = math.floor(GameRules:GetGameTime())
+        if time > GAME_PERIOD_GRACE then
+            killedUnit.grave = CreateUnitByName("gravestone", killedUnit:GetAbsOrigin(), false, killedUnit, killedUnit, killedUnit:GetTeamNumber())
+            grave.hero = killedUnit
+        end
     else
         --drop system
         for _,v in pairs(dropTable) do
@@ -582,12 +584,6 @@ function ITT:OnEntityKilled(keys)
             Spawns.neutralCount[unitName] = Spawns.neutralCount[unitName] - 1
         end
     end
-end
-
-function ITT:OnDotaPlayerKilled(keys)
-    local playerId = keys.PlayerID
-    print(playerId)
-    --print(PlayerResource:GetPlayer(playerID):GetAssignedHero())
 end
 
 function ITT:On_entity_hurt(data)
