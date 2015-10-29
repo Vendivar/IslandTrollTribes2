@@ -29,18 +29,13 @@ playerList = {}
 maxPlayerID = 0
 
 GAME_TICK_TIME              = 0.1   -- The game should update every tenth second
-GAME_CREATURE_TICK_TIME     = 120    -- Time for each creature spawn
-GAME_BUSH_TICK_TIME         = 30    --1in2 chance any bush will actually spawn so average timer is 2x
+GAME_BUSH_TICK_TIME         = 30    -- 1in2 chance any bush will actually spawn so average timer is 2x
 GAME_TROLL_TICK_TIME        = 0.5   -- Its really like its wc3!
 FLASH_ACK_THINK             = 2
 WIN_GAME_THINK              = 0.5 -- checks if you've won every x seconds
 
 BUILDING_TICK_TIME          = 0.03
 DROPMODEL_TICK_TIME         = 0.03
-
--- Game periods determine what is allowed to spawn, from start (0) to X seconds in
-GAME_PERIOD_GRACE           = 420
-GAME_PERIOD_EARLY           = 900
 
 -- Grace period respawn time in seconds
 GRACE_PERIOD_RESPAWN_TIME    = 3
@@ -73,20 +68,6 @@ MAX_SHOPS_ON_MAP = 1
 -- It can be used to pre-initialize any values/tables that will be needed later
 function ITT:InitGameMode()
     GameMode = GameRules:GetGameModeEntity()
-
-    -- This is the creature thinker. All neutral creature spawn logic goes here
-    GameMode:SetThink( "OnCreatureThink", ITT, "CreatureThink", 2 )
-    GameMode.neutralCurNum = {}
-    GameMode.neutralCurNum["npc_creep_elk_wild"] = 0
-    GameMode.neutralCurNum["npc_creep_hawk"] = 0
-    GameMode.neutralCurNum["npc_creep_fish"] = 0
-    GameMode.neutralCurNum["npc_creep_fish_green"] = 0
-    GameMode.neutralCurNum["npc_creep_wolf_jungle"] = 0
-    GameMode.neutralCurNum["npc_creep_bear_jungle"] = 0
-    GameMode.neutralCurNum["npc_creep_lizard"] = 0
-    GameMode.neutralCurNum["npc_creep_panther"] = 0
-    GameMode.neutralCurNum["npc_creep_panther_elder"] = 0
-    GameMode.neutralCurNum["npc_creep_mammoth"] = 0
 
     -- DebugPrint
     Convars:RegisterConvar('debug_spew', tostring(DEBUG_SPEW), 'Set to 1 to start spewing debug info. Set to 0 to disable.', 0)
@@ -236,22 +217,6 @@ function ITT:InitGameMode()
     local timeTxt = string.gsub(string.gsub(GetSystemTime(), ':', ''), '0','')
     math.randomseed(tonumber(timeTxt))
 
-    -- spawner_npc_bush_herb
-    -- spawner_npc_bush_river
-    -- spawner_npc_bush_mushroom
-    -- spawner_npc_bush_thistle
-    -- spawner_npc_bush_stash
-    -- spawner_npc_bush_herb_yellow
-    -- spawner_npc_bush_herb_blue
-    -- spawner_npc_bush_herb_purple
-    -- spawner_npc_bush_herb_orange
-    -- spawner_npc_bush_thief
-    -- spawner_npc_bush_scout
-
-    --prepare neutral spawns
-    self.NumPassiveNeutrals = 0
-    self.NumAggressiveNeutrals = 0
-
     GameRules.APPLIER = CreateItem("item_apply_modifiers", nil, nil)
 
     -- Custom Stats for STR/AGI/INT
@@ -261,6 +226,7 @@ function ITT:InitGameMode()
     GameRules.ClassInfo = LoadKeyValues("scripts/kv/class_info.kv")
     GameRules.BushInfo = LoadKeyValues("scripts/kv/bush_info.kv")
     GameRules.ItemInfo = LoadKeyValues("scripts/kv/item_info.kv")
+    GameRules.SpawnInfo = LoadKeyValues("scripts/kv/spawn_info.kv")
     GameRules.QuickCraft = LoadKeyValues("scripts/kv/quick_craft.kv")
     GameRules.AbilityKV = LoadKeyValues("scripts/npc/npc_abilities_custom.txt")
     GameRules.ItemKV = LoadKeyValues("scripts/npc/npc_items_custom.txt")
@@ -579,42 +545,41 @@ function ITT:OnEntityKilled(keys)
 
 
     else
-    --drop system
-    for _,v in pairs(dropTable) do
-        if unitName == v[1] then
-            for itemNum = 2,#v,1 do
-                itemName = v[itemNum][1]
-                itemChance = v[itemNum][2]
+        --drop system
+        for _,v in pairs(dropTable) do
+            if unitName == v[1] then
+                for itemNum = 2,#v,1 do
+                    itemName = v[itemNum][1]
+                    itemChance = v[itemNum][2]
 
-                if RandomInt(0, 100) <= itemChance then
-                    local newItem = CreateItem(itemName, nil, nil)
-                    CreateItemOnPositionSync(killedUnit:GetOrigin() + RandomVector(RandomInt(20,100)), newItem)
+                    if RandomInt(0, 100) <= itemChance then
+                        local newItem = CreateItem(itemName, nil, nil)
+                        CreateItemOnPositionSync(killedUnit:GetOrigin() + RandomVector(RandomInt(20,100)), newItem)
+                    end
                 end
             end
         end
-    end
 
-    --spawn young animals
-    local dieRoll = RandomInt(1,20)
-    local chance = 1
-    local bonusChance = killedUnit:GetModifierStackCount("modifier_spawn_chance",nil)
-    if bonusChance ~= nil then
-        chance = chance + bonusChance
-    end
+        --spawn young animals
+        local dieRoll = RandomInt(1,20)
+        local chance = 1
+        local bonusChance = killedUnit:GetModifierStackCount("modifier_spawn_chance",nil)
+        if bonusChance ~= nil then
+            chance = chance + bonusChance
+        end
 
-    if dieRoll <= chance then
-        print("Success! Spawning young animal")
-        for _,v in pairs(spawnTable) do
-            if unitName == v[1] then
-                CreateUnitByName(v[2],killedUnit:GetOrigin(), true,nil,nil,killer:GetTeam())
+        if dieRoll <= chance then
+            print("Success! Spawning young animal")
+            for _,v in pairs(spawnTable) do
+                if unitName == v[1] then
+                    CreateUnitByName(v[2],killedUnit:GetOrigin(), true,nil,nil,killer:GetTeam())
+                end
             end
         end
-    end
 
-    --tracking number of neutrals
-    --local numOfUnit = GameMode.neutralCurNum[unitName]
-    if GameMode.neutralCurNum[unitName] ~= nil then
-        GameMode.neutralCurNum[unitName] = GameMode.neutralCurNum[unitName] - 1
+        -- Tracking number of neutrals
+        if Spawns.neutralCount[unitName] then
+            Spawns.neutralCount[unitName] = Spawns.neutralCount[unitName] - 1
         end
     end
 end
@@ -708,98 +673,6 @@ function ITT:OnBuildingThink()
     end
     return GAME_TROLL_TICK_TIME
 end
-
--- This is similar, but handles spawning creatures
-function ITT:OnCreatureThink()
-
-    MAXIMUM_PASSIVE_NEUTRALS    = 300 --this isn't implemented yet
-    MAXIMUM_AGGRESSIVE_NEUTRALS = 20
-
-    if math.floor(GameRules:GetGameTime())>GAME_PERIOD_EARLY then
-    neutralSpawnTable = {
-        --{"creep_name", "spawner_name", spawn_chance, number_to_spawn},
-        {"npc_creep_elk_wild",      "spawner_neutral_elk",      100, 2},
-        {"npc_creep_hawk",          "spawner_neutral_hawk",     100, 2},
-        {"npc_creep_fish",          "spawner_neutral_fish",     100, 5},
-        {"npc_creep_fish_green",    "spawner_neutral_fish",     100, 2},
-        {"npc_creep_wolf_jungle",   "spawner_neutral_wolf",     100, 1},
-        {"npc_creep_bear_jungle",   "spawner_neutral_bear",     100, 1},
-        {"npc_creep_lizard",        "spawner_neutral_lizard",   100, 1},
-        {"npc_creep_panther",       "spawner_neutral_panther",  100, 1},
-    --  {"npc_creep_mammoth",       "spawner_neutral_mammoth",  0, 0},
-    --   {"npc_creep_panther_elder", "spawner_neutral_panther",  100, 1},
-    }
-        elseif math.floor(GameRules:GetGameTime())>GAME_PERIOD_GRACE then
-        neutralSpawnTable = {
-        --{"creep_name", "spawner_name", spawn_chance, number_to_spawn},
-        {"npc_creep_elk_wild",      "spawner_neutral_elk",      100, 2},
-        {"npc_creep_hawk",          "spawner_neutral_hawk",     100, 2},
-        {"npc_creep_fish",          "spawner_neutral_fish",     100, 5},
-        {"npc_creep_fish_green",    "spawner_neutral_fish",     100, 2},
-        {"npc_creep_wolf_jungle",   "spawner_neutral_wolf",     66, 1},
-        {"npc_creep_bear_jungle",   "spawner_neutral_bear",     50, 1},
-        {"npc_creep_lizard",        "spawner_neutral_lizard",   33, 1},
-        {"npc_creep_panther",       "spawner_neutral_panther",  5, 1},
-    --  {"npc_creep_mammoth",       "spawner_neutral_mammoth",  0, 0},
-    --   {"npc_creep_panther_elder", "spawner_neutral_panther",  100, 1},
-    }
-    else --at the start
-        neutralSpawnTable = {
-        --{"creep_name", "spawner_name", spawn_chance, number_to_spawn},
-        {"npc_creep_elk_wild",      "spawner_neutral_elk",      100, 2},
-        {"npc_creep_hawk",          "spawner_neutral_hawk",     10, 2},
-        {"npc_creep_fish",          "spawner_neutral_fish",     0, 5},
-        {"npc_creep_fish_green",    "spawner_neutral_fish",     0, 2},
-        {"npc_creep_wolf_jungle",   "spawner_neutral_wolf",     10, 1},
-        {"npc_creep_bear_jungle",   "spawner_neutral_bear",     0, 1},
-        {"npc_creep_lizard",        "spawner_neutral_lizard",   0, 1},
-        {"npc_creep_panther",       "spawner_neutral_panther",  0, 1},
-    --  {"npc_creep_mammoth",       "spawner_neutral_mammoth",  100, 1},
-    --   {"npc_creep_panther_elder", "spawner_neutral_panther",  100, 1},
-        }
-        
-        -- Spawn the mammoth at start
-        -- This needs to go on its spot
-        if (GameMode.neutralCurNum["npc_creep_mammoth"] == 0) then
-            SpawnCreature("npc_creep_mammoth", "spawner_neutral_mammoth")
-        end
-            
-        
-    
-    end
-
-    neutralMaxTable = {}
-        neutralMaxTable["npc_creep_elk_wild"] = 20
-        neutralMaxTable["npc_creep_hawk"] = 8
-        neutralMaxTable["npc_creep_fish"] = 20
-        neutralMaxTable["npc_creep_fish_green"] = 10
-        neutralMaxTable["npc_creep_wolf_jungle"] = 12
-        neutralMaxTable["npc_creep_bear_jungle"] = 8
-        neutralMaxTable["npc_creep_lizard"] = 8
-        neutralMaxTable["npc_creep_panther"] = 4
-        --neutralMaxTable["npc_creep_mammoth"] = 1
-        --neutralMaxTable["npc_creep_panther_elder"] = 4
-
-    for _,v in pairs(neutralSpawnTable) do
-        local creepName = v[1]
-        local spawnerName = v[2]
-        local spawnChance = v[3]
-        local numToSpawn = v[4]
-        for i=1,numToSpawn do
-            if (spawnChance >= RandomInt(1, 100)) and (GameMode.neutralCurNum[creepName] < neutralMaxTable[creepName]) then
-                -- Don't spawn fish on land
-                if creepName == "npc_creep_fish_green" or creepName == "npc_creep_fish" then
-                    SpawnRandomCreature(creepName, true)
-                else
-                    SpawnRandomCreature(creepName, false)
-                end
-            end
-        end
-    end
-
-    return GAME_CREATURE_TICK_TIME
-end
-
 
 function ITT:OnBushThink()
     --print("--Creating Items on Bushes--")
@@ -1127,7 +1000,9 @@ function ITT:OnGameRulesStateChange()
 --  print( "OnGameRulesStateChange: " .. nNewState )
 
     if nNewState == DOTA_GAMERULES_STATE_HERO_SELECTION then
-        print("DOTA_GAMERULES_STATE_HERO_SELECTION")
+
+        Spawns:Init()
+
         --self:AssignAllPlayersToTeams()
         GameRules:GetGameModeEntity():SetThink( "BroadcastPlayerTeamAssignments", self, 0 ) -- can't do this immediately because the player resource doesn't have the names yet
     end

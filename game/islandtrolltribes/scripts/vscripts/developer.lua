@@ -8,7 +8,7 @@ CHEAT_CODES = {
     ["acorns"] = function(...) ITT:Acorns(...) end, -- Make an acorn field
     ["spears"] = function(...) ITT:Spears(...) end, -- Make an spear field
     ["debug_creeps"] = function(...) ITT:DebugCreeps(...) end, -- Spawn All Creeps
-
+    ["fish"] = function(...) ITT:DebugFish(...) end, -- Spawn a shoal of fish
 }
 
 PLAYER_COMMANDS = {}
@@ -242,5 +242,13 @@ function ITT:SpawnCreeps( playerID )
         unit.vOwner = hero
         unit:SetControllableByPlayer(hero:GetPlayerID(), true )
         unit:SetForwardVector(Vector(0,-1,0))
+    end
+end
+
+function ITT:DebugFish()
+    local fishNames = { "npc_creep_fish_green", "npc_creep_fish"}
+    for i=1,100 do
+        local fish = fishNames[RandomInt(1,2)]
+        Spawns:Create( fish )
     end
 end

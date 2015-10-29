@@ -315,21 +315,17 @@ end
 
 --Compares two tables to see if they have the same values
 function CompareTables(table1, table2)
-    print("Comparing tables")
     if type(table1) ~= "table" or type(table2) ~= "table" then
         return false
     end
 
     for key,value in pairs(table1) do
-        print(key, table1[key], table2[key])
         if table2[key] == nil then
             return false
         elseif table2[key] ~= table1[key] then
             return false
         end
     end
-
-    print("check other table, just in case")
 
     for key,value in pairs(table2) do
         print(key, table2[key], table1[key])
@@ -339,8 +335,7 @@ function CompareTables(table1, table2)
             return false
         end
     end
-
-    print("Match!")
+    
     return true
 end
 

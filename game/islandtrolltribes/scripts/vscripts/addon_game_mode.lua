@@ -12,6 +12,7 @@ require('mechanics')
 require('mechanics/heat')
 require('mechanics/toolkit')
 require('itt')
+require('spawn')
 require('orders')
 require('damage')
 require('developer')
@@ -22,7 +23,6 @@ require('libraries/buildinghelper')
 
 -- This needs to be reviewed
 require("craftinghelper")
-require('logic_creature' )
 
 -- This should be a KV Table
 require('recipe_list')
