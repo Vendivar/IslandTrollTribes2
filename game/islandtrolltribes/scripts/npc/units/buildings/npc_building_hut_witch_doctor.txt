@@ -1,7 +1,7 @@
 "npc_building_hut_witch_doctor"
 {
 	"BaseClass"	"npc_dota_creature"
-	"Model"	"models/props_structures/sideshop_radiant002.vmdl"
+	"Model"	"models/props_structures/sniper_hut.vmdl"
 	"SoundSet"	"Creep_Good_Melee"
 	"HasInventory"	"1"
 	"MinimapIconSize"	"250"
@@ -11,7 +11,7 @@
 	"ModelScale"	"0.7"
 	"precache"
 	{
-		"model"	"models/props_debris/camp_fire001.vmdl"
+		"model"	"models/props_structures/sniper_hut.vmdl"
 		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts"
 		"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
 	}

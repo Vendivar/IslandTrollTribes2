@@ -1,7 +1,7 @@
 "npc_building_hatchery"
 {
 	"BaseClass"	"npc_dota_creature"
-	"Model"	"models/items/furion/staff_eagle_1.vmdl"
+	"Model"	"models/items/tiny_01/tiny_haunted_tree.vmdl"
 	"SoundSet"	"Creep_Good_Melee"
 	"HasInventory"	"1"
 	"MinimapIconSize"	"250"

@@ -1,7 +1,7 @@
 "npc_building_tannery"
 {
 	"BaseClass"	"npc_dota_creature"
-	"Model"	"models/props_structures/tent_dk_med.vmdl"
+	"Model"	"models/props_structures/secretshop_dire001.vmdl"
 	"SoundSet"	"Creep_Good_Melee"
 	"HasInventory"	"1"
 	"MinimapIconSize"	"250"

@@ -116,7 +116,7 @@
 	"npc_building_armory"
 	{
 		"BaseClass"	"npc_dota_creature"
-		"Model"	"models/props_structures/good_shop001.vmdl"
+		"Model"	"models/armory.vmdl"
 		"SoundSet"	"Creep_Good_Melee"
 		"HasInventory"	"1"
 		"MinimapIconSize"	"250"
@@ -321,7 +321,7 @@
 		"RingRadius"	"100"
 		"precache"
 		{
-			"model"	"models/props_debris/camp_fire001.vmdl"
+			"model"	"models/props_debris/creep_camp001d.vmdl"
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts"
 			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
 		}
@@ -354,7 +354,7 @@
 	"npc_building_hatchery"
 	{
 		"BaseClass"	"npc_dota_creature"
-		"Model"	"models/items/furion/staff_eagle_1.vmdl"
+		"Model"	"models/items/tiny_01/tiny_haunted_tree.vmdl"
 		"SoundSet"	"Creep_Good_Melee"
 		"HasInventory"	"1"
 		"MinimapIconSize"	"250"
@@ -364,7 +364,7 @@
 		"ModelScale"	"0.8"
 		"precache"
 		{
-			"model"	"models/props_debris/camp_fire001.vmdl"
+			"model"	"models/items/tiny_01/tiny_haunted_tree.vmdl"
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts"
 			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
 		}
@@ -395,7 +395,7 @@
 	"npc_building_hut_mud"
 	{
 		"BaseClass"	"npc_dota_creature"
-		"Model"	"models/props_structures/tent_dk_small.vmdl"
+		"Model"	"models/heroes/nerubian_assassin/mound.vmdl"
 		"SoundSet"	"Creep_Good_Melee"
 		"HasInventory"	"0"
 		"MinimapIconSize"	"250"
@@ -434,7 +434,7 @@
 	"npc_building_hut_troll"
 	{
 		"BaseClass"	"npc_dota_creature"
-		"Model"	"models/props_structures/sniper_hut.vmdl"
+		"Model"	"models/props_structures/tent_dk_med.vmdl"
 		"SoundSet"	"Creep_Good_Melee"
 		"HasInventory"	"0"
 		"MinimapIconSize"	"250"
@@ -444,7 +444,7 @@
 		"ModelScale"	"0.5"
 		"precache"
 		{
-			"model"	"models/props_debris/camp_fire001.vmdl"
+			"model"	"models/props_structures/tent_dk_med.vmdl"
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts"
 			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
 		}
@@ -474,7 +474,7 @@
 	"npc_building_hut_witch_doctor"
 	{
 		"BaseClass"	"npc_dota_creature"
-		"Model"	"models/props_structures/sideshop_radiant002.vmdl"
+		"Model"	"models/props_structures/sniper_hut.vmdl"
 		"SoundSet"	"Creep_Good_Melee"
 		"HasInventory"	"1"
 		"MinimapIconSize"	"250"
@@ -514,7 +514,7 @@
 	"npc_building_mix_pot"
 	{
 		"BaseClass"	"npc_dota_creature"
-		"Model"	"models/props_tree/stump001"
+		"Model"	"models/mixing_pot.vmdl"
 		"SoundSet"	"Creep_Good_Melee"
 		"HasInventory"	"1"
 		"MinimapIconSize"	"250"
@@ -635,16 +635,16 @@
 	"npc_building_spirit_ward"
 	{
 		"BaseClass"	"npc_dota_creature"
-		"Model"	"models/heroes/witchdoctor/witchdoctor_ward.vmdl"
+		"Model"	"models/heroes/undying/undying_tower.vmdl"
 		"SoundSet"	"Creep_Good_Melee"
 		"MinimapIconSize"	"250"
 		"HealthBarOffset"	"400"
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
-		"ModelScale"	"1.1"
+		"ModelScale"	"0.65"
 		"precache"
 		{
-			"model"	"models/props_debris/camp_fire001.vmdl"
+			"model"	"models/heroes/undying/undying_tower.vmdl"
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts"
 			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
 		}
@@ -713,7 +713,7 @@
 	"npc_building_tannery"
 	{
 		"BaseClass"	"npc_dota_creature"
-		"Model"	"models/props_structures/tent_dk_med.vmdl"
+		"Model"	"models/props_structures/secretshop_dire001.vmdl"
 		"SoundSet"	"Creep_Good_Melee"
 		"HasInventory"	"1"
 		"MinimapIconSize"	"250"
@@ -723,7 +723,7 @@
 		"ModelScale"	"0.7"
 		"precache"
 		{
-			"model"	"models/props_debris/camp_fire001.vmdl"
+			"model"	"models/props_structures/secretshop_dire001.vmdl"
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts"
 			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
 		}
@@ -755,7 +755,7 @@
 	"npc_building_teleport_beacon"
 	{
 		"BaseClass"	"npc_dota_creature"
-		"Model"	"models/items/wards/nexon_sotdaeward/nexon_sotdaeward.vmdl"
+		"Model"	"models/items/pugna/ward/nether_grandmasters_ward/nether_grandmasters_ward.vmdl"
 		"SoundSet"	"Creep_Good_Melee"
 		"MinimapIconSize"	"250"
 		"HealthBarOffset"	"400"
@@ -763,7 +763,7 @@
 		"RingRadius"	"100"
 		"precache"
 		{
-			"model"	"models/props_debris/camp_fire001.vmdl"
+			"model"	"models/items/pugna/ward/nether_grandmasters_ward/nether_grandmasters_ward.vmdl"
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts"
 			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
 		}
@@ -832,7 +832,7 @@
 	"npc_building_workshop"
 	{
 		"BaseClass"	"npc_dota_creature"
-		"Model"	"models/props_structures/shop_newplayerexperience_01.vmdl"
+		"Model"	"models/items/rattletrap/battletrap_cog/battletrap_cog.vmdl"
 		"SoundSet"	"Creep_Good_Melee"
 		"HasInventory"	"1"
 		"ConsideredHero"	"1"
@@ -843,7 +843,7 @@
 		"RingRadius"	"100"
 		"precache"
 		{
-			"model"	"models/props_debris/camp_fire001.vmdl"
+			"model"	"models/items/rattletrap/battletrap_cog/battletrap_cog.vmdl"
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts"
 			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
 		}
@@ -1033,7 +1033,7 @@
 	"npc_bush_mushroom"
 	{
 		"BaseClass"	"npc_dota_creature"
-		"Model"	"models/props_nature/mushroom_morel.vmdl"
+		"Model"	"models/props_nature/mushroom_wild001.vmdl"
 		"SoundSet"	"0"
 		"Level"	"1"
 		"ModelScale"	"2.0"

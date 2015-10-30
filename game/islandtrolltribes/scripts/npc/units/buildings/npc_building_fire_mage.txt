@@ -1,7 +1,7 @@
 "npc_building_fire_mage"
 {
 	"BaseClass"	"npc_dota_creature"
-	"Model"	"models/props_debris/camp_fire001.vmdl"
+	"Model"	"models/props_debris/creep_camp001d.vmdl"
 	"SoundSet"	"Creep_Good_Melee"
 	"MinimapIconSize"	"250"
 	"HealthBarOffset"	"400"
@@ -9,7 +9,7 @@
 	"RingRadius"	"100"
 	"precache"
 	{
-		"model"	"models/props_debris/camp_fire001.vmdl"
+		"model"	"models/props_debris/creep_camp001d.vmdl  "
 		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts"
 		"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
 	}

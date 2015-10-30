@@ -1,7 +1,7 @@
 "npc_building_workshop"
 {
 	"BaseClass"	"npc_dota_creature"
-	"Model"	"models/props_structures/shop_newplayerexperience_01.vmdl"
+	"Model"	"models/items/rattletrap/battletrap_cog/battletrap_cog.vmdl"
 	"SoundSet"	"Creep_Good_Melee"
 	"HasInventory"	"1"
 	"ConsideredHero"	"1"

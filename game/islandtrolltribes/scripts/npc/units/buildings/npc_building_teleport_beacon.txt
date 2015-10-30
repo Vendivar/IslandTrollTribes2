@@ -1,15 +1,15 @@
 "npc_building_teleport_beacon"
 {
 	"BaseClass"	"npc_dota_creature"
-	"Model"	"models/items/wards/nexon_sotdaeward/nexon_sotdaeward.vmdl"
+	"Model"	"models/items/pugna/ward/nether_grandmasters_ward/nether_grandmasters_ward.vmdl"
 	"SoundSet"	"Creep_Good_Melee"
-	"MinimapIconSize"	"250"
+	"MinimapIconSize"	"25"
 	"HealthBarOffset"	"400"
 	"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 	"RingRadius"	"100"
 	"precache"
 	{
-		"model"	"models/props_debris/camp_fire001.vmdl"
+		"model"	"models/items/pugna/ward/nether_grandmasters_ward/nether_grandmasters_ward.vmdl"
 		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts"
 		"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
 	}

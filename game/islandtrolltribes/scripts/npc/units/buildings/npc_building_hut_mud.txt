@@ -1,7 +1,7 @@
 "npc_building_hut_mud"
 {
 	"BaseClass"	"npc_dota_creature"
-	"Model"	"models/props_structures/tent_dk_small.vmdl"
+	"Model"	"models/heroes/nerubian_assassin/mound.vmdl"
 	"SoundSet"	"Creep_Good_Melee"
 	"HasInventory"	"0"
 	"MinimapIconSize"	"250"

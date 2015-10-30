@@ -1,7 +1,7 @@
 "npc_building_spirit_ward"
 {
 	"BaseClass"	"npc_dota_creature"
-	"Model"	"models/heroes/witchdoctor/witchdoctor_ward.vmdl"
+	"Model"	"models/heroes/undying/undying_tower.vmdl"
 	"SoundSet"	"Creep_Good_Melee"
 	"MinimapIconSize"	"250"
 	"HealthBarOffset"	"400"
@@ -10,7 +10,7 @@
 	"ModelScale"	"1.1"
 	"precache"
 	{
-		"model"	"models/props_debris/camp_fire001.vmdl"
+		"model"	"models/heroes/undying/undying_tower.vmdl"
 		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts"
 		"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
 	}
