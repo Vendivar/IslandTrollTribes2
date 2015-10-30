@@ -7,6 +7,7 @@
 	"HealthBarOffset"	"400"
 	"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 	"RingRadius"	"100"
+	"ModelScale"	"0.8"
 	"precache"
 	{
 		"model"	"models/props_structures/tent_dk_small.vmdl"

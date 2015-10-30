@@ -361,7 +361,7 @@
 		"HealthBarOffset"	"400"
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
-		"ModelScale"	"0.8"
+		"ModelScale"	"1.0"
 		"precache"
 		{
 			"model"	"models/props_debris/camp_fire001.vmdl"
@@ -441,7 +441,7 @@
 		"HealthBarOffset"	"400"
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
-		"ModelScale"	"0.5"
+		"ModelScale"	"0.65"
 		"precache"
 		{
 			"model"	"models/props_debris/camp_fire001.vmdl"
@@ -481,7 +481,7 @@
 		"HealthBarOffset"	"400"
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
-		"ModelScale"	"0.7"
+		"ModelScale"	"0.5"
 		"precache"
 		{
 			"model"	"models/props_structures/sniper_hut.vmdl"
@@ -521,7 +521,7 @@
 		"HealthBarOffset"	"400"
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
-		"ModelScale"	"1.2"
+		"ModelScale"	"0.9"
 		"precache"
 		{
 			"model"	"models/props_debris/camp_fire001.vmdl"
@@ -557,6 +557,7 @@
 		"Model"	"models/props_structures/wooden_sentry_tower001.vmdl"
 		"SoundSet"	"Creep_Good_Melee"
 		"HasInventory"	"0"
+		"ModelScale"	"0.8"
 		"MinimapIconSize"	"250"
 		"HealthBarOffset"	"400"
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
@@ -601,7 +602,7 @@
 		"HealthBarOffset"	"400"
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
-		"ModelScale"	"0.6"
+		"ModelScale"	"0.4"
 		"precache"
 		{
 			"model"	"models/props_debris/camp_fire001.vmdl"
@@ -641,7 +642,7 @@
 		"HealthBarOffset"	"400"
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
-		"ModelScale"	"1.1"
+		"ModelScale"	"0.85"
 		"precache"
 		{
 			"model"	"models/heroes/undying/undying_tower.vmdl"
@@ -799,6 +800,7 @@
 		"HealthBarOffset"	"400"
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
+		"ModelScale"	"0.8"
 		"precache"
 		{
 			"model"	"models/props_structures/tent_dk_small.vmdl"
@@ -834,6 +836,7 @@
 		"BaseClass"	"npc_dota_creature"
 		"Model"	"models/items/rattletrap/battletrap_cog/battletrap_cog.vmdl"
 		"SoundSet"	"Creep_Good_Melee"
+		"ModelScale"	"1.2"
 		"HasInventory"	"1"
 		"ConsideredHero"	"1"
 		"Level"	"1"

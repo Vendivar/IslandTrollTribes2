@@ -34,7 +34,7 @@
     "UpdateHealth"                  "1" //bool
     "Scale"                         "0" //bool
     "PlayerCanControl"              "1" //bool
-
+        "ModelRotation"                 "90"
     "UnitName"                      "npc_building_smoke_house"
     "AbilityCooldown"               "0"
     "AbilityGoldCost"               "0"

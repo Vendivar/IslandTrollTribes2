@@ -3,6 +3,7 @@
 	"BaseClass"	"npc_dota_creature"
 	"Model"	"models/items/rattletrap/battletrap_cog/battletrap_cog.vmdl"
 	"SoundSet"	"Creep_Good_Melee"
+	"ModelScale"	"1.2"
 	"HasInventory"	"1"
 	"ConsideredHero"	"1"
 	"Level"	"1"
