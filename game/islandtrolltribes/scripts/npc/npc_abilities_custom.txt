@@ -546,6 +546,9 @@
 		{
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_lina.vsndevts"
 		}
+	
+		"AbilitySharedWithTeammates" "1"
+		
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -1047,6 +1050,8 @@
 	
 	    "AbilityCastRange"     "%radius"
 	
+	    "AbilitySharedWithTeammates" "1"
+	
 	    "AbilitySpecial"
 	    {
 	        "01"
@@ -1074,6 +1079,8 @@
 	
 	    "AbilityCastRange"     "%radius"
 	
+	    "AbilitySharedWithTeammates" "1"
+	
 	    "AbilitySpecial"
 	    {
 	        "01"
@@ -1100,6 +1107,8 @@
 	    "MaxLevel"             "1"
 	
 	    "AbilityCastRange"     "%radius"
+	
+	    "AbilitySharedWithTeammates" "1"
 	
 	    "AbilitySpecial"
 	    {
@@ -12500,6 +12509,9 @@
 		"AbilityCooldown"	"0"
 		"AbilityCastRange"	"%cast_range"
 		"AbilityManaCost"	"0"
+	
+		"AbilitySharedWithTeammates" "1"
+		
 		"Precache"
 		{
 			"particle_folder"	"particles/newplayer_fx"
@@ -12629,6 +12641,9 @@
 		"AbilityCooldown"	"0"
 		"AbilityCastRange"	"%cast_range"
 		"AbilityManaCost"	"0"
+	
+		"AbilitySharedWithTeammates" "1"
+		
 		"Precache"
 		{
 			"particle_folder"	"particles/newplayer_fx"

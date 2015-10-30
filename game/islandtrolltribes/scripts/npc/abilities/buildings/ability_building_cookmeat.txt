@@ -9,6 +9,9 @@
 	{
 		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_lina.vsndevts"
 	}
+
+	"AbilitySharedWithTeammates" "1"
+	
 	"OnSpellStart"
 	{
 		"RunScript"

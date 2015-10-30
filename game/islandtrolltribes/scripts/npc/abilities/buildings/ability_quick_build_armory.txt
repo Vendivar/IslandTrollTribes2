@@ -7,6 +7,8 @@
 
     "AbilityCastRange"     "%radius"
 
+    "AbilitySharedWithTeammates" "1"
+
     "AbilitySpecial"
     {
         "01"

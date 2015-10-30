@@ -10,6 +10,9 @@
 	"AbilityCooldown"	"0"
 	"AbilityCastRange"	"%cast_range"
 	"AbilityManaCost"	"0"
+
+	"AbilitySharedWithTeammates" "1"
+	
 	"Precache"
 	{
 		"particle_folder"	"particles/newplayer_fx"
