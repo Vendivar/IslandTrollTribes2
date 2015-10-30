@@ -3,7 +3,7 @@
 	"ID"	"1122"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"building_kit_chest_storage"
+	"AbilityTextureName"	"clay_living_old"
 	"Model"	"models/props_debris/creep_camp001j.vmdl"
 	"Effect"	""
 	"ItemCost"	"9"
@@ -21,7 +21,11 @@
 	"UIPickupSound"	"Item.PickUpGemShop"
 	"UIDropSound"	"Item.DropGemShop"
 	"WorldDropSound"	"Item.DropGemWorld"
-	
+		    "Custom"
+    {
+        "ModelScale"    "0.65"
+    }
+
 	// BuildingHelper info
     "Building"                      "1" //bool
     "BuildingSize"                  "2" 

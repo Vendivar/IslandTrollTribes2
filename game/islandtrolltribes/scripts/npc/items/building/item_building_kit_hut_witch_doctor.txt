@@ -21,6 +21,10 @@
 	"UIPickupSound"	"Item.PickUpGemShop"
 	"UIDropSound"	"Item.DropGemShop"
 	"WorldDropSound"	"Item.DropGemWorld"
+	    "Custom"
+    {
+        "ModelScale"    "0.65"
+    }
 
 	// BuildingHelper info
     "Building"                      "1" //bool

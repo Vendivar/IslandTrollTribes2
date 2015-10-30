@@ -37,6 +37,11 @@
     "ItemInitialCharges"            "1"
     // End of BuildingHelper info
 
+    "Custom"
+    {
+        "ModelScale"    "0.65"
+    }
+
     "AbilitySpecial"
     {
         "01"
