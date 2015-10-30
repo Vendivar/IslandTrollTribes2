@@ -17,10 +17,8 @@ function ITT:FilterDamage( filterTable )
         local inflictor = filterTable["entindex_inflictor_const"]
         local damage = filterTable["damage"] --Post reduction
         if not inflictor then
-
-            if IsFlyingUnit(victim) then
-                return false
-            end
+            -- Physical autoattack filtering here
+            
         end
     end
 

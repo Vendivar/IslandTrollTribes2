@@ -28,6 +28,17 @@ function ITT:FilterExecuteOrder( filterTable )
     end
 
     ------------------------------------------------
+    --            Attacks vs Flying Units         --
+    ------------------------------------------------
+    if targetIndex and order_type == DOTA_UNIT_ORDER_ATTACK_TARGET then
+        local target = EntIndexToHScript(targetIndex)
+        if IsFlyingUnit(target) then
+            SendErrorMessage(issuer, "#error_cant_attack_air")
+            return false
+        end
+    end
+
+    ------------------------------------------------
     --          Transfer Range Increase           --
     ------------------------------------------------
     if targetIndex and abilityIndex and order_type == DOTA_UNIT_ORDER_GIVE_ITEM then

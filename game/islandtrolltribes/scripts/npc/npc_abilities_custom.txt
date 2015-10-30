@@ -1523,6 +1523,36 @@
 	
 		}
 	}
+	"hawk_passive"
+	{
+	    "BaseClass"             "ability_datadriven"
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	    "MaxLevel"  "1"
+	
+	    "Modifiers"
+	    {
+	        "modifier_hawk_passive"
+	        {
+	            "Passive"            "1"
+	            "IsHidden"           "1"
+	    
+	            "Aura"              "modifier_hawk_fly_aggro"
+	            "Aura_Radius"       "600"
+	            "Aura_Teams"        "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	            "Aura_Types"        "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	            "Aura_ApplyToCaster" "0"
+	        }
+	
+	        "modifier_hawk_fly_aggro"
+	        {
+	            "IsHidden"  "1"
+	            "Properties"
+	            {
+	                "MODIFIER_PROPERTY_DISABLE_AUTOATTACK" "1"
+	            }
+	        }
+	    }
+	}
 	"ability_empty1"
 	{
 		"BaseClass"	"ability_datadriven"
