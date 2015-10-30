@@ -32,7 +32,7 @@ function ITT:FilterExecuteOrder( filterTable )
     ------------------------------------------------
     if targetIndex and order_type == DOTA_UNIT_ORDER_ATTACK_TARGET then
         local target = EntIndexToHScript(targetIndex)
-        if IsFlyingUnit(target) then
+        if target.HasFlyMovementCapabilit and IsFlyingUnit(target) then
             SendErrorMessage(issuer, "#error_cant_attack_air")
             return false
         end
