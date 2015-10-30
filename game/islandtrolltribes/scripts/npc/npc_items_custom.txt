@@ -2568,6 +2568,11 @@
 	    "ItemInitialCharges"            "1"
 	    // End of BuildingHelper info
 	
+	    "Custom"
+	    {
+	        "ModelScale"    "0.65"
+	    }
+	
 	    "AbilitySpecial"
 	    {
 	        "01"
@@ -2624,6 +2629,10 @@
 	    "AbilityGoldCost"               "0"
 	    "ItemInitialCharges"            "1"
 	    // End of BuildingHelper info
+		    "Custom"
+	    {
+	        "ModelScale"    "0.65"
+	    }
 	
 	    "AbilitySpecial"
 	    {
@@ -2740,6 +2749,10 @@
 	    "AbilityGoldCost"               "0"
 	    "ItemInitialCharges"            "1"
 	    // End of BuildingHelper info
+		    "Custom"
+	    {
+	        "ModelScale"    "0.65"
+	    }
 	
 	    "AbilitySpecial"
 	    {
@@ -2797,6 +2810,10 @@
 	    "AbilityGoldCost"               "0"
 	    "ItemInitialCharges"            "1"
 	    // End of BuildingHelper info
+		    "Custom"
+	    {
+	        "ModelScale"    "0.65"
+	    }
 	
 	    "AbilitySpecial"
 	    {
@@ -2840,6 +2857,10 @@
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
+		    "Custom"
+	    {
+	        "ModelScale"    "0.65"
+	    }
 	
 		// BuildingHelper info
 	    "Building"                      "1" //bool
@@ -2898,6 +2919,10 @@
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
+		    "Custom"
+	    {
+	        "ModelScale"    "0.65"
+	    }
 	
 		// BuildingHelper info
 	    "Building"                      "1" //bool
@@ -2955,7 +2980,11 @@
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
-	    
+	    	    "Custom"
+	    {
+	        "ModelScale"    "0.65"
+	    }
+	
 		// BuildingHelper info
 	    "Building"                      "1" //bool
 	    "BuildingSize"                  "2" 
@@ -3012,7 +3041,11 @@
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
-		
+			    "Custom"
+	    {
+	        "ModelScale"    "0.65"
+	    }
+	
 		// BuildingHelper info
 	    "Building"                      "1" //bool
 	    "BuildingSize"                  "2" 
@@ -3070,7 +3103,11 @@
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
-		
+			    "Custom"
+	    {
+	        "ModelScale"    "0.65"
+	    }
+	
 		// BuildingHelper info
 	    "Building"                      "1" //bool
 	    "BuildingSize"                  "2" 
@@ -3110,7 +3147,7 @@
 		"ID"	"1122"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"building_kit_chest_storage"
+		"AbilityTextureName"	"clay_living_old"
 		"Model"	"models/props_debris/creep_camp001j.vmdl"
 		"Effect"	""
 		"ItemCost"	"9"
@@ -3128,7 +3165,11 @@
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
-		
+			    "Custom"
+	    {
+	        "ModelScale"    "0.65"
+	    }
+	
 		// BuildingHelper info
 	    "Building"                      "1" //bool
 	    "BuildingSize"                  "2" 
@@ -3186,7 +3227,11 @@
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
-		
+			    "Custom"
+	    {
+	        "ModelScale"    "0.65"
+	    }
+	
 		// BuildingHelper info
 	    "Building"                      "1" //bool
 	    "BuildingSize"                  "2" 
@@ -3244,7 +3289,11 @@
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
-		
+			    "Custom"
+	    {
+	        "ModelScale"    "0.65"
+	    }
+	
 		// BuildingHelper info
 	    "Building"                      "1" //bool
 	    "BuildingSize"                  "2" 
@@ -3301,7 +3350,11 @@
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
-		
+			    "Custom"
+	    {
+	        "ModelScale"    "0.65"
+	    }
+	
 		// BuildingHelper info
 	    "Building"                      "1" //bool
 	    "BuildingSize"                  "2" 
@@ -3358,7 +3411,11 @@
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
-		
+			    "Custom"
+	    {
+	        "ModelScale"    "0.65"
+	    }
+	
 		// BuildingHelper info
 	    "Building"                      "1" //bool
 	    "BuildingSize"                  "2" 
@@ -3415,7 +3472,11 @@
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
-		
+			    "Custom"
+	    {
+	        "ModelScale"    "0.65"
+	    }
+	
 		// BuildingHelper info
 	    "Building"                      "1" //bool
 	    "BuildingSize"                  "2" 
@@ -3472,7 +3533,11 @@
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
-		
+			    "Custom"
+	    {
+	        "ModelScale"    "0.65"
+	    }
+	
 		// BuildingHelper info
 	    "Building"                      "1" //bool
 	    "BuildingSize"                  "2" 
@@ -10656,7 +10721,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"magic_raw"
-		"Model"	"models/items/abaddon/alliance_abba_weapon/alliance_abba_weapon_fx.vmdl"
+		"Model"	"models/heroes/oracle/crystal_ball.vmdl"
 		"Effect"	"particles/econ/items/faceless_void/faceless_void_weapon_viridus/faceless_void_weapon_glow_viridus.vpcf"
 		"AbilityCastPoint"	"0.5"
 		"ItemCost"	"8"
