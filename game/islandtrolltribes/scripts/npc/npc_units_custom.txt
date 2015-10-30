@@ -126,7 +126,7 @@
 		"RingRadius"	"100"
 		"precache"
 		{
-			"model"	"models/props_debris/camp_fire001.vmdl"
+			"model"	"models/armory.vmdl"
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts"
 			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
 		}
@@ -313,7 +313,7 @@
 	"npc_building_fire_mage"
 	{
 		"BaseClass"	"npc_dota_creature"
-		"Model"	"models/props_debris/camp_fire001.vmdl"
+		"Model"	"models/props_debris/creep_camp001d.vmdl"
 		"SoundSet"	"Creep_Good_Melee"
 		"MinimapIconSize"	"250"
 		"HealthBarOffset"	"400"
@@ -321,7 +321,7 @@
 		"RingRadius"	"100"
 		"precache"
 		{
-			"model"	"models/props_debris/creep_camp001d.vmdl"
+			"model"	"models/props_debris/creep_camp001d.vmdl  "
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts"
 			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
 		}
@@ -364,7 +364,7 @@
 		"ModelScale"	"0.8"
 		"precache"
 		{
-			"model"	"models/items/tiny_01/tiny_haunted_tree.vmdl"
+			"model"	"models/props_debris/camp_fire001.vmdl"
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts"
 			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
 		}
@@ -444,7 +444,7 @@
 		"ModelScale"	"0.5"
 		"precache"
 		{
-			"model"	"models/props_structures/tent_dk_med.vmdl"
+			"model"	"models/props_debris/camp_fire001.vmdl"
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts"
 			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
 		}
@@ -484,7 +484,7 @@
 		"ModelScale"	"0.7"
 		"precache"
 		{
-			"model"	"models/props_debris/camp_fire001.vmdl"
+			"model"	"models/props_structures/sniper_hut.vmdl"
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts"
 			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
 		}
@@ -641,7 +641,7 @@
 		"HealthBarOffset"	"400"
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
-		"ModelScale"	"0.65"
+		"ModelScale"	"1.1"
 		"precache"
 		{
 			"model"	"models/heroes/undying/undying_tower.vmdl"
@@ -723,7 +723,7 @@
 		"ModelScale"	"0.7"
 		"precache"
 		{
-			"model"	"models/props_structures/secretshop_dire001.vmdl"
+			"model"	"models/props_debris/camp_fire001.vmdl"
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts"
 			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
 		}
@@ -757,7 +757,7 @@
 		"BaseClass"	"npc_dota_creature"
 		"Model"	"models/items/pugna/ward/nether_grandmasters_ward/nether_grandmasters_ward.vmdl"
 		"SoundSet"	"Creep_Good_Melee"
-		"MinimapIconSize"	"250"
+		"MinimapIconSize"	"25"
 		"HealthBarOffset"	"400"
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
@@ -843,7 +843,7 @@
 		"RingRadius"	"100"
 		"precache"
 		{
-			"model"	"models/items/rattletrap/battletrap_cog/battletrap_cog.vmdl"
+			"model"	"models/props_debris/camp_fire001.vmdl"
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts"
 			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
 		}
@@ -877,7 +877,6 @@
 		"SoundSet"	"0"
 		"Level"	"1"
 		"ModelScale"	"2.0"
-		"SelectionGroup"	""
 		"Ability1"	"ability_bush_passive"
 		"Ability2"	""
 		"Ability3"	""
@@ -909,7 +908,6 @@
 		"SoundSet"	"0"
 		"Level"	"1"
 		"ModelScale"	"1.5"
-		"SelectionGroup"	""
 		"Ability1"	"ability_bush_passive"
 		"Ability2"	""
 		"Ability3"	""
@@ -941,7 +939,6 @@
 		"SoundSet"	"0"
 		"Level"	"1"
 		"ModelScale"	"1.5"
-		"SelectionGroup"	""
 		"Ability1"	"ability_bush_passive"
 		"Ability2"	""
 		"Ability3"	""
@@ -973,7 +970,6 @@
 		"SoundSet"	"0"
 		"Level"	"1"
 		"ModelScale"	"1.5"
-		"SelectionGroup"	""
 		"Ability1"	"ability_bush_passive"
 		"Ability2"	""
 		"Ability3"	""
@@ -1005,7 +1001,6 @@
 		"SoundSet"	"0"
 		"Level"	"1"
 		"ModelScale"	"1.5"
-		"SelectionGroup"	""
 		"Ability1"	"ability_bush_passive"
 		"Ability2"	""
 		"Ability3"	""
@@ -1036,8 +1031,7 @@
 		"Model"	"models/props_nature/mushroom_wild001.vmdl"
 		"SoundSet"	"0"
 		"Level"	"1"
-		"ModelScale"	"2.0"
-		"SelectionGroup"	""
+		"ModelScale"	"0.5"
 		"Ability1"	"ability_bush_passive"
 		"Ability2"	""
 		"Ability3"	""
@@ -1069,7 +1063,6 @@
 		"SoundSet"	"0"
 		"Level"	"1"
 		"ModelScale"	"1.5"
-		"SelectionGroup"	""
 		"Ability1"	"ability_bush_passive"
 		"Ability2"	""
 		"Ability3"	""
@@ -1101,7 +1094,6 @@
 		"SoundSet"	"0"
 		"Level"	"1"
 		"ModelScale"	"1.5"
-		"SelectionGroup"	""
 		"Ability1"	"ability_bush_scout_passive"
 		"Ability2"	""
 		"Ability3"	""
@@ -1133,7 +1125,6 @@
 		"SoundSet"	"0"
 		"Level"	"1"
 		"ModelScale"	"1.5"
-		"SelectionGroup"	""
 		"Ability1"	"ability_bush_passive"
 		"Ability2"	""
 		"Ability3"	""
@@ -1165,7 +1156,6 @@
 		"SoundSet"	"0"
 		"Level"	"1"
 		"ModelScale"	"1.5"
-		"SelectionGroup"	""
 		"Ability1"	"ability_bush_passive"
 		"Ability2"	""
 		"Ability3"	""
@@ -1197,7 +1187,6 @@
 		"SoundSet"	"0"
 		"Level"	"1"
 		"ModelScale"	"0.4"
-		"SelectionGroup"	""
 		"Ability1"	"ability_bush_passive"
 		"Ability2"	""
 		"Ability3"	""

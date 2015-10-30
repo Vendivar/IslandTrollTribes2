@@ -2110,7 +2110,7 @@ function QuickCraftWorkshop(keys)
         end
     end
 end
-]]
+
 function BushZoneMajority(users, default)
     local good = users[DOTA_TEAM_GOODGUYS]
     local bad = users[DOTA_TEAM_BADGUYS]
@@ -2168,7 +2168,7 @@ function BushZoneOut(keys)
 
     bush:SetTeam(majority)
 
-end
+end]]
 
 function MammothBlockSuccess(keys)
     attacker = keys.attacker

@@ -220,6 +220,16 @@ function ITT:BushGather( event )
         Timers:RemoveTimer(unit.orderTimer)
     end
 
+    if (bush:GetUnitName() == "npc_bush_scout" and unit:GetClassname() ~= "npc_dota_hero_lion") then
+        SendErrorMessage(playerID, "#error_scout_only_bush")
+        return --exits if bush is used by anything other than a scout
+    end
+
+    if (bush:GetUnitName() == "npc_bush_thief" and unit:GetClassname() ~= "npc_dota_hero_riki") then
+        SendErrorMessage(playerID, "#error_thief_only_bush")
+        return --exits if bush is used by anything other than a thief
+    end
+
     -- Move towards the bush
     local position = bush:GetAbsOrigin()
     ExecuteOrderFromTable({ UnitIndex = unit:GetEntityIndex(), OrderType = DOTA_UNIT_ORDER_MOVE_TO_POSITION, Position = position, Queue = false})

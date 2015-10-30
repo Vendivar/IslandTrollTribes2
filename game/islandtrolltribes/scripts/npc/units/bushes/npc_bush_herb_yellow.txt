@@ -5,7 +5,6 @@
 	"SoundSet"	"0"
 	"Level"	"1"
 	"ModelScale"	"1.5"
-	"SelectionGroup"	""
 	"Ability1"	"ability_bush_passive"
 	"Ability2"	""
 	"Ability3"	""
