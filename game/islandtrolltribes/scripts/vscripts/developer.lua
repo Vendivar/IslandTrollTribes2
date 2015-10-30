@@ -9,6 +9,7 @@ CHEAT_CODES = {
     ["spears"] = function(...) ITT:Spears(...) end, -- Make an spear field
     ["debug_creeps"] = function(...) ITT:DebugCreeps(...) end, -- Spawn All Creeps
     ["fish"] = function(...) ITT:DebugFish(...) end, -- Spawn a shoal of fish
+    ["ingredients"] = function(...) ITT:CreateIngredients(...) end, -- Creates ingredients for an item
 }
 
 PLAYER_COMMANDS = {}
@@ -17,7 +18,8 @@ PLAYER_COMMANDS = {}
 function ITT:OnPlayerChat(keys)
     local text = keys.text
     local userID = keys.userid
-    local playerID = self.vUserIds[userID]:GetPlayerID()
+    local playerID = self.vUserIds[userID] and self.vUserIds[userID]:GetPlayerID()
+    if not playerID then return end
 
     -- Handle '-command'
     if StringStartsWith(text, "-") then
@@ -250,5 +252,39 @@ function ITT:DebugFish()
     for i=1,100 do
         local fish = fishNames[RandomInt(1,2)]
         Spawns:Create( fish )
+    end
+end
+
+function ITT:CreateIngredients( playerID, itemName )
+    if not itemName then
+        Say(nil,"Must pass an item name!", false)
+        return
+    end
+
+    local itemIngredients = GameRules.Crafting['Recipes'][itemName]
+    if not itemIngredients then
+        Say(nil,"["..itemName.."] <font color='#ff0000'> is not a valid item name for crafting!</font>", false)
+        return
+    else
+        local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+        local origin = hero:GetAbsOrigin()
+        for k,v in pairs(itemIngredients) do
+            for i=1,v do
+                local pos_launch = origin + RandomVector(RandomInt(1,200))
+
+                local item
+                if string.match(k, "any_") then
+                    item = CreateItem( GetRandomAliasFor(k), nil, nil )
+                else
+                    item = CreateItem(k, nil, nil)
+                end
+                local drop = CreateItemOnPositionSync( origin, item )
+                if item then
+                    item:LaunchLoot(false, 200, 0.75, pos_launch)
+                else
+                    print("Fail, couldn't create item: "..k)
+                end
+            end  
+        end
     end
 end

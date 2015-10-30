@@ -23,10 +23,10 @@ function QuickCraft(keys)
     
     local match
     -- Check if the items dropped match any recipe
-    -- The order that the reciepes are compared might matter in the results, it will be a bit random with this method
+    -- The order that the recipes are compared might matter in the results, it will be a bit random with this method
     for recipeName,recipeIngredients in pairs(recipeTable) do 
         
-        -- If the drop list contains enough of the ingredient items defined in the reciepeTable, it can be crafted and the drops need to be consumed
+        -- If the drop list contains enough of the ingredient items defined in the recipeTable, it can be crafted and the drops need to be consumed
         local craftingItems = CanCraft(buildingName, recipeName, drops)
         if craftingItems then
             match = recipeName

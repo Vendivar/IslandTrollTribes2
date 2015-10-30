@@ -4,6 +4,7 @@
     //Steel Boots, Gloves, Coat:     Basic Boots/Gloves/Coat, Steel Ingot, Steel Ingot
 
     // Auto combinable items on any hero inventory
+    // BUG: Some recipes might not be able to be built because of how auto-combine will craft before you pickup the whole ingredients
     "Recipes"
     {
         "item_building_kit_fire_basic"
@@ -13,17 +14,17 @@
             "item_stick"    "1"
         }
 
-        "item_building_kit_tent"
-        {
-            "item_stick"    "1"
-            "any_hide"      "2"
-        }
-
         "item_building_kit_hut_troll"
         {
             "item_ball_clay" "1"
             "item_stick"     "2"  
             "any_hide"       "2"
+        }
+
+        "item_building_kit_tent"
+        {
+            "item_stick"    "1"
+            "any_hide"      "2"
         }
 
         "item_building_kit_hut_mud"
@@ -42,7 +43,7 @@
         "item_building_kit_smoke_house"
         {
             "item_stick"     "1"
-            "item_hide_any"  "1"
+            "any_hide"       "1"
             "item_ball_clay" "1"
         }
 

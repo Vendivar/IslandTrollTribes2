@@ -72,9 +72,6 @@ function ITT:InitGameMode()
     -- DebugPrint
     Convars:RegisterConvar('debug_spew', tostring(DEBUG_SPEW), 'Set to 1 to start spewing debug info. Set to 0 to disable.', 0)
 
-    -- This is the troll thinker. All logic on the player's heros should be checked here
-    GameMode:SetThink( "OnTrollThink", ITT, "TrollThink", 0 )
-
     -- This is the building thinker. All logic on building crafting goes here
     GameMode:SetThink( "OnBuildingThink", ITT, "BuildingThink", 0 )
 
@@ -372,6 +369,12 @@ function ITT:OnHeroInGame( hero )
 
     -- Adjust Stats
     Stats:ModifyBonuses(hero)
+
+    -- Crafting Think
+    --[[Timers:CreateTimer(function()
+        InventoryCheck(hero)
+        return 1
+    end)]]
 end
 
 function ITT:OnHeroRespawn( hero )
@@ -621,27 +624,6 @@ function ITT:FixDropModels(dt)
     return DROPMODEL_TICK_TIME
 end
 
--- This updates state on each troll
--- Every half second it updates heat, checks inventory for items, etc
--- Add anything you want to run regularly on each troll to this
-function ITT:OnTrollThink()
-
-    --if GameRules:State_Get() ~= DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
-        -- Will not run until pregame ends
-       -- return 1
-    --end
-
-    -- This will run on every player, do stuff here
-    for i=1, maxPlayerID, 1 do
-        --Hunger(i)
-        --Energy(i)
-        --Heat(i)
-        InventoryCheck(i)
-        --print("burn")
-    end
-    return GAME_TROLL_TICK_TIME
-end
-
 function ITT:OnBuildingThink()
     --RE-ENABLE AFTER TESTING
     --if GameRules:State_Get() ~= DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
@@ -861,6 +843,9 @@ function ITT:OnItemPickedUp(event)
     local hero = EntIndexToHScript( event.HeroEntityIndex )
     local originalItem = EntIndexToHScript(event.ItemEntityIndex)
     local itemName = event.itemname
+
+    -- Check for combines
+    InventoryCheck(hero)
 
     local itemSlotRestriction = GameRules.ItemInfo['ItemSlots'][itemName]
     if itemSlotRestriction then

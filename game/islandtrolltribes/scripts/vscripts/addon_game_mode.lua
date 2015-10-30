@@ -18,11 +18,9 @@ require('damage')
 require('developer')
 require('item_spawning')
 require('subclass_system')
+require("crafting")
 require('util')
 require('libraries/buildinghelper')
-
--- This needs to be reviewed
-require("craftinghelper")
 
 -- This should be a KV Table
 require('recipe_list')
