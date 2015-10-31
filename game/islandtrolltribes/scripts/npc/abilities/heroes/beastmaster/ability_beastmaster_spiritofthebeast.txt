@@ -108,5 +108,18 @@
 		}
 
 	}
+        "AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"chance"	"5"
+		}
+            "01"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"bonus"	"5"
+		}
+}
 
 }

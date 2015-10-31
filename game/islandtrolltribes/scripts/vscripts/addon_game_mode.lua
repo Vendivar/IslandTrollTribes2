@@ -329,6 +329,8 @@ function Precache( context )
 	PrecacheResource("model", "models/items/abaddon/alliance_abba_weapon/alliance_abba_weapon_fx.vmdl",context)
 	PrecacheResource("model", "models/particle/tiny_simrocks.vmdl",context)
 	PrecacheResource("model", "models/particle/ice_shards.vmdl",context)
+	PrecacheResource("model", "models/heroes/leshrac/leshrac.vmdl",context)
+	PrecacheResource("model", "models/heroes/lycan/lycan_wolf.vmdl",context)
 	PrecacheResource("model", "models/projectiles/projectile_jar.vmdl",context)
 	PrecacheResource("model", "models/items/brewmaster/offhand_jug/offhand_jug.vmdl",context)
 	

@@ -28,5 +28,21 @@
 		}
 
 	}
-
+"AbilitySpecial"
+	{	"01"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"damage"	"30"
+            }
+             "02"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"armor"	"2"
+		}
+		"03"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"movespeed"	"25"
+		}
+        }
 }

@@ -4,4 +4,23 @@
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"AbilityTextureName"	"ability_beastmaster_empathicrage"
 	"MaxLevel"	"1"
+        
+        "AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"charges"	"2"
+		}
+            "02"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"movespeed"	"10"
+		}            
+            "03"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"attackspeed"	"10"
+		}
+        }
 }

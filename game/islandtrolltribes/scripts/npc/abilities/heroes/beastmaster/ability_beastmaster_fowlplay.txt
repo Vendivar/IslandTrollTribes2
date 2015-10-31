@@ -10,6 +10,12 @@
 	"AbilityCastRange"	"0"
 	"AbilityManaCost"	"40"
 	"MaxLevel"	"1"
+        "Precache"
+	{
+		"particle"	        "particles/custom/fowl_play.vpcf"
+		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_skywrath_mage.vsndevts"
+		"soundfile"			"soundevents/game_sounds.vsndevts"
+	}
 	"OnSpellStart"
 	{
 		"ApplyModifier"
@@ -27,17 +33,22 @@
 
 		"FireSound"
 		{
-			"EffectName"	"General.Chicken"
-			"Target"	"TARGET"
+			"EffectName"	"Hero_SkywrathMage.ChickenTaunt"
+			"Target"	    "CASTER"
 		}
-
+            "FireEffect"
+            {
+            "EffectName"            "particles/custom/fowl_play.vpcf"
+            "EffectAttachType"  	"follow_origin"
+            "Target"	            "CASTER"
+            }
 	}
 
 	"Modifiers"
 	{
 		"modifier_fowlplay"
 		{
-			"EffectName"	"shadowshaman_voodoo"
+			"EffectName"	""
 			"ModelName"	"models/props_gameplay/chicken.mdl"
 			"Duration"	"%duration"
 			"Properties"
@@ -55,7 +66,12 @@
 				"MODIFIER_STATE_EVADE_DISABLED"	"MODIFIER_STATE_VALUE_ENABLED"
 				"MODIFIER_STATE_HEXED"	"MODIFIER_STATE_VALUE_ENABLED"
 			}
-
+         "AttachEffect"
+            {
+            "EffectName"            "particles/custom/fowl_play.vpcf"
+            "EffectAttachType"  	"follow_origin"
+            "Target"	            "CASTER"
+            }
 		}
 
 	}

@@ -1695,9 +1695,16 @@
 		"AbilityCastRange"	"0"
 		"AbilityManaCost"	"30"
 		"MaxLevel"	"1"
-			"precache"
+        "precache"
 		{
-			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_lone_druid.vsndevts"
+			
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_lycan.vsndevts"
+            "soundfile"			"soundevents/game_sounds_heroes/game_sounds_lone_druid.vsndevts"
+            "particle"          "particles/units/heroes/hero_dragon_knight/dragon_knight_transform_red_spotlight.vpcf"
+            "particle"          "particles/units/heroes/hero_dragon_knight/dragon_knight_transform_blue_smoke04.vpcf"
+            "particle"          "particles/econ/events/ti5/blink_dagger_end_sparkles_end_lvl2_ti5.vpcf"
+            "particle"          "particles/econ/items/puck/puck_merry_wanderer/puck_illusory_orb_sphere_sparks_merry_wanderer.vpcf"
+            "particle"          "particles/items2_fx/medallion_of_courage_friend_sparks.vpcf"
 		}
 		"OnSpellStart"
 		{
@@ -1712,21 +1719,48 @@
 			{
 				"ModifierName"	"modifier_bearform"
 				"Target"	"CASTER"
-			}
-	
-			"FireSound"
+			}	
+            "FireSound"
 			{
 				"EffectName"			"Hero_LoneDruid.TrueForm.Cast"
-				"Target"			"CASTER"
+				"Target"			    "CASTER"
 			}
-	
+            "FireSound"
+			{
+				"EffectName"			"LoneDruid_SpiritBear_IdleRoar"
+				"Target"			    "CASTER"
+			}
+            "FireEffect"
+			{
+				"EffectName"			"particles/units/heroes/hero_dragon_knight/dragon_knight_transform_red_spotlight.vpcf"
+				"EffectAttachType"  	"follow_origin"
+                "Target"	            "CASTER"
+			}
+             "FireEffect"
+			{
+				"EffectName"			"particles/units/heroes/hero_dragon_knight/dragon_knight_transform_blue_smoke04.vpcf"
+				"EffectAttachType"  	"follow_origin"
+                "Target"	            "CASTER"
+			}
+           "FireEffect"
+			{
+				"EffectName"			"particles/econ/events/ti5/blink_dagger_end_sparkles_end_lvl2_ti5.vpcf"
+				"EffectAttachType"  	"follow_origin"
+                "Target"	            "CASTER"
+			}
+                       "FireEffect"
+			{
+				"EffectName"			"particles/econ/items/puck/puck_merry_wanderer/puck_illusory_orb_sphere_sparks_merry_wanderer.vpcf"
+				"EffectAttachType"  	"follow_origin"
+                "Target"	            "CASTER"
+			}
 		}
 	
 		"Modifiers"
 		{
 			"modifier_bearform"
 			{
-				"EffectName"	"shadowshaman_voodoo"
+				"EffectName"	"particles/items2_fx/medallion_of_courage_friend_sparks.vpcf"
 				"ModelName"	"models/heroes/lone_druid/spirit_bear.vmdl" //DOES THIS WORK?
 				"Properties"
 				{
@@ -1800,7 +1834,23 @@
 			}
 	
 		}
-	
+	"AbilitySpecial"
+		{	"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"30"
+            }
+             "02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"armor"	"2"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"movespeed"	"25"
+			}
+        }
 	}
 	"ability_beastmaster_criticalstrike"
 	{
@@ -1902,6 +1952,11 @@
 			"precache"
 		{
 			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_lone_druid.vsndevts"
+            "particle"          "particles/units/heroes/hero_dragon_knight/dragon_knight_transform_red_spotlight.vpcf"
+            "particle"          "particles/units/heroes/hero_dragon_knight/dragon_knight_transform_blue_smoke04.vpcf"
+            "particle"          "particles/econ/events/ti5/blink_dagger_end_sparkles_end_lvl2_ti5.vpcf"
+            "particle"          "particles/econ/items/puck/puck_merry_wanderer/puck_illusory_orb_sphere_sparks_merry_wanderer.vpcf"
+            "particle"          "particles/items2_fx/medallion_of_courage_friend_sparks.vpcf"
 		}
 		"OnSpellStart"
 		{
@@ -1921,7 +1976,31 @@
 			"FireSound"
 			{
 				"EffectName"			"Hero_LoneDruid.TrueForm.Cast"
-				"Target"			"CASTER"
+				"Target"			    "CASTER"
+			}
+            "FireEffect"
+			{
+				"EffectName"			"particles/units/heroes/hero_dragon_knight/dragon_knight_transform_red_spotlight.vpcf"
+				"EffectAttachType"  	"follow_origin"
+                "Target"	            "CASTER"
+			}
+             "FireEffect"
+			{
+				"EffectName"			"particles/units/heroes/hero_dragon_knight/dragon_knight_transform_blue_smoke04.vpcf"
+				"EffectAttachType"  	"follow_origin"
+                "Target"	            "CASTER"
+			}
+           "FireEffect"
+			{
+				"EffectName"			"particles/econ/events/ti5/blink_dagger_end_sparkles_end_lvl2_ti5.vpcf"
+				"EffectAttachType"  	"follow_origin"
+                "Target"	            "CASTER"
+			}
+                       "FireEffect"
+			{
+				"EffectName"			"particles/econ/items/puck/puck_merry_wanderer/puck_illusory_orb_sphere_sparks_merry_wanderer.vpcf"
+				"EffectAttachType"  	"follow_origin"
+                "Target"	            "CASTER"
 			}
 		}
 	
@@ -1929,8 +2008,8 @@
 		{
 			"modifier_elkform"
 			{
-				"EffectName"	"shadowshaman_voodoo"
-				"ModelName"	"models/creeps/neutral_creeps/n_creep_worg_small/n_creep_worg_small.vmdl"
+				"EffectName"	"particles/items2_fx/medallion_of_courage_friend_sparks.vpcf"
+				"ModelName"	"models/heroes/leshrac/leshrac.vmdl"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"-1"
@@ -1979,6 +2058,25 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"	"ability_beastmaster_empathicrage"
 		"MaxLevel"	"1"
+        
+        "AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"charges"	"2"
+			}
+            "02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"movespeed"	"10"
+			}            
+            "03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"attackspeed"	"10"
+			}
+        }
 	}
 	"ability_beastmaster_fleaattackaura"
 	{
@@ -2029,6 +2127,14 @@
 			}
 	
 		}
+        "AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"12 13 14 15 16 19 24 28"
+			}
+        }
 	
 	}
 	"ability_beastmaster_fowlplay"
@@ -2043,6 +2149,12 @@
 		"AbilityCastRange"	"0"
 		"AbilityManaCost"	"40"
 		"MaxLevel"	"1"
+        "Precache"
+		{
+			"particle"	        "particles/custom/fowl_play.vpcf"
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_skywrath_mage.vsndevts"
+			"soundfile"			"soundevents/game_sounds.vsndevts"
+		}
 		"OnSpellStart"
 		{
 			"ApplyModifier"
@@ -2060,17 +2172,22 @@
 	
 			"FireSound"
 			{
-				"EffectName"	"General.Chicken"
-				"Target"	"TARGET"
+				"EffectName"	"Hero_SkywrathMage.ChickenTaunt"
+				"Target"	    "CASTER"
 			}
-	
+            "FireEffect"
+            {
+            "EffectName"            "particles/custom/fowl_play.vpcf"
+            "EffectAttachType"  	"follow_origin"
+            "Target"	            "CASTER"
+            }
 		}
 	
 		"Modifiers"
 		{
 			"modifier_fowlplay"
 			{
-				"EffectName"	"shadowshaman_voodoo"
+				"EffectName"	""
 				"ModelName"	"models/props_gameplay/chicken.mdl"
 				"Duration"	"%duration"
 				"Properties"
@@ -2088,7 +2205,12 @@
 					"MODIFIER_STATE_EVADE_DISABLED"	"MODIFIER_STATE_VALUE_ENABLED"
 					"MODIFIER_STATE_HEXED"	"MODIFIER_STATE_VALUE_ENABLED"
 				}
-	
+	         "AttachEffect"
+            {
+            "EffectName"            "particles/custom/fowl_play.vpcf"
+            "EffectAttachType"  	"follow_origin"
+            "Target"	            "CASTER"
+            }
 			}
 	
 		}
@@ -2274,6 +2396,11 @@
 		"precache"
 		{
 			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_lone_druid.vsndevts"
+            "particle"          "particles/units/heroes/hero_dragon_knight/dragon_knight_transform_red_spotlight.vpcf"
+            "particle"          "particles/units/heroes/hero_dragon_knight/dragon_knight_transform_blue_smoke04.vpcf"
+            "particle"          "particles/econ/events/ti5/blink_dagger_end_sparkles_end_lvl2_ti5.vpcf"
+            "particle"          "particles/econ/items/puck/puck_merry_wanderer/puck_illusory_orb_sphere_sparks_merry_wanderer.vpcf"
+            "particle"          "particles/items2_fx/medallion_of_courage_friend_sparks.vpcf"
 		}
 		"OnSpellStart"
 		{
@@ -2282,13 +2409,36 @@
 				"ScriptFile" "heroes/beastmaster/shapeshift.lua"
 				"Function"   "Shapeshift"
 				"Form"       "Normal"
-			}
-					"FireSound"
+			}	
+			"FireSound"
 			{
 				"EffectName"			"Hero_LoneDruid.TrueForm.Cast"
-				"Target"			"CASTER"
+				"Target"			    "CASTER"
 			}
-	
+            "FireEffect"
+			{
+				"EffectName"			"particles/units/heroes/hero_dragon_knight/dragon_knight_transform_red_spotlight.vpcf"
+				"EffectAttachType"  	"follow_origin"
+                "Target"	            "CASTER"
+			}
+             "FireEffect"
+			{
+				"EffectName"			"particles/units/heroes/hero_dragon_knight/dragon_knight_transform_blue_smoke04.vpcf"
+				"EffectAttachType"  	"follow_origin"
+                "Target"	            "CASTER"
+			}
+           "FireEffect"
+			{
+				"EffectName"			"particles/econ/events/ti5/blink_dagger_end_sparkles_end_lvl2_ti5.vpcf"
+				"EffectAttachType"  	"follow_origin"
+                "Target"	            "CASTER"
+			}
+                       "FireEffect"
+			{
+				"EffectName"			"particles/econ/items/puck/puck_merry_wanderer/puck_illusory_orb_sphere_sparks_merry_wanderer.vpcf"
+				"EffectAttachType"  	"follow_origin"
+                "Target"	            "CASTER"
+			}
 		}
 	
 	}
@@ -2868,6 +3018,19 @@
 			}
 	
 		}
+        "AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"chance"	"5"
+			}
+            "01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus"	"5"
+			}
+	}
 	
 	}
 	"ability_beastmaster_tamepet"
@@ -2950,9 +3113,15 @@
 		"AbilityCastRange"	"0"
 		"AbilityManaCost"	"30"
 		"MaxLevel"	"1"
-		"precache"
-		{
+        "precache"
+		{			
 			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_lycan.vsndevts"
+            "soundfile"			"soundevents/game_sounds_heroes/game_sounds_lone_druid.vsndevts"
+            "particle"          "particles/units/heroes/hero_dragon_knight/dragon_knight_transform_red_spotlight.vpcf"
+            "particle"          "particles/units/heroes/hero_dragon_knight/dragon_knight_transform_blue_smoke04.vpcf"
+            "particle"          "particles/econ/events/ti5/blink_dagger_end_sparkles_end_lvl2_ti5.vpcf"
+            "particle"          "particles/econ/items/puck/puck_merry_wanderer/puck_illusory_orb_sphere_sparks_merry_wanderer.vpcf"
+            "particle"          "particles/items2_fx/medallion_of_courage_friend_sparks.vpcf"
 		}
 		"OnSpellStart"
 		{
@@ -2972,17 +3141,44 @@
 			"FireSound"
 			{
 				"EffectName"	"Hero_Lycan.SummonWolves"
-				"Target"	"TARGET"
+				"Target"	    "CASTER"
 			}
-	
+            "FireSound"
+			{
+				"EffectName"			"Hero_LoneDruid.TrueForm.Cast"
+				"Target"			    "CASTER"
+			}
+            "FireEffect"
+			{
+				"EffectName"			"particles/units/heroes/hero_dragon_knight/dragon_knight_transform_red_spotlight.vpcf"
+				"EffectAttachType"  	"follow_origin"
+                "Target"	            "CASTER"
+			}
+             "FireEffect"
+			{
+				"EffectName"			"particles/units/heroes/hero_dragon_knight/dragon_knight_transform_blue_smoke04.vpcf"
+				"EffectAttachType"  	"follow_origin"
+                "Target"	            "CASTER"
+			}
+           "FireEffect"
+			{
+				"EffectName"			"particles/econ/events/ti5/blink_dagger_end_sparkles_end_lvl2_ti5.vpcf"
+				"EffectAttachType"  	"follow_origin"
+                "Target"	            "CASTER"
+			}
+                       "FireEffect"
+			{
+				"EffectName"			"particles/econ/items/puck/puck_merry_wanderer/puck_illusory_orb_sphere_sparks_merry_wanderer.vpcf"
+				"EffectAttachType"  	"follow_origin"
+                "Target"	            "CASTER"
+			}
 		}
-	
 		"Modifiers"
 		{
 			"modifier_wolfform"
 			{
-				"EffectName"	"shadowshaman_voodoo"
-				"ModelName"	"models/creeps/neutral_creeps/n_creep_worg_small/n_creep_worg_small.vmdl"
+				"EffectName"	"particles/items2_fx/medallion_of_courage_friend_sparks.vpcf"
+				"ModelName"	    "models/heroes/lycan/lycan_wolf.vmdl"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"-1"
@@ -10467,6 +10663,11 @@
 				"var_type"	"FIELD_INTEGER"
 				"count3"	"0 0 1"
 			}
+            "04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"1000 1600 2400"
+			}
 	
 		}
 	
@@ -10562,7 +10763,24 @@
 			}
 	
 		}
-	
+	"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"wards"	"2 3 4"
+			}
+            "02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"lifetime"	"6 8 10"
+			}
+            "03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"stepdamage"	"10"
+			}
+		}
 	}
 	"ability_scout_ward_collision"
 	{

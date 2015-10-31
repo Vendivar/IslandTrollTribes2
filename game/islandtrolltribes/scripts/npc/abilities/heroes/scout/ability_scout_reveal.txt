@@ -72,6 +72,11 @@
 			"var_type"	"FIELD_INTEGER"
 			"count3"	"0 0 1"
 		}
+            "04"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"radius"	"1000 1600 2400"
+		}
 
 	}
 
