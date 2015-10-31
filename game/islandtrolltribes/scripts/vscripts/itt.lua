@@ -60,7 +60,6 @@ function ITT:InitGameMode()
     GameMode:SetThink( "OnItemThink", ITT, "ItemThink", 0 )
     GameMode:SetThink( "OnBushThink", ITT, "BushThink", 0 )
     GameMode:SetThink( "OnBoatThink", ITT, "BoatThink", 0 )
-    GameMode:SetThink("OnCheckWinThink", ITT,"CheckWinThink",0)
     
     boatStartTime = math.floor(GameRules:GetGameTime())
     GameMode.spawnedShops = {}
@@ -125,6 +124,7 @@ function ITT:InitGameMode()
 
     -- Team Colors
     for team,color in pairs(TEAM_COLORS) do
+        print("Color for team ",team,color[1], color[2], color[3])
         SetTeamCustomHealthbarColor(team, color[1], color[2], color[3])
     end
 
@@ -296,23 +296,29 @@ function ITT:OnClassSelected(event)
         print("[ITT] CreateHeroForPlayer: ",playerID,hero_name,team)
 
         -- Move to the first unassigned starting position for the assigned team-isle
-        hero.Tribe = TEAM_ISLANDS[team]
-        local possiblePositions = GameRules.StartingPositions[hero.Tribe]
-
-        for k,v in pairs(possiblePositions) do
-            if v.playerID == -1 then
-                FindClearSpaceForUnit(hero, v.position, true)
-                v.playerID = hero:GetPlayerID()
-                print("[ITT] Position for Hero in "..hero.Tribe.." Tribe: ".. VectorString(v.position))
-                break
-            end
-        end
+        ITT:SetHeroIslandPosition(hero)
 
         -- Health Label
         local color = ITT:ColorForTeam( team )
         hero:SetCustomHealthLabel( hero.Tribe.." Tribe", color[1], color[2], color[3] )
 
     end, playerID)
+end
+
+function ITT:SetHeroIslandPosition(hero)
+
+    hero.Tribe = TEAM_ISLANDS[hero:GetTeamNumber()]
+    local possiblePositions = GameRules.StartingPositions[hero.Tribe]
+
+    for k,v in pairs(possiblePositions) do
+        if v.playerID == -1 then
+            FindClearSpaceForUnit(hero, v.position, true)
+            hero:SetRespawnPosition(v.position)
+            v.playerID = hero:GetPlayerID()
+            print("[ITT] Position for Hero in "..hero.Tribe.." Tribe: ".. VectorString(v.position))
+            break
+        end
+    end
 end
 
 -- This code is written by Internet Veteran, handle with care.
@@ -363,6 +369,13 @@ function ITT:OnHeroInGame( hero )
         InventoryCheck(hero)
         return 1
     end)]]
+
+    -- This handles spawning heroes through dota_bot_populate
+    if PlayerResource:IsFakeClient(hero:GetPlayerID()) then
+        Timers:CreateTimer(1, function()
+            ITT:SetHeroIslandPosition(hero)
+        end)
+    end
 end
 
 function ITT:OnHeroRespawn( hero )
@@ -537,7 +550,7 @@ function ITT:OnEntityKilled(keys)
         local time = math.floor(GameRules:GetGameTime())
         if time > GAME_PERIOD_GRACE then
             killedUnit.grave = CreateUnitByName("gravestone", killedUnit:GetAbsOrigin(), false, killedUnit, killedUnit, killedUnit:GetTeamNumber())
-            grave.hero = killedUnit
+            killedUnit.grave.hero = killedUnit
         end
     else
         --drop system
@@ -613,11 +626,6 @@ function ITT:FixDropModels(dt)
 end
 
 function ITT:OnBuildingThink()
-    --RE-ENABLE AFTER TESTING
-    --if GameRules:State_Get() ~= DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
-        --Will not run until pregame ends
-        --return 1
-    --end
 
     -- Find all buildings
     buildings = FindUnitsInRadius(DOTA_TEAM_BADGUYS,
@@ -724,9 +732,45 @@ function ITT:OnBoatThink()
     return 0.1
 end
 
---This function checks if you won the game or not
-function ITT:OnCheckWinThink()
-    return WIN_GAME_THINK
+-- This function checks if you won the game or not
+function ITT:CheckWinCondition()
+    local winnerTeamID = nil
+
+    -- Don't end single team lobbies
+    if ITT:GetTeamCount() == 1 then
+        return
+    end
+
+    -- Check if all the heroes still in game belong to the same team
+    local AllHeroes = HeroList:GetAllHeroes()
+    for k,hero in pairs(AllHeroes) do
+        if hero:IsAlive() then
+            local teamNumber = hero:GetTeamNumber()
+            if not winnerTeamID then
+                winnerTeamID = teamNumber
+            elseif winnerTeamID ~= teamNumber then
+                return
+            end
+        end
+    end    
+
+    if winnerTeamID and not GameRules.Winner then
+        ITT:PrintWinMessageForTeam(winnerTeamID)
+        GameRules:SetGameWinner(winnerTeamID)
+    end
+end
+
+function ITT:PrintWinMessageForTeam( teamID )
+    for playerID = 0, DOTA_MAX_TEAM_PLAYERS do
+        if PlayerResource:IsValidPlayerID(playerID) then
+            local player = PlayerResource:GetPlayer(playerID)
+            if player and player:GetTeamNumber() == teamID then
+                local playerName = PlayerResource:GetPlayerName(playerID)
+                if playerName == "" then playerName = "Player "..playerID end
+                GameRules:SendCustomMessage(playerName.." was victorious!", 0, 0)
+            end
+        end
+    end
 end
 
 -- When players connect, add them to the players list and begin operations on them
@@ -916,6 +960,12 @@ function ITT:OnGameRulesStateChange()
 
         Spawns:Init()
 
+    elseif nNewState == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
+
+        Timers:CreateTimer(function()
+            ITT:CheckWinCondition()
+            return WIN_GAME_THINK
+        end)
     end
 end
 
@@ -945,4 +995,18 @@ function ITT:ColorForTeam( teamID )
         color = { 255, 255, 255 } -- default to white
     end
     return color
+end
+
+---------------------------------------------------------------------------
+-- Get the number of teams with valid players in them
+---------------------------------------------------------------------------
+function ITT:GetTeamCount()
+    local teamCount = 0
+    for i=DOTA_TEAM_FIRST,DOTA_TEAM_CUSTOM_MAX do
+        local playerCount = PlayerResource:GetPlayerCountForTeam(i)
+        if playerCount > 0 then
+            teamCount = teamCount + 1
+        end
+    end
+    return teamCount
 end

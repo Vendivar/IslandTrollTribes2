@@ -18,7 +18,7 @@
 	"npc_dota_hero_riki"				"1"
 	"npc_dota_hero_lycan"				"1"
 	"npc_dota_hero_huskar"				"1"
-	"npc_dota_hero_windrunner"		    "1"
-    "npc_dota_hero_sniper"              "1"
-    "npc_dota_hero_tinker"              "1"
+	//"npc_dota_hero_windrunner"		    "1"
+    //"npc_dota_hero_sniper"              "1"
+    //"npc_dota_hero_tinker"              "1"
 }
