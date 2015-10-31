@@ -28,10 +28,6 @@ function Spawns:Init()
         end
     end
 
-    for k,v in pairs(Spawns.locations) do
-        print(k,#v)
-    end
-
     Spawns.neutralCount = {}
     for unitName,_ in pairs(spawnerNames) do
         Spawns.neutralCount[unitName] = 0

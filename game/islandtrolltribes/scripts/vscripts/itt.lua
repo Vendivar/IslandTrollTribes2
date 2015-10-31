@@ -1,29 +1,12 @@
 print ('[ITT] itt.lua' )
 
 TEAM_COLORS = {}
-TEAM_COLORS[DOTA_TEAM_GOODGUYS] = { 52, 85, 255 } -- Blue
-TEAM_COLORS[DOTA_TEAM_BADGUYS] = { 255, 52, 85 } -- Red
-TEAM_COLORS[DOTA_TEAM_CUSTOM_1] = { 61, 210, 150 } -- Teal
-TEAM_COLORS[DOTA_TEAM_CUSTOM_2] = { 140, 42, 244 } -- Purple
-TEAM_COLORS[DOTA_TEAM_CUSTOM_3] = { 243, 201, 9 } -- Yellow
-TEAM_COLORS[DOTA_TEAM_CUSTOM_4] = { 255, 108, 0 } -- Orange
-TEAM_COLORS[DOTA_TEAM_CUSTOM_5] = { 101, 212, 19 } -- Green
-TEAM_COLORS[DOTA_TEAM_CUSTOM_6] = { 197, 77, 168 } -- Pink
-TEAM_COLORS[DOTA_TEAM_CUSTOM_7] = { 129, 83, 54 } -- Brown
-TEAM_COLORS[DOTA_TEAM_CUSTOM_8] = { 199, 228, 13 } -- Olive
-PLAYER_COLORS = {}
-PLAYER_COLORS[0] = { 52, 85, 255 } -- Blue
-PLAYER_COLORS[1] = { 255, 52, 85 } -- Red
-PLAYER_COLORS[2] = { 61, 210, 150 } -- Teal
-PLAYER_COLORS[3] = { 140, 42, 244 } -- Purple
-PLAYER_COLORS[4] = { 243, 201, 9 } -- Yellow
-PLAYER_COLORS[5] = { 255, 108, 0 } -- Orange
-PLAYER_COLORS[6] = { 101, 212, 19 } -- Green
-PLAYER_COLORS[7] = { 197, 77, 168 } -- Pink
-PLAYER_COLORS[8] = { 129, 83, 54 } -- Brown
-PLAYER_COLORS[9] = { 199, 228, 13 } -- Olive
-PLAYER_COLORS[10] = { 105, 105, 255 } -- Light Blue
-PLAYER_COLORS[11] = { 128, 128, 128 } -- Gray
+TEAM_COLORS[DOTA_TEAM_GOODGUYS] = { 52, 85, 255 }  -- Blue
+TEAM_COLORS[DOTA_TEAM_BADGUYS]  = { 255, 52, 85 }  -- Red
+TEAM_COLORS[DOTA_TEAM_CUSTOM_1] = { 243, 201, 9 }  -- Yellow
+TEAM_COLORS[DOTA_TEAM_CUSTOM_2] = { 101, 212, 19 } -- Green
+VALID_TEAMS = {DOTA_TEAM_GOODGUYS, DOTA_TEAM_BADGUYS, DOTA_TEAM_CUSTOM_1, DOTA_TEAM_CUSTOM_2}
+TEAM_ISLANDS = {}
 
 playerList = {}
 maxPlayerID = 0
@@ -72,18 +55,11 @@ function ITT:InitGameMode()
     -- DebugPrint
     Convars:RegisterConvar('debug_spew', tostring(DEBUG_SPEW), 'Set to 1 to start spewing debug info. Set to 0 to disable.', 0)
 
-    -- This is the building thinker. All logic on building crafting goes here
+    -- Thinkers. Should get rid of these in favor of timers
     GameMode:SetThink( "OnBuildingThink", ITT, "BuildingThink", 0 )
-
-    -- This is the item thinker. All random item spawn logic goes here
     GameMode:SetThink( "OnItemThink", ITT, "ItemThink", 0 )
-
-     -- This is the herb bush thinker. All herb spawn logic goes here
     GameMode:SetThink( "OnBushThink", ITT, "BushThink", 0 )
-
-     -- This is the boat thinker. All boat logic goes here
     GameMode:SetThink( "OnBoatThink", ITT, "BoatThink", 0 )
-
     GameMode:SetThink("OnCheckWinThink", ITT,"CheckWinThink",0)
     
     boatStartTime = math.floor(GameRules:GetGameTime())
@@ -91,8 +67,6 @@ function ITT:InitGameMode()
     GameMode.shopEntities = Entities:FindAllByName("entity_ship_merchant_*")
 
     GameMode:SetThink("FixDropModels", ITT, "FixDropModels", 0)
-
-    GameMode:SetCustomHeroMaxLevel ( 6 ) -- No accidental overleveling
 
     -- Disable buybacks to stop instant respawning.
     GameMode:SetBuybackEnabled( false )
@@ -111,34 +85,16 @@ function ITT:InitGameMode()
     GameRules:SetGoldTickTime( 60.0 )
     GameRules:SetGoldPerTick( 0 )
 
-    -- Listen for a game event.
-    -- A list of events is findable here: https://developer.valvesoftware.com/wiki/Dota_2_Workshop_Tools/Scripting/Built-In_Engine_Events
-    -- A bunch of those are broken, so be warned
-    -- Custom events can be made in /scripts/custom_events.txt
-    -- BROKEN:
-    -- dota_item_drag_end dota_item_drag_begin dota_inventory_changed dota_inventory_item_changed
-    -- dota_inventory_changed_query_unit dota_inventory_item_added
-    -- WORK:
-    -- dota_item_picked_up dota_item_purchased
+    -- Listeners
     ListenToGameEvent('player_connect_full', Dynamic_Wrap(ITT, 'OnPlayerConnectFull'), self)
-
-    -- Use this for assigning items to heroes initially once they pick their hero.
-    ListenToGameEvent( "dota_player_pick_hero", Dynamic_Wrap( ITT, "OnPlayerPicked" ), self )
-
-    -- Use this for dealing with subclass spawning
     ListenToGameEvent( "npc_spawned", Dynamic_Wrap( ITT, "OnNPCSpawned" ), self )
-
-    --Listener for items picked up, used for telegather abilities
     ListenToGameEvent('dota_item_picked_up', Dynamic_Wrap(ITT, 'OnItemPickedUp'), self)
-
     ListenToGameEvent('dota_player_gained_level', Dynamic_Wrap(ITT, 'OnPlayerGainedLevel'), self)
-
-    -- Listener for drops and for removing buildings from block table
     ListenToGameEvent("entity_killed", Dynamic_Wrap( ITT, "OnEntityKilled" ), self )
-
     ListenToGameEvent("entity_hurt", Dynamic_Wrap(ITT, 'On_entity_hurt'), self)
     ListenToGameEvent('player_chat', Dynamic_Wrap(ITT, 'OnPlayerChat'), self)
     ListenToGameEvent("player_reconnected", Dynamic_Wrap(ITT, 'OnPlayerReconnected'), self)
+    ListenToGameEvent( "game_rules_state_change", Dynamic_Wrap( ITT, 'OnGameRulesStateChange' ), self )
 
     -- Panorama Listeners
     CustomGameEventManager:RegisterListener( "update_selected_entities", Dynamic_Wrap(ITT, 'OnPlayerSelectedEntities'))
@@ -164,31 +120,52 @@ function ITT:InitGameMode()
     GameMode:SetExecuteOrderFilter( Dynamic_Wrap( ITT, "FilterExecuteOrder" ), self )
     GameMode:SetDamageFilter( Dynamic_Wrap( ITT, "FilterDamage" ), self )
 
-    --for multiteam
-    ListenToGameEvent( "game_rules_state_change", Dynamic_Wrap( ITT, 'OnGameRulesStateChange' ), self )
-
-    --multiteam stuff
-    self.m_TeamColors = {}
-    print("DOTA_TEAM_GOODGUYS "..DOTA_TEAM_GOODGUYS, "DOTA_TEAM_BADGUYS "..DOTA_TEAM_BADGUYS, "DOTA_TEAM_CUSTOM_1 "..DOTA_TEAM_CUSTOM_1)
-    self.m_TeamColors[DOTA_TEAM_GOODGUYS] = { 255, 0, 0 }
-    self.m_TeamColors[DOTA_TEAM_BADGUYS] = { 0, 255, 0 }
-    self.m_TeamColors[DOTA_TEAM_CUSTOM_1] = { 0, 0, 255 }
-    print(self.m_TeamColors[DOTA_TEAM_GOODGUYS], self.m_TeamColors[DOTA_TEAM_BADGUYS], self.m_TeamColors[DOTA_TEAM_CUSTOM_1])
-
-    self.m_VictoryMessages = {}
-    self.m_VictoryMessages[DOTA_TEAM_GOODGUYS] = "#VictoryMessage_GoodGuys"
-    self.m_VictoryMessages[DOTA_TEAM_BADGUYS] = "#VictoryMessage_BadGuys"
-    self.m_VictoryMessages[DOTA_TEAM_CUSTOM_1] = "#VictoryMessage_Custom1"
-
     self.m_GatheredShuffledTeams = {}
     self.m_NumAssignedPlayers = 0
 
-    self:GatherValidTeams()
+    -- Team Colors
+    for team,color in pairs(TEAM_COLORS) do
+        SetTeamCustomHealthbarColor(team, color[1], color[2], color[3])
+    end
+
+    -- Starting positions
+    GameRules.StartingPositions = {}
+    GameRules.StartingPositions["Radiant"] = {}
+    GameRules.StartingPositions["Dire"] = {}
+    GameRules.StartingPositions["Winter"] = {}
+    GameRules.StartingPositions["Desert"] = {}
+    local startEntities = Entities:FindAllByName( "start_*" )
+    for k,v in pairs(startEntities) do
+        local name = v:GetName()
+        local posTable
+        if string.match(name, "radiant_") then
+            posTable = GameRules.StartingPositions["Radiant"]
+        elseif string.match(name, "dire_") then
+            posTable = GameRules.StartingPositions["Dire"]
+        elseif string.match(name, "winter_") then
+            posTable = GameRules.StartingPositions["Winter"]
+        elseif string.match(name, "desert_") then
+            posTable = GameRules.StartingPositions["Desert"]
+        end
+
+        pos_subtable = {}
+        pos_subtable.playerID = -1 --Unassigned position
+        pos_subtable.position = v:GetAbsOrigin()
+
+        posTable[#posTable+1] = pos_subtable
+    end
+
+    -- Multiteams & randomized Island positions
+    local islandList = {"Radiant", "Dire", "Winter", "Desert"}
+    islandList = ShuffledList(islandList)
+
+    for k,v in pairs(VALID_TEAMS) do
+        GameRules:SetCustomGameTeamMaxPlayers( v, 4 )
+        TEAM_ISLANDS[v] = islandList[k]
+    end
 
     self.vUserIds = {}
     self.vPlayerUserIds = {}
-
-    GameRules:GetGameModeEntity():SetThink( "OnThink", self, 1 )
 
     --initial bush spawns
     --place entities starting with spawner_ plus the appropriate name to spawn to corresponding bush on game start
@@ -200,8 +177,7 @@ function ITT:InitGameMode()
             local bush_name = string.sub(string.gsub(spawner:GetName(), "spawner_", ""), 5)
             local bush = CreateUnitByName(bush_name, spawner:GetAbsOrigin(), false, nil, nil, DOTA_TEAM_NEUTRALS)
             if bush then            
-        local bushalert =  ParticleManager:CreateParticle("particles/custom/dropped_item_white.vpcf", PATTACH_ABSORIGIN, bush)
-			ParticleManager:SetParticleControl(bushalert, 15,  Vector(255,255,255))
+                local bushalert =  ParticleManager:CreateParticle("particles/custom/dropped_item_white.vpcf", PATTACH_ABSORIGIN, bush)
                 table.insert(GameRules.Bushes, bush)
             end
         end
@@ -264,6 +240,8 @@ function ITT:InitGameMode()
             UnblockMammoth()
         end
     })
+
+    print('[ITT] Done loading gamemode!')
 end
 
  --disables rosh pit
@@ -314,17 +292,27 @@ function ITT:OnClassSelected(event)
     CustomGameEventManager:Send_ServerToTeam(team, "team_update_class", { class_name = class_name, player_name = player_name})
 
     PrecacheUnitByNameAsync(hero_name, function()
-        CreateHeroForPlayer(hero_name, player)
-        print("[ITT] CreateHeroForPlayer: ",playerID,hero_name)
+        local hero = CreateHeroForPlayer(hero_name, player)
+        print("[ITT] CreateHeroForPlayer: ",playerID,hero_name,team)
+
+        -- Move to the first unassigned starting position for the assigned team-isle
+        hero.Tribe = TEAM_ISLANDS[team]
+        local possiblePositions = GameRules.StartingPositions[hero.Tribe]
+
+        for k,v in pairs(possiblePositions) do
+            if v.playerID == -1 then
+                FindClearSpaceForUnit(hero, v.position, true)
+                v.playerID = hero:GetPlayerID()
+                print("[ITT] Position for Hero in "..hero.Tribe.." Tribe: ".. VectorString(v.position))
+                break
+            end
+        end
+
+        -- Health Label
+        local color = ITT:ColorForTeam( team )
+        hero:SetCustomHealthLabel( hero.Tribe.." Tribe", color[1], color[2], color[3] )
+
     end, playerID)
-end
-
--- This code is written by Internet Veteran, handle with care.
---Distribute slot locked items based off of the class.
-function ITT:OnPlayerPicked( keys )
-    local spawnedUnit = EntIndexToHScript( keys.heroindex )
-
-    local class = spawnedUnit:GetClassname()
 end
 
 -- This code is written by Internet Veteran, handle with care.
@@ -738,62 +726,6 @@ end
 
 --This function checks if you won the game or not
 function ITT:OnCheckWinThink()
-   if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then --waits for pregame to end before you can win
-    --win check here
-        local goodteam = 0 --tallies for the 3 teams, X = players alive
-        local badteam  = 0
-        local cust1team = 0
-        for playerID = 0, (DOTA_MAX_TEAM_PLAYERS-1) do
-            local player = PlayerResource:GetPlayer(playerID)
-            if PlayerResource:IsValidPlayer(playerID) then
-                local hero = player:GetAssignedHero()
-                if nil ~= hero then
-                    if hero:IsAlive() then
-                        local team = PlayerResource:GetTeam(playerID)
-                        if team == DOTA_TEAM_GOODGUYS then
-                            goodteam = goodteam + 1
-                        elseif team == DOTA_TEAM_BADGUYS then
-                            badteam = badteam + 1
-                        elseif team == DOTA_TEAM_CUSTOM_1 then
-                            cust1team = cust1team + 1
-                        else
-                            print("Error 21232: Faction not found")
-                        end
-                    end
-                end
-            end
-        end
-        if goodteam==0 and badteam==0 and cust1team==0 then
-            print("Draw")
-            if not GAME_TESTING_CHECK then
-                GameRules:SetSafeToLeave( true )
-                --GameRules:SetGameWinner( DOTA_TEAM_BADGUYS )     
-            end
-            return -1
-        elseif cust1team==0 and badteam==0 then
-            print("Team 1 wins")
-            if not GAME_TESTING_CHECK then
-                GameRules:SetSafeToLeave( true )
-                GameRules:SetGameWinner( DOTA_TEAM_GOODGUYS )
-
-            end
-            return -1
-        elseif goodteam==0 and cust1team==0 then
-            print("Team 2 wins")     
-            if not GAME_TESTING_CHECK then
-                GameRules:SetSafeToLeave( true )
-                GameRules:SetGameWinner( DOTA_TEAM_BADGUYS )
-            end
-            return -1
-        elseif goodteam==0 and badteam==0 then
-            print("Team 3 wins")
-            if not GAME_TESTING_CHECK then
-                GameRules:SetSafeToLeave( true )
-                GameRules:SetGameWinner( DOTA_TEAM_CUSTOM_1 )
-            end
-            return -1
-        end
-    end
     return WIN_GAME_THINK
 end
 
@@ -973,8 +905,6 @@ end
 Convars:RegisterCommand("print_fix_diffs", function(cmdname) print_fix_diffs(cmdname) end, "Give any item", 0)
 Convars:RegisterCommand("print_dropped_vecs", function(cmdname) print_dropped_vecs(cmdname) end, "Give any item", 0)
 
---multiteam stuff
-
 ---------------------------------------------------------------------------
 -- Game state change handler
 ---------------------------------------------------------------------------
@@ -986,163 +916,8 @@ function ITT:OnGameRulesStateChange()
 
         Spawns:Init()
 
-        --self:AssignAllPlayersToTeams()
-        GameRules:GetGameModeEntity():SetThink( "BroadcastPlayerTeamAssignments", self, 0 ) -- can't do this immediately because the player resource doesn't have the names yet
     end
 end
-
----------------------------------------------------------------------------
--- Helper functions
----------------------------------------------------------------------------
-function ShuffledList( list )
-    local result = {}
-    local count = #list
-    for i = 1, count do
-        local pick = RandomInt( 1, #list )
-        result[ #result + 1 ] = list[ pick ]
-        table.remove( list, pick )
-    end
-    return result
-end
-
-function TableCount( t )
-    local n = 0
-    for _ in pairs( t ) do
-        n = n + 1
-    end
-    return n
-end
-
----------------------------------------------------------------------------
--- Scan the map to see which teams have spawn points
----------------------------------------------------------------------------
-function ITT:GatherValidTeams()
-  print( "GatherValidTeams:" )
-
-    local foundTeams = {}
-    for _, playerStart in pairs( Entities:FindAllByClassname( "info_player_start_dota" ) ) do
-        foundTeams[  playerStart:GetTeam() ] = true
-    end
-
-  print( "GatherValidTeams - Found spawns for a total of " .. TableCount(foundTeams) .. " teams" )
-
-    local foundTeamsList = {}
-    for t, _ in pairs( foundTeams ) do
-        table.insert( foundTeamsList, t )
-    end
-
-    self.m_GatheredShuffledTeams = foundTeamsList
-    print("gather shuffled teams", self.m_GatheredShuffledTeams, #self.m_GatheredShuffledTeams, #foundTeamsList)
-    print( "Final shuffled team list:" )
-    for _, team in pairs( self.m_GatheredShuffledTeams ) do
-     print( " - " .. team .. " ( " .. GetTeamName( team ) .. " )" )
-    end
-end
-
-
----------------------------------------------------------------------------
--- Assign all real players to a team
----------------------------------------------------------------------------
-function ITT:AssignAllPlayersToTeams()
-  print( "Assigning players to teams..." )
-    for playerID = 0, (DOTA_MAX_TEAM_PLAYERS-1) do
-        if nil ~= PlayerResource:GetPlayer( playerID ) then
-            local teamID = self:GetNextTeamAssignment()
-            print( " - Player " .. playerID .. " assigned to team " .. teamID )
-            PlayerResource:SetCustomTeamAssignment( playerID, teamID )
-        end
-    end
-end
-
----------------------------------------------------------------------------
--- Get the color associated with a given teamID
----------------------------------------------------------------------------
-function ITT:ColorForTeam( teamID )
-    local color = self.m_TeamColors[teamID]
-    if color == nil then
-        color = { 255, 255, 255 } -- default to white
-    end
-    return color
-end
-
----------------------------------------------------------------------------
--- Determine a good team assignment for the next player
----------------------------------------------------------------------------
-function ITT:GetNextTeamAssignment()
-    if #self.m_GatheredShuffledTeams == 0 then
-      print( "CANNOT ASSIGN PLAYER - NO KNOWN TEAMS" )
-        return DOTA_TEAM_NOTEAM
-    end
-
-    -- haven't assigned this player to a team yet
-    print( "m_NumAssignedPlayers = " .. self.m_NumAssignedPlayers )
-
-    -- If the number of players per team doesn't divide evenly (ie. 10 players on 4 teams => 2.5 players per team)
-    -- Then this floor will round that down to 2 players per team
-    -- If you want to limit the number of players per team, you could just set this to eg. 1
-    local playersPerTeam = 3 --math.floor( DOTA_MAX_TEAM_PLAYERS / #self.m_GatheredShuffledTeams )
-    print( "playersPerTeam = " .. playersPerTeam )
-
-    local teamIndexForPlayer = math.floor( self.m_NumAssignedPlayers / playersPerTeam )
-    print( "teamIndexForPlayer = " .. teamIndexForPlayer )
-
-    -- Then once we get to the 9th player from the case above, we need to wrap around and start assigning to the first team
-    if teamIndexForPlayer >= #self.m_GatheredShuffledTeams then
-        teamIndexForPlayer = teamIndexForPlayer - #self.m_GatheredShuffledTeams
-        print( "teamIndexForPlayer => " .. teamIndexForPlayer )
-    end
-
-    teamAssignment = self.m_GatheredShuffledTeams[ 1 + teamIndexForPlayer ]
-    print( "teamAssignment = " .. teamAssignment )
-
-    self.m_NumAssignedPlayers = self.m_NumAssignedPlayers + 1
-
-    return teamAssignment
-end
-
-
----------------------------------------------------------------------------
--- Put a label over a player's hero so people know who is on what team
----------------------------------------------------------------------------
-function ITT:MakeLabelForPlayer( nPlayerID )
-    if not PlayerResource:HasSelectedHero( nPlayerID ) then
-        return
-    end
-
-    local hero = PlayerResource:GetSelectedHeroEntity( nPlayerID )
-    if hero == nil then
-        return
-    end
-
-    local teamID = PlayerResource:GetTeam( nPlayerID )
-    local color = self:ColorForTeam( teamID )
-    hero:SetCustomHealthLabel( GetTeamName( teamID ), color[1], color[2], color[3] )
-end
-
----------------------------------------------------------------------------
--- Tell everyone the team assignments during hero selection
----------------------------------------------------------------------------
-function ITT:BroadcastPlayerTeamAssignments()
-    print("BroadcastPlayerTeamAssignments")
-    for nPlayerID = 0, (DOTA_MAX_TEAM_PLAYERS-1) do
-        local nTeamID = PlayerResource:GetTeam( nPlayerID )
-        if nTeamID ~= DOTA_TEAM_NOTEAM then
-            GameRules:SendCustomMessage( "#TeamAssignmentMessage", nPlayerID, -1 )
-        end
-    end
-end
-
----------------------------------------------------------------------------
--- Update player labels and the scoreboard
----------------------------------------------------------------------------
-function ITT:OnThink()
-    for nPlayerID = 0, (DOTA_MAX_TEAM_PLAYERS-1) do
-        self:MakeLabelForPlayer( nPlayerID )
-    end
-
-    return 1
-end
-
 
 ---------------------------------------------------------------------------
 
@@ -1158,4 +933,16 @@ function ITT:OnPlayerSelectedEntities( event )
         local player = PlayerResource:GetPlayer(pID)
         player.activeBuilder = mainSelected
     end
+end
+
+
+---------------------------------------------------------------------------
+-- Get the color associated with a given teamID
+---------------------------------------------------------------------------
+function ITT:ColorForTeam( teamID )
+    local color = TEAM_COLORS[teamID]
+    if color == nil then
+        color = { 255, 255, 255 } -- default to white
+    end
+    return color
 end
