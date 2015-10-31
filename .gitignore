@@ -19,3 +19,4 @@ game/dota_addons/*/scripts/vscripts/statcollection/settings.kv
 # Custom particles
 !/game/islandtrolltribes/particles/buildinghelper/*
 !/game/islandtrolltribes/particles/custom/*
+*.wav

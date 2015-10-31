@@ -2380,8 +2380,7 @@
 				"duration"	"10.0"
 			}
 	
-		}
-	
+		}	
 	}
 	"ability_beastmaster_normalform"
 	{
@@ -2776,7 +2775,9 @@
 		"MaxLevel"	"1"
 		"precache"
 		{
-			"particle_folder"	"particles/units/heroes/hero_phantom_assassin"
+			"particle_folder"	"particles/units/heroes/hero_phantom_assassin"      
+			"particle"	        "particles/econ/courier/courier_shagbark/courier_shagbark_feather_white.vpcf"            
+			"soundfile"	        "soundevents/chicken.vsndevts"
 		}
 	
 		"Modifiers"
@@ -2789,6 +2790,26 @@
 					"MODIFIER_PROPERTY_AVOID_CONSTANT"	"%chance"
 				}
 	
+			}
+            "modifier_chickensound"
+			{
+				"IsHidden"	"1"
+				"ThinkInterval"	"10"
+				"OnIntervalThink"
+				{
+					"FireSound"
+                    {
+                        "EffectName"		"ChickenRandom"
+                        "Target"			"CASTER"
+                    }
+                    "FireEffect"
+					{
+						"EffectName" "particles/econ/courier/courier_shagbark/courier_shagbark_feather_white.vpcf"
+						"Target" "CASTER"
+						"EffectAttachType" "follow_origin"
+					}	
+				}
+					
 			}
 	
 		}

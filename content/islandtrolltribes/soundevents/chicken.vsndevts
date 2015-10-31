@@ -1,0 +1,38 @@
+
+"ChickenRandom"
+{
+    "operator_stacks"
+    {
+        "update_stack"
+        {
+            "reference_operator"
+            {
+                "operator"              "sos_reference_stack"
+                "reference_stack"       "dota_src1_3d"
+                "operator_variables"
+                {
+                    "vsnd_files"
+                    {
+                        "value"
+                        {
+                              "value0"        "sounds/chicken/chicken_random_1.vsnd"
+			      "value1"        "sounds/chicken/chicken_random_2.vsnd"
+			      "value2"        "sounds/chicken/chicken_random_3.vsnd"
+			      "value3"        "sounds/chicken/chicken_random_4.vsnd"
+			      "value4"        "sounds/chicken/chicken_random_5.vsnd"
+			      "value5"        "sounds/chicken/chicken_random_6.vsnd"
+			      "value6"        "sounds/chicken/chicken_random_7.vsnd"
+                        }
+                    }
+                    "volume"            {   "value"     "10.00000"  }
+                    "pitch_rand_min"    {   "value"     "-0.05000"  }
+                    "pitch_rand_max"    {   "value"     "0.050000"  }
+                    "pitch"             {   "value"     "1.000000"  }
+                    "soundlevel"        {   "value"     "100.00000" }
+                    "distance_max"      {   "value"     "1600.000"  }
+                    "event_type"        {   "value"     "1.000000"  }
+                }
+            }
+        }
+    }
+}
