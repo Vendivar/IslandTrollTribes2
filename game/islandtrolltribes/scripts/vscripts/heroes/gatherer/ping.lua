@@ -8,7 +8,6 @@ function PingItemInRange(keys)
     local itemColorTable = GameRules.ItemInfo["PingColors"]
 
     local itemDrops = Entities:FindAllByClassnameWithin("dota_item_drop", caster:GetAbsOrigin(), range)
-    print(#itemDrops,"in",range)
     for k,drop in pairs(itemDrops) do
         local item = drop:GetContainedItem()
         if not item then print("ERROR: Drop doesnt contain an item") return end
@@ -34,21 +33,21 @@ function PingItemInRange(keys)
             ParticleManager:SetParticleControl(pingParticle, 0, position)
             ParticleManager:SetParticleControl(pingParticle, 1, Vector(r, g, b))
 
-            -- Static particle on the world, 5 second duration through fog
-            local pingStaticParticle1 = ParticleManager:CreateParticleForTeam("particles/custom/ping_static.vpcf", PATTACH_ABSORIGIN, caster, team)
-            ParticleManager:SetParticleControl(pingStaticParticle1, 0, position)
-            ParticleManager:SetParticleControl(pingStaticParticle1, 1, Vector(r, g, b))
-            Timers:CreateTimer(5, function() ParticleManager:DestroyParticle(pingStaticParticle1, true) end)
-
-            -- Static particle attached to the item drop, removed after the item is picked up
-            local pingStaticParticle2 = ParticleManager:CreateParticleForTeam("particles/custom/ping_static.vpcf", PATTACH_ABSORIGIN_FOLLOW, drop, team)
-            ParticleManager:SetParticleControl(pingStaticParticle2, 0, position)
-            ParticleManager:SetParticleControl(pingStaticParticle2, 1, Vector(r, g, b))
+            -- Static particle on the drop, 25 second duration through fog or when the item gets picked up
+            drop.pingStaticParticle = ParticleManager:CreateParticleForTeam("particles/custom/ping_static.vpcf", PATTACH_ABSORIGIN, caster, team)
+            ParticleManager:SetParticleControl(drop.pingStaticParticle, 0, position)
+            ParticleManager:SetParticleControl(drop.pingStaticParticle, 1, Vector(r, g, b))
+            Timers:CreateTimer(25, function()
+                if IsValidEntity(drop) and drop.pingStaticParticle then
+                    ParticleManager:DestroyParticle(drop.pingStaticParticle, true) 
+                end
+            end)
 
             item:EmitSound("General.Ping")  --may be deafening
 
             --Ping Minimap
-            GameRules:AddMinimapDebugPointForTeam( -drop:entindex(), drop:GetAbsOrigin(), r, g, b, 400, 100, team )
+            local radius = 400
+            GameRules:AddMinimapDebugPointForTeam( -drop:entindex(), drop:GetAbsOrigin(), r, g, b, radius, 100, team )
         end
     end
 end

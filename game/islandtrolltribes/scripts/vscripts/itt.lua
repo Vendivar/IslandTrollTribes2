@@ -308,6 +308,7 @@ end
 function ITT:SetHeroIslandPosition(hero, teamID)
 
     hero.Tribe = TEAM_ISLANDS[teamID]
+    DeepPrintTable(TEAM_ISLANDS)
     local possiblePositions = GameRules.StartingPositions[hero.Tribe]
 
     for k,v in pairs(possiblePositions) do

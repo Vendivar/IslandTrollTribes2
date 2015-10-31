@@ -112,6 +112,10 @@ function PickupItem( unit, drop )
     if CanTakeMoreItems(unit) then
         drop:SetAbsOrigin(unit:GetAbsOrigin())
         unit:PickupDroppedItem(drop)
+        if drop.pingStaticParticle then
+            ParticleManager:DestroyParticle(drop.pingStaticParticle, true)
+            drop.pingStaticParticle = nil
+        end
         --print("Picking up "..item:GetAbilityName())
         ResolveInventoryMerge(unit, item)
         return true
@@ -129,7 +133,14 @@ function PickupItem( unit, drop )
             if inventoryItemCharges+currentItemCharges <= maxStacks then
 
                 itemToStack:SetCurrentCharges(inventoryItemCharges+currentItemCharges)
-                UTIL_Remove(drop)
+                Timers:CreateTimer(function() 
+                    if drop.pingStaticParticle then
+                        ParticleManager:DestroyParticle(drop.pingStaticParticle, true)
+                        drop.pingStaticParticle = nil
+                    end
+
+                    UTIL_Remove(drop)
+                end)
 
             -- Otherwise add up to maxCharges and keep both items
             else
