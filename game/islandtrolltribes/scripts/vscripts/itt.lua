@@ -296,7 +296,7 @@ function ITT:OnClassSelected(event)
         print("[ITT] CreateHeroForPlayer: ",playerID,hero_name,team)
 
         -- Move to the first unassigned starting position for the assigned team-isle
-        ITT:SetHeroIslandPosition(hero)
+        ITT:SetHeroIslandPosition(hero, team)
 
         -- Health Label
         local color = ITT:ColorForTeam( team )
@@ -305,9 +305,9 @@ function ITT:OnClassSelected(event)
     end, playerID)
 end
 
-function ITT:SetHeroIslandPosition(hero)
+function ITT:SetHeroIslandPosition(hero, teamID)
 
-    hero.Tribe = TEAM_ISLANDS[hero:GetTeamNumber()]
+    hero.Tribe = TEAM_ISLANDS[teamID]
     local possiblePositions = GameRules.StartingPositions[hero.Tribe]
 
     for k,v in pairs(possiblePositions) do
@@ -373,7 +373,7 @@ function ITT:OnHeroInGame( hero )
     -- This handles spawning heroes through dota_bot_populate
     if PlayerResource:IsFakeClient(hero:GetPlayerID()) then
         Timers:CreateTimer(1, function()
-            ITT:SetHeroIslandPosition(hero)
+            ITT:SetHeroIslandPosition(hero, hero:GetTeamNumber())
         end)
     end
 end

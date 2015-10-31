@@ -2561,7 +2561,7 @@
 	    "UpdateHealth"                  "1" //bool
 	    "Scale"                         "0" //bool
 	    "PlayerCanControl"              "1" //bool
-        "ModelRotation"                 "90.0"
+	        "ModelRotation"                 "90.0"
 	    "UnitName"                      "npc_building_armory"
 	    "AbilityCooldown"               "0"
 	    "AbilityGoldCost"               "0"
@@ -2870,7 +2870,7 @@
 	    "UpdateHealth"                  "1" //bool
 	    "Scale"                         "0" //bool
 	    "PlayerCanControl"              "1" //bool
-        "ModelRotation"                 "90.0"
+	        "ModelRotation"                 "90.0"
 	    "UnitName"                      "npc_building_hut_troll"
 	    "AbilityCooldown"               "0"
 	    "AbilityGoldCost"               "0"
@@ -2993,7 +2993,7 @@
 	    "UpdateHealth"                  "1" //bool
 	    "Scale"                         "0" //bool
 	    "PlayerCanControl"              "1" //bool
-        "ModelRotation"                 "-90"
+	        "ModelRotation"                 "-90"
 	    "UnitName"                      "npc_building_mix_pot"
 	    "AbilityCooldown"               "0"
 	    "AbilityGoldCost"               "0"
@@ -3054,7 +3054,7 @@
 	    "UpdateHealth"                  "1" //bool
 	    "Scale"                         "0" //bool
 	    "PlayerCanControl"              "1" //bool
-        "ModelRotation"                 "90"
+	        "ModelRotation"                 "90"
 	    "UnitName"                      "npc_building_smoke_house"
 	    "AbilityCooldown"               "0"
 	    "AbilityGoldCost"               "0"
@@ -3240,7 +3240,7 @@
 	    "UpdateHealth"                  "1" //bool
 	    "Scale"                         "0" //bool
 	    "PlayerCanControl"              "1" //bool
-        "ModelRotation"                 "90.0"
+	        "ModelRotation"                 "90.0"
 	    "UnitName"                      "npc_building_tannery"
 	    "AbilityCooldown"               "0"
 	    "AbilityGoldCost"               "0"
@@ -3363,7 +3363,7 @@
 	    "UpdateHealth"                  "1" //bool
 	    "Scale"                         "0" //bool
 	    "PlayerCanControl"              "1" //bool
-        "ModelRotation"                 "180"
+	        "ModelRotation"                 "180"
 	    "UnitName"                      "npc_building_tent"
 	    "AbilityCooldown"               "0"
 	    "AbilityGoldCost"               "0"
@@ -10761,7 +10761,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"meat_cooked"
-		"Model"	"models/turkeyleg.vmdl"
+		"Model"	"models/props_gameplay/cheese.vmdl"
 		"Effect"	""
 		"AbilityCastPoint"	"0.5"
 		"ItemCost"	"2"
@@ -10823,7 +10823,7 @@
 	
 		"Custom"
 		{
-			"ModelScale"	"60"
+			"ModelScale"	"0.8"
 		}
 	
 	}

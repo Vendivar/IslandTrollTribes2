@@ -1,43 +1,54 @@
 --[[Pings the items in parameter ItemTable with their corresponding color]]
 function PingItemInRange(keys)
-    --PrintTable(keys)
     local caster = keys.caster
-    local id = caster:GetPlayerID()
+    local ability = keys.ability
+    local playerID = caster:GetPlayerID()
     local team = caster:GetTeamNumber()
-    local range = keys.Range
-    local itemTable = keys.ItemTable
+    local range = ability:GetCastRange()
+    local itemColorTable = GameRules.ItemInfo["PingColors"]
 
-    --PingMap(caster:GetPlayerID(),caster:GetOrigin(),1,1,1)
-    --code above for checking your position.
-    print("caster info", caster:GetTeam(), caster:GetOrigin(),range)
-    for _,item in pairs( Entities:FindAllByClassnameWithin("dota_item_drop", caster:GetOrigin(), range)) do
-        local containedItem = item:GetContainedItem()
+    local itemDrops = Entities:FindAllByClassnameWithin("dota_item_drop", caster:GetAbsOrigin(), range)
+    print(#itemDrops,"in",range)
+    for k,drop in pairs(itemDrops) do
+        local item = drop:GetContainedItem()
+        if not item then print("ERROR: Drop doesnt contain an item") return end
 
-        -- Get item color from table, else default white
-        local itemColor = itemTable[containedItem:GetAbilityName()]
-        if (itemColor == nil) then
-            itemColor = "255 255 255"
+        local itemName = item:GetAbilityName()
+        if itemname ~= "item_meat_raw" then
+
+            -- Get item color from table, else default white
+            local itemColor = itemColorTable[itemName]
+            if not itemColor then
+                itemColor = "255 255 255"
+            end
+            
+            -- Iterate over item color string and parse into specific values
+            local color = split(itemColor)
+            local r = tonumber(color[1])
+            local g = tonumber(color[2])
+            local b = tonumber(color[3])
+                 
+            -- Ping World Particle, 3 second duration
+            local position = drop:GetAbsOrigin()
+            local pingParticle = ParticleManager:CreateParticleForTeam("particles/custom/ping_world.vpcf", PATTACH_ABSORIGIN, caster, team)
+            ParticleManager:SetParticleControl(pingParticle, 0, position)
+            ParticleManager:SetParticleControl(pingParticle, 1, Vector(r, g, b))
+
+            -- Static particle on the world, 5 second duration through fog
+            local pingStaticParticle1 = ParticleManager:CreateParticleForTeam("particles/custom/ping_static.vpcf", PATTACH_ABSORIGIN, caster, team)
+            ParticleManager:SetParticleControl(pingStaticParticle1, 0, position)
+            ParticleManager:SetParticleControl(pingStaticParticle1, 1, Vector(r, g, b))
+            Timers:CreateTimer(5, function() ParticleManager:DestroyParticle(pingStaticParticle1, true) end)
+
+            -- Static particle attached to the item drop, removed after the item is picked up
+            local pingStaticParticle2 = ParticleManager:CreateParticleForTeam("particles/custom/ping_static.vpcf", PATTACH_ABSORIGIN_FOLLOW, drop, team)
+            ParticleManager:SetParticleControl(pingStaticParticle2, 0, position)
+            ParticleManager:SetParticleControl(pingStaticParticle2, 1, Vector(r, g, b))
+
+            item:EmitSound("General.Ping")  --may be deafening
+
+            --Ping Minimap
+            GameRules:AddMinimapDebugPointForTeam( -drop:entindex(), drop:GetAbsOrigin(), r, g, b, 400, 100, team )
         end
-        -- TODO: ignore raw meat since it is now an item.
-        
-        -- Iterate over item color string and parse into specific values
-        local stringParse = string.gmatch(itemColor, "%d+")
-        --need to divide by 255 to convert to 0-1 scale
-        local redVal = tonumber(stringParse())/255
-        local greenVal = tonumber(stringParse())/255
-        local blueVal = tonumber(stringParse())/255
- 
-        print("pinging", containedItem:GetAbilityName(), "at", item:GetAbsOrigin().x, item:GetAbsOrigin().y, item:GetAbsOrigin().z)
-        --maybe use CreateParticleForPlayer(string particleName, int particleAttach, handle owningEntity, handle owningPlayer)
-        local thisParticle = ParticleManager:CreateParticle("particles/ui_mouseactions/ping_world.vpcf", PATTACH_ABSORIGIN, item)
-        ParticleManager:SetParticleControl(thisParticle, 0, item:GetAbsOrigin())
-        ParticleManager:SetParticleControl(thisParticle, 1, Vector(redVal, greenVal, blueVal))
-        print(containedItem:GetAbilityName(), redVal, greenVal, blueVal)
-        ParticleManager:ReleaseParticleIndex(thisParticle)
-        item:EmitSound("General.Ping")   --may be deafening
-        print("ping color: ", itemColor)
-        --Ping Minimap
-        --MinimapEvent( team, caster, item:GetAbsOrigin().x, item:GetAbsOrigin().y, DOTA_MINIMAP_EVENT_HINT_LOCATION, 3 )
-        GameRules:AddMinimapDebugPointForTeam(id,item:GetAbsOrigin(), redVal*255, greenVal*255, blueVal*255, 500, 3, team)
     end
 end
