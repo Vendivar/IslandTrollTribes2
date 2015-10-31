@@ -1,79 +1,89 @@
 "ability_hunter_dysenterytrack"
 {
-	"BaseClass"	"ability_datadriven"
-	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
-	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	"AbilityTextureName"	"ability_hunter_dysenterytrack"
-	"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
-	"AbilityCastPoint"	"0.0"
-	"AbilityCooldown"	"35"
-	"AbilityCastRange"	"700"
-	"AbilityManaCost"	"0"
-	"MaxLevel"	"1"
-	"precache"
-	{
-		"particle_folder"	"particles/econ/courier/courier_trail_fungal"
-		"particle_folder"	"particles/units/heroes/hero_tinker"
-		"soundfile"			"sounds/weapons/hero/venomancer/venomancer_poison_nova.vsnd"
-	}
+    "BaseClass"                 "ability_datadriven"
+    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+    "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityTextureName"        "ability_hunter_dysenterytrack"
+    "AbilityCastAnimation"      "ACT_DOTA_ATTACK"
+    "AbilityCastPoint"          "0.0"
+    "AbilityCooldown"           "35"
+    "AbilityCastRange"          "700"
+    "AbilityManaCost"           "0"
+    "MaxLevel"                  "1"
+    
+    "AbilitySpecial"
+    {
+        "01"
+        {
+            "var_type"          "FIELD_FLOAT"
+            "duration"          "60"
+        }
 
-	"OnSpellStart"
-	{
-		"TrackingProjectile"
-		{
-			"Target"	"TARGET"
-			"EffectName"	"particles/units/heroes/hero_tinker/tinker_missile.vpcf"
-			"Dodgeable"	"false"
-			"ProvidesVision"	"false"
-			"MoveSpeed"	"2000"
-		}
-		"FireSound"
-		{
-			"EffectName"		"Hero_Venomancer.PoisonNova"
-			"Target"			"TARGET"
-		}
-	}
+        "02"
+        {
+            "var_type"          "FIELD_FLOAT"
+            "trail_fade_time"   "10"
+        }
+    }
 
-	"OnProjectileHitUnit"
-	{
-		"RunScript"
-		{
-			"ScriptFile"    "heroes/hunter/dysentery.lua"
-			"Function"      "DysenteryTrackUnit"
-			"Target"        "TARGET"
-			"Duration"      "%duration"
-			"TrailFadeTime" "%trail_fade_time"
-		}
+    "precache"
+    {
+        "particle"    "particles/econ/courier/courier_trail_fungal/courier_trail_fungal_f.vpcf"
+        "particle"    "particles/units/heroes/hero_tinker/tinker_missile.vpcf"
+        "soundfile"   "sounds/weapons/hero/venomancer/venomancer_poison_nova.vsnd"
+    }
 
-		"FireSound"
-		{
-			"EffectName"	"Hero_Venomancer.PoisonNova"
-			"Target"	"TARGET"
-		}
+    "OnSpellStart"
+    {
+        "TrackingProjectile"
+        {
+            "Target"         "TARGET"
+            "EffectName"     "particles/units/heroes/hero_tinker/tinker_missile.vpcf"
+            "Dodgeable"      "0"
+            "ProvidesVision" "0"
+            "MoveSpeed"      "2000"
+        }
+        "FireSound"
+        {
+            "EffectName"        "Hero_Venomancer.PoisonNova"
+            "Target"            "TARGET"
+        }
+    }
 
-	}
+    "OnProjectileHitUnit"
+    {
+        "DeleteOnHit"   "1"
+        "ApplyModifier"
+        {
+            "ModifierName"   "modifier_dynsentery_track"
+            "Target"         "TARGET"
+            "Duration"       "%duration"
+        }
 
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"	"FIELD_FLOAT"
-			"duration"	"60"
-		}
+        "FireSound"
+        {
+            "EffectName"    "Hero_Venomancer.PoisonNova"
+            "Target"        "TARGET"
+        }
+    }
 
-		"02"
-		{
-			"var_type"	"FIELD_FLOAT"
-			"trail_fade_time"	"10"
-		}
-
-		"03"
-		{
-			"var_type"	"FIELD_FLOAT"
-			"cooldown"	"35.0"
-		}
-
-	}
-
+    "Modifiers"
+    {
+        "modifier_dynsentery_track"
+        {
+            "IsDebuff"          "1"
+    
+            "ThinkInterval"     "0.75"
+            "OnIntervalThink"
+            {
+                "RunScript"
+                {
+                    "ScriptFile"    "heroes/hunter/dysentery.lua"
+                    "Function"      "DysenteryTrackThink"
+                    "Fade"          "%trail_fade_time"
+                }
+            }    
+        }
+    }
 }
