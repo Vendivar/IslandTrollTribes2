@@ -1,54 +1,72 @@
 "eat_meat"
 {
-	"BaseClass"	"ability_datadriven"
-	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 	"AbilityTextureName"	"life_stealer_open_wounds"
-	"AbilityCastPoint"	"0.0"
+	"AbilityCastPoint"		"0.0"
 	"AbilityCastAnimation"	"ACT_DOTA_CHANNEL_ABILITY_4"
-	"AbilityChannelTime"	"2.0"
-	"AbilityCooldown"	"0"
-	"AbilityManaCost"	"0"
+	"AbilityChannelTime"	"1.5"
+	"AbilityCooldown"		"0"
+	"AbilityManaCost"		"0"
 
 	"IsCastableWhileHidden"	"1"
+
+	"AbilitySpecial"
+    {
+        "01"
+        {
+            "var_type"    	"FIELD_INTEGER"
+            "max_stacks"    "10"
+        }
+
+        "02"
+        {
+            "var_type"    	"FIELD_INTEGER"
+            "heal_amount"   "15"
+        }
+
+        "03"
+        {
+            "var_type"    	"FIELD_FLOAT"
+            "channel_time"  "1.5"
+        }
+    }
 
 	"OnSpellStart"
 	{
 		"ApplyModifier"
 		{
-			"Target"	"CASTER"
-			"ModifierName"	"modifier_eat_meat_raw"
+			"Target"			"CASTER"
+			"ModifierName"		"modifier_eat_meat_raw"
 		}
-
 	}
 
 	"OnChannelFinish"
 	{
 		"RemoveModifier"
 		{
-			"Target"	"CASTER"
-			"ModifierName"	"modifier_eat_meat_raw"
+			"Target"			"CASTER"
+			"ModifierName"		"modifier_eat_meat_raw"
 		}
 
 		"RemoveAbility"
 		{
-			"Target"	"CASTER"
-			"AbilityName"	"ability_item_eat_meat_raw"
+			"Target"			"CASTER"
+			"AbilityName"		"eat_meat"
 		}
-
 	}
 
 	"Modifiers"
 	{
 		"modifier_eat_meat_raw"
 		{
-			"ThinkInterval"	".2"
+			"ThinkInterval"	"0.1"
 			"OnIntervalThink"
 			{
-				"RunScript"
+				"Heal"
 				{
-					"ScriptFile"	"mechanics/meat.lua"
-					"Function"		"EatMeat"
-					"heal_amount"	"1"
+					"Target"        "CASTER"
+					"HealAmount"	"1" //15 ticks during 1.5 seconds
 				}
 			}
 		}

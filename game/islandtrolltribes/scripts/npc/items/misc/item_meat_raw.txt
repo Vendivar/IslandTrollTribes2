@@ -1,78 +1,42 @@
+// The item is placeholder, the real ability is eat_meat
 "item_meat_raw"
 {
-	"ID"	"1006"
-	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"meat_raw"
-	"Model"	"models/items/lifestealer/transmuted_armaments_back/transmuted_armaments_back.vmdl"
-	"Effect"	""
-	"ItemCost"	"1"
-	"ItemShopTags"	"consumable"
-	"ItemQuality"	"consumable"
-	"ItemShareability"	"ITEM_FULLY_SHAREABLE_STACKING"
-	"ItemStackable"	"0"
-	"ItemPermanent"	"0"
-	"ItemDroppable"	"1"
-	"ItemInitialCharges"	"1"
-	"ItemAliases"	"quicktype"
-	"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
-	"ItemKillable"	"1"
-	"ItemSellable"	"0"
+    "ID"    				"1006"
+    "AbilityBehavior"    	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "BaseClass"    			"item_datadriven"
+    "AbilityTextureName"    "meat_raw"
+    "Model"    				"models/items/lifestealer/transmuted_armaments_back/transmuted_armaments_back.vmdl"
+    "Effect"    			""
+    "ItemCost"    			"1"
+    "ItemShopTags"    		"consumable"
+    "ItemQuality"    		"consumable"
+    "ItemShareability"    	"ITEM_FULLY_SHAREABLE_STACKING"
+    "ItemStackable"    		"0"
+    "ItemPermanent"    		"0"
+    "ItemDroppable"    		"1"
+    "ItemInitialCharges"    "1"
+    "ItemAliases"    		"quicktype"
+    "ItemDisassembleRule"   "DOTA_ITEM_DISASSEMBLE_NEVER"
+    "ItemKillable"    		"1"
+    "ItemSellable"    		"0"
 
-	"OnSpellStart"
-	{
-		"SpendCharge"
-        {}
+    "Custom"
+    {
+        "ModelOffsets"
+        {
+            "Origin"
+            {
+                "x"    "0"
+                "y"    "0"
+                "z"    "97"
+            }
 
-		"RunScript"
-		{
-			"ScriptFile"	"mechanics/meat.lua"
-			"Function"		"EatMeatRaw"
-		}
-	}
-
-	"Custom"
-	{
-		"ModelOffsets"
-		{
-			"Origin"
-			{
-				"x"	"0"
-				"y"	"0"
-				"z"	"97"
-			}
-
-			"Angles"
-			{
-				"x"	"0"
-				"y"	"0"
-				"z"	"0"
-			}
-
-		}
-
-	}
-
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"	"FIELD_INTEGER"
-			"buff_duration"	"2"
-		}
-
-		"02"
-		{
-			"var_type"	"FIELD_INTEGER"
-			"total_hp"	"15"
-		}
-
-		"03"
-		{
-			"var_type"	"FIELD_INTEGER"
-			"hp_per_tick"	"1"
-		}
-
-	}
-
+            "Angles"
+            {
+                "x"    "0"
+                "y"    "0"
+                "z"    "0"
+            }
+        }
+    }
 }
