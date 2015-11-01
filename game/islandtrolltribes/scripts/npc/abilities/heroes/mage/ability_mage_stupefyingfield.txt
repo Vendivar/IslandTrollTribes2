@@ -1,163 +1,122 @@
 "ability_mage_stupefyingfield"
 {
-	"BaseClass"	"ability_datadriven"
-	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
-	"AbilityTextureName"	"ability_mage_stupefyingfield"
-	"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_6"
-	"AbilityCastPoint"	"0.5"
-	"AbilityCooldown"	"20"
-	"AbilityChannelTime"	"8"
-	"AbilityManaCost"	"10"
-	"MaxLevel"	"1"
-	"RequiredLevel"	"4"
-	"precache"
-	{
-		"soundfile"				"soundevents/game_sounds_heroes/game_sounds_visage.vsndevts"
-	}
-	"OnSpellStart"
-	{
-		"ApplyModifier"
-		{
-			"ModifierName"	"modifier_stupefy"
-			"Duration"	"%stupefy_duration"
-			"Target"
-			{
-				"Target"	"CASTER"
-				"Center"	"CASTER"
-			}
+    "BaseClass"             "ability_datadriven"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+    "AbilityTextureName"    "ability_mage_stupefyingfield"
+    "AbilityCastAnimation"  "ACT_DOTA_CAST_ABILITY_4"
+    "AbilityCastPoint"      "0.5"
+    "AbilityCooldown"       "20"
+    "AbilityChannelTime"    "8"
+    "AbilityManaCost"       "10"
+    "MaxLevel"              "1"
 
-		}
+    "AbilityCastRange"      "%stupefy_radius" 
 
-		"ApplyModifier"
-		{
-			"ModifierName"	"modifier_stupefyself"
-			"Duration"	"%stupefy_duration"
-			"Target"
-			{
-				"Target"	"CASTER"
-			}
+    "AbilitySpecial"
+    {
+        "01"
+        {
+            "var_type"              "FIELD_INTEGER"
+            "stupefy_duration"      "8"
+        }
 
-		}
+        "02"
+        {
+            "var_type"              "FIELD_INTEGER"
+            "stupefy_radius"        "600"
+        }
 
-			"FireSound"
-		{
-			"EffectName"		"Hero_Visage.GraveChill.Cast"
-			"Target"			"CASTER"
-		}
+        "02"
+        {
+            "var_type"              "FIELD_INTEGER"
+            "move_speed_reduction"  "-300"
+        }
 
-	}
+        "03"
+        {
+            "var_type"               "FIELD_INTEGER"
+            "attack_speed_reduction" "-300"
+        }
+    }
 
-	"OnChannelSucceeded"
-	{
-		"RemoveModifier"
-		{
-			"Target"	"CASTER"
-			"ModifierName"	"modifier_stupefy"
-		}
+    "precache"
+    {
+        "soundfile" "soundevents/game_sounds_heroes/game_sounds_visage.vsndevts"
+    }
 
-		"RemoveModifier"
-		{
-			"Target"	"CASTER"
-			"ModifierName"	"modifier_stupefyself"
-		}
+    "OnSpellStart"
+    {
+        "ApplyModifier"
+        {
+            "ModifierName"  "modifier_stupefy"
+            "Duration"      "%stupefy_duration"
+            "Target"        "CASTER"
+        }
 
-	}
+        "ApplyModifier"
+        {
+            "ModifierName"  "modifier_stupefyself"
+            "Duration"      "%stupefy_duration"
+            "Target"        "CASTER"
+        }
 
-	"OnChannelFinish"
-	{
-		"RemoveModifier"
-		{
-			"Target"	"CASTER"
-			"ModifierName"	"modifier_stupefy"
-		}
+        "FireSound"
+        {
+            "EffectName"    "Hero_Visage.GraveChill.Cast"
+            "Target"        "CASTER"
+        }
+    }
 
-		"RemoveModifier"
-		{
-			"Target"	"CASTER"
-			"ModifierName"	"modifier_stupefyself"
-		}
-		"FireSound"
-		{
-			"EffectName"	"Hero_Visage.GraveChill.Target"
-			"Target"		"TARGET"
-		}
+    "OnChannelFinish"
+    {
+        "RemoveModifier"
+        {
+            "Target"        "CASTER"
+            "ModifierName"  "modifier_stupefy"
+        }
 
-	}
+        "RemoveModifier"
+        {
+            "Target"        "CASTER"
+            "ModifierName"  "modifier_stupefyself"
+        }
+        "FireSound"
+        {
+            "EffectName"    "Hero_Visage.GraveChill.Target"
+            "Target"        "TARGET"
+        }
+    }
 
-	"OnChannelInterrupted"
-	{
-		"RemoveModifier"
-		{
-			"Target"	"CASTER"
-			"ModifierName"	"modifier_stupefy"
-		}
+    "Modifiers"
+    {
+        "modifier_stupefy"
+        {
+            "IsHidden"      "1"
+            "Aura"          "stupefy_aura"
+            "Aura_Radius"   "%stupefy_radius"
+            "Aura_Teams"    "DOTA_UNIT_TARGET_TEAM_BOTH"
+            "Aura_Types"    "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+            "Aura_ApplyToCaster" "0" 
+        }
 
-		"RemoveModifier"
-		{
-			"Target"	"CASTER"
-			"ModifierName"	"modifier_stupefyself"
-		}
+        "stupefy_aura"
+        {
+            "IsDebuff"      "1"
+            "IsPurgable"    "0"
+            "Properties"
+            {
+                "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"    "%move_speed_reduction"
+                "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"    "%attack_speed_reduction"
+            }
+        }
 
-	}
-
-	"Modifiers"
-	{
-		"modifier_stupefy"
-		{
-			"Passive"	"1"
-			"IsHidden"	"0"
-			"Aura"	"stupefy_aura"
-			"Aura_Radius"	"%stupefy_radius"
-			"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_BOTH"
-			"Aura_Types"	"DOTA_UNIT_TARGET_ALL"
-			"Aura_ApplyToCaster" "0" 
-		}
-
-		"stupefy_aura"
-		{
-			"IsDebuffBuff"	"1"
-
-			"IsPurgable"	"0"
-			"Properties"
-			{
-				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%move_speed_reduction"
-				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed_reduction"
-			}
-
-		}
-
-		"modifier_stupefyself"
-		{
-			"Duration"	"8"
-			"States"
-			{
-				"MODIFIER_STATE_MAGIC_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
-			}
-
-		}
-
-	}
-
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"	"FIELD_INTEGER"
-			"stupefy_duration"	"8"
-		}
-
-		"02"
-		{
-			"var_type"	"FIELD_INTEGER"
-			"move_speed_reduction"	"-300"
-		}
-
-		"03"
-		{
-			"var_type"	"FIELD_INTEGER"
-			"attack_speed_reduction"	"-300"
-		}
-
-	}
-
+        "modifier_stupefyself"
+        {
+            "Duration"    "%stupefy_duration"
+            "States"
+            {
+                "MODIFIER_STATE_MAGIC_IMMUNE"    "MODIFIER_STATE_VALUE_ENABLED"
+            }
+        }
+    }
 }
