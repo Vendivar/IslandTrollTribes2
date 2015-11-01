@@ -1,6 +1,6 @@
-
+-- Checks for combines in heroes or units
 function InventoryCheck( unit )
-    local recipeTable = GameRules.Crafting['Recipes']
+    local recipeTable = GameRules.Crafting[unit:GetUnitName()] or GameRules.Crafting['Recipes']
 
     for recipeName,recipeIngredients in pairs(recipeTable) do 
         
@@ -14,13 +14,17 @@ function InventoryCheck( unit )
             -- Create the resulting item
             unit:AddItem(CreateItem(recipeName, nil, nil))
 
+            FireCombineParticle(unit)
+
+            unit:EmitSound("General.Combine")
+
             break
         end
     end
 end
 
 function CanCombine( unit, recipeName )
-    local requirements = GameRules.Crafting['Recipes'][recipeName]
+    local requirements = GameRules.Crafting['Recipes'][recipeName] or GameRules.Crafting[unit:GetUnitName()][recipeName]
 
     local result = {}
     for itemName,num in pairs(requirements) do
@@ -108,9 +112,20 @@ function GetRandomAliasFor(aliasName)
     end
 end
 
+-- Associates a particle to each building
+function FireCombineParticle( unit )
+    local combineParticles = {
+        ["npc_building_mix_pot"] = "particles/units/heroes/hero_keeper_of_the_light/keeper_chakra_magic.vpcf",
+    }
 
-
-
+    local unitName = unit:GetUnitName()
+    local particleName = combineParticles[unitName]
+    if particleName then
+        local combineFX = ParticleManager:CreateParticle(particleName, PATTACH_ABSORIGIN_FOLLOW, unit)
+        ParticleManager:SetParticleControl(combineFX, 0, unit:GetAbsOrigin())
+        ParticleManager:SetParticleControl(combineFX, 1, unit:GetAbsOrigin())
+    end
+end
 
 
 

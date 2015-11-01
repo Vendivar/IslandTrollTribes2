@@ -14,26 +14,33 @@ function FleaAttack(keys)
         local units = FindUnitsInRadius(teamnumber, casterPosition, nil, ability:GetCastRange(), DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, 0, 0, false)
         
         if #units > 0 then
-            -- select random target
-            local target = units[RandomInt(1,#units)]
+            for k,v in pairs(units) do
+                if not IsFlyingUnit(v) then
+            
+                    -- select random target
+                    local target = units[RandomInt(1,#units)]
 
-            -- fire flea attack projectile
-            local info =
-            {
-                Ability = ability,
-                Target = target,
-                Source = caster,
-                EffectName = particleName,
-                vSpawnOrigin = casterPosition,
-                bProvidesVision = false,
-                bDeleteOnHit = true,
-                bDodgeable = true,
-                iMoveSpeed = 1000
-            }
-            projectile = ProjectileManager:CreateTrackingProjectile(info)
+                    -- fire flea attack projectile
+                    local info =
+                    {
+                        Ability = ability,
+                        Target = target,
+                        Source = caster,
+                        EffectName = particleName,
+                        vSpawnOrigin = casterPosition,
+                        bProvidesVision = false,
+                        bDeleteOnHit = true,
+                        bDodgeable = true,
+                        iMoveSpeed = 1000
+                    }
+                    projectile = ProjectileManager:CreateTrackingProjectile(info)
 
-            -- apply cooldown
-            ability:StartCooldown(cooldown)
+                    -- apply cooldown
+                    ability:StartCooldown(cooldown)
+
+                    break
+                end
+            end
         end
     end
 end

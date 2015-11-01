@@ -819,19 +819,27 @@ function ITT:OnPlayerConnectFull(keys)
 end
 
 -- Listener to handle item pickup (the rest of the pickup logic is tied to the order filter and item function mechanics)
-function ITT:OnItemPickedUp(event)    
-    if not event.HeroEntityIndex then
-        print("A building just picked an item")
-        return
+function ITT:OnItemPickedUp(event)
+
+    local unit
+    if event.UnitEntityIndex then
+        unit = EntIndexToHScript( event.UnitEntityIndex )
+    elseif event.HeroEntityIndex then
+        unit = EntIndexToHScript( event.HeroEntityIndex )
     end
 
-    local hero = EntIndexToHScript( event.HeroEntityIndex )
-    local originalItem = EntIndexToHScript(event.ItemEntityIndex)
+    local originalItem = EntIndexToHScript( event.ItemEntityIndex )
     local itemName = event.itemname
 
     -- Check for combines
-    InventoryCheck(hero)
+    InventoryCheck(unit)
 
+    -- A unit/building picked an item, don't continue with the rest of the hero logic
+    if not event.HeroEntityIndex then
+        return
+    end
+
+    local hero = unit
     local itemSlotRestriction = GameRules.ItemInfo['ItemSlots'][itemName]
     if itemSlotRestriction then
         local maxCarried = GameRules.ItemInfo['MaxCarried'][itemSlotRestriction]

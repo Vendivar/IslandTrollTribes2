@@ -353,6 +353,7 @@ function Precache( context )
 	PrecacheResource("model", "models/items/brewmaster/offhand_jug/offhand_jug.vmdl",context)
 	
 	
+	PrecacheResource("particle", "particles/units/heroes/hero_keeper_of_the_light/keeper_chakra_magic.vpcf", context)
 	PrecacheResource("particle", "particles/econ/courier/courier_trail_fungal/courier_trail_fungal.vpcf", context)
 	PrecacheResource("particle_folder", "particles/items_fx",context)
 	PrecacheResource("particle_folder", "particles/items2_fx",context)
