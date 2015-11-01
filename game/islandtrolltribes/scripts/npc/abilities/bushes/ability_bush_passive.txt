@@ -10,6 +10,9 @@
 			"Passive"	"1"
 			"IsHidden"	"1"
 
+			"EffectName"		"particles/custom/dropped_item_white.vpcf"
+			"EffectAttachType"	"follow_origin"
+
 			"States"
 			{
 				"MODIFIER_STATE_MAGIC_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"

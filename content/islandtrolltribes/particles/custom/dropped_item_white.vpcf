@@ -24,6 +24,7 @@
 			m_bAdditive = true
 			m_hTexture = resource:"materials/particle/burst01.vtex"
 			m_nOrientationType = 2
+			m_flOverbrightFactor = 2.000000
 		},
 	]
 	m_Operators =
@@ -103,6 +104,15 @@
 		{
 			_class = "C_OP_ContinuousEmitter"
 			m_flEmitRate = 16.000000
+		},
+	]
+	m_Children =
+	[
+		{
+			m_ChildRef = resource:"particles/custom/dropped_item_b_white.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/custom/dropped_item_bloom_white.vpcf"
 		},
 	]
 }
