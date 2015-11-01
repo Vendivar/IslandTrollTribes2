@@ -2083,62 +2083,90 @@
 	}
 	"ability_beastmaster_fleaattackaura"
 	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"ability_beastmaster_fleaattackaura"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"MaxLevel"	"1"
-		"Precache"
-		{
-			"particle"	"particles/units/heroes/hero_weaver/weaver_base_attack.vpcf"
-			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_shadow_demon.vsndevts"
-		}
+	    "BaseClass"             "ability_datadriven"
+	    "AbilityTextureName"    "ability_beastmaster_fleaattackaura"
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	    "MaxLevel"              "7" //Learned at  6 7 8 10 15 20 30
 	
-		"OnProjectileFinish"
-		{
-			"RunScript"
-			{
-				"ScriptFile" "heroes/beastmaster/flea.lua"
-				"Function"   "FleaAttackDamage"
-			}
-			"FireSound"
-				{
-					"EffectName"	"Hero_ShadowDemon.projectileImpact"
-					"Target"		"TARGET"
-				}
+	    "AbilityCastRange"      "400"
+	    
+	    "precache"
+	    {
+	        "particle"  "particles/units/heroes/hero_weaver/weaver_base_attack.vpcf"
+	        "soundfile" "soundevents/game_sounds_heroes/game_sounds_shadow_demon.vsndevts"
+	    }
 	
-		}
-	
-		"Modifiers"
-		{
-			"modifier_flea_attack"
-			{
-				"Passive"	"1"
-				"IsHidden"	"1"
-				"IsPurgable"	"0"
-				"ThinkInterval"	"0.05"
-				"OnIntervalThink"
-				{
-					"RunScript"
-					{
-						"ScriptFile"   "heroes/beastmaster/flea.lua"
-						"Function"     "FleaAttack"
-						"Particle"     "particles/units/heroes/hero_weaver/weaver_base_attack.vpcf"
-					}
-					
-				}
-	
-			}
-	
-		}
-	        "AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"damage"	"12 13 14 15 16 19 24 28"
-			}
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"    "FIELD_INTEGER"
+	            "damage"      "12 13 14 15 16 20 28"
 	        }
 	
+	        "02"
+	        {
+	            "var_type"    "FIELD_FLOAT"
+	            "cooldown"    "1.0 0.95 0.90 0.85 0.8 0.75 0.70"
+	        }
+	
+	        "03"
+	        {
+	            "var_type"    "FIELD_FLOAT"
+	            "dps"         "3.0"
+	        }
+	    }
+	
+	    "OnProjectileHitUnit"
+	    {
+	        "DeleteOnHit"   "1"
+	        "RunScript"
+	        {
+	            "ScriptFile" "heroes/beastmaster/flea.lua"
+	            "Function"   "FleaAttackHit"
+	            "Target"     "TARGET"
+	        }
+	        
+	        "FireSound"
+	        {
+	            "EffectName"    "Hero_ShadowDemon.projectileImpact"
+	            "Target"        "TARGET"
+	        }
+	    }
+	
+	    "Modifiers"
+	    {
+	        "modifier_flea_attack"
+	        {
+	            "Passive"           "1"
+	            "IsHidden"          "1"
+	            "IsPurgable"        "0"
+	            "ThinkInterval"     "0.1"
+	            "OnIntervalThink"
+	            {
+	                "RunScript"
+	                {
+	                    "ScriptFile"   "heroes/beastmaster/flea.lua"
+	                    "Function"     "FleaAttack"
+	                }   
+	            }
+	        }
+	
+	        "modifier_flea_debuff"
+	        {
+	            "IsDebuff"       "1"
+	            "ThinkInterval"  "0.5"
+	            "OnIntervalThink"
+	            {
+	                "Damage"
+	                {
+	                    "Target"        "TARGET"
+	                    "Type"          "DAMAGE_TYPE_MAGICAL"
+	                    "Damage"        "%dps / 2"
+	                }
+	            }
+	        }
+	    }
 	}
 	"ability_beastmaster_fowlplay"
 	{
@@ -12878,9 +12906,11 @@
 					"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
 					"MODIFIER_STATE_COMMAND_RESTRICTED"	"MODIFIER_STATE_VALUE_ENABLED"
 					"MODIFIER_STATE_ATTACK_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_MAGIC_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
 					"MODIFIER_STATE_NOT_ON_MINIMAP"	"MODIFIER_STATE_VALUE_ENABLED"
 					"MODIFIER_STATE_UNSELECTABLE"	"MODIFIER_STATE_VALUE_ENABLED"
 					"MODIFIER_STATE_NO_HEALTH_BAR"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_OUT_OF_GAME" "MODIFIER_STATE_VALUE_ENABLED"
 				}
 			}
 		}
