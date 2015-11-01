@@ -3366,383 +3366,329 @@
 		}
 	
 	}
+	"ability_gatherer_advanced_radarmanipulations"
+	{
+	    "BaseClass"             "ability_datadriven"
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	    "AbilityTextureName"    "ability_gatherer_advanced_radarmanipulations" //TODO: Icon
+	    "MaxLevel"              "1"
+	    "AbilityCastPoint"      "0"
+	
+	    "OnToggleOn"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile" "heroes/gatherer/radar.lua"
+	            "Function"   "ToggleOnAdvancedRadar"
+	        }
+	    }
+	
+	    "OnToggleOff"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile" "heroes/gatherer/radar.lua"
+	            "Function"   "ToggleOffRadar"
+	        }
+	    }
+	}
 	"ability_gatherer_findclayballcookedmeatorbone"
 	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-		"AbilityTextureName"	"ability_gatherer_findclayballcookedmeatorbone"
-		"MaxLevel"	"1"
-		"AbilityCastPoint"	"0"
-		"AbilityCooldown"	"45"
-		"precache"
-		{
-			"soundfile"	"sounds/ui/ping.vsnd"
-			"particle_folder"	"particles/ui_mouseactions"
-			"soundfile"				"soundevents/game_sounds_heroes/game_sounds_witchdoctor.vsndevts"
-		}
+	    "BaseClass"             "ability_datadriven"
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	    "AbilityTextureName"    "ability_gatherer_findclayballcookedmeatorbone"
+	    "MaxLevel"              "1"
+	    "AbilityCastPoint"      "0"
 	
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile" "heroes/gatherer/ping.lua"
-				"Function"   "PingItemInRange"
-				"Target"     "CASTER"
-				"Range"	     "%range"
-				"ItemTable"
-				{
-					"item_clay_ball"	"100 100 100"
-					"item_meat_cooked"	"178 34 34"
-					"item_bone"	"255 255 255"
-				}
+	    "AbilityCooldown"       "45"
+	     "AbilityCastRange"     "2500"
 	
-			}
+	    "precache"
+	    {
+	        "soundfile"         "sounds/ui/ping.vsnd"
+	        "soundfile"         "soundevents/game_sounds_heroes/game_sounds_witchdoctor.vsndevts"
+	    }
 	
-			"RunScript"
-			{
-				"ScriptFile" "heroes/gatherer/radar.lua"
-				"Function"   "RadarManipulations"
-				"isOpening"  "false"
-			}
-				"FireSound"
-		{
-		"EffectName"	"Hero_WitchDoctor.Voodoo_Restoration"
-		"Target"		"CASTER"
-		}
+	    "OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"    "heroes/gatherer/ping.lua"
+	            "Function"      "PingItemInRange"
+	            "Items"         "item_clay_ball,item_meat_cooked,item_bone"
+	        }
+	        
+	        "FireSound"
+	        {
+	            "EffectName"    "Hero_WitchDoctor.Voodoo_Restoration"
+	            "Target"        "CASTER"
+	        }
+	    }
 	
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"  "FIELD_INTEGER"
+	            "cooldown"  "45"
+	        }
 	
-		}
-	
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"cooldown"	"45"
-			}
-	
-			"02"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"range"	"2500"
-			}
-	
-		}
-	
+	        "02"
+	        {
+	            "var_type"  "FIELD_INTEGER"
+	            "range"     "2500"
+	        }
+	    }
 	}
 	"ability_gatherer_findflint"
 	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityTextureName"	"ability_gatherer_findflint"
-		"MaxLevel"	"1"
-		"AbilityCastPoint"	"0"
-		"AbilityCooldown"	"40"
-		"precache"
-		{
-			"soundfile"	"sounds/ui/ping.vsnd"
-			"particle_folder"	"particles/ui_mouseactions"
-			"soundfile"				"soundevents/game_sounds_heroes/game_sounds_witchdoctor.vsndevts"
-		}
+	    "BaseClass"             "ability_datadriven"
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	    "AbilityTextureName"    "ability_gatherer_findflint"
+	    "MaxLevel"              "1"
+	    "AbilityCastPoint"      "0"
 	
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile" "heroes/gatherer/ping.lua"
-				"Function"   "PingItemInRange"
-				"Target"     "CASTER"
-				"Range"	     "%range"
-				"ItemTable"
-				{
-					"item_flint"	"255 0 0"
-				}
+	    "AbilityCooldown"       "40"
+	    "AbilityCastRange"      "2500"
 	
-			}
+	    "precache"
+	    {
+	        "soundfile"         "sounds/ui/ping.vsnd"
+	        "soundfile"         "soundevents/game_sounds_heroes/game_sounds_witchdoctor.vsndevts"
+	    }
 	
-			"RunScript"
-			{
-				"ScriptFile" "heroes/gatherer/radar.lua"
-				"Function"   "RadarManipulations"
-				"isOpening"  "false"
-			}
-				"FireSound"
-		{
-		"EffectName"	"Hero_WitchDoctor.Voodoo_Restoration"
-		"Target"		"CASTER"
-		}
+	    "OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"    "heroes/gatherer/ping.lua"
+	            "Function"      "PingItemInRange"
+	            "Items"         "item_flint"
+	        }
 	
+	        "FireSound"
+	        {
+	            "EffectName"    "Hero_WitchDoctor.Voodoo_Restoration"
+	            "Target"        "CASTER"
+	        }
+	    }
 	
-		}
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"  "FIELD_INTEGER"
+	            "cooldown"  "40"
+	        }
 	
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"cooldown"	"40"
-			}
-	
-			"02"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"range"	"2500"
-			}
-	
-		}
-	
+	        "02"
+	        {
+	            "var_type"  "FIELD_INTEGER"
+	            "range"     "2500"
+	        }
+	    }
 	}
 	"ability_gatherer_findhide"
 	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-		"AbilityTextureName"	"ability_gatherer_findhide"
-		"MaxLevel"	"1"
-		"AbilityCastPoint"	"0"
-		"AbilityCooldown"	"45"
-		"precache"
-		{
-			"soundfile"	"sounds/ui/ping.vsnd"
-			"particle_folder"	"particles/ui_mouseactions"
-			"soundfile"				"soundevents/game_sounds_heroes/game_sounds_witchdoctor.vsndevts"
-		}
+	    "BaseClass"             "ability_datadriven"
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	    "AbilityTextureName"    "ability_gatherer_findhide"
+	    "MaxLevel"              "1"
+	    "AbilityCastPoint"      "0"
 	
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile" "heroes/gatherer/ping.lua"
-				"Function"   "PingItemInRange"
-				"Target"     "CASTER"
-				"Range"	     "%range"
-				"ItemTable"
-				{
-					"item_hide_elk"	"165 42 42"
-					"item_hide_jungle_bear"	"165 42 42"
-					"item_hide_wolf"	"165 42 42"
-				}
+	    "AbilityCooldown"       "45"
+	    "AbilityCastRange"      "2500"
 	
-			}
+	    "precache"
+	    {
+	        "soundfile"         "sounds/ui/ping.vsnd"
+	        "soundfile"         "soundevents/game_sounds_heroes/game_sounds_witchdoctor.vsndevts"
+	    }
 	
-			"RunScript"
-			{
-				"ScriptFile" "heroes/gatherer/radar.lua"
-				"Function"   "RadarManipulations"
-				"isOpening"  "false"
-			}
-				"FireSound"
-		{
-		"EffectName"	"Hero_WitchDoctor.Voodoo_Restoration"
-		"Target"		"CASTER"
-		}
+	    "OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"    "heroes/gatherer/ping.lua"
+	            "Function"      "PingItemInRange"
+	            "Items"         "item_hide_elk,item_hide_jungle_bear,item_hide_wolf"
+	        }
+	        
+	        "FireSound"
+	        {
+	            "EffectName"    "Hero_WitchDoctor.Voodoo_Restoration"
+	            "Target"        "CASTER"
+	        }
+	    }
 	
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"        "FIELD_INTEGER"
+	            "cooldown"        "45"
+	        }
 	
-		}
-	
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"cooldown"	"45"
-			}
-	
-			"02"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"range"	"2500"
-			}
-	
-		}
-	
+	        "02"
+	        {
+	            "var_type"        "FIELD_INTEGER"
+	            "range"            "2500"
+	        }
+	    }
 	}
 	"ability_gatherer_findmagic"
 	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityTextureName"	"ability_gatherer_findmagic"
-		"MaxLevel"	"1"
-		"AbilityCastPoint"	"0"
-		"AbilityCooldown"	"60"
-		"precache"
-		{
-			"soundfile"	"sounds/ui/ping.vsnd"
-			"particle_folder"	"particles/ui_mouseactions"
-			"soundfile"				"soundevents/game_sounds_heroes/game_sounds_witchdoctor.vsndevts"
-		}
+	    "BaseClass"              "ability_datadriven"
+	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	    "AbilityTextureName"     "ability_gatherer_findmagic"
+	    "MaxLevel"               "1"
+	    "AbilityCastPoint"       "0"
 	
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile" "heroes/gatherer/ping.lua"
-				"Function"   "PingItemInRange"
-				"Target"     "CASTER"
-				"Range"      "%range"
-				"ItemTable"
-				{
-					"item_magic_raw"	"255 0 255"
-				}
+	    "AbilityCooldown"        "60"
+	    "AbilityCastRange"       "2500"
 	
-			}
+	    "precache"
+	    {
+	        "soundfile"          "sounds/ui/ping.vsnd"
+	        "soundfile"          "soundevents/game_sounds_heroes/game_sounds_witchdoctor.vsndevts"
+	    }
 	
-			"RunScript"
-			{
-				"ScriptFile" "heroes/gatherer/radar.lua"
-				"Function"   "RadarManipulations"
-				"isOpening"  "false"
-			}
-				"FireSound"
-		{
-		"EffectName"	"Hero_WitchDoctor.Voodoo_Restoration"
-		"Target"		"CASTER"
-		}
+	    "OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile" "heroes/gatherer/ping.lua"
+	            "Function"   "PingItemInRange"
+	            "Items"      "item_magic_raw"
+	        }
 	
+	        "FireSound"
+	        {
+	            "EffectName"    "Hero_WitchDoctor.Voodoo_Restoration"
+	            "Target"        "CASTER"
+	        }
+	    }
 	
-		}
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"    "FIELD_INTEGER"
+	            "cooldown"    "60"
+	        }
 	
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"cooldown"	"60"
-			}
-	
-			"02"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"range"	"2500"
-			}
-	
-		}
-	
+	        "02"
+	        {
+	            "var_type"    "FIELD_INTEGER"
+	            "range"       "2500"
+	        }
+	    }
 	}
 	"ability_gatherer_findmanacrystalorstone"
 	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-		"AbilityTextureName"	"ability_gatherer_findmanacrystalorstone"
-		"MaxLevel"	"1"
-		"AbilityCastPoint"	"0"
-		"AbilityCooldown"	"45"
-		"precache"
-		{
-			"soundfile"	"sounds/ui/ping.vsnd"
-			"particle_folder"	"particles/ui_mouseactions"
-			"soundfile"				"soundevents/game_sounds_heroes/game_sounds_witchdoctor.vsndevts"
-		}
+	    "BaseClass"                 "ability_datadriven"
+	    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	    "AbilityTextureName"        "ability_gatherer_findmanacrystalorstone"
+	    "MaxLevel"                  "1"
+	    "AbilityCastPoint"          "0"
 	
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile" "heroes/gatherer/ping.lua"
-				"Function"   "PingItemInRange"
-				"Target"     "CASTER"
-				"Range"	     "%range"
-				"ItemTable"
-				{
-					"item_crystal_mana"	"0 0 255"
-					"item_stone"	"0 0 255"
-				}
+	    "AbilityCooldown"           "45"
+	    "AbilityCastRange"          "2500"
 	
-			}
+	    "precache"
+	    {
+	        "soundfile" "sounds/ui/ping.vsnd"
+	        "soundfile" "soundevents/game_sounds_heroes/game_sounds_witchdoctor.vsndevts"
+	    }
 	
-			"RunScript"
-			{
-				"ScriptFile" "heroes/gatherer/radar.lua"
-				"Function"   "RadarManipulations"
-				"isOpening"  "false"
-			}
-				"FireSound"
-		{
-		"EffectName"	"Hero_WitchDoctor.Voodoo_Restoration"
-		"Target"		"CASTER"
-		}
+	    "OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile" "heroes/gatherer/ping.lua"
+	            "Function"   "PingItemInRange"
+	            "Items"      "item_mushroom,item_stone"
+	        }
 	
+	        "FireSound"
+	        {
+	            "EffectName"    "Hero_WitchDoctor.Voodoo_Restoration"
+	            "Target"        "CASTER"
+	        }
+	    }
 	
-		}
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"    "FIELD_INTEGER"
+	            "cooldown"    "45"
+	        }
 	
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"cooldown"	"45"
-			}
+	        "02"
+	        {
+	            "var_type"    "FIELD_INTEGER"
+	            "range"    "2500"
+	        }
 	
-			"02"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"range"	"2500"
-			}
-	
-		}
+	    }
 	
 	}
 	"ability_gatherer_findmushroomstickortinder"
 	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-		"AbilityTextureName"	"ability_gatherer_findmushroomstickortinder"
-		"MaxLevel"	"1"
-		"AbilityCastPoint"	"0"
-		"AbilityCooldown"	"45"
-		"precache"
-		{
-			"soundfile"	"sounds/ui/ping.vsnd"
-			"particle_folder"	"particles/ui_mouseactions"
-			"soundfile"				"soundevents/game_sounds_heroes/game_sounds_witchdoctor.vsndevts"
-		}
+	    "BaseClass"             "ability_datadriven"
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	    "AbilityTextureName"    "ability_gatherer_findmushroomstickortinder"
+	    "MaxLevel"              "1"
+	    "AbilityCastPoint"      "0"
+	    "AbilityCooldown"       "45"
 	
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile" "heroes/gatherer/ping.lua"
-				"Function"   "PingItemInRange"
-				"Target"     "CASTER"
-				"Range"	     "%range"
-				"ItemTable"
-				{
-					"item_mushroom"	"200 0 200"
-					"item_stick"	"50 100 100"
-					"item_tinder"	"0 255 0"
-				}
+	    "AbilityCastRange"      "2500"
 	
-			}
+	    "precache"
+	    {
+	        "soundfile"         "sounds/ui/ping.vsnd"
+	        "soundfile"         "soundevents/game_sounds_heroes/game_sounds_witchdoctor.vsndevts"
+	    }
 	
-			"RunScript"
-			{
-				"ScriptFile" "heroes/gatherer/radar.lua"
-				"Function"   "RadarManipulations"
-				"isOpening"  "false"
-			}
-				"FireSound"
-		{
-		"EffectName"	"Hero_WitchDoctor.Voodoo_Restoration"
-		"Target"		"CASTER"
-		}
+	    "OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"    "heroes/gatherer/ping.lua"
+	            "Function"      "PingItemInRange"
+	            "Items"         "item_crystal_mana,item_stick,item_tinder"       
+	        }
 	
+	        "RunScript"
+	        {
+	            "ScriptFile" "heroes/gatherer/radar.lua"
+	            "Function"   "RadarManipulations"
+	            "isOpening"  "false"
+	        }
 	
-		}
+	        "FireSound"
+	        {
+	        "EffectName"    "Hero_WitchDoctor.Voodoo_Restoration"
+	        "Target"        "CASTER"
+	        }
+	    }
 	
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"cooldown"	"45"
-			}
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"    "FIELD_INTEGER"
+	            "cooldown"    "45"
+	        }
 	
-			"02"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"range"	"2500"
-			}
+	        "02"
+	        {
+	            "var_type"    "FIELD_INTEGER"
+	            "range"    "2500"
+	        }
 	
-		}
+	    }
 	
 	}
 	"ability_gatherer_itemradar"
@@ -3822,24 +3768,29 @@
 	}
 	"ability_gatherer_radarmanipulations"
 	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityTextureName"	"ability_gatherer_radarmanipulations"
-		"RequiredLevel"	"2"
-		"LevelsBetweenUpgrades"	"1"
-		"MaxLevel"	"3"
-		"AbilityCastPoint"	"0"
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile" "heroes/gatherer/radar.lua"
-				"Function"   "RadarManipulations"
-				"isOpening"  "true"
-			}
+	    "BaseClass"    			"ability_datadriven"
+	    "AbilityBehavior"    	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE"
+	    "AbilityTextureName"    "ability_gatherer_radarmanipulations"
+	    "MaxLevel"    			"3"
+	    "AbilityCastPoint"    	"0"
 	
-		}
+	    "OnToggleOn"
+	    {
+	    	"RunScript"
+	        {
+	            "ScriptFile" "heroes/gatherer/radar.lua"
+	            "Function"   "ToggleOnRadar"
+	        }
+	    }
 	
+	    "OnToggleOff"
+	    {
+	    	"RunScript"
+	        {
+	            "ScriptFile" "heroes/gatherer/radar.lua"
+	            "Function"   "ToggleOffRadar"
+	        }
+	    }
 	}
 	"ability_gatherer_telegather"
 	{

@@ -1,21 +1,26 @@
 "ability_gatherer_radarmanipulations"
 {
-	"BaseClass"	"ability_datadriven"
-	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	"AbilityTextureName"	"ability_gatherer_radarmanipulations"
-	"RequiredLevel"	"2"
-	"LevelsBetweenUpgrades"	"1"
-	"MaxLevel"	"3"
-	"AbilityCastPoint"	"0"
-	"OnSpellStart"
-	{
-		"RunScript"
-		{
-			"ScriptFile" "heroes/gatherer/radar.lua"
-			"Function"   "RadarManipulations"
-			"isOpening"  "true"
-		}
+    "BaseClass"    			"ability_datadriven"
+    "AbilityBehavior"    	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE"
+    "AbilityTextureName"    "ability_gatherer_radarmanipulations"
+    "MaxLevel"    			"3"
+    "AbilityCastPoint"    	"0"
 
-	}
+    "OnToggleOn"
+    {
+    	"RunScript"
+        {
+            "ScriptFile" "heroes/gatherer/radar.lua"
+            "Function"   "ToggleOnRadar"
+        }
+    }
 
+    "OnToggleOff"
+    {
+    	"RunScript"
+        {
+            "ScriptFile" "heroes/gatherer/radar.lua"
+            "Function"   "ToggleOffRadar"
+        }
+    }
 }

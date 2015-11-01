@@ -57,7 +57,7 @@
 		"AbilityLayout"	"4"
 		"Ability1"	"ability_gatherer_itemradar"
 		"Ability2"	"ability_gatherer_radarmanipulations"
-		"Ability3"	""
+		"Ability3"	"ability_gatherer_advanced_radarmanipulations"
 		"Ability4"	""
 		"Ability5"	""
 		"Ability6"	""
@@ -65,6 +65,8 @@
 		"Ability8"	"ability_gatherer_findhide"
 		"Ability9"	"ability_gatherer_findclayballcookedmeatorbone"
 		"Ability10"	"ability_gatherer_findmanacrystalorstone"
+		"Ability11" "ability_gatherer_findflint"
+		"Ability12"	"ability_gatherer_findmagic"
 	
 		"UnitLabel"	"builder"
 		

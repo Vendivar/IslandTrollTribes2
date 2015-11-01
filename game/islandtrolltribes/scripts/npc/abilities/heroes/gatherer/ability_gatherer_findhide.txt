@@ -1,64 +1,48 @@
 "ability_gatherer_findhide"
 {
-	"BaseClass"	"ability_datadriven"
-	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-	"AbilityTextureName"	"ability_gatherer_findhide"
-	"MaxLevel"	"1"
-	"AbilityCastPoint"	"0"
-	"AbilityCooldown"	"45"
-	"precache"
-	{
-		"soundfile"	"sounds/ui/ping.vsnd"
-		"particle_folder"	"particles/ui_mouseactions"
-		"soundfile"				"soundevents/game_sounds_heroes/game_sounds_witchdoctor.vsndevts"
-	}
+    "BaseClass"             "ability_datadriven"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+    "AbilityTextureName"    "ability_gatherer_findhide"
+    "MaxLevel"              "1"
+    "AbilityCastPoint"      "0"
 
-	"OnSpellStart"
-	{
-		"RunScript"
-		{
-			"ScriptFile" "heroes/gatherer/ping.lua"
-			"Function"   "PingItemInRange"
-			"Target"     "CASTER"
-			"Range"	     "%range"
-			"ItemTable"
-			{
-				"item_hide_elk"	"165 42 42"
-				"item_hide_jungle_bear"	"165 42 42"
-				"item_hide_wolf"	"165 42 42"
-			}
+    "AbilityCooldown"       "45"
+    "AbilityCastRange"      "2500"
 
-		}
+    "precache"
+    {
+        "soundfile"         "sounds/ui/ping.vsnd"
+        "soundfile"         "soundevents/game_sounds_heroes/game_sounds_witchdoctor.vsndevts"
+    }
 
-		"RunScript"
-		{
-			"ScriptFile" "heroes/gatherer/radar.lua"
-			"Function"   "RadarManipulations"
-			"isOpening"  "false"
-		}
-			"FireSound"
-	{
-	"EffectName"	"Hero_WitchDoctor.Voodoo_Restoration"
-	"Target"		"CASTER"
-	}
+    "OnSpellStart"
+    {
+        "RunScript"
+        {
+            "ScriptFile"    "heroes/gatherer/ping.lua"
+            "Function"      "PingItemInRange"
+            "Items"         "item_hide_elk,item_hide_jungle_bear,item_hide_wolf"
+        }
+        
+        "FireSound"
+        {
+            "EffectName"    "Hero_WitchDoctor.Voodoo_Restoration"
+            "Target"        "CASTER"
+        }
+    }
 
+    "AbilitySpecial"
+    {
+        "01"
+        {
+            "var_type"        "FIELD_INTEGER"
+            "cooldown"        "45"
+        }
 
-	}
-
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"	"FIELD_INTEGER"
-			"cooldown"	"45"
-		}
-
-		"02"
-		{
-			"var_type"	"FIELD_INTEGER"
-			"range"	"2500"
-		}
-
-	}
-
+        "02"
+        {
+            "var_type"        "FIELD_INTEGER"
+            "range"            "2500"
+        }
+    }
 }

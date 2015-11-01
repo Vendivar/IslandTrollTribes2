@@ -146,6 +146,8 @@ function ITT:InitGameMode()
             posTable = GameRules.StartingPositions["Winter"]
         elseif string.match(name, "desert_") then
             posTable = GameRules.StartingPositions["Desert"]
+        else
+            print("What is this?",name)
         end
 
         pos_subtable = {}
@@ -309,6 +311,10 @@ function ITT:SetHeroIslandPosition(hero, teamID)
 
     hero.Tribe = TEAM_ISLANDS[teamID]
     DeepPrintTable(TEAM_ISLANDS)
+    if not hero.Tribe then
+        print("ERROR: No Hero Tribe assigned to team ",teamID)
+    end
+
     local possiblePositions = GameRules.StartingPositions[hero.Tribe]
 
     for k,v in pairs(possiblePositions) do
@@ -372,11 +378,11 @@ function ITT:OnHeroInGame( hero )
     end)]]
 
     -- This handles spawning heroes through dota_bot_populate
-    if PlayerResource:IsFakeClient(hero:GetPlayerID()) then
+    --[[if PlayerResource:IsFakeClient(hero:GetPlayerID()) then
         Timers:CreateTimer(1, function()
             ITT:SetHeroIslandPosition(hero, hero:GetTeamNumber())
         end)
-    end
+    end]]
 end
 
 function ITT:OnHeroRespawn( hero )
@@ -455,6 +461,7 @@ function ITT:AdjustSkills( hero )
         for _,abilityName in pairs(ability_names) do
             local ability = hero:FindAbilityByName(abilityName)
             if ability then
+                ability:SetHidden(false)
                 ability:UpgradeAbility(false)
             else
                 TeachAbility(hero, abilityName)

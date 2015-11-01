@@ -6,56 +6,105 @@ function RadarTelegatherInit(keys)
 
 end
 
-function RadarManipulations(keys)
-    local caster = keys.caster
-    local isOpening = (keys.isOpening == "true")
-    local ABILITY_radarManipulations = caster:FindAbilityByName("ability_gatherer_radarmanipulations")
+-- ItemRadar, RadarManip
+-- ToggleOn RadarManip:         ItemRadar, RadarManip, Ability1, 2, 3, 4.
+function ToggleOnRadar( event )
+    local caster = event.caster
+    local ability = event.ability
+    local level = ability:GetLevel()
 
-    local abilityLevel = ABILITY_radarManipulations:GetLevel()
-    print("abilityLevel", abilityLevel)
-    local unitName = caster:GetUnitName()
-    print(unitName)
+    -- Toggle off the secondary subclass ability
+    local advRadarAbility = caster:FindAbilityByName("ability_gatherer_advanced_radarmanipulations")
+    if advRadarAbility then
+        ToggleOff(advRadarAbility)
+    end
 
-    local tableDefaultSkillBook ={
-        "ability_gatherer_itemradar",
-        "ability_gatherer_radarmanipulations",
-        "ability_empty3",
-        "ability_empty4",
-        "ability_empty5",
-        "ability_empty6",
-        "ability_empty7"}
-
-    local tableRadarBook ={
-        "ability_gatherer_findmushroomstickortinder",
-        "ability_gatherer_findhide",
-        "ability_gatherer_findclayballcookedmeatorbone",
-        "ability_gatherer_findmanacrystalorstone",
-        "ability_gatherer_findflint",
-        "ability_gatherer_findmagic"
+    local radarSkillTable = {
+        [1] = {"ability_gatherer_findmushroomstickortinder", "ability_gatherer_findhide" },
+        [2] = {"ability_gatherer_findmushroomstickortinder", "ability_gatherer_findhide", "ability_gatherer_findclayballcookedmeatorbone"},
+        [3] = {"ability_gatherer_findmushroomstickortinder", "ability_gatherer_findhide", "ability_gatherer_findclayballcookedmeatorbone", "ability_gatherer_findmanacrystalorstone"},
     }
 
-    local numAbilities = abilityLevel + 1
+    local abilityTable = radarSkillTable[level]
+    local currentSlot = 3
 
-    for i=1,numAbilities do
-        print(tableDefaultSkillBook[i], tableRadarBook[i])
-        local ability1 = caster:FindAbilityByName(tableDefaultSkillBook[i])
-        local ability2 = caster:FindAbilityByName(tableRadarBook[i])
-        if ability2:GetLevel() == 0 then
-            ability2:SetLevel(1)
+    for k,abilityName in pairs(abilityTable) do
+        local swapAbility = GetAbilityOnVisibleSlot(caster, currentSlot)
+
+        -- If there is already an ability on slot 4~6, swap it
+        if swapAbility then
+            caster:SwapAbilities(swapAbility:GetAbilityName(), abilityName, false, true)
         end
-        print("isopening",isOpening)
-        if isOpening == true then
-            print("ability1:", ability1:GetName(), "ability2:", ability2:GetName())
-            SwapAbilities(caster, ability1, ability2, false, true)
-            caster:FindAbilityByName("ability_gatherer_radarmanipulations"):SetHidden(true)
-        else
-            SwapAbilities(caster, ability1, ability2, true, false)
-            caster:FindAbilityByName("ability_gatherer_radarmanipulations"):SetHidden(false)
-            caster:FindAbilityByName("ability_empty3"):SetHidden(true)
-            caster:FindAbilityByName("ability_empty4"):SetHidden(true)
-            caster:FindAbilityByName("ability_empty5"):SetHidden(true)
-            caster:FindAbilityByName("ability_empty6"):SetHidden(true)
+
+        -- All the _find abilities should already be added as hidden on the gatherer skill list
+        local ability = caster:FindAbilityByName(abilityName)
+        if ability then
+            ability:SetHidden(false)
+            ability:SetLevel(1)
+            currentSlot = currentSlot+1
         end
     end
 
+    AdjustAbilityLayout(caster)
+end
+
+-- Turns the layout back to normal
+function ToggleOffRadar( event )
+    local caster = event.caster
+    
+    local abilityTable = {
+        ["ability_gatherer_findmushroomstickortinder"]="",
+        ["ability_gatherer_findhide"]="",
+        ["ability_gatherer_findclayballcookedmeatorbone"]="",
+        ["ability_gatherer_findmanacrystalorstone"]="",
+        ["ability_gatherer_findflint"]="",
+        ["ability_gatherer_findmagic"]="",
+    }
+
+    for i=0,15 do
+        local ability = caster:GetAbilityByIndex(i)
+        if ability then
+            local abilityName = ability:GetAbilityName()
+            if abilityTable[abilityName] then
+                ability:SetHidden(true)
+                ability:SetLevel(0)
+            elseif ability:GetLevel() > 0 and not string.match(abilityName, "move_to_point") then
+                ability:SetHidden(false)
+            end
+        end        
+    end
+end
+
+-- ItemRadar, RadarManip, AdvancedRadarManip
+-- ToggleOnAdvancedRadarManip:  ItemRadar, RadarManip, AdvancedRadarManip, Ability1, 2
+function ToggleOnAdvancedRadar( event )
+    local caster = event.caster
+    local ability = event.ability
+    local level = ability:GetLevel()
+
+    local abilityTable = { "ability_gatherer_findflint", "ability_gatherer_findmagic" }
+    local currentSlot = 4
+
+    for k,abilityName in pairs(abilityTable) do
+        local swapAbility = GetAbilityOnVisibleSlot(caster, currentSlot)
+
+        -- If there is already an ability on slot 4~5, swap it
+        if swapAbility then
+            caster:SwapAbilities(swapAbility:GetAbilityName(), abilityName, false, true)
+        end
+
+        -- All the _find abilities should already be added as hidden on the gatherer skill list
+        local ability = caster:FindAbilityByName(abilityName)
+        if ability then
+            ability:SetHidden(false)
+            ability:SetLevel(1)
+            currentSlot = currentSlot+1
+        end
+    end
+
+    -- Force the Radar Advanced into slot 3
+    local swapAbility = GetAbilityOnVisibleSlot(caster, 3)
+    caster:SwapAbilities(swapAbility:GetAbilityName(), "ability_gatherer_advanced_radarmanipulations", false, true)
+
+    AdjustAbilityLayout(caster)
 end
