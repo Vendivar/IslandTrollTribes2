@@ -48,7 +48,6 @@ function ITT:FilterExecuteOrder( filterTable )
 
         -- If within range of the modified transfer range, and the target has free inventory slots, make the swap
         local rangeToTarget = unit:GetRangeToUnit(target)
-
         if not CanTakeItem(target) then
             SendErrorMessage(issuer, "#error_inventory_full")
             return false
@@ -60,7 +59,6 @@ function ITT:FilterExecuteOrder( filterTable )
         else
             -- If its a building targeting a hero, order the hero to move towards the building
             -- The building will transfer the item to the hero inventory as soon as it gets close
-            -- Probably need to check ownership to not be able to order an enemy hero to do things
             local origin = unit:GetAbsOrigin()
             local target_origin = target:GetAbsOrigin()
             if IsCustomBuilding(unit) then
@@ -100,6 +98,26 @@ function ITT:FilterExecuteOrder( filterTable )
                 end)
 
                 return false
+
+            -- Hero to Hero
+            else
+                unit.skip = true
+                ExecuteOrderFromTable({ UnitIndex = unitIndex, OrderType = DOTA_UNIT_ORDER_MOVE_TO_TARGET, TargetIndex = targetIndex, Queue = queue}) 
+              
+                -- Check for drop distance
+                unit.orderTimer = Timers:CreateTimer(function()
+                    if IsValidAlive(unit) and IsValidAlive(target) and (unit:GetAbsOrigin() - target:GetAbsOrigin()):Length2D() <= ITEM_TRANSFER_RANGE+25 then
+                        local canTransfer = TransferItem(unit, target, item)
+                        unit:Stop()
+                        if canTransfer == false then
+                            SendErrorMessage(issuer, "#error_inventory_full")
+                        end
+                        return
+                    end
+                    return 0.1
+                end)
+
+                return false
             end
         end
 
@@ -119,15 +137,17 @@ function ITT:FilterExecuteOrder( filterTable )
         end
         
         -- Drop the item if within the extended range
-        if (origin - point):Length2D() <= ITEM_TRANSFER_RANGE then
-            unit:DropItemAtPositionImmediate(item, point)
-            print("unit:DropItemAtPositionImmediate(item, point) <=ITEM_TRANSFER_RANGE")
+        local distance = (origin - point):Length2D()
+        if distance <= ITEM_TRANSFER_RANGE then
+            unit:DropItemAtPositionImmediate(item, origin)
+            item:LaunchLoot(false, 200, 0.5, point)
             unit:Stop()
         else
             -- For buildings, Best Effort drop
             if IsCustomBuilding(unit) then
                 local drop_point = origin + (point - origin):Normalized() * ITEM_TRANSFER_RANGE
-                unit:DropItemAtPositionImmediate(item, drop_point)
+                unit:DropItemAtPositionImmediate(item, origin)
+                item:LaunchLoot(false, 200, 0.75, point)
                 unit:Stop()
             else
                 -- Move towards the position and drop the item at the extended range
@@ -138,7 +158,8 @@ function ITT:FilterExecuteOrder( filterTable )
                 -- Check for drop distance
                 unit.orderTimer = Timers:CreateTimer(function()
                     if IsValidAlive(unit) and (unit:GetAbsOrigin() - point):Length2D() <= ITEM_TRANSFER_RANGE+25 then
-                        unit:DropItemAtPositionImmediate(item, point)
+                        unit:DropItemAtPositionImmediate(item, unit:GetAbsOrigin())
+                        item:LaunchLoot(false, 200, 0.75, point)
                         print("unit:DropItemAtPositionImmediate(item, point)")
                         return false
                     end

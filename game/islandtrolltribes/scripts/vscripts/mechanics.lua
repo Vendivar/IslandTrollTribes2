@@ -158,9 +158,11 @@ end
 -- This handles transfering an item handle from a unit to a target
 function TransferItem( unit, target, item )
     if CanTakeItem(target) then
-        unit:DropItemAtPositionImmediate(item, target:GetAbsOrigin())
-        Timers:CreateTimer(function()
-            PickupItem( target, item:GetContainer() )
+        unit:DropItemAtPositionImmediate(item, unit:GetAbsOrigin())
+        item:LaunchLoot(false, 200, 0.75, target:GetAbsOrigin())
+
+        Timers:CreateTimer(0.75, function()
+            local pickedUp = PickupItem( target, item:GetContainer() )
         end)
     else
         return false
