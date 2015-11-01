@@ -1,132 +1,123 @@
 "ability_rest_big"
 {
-	"BaseClass"	"ability_datadriven"
-	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_MOVEMENT"
-	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
-	"AbilityUnitTargetFlags"	"DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
-	"AbilityTextureName"	"ability_building_rest"
-	"AbilityCastPoint"	"0.0"
-	"AbilityCooldown"	"0"
-	"AbilityCastRange"	"%cast_range"
-	"AbilityManaCost"	"0"
+    "BaseClass"                 "ability_datadriven"
+    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_MOVEMENT"
+    "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+    "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO"
+    "AbilityUnitTargetFlags"    "DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
+    "AbilityTextureName"        "ability_building_rest"
+    "AbilityCastPoint"          "0.0"
+    "AbilityCooldown"           "0"
+    "AbilityCastRange"          "%cast_range"
+    "AbilityManaCost"           "0"
+    
+    "precache"
+    {
+        "particle_folder" "particles/newplayer_fx"
+    }
 
-	"AbilitySharedWithTeammates" "1"
-	
-	"Precache"
-	{
-		"particle_folder"	"particles/newplayer_fx"
-		"soundfile"					"soundevents/game_sounds_items.vsndevts"
-	}
+    "OnSpellStart"
+    {
+        "RunScript"
+        {
+            "ScriptFile"    "mechanics/mana.lua"
+            "Function"      "RestoreMana"
+            "ManaRestored"  "%mana_restored"
+        }
 
-	"OnSpellStart"
-	{
-		"RunScript"
-		{
-			"ScriptFile"	"custom_functions_ability.lua"
-			"Function"	"RestoreMana"
-			"ManaRestored"	"%mana_restored"
-			"Target"	"TARGET"
-		}
+        "ApplyModifier"
+        {
+            "ModifierName"  "modifier_sleep"
+            "Duration"      "%rest_duration"
+            "Target"        "TARGET"
+        }
 
-		"ApplyModifier"
-		{
-			"ModifierName"	"modifier_sleep"
-			"Duration"	"%rest_duration"
-			"Target"	"TARGET"
-		}
+        "ApplyModifier"
+        {
+            "ModifierName"  "modifier_invuln"
+            "Duration"      "%invuln_duration"
+            "Target"        "TARGET"
+        }
+    }
 
-		"ApplyModifier"
-		{
-			"ModifierName"	"modifier_invuln"
-			"Duration"	"%invuln_duration"
-			"Target"	"TARGET"
-		}
+    "Modifiers"
+    {
+        "modifier_sleep"
+        {
+            "IsPurgable"    "0"
+            "States"
+            {
+                "MODIFIER_STATE_STUNNED"    "MODIFIER_STATE_VALUE_ENABLED"
+            }
 
-	}
+            "OnCreated"
+            {
+                "AttachEffect"
+                {
+                    "Target"    "TARGET"
+                    "EffectName"    "particles/newplayer_fx/npx_sleeping.vpcf"
+                    "EffectAttachType"    "follow_overhead"
+                    "EffectLifeDurationScale"    "1"
+                }
+                "FireSound"
+                {
+                    "EffectName"    "DOTA_Item.SmokeOfDeceit.Activate"
+                    "Target"         "TARGET"
+                }
+            }
 
-	"Modifiers"
-	{
-		"modifier_sleep"
-		{
-			"IsDebuff"	"0"
-			"IsPurgable"	"0"
-			"States"
-			{
-				"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
-			}
+            "OnAttacked"
+            {
+                "RemoveModifier"
+                {
+                    "ModifierName"    "modifier_sleep"
+                    "Target"    "TARGET"
+                }
+            }
 
-			"OnCreated"
-			{
-				"AttachEffect"
-				{
-					"Target"	"TARGET"
-					"EffectName"	"particles/newplayer_fx/npx_sleeping.vpcf"
-					"EffectAttachType"	"follow_overhead"
-					"EffectLifeDurationScale"	"1"
-				}
-				"FireSound"
-				{
-					"EffectName"	"DOTA_Item.SmokeOfDeceit.Activate"
-					"Target" 		"TARGET"
-				}
-			}
+        }
 
-			"OnAttacked"
-			{
-				"RemoveModifier"
-				{
-					"ModifierName"	"modifier_sleep"
-					"Target"	"TARGET"
-				}
+        "modifier_invuln"
+        {
+            "States"
+            {
+                "MODIFIER_STATE_INVULNERABLE"    "MODIFIER_STATE_VALUE_ENABLED"
+            }
 
-			}
+        }
 
-		}
+    }
 
-		"modifier_invuln"
-		{
-			"States"
-			{
-				"MODIFIER_STATE_INVULNERABLE"	"MODIFIER_STATE_VALUE_ENABLED"
-			}
+    "AbilitySpecial"
+    {
+        "01"
+        {
+            "var_type"    "FIELD_FLOAT"
+            "rest_duration"    "6"
+        }
 
-		}
+        "02"
+        {
+            "var_type"    "FIELD_INTEGER"
+            "cast_range"    "250"
+        }
 
-	}
+        "03"
+        {
+            "var_type"    "FIELD_INTEGER"
+            "mana_restored"    "200"
+        }
 
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"	"FIELD_FLOAT"
-			"rest_duration"	"6"
-		}
+        "04"
+        {
+            "var_type"    "FIELD_FLOAT"
+            "cooldown"    "0.0"
+        }
 
-		"02"
-		{
-			"var_type"	"FIELD_INTEGER"
-			"cast_range"	"250"
-		}
-
-		"03"
-		{
-			"var_type"	"FIELD_INTEGER"
-			"mana_restored"	"200"
-		}
-
-		"04"
-		{
-			"var_type"	"FIELD_FLOAT"
-			"cooldown"	"0.0"
-		}
-
-		"05"
-		{
-			"var_type"	"FIELD_FLOAT"
-			"invuln_duration"	"1.0"
-		}
-
-	}
-
+        "05"
+        {
+            "var_type"    "FIELD_FLOAT"
+            "invuln_duration"    "1.0"
+        }
+    }
 }
