@@ -4,7 +4,7 @@
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"hide_jungle_bear"
-	"Model"	"models/items/wraith_king/sk_dreadknight_cloak.vmdl"
+	"Model"	"models/heroes/lone_druid/lone_druid_claw_fx.vmdl"
 	"Effect"	""
 	"ItemCost"	"30"
 	"ItemShopTags"	"consumable"

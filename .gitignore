@@ -21,3 +21,6 @@ game/dota_addons/*/scripts/vscripts/statcollection/settings.kv
 !/game/islandtrolltribes/particles/custom/*
 *.wav
 game/islandtrolltribes/models/turkeyleg_b22bdcf6.vagrp_c
+game/islandtrolltribes/models/b22bdcf6/cube.vanim_c
+*.vagrp_c
+game/islandtrolltribes/models/5f81a1a5/cube.vanim_c
