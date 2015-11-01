@@ -140,7 +140,7 @@
 			m_ChildRef = resource:"particles/items3_fx/glimmer_cape_initial_flash_smoke.vpcf"
 		},
 		{
-			m_ChildRef = resource:"particles/items3_fx/glimmer_cape_initial_flash_ember.vpcf"
+			m_ChildRef = resource:"particles/custom/fowl_play_flash_ember.vpcf"
 		},
 	]
 }

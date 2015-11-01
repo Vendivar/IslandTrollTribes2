@@ -130,7 +130,6 @@
 			m_flInitialSpeedMax = 900.000000
 			m_flInitialSpeedMin = 800.000000
 			m_flInitialRadius = 5.000000
-			m_nControlPointNumber = 3
 			m_bXYVelocityOnly = false
 		},
 	]
