@@ -32,7 +32,7 @@ function ITT:FilterExecuteOrder( filterTable )
     ------------------------------------------------
     if targetIndex and order_type == DOTA_UNIT_ORDER_ATTACK_TARGET then
         local target = EntIndexToHScript(targetIndex)
-        if target.HasFlyMovementCapabilit and IsFlyingUnit(target) then
+        if target.HasFlyMovementCapability and IsFlyingUnit(target) then
             SendErrorMessage(issuer, "#error_cant_attack_air")
             return false
         end
@@ -112,6 +112,11 @@ function ITT:FilterExecuteOrder( filterTable )
     if order_type == DOTA_UNIT_ORDER_DROP_ITEM then
         local item = EntIndexToHScript(abilityIndex)
         local origin = unit:GetAbsOrigin()
+
+        -- BuildingHelper clear queue when a item is dropped
+        if IsBuilder(unit) then
+            BuildingHelper:ClearQueue(unit)
+        end
         
         -- Drop the item if within the extended range
         if (origin - point):Length2D() <= ITEM_TRANSFER_RANGE then

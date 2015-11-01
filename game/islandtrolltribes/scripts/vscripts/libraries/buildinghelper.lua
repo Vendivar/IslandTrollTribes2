@@ -1043,6 +1043,11 @@ function BuildingHelper:ClearQueue(builder)
     builder.work = nil
     builder.state = "idle"
 
+    local player = builder:GetPlayerOwner()
+    if player then
+        CustomGameEventManager:Send_ServerToPlayer(player, "building_helper_end", {})
+    end
+
     -- Skip if there's nothing to clear
     if not builder.buildingQueue or (not work and #builder.buildingQueue == 0) then
         return

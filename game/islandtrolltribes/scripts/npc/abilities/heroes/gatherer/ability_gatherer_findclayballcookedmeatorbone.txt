@@ -21,7 +21,7 @@
         {
             "ScriptFile"    "heroes/gatherer/ping.lua"
             "Function"      "PingItemInRange"
-            "Items"         "item_clay_ball,item_meat_cooked,item_bone"
+            "Items"         "item_ball_clay,item_meat_cooked,item_bone"
         }
         
         "FireSound"
