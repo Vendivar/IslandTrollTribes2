@@ -2,8 +2,8 @@
 {
 	"BaseClass"	"npc_dota_creature"
 	"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
-	"VisionDaytimeRange"	"2200"
-	"VisionNighttimeRange"	"2200"
+	"VisionDaytimeRange"	"2400"
+	"VisionNighttimeRange"	"2400"
 	"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
 	"Ability1"	"dummy_passive"
 	"Ability2"	"ability_the_one_truesight"

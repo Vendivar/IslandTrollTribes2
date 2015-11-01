@@ -5,8 +5,6 @@ TEAM_COLORS[DOTA_TEAM_GOODGUYS] = { 52, 85, 255 }  -- Blue
 TEAM_COLORS[DOTA_TEAM_BADGUYS]  = { 255, 52, 85 }  -- Red
 TEAM_COLORS[DOTA_TEAM_CUSTOM_1] = { 243, 201, 9 }  -- Yellow
 TEAM_COLORS[DOTA_TEAM_CUSTOM_2] = { 101, 212, 19 } -- Green
-VALID_TEAMS = {DOTA_TEAM_GOODGUYS, DOTA_TEAM_BADGUYS, DOTA_TEAM_CUSTOM_1, DOTA_TEAM_CUSTOM_2}
-TEAM_ISLANDS = {}
 
 playerList = {}
 maxPlayerID = 0
@@ -161,6 +159,9 @@ function ITT:InitGameMode()
     local islandList = {"Radiant", "Dire", "Winter", "Desert"}
     islandList = ShuffledList(islandList)
 
+    VALID_TEAMS = {DOTA_TEAM_GOODGUYS, DOTA_TEAM_BADGUYS, DOTA_TEAM_CUSTOM_1, DOTA_TEAM_CUSTOM_2}
+    TEAM_ISLANDS = {}
+
     for k,v in pairs(VALID_TEAMS) do
         GameRules:SetCustomGameTeamMaxPlayers( v, 4 )
         TEAM_ISLANDS[v] = islandList[k]
@@ -310,9 +311,10 @@ end
 function ITT:SetHeroIslandPosition(hero, teamID)
 
     hero.Tribe = TEAM_ISLANDS[teamID]
-    DeepPrintTable(TEAM_ISLANDS)
     if not hero.Tribe then
         print("ERROR: No Hero Tribe assigned to team ",teamID)
+        DeepPrintTable(TEAM_ISLANDS)
+        return
     end
 
     local possiblePositions = GameRules.StartingPositions[hero.Tribe]

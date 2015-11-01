@@ -1,83 +1,48 @@
 "ability_scout_reveal"
 {
-	"BaseClass"	"ability_datadriven"
-	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	"AbilityTextureName"	"ability_scout_reveal"
-	"AbilityCastPoint"	"0.2 0.2 02"
-	"AbilityCooldown"	"20 20 20"
-	"AbilityManaCost"	"10 10 10"
-	"MaxLevel"	"3"
-	"precache"
-	{
-		"particle_folder"	"particles/units/heroes/hero_night_stalker"
-		"particle_folder"	"particles/units/heroes/hero_bane"
-		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_spectre.vsndevts"
-	}
+    "BaseClass"             "ability_datadriven"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "AbilityTextureName"    "ability_scout_reveal"
+    "AbilityCastPoint"      "0.2"
+    "AbilityCooldown"       "20"
+    "AbilityManaCost"       "10"
 
-	"OnSpellStart"
-	{
-		"SpawnUnit"
-		{
-			"UnitName"	"dummy_caster_reveal1"
-			"UnitCount"	"%count1"
-			"UnitLimit"	"10"
-			"SpawnRadius"	"0"
-			"Duration"	"8"
-			"Target"	"CASTER"
-		}
+    "AbilityCastRange"      "%radius"
 
-		"SpawnUnit"
-		{
-			"UnitName"	"dummy_caster_reveal2"
-			"UnitCount"	"%count2"
-			"UnitLimit"	"10"
-			"SpawnRadius"	"0"
-			"Duration"	"8"
-			"Target"	"CASTER"
-		}
+    "MaxLevel"    "3"
 
-		"SpawnUnit"
-		{
-			"UnitName"	"dummy_caster_reveal3"
-			"UnitCount"	"%count3"
-			"UnitLimit"	"10"
-			"SpawnRadius"	"0"
-			"Duration"	"8"
-			"Target"	"CASTER"
-		}
-		"FireSound"
-		{
-			"EffectName"			"Hero_Spectre.HauntCast"
-			"Target"				"CASTER"
-		}
+    "AbilitySpecial"
+    {        
+        "01"
+        {
+            "var_type"    "FIELD_INTEGER"
+            "radius"      "1000 1600 2400"
+        }
+        "02"
+        {
+            "var_type"    "FIELD_INTEGER"
+            "duration"    "8"
+        }
+    }
 
-	}
+    "precache"
+    {
+        "particle_folder"    "particles/units/heroes/hero_night_stalker"
+        "particle_folder"    "particles/units/heroes/hero_bane"
+        "soundfile"          "soundevents/game_sounds_heroes/game_sounds_spectre.vsndevts"
+    }
 
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"	"FIELD_INTEGER"
-			"count1"	"1 0 0"
-		}
-
-		"02"
-		{
-			"var_type"	"FIELD_INTEGER"
-			"count2"	"0 1 0"
-		}
-
-		"03"
-		{
-			"var_type"	"FIELD_INTEGER"
-			"count3"	"0 0 1"
-		}
-            "04"
-		{
-			"var_type"	"FIELD_INTEGER"
-			"radius"	"1000 1600 2400"
-		}
-
-	}
-
+    "OnSpellStart"
+    {
+        "RunScript"
+        {
+            "ScriptFile"    "heroes/scout/reveal.lua"
+            "Function"      "Reveal"
+        }
+        "FireSound"
+        {
+            "EffectName"    "Hero_Spectre.HauntCast"
+            "Target"        "CASTER"
+        }
+    }
 }
