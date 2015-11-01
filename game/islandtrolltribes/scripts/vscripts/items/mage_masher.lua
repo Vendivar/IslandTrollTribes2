@@ -1,14 +1,12 @@
 function MageMasherManaBurn(keys)
     local caster = keys.caster
     local target = keys.target
-    local damage = keys.Damage
-    local targetName = target:GetUnitName()
+    local damage = tonumber(keys.Damage)
+    local attackedClass = GetHeroClass(target)
+
     --look for mage and priests only
-    if ((string.find(targetName,"mage") ~= nil) or (string.find(targetName,"priest")~= nil) or (string.find(targetName,"dazzle")~= nil) or (string.find(targetName,"witch")~= nil)) then
-        --print("Burning " .. damage .. " mana")
-        local startingMana = target:GetMana()
-        target:SetMana(startingMana - damage)
-        --print("Old mana " .. startingMana .. ". New Mana " .. target:GetMana())
+    if (attackedClass == "priest") or (attackedClass == "mage") then
+        target:SpendMana(damage, nil)
         
         local damageTable = {
         victim = target,
@@ -18,10 +16,11 @@ function MageMasherManaBurn(keys)
 
         ApplyDamage(damageTable)
         
-        local thisParticle = ParticleManager:CreateParticle("particles/units/heroes/hero_nyx_assassin/nyx_assassin_mana_burn.vpcf", PATTACH_ABSORIGIN, target)
-        ParticleManager:ReleaseParticleIndex(thisParticle)
+        local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_nyx_assassin/nyx_assassin_mana_burn.vpcf", PATTACH_ABSORIGIN, target)
         target:EmitSound("Hero_NyxAssassin.ManaBurn.Target")
-    else
-        print(targetName .. " is not Mage or Priest")
+
+        local particlePopup = ParticleManager:CreateParticle("particles/units/heroes/hero_nyx_assassin/nyx_assassin_mana_burn_msg.vpcf", PATTACH_OVERHEAD_FOLLOW, target)
+        ParticleManager:SetParticleControl(particlePopup, 1, Vector(1, damage, 0))
+        ParticleManager:SetParticleControl(particlePopup, 2, Vector(1, #tostring(damage), 0))
     end 
 end
