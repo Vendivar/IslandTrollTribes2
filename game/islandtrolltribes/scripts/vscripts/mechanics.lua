@@ -104,7 +104,7 @@ function PickupItem( unit, drop )
             return true
         else
             SendErrorMessage(unit:GetPlayerOwnerID(), "#error_cant_carry_more_raw_meat")
-            return false
+            return true
         end
     end
 
@@ -184,7 +184,9 @@ function GiveItemStack( unit, itemName )
             local currentCharges = itemToStack:GetCurrentCharges()
             itemToStack:SetCurrentCharges(currentCharges + newItem:GetCurrentCharges())
             --print("Given "..itemName.." to "..unit:GetUnitName().." through stacks")
-            UTIL_Remove(newItem)
+            Timers:CreateTimer(function()
+                UTIL_Remove(newItem)
+            end)
             return itemToStack
         end
     end
@@ -258,9 +260,8 @@ function ResolveInventoryMerge( unit, item )
             --print(" It can be merged completely")
 
             itemToStack:SetCurrentCharges(inventoryItemCharges+currentItemCharges)
-            Timers:CreateTimer(function()
-                UTIL_Remove(item)
-            end)
+            unit:DropItemAtPositionImmediate(item, unit:GetAbsOrigin())
+            item:GetContainer():RemoveSelf()
 
         -- Otherwise add up to maxCharges and keep both items
         else

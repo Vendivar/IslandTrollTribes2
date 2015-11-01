@@ -2,8 +2,6 @@
 function InventoryCheck( unit )
     local recipeTable = GameRules.Crafting['Recipes']
 
-    print('===========================================')
-
     for recipeName,recipeIngredients in pairs(recipeTable) do 
         
         -- If the inventory contains enough of the ingredient items defined in the recipeTable, combine and clear
@@ -19,8 +17,6 @@ function InventoryCheck( unit )
             break
         end
     end
-
-    print('==========================================-')
 end
 
 function CanCombine( unit, recipeName )
