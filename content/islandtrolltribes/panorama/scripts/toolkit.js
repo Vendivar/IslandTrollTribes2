@@ -12,7 +12,7 @@ function MouseOver(argument) {
     $("#label_"+argument).visible = true;
     $("#label_"+argument).text = $.Localize(argument);
 
-    $.DispatchEvent( "DOTAShowAbilityTooltip", $("#"+argument), "ability_"+argument );
+    $.DispatchEvent( "DOTAShowAbilityTooltip", $("#"+argument), argument );
 }
 
 function MouseOut(argument) {

@@ -111,10 +111,37 @@
 
 
         // Toolkit Abilities
-        "sleep"         "Sleep"
-        "eat_meat"      "Eat\nMeat"
+        "sleep_outside"                                          "Sleep Outside"
+        "DOTA_Tooltip_Ability_sleep_outside"                     "Sleep outside"
+        "DOTA_Tooltip_Ability_sleep_outside_Description"         "Sleep outside and gain 20 energy but lose 20 heat!\nShould only be used as a worse case scenario to gain energy!"
+        "DOTA_Tooltip_Ability_sleep_outside_rest_duration"       "REST DURATION:"
+        "DOTA_Tooltip_Ability_sleep_outside_mana_restored"       "MANA RESTORED:"
+        
+        "eat_meat"                                       "Eat\nMeat"
+        
+        "DOTA_Tooltip_Ability_eat_meat"                  "Eat Meat"
+        "DOTA_Tooltip_Ability_eat_meat_Description"      "Eat the raw meat your troll is currently holding (seen in the buff bar) once per use of this ability. You will eat it over time (channeling) gaining a total of 15 health over 1.5 seconds."
+        "DOTA_Tooltip_Ability_eat_meat_channel_time"     "EAT TIME:"
+        "DOTA_Tooltip_Ability_eat_meat_heal_amount"      "HEALTH RESTORED:"
+        
         "drop_meat"     "Drop\nMeat"
+        
+        "DOTA_Tooltip_Ability_drop_meat"                  "Drop Raw Meat"
+        "DOTA_Tooltip_Ability_drop_meat_Description"                  "Drop one raw meat per use that your troll is currently holding. It will go to the ground once this ability is used."
+        
         "drop_all_meat" "Drop\nAll Meat"
+        
+        "DOTA_Tooltip_Ability_drop_all_meat"                            "Drop All Raw Meat"
+        "DOTA_Tooltip_Ability_drop_all_meat_Description"                  "Drop all raw meat your troll is currently holding. It will go to the ground once this ability is used. This is best used near a camp fire where the raw meat can quickly be cooked into cooked meat."
+        
         "panic"         "Panic!"
+        
+        "DOTA_Tooltip_Ability_Panic" "Panic"
+        "DOTA_Tooltip_Ability_Panic_Description"         "Use this ability to send your troll into a panic to gain attack damage and move speed! Be warned, during your state of frenzy you take increased damage." 
+        "DOTA_Tooltip_Ability_Panic_attack_speed"       "ATTACK SPEED:"
+        "DOTA_Tooltip_Ability_Panic_move_speed"         "MOVE SPEED:"
+        "DOTA_Tooltip_Ability_Panic_incoming_damage"    "INCOMING DAMAGE:"
+        
+
     }
 }

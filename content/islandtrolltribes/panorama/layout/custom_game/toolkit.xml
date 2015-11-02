@@ -7,9 +7,9 @@
 	</scripts>
 	<Panel class="ToolkitRoot" hittest="false">
 		<Panel class="ToolkitContainer">
-			<Panel id="sleep" class="ToolkitAbility" onactivate="Cast('sleep')" onmouseover="MouseOver('sleep')" onmouseout="MouseOut('sleep')">
+			<Panel id="sleep_outside" class="ToolkitAbility" onactivate="Cast('sleep_outside')" onmouseover="MouseOver('sleep_outside')" onmouseout="MouseOut('sleep_outside')">
 				<Image class="ToolkitImage" src="file://{images}/toolkit/sleep.png" />
-				<Label id="label_sleep" class="ImageLabel" text="" />
+				<Label id="label_sleep_outside" class="ImageLabel" text="" />
 			</Panel>
 
 			<Panel id="eat_meat" class="ToolkitAbility" onactivate="Cast('eat_meat')" onmouseover="MouseOver('eat_meat')" onmouseout="MouseOut('eat_meat')"  >
