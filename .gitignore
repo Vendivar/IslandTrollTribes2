@@ -9,20 +9,15 @@
 *.vcss_c
 *.vmdl_c
 *.vmesh_c
+*.vanim_c
+*.vagrp_c
+*.vphys_c
 
 # Map files
 *.vpk
 
 # Stat keys
-game/dota_addons/*/scripts/vscripts/statcollection/settings.kv
+settings.kv
 
-# Custom particles
-!/game/islandtrolltribes/particles/buildinghelper/*
-!/game/islandtrolltribes/particles/custom/*
+# Sounds
 *.wav
-game/islandtrolltribes/models/turkeyleg_b22bdcf6.vagrp_c
-game/islandtrolltribes/models/b22bdcf6/cube.vanim_c
-*.vagrp_c
-game/islandtrolltribes/models/5f81a1a5/cube.vanim_c
-*.vtex_c
-game/islandtrolltribes/particles/buildinghelper/ghost_model.vpcf_c
