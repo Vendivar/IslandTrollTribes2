@@ -61,7 +61,7 @@ function HasEnoughInInventory( unit, itemName, num )
                     end
                     table.insert(items, item)
 
-                elseif string.match(itemName, "any_") and MatchesAlias(itemName, thisItemName) then
+                elseif MatchesAlias(itemName, thisItemName) then
                     currentNum = currentNum + 1
                     table.insert(items, item)
                 end
@@ -76,17 +76,31 @@ function HasEnoughInInventory( unit, itemName, num )
     end
 end
 
--- Returns whether the itemName can be matched to any of the alias
-function MatchesAlias( aliasName, itemName )  
-    local alias = string.gsub(aliasName, "any_", "")
-    local aliasTable = GameRules.Crafting['Alias'][alias]
-    
-    for k,v in pairs(aliasTable) do
-        if k==itemName then
-            return true
+-- Returns whether the itemName can be matched to an specific alias
+function MatchesAlias( aliasName, itemName )
+    if string.match(itemName, "any_") then
+        local aliasTable = GameRules.Crafting['Alias'][aliasName]
+
+        for k,v in pairs(aliasTable) do
+            if k==itemName then
+                return true
+            end
         end
     end
     return false
+end
+
+-- Returns alias or "" if couldn't find a match
+function GetAlias( itemName )
+    local aliases = GameRules.Crafting['Alias']
+    for aliasName,aliasTable in pairs(aliases) do
+        for k,v in pairs(aliasTable) do
+            if k==itemName then
+                return aliasName
+            end
+        end
+    end
+    return ""
 end
 
 -- TODO: Handle stacks, never delete a full item if we pick more than the required count
@@ -99,9 +113,8 @@ function ClearItems( itemList, requirements )
 end
 
 function GetRandomAliasFor(aliasName)
-    local alias = string.gsub(aliasName, "any_", "")
-    local aliasTable = GameRules.Crafting['Alias'][alias]
-    local random = RandomInt(1, 3)
+    local aliasTable = GameRules.Crafting['Alias'][aliasName]
+    local random = RandomInt(1, #aliasTable)
     local count = 1
     for k,v in pairs(aliasTable) do
         if count == random then

@@ -255,36 +255,30 @@ function ITT:DebugFish()
     end
 end
 
-function ITT:CreateIngredients( playerID, itemName )
-    if not itemName then
-        Say(nil,"Must pass an item name!", false)
-        return
-    end
-
-    local itemIngredients = GameRules.Crafting['Recipes'][itemName]
-    if not itemIngredients then
-        Say(nil,"["..itemName.."] <font color='#ff0000'> is not a valid item name for crafting!</font>", false)
-        return
-    else
-        local hero = PlayerResource:GetSelectedHeroEntity(playerID)
-        local origin = hero:GetAbsOrigin()
-        for k,v in pairs(itemIngredients) do
-            for i=1,v do
+function ITT:CreateIngredients( playerID, buildingName )
+    local itemRecipes = GameRules.Crafting[buildingName]
+    local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+    local origin = hero:GetAbsOrigin()
+    
+    for k,v in pairs(itemRecipes) do
+        for itemName,n in pairs (v) do
+            for i=1,n*3 do
                 local pos_launch = origin + RandomVector(RandomInt(1,200))
 
                 local item
-                if string.match(k, "any_") then
-                    item = CreateItem( GetRandomAliasFor(k), nil, nil )
+                if string.match(itemName, "any_") then
+                    item = CreateItem( GetRandomAliasFor(itemName), nil, nil )
                 else
-                    item = CreateItem(k, nil, nil)
+                    item = CreateItem(itemName, nil, nil)
                 end
-                local drop = CreateItemOnPositionSync( origin, item )
+                
                 if item then
+                    local drop = CreateItemOnPositionSync( origin, item )
                     item:LaunchLoot(false, 200, 0.75, pos_launch)
                 else
-                    print("Fail, couldn't create item: "..k)
+                    print("Fail, couldn't create item: "..itemName)
                 end
-            end  
-        end
+            end
+        end  
     end
 end

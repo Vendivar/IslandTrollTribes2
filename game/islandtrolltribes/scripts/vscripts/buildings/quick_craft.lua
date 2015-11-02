@@ -13,10 +13,6 @@ function QuickCraft(keys)
     print("QuickCrafting on "..buildingName)
        
     local recipeTable = GameRules.Crafting[buildingName]
-    --[[print("List of items the building can craft:")
-    for k,v in pairs(recipeTable) do
-        print(k)
-    end]]
 
     -- Get all items dropped nearby
     local drops = Entities:FindAllByClassnameWithin("dota_item_drop", caster:GetAbsOrigin(), range)  --get the item in the slot
@@ -25,7 +21,7 @@ function QuickCraft(keys)
     -- Check if the items dropped match any recipe
     -- The order that the recipes are compared might matter in the results, it will be a bit random with this method
     for recipeName,recipeIngredients in pairs(recipeTable) do 
-        
+
         -- If the drop list contains enough of the ingredient items defined in the recipeTable, it can be crafted and the drops need to be consumed
         local craftingItems = CanCraft(buildingName, recipeName, drops)
         if craftingItems then
@@ -38,6 +34,7 @@ function QuickCraft(keys)
 
             break  --end the function, only one item per mix
         end
+        print("-----")
     end
 
     if match then return
@@ -48,9 +45,9 @@ function QuickCraft(keys)
 end
 
 -- Returns a list of crafting drops if the itemName can be crafted with the passed drops, false otherwise
-function CanCraft( buildingName, itemName, droppedContainers )
+function CanCraft( buildingName, resultName, droppedContainers )
     local recipeTable = GameRules.Crafting[buildingName]
-    local required = recipeTable[itemName]
+    local required = recipeTable[resultName]
     
     local craftingItems = {}
 
@@ -60,14 +57,21 @@ function CanCraft( buildingName, itemName, droppedContainers )
         local itemName = item:GetAbilityName()
 
         -- If the item is required for this craft, add if we don't have enough
-        if required[itemName] then
+        local alias = GetAlias(itemName)
+        if alias ~= "" then
+            itemName = alias
+        end
+        local requiredAmount = required[itemName]
+        if requiredAmount then
+            --print("Is required ",requiredAmount)
             -- At least it will require 1 of the item
+            
             if not craftingItems[itemName] then
                 craftingItems[itemName] = {}
                 table.insert(craftingItems[itemName], drop)
 
             -- If it requires more than 1 and we still don't have enough, keep adding
-            elseif #craftingItems[itemName] < required[itemName] then
+            elseif #craftingItems[itemName] < requiredAmount then
                 table.insert(craftingItems[itemName], drop)
             end
         end
@@ -76,81 +80,21 @@ function CanCraft( buildingName, itemName, droppedContainers )
     -- Check that the crafting and the required items match, break at first fail
     local ingredients = ""
     for k,v in pairs(required) do
-        if type(v)=="number" and (not craftingItems[k] or (#craftingItems[k] < required[k])) then
-            --print("Can't craft ",itemName,"missing ",k)
-            return false
-        elseif type(v)=="number" then
+        if type(v)=="number" then
+            local requiredAmount = required[k] or required[GetAlias(k)]
+            if not craftingItems[k] or (#craftingItems[k] < requiredAmount) then
+                for kappa,vim in pairs(craftingItems) do
+                    print(kappa,vim)
+                end
+                return false
+            end
             ingredients = k.."("..v..") "
         end
     end
 
-    print("--------\nPassed the basic requirements to craft "..itemName..": "..ingredients)
+    print("--------\nPassed the requirements to craft "..resultName..": "..ingredients)
 
-    -- Check for alternatives
-    local alternatives = required['alt']
-    if alternatives then
-
-        print("Item has alternatives:")
-        local alts = {}
-        for k,v in pairs(alternatives) do
-            local altString = ""
-            for itemName,num in pairs(v) do
-                altString = altString..itemName.."("..num..") "
-            end
-            alts[k] = altString
-        end
-
-        local altCrafting = {}
-        local match
-        for altNumber,altItems in pairs(alternatives) do
-            if not match then
-                print("Checking alternative "..altNumber..":", alts[altNumber])
-
-                -- Build an alt table
-                for altItemName,number in pairs(altItems) do
-                    local dropFound = DropTableContainsItem(droppedContainers, altItemName)
-                    if dropFound then
-                        print("\tGot "..altItemName)
-                        if not altCrafting[altItemName] then
-                            altCrafting[altItemName] = {}
-                            table.insert(altCrafting[altItemName], dropFound)
-                        elseif #altCrafting[altItemName] < number then
-                            table.insert(altCrafting[altItemName], dropFound)
-                        end
-                    end
-                end
-
-                -- Check that the crafting and the alt required items match, break at first fail
-                match = true
-                for k,v in pairs(altItems) do
-                    if not altCrafting[k] or (#altCrafting[k] < v) then
-                        altCrafting = {} --Clean up the alt table
-                        print("\tFailed, not enough "..k)
-                        match = false
-                        break
-                    end
-                end
-            end
-        end
-        
-        if match then
-            print("\tSucceeded an alternative match")
-            -- Put all the matched alternatives in the final crafting ingredients and return it 
-            for k,itemDropsMatch in pairs(altCrafting) do
-                if not craftingItems[k] then
-                    craftingItems[k] = {}
-                end
-
-                for _,v in pairs(itemDropsMatch) do
-                    table.insert(craftingItems[k], v)
-                end           
-            end
-
-            return craftingItems
-        end
-    else
-        return craftingItems
-    end
+    return craftingItems
 end
 
 -- TODO: Handle charges
