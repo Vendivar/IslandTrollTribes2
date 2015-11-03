@@ -38,6 +38,10 @@ end
 --              Ability functions             --
 ------------------------------------------------
 
+function IsCastableWhileHidden( abilityName )
+    return GameRules.AbilityKV[abilityName] and GameRules.AbilityKV[abilityName]["IsCastableWhileHidden"]
+end
+
 function SetAbilityVisibility(unit, abilityName, visibility)
     local ability = unit:FindAbilityByName(abilityName)
     local hidden = (visibility == false)

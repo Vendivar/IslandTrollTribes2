@@ -1995,7 +1995,7 @@ function KillDummyUnit(keys)
     end
 end
 
-function PackUp(keys)
+--[[function PackUp(keys)
     local building = keys.caster
     local buildingName = building:GetUnitName()
 
@@ -2021,7 +2021,7 @@ end
 function RemoveEntity(keys)
     local building = keys.caster
     building:RemoveSelf()
-end
+end]]
 
 function QuickDrop(keys)
     local caster = keys.caster

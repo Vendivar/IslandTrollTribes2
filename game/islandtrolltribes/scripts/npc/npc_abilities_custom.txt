@@ -1041,6 +1041,29 @@
 			}
 		}
 	}
+	"ability_pack_up"
+	{
+	    "BaseClass"             "ability_datadriven"
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	    "AbilityTextureName"    "ability_building_packup"
+	    "AbilityCooldown"       "0.0"
+	    "AbilityChannelTime"    "0.5"
+	    "AbilityManaCost"       "0"
+	
+	    "OnChannelSucceeded"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"    "buildings/pack_up.lua"
+	            "Function"      "PackUp"
+	        }
+	        "FireSound"
+	        {
+	            "EffectName"    "DOTA_Item.SmokeOfDeceit.Activate"
+	            "Target"        "CASTER"
+	        }
+	    }
+	}
 	"ability_quick_build_armory"
 	{
 		"BaseClass"	"ability_datadriven"
@@ -12691,35 +12714,6 @@
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"ability_building_mix"
 	}
-	"ability_pack_up"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityTextureName"	"ability_building_packup"
-		"AbilityCooldown"	"0.0"
-		"AbilityCastPoint"	"0.5"
-		"AbilityManaCost"	"0"
-		"precache"
-		{
-			"soundfile"		"sounds/items/smoke_of_deceit.vsnd"
-		}
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"Target"	"CASTER"
-				"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
-				"Function"	"PackUp"
-			}
-			"FireSound"
-			{
-				"EffectName"	"DOTA_Item.SmokeOfDeceit.Activate"
-				"Target"		"CASTER"
-			}
-	
-		}
-	
-	}
 	"ability_pack_up_magefire"
 	{
 		"BaseClass"	"ability_datadriven"
@@ -13125,69 +13119,76 @@
 	}
 	"panic"
 	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-		"AbilityTextureName"	"razor_plasma_field"
-		"AbilityCastPoint"	"0.0"
-		"AbilityCooldown"	"15"
-		"AbilityCastRange"	"0"
-		"AbilityManaCost"	"20"
+	    "BaseClass"             "ability_datadriven"
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	    "AbilityTextureName"    "huskar_berserkers_blood"
+	    "AbilityCastPoint"      "0.0"
+	    "AbilityCooldown"       "15"
+	    "AbilityCastRange"      "0"
+	    "AbilityManaCost"       "20"
 	
-		"IsCastableWhileHidden"	"1"
+	    "IsCastableWhileHidden"    "1"
 	
-		"OnSpellStart"
-		{
-			"ApplyModifier"
-			{
-				"Target"	"CASTER"
-				"ModifierName"	"modifier_panic"
-				"Duration"	"15"
-			}
+	    "OnSpellStart"
+	    {
+	        "ApplyModifier"
+	        {
+	            "Target"        "CASTER"
+	            "ModifierName"  "modifier_panic"
+	            "Duration"      "15"
+	        }
 	
-			"FireSound"
-			{
-				"EffectName"	"Hero_Undying.FleshGolem.Cast"
-				"Target"	"CASTER"
-			}
-		}
+	        "FireSound"
+	        {
+	            "EffectName"    "Hero_Undying.FleshGolem.Cast"
+	            "Target"        "CASTER"
+	        }
 	
-		"Modifiers"
-		{
-			"modifier_panic"
-			{
-				"Passive"	"1"
-				"Hidden"	"0"
-				"IsDebuff"	"0"
-				"IsPurgable"	"0"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE"	"%incoming_damage"
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%move_speed"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed"
-				}
-			}
-		}
+	        "RemoveAbility"
+	        {
+	            "Target"        "CASTER"
+	            "AbilityName"   "panic"
+	        }
+	    }
 	
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"attack_speed"	"20"
-			}
+	    "Modifiers"
+	    {
+	        "modifier_panic"
+	        {
+	            "Passive"       "1"
+	            "Hidden"        "0"
+	            "IsDebuff"      "0"
+	            "IsPurgable"    "0"
+	            "TextureName"   "huskar_berserkers_blood"
+	            "Properties"
+	            {
+	                "MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE"    "%incoming_damage"
+	                "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"    "%move_speed"
+	                "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"    "%attack_speed"
+	            }
+	        }
+	    }
 	
-			"02"
-			{
-				"var_type"	"FIELD_FLOAT"
-				"move_speed"	"30"
-			}
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"    "FIELD_INTEGER"
+	            "attack_speed"    "20"
+	        }
 	
-			"03"
-			{
-				"var_type"	"FIELD_FLOAT"
-				"incoming_damage"	"110"
-			}
-		}
+	        "02"
+	        {
+	            "var_type"    "FIELD_FLOAT"
+	            "move_speed"    "30"
+	        }
+	
+	        "03"
+	        {
+	            "var_type"    "FIELD_FLOAT"
+	            "incoming_damage"    "110"
+	        }
+	    }
 	}
 	"sleep_outside"
 	{

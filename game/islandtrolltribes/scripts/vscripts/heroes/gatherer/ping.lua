@@ -18,7 +18,7 @@ function PingItemInRange(event)
         end
     end
 
-
+    local foundItem
     local itemDrops = Entities:FindAllByClassnameWithin("dota_item_drop", caster:GetAbsOrigin(), range)
     for k,drop in pairs(itemDrops) do
         local item = drop:GetContainedItem()
@@ -52,17 +52,21 @@ function PingItemInRange(event)
             ParticleManager:SetParticleControl(drop.pingStaticParticle, 0, position)
             ParticleManager:SetParticleControl(drop.pingStaticParticle, 1, Vector(r, g, b))
             Timers:CreateTimer(25, function()
-                if IsValidEntity(drop) then
+                if IsValidEntity(drop) and drop.pingStaticParticle then
                     ParticleManager:DestroyParticle(drop.pingStaticParticle, true)
                     drop.pingStaticParticle = nil
                 end
             end)
 
-            item:EmitSound("General.Ping")  --may be deafening
-
             --Ping Minimap
             local radius = 400
             GameRules:AddMinimapDebugPointForTeam( -drop:entindex(), drop:GetAbsOrigin(), r, g, b, radius, 100, team )
+
+            foundItem = true
         end
+    end
+
+    if foundItem then
+        EmitSoundOnLocationForAllies(caster:GetAbsOrigin(), "General.Ping", caster)
     end
 end

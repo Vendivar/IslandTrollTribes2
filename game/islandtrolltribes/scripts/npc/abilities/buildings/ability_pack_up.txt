@@ -1,0 +1,23 @@
+"ability_pack_up"
+{
+    "BaseClass"             "ability_datadriven"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "AbilityTextureName"    "ability_building_packup"
+    "AbilityCooldown"       "0.0"
+    "AbilityChannelTime"    "0.5"
+    "AbilityManaCost"       "0"
+
+    "OnChannelSucceeded"
+    {
+        "RunScript"
+        {
+            "ScriptFile"    "buildings/pack_up.lua"
+            "Function"      "PackUp"
+        }
+        "FireSound"
+        {
+            "EffectName"    "DOTA_Item.SmokeOfDeceit.Activate"
+            "Target"        "CASTER"
+        }
+    }
+}

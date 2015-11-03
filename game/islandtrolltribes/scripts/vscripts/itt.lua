@@ -98,7 +98,7 @@ function ITT:InitGameMode()
     CustomGameEventManager:RegisterListener( "player_selected_class", Dynamic_Wrap( ITT, "OnClassSelected" ) )
     CustomGameEventManager:RegisterListener( "player_selected_subclass", Dynamic_Wrap( ITT, "OnSubclassChange" ) )
 
-    CustomGameEventManager:RegisterListener( "player_sleep", Dynamic_Wrap( ITT, "Sleep" ) )
+    CustomGameEventManager:RegisterListener( "player_sleep_outside", Dynamic_Wrap( ITT, "Sleep" ) )
     CustomGameEventManager:RegisterListener( "player_eat_meat", Dynamic_Wrap( ITT, "EatMeat" ) )
     CustomGameEventManager:RegisterListener( "player_drop_meat", Dynamic_Wrap( ITT, "DropMeat" ) )
     CustomGameEventManager:RegisterListener( "player_drop_all_meat", Dynamic_Wrap( ITT, "DropAllMeat" ) )
@@ -529,8 +529,8 @@ function ITT:OnEntityKilled(keys)
         end)
     end
 
-    if string.find(unitName, "building") then
-        killedUnit:RemoveBuilding(2, false)
+    if IsCustomBuilding(killedUnit) then
+        BuildingHelper:RemoveBuilding(killedUnit, false)
     end
 
     -- Heroes
