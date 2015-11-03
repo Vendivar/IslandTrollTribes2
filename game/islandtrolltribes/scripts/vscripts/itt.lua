@@ -529,8 +529,8 @@ function ITT:OnEntityKilled(keys)
         end)
     end
 
-    if string.find(unitName, "building") then
-        killedUnit:RemoveBuilding(2, false)
+    if IsCustomBuilding(killedUnit) then
+        BuildingHelper:RemoveBuilding(killedUnit, false)
     end
 
     -- Heroes

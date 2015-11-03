@@ -1041,6 +1041,29 @@
 			}
 		}
 	}
+	"ability_pack_up"
+	{
+	    "BaseClass"             "ability_datadriven"
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	    "AbilityTextureName"    "ability_building_packup"
+	    "AbilityCooldown"       "0.0"
+	    "AbilityChannelTime"    "0.5"
+	    "AbilityManaCost"       "0"
+	
+	    "OnChannelSucceeded"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"    "buildings/pack_up.lua"
+	            "Function"      "PackUp"
+	        }
+	        "FireSound"
+	        {
+	            "EffectName"    "DOTA_Item.SmokeOfDeceit.Activate"
+	            "Target"        "CASTER"
+	        }
+	    }
+	}
 	"ability_quick_build_armory"
 	{
 		"BaseClass"	"ability_datadriven"
@@ -12557,35 +12580,6 @@
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"ability_building_mix"
 	}
-	"ability_pack_up"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityTextureName"	"ability_building_packup"
-		"AbilityCooldown"	"0.0"
-		"AbilityCastPoint"	"0.5"
-		"AbilityManaCost"	"0"
-		"precache"
-		{
-			"soundfile"		"sounds/items/smoke_of_deceit.vsnd"
-		}
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"Target"	"CASTER"
-				"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
-				"Function"	"PackUp"
-			}
-			"FireSound"
-			{
-				"EffectName"	"DOTA_Item.SmokeOfDeceit.Activate"
-				"Target"		"CASTER"
-			}
-	
-		}
-	
-	}
 	"ability_pack_up_magefire"
 	{
 		"BaseClass"	"ability_datadriven"
@@ -13062,7 +13056,7 @@
 		"AbilityUnitTargetFlags"	"DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
 		"AbilityTextureName"	"ability_building_rest"
 		"AbilityCastPoint"	"0.0"
-		"AbilityCooldown"	"12"
+		"AbilityCooldown"	"10"
 		"AbilityManaCost"	"0"
 	
 		"IsCastableWhileHidden"	"1"
