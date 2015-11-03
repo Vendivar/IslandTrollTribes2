@@ -1,33 +1,47 @@
-"ability_thief_jump"
-{
-	"BaseClass"	"ability_datadriven"
-	"AbilityTextureName"	"ability_thief_jump"
-	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
-	"AbilityCastRange"	"600"
-	"AbilityCastPoint"	"0.4"
-	"AbilityCooldown"	"30.0"
-	"AbilityManaCost"	"15"
-	"RequiredLevel"	"2"
-	"MaxLevel"	"1"
-	"precache"
+	"ability_thief_jump"
 	{
-		"soundfile"			"sounds/weapons/hero/riki/riki_blinkstrike.vsnd"
-	}
-
-	"OnSpellStart"
-	{
-		"RunScript"
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"ability_thief_jump"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityCastRange"	"600"
+		"AbilityCastPoint"	"0.4"
+		"AbilityCooldown"	"30.0"
+		"AbilityManaCost"	"15"
+		"RequiredLevel"	"2"
+		"MaxLevel"	"1"
+		"precache"
 		{
-			"ScriptFile" "heroes/thief/jump.lua"
-			"Function"   "Jump"
-			"Target"     "POINT"
+			"soundfile"			"sounds/weapons/hero/riki/riki_blinkstrike.vsnd"
+            "particle"          "particles/custom/jump_land_smoke.vpcf"
+            "particle"          "particles/custom/jump.vpcf"
 		}
-		"FireSound"
+	
+		"OnSpellStart"
 		{
-			"EffectName"		"Hero_Riki.Blink_Strike"
-			"Target"			"POINT"
+			"RunScript"
+			{
+				"ScriptFile" "heroes/thief/jump.lua"
+				"Function"   "Jump"
+				"Target"     "POINT"
+			}
+            "FireEffect"
+			{
+				"EffectName"	"particles/custom/jump.vpcf"
+				"EffectAttachType"	"world_origin"
+				"Target"	"CASTER"
+                        "ControlPoints"
+                            {
+                                "01" "0 0 0"
+                                "02" "0 0 0"
+                                "03" "0 0 0"
+                            }
+			}
+			"FireSound"
+			{
+				"EffectName"		"Hero_Riki.Blink_Strike"
+				"Target"			"POINT"
+			}
+	
 		}
-
+	
 	}
-
-}

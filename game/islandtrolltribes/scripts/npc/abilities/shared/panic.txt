@@ -10,6 +10,10 @@
 
     "IsCastableWhileHidden"    "1"
 
+	    "precache"
+	    {
+	        "soundfile" "soundevents/trollgeneral.vsndevts"
+	    }
     "OnSpellStart"
     {
         "ApplyModifier"
@@ -21,7 +25,7 @@
 
         "FireSound"
         {
-            "EffectName"    "Hero_Undying.FleshGolem.Cast"
+            "EffectName"    "Panic"
             "Target"        "CASTER"
         }
 
@@ -67,7 +71,7 @@
         "03"
         {
             "var_type"    "FIELD_FLOAT"
-            "incoming_damage"    "110"
+            "incoming_damage"    "10"
         }
     }
 }

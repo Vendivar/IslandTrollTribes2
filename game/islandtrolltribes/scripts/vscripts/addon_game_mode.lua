@@ -340,7 +340,8 @@ function Precache( context )
 	PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_enigma.vsndevts",context)
 	PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_chen.vsndevts",context)
 	PrecacheResource("soundfile", "soundevents/game_sounds.vsndevts",context)
-	
+	PrecacheResource("soundfile", "soundevents/chicken.vsndevts",context)
+	PrecacheResource("soundfile", "soundevents/trollgeneral.vsndevts",context)
 
 
 	PrecacheResource("model", "models/props_destruction/lion_groundspikes.vmdl",context)

@@ -146,8 +146,19 @@ CVhitBoxSetList CVhitBoxSetList_0
 					string m_sSurfaceProperty = ""
 					int m_nGroupId = 0
 					string m_sBoneName = "Cube"
-					float(3) m_vMinBounds = ( 200.000000, -155.068588, 220.000000 )
-					float(3) m_vMaxBounds = ( -100.000000, 155.232910, 1.000000 )
+					float(3) m_vMinBounds = ( 300.000000, -300.000000, 400.000000 )
+					float(3) m_vMaxBounds = ( -200.000000, 300.000000, 1.860000 )
+					bool m_bTranslationOnly = false
+					uint(4) m_cRenderColor = ( 0, 0, 0, 0 )
+				},
+				CVhitBox
+				{
+					string m_name = "Cube1"
+					string m_sSurfaceProperty = ""
+					int m_nGroupId = 0
+					string m_sBoneName = "Cube1"
+					float(3) m_vMinBounds = ( -200.000000, -300.000000, 500.000000 )
+					float(3) m_vMaxBounds = ( 293.720001, 300.000000, 0.000000 )
 					bool m_bTranslationOnly = false
 					uint(4) m_cRenderColor = ( 0, 0, 0, 0 )
 				}

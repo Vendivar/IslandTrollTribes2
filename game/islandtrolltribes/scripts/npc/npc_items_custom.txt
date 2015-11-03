@@ -24,8 +24,8 @@
 	            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
 	            "Properties"
 	            {
-	                "MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT" "-1"
-	                "MODIFIER_PROPERTY_MANA_REGEN_CONSTANT" "-1"
+	                "MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT" "-0.3"
+	                "MODIFIER_PROPERTY_MANA_REGEN_CONSTANT" "-0.3"
 	            }
 	            "ThinkInterval" "1.0"
 	            "OnIntervalThink"
@@ -45,6 +45,7 @@
 	
 	        "modifier_beastmaster_pack_leader"
 	        {
+				"IsHidden"	"1"
 	            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
 	            "Properties"
 	            {
@@ -58,6 +59,7 @@
 	        }
 	        "modifier_beastmaster_chicken_form"
 	        {
+				"IsHidden"	"1"
 	            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
 	            "Properties"
 	            {
@@ -71,6 +73,7 @@
 	        }
 	        "modifier_beastmaster_shapeshifter"
 	        {
+				"IsHidden"	"1"
 	            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
 	            "Properties"
 	            {
@@ -85,6 +88,7 @@
 	
 	        "modifier_hunter_tracker"
 	        {
+				"IsHidden"	"1"
 	            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
 	            "Properties"
 	            {
@@ -98,6 +102,7 @@
 	        }
 	        "modifier_hunter_warrior"
 	        {
+				"IsHidden"	"1"
 	            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
 	            "Properties"
 	            {
@@ -111,6 +116,7 @@
 	        }
 	        "modifier_hunter_juggernaut"
 	        {
+				"IsHidden"	"1"
 	            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
 	            "Properties"
 	            {
@@ -125,6 +131,7 @@
 	
 	        "modifier_gatherer_herbal_master_telegatherer"
 	        {
+				"IsHidden"	"1"
 	            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
 	            "Properties"
 	            {
@@ -138,6 +145,7 @@
 	        }
 	        "modifier_gatherer_radar_telegatherer"
 	        {
+				"IsHidden"	"1"
 	            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
 	            "Properties"
 	            {
@@ -151,6 +159,7 @@
 	        }
 	        "modifier_gatherer_remote_telegatherer"
 	        {
+				"IsHidden"	"1"
 	            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
 	            "Properties"
 	            {
@@ -165,6 +174,7 @@
 	
 	        "modifier_mage_elementalist"
 	        {
+				"IsHidden"	"1"
 	            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
 	            "Properties"
 	            {
@@ -178,6 +188,7 @@
 	        }
 	        "modifier_mage_dementia_master"
 	        {
+				"IsHidden"	"1"
 	            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
 	            "Properties"
 	            {
@@ -191,6 +202,7 @@
 	        }
 	        "modifier_mage_hypnotist"
 	        {
+				"IsHidden"	"1"
 	            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
 	            "Properties"
 	            {
@@ -205,6 +217,7 @@
 	
 	        "modifier_priest_booster"
 	        {
+				"IsHidden"	"1"
 	            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
 	            "Properties"
 	            {
@@ -218,6 +231,7 @@
 	        }
 	        "modifier_priest_master_healer"
 	        {
+				"IsHidden"	"1"
 	            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
 	            "Properties"
 	            {
@@ -231,6 +245,7 @@
 	        }
 	        "modifier_priest_shaman"
 	        {
+				"IsHidden"	"1"
 	            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
 	            "Properties"
 	            {
@@ -245,6 +260,7 @@
 	
 	        "modifier_scout_observer"
 	        {
+				"IsHidden"	"1"
 	            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
 	            "Properties"
 	            {
@@ -258,6 +274,7 @@
 	        }
 	        "modifier_scout_radar_scout"
 	        {
+				"IsHidden"	"1"
 	            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
 	            "Properties"
 	            {
@@ -271,6 +288,7 @@
 	        }
 	        "modifier_scout_spy"
 	        {
+				"IsHidden"	"1"
 	            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
 	            "Properties"
 	            {
@@ -285,6 +303,7 @@
 	
 	        "modifier_thief_escape_artist"
 	        {
+				"IsHidden"	"1"
 	            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
 	            "Properties"
 	            {
@@ -298,6 +317,7 @@
 	        }
 	        "modifier_thief_contortionist"
 	        {
+				"IsHidden"	"1"
 	            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
 	            "Properties"
 	            {
@@ -311,6 +331,7 @@
 	        }
 	        "modifier_thief_assassin"
 	        {
+				"IsHidden"	"1"
 	            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
 	            "Properties"
 	            {

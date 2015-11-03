@@ -11479,6 +11479,8 @@
 		"precache"
 		{
 			"soundfile"			"sounds/weapons/hero/riki/riki_blinkstrike.vsnd"
+            "particle"          "particles/custom/jump_land_smoke.vpcf"
+            "particle"          "particles/custom/jump.vpcf"
 		}
 	
 		"OnSpellStart"
@@ -11488,6 +11490,18 @@
 				"ScriptFile" "heroes/thief/jump.lua"
 				"Function"   "Jump"
 				"Target"     "POINT"
+			}
+            "AttachEffect"
+			{
+				"EffectName"	"particles/custom/jump.vpcf"
+				"EffectAttachType"	"world_origin"
+				"Target"	"CASTER"
+                        "ControlPoints"
+                            {
+                                "01" "0 0 0"
+                                "02" "0 0 0"
+                                "03" "0 0 0"
+                            }
 			}
 			"FireSound"
 			{
@@ -13117,6 +13131,10 @@
 	
 	    "IsCastableWhileHidden"    "1"
 	
+	    "precache"
+	    {
+	        "soundfile" "soundevents/trollgeneral.vsndevts"
+	    }
 	    "OnSpellStart"
 	    {
 	        "ApplyModifier"
@@ -13128,7 +13146,7 @@
 	
 	        "FireSound"
 	        {
-	            "EffectName"    "Hero_Undying.FleshGolem.Cast"
+	            "EffectName"    "Panic"
 	            "Target"        "CASTER"
 	        }
 	
@@ -13174,7 +13192,7 @@
 	        "03"
 	        {
 	            "var_type"    "FIELD_FLOAT"
-	            "incoming_damage"    "110"
+	            "incoming_damage"    "10"
 	        }
 	    }
 	}
