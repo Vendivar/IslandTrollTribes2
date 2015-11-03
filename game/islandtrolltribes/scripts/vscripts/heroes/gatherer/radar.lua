@@ -68,7 +68,7 @@ function ToggleOffRadar( event )
             if abilityTable[abilityName] then
                 ability:SetHidden(true)
                 ability:SetLevel(0)
-            elseif ability:GetLevel() > 0 and not string.match(abilityName, "move_to_point") then
+            elseif ability:GetLevel() > 0 and not IsCastableWhileHidden(abilityName) then
                 ability:SetHidden(false)
             end
         end        
