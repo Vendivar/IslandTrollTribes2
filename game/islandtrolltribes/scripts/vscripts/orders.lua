@@ -140,14 +140,14 @@ function ITT:FilterExecuteOrder( filterTable )
         local distance = (origin - point):Length2D()
         if distance <= ITEM_TRANSFER_RANGE then
             unit:DropItemAtPositionImmediate(item, origin)
-            item:LaunchLoot(false, 200, 0.5, point)
+            DropLaunch(unit, item, 0.5, point)
             unit:Stop()
         else
             -- For buildings, Best Effort drop
             if IsCustomBuilding(unit) then
                 local drop_point = origin + (point - origin):Normalized() * ITEM_TRANSFER_RANGE
                 unit:DropItemAtPositionImmediate(item, origin)
-                item:LaunchLoot(false, 200, 0.75, point)
+                DropLaunch(unit, item, 0.75, point)
                 unit:Stop()
             else
                 -- Move towards the position and drop the item at the extended range
@@ -159,7 +159,7 @@ function ITT:FilterExecuteOrder( filterTable )
                 unit.orderTimer = Timers:CreateTimer(function()
                     if IsValidAlive(unit) and (unit:GetAbsOrigin() - point):Length2D() <= ITEM_TRANSFER_RANGE+25 then
                         unit:DropItemAtPositionImmediate(item, unit:GetAbsOrigin())
-                        item:LaunchLoot(false, 200, 0.75, point)
+                        DropLaunch(unit, item, 0.5, point)
                         print("unit:DropItemAtPositionImmediate(item, point)")
                         return false
                     end

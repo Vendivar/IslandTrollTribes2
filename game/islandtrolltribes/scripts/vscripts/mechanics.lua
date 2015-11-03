@@ -280,6 +280,27 @@ function ResolveInventoryMerge( unit, item )
     end
 end
 
+-- Launches an item towards a point, adjusted to never land on top of a tree
+function DropLaunch(unit, item, duration, point)
+    local trees = GridNav:GetAllTreesAroundPoint(point, 100, false)
+    if #trees > 0 then
+        local origin = unit:GetAbsOrigin()
+        local fv = unit:GetForwardVector()
+
+        -- Get points from tree towards the hero
+        for i=64,320,64 do
+            local testPosition = point + (origin - point):Normalized() * i
+            trees = GridNav:GetAllTreesAroundPoint(testPosition, 100, false)
+            if #trees == 0 then
+                point = testPosition
+                break
+            end
+        end
+    end
+
+    item:LaunchLoot(false, 200, duration, point)
+end
+
 -- Returns how many items of a certain slot type are there in the units inventory
 function GetNumItemsOfSlot( unit, slotName )
     local count = 0
