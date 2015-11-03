@@ -63,14 +63,14 @@ function StartBuildingHelper( params )
             gridParticles.push(particle)
         }
 
-        overlayParticles = [];
+        /*overlayParticles = [];
         for (var y=0; y < overlay_size*overlay_size; y++)
         {
             var particle = Particles.CreateParticle("particles/buildinghelper/square_overlay.vpcf", ParticleAttachment_t.PATTACH_CUSTOMORIGIN, 0)
             Particles.SetParticleControl(particle, 1, [32,0,0])
             Particles.SetParticleControl(particle, 3, [0,0,0])
             overlayParticles.push(particle)
-        }
+        }*/
     } 
     
     if (state == 'active')
@@ -131,7 +131,7 @@ function StartBuildingHelper( params )
 
             // Overlay Grid, visible with Alt pressed
             // Keep in mind that a particle with 0 alpha does still eat frame rate.
-            overlay_alpha = GameUI.IsAltDown() ? 90 : 0;
+            /*overlay_alpha = GameUI.IsAltDown() ? 90 : 0;
 
             color = [255,255,255]
             var part2 = 0
@@ -168,7 +168,7 @@ function StartBuildingHelper( params )
                     Particles.SetParticleControl(overlayParticle, 2, color)        
                     Particles.SetParticleControl(overlayParticle, 3, [overlay_alpha,0,0])
                 }
-            }
+            }*/
 
             // Update the model particle
             Particles.SetParticleControl(modelParticle, 0, GamePos)
