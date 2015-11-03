@@ -34,6 +34,9 @@ function ITT:EatMeat(event)
             end
 
             hero:SetModifierStackCount("modifier_meat_passive", nil, meatStacks-1)
+        else
+            print("No Meat to eat!")
+            SendErrorMessage(playerID, "#error_no_meat_to_eat")
         end
     end
 end
@@ -50,6 +53,8 @@ function ITT:DropMeat(event)
             CreateItemOnPositionSync(hero:GetOrigin() + RandomVector(RandomInt(50,100)), newItem)
 
             hero:SetModifierStackCount("modifier_meat_passive", nil, meatStacks - 1)
+        else
+            SendErrorMessage(playerID, "#error_no_meat_to_drop")
         end
     end
 end
@@ -68,6 +73,8 @@ function ITT:DropAllMeat(event)
 
                 hero:SetModifierStackCount("modifier_meat_passive", nil, 0)
             end
+        else
+            SendErrorMessage(playerID, "#error_no_meat_to_drop")
         end
     end
 end
