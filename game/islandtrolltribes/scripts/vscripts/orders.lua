@@ -187,8 +187,13 @@ function ITT:FilterExecuteOrder( filterTable )
 
         -- Buildings
         if IsCustomBuilding(unit) then
+            local itemName = drop:GetContainedItem():GetAbilityName()
+            if itemName == "item_meat_raw" then
+                SendErrorMessage(issuer, "#error_building_cant_pick_meat")
+                return false
+
             -- Pick up the item if within the extended range
-            if (origin - position):Length2D() <= ITEM_TRANSFER_RANGE+25 then
+            elseif (origin - position):Length2D() <= ITEM_TRANSFER_RANGE+25 then
                 local pickedUp = PickupItem(unit, drop)
                 if not pickedUp then 
                     SendErrorMessage(issuer, "#error_inventory_full")

@@ -57,6 +57,7 @@
         "05"
         {
             "var_type"      "FIELD_FLOAT"
+            "spellblock_cd" "75.0"
         }
         "06"
         {
@@ -127,6 +128,7 @@
 
     "Modifiers"
     {
+        "modifier_shield_battle_spell_block"
         {
             "Passive"           "1"
             "EffectName"        "particles/items_fx/black_king_bar_overhead.vpcf"
@@ -142,6 +144,7 @@
 
         "modifier_spell_block_check"
         {
+            "IsHidden"  "1"
             "OnAbilityExecuted"
             {
                 "RunScript"
