@@ -11973,17 +11973,17 @@
 		{
 			"TrackingProjectile"
 			{
-				"Target"	"TARGET"
-				"EffectName"	"particles/base_attacks/ranged_siege_bad.vpcf"
-				"MoveSpeed"	"%projectile_speed"
-				"Dodgeable"	"1"
+				"Target"			"TARGET"
+				"EffectName"		"particles/base_attacks/ranged_siege_bad.vpcf"
+				"MoveSpeed"			"%projectile_speed"
+				"Dodgeable"			"1"
 				"ProvidesVision"	"0"
 			}
 	
 			"FireSound"
 			{
 				"EffectName"	"Hero_EarthSpirit.StoneRemnant.Destroy"
-				"Target"	"TARGET"
+				"Target"		"TARGET"
 			}
 			"SpendCharge"
 			{
@@ -11997,6 +11997,8 @@
 				"ScriptFile"	"items/stone.lua"
 				"Function"		"StoneStun"
 				"Target"		"TARGET"
+				"stun_troll"	"%stun_troll"
+				"stun_creep"	"%stun_creep"
 			}
 	
 			"SpendCharge"
