@@ -120,7 +120,7 @@
         "eat_meat"                                       "Eat\nMeat"
         
         "DOTA_Tooltip_Ability_eat_meat"                  "Eat Meat"
-        "DOTA_Tooltip_Ability_eat_meat_Description"      "Eat the raw meat your troll is currently holding (seen in the buff bar) once per use of this ability. You will eat it over time channeling gaining a total of 15 health over 1.5 seconds."
+        "DOTA_Tooltip_Ability_eat_meat_Description"      "Eat the raw meat your troll is currently holding (seen in the buff bar) once per use of this ability. You will eat it over time (channeling) gaining a total of 15 health over 1.5 seconds."
         "DOTA_Tooltip_Ability_eat_meat_channel_time"     "EAT TIME:"
         "DOTA_Tooltip_Ability_eat_meat_heal_amount"      "HEALTH RESTORED:"
         
