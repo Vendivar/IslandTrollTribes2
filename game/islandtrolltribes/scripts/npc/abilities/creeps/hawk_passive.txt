@@ -12,7 +12,7 @@
             "IsHidden"           "1"
     
             "Aura"              "modifier_hawk_fly_aggro"
-            "Aura_Radius"       "600"
+            "Aura_Radius"       "900"
             "Aura_Teams"        "DOTA_UNIT_TARGET_TEAM_ENEMY"
             "Aura_Types"        "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
             "Aura_ApplyToCaster" "0"

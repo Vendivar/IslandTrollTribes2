@@ -589,7 +589,10 @@ function ITT:OnEntityKilled(keys)
             print("Success! Spawning young animal")
             for _,v in pairs(spawnTable) do
                 if unitName == v[1] then
-                    CreateUnitByName(v[2],killedUnit:GetOrigin(), true,nil,nil,killer:GetTeam())
+                    local unit = CreateUnitByName(v[2],killedUnit:GetOrigin(), true,nil,nil,killer:GetTeam())
+                    unit.originalVision = GetDayTimeVisionRange()
+                    unit:SetNightTimeVisionRange(0)
+                    unit:SetDayTimeVisionRange(0)
                 end
             end
         end

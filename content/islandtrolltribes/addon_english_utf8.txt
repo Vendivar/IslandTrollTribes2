@@ -53,6 +53,7 @@
 		"npc_creep_mammoth_baby"				"Baby Mammoth"
 		"npc_creep_elk_pet"						"Elk (Pet)"
 		"npc_creep_elk_adult"					"Adult Elk"
+		"npc_creep_bear_jungle"					"Jungle Bear"
 		"npc_creep_bear_jungle_adult"			"Adult Jungle Bear"
 		"npc_creep_drake_bone"					"Bone Drake"
 		"npc_creep_harpy_red"					"Red Harpy"
@@ -63,15 +64,13 @@
 		"npc_creep_elk_wild"					"Wild Elk"
 		"npc_creep_hawk"						"Hawk"
 		"npc_creep_wolf_jungle"					"Jungle Wolf"
+		"npc_creep_wolf_jungle_adult"			"Adult Jungle Wolf"
 		"npc_creep_wolf_ice"					"Ice Wolf"
-		"npc_creep_wolf_adult_jungle"			"Adult Jungle Wolf"
-		"npc_creep_bear_jungle"					"Adult Jungle Bear"
 		"npc_creep_lizard"						"Lizard"
 		"npc_creep_panther"						"Panther"
 		"npc_creep_panther_elder"				"Elder Panther"
 		"npc_creature_scroll_skeleton"			"Skeleton"
-		"npc_creep_mammoth"						"Mammoth"
-		"npc_creep_wolf_jungle_adult"			"Adult Jungle Wolf"
+		"npc_creep_mammoth"						"Mammoth"		
 		
 		"npc_bush_herb"							"Herb Bush"
 		"npc_bush_herb_blue"					"Herb Bush"
@@ -139,9 +138,12 @@
 		"DOTA_Tooltip_Ability_ability_beastmaster_normalform_Description"					"Return to the shapeshifter's normal form."
 		"DOTA_Tooltip_Ability_ability_beastmaster_normalform_Note0"							"Return to base form"
 		"DOTA_Tooltip_Ability_ability_beastmaster_calltobattle"								"Call to Battle"
+		"DOTA_Tooltip_Ability_ability_beastmaster_calltobattle_Description"					"A howl which temporarily increases the move speed, armor, and damage of all pets under your control for 6 seconds."
+		"DOTA_Tooltip_Ability_ability_beastmaster_calltobattle_damage"					    "%DAMAGE:"
+		"DOTA_Tooltip_Ability_ability_beastmaster_calltobattle_armor"					    "ARMOR:"
+		"DOTA_Tooltip_Ability_ability_beastmaster_calltobattle_movespeed"				    "%MOVESPEED:"
 		"DOTA_Tooltip_Ability_modifier_calltobattle"										"Call To Battle"
 		"DOTA_Tooltip_Ability_modifier_calltobattle_Description"							"Move speed, armor, and damage buffed."
-		"DOTA_Tooltip_Ability_ability_beastmaster_calltobattle_Description"					"A howl which temporarily increases the move speed, armor, and damage of all pets under your control for 6 seconds.\n\nMOVE SPEED: <font color='#777777'>+25%</font>\n+BONUS ARMOR: <font color='#777777'>+2</font>\nBONUS DAMAGE: <font color='#777777'>+30%</font>"
 		"DOTA_Tooltip_Ability_ability_beastmaster_howl"										"(Wolf) Howl"
 		"DOTA_Tooltip_Ability_ability_beastmaster_howl_Description"							"Reduces the armor and attack speed of enemies within range.\n\nBONUS ARMOR: <font color='#777777'>-4</font><font color='#777777'>+2</font>\nATTACK SPEED: <font color='#777777'>-15%</font>"		
 		"DOTA_Tooltip_Ability_ability_modifier_howl"										"Howl"	
@@ -149,13 +151,17 @@
 		"DOTA_Tooltip_Ability_ability_beastmaster_criticalstrike"							"(Wolf) Critical strike"
 		"DOTA_Tooltip_Ability_ability_beastmaster_criticalstrike_Description"				"Gives a chance to deal critical damage.\n\nCHANCE: <font color='#777777'>30%</font>\nMULTIPLIER: <font color='#777777'>1.25x damage</font>"
 		"DOTA_Tooltip_Ability_ability_beastmaster_empathicrage"								"Empathic Rage"
-		"DOTA_Tooltip_Ability_ability_beastmaster_empathicrage_Description"					"When one of your pets dies near you you receive a temporary buff to move speed and attack speed. Stacks for each pet that was killed. Lasts 10 seconds.\n\nCHARGES: <font color='#777777'>2</font>\nMOVE SPEED: <font color='#777777'>+10%</font>\nATTACK SPEED: <font color='#777777'>+20%</font>"
+		"DOTA_Tooltip_Ability_ability_beastmaster_empathicrage_Description"					"When one of your pets dies near you you receive a temporary buff to move speed and attack speed. Stacks for each pet that was killed. Lasts 10 seconds."
+		"DOTA_Tooltip_Ability_ability_beastmaster_empathicrage_attackspeed"					"%ATTACK SPEED:"
+		"DOTA_Tooltip_Ability_ability_beastmaster_empathicrage_movespeed"					"%MOVE SPEED:"
+		"DOTA_Tooltip_Ability_ability_beastmaster_empathicrage_charges"					    "CHARGES:"
 		"DOTA_Tooltip_Ability_ability_modifier_empathicrage"								"Empathic Rage"
 		"DOTA_Tooltip_Ability_ability_modifier_empathicrage_Description"					"Attack speed and movement speed increased."
 		"DOTA_Tooltip_Ability_ability_beastmaster_fleaattackaura"							"Flea Attack Aura"
 		"DOTA_Tooltip_Ability_ability_beastmaster_fleaattackaura_Description"				"The chicken does not attack like normal trolls. Instead, the chicken has a magical attack that automatically attacks any nearby hostile unit. The damage upgrades automatically depending on his level."
 		"DOTA_Tooltip_Ability_ability_beastmaster_fleaattackaura_Initial_Damage"			"INITAL DAMAGE:"
 		"DOTA_Tooltip_Ability_ability_beastmaster_fleaattackaura_DPS" 						"DAMAGE PER SECOND:"
+		"DOTA_Tooltip_Ability_ability_beastmaster_fleaattackaura_damage" 				    "DAMAGE"
 		"DOTA_Tooltip_Ability_ability_beastmaster_fowlplay"									"Fowl Play"
 		"DOTA_Tooltip_Ability_ability_beastmaster_fowlplay_Description"						"Transforms all nearby trolls into a chicken for a duration."
 		"DOTA_Tooltip_Ability_ability_modifier_fowlplay"									"Fowled!"
@@ -190,8 +196,8 @@
 		"DOTA_Tooltip_Ability_ability_beastmaster_stay_Description"							"Under your will, the pet holds it's position."
 		"DOTA_Tooltip_Ability_ability_beastmaster_spiritofthebeast"							"Spirit of the Beast"
 		"DOTA_Tooltip_Ability_ability_beastmaster_spiritofthebeast_Description"				"PASSIVE - Deals 2 damage each time an enemy attacks the Beastmaster slowing their movement speed by 40% and attack speed by 5% (only affects animals)\nAlso gives an EXTRA chance per level to find baby animals. Also animals are attracted to the Beastmaster. Effect increases per level."
-		"DOTA_Tooltip_Ability_ability_beastmaster_spiritofthebeast_chance"					"CHANCE:"
-		"DOTA_Tooltip_Ability_ability_beastmaster_spiritofthebeast_bonus"					"BONUS PER LEVEL:"
+		"DOTA_Tooltip_Ability_ability_beastmaster_spiritofthebeast_chance"					"%CHANCE:"
+		"DOTA_Tooltip_Ability_ability_beastmaster_spiritofthebeast_bonus"					"%BONUS PER LEVEL:"
 		"DOTA_Tooltip_Ability_ability_beastmaster_spiritofthebeast_sub2"					"Spirit of the Beast"
 		"DOTA_Tooltip_Ability_ability_beastmaster_spiritofthebeast_sub2_Description"		"PASSIVE - Deals 2 damage each time an enemy attacks the Beastmaster, slowing movement speed by 40% and attack speed by 5%.\nAlso gives a 30% chance and +5% per level to produce a Fawn, Wolf Pup or Bear Cub, with a maximum of 50%\nPets under Pack Leader Form's controll grow 35% faster.\nAlso gives an EXTRA chance per level to find baby animals. Also animals are attracted to the Beastmaster. Effect increases per level."
 		"DOTA_Tooltip_Ability_ability_beastmaster_spiritofthebeast_sub2_Note0"				"Pets under Pack Leader Form's control grow 35% faster."
@@ -210,8 +216,8 @@
 		"DOTA_Tooltip_Ability_ability_building_enemytargetting_Note0"						"Items applicable: spears, scrolls, offensive potions, nets or blowguns.\nItems retain their cooldown.\nRange 575."
 		"DOTA_Tooltip_Ability_ability_building_ensnare"										"Ensnare"
 		"DOTA_Tooltip_Ability_ability_building_ensnare_Description"							"Traps the target with a net, rendering it incapable of moving.\n\nImmobilizes enemy trolls for 3.25 seconds and 8 seconds on animals"
-		"DOTA_Tooltip_Ability_ability_building_getcorpse"									"Get Corpse"
-		"DOTA_Tooltip_Ability_ability_building_getcorpse_Description"						"Picks up a nearby corpse. Can be autocast which will continuously pick up meat around the building until at full capacity (8 corpses) or until no more corpses remain."
+		"DOTA_Tooltip_Ability_ability_getcorpse"									        "Get Corpse"
+		"DOTA_Tooltip_Ability_ability_getcorpse_Description"						        "Picks up a nearby corpse. Can be autocast which will continuously pick up meat around the building until at full capacity (8 corpses) or until no more corpses remain."
 		"DOTA_Tooltip_Ability_ability_building_hatchegg"									"Hatch Egg"
 		"DOTA_Tooltip_Ability_ability_building_hatchegg_Description"						"The first slot in the hatchery must contain a Hawk Egg. The other 5 slots must contain items labeled with ''hatchery transmutable.'' The items will be used up and a untamed baby hawk will be created above the hatchery."
 		"DOTA_Tooltip_Ability_ability_building_makeboots"									"Make Boots"
@@ -282,6 +288,10 @@
 		"DOTA_Tooltip_Ability_ability_gatherer_telegather"									"Telegather"
 		"DOTA_Tooltip_Ability_ability_gatherer_telegather_Description"						"The Telegatherer targets a friendly fire.\n\nFor the duration of the spell the Telegatherer has a chance to teleport any items picked up back to the fire."
 		"DOTA_Tooltip_Ability_ability_gatherer_telegather_duration"							"DURATION:"
+		"DOTA_Tooltip_modifier_hunter_challenge_caster"                                   	"Hunter Challenge Caster"
+		"DOTA_Tooltip_modifier_hunter_challenge_caster_Description"                       	""
+		"DOTA_Tooltip_modifier_hunter_challenge_target"                                   	"Hunter Challenge Target"
+		"DOTA_Tooltip_modifier_hunter_challenge_target_Description"   						""
 		"DOTA_Tooltip_Ability_ability_hunter_dysenterytrack"								"Dysentery Track"
 		"DOTA_Tooltip_Ability_ability_hunter_dysenterytrack_Description"					"Creates physical footprints on the ground that the Tracker can follow."
 		"DOTA_Tooltip_Ability_ability_hunter_demoralizingwarcry"							"Demoralizing Warcry"
@@ -333,7 +343,7 @@
 		"DOTA_Tooltip_Ability_ability_mage_chainlightning"									"Chain Lightning"
 		"DOTA_Tooltip_Ability_ability_mage_chainlightning_Description"						"Deals damage to the first target, then bounces to the next target, dealing 10% less damage each time it bounces.\nCan bounce up to 3 times.\nBounce acquisition has a huge range.\n\nINITIAL DAMAGE: <font color='#777777'>45</font>\nBOUNCE ACQUISITION RANGE<font color='#777777'>1500</font>"
 		"DOTA_Tooltip_Ability_ability_mage_darkgate"										"Dark Gate"
-		"DOTA_Tooltip_Ability_ability_mage_darkgate_Description"							"A Dark gate field is created around the dementia master.\nWhile this field is open random spells from dementia master's book will be cast on enemies inside the field.\nWhile this field is open dementia master cannot move or attack.\nThe field can be collapsed by casting this spell again<font color='#777777'>Hold ALT to view more information.</font>"
+		"DOTA_Tooltip_Ability_ability_mage_darkgate_Description"							"A Dark gate field is created around the dementia master.\nWhile this field is open random spells from dementia master's book will be cast on enemies inside the field.\nWhile this field is open dementia master cannot move or attack.\nThe field can be collapsed by casting this spell again\n<font color='#777777'>Hold ALT to view more information.</font>"
 		"DOTA_Tooltip_Ability_ability_mage_darkgate_Note0"									"Creates a 1500 radius field around dementia master. Random spells are cast on enemy trolls within this field every 3 seconds:\n25% chance to to cast Giga Negative Blast.\n25% chance to cast Quantum Null Damage.\n25% chance to cast Reduce Food.\n25% chance to cast Maddening Discharge.\nDementia master gets -200% move speed and is disarmed while the gate is up.\nIf Dementia master takes 150 damage within 3 seconds the gate collapses."
 		"DOTA_Tooltip_Ability_ability_mage_defenderenergy"									"Defender Energy"
 		"DOTA_Tooltip_Ability_ability_mage_defenderenergy_Description"						"Creates an orb of energy that swirls around the position of the targeted area, stunning and damaging every enemy it touches."
@@ -1055,14 +1065,14 @@
 "DOTA_Tooltip_ability_item_shield_steel_block_amount"        	"BLOCK CHANCE:"
 
 "DOTA_Tooltip_ability_item_shield_battle"                     	"Battle Shield"
-"DOTA_Tooltip_ability_item_shield_battle_Description"         	"ACTIVE: Shield Bash - Bashes the opponent with the shield causing them to be silenced and deal damage.\nPASSIVE: Provides armor, as well as giving a chance to block physical damage and a spell every 75 seconds.\n\n"
+"DOTA_Tooltip_ability_item_shield_battle_Description"         	"ACTIVE: Shield Bash - Bashes the opponent with the shield causing them to be silenced and deal damage.\nPASSIVE: Provides armor, as well as giving a chance to block physical damage and a spell every 75 seconds.\n"
 "DOTA_Tooltip_ability_item_shield_battle_Lore"                	"Bloodstains coat the outside of the shield."
 "DOTA_Tooltip_ability_item_shield_battle_armor"        			"+$armor"
 "DOTA_Tooltip_ability_item_shield_battle_bonus_str"        		"+$STR"
 "DOTA_Tooltip_ability_item_shield_battle_bonus_int"        		"+$INT"
 "DOTA_Tooltip_ability_item_shield_battle_bonus_agi"        		"+$AGI"
 "DOTA_Tooltip_ability_item_shield_battle_block_chance"    	    "BLOCK CHANCE:"
-"DOTA_Tooltip_ability_item_shield_battle_block_amount"        	"BLOCK CHANCE:"
+"DOTA_Tooltip_ability_item_shield_battle_block_amount"        	"BLOCK AMOUNT:"
 "DOTA_Tooltip_ability_item_shield_battle_silence_damage"        "SILENCE DAMAGE:"
 "DOTA_Tooltip_ability_item_shield_battle_silence_duration"      "SILENCE DURATION:"
 
@@ -1287,8 +1297,8 @@
 "DOTA_Tooltip_ability_ability_burn_building"                     	"Burn Building"
 "DOTA_Tooltip_ability_ability_burn_building_Description"          	"Passively deals 7 damage a second to all buildings in a 125 range."
 
-"DOTA_Tooltip_Ability_ability_quick_build_armory" 					"Quick Build"
-"DOTA_Tooltip_Ability_ability_quick_build_armory_Description" 					"Grabs nearby items on the ground to make selected item. If not all items are available, will still grab everything that was available. Items already in the building will be pushed to the bottom of the building's inventory."
+"DOTA_Tooltip_Ability_ability_quick_craft_armory" 					"Quick Build"
+"DOTA_Tooltip_Ability_ability_quick_craft_armory_Description" 					"Grabs nearby items on the ground to make selected item. If not all items are available, will still grab everything that was available. Items already in the building will be pushed to the bottom of the building's inventory."
 
 "DOTA_Tooltip_Ability_ability_get_corpse"  "Get Corpse"
 "DOTA_Tooltip_Ability_ability_get_corpse"  "Picks up a nearby corpse. Can be autocast which will continuously pick up meat around the building until at full capacity (8 corpses) or until no more corpses remain."
@@ -1303,11 +1313,11 @@
 "DOTA_Tooltip_ability_ability_make_coat"							"Make Coat"
 "DOTA_Tooltip_ability_ability_make_coat_Description"				"Takes three identical hides from the Tannery's inventory to make a corresponding cloak."
 
-"DOTA_Tooltip_ability_ability_quick_build_workshop" 				"Quick Build"
-"DOTA_Tooltip_ability_ability_quick_build_workshop_Description" 	"Collects nearby items on the ground to make selected item. If all items are not available the ones that were will be left in the workshop. Items already in the workshop will be pushed to the bottom of the workshop's inventory. Can quick make only Solar Compasses, Blowguns, Beehives, and Nets."
+"DOTA_Tooltip_ability_ability_quick_craft_workshop" 				"Quick Build"
+"DOTA_Tooltip_ability_ability_quick_craft_workshop_Description" 	"Collects nearby items on the ground to make selected item. If all items are not available the ones that were will be left in the workshop. Items already in the workshop will be pushed to the bottom of the workshop's inventory. Can quick make only Solar Compasses, Blowguns, Beehives, and Nets."
 
-"DOTA_Tooltip_Ability_ability_quick_build_wd_hut"					"Quick Build"
-"DOTA_Tooltip_Ability_ability_quick_build_wd_hut_Description"		"Collects nearby items on the ground to make selected item. If all items are not available the ones that were will be left in the Witch Doctor's Hut. Items already inside will be pushed to the bottom of the building's inventory."
+"DOTA_Tooltip_Ability_ability_quick_craft_wd_hut"					"Quick Build"
+"DOTA_Tooltip_Ability_ability_quick_craft_wd_hut_Description"		"Collects nearby items on the ground to make selected item. If all items are not available the ones that were will be left in the Witch Doctor's Hut. Items already inside will be pushed to the bottom of the building's inventory."
 
 
 "DOTA_Tooltip_Ability_ability_mix" 									"Mix"
@@ -1705,11 +1715,11 @@
 
 //******************** ABILITY MODIFIERS ********************
 
-"DOTA_Tooltip_modifier_bear_bash_passive"                                         "Bear Bash Passive"
-		"DOTA_Tooltip_modifier_bear_bash_passive_Description"                             ""
+"DOTA_Tooltip_modifier_bear_bash_passive"                                         		  "Bear Bash Passive"
+		"DOTA_Tooltip_modifier_bear_bash_passive_Description"                             "Chance to bash"
 
 		"DOTA_Tooltip_modifier_bear_bash"                                                 "Bear Bash"
-		"DOTA_Tooltip_modifier_bear_bash_Description"                                     ""
+		"DOTA_Tooltip_modifier_bear_bash_Description"                                     "Stunned for 1 second."
 
 		"DOTA_Tooltip_modifier_wolf_crit"                                                 "Wolf Crit"
 		"DOTA_Tooltip_modifier_wolf_crit_Description"                                     ""
@@ -1718,30 +1728,30 @@
 		"DOTA_Tooltip_wolf_crit_Description"                                              ""
 
 		"DOTA_Tooltip_modifier_elkform"                                                   "Elkform"
-		"DOTA_Tooltip_modifier_elkform_Description"                                       ""
+		"DOTA_Tooltip_modifier_elkform_Description"                                       "Gaining +35 move speed, -4 damage, +10% attack speed, and +25% magic resistance while losing energy at 2x rate"
 
 		"DOTA_Tooltip_modifier_fowlplay"                                                  "Fowl play"
 		"DOTA_Tooltip_modifier_fowlplay_Description"                                      "Being affected by fowl play and are unable to attack or cast!"
 
 		"DOTA_Tooltip_modifier_howl"                                                      "Howl"
-		"DOTA_Tooltip_modifier_howl_Description"                                          ""
+		"DOTA_Tooltip_modifier_howl_Description"                                          "Under the effect of howl. Losing -4 armor and -15% attack speed."
 
-		"DOTA_Tooltip_elk_immunity"                                                       "Elk Immunity"
-		"DOTA_Tooltip_elk_immunity_Description"                                           ""
+		"DOTA_Tooltip_elk_immunity"                                                       "Elk Magic Immunity"
+		"DOTA_Tooltip_elk_immunity_Description"                                           "Immune to all magic."
 
-		"DOTA_Tooltip_modifier_beastmaster_shortness_evasion"                             "Beastmaster Shortness Evasion"
-		"DOTA_Tooltip_modifier_beastmaster_shortness_evasion_Description"                 ""
+		"DOTA_Tooltip_modifier_beastmaster_shortness_evasion"                             "Shortness Evasion"
+		"DOTA_Tooltip_modifier_beastmaster_shortness_evasion_Description"                 "Reduced size granting 18% chance to evade a physical attack."
 
 		"DOTA_Tooltip_bear_slam_slow"                                                     "Bear Slam Slow"
-		"DOTA_Tooltip_bear_slam_slow_Description"                                         ""
+		"DOTA_Tooltip_bear_slam_slow_Description"                                         "Disoriented from the slam you move and attack 50% slower."
 
-		"DOTA_Tooltip_modifier_spirit"                                                    "Spirit"
+		"DOTA_Tooltip_modifier_spirit"                                                    "Spirit of the Beast"
 		"DOTA_Tooltip_modifier_spirit_Description"                                        ""
 
 		"DOTA_Tooltip_modifier_spawn_chance"                                              "Spawn Chance"
 		"DOTA_Tooltip_modifier_spawn_chance_Description"                                  ""
 
-		"DOTA_Tooltip_modifier_wolfform"                                                  "Wolfform"
+		"DOTA_Tooltip_modifier_wolfform"                                                  "Wolf Form"
 		"DOTA_Tooltip_modifier_wolfform_Description"                                      ""
 
 		"DOTA_Tooltip_ability_boat_passive"                                               "Ability Boat Passive"
@@ -1997,14 +2007,14 @@
 		"DOTA_Tooltip_modifier_coat_elk"                                                  "Elk Skin Coat"
 		"DOTA_Tooltip_modifier_coat_elk_Description"                                      "Gaining +8 heat per 35 seconds"
 
-		"DOTA_Tooltip_modifier_coat_iron"                                                 "Coat Iron"
-		"DOTA_Tooltip_modifier_coat_iron_Description"                                     ""
+		"DOTA_Tooltip_modifier_coat_iron"                                                 "Iron Coat"
+		"DOTA_Tooltip_modifier_coat_iron_Description"                                     "Gaining +8 heat per 35 seconds"
 
-		"DOTA_Tooltip_modifier_coat_steel"                                                "Coat Steel"
-		"DOTA_Tooltip_modifier_coat_steel_Description"                                    ""
+		"DOTA_Tooltip_modifier_coat_steel"                                                "Steel Coat"
+		"DOTA_Tooltip_modifier_coat_steel_Description"                                    "Gaining +8 heat per 35 seconds"
 
-		"DOTA_Tooltip_modifier_coat_wolf"                                                 "Coat Wolf"
-		"DOTA_Tooltip_modifier_coat_wolf_Description"                                     ""
+		"DOTA_Tooltip_modifier_coat_wolf"                                                 "Wolf Coat"
+		"DOTA_Tooltip_modifier_coat_wolf_Description"                                     "Gaining +8 heat per 35 seconds"
 
 		"DOTA_Tooltip_modifier_empathicrage"                                              "Empathicrage"
 		"DOTA_Tooltip_modifier_empathicrage_Description"                                  ""
@@ -2459,9 +2469,7 @@
 		"DOTA_Tooltip_ability_ability_rest_troll_cooldown"                                "COOLDOWN:"
 		"DOTA_Tooltip_ability_ability_rest_troll_invuln_duration"                         "INVULN DURATION:"
 
-		"DOTA_Tooltip_ability_ability_scout_reveal_count1"                                "COUNT1:"
-		"DOTA_Tooltip_ability_ability_scout_reveal_count2"                                "COUNT2:"
-		"DOTA_Tooltip_ability_ability_scout_reveal_count3"                                "COUNT3:"
+		"DOTA_Tooltip_ability_ability_scout_reveal_radius"                                "RADIUS:"
 
 		"DOTA_Tooltip_ability_ability_scout_shadowsight_shadowsight_radius"               "SHADOWSIGHT RADIUS:"
 
@@ -2926,8 +2934,41 @@
 		"DOTA_Tooltip_ability_item_spirit_wind_all_stats"                                 "ALL STATS:"
 
 		"DOTA_Tooltip_ability_item_stick_bonus_damage"                                    "BONUS DAMAGE:"
-
-		"DOTA_Tooltip_ability_item_tombstone"								"Resurrect Teammate"
-		"DOTA_Chat_Tombstone_Pinged"										"[ALLIES] Fallen teammate here."		
+        
+        
+        
+         "sleep_outside"                                          "Sleep Outside"
+        "DOTA_Tooltip_Ability_sleep_outside"                     "Sleep Outside"
+        "DOTA_Tooltip_Ability_sleep_outside_Description"         "Sleep outside and gain 20 energy but lose 20 heat!\nShould only be used as a worse case scenario to gain energy!"
+        "DOTA_Tooltip_Ability_sleep_outside_rest_duration"       "REST DURATION:"
+        "DOTA_Tooltip_Ability_sleep_outside_mana_restored"       "MANA RESTORED:"
+        
+        "eat_meat"                                       "Eat\nMeat"
+        
+        "DOTA_Tooltip_Ability_eat_meat"                  "Eat Meat"
+        "DOTA_Tooltip_Ability_eat_meat_Description"      "Eat the raw meat your troll is currently holding (seen in the buff bar) once per use of this ability. You will eat it over time (channeling) gaining a total of 15 health over 1.5 seconds."
+        "DOTA_Tooltip_Ability_eat_meat_channel_time"     "EAT TIME:"
+        "DOTA_Tooltip_Ability_eat_meat_heal_amount"      "HEALTH RESTORED:"
+        
+        "drop_meat"     "Drop\nMeat"
+        
+        "DOTA_Tooltip_Ability_drop_meat"                  "Drop Raw Meat"
+        "DOTA_Tooltip_Ability_drop_meat_Description"                  "Drop one raw meat per use that your troll is currently holding. It will go to the ground once this ability is used."
+        
+        "drop_all_meat" "Drop\nAll Meat"
+        
+        "DOTA_Tooltip_Ability_drop_all_meat"                            "Drop All Raw Meat"
+        "DOTA_Tooltip_Ability_drop_all_meat_Description"                  "Drop all raw meat your troll is currently holding. It will go to the ground once this ability is used. This is best used near a camp fire where the raw meat can quickly be cooked into cooked meat."
+        
+        "panic"         "Panic!"
+        
+        "DOTA_Tooltip_Ability_Panic" "Panic"
+        "DOTA_Tooltip_Ability_Panic_Description"         "Use this ability to send your troll into a panic to gain attack damage and move speed! Be warned, during your state of frenzy you take increased damage." 
+        "DOTA_Tooltip_Ability_Panic_attack_speed"       "ATTACK SPEED:"
+        "DOTA_Tooltip_Ability_Panic_move_speed"         "MOVE SPEED:"
+        "DOTA_Tooltip_Ability_Panic_incoming_damage"    "INCOMING DAMAGE:"
+        
+		"DOTA_Tooltip_ability_item_Gravestone"								"Resurrect Teammate"
+		"DOTA_Chat_Gravestone_Pinged"										"[ALLIES] Fallen teammate here."		
 	}
 }
