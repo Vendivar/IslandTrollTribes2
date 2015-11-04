@@ -3594,68 +3594,72 @@
 	}
 	"item_axe_battle"
 	{
-		"ID"	"1027"
-		"BaseClass"	"item_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_TREE | DOTA_UNIT_TARGET_CUSTOM"
-		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_CUSTOM"
-		"AbilityTextureName"	"axe_battle"
-		"Model"	"models/items/antimage/arc_of_manta/arc_of_manta.vmdl"
-		"Effect"	""
-		"ItemCost"	"78"
-		"ItemShopTags"	"consumable"
-		"ItemQuality"	"consumable"
-		"ItemShareability"	"ITEM_FULLY_SHAREABLE_STACKING"
-		"ItemStackable"	"0"
-		"ItemPermanent"	"0"
-		"ItemDroppable"	"1"
-		"ItemAliases"	"quicktype"
-		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
-		"ItemKillable"	"1"
-		"ItemSellable"	"0"
-		
-		"UIPickupSound"	"Item.PickUpGemShop"
-		"UIDropSound"	"Item.DropGemShop"
-		"WorldDropSound"	"ui.inv_pickup_metalheavy"
-		"OnAttackLanded"
-		{
-			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-			"Function"	"MageMasherMash"
-		}
+	    "ID"                        "1027"
+	    "BaseClass"                 "item_datadriven"
+	    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	    "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_TREE | DOTA_UNIT_TARGET_CUSTOM"
+	    "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_CUSTOM"
+	    "AbilityTextureName"        "axe_battle"
+	    "Model"                     "models/items/antimage/arc_of_manta/arc_of_manta.vmdl" //Should be models/items/faceless_void/battlefury/battlefury.vmdl
+	    "Effect"                    ""
+	    
+	    "AbilityCastRange"          "125"
+	    "AbilityCastPoint"          "0.5"
+	    "AbilityCooldown"           "10.0"
+	    "AbilityChannelTime"        "0.5"
 	
-		"Modifiers"
-		{
-			"modifier_axe_battle_damage"
-			{
-				"IsHidden"	"1"
-				"Passive"	"1"
-				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%bonus_damage"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed"
-				}
+	    "ItemCost"                  "78"
+	    "ItemShopTags"              "consumable"
+	    "ItemQuality"               "consumable"
+	    "ItemShareability"          "ITEM_FULLY_SHAREABLE_STACKING"
+	    "ItemStackable"             "0"
+	    "ItemPermanent"             "0"
+	    "ItemDroppable"             "1"
+	    "ItemAliases"               "quicktype"
+	    "ItemDisassembleRule"       "DOTA_ITEM_DISASSEMBLE_NEVER"
+	    "ItemKillable"              "1"
+	    "ItemSellable"              "0"
+	    
+	    "UIPickupSound"             "Item.PickUpGemShop"
+	    "UIDropSound"               "Item.DropGemShop"
+	    "WorldDropSound"            "ui.inv_pickup_metalheavy"
 	
-			}
+	    "OnChannelSucceeded"
+	    {
+	        "DestroyTrees"
+	        {
+	            "Target"    "POINT"
+	        }
+	    }
 	
-		}
+	    "Modifiers"
+	    {
+	        "modifier_axe_battle_damage"
+	        {
+	            "IsHidden"    "1"
+	            "Passive"    "1"
+	            "Properties"
+	            {
+	                "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"      "%bonus_damage"
+	                "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "%attack_speed"
+	            }
+	        }
+	    }
 	
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_damage"	"9"
-			}
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"      "FIELD_INTEGER"
+	            "bonus_damage"  "9"
+	        }
 	
-			"02"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"attack_speed"	"15"
-			}
-	
-		}
-	
+	        "02"
+	        {
+	            "var_type"      "FIELD_INTEGER"
+	            "attack_speed"  "15"
+	        }
+	    }
 	}
 	"item_axe_flint"
 	{

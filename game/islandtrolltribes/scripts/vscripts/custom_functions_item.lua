@@ -12,7 +12,7 @@ function NetEnsnare(keys)
 	target:AddNewModifier(caster, nil, "modifier_meepo_earthbind", {duration = dur})
 end
 
-function MageMasherManaBurn(keys)
+--[[function MageMasherManaBurn(keys)
 	local caster = keys.caster
 	local target = keys.target
 	local damage = keys.Damage
@@ -38,7 +38,7 @@ function MageMasherManaBurn(keys)
 	else
 		print(targetName .. " is not Mage or Priest")
 	end	
-end
+end]]
 
 --Not finished, need to find and ping spirit wards and bosses
 function PotionTwinUse(keys)
