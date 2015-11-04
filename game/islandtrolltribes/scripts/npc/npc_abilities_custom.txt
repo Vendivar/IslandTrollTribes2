@@ -11491,7 +11491,7 @@
 				"Function"   "Jump"
 				"Target"     "POINT"
 			}
-            "AttachEffect"
+            "FireEffect"
 			{
 				"EffectName"	"particles/custom/jump.vpcf"
 				"EffectAttachType"	"world_origin"
@@ -13131,10 +13131,10 @@
 	
 	    "IsCastableWhileHidden"    "1"
 	
-	    "precache"
-	    {
-	        "soundfile" "soundevents/trollgeneral.vsndevts"
-	    }
+		    "precache"
+		    {
+		        "soundfile" "soundevents/trollgeneral.vsndevts"
+		    }
 	    "OnSpellStart"
 	    {
 	        "ApplyModifier"
