@@ -110,6 +110,14 @@
 		"thief_sub3_desc" "The Assassin has one simple task: to end the lives of enemy trolls. Focused on combat, the Assassin can make an enemy's simple mistake their downfall.\n\n\n\n\nFunction: Harassment, Combat\nInitial Abilities: Teleport, Cloak\nLearnable Ability: Throwing Knife, Planning Phase, Assassinate\nBase Damage: 18-18\nAttack Cooldown: 1.85\nMovement Speed: 310"		 
 
 
+"error_inventory_full"            "Inventory is full."
+
+"error_cant_attack_air"            "Can not attack air units. Try using ensnare to bring down the hawks."
+"error_cant_carry_more_raw_meat"            "Can not carry any more raw meat"
+"error_no_meat_to_eat"            "No raw meat to eat."
+"error_no_meat_to_drop"            "No raw meat to drop."
+"error_not_enough_gold "            "Not enough gold."
+
         // Toolkit Abilities
         "sleep_outside"                                          "Sleep Outside"
         "DOTA_Tooltip_Ability_sleep_outside"                     "Sleep Outside"
