@@ -1206,28 +1206,12 @@
 				"Passive"		"1"
 				"IsHidden"		"1"
 	
-				"Aura"			"modifier_bush_scout_reveal"
-				"Aura_Radius"	"350"
-				"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_BOTH"
-				"Aura_Types"	"DOTA_UNIT_TARGET_HERO"
-				"Aura_ApplyToCaster" "0"
-	
 				"States"
 				{
 					"MODIFIER_STATE_MAGIC_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
 					"MODIFIER_STATE_NO_HEALTH_BAR"	"MODIFIER_STATE_VALUE_ENABLED"
 					"MODIFIER_STATE_NOT_ON_MINIMAP"	"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_INVULNERABLE"	"MODIFIER_STATE_VALUE_ENABLED"
-				}
-	
-				"ThinkInterval"  "1.0"
-				"OnIntervalThink"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"units/bush_scout.lua"
-						"Function"		"StopReveal"
-					}
+					"MODIFIER_STATE_ATTACK_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
 				}
 			}
 	
@@ -1238,19 +1222,6 @@
 				"States"
 				{
 					"MODIFIER_STATE_INVISIBLE"		"MODIFIER_STATE_VALUE_ENABLED"
-				}
-			}
-	
-			"modifier_bush_scout_reveal"
-			{
-				"IsHidden" 	"1"
-				"OnCreated"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"units/bush_scout.lua"
-						"Function"		"CheckReveal"
-					}
 				}
 			}
 		}
@@ -10613,39 +10584,81 @@
 	}
 	"ability_scout_greaterreveal"
 	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityTextureName"	"ability_scout_greaterreveal"
-		"AbilityCastPoint"	"0.2"
-		"AbilityCooldown"	"20"
-		"AbilityManaCost"	"0"
-		"MaxLevel"	"1"
-		"precache"
-		{
-			"particle_folder"	"particles/units/heroes/hero_night_stalker"
-			"particle_folder"	"particles/units/heroes/hero_bane"
-			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_spectre.vsndevts"
-		}
+	    "BaseClass"                 "ability_datadriven"
+	    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	    "AbilityTextureName"        "ability_scout_greaterreveal"
 	
-		"OnSpellStart"
-		{
-			"SpawnUnit"
-			{
-				"UnitName"	"dummy_caster_reveal4"
-				"UnitCount"	"1"
-				"UnitLimit"	"10"
-				"SpawnRadius"	"0"
-				"Duration"	"10"
-				"Target"	"CASTER"
-			}
-				"FireSound"
-			{
-				"EffectName"		"Hero_Spectre.HauntCast"
-				"Target"			"CASTER"
-			}
+	    "AbilityCastPoint"          "0.2"
+	    "AbilityCooldown"           "20"
+	    "AbilityManaCost"           "0"
+	    "MaxLevel"                  "1"
+	    "AbilityCastRange"          "%radius"
 	
-		}
+	    "AbilitySpecial"
+	    {        
+	        "01"
+	        {
+	            "var_type"    "FIELD_INTEGER"
+	            "radius"      "2700"
+	        }
+	        "02"
+	        {
+	            "var_type"    "FIELD_INTEGER"
+	            "duration"    "10"
+	        }
+	    }
 	
+	    "precache"
+	    {
+	        "particle_folder"       "particles/units/heroes/hero_night_stalker"
+	        "particle_folder"       "particles/units/heroes/hero_bane"
+	        "soundfile"             "soundevents/game_sounds_heroes/game_sounds_spectre.vsndevts"
+	    }
+	
+	    "OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"    "heroes/scout/reveal.lua"
+	            "Function"      "Reveal"
+	        }
+	
+	        "FireSound"
+	        {
+	            "EffectName"    "Hero_Spectre.HauntCast"
+	            "Target"        "CASTER"
+	        }
+	
+	        "CreateThinker"
+	        {
+	            "ModifierName"  "modifier_scout_reveal"
+	            "Target"        "CASTER"
+	        }
+	    }
+	
+	    "Modifiers"
+	    {
+	        "modifier_scout_reveal"
+	        {   
+	            "IsHidden"          "1"
+	            "Duration"          "%duration"
+	
+	            "Aura"              "modifier_scout_reveal_vision"
+	            "Aura_Radius"       "%radius"
+	            "Aura_Teams"        "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	            "Aura_Types"        "DOTA_UNIT_TARGET_ALL"
+	            "Aura_Flags"        "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	        }
+	
+	        "modifier_scout_reveal_vision"
+	        {
+	            "Priority"                     "MODIFIER_PRIORITY_ULTRA"
+	            "States"
+	            {
+	                "MODIFIER_STATE_INVISIBLE"      "MODIFIER_STATE_VALUE_DISABLED"
+	            }
+	        }
+	    }
 	}
 	"ability_scout_placeward"
 	{
@@ -10718,10 +10731,41 @@
 	            "ScriptFile"    "heroes/scout/reveal.lua"
 	            "Function"      "Reveal"
 	        }
+	
 	        "FireSound"
 	        {
 	            "EffectName"    "Hero_Spectre.HauntCast"
 	            "Target"        "CASTER"
+	        }
+	
+	        "CreateThinker"
+	        {
+	            "ModifierName"  "modifier_scout_reveal"
+	            "Target"        "CASTER"
+	        }
+	    }
+	
+	    "Modifiers"
+	    {
+	        "modifier_scout_reveal"
+	        {   
+	            "IsHidden"          "1"
+	            "Duration"          "%duration"
+	
+	            "Aura"              "modifier_scout_reveal_vision"
+	            "Aura_Radius"       "%radius"
+	            "Aura_Teams"        "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	            "Aura_Types"        "DOTA_UNIT_TARGET_ALL"
+	            "Aura_Flags"        "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	        }
+	
+	        "modifier_scout_reveal_vision"
+	        {
+	            "Priority"                     "MODIFIER_PRIORITY_ULTRA"
+	            "States"
+	            {
+	                "MODIFIER_STATE_INVISIBLE"      "MODIFIER_STATE_VALUE_DISABLED"
+	            }
 	        }
 	    }
 	}

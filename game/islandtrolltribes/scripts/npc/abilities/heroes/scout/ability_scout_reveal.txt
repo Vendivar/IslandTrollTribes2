@@ -39,10 +39,41 @@
             "ScriptFile"    "heroes/scout/reveal.lua"
             "Function"      "Reveal"
         }
+
         "FireSound"
         {
             "EffectName"    "Hero_Spectre.HauntCast"
             "Target"        "CASTER"
+        }
+
+        "CreateThinker"
+        {
+            "ModifierName"  "modifier_scout_reveal"
+            "Target"        "CASTER"
+        }
+    }
+
+    "Modifiers"
+    {
+        "modifier_scout_reveal"
+        {   
+            "IsHidden"          "1"
+            "Duration"          "%duration"
+
+            "Aura"              "modifier_scout_reveal_vision"
+            "Aura_Radius"       "%radius"
+            "Aura_Teams"        "DOTA_UNIT_TARGET_TEAM_ENEMY"
+            "Aura_Types"        "DOTA_UNIT_TARGET_ALL"
+            "Aura_Flags"        "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+        }
+
+        "modifier_scout_reveal_vision"
+        {
+            "Priority"                     "MODIFIER_PRIORITY_ULTRA"
+            "States"
+            {
+                "MODIFIER_STATE_INVISIBLE"      "MODIFIER_STATE_VALUE_DISABLED"
+            }
         }
     }
 }
