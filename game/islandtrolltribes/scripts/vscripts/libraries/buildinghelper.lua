@@ -894,8 +894,8 @@ function BuildingHelper:ValidPosition(size, location, callbacks)
             if GridNav:IsBlocked(testLocation) or GridNav:IsTraversable(testLocation) == false then
                 if callbacks.onConstructionFailed then
                     callbacks.onConstructionFailed()
-                    return false
                 end
+                return false
             end
         end
     end
