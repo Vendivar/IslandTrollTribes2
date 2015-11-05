@@ -1,16 +1,23 @@
-function Teleport(keys)
-    local caster = keys.caster
-    local point = keys.target_points[1]
+function Teleport(event)
+    local caster = event.caster
+    local ability = event.ability
+    local point = event.target_points[1]
 
-    local dummyTarget = CreateUnitByName("dummy_caster_metronome", point, false, nil, nil,DOTA_TEAM_NEUTRALS)
+    FindClearSpaceForUnit(caster, point, false)
+end
+
+function CheckTeleport( event )
+    local caster = event.caster
+    local ability = event.ability
+    local point = event.target_points[1]
+
+    local dummyTarget = CreateUnitByName("dummy_caster", point, false, nil, nil, DOTA_TEAM_NEUTRALS)
     local visible = caster:CanEntityBeSeenByMyTeam(dummyTarget)
 
     if visible then
-        FindClearSpaceForUnit(caster, point, false)
+        dummyTarget:RemoveSelf()
     else
-        local tp = caster:FindAbilityByName("ability_thief_teleport")
-        tp:EndCooldown()
-        local mana = tp:GetManaCost(1)
-        caster:GiveMana(mana)
+        caster:Interrupt()
+        SendErrorMessage(caster:GetPlayerOwnerID(), "#error_cant_teleport_without_vision")
     end
 end

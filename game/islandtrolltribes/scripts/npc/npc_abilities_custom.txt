@@ -11880,6 +11880,17 @@
 		{
 			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_antimage.vsndevts"		
 		}
+	
+		"OnAbilityPhaseStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile" "heroes/thief/teleport.lua"
+				"Function"   "CheckTeleport"
+				"Target"     "POINT"
+			}
+		}
+	
 		"OnSpellStart"
 		{
 			"RunScript"
