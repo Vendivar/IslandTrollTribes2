@@ -590,7 +590,7 @@ function ITT:OnEntityKilled(keys)
             for _,v in pairs(spawnTable) do
                 if unitName == v[1] then
                     local unit = CreateUnitByName(v[2],killedUnit:GetOrigin(), true,nil,nil,killer:GetTeam())
-                    unit.originalVision = GetDayTimeVisionRange()
+                    unit.originalVision = unit:GetDayTimeVisionRange()
                     unit:SetNightTimeVisionRange(0)
                     unit:SetDayTimeVisionRange(0)
                 end

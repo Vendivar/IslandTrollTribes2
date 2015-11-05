@@ -5769,7 +5769,7 @@
 			"LinearProjectile"
 			{
 			    "Target"      	 "POINT"
-				"EffectName"	 "particles/econ/items/puck/puck_alliance_set/puck_illusory_orb_aproset.vpcf"
+				"EffectName"	 "particles/custom/depression_orb_aproset.vpcf"
 				"MoveSpeed"		 "%proj_speed"
 				"StartRadius"	 "%radius"
 				"StartPosition"  "attach_origin"
@@ -5782,21 +5782,7 @@
 			    "ProvidesVision" "1"
 			    "VisionRadius" 	 "%radius"
 			}
-			"LinearProjectile"
-			{
-			    "Target"      	 "POINT"
-				"MoveSpeed"		 "%proj_speed"
-				"StartRadius"	 "%radius_small"
-				"StartPosition"  "attach_origin"
-				"EndRadius"      "%radius_small"
-				"HasFrontalCone" "0"
-				"FixedDistance"  "%range"
-				"TargetTeams"	 "DOTA_UNIT_TARGET_TEAM_ENEMY"
-				"TargetTypes"	 "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
-				"TargetFlags"	 "DOTA_UNIT_TARGET_FLAG_NONE"						
-			    "ProvidesVision" "1"
-			    "VisionRadius" 	 "0"
-			}
+	
 			"RunScript"
 			{
 				"ScriptFile"	"heroes/mage/depression.lua"
@@ -6794,6 +6780,7 @@
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_silencer.vsndevts"
 			"particle"  "particles/units/heroes/hero_axe/axe_beserkers_call_owner.vpcf"
 			"particle"  "particles/status_fx/status_effect_beserkers_call.vpcf"
+			"particle"	"particles/econ/courier/courier_faceless_rex/cour_rex_ground_a.vpcf"
 		}
 	
 		"AbilitySpecial"
@@ -6861,6 +6848,9 @@
 				"IsHidden"			"1"
 				"IsBuff"			"1"
 	
+				"EffectName"		"particles/econ/courier/courier_faceless_rex/cour_rex_ground_a.vpcf"
+				"EffectAttachType"	"follow_origin"
+	
 				"OnCreated"
 				{
 					"AttachEffect"
@@ -6888,6 +6878,9 @@
 			{
 				"IsHidden"			"0"
 				"IsDebuff"			"1"
+	
+				"EffectName"		"particles/econ/courier/courier_faceless_rex/cour_rex_ground_a.vpcf"
+				"EffectAttachType"	"follow_origin"
 				
 				"StatusEffectName" 		"particles/status_fx/status_effect_beserkers_call.vpcf" 	   
 				"StatusEffectPriority"  "10"

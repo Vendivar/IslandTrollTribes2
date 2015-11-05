@@ -20,6 +20,7 @@
 		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_silencer.vsndevts"
 		"particle"  "particles/units/heroes/hero_axe/axe_beserkers_call_owner.vpcf"
 		"particle"  "particles/status_fx/status_effect_beserkers_call.vpcf"
+		"particle"	"particles/econ/courier/courier_faceless_rex/cour_rex_ground_a.vpcf"
 	}
 
 	"AbilitySpecial"
@@ -87,6 +88,9 @@
 			"IsHidden"			"1"
 			"IsBuff"			"1"
 
+			"EffectName"		"particles/econ/courier/courier_faceless_rex/cour_rex_ground_a.vpcf"
+			"EffectAttachType"	"follow_origin"
+
 			"OnCreated"
 			{
 				"AttachEffect"
@@ -114,6 +118,9 @@
 		{
 			"IsHidden"			"0"
 			"IsDebuff"			"1"
+
+			"EffectName"		"particles/econ/courier/courier_faceless_rex/cour_rex_ground_a.vpcf"
+			"EffectAttachType"	"follow_origin"
 			
 			"StatusEffectName" 		"particles/status_fx/status_effect_beserkers_call.vpcf" 	   
 			"StatusEffectPriority"  "10"
