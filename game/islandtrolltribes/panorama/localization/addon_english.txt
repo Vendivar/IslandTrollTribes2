@@ -111,7 +111,7 @@
 
 
 "error_inventory_full"            "Inventory is full."
-
+"error_cant_teleport_without_vision"            "Can not teleport to a location without vision. Do you want to end up inside a wall?"
 "error_cant_attack_air"            "Can not attack air units. Try using ensnare to bring down the hawks."
 "error_cant_carry_more_raw_meat"            "Can not carry any more raw meat"
 "error_no_meat_to_eat"            "No raw meat to eat."

@@ -1,0 +1,121 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_nMaxParticles = 4
+	m_ConstantColor =
+	[
+		80,
+		102,
+		229,
+		255,
+	]
+	m_Operators =
+	[
+		{
+			_class = "C_OP_Decay"
+		},
+		{
+			_class = "C_OP_SetPerChildControlPoint"
+			m_nNumControlPoints = 10
+		},
+		{
+			_class = "C_OP_RestartAfterDuration"
+			m_flDurationMin = 0.300000
+			m_flDurationMax = 0.600000
+			m_nCP = -3
+		},
+	]
+	m_Initializers =
+	[
+		{
+			_class = "C_INIT_RandomLifeTime"
+			m_fLifetimeMax = 0.450000
+			m_fLifetimeMin = 0.250000
+		},
+		{
+			_class = "C_INIT_CreateWithinSphere"
+			m_fRadiusMax = 600.000000
+			m_vecDistanceBias =
+			[
+				1.000000,
+				1.000000,
+				0.000000,
+			]
+		},
+		{
+			_class = "C_INIT_PositionOffset"
+			m_OffsetMin =
+			[
+				0.000000,
+				0.000000,
+				1200.000000,
+			]
+			m_OffsetMax =
+			[
+				0.000000,
+				0.000000,
+				1200.000000,
+			]
+		},
+	]
+	m_Emitters =
+	[
+		{
+			_class = "C_OP_InstantaneousEmitter"
+			m_nParticlesToEmit = 10
+			m_nOpEndCapState = 0
+			m_nScaleControlPointField = 1
+		},
+		{
+			_class = "C_OP_ContinuousEmitter"
+			m_flEmissionDuration = 3.000000
+			m_flEmitRate = 500.000000
+			m_bScalePerParticle = true
+			m_bInitFromKilledParentParticles = true
+		},
+	]
+	m_Children =
+	[
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_zuus/zuus_thundergods_wrath_start_bolt_child.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_zuus/zuus_thundergods_wrath_start_bolt_child.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_zuus/zuus_thundergods_wrath_start_bolt_child.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_zuus/zuus_thundergods_wrath_start_bolt_child.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_zuus/zuus_arc_lightning_impact.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_zuus/zuus_static_field.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/econ/items/shadow_fiend/sf_fire_arcana/sf_fire_arcana_shadowraze.vpcf"
+			m_bPreventNameBasedLookup = true
+		},
+		{
+			m_ChildRef = resource:"particles/spark_arks.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/econ/items/natures_prophet/natures_prophet_weapon_sufferwood/furion_teleport_end_sufferwood_lava.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_ursa/ursa_earthshock_rocks.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/econ/items/sven/sven_warcry_ti5/sven_warcry_shield_bash_blur_2_c.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/stone_debris.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/dire_fx/dire_barracks_ranged001_destruction_e.vpcf"
+		},
+	]
+}

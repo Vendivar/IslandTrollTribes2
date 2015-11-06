@@ -5057,7 +5057,11 @@
 		"AbilityCastPoint"				"3.0"
 		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_1"
 		"AOERadius"						"%radius"
-	
+        "Precache"
+		{
+			"soundfile"	"sounds/weapons/hero/zuus/static_field.vsnd"
+			"particle"	"particles/custom/dark_gate.vpcf"
+		}
 		"AbilitySpecial"
 		{
 			"01"
@@ -5116,7 +5120,15 @@
 			{
 				"IsHidden"			"0"
 				"IsBuff"			"1"
-				
+				"OnCreated"
+			{
+				"AttachEffect"
+				{
+					"Target"	"CASTER"
+					"EffectName"	"particles/custom/dark_gate.vpcf"
+					"EffectAttachType"	"attach_origin"
+				}
+			}
 				"OnTakeDamage"
 				{
 					"RunScript"
@@ -8451,7 +8463,15 @@
 		"AbilityCooldown"		"300"
 		"AbilityManaCost"		"50"
 		"MaxLevel"	"1"
-	
+			"precache"
+		{
+			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts"
+            "soundfile"     "soundevents/game_sounds_heroes/game_sounds_earth_spirit.vsndevts"
+			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_earthspirit.vsndevts"
+            "soundfile"     "soundevents/game_sounds_heroes/game_sounds_ogre_magi.vsndevts"
+            "particle"      "particles/units/heroes/hero_zuus/zuus_thundergods_wrath_start.vpcf"
+            "particle"      "particles/custom/storm_earth_fire_3.vpcf"
+		}
 		"AbilitySpecial"
 		{
 			"01"
@@ -8505,67 +8525,50 @@
 						"stone_throw"	"ability_mage_stonethrow"
 						"duration"		"%duration"
 					}
-	
+                
 				}
 	
-				"FireSound"
+				
+			}
+            "FireSound"
 				{
 					"EffectName"		"Hero_Zuus.GodsWrath"
 					"Target"			"CASTER"
 				}
-	
-			}
-	
-			"FireEffect"
-			{
-				"TargetPoint"	"POINT"
-				"EffectName"	"generic_aoe_explosion_sphere_1_a"
-				"EffectAttachType"	"follow_origin"
-				"EffectRadius"	"320"
-				"EffectDurationScale"	"1"
-				"EffectLifeDurationScale"	"1"
-				"EffectColorA"	"25 50 200"
-				"EffectColorB"	"25 50 200"
-				"FireSound"
+					"FireSound"
 				{
-					"EffectName"	"Hero_Zuus.GodsWrath.Target"
-					"Target"		"POINT"
+					"EffectName"		"Hero_EarthSpirit.Magnetize.Debris"
+					"Target"			"CASTER"
+				}
+					"FireSound"
+				{
+					"EffectName"		"Hero_EarthSpirit.Magnetize.StoneBolt"
+					"Target"			"CASTER"
+				}
+					"FireSound"
+				{
+					"EffectName"		"Hero_OgreMagi.Fireblast.Target"
+					"Target"			"CASTER"
+				}
+				"FireEffect"
+			{
+				"EffectName" "particles/units/heroes/hero_zuus/zuus_thundergods_wrath_start.vpcf"
+				"Target" "CASTER"
+				"EffectAttachType" "attach_origin"
+			}				
+            "FireEffect"
+			{
+				"EffectName" "particles/custom/storm_earth_fire_3.vpcf"
+				"Target" "CASTER"
+				"EffectAttachType" "attach_origin"
+                "ControlPointEntities"
+				{
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin" //CP2
 				}
 			}
-	
-			"FireEffect"
-			{
-				"TargetPoint"	"POINT"
-				"EffectName"	"generic_aoe_explosion_sphere_1_a"
-				"EffectAttachType"	"follow_origin"
-				"EffectRadius"	"320"
-				"EffectDurationScale"	"1"
-				"EffectLifeDurationScale"	"1"
-				"EffectColorA"	"205 50 200"
-				"EffectColorB"	"205 50 200"
-				"FireSound"
-				{
-					"EffectName"	"Hero_Leshrac.Split_Earth"
-					"Target"		"POINT"
-				}
-			}
-	
-			"FireEffect"
-			{
-				"TargetPoint"	"POINT"
-				"EffectName"	"generic_aoe_explosion_sphere_1_a"
-				"EffectAttachType"	"follow_origin"
-				"EffectRadius"	"320"
-				"EffectDurationScale"	"1"
-				"EffectLifeDurationScale"	"1"
-				"EffectColorA"	"255 0 0"
-				"EffectColorB"	"255 0 0"
-				"FireSound"
-				{
-					"EffectName"	"Hero_Zuus.GodsWrath.PreCast"
-					"Target"		"POINT"
-				}
-			}
+			
 		}
 	}
 	"ability_mage_stupefyingfield"
@@ -8581,7 +8584,6 @@
 	    "MaxLevel"              "1"
 	
 	    "AbilityCastRange"      "%stupefy_radius" 
-	
 	    "AbilitySpecial"
 	    {
 	        "01"
@@ -8612,6 +8614,8 @@
 	    "precache"
 	    {
 	        "soundfile" "soundevents/game_sounds_heroes/game_sounds_visage.vsndevts"
+	        "soundfile" "soundevents/spells.vsndevts"
+            "particle"  "particles/stupefy_pulses.vpcf"
 	    }
 	
 	    "OnSpellStart"
@@ -8635,6 +8639,28 @@
 	            "EffectName"    "Hero_Visage.GraveChill.Cast"
 	            "Target"        "CASTER"
 	        }
+            	        "FireSound"
+	        {
+	            "EffectName"    "stupefy.start"
+	            "Target"        "CASTER"
+	        }
+            	        "FireSound"
+	        {
+	            "EffectName"    "stupefy.channel"
+	            "Target"        "CASTER"
+	        }
+           "AttachEffect"
+				{
+				"EffectName"        "particles/stupefy_pulses.vpcf"
+                "EffectAttachType"  "follow_origin"
+                "Target"            "CASTER"
+                                "ControlPointEntities"
+				{
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin" //CP2
+				}
+				}
 	    }
 	
 	    "OnChannelFinish"
