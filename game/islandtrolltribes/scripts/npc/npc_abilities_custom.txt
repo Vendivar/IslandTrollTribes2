@@ -8615,7 +8615,7 @@
 	    {
 	        "soundfile" "soundevents/game_sounds_heroes/game_sounds_visage.vsndevts"
 	        "soundfile" "soundevents/spells.vsndevts"
-            "particle"  "particles/stupefy_pulses.vpcf"
+            "particle"  "particles/custom/stupefy_channel.vpcf"
 	    }
 	
 	    "OnSpellStart"
@@ -8651,7 +8651,7 @@
 	        }
            "AttachEffect"
 				{
-				"EffectName"        "particles/stupefy_pulses.vpcf"
+				"EffectName"        "particles/custom/stupefy_channel.vpcf"
                 "EffectAttachType"  "follow_origin"
                 "Target"            "CASTER"
                                 "ControlPointEntities"
