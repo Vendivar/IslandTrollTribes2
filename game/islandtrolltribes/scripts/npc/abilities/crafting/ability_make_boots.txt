@@ -1,5 +1,17 @@
 "ability_make_boots"
 {
-	"BaseClass"	"ability_datadriven"
-	"AbilityTextureName"	"ability_building_makeboots"
+    "BaseClass"             "ability_datadriven"
+    "AbilityTextureName"    "ability_building_makeboots"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "MaxLevel"              "1"
+
+    "OnSpellStart"
+    {
+        "RunScript"
+        {
+            "ScriptFile"    "buildings/tannery.lua"
+            "Function"      "Make"
+            "Item"          "Boots"
+        }
+    }
 }

@@ -1,5 +1,17 @@
 "ability_make_gloves"
 {
-	"BaseClass"	"ability_datadriven"
-	"AbilityTextureName"	"ability_building_makegloves"
+    "BaseClass"             "ability_datadriven"
+    "AbilityTextureName"    "ability_building_makegloves"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "MaxLevel"              "1"
+
+    "OnSpellStart"
+    {
+        "RunScript"
+        {
+            "ScriptFile"    "buildings/tannery.lua"
+            "Function"      "Make"
+            "Item"          "Gloves"
+        }
+    }
 }

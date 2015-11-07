@@ -9,7 +9,7 @@ function InventoryCheck( unit )
         if craftingItems then
             match = recipeName
             -- Clear the inventory items returned by the CanCombine aux
-            ClearItems(craftingItems, recipeIngredients)   
+            ClearItems(craftingItems)   
 
             -- Create the resulting item
             unit:AddItem(CreateItem(recipeName, nil, nil))
@@ -104,7 +104,7 @@ function GetAlias( itemName )
 end
 
 -- TODO: Handle stacks, never delete a full item if we pick more than the required count
-function ClearItems( itemList, requirements )
+function ClearItems( itemList )
     for k,v in pairs(itemList) do
         for kk,vv in pairs(v) do
             UTIL_Remove(vv)

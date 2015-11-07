@@ -1,5 +1,17 @@
 "ability_make_coat"
 {
-	"BaseClass"	"ability_datadriven"
-	"AbilityTextureName"	"ability_building_makecloak"
+    "BaseClass"             "ability_datadriven"
+    "AbilityTextureName"    "ability_building_makecloak"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "MaxLevel"              "1"
+
+    "OnSpellStart"
+    {
+        "RunScript"
+        {
+            "ScriptFile"    "buildings/tannery.lua"
+            "Function"      "Make"
+            "Item"          "Coat"
+        }
+    }
 }
