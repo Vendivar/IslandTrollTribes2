@@ -108,9 +108,9 @@ function ITT:OnSubclassChange(event)
         EmitSoundOnClient("SubSelectReady", PlayerResource:GetPlayer(playerID))
         local endParticle1 = ParticleManager:CreateParticle("particles/custom/subselect.vpcf", PATTACH_ABSORIGIN_FOLLOW, hero)
         local endParticle2 = ParticleManager:CreateParticle("particles/custom/subselect2.vpcf", PATTACH_ABSORIGIN_FOLLOW, hero)
-			ParticleManager:SetParticleControl( endParticle2, 2,  Vector(255,255,255))
-			ParticleManager:SetParticleControl( endParticle2, 16,  Vector(1,0,0))
-			ParticleManager:SetParticleControl( endParticle2, 15,  Vector(0,0,0))
+            ParticleManager:SetParticleControl( endParticle2, 2,  Vector(255,255,255))
+            ParticleManager:SetParticleControl( endParticle2, 16,  Vector(1,0,0))
+            ParticleManager:SetParticleControl( endParticle2, 15,  Vector(0,0,0))
         
         Timers:CreateTimer(2, function()
             ParticleManager:DestroyParticle(endParticle1, false) 
@@ -135,6 +135,21 @@ function ITT:OnSubclassChange(event)
         print("Adding",modifier_lua)
         hero:AddNewModifier(hero, nil, modifier_lua, {})
         hero.modelChangeModifierName = modifier_lua
+    end
+
+    -- Learn all the skills for the new class
+    local subClassAbilities = GameRules.ClassInfo['SkillProgression'][new_name]
+    for _,v in pairs(subClassAbilities) do
+        if type(v) ~= "table" then
+            print("String is "..v)
+            local learn_ability_names = split(v, ",")
+            for _,abilityName in pairs(learn_ability_names) do
+                if not hero:HasAbility(abilityName) then
+                    print("Adding "..abilityName)
+                    hero:AddAbility(abilityName)
+                end
+            end
+        end
     end
 
     -- Update skills

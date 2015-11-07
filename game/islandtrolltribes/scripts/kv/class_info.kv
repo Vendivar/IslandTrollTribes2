@@ -120,22 +120,22 @@
                 "6" "ability_mage_depress,ability_mage_nulldamage,ability_mage_negativeblast,ability_mage_pumpup,ability_mage_flamespray"
             }
         }
+        
         "gatherer"
         {
             "1" "ability_gatherer_itemradar,ability_gatherer_radarmanipulations"
             "2" "ability_gatherer_radarmanipulations"
             "3" "ability_gatherer_radarmanipulations"
-            "4" ""
         }
         "herbal_master_telegatherer"
         {
-            "6" "ability_gatherer_mixherbs,ability_gatherer_advanced_radarmanipulations"
+            "6" "ability_gatherer_mixherbs"
             "7" "ability_gatherer_telegather"
             "8" "ability_gatherer_telegather"
             "9" "ability_gatherer_telegather"
             "unlearn"
             {
-                "6" "ability_gatherer_radarmanipulations,ability_gatherer_itemradar"
+                "6" "ability_gatherer_radarmanipulations,ability_gatherer_findhide,ability_gatherer_findclayballcookedmeatorbone,ability_gatherer_findmanacrystalorstone,ability_gatherer_findmushroomstickortinder,ability_gatherer_itemradar"
             }
         }
         "radar_telegatherer"
@@ -147,10 +147,14 @@
         }
         "remote_telegatherer"
         {
-            "6" "ability_gatherer_itemwarp,ability_gatherer_advanced_radarmanipulations"
+            "6" "ability_gatherer_itemwarp"
             "7" "ability_gatherer_telegather"
             "8" "ability_gatherer_telegather"
             "9" "ability_gatherer_telegather"
+            "unlearn"
+            {
+                "6" "ability_gatherer_radarmanipulations,ability_gatherer_findhide,ability_gatherer_findclayballcookedmeatorbone,ability_gatherer_findmanacrystalorstone,ability_gatherer_findmushroomstickortinder,ability_gatherer_itemradar"
+            }
         }
         
         "scout"
@@ -173,7 +177,7 @@
         }
         "radar_scout"
         {
-            "6" "ability_scout_enemyradar,ability_scout_shadowsight"
+            "6" "ability_scout_shadowsight"
             "7" "ability_scout_motionsensorradar"
             "8" "ability_scout_motionsensorradar"
             "10" "ability_scout_motionsensorradar"
@@ -220,7 +224,15 @@
         }
         "beastmaster"
         {
-            "1" "ability_beastmaster_tamepet,ability_beastmaster_spiritofthebeast, ability_beastmaster_pet_release, ability_beastmaster_pet_follow, ability_beastmaster_pet_stay, ability_beastmaster_pet_sleep, ability_beastmaster_pet_attack"
+            "1" "ability_beastmaster_tamepet,ability_beastmaster_spiritofthebeast"
+            "pet"
+            {
+                "1" "ability_beastmaster_pet_release"
+                "2" "ability_beastmaster_pet_follow"
+                "3" "ability_beastmaster_pet_stay"
+                "4" "ability_beastmaster_pet_sleep"
+                "5" "ability_beastmaster_pet_attack"
+            }
         }
         "pack_leader"
         {
