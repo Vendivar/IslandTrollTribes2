@@ -1,134 +1,163 @@
-"ability_mage_darkgate"
-{
-	"BaseClass"             		"ability_datadriven"
-	"AbilityTextureName"			"ability_mage_darkgate"
-	"MaxLevel" 						"1"
 
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-
-	"AbilityCooldown"				"%cooldown"
-	"AbilityManaCost"				"50"
-
-	"AbilityCastRange"				"0"
-	"AbilityCastPoint"				"3.0"
-	"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_1"
-	"AOERadius"						"%radius"
-
-	"AbilitySpecial"
+	"ability_mage_darkgate"
 	{
-		"01"
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"ability_mage_darkgate"
+		"MaxLevel" 						"1"
+	
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	
+		"AbilityCooldown"				"%cooldown"
+		"AbilityManaCost"				"50"
+	
+		"AbilityCastRange"				"0"
+		"AbilityCastPoint"				"3.0"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_1"
+		"AOERadius"						"%radius"
+        "Precache"
 		{
-			"var_type"			"FIELD_INTEGER"
-			"radius"			"1500"
+			"soundfile"	"sounds/weapons/hero/zuus/static_field.vsnd"
+			"particle"	"particles/custom/dark_gate.vpcf"
 		}
-		"02"
+		"AbilitySpecial"
 		{
-			"var_type"			"FIELD_FLOAT"
-			"spell_interval"	"3.0"
-		}
-		"03"
-		{
-			"var_type"			"FIELD_INTEGER"
-			"damage_threshold"	"150"
-		}
-		"04"
-		{
-			"var_type"			"FIELD_INTEGER"
-			"cooldown"			"40"
-		}
-	}
-
-	"OnAbilityPhaseStart"
-	{
-		"RunScript"
-		{
-			"ScriptFile"	"heroes/mage/dark_gate.lua"
-			"Function"		"DarkGatePhaseStart"
-
-			"modifier"		"modifier_mage_darkgate"
-		}
-	}
-
-	"OnSpellStart"
-	{
-		"RunScript"
-		{
-			"ScriptFile"	"heroes/mage/dark_gate.lua"
-			"Function"		"DarkGateStart"
-		}
-
-		"ApplyModifier"
-		{
-			"ModifierName"	"modifier_mage_darkgate"
-			"Target" 		"CASTER"
-			"Duration"		"-1"
-		}
-	}
-
-
-	"Modifiers"
-	{
-		"modifier_mage_darkgate"
-		{
-			"IsHidden"			"0"
-			"IsBuff"			"1"
-			
-			"OnTakeDamage"
+			"01"
 			{
-				"RunScript"
+				"var_type"			"FIELD_INTEGER"
+				"radius"			"1500"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"spell_interval"	"3.0"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"damage_threshold"	"150"
+			}
+			"04"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"cooldown"			"40"
+			}
+		}
+	
+		"OnAbilityPhaseStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"heroes/mage/dark_gate.lua"
+				"Function"		"DarkGatePhaseStart"
+	
+				"modifier"		"modifier_mage_darkgate"
+			}
+		}
+	
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"heroes/mage/dark_gate.lua"
+				"Function"		"DarkGateStart"
+			}
+	
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_mage_darkgate"
+				"Target" 		"CASTER"
+				"Duration"		"-1"
+			}
+		}
+	
+	
+		"Modifiers"
+		{
+			"modifier_mage_darkgate"
+			{
+				"IsHidden"			"0"
+				"IsBuff"			"1"
+				"OnCreated"
+			{
+				"AttachEffect"
 				{
-					"ScriptFile"	"heroes/mage/dark_gate.lua"
-					"Function"		"DarkGateDamaged"
-
-					"attack_damage" "%attack_damage"
-					"damage_threshold" "%damage_threshold"
-
-					"modifier"		"modifier_mage_darkgate"
+					"Target"	"CASTER"
+					"EffectName"	"particles/custom/dark_gate.vpcf"
+					"EffectAttachType"	"attach_origin"
+                "ControlPointEntities"
+				{
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin" //CP2
+				}
 				}
 			}
-
-			"ThinkInterval"  "%spell_interval"
-			"OnIntervalThink"
-			{
-				"ActOnTargets"
+				"OnTakeDamage"
 				{
-					"Target"
+					"RunScript"
 					{
-						"Center"  	"CASTER"
-						"Radius" 	"%radius"
-						"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-						"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+						"ScriptFile"	"heroes/mage/dark_gate.lua"
+						"Function"		"DarkGateDamaged"
+	
+						"attack_damage" "%attack_damage"
+						"damage_threshold" "%damage_threshold"
+	
+						"modifier"		"modifier_mage_darkgate"
 					}
-				
-					"Action"    
+				}
+	
+				"ThinkInterval"  "%spell_interval"
+				"OnIntervalThink"
+				{
+					"ActOnTargets"
 					{
-						"RunScript"
+						"Target"
 						{
-							"ScriptFile"	"heroes/mage/dark_gate.lua"
-							"Function"		"DarkGateThink"
+							"Center"  	"CASTER"
+							"Radius" 	"%radius"
+							"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+							"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+						}
+					
+						"Action"    
+						{
+							"RunScript"
+							{
+								"ScriptFile"	"heroes/mage/dark_gate.lua"
+								"Function"		"DarkGateThink"
+							}
 						}
 					}
 				}
-			}
-
-			"OnDestroy"
-			{
-				"RunScript"
+	
+				"OnDestroy"
 				{
-					"ScriptFile"	"heroes/mage/dark_gate.lua"
-					"Function"		"DarkGateStop"
-
-					"cooldown"		"%cooldown"
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/mage/dark_gate.lua"
+						"Function"		"DarkGateStop"
+	
+						"cooldown"		"%cooldown"
+					}
 				}
-			}
-
-			"States"
-			{
-				"MODIFIER_STATE_DISARMED"		"MODIFIER_STATE_VALUE_ENABLED"
-				"MODIFIER_STATE_ROOTED"			"MODIFIER_STATE_VALUE_ENABLED"
+	
+				"States"
+				{
+					"MODIFIER_STATE_DISARMED"		"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_ROOTED"			"MODIFIER_STATE_VALUE_ENABLED"
+				}
 			}
 		}
 	}
-}

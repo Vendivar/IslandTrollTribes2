@@ -1,3 +1,4 @@
+
 	"ability_mage_stupefyingfield"
 	{
 	    "BaseClass"             "ability_datadriven"
@@ -131,6 +132,20 @@
 				"EffectName"        "particles/custom/stupefy_channel.vpcf"
                 "EffectAttachType"  "follow_origin"
                 "Target"            "CASTER"
+                                "ControlPointEntities"
+				{
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin" //CP2
+				}
 				}
                  "FireSound"
 	        {

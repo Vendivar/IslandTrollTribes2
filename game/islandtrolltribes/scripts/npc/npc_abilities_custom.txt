@@ -5127,6 +5127,22 @@
 					"Target"	"CASTER"
 					"EffectName"	"particles/custom/dark_gate.vpcf"
 					"EffectAttachType"	"attach_origin"
+                "ControlPointEntities"
+				{
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin" //CP2
+				}
 				}
 			}
 				"OnTakeDamage"
@@ -8704,6 +8720,20 @@
 				"EffectName"        "particles/custom/stupefy_channel.vpcf"
                 "EffectAttachType"  "follow_origin"
                 "Target"            "CASTER"
+                                "ControlPointEntities"
+				{
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin" //CP2
+				}
 				}
                  "FireSound"
 	        {
