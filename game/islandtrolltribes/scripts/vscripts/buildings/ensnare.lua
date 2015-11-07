@@ -1,14 +1,15 @@
-function Ensnare( event )
-	local ability = event.ability
-	local caster = event.caster
-	local target = event.target
-	local modifier = event.modifier
-	local durationHero = event.duration_hero
-	local durationAnimal = event.duration_animal
+function CastTrap( event )
+    local ability = event.ability
+    local caster = event.caster
+    local target = event.target_entities and event.target_entities[1]
 
-	local dur = durationAnimal
-	if string.find(target:GetName(), "hero") then
-		dur = durationHero
-	end
-	ability:ApplyDataDrivenModifier(caster, target, modifier, {duration = dur})
+    if target and ability:GetAutoCastState() and ability:IsFullyCastable() then
+        -- Cast ability on target
+        caster:CastAbilityOnTarget(target, ability, -1)
+    end
+end
+
+function AutocastOn( event )
+    local ability = event.ability
+    ability:ToggleAutoCast()
 end

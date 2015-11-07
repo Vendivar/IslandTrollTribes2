@@ -1,105 +1,157 @@
+// Immobilizes animals for 8 seconds, trolls for 3.25, with a 10 second cooldown.
+// It can be set to auto-cast for when hostile units are nearby. Autocast is automatically on.
 "ability_ensnaretrap_ensnare"
 {
-	"BaseClass"             		"ability_datadriven"
-	"AbilityTextureName"			"ability_ensnaretrap_ensnare"
-	"MaxLevel" 						"1"
+    "BaseClass"                     "ability_datadriven"
+    "AbilityTextureName"            "ability_ensnaretrap_ensnare"
+    "MaxLevel"                      "1"
 
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
+    "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 
-	"AbilityCooldown"				"10"
-	"AbilityManaCost"				"0"
+    "AbilityCooldown"               "10"
+    "AbilityManaCost"               "0"
+    "AbilityCastRange"              "700"
 
-	"AbilityCastRange"				"700"
+    "precache"
+    {
+        "particle"  "particles/units/heroes/hero_meepo/meepo_earthbind.vpcf"
+        "particle"  "particles/units/heroes/hero_meepo/meepo_earthbind_flash.vpcf"
+        "particle"  "particles/units/heroes/hero_meepo/meepo_earthbind_projectile_fx.vpcf"
+        "soundfile" "soundevents/game_sounds_heroes/game_sounds_meepo.vsndevts"
+    }
 
-	"precache"
-	{
-		"particle"	"particles/units/heroes/hero_meepo/meepo_earthbind.vpcf"
-		"particle"	"particles/units/heroes/hero_meepo/meepo_earthbind_flash.vpcf"
-		"particle"  "particles/units/heroes/hero_meepo/meepo_earthbind_projectile_fx.vpcf"
-		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_meepo.vsndevts"
-	}
+    "AbilitySpecial"
+    {
+        "01"
+        {
+            "var_type"              "FIELD_FLOAT"
+            "duration_hero"         "3.25"
+        }
+        "02"
+        {
+            "var_type"              "FIELD_FLOAT"
+            "duration_animal"       "8.0"
+        }
+        "03"
+        {
+            "var_type"              "FIELD_INTEGER"
+            "projectile_speed"      "700"
+        }
+        "04"
+        {
+            "var_type"              "FIELD_INTEGER"
+            "autocast_radius"       "500"
+        }
+    }
 
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"			"FIELD_FLOAT"
-			"duration_hero"		"3.25"
-		}
-		"02"
-		{
-			"var_type"			"FIELD_FLOAT"
-			"duration_animal"	"8.0"
-		}
-		"03"
-		{
-			"var_type"			"FIELD_INTEGER"
-			"projectile_speed"	"700"
-		}
-	}
+    "OnSpellStart"
+    {
+        "FireSound"
+        {
+            "EffectName"    "Hero_Meepo.Earthbind.Cast"
+            "Target"        "CASTER"
+        }
 
-	"OnSpellStart"
-	{
-		"FireSound"
-		{
-			"EffectName"	"Hero_Meepo.Earthbind.Cast"
-			"Target"		"CASTER"
-		}
+        "FireEffect"
+        {
+            "EffectName"        "particles/units/heroes/hero_meepo/meepo_earthbind_flash.vpcf"
+            "EffectAttachType"  "follow_origin"
+            "Target"            "CASTER"
+        }
 
-		"FireEffect"
-		{
-			"EffectName"        "particles/units/heroes/hero_meepo/meepo_earthbind_flash.vpcf"
-			"EffectAttachType"  "follow_origin"
-			"Target"            "CASTER"
-		}
+        "TrackingProjectile"
+        {
+            "Target"            "TARGET"
+            "EffectName"        "particles/units/heroes/hero_meepo/meepo_earthbind_projectile_fx.vpcf"
+            "Dodgeable"         "1"
+            "ProvidesVision"    "0"
+            "MoveSpeed"         "%projectile_speed"
+            "SourceAttachment"  "DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
+        }
+    }
 
-		"TrackingProjectile"
-		{
-			"Target"           	"TARGET"
-			"EffectName"		"particles/units/heroes/hero_meepo/meepo_earthbind_projectile_fx.vpcf"
-			"Dodgeable"			"1"
-			"ProvidesVision"	"0"
-			"MoveSpeed"        	"%projectile_speed"
-			"SourceAttachment"	"DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
-		}
-	}
+    "OnProjectileHitUnit"
+    {
+        "FireSound"
+        {
+            "EffectName"    "Hero_Meepo.Earthbind.Target"
+            "Target"        "TARGET"
+        }
 
-	"OnProjectileHitUnit"
-	{
-		"FireSound"
-		{
-			"EffectName"	"Hero_Meepo.Earthbind.Target"
-			"Target"		"TARGET"
-		}
+        "ApplyModifier"
+        {
+            "ModifierName"  "modifier_ensnaretrap_ensnare"
+            "Target"
+            {
+                "Center"    "TARGET"
+                "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+                "Types"     "DOTA_UNIT_TARGET_HERO"
+            }
+            "Duration"      "%duration_hero"
+        }
+        
+        "ApplyModifier"
+        {
+            "ModifierName"  "modifier_ensnaretrap_ensnare"
+            "Target"
+            {
+                "Center"    "TARGET"
+                "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+                "Types"     "DOTA_UNIT_TARGET_BASIC"
+            }
+            "Duration"      "%duration_animal"
+        }
+    }
 
-		"RunScript"
-		{
-			"ScriptFile"	"/scripts/vscripts/buildings/ensnare.lua"
-			"Function"		"Ensnare"
+    "Modifiers"
+    {
+        "modifier_ensnare_trap"
+        {
+            "IsHidden"      "1"
+            "Passive"       "1"
+            "OnCreated"
+            {
+                "RunScript"
+                {
+                    "ScriptFile"    "buildings/ensnare.lua"
+                    "Function"      "AutocastOn"
+                }
+            }
 
-			"modifier"			"modifier_ensnaretrap_ensnare"
-			"duration_hero"		"%duration_hero"
-			"duration_animal"	"%duration_animal"
-		}
-	}
+            "ThinkInterval"  "1.0"
+            "OnIntervalThink"
+            {
+                "RunScript"
+                {
+                    "ScriptFile"    "buildings/ensnare.lua"
+                    "Function"      "CastTrap"
+                    "Target"
+                    {
+                        "Center"    "TARGET"
+                        "Radius"    "%autocast_radius"
+                        "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+                        "Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+                        "MaxTargets" "1"
+                        "Random"     "1"
+                    }
+                }
+            }
+        }
 
-	"Modifiers"
-	{
-		"modifier_ensnaretrap_ensnare"
-		{
-			"IsHidden"			"0"
-			"IsDebuff"			"1"
-			"IsPurgable"		"1"
-	
-			"EffectName"		"particles/units/heroes/hero_meepo/meepo_earthbind.vpcf"
-			"EffectAttachType"	"follow_origin"
-	
-			"States"
-			{
-				"MODIFIER_STATE_ROOTED"	"MODIFIER_STATE_VALUE_ENABLED"
-			}
-		}
-	}
+        "modifier_ensnaretrap_ensnare"
+        {
+            "IsDebuff"          "1"
+            "IsPurgable"        "1"
+    
+            "EffectName"        "particles/units/heroes/hero_meepo/meepo_earthbind.vpcf"
+            "EffectAttachType"  "follow_origin"
+    
+            "States"
+            {
+                "MODIFIER_STATE_ROOTED"    "MODIFIER_STATE_VALUE_ENABLED"
+            }
+        }
+    }
 }

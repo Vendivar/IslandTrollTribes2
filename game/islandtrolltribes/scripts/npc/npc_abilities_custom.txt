@@ -936,110 +936,162 @@
 		}
 	
 	}
+	// Immobilizes animals for 8 seconds, trolls for 3.25, with a 10 second cooldown.
+	// It can be set to auto-cast for when hostile units are nearby. Autocast is automatically on.
 	"ability_ensnaretrap_ensnare"
 	{
-		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"ability_ensnaretrap_ensnare"
-		"MaxLevel" 						"1"
+	    "BaseClass"                     "ability_datadriven"
+	    "AbilityTextureName"            "ability_ensnaretrap_ensnare"
+	    "MaxLevel"                      "1"
 	
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
+	    "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	    "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 	
-		"AbilityCooldown"				"10"
-		"AbilityManaCost"				"0"
+	    "AbilityCooldown"               "10"
+	    "AbilityManaCost"               "0"
+	    "AbilityCastRange"              "700"
 	
-		"AbilityCastRange"				"700"
+	    "precache"
+	    {
+	        "particle"  "particles/units/heroes/hero_meepo/meepo_earthbind.vpcf"
+	        "particle"  "particles/units/heroes/hero_meepo/meepo_earthbind_flash.vpcf"
+	        "particle"  "particles/units/heroes/hero_meepo/meepo_earthbind_projectile_fx.vpcf"
+	        "soundfile" "soundevents/game_sounds_heroes/game_sounds_meepo.vsndevts"
+	    }
 	
-		"precache"
-		{
-			"particle"	"particles/units/heroes/hero_meepo/meepo_earthbind.vpcf"
-			"particle"	"particles/units/heroes/hero_meepo/meepo_earthbind_flash.vpcf"
-			"particle"  "particles/units/heroes/hero_meepo/meepo_earthbind_projectile_fx.vpcf"
-			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_meepo.vsndevts"
-		}
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"              "FIELD_FLOAT"
+	            "duration_hero"         "3.25"
+	        }
+	        "02"
+	        {
+	            "var_type"              "FIELD_FLOAT"
+	            "duration_animal"       "8.0"
+	        }
+	        "03"
+	        {
+	            "var_type"              "FIELD_INTEGER"
+	            "projectile_speed"      "700"
+	        }
+	        "04"
+	        {
+	            "var_type"              "FIELD_INTEGER"
+	            "autocast_radius"       "500"
+	        }
+	    }
 	
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"			"FIELD_FLOAT"
-				"duration_hero"		"3.25"
-			}
-			"02"
-			{
-				"var_type"			"FIELD_FLOAT"
-				"duration_animal"	"8.0"
-			}
-			"03"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"projectile_speed"	"700"
-			}
-		}
+	    "OnSpellStart"
+	    {
+	        "FireSound"
+	        {
+	            "EffectName"    "Hero_Meepo.Earthbind.Cast"
+	            "Target"        "CASTER"
+	        }
 	
-		"OnSpellStart"
-		{
-			"FireSound"
-			{
-				"EffectName"	"Hero_Meepo.Earthbind.Cast"
-				"Target"		"CASTER"
-			}
+	        "FireEffect"
+	        {
+	            "EffectName"        "particles/units/heroes/hero_meepo/meepo_earthbind_flash.vpcf"
+	            "EffectAttachType"  "follow_origin"
+	            "Target"            "CASTER"
+	        }
 	
-			"FireEffect"
-			{
-				"EffectName"        "particles/units/heroes/hero_meepo/meepo_earthbind_flash.vpcf"
-				"EffectAttachType"  "follow_origin"
-				"Target"            "CASTER"
-			}
+	        "TrackingProjectile"
+	        {
+	            "Target"            "TARGET"
+	            "EffectName"        "particles/units/heroes/hero_meepo/meepo_earthbind_projectile_fx.vpcf"
+	            "Dodgeable"         "1"
+	            "ProvidesVision"    "0"
+	            "MoveSpeed"         "%projectile_speed"
+	            "SourceAttachment"  "DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
+	        }
+	    }
 	
-			"TrackingProjectile"
-			{
-				"Target"           	"TARGET"
-				"EffectName"		"particles/units/heroes/hero_meepo/meepo_earthbind_projectile_fx.vpcf"
-				"Dodgeable"			"1"
-				"ProvidesVision"	"0"
-				"MoveSpeed"        	"%projectile_speed"
-				"SourceAttachment"	"DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
-			}
-		}
+	    "OnProjectileHitUnit"
+	    {
+	        "FireSound"
+	        {
+	            "EffectName"    "Hero_Meepo.Earthbind.Target"
+	            "Target"        "TARGET"
+	        }
 	
-		"OnProjectileHitUnit"
-		{
-			"FireSound"
-			{
-				"EffectName"	"Hero_Meepo.Earthbind.Target"
-				"Target"		"TARGET"
-			}
+	        "ApplyModifier"
+	        {
+	            "ModifierName"  "modifier_ensnaretrap_ensnare"
+	            "Target"
+	            {
+	                "Center"    "TARGET"
+	                "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	                "Types"     "DOTA_UNIT_TARGET_HERO"
+	            }
+	            "Duration"      "%duration_hero"
+	        }
+	        
+	        "ApplyModifier"
+	        {
+	            "ModifierName"  "modifier_ensnaretrap_ensnare"
+	            "Target"
+	            {
+	                "Center"    "TARGET"
+	                "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	                "Types"     "DOTA_UNIT_TARGET_BASIC"
+	            }
+	            "Duration"      "%duration_animal"
+	        }
+	    }
 	
-			"RunScript"
-			{
-				"ScriptFile"	"/scripts/vscripts/buildings/ensnare.lua"
-				"Function"		"Ensnare"
+	    "Modifiers"
+	    {
+	        "modifier_ensnare_trap"
+	        {
+	            "IsHidden"      "1"
+	            "Passive"       "1"
+	            "OnCreated"
+	            {
+	                "RunScript"
+	                {
+	                    "ScriptFile"    "buildings/ensnare.lua"
+	                    "Function"      "AutocastOn"
+	                }
+	            }
 	
-				"modifier"			"modifier_ensnaretrap_ensnare"
-				"duration_hero"		"%duration_hero"
-				"duration_animal"	"%duration_animal"
-			}
-		}
+	            "ThinkInterval"  "1.0"
+	            "OnIntervalThink"
+	            {
+	                "RunScript"
+	                {
+	                    "ScriptFile"    "buildings/ensnare.lua"
+	                    "Function"      "CastTrap"
+	                    "Target"
+	                    {
+	                        "Center"    "TARGET"
+	                        "Radius"    "%autocast_radius"
+	                        "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	                        "Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	                        "MaxTargets" "1"
+	                        "Random"     "1"
+	                    }
+	                }
+	            }
+	        }
 	
-		"Modifiers"
-		{
-			"modifier_ensnaretrap_ensnare"
-			{
-				"IsHidden"			"0"
-				"IsDebuff"			"1"
-				"IsPurgable"		"1"
-		
-				"EffectName"		"particles/units/heroes/hero_meepo/meepo_earthbind.vpcf"
-				"EffectAttachType"	"follow_origin"
-		
-				"States"
-				{
-					"MODIFIER_STATE_ROOTED"	"MODIFIER_STATE_VALUE_ENABLED"
-				}
-			}
-		}
+	        "modifier_ensnaretrap_ensnare"
+	        {
+	            "IsDebuff"          "1"
+	            "IsPurgable"        "1"
+	    
+	            "EffectName"        "particles/units/heroes/hero_meepo/meepo_earthbind.vpcf"
+	            "EffectAttachType"  "follow_origin"
+	    
+	            "States"
+	            {
+	                "MODIFIER_STATE_ROOTED"    "MODIFIER_STATE_VALUE_ENABLED"
+	            }
+	        }
+	    }
 	}
 	"ability_pack_up"
 	{
@@ -5040,168 +5092,169 @@
 		}
 	
 	}
-	"ability_mage_darkgate"
-	{
-		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"ability_mage_darkgate"
-		"MaxLevel" 						"1"
 	
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	
-		"AbilityCooldown"				"%cooldown"
-		"AbilityManaCost"				"50"
-	
-		"AbilityCastRange"				"0"
-		"AbilityCastPoint"				"3.0"
-		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_1"
-		"AOERadius"						"%radius"
-        "Precache"
+		"ability_mage_darkgate"
 		{
-			"soundfile"	"sounds/weapons/hero/zuus/static_field.vsnd"
-			"particle"	"particles/custom/dark_gate.vpcf"
-		}
-		"AbilitySpecial"
-		{
-			"01"
+			"BaseClass"             		"ability_datadriven"
+			"AbilityTextureName"			"ability_mage_darkgate"
+			"MaxLevel" 						"1"
+		
+			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+			"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+			"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		
+			"AbilityCooldown"				"%cooldown"
+			"AbilityManaCost"				"50"
+		
+			"AbilityCastRange"				"0"
+			"AbilityCastPoint"				"3.0"
+			"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_1"
+			"AOERadius"						"%radius"
+	        "Precache"
 			{
-				"var_type"			"FIELD_INTEGER"
-				"radius"			"1500"
+				"soundfile"	"sounds/weapons/hero/zuus/static_field.vsnd"
+				"particle"	"particles/custom/dark_gate.vpcf"
 			}
-			"02"
+			"AbilitySpecial"
 			{
-				"var_type"			"FIELD_FLOAT"
-				"spell_interval"	"3.0"
-			}
-			"03"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"damage_threshold"	"150"
-			}
-			"04"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"cooldown"			"40"
-			}
-		}
-	
-		"OnAbilityPhaseStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"heroes/mage/dark_gate.lua"
-				"Function"		"DarkGatePhaseStart"
-	
-				"modifier"		"modifier_mage_darkgate"
-			}
-		}
-	
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"heroes/mage/dark_gate.lua"
-				"Function"		"DarkGateStart"
-			}
-	
-			"ApplyModifier"
-			{
-				"ModifierName"	"modifier_mage_darkgate"
-				"Target" 		"CASTER"
-				"Duration"		"-1"
-			}
-		}
-	
-	
-		"Modifiers"
-		{
-			"modifier_mage_darkgate"
-			{
-				"IsHidden"			"0"
-				"IsBuff"			"1"
-				"OnCreated"
-			{
-				"AttachEffect"
+				"01"
 				{
-					"Target"	"CASTER"
-					"EffectName"	"particles/custom/dark_gate.vpcf"
-					"EffectAttachType"	"attach_origin"
-                "ControlPointEntities"
-				{
-					"CASTER" "attach_origin"
-					"CASTER" "attach_origin"
-					"CASTER" "attach_origin"
-					"CASTER" "attach_origin"
-					"CASTER" "attach_origin"
-					"CASTER" "attach_origin"
-					"CASTER" "attach_origin"
-					"CASTER" "attach_origin"
-					"CASTER" "attach_origin"
-					"CASTER" "attach_origin"
-					"CASTER" "attach_origin"
-					"CASTER" "attach_origin"
-					"CASTER" "attach_origin" //CP2
+					"var_type"			"FIELD_INTEGER"
+					"radius"			"1500"
 				}
+				"02"
+				{
+					"var_type"			"FIELD_FLOAT"
+					"spell_interval"	"3.0"
+				}
+				"03"
+				{
+					"var_type"			"FIELD_INTEGER"
+					"damage_threshold"	"150"
+				}
+				"04"
+				{
+					"var_type"			"FIELD_INTEGER"
+					"cooldown"			"40"
 				}
 			}
-				"OnTakeDamage"
+		
+			"OnAbilityPhaseStart"
+			{
+				"RunScript"
 				{
-					"RunScript"
+					"ScriptFile"	"heroes/mage/dark_gate.lua"
+					"Function"		"DarkGatePhaseStart"
+		
+					"modifier"		"modifier_mage_darkgate"
+				}
+			}
+		
+			"OnSpellStart"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/mage/dark_gate.lua"
+					"Function"		"DarkGateStart"
+				}
+		
+				"ApplyModifier"
+				{
+					"ModifierName"	"modifier_mage_darkgate"
+					"Target" 		"CASTER"
+					"Duration"		"-1"
+				}
+			}
+		
+		
+			"Modifiers"
+			{
+				"modifier_mage_darkgate"
+				{
+					"IsHidden"			"0"
+					"IsBuff"			"1"
+					"OnCreated"
+				{
+					"AttachEffect"
 					{
-						"ScriptFile"	"heroes/mage/dark_gate.lua"
-						"Function"		"DarkGateDamaged"
-	
-						"attack_damage" "%attack_damage"
-						"damage_threshold" "%damage_threshold"
-	
-						"modifier"		"modifier_mage_darkgate"
+						"Target"	"CASTER"
+						"EffectName"	"particles/custom/dark_gate.vpcf"
+						"EffectAttachType"	"attach_origin"
+	                "ControlPointEntities"
+					{
+						"CASTER" "attach_origin"
+						"CASTER" "attach_origin"
+						"CASTER" "attach_origin"
+						"CASTER" "attach_origin"
+						"CASTER" "attach_origin"
+						"CASTER" "attach_origin"
+						"CASTER" "attach_origin"
+						"CASTER" "attach_origin"
+						"CASTER" "attach_origin"
+						"CASTER" "attach_origin"
+						"CASTER" "attach_origin"
+						"CASTER" "attach_origin"
+						"CASTER" "attach_origin" //CP2
+					}
 					}
 				}
-	
-				"ThinkInterval"  "%spell_interval"
-				"OnIntervalThink"
-				{
-					"ActOnTargets"
+					"OnTakeDamage"
 					{
-						"Target"
+						"RunScript"
 						{
-							"Center"  	"CASTER"
-							"Radius" 	"%radius"
-							"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-							"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+							"ScriptFile"	"heroes/mage/dark_gate.lua"
+							"Function"		"DarkGateDamaged"
+		
+							"attack_damage" "%attack_damage"
+							"damage_threshold" "%damage_threshold"
+		
+							"modifier"		"modifier_mage_darkgate"
 						}
-					
-						"Action"    
+					}
+		
+					"ThinkInterval"  "%spell_interval"
+					"OnIntervalThink"
+					{
+						"ActOnTargets"
 						{
-							"RunScript"
+							"Target"
 							{
-								"ScriptFile"	"heroes/mage/dark_gate.lua"
-								"Function"		"DarkGateThink"
+								"Center"  	"CASTER"
+								"Radius" 	"%radius"
+								"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+								"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+							}
+						
+							"Action"    
+							{
+								"RunScript"
+								{
+									"ScriptFile"	"heroes/mage/dark_gate.lua"
+									"Function"		"DarkGateThink"
+								}
 							}
 						}
 					}
-				}
-	
-				"OnDestroy"
-				{
-					"RunScript"
+		
+					"OnDestroy"
 					{
-						"ScriptFile"	"heroes/mage/dark_gate.lua"
-						"Function"		"DarkGateStop"
-	
-						"cooldown"		"%cooldown"
+						"RunScript"
+						{
+							"ScriptFile"	"heroes/mage/dark_gate.lua"
+							"Function"		"DarkGateStop"
+		
+							"cooldown"		"%cooldown"
+						}
 					}
-				}
-	
-				"States"
-				{
-					"MODIFIER_STATE_DISARMED"		"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_ROOTED"			"MODIFIER_STATE_VALUE_ENABLED"
+		
+					"States"
+					{
+						"MODIFIER_STATE_DISARMED"		"MODIFIER_STATE_VALUE_ENABLED"
+						"MODIFIER_STATE_ROOTED"			"MODIFIER_STATE_VALUE_ENABLED"
+					}
 				}
 			}
 		}
-	}
 	"ability_mage_defenderenergy"
 	{
 		"BaseClass"					"ability_datadriven"
@@ -8587,163 +8640,164 @@
 			
 		}
 	}
-	"ability_mage_stupefyingfield"
-	{
-	    "BaseClass"             "ability_datadriven"
-	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
-	    "AbilityTextureName"    "ability_mage_stupefyingfield"
-	    "AbilityCastAnimation"  "ACT_DOTA_CAST_ABILITY_4"
-	    "AbilityCastPoint"      "0.5"
-	    "AbilityCooldown"       "20"
-	    "AbilityChannelTime"    "8"
-	    "AbilityManaCost"       "10"
-	    "MaxLevel"              "1"
 	
-	    "AbilityCastRange"      "%stupefy_radius" 
-	    "AbilitySpecial"
-	    {
-	        "01"
-	        {
-	            "var_type"              "FIELD_INTEGER"
-	            "stupefy_duration"      "8"
-	        }
-	
-	        "02"
-	        {
-	            "var_type"              "FIELD_INTEGER"
-	            "stupefy_radius"        "600"
-	        }
-	
-	        "02"
-	        {
-	            "var_type"              "FIELD_INTEGER"
-	            "move_speed_reduction"  "-300"
-	        }
-	
-	        "03"
-	        {
-	            "var_type"               "FIELD_INTEGER"
-	            "attack_speed_reduction" "-300"
-	        }
-	    }
-	
-	    "precache"
-	    {
-	        "soundfile" "soundevents/game_sounds_heroes/game_sounds_visage.vsndevts"
-	        "soundfile" "soundevents/spells.vsndevts"
-            "particle"  "particles/custom/stupefy_channel.vpcf"
-	    }
-	
-	    "OnSpellStart"
-	    {
-	        "ApplyModifier"
-	        {
-	            "ModifierName"  "modifier_stupefy"
-	            "Duration"      "%stupefy_duration"
-	            "Target"        "CASTER"
-	        }
-	
-	        "ApplyModifier"
-	        {
-	            "ModifierName"  "modifier_stupefyself"
-	            "Duration"      "%stupefy_duration"
-	            "Target"        "CASTER"
-	        }
-	
-	        "FireSound"
-	        {
-	            "EffectName"    "Hero_Visage.GraveChill.Cast"
-	            "Target"        "CASTER"
-	        }
-            	        "FireSound"
-	        {
-	            "EffectName"    "stupefy.start"
-	            "Target"        "CASTER"
-	        }
-            	             
-	    }
-	
-	    "OnChannelFinish"
-	    {
-	        "RemoveModifier"
-	        {
-	            "Target"        "CASTER"
-	            "ModifierName"  "modifier_stupefy"
-	        }
-	
-	        "RemoveModifier"
-	        {
-	            "Target"        "CASTER"
-	            "ModifierName"  "modifier_stupefyself"
-	        }
-	        "FireSound"
-	        {
-	            "EffectName"    "Hero_Visage.GraveChill.Target"
-	            "Target"        "TARGET"
-	        }
-	    }
-	
-	    "Modifiers"
-	    {
-	        "modifier_stupefy"
-	        {
-	            "IsHidden"      "1"
-	            "Aura"          "stupefy_aura"
-	            "Aura_Radius"   "%stupefy_radius"
-	            "Aura_Teams"    "DOTA_UNIT_TARGET_TEAM_BOTH"
-	            "Aura_Types"    "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	            "Aura_ApplyToCaster" "0" 
-	        }
-	
-	        "stupefy_aura"
-	        {
-	            "IsDebuff"      "1"
-	            "IsPurgable"    "0"
-	            "Properties"
-	            {
-	                "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"    "%move_speed_reduction"
-	                "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"    "%attack_speed_reduction"
-	            }
-	        }
-	
-	        "modifier_stupefyself"
-	        {
-	            "Duration"    "%stupefy_duration"
-	            "States"
-	            {
-	                "MODIFIER_STATE_MAGIC_IMMUNE"    "MODIFIER_STATE_VALUE_ENABLED"
-	            }
-                "OnCreated"
-                {
-                "AttachEffect"
-				{
-				"EffectName"        "particles/custom/stupefy_channel.vpcf"
-                "EffectAttachType"  "follow_origin"
-                "Target"            "CASTER"
-                                "ControlPointEntities"
-				{
-					"CASTER" "attach_origin"
-					"CASTER" "attach_origin"
-					"CASTER" "attach_origin"
-					"CASTER" "attach_origin"
-					"CASTER" "attach_origin"
-					"CASTER" "attach_origin"
-					"CASTER" "attach_origin"
-					"CASTER" "attach_origin"
-					"CASTER" "attach_origin"
-					"CASTER" "attach_origin"
-					"CASTER" "attach_origin" //CP2
-				}
-				}
-                 "FireSound"
-	        {
-	            "EffectName"    "stupefy.channel"
-	            "Target"        "CASTER"
-	        }     
-                }
-	        }
-	    }
-	}
+		"ability_mage_stupefyingfield"
+		{
+		    "BaseClass"             "ability_datadriven"
+		    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+		    "AbilityTextureName"    "ability_mage_stupefyingfield"
+		    "AbilityCastAnimation"  "ACT_DOTA_CAST_ABILITY_4"
+		    "AbilityCastPoint"      "0.5"
+		    "AbilityCooldown"       "20"
+		    "AbilityChannelTime"    "8"
+		    "AbilityManaCost"       "10"
+		    "MaxLevel"              "1"
+		
+		    "AbilityCastRange"      "%stupefy_radius" 
+		    "AbilitySpecial"
+		    {
+		        "01"
+		        {
+		            "var_type"              "FIELD_INTEGER"
+		            "stupefy_duration"      "8"
+		        }
+		
+		        "02"
+		        {
+		            "var_type"              "FIELD_INTEGER"
+		            "stupefy_radius"        "600"
+		        }
+		
+		        "02"
+		        {
+		            "var_type"              "FIELD_INTEGER"
+		            "move_speed_reduction"  "-300"
+		        }
+		
+		        "03"
+		        {
+		            "var_type"               "FIELD_INTEGER"
+		            "attack_speed_reduction" "-300"
+		        }
+		    }
+		
+		    "precache"
+		    {
+		        "soundfile" "soundevents/game_sounds_heroes/game_sounds_visage.vsndevts"
+		        "soundfile" "soundevents/spells.vsndevts"
+	            "particle"  "particles/custom/stupefy_channel.vpcf"
+		    }
+		
+		    "OnSpellStart"
+		    {
+		        "ApplyModifier"
+		        {
+		            "ModifierName"  "modifier_stupefy"
+		            "Duration"      "%stupefy_duration"
+		            "Target"        "CASTER"
+		        }
+		
+		        "ApplyModifier"
+		        {
+		            "ModifierName"  "modifier_stupefyself"
+		            "Duration"      "%stupefy_duration"
+		            "Target"        "CASTER"
+		        }
+		
+		        "FireSound"
+		        {
+		            "EffectName"    "Hero_Visage.GraveChill.Cast"
+		            "Target"        "CASTER"
+		        }
+	            	        "FireSound"
+		        {
+		            "EffectName"    "stupefy.start"
+		            "Target"        "CASTER"
+		        }
+	            	             
+		    }
+		
+		    "OnChannelFinish"
+		    {
+		        "RemoveModifier"
+		        {
+		            "Target"        "CASTER"
+		            "ModifierName"  "modifier_stupefy"
+		        }
+		
+		        "RemoveModifier"
+		        {
+		            "Target"        "CASTER"
+		            "ModifierName"  "modifier_stupefyself"
+		        }
+		        "FireSound"
+		        {
+		            "EffectName"    "Hero_Visage.GraveChill.Target"
+		            "Target"        "TARGET"
+		        }
+		    }
+		
+		    "Modifiers"
+		    {
+		        "modifier_stupefy"
+		        {
+		            "IsHidden"      "1"
+		            "Aura"          "stupefy_aura"
+		            "Aura_Radius"   "%stupefy_radius"
+		            "Aura_Teams"    "DOTA_UNIT_TARGET_TEAM_BOTH"
+		            "Aura_Types"    "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		            "Aura_ApplyToCaster" "0" 
+		        }
+		
+		        "stupefy_aura"
+		        {
+		            "IsDebuff"      "1"
+		            "IsPurgable"    "0"
+		            "Properties"
+		            {
+		                "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"    "%move_speed_reduction"
+		                "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"    "%attack_speed_reduction"
+		            }
+		        }
+		
+		        "modifier_stupefyself"
+		        {
+		            "Duration"    "%stupefy_duration"
+		            "States"
+		            {
+		                "MODIFIER_STATE_MAGIC_IMMUNE"    "MODIFIER_STATE_VALUE_ENABLED"
+		            }
+	                "OnCreated"
+	                {
+	                "AttachEffect"
+					{
+					"EffectName"        "particles/custom/stupefy_channel.vpcf"
+	                "EffectAttachType"  "follow_origin"
+	                "Target"            "CASTER"
+	                                "ControlPointEntities"
+					{
+						"CASTER" "attach_origin"
+						"CASTER" "attach_origin"
+						"CASTER" "attach_origin"
+						"CASTER" "attach_origin"
+						"CASTER" "attach_origin"
+						"CASTER" "attach_origin"
+						"CASTER" "attach_origin"
+						"CASTER" "attach_origin"
+						"CASTER" "attach_origin"
+						"CASTER" "attach_origin"
+						"CASTER" "attach_origin" //CP2
+					}
+					}
+	                 "FireSound"
+		        {
+		            "EffectName"    "stupefy.channel"
+		            "Target"        "CASTER"
+		        }     
+	                }
+		        }
+		    }
+		}
 	"ability_mage_swap1"
 	{
 		"BaseClass"	"ability_datadriven"
