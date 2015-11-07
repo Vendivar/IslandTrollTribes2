@@ -33,7 +33,6 @@
 		},
 		{
 			_class = "C_OP_PositionLock"
-			m_nControlPointNumber = 3
 		},
 		{
 			_class = "C_OP_BasicMovement"
@@ -52,7 +51,7 @@
 		{
 			_class = "C_OP_InterpolateRadius"
 			m_flStartScale = 0.500000
-			m_flEndScale = 3.000000
+			m_flEndScale = 5.000000
 		},
 		{
 			_class = "C_OP_FadeOutSimple"
@@ -83,7 +82,6 @@
 		},
 		{
 			_class = "C_INIT_CreateWithinSphere"
-			m_nControlPointNumber = 3
 		},
 		{
 			_class = "C_INIT_RandomColor"
@@ -128,6 +126,21 @@
 			m_nFieldOutput = 5
 			m_flOutputMin = 2.000000
 			m_flOutputMax = 8.000000
+		},
+		{
+			_class = "C_INIT_PositionOffset"
+			m_OffsetMin =
+			[
+				0.000000,
+				0.000000,
+				10.000000,
+			]
+			m_OffsetMax =
+			[
+				0.000000,
+				0.000000,
+				200.000000,
+			]
 		},
 	]
 	m_Emitters =

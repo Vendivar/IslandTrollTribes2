@@ -42,7 +42,7 @@
 	    {
 	        "soundfile" "soundevents/game_sounds_heroes/game_sounds_visage.vsndevts"
 	        "soundfile" "soundevents/spells.vsndevts"
-            "particle"  "particles/stupefy_pulses.vpcf"
+            "particle"  "particles/custom/stupefy_channel.vpcf"
 	    }
 	
 	    "OnSpellStart"
@@ -71,24 +71,7 @@
 	            "EffectName"    "stupefy.start"
 	            "Target"        "CASTER"
 	        }
-            	        "FireSound"
-	        {
-	            "EffectName"    "stupefy.channel"
-	            "Target"        "CASTER"
-	        }
-           "AttachEffect"
-				{
-				"EffectName"        "particles/stupefy_pulses.vpcf"
-                "EffectAttachType"  "follow_origin"
-                "Target"            "CASTER"
-                                "ControlPointEntities"
-				{
-					"CASTER" "attach_origin"
-					"CASTER" "attach_origin"
-					"CASTER" "attach_origin"
-					"CASTER" "attach_origin" //CP2
-				}
-				}
+            	             
 	    }
 	
 	    "OnChannelFinish"
@@ -141,6 +124,20 @@
 	            {
 	                "MODIFIER_STATE_MAGIC_IMMUNE"    "MODIFIER_STATE_VALUE_ENABLED"
 	            }
+                "OnCreated"
+                {
+                "AttachEffect"
+				{
+				"EffectName"        "particles/custom/stupefy_channel.vpcf"
+                "EffectAttachType"  "follow_origin"
+                "Target"            "CASTER"
+				}
+                 "FireSound"
+	        {
+	            "EffectName"    "stupefy.channel"
+	            "Target"        "CASTER"
+	        }     
+                }
 	        }
 	    }
 	}

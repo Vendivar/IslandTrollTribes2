@@ -15,7 +15,7 @@
 		},
 		{
 			_class = "C_OP_SetSingleControlPointPosition"
-			m_nCP1 = 3
+			m_nCP1 = 0
 			m_vecCP1Pos =
 			[
 				0.000000,
@@ -26,15 +26,11 @@
 		{
 			_class = "C_OP_SetControlPointOrientation"
 			m_bSetOnce = true
-			m_nCP = 3
+			m_nCP = 0
 		},
 		{
 			_class = "C_OP_InterpolateRadius"
 			m_flEndScale = 0.950000
-		},
-		{
-			_class = "C_OP_FadeAndKill"
-			m_flStartAlpha = 0.000000
 		},
 		{
 			_class = "C_OP_BasicMovement"
@@ -46,9 +42,13 @@
 			]
 		},
 		{
+			_class = "C_OP_FadeAndKill"
+			m_flStartAlpha = 0.000000
+		},
+		{
 			_class = "C_OP_SetSingleControlPointPosition"
 			m_bUseWorldLocation = true
-			m_nCP1 = 11
+			m_nCP1 = 0
 			m_vecCP1Pos =
 			[
 				10.000000,
@@ -58,19 +58,12 @@
 		},
 		{
 			_class = "C_OP_RemapVectortoCP"
-			m_nOutControlPointNumber = 15
+			m_nOutControlPointNumber = 0
 			m_nFieldInput = 6
 		},
 	]
 	m_Renderers =
 	[
-		{
-			_class = "C_OP_RenderSprites"
-			m_nOrientationType = 3
-			m_flSelfIllumAmount = 1.000000
-			m_hTexture = resource:"materials/particle/customgames/cp_elements/cp_icon_elements.vtex"
-			m_bDisableOperator = true
-		},
 		{
 			_class = "C_OP_RenderDeferredLight"
 			m_flRadiusScale = 5.000000
@@ -87,7 +80,6 @@
 	[
 		{
 			_class = "C_INIT_CreateWithinSphere"
-			m_nControlPointNumber = 3
 		},
 		{
 			_class = "C_INIT_RandomRadius"

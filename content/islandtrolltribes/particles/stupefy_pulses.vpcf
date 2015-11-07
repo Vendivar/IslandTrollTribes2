@@ -20,6 +20,8 @@
 			m_bSaturateColorPreAlphaBlend = false
 			m_hTexture = resource:"materials/particle/lava_pool_glow.vtex"
 			m_flAnimationRate = 1.000000
+			m_nOrientationType = 1
+			m_nOrientationControlPoint = 0
 		},
 	]
 	m_Operators =
@@ -91,7 +93,13 @@
 			[
 				0.000000,
 				0.000000,
-				5.000000,
+				100.000000,
+			]
+			m_OffsetMin =
+			[
+				0.000000,
+				0.000000,
+				100.000000,
 			]
 		},
 		{
@@ -155,7 +163,10 @@
 			m_ChildRef = resource:"particles/green_glow.vpcf"
 		},
 		{
-			m_ChildRef = resource:"particles/green_swirl.vpcf"
+			m_ChildRef = resource:"particles/custom/green_swirl.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/custom/green_smoke.vpcf"
 		},
 	]
 }
