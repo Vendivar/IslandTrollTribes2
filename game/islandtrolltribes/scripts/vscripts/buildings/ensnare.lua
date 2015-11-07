@@ -8,8 +8,3 @@ function CastTrap( event )
         caster:CastAbilityOnTarget(target, ability, -1)
     end
 end
-
-function AutocastOn( event )
-    local ability = event.ability
-    ability:ToggleAutoCast()
-end

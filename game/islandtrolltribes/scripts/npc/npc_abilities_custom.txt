@@ -950,7 +950,7 @@
 	
 	    "AbilityCooldown"               "10"
 	    "AbilityManaCost"               "0"
-	    "AbilityCastRange"              "700"
+	    "AbilityCastRange"              "300"
 	
 	    "precache"
 	    {
@@ -975,7 +975,7 @@
 	        "03"
 	        {
 	            "var_type"              "FIELD_INTEGER"
-	            "projectile_speed"      "700"
+	            "projectile_speed"      "300"
 	        }
 	        "04"
 	        {
@@ -1053,7 +1053,7 @@
 	            {
 	                "RunScript"
 	                {
-	                    "ScriptFile"    "buildings/ensnare.lua"
+	                    "ScriptFile"    "mechanics/autocast.lua"
 	                    "Function"      "AutocastOn"
 	                }
 	            }
@@ -1089,6 +1089,59 @@
 	            "States"
 	            {
 	                "MODIFIER_STATE_ROOTED"    "MODIFIER_STATE_VALUE_ENABLED"
+	            }
+	        }
+	    }
+	}
+	// Picks up a nearby corpse.
+	// Can be autocast which will continuously pick up meat around the building until at full capacity or until no more corpses remain.
+	"ability_get_corpse"
+	{
+	    "BaseClass"             "ability_datadriven"
+	    "AbilityTextureName"    "ability_building_getcorpse"
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
+	    "MaxLevel"              "1"
+	    "AbilityCastRange"      "300"
+	
+	    "OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"    "buildings/get_corpse.lua"
+	            "Function"      "GetCorpses"
+	        }
+	    }
+	
+	    "Modifiers"
+	    {
+	        "modifier_get_corpses"
+	        {
+	            "Passive"           "1"
+	            "IsHidden"          "1"
+	    
+	            "OnCreated"
+	            {
+	                "RunScript"
+	                {
+	                    "ScriptFile"    "mechanics/autocast.lua"
+	                    "Function"      "AutocastOn"
+	                }
+	
+	                "RunScript"
+	                {
+	                    "ScriptFile"    "buildings/get_corpse.lua"
+	                    "Function"      "FillSlots"
+	                }
+	            }
+	
+	            "ThinkInterval"  "1.0"
+	            "OnIntervalThink"
+	            {
+	                "RunScript"
+	                {
+	                    "ScriptFile"    "buildings/get_corpse.lua"
+	                    "Function"      "GetCorpseAutocast"
+	                }
 	            }
 	        }
 	    }
@@ -1291,7 +1344,7 @@
 	        {
 	            "ScriptFile"    "buildings/tannery.lua"
 	            "Function"      "Make"
-	            "Item"          "Coat"
+	            "Item"          "Boots"
 	        }
 	    }
 	}
@@ -12675,11 +12728,6 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"ability_building_duel"
-	}
-	"ability_get_corpse"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"ability_building_getcorpse"
 	}
 	"ability_gravestone"
 	{

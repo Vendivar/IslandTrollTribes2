@@ -12,7 +12,7 @@
 
     "AbilityCooldown"               "10"
     "AbilityManaCost"               "0"
-    "AbilityCastRange"              "700"
+    "AbilityCastRange"              "300"
 
     "precache"
     {
@@ -37,7 +37,7 @@
         "03"
         {
             "var_type"              "FIELD_INTEGER"
-            "projectile_speed"      "700"
+            "projectile_speed"      "300"
         }
         "04"
         {
@@ -115,7 +115,7 @@
             {
                 "RunScript"
                 {
-                    "ScriptFile"    "buildings/ensnare.lua"
+                    "ScriptFile"    "mechanics/autocast.lua"
                     "Function"      "AutocastOn"
                 }
             }
