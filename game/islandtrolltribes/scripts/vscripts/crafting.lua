@@ -49,6 +49,9 @@ function HasEnoughInInventory( unit, itemName, num )
     local items = {}
     local currentNum = 0
     for i=0,5 do
+        if currentNum >= num then
+            break
+        end
         local item = unit:GetItemInSlot(i)
         if item then
             local thisItemName = item:GetAbilityName()

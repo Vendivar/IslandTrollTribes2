@@ -6,7 +6,7 @@ function Make( event )
     local requirements = GameRules.Crafting['Tannery'][item]
 
     print("Making "..item)
-
+    local make
     for recipeName,v in pairs(requirements) do
         local craftingItems
         -- Making Boots/Gloves/Coat only takes 1 single ingredient
@@ -23,7 +23,14 @@ function Make( event )
             tannery:AddItem(CreateItem(recipeName, nil, nil))
             
             tannery:EmitSound("General.Combine")
+
+            make = true
+            break
         end
+    end
+
+    if not make then
+        SendErrorMessage(tannery:GetPlayerOwnerID(), "#error_not_enough_hides")
     end
 end
 
