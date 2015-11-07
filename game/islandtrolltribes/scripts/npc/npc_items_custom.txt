@@ -2638,19 +2638,21 @@
 		
 		// BuildingHelper info
 	    "Building"                      "1" //bool
-	    "BuildingSize"                  "2" 
+	    "BuildingSize"                  "0" 
 	    "BuildTime"                     "10.0"
 	    "AbilityCastRange"              "300"
 	    "UpdateHealth"                  "1" //bool
 	    "Scale"                         "0" //bool
 	    "PlayerCanControl"              "1" //bool
+	    "FindClearSpace"                "1"
 	
 	    "UnitName"                      "npc_building_fire_basic"
 	    "AbilityCooldown"               "0"
 	    "AbilityGoldCost"               "0"
 	    "ItemInitialCharges"            "1"
 	    // End of BuildingHelper info
-		    "Custom"
+		
+	    "Custom"
 	    {
 	        "ModelScale"    "0.65"
 	    }
@@ -2672,7 +2674,6 @@
 	            "Function"      "Build"
 	        }
 	    }
-	
 	}
 	"item_building_kit_fire_mage"
 	{
@@ -2700,12 +2701,13 @@
 		
 		// BuildingHelper info
 	    "Building"                      "1" //bool
-	    "BuildingSize"                  "2" 
+	    "BuildingSize"                  "0" 
 	    "BuildTime"                     "10.0"
 	    "AbilityCastRange"              "300"
 	    "UpdateHealth"                  "1" //bool
 	    "Scale"                         "0" //bool
 	    "PlayerCanControl"              "1" //bool
+	    "FindClearSpace"                "1"
 	
 	    "UnitName"                      "npc_building_fire_mage"
 	    "AbilityCooldown"               "0"
@@ -2730,7 +2732,6 @@
 	            "Function"      "Build"
 	        }
 	    }
-	
 	}
 	"item_building_kit_hatchery"
 	{
@@ -3493,19 +3494,21 @@
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
-			    "Custom"
+		
+	    "Custom"
 	    {
 	        "ModelScale"    "0.65"
 	    }
 	
 		// BuildingHelper info
 	    "Building"                      "1" //bool
-	    "BuildingSize"                  "2" 
+	    "BuildingSize"                  "0"
 	    "BuildTime"                     "10.0"
 	    "AbilityCastRange"              "300"
 	    "UpdateHealth"                  "1" //bool
 	    "Scale"                         "0" //bool
 	    "PlayerCanControl"              "1" //bool
+	    "FindClearSpace"                "1"
 	
 	    "UnitName"                      "npc_building_ensnare_trap"
 	    "AbilityCooldown"               "0"

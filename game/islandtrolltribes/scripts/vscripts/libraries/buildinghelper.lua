@@ -421,6 +421,10 @@ function BuildingHelper:StartBuilding( keys )
     Timers:CreateTimer(
         function() 
             building:SetAbsOrigin(location)
+            local bFindClearSpace = buildingTable:GetVal("FindClearSpace", "bool")
+            if bFindClearSpace then
+                FindClearSpaceForUnit(building, location, true)
+            end
             
             -- Remove ghost model
             UTIL_Remove(buildingTable.mgd)

@@ -24,19 +24,21 @@
 	
 	// BuildingHelper info
     "Building"                      "1" //bool
-    "BuildingSize"                  "2" 
+    "BuildingSize"                  "0" 
     "BuildTime"                     "10.0"
     "AbilityCastRange"              "300"
     "UpdateHealth"                  "1" //bool
     "Scale"                         "0" //bool
     "PlayerCanControl"              "1" //bool
+    "FindClearSpace"                "1"
 
     "UnitName"                      "npc_building_fire_basic"
     "AbilityCooldown"               "0"
     "AbilityGoldCost"               "0"
     "ItemInitialCharges"            "1"
     // End of BuildingHelper info
-	    "Custom"
+	
+    "Custom"
     {
         "ModelScale"    "0.65"
     }
@@ -58,5 +60,4 @@
             "Function"      "Build"
         }
     }
-
 }

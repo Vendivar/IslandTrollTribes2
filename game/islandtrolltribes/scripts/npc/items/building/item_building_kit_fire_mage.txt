@@ -24,12 +24,13 @@
 	
 	// BuildingHelper info
     "Building"                      "1" //bool
-    "BuildingSize"                  "2" 
+    "BuildingSize"                  "0" 
     "BuildTime"                     "10.0"
     "AbilityCastRange"              "300"
     "UpdateHealth"                  "1" //bool
     "Scale"                         "0" //bool
     "PlayerCanControl"              "1" //bool
+    "FindClearSpace"                "1"
 
     "UnitName"                      "npc_building_fire_mage"
     "AbilityCooldown"               "0"
@@ -54,5 +55,4 @@
             "Function"      "Build"
         }
     }
-
 }
