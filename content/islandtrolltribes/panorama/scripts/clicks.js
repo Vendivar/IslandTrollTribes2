@@ -25,11 +25,19 @@ function OnRightButtonPressed()
     for ( var e of mouseEntities )
     {
         var entityIndex = e.entityIndex
-        if (IsBush(entityIndex) && (mainSelected == hero))
-        {
-            $.Msg("Right clicked on a bush")
-            GameEvents.SendCustomGameEventToServer( "player_bush_gather", { entityIndex : entityIndex } );
-            return true
+        if (mainSelected == hero){
+            if (IsBush(entityIndex))
+            {
+                $.Msg("Right clicked on a bush")
+                GameEvents.SendCustomGameEventToServer( "player_bush_gather", { entityIndex : entityIndex } );
+                return true
+            }
+            else if (IsRestBuilding(entityIndex) && IsTeamControlled(entityIndex) )
+            {
+                $.Msg("Right clicked on a rest building")
+                GameEvents.SendCustomGameEventToServer( "player_rest_building", { entityIndex : entityIndex } );
+                return false
+            }
         }
     }
 
@@ -39,6 +47,26 @@ function OnRightButtonPressed()
 function IsBush( entityIndex ){
     var name = Entities.GetUnitName( entityIndex )
     return (name.indexOf("bush") != -1)
+}
+
+function IsRestBuilding( entityIndex ) {
+    var name = Entities.GetUnitName(entityIndex)
+    return (name=="npc_building_hut_troll" || name=="npc_building_hut_mud"  || name=="npc_building_tent")
+}
+
+function IsTeamControlled ( entityIndex ) {
+    var iPlayerID = Players.GetLocalPlayer();
+    var hero = Players.GetPlayerHeroEntityIndex( iPlayerID );
+    var teamID = Entities.GetTeamNumber( hero )
+    var playersOnTeam = Game.GetPlayerIDsOnTeam( teamID );
+    for (var i = 0; i < playersOnTeam.length; i++)
+    {
+        if (Entities.IsControllableByPlayer( entityIndex, playersOnTeam[i] ))
+        {
+            return true
+        }
+    };
+    return false
 }
 
 function IsCustomBuilding( entityIndex ){

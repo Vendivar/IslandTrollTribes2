@@ -103,6 +103,7 @@ function ITT:InitGameMode()
     CustomGameEventManager:RegisterListener( "player_drop_meat", Dynamic_Wrap( ITT, "DropMeat" ) )
     CustomGameEventManager:RegisterListener( "player_drop_all_meat", Dynamic_Wrap( ITT, "DropAllMeat" ) )
     CustomGameEventManager:RegisterListener( "player_panic", Dynamic_Wrap( ITT, "Panic" ) )
+    CustomGameEventManager:RegisterListener( "player_rest_building", Dynamic_Wrap( ITT, "RestBuilding" ) )
 
     CustomGameEventManager:RegisterListener( "player_bush_gather", Dynamic_Wrap( ITT, "BushGather" ) )
 
@@ -393,6 +394,8 @@ function ITT:OnHeroRespawn( hero )
 
     -- Restart Meat tracking
     ApplyModifier(hero, "modifier_meat_passive")
+
+    AdjustAbilityLayout(hero)
 
     -- Kill grave
     if hero.grave then

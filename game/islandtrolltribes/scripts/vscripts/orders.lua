@@ -300,6 +300,26 @@ function ITT:BushGather( event )
     end)
 end
 
+-- Orders casting a rest ability on the playerID hero
+function ITT:RestBuilding( event )
+    local playerID = event.PlayerID
+    local building = EntIndexToHScript(event.entityIndex)
+    local unit = PlayerResource:GetSelectedHeroEntity(playerID)
+
+    -- Find any rest_ ability
+    local restAbility
+    for i=0,15 do
+        local ability = building:GetAbilityByIndex(i)
+        if ability and string.match(ability:GetAbilityName(), "rest_") then
+            restAbility = ability
+            break
+        end
+    end
+
+    if restAbility then
+        building:CastAbilityOnTarget(unit, restAbility, -1)
+    end
+end
 
 function printOrderTable( filterTable )
     print(ORDERS[filterTable["order_type"]])
