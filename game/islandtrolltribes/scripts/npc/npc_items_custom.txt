@@ -12079,121 +12079,154 @@
 	}
 	"item_stone"
 	{
-		"ID"	"1003"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
-		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
-		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"stone"
-		"Model"	"models/particle/tiny_rocks.vmdl"
-		"Effect"	""
-		"AbilityCastRange"	"1000"
-		"AbilityCastPoint"	"0.4"
-		"AbilityCooldown"	"1.0"
-		"ItemCost"	"6"
-		"ItemShopTags"	"consumable"
-		"ItemQuality"	"consumable"
-		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
-		"ItemStackable"	"0"
-		"ItemPermanent"	"0"
-		"ItemDroppable"	"1"
-		"ItemInitialCharges"	"1"
-		"ItemAliases"	"quicktype"
-		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
-		"ItemKillable"	"1"
-		"ItemSellable"	"0"
-		"precache"
-		{
-			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_earth_spirit.vsndevts"
-		}
-		"UIPickupSound"	"ui.inv_drop_stone"
-		"UIDropSound"	"ui.inv_drop_stone"
-		"WorldDropSound"	"ui.inv_drop_stone"
-		"Custom"
-		{
-			"ModelScale"	"2.5"
-		}
+	    "ID"                        "1003"
+	    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+	    "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	    "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+	    "BaseClass"                 "item_datadriven"
+	    "AbilityTextureName"        "stone"
+	    "Model"                     "models/particle/tiny_rocks.vmdl"
+	    "Effect"                    ""
+	    
+	    "AbilityCastRange"          "1000"
+	    "AbilityCastPoint"          "0.4"
+	    "AbilityCooldown"           "1.0"
 	
-		"OnSpellStart"
-		{
-			"TrackingProjectile"
-			{
-				"Target"			"TARGET"
-				"EffectName"		"particles/base_attacks/ranged_siege_bad.vpcf"
-				"MoveSpeed"			"%projectile_speed"
-				"Dodgeable"			"1"
-				"ProvidesVision"	"0"
-			}
+	    "ItemCost"                  "6"
+	    "ItemShopTags"              "consumable"
+	    "ItemQuality"               "consumable"
+	    "ItemShareability"          "ITEM_FULLY_SHAREABLE"
+	    "ItemStackable"             "0"
+	    "ItemPermanent"             "0"
+	    "ItemDroppable"             "1"
+	    "ItemInitialCharges"        "1"
+	    "ItemAliases"               "quicktype"
+	    "ItemDisassembleRule"       "DOTA_ITEM_DISASSEMBLE_NEVER"
+	    "ItemKillable"              "1"
+	    "ItemSellable"              "0"
+	    
+	    "precache"
+	    {
+	        "soundfile"    "soundevents/game_sounds_heroes/game_sounds_earth_spirit.vsndevts"
+	    }
+	    
+	    "UIPickupSound"     "ui.inv_drop_stone"
+	    "UIDropSound"       "ui.inv_drop_stone"
+	    "WorldDropSound"    "ui.inv_drop_stone"
+	    
+	    "Custom"
+	    {
+	        "ModelScale"    "2.5"
+	    }
 	
-			"FireSound"
-			{
-				"EffectName"	"Hero_EarthSpirit.StoneRemnant.Destroy"
-				"Target"		"TARGET"
-			}
-			"SpendCharge"
-			{
-			}
-		}
+	    "OnSpellStart"
+	    {
+	        "TrackingProjectile"
+	        {
+	            "Target"        "TARGET"
+	            "EffectName"    "particles/base_attacks/ranged_siege_bad.vpcf"
+	            "MoveSpeed"     "%projectile_speed"
+	            "Dodgeable"     "1"
+	            "ProvidesVision" "0"
+	        }
 	
-		"OnProjectileHitUnit"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"items/stone.lua"
-				"Function"		"StoneStun"
-				"Target"		"TARGET"
-				"stun_troll"	"%stun_troll"
-				"stun_creep"	"%stun_creep"
-			}
+	        "FireSound"
+	        {
+	            "EffectName"    "Hero_EarthSpirit.StoneRemnant.Destroy"
+	            "Target"        "TARGET"
+	        }
 	
-			"SpendCharge"
-			{
-			}
+	        // Can't use SpendCharge before the projectile hits otherwise we lose the ability effects
+	        "RunScript"
+	        {
+	            "ScriptFile"    "items/stone.lua"
+	            "Function"      "Hide"
+	        }
+	    }
 	
-		}
+	    "OnProjectileHitUnit"
+	    {
+	        "DeleteOnHit"    "1"
+	        "Damage"
+	        {
+	            "Target"        "TARGET"
+	            "Type"          "DAMAGE_TYPE_MAGICAL"
+	            "Damage"        "%stone_damage"
+	        }
+	        "ApplyModifier"
+	        {
+	            "ModifierName"  "modifier_stone_stun"
+	            "Target"
+	            {
+	                "Center"    "TARGET"
+	                "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	                "Types"     "DOTA_UNIT_TARGET_HERO"
+	            }
+	            "Duration"      "%stun_troll"
+	        }
+	        
+	        "ApplyModifier"
+	        {
+	            "ModifierName"  "modifier_stone_stun"
+	            "Target"
+	            {
+	                "Center"    "TARGET"
+	                "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	                "Types"     "DOTA_UNIT_TARGET_BASIC"
+	            }
+	            "Duration"      "%stun_creep"
+	        }
+	        "RunScript"
+	        {
+	            "ScriptFile"    "items/stone.lua"
+	            "Function"      "Remove"
+	        }
+	    }
 	
-		"OnProjectileFinish"
-		{
-			"FireSound"
-			{
-				"EffectName"	"Creep_Bad_Engine.ProjectileImpact"
-				"Target"	"TARGET"
-			}
+	    "Modifiers"
+	    {
+	        "modifier_stone_stun"
+	        {
+	            "IsDebuff"          "1"
+	            "TextureName"       "generic_stun"
+	            "EffectName"        "particles/generic_gameplay/generic_stunned.vpcf"
+	            "EffectAttachType"  "follow_overhead"
+	    
+	            "OverrideAnimation"     "ACT_DOTA_DISABLED"
 	
-			"SpendCharge"
-			{
-			}
+	            "States"
+	            {
+	                "MODIFIER_STATE_STUNNED"        "MODIFIER_STATE_VALUE_ENABLED"
+	            }
+	        }
+	    }
 	
-		}
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"    "FIELD_INTEGER"
+	            "projectile_speed"    "1000"
+	        }
 	
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"projectile_speed"	"1000"
-			}
+	        "02"
+	        {
+	            "var_type"    "FIELD_INTEGER"
+	            "stone_damage"    "1"
+	        }
 	
-			"02"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"stone_damage"	"1"
-			}
+	        "03"
+	        {
+	            "var_type"    "FIELD_INTEGER"
+	            "stun_troll"    "1"
+	        }
 	
-			"03"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"stun_troll"	"1"
-			}
-	
-			"04"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"stun_creep"	"7"
-			}
-	
-		}
-	
+	        "04"
+	        {
+	            "var_type"    "FIELD_INTEGER"
+	            "stun_creep"    "7"
+	        }
+	    }
 	}
 	"item_thistles"
 	{
