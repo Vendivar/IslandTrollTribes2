@@ -152,6 +152,7 @@ function ITT:OnSubclassChange(event)
                         ability:SetLevel(0)
                     else
                         print("ERROR: couldn't add ability "..abilityName)
+                    end
                 end
             end
         end
