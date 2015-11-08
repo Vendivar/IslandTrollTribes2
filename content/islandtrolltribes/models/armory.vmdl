@@ -62,7 +62,11 @@ CVModel CVModel_0
 	]
 	CVattachmentListReference[] m_pAttachmentLists = 
 	[
-		
+		CVattachmentListReference
+		{
+			CVattachmentList* m_pObject = &CVattachmentList_0
+			string m_sFileName = ""
+		}
 	]
 	CVanimGroupReference m_pAnimGroup = CVanimGroupReference
 	{
@@ -142,23 +146,12 @@ CVhitBoxSetList CVhitBoxSetList_0
 			[
 				CVhitBox
 				{
-					string m_name = "Cube"
-					string m_sSurfaceProperty = ""
+					string m_name = "Cube1"
+					string m_sSurfaceProperty = "porcelain"
 					int m_nGroupId = 0
 					string m_sBoneName = "Cube"
-					float(3) m_vMinBounds = ( 300.000000, -300.000000, 400.000000 )
-					float(3) m_vMaxBounds = ( -200.000000, 300.000000, 1.860000 )
-					bool m_bTranslationOnly = false
-					uint(4) m_cRenderColor = ( 0, 0, 0, 0 )
-				},
-				CVhitBox
-				{
-					string m_name = "Cube1"
-					string m_sSurfaceProperty = ""
-					int m_nGroupId = 0
-					string m_sBoneName = "Cube1"
-					float(3) m_vMinBounds = ( -200.000000, -300.000000, 500.000000 )
-					float(3) m_vMaxBounds = ( 293.720001, 300.000000, 0.000000 )
+					float(3) m_vMinBounds = ( -173.880005, -166.556702, 5.278326 )
+					float(3) m_vMaxBounds = ( 168.390289, 173.880005, 263.916260 )
 					bool m_bTranslationOnly = false
 					uint(4) m_cRenderColor = ( 0, 0, 0, 0 )
 				}
@@ -166,6 +159,15 @@ CVhitBoxSetList CVhitBoxSetList_0
 		}
 	]
 	string m_AutoCreateSetName = ""
+}
+
+CVattachmentList CVattachmentList_0
+{
+	string m_name = ""
+	CVattachment[] m_attachments = 
+	[
+		
+	]
 }
 
 CVanimGroup CVanimGroup_0
@@ -194,8 +196,8 @@ CVanimGroup CVanimGroup_0
 	[
 		CVanim
 		{
-			string m_Animationname = "Cube"
-			string m_Filepath = "models/Cube.dmx"
+			string m_Animationname = "mixing_potbone"
+			string m_Filepath = "models/cube.dmx"
 			int m_nStartframe = 0
 			int m_nEndframe = 0
 			float m_flFps = 30.000000
