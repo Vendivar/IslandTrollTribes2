@@ -385,13 +385,10 @@ end
 ------------------------------------------------
 
 --general "ping minimap" function
-function PingMap(playerID,pos,r,g,b)
-    --(PlayerID, position(vector), R, G, B, SizeofDot, Duration)
-    GameRules:AddMinimapDebugPoint(5,pos, r, g, b, 500, 6)
-    print("x:", pos.x)
-    print("y:", pos.y)
-    print("z:", pos.z)
-    --NEWEST PING ALWAYS CLEARS LAST PING, ONLY ONE PING AT A TIME, THIS FUNCTION SUCKS DICK BUT IT'S ALL WE HAVE TO WORK WITH
+function PingMap(entity, pos, r, g, b, teamNumber)
+  
+    local radius = 400
+    GameRules:AddMinimapDebugPointForTeam( -entity:entindex(), pos, r, g, b, radius, 100, teamNumber )
 end
 
 ------------------------------------------------

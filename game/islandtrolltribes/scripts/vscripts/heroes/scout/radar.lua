@@ -1,35 +1,36 @@
 function EnemyRadar(keys)
     local caster = keys.caster
-    local range = keys.Range
+    local ability = keys.ability
+    local range = ability:GetCastRange()
     local casterPosition = caster:GetAbsOrigin()
     local teamnumber = caster:GetTeamNumber()
 
-    local units = FindUnitsInRadius(teamnumber,
-                                casterPosition,
-                                nil,
-                                range,
-                                DOTA_UNIT_TARGET_TEAM_ENEMY,
-                                DOTA_UNIT_TARGET_ALL,
-                                DOTA_UNIT_TARGET_FLAG_NONE,
-                                FIND_ANY_ORDER,
-                                false)
+    local units = FindUnitsInRadius(teamnumber, casterPosition, nil, range, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, 0, 0, false)
+    
+    if #units > 0 then
+        for _, unit in pairs(units) do
+            local r = 0
+            local g = 0
+            local b = 0
+            if unit:IsRealHero() then
+                r = 255
+            else
+                b = 255
+            end
 
-    local redVal = 0
-    local greenVal = 0
-    local blueVal = 0
+            local position = unit:GetAbsOrigin()
+            local thisParticle = ParticleManager:CreateParticleForTeam("particles/custom/ping_world.vpcf", PATTACH_ABSORIGIN, caster, teamnumber)
+            ParticleManager:SetParticleControl(thisParticle, 0, position)
+            ParticleManager:SetParticleControl(thisParticle, 1, Vector(r, g, b))
 
-    for _, unit in pairs(units) do
-        if unit:IsHero() then
-            redVal = 255
-        elseif unit:IsCreature() then
-            blueVal = 255
+            local particle = ParticleManager:CreateParticleForTeam("particles/custom/ping_static.vpcf", PATTACH_ABSORIGIN, caster, teamnumber)
+            ParticleManager:SetParticleControl(particle, 0, position)
+            ParticleManager:SetParticleControl(particle, 1, Vector(r, g, b))
+            Timers:CreateTimer(3, function() ParticleManager:DestroyParticle(particle, true) end)
+
+            PingMap(unit, position, r, g, b, teamnumber)
         end
 
-        local thisParticle = ParticleManager:CreateParticle("particles/ui_mouseactions/ping_world.vpcf", PATTACH_ABSORIGIN, caster:GetOwner())
-        ParticleManager:SetParticleControl(thisParticle, 0, unit:GetAbsOrigin())
-        ParticleManager:SetParticleControl(thisParticle, 1, Vector(redVal, greenVal, blueVal))
-        PingMap(caster:GetPlayerID(),unit:GetAbsOrigin(),redVal,greenVal,blueVal)
-        ParticleManager:ReleaseParticleIndex(thisParticle)
-        unit:EmitSound("General.Ping")   --may be deafening
+        EmitSoundOnLocationForAllies(caster:GetAbsOrigin(), "General.Ping", caster)
     end
 end

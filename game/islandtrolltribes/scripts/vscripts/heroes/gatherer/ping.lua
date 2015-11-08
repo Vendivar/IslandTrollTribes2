@@ -59,8 +59,7 @@ function PingItemInRange(event)
             end)
 
             --Ping Minimap
-            local radius = 400
-            GameRules:AddMinimapDebugPointForTeam( -drop:entindex(), drop:GetAbsOrigin(), r, g, b, radius, 100, team )
+            PingMap(drop, position, r, g, b, team)
 
             foundItem = true
         end
