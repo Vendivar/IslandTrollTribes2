@@ -14,7 +14,6 @@
 	"ItemStackable"	"0"
 	"ItemPermanent"	"0"
 	"ItemDroppable"	"1"
-	"ItemInitialCharges"	"1"
 	"ItemAliases"	"quicktype"
 	"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 	"ItemKillable"	"1"

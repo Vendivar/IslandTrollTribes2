@@ -11229,6 +11229,7 @@
         "precache"
         {
             "soundfile"					"sounds/items/rod_of_atos.vsnd"
+            "particle"                  "particles/units/heroes/hero_dark_seer/dark_seer_surge.vpcf"
         }
 
         "OnSpellStart"
@@ -11273,6 +11274,7 @@
             {
                 "IsHidden"	"1"
                 "ThinkInterval"	"%illusion_interval"
+                "EffectName"    "particles/units/heroes/hero_dark_seer/dark_seer_surge.vpcf"
                 "OnIntervalThink"
                 {
                     "SpawnUnit"

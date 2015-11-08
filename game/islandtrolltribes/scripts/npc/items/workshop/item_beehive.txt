@@ -7,7 +7,7 @@
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"item_aegis"
 	"Model"	"models/props_winter/nest_01.vmdl"
-	"Effect"	"particles/econ/items/windrunner/windrunner_cape_cascade/windrunner_windrun_magic_trail_cascade.vpcf"
+	"Effect"	"particles/custom/bee_swarm.vpcf"
 	"AbilityCastRange"	"800"
 	"AbilityCastPoint"	"0.5"
 	"ItemCost"	"14"
@@ -64,5 +64,8 @@
 		}
 
 	}
-
+		"Custom"
+	{
+		"ModelScale"	"0.65"
+	}
 }

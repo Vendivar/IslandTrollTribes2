@@ -4,7 +4,7 @@
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"armor_battle"
-	"Model"	"models/items/alchemist/armor/armor.vmdl"
+	"Model"	"models/props_items/assault_cuirass.vmdl"
 	"Effect"	""
 	"ItemCost"	"104"
 	"ItemShopTags"	"consumable"
@@ -46,6 +46,10 @@
 		}
 	}
 
+	"Custom"
+	{
+		"ModelScale"	"1"
+        }
 	"AbilitySpecial"
 	{
 		"01"

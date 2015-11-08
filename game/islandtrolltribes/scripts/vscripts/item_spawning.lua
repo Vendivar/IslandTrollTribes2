@@ -19,7 +19,7 @@ STICK_RATE                  = 3.00
 CLAYBALL_RATE               = 1.00
 STONE_RATE                  = 1.00
 MANACRYSTAL_RATE            = 0.00
-MAGIC_RATE                  = 0.5
+MAGIC_RATE                  = 0.35
 
 -- Relative rates start at 0 but will be set such that all should sum to one on first call of ITT:UpdateRelativePool
 REL_TINDER_RATE             = 0
@@ -136,7 +136,7 @@ end
 function ITT:AdjustItemSpawns()
     --print("adjusting item spawns")
     FLINT_RATE = math.max(2.0,(FLINT_RATE-0.4))
-    MANACRYSTAL_RATE = math.min(1.6,(MANACRYSTAL_RATE+0.5))
+    MANACRYSTAL_RATE = math.min(1.6,(MANACRYSTAL_RATE+0.2))
     STONE_RATE = math.min(3.3,(STONE_RATE+0.5))
     STICK_RATE = math.min(4.5,(STICK_RATE+0.5))
     TINDER_RATE = math.max(.7,(TINDER_RATE-0.6))

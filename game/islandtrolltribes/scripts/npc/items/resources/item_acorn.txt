@@ -24,6 +24,11 @@
 	"UIPickupSound"	"Item.PickUpGemShop"
 	"UIDropSound"	"Item.DropGemShop"
 	"WorldDropSound"	"ui.inv_drop_wood"
+        
+    "precache"
+    {
+        "soundfile"    "soundevents/game_sounds_heroes/game_sounds_tidehunter.vsndevts"
+    }
 	"Custom"
 	{
 		"ModelScale"	"2.5"
@@ -36,11 +41,13 @@
 			"Target"	"CASTER"
 			"HealAmount"	"%heal_amount"
 		}
-
-		"SpendCharge"
-		{
-		}
-
+        "FireSound"
+        {
+            "EffectName"    "Hero_Tidehunter.Idle_bite"
+            "Target"        "CASTER"
+        }
+        "SpendCharge"
+        {}
 	}
 
 	"AbilitySpecial"
