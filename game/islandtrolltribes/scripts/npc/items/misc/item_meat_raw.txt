@@ -20,6 +20,8 @@
     "ItemKillable"    		"1"
     "ItemSellable"    		"0"
 
+    "MaxStacks"             "10"
+
     "Custom"
     {
         "ModelOffsets"

@@ -100,7 +100,7 @@ function PickupItem( unit, drop )
     local itemName = item:GetAbilityName()
 
     -- Raw meat uses modifier stacks instead of inventory slots
-    if itemName == "item_meat_raw" then
+    if itemName == "item_meat_raw" and not IsCustomBuilding(unit) then
         local meatStacks = unit:GetModifierStackCount("modifier_meat_passive", nil)
         if meatStacks < 10 then
             unit:SetModifierStackCount("modifier_meat_passive", nil, meatStacks + 1)
