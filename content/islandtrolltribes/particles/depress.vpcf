@@ -110,20 +110,22 @@
 	m_Emitters =
 	[
 		{
-			_class = "C_OP_ContinuousEmitter"
-			m_flOpEndFadeInTime = 1.000000
-			m_flOpStartFadeInTime = 0.500000
-			m_flStartTime = 1.000000
-			m_flEmissionDuration = 2.000000
-			m_flEmitRate = 1.000000
-		},
-		{
 			_class = "C_OP_InstantaneousEmitter"
 			m_flStartTime = 1.250000
 			m_nParticlesToEmit = 8
 		},
 		{
 			_class = "C_OP_ContinuousEmitter"
+			m_flEmitRate = 5.000000
+		},
+	]
+	m_Children =
+	[
+		{
+			m_ChildRef = resource:"particles/clouding_in.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/clouding_in_big.vpcf"
 		},
 	]
 }

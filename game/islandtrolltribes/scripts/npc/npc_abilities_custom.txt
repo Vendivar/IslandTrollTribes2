@@ -5884,7 +5884,7 @@
 			"06"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"proj_speed"		"100"
+				"proj_speed"		"400"
 			}
 			"07"
 			{
