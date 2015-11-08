@@ -7926,37 +7926,13 @@
 				{
 					"ScriptFile"    "heroes/mage/grow.lua"
 					"Function"      "Grow"
-					"GrowAmmt"      "1.3"
+					"GrowAmmt"      "1.10"
 				}
 				"FireSound"
 				{
 					"EffectName"	 "Hero_OgreMagi.Bloodlust.Cast"
 					"Target"	"CASTER"
 				}	
-				"FireEffect"
-				{
-					"EffectName" "particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_cast_circle_flash.vpcf"
-					"Target" "TARGET"
-					"EffectAttachType" "follow_origin"
-				}        
-				"FireEffect"
-				{
-					"EffectName" "particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff_circle_outer_pulse.vpcf"
-					"Target" "TARGET"
-					"EffectAttachType" "follow_origin"
-				}
-				"FireEffect"
-				{
-					"EffectName" "particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff_symbol.vpcf"
-					"Target" "TARGET"
-					"EffectAttachType" "follow_origin"
-				}
-				"FireEffect"
-				{
-					"EffectName" "			particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff_tornado.vpcf"
-					"Target" "TARGET"
-					"EffectAttachType" "follow_origin"
-				}
 				
 			"ApplyModifier"
 			{
@@ -8025,6 +8001,12 @@
 						"Target"	"TARGET"
 						"EffectAttachType"	"follow_overhead"
 					}
+                    "FireEffect"
+                    {
+                        "EffectName" "particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff.vpcf"
+                        "Target" "TARGET"
+                        "EffectAttachType" "follow_origin"
+                    }
 				}
 			}
 		}
