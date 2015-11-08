@@ -12074,7 +12074,14 @@
 			}
 	
 		}
-	
+	"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"duration"		"7"
+			}
+        }
 	}
 	"ability_thief_teleport"
 	{
