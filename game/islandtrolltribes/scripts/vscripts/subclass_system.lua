@@ -147,6 +147,11 @@ function ITT:OnSubclassChange(event)
                 if not hero:HasAbility(abilityName) then
                     print("Adding "..abilityName)
                     hero:AddAbility(abilityName)
+                    local ability = hero:FindAbilityByName(abilityName)
+                    if ability then
+                        ability:SetLevel(0)
+                    else
+                        print("ERROR: couldn't add ability "..abilityName)
                 end
             end
         end

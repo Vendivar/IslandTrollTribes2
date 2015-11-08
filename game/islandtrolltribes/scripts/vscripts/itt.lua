@@ -439,21 +439,23 @@ function ITT:AdjustSkills( hero )
         return
     end
 
-    -- Check for any skill in the 'unlearn' subtable
-    local unlearn_skills = skillProgressionTable[class]['unlearn']
-    if unlearn_skills then
-        local unlearn_skills_level = unlearn_skills[tostring(level)]
-        if unlearn_skills_level then
-            local unlearn_ability_names = split(unlearn_skills_level, ",")
 
-            for _,abilityName in pairs(unlearn_ability_names) do
-                local ability = hero:FindAbilityByName(abilityName)
-                if ability then
-                    hero:RemoveAbility(abilityName)
+    -- Check for any skill in the 'unlearn' subtable
+    Timers:CreateTimer(function()
+        local unlearn_skills = skillProgressionTable[class]['unlearn']
+        if unlearn_skills then
+            local unlearn_skills_level = unlearn_skills[tostring(level)]
+            if unlearn_skills_level then
+                local unlearn_ability_names = split(unlearn_skills_level, ",")
+                for _,abilityName in pairs(unlearn_ability_names) do
+                    local ability = hero:FindAbilityByName(abilityName)
+                    if ability then
+                        hero:RemoveAbility(abilityName)
+                    end
                 end
             end
         end
-    end
+    end)
     
     -- Learn/Upgrade all abilities for this level    
     local level_skills = skillProgressionTable[class][tostring(level)]
@@ -476,8 +478,8 @@ function ITT:AdjustSkills( hero )
         print("No skills to change for "..class.." at level "..level)
     end
 
-    AdjustAbilityLayout(hero)
-    PrintAbilities(hero)
+    --AdjustAbilityLayout(hero)
+    --PrintAbilities(hero)
 end
 
 
