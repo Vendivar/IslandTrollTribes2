@@ -37,7 +37,7 @@
         "03"
         {
             "var_type"              "FIELD_INTEGER"
-            "projectile_speed"      "300"
+            "projectile_speed"      "750"
         }
         "04"
         {
@@ -82,7 +82,7 @@
 
         "ApplyModifier"
         {
-            "ModifierName"  "modifier_ensnaretrap_ensnare"
+            "ModifierName"  "modifier_ensnare"
             "Target"
             {
                 "Center"    "TARGET"
@@ -94,7 +94,7 @@
         
         "ApplyModifier"
         {
-            "ModifierName"  "modifier_ensnaretrap_ensnare"
+            "ModifierName"  "modifier_ensnare"
             "Target"
             {
                 "Center"    "TARGET"
@@ -140,7 +140,7 @@
             }
         }
 
-        "modifier_ensnaretrap_ensnare"
+        "modifier_ensnare"
         {
             "IsDebuff"          "1"
             "IsPurgable"        "1"
@@ -151,6 +151,24 @@
             "States"
             {
                 "MODIFIER_STATE_ROOTED"    "MODIFIER_STATE_VALUE_ENABLED"
+            }
+
+            "OnCreated"
+            {
+                "RunScript"
+                {
+                    "ScriptFile"    "mechanics/ensnare.lua"
+                    "Function"      "LoseMovement"
+                }
+            }
+
+            "OnDestroy"
+            {
+                "RunScript"
+                {
+                    "ScriptFile"    "mechanics/ensnare.lua"
+                    "Function"      "RegainMovement"
+                }
             }
         }
     }

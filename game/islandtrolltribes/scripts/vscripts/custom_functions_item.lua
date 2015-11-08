@@ -1,4 +1,4 @@
-function NetEnsnare(keys)
+--[[function NetEnsnare(keys)
 	local caster = keys.caster
 	local target = keys.target
 	local targetName = target:GetName()
@@ -12,7 +12,7 @@ function NetEnsnare(keys)
 	target:AddNewModifier(caster, nil, "modifier_meepo_earthbind", {duration = dur})
 end
 
---[[function MageMasherManaBurn(keys)
+function MageMasherManaBurn(keys)
 	local caster = keys.caster
 	local target = keys.target
 	local damage = keys.Damage
