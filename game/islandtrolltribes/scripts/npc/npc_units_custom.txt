@@ -132,6 +132,7 @@
 		}
 	
 		"Ability1"	"ability_quick_build_armory"
+        "Ability2"	"ability_quick_drop"
 		"Ability10"	"ability_building"
 		
 		"ArmorPhysical"	"5"
@@ -171,6 +172,7 @@
 		}
 	
 		"Ability1"	"ability_duel"
+        "Ability2"	"ability_quick_drop"
 		"Ability10"	"ability_building"
 		
 		"ArmorPhysical"	"0"
@@ -490,6 +492,7 @@
 		}
 	
 		"Ability1"	"ability_quick_build_wd_hut"
+        "Ability2"	"ability_quick_drop"
 		"Ability10"	"ability_building"
 		
 		"ArmorPhysical"	"5"
@@ -530,6 +533,7 @@
 		}
 	
 		"Ability1"	"ability_mix"
+        "Ability2"	"ability_quick_drop"
 		"Ability10"	"ability_building"
 		
 		"ArmorPhysical"	"2"
@@ -690,6 +694,7 @@
 			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
 		}
 	
+        "Ability1"	"ability_quick_drop"
 		"Ability10"	"ability_building"
 	
 		"ArmorPhysical"	"5"
@@ -732,6 +737,7 @@
 		"Ability1"	"ability_make_gloves"
 		"Ability2"	"ability_make_boots"
 		"Ability3"	"ability_make_coat"
+        "Ability4"	"ability_quick_drop"
 		"Ability10"	"ability_building"
 		
 		"ArmorPhysical"	"5"
@@ -852,6 +858,7 @@
 		}
 	
 		"Ability1"	"ability_quick_build_workshop"
+        "Ability2"	"ability_quick_drop"
 		"Ability10"	"ability_building"
 	
 		"ArmorPhysical"	"2"

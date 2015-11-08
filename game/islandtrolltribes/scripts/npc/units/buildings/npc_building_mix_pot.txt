@@ -17,6 +17,7 @@
 	}
 
 	"Ability1"	"ability_mix"
+	"Ability2"	"ability_quick_drop"
 	"Ability10"	"ability_building"
 	
 	"ArmorPhysical"	"2"

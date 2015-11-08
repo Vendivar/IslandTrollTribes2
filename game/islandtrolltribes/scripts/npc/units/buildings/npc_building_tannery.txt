@@ -19,6 +19,7 @@
 	"Ability1"	"ability_make_gloves"
 	"Ability2"	"ability_make_boots"
 	"Ability3"	"ability_make_coat"
+	"Ability4"	"ability_quick_drop"
 	"Ability10"	"ability_building"
 	
 	"ArmorPhysical"	"5"
