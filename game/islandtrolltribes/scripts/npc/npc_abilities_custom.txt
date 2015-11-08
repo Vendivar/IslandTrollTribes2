@@ -4915,7 +4915,7 @@
 		"AbilityTextureName"	"ability_hunter_track"
 		"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
 		"AbilityCastPoint"	"0.0 0.0 0.0"
-		"AbilityCooldown"	"10"
+		"AbilityCooldown"	"45.0 40.0 35.0"
 		"AbilityCastRange"	"700"
 		"AbilityManaCost"	"0"
 		"MaxLevel"	"3"

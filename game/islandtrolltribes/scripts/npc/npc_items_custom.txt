@@ -4674,10 +4674,9 @@
 				"IsPurgable" "0"
 			}
 		}
-	
 		"Custom"
 		{
-			"ModelScale"	"1"
+			"ModelScale"	"1.2"
         }
 		"AbilitySpecial"
 		{
@@ -5674,6 +5673,10 @@
 	    "UIDropSound"           "Item.DropGemShop"
 	    "WorldDropSound"        "ui.inv_pickup_metalarmour"
 	
+	    "precache"
+	    {
+	        "soundfile"     "soundevents/game_sounds_heroes/game_sounds_phantom_assassin.vsndevts"
+	    }
 	    "Modifiers"
 	    {
 	        "modifier_gloves_battle"
@@ -5706,6 +5709,11 @@
 	                            "Target"        "CASTER"
 	                            "ModifierName"  "critical_strike"
 	                        }
+                            "FireSound"
+                            {
+                                "EffectName"	"Hero_PhantomAssassin.CoupDeGrace"
+                                "Target"	"TARGET"
+                            }
 	                    }
 	                }
 	            }

@@ -1,139 +1,149 @@
-"item_gloves_battle"
-{
-    "ID"                    "1062"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-    "BaseClass"             "item_datadriven"
-    "AbilityTextureName"    "item_blades_of_attack"
-    "Model"                 "models/items/rikimaru/bladearmorgloves/bladearmorgloves.vmdl"
-    "Effect"                ""
-    "ItemCost"              "106"
-    "ItemShopTags"          "consumable"
-    "ItemQuality"           "consumable"
-    "ItemShareability"      "ITEM_FULLY_SHAREABLE"
-    "ItemStackable"         "0"
-    "ItemPermanent"         "1"
-    "ItemDroppable"         "1"
-    "ItemAliases"           "quicktype"
-    "ItemDisassembleRule"   "DOTA_ITEM_DISASSEMBLE_NEVER"
-    "ItemKillable"          "1"
-    "ItemSellable"          "1"
 
-    "UIPickupSound"         "Item.PickUpGemShop"
-    "UIDropSound"           "Item.DropGemShop"
-    "WorldDropSound"        "ui.inv_pickup_metalarmour"
-
-    "Modifiers"
-    {
-        "modifier_gloves_battle"
-        {
-            "Passive"       "1"
-            "IsHidden"      "0"
-            "Properties"
-            {
-                "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"        "%armor"
-                "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "%attack_speed"
-                "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"       "%all_stats"
-                "MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"        "%all_stats"
-                "MODIFIER_PROPERTY_STATS_AGILITY_BONUS"         "%all_stats"
-            }
-
-            "OnAttackStart"
-            {
-                "RemoveModifier"
-                {
-                    "ModifierName"  "critical_strike"
-                    "Target"        "CASTER"
-                }
-                "Random"
-                {
-                    "Chance"    "%crit_chance"
-                    "OnSuccess"
-                    {
-                        "ApplyModifier"
-                        {
-                            "Target"        "CASTER"
-                            "ModifierName"  "critical_strike"
-                        }
-                    }
-                }
-            }
-        }
-
-        // Internal Heat mechanic
-        "modifier_gloves_heat"
-        {
-            "Passive"    "1"
-            "IsHidden"   "1"
-            "IsPurgable" "0"
-        }
-
-        "critical_strike"
-        {
-            "IsHidden"  "1"
-            "Properties"
-            {
-                "MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"    "%crit_bonus"
-            }
-
-            "OnAttackLanded"
-            {
-                "RemoveModifier"
-                {
-                    "ModifierName"  "critical_strike"
-                    "Target"        "CASTER"
-                }
-                "FireEffect"
-                {
-                    "EffectName"        "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
-                    "EffectAttachType"  "follow_origin"
-                    "Target"            "TARGET"
-                }
-            }
-        }
-    }
-
-    "AbilitySpecial"
-    {
-        "01"
-        {
-            "var_type"      "FIELD_INTEGER"
-            "armor"         "5"
-        }
-
-        "02"
-        {
-            "var_type"      "FIELD_INTEGER"
-            "attack_speed"  "25"
-        }
-
-        "03"
-        {
-            "var_type"      "FIELD_INTEGER"
-            "all_stats"     "2"
-        }
-
-        "04"
-        {
-            "var_type"      "FIELD_INTEGER"
-            "heat"          "2"
-        }
-
-        "05"
-        {
-            "var_type"      "FIELD_INTEGER"
-            "tick_rate"     "35"
-        }
-
-        "06"
-        {
-            "var_type"      "FIELD_INTEGER"
-            "crit_chance"   "20"
-        }
-
-        "07"
-        {
-            "var_type"      "FIELD_INTEGER"
-            "crit_bonus"    "150"
-        }
-    }
-}
+	"item_gloves_battle"
+	{
+	    "ID"                    "1062"
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	    "BaseClass"             "item_datadriven"
+	    "AbilityTextureName"    "item_blades_of_attack"
+	    "Model"                 "models/items/rikimaru/bladearmorgloves/bladearmorgloves.vmdl"
+	    "Effect"                ""
+	    "ItemCost"              "106"
+	    "ItemShopTags"          "consumable"
+	    "ItemQuality"           "consumable"
+	    "ItemShareability"      "ITEM_FULLY_SHAREABLE"
+	    "ItemStackable"         "0"
+	    "ItemPermanent"         "1"
+	    "ItemDroppable"         "1"
+	    "ItemAliases"           "quicktype"
+	    "ItemDisassembleRule"   "DOTA_ITEM_DISASSEMBLE_NEVER"
+	    "ItemKillable"          "1"
+	    "ItemSellable"          "1"
+	
+	    "UIPickupSound"         "Item.PickUpGemShop"
+	    "UIDropSound"           "Item.DropGemShop"
+	    "WorldDropSound"        "ui.inv_pickup_metalarmour"
+	
+	    "precache"
+	    {
+	        "soundfile"     "soundevents/game_sounds_heroes/game_sounds_phantom_assassin.vsndevts"
+	    }
+	    "Modifiers"
+	    {
+	        "modifier_gloves_battle"
+	        {
+	            "Passive"       "1"
+	            "IsHidden"      "0"
+	            "Properties"
+	            {
+	                "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"        "%armor"
+	                "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "%attack_speed"
+	                "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"       "%all_stats"
+	                "MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"        "%all_stats"
+	                "MODIFIER_PROPERTY_STATS_AGILITY_BONUS"         "%all_stats"
+	            }
+	
+	            "OnAttackStart"
+	            {
+	                "RemoveModifier"
+	                {
+	                    "ModifierName"  "critical_strike"
+	                    "Target"        "CASTER"
+	                }
+	                "Random"
+	                {
+	                    "Chance"    "%crit_chance"
+	                    "OnSuccess"
+	                    {
+	                        "ApplyModifier"
+	                        {
+	                            "Target"        "CASTER"
+	                            "ModifierName"  "critical_strike"
+	                        }
+                            "FireSound"
+                            {
+                                "EffectName"	"Hero_PhantomAssassin.CoupDeGrace"
+                                "Target"	"TARGET"
+                            }
+	                    }
+	                }
+	            }
+	        }
+	
+	        // Internal Heat mechanic
+	        "modifier_gloves_heat"
+	        {
+	            "Passive"    "1"
+	            "IsHidden"   "1"
+	            "IsPurgable" "0"
+	        }
+	
+	        "critical_strike"
+	        {
+	            "IsHidden"  "1"
+	            "Properties"
+	            {
+	                "MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"    "%crit_bonus"
+	            }
+	
+	            "OnAttackLanded"
+	            {
+	                "RemoveModifier"
+	                {
+	                    "ModifierName"  "critical_strike"
+	                    "Target"        "CASTER"
+	                }
+	                "FireEffect"
+	                {
+	                    "EffectName"        "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
+	                    "EffectAttachType"  "follow_origin"
+	                    "Target"            "TARGET"
+	                }
+	            }
+	        }
+	    }
+	
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"      "FIELD_INTEGER"
+	            "armor"         "5"
+	        }
+	
+	        "02"
+	        {
+	            "var_type"      "FIELD_INTEGER"
+	            "attack_speed"  "25"
+	        }
+	
+	        "03"
+	        {
+	            "var_type"      "FIELD_INTEGER"
+	            "all_stats"     "2"
+	        }
+	
+	        "04"
+	        {
+	            "var_type"      "FIELD_INTEGER"
+	            "heat"          "2"
+	        }
+	
+	        "05"
+	        {
+	            "var_type"      "FIELD_INTEGER"
+	            "tick_rate"     "35"
+	        }
+	
+	        "06"
+	        {
+	            "var_type"      "FIELD_INTEGER"
+	            "crit_chance"   "20"
+	        }
+	
+	        "07"
+	        {
+	            "var_type"      "FIELD_INTEGER"
+	            "crit_bonus"    "150"
+	        }
+	    }
+	}

@@ -48,7 +48,7 @@
 
 	"Custom"
 	{
-		"ModelScale"	"1"
+		"ModelScale"	"1.2"
         }
 	"AbilitySpecial"
 	{
