@@ -189,11 +189,21 @@ function ITT:FilterExecuteOrder( filterTable )
         if IsCustomBuilding(unit) then
             local itemName = drop:GetContainedItem():GetAbilityName()
             if itemName == "item_meat_raw" then
-                SendErrorMessage(issuer, "#error_building_cant_pick_meat")
-                return false
+
+                -- Exception for ensnare trap which can only pick up raw meat
+                if unit:GetUnitName() ~= "npc_building_ensnare_trap" then
+                    SendErrorMessage(issuer, "#error_building_cant_pick_meat")
+                    return false
+                end
+            end
 
             -- Pick up the item if within the extended range
-            elseif (origin - position):Length2D() <= ITEM_TRANSFER_RANGE+25 then
+            if (origin - position):Length2D() <= ITEM_TRANSFER_RANGE+25 then
+                if unit:GetUnitName() == "npc_building_ensnare_trap" and itemName ~= "item_meat_raw" then
+                    SendErrorMessage(issuer, "#error_traps_cant_pickup_that")
+                    return false
+                end
+
                 local pickedUp = PickupItem(unit, drop)
                 if not pickedUp then 
                     SendErrorMessage(issuer, "#error_inventory_full")

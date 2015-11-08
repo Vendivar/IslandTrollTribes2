@@ -25,7 +25,7 @@ function PingItemInRange(event)
         if not item then print("ERROR: Drop doesnt contain an item") return end
 
         local itemName = item:GetAbilityName()
-        if itemname ~= "item_meat_raw" and (not itemList or itemList[itemName]) then
+        if itemName ~= "item_meat_raw" and (not itemList or itemList[itemName]) then
 
             -- Get item color from table, else default white
             local itemColor = itemColorTable[itemName]
@@ -59,8 +59,7 @@ function PingItemInRange(event)
             end)
 
             --Ping Minimap
-            local radius = 400
-            GameRules:AddMinimapDebugPointForTeam( -drop:entindex(), drop:GetAbsOrigin(), r, g, b, radius, 100, team )
+            PingMap(drop, position, r, g, b, team)
 
             foundItem = true
         end

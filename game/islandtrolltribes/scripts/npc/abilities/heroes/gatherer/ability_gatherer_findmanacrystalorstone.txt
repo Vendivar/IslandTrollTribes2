@@ -21,7 +21,7 @@
         {
             "ScriptFile" "heroes/gatherer/ping.lua"
             "Function"   "PingItemInRange"
-            "Items"      "item_mushroom,item_stone"
+            "Items"      "item_crystal_mana,item_stone"
         }
 
         "FireSound"
