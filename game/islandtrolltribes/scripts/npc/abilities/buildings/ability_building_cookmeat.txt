@@ -1,7 +1,7 @@
 "ability_building_cookmeat"
 {
 	"BaseClass"	"ability_datadriven"
-	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
 	"AbilityTextureName"	"ability_building_cookmeat"
 	"AbilityCooldown"	"1.0"
 	"AbilityManaCost"	"0"
@@ -26,6 +26,23 @@
 			"Target"		"CASTER"
 		}
 	}
+    "OnCreated"
+            {
+                "RunScript"
+                {
+                    "ScriptFile"    "mechanics/autocast.lua"
+                    "Function"      "AutocastOn"
+                }
+                "ThinkInterval"  "1.0"
+                "OnIntervalThink"
+                {
+                    "RunScript"
+                    {
+                        "ScriptFile"    "buildings/get_corpse.lua"
+                        "Function"      "GetCorpseAutocast"
+                    }
+                }
+            }
 	"AbilitySpecial"
 	{
 		"01"
