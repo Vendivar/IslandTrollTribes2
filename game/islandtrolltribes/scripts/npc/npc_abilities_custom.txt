@@ -975,7 +975,7 @@
 	        "03"
 	        {
 	            "var_type"              "FIELD_INTEGER"
-	            "projectile_speed"      "300"
+	            "projectile_speed"      "750"
 	        }
 	        "04"
 	        {
@@ -1020,7 +1020,7 @@
 	
 	        "ApplyModifier"
 	        {
-	            "ModifierName"  "modifier_ensnaretrap_ensnare"
+	            "ModifierName"  "modifier_ensnare"
 	            "Target"
 	            {
 	                "Center"    "TARGET"
@@ -1032,7 +1032,7 @@
 	        
 	        "ApplyModifier"
 	        {
-	            "ModifierName"  "modifier_ensnaretrap_ensnare"
+	            "ModifierName"  "modifier_ensnare"
 	            "Target"
 	            {
 	                "Center"    "TARGET"
@@ -1078,7 +1078,7 @@
 	            }
 	        }
 	
-	        "modifier_ensnaretrap_ensnare"
+	        "modifier_ensnare"
 	        {
 	            "IsDebuff"          "1"
 	            "IsPurgable"        "1"
@@ -1089,6 +1089,24 @@
 	            "States"
 	            {
 	                "MODIFIER_STATE_ROOTED"    "MODIFIER_STATE_VALUE_ENABLED"
+	            }
+	
+	            "OnCreated"
+	            {
+	                "RunScript"
+	                {
+	                    "ScriptFile"    "mechanics/ensnare.lua"
+	                    "Function"      "LoseMovement"
+	                }
+	            }
+	
+	            "OnDestroy"
+	            {
+	                "RunScript"
+	                {
+	                    "ScriptFile"    "mechanics/ensnare.lua"
+	                    "Function"      "RegainMovement"
+	                }
 	            }
 	        }
 	    }
@@ -1379,6 +1397,27 @@
 	            "ScriptFile"    "buildings/tannery.lua"
 	            "Function"      "Make"
 	            "Item"          "Gloves"
+	        }
+	    }
+	}
+	"ability_baby_animal"
+	{
+	    "BaseClass"         "ability_datadriven"
+	    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	    "MaxLevel"          "1"
+	    "Modifiers"
+	    {
+	        "modifier_baby_animal"
+	        {
+	            "Passive"   "1"
+	            "States"
+	            {
+	                "MODIFIER_STATE_NO_UNIT_COLLISION"  "MODIFIER_STATE_VALUE_ENABLED"
+	                "MODIFIER_STATE_MAGIC_IMMUNE"  "MODIFIER_STATE_VALUE_ENABLED"
+	                "MODIFIER_STATE_ATTACK_IMMUNE"  "MODIFIER_STATE_VALUE_ENABLED"
+	                "MODIFIER_STATE_NOT_ON_MINIMAP" "MODIFIER_STATE_VALUE_ENABLED"
+	                //"MODIFIER_STATE_NO_HEALTH_BAR"  "MODIFIER_STATE_VALUE_ENABLED"
+	            }
 	        }
 	    }
 	}
@@ -1924,7 +1963,7 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile" "heroes/beastmaster/pets.lua"
+				"ScriptFile" "heroes/beastmaster/call.lua"
 				"Function"   "CallToBattle"
 				"Duration"   "6"
 			}
@@ -2569,265 +2608,6 @@
 		}
 	
 	}
-	"ability_beastmaster_pet_attack"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-		"AbilityTextureName"	"ability_beastmaster_attack"
-		"AbilityCastPoint"	"0"
-		"AbilityCooldown"	"0"
-		"AbilityManaCost"	"0"
-		"MaxLevel"	"1"
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile" "heroes/beastmaster/pets.lua"
-				"Function"   "PetCommand"
-				"Command"    "attack"
-			}
-	
-		}
-	
-	}
-	"ability_beastmaster_pet_follow"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-		"AbilityTextureName"	"ability_beastmaster_follow"
-		"AbilityCastPoint"	"0"
-		"AbilityCooldown"	"0"
-		"AbilityManaCost"	"0"
-		"MaxLevel"	"1"
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile" "heroes/beastmaster/pets.lua"
-				"Function"   "PetCommand"
-				"Command"    "follow"
-			}
-	
-		}
-	
-	}
-	"ability_beastmaster_pet_grow1"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-		"MaxLevel"	"1"
-		"Modifiers"
-		{
-			"modifier_grow"
-			{
-				"Passive"	"1"
-				"IsHidden"	"1"
-				"OnCreated"
-				{
-					"DelayedAction"
-					{
-						"Delay"	"180"
-						"Action"
-						{
-							"RunScript"
-							{
-								"ScriptFile"	"custom_functions_ability.lua"
-								"Function"	"GrowPet"
-							}
-	
-						}
-	
-					}
-	
-				}
-	
-			}
-	
-		}
-	
-	}
-	"ability_beastmaster_pet_grow1fast"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-		"MaxLevel"	"1"
-		"Modifiers"
-		{
-			"modifier_grow"
-			{
-				"Passive"	"1"
-				"IsHidden"	"1"
-				"OnCreated"
-				{
-					"DelayedAction"
-					{
-						"Delay"	"130"
-						"Action"
-						{
-							"RunScript"
-							{
-								"ScriptFile" "heroes/beastmaster/pets.lua"
-								"Function"   "GrowPet"
-							}
-	
-						}
-	
-					}
-	
-				}
-	
-			}
-	
-		}
-	
-	}
-	"ability_beastmaster_pet_grow2"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-		"MaxLevel"	"1"
-		"Modifiers"
-		{
-			"modifier_grow"
-			{
-				"Passive"	"1"
-				"IsHidden"	"1"
-				"OnCreated"
-				{
-					"DelayedAction"
-					{
-						"Delay"	"300"
-						"Action"
-						{
-							"RunScript"
-							{
-								"ScriptFile" "heroes/beastmaster/pets.lua"
-								"Function"   "GrowPet"
-							}
-	
-						}
-	
-					}
-	
-				}
-	
-			}
-	
-		}
-	
-	}
-	"ability_beastmaster_pet_grow2fast"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-		"MaxLevel"	"1"
-		"Modifiers"
-		{
-			"modifier_grow"
-			{
-				"Passive"	"1"
-				"IsHidden"	"1"
-				"OnCreated"
-				{
-					"DelayedAction"
-					{
-						"Delay"	"220"
-						"Action"
-						{
-							"RunScript"
-							{
-								"ScriptFile" "heroes/beastmaster/pets.lua"
-								"Function"   "GrowPet"
-							}
-	
-						}
-	
-					}
-	
-				}
-	
-			}
-	
-		}
-	
-	}
-	"ability_beastmaster_pet_release"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-		"AbilityTextureName"	"ability_beastmaster_releasepet"
-		"AbilityCastPoint"	"0"
-		"AbilityCooldown"	"0"
-		"AbilityManaCost"	"0"
-		"MaxLevel"	"1"
-		"precache"
-		{
-			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_beastmaster.vsndevts"
-		}
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile" "heroes/beastmaster/pets.lua"
-				"Function"   "PetCommand"
-				"Command"    "release"
-			}
-			"FireSound"
-			{
-				"EffectName"	"Hero_Beastmaster.Call.Boar"
-				"Target"		"CASTER"
-			}
-			"FireSound"
-			{
-				"EffectName"	"Hero_Beastmaster.Call.Hawk"
-				"Target"		"CASTER"
-			}
-	
-		}
-	
-	}
-	"ability_beastmaster_pet_sleep"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-		"AbilityTextureName"	"ability_beastmaster_sleep"
-		"AbilityCastPoint"	"0"
-		"AbilityCooldown"	"0"
-		"AbilityManaCost"	"0"
-		"MaxLevel"	"1"
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile" "heroes/beastmaster/pets.lua"
-				"Function"   "PetCommand"
-				"Command"    "sleep"
-			}
-	
-		}
-	
-	}
-	"ability_beastmaster_pet_stay"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-		"AbilityTextureName"	"ability_beastmaster_stay"
-		"AbilityCastPoint"	"0"
-		"AbilityCooldown"	"0"
-		"AbilityManaCost"	"0"
-		"MaxLevel"	"1"
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile" "heroes/beastmaster/pets.lua"
-				"Function"   "PetCommand"
-				"Command"    "stay"
-			}
-	
-		}
-	
-	}
 	"ability_beastmaster_ram"
 	{
 		"BaseClass"	"ability_datadriven"
@@ -3105,7 +2885,7 @@
 						{
 							"RunScript"
 							{
-								"ScriptFile" "heroes/beastmaster/pets.lua"
+								"ScriptFile" "heroes/beastmaster/spirit_of_the_beast.lua"
 								"Function"   "AttractAnimal"
 							}
 	
@@ -3144,7 +2924,7 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"   "heroes/beastmaster/pets.lua"
+						"ScriptFile"   "heroes/beastmaster/spirit_of_the_beast.lua"
 						"Function"     "SetSpawnChance"
 						"target"       "TARGET"
 						"Remove"       "0"
@@ -3156,7 +2936,7 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"   "heroes/beastmaster/pets.lua"
+						"ScriptFile"   "heroes/beastmaster/spirit_of_the_beast.lua"
 						"Function"     "SetSpawnChance"
 						"target"       "TARGET"
 						"Remove"       "1"
@@ -3184,73 +2964,96 @@
 	}
 	"ability_beastmaster_tamepet"
 	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
-		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_CREEP"
-		"AbilityTextureName"	"ability_beastmaster_tamepet"
-		"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
-		"AbilityCastPoint"	"1.0"
-		"AbilityCooldown"	"10"
-		"AbilityCastRange"	"200"
-		"AbilityManaCost"	"0"
-		"MaxLevel"	"1"
-			"precache"
-		{
-			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_enchantress.vsndevts"
-		}
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile" "heroes/beastmaster/pets.lua"
-				"Function"   "TamePet"
-				"MaxPets"    "1"
-				"Growth"     "Normal"
-			}
-			"FireSound"
-			{
-				"EffectName"	"Hero_Enchantress.EnchantCreep"
-				"Target"		"TARGET"
-			}
+	    "BaseClass"                 "ability_lua"
+	    "ScriptFile"                "heroes/beastmaster/ability_beastmaster_tamepet.lua"
 	
-		}
+	    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+	    "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	    "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_BASIC"
+	    "AbilityTextureName"        "ability_beastmaster_tamepet"
+	    "AbilityCastAnimation"      "ACT_DOTA_CAST_ABILITY_2"
+	    "MaxLevel"                  "1"
+	    "AnimationPlaybackRate"     "0.6"
+	    
+	    "AbilityCastPoint"          "1.0"
+	    "AbilityCooldown"           "10"
+	    "AbilityCastRange"          "200"
+	    "AbilityManaCost"           "0"
+	    
+	    "precache"
+	    {
+	        "soundfile"            "soundevents/game_sounds_heroes/game_sounds_enchantress.vsndevts"
+	    }
 	
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"            "FIELD_INTEGER"
+	            "max_pets"            "1"
+	        }
+	        "02"
+	        {
+	            "var_type"            "FIELD_INTEGER"
+	            "leash_range"         "1200"
+	        }
+	        "03"
+	        {
+	            "var_type"            "FIELD_INTEGER"
+	            "grow_young"          "180"
+	        }
+	        "04"
+	        {
+	            "var_type"            "FIELD_INTEGER"
+	            "grow_adult"          "300"
+	        }
+	    }
 	}
 	"ability_beastmaster_tamepet2"
 	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
-		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_CREEP"
-		"AbilityTextureName"	"ability_beastmaster_tamepet"
-		"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
-		"AbilityCastPoint"	"1.0"
-		"AbilityCooldown"	"10"
-		"AbilityCastRange"	"200"
-		"AbilityManaCost"	"0"
-		"MaxLevel"	"1"
-				"precache"
-		{
-			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_enchantress.vsndevts"
-		}
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile" "heroes/beastmaster/pets.lua"
-				"Function"   "TamePet"
-				"MaxPets"    "2"
-				"Growth"     "Fast"
-			}
-					"FireSound"
-			{
-				"EffectName"	"Hero_Enchantress.EnchantCreep"
-				"Target"		"TARGET"
-			}
+	    "BaseClass"                 "ability_lua"
+	    "ScriptFile"                "heroes/beastmaster/ability_beastmaster_tamepet2.lua"
 	
-		}
+	    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+	    "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	    "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_BASIC"
+	    "AbilityTextureName"        "ability_beastmaster_tamepet"
+	    "AbilityCastAnimation"      "ACT_DOTA_ATTACK"
+	    "MaxLevel"                  "1"
+	    
+	    "AbilityCastPoint"          "1.0"
+	    "AbilityCooldown"           "10"
+	    "AbilityCastRange"          "200"
+	    "AbilityManaCost"           "0"
+	    
+	    "precache"
+	    {
+	        "soundfile"            "soundevents/game_sounds_heroes/game_sounds_enchantress.vsndevts"
+	    }
 	
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"            "FIELD_INTEGER"
+	            "max_pets"            "2"
+	        }
+	        "02"
+	        {
+	            "var_type"            "FIELD_INTEGER"
+	            "leash_range"         "1200"
+	        }
+	        "03"
+	        {
+	            "var_type"            "FIELD_INTEGER"
+	            "grow_young"          "130"
+	        }
+	        "04"
+	        {
+	            "var_type"            "FIELD_INTEGER"
+	            "grow_adult"          "220"
+	        }
+	    }
 	}
 	"ability_beastmaster_wolfform"
 	{
@@ -3363,44 +3166,163 @@
 		}
 	
 	}
+	// Orders all the pets to attack all the enemies around its owner
+	"ability_beastmaster_pet_attack"
+	{
+	    "BaseClass"             "ability_datadriven"
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE | DOTA_ABILITY_BEHAVIOR_TOGGLE"
+	    "AbilityTextureName"    "ability_beastmaster_pet_attack"
+	    "AbilityCastPoint"      "0"
+	    "AbilityCooldown"       "0"
+	    "AbilityManaCost"       "0"
+	    "MaxLevel"              "1"
+	
+	    "OnToggleOn"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile" "heroes/beastmaster/pets.lua"
+	            "Function"   "PetAttack"
+	        }
+	    }
+	
+	    "OnToggleOff"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile" "heroes/beastmaster/pets.lua"
+	            "Function"   "PetStop"
+	        }
+	    }
+	}
+	// Orders all the pets to follow their owner
+	"ability_beastmaster_pet_follow"
+	{
+		"BaseClass"             "ability_datadriven"
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE | DOTA_ABILITY_BEHAVIOR_TOGGLE"
+	    "AbilityTextureName"    "ability_beastmaster_pet_follow"
+	    "AbilityCastPoint"      "0"
+	    "AbilityCooldown"       "0"
+	    "AbilityManaCost"       "0"
+	    "MaxLevel"              "1"
+	
+	    "OnToggleOn"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile" "heroes/beastmaster/pets.lua"
+	            "Function"   "PetFollow"
+	        }
+	    }
+	
+	    "OnToggleOff"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile" "heroes/beastmaster/pets.lua"
+	            "Function"   "PetStop"
+	        }
+	    }
+	}
+	// Orders all pets to hold position
+	"ability_beastmaster_pet_stay"
+	{
+		"BaseClass"             "ability_datadriven"
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE | DOTA_ABILITY_BEHAVIOR_TOGGLE"
+	    "AbilityTextureName"    "ability_beastmaster_pet_stay"
+	    "AbilityCastPoint"      "0"
+	    "AbilityCooldown"       "0"
+	    "AbilityManaCost"       "0"
+	    "MaxLevel"              "1"
+	    
+	    "OnToggleOn"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile" "heroes/beastmaster/pets.lua"
+	            "Function"   "PetStay"
+	        }
+	    }
+	
+	    "OnToggleOff"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile" "heroes/beastmaster/pets.lua"
+	            "Function"   "PetStop"
+	        }
+	    }
+	}
+	// Frees the pet from the hero table
 	"ability_pet"
 	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"			"ability_datadriven"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"MaxLevel"			"1"
+		
 		"Modifiers"
 		{
-			"pet_alive"
+			"modifier_pet"
 			{
 				"Passive"	"1"
 				"IsHidden"	"1"
-				"OnDeath"
+				"OnDestroy"
 				{
 					"RunScript"
 					{
 						"ScriptFile"   "heroes/beastmaster/pets.lua"
-						"Function"     "PetDeath"
+						"Function"     "PetFree"
 					}
-	
 				}
 	
+				"ThinkInterval"  "3.0"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"   "heroes/beastmaster/pets.lua"
+						"Function"     "PetThink"
+					}
+				}
 			}
-	
 		}
-	
 	}
+	// Release this pet
+	"ability_pet_release"
+	{
+		"BaseClass"             "ability_datadriven"
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	    "AbilityTextureName"    "ability_beastmaster_releasepet"
+	    "AbilityCastPoint"      "0"
+	    "AbilityCooldown"       "0"
+	    "AbilityManaCost"       "0"
+	    "MaxLevel"              "1"
+	
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile" "heroes/beastmaster/pets.lua"
+				"Function"   "PetRelease"
+			}
+		}
+	}
+	// Orders this pet to sleep
 	"ability_pet_sleep"
 	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-		"AbilityCastPoint"	"0"
-		"AbilityCooldown"	"0"
-		"AbilityManaCost"	"0"
-		"Precache"
+		"BaseClass"             "ability_datadriven"
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	    "AbilityTextureName"    "ability_beastmaster_sleep"
+	    "AbilityCastPoint"      "0"
+	    "AbilityCooldown"       "0"
+	    "AbilityManaCost"       "0"
+	    "MaxLevel"              "1"
+	
+		"precache"
 		{
 			"particle_folder"	"particles/newplayer_fx"
 		}
 	
-		"MaxLevel"	"1"
 		"OnSpellStart"
 		{
 			"ApplyModifier"
@@ -3460,9 +3382,7 @@
 						"ScriptFile"   "heroes/beastmaster/pets.lua"
 						"Function"     "HealPet"
 					}
-	
 				}
-	
 			}
 	
 			"modifier_invuln"
@@ -3471,9 +3391,7 @@
 				{
 					"MODIFIER_STATE_INVULNERABLE"	"MODIFIER_STATE_VALUE_ENABLED"
 				}
-	
 			}
-	
 		}
 	
 		"AbilitySpecial"
@@ -3489,9 +3407,7 @@
 				"var_type"	"FIELD_FLOAT"
 				"invuln_duration"	"1.0"
 			}
-	
 		}
-	
 	}
 	"ability_gatherer_advanced_radarmanipulations"
 	{
@@ -3734,7 +3650,7 @@
 	        {
 	            "ScriptFile" "heroes/gatherer/ping.lua"
 	            "Function"   "PingItemInRange"
-	            "Items"      "item_mushroom,item_stone"
+	            "Items"      "item_crystal_mana,item_stone"
 	        }
 	
 	        "FireSound"
@@ -4455,91 +4371,128 @@
 	}
 	"ability_hunter_ensnare"
 	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityTextureName"	"ability_hunter_ensnare"
-		"AbilityCastPoint"	"0.0 0.0 0.0 0.0 0.0"
-		"AbilityCooldown"	"10"
-		"AbilityCastRange"	"700"
-		"AbilityManaCost"	"0"
-		"MaxLevel"	"1"
+	    "BaseClass"                 "ability_datadriven"
+	    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	    "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	    "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	    "AbilityTextureName"        "ability_hunter_ensnare"
+	    "MaxLevel"                  "1"
 	
-		"precache"
-		{
-			"particle_folder"	"particles/units/heroes/hero_meepo"
-			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_meepo.vsndevts"
-		}
+	    "AbilityCooldown"           "10"
+	    "AbilityCastRange"          "700"
+	    "AbilityManaCost"           "0"
 	
-		"OnSpellStart"
-		{
-			"TrackingProjectile"
-			{
-				"Target"	"TARGET"
-				"EffectName"	"particles/units/heroes/hero_meepo/meepo_earthbind_projectile_fx.vpcf"
-				"Dodgeable"	"false"
-				"ProvidesVision"	"false"
-				"MoveSpeed"	"750"
-			}
-			"FireSound"
-			{
-				"EffectName"	"Hero_Meepo.Earthbind.Cast"
-				"Target"		"CASTER"
-			}
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"      "FIELD_FLOAT"
+	            "hero_duration" "3.5"
+	        }
+	        "02"
+	        {
+	            "var_type"      "FIELD_FLOAT"
+	            "creep_duration" "8.0"
+	        }
+	    }
 	
-		}
+	    "precache"
+	    {
+	        "particle_folder"    "particles/units/heroes/hero_meepo/meepo_earthbind_projectile_fx.vpcf"
+	        "soundfile"          "soundevents/game_sounds_heroes/game_sounds_meepo.vsndevts"
+	    }
 	
-		"OnProjectileHitUnit"
-		{
-			"RunScript"
-			{
-				"ScriptFile" "heroes/hunter/ensnare.lua"
-				"Function"   "EnsnareUnit"
-				"Target"     "TARGET"
-			}
-			"FireSound"
-			{
-				"EffectName"	"Hero_Meepo.Earthbind.Target"
-				"Target"		"TARGET"
-			}
+	    "OnSpellStart"
+	    {
+	        "FireEffect"
+	        {
+	            "EffectName"        "particles/units/heroes/hero_meepo/meepo_earthbind_flash.vpcf"
+	            "EffectAttachType"  "follow_origin"
+	            "Target"            "CASTER"
+	        }
 	
-		}
+	        "TrackingProjectile"
+	        {
+	            "Target"            "TARGET"
+	            "EffectName"        "particles/units/heroes/hero_meepo/meepo_earthbind_projectile_fx.vpcf"
+	            "Dodgeable"         "false"
+	            "ProvidesVision"    "false"
+	            "MoveSpeed"         "750"
+	        }
 	
-		"Modifiers"
-		{
-			"modifier_ensnare"
-			{
-				"IsHidden"	"1"
-				"Duration"	"%duration"
-				"IsPurgable"	"1"
-				"States"
-				{
-					"MODIFIER_STATE_ROOTED"	"MODIFIER_STATE_VALUE_ENABLED"
-				}
+	        "FireSound"
+	        {
+	            "EffectName"    "Hero_Meepo.Earthbind.Cast"
+	            "Target"        "CASTER"
+	        }
+	    }
 	
-				"OnCreated"
-				{
-					"AttachEffect"
-					{
-						"Target"	"TARGET"
-						"EffectName"	"particles/units/heroes/hero_meepo/meepo_earthbind.vpcf"
-						"EffectAttachType"	"follow_origin"
-					}
+	    "OnProjectileHitUnit"
+	    {
+	        "ApplyModifier"
+	        {
+	            "ModifierName"  "modifier_ensnare"
+	            "Target"
+	            {
+	                "Center"    "TARGET"
+	                "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	                "Types"     "DOTA_UNIT_TARGET_HERO"
+	            }
+	            "Duration"      "%hero_duration"
+	        }
+	        
+	        "ApplyModifier"
+	        {
+	            "ModifierName"  "modifier_ensnare"
+	            "Target"
+	            {
+	                "Center"    "TARGET"
+	                "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	                "Types"     "DOTA_UNIT_TARGET_BASIC"
+	            }
+	            "Duration"      "%creep_duration"
+	        }
+	        "FireSound"
+	        {
+	            "EffectName"    "Hero_Meepo.Earthbind.Target"
+	            "Target"        "TARGET"
+	        }
+	    }
 	
-				}
+	    "Modifiers"
+	    {
+	        "modifier_ensnare"
+	        {
+	            "IsDebuff"          "1"
+	            "IsPurgable"        "1"
+	    
+	            "EffectName"        "particles/units/heroes/hero_meepo/meepo_earthbind.vpcf"
+	            "EffectAttachType"  "follow_origin"
+	    
+	            "States"
+	            {
+	                "MODIFIER_STATE_ROOTED"    "MODIFIER_STATE_VALUE_ENABLED"
+	            }
 	
-			}
-	
-		}
-	"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_FLOAT"
-				"duration"	"3.5"
-			}
-		}
+	            "OnCreated"
+	            {
+	                "RunScript"
+	                {
+	                    "ScriptFile"    "mechanics/ensnare.lua"
+	                    "Function"      "LoseMovement"
+	                }
+	            }
+	            
+	            "OnDestroy"
+	            {
+	                "RunScript"
+	                {
+	                    "ScriptFile"    "mechanics/ensnare.lua"
+	                    "Function"      "RegainMovement"
+	                }
+	            }
+	        }
+	    }
 	}
 	"ability_hunter_giantswing"
 	{
@@ -10695,28 +10648,23 @@
 	}
 	"ability_scout_enemyradar"
 	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityTextureName"	"ability_scout_enemyradar"
-		"AbilityCastPoint"	"0.2"
-		"AbilityCooldown"	"20"
-		"AbilityManaCost"	"0"
-		"MaxLevel"	"1"
-		"precache"
-		{
-			"soundfile"	"sounds/ui/ping.vsnd"		
-		}
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile" "heroes/scout/radar.lua"
-				"Function"   "EnemyRadar"
-				"Range"      "2500"
-			}
+	    "BaseClass"             "ability_datadriven"
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	    "AbilityTextureName"    "ability_scout_enemyradar"
+	    "AbilityCastPoint"      "0.2"
+	    "AbilityCooldown"       "20"
+	    "AbilityManaCost"       "0"
+	    "AbilityCastRange"      "2500"
+	    "MaxLevel"              "1"
 	
-		}
-	
+	    "OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile" "heroes/scout/radar.lua"
+	            "Function"   "EnemyRadar"
+	        }
+	    }
 	}
 	"ability_scout_greaterreveal"
 	{
@@ -10798,33 +10746,35 @@
 	}
 	"ability_scout_placeward"
 	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
-		"AbilityTextureName"	"ability_scout_placeward"
-	        "AbilityCastRange"	"600"
-		"AbilityCastPoint"	"0.4"
-		"AbilityCooldown"	"35.0"
-		"AbilityManaCost"	"20"
-		"MaxLevel"	"1"
-		"precache"
-		{
-			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"		
-		}
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile" "heroes/scout/ward.lua"
-				"Function"   "PlaceWard"
-	            "Target"     "POINT"
-			}
-			"FireSound"
-			{
-				"EffectName"		"Hero_Techies.StasisTrap.Plant"
-				"Target"			"CASTER"
-			}
-		}
+	    "BaseClass"             "ability_datadriven"
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT"
+	    "AbilityTextureName"    "ability_scout_placeward"
+	    "MaxLevel"              "1"
+	    
+	    "AbilityCastRange"      "600"
+	    "AbilityCastPoint"      "0.4"
+	    "AbilityCooldown"       "35.0"
+	    "AbilityManaCost"       "20"
+	    
+	    "precache"
+	    {
+	        "soundfile"            "soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"        
+	    }
 	
+	    "OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile" "heroes/scout/ward.lua"
+	            "Function"   "PlaceWard"
+	            "Target"     "POINT"
+	        }
+	        "FireSound"
+	        {
+	            "EffectName"        "Hero_Techies.StasisTrap.Plant"
+	            "Target"            "CASTER"
+	        }
+	    }
 	}
 	"ability_scout_reveal"
 	{
@@ -11198,111 +11148,110 @@
 	
 		}
 	
-        }
-    "ability_thief_blur"
-    {
-        "BaseClass"	"ability_datadriven"
-        "AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-        "AbilityTextureName"	"ability_thief_blur"
-        "AbilityCastPoint"	"0.1"
-        "AbilityCooldown"	"60.0"
-        "AbilityManaCost"	"10"
-        "MaxLevel"	"1"
-        "precache"
-        {
-            "soundfile"					"sounds/items/rod_of_atos.vsnd"
-            "particle"                  "particles/units/heroes/hero_dark_seer/dark_seer_surge.vpcf"
-        }
-
-        "OnSpellStart"
-        {
-            "ApplyModifier"
-            {
-                "Target"	"CASTER"
-                "ModifierName"	"modifier_blur"
-                "Duration"	"%duration"
-            }
-            "FireSound"
-            {
-                "EffectName"		"DOTA_Item.RodOfAtos.Activate"
-                "Target"			"CASTER"
-            }
-
-        }
-
-        "Modifiers"
-        {
-            "modifier_blur"
-            {
-                "OnUnitMoved"
-                {
-                    "ApplyModifier"
-                    {
-                        "Target"	"CASTER"
-                        "ModifierName"	"modifier_blur_illusion"
-                        "Duration"	"%illusion_interval"
-                    }
-
-                }
-
-                "Properties"
-                {
-                    "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"200"
-                }
-
-            }
-
-            "modifier_blur_illusion"
-            {
-                "IsHidden"	"1"
-                "ThinkInterval"	"%illusion_interval"
-                "EffectName"    "particles/units/heroes/hero_dark_seer/dark_seer_surge.vpcf"
-                "OnIntervalThink"
-                {
-                    "SpawnUnit"
-                    {
-                        "Target"	"CASTER"
-                        "UnitName"	"blur_illusion"
-                        "UnitCount"	"1"
-                        "UnitLimit"	"64"
-                        "SpawnRadius"	"0"
-                        "Duration"	"1.5"
-                    }
-
-                }
-
-            }
-
-        }
-
-        "AbilitySpecial"
-        {
-            "01"
-            {
-                "var_type"	"FIELD_FLOAT"
-                "duration"	"4.5"
-            }
-
-            "02"
-            {
-                "var_type"	"FIELD_FLOAT"
-                "illusion_interval"	"0.75"
-            }
-            "03"
-            {
-                "var_type"	"FIELD_FLOAT"
-                "miss_chance"	"20"
-            }        
-            "04"
-            {
-                "var_type"	"FIELD_FLOAT"
-                "miss_duration"	"20"
-            }
-
-        }
-
-    }
-
+	}
+	"ability_thief_blur"
+	    {
+	        "BaseClass"	"ability_datadriven"
+	        "AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	        "AbilityTextureName"	"ability_thief_blur"
+	        "AbilityCastPoint"	"0.1"
+	        "AbilityCooldown"	"60.0"
+	        "AbilityManaCost"	"10"
+	        "MaxLevel"	"1"
+	        "precache"
+	        {
+	            "soundfile"					"sounds/items/rod_of_atos.vsnd"
+	            "particle"                  "particles/units/heroes/hero_dark_seer/dark_seer_surge.vpcf"
+	        }
+	
+	        "OnSpellStart"
+	        {
+	            "ApplyModifier"
+	            {
+	                "Target"	"CASTER"
+	                "ModifierName"	"modifier_blur"
+	                "Duration"	"%duration"
+	            }
+	            "FireSound"
+	            {
+	                "EffectName"		"DOTA_Item.RodOfAtos.Activate"
+	                "Target"			"CASTER"
+	            }
+	
+	        }
+	
+	        "Modifiers"
+	        {
+	            "modifier_blur"
+	            {
+	                "OnUnitMoved"
+	                {
+	                    "ApplyModifier"
+	                    {
+	                        "Target"	"CASTER"
+	                        "ModifierName"	"modifier_blur_illusion"
+	                        "Duration"	"%illusion_interval"
+	                    }
+	
+	                }
+	
+	                "Properties"
+	                {
+	                    "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"200"
+	                }
+	
+	            }
+	
+	            "modifier_blur_illusion"
+	            {
+	                "IsHidden"	"1"
+	                "ThinkInterval"	"%illusion_interval"
+	                "EffectName"    "particles/units/heroes/hero_dark_seer/dark_seer_surge.vpcf"
+	                "OnIntervalThink"
+	                {
+	                    "SpawnUnit"
+	                    {
+	                        "Target"	"CASTER"
+	                        "UnitName"	"blur_illusion"
+	                        "UnitCount"	"1"
+	                        "UnitLimit"	"64"
+	                        "SpawnRadius"	"0"
+	                        "Duration"	"1.5"
+	                    }
+	
+	                }
+	
+	            }
+	
+	        }
+	
+	        "AbilitySpecial"
+	        {
+	            "01"
+	            {
+	                "var_type"	"FIELD_FLOAT"
+	                "duration"	"4.5"
+	            }
+	
+	            "02"
+	            {
+	                "var_type"	"FIELD_FLOAT"
+	                "illusion_interval"	"0.75"
+	            }
+	            "03"
+	            {
+	                "var_type"	"FIELD_FLOAT"
+	                "miss_chance"	"20"
+	            }        
+	            "04"
+	            {
+	                "var_type"	"FIELD_FLOAT"
+	                "miss_duration"	"20"
+	            }
+	
+	        }
+	
+	    }
 	"ability_thief_blur_collision"
 	{
 		"BaseClass"	"ability_datadriven"
@@ -11380,105 +11329,93 @@
 		}
 	
 	}
+	// Makes user invisible while stationary when cast. Causes 3x stat degradation
 	"ability_thief_camouflage"
 	{
-		"BaseClass"				"ability_datadriven"
-		"AbilityTextureName"	"ability_thief_camouflage"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	    "BaseClass"                 "ability_datadriven"
+	    "AbilityTextureName"        "ability_thief_camouflage"
+	    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	
-		"AbilityCooldown"				"0"
-		"AbilityManaCost"				"20"
+	    "AbilityCooldown"           "0"
+	    "AbilityCastPoint"          "0.1"
+	    "AbilityManaCost"           "20"
 	
-		"precache"
-		{
-			"soundfile"				"sounds/weapons/hero/treant/natures_guise.vsnd"
-		}
+	    "precache"
+	    {
+	        "soundfile"                "sounds/weapons/hero/treant/natures_guise.vsnd"
+	    }
 	
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"heat_increase"		"8"
-			}
-			"02"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"heat_interval"		"35"
-			}
-			"03"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"stat_multiplier"	"3"
-			}
-			"04"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"duration"			"-1"
-			}
-		}
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"            "FIELD_INTEGER"
+	            "heat_increase"        "8"
+	        }
+	    }
 	
+	    "OnAbilityPhaseStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"    "heroes/thief/camouflage.lua"
+	            "Function"      "CheckTrees"
+	        }
+	    }
 	
-		"OnSpellStart"
-		{
-			"FireSound"
-			{
-				"EffectName"	"Hero_Treant.NaturesGuise.On"
-				"Target"		"CASTER"
-			}
-			"ApplyModifier"
-			{
-				"ModifierName"	"modifier_thief_camouflage"
-				"Target" 		"CASTER"
-				"Duration"		"%duration"
-			}
-		}
-		
-		"OnUnitMoved"
-		{
-			"RemoveModifier"
-			{
-				"ModifierName"	"modifier_thief_camouflage"
-				"Target" 		"CASTER"
-			}
-		}
+	    "OnSpellStart"
+	    {
+	        "FireSound"
+	        {
+	            "EffectName"    "Hero_Treant.NaturesGuise.On"
+	            "Target"        "CASTER"
+	        }
 	
-		"Modifiers"
-		{
-			"modifier_thief_camouflage"
-			{
-				"IsHidden"	"0"
-				"IsBuff"	"1"
+	        "ApplyModifier"
+	        {
+	            "ModifierName"     "modifier_thief_camouflage"
+	            "Target"           "CASTER"
+	        }
+	    }
 	
-				"EffectName"	"particles/status_fx/status_effect_medusa_stone_gaze.vpcf"
+	    "Modifiers"
+	    {
+	        "modifier_thief_camouflage"
+	        {
+	            "IsHidden"    "0"
+	            "IsBuff"    "1"
 	
-				"ThinkInterval"  "3.0"
-				"OnIntervalThink"
-				{
-					"RunScript"
-					{
-						"ScriptFile"   "mechanics/heat.lua"
-						"Function"     "AddHeat"
-						"Heat"         "-2" //TODO: AbilitySpecials
-					}
-					"SpendMana"
-					{
-						"Mana"		"2"
-					}
-					"Damage"
-					{
-						"Target"		"TARGET"
-						"Type"			"DAMAGE_TYPE_MAGICAL"
-						"Damage"		"2"
-					}
-				}
+	            "EffectName"    "particles/status_fx/status_effect_medusa_stone_gaze.vpcf"
 	
-				"States"
-				{
-					"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_ENABLED"
-				}
-			}
-		}
+	            "ThinkInterval"  "3.0"
+	            "OnIntervalThink"
+	            {
+	                "RunScript"
+	                {
+	                    "ScriptFile"   "mechanics/heat.lua"
+	                    "Function"     "AddHeat"
+	                    "Heat"         "-2" //TODO: AbilitySpecials
+	                }
+	
+	                "SpendMana"
+	                {
+	                    "Mana"        "2"
+	                }
+	
+	                "Damage"
+	                {
+	                    "Target"       "TARGET"
+	                    "Type"        "DAMAGE_TYPE_MAGICAL"
+	                    "Damage"       "2"
+	                }
+	            }
+	
+	            "States"
+	            {
+	                "MODIFIER_STATE_INVISIBLE"    "MODIFIER_STATE_VALUE_ENABLED"
+	            }
+	        }
+	    }
 	}
 	"ability_thief_cloak"
 	{
@@ -11703,7 +11640,14 @@
 			}
 	
 		}
-	
+			"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"range"		"600"
+			}
+        }
 	}
 	"ability_thief_netherfade"
 	{
@@ -12916,7 +12860,7 @@
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT_TARGET"
 		"AbilityTextureName"	"ability_building_quickdrop"
-	    "AbilityCastRange"          "%cast_range"
+	    "AbilityCastRange"          "500"
 		"MaxLevel"	"1"
 		"OnSpellStart"
 		{

@@ -478,8 +478,8 @@ function ITT:AdjustSkills( hero )
         print("No skills to change for "..class.." at level "..level)
     end
 
-    --AdjustAbilityLayout(hero)
-    --PrintAbilities(hero)
+    AdjustAbilityLayout(hero)
+    PrintAbilities(hero)
 end
 
 
@@ -512,7 +512,7 @@ function ITT:OnEntityKilled(keys)
     print(unitName .. " has been killed")
 
     -- Corpses
-    if string.find(unitName, "creep") then
+    if string.find(unitName, "creep") and not killedUnit.no_corpse then
         corpse = CreateUnitByName("npc_creep_corpse", killedUnit:GetAbsOrigin(), false, nil, nil, 0)
         corpse.killer = killer
 

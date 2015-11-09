@@ -1,0 +1,34 @@
+// Frees the pet from the hero table
+"ability_pet"
+{
+	"BaseClass"			"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	"MaxLevel"			"1"
+	
+	"Modifiers"
+	{
+		"modifier_pet"
+		{
+			"Passive"	"1"
+			"IsHidden"	"1"
+			"OnDestroy"
+			{
+				"RunScript"
+				{
+					"ScriptFile"   "heroes/beastmaster/pets.lua"
+					"Function"     "PetFree"
+				}
+			}
+
+			"ThinkInterval"  "3.0"
+			"OnIntervalThink"
+			{
+				"RunScript"
+				{
+					"ScriptFile"   "heroes/beastmaster/pets.lua"
+					"Function"     "PetThink"
+				}
+			}
+		}
+	}
+}

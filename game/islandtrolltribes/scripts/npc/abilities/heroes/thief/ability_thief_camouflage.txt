@@ -1,100 +1,88 @@
+// Makes user invisible while stationary when cast. Causes 3x stat degradation
 "ability_thief_camouflage"
 {
-	"BaseClass"				"ability_datadriven"
-	"AbilityTextureName"	"ability_thief_camouflage"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "BaseClass"                 "ability_datadriven"
+    "AbilityTextureName"        "ability_thief_camouflage"
+    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 
-	"AbilityCooldown"				"0"
-	"AbilityManaCost"				"20"
+    "AbilityCooldown"           "0"
+    "AbilityCastPoint"          "0.1"
+    "AbilityManaCost"           "20"
 
-	"precache"
-	{
-		"soundfile"				"sounds/weapons/hero/treant/natures_guise.vsnd"
-	}
+    "precache"
+    {
+        "soundfile"                "sounds/weapons/hero/treant/natures_guise.vsnd"
+    }
 
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"			"FIELD_INTEGER"
-			"heat_increase"		"8"
-		}
-		"02"
-		{
-			"var_type"			"FIELD_INTEGER"
-			"heat_interval"		"35"
-		}
-		"03"
-		{
-			"var_type"			"FIELD_INTEGER"
-			"stat_multiplier"	"3"
-		}
-		"04"
-		{
-			"var_type"			"FIELD_INTEGER"
-			"duration"			"-1"
-		}
-	}
+    "AbilitySpecial"
+    {
+        "01"
+        {
+            "var_type"            "FIELD_INTEGER"
+            "heat_increase"        "8"
+        }
+    }
 
+    "OnAbilityPhaseStart"
+    {
+        "RunScript"
+        {
+            "ScriptFile"    "heroes/thief/camouflage.lua"
+            "Function"      "CheckTrees"
+        }
+    }
 
-	"OnSpellStart"
-	{
-		"FireSound"
-		{
-			"EffectName"	"Hero_Treant.NaturesGuise.On"
-			"Target"		"CASTER"
-		}
-		"ApplyModifier"
-		{
-			"ModifierName"	"modifier_thief_camouflage"
-			"Target" 		"CASTER"
-			"Duration"		"%duration"
-		}
-	}
-	
-	"OnUnitMoved"
-	{
-		"RemoveModifier"
-		{
-			"ModifierName"	"modifier_thief_camouflage"
-			"Target" 		"CASTER"
-		}
-	}
+    "OnSpellStart"
+    {
+        "FireSound"
+        {
+            "EffectName"    "Hero_Treant.NaturesGuise.On"
+            "Target"        "CASTER"
+        }
 
-	"Modifiers"
-	{
-		"modifier_thief_camouflage"
-		{
-			"IsHidden"	"0"
-			"IsBuff"	"1"
+        "ApplyModifier"
+        {
+            "ModifierName"     "modifier_thief_camouflage"
+            "Target"           "CASTER"
+        }
+    }
 
-			"EffectName"	"particles/status_fx/status_effect_medusa_stone_gaze.vpcf"
+    "Modifiers"
+    {
+        "modifier_thief_camouflage"
+        {
+            "IsHidden"    "0"
+            "IsBuff"    "1"
 
-			"ThinkInterval"  "3.0"
-			"OnIntervalThink"
-			{
-				"RunScript"
-				{
-					"ScriptFile"   "mechanics/heat.lua"
-					"Function"     "AddHeat"
-					"Heat"         "-2" //TODO: AbilitySpecials
-				}
-				"SpendMana"
-				{
-					"Mana"		"2"
-				}
-				"Damage"
-				{
-					"Target"		"TARGET"
-					"Type"			"DAMAGE_TYPE_MAGICAL"
-					"Damage"		"2"
-				}
-			}
+            "EffectName"    "particles/status_fx/status_effect_medusa_stone_gaze.vpcf"
 
-			"States"
-			{
-				"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_ENABLED"
-			}
-		}
-	}
+            "ThinkInterval"  "3.0"
+            "OnIntervalThink"
+            {
+                "RunScript"
+                {
+                    "ScriptFile"   "mechanics/heat.lua"
+                    "Function"     "AddHeat"
+                    "Heat"         "-2" //TODO: AbilitySpecials
+                }
+
+                "SpendMana"
+                {
+                    "Mana"        "2"
+                }
+
+                "Damage"
+                {
+                    "Target"       "TARGET"
+                    "Type"        "DAMAGE_TYPE_MAGICAL"
+                    "Damage"       "2"
+                }
+            }
+
+            "States"
+            {
+                "MODIFIER_STATE_INVISIBLE"    "MODIFIER_STATE_VALUE_ENABLED"
+            }
+        }
+    }
 }

@@ -46,7 +46,7 @@
 					{
 						"RunScript"
 						{
-							"ScriptFile" "heroes/beastmaster/pets.lua"
+							"ScriptFile" "heroes/beastmaster/spirit_of_the_beast.lua"
 							"Function"   "AttractAnimal"
 						}
 
@@ -85,7 +85,7 @@
 			{
 				"RunScript"
 				{
-					"ScriptFile"   "heroes/beastmaster/pets.lua"
+					"ScriptFile"   "heroes/beastmaster/spirit_of_the_beast.lua"
 					"Function"     "SetSpawnChance"
 					"target"       "TARGET"
 					"Remove"       "0"
@@ -97,7 +97,7 @@
 			{
 				"RunScript"
 				{
-					"ScriptFile"   "heroes/beastmaster/pets.lua"
+					"ScriptFile"   "heroes/beastmaster/spirit_of_the_beast.lua"
 					"Function"     "SetSpawnChance"
 					"target"       "TARGET"
 					"Remove"       "1"

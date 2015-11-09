@@ -1,16 +1,19 @@
+// Orders this pet to sleep
 "ability_pet_sleep"
 {
-	"BaseClass"	"ability_datadriven"
-	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-	"AbilityCastPoint"	"0"
-	"AbilityCooldown"	"0"
-	"AbilityManaCost"	"0"
-	"Precache"
+	"BaseClass"             "ability_datadriven"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "AbilityTextureName"    "ability_beastmaster_sleep"
+    "AbilityCastPoint"      "0"
+    "AbilityCooldown"       "0"
+    "AbilityManaCost"       "0"
+    "MaxLevel"              "1"
+
+	"precache"
 	{
 		"particle_folder"	"particles/newplayer_fx"
 	}
 
-	"MaxLevel"	"1"
 	"OnSpellStart"
 	{
 		"ApplyModifier"
@@ -70,9 +73,7 @@
 					"ScriptFile"   "heroes/beastmaster/pets.lua"
 					"Function"     "HealPet"
 				}
-
 			}
-
 		}
 
 		"modifier_invuln"
@@ -81,9 +82,7 @@
 			{
 				"MODIFIER_STATE_INVULNERABLE"	"MODIFIER_STATE_VALUE_ENABLED"
 			}
-
 		}
-
 	}
 
 	"AbilitySpecial"
@@ -99,7 +98,5 @@
 			"var_type"	"FIELD_FLOAT"
 			"invuln_duration"	"1.0"
 		}
-
 	}
-
 }

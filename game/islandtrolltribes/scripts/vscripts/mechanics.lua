@@ -52,6 +52,11 @@ end
 
 function TeachAbility( unit, ability_name, level )
     if not level then level = 1 end
+    if unit:HasAbility(ability_name) then
+        unit:FindAbilityByName(ability_name):SetLevel(tonumber(level))
+        return
+    end
+
     if GameRules.AbilityKV[ability_name] then
         unit:AddAbility(ability_name)
         local ability = unit:FindAbilityByName(ability_name)

@@ -132,7 +132,7 @@
 		}
 	
 		"Ability1"	"ability_quick_build_armory"
-        "Ability2"	"ability_quick_drop"
+		"Ability2"	"ability_quick_drop"
 		"Ability10"	"ability_building"
 		
 		"ArmorPhysical"	"5"
@@ -172,7 +172,7 @@
 		}
 	
 		"Ability1"	"ability_duel"
-        "Ability2"	"ability_quick_drop"
+		"Ability2"	"ability_quick_drop"
 		"Ability10"	"ability_building"
 		
 		"ArmorPhysical"	"0"
@@ -238,6 +238,7 @@
 		"SoundSet"	"Creep_Good_Melee"
 		"MinimapIconSize"	"250"
 		"HealthBarOffset"	"400"
+		"HasInventory"	"1"
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
 		"ModelScale"	"0.5"
@@ -492,7 +493,7 @@
 		}
 	
 		"Ability1"	"ability_quick_build_wd_hut"
-        "Ability2"	"ability_quick_drop"
+		"Ability2"	"ability_quick_drop"
 		"Ability10"	"ability_building"
 		
 		"ArmorPhysical"	"5"
@@ -533,7 +534,7 @@
 		}
 	
 		"Ability1"	"ability_mix"
-        "Ability2"	"ability_quick_drop"
+		"Ability2"	"ability_quick_drop"
 		"Ability10"	"ability_building"
 		
 		"ArmorPhysical"	"2"
@@ -694,7 +695,6 @@
 			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
 		}
 	
-        "Ability1"	"ability_quick_drop"
 		"Ability10"	"ability_building"
 	
 		"ArmorPhysical"	"5"
@@ -737,7 +737,7 @@
 		"Ability1"	"ability_make_gloves"
 		"Ability2"	"ability_make_boots"
 		"Ability3"	"ability_make_coat"
-        "Ability4"	"ability_quick_drop"
+		"Ability4"	"ability_quick_drop"
 		"Ability10"	"ability_building"
 		
 		"ArmorPhysical"	"5"
@@ -858,7 +858,7 @@
 		}
 	
 		"Ability1"	"ability_quick_build_workshop"
-        "Ability2"	"ability_quick_drop"
+		"Ability2"	"ability_quick_drop"
 		"Ability10"	"ability_building"
 	
 		"ArmorPhysical"	"2"
@@ -1336,23 +1336,10 @@
 		"ConsideredHero"	"0"
 		"ModelScale"	"0.91"
 		"Model"	"models/items/courier/d2l_steambear/d2l_steambear.vmdl"
-		"Level"	"0"
-		"Ability1"	"ability_wander"
-		"Ability2"	""
-		"Ability3"	""
-		"Ability4"	""
-		"Ability5"	""
-		"Ability6"	""
-		"Ability7"	""
-		"Ability8"	""
-		"Ability9"	""
-		"Ability10"	""
-		"Ability11"	"ability_beastmaster_pet_grow1"
-		"Ability12"	""
-		"Ability13"	""
-		"Ability14"	""
-		"Ability15"	""
-		"Ability16"	""
+		"Level"	"1"
+	
+		"Ability1"	"ability_baby_animal"
+	
 		"ArmorPhysical"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"	"0"
@@ -1651,22 +1638,9 @@
 		"ModelScale"	"0.91"
 		"Model"	"models/items/keeper_of_the_light/northlight_spirit_stag/northlight_spirit_stag.vmdl"
 		"Level"	"7"
-		"Ability1"	"ability_wander"
-		"Ability2"	"ability_pet_sleep"
-		"Ability3"	""
-		"Ability4"	""
-		"Ability5"	""
-		"Ability6"	""
-		"Ability7"	""
-		"Ability8"	""
-		"Ability9"	""
-		"Ability10"	""
-		"Ability11"	"ability_beastmaster_pet_grow2"
-		"Ability12"	""
-		"Ability13"	""
-		"Ability14"	""
-		"Ability15"	""
-		"Ability16"	""
+	
+		"Ability1"	""
+	
 		"ArmorPhysical"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_MELEE_ATTACK"
 		"AttackDamageMin"	"9"
@@ -1756,23 +1730,10 @@
 		"ConsideredHero"	"0"
 		"ModelScale"	"0.80"
 		"Model"	"models/items/courier/throe/throe.vmdl"
-		"Level"	"0"
-		"Ability1"	"ability_wander"
-		"Ability2"	""
-		"Ability3"	""
-		"Ability4"	""
-		"Ability5"	""
-		"Ability6"	""
-		"Ability7"	""
-		"Ability8"	""
-		"Ability9"	""
-		"Ability10"	""
-		"Ability11"	"ability_beastmaster_pet_grow1"
-		"Ability12"	""
-		"Ability13"	""
-		"Ability14"	""
-		"Ability15"	""
-		"Ability16"	""
+		"Level"	"1"
+	
+		"Ability1"	"ability_baby_animal"
+	
 		"ArmorPhysical"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"	"0"
@@ -2435,23 +2396,10 @@
 		"ConsideredHero"	"0"
 		"ModelScale"	"0.75"
 		"Model"	"models/items/lycan/wolves/alpha_summon_01/alpha_summon_01.vmdl"
-		"Level"	"0"
-		"Ability1"	"ability_wander"
-		"Ability2"	""
-		"Ability3"	""
-		"Ability4"	""
-		"Ability5"	""
-		"Ability6"	""
-		"Ability7"	""
-		"Ability8"	""
-		"Ability9"	""
-		"Ability10"	""
-		"Ability11"	"ability_beastmaster_pet_grow1"
-		"Ability12"	""
-		"Ability13"	""
-		"Ability14"	""
-		"Ability15"	""
-		"Ability16"	""
+		"Level"	"1"
+		
+		"Ability1"	"ability_baby_animal"
+	
 		"ArmorPhysical"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"	"0"
@@ -2679,12 +2627,12 @@
 		"ModelScale"	"1"
 		"Model"	"models/creeps/neutral_creeps/n_creep_ghost_b/n_creep_ghost_frost.vmdl"
 		"Ability1"	"ability_mage_darkgate"
-		"Ability2"	"ability_mage_dreameater"
-		"Ability3"	"ability_mage_depressionorb"
-		"Ability4"	"ability_mage_jealousy"
-		"Ability5"	"ability_mage_stormearthfire"
-		"Ability6"	"ability_mage_stupefyingfield"
-		"AbilityLayout"	"6"
+		"Ability2"	""
+		"Ability3"	""
+		"Ability4"	""
+		"Ability5"	""
+		"Ability6"	""
+		"AbilityLayout"	"4"
 		"ArmorPhysical"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_MELEE_ATTACK"
 		"AttackDamageMin"	"25"

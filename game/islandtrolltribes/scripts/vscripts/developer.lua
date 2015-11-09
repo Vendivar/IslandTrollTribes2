@@ -10,6 +10,7 @@ CHEAT_CODES = {
     ["debug_creeps"] = function(...) ITT:DebugCreeps(...) end, -- Spawn All Creeps
     ["fish"] = function(...) ITT:DebugFish(...) end, -- Spawn a shoal of fish
     ["ingredients"] = function(...) ITT:CreateIngredients(...) end, -- Creates ingredients for an item
+    ["pets"] = function(...) ITT:SpawnPets(...) end, -- Creates pets around the hero
 }
 
 PLAYER_COMMANDS = {}
@@ -280,5 +281,18 @@ function ITT:CreateIngredients( playerID, buildingName )
                 end
             end
         end  
+    end
+end
+
+function ITT:SpawnPets(playerID)
+    local animal_names = {"npc_creep_fawn", "npc_creep_wolf_pup", "npc_creep_bear_cub"}
+    local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+    local origin = hero:GetAbsOrigin()
+    local rotate_pos = origin + Vector(1,0,0) * 200
+    local count = 4
+    local angle = 360 / count
+    for i=1,count do
+        local position = RotatePosition(origin, QAngle(0, angle*i, 0), rotate_pos)
+        CreateUnitByName(animal_names[RandomInt(1, #animal_names)], position, true, nil, nil, DOTA_TEAM_NEUTRALS)
     end
 end

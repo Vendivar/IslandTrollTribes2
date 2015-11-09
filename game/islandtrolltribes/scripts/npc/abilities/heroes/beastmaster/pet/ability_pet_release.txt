@@ -1,0 +1,20 @@
+// Release this pet
+"ability_pet_release"
+{
+	"BaseClass"             "ability_datadriven"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+    "AbilityTextureName"    "ability_beastmaster_releasepet"
+    "AbilityCastPoint"      "0"
+    "AbilityCooldown"       "0"
+    "AbilityManaCost"       "0"
+    "MaxLevel"              "1"
+
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile" "heroes/beastmaster/pets.lua"
+			"Function"   "PetRelease"
+		}
+	}
+}
