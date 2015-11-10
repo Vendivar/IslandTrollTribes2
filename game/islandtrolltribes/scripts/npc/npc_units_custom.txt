@@ -1824,7 +1824,7 @@
 		"Model"	"models/items/hex/fish_hex/fish_hex.vmdl"
 		"Level"	"0"
 		"vscripts"	"units/ai/fish_neutral_ai.lua"
-		"Ability1"	""
+		"Ability1"	"ability_greentint"
 		"Ability2"	""
 		"Ability3"	""
 		"Ability4"	""

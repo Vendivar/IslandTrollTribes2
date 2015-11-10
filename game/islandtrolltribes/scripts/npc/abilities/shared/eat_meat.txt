@@ -11,6 +11,10 @@
 
 	"IsCastableWhileHidden"	"1"
 
+    "precache"
+    {
+        "soundfile"    "soundevents/game_sounds_heroes/game_sounds_pudge.vsndevts"
+    }
 	"AbilitySpecial"
     {
         "01"
@@ -69,6 +73,11 @@
 					"HealAmount"	"1" //15 ticks during 1.5 seconds
 				}
 			}
+            "FireSound"
+            {
+                "EffectName"    "Hero_Pudge.Dismember"
+                "Target"        "CASTER"
+            }
 		}
 	}
 }

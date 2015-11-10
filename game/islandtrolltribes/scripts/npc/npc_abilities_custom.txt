@@ -563,23 +563,32 @@
 				"Target"		"CASTER"
 			}
 		}
-	    "OnCreated"
+	    "Modifiers"
+	    {
+	    "modifier_cookmeatauto"
+	        {
+	            "IsHidden"      "1"
+	            "Passive"       "1"
+	            "OnCreated"
 	            {
 	                "RunScript"
 	                {
 	                    "ScriptFile"    "mechanics/autocast.lua"
 	                    "Function"      "AutocastOn"
 	                }
-	                "ThinkInterval"  "1.0"
-	                "OnIntervalThink"
+	            }
+	
+	            "ThinkInterval"  "5.0"
+	            "OnIntervalThink"
+	            {
+	                "RunScript"
 	                {
-	                    "RunScript"
-	                    {
-	                        "ScriptFile"    "buildings/cook.lua"
-	                        "Function"      "CookFood"
-	                    }
+	                    "ScriptFile"	"buildings/cook.lua"
+	                    "Function"      "AutoCookFood"
 	                }
 	            }
+	        }
+	    }
 		"AbilitySpecial"
 		{
 			"01"
@@ -1462,6 +1471,26 @@
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"ability_building_ensnare"
 	}
+	"ability_greentint"
+	{
+	    "BaseClass"         "ability_datadriven"
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	    "MaxLevel"          "1"
+		    "precache"
+		    {
+	            "particle"  "particles/econ/items/effigies/status_fx_effigies/status_effect_effigy_jade_stone_dire.vpcf"
+		    }
+	    "Modifiers"
+	    {
+	        "modifier_greentint"
+	        {
+	            "StatusEffectName" "particles/econ/items/effigies/status_fx_effigies/status_effect_effigy_jade_stone_dire.vpcf"
+	            "StatusEffectPriority" "15"
+	            "Passive"   "1"
+	            "IsHidden"         "1"
+	        }
+	    }
+	}
 	"ability_hatch_egg"
 	{
 		"BaseClass"	"ability_datadriven"
@@ -1506,7 +1535,7 @@
 			"modifier_lizard_slow"
 			{
 				"IsDebuff"	"1"
-				"IsPurgable"	"0"
+				"IsPurgable"	"1"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"-7"
@@ -7819,9 +7848,9 @@
 	
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"-10"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"-25"
-					"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"	"-55"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%movespeed"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attackspeed"
+					"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"	"%damage"
 				}
 	
 			}
@@ -7854,9 +7883,9 @@
 	
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"-10"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"-25"
-					"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"	"-55"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%movespeed"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attackspeed"
+					"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"	"%damage"
 				}
 	
 			}
@@ -7868,15 +7897,29 @@
 			"01"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"null_duration_troll"	"15"
+				"damage"	"-55"
 			}
 	
 			"02"
 			{
 				"var_type"	"FIELD_FLOAT"
+				"attackspeed"	"-25"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"movespeed"	"-10"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"null_duration_troll"	"15"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
 				"null_duration_creep"	"20"
 			}
-	
 		}
 	
 	}
@@ -7901,12 +7944,6 @@
 	
 		"OnSpellStart"
 		{
-				"FireEffect"
-				{
-					"EffectName" "particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff_k.vpcf"
-					"Target" "CASTER"
-					"EffectAttachType" "follow_origin"
-				}
 				"RunScript"
 				{
 					"ScriptFile"    "heroes/mage/grow.lua"
@@ -7951,6 +7988,12 @@
 					"ScriptFile"    "heroes/mage/grow.lua"
 					"Function"      "Grow"
 					"GrowAmmt"      "1.0"
+				}
+                "FireEffect"
+				{
+					"EffectName" "particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff_k.vpcf"
+					"Target" "CASTER"
+					"EffectAttachType" "follow_origin"
 				}
 				"FireSound"
 				{
@@ -8151,9 +8194,9 @@
 	
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"-15"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"-35"
-					"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"	"-60"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%movespeed"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attackspeed"
+					"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"	"%damage"
 				}
 	
 			}
@@ -8187,32 +8230,43 @@
 	
 				"Properties"
 				{
-					"MODIFIER_STATE_DISARMED"	"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"-15"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"-35"
-					"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"	"-60"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%movespeed"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attackspeed"
+					"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"	"%damage"
 				}
 	
 			}
 	
 		}
-	
 		"AbilitySpecial"
 		{
 			"01"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"quantum_null_duration_troll"	"15"
+				"damage"	"-60"
 			}
 	
 			"02"
 			{
 				"var_type"	"FIELD_FLOAT"
+				"attackspeed"	"-35"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"movespeed"	"-15"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"quantum_null_duration_troll"	"15"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
 				"quantum_null_duration_creep"	"20"
 			}
-	
 		}
-	
 	}
 	"ability_mage_reducefood"
 	{
@@ -8742,6 +8796,7 @@
 		        "soundfile" "soundevents/game_sounds_heroes/game_sounds_visage.vsndevts"
 		        "soundfile" "soundevents/spells.vsndevts"
 	            "particle"  "particles/custom/stupefy_channel.vpcf"
+	            "particle"  "particles/status_fx/status_effect_doom.vpcf"
 		    }
 		
 		    "OnSpellStart"
@@ -8807,6 +8862,8 @@
 		
 		        "stupefy_aura"
 		        {
+	            "StatusEffectName"     "particles/status_fx/status_effect_doom.vpcf"
+	            "StatusEffectPriority" "10"
 		            "IsDebuff"      "1"
 		            "IsPurgable"    "0"
 		            "Properties"
@@ -13209,6 +13266,10 @@
 	
 		"IsCastableWhileHidden"	"1"
 	
+	    "precache"
+	    {
+	        "soundfile"    "soundevents/game_sounds_heroes/game_sounds_pudge.vsndevts"
+	    }
 		"AbilitySpecial"
 	    {
 	        "01"
@@ -13267,6 +13328,11 @@
 						"HealAmount"	"1" //15 ticks during 1.5 seconds
 					}
 				}
+	            "FireSound"
+	            {
+	                "EffectName"    "Hero_Pudge.Dismember"
+	                "Target"        "CASTER"
+	            }
 			}
 		}
 	}

@@ -4,7 +4,7 @@
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"item_boots"
-	"Model"	"models/props_gameplay/boots_of_speed.vmdl"
+	"Model"	"models/props_items/powertreads.vmdl"
 	"Effect"	""
 	"ItemCost"	"38"
 	"ItemShopTags"	"consumable"
@@ -29,7 +29,7 @@
 			"Properties"
 			{
 				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
-				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%move_speed"
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"%move_speed"
 			}
 		}
 

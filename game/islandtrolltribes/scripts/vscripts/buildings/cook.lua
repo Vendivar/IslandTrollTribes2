@@ -13,3 +13,12 @@ function CookFood(keys)
         end
     end
 end
+
+function AutoCookFood( event )
+    local ability = event.ability
+    local caster = event.caster
+
+    if ability:GetAutoCastState() and ability:IsFullyCastable() then
+        caster:CastAbilityNoTarget(ability, -1)
+    end
+end

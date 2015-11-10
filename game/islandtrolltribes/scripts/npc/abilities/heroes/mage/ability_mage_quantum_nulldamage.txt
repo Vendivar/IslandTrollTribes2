@@ -130,9 +130,9 @@
 
 			"Properties"
 			{
-				"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"-15"
-				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"-35"
-				"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"	"-60"
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%movespeed"
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attackspeed"
+				"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"	"%damage"
 			}
 
 		}
@@ -166,30 +166,41 @@
 
 			"Properties"
 			{
-				"MODIFIER_STATE_DISARMED"	"MODIFIER_STATE_VALUE_ENABLED"
-				"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"-15"
-				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"-35"
-				"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"	"-60"
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%movespeed"
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attackspeed"
+				"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"	"%damage"
 			}
 
 		}
 
 	}
-
 	"AbilitySpecial"
 	{
 		"01"
 		{
 			"var_type"	"FIELD_FLOAT"
-			"quantum_null_duration_troll"	"15"
+			"damage"	"-60"
 		}
 
 		"02"
 		{
 			"var_type"	"FIELD_FLOAT"
+			"attackspeed"	"-35"
+		}
+		"03"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"movespeed"	"-15"
+		}
+		"04"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"quantum_null_duration_troll"	"15"
+		}
+		"05"
+		{
+			"var_type"	"FIELD_FLOAT"
 			"quantum_null_duration_creep"	"20"
 		}
-
 	}
-
 }

@@ -32,7 +32,7 @@
 		"modifier_lizard_slow"
 		{
 			"IsDebuff"	"1"
-			"IsPurgable"	"0"
+			"IsPurgable"	"1"
 			"Properties"
 			{
 				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"-7"

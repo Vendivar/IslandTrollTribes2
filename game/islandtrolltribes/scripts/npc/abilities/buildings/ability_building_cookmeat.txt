@@ -26,23 +26,32 @@
 			"Target"		"CASTER"
 		}
 	}
-    "OnCreated"
+    "Modifiers"
+    {
+    "modifier_cookmeatauto"
+        {
+            "IsHidden"      "1"
+            "Passive"       "1"
+            "OnCreated"
             {
                 "RunScript"
                 {
                     "ScriptFile"    "mechanics/autocast.lua"
                     "Function"      "AutocastOn"
                 }
-                "ThinkInterval"  "1.0"
-                "OnIntervalThink"
+            }
+
+            "ThinkInterval"  "5.0"
+            "OnIntervalThink"
+            {
+                "RunScript"
                 {
-                    "RunScript"
-                    {
-                        "ScriptFile"    "buildings/cook.lua"
-                        "Function"      "CookFood"
-                    }
+                    "ScriptFile"	"buildings/cook.lua"
+                    "Function"      "AutoCookFood"
                 }
             }
+        }
+    }
 	"AbilitySpecial"
 	{
 		"01"

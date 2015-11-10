@@ -19,12 +19,6 @@
 	
 		"OnSpellStart"
 		{
-				"FireEffect"
-				{
-					"EffectName" "particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff_k.vpcf"
-					"Target" "CASTER"
-					"EffectAttachType" "follow_origin"
-				}
 				"RunScript"
 				{
 					"ScriptFile"    "heroes/mage/grow.lua"
@@ -69,6 +63,12 @@
 					"ScriptFile"    "heroes/mage/grow.lua"
 					"Function"      "Grow"
 					"GrowAmmt"      "1.0"
+				}
+                "FireEffect"
+				{
+					"EffectName" "particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff_k.vpcf"
+					"Target" "CASTER"
+					"EffectAttachType" "follow_origin"
 				}
 				"FireSound"
 				{

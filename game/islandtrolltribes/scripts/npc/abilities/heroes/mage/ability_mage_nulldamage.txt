@@ -127,9 +127,9 @@
 
 			"Properties"
 			{
-				"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"-10"
-				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"-25"
-				"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"	"-55"
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%movespeed"
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attackspeed"
+				"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"	"%damage"
 			}
 
 		}
@@ -162,9 +162,9 @@
 
 			"Properties"
 			{
-				"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"-10"
-				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"-25"
-				"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"	"-55"
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%movespeed"
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attackspeed"
+				"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"	"%damage"
 			}
 
 		}
@@ -176,15 +176,29 @@
 		"01"
 		{
 			"var_type"	"FIELD_FLOAT"
-			"null_duration_troll"	"15"
+			"damage"	"-55"
 		}
 
 		"02"
 		{
 			"var_type"	"FIELD_FLOAT"
+			"attackspeed"	"-25"
+		}
+		"03"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"movespeed"	"-10"
+		}
+		"04"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"null_duration_troll"	"15"
+		}
+		"05"
+		{
+			"var_type"	"FIELD_FLOAT"
 			"null_duration_creep"	"20"
 		}
-
 	}
 
 }

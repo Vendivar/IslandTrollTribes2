@@ -43,30 +43,25 @@
     {
         "01"
         {
-            "var_type"    "FIELD_INTEGER"
-            "max_stacks"    "6"
+            "var_type"              "FIELD_FLOAT"
+            "duration_hero"         "5"
         }
         "02"
         {
-            "var_type"      "FIELD_FLOAT"
-            "hero_duration" "5"
+            "var_type"              "FIELD_FLOAT"
+            "duration_animal"       "10"
         }
         "03"
-        {
-            "var_type"      "FIELD_FLOAT"
-            "creep_duration" "15"
-        }
-        "04"
         {
             "var_type"              "FIELD_INTEGER"
             "projectile_speed"      "750"
         }
-        "05"
+        "04"
         {
             "var_type"              "FIELD_INTEGER"
-            "autocast_radius"       "500"
+            "max_stacks"            "8"
         }
-        "06"
+        "05"
         {
             "var_type"              "FIELD_INTEGER"
             "damage"       "2"
@@ -94,7 +89,7 @@
             "EffectName"        "particles/units/heroes/hero_meepo/meepo_earthbind_projectile_fx.vpcf"
             "Dodgeable"         "1"
             "ProvidesVision"    "0"
-            "MoveSpeed"         "750"
+            "MoveSpeed"         "%projectile_speed"
             "SourceAttachment"  "DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
         }
     }
@@ -138,6 +133,33 @@
         {
             "IsHidden"      "1"
             "Passive"       "1"
+            "OnCreated"
+            {
+                "RunScript"
+                {
+                    "ScriptFile"    "mechanics/autocast.lua"
+                    "Function"      "AutocastOn"
+                }
+            }
+
+            "ThinkInterval"  "1.0"
+            "OnIntervalThink"
+            {
+                "RunScript"
+                {
+                    "ScriptFile"    "buildings/ensnare.lua"
+                    "Function"      "CastTrap"
+                    "Target"
+                    {
+                        "Center"    "TARGET"
+                        "Radius"    "%autocast_radius"
+                        "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+                        "Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+                        "MaxTargets" "1"
+                        "Random"     "1"
+                    }
+                }
+            }
         }
 
         "modifier_ensnare"

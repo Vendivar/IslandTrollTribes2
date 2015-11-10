@@ -44,6 +44,7 @@
 	        "soundfile" "soundevents/game_sounds_heroes/game_sounds_visage.vsndevts"
 	        "soundfile" "soundevents/spells.vsndevts"
             "particle"  "particles/custom/stupefy_channel.vpcf"
+            "particle"  "particles/status_fx/status_effect_doom.vpcf"
 	    }
 	
 	    "OnSpellStart"
@@ -109,6 +110,8 @@
 	
 	        "stupefy_aura"
 	        {
+            "StatusEffectName"     "particles/status_fx/status_effect_doom.vpcf"
+            "StatusEffectPriority" "10"
 	            "IsDebuff"      "1"
 	            "IsPurgable"    "0"
 	            "Properties"

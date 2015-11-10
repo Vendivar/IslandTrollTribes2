@@ -1,0 +1,20 @@
+"ability_greentint"
+{
+    "BaseClass"         "ability_datadriven"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+    "MaxLevel"          "1"
+	    "precache"
+	    {
+            "particle"  "particles/econ/items/effigies/status_fx_effigies/status_effect_effigy_jade_stone_dire.vpcf"
+	    }
+    "Modifiers"
+    {
+        "modifier_greentint"
+        {
+            "StatusEffectName" "particles/econ/items/effigies/status_fx_effigies/status_effect_effigy_jade_stone_dire.vpcf"
+            "StatusEffectPriority" "15"
+            "Passive"   "1"
+            "IsHidden"         "1"
+        }
+    }
+}
