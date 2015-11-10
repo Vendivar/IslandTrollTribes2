@@ -38,8 +38,8 @@
                 {
                     "RunScript"
                     {
-                        "ScriptFile"    "buildings/get_corpse.lua"
-                        "Function"      "GetCorpseAutocast"
+                        "ScriptFile"    "buildings/cook.lua"
+                        "Function"      "CookFood"
                     }
                 }
             }

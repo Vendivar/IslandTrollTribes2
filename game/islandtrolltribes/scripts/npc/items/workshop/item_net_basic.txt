@@ -31,6 +31,14 @@
     "UIDropSound"               "Item.DropGemShop"
     "WorldDropSound"            "Item.DropGemWorld"
 
+    "precache"
+    {
+        "particle"  "particles/units/heroes/hero_meepo/meepo_earthbind.vpcf"
+        "particle"  "particles/units/heroes/hero_meepo/meepo_earthbind_flash.vpcf"
+        "particle"  "particles/units/heroes/hero_meepo/meepo_earthbind_projectile_fx.vpcf"
+        "soundfile" "soundevents/game_sounds_heroes/game_sounds_meepo.vsndevts"
+    }
+    
     "AbilitySpecial"
     {
         "01"
@@ -47,6 +55,21 @@
         {
             "var_type"      "FIELD_FLOAT"
             "creep_duration" "15"
+        }
+        "04"
+        {
+            "var_type"              "FIELD_INTEGER"
+            "projectile_speed"      "750"
+        }
+        "05"
+        {
+            "var_type"              "FIELD_INTEGER"
+            "autocast_radius"       "500"
+        }
+        "06"
+        {
+            "var_type"              "FIELD_INTEGER"
+            "damage"       "2"
         }
     }
 
@@ -107,13 +130,16 @@
             }
             "Duration"      "%duration_animal"
         }
-
-        "SpendCharge"
-        {}
     }
 
     "Modifiers"
     {
+        "modifier_ensnare_trap"
+        {
+            "IsHidden"      "1"
+            "Passive"       "1"
+        }
+
         "modifier_ensnare"
         {
             "IsDebuff"          "1"
@@ -121,7 +147,16 @@
     
             "EffectName"        "particles/units/heroes/hero_meepo/meepo_earthbind.vpcf"
             "EffectAttachType"  "follow_origin"
-    
+            "ThinkInterval" "0.5"
+            "OnIntervalThink"
+            {
+                "Damage"
+                {
+                    "Type"   "DAMAGE_TYPE_PHYSICAL"
+                    "Damage" "%damage"
+                    "Target" "TARGET"
+                }
+            }
             "States"
             {
                 "MODIFIER_STATE_ROOTED"    "MODIFIER_STATE_VALUE_ENABLED"

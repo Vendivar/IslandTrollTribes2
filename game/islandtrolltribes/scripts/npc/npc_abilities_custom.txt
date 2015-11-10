@@ -538,7 +538,7 @@
 	"ability_building_cookmeat"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
 		"AbilityTextureName"	"ability_building_cookmeat"
 		"AbilityCooldown"	"1.0"
 		"AbilityManaCost"	"0"
@@ -563,6 +563,23 @@
 				"Target"		"CASTER"
 			}
 		}
+	    "OnCreated"
+	            {
+	                "RunScript"
+	                {
+	                    "ScriptFile"    "mechanics/autocast.lua"
+	                    "Function"      "AutocastOn"
+	                }
+	                "ThinkInterval"  "1.0"
+	                "OnIntervalThink"
+	                {
+	                    "RunScript"
+	                    {
+	                        "ScriptFile"    "buildings/cook.lua"
+	                        "Function"      "CookFood"
+	                    }
+	                }
+	            }
 		"AbilitySpecial"
 		{
 			"01"
@@ -982,6 +999,11 @@
 	            "var_type"              "FIELD_INTEGER"
 	            "autocast_radius"       "500"
 	        }
+	        "05"
+	        {
+	            "var_type"              "FIELD_INTEGER"
+	            "damage"       "2"
+	        }
 	    }
 	
 	    "OnSpellStart"
@@ -1085,7 +1107,16 @@
 	    
 	            "EffectName"        "particles/units/heroes/hero_meepo/meepo_earthbind.vpcf"
 	            "EffectAttachType"  "follow_origin"
-	    
+	            "ThinkInterval" "0.5"
+	            "OnIntervalThink"
+	            {
+	                "Damage"
+	                {
+	                    "Type"   "DAMAGE_TYPE_PHYSICAL"
+	                    "Damage" "%damage"
+	                    "Target" "TARGET"
+	                }
+	            }
 	            "States"
 	            {
 	                "MODIFIER_STATE_ROOTED"    "MODIFIER_STATE_VALUE_ENABLED"
@@ -1448,6 +1479,7 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+	    "AbilityTextureName" "beastmaster_boar_poison"
 		"Precache"
 		{
 			"particle"	"particles/neutral_fx/gnoll_poison_debuff.vpcf"
