@@ -56,7 +56,6 @@ function ITT:InitGameMode()
     -- Thinkers. Should get rid of these in favor of timers
     GameMode:SetThink( "OnBuildingThink", ITT, "BuildingThink", 0 )
     GameMode:SetThink( "OnItemThink", ITT, "ItemThink", 0 )
-    GameMode:SetThink( "OnBushThink", ITT, "BushThink", 0 )
     GameMode:SetThink( "OnBoatThink", ITT, "BoatThink", 0 )
     
     boatStartTime = math.floor(GameRules:GetGameTime())
@@ -171,22 +170,9 @@ function ITT:InitGameMode()
     self.vUserIds = {}
     self.vPlayerUserIds = {}
 
-    --initial bush spawns
-    --place entities starting with spawner_ plus the appropriate name to spawn to corresponding bush on game start
-    local bush_herb_spawners = Entities:FindAllByClassname("npc_dota_spawner")
-    GameRules.Bushes = {}
-    for _,spawner in pairs(bush_herb_spawners) do
-        local spawnerName = spawner:GetName()
-        if string.find(spawnerName, "_bush_") then
-            local bush_name = string.sub(string.gsub(spawner:GetName(), "spawner_", ""), 5)
-            local bush = CreateUnitByName(bush_name, spawner:GetAbsOrigin(), false, nil, nil, DOTA_TEAM_NEUTRALS)
-            if bush then
-                table.insert(GameRules.Bushes, bush)
-            end
-        end
-    end
-    local bushCount = #GameRules.Bushes
-    print("Spawned "..bushCount.." bushes total")
+    -- Initial bush spawns, starts the timer to add items to the bushes periodially
+    -- Place entities starting with spawner_ plus the appropriate name to spawn to corresponding bush on game start
+    ITT:SpawnBushes()
 
     -- Change random seed
     local timeTxt = string.gsub(string.gsub(GetSystemTime(), ':', ''), '0','')
@@ -627,15 +613,19 @@ function ITT:FixDropModels(dt)
             v.ModelFixInit = true
             v.OriginalOrigin = v:GetOrigin()
             v.OriginalAngles = v:GetAngles()
-            local custom = GameRules.ItemKV[v:GetContainedItem():GetAbilityName()].Custom
-            if custom then
-                --print("found custom")
-                if custom.ModelOffsets then
-                    local offsets = GameRules.ItemKV[v:GetContainedItem():GetAbilityName()].Custom.ModelOffsets
-                    v:SetOrigin( v.OriginalOrigin - Vector(offsets.Origin.x, offsets.Origin.y, offsets.Origin.z))
-                    v:SetAngles( v.OriginalAngles.x - offsets.Angles.x, v.OriginalAngles.y - offsets.Angles.y, v.OriginalAngles.z - offsets.Angles.z)
+            local item = v:GetContainedItem()
+            if item then
+                local itemName = item:GetAbilityName()
+                local custom = GameRules.ItemKV[itemName] and GameRules.ItemKV[itemName].Custom
+                if custom then
+                    --print("found custom")
+                    if custom.ModelOffsets then
+                        local offsets = GameRules.ItemKV[v:GetContainedItem():GetAbilityName()].Custom.ModelOffsets
+                        v:SetOrigin( v.OriginalOrigin - Vector(offsets.Origin.x, offsets.Origin.y, offsets.Origin.z))
+                        v:SetAngles( v.OriginalAngles.x - offsets.Angles.x, v.OriginalAngles.y - offsets.Angles.y, v.OriginalAngles.z - offsets.Angles.z)
+                    end
+                    if custom.ModelScale then v:SetModelScale(custom.ModelScale) end
                 end
-                if custom.ModelScale then v:SetModelScale(custom.ModelScale) end
             end
         end
     end
@@ -665,37 +655,6 @@ function ITT:OnBuildingThink()
         end
     end
     return GAME_TROLL_TICK_TIME
-end
-
-function ITT:OnBushThink()
-    --print("--Creating Items on Bushes--")
-    
-    local bushes = GameRules.Bushes
-    
-    for k,bush in pairs(bushes) do
-        if bush.RngWeight == nil then --rng weight maks it so there's a chance a bush won't spawn but you won't get rng fucked
-            bush.RngWeight = 0 --if rng weight doesnt exist declare it to a value that's unlikely to spawn for the first few ticks
-        end
-
-        local rand = RandomInt(-4,4) --randomize between -4 and +4, since the min is 0 with the best rng on the minimum number you will still not get a spawn
-        
-        if rand + bush.RngWeight >= 5 then 
-            bush.RngWeight = bush.RngWeight - 1 --if spawn succeeds reduce the odds of the next spawn
-
-            local bush_name = bush:GetUnitName()
-            local bushTable = GameRules.BushInfo[bush_name]
-            local possibleChoices = TableCount(bushTable)
-            local randomN = tostring(RandomInt(1, possibleChoices))
-            local bush_random_item = bushTable[randomN]
-
-            GiveItemStack(bush, bush_random_item)
-
-        else
-            bush.RngWeight = bush.RngWeight + 1 --if spawn fails increase odds for next run
-        end
-    end
-
-    return GAME_BUSH_TICK_TIME
 end
 
 function ITT:OnBoatThink()

@@ -1,6 +1,7 @@
+ITEM_TRANSFER_RANGE = 300
+DEFAULT_TRANSFER_RANGE = 100
+
 function ITT:FilterExecuteOrder( filterTable )
-    ITEM_TRANSFER_RANGE = 300
-    DEFAULT_TRANSFER_RANGE = 100
 
     local units = filterTable["units"]
     local order_type = filterTable["order_type"]
@@ -257,57 +258,6 @@ function ITT:FilterExecuteOrder( filterTable )
     end
 
     return true
-end
-
--- Moves towards a bush and extracts items from it
-function ITT:BushGather( event )
-    local playerID = event.PlayerID
-    local bush = EntIndexToHScript(event.entityIndex)
-    local unit = PlayerResource:GetSelectedHeroEntity(playerID)
-
-    print("Gather from "..bush:GetUnitName())
-
-    -- Order Timers Reset
-    if unit.orderTimer then
-        Timers:RemoveTimer(unit.orderTimer)
-    end
-
-    if (bush:GetUnitName() == "npc_bush_scout" and unit:GetClassname() ~= "npc_dota_hero_lion") then
-        SendErrorMessage(playerID, "#error_scout_only_bush")
-        return --exits if bush is used by anything other than a scout
-    end
-
-    if (bush:GetUnitName() == "npc_bush_thief" and unit:GetClassname() ~= "npc_dota_hero_riki") then
-        SendErrorMessage(playerID, "#error_thief_only_bush")
-        return --exits if bush is used by anything other than a thief
-    end
-
-    -- Move towards the bush
-    local position = bush:GetAbsOrigin()
-    ExecuteOrderFromTable({ UnitIndex = unit:GetEntityIndex(), OrderType = DOTA_UNIT_ORDER_MOVE_TO_POSITION, Position = position, Queue = false})
-    unit.orderTimer = Timers:CreateTimer(function()
-        if IsValidAlive(unit) and (unit:GetAbsOrigin() - position):Length2D() <= DEFAULT_TRANSFER_RANGE then
-            print("Reached Bush!")
-            unit:Stop()
-            if GetNumItemsInInventory(bush) > 0 then
-                unit:StartGesture(ACT_DOTA_ATTACK)
-
-                -- Transfer items from the bush to the gatherer
-                for i=0,5 do
-                    Timers:CreateTimer(0.1*i, function()
-
-                        local item = bush:GetItemInSlot(i)
-                        if item then
-                            TransferItem(bush, unit, item)
-                        end
-                    end)
-                end
-            end
-
-            return
-        end
-        return 0.1
-    end)
 end
 
 -- Orders casting a rest ability on the playerID hero

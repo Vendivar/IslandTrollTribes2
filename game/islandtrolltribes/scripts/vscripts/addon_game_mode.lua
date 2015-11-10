@@ -18,6 +18,7 @@ require('itt')
 require('spawn')
 require('orders')
 require('damage')
+require('bushes')
 require('developer')
 require('item_spawning')
 require('subclass_system')
@@ -484,6 +485,7 @@ end
 -- Create our game mode and initialize it
 function Activate()
 	print ( '[ITT] Creating Game Mode' )
+	require('libraries/containers')
 	ITT:InitGameMode()
 end
 

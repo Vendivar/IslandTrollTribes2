@@ -11,6 +11,7 @@ CHEAT_CODES = {
     ["fish"] = function(...) ITT:DebugFish(...) end, -- Spawn a shoal of fish
     ["ingredients"] = function(...) ITT:CreateIngredients(...) end, -- Creates ingredients for an item
     ["pets"] = function(...) ITT:SpawnPets(...) end, -- Creates pets around the hero
+    ["bush"] = function( ... ) ITT:TestBush(...) end,
 }
 
 PLAYER_COMMANDS = {}
@@ -295,4 +296,10 @@ function ITT:SpawnPets(playerID)
         local position = RotatePosition(origin, QAngle(0, angle*i, 0), rotate_pos)
         CreateUnitByName(animal_names[RandomInt(1, #animal_names)], position, true, nil, nil, DOTA_TEAM_NEUTRALS)
     end
+end
+
+function ITT:TestBush( playerID )
+    local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+
+    ITT:ContainerTest( hero )
 end
