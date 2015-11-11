@@ -455,22 +455,79 @@ function ITT:AdjustSkills( hero )
     PrintAbilities(hero)
 end
 
+--[[
+Utility functions for creating meat with decay time. Arguably would be best to place in another file
+]]
+-- Get meat decay time, for now use constant, but later could be affected by buffs/class type
+function GetMeatDecayTime(unitKilled, unitKiller)
+    return 45
+end
+
+-- Function to contain logic that modifies food drop rate
+function GetMeatStacksToDrop(baseDrop, unitKilled, unitKiller)
+    return baseDrop
+end
+
+-- Creates some raw meat at the specified position and creates timers to make the meat decay.
+-- position: location where to spawn the meat (vector)
+-- stacks: number of meats to make
+-- decayTimeInSec: # of seconds before meat dissapears
+-- meatCreateTimestamp: Gametime timestamp of when the meat is created. This is used for create copies of meat with correct decay timers (picking up a meat with full meat means we need to copy)
+function CreateRawMeatAtLoc(position, stacks, decayTimeInSec, meatCreateTimestamp)
+    for i= 1, stacks, 1 do
+        local newItem = CreateItem("item_meat_raw", nil, nil)
+        local physicalItem =  CreateItemOnPositionSync(position + RandomVector(RandomInt(20,100)), newItem)
+        local decayTime = decayTimeInSec
+        physicalItem.spawn_time = meatCreateTimestamp
+        if (decayTime > 0) then
+            Timers:CreateTimer({
+                endTime = decayTime, -- when this timer should first execute, you can omit this if you want it to run first on the next frame
+                callback = 
+                    function()
+                        print ("Removing raw meat due to time")
+                        --TODO: add particle effect to dissapearing meat
+                        if (physicalItem ~= nil) then
+                            UTIL_Remove(physicalItem:GetContainedItem())
+                            UTIL_Remove(physicalItem)
+                            --RemoveUnit(physicalItem)
+                        else
+                            print("Nil meat")
+                        end
+                    end
+            })
+        end
+    end
+end
+
 
 function ITT:OnEntityKilled(keys)
     local dropTable = {
         --{"unit_name", {"item_1", drop_chance}, {"mutually_exclusive_item_1", "mutually_exclusive_item_2", drop_chance}},
-        {"npc_creep_elk_wild", {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_hide_elk", 100}, {"item_bone", 100}},
-        {"npc_creep_wolf_jungle", {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_hide_wolf", 100}, {"item_bone", 100}},
-        {"npc_creep_bear_jungle", {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_hide_jungle_bear", 100}, {"item_bone", 100}},
-        {"npc_creep_bear_jungle_adult", {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_hide_jungle_bear", 100}, {"item_bone", 100}},
-        {"npc_creep_panther", {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_bone", 100}, {"item_bone", 100}},
-        {"npc_creep_panther_elder", {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_bone", 100}, {"item_bone", 100}},
-        {"npc_creep_lizard", {"item_meat_raw", 100}},
-        {"npc_creep_fish", {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}},
-        {"npc_creep_fish_green", {"item_meat_raw", 100}},
-        {"npc_creep_hawk", {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_bone", 100}, {"item_egg_hawk", 10}},
-        {"npc_creep_mammoth", {"item_bone", 100},{"item_bone", 100},{"item_bone", 100},{"item_bone", 100},{"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_meat_raw", 100}, {"item_horn_mammoth", 100}, {"item_horn_mammoth", 50}}
+        {"npc_creep_elk_wild", {"item_hide_elk", 100}, {"item_bone", 100}},
+        {"npc_creep_wolf_jungle", {"item_hide_wolf", 100}, {"item_bone", 100}},
+        {"npc_creep_bear_jungle", {"item_hide_jungle_bear", 100}, {"item_bone", 100}},
+        {"npc_creep_bear_jungle_adult", {"item_hide_jungle_bear", 100}, {"item_bone", 100}},
+        {"npc_creep_panther", {"item_bone", 100}, {"item_bone", 100}},
+        {"npc_creep_panther_elder", {"item_bone", 100}, {"item_bone", 100}},
+        {"npc_creep_hawk", {"item_bone", 100}, {"item_egg_hawk", 10}},
+        {"npc_creep_mammoth", {"item_bone", 100},{"item_bone", 100},{"item_bone", 100},{"item_bone", 100}, {"item_horn_mammoth", 100}, {"item_horn_mammoth", 50}}
     }
+    local meatTable = {
+    	{"npc_creep_elk_wild", 6},
+        {"npc_creep_wolf_jungle", 4},
+        {"npc_creep_bear_jungle", 7},
+        {"npc_creep_bear_jungle_adult", 7},
+        {"npc_creep_panther", 8},
+        {"npc_creep_panther_elder", 8},
+        {"npc_creep_lizard", 1},
+        -- The follow 2 values look switched: in ITT1 green fish were rare, larger, and dropped 3 meat
+        {"npc_creep_fish", 3},
+        {"npc_creep_fish_green", 1},
+        
+        {"npc_creep_hawk", 2},
+        {"npc_creep_mammoth", 15}
+    }
+    
     local spawnTable = {
                         {"npc_creep_elk_wild","npc_creep_fawn"},
                         {"npc_creep_wolf_jungle","npc_creep_wolf_pup"},
@@ -514,11 +571,11 @@ function ITT:OnEntityKilled(keys)
     -- Heroes
     if killedUnit.IsHero and killedUnit:IsHero() then
         --if it's a hero, drop all carried raw meat, plus 3, and a bone
-        meatStacks = killedUnit:GetModifierStackCount("modifier_meat_passive", nil)
-        for i= 1, meatStacks+3, 1 do
-            local newItem = CreateItem("item_meat_raw", nil, nil)
-            CreateItemOnPositionSync(killedUnit:GetOrigin() + RandomVector(RandomInt(20,100)), newItem)
-        end
+        local meatStacksBase = killedUnit:GetModifierStackCount("modifier_meat_passive", nil) + 3
+        local meatStacks = GetMeatStacksToDrop(meatStacksBase, killedUnit, killer)
+        local decayTime = GetMeatDecayTime(killedUnit, killer)
+        CreateRawMeatAtLoc(killedUnit:GetOrigin(), meatStacks, decayTime, GameRules:GetGameTime())
+        
         local newItem = CreateItem("item_bone", nil, nil)
         CreateItemOnPositionSync(killedUnit:GetOrigin() + RandomVector(RandomInt(20,100)), newItem)
 
@@ -541,6 +598,7 @@ function ITT:OnEntityKilled(keys)
         end
     else
         --drop system
+        -- Items
         for _,v in pairs(dropTable) do
             if unitName == v[1] then
                 for itemNum = 2,#v,1 do
@@ -554,7 +612,16 @@ function ITT:OnEntityKilled(keys)
                 end
             end
         end
-
+		-- Meat
+     
+        for _,v in pairs(meatTable) do
+            if unitName == v[1] then
+                local meatStacksBase = v[2]
+       			local meatStacks = GetMeatStacksToDrop(meatStacksBase, killedUnit, killer)
+        		local decayTime = GetMeatDecayTime(killedUnit, killer)
+        		CreateRawMeatAtLoc(killedUnit:GetOrigin(), meatStacks, decayTime, GameRules:GetGameTime())
+            end
+        end
         --spawn young animals
         local dieRoll = RandomInt(1,20)
         local chance = 1
