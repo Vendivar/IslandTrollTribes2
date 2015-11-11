@@ -48,12 +48,12 @@ function ITT:SetDefaultCosmetics(hero)
                 local slot = modelmap[wearableName] or "weapon" --Default main weapons don't have an item_slot in items_game.txt
                 local defaultWearableName = defaultWearables[slot]
 
-                print(wearableName,"at",slot)
-                print("Default item at",slot,"is:",defaultWearableName)
+                --print(wearableName,"at",slot)
+                --print("Default item at",slot,"is:",defaultWearableName)
                 if wearableName and defaultWearableName and wearableName ~= defaultWearableName then
                     SwapWearable(hero, wearableName, defaultWearableName)
                 end
-                print("-------------------------------------------------")
+                --print("-------------------------------------------------")
             end
         end
         wearable = wearable:NextMovePeer()
@@ -72,7 +72,7 @@ function ITT:SetDefaultCosmetics(hero)
                         local defaultWearableName = defaultWearables[slot]
 
                         if subclassTable['hide'][slot] then
-                            print("Hiding",wearableName,wearable)
+                            --print("Hiding",wearableName,wearable)
                             wearable:AddEffects(EF_NODRAW)
                             wearable.hidden = true
                         end

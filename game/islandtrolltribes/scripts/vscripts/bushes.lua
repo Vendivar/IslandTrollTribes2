@@ -137,6 +137,7 @@ function CreateLootBox(loc)
     items = items,
     entity = phys,
     range = 150,
+    OnDragWorld = true,
 
     OnLeftClick = function(playerID, unit, container, item, slot)
         if CanTakeMoreItems(unit) or CanTakeMoreStacksOfItem(unit, item) then
