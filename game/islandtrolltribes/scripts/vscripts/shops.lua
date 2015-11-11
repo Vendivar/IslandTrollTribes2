@@ -54,7 +54,7 @@ function TieShopToUnit( unit )
     shopLayout[shopRows] = #sItems - shopRows*(shopRows-1)
     DeepPrintTable(shopLayout)
 
-    contRadiantShop = Containers:CreateShop({
+    local shop = Containers:CreateShop({
         layout =      shopLayout,
         skins =       {},
         headerText =  "#"..unitName,
@@ -69,11 +69,11 @@ function TieShopToUnit( unit )
     })
 
     Containers:SetEntityOrderAction(unit, {
-        container = contRadiantShop,
+        container = shop,
         action = function(playerID, unit, target)
         print("ORDER ACTION radiant shop", playerID)
         if PlayerResource:GetTeam(playerID) == DOTA_TEAM_GOODGUYS then
-            contRadiantShop:Open(playerID)
+            shop:Open(playerID)
             unit:Stop()
         else
             Containers:DisplayError(playerID, "#dota_hud_error_unit_command_restricted")
@@ -95,8 +95,9 @@ function CreateShopItems(ii)
     sItems[#sItems+1] = item
     if i.price then prices[index] = i.price end
     if i.stock then stocks[index] = i.stock end
+    
+    item:SetCurrentCharges(item:GetInitialCharges())
 
-    --sItems[3]:SetCurrentCharges(2)
   end
 
   return sItems, prices, stocks
