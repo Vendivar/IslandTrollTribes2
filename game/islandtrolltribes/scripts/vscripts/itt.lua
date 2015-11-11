@@ -35,16 +35,6 @@ GAME_TESTING_CHECK          = true
 -- Use this variable for anything that can ONLY happen during testing
 -- REMEMBER TO DISABLE BEFORE PUBLIC RELEASE
 
---Merchant Boat paths, and other lists
-PATH1 = {"path_ship_waypoint_1","path_ship_waypoint_2","path_ship_waypoint_3","path_ship_waypoint_4","path_ship_waypoint_5", "path_ship_waypoint_6", "path_ship_waypoint_7"}
-PATH2 = {"path_ship_waypoint_8","path_ship_waypoint_9","path_ship_waypoint_4","path_ship_waypoint_5", "path_ship_waypoint_6", "path_ship_waypoint_7"}
-PATH3 = {"path_ship_waypoint_1","path_ship_waypoint_2","path_ship_waypoint_3","path_ship_waypoint_4","path_ship_waypoint_5", "path_ship_waypoint_10", "path_ship_waypoint_11", "path_ship_waypoint_12"}
-PATH4 = {"path_ship_waypoint_8","path_ship_waypoint_9","path_ship_waypoint_4","path_ship_waypoint_5", "path_ship_waypoint_10", "path_ship_waypoint_11", "path_ship_waypoint_12"}
-PATH_LIST = {PATH1, PATH2, PATH3, PATH4}
-SHOP_UNIT_NAME_LIST = {"npc_ship_merchant_1", "npc_ship_merchant_2", "npc_ship_merchant_3"}
-TOTAL_SHOPS = #SHOP_UNIT_NAME_LIST
-MAX_SHOPS_ON_MAP = 1
-
 -- This function initializes the game mode and is called before anyone loads into the game
 -- It can be used to pre-initialize any values/tables that will be needed later
 function ITT:InitGameMode()
@@ -56,12 +46,6 @@ function ITT:InitGameMode()
     -- Thinkers. Should get rid of these in favor of timers
     GameMode:SetThink( "OnBuildingThink", ITT, "BuildingThink", 0 )
     GameMode:SetThink( "OnItemThink", ITT, "ItemThink", 0 )
-    GameMode:SetThink( "OnBoatThink", ITT, "BoatThink", 0 )
-    
-    boatStartTime = math.floor(GameRules:GetGameTime())
-    GameMode.spawnedShops = {}
-    GameMode.shopEntities = Entities:FindAllByName("entity_ship_merchant_*")
-
     GameMode:SetThink("FixDropModels", ITT, "FixDropModels", 0)
 
     -- Disable buybacks to stop instant respawning.
@@ -229,6 +213,9 @@ function ITT:InitGameMode()
             UnblockMammoth()
         end
     })
+
+    -- Initialize the roaming trading ships
+    ITT:SetupShops()
 
     print('[ITT] Done loading gamemode!')
 end
@@ -655,57 +642,6 @@ function ITT:OnBuildingThink()
         end
     end
     return GAME_TROLL_TICK_TIME
-end
-
-function ITT:OnBoatThink()
-    local currentTime = math.floor(GameRules:GetGameTime())
-    local numShopsSpawned = 0
-    for k,_ in pairs(GameMode.spawnedShops) do
-        numShopsSpawned = numShopsSpawned + 1
-    end
-
-    if numShopsSpawned < MAX_SHOPS_ON_MAP then
-        local pathNum = RandomInt(1, #PATH_LIST)
-        local path = PATH_LIST[pathNum]
-
-        local initialWaypoint = Entities:FindByName(nil, path[1])
-        local spawnOrigin = initialWaypoint:GetOrigin()
-
-        local merchantNum = RandomInt(1, TOTAL_SHOPS)
-        unitName = SHOP_UNIT_NAME_LIST[merchantNum]
-        local shopUnit = CreateUnitByName(unitName, spawnOrigin, false, nil, nil, DOTA_TEAM_NEUTRALS)
-        shopUnit.path = path
-        print("Spawning " .. unitName .. " on path " .. pathNum .. " at time " .. currentTime)
-    end
-
-    for _,shopUnit in pairs(GameMode.spawnedShops) do
-        local shopent = nil
-        for _,entity in pairs(GameMode.shopEntities) do
-            local nameToFind = string.sub(shopUnit:GetUnitName(), 5)
-            if string.find(entity:GetName(), nameToFind) then
-                shopent = entity
-            end
-        end
-
-        if shopent == nil then
-            print("No Shop Ent Found!")
-            return 0.1
-        end
-
-        --local shopent = Entities:FindAllByClassname("ent_dota_shop")
-        if shopUnit ~= nil then
-            if shopUnit:IsAlive() then
-                shopent:SetOrigin(shopUnit:GetOrigin())
-                shopent:SetForwardVector(shopUnit:GetForwardVector())
-            else
-                shopent:SetOrigin(Vector(10000,10000,120))
-            end
-        else
-            shopent:SetOrigin(Vector(10000,10000,120))
-        end
-    end
-
-    return 0.1
 end
 
 -- This function checks if you won the game or not

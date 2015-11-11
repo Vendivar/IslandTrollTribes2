@@ -951,7 +951,24 @@ function Containers:OnDragWorld(playerID, unit, container, item, slot, position,
   local diff = unitpos - position
   local dist = diff:Length2D()
 
-  if IsValidEntity(entity) and entity:GetTeam() == unit:GetTeam() and entity.HasInventory and entity:HasInventory() and entity:IsAlive() then
+  if IsValidEntity(entity) and entity.GetContainedItem and Containers.entOrderActions[entity:GetEntityIndex()] and Containers.entOrderActions[entity:GetEntityIndex()].container then
+    local tcont = Containers.entOrderActions[entity:GetEntityIndex()].container
+    Containers:SetRangeAction(unit,{
+      container = tcont,
+      entity = entity,
+      playerID = playerID,
+      action = function(playerID, unit, target)
+        if IsValidEntity(target) and container:ContainsItem(item) then
+          container:RemoveItem(item)
+          if not tcont:AddItem(item) then
+            CreateItemOnPositionSync(unit:GetAbsOrigin() + RandomVector(10), item)
+          end
+        end
+
+        unit:Stop()
+      end
+    })
+  elseif IsValidEntity(entity) and entity:GetTeam() == unit:GetTeam() and entity.HasInventory and entity:HasInventory() and entity:IsAlive() then
     ExecuteOrderFromTable({
       UnitIndex=   unit:GetEntityIndex(),
       OrderType=   DOTA_UNIT_ORDER_MOVE_TO_TARGET,

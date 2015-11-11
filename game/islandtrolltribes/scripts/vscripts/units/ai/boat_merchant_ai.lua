@@ -1,14 +1,11 @@
 function Spawn(entityKeyValues)
 	thisEntity:SetContextThink("boatmerchantthink"..thisEntity:GetEntityIndex(), boatmerchantthink, 0.25)
 	thisEntity.state = "move"		--possible states = move, wait
-	
-	
-	print("starting merchant boat ai")
+		
+	print("Starting "..thisEntity:GetUnitName().." AI")
 	thisEntity.waypointNum = 2
 	thisEntity.spawnTime = GameRules:GetGameTime()
 	thisEntity.endWait = 9999
-	local GameMode = GameRules:GetGameModeEntity()
-	GameMode.spawnedShops[thisEntity:GetUnitName()] = thisEntity
 end
 
 function boatmerchantthink()
@@ -20,30 +17,27 @@ function boatmerchantthink()
 	local waypointName = path[waypointNum]
 	local waypointEnt = Entities:FindByName(nil, waypointName)
 	local waypointPos = waypointEnt:GetOrigin()
-	local GameMode = GameRules:GetGameModeEntity()
 
-	local shopent = nil
-    for _,entity in pairs(GameMode.shopEntities) do 
-        local nameToFind = string.sub(thisEntity:GetUnitName(), 5)
-        if string.find(entity:GetName(), nameToFind) then
-            shopent = entity
-        end
-    end
-
-	if not thisEntity:IsAlive() then
+	if not IsValidAlive(thisEntity) then
 		return nil
 	end
+
 	local distanceToWaypoint = (thisEntity:GetOrigin() - waypointPos)
+
 	if (thisEntity.state == "move") and (distanceToWaypoint:Length2D() ~= 0) then
 		thisEntity:MoveToPosition(waypointPos)
+    
     elseif (thisEntity.state == "move") and (distanceToWaypoint:Length2D() == 0) then
     	thisEntity.state = "wait"
     	thisEntity.endWait = GameRules:GetGameTime()+ 15
-	elseif (thisEntity.state == "wait") and (waypointNum >= #path) then
-		shopent:SetOrigin(Vector(10000,10000,120))
+	
+    elseif (thisEntity.state == "wait") and (waypointNum >= #path) then
+
     	print(thisEntity:GetUnitName() .. " despawning")
-		GameMode.spawnedShops[thisEntity:GetUnitName()] = nil
     	thisEntity:RemoveSelf()
+
+        -- Create a new shop
+
 	elseif (thisEntity.state == "wait") and (GameRules:GetGameTime() >= thisEntity.endWait) then
     	thisEntity.state = "move"
 		thisEntity.waypointNum = thisEntity.waypointNum + 1
