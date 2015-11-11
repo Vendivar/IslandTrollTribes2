@@ -1822,7 +1822,7 @@
 		"ConsideredHero"	"0"
 		"ModelScale"	"0.60"
 		"Model"	"models/items/hex/fish_hex/fish_hex.vmdl"
-		"Level"	"0"
+		"Level"	"1"
 		"vscripts"	"units/ai/fish_neutral_ai.lua"
 		"Ability1"	"ability_greentint"
 		"Ability2"	""
@@ -4736,8 +4736,10 @@
 		"VisionDaytimeRange"	"800"
 		"VisionNighttimeRange"	"800"
 		"HasInventory"	"0"
-		"MinimapIconSize"           "0"
-	
+		
+		"MinimapIcon"				"minimap_boat"
+		"MinimapIconSize"			"1000"
+		"MinimapDisableTint"		"1"
 	}
 	"npc_ship_merchant_2"
 	{
@@ -4771,7 +4773,10 @@
 		"VisionDaytimeRange"	"800"
 		"VisionNighttimeRange"	"800"
 		"HasInventory"	"0"
-		"MinimapIconSize"           "0"
+		
+		"MinimapIcon"				"minimap_boat"
+		"MinimapIconSize"			"1000"
+		"MinimapDisableTint"		"1"
 	}
 	"npc_ship_merchant_3"
 	{
@@ -4805,6 +4810,9 @@
 		"VisionDaytimeRange"	"800"
 		"VisionNighttimeRange"	"800"
 		"HasInventory"	"0"
-		"MinimapIconSize"           "0"
+		
+		"MinimapIcon"				"minimap_boat"
+		"MinimapIconSize"			"1000"
+		"MinimapDisableTint"		"1"
 	}
 }

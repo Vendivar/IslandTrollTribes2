@@ -30,5 +30,8 @@
 	"VisionDaytimeRange"	"800"
 	"VisionNighttimeRange"	"800"
 	"HasInventory"	"0"
-	"MinimapIconSize"           "0"
+	
+	"MinimapIcon"				"minimap_boat"
+	"MinimapIconSize"			"1000"
+	"MinimapDisableTint"		"1"
 }
