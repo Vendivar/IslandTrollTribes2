@@ -1,11 +1,12 @@
 function Spawn(entityKeyValues)
 	thisEntity:SetContextThink("boatmerchantthink"..thisEntity:GetEntityIndex(), boatmerchantthink, 0.25)
-	thisEntity.state = "move"		--possible states = move, wait
 		
 	print("Starting "..thisEntity:GetUnitName().." AI")
+
 	thisEntity.waypointNum = 2
 	thisEntity.spawnTime = GameRules:GetGameTime()
-	thisEntity.endWait = 9999
+	thisEntity.endWait = 0
+    thisEntity.state = "move"       --possible states = move, wait
 end
 
 function boatmerchantthink()
@@ -22,25 +23,36 @@ function boatmerchantthink()
 		return nil
 	end
 
-	local distanceToWaypoint = (thisEntity:GetOrigin() - waypointPos)
+	local distanceToWaypoint = (thisEntity:GetOrigin() - waypointPos):Length2D()
 
-	if (thisEntity.state == "move") and (distanceToWaypoint:Length2D() ~= 0) then
-		thisEntity:MoveToPosition(waypointPos)
-    
-    elseif (thisEntity.state == "move") and (distanceToWaypoint:Length2D() == 0) then
-    	thisEntity.state = "wait"
-    	thisEntity.endWait = GameRules:GetGameTime()+ 15
+	if (thisEntity.state == "move") then
+        if (distanceToWaypoint > 10) then
+            thisEntity:MoveToPosition(waypointPos)
+            
+        else
+    	   thisEntity.state = "wait"
+    	   thisEntity.endWait = GameRules:GetGameTime() + 5
+
+        end
 	
-    elseif (thisEntity.state == "wait") and (waypointNum >= #path) then
+    elseif (thisEntity.state == "wait") then
+        if (waypointNum >= #path) then
 
-    	print(thisEntity:GetUnitName() .. " despawning")
-    	thisEntity:RemoveSelf()
+            local pathChosen = thisEntity.pathNum
+            local newPath = pathChosen + 2
+            if newPath > 4 then newPath = newPath - 4 end
+            print("Despawning "..thisEntity:GetUnitName().." - Path was "..pathChosen.." - New Path: "..newPath)
 
-        -- Create a new shop
+            SpawnBoat(newPath)
 
-	elseif (thisEntity.state == "wait") and (GameRules:GetGameTime() >= thisEntity.endWait) then
-    	thisEntity.state = "move"
-		thisEntity.waypointNum = thisEntity.waypointNum + 1
+        	thisEntity:RemoveSelf()
+
+            -- Create a new shop
+        elseif (GameRules:GetGameTime() >= thisEntity.endWait) then
+        	thisEntity.state = "move"
+    		thisEntity.waypointNum = thisEntity.waypointNum + 1
+
+        end
 	end
 
 	return 0.25

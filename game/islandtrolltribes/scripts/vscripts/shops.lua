@@ -17,15 +17,15 @@ function ITT:SetupShops()
 
     GameRules.ShopKV = LoadKeyValues("scripts/kv/shop_info.kv")
 
-    local pathA = RollPercentage(50) and PATH1 or PATH3
-    local pathB = RollPercentage(50) and PATH2 or PATH4
+    local pathA = RollPercentage(50) and 1 or 3
+    local pathB = RollPercentage(50) and 2 or 4
     SpawnBoat(pathA)
     SpawnBoat(pathB)
 end
 
-function SpawnBoat(path)
+function SpawnBoat(pathNum)
     local currentTime = math.floor(GameRules:GetGameTime())
-
+    local path = PATH_LIST[pathNum]
     local initialWaypoint = Entities:FindByName(nil, path[1])
     local spawnOrigin = initialWaypoint:GetOrigin()
 
@@ -34,6 +34,9 @@ function SpawnBoat(path)
 
     local shopUnit = CreateUnitByName(unitName, spawnOrigin, false, nil, nil, DOTA_TEAM_NEUTRALS)
     shopUnit.path = path
+    shopUnit.pathNum = pathNum
+
+    print("Spawned "..unitName.." at path "..pathNum)
 
     TieShopToUnit(shopUnit)    
 end
