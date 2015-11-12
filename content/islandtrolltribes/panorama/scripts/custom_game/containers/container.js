@@ -258,9 +258,12 @@ function CloseContainer()
 function DeleteContainer()
 {
   var panel = $.GetContextPanel();
-  panel.deleted = true;
+
   PlayerTables.UnsubscribeNetTableListener(subscription);
-  CloseContainer();
+  if (panel){
+    panel.deleted = true;
+    CloseContainer();
+  }
 }
 
 function IsShop()

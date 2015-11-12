@@ -487,7 +487,7 @@ end
 -- Create our game mode and initialize it
 function Activate()
 	print ( '[ITT] Creating Game Mode' )
-	require('libraries/containers')
+	Containers:Init()
 	ITT:InitGameMode()
 end
 

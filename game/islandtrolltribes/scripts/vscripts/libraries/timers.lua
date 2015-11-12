@@ -1,4 +1,4 @@
-TIMERS_VERSION = "1.03"
+TIMERS_VERSION = "1.04"
 
 --[[
 
@@ -105,9 +105,9 @@ function Timers:start()
 end
 
 function Timers:Think()
-  if GameRules:State_Get() >= DOTA_GAMERULES_STATE_POST_GAME then
-    return
-  end
+  --if GameRules:State_Get() >= DOTA_GAMERULES_STATE_POST_GAME then
+    --return
+  --end
 
   -- Track game time, since the dt passed in to think is actually wall-clock time not simulation time.
   local now = GameRules:GetGameTime()

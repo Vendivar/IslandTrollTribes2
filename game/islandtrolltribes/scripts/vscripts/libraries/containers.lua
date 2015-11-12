@@ -76,6 +76,25 @@ LinkLuaModifier( "modifier_shopkeeper", "libraries/modifiers/modifier_shopkeeper
 --"DOTA_FantasyTeamCreate_Error_Header"       "Error"
 --"DOTA_Trading_Response_UnknownError"      "Unknown Error"
 
+
+--search bar?
+-- max stacks?
+-- other callbacks?
+-- remove item_banlk
+--drag to regular inventory
+--UNIT CHECKS ON COMMANDS
+
+-- change casting unit handling?
+-- test out Equipping items
+-- callback events like item added?
+
+-- container context menu?
+-- add unit checks to event functions
+-- add unit checks to activate
+-- add filter checks on stuff?
+-- equipment container
+
+
 local GetItem = function(item)
   if type(item) == "number" then
     return EntIndexToHScript(item)
@@ -84,11 +103,146 @@ local GetItem = function(item)
   end
 end
 
+
+
+local unitInventory = {unit = nil, range = 150, allowStash = false, canDragFrom = {}, canDragTo = {}, forceOwner = nil, forcePurchaser = nil}
+
+function unitInventory:AddItem(item, slot)
+  item = GetItem(item)
+  local unit = self.unit
+
+  local findStack = slot == nil
+  slot = slot or 0
+
+  local size = self:GetSize()
+
+  if slot > size then
+    print("[containers.lua]  Request to add item in slot " .. slot .. " -- exceeding dota inventory size " .. size)
+    return false
+  end
+
+  local full = true
+  local stack = false
+  for i=0,size do
+    local sItem = unit:GetItemInSlot(i)
+    if not sItem then
+      full = false
+    elseif sItem:GetAbilityName() == item:GetAbilityName() and item:IsStackable() then
+      stack = true
+    end
+  end
+
+  if full and not stack then return false end
+  unit:AddItem(item)
+
+  if not findStack then
+    for i=0,5 do
+      if unit:GetItemInSlot(i) == item then
+        unit:SwapItems(i,slot)
+
+        if self.forceOwner then 
+          item:SetOwner(self.forceOwner) 
+        elseif self.forceOwner == false then
+          item:SetOwner(nil)
+        end
+        if self.forcePurchaser then
+          item:SetPurchaser(self.forcePurchaser) 
+        elseif self.forceOwner == false then
+          item:SetPurchaser(nil)
+        end
+        return true
+      end
+    end
+  end
+
+  return true
+end
+
+function unitInventory:ClearSlot(slot)
+  local item = self.unit:GetItemInSlot(slot)
+  if item then
+    self:RemoveItem(item)
+  end
+end
+
+function unitInventory:RemoveItem(item)
+  item = GetItem(item)
+  local unit = self.unit
+
+  if self:ContainsItem(item) then
+    unit:DropItemAtPositionImmediate(item, unit:GetAbsOrigin())
+    local drop = nil
+    for i=GameRules:NumDroppedItems()-1,0,-1 do
+      drop = GameRules:GetDroppedItem(i)
+      if drop:GetContainedItem() == item then
+        drop:RemoveSelf()
+        break
+      end
+    end
+  end
+end
+
+
+function unitInventory:ContainsItem(item)
+  item = GetItem(item)
+  if not item then return false end
+
+  local unit = self.unit
+  for i=0,11 do
+    if item == unit:GetItemInSlot(i) then
+      return true
+    end
+  end
+
+  return false
+end
+
+function unitInventory:GetSize()
+  if self.allowStash then
+    return 11 
+  else
+    return 5
+  end
+end
+
+function unitInventory:GetItemInSlot(slot)
+  return self.unit:GetItemInSlot(slot)
+end
+
+function unitInventory:GetRange()
+  return self.range
+end
+
+function unitInventory:GetEntity()
+  return self.unit
+end
+
+function unitInventory:IsInventory()
+  return true
+end
+
+
+
+
+
 if not Containers then
   Containers = class({})
 end
 
+function Containers:Init()
+  local mode = GameRules:GetGameModeEntity()
+  mode:SetExecuteOrderFilter(Dynamic_Wrap(Containers, 'OrderFilter'), Containers)
+  self.oldFilter = mode.SetExecuteOrderFilter
+  mode.SetExecuteOrderFilter = function(mode, fun, context)
+    --print('SetExecuteOrderFilter', fun, context)
+    Containers.nextFilter = fun
+    Containers.nextContext = context
+  end
+  self.initialized = true
+end
+
 function Containers:start()
+  self.initialized = false
   self.containers = {}
   self.nextID = 0
   self.closeOnOrders = {}
@@ -100,7 +254,7 @@ function Containers:start()
   self.nextContext = nil
   self.disableItemLimit = false
 
-  self.itemKV = LoadKeyValues("scripts/npc/npc_items_custom.txt")
+  self.itemKV = LoadKeyValues("scripts/npc/items.txt")
   self.itemIDs = {}
 
   self.entityShops = {}
@@ -109,13 +263,15 @@ function Containers:start()
   self.rangeActions = {}
   self.entOrderActions = {}
 
-  for k,v in pairs(LoadKeyValues("scripts/npc/items.txt")) do
-    if not self.itemKV[k] then
+  for k,v in pairs(LoadKeyValues("scripts/npc/npc_abilities_override.txt")) do
+    if self.itemKV[k] then
       self.itemKV[k] = v
     end
+  end
 
-    if type(v) == "table" and v.ID then
-      self.itemIDs[v.ID] = k
+  for k,v in pairs(LoadKeyValues("scripts/npc/npc_items_custom.txt")) do
+    if not self.itemKV[k] then
+      self.itemKV[k] = v
     end
   end
 
@@ -142,20 +298,7 @@ function Containers:start()
   CustomGameEventManager:RegisterListener("Containers_OnCloseClicked", Dynamic_Wrap(Containers, "Containers_OnCloseClicked"))
   CustomGameEventManager:RegisterListener("Containers_OnButtonPressed", Dynamic_Wrap(Containers, "Containers_OnButtonPressed"))
 
-  Timers:CreateTimer(function()
-    local mode = GameRules:GetGameModeEntity()
-    if not mode then return .01 end
 
-    mode:SetExecuteOrderFilter(Dynamic_Wrap(Containers, 'OrderFilter'), Containers)
-    self.oldFilter = mode.SetExecuteOrderFilter
-    mode.SetExecuteOrderFilter = function(mode, fun, context)
-      --print('SetExecuteOrderFilter', fun, context)
-      Containers.nextFilter = fun
-      Containers.nextContext = context
-    end
-  end)
-
-  
 
   Timers:CreateTimer(function()
     for id,action in pairs(Containers.rangeActions) do
@@ -169,7 +312,7 @@ function Containers:start()
           local dist = unit:GetAbsOrigin() - pos
 
           if (dist.x * dist.x + dist.y * dist.y) <= range2 then
-            local status, err = pcall(action.action, action.playerID, unit, action.entity or action.position)
+            local status, err = pcall(action.action, action.playerID, unit, action.entity or action.position, action.fromContainer, action.item)
             if not status then print('[containers.lua] RangeAction failure:' .. err) end
 
             Containers.rangeActions[id] = nil  
@@ -182,32 +325,6 @@ function Containers:start()
     return .01
   end)
 end
-
---not in range of secret shop
---[   PanoramaScript         ]: ErrorMessage: {"splitscreenplayer":0,"reason":62,"message":""}
-
---can't purchase inventory full
---[   PanoramaScript         ]: ErrorMessage: {"splitscreenplayer":0,"reason":80,"message":"#dota_hud_error_cant_purchase_inventory_full"}
-
---tutorial shop not in range
---[   PanoramaScript         ]: ErrorMessage: {"splitscreenplayer":0,"reason":67}
-
---purchased item
---by unit with inventory
-  -- not in range of shop -> purchase to stash of player issuer
-  -- secret shop only, purchased non-ss item -> purcahse to stash of player issuer
-  -- secret shop only, purchased ss item -> purchase to inventory
-  -- side shop only, purchased non-side item -> purchase to stash of player issuer
-  -- side shop only, purchased side item -> purchase to inventory
-  -- home shop only, full inventory -> drop on position
-  -- home shop only, not full inventory -> purchase to inventory
---by courier
-  -- same as unit with inventory except purchase can happen without direct selection of the unit
---by selected hero unit
-  -- same as unit with inventory except
-  -- home shop only, full inventory -> purchase to stash
-  -- if SetStashPurchasingDisabled and not in range of shop, deny
-
 
 
 local closeOnOrderSkip = {
@@ -251,6 +368,10 @@ function Containers:AddItemToUnit(unit, item)
 end
 
 function Containers:SetDisableItemLimit(disable)
+  if not self.initialized then
+    print('[containers.lua] FATAL: Containers:Init() has not been called in the Activate() function chain!')
+    return
+  end
   self.disableItemLimit = disable
 end
 
@@ -724,10 +845,26 @@ function Containers:Containers_OnDragFrom(args)
   if not playerID then return end
   if unit and unit:GetMainControllingPlayer() ~= playerID then return end
 
-  local container = Containers.containers[contID]
+  local container = nil
+  if contID == -1 then
+    container = unitInventory
+    container.unit = unit
+    container.range = 150
+    if fromSlot > 5 then return end
+  else
+    container = Containers.containers[contID]
+  end
   if not container then return end
 
-  local toContainer = Containers.containers[toContID]
+  local toContainer = nil
+  if toContID == -1 then
+    toContainer = unitInventory
+    toContainer.unit = unit
+    toContainer.range = 150
+    if toSlot > 5 then return end
+  else
+    toContainer = Containers.containers[toContID]
+  end
   if not toContainer then return end
 
   local item = EntIndexToHScript(args.itemID)
@@ -794,7 +931,14 @@ function Containers:Containers_OnDragWorld(args)
   if not playerID then return end
   if unit and unit:GetMainControllingPlayer() ~= playerID then return end
 
-  local container = Containers.containers[contID]
+  local container = nil
+  if contID == -1 then
+    container = unitInventory
+    container.unit = unit
+    container.range = nil
+  else
+    container = Containers.containers[contID]
+  end
   if not container then return end
 
   local fun = container._OnDragWorld
@@ -951,22 +1095,20 @@ function Containers:OnDragWorld(playerID, unit, container, item, slot, position,
   local diff = unitpos - position
   local dist = diff:Length2D()
 
-  if IsValidEntity(entity) and entity.GetContainedItem and Containers.entOrderActions[entity:GetEntityIndex()] and Containers.entOrderActions[entity:GetEntityIndex()].container then
-    local tcont = Containers.entOrderActions[entity:GetEntityIndex()].container
-    Containers:SetRangeAction(unit,{
-      container = tcont,
-      entity = entity,
-      playerID = playerID,
-      action = function(playerID, unit, target)
-        if IsValidEntity(target) and container:ContainsItem(item) then
-          container:RemoveItem(item)
-          if not tcont:AddItem(item) then
-            CreateItemOnPositionSync(unit:GetAbsOrigin() + RandomVector(10), item)
-          end
-        end
+  if IsValidEntity(entity) and entity.GetContainedItem and Containers.entOrderActions[entity:GetEntityIndex()] and Containers.entOrderActions[entity:GetEntityIndex()].dragAction then
+    local tab = Containers.entOrderActions[entity:GetEntityIndex()]
+    local target = entity
+    local range = tab.range or 150
+    if tab.container then range = (tab.container:GetRange() or 150) end
 
-        unit:Stop()
-      end
+    Containers:SetRangeAction(unit, {
+      unit = unit,
+      entity = target,
+      range = range,
+      playerID = playerID,
+      fromContainer = container,
+      item = item,
+      action = tab.dragAction,
     })
   elseif IsValidEntity(entity) and entity:GetTeam() == unit:GetTeam() and entity.HasInventory and entity:HasInventory() and entity:IsAlive() then
     ExecuteOrderFromTable({
@@ -1030,22 +1172,15 @@ function Containers:OnButtonPressed(playerID, unit, container, buttonNumber, but
   print('Button ' .. buttonNumber .. ':\'' .. buttonName .. '\' Pressed by player:' .. playerID .. ' for container ' .. container.id .. '.  No OnButtonPressed handler.')
 end
 
---search bar?
---dragtoworld other than give and drop
---drag to regular inventory
---UNIT CHECKS ON COMMANDS
 
--- change casting unit handling?
--- test out Equipping items
--- callback events like item added?
 
--- container context menu?
--- add unit checks to event functions
--- add unit checks to activate
--- add filter checks on stuff?
--- equipment container
+
 
 function Containers:SetEntityOrderAction(entity, tab)
+  if not self.initialized then
+    print('[containers.lua] FATAL: Containers:Init() has not been called in the Activate() function chain!')
+    return
+  end
   --{test=tab.test, action=tab.action, range=tab.range, container=tab.container}
   if IsValidEntity(entity) then
     self.entOrderActions[entity:GetEntityIndex()] = tab
@@ -1070,7 +1205,7 @@ function Containers:SetRangeAction(unit, tab)
 
   tab.unit = unit
 
-  if tab.entity then
+  if tab.entity and not tab.entity.GetContainedItem then
     ExecuteOrderFromTable({
       UnitIndex=   unit:GetEntityIndex(),
       OrderType=   DOTA_UNIT_ORDER_MOVE_TO_TARGET,
@@ -1088,6 +1223,10 @@ function Containers:SetRangeAction(unit, tab)
 end
 
 function Containers:SetDefaultInventory(unit, container)
+  if not self.initialized then
+    print('[containers.lua] FATAL: Containers:Init() has not been called in the Activate() function chain!')
+    return
+  end
   self.defaultInventories[unit:GetEntityIndex()] = container
 end
 
@@ -1217,6 +1356,10 @@ function Containers:CreateShop(cont)
 end
 
 function Containers:CreateContainer(cont)
+  if not self.initialized then
+    print('[containers.lua] FATAL: Containers:Init() has not been called in the Activate() function chain!')
+    return
+  end
   local pt =
     {id =          self.nextID,
      ptID =        ID_BASE .. self.nextID,
@@ -2067,6 +2210,10 @@ function Containers:CreateContainer(cont)
 
   function c:OnEmptyAndClosed(fun)
     self._OnEmptyAndClosed = fun
+  end
+
+  function c:IsInventory()
+    return false
   end
 
 

@@ -222,10 +222,15 @@ function ScreenHeightWidth()
 
   if (panel.initialized){
     containers = panel.containers || {};
-    return; 
+    for (var key in containers){
+      containers[key].DeleteContainer();
+      //containers[keys[key]].DeleteAsync(1);
+      delete containers[key]; 
+    }
+    return;  
   }
 
-  panel.containers = containers;
+  panel.containers = containers; 
   panel.initialized = true; 
 })()
 

@@ -2,40 +2,41 @@
 
 var m_Item = -1;
 var m_ItemSlot = -1;
-var m_contID = -1;
-var m_contString = "";
-var m_slot = -1;
 var m_QueryUnit = -1;
-var m_Container = null;
-var started = false;
 
 function UpdateItem()
 {
-	m_Item = -1;
-	if (m_contString !== ""){
-		m_Item = PlayerTables.GetTableValue(m_contString, "slot" + m_slot) || -1;
-		m_QueryUnit = PlayerTables.GetTableValue(m_contString, "unit") || -1;
-	}
-
-	if (m_Container === null || m_Container.deleted){
-		return;
-	}
-
-	if (m_Container && !m_Container.visible){
-		$.Schedule( 0.1, UpdateItem );
-		return;
-	}
-
+	var panel = $.GetContextPanel();
 	var itemName = Abilities.GetAbilityName( m_Item );
-	if (itemName == ""){
-		m_Item = -1;
-	}
 	var hotkey = Abilities.GetKeybind( m_Item, m_QueryUnit );
 	var isPassive = Abilities.IsPassive( m_Item );
 	var chargeCount = 0;
 	var hasCharges = false;
-	var altChargeCount = 0;
+	var altChargeCount = 0; 
 	var hasAltCharges = false;
+
+	if (IsInStash()){
+		panel = panel.GetParent();
+	}else{
+		panel = panel.GetParent().GetParent();
+	}
+
+	if (m_ItemSlot === 6 && panel.id === "stash_row"){
+		var show = false;
+		for (var i=6; i<12; i++){
+			if (Entities.GetItemInSlot( m_QueryUnit, i ) !== -1){
+				show = true;
+				break;
+			}
+		}
+
+		panel.visible = show;
+	} 
+
+	if (!panel.visible){
+		$.Schedule( 0.1, UpdateItem );
+		return;
+	}
 	
 	if ( Items.ShowSecondaryCharges( m_Item ) )
 	{
@@ -59,47 +60,19 @@ function UpdateItem()
 		chargeCount = Items.GetCurrentCharges( m_Item );
 	}
 
-	var isShop = m_Container && m_Container.IsShop();
-	var stock = -1;
-	var price = -1;
-	if (isShop && m_Item !== -1){
-		stock = PlayerTables.GetTableValue(m_contString, "stock" + m_Item);
-		if (stock === null) 
-			stock = -1;
-		price = PlayerTables.GetTableValue(m_contString, "price" + m_Item) || Items.GetCost(m_Item);
-	}
-
-	var gold = Players.GetGold(Players.GetLocalPlayer());
-
-	$.GetContextPanel().SetHasClass( "show_stock", stock >= 0 );
-	$.GetContextPanel().SetHasClass( "out_of_stock", stock === 0 );
-	$.GetContextPanel().SetHasClass( "show_price", price >= 0 );
-	$.GetContextPanel().SetHasClass( "high_price", gold < price );
-
 	$.GetContextPanel().SetHasClass( "no_item", (m_Item == -1) );
 	$.GetContextPanel().SetHasClass( "show_charges", hasCharges );
 	$.GetContextPanel().SetHasClass( "show_alt_charges", hasAltCharges );
 	$.GetContextPanel().SetHasClass( "is_passive", isPassive );
-	//$.GetContextPanel().SetHasClass( "no_mana_cost", (Abilities.GetManaCost( m_Item ) <= 0));
 	$.GetContextPanel().SetHasClass( "low_mana", ((m_QueryUnit !== -1) && Abilities.GetManaCost( m_Item ) > Entities.GetMana(m_QueryUnit)));
 
-	
-
-	if (m_Container)
-		$.GetContextPanel().SetHasClass( "is_active", (Abilities.GetLocalPlayerActiveAbility() == m_Item));
+	//$.GetContextPanel().SetHasClass( "is_active", (Abilities.GetLocalPlayerActiveAbility() == m_Item));
 	
 	$( "#HotkeyText" ).text = hotkey;
 	$( "#ItemImage" ).itemname = itemName;
 	$( "#ItemImage" ).contextEntityIndex = m_Item;
 	$( "#ChargeCount" ).text = chargeCount;
 	$( "#AltChargeCount" ).text = altChargeCount;
-
-	$( "#Price" ).text = price;
-	$( "#Stock" ).text = "x" + stock;
-
-	var manaCost = Abilities.GetManaCost( m_Item );
-	if (m_Container)
-		$( "#ManaCost" ).text = Abilities.GetManaCost( m_Item );
 	
 	if ( m_Item == -1 || Abilities.IsCooldownReady( m_Item ) )
 	{
@@ -142,13 +115,8 @@ function ActivateItem()
 	if ( m_Item == -1 )
 		return;
 
-	var action = PlayerTables.GetTableValue(m_contString, "OnLeftClick");
-	if (action !== 0){
-		GameEvents.SendCustomGameEventToServer( "Containers_OnLeftClick", {unit:Players.GetLocalPlayerPortraitUnit(), contID:m_contID, itemID:m_Item, slot:m_slot} );
-		return;
-	}
-
-	//Abilities.ExecuteAbility( m_Item, m_QueryUnit, false );
+	// Items are abilities - just execute the ability
+	Abilities.ExecuteAbility( m_Item, m_QueryUnit, false );
 }
 
 function DoubleClickItem()
@@ -167,23 +135,17 @@ function IsInStash()
 function RightClickItem()
 {
 	lastClick = 1;
-	var action = PlayerTables.GetTableValue(m_contString, "OnRightClick");
-	if (action === 1){
-		GameEvents.SendCustomGameEventToServer( "Containers_OnRightClick", {unit:Players.GetLocalPlayerPortraitUnit(), contID:m_contID, itemID:m_Item, slot:m_slot} );
-		return;
-	}
-
 	ItemHideTooltip();
 
 	var bSlotInStash = IsInStash();
 	var bControllable = Entities.IsControllableByPlayer( m_QueryUnit, Game.GetLocalPlayerID() );
 	var bSellable = Items.IsSellable( m_Item ) && Items.CanBeSoldByLocalPlayer( m_Item );
 	var bDisassemble = Items.IsDisassemblable( m_Item ) && bControllable && !bSlotInStash;
-	var bAlertable = Items.IsAlertableItem( m_Item ); 
+	var bAlertable = Items.IsAlertableItem( m_Item );
 	var bShowInShop = Items.IsPurchasable( m_Item );
 	var bDropFromStash = bSlotInStash && bControllable;
 
-	if (m_Container || ( !bSellable && !bDisassemble && !bShowInShop && !bDropFromStash && !bAlertable && !bMoveToStash ))
+	if ( !bSellable && !bDisassemble && !bShowInShop && !bDropFromStash && !bAlertable && !bMoveToStash )
 	{
 		// don't show a menu if there's nothing to do
 		return;
@@ -199,12 +161,12 @@ function RightClickItem()
 	contextMenu.GetContentsPanel().SetHasClass( "bDropFromStash", bDropFromStash );
 	contextMenu.GetContentsPanel().SetHasClass( "bAlertable", bAlertable );
 	contextMenu.GetContentsPanel().SetHasClass( "bMoveToStash", false ); // TODO
-	contextMenu.GetContentsPanel().BLoadLayout( "file://{resources}/layout/custom_game/inventory_context_menu.xml", false, false );
-} 
+	contextMenu.GetContentsPanel().BLoadLayout( "file://{resources}/layout/custom_game/containers/dota_inventory_context_menu.xml", false, false );
+}
 
 function OnDragEnter( a, draggedPanel )
 {
-	var draggedItem = draggedPanel.data().m_DragItem; 
+	var draggedItem = draggedPanel.data().m_DragItem;
 
 	// only care about dragged items other than us
 	if ( draggedItem === null || draggedItem == m_Item )
@@ -233,24 +195,9 @@ function OnDragDrop( panelId, draggedPanel )
 	if ( draggedItem == m_Item )
 		return true;
 
+	var fromCont = draggedPanel.data().m_contID;
 
-	var action = PlayerTables.GetTableValue(m_contString, "OnDragTo");
-	if (action !== 0){
-		GameEvents.SendCustomGameEventToServer( "Containers_OnDragFrom", {unit:Players.GetLocalPlayerPortraitUnit(), contID:draggedPanel.data().m_contID, itemID:draggedItem, 
-			fromSlot:draggedPanel.data().m_OriginalPanel.data().GetSlot(), toContID:m_contID, toSlot:m_slot} );
-	}
-
-
-	/*if (m_Container || container)
-	{
-		if (m_Container && container)
-		{
-			draggedPanel.data().m_OriginalPanel.data().SetItem(m_QueryUnit, m_Item, container);
-			SetItem(draggedPanel.data().m_QueryUnit, draggedItem, m_Container);
-		}
-	}
-	else
-	{
+	if (fromCont == -1){
 		// create the order
 		var moveItemOrder =
 		{
@@ -259,7 +206,12 @@ function OnDragDrop( panelId, draggedPanel )
 			AbilityIndex: draggedItem
 		};
 		Game.PrepareUnitOrders( moveItemOrder );
-	}*/
+	}
+	else{
+		GameEvents.SendCustomGameEventToServer( "Containers_OnDragFrom", {unit:Players.GetLocalPlayerPortraitUnit(), contID:fromCont, itemID:draggedItem, 
+			fromSlot:draggedPanel.data().m_OriginalPanel.data().GetSlot(), toContID:-1, toSlot:m_ItemSlot} );
+	}
+
 	return true;
 }
 
@@ -281,12 +233,6 @@ function OnDragStart( panelId, dragCallbacks )
 		return true;
 	}
 
-	var action = PlayerTables.GetTableValue(m_contString, "OnDragDrop");
-	var action2 = PlayerTables.GetTableValue(m_contString, "OnDragWorld");
-	if (action === 0 && action2 === 0){
-		return true;
-	}
-
 	var itemName = Abilities.GetAbilityName( m_Item );
 
 	ItemHideTooltip(); // tooltip gets in the way
@@ -296,7 +242,7 @@ function OnDragStart( panelId, dragCallbacks )
 	displayPanel.itemname = itemName;
 	displayPanel.contextEntityIndex = m_Item;
 	displayPanel.data().m_DragItem = m_Item;
-	displayPanel.data().m_contID = m_contID;
+	displayPanel.data().m_contID = -1;
 	displayPanel.data().m_DragCompleted = false; // whether the drag was successful
 	displayPanel.data().m_OriginalPanel = $.GetContextPanel();
 	displayPanel.data().m_QueryUnit = m_QueryUnit;
@@ -314,9 +260,7 @@ function OnDragStart( panelId, dragCallbacks )
 function OnDragEnd( panelId, draggedPanel )
 {
 
-	var action = PlayerTables.GetTableValue(m_contString, "OnDragWorld");
-
-	if (!draggedPanel.data().m_DragCompleted && action === 1){
+	if (!IsInStash() && !draggedPanel.data().m_DragCompleted){
 		var position = GameUI.GetScreenWorldPosition( GameUI.GetCursorPosition() );
 		var mouseEntities = GameUI.FindScreenEntities( GameUI.GetCursorPosition() );
 		var entity = null;
@@ -330,7 +274,7 @@ function OnDragEnd( panelId, draggedPanel )
 				}
 			}
 		}
-		GameEvents.SendCustomGameEventToServer( "Containers_OnDragWorld", {unit:Players.GetLocalPlayerPortraitUnit(), contID:m_contID, itemID:m_Item, slot:m_slot, position:position, entity:entity} );
+		GameEvents.SendCustomGameEventToServer( "Containers_OnDragWorld", {unit:Players.GetLocalPlayerPortraitUnit(), contID:-1, itemID:m_Item, slot:m_ItemSlot, position:position, entity:entity} );
 	}
 
 	// if the drag didn't already complete, then try dropping in the world
@@ -349,25 +293,15 @@ function SetItemSlot( itemSlot )
 	m_ItemSlot = itemSlot;
 }
 
-function SetItem( queryUnit, contID, slot, container )
+function SetItem( queryUnit, iItem )
 {
-	m_contID = contID;
-	m_contString = "cont_" + contID;
-	m_slot = slot;
-	//m_Item = iItem;
-	//m_QueryUnit = queryUnit;
-	m_Container = container;
-
-	if (!started){
-		UpdateItem(); // initial update of dynamic state
-	}
-	started = true;
+	m_Item = iItem;
+	m_QueryUnit = queryUnit;
 }
-
 
 function GetSlot()
 {
-	return m_slot;
+	return m_ItemSlot;
 }
 
 (function()
@@ -382,4 +316,6 @@ function GetSlot()
 	$.RegisterEventHandler( 'DragLeave', $.GetContextPanel(), OnDragLeave );
 	$.RegisterEventHandler( 'DragStart', $.GetContextPanel(), OnDragStart );
 	$.RegisterEventHandler( 'DragEnd', $.GetContextPanel(), OnDragEnd );
+
+	UpdateItem(); // initial update of dynamic state
 })();

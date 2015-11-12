@@ -10,6 +10,7 @@
   <scripts>
     <include src="file://{resources}/scripts/custom_game/playertables/playertables.js" /> 
     <include src="file://{resources}/scripts/custom_game/containers/container_base.js" /> 
+    <include src="file://{resources}/scripts/custom_game/containers/dota_inventory.js" /> 
   </scripts>
   <Panel hittest="false" class="ContainersBase">
 
@@ -25,6 +26,11 @@
     </Panel>-->
 
 
+    <Panel id="stash_row" />
+    <Panel id="inventory_items">
+      <Panel id="inventory_row_1" />
+      <Panel id="inventory_row_2" />
+    </Panel>
 
   </Panel>
 </root>

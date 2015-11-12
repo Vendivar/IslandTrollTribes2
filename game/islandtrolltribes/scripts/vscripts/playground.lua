@@ -161,6 +161,17 @@ function GameMode:OFPL()
       sharedBank:Open(playerID)
       unit:Stop()
     end,
+    dragAction = function(playerID, unit, target, fromContainer, item)
+      print("Drag ACTION shared bank: ", playerID, unit, target, fromContainer, item)
+      if IsValidEntity(target) and fromContainer:ContainsItem(item) then
+        fromContainer:RemoveItem(item)
+        if not sharedBank:AddItem(item) then
+          CreateItemOnPositionSync(unit:GetAbsOrigin() + RandomVector(10), item)
+        end
+      end
+
+      unit:Stop()
+    end,
   })
 
 

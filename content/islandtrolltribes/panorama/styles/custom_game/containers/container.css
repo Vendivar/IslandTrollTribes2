@@ -71,28 +71,117 @@
 
 
 
+
 .InventoryOverlayRoot
 {
   horizontal-align: right;
   vertical-align: bottom;
-  margin-bottom: 350px;
-  margin-right: 20px;
+  margin-bottom: 28px;
+  margin-right: 10px; 
   
   flow-children: down;
+}
+
+.AspectRatio5x4 #inventory_items.Flipped
+{
+  margin-right: 0px;
+  margin-left: 80px;
+}
+
+.AspectRatio5x4 #inventory_items
+{
+  margin-bottom: 26px;
+  margin-right: 80px;
+}
+
+.AspectRatio4x3 #inventory_items.Flipped
+{
+  margin-right: 0px;
+  margin-left: 100px;
+}
+
+.AspectRatio4x3 #inventory_items
+{
+  margin-bottom: 30px;
+  margin-right: 100px;
+}
+
+.AspectRatio16x9 #inventory_items.Flipped
+{
+  margin-right: 0px;
+  margin-left: 230px;
+}
+
+.AspectRatio16x9 #inventory_items
+{
+  margin-bottom: 27px;
+  margin-right: 230px;
+}
+
+.AspectRatio16x10 #inventory_items.Flipped
+{
+  margin-right: 0px;
+  margin-left: 230px;
+}
+
+.AspectRatio16x10 #inventory_items
+{
+  margin-bottom: 30px;
+  margin-right: 230px;
+}
+
+
+#inventory_items.Flipped
+{
+  horizontal-align: left;
 }
 
 #inventory_items
 {
   flow-children: down;
   border: 2px solid black;
+  horizontal-align: right;
+  vertical-align: bottom; 
+  margin-bottom: 235px;
 }
+
+
+.AspectRatio5x4 #stash_row
+{
+  margin-bottom: 235px;
+  transform: scale3d(.75, .75, 1);
+}
+
+.AspectRatio4x3 #stash_row
+{
+  margin-bottom: 255px;
+}
+
+.AspectRatio16x9 #stash_row
+{
+  margin-bottom: 235px;
+}
+
+.AspectRatio16x10 #stash_row
+{
+  margin-bottom: 225px;
+}
+
+#stash_row.Flipped
+{
+  horizontal-align: left;
+  transform-origin: 0% 50%;
+} 
 
 #stash_row
 {
+  transform-origin: 100% 50%;
+  transform: scale3d(.8, .8, 1);
   flow-children: right;
   background-color: #222222;
-  margin-bottom: 32px;
-  border: 2px solid black;
+  border: 2px solid black; 
+  horizontal-align: right;
+  vertical-align: bottom;
 }
 
 #inventory_row_1
@@ -122,6 +211,8 @@
 {
   width: 66px;
   height: 48px;
+  box-shadow: #000000ff 1px 1px 2px 2px;
+
   margin-top: 4px;
   margin-bottom: 4px;
   margin-left: 4px;
@@ -173,32 +264,6 @@
 .show_alt_charges #AltChargeCount
 {
   visibility: visible;
-}
-
-#Hotkey
-{
-  margin-left: -4px;
-
-  vertical-align: top;
-  horizontal-align: left;
-  min-width: 18px;
-  min-height: 18px;
-
-  background-color: gradient( linear, 0% 0%, 0% 100%, from( #393939 ), to( #414849 ) );
-  border: 1px solid #ffffff05;
-  box-shadow: fill black 1px 1px 2px 2px;
-}
-
-#HotkeyText
-{
-  color: #bba995;
-  text-shadow: 1px 1px 2px 2 #000000;
-    font-size: 14px;
-    font-weight: bold;
-  vertical-align: center;
-  text-align: center;
-  width: 100%;
-  margin: -2px;
 }
 
 .no_hotkey #Hotkey
@@ -435,7 +500,17 @@
   vertical-align: top;
   horizontal-align: left;
   min-width: 18px;
-  min-height: 18px;
+}
+
+#HotkeyBlock
+{
+
+  vertical-align: top;
+  horizontal-align: left;
+  min-width: 18px;
+  min-height: 17px;
+  width: 18px;
+  clip: rect(0%, 200%, 200%, 0%);
 
   background-color: gradient( linear, 0% 0%, 0% 100%, from( #393939 ), to( #414849 ) );
   border: 1px solid #ffffff05;
@@ -446,12 +521,12 @@
 {
   color: #bba995;
   text-shadow: 1px 1px 2px 2 #000000;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: bold;
   vertical-align: center;
   text-align: center;
-  width: 100%;
-  margin: -2px;
+  min-width: 18px;
+  text-overflow: clip;
 }
 
 .Outer #Hotkey,
@@ -463,5 +538,3 @@
 {
   visibility: collapse;
 }
-
-
