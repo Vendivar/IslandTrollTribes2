@@ -784,7 +784,7 @@
 "DOTA_Tooltip_ability_ability_hunter_demoralizingwarcry_damage_duration"		"DAMAGE REDUCTION DURATION:"
 "DOTA_Tooltip_Ability_ability_hunter_demoralizingwarcry_Description"		"Disarms opponents for 2 seconds. Also reduces opponent's damage seconds afterwards."
 "DOTA_Tooltip_ability_ability_hunter_demoralizingwarcry_disarm_duration"		"DISARM DURATION:"
-"DOTA_Tooltip_ability_ability_hunter_demoralizingwarcry_minus_armor"		"-$ARMOR REDUCTION:"
+"DOTA_Tooltip_ability_ability_hunter_demoralizingwarcry_minus_armor"		"ARMOR REDUCTION:"
 "DOTA_Tooltip_ability_ability_hunter_demoralizingwarcry_minus_damage"		"DAMAGE REDUCTION:"
 
 "DOTA_Tooltip_modifier_demoralizing_warcry1"		"Demoralizing Warcry1"
@@ -812,7 +812,8 @@
 "DOTA_Tooltip_ability_ability_hunter_ensnare_duration"		"DURATION:"
 "DOTA_Tooltip_modifier_meepo_earthbind"		"Ensnared!"
 "DOTA_Tooltip_modifier_meepo_earthbind_Description"		"Movement is disabled."
-
+"DOTA_Tooltip_modifier_ensnare"                                                   "Ensnared!"
+"DOTA_Tooltip_modifier_ensnare_Description"                                       ""
 
 "DOTA_Tooltip_Ability_ability_hunter_giantswing"		"Giant Swing"
 "DOTA_Tooltip_Ability_ability_hunter_giantswing_chance"		"%CHANCE:"
@@ -1322,7 +1323,6 @@
 
 "DOTA_Tooltip_ability_ability_the_one_ensnare"		"Ensnare"
 "DOTA_Tooltip_ability_ability_the_one_ensnare_Description"		""
-
 
 "DOTA_Tooltip_ability_ability_the_one_orboflightning"		"Orb of Lightning"
 "DOTA_Tooltip_ability_ability_the_one_orboflightning_bonus_damage"		"+$damage"
@@ -2771,11 +2771,10 @@
 "DOTA_Tooltip_Ability_ability_enemy_target"		"Target Enemy"
 "DOTA_Tooltip_Ability_ability_enemy_target_Description"		"Allows the autocasted use of certain items placed in the Omnitower's inventory. All items used this way have a range of 575. Items stacked in a tower and consumed this way retain their cooldown."
 "DOTA_Tooltip_ability_ability_ensnare"		"Traps the target with a net, rendering it incapable of moving."
-"DOTA_Tooltip_ability_ability_ensnaretrap_ensnare"		"Ability Ensnaretrap Ensnare"
+"DOTA_Tooltip_ability_ability_ensnaretrap_ensnare"		"Ensnare"
 "DOTA_Tooltip_ability_ability_ensnaretrap_ensnare_Description"		""
 "DOTA_Tooltip_ability_ability_ensnaretrap_ensnare_duration_animal"		"DURATION ANIMAL:"
 "DOTA_Tooltip_ability_ability_ensnaretrap_ensnare_duration_hero"		"DURATION HERO:"
-"DOTA_Tooltip_ability_ability_ensnaretrap_ensnare_projectile_speed"		"PROJECTILE SPEED:"
 "DOTA_Tooltip_Ability_ability_get_corpse"		"Get Corpse"
 "DOTA_Tooltip_Ability_ability_getcorpse_Description"		"Picks up a nearby corpse. Can be auto-cast which will continuously pick up meat around the building until at full capacity (8 corpses) or until no more corpses remain."
 

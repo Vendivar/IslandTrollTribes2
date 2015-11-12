@@ -1,0 +1,17 @@
+"npc_ship_merchant_4"
+	{
+	    "BaseClass"         "item_datadriven"
+	    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	    "Model"             "models/courier/turtle_rider/turtle_rider.vmdl"
+	    
+	    "Custom"
+	    {
+	        "ModelScale"    "1.0"
+	    }
+	    
+	    "ItemInitialCharges"    "0"
+	    "ItemDroppable"         "0"
+	    "ItemSellable"          "0"
+	    "ItemPurchasable"       "0"
+	    "ItemShareability"      "ITEM_NOT_SHAREABLE"
+	}

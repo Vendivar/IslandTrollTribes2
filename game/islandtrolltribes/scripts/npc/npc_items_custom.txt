@@ -12306,6 +12306,125 @@
 		"UIDropSound"	"ui.inv_drop_robes"
 		"WorldDropSound"	"ui.inv_equip_robes"
 	}
+	"npc_ship_merchant_1"
+	{
+	    "BaseClass"         "item_datadriven"
+	    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	    "Model"             "models/courier/skippy_parrot/skippy_parrot_flying_rowboat.vmdl"
+	    
+	    "Custom"
+	    {
+	        "ModelScale"    "1.0"
+	    }
+	    
+	    "ItemInitialCharges"    "0"
+	    "ItemDroppable"         "0"
+	    "ItemSellable"          "0"
+	    "ItemPurchasable"       "0"
+	    "ItemShareability"      "ITEM_NOT_SHAREABLE"
+	}
+	"npc_ship_merchant_2"
+		{
+		    "BaseClass"         "item_datadriven"
+		    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		    "Model"             "models/courier/skippy_parrot/skippy_parrot_flying_sailboat.vmdl"
+		    
+		    "Custom"
+		    {
+		        "ModelScale"    "1.0"
+		    }
+		    
+		    "ItemInitialCharges"    "0"
+		    "ItemDroppable"         "0"
+		    "ItemSellable"          "0"
+		    "ItemPurchasable"       "0"
+		    "ItemShareability"      "ITEM_NOT_SHAREABLE"
+		}
+	"npc_ship_merchant_3"
+		{
+		    "BaseClass"         "item_datadriven"
+		    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		    "Model"             "models/props_structures/boat_dragonknight.vmdl"
+		    
+		    "Custom"
+		    {
+		        "ModelScale"    "1.0"
+		    }
+		    
+		    "ItemInitialCharges"    "0"
+		    "ItemDroppable"         "0"
+		    "ItemSellable"          "0"
+		    "ItemPurchasable"       "0"
+		    "ItemShareability"      "ITEM_NOT_SHAREABLE"
+		}
+	"npc_ship_merchant_4"
+		{
+		    "BaseClass"         "item_datadriven"
+		    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		    "Model"             "models/courier/turtle_rider/turtle_rider.vmdl"
+		    
+		    "Custom"
+		    {
+		        "ModelScale"    "1.0"
+		    }
+		    
+		    "ItemInitialCharges"    "0"
+		    "ItemDroppable"         "0"
+		    "ItemSellable"          "0"
+		    "ItemPurchasable"       "0"
+		    "ItemShareability"      "ITEM_NOT_SHAREABLE"
+		}
+	"npc_ship_merchant_5"
+		{
+		    "BaseClass"         "item_datadriven"
+		    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		    "Model"             "models/items/courier/gnomepig/gnomepig.vmdl"
+		    
+		    "Custom"
+		    {
+		        "ModelScale"    "1.0"
+		    }
+		    
+		    "ItemInitialCharges"    "0"
+		    "ItemDroppable"         "0"
+		    "ItemSellable"          "0"
+		    "ItemPurchasable"       "0"
+		    "ItemShareability"      "ITEM_NOT_SHAREABLE"
+		}
+	"npc_ship_merchant_6"
+		{
+		    "BaseClass"         "item_datadriven"
+		    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		    "Model"             "models/courier/frull/frull_courier.vmdl"
+		    
+		    "Custom"
+		    {
+		        "ModelScale"    "1.0"
+		    }
+		    
+		    "ItemInitialCharges"    "0"
+		    "ItemDroppable"         "0"
+		    "ItemSellable"          "0"
+		    "ItemPurchasable"       "0"
+		    "ItemShareability"      "ITEM_NOT_SHAREABLE"
+		}
+	"npc_ship_merchant_7"
+		{
+		    "BaseClass"         "item_datadriven"
+		    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		    "Model"             "models/courier/smeevil_crab/smeevil_crab.vmdl"
+		    
+		    "Custom"
+		    {
+		        "ModelScale"    "1.0"
+		    }
+		    
+		    "ItemInitialCharges"    "0"
+		    "ItemDroppable"         "0"
+		    "ItemSellable"          "0"
+		    "ItemPurchasable"       "0"
+		    "ItemShareability"      "ITEM_NOT_SHAREABLE"
+		}
 	"item_beehive"
 	{
 		"ID"	"1107"
