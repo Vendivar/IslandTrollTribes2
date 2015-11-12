@@ -75,6 +75,7 @@ function TieShopToUnit( unit )
         container = shop,
         action = function(playerID, unit, target)
         print("ORDER ACTION radiant shop", playerID)
+      --pleasefix  EmitSoundOnClient("Shop.Available", PlayerResource:GetPlayer(attacker_playerID))
         if PlayerResource:GetTeam(playerID) == DOTA_TEAM_GOODGUYS then
             shop:Open(playerID)
             unit:Stop()
