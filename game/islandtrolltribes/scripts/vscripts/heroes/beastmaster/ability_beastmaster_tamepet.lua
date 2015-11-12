@@ -43,7 +43,7 @@ function ability_beastmaster_tamepet:OnSpellStart()
 
     -- Grow
     local grow_duration = ability:GetSpecialValueFor("grow_young")
-    newPet:AddNewModifier(caster, ability, "modifier_pet_grow", {duration=10})
+    newPet:AddNewModifier(caster, ability, "modifier_pet_grow", {duration=grow_duration})
     
     -- Change ownership
     newPet:SetControllableByPlayer(caster:GetPlayerID(), true)

@@ -106,7 +106,6 @@ function ITT:InitGameMode()
 
     -- Team Colors
     for team,color in pairs(TEAM_COLORS) do
-        print("Color for team ",team,color[1], color[2], color[3])
         SetTeamCustomHealthbarColor(team, color[1], color[2], color[3])
     end
 

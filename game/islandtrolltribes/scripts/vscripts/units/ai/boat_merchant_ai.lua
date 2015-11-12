@@ -31,7 +31,7 @@ function boatmerchantthink()
             
         else
     	   thisEntity.state = "wait"
-    	   thisEntity.endWait = GameRules:GetGameTime() + 5
+    	   thisEntity.endWait = GameRules:GetGameTime() + 15
 
         end
 	

@@ -55,7 +55,6 @@ function TieShopToUnit( unit )
         shopLayout[i] = shopRows
     end
     shopLayout[shopRows] = #sItems - shopRows*(shopRows-1)
-    DeepPrintTable(shopLayout)
 
     local shop = Containers:CreateShop({
         layout =      shopLayout,
@@ -74,15 +73,12 @@ function TieShopToUnit( unit )
     Containers:SetEntityOrderAction(unit, {
         container = shop,
         action = function(playerID, unit, target)
-        print("ORDER ACTION radiant shop", playerID)
-      --pleasefix  EmitSoundOnClient("Shop.Available", PlayerResource:GetPlayer(attacker_playerID))
-        if PlayerResource:GetTeam(playerID) == DOTA_TEAM_GOODGUYS then
             shop:Open(playerID)
+            local player = PlayerResource:GetPlayer(playerID)
+            EmitSoundOnClient("Shop.Available", player)
+            EmitSoundOnClient("Quickbuy.Available", player)
             unit:Stop()
-        else
-            Containers:DisplayError(playerID, "#dota_hud_error_unit_command_restricted")
-        end
-    end,
+        end,
     })
 end
 
@@ -93,7 +89,6 @@ function CreateShopItems(ii)
   local stocks = {}
 
   for _,i in pairs(ii) do
-    print(i.name, i.price, i.stock)
     local item = CreateItem(i.name, nil, nil)
     local index = item:GetEntityIndex()
     sItems[#sItems+1] = item

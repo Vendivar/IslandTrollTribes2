@@ -963,6 +963,11 @@ function Containers:Containers_OnDragWorld(args)
     return 
   end
 
+  if not item:IsDroppable() then
+    Containers:DisplayError(playerID,"#dota_hud_error_item_cant_be_dropped")
+    return
+  end
+
   if type(fun) == "function" then
     fun(playerID, unit, container, item, slot, position, entity)
   else

@@ -10,8 +10,8 @@
   </scripts>
   <Panel draggable="true" class="Outer">
     <Panel id="Header">
-      <Button class="CloseButton" draggable="true" id="CloseButton" onactivate="CloseClicked()"/>
       <Label id="HeaderLabel" text="Container Header"/>
+      <Button class="CloseButton" draggable="true" id="CloseButton" onactivate="CloseClicked()"/>
     </Panel>
     <Panel id="Inner" draggable="true">
 
