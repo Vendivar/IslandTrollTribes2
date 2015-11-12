@@ -8,6 +8,7 @@ function ITT:SpawnBushes()
             local bush = CreateUnitByName(bush_name, spawner:GetAbsOrigin(), false, nil, nil, DOTA_TEAM_NEUTRALS)
             if bush then
                 table.insert(GameRules.Bushes, bush)
+                CreateBushContainer(bush)
             end
         end
     end
@@ -100,6 +101,55 @@ function ITT:BushGather( event )
         end
         return 0.1
     end)
+end
+
+function CreateBushContainer( unit )
+    local cont = Containers:CreateContainer({
+        layout =      {3,3},
+        --skins =       {"Hourglass"},
+        headerText =  unit:GetUnitName(),
+        buttons =     {"Grab All"},
+        position =    "entity", --"mouse",--"900px 200px 0px",
+        draggable = false,
+        closeOnOrder= true,
+        items = {},
+        entity = unit,
+        range = 150,
+        OnDragWorld = true,
+
+        OnLeftClick = function(playerID, unit, container, item, slot)
+            if CanTakeMoreItems(unit) or CanTakeMoreStacksOfItem(unit, item) then
+                container:RemoveItem(item)
+                Containers:AddItemToUnit(unit,item)
+            else
+                SendErrorMessage(playerID, "#error_inventory_full")
+            end
+        end,
+
+        OnButtonPressed = function(playerID, unit, container, button, buttonName)
+          if button == 1 then
+            local items = container:GetAllItems()
+            for _,item in ipairs(items) do
+              container:RemoveItem(item)
+              Containers:AddItemToUnit(unit,item)
+            end
+
+            container:Close(playerID)
+          end
+        end,
+        })
+
+        Containers:SetEntityOrderAction(unit, {
+        range = 150,
+        action = function(playerID, unit, target)
+          print("ORDER ACTION loot box: ", playerID)
+          cont:Open(playerID)
+          unit:Stop()
+          unit:Hold()
+        end,
+    })
+
+    unit.container = cont
 end
 
 function ITT:ContainerTest( hero )

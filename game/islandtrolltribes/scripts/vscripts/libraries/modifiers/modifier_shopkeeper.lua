@@ -15,6 +15,7 @@ end
 function modifier_shopkeeper:CheckState()
   local state = {
     --[MODIFIER_STATE_OUT_OF_GAME] = true,
+    [MODIFIER_STATE_INVULNERABLE] = true,
     [MODIFIER_STATE_MAGIC_IMMUNE] = true,
     --[MODIFIER_STATE_ATTACK_IMMUNE] = true,
     --[MODIFIER_STATE_NIGHTMARED] = true,
@@ -42,5 +43,5 @@ function modifier_shopkeeper:GetMinHealth()
 end
 
 function modifier_shopkeeper:IsHidden()
-    return false--true
+    return true
 end

@@ -25,11 +25,20 @@ function OnRightButtonPressed()
     for ( var e of mouseEntities )
     {
         var entityIndex = e.entityIndex
-        if (mainSelected == hero){
-            if (IsBush(entityIndex))
+        if (mainSelected == hero)
+        {
+            if (Entities.IsInvulnerable( entityIndex ))
             {
-                $.Msg("Right clicked on a bush")
-                GameEvents.SendCustomGameEventToServer( "player_bush_gather", { entityIndex : entityIndex } );
+                var order = {
+                    UnitIndex : hero,
+                    TargetIndex : entityIndex,
+                    OrderType : dotaunitorder_t.DOTA_UNIT_ORDER_MOVE_TO_TARGET,
+                    QueueBehavior : OrderQueueBehavior_t.DOTA_ORDER_QUEUE_NEVER,
+                    ShowEffects : false
+                };
+
+                Game.PrepareUnitOrders( order );                
+
                 return true
             }
             else if (IsRestBuilding(entityIndex) && IsTeamControlled(entityIndex) )

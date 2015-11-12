@@ -59,7 +59,7 @@ function TieShopToUnit( unit )
     local shop = Containers:CreateShop({
         layout =      shopLayout,
         skins =       {},
-        headerText =  "#"..unitName,
+        headerText =  unitName,
         pids =        {},
         position =    "entity", --"1000px 300px 0px",
         entity =      unit,
@@ -78,6 +78,7 @@ function TieShopToUnit( unit )
             EmitSoundOnClient("Shop.Available", player)
             EmitSoundOnClient("Quickbuy.Available", player)
             unit:Stop()
+            unit:Hold()
         end,
     })
 end
