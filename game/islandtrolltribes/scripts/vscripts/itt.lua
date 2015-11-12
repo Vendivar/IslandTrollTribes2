@@ -10,7 +10,6 @@ playerList = {}
 maxPlayerID = 0
 
 GAME_TICK_TIME              = 0.1   -- The game should update every tenth second
-GAME_BUSH_TICK_TIME         = 30    -- 1in2 chance any bush will actually spawn so average timer is 2x
 GAME_TROLL_TICK_TIME        = 0.5   -- Its really like its wc3!
 FLASH_ACK_THINK             = 2
 WIN_GAME_THINK              = 0.5 -- checks if you've won every x seconds

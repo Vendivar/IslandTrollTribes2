@@ -11,7 +11,7 @@ function OnRightButtonPressed()
 	var mainSelectedName = Entities.GetUnitName( mainSelected );
 	var cursor = GameUI.GetCursorPosition();
 	var mouseEntities = GameUI.FindScreenEntities( cursor );
-	mouseEntities = mouseEntities.filter( function(e) { return e.entityIndex != mainSelected; } )
+	//mouseEntities = mouseEntities.filter( function(e) { return e.entityIndex != mainSelected; } )
 	
 	var pressedShift = GameUI.IsShiftDown();
 
@@ -25,28 +25,25 @@ function OnRightButtonPressed()
     for ( var e of mouseEntities )
     {
         var entityIndex = e.entityIndex
-        if (mainSelected == hero)
+        if (Entities.IsInvulnerable( entityIndex ))
         {
-            if (Entities.IsInvulnerable( entityIndex ))
-            {
-                var order = {
-                    UnitIndex : hero,
-                    TargetIndex : entityIndex,
-                    OrderType : dotaunitorder_t.DOTA_UNIT_ORDER_MOVE_TO_TARGET,
-                    QueueBehavior : OrderQueueBehavior_t.DOTA_ORDER_QUEUE_NEVER,
-                    ShowEffects : false
-                };
+            var order = {
+                UnitIndex : hero,
+                TargetIndex : entityIndex,
+                OrderType : dotaunitorder_t.DOTA_UNIT_ORDER_MOVE_TO_TARGET,
+                QueueBehavior : OrderQueueBehavior_t.DOTA_ORDER_QUEUE_NEVER,
+                ShowEffects : false
+            };
 
-                Game.PrepareUnitOrders( order );                
+            Game.PrepareUnitOrders( order );                
 
-                return true
-            }
-            else if (IsRestBuilding(entityIndex) && IsTeamControlled(entityIndex) )
-            {
-                $.Msg("Right clicked on a rest building")
-                GameEvents.SendCustomGameEventToServer( "player_rest_building", { entityIndex : entityIndex } );
-                return false
-            }
+            return true
+        }
+        else if (IsRestBuilding(entityIndex) && IsTeamControlled(entityIndex) )
+        {
+            $.Msg("Right clicked on a rest building")
+            GameEvents.SendCustomGameEventToServer( "player_rest_building", { entityIndex : entityIndex } );
+            return false
         }
     }
 

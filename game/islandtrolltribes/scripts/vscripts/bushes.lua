@@ -1,3 +1,5 @@
+GAME_BUSH_TICK_TIME = 1--30
+
 function ITT:SpawnBushes()
     local bush_herb_spawners = Entities:FindAllByClassname("npc_dota_spawner")
     GameRules.Bushes = {}
@@ -15,7 +17,7 @@ function ITT:SpawnBushes()
     local bushCount = #GameRules.Bushes
     print("Spawned "..bushCount.." bushes total")
 
-    Timers:CreateTimer(GAME_BUSH_TICK_TIME, function()
+    Timers:CreateTimer(function()
         ITT:OnBushThink()
         return GAME_BUSH_TICK_TIME
     end)
@@ -52,174 +54,74 @@ function ITT:OnBushThink()
     return GAME_BUSH_TICK_TIME
 end
 
--- Moves towards a bush and extracts items from it
-function ITT:BushGather( event )
-    local playerID = event.PlayerID
-    local bush = EntIndexToHScript(event.entityIndex)
-    local unit = PlayerResource:GetSelectedHeroEntity(playerID)
-
-    print("Gather from "..bush:GetUnitName())
-
-    -- Order Timers Reset
-    if unit.orderTimer then
-        Timers:RemoveTimer(unit.orderTimer)
-    end
-
-    if (bush:GetUnitName() == "npc_bush_scout" and unit:GetClassname() ~= "npc_dota_hero_lion") then
-        SendErrorMessage(playerID, "#error_scout_only_bush")
-        return --exits if bush is used by anything other than a scout
-    end
-
-    if (bush:GetUnitName() == "npc_bush_thief" and unit:GetClassname() ~= "npc_dota_hero_riki") then
-        SendErrorMessage(playerID, "#error_thief_only_bush")
-        return --exits if bush is used by anything other than a thief
-    end
-
-    -- Move towards the bush
-    local position = bush:GetAbsOrigin()
-    ExecuteOrderFromTable({ UnitIndex = unit:GetEntityIndex(), OrderType = DOTA_UNIT_ORDER_MOVE_TO_POSITION, Position = position, Queue = false})
-    unit.orderTimer = Timers:CreateTimer(function()
-        if IsValidAlive(unit) and (unit:GetAbsOrigin() - position):Length2D() <= DEFAULT_TRANSFER_RANGE then
-            print("Reached Bush!")
-            unit:Stop()
-            if GetNumItemsInInventory(bush) > 0 then
-                unit:StartGesture(ACT_DOTA_ATTACK)
-
-                -- Transfer items from the bush to the gatherer
-                for i=0,5 do
-                    Timers:CreateTimer(0.1*i, function()
-
-                        local item = bush:GetItemInSlot(i)
-                        if item then
-                            TransferItem(bush, unit, item)
-                        end
-                    end)
-                end
-            end
-
-            return
-        end
-        return 0.1
-    end)
-end
-
-function CreateBushContainer( unit )
+function CreateBushContainer( bush )
     local cont = Containers:CreateContainer({
         layout =      {3,3},
         --skins =       {"Hourglass"},
-        headerText =  unit:GetUnitName(),
+        headerText =  bush:GetUnitName(),
         buttons =     {"Grab All"},
         position =    "entity", --"mouse",--"900px 200px 0px",
         draggable = false,
         closeOnOrder= true,
         items = {},
-        entity = unit,
-        range = 150,
+        entity = bush,
+        range = DEFAULT_TRANSFER_RANGE,
         OnDragWorld = true,
 
+        --[[OnDragFrom = function(playerID, unit, container, item, fromSlot, toContainer, toSlot) 
+            --stuff here
+            Containers:OnDragFrom(playerID, unit, container, item, fromSlot, toContainer, toSlot)
+        end]]
+
         OnLeftClick = function(playerID, unit, container, item, slot)
+
             if CanTakeMoreItems(unit) or CanTakeMoreStacksOfItem(unit, item) then
-                container:RemoveItem(item)
-                Containers:AddItemToUnit(unit,item)
+                unit:StartGesture(ACT_DOTA_ATTACK)
+
+                TransferItem(bush, unit, item)
+
             else
                 SendErrorMessage(playerID, "#error_inventory_full")
             end
         end,
 
         OnButtonPressed = function(playerID, unit, container, button, buttonName)
-          if button == 1 then
-            local items = container:GetAllItems()
-            for _,item in ipairs(items) do
-              container:RemoveItem(item)
-              Containers:AddItemToUnit(unit,item)
+            if button == 1 then
+                local items = container:GetAllItems()
+
+                for _,item in ipairs(items) do
+
+                    TransferItem(bush, unit, item)
+
+                end
+
+                container:Close(playerID)
+            end
+        end,
+    })
+
+    Containers:SetEntityOrderAction(bush, {
+        range = DEFAULT_TRANSFER_RANGE,
+        action = function(playerID, unit, target)
+            if (bush:GetUnitName() == "npc_bush_scout" and unit:GetClassname() ~= "npc_dota_hero_lion") then
+                SendErrorMessage(playerID, "#error_scout_only_bush")
+                return --exits if bush is used by anything other than a scout
             end
 
-            container:Close(playerID)
-          end
-        end,
-        })
-
-        Containers:SetEntityOrderAction(unit, {
-        range = 150,
-        action = function(playerID, unit, target)
-          print("ORDER ACTION loot box: ", playerID)
-          cont:Open(playerID)
-          unit:Stop()
-          unit:Hold()
+            if (bush:GetUnitName() == "npc_bush_thief" and unit:GetClassname() ~= "npc_dota_hero_riki") then
+                SendErrorMessage(playerID, "#error_thief_only_bush")
+                return --exits if bush is used by anything other than a thief
+            end
+            
+            print("ORDER ACTION loot box: ", playerID)
+            cont:Open(playerID)
+            unit:Stop()
+            unit:Hold()
         end,
     })
 
-    unit.container = cont
-end
+    bush.container = cont
+    bush.replicatedContainer = true
 
-function ITT:ContainerTest( hero )
-    local position = hero:GetAbsOrigin() + hero:GetForwardVector() * 200
-
-    CreateLootBox(position)
-end
-
-function RandomItem(owner)
-  local id = RandomInt(1,29)
-  local name = Containers.itemIDs[id]
-  print(name)
-  return CreateItem(name, owner, owner)
-end
-
-function CreateLootBox(loc)
-    local phys = CreateItemOnPositionSync(loc, CreateItem("item_bush_mushroom", nil, nil))
-    phys:SetForwardVector(Vector(0,-1,0))
-    phys:SetModelScale(1.5)
-
-    local items = {}
-    local slots = {1,2,3,4,5,6}
-    for i=1,6 do
-        items[i] = CreateItem("item_mushroom", nil, nil)
-    end
-
-    local cont = Containers:CreateContainer({
-    layout =      {3,3},
-    --skins =       {"Hourglass"},
-    headerText =  "Mushroom Bush",
-    buttons =     {"Grab All"},
-    position =    "entity", --"mouse",--"900px 200px 0px",
-    draggable = false,
-    closeOnOrder= true,
-    items = items,
-    entity = phys,
-    range = 150,
-    OnDragWorld = true,
-
-    OnLeftClick = function(playerID, unit, container, item, slot)
-        if CanTakeMoreItems(unit) or CanTakeMoreStacksOfItem(unit, item) then
-            container:RemoveItem(item)
-            Containers:AddItemToUnit(unit,item)
-        else
-            SendErrorMessage(playerID, "#error_inventory_full")
-        end
-    end,
-
-    OnButtonPressed = function(playerID, unit, container, button, buttonName)
-      if button == 1 then
-        local items = container:GetAllItems()
-        for _,item in ipairs(items) do
-          container:RemoveItem(item)
-          Containers:AddItemToUnit(unit,item)
-        end
-
-        container:Close(playerID)
-      end
-    end,
-    })
-
-    Containers:SetEntityOrderAction(phys, {
-    range = 150,
-    action = function(playerID, unit, target)
-      print("ORDER ACTION loot box: ", playerID)
-      cont:Open(playerID)
-      unit:Stop()
-    end,
-    })
-
-    loc.container = cont
-    loc.phys = phys
+    Containers:SetDefaultInventory(bush, container)
 end

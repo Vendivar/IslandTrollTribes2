@@ -167,12 +167,25 @@ end
 -- This handles transfering an item handle from a unit to a target
 function TransferItem( unit, target, item )
     if CanTakeItem(target) then
-        unit:DropItemAtPositionImmediate(item, unit:GetAbsOrigin())
-        item:LaunchLoot(false, 200, 0.75, target:GetAbsOrigin())
+        if unit.replicatedContainer then
 
-        Timers:CreateTimer(0.75, function()
-            local pickedUp = PickupItem( target, item:GetContainer() )
-        end)
+            local container = unit.container
+            local slot = container:GetSlotForItem(item)
+
+            container:RemoveItem(item)
+            unit:GetItemInSlot(slot):RemoveSelf()
+
+            Containers:AddItemToUnit(target,item)
+
+        else
+            unit:DropItemAtPositionImmediate(item, unit:GetAbsOrigin())
+
+            item:LaunchLoot(false, 200, 0.75, target:GetAbsOrigin())
+
+            Timers:CreateTimer(0.75, function()
+                local pickedUp = PickupItem( target, item:GetContainer() )
+            end)
+        end
     else
         return false
     end
@@ -182,11 +195,12 @@ end
 function GiveItemStack( unit, itemName )
     local newItem = CreateItem(itemName, nil, nil)
 
+    local result
     if CanTakeMoreItems(unit) then
         unit:AddItem(newItem)
         --print("Given "..itemName.." to "..unit:GetUnitName())
         ResolveInventoryMerge(unit, newItem)
-        return newItem
+        result = newItem
     else
         local itemToStack = CanTakeMoreStacksOfItem(unit, newItem)
         if itemToStack then
@@ -198,12 +212,37 @@ function GiveItemStack( unit, itemName )
             Timers:CreateTimer(function()
                 UTIL_Remove(newItem)
             end)
-            return itemToStack
+            result = itemToStack
         end
     end
 
-    --print("Couldn't add "..itemName.." - Inventory is full and it wont take more stacks")
-    UTIL_Remove(newItem)
+    -- If the unit is replicating its inventory on a container, add it there too
+    Timers:CreateTimer(function()
+        if unit.replicatedContainer then
+            local container = unit.container
+
+            -- Set the correct charges
+            for i=0,5 do
+                local item = unit:GetItemInSlot(i)
+                if item then
+                    local containerItem = container:GetItemInSlot(i+1)
+                    local charges = item:GetCurrentCharges() or 0
+                    if not containerItem then
+                        container:AddItem(CreateItem(itemName, nil, nil), i)
+                    else
+                        containerItem:SetCurrentCharges(charges)
+                    end
+                end
+            end
+        end
+    end)
+
+    if not result then
+        --print("Couldn't add "..itemName.." - Inventory is full and it wont take more stacks")
+        UTIL_Remove(newItem)
+    end
+
+    return result
 end
 
 function GetNumItemsInInventory( unit )

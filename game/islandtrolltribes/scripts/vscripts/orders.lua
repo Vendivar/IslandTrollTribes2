@@ -1,5 +1,5 @@
 ITEM_TRANSFER_RANGE = 300
-DEFAULT_TRANSFER_RANGE = 100
+DEFAULT_TRANSFER_RANGE = 150
 
 function ITT:FilterExecuteOrder( filterTable )
 
