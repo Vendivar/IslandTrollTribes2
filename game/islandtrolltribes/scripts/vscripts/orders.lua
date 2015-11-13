@@ -182,6 +182,11 @@ function ITT:FilterExecuteOrder( filterTable )
             print("INVALID DROP, index was",targetIndex,"ABORT")
             return false
         end
+
+        -- Filter out containers
+        if drop.container then
+            return true
+        end
         
         local position = drop:GetAbsOrigin()
         local origin = unit:GetAbsOrigin()

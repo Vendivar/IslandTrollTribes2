@@ -300,6 +300,7 @@ end
 
 function ITT:TestBush( playerID )
     local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+    local position = hero:GetAbsOrigin() + hero:GetForwardVector() * 200
 
-    ITT:ContainerTest( hero )
+    CreateBushContainer("item_bush_mushroom", position)
 end

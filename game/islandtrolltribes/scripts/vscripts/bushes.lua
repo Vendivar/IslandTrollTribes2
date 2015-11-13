@@ -6,12 +6,9 @@ function ITT:SpawnBushes()
     for _,spawner in pairs(bush_herb_spawners) do
         local spawnerName = spawner:GetName()
         if string.find(spawnerName, "_bush_") then
-            local bush_name = string.sub(string.gsub(spawner:GetName(), "spawner_", ""), 5)
-            local bush = CreateUnitByName(bush_name, spawner:GetAbsOrigin(), false, nil, nil, DOTA_TEAM_NEUTRALS)
-            if bush then
-                table.insert(GameRules.Bushes, bush)
-                CreateBushContainer(bush)
-            end
+            local bushName = string.sub(string.gsub(spawnerName, "spawner_npc_", ""), 5)
+            local itemName = "item_"..bushName
+            CreateBushContainer(itemName, spawner:GetAbsOrigin())
         end
     end
     local bushCount = #GameRules.Bushes
@@ -38,13 +35,14 @@ function ITT:OnBushThink()
         if rand + bush.RngWeight >= 5 then 
             bush.RngWeight = bush.RngWeight - 1 --if spawn succeeds reduce the odds of the next spawn
 
-            local bush_name = bush:GetUnitName()
+            local bush_name = string.gsub(bush:GetContainedItem():GetAbilityName(), "item_", "")
             local bushTable = GameRules.BushInfo[bush_name]
             local possibleChoices = TableCount(bushTable)
             local randomN = tostring(RandomInt(1, possibleChoices))
             local bush_random_item = bushTable[randomN]
 
-            GiveItemStack(bush, bush_random_item)
+            --GiveItemStack(bush, bush_random_item)
+            bush.container:AddItem(CreateItem(bush_random_item, nil, nil)) --Missing stack handling
 
         else
             bush.RngWeight = bush.RngWeight + 1 --if spawn fails increase odds for next run
@@ -54,11 +52,20 @@ function ITT:OnBushThink()
     return GAME_BUSH_TICK_TIME
 end
 
-function CreateBushContainer( bush )
+function CreateBushContainer( name, position )
+
+    local newItem = CreateItem(name, nil, nil)
+    local bush = CreateItemOnPositionSync(position, newItem)
+
+    --Particle refused to show through fog for an hour so give vision instead
+    for _,v in pairs(VALID_TEAMS) do AddFOWViewer ( v, position, 100, 0.1, false) end
+
+    table.insert(GameRules.Bushes, bush)
+
     local cont = Containers:CreateContainer({
         layout =      {3,3},
         --skins =       {"Hourglass"},
-        headerText =  bush:GetUnitName(),
+        headerText =  newItem:GetAbilityName(),
         buttons =     {"Grab All"},
         position =    "entity", --"mouse",--"900px 200px 0px",
         draggable = false,
@@ -103,7 +110,7 @@ function CreateBushContainer( bush )
     Containers:SetEntityOrderAction(bush, {
         range = DEFAULT_TRANSFER_RANGE,
         action = function(playerID, unit, target)
-            if (bush:GetUnitName() == "npc_bush_scout" and unit:GetClassname() ~= "npc_dota_hero_lion") then
+            --[[if (bush:GetUnitName() == "npc_bush_scout" and unit:GetClassname() ~= "npc_dota_hero_lion") then
                 SendErrorMessage(playerID, "#error_scout_only_bush")
                 return --exits if bush is used by anything other than a scout
             end
@@ -111,7 +118,7 @@ function CreateBushContainer( bush )
             if (bush:GetUnitName() == "npc_bush_thief" and unit:GetClassname() ~= "npc_dota_hero_riki") then
                 SendErrorMessage(playerID, "#error_thief_only_bush")
                 return --exits if bush is used by anything other than a thief
-            end
+            end]]
             
             print("ORDER ACTION loot box: ", playerID)
             cont:Open(playerID)
@@ -121,7 +128,7 @@ function CreateBushContainer( bush )
     })
 
     bush.container = cont
-    bush.replicatedContainer = true
+    bush.phys = phys
 
-    Containers:SetDefaultInventory(bush, container)
+    --Containers:SetDefaultInventory(bush, container)
 end
