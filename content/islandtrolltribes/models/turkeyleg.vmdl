@@ -11,7 +11,7 @@ CVModel CVModel_0
 				string m_meshFile = "models/turkeyleg.dmx"
 				string m_materialSearchPath = ""
 				bool m_bSkinParentedObjects = true
-				bool m_bLegacySkinParentedTransforms = true
+				bool m_bLegacySkinParentedTransforms = false
 				bool m_bExpensiveTangents = false
 				bool m_bExpensiveVertices = false
 				bool m_bIgnoreCloth = false
@@ -27,7 +27,7 @@ CVModel CVModel_0
 			
 		]
 		float m_flClothEnableThreshold = 0.050000
-		bool m_bCreateStaticBone = true
+		bool m_bCreateStaticBone = false
 		int m_nMaxBonesPerVertex = 4
 		bool m_bRemoveUnusedBonesEnabled = false
 		bool m_bDriveMeshesWithBacksolvedJointsOnly = true
@@ -62,7 +62,11 @@ CVModel CVModel_0
 	]
 	CVattachmentListReference[] m_pAttachmentLists = 
 	[
-		
+		CVattachmentListReference
+		{
+			CVattachmentList* m_pObject = &CVattachmentList_0
+			string m_sFileName = ""
+		}
 	]
 	CVanimGroupReference m_pAnimGroup = CVanimGroupReference
 	{
@@ -71,7 +75,7 @@ CVModel CVModel_0
 	}
 	CVNodeMaterialGroupListReference m_pMaterialGroupList = CVNodeMaterialGroupListReference
 	{
-		NodeMaterialGroupList_t* m_pObject = NULL
+		NodeMaterialGroupList_t* m_pObject = &NodeMaterialGroupList_t_0
 		string m_sFileName = ""
 	}
 	CVMeshGroupListReference m_pMeshGroupList = CVMeshGroupListReference
@@ -146,8 +150,8 @@ CVhitBoxSetList CVhitBoxSetList_0
 					string m_sSurfaceProperty = "porcelain"
 					int m_nGroupId = 0
 					string m_sBoneName = "Cube"
-					float(3) m_vMinBounds = ( -92.000000, -88.125237, 2.792765 )
-					float(3) m_vMaxBounds = ( 89.095390, 92.000000, 139.638229 )
+					float(3) m_vMinBounds = ( 2.000000, -2.000000, 0.223421 )
+					float(3) m_vMaxBounds = ( -7.755000, 8.000000, 11.171100 )
 					bool m_bTranslationOnly = false
 					uint(4) m_cRenderColor = ( 0, 0, 0, 0 )
 				}
@@ -156,6 +160,16 @@ CVhitBoxSetList CVhitBoxSetList_0
 	]
 	string m_AutoCreateSetName = ""
 }
+
+CVattachmentList CVattachmentList_0
+{
+	string m_name = ""
+	CVattachment[] m_attachments = 
+	[
+		
+	]
+}
+
 CVanimGroup CVanimGroup_0
 {
 	string m_Name = ""
@@ -182,8 +196,8 @@ CVanimGroup CVanimGroup_0
 	[
 		CVanim
 		{
-			string m_Animationname = "Cube"
-			string m_Filepath = "models/Cube.dmx"
+			string m_Animationname = "mixing_potbone"
+			string m_Filepath = "models/cube.dmx"
 			int m_nStartframe = 0
 			int m_nEndframe = 0
 			float m_flFps = 30.000000
@@ -246,6 +260,21 @@ CVanimGroup CVanimGroup_0
 	]
 }
 
+NodeMaterialGroupList_t NodeMaterialGroupList_t_0
+{
+	NodeMaterialGroup_t[] m_materialGroups = 
+	[
+		NodeMaterialGroup_t
+		{
+			string m_name = "default"
+			string[] m_materialList = 
+			[
+				"untitled.vmat"
+			]
+		}
+	]
+}
+
 CVMaterialRemapList CVMaterialRemapList_0
 {
 	CVMaterialRemap[] m_vMaterialRemapList = 
@@ -253,7 +282,7 @@ CVMaterialRemapList CVMaterialRemapList_0
 		CVMaterialRemap
 		{
 			string m_sSearchMaterial = "untitled.vmat"
-			string m_sReplaceMaterial = "materials/models/items/brewmaster/gear_brewmaster_shoulder_01/gear_brewmaster_shoulder_01.vmat"
+			string m_sReplaceMaterial = "materials/models/heroes/brewmaster/weapon_color.vmat"
 		}
 	]
 }
