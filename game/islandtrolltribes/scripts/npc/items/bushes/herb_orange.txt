@@ -1,0 +1,18 @@
+"item_bush_herb_orange"
+{
+    "BaseClass"         "item_datadriven"
+    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "Model"             "models/props_nature/fern003.vmdl"
+    "Effect"            "particles/custom/dropped_item_white.vpcf"
+    
+    "Custom"
+    {
+        "ModelScale"    "1.5"
+    }
+    
+    "ItemInitialCharges"    "0"
+    "ItemDroppable"         "0"
+    "ItemSellable"          "0"
+    "ItemPurchasable"       "0"
+    "ItemShareability"      "ITEM_NOT_SHAREABLE"
+}

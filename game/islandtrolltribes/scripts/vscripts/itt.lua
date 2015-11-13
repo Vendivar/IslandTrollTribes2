@@ -150,10 +150,6 @@ function ITT:InitGameMode()
     self.vUserIds = {}
     self.vPlayerUserIds = {}
 
-    -- Initial bush spawns, starts the timer to add items to the bushes periodially
-    -- Place entities starting with spawner_ plus the appropriate name to spawn to corresponding bush on game start
-    ITT:SpawnBushes()
-
     -- Change random seed
     local timeTxt = string.gsub(string.gsub(GetSystemTime(), ':', ''), '0','')
     math.randomseed(tonumber(timeTxt))
@@ -942,6 +938,10 @@ function ITT:OnGameRulesStateChange()
     if nNewState == DOTA_GAMERULES_STATE_HERO_SELECTION then
 
         Spawns:Init()
+
+        -- Initial bush spawns, starts the timer to add items to the bushes periodially
+        -- Place entities starting with spawner_ plus the appropriate name to spawn to corresponding bush on game start
+        ITT:SpawnBushes()
 
     elseif nNewState == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
 
