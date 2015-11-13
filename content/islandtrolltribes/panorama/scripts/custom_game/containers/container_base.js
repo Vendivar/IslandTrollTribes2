@@ -15,8 +15,6 @@ function DefaultInventory()
 
 
 
-
-
 var containers = {};
 var lastUnit = null;
 
@@ -30,7 +28,7 @@ function DisableFocus(panel)
 {
   panel.SetDisableFocusOnMouseDown(true);
   //panel.SetAcceptsFocus(false);
-
+  
   for (var i=0; i<panel.GetChildCount(); i++){
     DisableFocus(panel.GetChild(i));
   }
@@ -84,9 +82,9 @@ function DeleteContainer(msg)
  }
  else{
   //$.Msg("[container_base.js] Delete container for id '" + id + "' unable to find existing container.")
- }
+ } 
 }
-
+ 
 
 function ExecuteProxy(msg)
 {
@@ -116,10 +114,16 @@ function ExecuteProxy(msg)
 }
 
 var EntityShops = {};
+var lastSel = null; 
 
 function CheckShop()
 {
   var sel = Players.GetLocalPlayerPortraitUnit();
+  if (sel !== lastSel){
+    GameEvents.SendCustomGameEventToServer( "Containers_Select", {entity:sel} );
+    lastSel = sel;
+    $.Msg("CheckShop ", sel, ' -- ', lastSel);
+  }
 
   if (sel >= 1 && (Entities.IsCreepHero(sel) || Entities.IsRealHero(sel))) {
     var shop = 0;
@@ -186,6 +190,20 @@ function EmitClientSound(msg)
   }
 }
 
+function UsePanoramaInventory(msg)
+{
+  var use = msg.use;
+  var panInv = $("#PanoramaInventory");
+  if (use === 0){
+    panInv.visible = false;
+    GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_INVENTORY_ITEMS, true );
+  }
+  else{
+    panInv.visible = true;
+    GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_INVENTORY_ITEMS, false );
+  }
+}
+
 function ScreenHeightWidth()
 {
   var panel = $.GetContextPanel();
@@ -204,16 +222,20 @@ function ScreenHeightWidth()
   //containerPanel = $.CreatePanel( "Panel", panel, "" );
   //containerPanel.BLoadLayout("file://{resources}/layout/custom_game/containers/container.xml", false, false);
 
-  GameEvents.Subscribe( "cont_open_container", OpenContainer);
+  GameEvents.Subscribe( "cont_open_container", OpenContainer); 
   GameEvents.Subscribe( "cont_close_container", CloseContainer);
   GameEvents.Subscribe( "cont_delete_container", DeleteContainer);
 
   GameEvents.Subscribe( "cont_execute_proxy", ExecuteProxy);
   GameEvents.Subscribe( "cont_create_error_message", CreateErrorMessage);
   GameEvents.Subscribe( "cont_emit_client_sound", EmitClientSound);
+  GameEvents.Subscribe( "cont_use_panorama_inventory", UsePanoramaInventory);
 
   GameEvents.Subscribe( "dota_player_update_selected_unit", CheckShop );
   GameEvents.Subscribe( "dota_player_update_query_unit", CheckShop );
+
+  var use = CustomNetTables.GetTableValue( "containers_lua", "use_panorama_inventory" );
+  UsePanoramaInventory({use:use.value});
 
   CheckShopSchedule();
   CheckCouriers();
@@ -233,4 +255,3 @@ function ScreenHeightWidth()
   panel.containers = containers; 
   panel.initialized = true; 
 })()
-

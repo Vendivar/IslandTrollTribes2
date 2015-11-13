@@ -1,6 +1,9 @@
 GAME_BUSH_TICK_TIME = 1--30
 
 function ITT:SpawnBushes()
+    Containers:SetDisableItemLimit(true)
+    Containers:UsePanoramaInventory(false)
+
     local bush_herb_spawners = Entities:FindAllByClassname("npc_dota_spawner")
     GameRules.Bushes = {}
     for _,spawner in pairs(bush_herb_spawners) do
@@ -75,41 +78,38 @@ function CreateBushContainer( name, position )
         range = DEFAULT_TRANSFER_RANGE,
         OnDragWorld = true,
 
-        --[[OnDragFrom = function(playerID, unit, container, item, fromSlot, toContainer, toSlot) 
-            --stuff here
-            Containers:OnDragFrom(playerID, unit, container, item, fromSlot, toContainer, toSlot)
-        end]]
+        OnLeftClick = function(playerID, container, unit, item, slot)
 
-        OnLeftClick = function(playerID, unit, container, item, slot)
+            container:RemoveItem(item)
+            Containers:AddItemToUnit(unit,item)
 
-            if CanTakeMoreItems(unit) or CanTakeMoreStacksOfItem(unit, item) then
+            --[[if CanTakeMoreItems(unit) or CanTakeMoreStacksOfItem(unit, item) then
                 unit:StartGesture(ACT_DOTA_ATTACK)
 
-                TransferItem(bush, unit, item)
+                TransferItem(container, unit, item)
 
             else
                 SendErrorMessage(playerID, "#error_inventory_full")
-            end
+            end]]
         end,
 
-        OnButtonPressed = function(playerID, unit, container, button, buttonName)
+        OnButtonPressed = function(playerID, container, unit, button, buttonName)
             if button == 1 then
                 local items = container:GetAllItems()
 
                 for _,item in ipairs(items) do
 
-                    TransferItem(bush, unit, item)
+                    --TransferItem(container, unit, item)
+                    container:RemoveItem(item)
+                    Containers:AddItemToUnit(unit,item)
 
                 end
 
                 container:Close(playerID)
             end
         end,
-    })
 
-    Containers:SetEntityOrderAction(bush, {
-        range = DEFAULT_TRANSFER_RANGE,
-        action = function(playerID, unit, target)
+        OnEntityOrder = function(playerID, container, unit, target)
             --[[if (bush:GetUnitName() == "npc_bush_scout" and unit:GetClassname() ~= "npc_dota_hero_lion") then
                 SendErrorMessage(playerID, "#error_scout_only_bush")
                 return --exits if bush is used by anything other than a scout
@@ -121,7 +121,7 @@ function CreateBushContainer( name, position )
             end]]
             
             print("ORDER ACTION loot box: ", playerID)
-            cont:Open(playerID)
+            container:Open(playerID)
             unit:Stop()
             unit:Hold()
         end,

@@ -68,12 +68,19 @@ function TieShopToUnit( unit )
         stocks =      stocks,
         closeOnOrder= true,
         range =       300,
-    })
 
-    Containers:SetEntityOrderAction(unit, {
-        container = shop,
-        action = function(playerID, unit, target)
-            shop:Open(playerID)
+        OnSelect = function(playerID, container, selected)
+            print("Selected", selected:GetUnitName())
+            container:Open(playerID)
+        end,
+
+        OnDeselect = function(playerID, container, deselected)
+            print("Deselected", deselected:GetUnitName())
+            container:Close(playerID)
+        end,
+
+        OnEntityOrder = function(playerID, container, unit, target)
+            container:Open(playerID)
             local player = PlayerResource:GetPlayer(playerID)
             EmitSoundOnClient("Shop.Available", player)
             EmitSoundOnClient("Quickbuy.Available", player)

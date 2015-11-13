@@ -9,6 +9,13 @@ TIMERS_VERSION = "1.04"
     end
   )
 
+  -- The same timer as above with a shorthand call 
+  Timers(function()
+    print ("Hello. I'm running immediately and then every second thereafter.")
+    return 1.0
+  end)
+  
+
   -- A timer which calls a function with a table context
   Timers:CreateTimer(GameMode.someFunction, GameMode)
 
@@ -67,13 +74,12 @@ TIMERS_THINK = 0.01
 if Timers == nil then
   print ( '[Timers] creating Timers' )
   Timers = {}
-  Timers.__index = Timers
-end
-
-function Timers:new( o )
-  o = o or {}
-  setmetatable( o, Timers )
-  return o
+  setmetatable(Timers, {
+    __call = function(t, ...)
+      return t:CreateTimer(...)
+    end
+  })
+  --Timers.__index = Timers
 end
 
 function Timers:_xpcall (f, ...)
@@ -251,3 +257,5 @@ function Timers:RemoveTimers(killAll)
 end
 
 if not Timers.timers then Timers:start() end
+
+GameRules.Timers = Timers

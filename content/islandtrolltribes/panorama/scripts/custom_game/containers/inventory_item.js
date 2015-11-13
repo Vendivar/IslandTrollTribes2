@@ -14,7 +14,12 @@ function UpdateItem()
 	m_Item = -1;
 	if (m_contString !== ""){
 		m_Item = PlayerTables.GetTableValue(m_contString, "slot" + m_slot) || -1;
-		m_QueryUnit = PlayerTables.GetTableValue(m_contString, "unit") || -1;
+		m_QueryUnit = PlayerTables.GetTableValue(m_contString, "entity") || -1;
+		var sel = Players.GetPlayerHeroEntityIndex( Players.GetLocalPlayer() );
+		if (!Entities.IsInventoryEnabled(m_QueryUnit) || !Entities.IsControllableByAnyPlayer(m_QueryUnit) || 
+			(Entities.GetTeamNumber(m_QueryUnit) != Entities.GetTeamNumber(sel))){
+			m_QueryUnit = -1;
+		}
 	}
 
 	if (m_Container === null || m_Container.deleted){
@@ -81,6 +86,7 @@ function UpdateItem()
 	$.GetContextPanel().SetHasClass( "show_alt_charges", hasAltCharges );
 	$.GetContextPanel().SetHasClass( "is_passive", isPassive );
 	//$.GetContextPanel().SetHasClass( "no_mana_cost", (Abilities.GetManaCost( m_Item ) <= 0));
+	//$.Msg(m_QueryUnit, " -- ", m_Item, " -- ", Abilities.GetManaCost( m_Item ), " -- ", Entities.GetMana(m_QueryUnit));
 	$.GetContextPanel().SetHasClass( "low_mana", ((m_QueryUnit !== -1) && Abilities.GetManaCost( m_Item ) > Entities.GetMana(m_QueryUnit)));
 
 	
@@ -101,7 +107,7 @@ function UpdateItem()
 	if (m_Container)
 		$( "#ManaCost" ).text = Abilities.GetManaCost( m_Item );
 	
-	if ( m_Item == -1 || Abilities.IsCooldownReady( m_Item ) )
+	if ( m_QueryUnit == -1 || m_Item == -1 || Abilities.IsCooldownReady( m_Item ) )
 	{
 		$.GetContextPanel().SetHasClass( "cooldown_ready", true );
 		$.GetContextPanel().SetHasClass( "in_cooldown", false );
@@ -109,7 +115,7 @@ function UpdateItem()
 	else
 	{
 		$.GetContextPanel().SetHasClass( "cooldown_ready", false );
-		$.GetContextPanel().SetHasClass( "in_cooldown", true );
+		$.GetContextPanel().SetHasClass( "in_cooldown", true ); 
 		var cooldownLength = Abilities.GetCooldownLength( m_Item );
 		var cooldownRemaining = Abilities.GetCooldownTimeRemaining( m_Item );
 		var cooldownPercent = Math.ceil( 100 * cooldownRemaining / cooldownLength );

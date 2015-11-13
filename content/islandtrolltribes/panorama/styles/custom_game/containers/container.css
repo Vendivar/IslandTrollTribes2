@@ -223,11 +223,15 @@
 #ItemButton
 {
   align: center center;
+  width: 100%;
+  height: 100%;
 }
 
 #ItemImage
 {
   align: center center; 
+  width: 100%;
+  height: 100%;
 }
 
 
@@ -538,3 +542,4 @@
 {
   visibility: collapse;
 }
+

@@ -167,25 +167,13 @@ end
 -- This handles transfering an item handle from a unit to a target
 function TransferItem( unit, target, item )
     if CanTakeItem(target) then
-        if unit.replicatedContainer then
+        unit:DropItemAtPositionImmediate(item, unit:GetAbsOrigin())
 
-            local container = unit.container
-            local slot = container:GetSlotForItem(item)
+        item:LaunchLoot(false, 200, 0.75, target:GetAbsOrigin())
 
-            container:RemoveItem(item)
-            unit:GetItemInSlot(slot):RemoveSelf()
-
-            Containers:AddItemToUnit(target,item)
-
-        else
-            unit:DropItemAtPositionImmediate(item, unit:GetAbsOrigin())
-
-            item:LaunchLoot(false, 200, 0.75, target:GetAbsOrigin())
-
-            Timers:CreateTimer(0.75, function()
-                local pickedUp = PickupItem( target, item:GetContainer() )
-            end)
-        end
+        Timers:CreateTimer(0.75, function()
+            local pickedUp = PickupItem( target, item:GetContainer() )
+        end)
     else
         return false
     end

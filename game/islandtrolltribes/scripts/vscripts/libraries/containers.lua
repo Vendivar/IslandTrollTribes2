@@ -79,10 +79,6 @@ LinkLuaModifier( "modifier_shopkeeper", "libraries/modifiers/modifier_shopkeeper
 
 --search bar?
 -- max stacks?
--- other callbacks?
--- remove item_banlk
---drag to regular inventory
---UNIT CHECKS ON COMMANDS
 
 -- change casting unit handling?
 -- test out Equipping items
@@ -250,6 +246,8 @@ function Containers:start()
     self.closeOnOrders[i] = {}
   end
 
+  CustomNetTables:SetTableValue("containers_lua", "use_panorama_inventory", {value=false})
+
   self.nextFilter = nil
   self.nextContext = nil
   self.disableItemLimit = false
@@ -261,7 +259,8 @@ function Containers:start()
   self.defaultInventories = {}
 
   self.rangeActions = {}
-  self.entOrderActions = {}
+  self.previousSelection = {}
+  self.entityContainers = {}
 
   for k,v in pairs(LoadKeyValues("scripts/npc/npc_abilities_override.txt")) do
     if self.itemKV[k] then
@@ -289,6 +288,7 @@ function Containers:start()
   end
 
   CustomGameEventManager:RegisterListener("Containers_EntityShopRange", Dynamic_Wrap(Containers, "Containers_EntityShopRange"))
+  CustomGameEventManager:RegisterListener("Containers_Select", Dynamic_Wrap(Containers, "Containers_Select"))
   CustomGameEventManager:RegisterListener("Containers_HideProxy", Dynamic_Wrap(Containers, "Containers_HideProxy"))
 
   CustomGameEventManager:RegisterListener("Containers_OnLeftClick", Dynamic_Wrap(Containers, "Containers_OnLeftClick"))
@@ -307,12 +307,17 @@ function Containers:start()
         if action.entity and not IsValidEntity(action.entity) then
           Containers.rangeActions[id] = nil  
         else
-          local range2 = action.range * action.range
+          local range = action.range
+          if not range and action.container then
+            range = action.container:GetRange()
+          end
+          if not range then range = 150 end
+          local range2 = range * range
           local pos = action.position or action.entity:GetAbsOrigin()
           local dist = unit:GetAbsOrigin() - pos
 
           if (dist.x * dist.x + dist.y * dist.y) <= range2 then
-            local status, err = pcall(action.action, action.playerID, unit, action.entity or action.position, action.fromContainer, action.item)
+            local status, err = pcall(action.action, action.playerID, action.container, unit, action.entity or action.position, action.fromContainer or action.orderType, action.item)
             if not status then print('[containers.lua] RangeAction failure:' .. err) end
 
             Containers.rangeActions[id] = nil  
@@ -375,6 +380,11 @@ function Containers:SetDisableItemLimit(disable)
   self.disableItemLimit = disable
 end
 
+function Containers:UsePanoramaInventory(useInventory)
+  CustomNetTables:SetTableValue("containers_lua", "use_panorama_inventory", {value=useInventory})
+  CustomGameEventManager:Send_ServerToAllClients("cont_use_panorama_inventory", {use=useInventory})
+end
+
 function Containers:DisplayError(pid, message)
   local player = PlayerResource:GetPlayer(pid)
   if player then
@@ -424,40 +434,28 @@ function Containers:OrderFilter(order)
     Containers.rangeActions[order.units["0"]] = nil
   end
 
-  if order.units["0"] and Containers.entOrderActions[order.entindex_target] then
-    local unit = EntIndexToHScript(order.units["0"])
-    local tab = Containers.entOrderActions[order.entindex_target]
-    local target = EntIndexToHScript(order.entindex_target)
-    local range = tab.range or 150
-    if tab.container then range = (tab.container:GetRange() or 150) end
-    local test = tab.test
-    local success = false
-    local unitpos = unit:GetAbsOrigin()
-    local diff = unitpos - target:GetAbsOrigin()
-    local dist = diff:Length2D()
-    local pos = unitpos
-    if dist > range * .9 then
-      pos = target:GetAbsOrigin() + diff:Normalized() * range * .9
+  local conts = Containers:GetEntityContainers(order.entindex_target)
+  if order.units["0"] and #conts > 0 then
+    local container = nil
+    for _,cont in ipairs(conts) do
+      if cont._OnEntityOrder then
+        container = cont
+        break
+      end
     end
 
-    if test and type(test) == "function" then
-      local result, err = pcall(test, order)
-      if err then
-        print("[containers.lua] Order Action Test Failure: " .. err)
-      else
-        success = result
-        if result then
-          if target.GetContainedItem then
-            order.order_type = DOTA_UNIT_ORDER_MOVE_TO_POSITION
-            order.position_x = pos.x
-            order.position_y = pos.y
-            order.position_z = pos.z
-          else
-            order.order_type = DOTA_UNIT_ORDER_MOVE_TO_TARGET
-          end
-        end
+    if container then
+      local unit = EntIndexToHScript(order.units["0"])
+      local target = EntIndexToHScript(order.entindex_target)
+      local range = container:GetRange() or 150
+      local unitpos = unit:GetAbsOrigin()
+      local diff = unitpos - target:GetAbsOrigin()
+      local dist = diff:Length2D()
+      local pos = unitpos
+      if dist > range * .9 then
+        pos = target:GetAbsOrigin() + diff:Normalized() * range * .9
       end
-    else
+
       if target.GetContainedItem then
         order.order_type = DOTA_UNIT_ORDER_MOVE_TO_POSITION
         order.position_x = pos.x
@@ -466,17 +464,15 @@ function Containers:OrderFilter(order)
       else
         order.order_type = DOTA_UNIT_ORDER_MOVE_TO_TARGET
       end
-      success = true
-    end
-
-    if success then
+      
       Containers.rangeActions[order.units["0"]] = {
         unit = unit,
         entity = target,
-        --position = pos,
         range = range,
         playerID = issuerID,
-        action = tab.action,
+        container = container,
+        orderType = order.order_type,
+        action = container._OnEntityOrder,
       }
     end
   end
@@ -496,7 +492,7 @@ function Containers:OrderFilter(order)
         entity = target,
         range = 180,
         playerID = issuerID,
-        action = function(playerID, unit, target)
+        action = function(playerID, container, unit, target)
           if IsValidEntity(target) and target:IsAlive() then
             unit:DropItemAtPositionImmediate(item, unit:GetAbsOrigin())
             local drop = nil
@@ -541,7 +537,7 @@ function Containers:OrderFilter(order)
         position = physItem:GetAbsOrigin(),
         range = 100,
         playerID = issuerID,
-        action = function(playerID, unit, target)
+        action = function(playerID, container, unit, target)
           if IsValidEntity(physItem) then
             local item = physItem:GetContainedItem()
             if item and defInventory:AddItem(item) then
@@ -564,6 +560,16 @@ function Containers:OrderFilter(order)
     local defInventory = Containers:GetDefaultInventory(unit)
 
     if defInventory then
+      local shops = Containers.entityShops[unit:GetEntityIndex()] or {home=false, side=false, secret=false}
+      if not unit:IsAlive() then
+        shops = {home=true, side=false, secret=false}
+      end
+
+      if not shops.home and not shops.side and not shops.secret then
+        CustomGameEventManager:Send_ServerToPlayer(player, "cont_create_error_message", {reason=67})
+        return false
+      end
+
       local item = CreateItem(itemName, owner, owner)
       if not defInventory:AddItem(item) then
         CreateItemOnPositionSync(unit:GetAbsOrigin() + RandomVector(10), item)
@@ -627,14 +633,21 @@ function Containers:OrderFilter(order)
 
       if toStash then
         local restore = {}
+        local stashSlot = 11
+        for i=6,11 do
+          local slot = owner:GetItemInSlot(i)
+          if not slot then
+            stashSlot = i
+            break
+          end
+        end
+
         for i=0,5 do
           local slot = owner:GetItemInSlot(i)
-          if slot == nil then
-            local item = CreateItem("item_blank_item", owner, owner)
-            owner:AddItem(item)
-          elseif fullyShareStacking and slot:GetAbilityName() == itemName 
-            or ((slot:GetAbilityName() == "item_ward_dispenser" or slot:GetAbilityName() == "item_ward_observer" or slot:GetAbilityName() == "item_ward_sentry")and 
+          if slot and (fullyShareStacking and slot:GetAbilityName() == itemName 
+            or ((slot:GetAbilityName() == "item_ward_dispenser" or slot:GetAbilityName() == "item_ward_observer" or slot:GetAbilityName() == "item_ward_sentry")) and 
               (itemName == "item_ward_observer" or itemName == "item_ward_sentry")) then
+
             owner:DropItemAtPositionImmediate(slot, owner:GetAbsOrigin())
             for i=GameRules:NumDroppedItems()-1,0,-1 do
               local drop = GameRules:GetDroppedItem(i)
@@ -644,9 +657,7 @@ function Containers:OrderFilter(order)
               end
             end
 
-            local item = CreateItem("item_blank_item", owner, owner)
-            owner:AddItem(item)
-          elseif slot:GetOwner() == owner or slot:GetPurchaser() == owner then
+          elseif slot and (slot:GetOwner() == owner or slot:GetPurchaser() == owner) then
             restore[slot:GetEntityIndex()] = {owner=slot:GetOwner(), purchaser=slot:GetPurchaser()}
             slot:SetPurchaser(nil)
             slot:SetOwner(nil)
@@ -664,11 +675,21 @@ function Containers:OrderFilter(order)
             end
             owner:SwapItems(slot,14)
             owner:AddItem(item)
-            owner:EjectItemFromStash(item)
+            for i=0,11 do
+              if owner:GetItemInSlot(i) == item then
+                owner:SwapItems(slot,i)
+                owner:EjectItemFromStash(item)
+              end
+            end
             owner:SwapItems(14,slot)
           end
         else
           owner:AddItem(item)
+          for i=0,11 do
+            if owner:GetItemInSlot(i) == item then
+              owner:SwapItems(stashSlot,i)
+            end
+          end
         end
 
         for i=0,5 do
@@ -698,13 +719,6 @@ function Containers:OrderFilter(order)
               item:SetPurchaser(owner)
             end
           end
-        end
-      end
-
-      for i=0,11 do
-        local item = owner:GetItemInSlot(i)
-        if item and item:GetAbilityName() == "item_blank_item" then
-          owner:RemoveItem(item)
         end
       end
 
@@ -740,6 +754,35 @@ function Containers:Containers_EntityShopRange(args)
   cs[unit].home = bit.band(shop, 1) ~= 0
   cs[unit].side = bit.band(shop, 2) ~= 0
   cs[unit].secret = bit.band(shop, 4) ~= 0
+end
+
+function Containers:Containers_Select(args)
+  local playerID = args.PlayerID
+  local prev = Containers.previousSelection[playerID]
+  local new = args.entity
+  local newEnt = EntIndexToHScript(new)
+
+  local prevConts = Containers:GetEntityContainers(prev)
+  for _, c in ipairs(prevConts) do
+    if c._OnDeselect then
+      local res, err = pcall(c._OnDeselect, playerID, c, prev)
+      if err then
+        print('[containers.lua] Error in OnDeselect: ' .. err)
+      end
+    end
+  end
+
+  Containers.previousSelection[playerID] = newEnt
+
+  local conts = Containers:GetEntityContainers(new)
+  for _, c in ipairs(conts) do
+    if c._OnSelect then
+      local res, err = pcall(c._OnSelect, playerID, c, newEnt)
+      if err then
+        print('[containers.lua] Error in OnSelect: ' .. err)
+      end
+    end
+  end
 end
 
 function Containers:Containers_HideProxy(args)
@@ -784,9 +827,9 @@ function Containers:Containers_OnLeftClick(args)
   end
 
   if type(fun) == "function" then
-    fun(playerID, unit, container, item, slot)
+    fun(playerID, container, unit, item, slot)
   else
-    Containers:OnLeftClick(playerID, unit, container, item, slot)
+    Containers:OnLeftClick(playerID, container, unit, item, slot)
   end
 end
 
@@ -824,9 +867,9 @@ function Containers:Containers_OnRightClick(args)
   end
 
   if type(fun) == "function" then
-    fun(playerID, unit, container, item, slot)
+    fun(playerID, container, unit, item, slot)
   else
-    Containers:OnRightClick(playerID, unit, container, item, slot)
+    Containers:OnRightClick(playerID, container, unit, item, slot)
   end
 end
 
@@ -890,9 +933,9 @@ function Containers:Containers_OnDragFrom(args)
     if fun == false then return end
 
     if type(fun) == "function" then
-      fun(playerID, unit, container, item, fromSlot, toSlot)
+      fun(playerID, container, unit, item, fromSlot, toSlot)
     else
-      Containers:OnDragWithin(playerID, unit, container, item, fromSlot, toSlot)
+      Containers:OnDragWithin(playerID, container, unit, item, fromSlot, toSlot)
     end
   else
     if container.canDragFrom[playerID] == false or toContainer.canDragTo[playerID] == false then return end
@@ -908,9 +951,9 @@ function Containers:Containers_OnDragFrom(args)
     if fun == false then return end
 
     if type(fun) == "function" then
-      fun(playerID, unit, container, item, fromSlot, toContainer, toSlot)
+      fun(playerID, container, unit, item, fromSlot, toContainer, toSlot)
     else
-      Containers:OnDragFrom(playerID, unit, container, item, fromSlot, toContainer, toSlot)
+      Containers:OnDragFrom(playerID, container, unit, item, fromSlot, toContainer, toSlot)
     end
   end
 end
@@ -955,6 +998,11 @@ function Containers:Containers_OnDragWorld(args)
 
   if container.canDragFrom[playerID] == false then return end
 
+  if not item:IsDroppable() then
+    Containers:DisplayError(playerID,"#dota_hud_error_item_cant_be_dropped")
+    return
+  end
+
   local range = container:GetRange()
   local ent = container:GetEntity()
   if range == nil and ent and unit ~= ent then return end
@@ -963,15 +1011,10 @@ function Containers:Containers_OnDragWorld(args)
     return 
   end
 
-  if not item:IsDroppable() then
-    Containers:DisplayError(playerID,"#dota_hud_error_item_cant_be_dropped")
-    return
-  end
-
   if type(fun) == "function" then
-    fun(playerID, unit, container, item, slot, position, entity)
+    fun(playerID, container, unit, item, slot, position, entity)
   else
-    Containers:OnDragWorld(playerID, unit, container, item, slot, position, entity)
+    Containers:OnDragWorld(playerID, container, unit, item, slot, position, entity)
   end
 end
 
@@ -992,9 +1035,9 @@ function Containers:Containers_OnCloseClicked(args)
   if fun == false then return end
 
   if type(fun) == "function" then
-    fun(playerID, unit, container)
+    fun(playerID, container, unit)
   else
-    Containers:OnCloseClicked(playerID, unit, container)
+    Containers:OnCloseClicked(playerID, container, unit)
   end
 end
 
@@ -1030,32 +1073,32 @@ function Containers:Containers_OnButtonPressed(args)
   end
 
   if type(fun) == "function" then
-    fun(playerID, unit, container, buttonNumber, buttonName)
+    fun(playerID, container, unit, buttonNumber, buttonName)
   else
-    Containers:OnButtonPressed(playerID, unit, container, buttonNumber, buttonName)
+    Containers:OnButtonPressed(playerID, container, unit, buttonNumber, buttonName)
   end
 end
 
 
-function Containers:OnLeftClick(playerID, unit, container, item, slot)
-  print("Containers:OnLeftClick", playerID, unit, container, item:GetEntityIndex(), slot)
+function Containers:OnLeftClick(playerID, container, unit, item, slot)
+  print("Containers:OnLeftClick", playerID, container, unit, item:GetEntityIndex(), slot)
 
   local hero = PlayerResource:GetSelectedHeroEntity(playerID)
   container:ActivateItem(hero, item, playerID)
 end
 
-function Containers:OnRightClick(playerID, unit, container, item, slot)
-  print("Containers:OnRightClick", playerID, unit, container, item:GetEntityIndex(), slot)
+function Containers:OnRightClick(playerID, container, unit, item, slot)
+  print("Containers:OnRightClick", playerID, container, unit, item:GetEntityIndex(), slot)
 end
 
-function Containers:OnDragWithin(playerID, unit, container, item, fromSlot, toSlot)
-  print('Containers:OnDragWithin', playerID, unit, container, item, fromSlot, toSlot)
+function Containers:OnDragWithin(playerID, container, unit, item, fromSlot, toSlot)
+  print('Containers:OnDragWithin', playerID, container, unit, item, fromSlot, toSlot)
 
   container:SwapSlots(fromSlot, toSlot, true)
 end
 
-function Containers:OnDragFrom(playerID, unit, container, item, fromSlot, toContainer, toSlot)
-  print('Containers:OnDragFrom', playerID, unit, container, item, fromSlot, toContainer, toSlot)
+function Containers:OnDragFrom(playerID, container, unit, item, fromSlot, toContainer, toSlot)
+  print('Containers:OnDragFrom', playerID, container, unit, item, fromSlot, toContainer, toSlot)
 
   if toContainer._OnDragTo == false then return end
 
@@ -1065,15 +1108,15 @@ function Containers:OnDragFrom(playerID, unit, container, item, fromSlot, toCont
   end
 
   if fun then
-    fun(playerID, unit, container, item, fromSlot, toContainer, toSlot)
+    fun(playerID, container, unit, item, fromSlot, toContainer, toSlot)
   else
-    Containers:OnDragTo(playerID, unit, container, item, fromSlot, toContainer, toSlot)
+    Containers:OnDragTo(playerID, container, unit, item, fromSlot, toContainer, toSlot)
   end
 
 end
 
-function Containers:OnDragTo(playerID, unit, container, item, fromSlot, toContainer, toSlot)
-  print('Containers:OnDragTo', playerID, unit, container, item, fromSlot, toContainer, toSlot)
+function Containers:OnDragTo(playerID, container, unit, item, fromSlot, toContainer, toSlot)
+  print('Containers:OnDragTo', playerID, container, unit, item, fromSlot, toContainer, toSlot)
 
   local item2 = toContainer:GetItemInSlot(toSlot)
   local addItem = nil
@@ -1093,27 +1136,38 @@ function Containers:OnDragTo(playerID, unit, container, item, fromSlot, toContai
   return false 
 end
 
-function Containers:OnDragWorld(playerID, unit, container, item, slot, position, entity)
-  print('Containers:OnDragWorld', playerID, unit, container, item, slot, position, entity)
+function Containers:OnDragWorld(playerID, container, unit, item, slot, position, entity)
+  print('Containers:OnDragWorld', playerID, container, unit, item, slot, position, entity)
 
   local unitpos = unit:GetAbsOrigin()
   local diff = unitpos - position
   local dist = diff:Length2D()
 
-  if IsValidEntity(entity) and entity.GetContainedItem and Containers.entOrderActions[entity:GetEntityIndex()] and Containers.entOrderActions[entity:GetEntityIndex()].dragAction then
-    local tab = Containers.entOrderActions[entity:GetEntityIndex()]
-    local target = entity
-    local range = tab.range or 150
-    if tab.container then range = (tab.container:GetRange() or 150) end
+  local conts = {}
+  if IsValidEntity(entity) then
+    conts = Containers:GetEntityContainers(entity:GetEntityIndex())
+  end
+
+  local toCont = nil
+  for _,cont in ipairs(conts) do
+    if cont._OnEntityDrag then
+      toCont = cont
+      break
+    end
+  end
+
+  if IsValidEntity(entity) and entity.GetContainedItem and toCont then
+    local range = toCont:GetRange() or 150
 
     Containers:SetRangeAction(unit, {
       unit = unit,
-      entity = target,
+      entity = entity,
       range = range,
       playerID = playerID,
+      container = toCont,
       fromContainer = container,
       item = item,
-      action = tab.dragAction,
+      action = toCont._OnEntityDrag,
     })
   elseif IsValidEntity(entity) and entity:GetTeam() == unit:GetTeam() and entity.HasInventory and entity:HasInventory() and entity:IsAlive() then
     ExecuteOrderFromTable({
@@ -1126,8 +1180,9 @@ function Containers:OnDragWorld(playerID, unit, container, item, slot, position,
       unit = unit,
       entity = entity,
       range = 180,
+      container = container,
       playerID = playerID,
-      action = function(playerID, unit, target)
+      action = function(playerID, container, unit, target)
         if IsValidEntity(target) and target:IsAlive() and container:ContainsItem(item) then
           container:RemoveItem(item)
           Containers:AddItemToUnit(target, item)
@@ -1156,8 +1211,9 @@ function Containers:OnDragWorld(playerID, unit, container, item, slot, position,
       --entity = target,
       position = position,
       range = 150,
+      container = container,
       playerID = playerID,
-      action = function(playerID, unit, target)
+      action = function(playerID, container, unit, target)
         if container:ContainsItem(item) then
           container:RemoveItem(item)
           CreateItemOnPositionSync(position, item)
@@ -1168,28 +1224,28 @@ function Containers:OnDragWorld(playerID, unit, container, item, slot, position,
 end
 
 
-function Containers:OnCloseClicked(playerID, unit, container)
-  print('Containers:OnCloseClicked', playerID, unit, container)
+function Containers:OnCloseClicked(playerID, container, unit)
+  print('Containers:OnCloseClicked', playerID, container, unit)
   container:Close(playerID)
 end
 
-function Containers:OnButtonPressed(playerID, unit, container, buttonNumber, buttonName)
+function Containers:OnButtonPressed(playerID, container, unit, buttonNumber, buttonName)
   print('Button ' .. buttonNumber .. ':\'' .. buttonName .. '\' Pressed by player:' .. playerID .. ' for container ' .. container.id .. '.  No OnButtonPressed handler.')
 end
 
 
 
 
+function Containers:GetEntityContainers(entity)
+  if entity and type(entity) ~= "number" and entity.GetEntityIndex then
+    entity = entity:GetEntityIndex()
+  end
 
-function Containers:SetEntityOrderAction(entity, tab)
-  if not self.initialized then
-    print('[containers.lua] FATAL: Containers:Init() has not been called in the Activate() function chain!')
-    return
+  local tab = {}
+  for id,cont in pairs(Containers.entityContainers[entity] or {}) do
+    table.insert(tab, cont)
   end
-  --{test=tab.test, action=tab.action, range=tab.range, container=tab.container}
-  if IsValidEntity(entity) then
-    self.entOrderActions[entity:GetEntityIndex()] = tab
-  end
+  return tab
 end
 
 function Containers:SetRangeAction(unit, tab)
@@ -1337,17 +1393,17 @@ function Containers:CreateShop(cont)
   shop:OnDragWorld(false)
   shop:OnDragWithin(false)
   shop:OnLeftClick(false)
-  shop:OnDragTo(function(playerID, unit, container, item, fromSlot, toContainer, toSlot)
-    print('Shop:OnDragTo', playerID, unit, container, item, fromSlot, toContainer, toSlot)
+  shop:OnDragTo(function(playerID, container, unit, item, fromSlot, toContainer, toSlot)
+    print('Shop:OnDragTo', playerID, container, unit, item, fromSlot, toContainer, toSlot)
   end)
-  shop:OnDragFrom(function(playerID, unit, container, item, fromSlot, toContainer, toSlot)
-    print('Shop:OnDragFrom', playerID, unit, container, item, fromSlot, toContainer, toSlot)
+  shop:OnDragFrom(function(playerID, container, unit, item, fromSlot, toContainer, toSlot)
+    print('Shop:OnDragFrom', playerID, container, unit, item, fromSlot, toContainer, toSlot)
   end)
-  --[[shop:OnLeftClick(function(playerID, unit, container, item, slot)
-    print("Shop:OnLeftClick", playerID, unit, container, item:GetEntityIndex(), slot)
+  --[[shop:OnLeftClick(function(playerID, container, unit, item, slot)
+    print("Shop:OnLeftClick", playerID, container, unit, item:GetEntityIndex(), slot)
   end)]]
-  shop:OnRightClick(function(playerID, unit, container, item, slot)
-    print("Shop:OnRightClick", playerID, unit, container, item:GetEntityIndex(), slot)
+  shop:OnRightClick(function(playerID, container, unit, item, slot)
+    print("Shop:OnRightClick", playerID, container, unit, item:GetEntityIndex(), slot)
 
     local defInventory = Containers:GetDefaultInventory(unit)
     if not defInventory and not unit:HasInventory() then return end
@@ -1414,7 +1470,12 @@ function Containers:CreateContainer(cont)
     _OnDragWorld =     cont.OnDragWorld,
     _OnCloseClicked =  cont.OnCloseClicked,
     _OnButtonPressed = cont.OnButtonPressed,
-    _OnEmptyAndClosed= cont.OnEmptyAndClosed,
+    _OnEntityOrder =   cont.OnEntityOrder,
+    _OnEntityDrag =    cont.OnEntityDrag,
+    _OnClose =         cont.OnClose,
+    _OnOpen =          cont.OnOpen,
+    _OnSelect =        cont.OnSelect,
+    _OnDeselect =      cont.OnDeselect,
   }
 
   if cont.OnDragWorld ~= nil and (type(cont.OnDragWorld) == "function" or cont.OnDragWorld == true) then
@@ -1428,6 +1489,11 @@ function Containers:CreateContainer(cont)
     pt.entity = cont.entity
   elseif cont.entity and cont.entity.GetEntityIndex then
     pt.entity = cont.entity:GetEntityIndex()
+  end
+
+  if pt.entity then
+    Containers.entityContainers[pt.entity] = Containers.entityContainers[pt.entity] or {}
+    Containers.entityContainers[pt.entity][c.id] = c
   end
 
   for i,row in ipairs(pt.layout) do
@@ -1592,6 +1658,10 @@ function Containers:CreateContainer(cont)
     if player then  
       CustomGameEventManager:Send_ServerToPlayer(player, "cont_open_container", {id=self.id} )
     end
+
+    if self._OnOpen then
+      self._OnOpen(pid, self)
+    end
   end
 
   function c:Close(pid)
@@ -1611,8 +1681,8 @@ function Containers:CreateContainer(cont)
       CustomGameEventManager:Send_ServerToPlayer(player, "cont_close_container", {id=self.id} )
     end
 
-    if self._OnEmptyAndClosed and next(self.opens)==nil and #self:GetAllItems() == 0 then
-      self._OnEmptyAndClosed(self)
+    if self._OnClose then
+      self._OnClose(pid, self)
     end
   end
 
@@ -2049,10 +2119,17 @@ function Containers:CreateContainer(cont)
   function c:SetEntity(entity)
     if entity and type(entity) == "number" then
       PlayerTables:SetTableValue(self.ptID, "entity", entity)
+      Containers.entityContainers[entity] = Containers.entityContainers[entity] or {}
+      Containers.entityContainers[entity][self.id] = self
     elseif entity and entity.GetEntityIndex then
-      PlayerTables:SetTableValue(self.ptID, "entity", entity:GetEntityIndex())
+      local num = entity:GetEntityIndex()
+      PlayerTables:SetTableValue(self.ptID, "entity", num)
+      Containers.entityContainers[num] = Containers.entityContainers[num] or {}
+      Containers.entityContainers[num][self.id] = self
     elseif entity == nil then
       PlayerTables:DeleteTableValue(self.ptID, "entity")
+      Containers.entityContainers[entity] = Containers.entityContainers[entity] or {}
+      Containers.entityContainers[entity][self.id] = nil
     end
   end
 
@@ -2213,8 +2290,28 @@ function Containers:CreateContainer(cont)
     self._OnButtonPressed = fun
   end
 
-  function c:OnEmptyAndClosed(fun)
-    self._OnEmptyAndClosed = fun
+  function c:OnEntityOrder(fun)
+    self._OnEntityOrder = fun
+  end
+
+  function c:OnEntityDrag(fun)
+    self._OnEntityDrag = fun
+  end
+
+  function c:OnClose(fun)
+    self._OnClose = fun
+  end
+
+  function c:OnOpen(fun)
+    self._OnOpen = fun
+  end
+
+  function c:OnSelect(fun)
+    self._OnSelect = fun
+  end
+
+  function c:OnDeselect(fun)
+    self._OnDeselect = fun
   end
 
   function c:IsInventory()

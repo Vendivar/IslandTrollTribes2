@@ -4,7 +4,6 @@
     <include src="file://{resources}/styles/custom_game/containers/container.css" />
     <include src="file://{resources}/styles/custom_game/containers/container_skins.css" />
 
-
     <include src="s2r://panorama/styles/hero_splash.vcss_c" />
   </styles>
   <scripts>
@@ -14,7 +13,6 @@
   </scripts>
   <Panel hittest="false" class="ContainersBase">
 
-
     <!--
     <Panel hittest="false" style="opacity:1;flow-children:down;">
       <Button class="SplashButton" style="width:250px;margin-top:80px;" onactivate="OpenInventory()">
@@ -23,13 +21,15 @@
       <Button class="SplashButton" style="width:250px;" onactivate="DefaultInventory()">
         <Label text="Change Default Inventory"/>
       </Button>
-    </Panel>-->
+    </Panel>
+    -->
 
-
-    <Panel id="stash_row" />
-    <Panel id="inventory_items">
-      <Panel id="inventory_row_1" />
-      <Panel id="inventory_row_2" />
+    <Panel hittest="false" style="width:100%; height:100%;" id="PanoramaInventory">
+      <Panel id="stash_row" />
+      <Panel id="inventory_items">
+        <Panel id="inventory_row_1" />
+        <Panel id="inventory_row_2" />
+      </Panel>
     </Panel>
 
   </Panel>

@@ -21,21 +21,27 @@ function CreateLootBox(loc)
     headerText =  "Loot Box",
     buttons =     {"Take All"},
     position =    "entity", --"mouse",--"900px 200px 0px",
-    OnEmptyAndClosed = function(container)
-      print("Empty and closed")
-      container:GetEntity():RemoveSelf()
-      container:Delete()
-      loc.container = nil
+    OnClose = function(playerID, container)
+      print("Closed")
 
-      Timers:CreateTimer(7, function()
-        CreateLootBox(loc)
-      end)
+      if next(container:GetAllOpen()) == nil and #container:GetAllItems() == 0 then
+        container:GetEntity():RemoveSelf()
+        container:Delete()
+        loc.container = nil
+
+        Timers:CreateTimer(7, function()
+          CreateLootBox(loc)
+        end)
+      end
+    end,
+    OnOpen = function(playerID, container)
+      print("Loot box opened")
     end,
     closeOnOrder= true,
     items = items,
     entity = phys,
     range = 150,
-    OnButtonPressed = function(playerID, unit, container, button, buttonName)
+    OnButtonPressed = function(playerID, container, unit, button, buttonName)
       if button == 1 then
         local items = container:GetAllItems()
         for _,item in ipairs(items) do
@@ -46,15 +52,11 @@ function CreateLootBox(loc)
         container:Close(playerID)
       end
     end,
-  })
-
-  Containers:SetEntityOrderAction(phys, {
-    range = 150,
-    action = function(playerID, unit, target)
+    OnEntityOrder = function(playerID, container, unit, target)
       print("ORDER ACTION loot box: ", playerID)
-      cont:Open(playerID)
+      container:Open(playerID)
       unit:Stop()
-    end,
+    end
   })
 
   loc.container = cont
@@ -108,6 +110,7 @@ function GameMode:OFPL()
   --CustomGameEventManager:RegisterListener("Containers_EntityShopRange", Dynamic_Wrap(Containers, "Containers_EntityShopRange"))
 
   Containers:SetDisableItemLimit(true)
+  Containers:UsePanoramaInventory(true)
 
   -- create initial stuff
   lootSpawns = Entities:FindAllByName("loot_spawn")
@@ -124,16 +127,16 @@ function GameMode:OFPL()
   privateBankEnt:SetModelScale(1.8)
   privateBankEnt:SetForwardVector(Vector(-1,0,0))
 
-  Containers:SetEntityOrderAction(privateBankEnt, {
+  --[[Containers:SetEntityOrderAction(privateBankEnt, {
     range = 250,
-    action = function(playerID, unit, target)
+    action = function(playerID, container, unit, target)
       print("ORDER ACTION private bank: ", playerID)
       if privateBank[playerID] then
         privateBank[playerID]:Open(playerID)
       end
       unit:Stop()
     end,
-  })
+  })]]
 
   local all = {}
   for i=0,23 do all[#all+1] = i end
@@ -145,33 +148,29 @@ function GameMode:OFPL()
   sharedBankEnt:SetForwardVector(Vector(-1,0,0))
 
   sharedBank = Containers:CreateContainer({
-      layout =      {6,4,4,6},
-      headerText =  "Shared Bank",
-      pids =        all,
-      position =    "entity", --"600px 400px 0px",
-      entity =      sharedBankEnt,
-      closeOnOrder= true,
-      range =       230,
-  })
-
-  Containers:SetEntityOrderAction(sharedBankEnt, {
-    range = 230,
-    action = function(playerID, unit, target)
+    layout =      {6,4,4,6},
+    headerText =  "Shared Bank",
+    pids =        all,
+    position =    "entity", --"600px 400px 0px",
+    entity =      sharedBankEnt,
+    closeOnOrder= true,
+    range =       230,
+    OnEntityOrder=function(playerID, container, unit, target)
       print("ORDER ACTION shared bank: ", playerID)
-      sharedBank:Open(playerID)
+      container:Open(playerID)
       unit:Stop()
     end,
-    dragAction = function(playerID, unit, target, fromContainer, item)
+    OnEntityDrag= function(playerID, container, unit, target, fromContainer, item)
       print("Drag ACTION shared bank: ", playerID, unit, target, fromContainer, item)
       if IsValidEntity(target) and fromContainer:ContainsItem(item) then
         fromContainer:RemoveItem(item)
-        if not sharedBank:AddItem(item) then
+        if not container:AddItem(item) then
           CreateItemOnPositionSync(unit:GetAbsOrigin() + RandomVector(10), item)
         end
       end
 
       unit:Stop()
-    end,
+    end
   })
 
 
@@ -193,27 +192,23 @@ function GameMode:OFPL()
   local sItems,prices,stocks = CreateShop(ii)
 
   itemShop = Containers:CreateShop({
-       layout =      {3,3,3},
-       skins =       {},
-       headerText =  "Item Shop",
-       pids =        {},
-       position =    "entity", --"1000px 300px 0px",
-       entity =      itemShopEnt,
-       items =       sItems,
-       prices =      prices,
-       stocks =      stocks,
-       closeOnOrder= true,
-       range =       230,
-    })
-
-  Containers:SetEntityOrderAction(itemShopEnt, {
-    container = itemShop,
-    action = function(playerID, unit, target)
+    layout =      {3,3,3},
+    skins =       {},
+    headerText =  "Item Shop",
+    pids =        {},
+    position =    "entity", --"1000px 300px 0px",
+    entity =      itemShopEnt,
+    items =       sItems,
+    prices =      prices,
+    stocks =      stocks,
+    closeOnOrder= true,
+    range =       230,
+    OnEntityOrder=function(playerID, container, unit, target)
       print("ORDER ACTION item shop", playerID)
-      itemShop:Open(playerID)
+      container:Open(playerID)
       unit:Stop()
     end,
-    })
+  })
 
 
   contShopRadEnt = CreateUnitByName("npc_dummy_unit", contShopRadEnt:GetAbsOrigin(), false, nil, nil, DOTA_TEAM_GOODGUYS)
@@ -233,31 +228,39 @@ function GameMode:OFPL()
   sItems[3]:SetCurrentCharges(2)
 
   contRadiantShop = Containers:CreateShop({
-       layout =      {2,2,2,2,2},
-       skins =       {},
-       headerText =  "Radiant Shop",
-       pids =        {},
-       position =    "entity", --"1000px 300px 0px",
-       entity =      contShopRadEnt,
-       items =       sItems,
-       prices =      prices,
-       stocks =      stocks,
-       closeOnOrder= true,
-       range =       300,
-    })
-
-  Containers:SetEntityOrderAction(contShopRadEnt, {
-    container = contRadiantShop,
-    action = function(playerID, unit, target)
+    layout =      {2,2,2,2,2},
+    skins =       {},
+    headerText =  "Radiant Shop",
+    pids =        {},
+    position =    "entity", --"1000px 300px 0px",
+    entity =      contShopRadEnt,
+    items =       sItems,
+    prices =      prices,
+    stocks =      stocks,
+    closeOnOrder= true,
+    range =       300,
+    OnSelect  =   function(playerID, container, selected)
+      print("Selected", selected:GetUnitName())
+      if PlayerResource:GetTeam(playerID) == DOTA_TEAM_GOODGUYS then
+        container:Open(playerID)
+      end
+    end,
+    OnDeselect =  function(playerID, container, deselected)
+      print("Deselected", deselected:GetUnitName())
+      if PlayerResource:GetTeam(playerID) == DOTA_TEAM_GOODGUYS then
+        container:Close(playerID)
+      end
+    end,
+    OnEntityOrder=function(playerID, container, unit, target)
       print("ORDER ACTION radiant shop", playerID)
       if PlayerResource:GetTeam(playerID) == DOTA_TEAM_GOODGUYS then
-        contRadiantShop:Open(playerID)
+        container:Open(playerID)
         unit:Stop()
       else
         Containers:DisplayError(playerID, "#dota_hud_error_unit_command_restricted")
       end
     end,
-    })
+  })
 
 
   contShopDireEnt = CreateUnitByName("npc_dummy_unit", contShopDireEnt:GetAbsOrigin(), false, nil, nil, DOTA_TEAM_BADGUYS)
@@ -277,32 +280,39 @@ function GameMode:OFPL()
   sItems[3]:SetCurrentCharges(2)
   
   contShopDire = Containers:CreateShop({
-       layout =      {2,2,2,2,2},
-       skins =       {},
-       headerText =  "Dire Shop",
-       pids =        {},
-       position =    "entity", --"1000px 300px 0px",
-       entity =      contShopDireEnt,
-       items =       sItems,
-       prices =      prices,
-       stocks =      stocks,
-       closeOnOrder= true,
-       range =       300,
-    })
-
-  Containers:SetEntityOrderAction(contShopDireEnt, {
-    container = contShopDire,
-    action = function(playerID, unit, target)
+    layout =      {2,2,2,2,2},
+    skins =       {},
+    headerText =  "Dire Shop",
+    pids =        {},
+    position =    "entity", --"1000px 300px 0px",
+    entity =      contShopDireEnt,
+    items =       sItems,
+    prices =      prices,
+    stocks =      stocks,
+    closeOnOrder= true,
+    range =       300,
+    OnSelect  =   function(playerID, container, selected)
+      print("Selected", selected:GetUnitName())
+      if PlayerResource:GetTeam(playerID) == DOTA_TEAM_BADGUYS then
+        container:Open(playerID)
+      end
+    end,
+    OnDeselect  =   function(playerID, container, deselected)
+      print("Deselected", deselected:GetUnitName())
+      if PlayerResource:GetTeam(playerID) == DOTA_TEAM_BADGUYS then
+        container:Close(playerID)
+      end
+    end,
+    OnEntityOrder=function(playerID, container, unit, target)
       print("ORDER ACTION dire shop", playerID)
       if PlayerResource:GetTeam(playerID) == DOTA_TEAM_BADGUYS then
-        contShopDire:Open(playerID)
+        container:Open(playerID)
         unit:Stop()
       else
         Containers:DisplayError(playerID, "#dota_hud_error_unit_command_restricted")
       end
     end,
-    })
-
+  })
 
   for _,loc in ipairs(lootSpawns) do
     CreateLootBox(loc)
@@ -334,16 +344,15 @@ function GameMode:OHIG(hero)
   local pid = hero:GetPlayerID()
 
   local c = Containers:CreateContainer({
-     layout =      {3,4,4},
-     skins =       {},
-     headerText =  "My Inventory",
-     pids =        {pid},
-     --buttons =     {"Button 1", "Button 2"},
-     entity =      hero,
-     closeOnOrder = false,
-     position =    "1200px 600px 0px",
-     OnDragWorld = true,
-    })
+    layout =      {3,4,4},
+    skins =       {},
+    headerText =  "My Inventory",
+    pids =        {pid},
+    entity =      hero,
+    closeOnOrder = false,
+    position =    "1200px 600px 0px",
+    OnDragWorld = true,
+  })
 
   pidInventory[pid] = c
 
@@ -363,15 +372,22 @@ function GameMode:OHIG(hero)
   c:AddItem(item)
 
   privateBank[pid] = Containers:CreateContainer({
-      layout =      {4,4,4,4},
-      headerText =  "Private Bank",
-      pids =        {pid},
-      position =    "entity", --"200px 200px 0px",
-      entity =      privateBankEnt,
-      closeOnOrder= true,
-      forceOwner =  hero,
-      forcePurchaser=hero,
-      range =       250,
+    layout =      {4,4,4,4},
+    headerText =  "Private Bank",
+    pids =        {pid},
+    position =    "entity", --"200px 200px 0px",
+    entity =      privateBankEnt,
+    closeOnOrder= true,
+    forceOwner =  hero,
+    forcePurchaser=hero,
+    range =       250,
+    OnEntityOrder =function(playerID, container, unit, target)
+      print("ORDER ACTION private bank: ", playerID)
+      if privateBank[playerID] then
+        privateBank[playerID]:Open(playerID)
+      end
+      unit:Stop()
+    end,
   })
 
   defaultInventory[pid] = true
