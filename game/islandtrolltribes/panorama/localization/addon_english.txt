@@ -117,6 +117,7 @@
 "error_cant_carry_more_boots"        "Can not carry any more boots."
 "error_cant_carry_more_gloves"       "Can not carry any more gloves."
 "error_cant_carry_more_coat"         "Can not carry any more coat."
+"error_not_enough_hides"             "Not enough of same hide to craft item."
 "error_no_meat_to_eat"               "No raw meat to eat."
 "error_no_meat_to_drop"              "No raw meat to drop."
 "error_not_enough_gold "             "Not enough gold."

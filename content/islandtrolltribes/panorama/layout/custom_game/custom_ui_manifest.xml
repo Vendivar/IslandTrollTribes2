@@ -10,6 +10,7 @@
         <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/toolkit.xml" /> 
         <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/scripts.xml" />
         <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/containers/container_base.xml" />
+        <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/shared_action_bar.xml" />
         
         <CustomUIElement type="GameInfo"            layoutfile="file://{resources}/layout/custom_game/images.xml" />
   </Panel>

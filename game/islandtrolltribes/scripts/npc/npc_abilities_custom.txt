@@ -12763,11 +12763,13 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"ability_building_duel"
+	    "MaxLevel"              "1"
 	}
 	"ability_gravestone"
 	{
 	    "BaseClass"         "ability_datadriven"
 	    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	    "MaxLevel"              "1"
 	    "Modifiers"
 	    {
 	        "dummy_modifier"
@@ -12923,6 +12925,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"ability_building_mix"
+	    "MaxLevel"              "1"
 	}
 	"ability_pack_up_magefire"
 	{
@@ -12932,6 +12935,7 @@
 		"AbilityCooldown"	"0.0"
 		"AbilityCastPoint"	"0.5"
 		"AbilityManaCost"	"0"
+	    "MaxLevel"              "1"
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -12973,6 +12977,7 @@
 	    "AbilityCooldown"           "0"
 	    "AbilityCastRange"          "%cast_range"
 	    "AbilityManaCost"           "0"
+	    "MaxLevel"              "1"
 	    
 	    "precache"
 	    {
@@ -13096,6 +13101,7 @@
 	    "AbilityCooldown"           "0"
 	    "AbilityCastRange"          "%cast_range"
 	    "AbilityManaCost"           "0"
+	    "MaxLevel"              "1"
 	    
 	    "precache"
 	    {
@@ -13210,11 +13216,13 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"ability_building_smokemeat"
+	    "MaxLevel"              "1"
 	}
 	"ability_teleport"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"ability_building_teleport"
+	    "MaxLevel" "1"
 	}
 	// For Tooltip purposes
 	"drop_all_meat"
@@ -13263,6 +13271,7 @@
 		"AbilityChannelTime"	"1.5"
 		"AbilityCooldown"		"0"
 		"AbilityManaCost"		"0"
+	    "MaxLevel"              "1"
 	
 		"IsCastableWhileHidden"	"1"
 	
@@ -13345,6 +13354,7 @@
 	    "AbilityCooldown"       "15"
 	    "AbilityCastRange"      "0"
 	    "AbilityManaCost"       "20"
+	    "MaxLevel"              "1"
 	
 	    "IsCastableWhileHidden"    "1"
 	
@@ -13422,6 +13432,7 @@
 		"AbilityCastPoint"	"0.0"
 		"AbilityCooldown"	"10"
 		"AbilityManaCost"	"0"
+	    "MaxLevel"              "1"
 	
 		"IsCastableWhileHidden"	"1"
 	

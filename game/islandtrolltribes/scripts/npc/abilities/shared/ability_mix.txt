@@ -2,4 +2,5 @@
 {
 	"BaseClass"	"ability_datadriven"
 	"AbilityTextureName"	"ability_building_mix"
+    "MaxLevel"              "1"
 }

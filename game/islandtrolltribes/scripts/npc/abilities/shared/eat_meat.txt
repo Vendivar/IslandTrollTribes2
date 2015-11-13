@@ -8,6 +8,7 @@
 	"AbilityChannelTime"	"1.5"
 	"AbilityCooldown"		"0"
 	"AbilityManaCost"		"0"
+    "MaxLevel"              "1"
 
 	"IsCastableWhileHidden"	"1"
 

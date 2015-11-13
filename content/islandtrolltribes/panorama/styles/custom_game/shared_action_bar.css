@@ -1,0 +1,88 @@
+.AbilityOverlayRoot
+{
+
+	horizontal-align: center;
+	vertical-align: bottom;
+	margin-bottom: 200px;
+	margin-left: 105px;
+}
+
+#ability_list
+{
+	flow-children: right;
+	border: 0px solid black;
+	background-color: #272823;
+}
+
+.AbilityPanel
+{	
+
+	margin-left: 8px;
+	margin-right: 8px;
+	margin-top: 4px;
+	margin-bottom: 10px;
+}
+
+#ButtonAndLevel
+{
+	flow-children: down;
+}
+
+#AbilityButton
+{
+	width: 80px;
+	height: 80px;
+	border: 2px solid black;
+}
+
+#AbilityButton:hover
+{
+	border: 2px solid white;
+}
+
+#AbilityButton:active
+{
+	border: 4px solid white;
+}
+
+.is_passive #AbilityButton
+{
+	border: 0px;
+}
+
+.no_level DOTAAbilityImage
+{
+	desaturation: 1;
+	wash-color: #303030;
+}
+
+.insufficient_mana DOTAAbilityImage
+{
+	desaturation: 1;
+	wash-color: #1569be;
+}
+
+
+#AbilityStatusBorder
+{
+	margin: 2px;
+	border: 4px solid transparent;
+}
+
+.auto_cast_enabled #AbilityStatusBorder
+{
+	border: 4px solid orange;
+}
+
+.toggle_active #AbilityStatusBorder
+{
+	border: 4px solid green;
+}
+
+#AbilityLevelContainer
+{
+	horizontal-align: center;
+	flow-children: right;
+}
+
+

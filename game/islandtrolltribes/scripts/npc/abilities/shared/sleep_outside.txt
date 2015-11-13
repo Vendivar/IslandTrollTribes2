@@ -7,6 +7,7 @@
 	"AbilityCastPoint"	"0.0"
 	"AbilityCooldown"	"10"
 	"AbilityManaCost"	"0"
+    "MaxLevel"              "1"
 
 	"IsCastableWhileHidden"	"1"
 

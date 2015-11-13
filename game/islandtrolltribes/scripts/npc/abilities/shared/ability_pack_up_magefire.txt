@@ -6,6 +6,7 @@
 	"AbilityCooldown"	"0.0"
 	"AbilityCastPoint"	"0.5"
 	"AbilityManaCost"	"0"
+    "MaxLevel"              "1"
 	"OnSpellStart"
 	{
 		"RunScript"

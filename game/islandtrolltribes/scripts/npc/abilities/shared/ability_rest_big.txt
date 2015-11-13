@@ -10,6 +10,7 @@
     "AbilityCooldown"           "0"
     "AbilityCastRange"          "%cast_range"
     "AbilityManaCost"           "0"
+    "MaxLevel"              "1"
     
     "precache"
     {
