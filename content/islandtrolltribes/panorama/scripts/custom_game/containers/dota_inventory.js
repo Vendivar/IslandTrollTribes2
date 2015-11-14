@@ -35,7 +35,7 @@ function SetPosition()
   $.Schedule(2, SetPosition);
 } 
 
-function UpdateInventory()
+function UpdateInventory()   
 {
   var queryUnit = Players.GetLocalPlayerPortraitUnit();
   for ( var i = 0; i < DOTA_ITEM_STASH_MAX; ++i )

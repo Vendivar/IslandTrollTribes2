@@ -144,6 +144,7 @@ function RightClickItem()
 	var bAlertable = Items.IsAlertableItem( m_Item );
 	var bShowInShop = Items.IsPurchasable( m_Item );
 	var bDropFromStash = bSlotInStash && bControllable;
+	var bMoveToStash = Entities.IsInRangeOfShop(m_QueryUnit, 0, true);
 
 	if ( !bSellable && !bDisassemble && !bShowInShop && !bDropFromStash && !bAlertable && !bMoveToStash )
 	{
@@ -160,7 +161,7 @@ function RightClickItem()
 	contextMenu.GetContentsPanel().SetHasClass( "bShowInShop", bShowInShop );
 	contextMenu.GetContentsPanel().SetHasClass( "bDropFromStash", bDropFromStash );
 	contextMenu.GetContentsPanel().SetHasClass( "bAlertable", bAlertable );
-	contextMenu.GetContentsPanel().SetHasClass( "bMoveToStash", false ); // TODO
+	contextMenu.GetContentsPanel().SetHasClass( "bMoveToStash", bMoveToStash ); // TODO
 	contextMenu.GetContentsPanel().BLoadLayout( "file://{resources}/layout/custom_game/containers/dota_inventory_context_menu.xml", false, false );
 }
 
