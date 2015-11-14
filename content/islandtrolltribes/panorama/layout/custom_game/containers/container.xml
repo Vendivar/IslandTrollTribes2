@@ -10,7 +10,7 @@
   </scripts>
   <Panel draggable="true" class="Outer">
     <Panel id="Header">
-      <Label id="HeaderLabel" text="Container Header"/>
+      <Label id="HeaderLabel" hittest="false" text="Container Header"/>
       <Button class="CloseButton" draggable="true" id="CloseButton" onactivate="CloseClicked()"/>
     </Panel>
     <Panel id="Inner" draggable="true">

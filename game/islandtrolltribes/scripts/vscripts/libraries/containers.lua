@@ -77,19 +77,68 @@ LinkLuaModifier( "modifier_shopkeeper", "libraries/modifiers/modifier_shopkeeper
 --"DOTA_Trading_Response_UnknownError"      "Unknown Error"
 
 
+-- mango can't be activated from outside inventory if it ever touched it
+-- dust crash for same reason
+-- dagon no particles/effects for same reason
+-- soul ring crash for same reason
+-- bottle also doesn't activate for same reason
+
+-- travels don't work, TP either probably
+-- armlet doesn't activate at all
+
+-- euls has targeting issues
+-- aghs probably not for sure
+-- treads don't work in equipment
+
 --search bar?
 -- max stacks?
 
--- change casting unit handling?
--- test out Equipping items
--- callback events like item added?
+-- layoutfile property
 
 -- container context menu?
--- add unit checks to event functions
--- add unit checks to activate
 -- add filter checks on stuff?
--- equipment container
 
+local ApplyPassives = nil
+ApplyPassives = function(container, item, entOverride)
+  local ent = entOverride or container:GetEntity()
+  if not ent or not ent.AddNewModifier then return end
+  if container.appliedPassives[item:GetEntityIndex()] then return end
+
+  local passives = Containers.itemPassives[item:GetAbilityName()]
+  if passives then
+    for _,passive in ipairs(passives) do
+      -- check for previous buffs from this exact item
+      local buffs = ent:FindAllModifiersByName(passive)
+      for _, buff in ipairs(buffs) do
+        if buff:GetAbility() == item then
+          Timers:CreateTimer(function()
+            --print("FOUND, rerunning until removed")
+            ApplyPassives(container, item, entOverride)
+          end)
+          return
+        end
+      end
+    end
+
+    container.appliedPassives[item:GetEntityIndex()] = {}
+    for _,passive in ipairs(passives) do
+      item:ApplyDataDrivenModifier(ent, ent, passive, {})
+      buffs = ent:FindAllModifiersByName(passive)
+      for _, buff in ipairs(buffs) do
+        if buff:GetAbility() == item then
+          table.insert(container.appliedPassives[item:GetEntityIndex()], buff)
+          break
+        end
+      end
+    end
+  else
+    passives = item:GetIntrinsicModifierName()
+    if passives then
+      local buff = ent:AddNewModifier(ent, item, passives, {})
+      container.appliedPassives[item:GetEntityIndex()] = {buff}
+    end
+  end
+end
 
 local GetItem = function(item)
   if type(item) == "number" then
@@ -131,6 +180,42 @@ function unitInventory:AddItem(item, slot)
   if full and not stack then return false end
   unit:AddItem(item)
 
+  Timers:CreateTimer(function()
+    if not IsValidEntity(item) then return end
+
+    unit:DropItemAtPositionImmediate(item, unit:GetAbsOrigin())
+    local drop = nil
+    for i=GameRules:NumDroppedItems()-1,0,-1 do
+      drop = GameRules:GetDroppedItem(i)
+      if drop:GetContainedItem() == item then
+        drop:RemoveSelf()
+        break
+      end
+    end
+
+    unit:AddItem(item)
+
+    if not findStack then
+      for i=0,5 do
+        if unit:GetItemInSlot(i) == item then
+          unit:SwapItems(i,slot)
+
+          if self.forceOwner then 
+            item:SetOwner(self.forceOwner) 
+          elseif self.forceOwner == false then
+            item:SetOwner(nil)
+          end
+          if self.forcePurchaser then
+            item:SetPurchaser(self.forcePurchaser) 
+          elseif self.forceOwner == false then
+            item:SetPurchaser(nil)
+          end
+        end
+      end
+    end
+
+  end)
+
   if not findStack then
     for i=0,5 do
       if unit:GetItemInSlot(i) == item then
@@ -150,6 +235,8 @@ function unitInventory:AddItem(item, slot)
       end
     end
   end
+
+
 
   return true
 end
@@ -277,6 +364,23 @@ function Containers:start()
   for k,v in pairs(self.itemKV) do
     if type(v) == "table" and v.ID then
       self.itemIDs[v.ID] = k
+    end
+  end
+
+  self.itemPassives = {}
+
+  for id,itemName in pairs(Containers.itemIDs) do
+    local kv = Containers.itemKV[itemName]
+    if kv.BaseClass == "item_datadriven" then
+      self.itemPassives[itemName] = {}
+      if kv.Modifiers then
+        local mods = kv.Modifiers
+        for modname, mod in pairs(mods) do
+          if mod.Passive == 1 then
+            table.insert(self.itemPassives[itemName], modname)
+          end
+        end
+      end
     end
   end
 
@@ -456,6 +560,8 @@ function Containers:OrderFilter(order)
         pos = target:GetAbsOrigin() + diff:Normalized() * range * .9
       end
 
+      local origOrder = order.order_type
+
       if target.GetContainedItem then
         order.order_type = DOTA_UNIT_ORDER_MOVE_TO_POSITION
         order.position_x = pos.x
@@ -471,7 +577,7 @@ function Containers:OrderFilter(order)
         range = range,
         playerID = issuerID,
         container = container,
-        orderType = order.order_type,
+        orderType = origOrder,
         action = container._OnEntityOrder,
       }
     end
@@ -518,6 +624,7 @@ function Containers:OrderFilter(order)
     local unit = EntIndexToHScript(order.units["0"])
     local physItem = EntIndexToHScript(order.entindex_target)
     local unitpos = unit:GetAbsOrigin()
+    if not physItem then return false end
     local diff = unitpos - physItem:GetAbsOrigin()
     local dist = diff:Length2D()
     local pos = unitpos
@@ -1436,6 +1543,7 @@ function Containers:CreateContainer(cont)
      headerText =  cont.headerText or "Container",
      draggable =   cont.draggable or true,
      position =    cont.position or "100px 200px 0px",
+     equipment =   cont.equipment,
 
      OnLeftClick =     type(cont.OnLeftClick) == "function" and true or cont.OnLeftClick,
      OnRightClick =    type(cont.OnRightClick) == "function" and true or cont.OnRightClick,
@@ -1457,6 +1565,8 @@ function Containers:CreateContainer(cont)
     canDragFrom = {},
     canDragTo = {},
     canDragWithin = {},
+    appliedPassives = {},
+    cleanupTimer = nil,
 
     forceOwner =         cont.forceOwner,
     forcePurchaser =     cont.forcePurchaser,
@@ -1524,9 +1634,27 @@ function Containers:CreateContainer(cont)
           c.items[itemid] = k
           c.itemNames[itemname] = c.itemNames[itemname] or {}
           c.itemNames[itemname][itemid] = k
+
+          if cont.equipment and pt.entity then
+            ApplyPassives(c, item, EntIndexToHScript(pt.entity))
+          end
         end
       end
     end
+  end
+
+  if cont.equipment then
+    c.cleanupTimer = Timers:CreateTimer(1, function()
+      for itemID, mods in pairs(c.appliedPassives) do
+        if not IsValidEntity(EntIndexToHScript(itemID)) or not c:ContainsItem(itemID) then
+          for _, mod in ipairs(mods) do
+            mod:Destroy()
+          end
+          c.appliedPassives[itemID] = nil
+        end
+      end
+      return 1
+    end)
   end
 
   if cont.cantDragFrom then
@@ -1607,11 +1735,11 @@ function Containers:CreateContainer(cont)
         end
 
         if treeTarget then
-          unit:AddAbility("containers_lua_targeting_tree")
-          abil = unit:FindAbilityByName("containers_lua_targeting_tree")
+          abil = unit:AddAbility("containers_lua_targeting_tree")
+          --abil = unit:FindAbilityByName("containers_lua_targeting_tree")
         else
-          unit:AddAbility("containers_lua_targeting")
-          abil = unit:FindAbilityByName("containers_lua_targeting")
+          abil = unit:AddAbility("containers_lua_targeting")
+          --abil = unit:FindAbilityByName("containers_lua_targeting")
         end
         abil:SetLevel(1)
       end
@@ -1687,7 +1815,7 @@ function Containers:CreateContainer(cont)
   end
 
   function c:Delete(deleteContents)
-    Containers:DeleteContainer(c, deleteContents)
+    Containers:DeleteContainer(self, deleteContents)
   end
 
   function c:AddSubscription(pid)
@@ -1954,6 +2082,10 @@ function Containers:CreateContainer(cont)
           item:SetPurchaser(nil)
         end
 
+        if self:IsEquipment() then
+          ApplyPassives(self, item)
+        end
+
         PlayerTables:SetTableValue(self.ptID, "slot" .. i, itemid)
         return true
       end
@@ -1966,9 +2098,20 @@ function Containers:CreateContainer(cont)
     item = GetItem(item)
     local slot = self.items[item:GetEntityIndex()]
     local nameTable = self.itemNames[item:GetAbilityName()]
+    local itemid = item:GetEntityIndex()
 
-    self.items[item:GetEntityIndex()] = nil
-    nameTable[item:GetEntityIndex()] = nil
+    self.items[itemid] = nil
+    nameTable[itemid] = nil
+
+    if self:IsEquipment() then
+      local mods = self.appliedPassives[itemid]
+      if mods then
+        for _, mod in ipairs(mods) do
+          mod:Destroy()
+        end
+      end
+      self.appliedPassives[itemid] = nil
+    end
 
     PlayerTables:DeleteTableKey(self.ptID, "slot" .. slot)
   end
@@ -2018,7 +2161,7 @@ function Containers:CreateContainer(cont)
       size = size + row
     end
 
-    local oldSize = c:GetSize()
+    local oldSize = self:GetSize()
     local changes = {}
 
     if removeOnContract and size < oldSize then
@@ -2032,6 +2175,16 @@ function Containers:CreateContainer(cont)
 
           self.items[item:GetEntityIndex()] = nil
           nameTable[item:GetEntityIndex()] = nil
+
+          if self:IsEquipment() then
+            local mods = self.appliedPassives[itemid]
+            if mods then
+              for _, mod in ipairs(mods) do
+                mod:Destroy()
+              end
+            end
+            self.appliedPassives[itemid] = nil
+          end
 
           table.insert(deletions, "slot"..i)
         end
@@ -2117,19 +2270,36 @@ function Containers:CreateContainer(cont)
   end
 
   function c:SetEntity(entity)
+    local old = c:GetEntity()
+    local num = entity
     if entity and type(entity) == "number" then
-      PlayerTables:SetTableValue(self.ptID, "entity", entity)
-      Containers.entityContainers[entity] = Containers.entityContainers[entity] or {}
-      Containers.entityContainers[entity][self.id] = self
+      entity = EntIndexToHScript(entity)
     elseif entity and entity.GetEntityIndex then
-      local num = entity:GetEntityIndex()
+      num = entity:GetEntityIndex()
+    end
+
+    if entity then
       PlayerTables:SetTableValue(self.ptID, "entity", num)
       Containers.entityContainers[num] = Containers.entityContainers[num] or {}
       Containers.entityContainers[num][self.id] = self
-    elseif entity == nil then
-      PlayerTables:DeleteTableValue(self.ptID, "entity")
-      Containers.entityContainers[entity] = Containers.entityContainers[entity] or {}
-      Containers.entityContainers[entity][self.id] = nil
+    elseif old ~= nil then
+      PlayerTables:DeleteTableKey(self.ptID, "entity")
+      Containers.entityContainers[old:GetEntityIndex()] = Containers.entityContainers[old:GetEntityIndex()] or {}
+      Containers.entityContainers[old:GetEntityIndex()][self.id] = nil
+    end
+
+    if self:IsEquipment() and old ~= entity then
+      for itemID, mods in pairs(self.appliedPassives) do
+        for _, mod in ipairs(mods) do
+          mod:Destroy()
+        end
+      end
+      self.appliedPassives = {}
+
+      local items = self:GetAllItems()
+      for _, item in ipairs(items) do
+        ApplyPassives(self, item)
+      end
     end
   end
 
@@ -2175,6 +2345,52 @@ function Containers:CreateContainer(cont)
 
   function c:SetDraggable(drag)
     PlayerTables:SetTableValue(self.ptID, "draggable", drag)
+  end
+
+  function c:IsEquipment()
+    local eq = PlayerTables:GetTableValue(self.ptID, "equipment")
+    if eq then
+      return true
+    else
+      return false
+    end
+  end
+
+  function c:SetEquipment(equip)
+    local isEq = self:IsEquipment()
+    if equip and not isEq then
+      local items = self:GetAllItems()
+      for _, item in ipairs(items) do
+        ApplyPassives(self, item)
+      end
+
+      local c = self
+
+      self.cleanupTimer = Timers:CreateTimer(1, function()
+        print('cleanupTimer')
+        for itemID, mods in pairs(c.appliedPassives) do
+          if not IsValidEntity(EntIndexToHScript(itemID)) or not c:ContainsItem(itemID) then
+            for _, mod in ipairs(mods) do
+              mod:Destroy()
+            end
+            c.appliedPassives[itemID] = nil
+          end
+        end
+        return 1
+      end)
+    elseif not equip and isEq then
+      PrintTable(self.appliedPassives)
+      local items = self:GetAllItems()
+      for itemID,mods in pairs(self.appliedPassives) do
+        for _, mod in ipairs(mods) do
+          mod:Destroy()
+        end
+      end
+      self.appliedPassives = {}
+
+      Timers:RemoveTimer(self.cleanupTimer)
+    end
+    PlayerTables:SetTableValue(self.ptID, "equipment", equip)
   end
 
   function c:GetForceOwner()
@@ -2325,10 +2541,21 @@ function Containers:CreateContainer(cont)
 end
 
 function Containers:DeleteContainer(c, deleteContents)
-  if deleteContents ~= false then
+  if deleteContents ~= false or c:IsEquipment() then
     local items = c:GetAllItems()
     for _, item in ipairs(items) do
-      item:RemoveSelf()
+      if c:IsEquipment() then
+        local mods = c.appliedPassives[item:GetEntityIndex()]
+        Timers:RemoveTimer(c.cleanupTimer)
+        if mods then
+          for _, mod in ipairs(mods) do
+            mod:Destroy()
+          end
+        end
+      end
+      if deleteContents then
+        item:RemoveSelf()
+      end
     end
   end
 

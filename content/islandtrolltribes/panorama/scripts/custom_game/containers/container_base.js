@@ -157,7 +157,7 @@ function CheckCouriers()
 
       var shop = 0;
       shop += Entities.IsInRangeOfShop( cour, 0, true) ? 1 : 0;
-      shop += Entities.IsInRangeOfShop( cour, 1, true) ? 2 : 0;
+      shop += Entities.IsInRangeOfShop( cour, 1, true) ? 2 : 0; 
       shop += Entities.IsInRangeOfShop( cour, 2, true) ? 4 : 0;
 
       var oldShop = EntityShops[cour];
@@ -235,7 +235,10 @@ function ScreenHeightWidth()
   GameEvents.Subscribe( "dota_player_update_query_unit", CheckShop );
 
   var use = CustomNetTables.GetTableValue( "containers_lua", "use_panorama_inventory" );
-  UsePanoramaInventory({use:use.value});
+  if (use)
+    UsePanoramaInventory({use:use.value});
+  else
+    UsePanoramaInventory({use:false});
 
   CheckShopSchedule();
   CheckCouriers();

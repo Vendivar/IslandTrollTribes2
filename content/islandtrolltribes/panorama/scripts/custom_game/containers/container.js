@@ -212,7 +212,7 @@ function NewContainer(id)
   panel.SetDraggable(pt.draggable !== 0);
   isShop = pt.shop === 1;
 
-  if (pt.OnCloseClicked === 0)
+  if (pt.OnCloseClicked === 0 && $("#CloseButton"))
     $("#CloseButton").visible = false;
 
 
