@@ -107,6 +107,57 @@ function Build( event )
 			else
 				ability:SetCurrentCharges(charges)
 			end
+
+            -- Create building container
+            local cont = Containers:CreateContainer({
+                layout = {6}, --Could be 3,3
+                --skins =       {"Hourglass"},
+                headerText =  unit:GetUnitName(),
+                buttons =     {"Craft"},
+                position =    "entity", --"mouse",--"900px 200px 0px",
+                draggable = false,
+                closeOnOrder= false,
+                items = {},
+                entity = unit,
+                range = DEFAULT_TRANSFER_RANGE,
+                OnDragWorld = true,
+
+                OnLeftClick = function(playerID, container, unit, item, slot)
+
+                    container:RemoveItem(item)
+                    Containers:AddItemToUnit(unit,item)
+
+                    --TransferItem(container, unit, item)
+                end,
+
+                   OnButtonPressed = function(playerID, container, unit, button, buttonName)
+                       -- Craft
+                    if button == 1 then
+                        print("CRAFT")
+                    end
+
+                    container:Close(playerID)
+                end,
+
+                OnEntityDrag = function(playerID, container, unit, target, fromContainer, item)
+                    print("Drag ACTION building container:", playerID, unit, target, fromContainer, item)
+                    if IsValidEntity(target) and fromContainer:ContainsItem(item) then
+                        fromContainer:RemoveItem(item)
+                        if not container:AddItem(item) then
+                            CreateItemOnPositionSync(unit:GetAbsOrigin() + RandomVector(10), item)
+                        end
+                    end
+                end,
+
+                OnEntityOrder = function(playerID, container, unit, target)
+                    print("ORDER ACTION building container: ", playerID)
+                    container:Open(playerID)
+                    unit:Stop()
+                    unit:Hold()
+                end,
+            })
+
+			unit.container = container
 		end
 
 	    -- Units can't attack while building
