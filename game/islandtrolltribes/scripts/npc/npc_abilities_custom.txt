@@ -1465,6 +1465,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"ability_building_enemytargetting"
+	    "MaxLevel"              "1"
 	}
 	"ability_ensnare"
 	{
@@ -12748,6 +12749,7 @@
 		"AbilityCooldown"	"0"
 		"AbilityCastPoint"	"0"
 		"AbilityManaCost"	"0"
+	    "MaxLevel"              "1"
 		"AbilitySpecial"
 		{
 			"01"

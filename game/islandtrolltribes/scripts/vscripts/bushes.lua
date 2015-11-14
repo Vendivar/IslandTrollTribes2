@@ -1,4 +1,4 @@
-GAME_BUSH_TICK_TIME = 1--30
+GAME_BUSH_TICK_TIME = 30
 
 function ITT:SpawnBushes()
     Containers:SetDisableItemLimit(true)
@@ -34,8 +34,8 @@ function ITT:OnBushThink()
         end
 
         local rand = RandomInt(-4,4) --randomize between -4 and +4, since the min is 0 with the best rng on the minimum number you will still not get a spawn
-        
-        if rand + bush.RngWeight >= 5 then 
+        local items = bush.container:GetAllItems()
+        if rand + bush.RngWeight >= 5 and #items <= 6 then 
             bush.RngWeight = bush.RngWeight - 1 --if spawn succeeds reduce the odds of the next spawn
 
             local bush_name = string.gsub(bush:GetContainedItem():GetAbilityName(), "item_", "")

@@ -40,7 +40,7 @@ function ITT:InitGameMode()
     GameMode = GameRules:GetGameModeEntity()
 
     -- DebugPrint
-    Convars:RegisterConvar('debug_spew', tostring(DEBUG_SPEW), 'Set to 1 to start spewing debug info. Set to 0 to disable.', 0)
+    --Convars:RegisterConvar('debug_spew', tostring(DEBUG_SPEW), 'Set to 1 to start spewing debug info. Set to 0 to disable.', 0)
 
     -- Thinkers. Should get rid of these in favor of timers
     GameMode:SetThink( "OnBuildingThink", ITT, "BuildingThink", 0 )
