@@ -4,7 +4,7 @@
 	"Model"	"models/props_structures/wooden_sentry_tower001.vmdl"
 	"SoundSet"	"Creep_Good_Melee"
 	"HasInventory"	"0"
-	"ModelScale"	"0.8"
+	"ModelScale"	"0.65"
 	"MinimapIconSize"	"250"
 	"HealthBarOffset"	"400"
 	"BoundsHullName"	"DOTA_HULL_SIZE_HERO"

@@ -6,7 +6,7 @@
 	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"cloak_protection"
-	"Model"	"models/items/windrunner/falconcloak/falconcloak.vmdl"
+	"Model"	"models/props_items/shivaguard.vmdl"
 	"Effect"	""
 	"ItemCost"	"88"
 	"ItemShopTags"	"consumable"

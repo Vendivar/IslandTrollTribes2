@@ -86,8 +86,13 @@
 		"npc_bush_thief"						"Theif Bush"
 		"npc_bush_thistle"						"BushThistle"
 		
+		"npc_creep_corpse"                                                                "Creep Corpse"
+        "gravestone"                                                                      "Gravestone"
 		
 		"scout_ward"                            "Scout Ward"
+        
+        "npc_boss_disco_duck"                                                             "Boss Disco Duck"
+		"npc_boss_the_one"                                                                "Boss The One"
 		
 		
 // Building Names
@@ -113,6 +118,31 @@
 		"npc_building_tent"				"Tent"
 		"npc_building_workshop"			"Workshop"
 		
+// Ships        
+
+        "DOTA_Tooltip_ability_npc_ship_merchant_1"                                        "Merchant 1"
+		"DOTA_Tooltip_ability_npc_ship_merchant_1_Description"                            ""
+
+		"DOTA_Tooltip_ability_npc_ship_merchant_2"                                        "Merchant 2"
+		"DOTA_Tooltip_ability_npc_ship_merchant_2_Description"                            ""
+
+		"DOTA_Tooltip_ability_npc_ship_merchant_3"                                        "Merchant 3"
+		"DOTA_Tooltip_ability_npc_ship_merchant_3_Description"                            ""
+
+		"DOTA_Tooltip_ability_npc_ship_merchant_4"                                        "Merchant 4"
+		"DOTA_Tooltip_ability_npc_ship_merchant_4_Description"                            ""
+
+		"DOTA_Tooltip_ability_npc_ship_merchant_5"                                        "Merchant 5"
+		"DOTA_Tooltip_ability_npc_ship_merchant_5_Description"                            ""
+
+		"DOTA_Tooltip_ability_npc_ship_merchant_6"                                        "Merchant 6"
+		"DOTA_Tooltip_ability_npc_ship_merchant_6_Description"                            ""
+
+		"DOTA_Tooltip_ability_npc_ship_merchant_7"                                        "Merchant 7"
+		"DOTA_Tooltip_ability_npc_ship_merchant_7_Description"                            ""
+
+		
+        
 //Game Strings
 		"DiscoDuckSpawnMessage"					"AN ANCIENT EVIL HAS AWOKEN"
 

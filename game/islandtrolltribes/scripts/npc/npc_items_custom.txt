@@ -4951,7 +4951,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"item_shivas_guard"
-		"Model"	"models/items/windrunner/falconcloak/falconcloak.vmdl"
+		"Model"	"models/props_items/shivaguard.vmdl"
 		"Effect"	""
 		"ItemCost"	"96"
 		"ItemShopTags"	"consumable"
@@ -5053,7 +5053,7 @@
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"cloak_protection"
-		"Model"	"models/items/windrunner/falconcloak/falconcloak.vmdl"
+		"Model"	"models/props_items/shivaguard.vmdl"
 		"Effect"	""
 		"ItemCost"	"88"
 		"ItemShopTags"	"consumable"
@@ -11130,7 +11130,7 @@
 	
 	    "Custom"
 	    {
-	        "ModelScale"    "0.8"
+	        "ModelScale"    "10.0"
 	    }
 	}
 	"item_meat_diseased"
@@ -11240,7 +11240,7 @@
 	    "BaseClass"             "item_datadriven"
 	    "AbilityTextureName"    "meat_smoked"
 	    "Model"                 "models/props_gameplay/cheese.vmdl"
-	    "Effect"                "particles/econ/items/spirit_breaker/spirit_breaker_weapon_fury/spirit_breaker_ambient_flame_fury_smoke.vpcf"
+	    "Effect"                "particles/custom/meat_smoke.vpcf"
 	    "AbilityCastPoint"      "0.5"
 	    "ItemCost"              "2"
 	    "ItemShopTags"          "consumable"
@@ -11259,8 +11259,11 @@
 	
 	    "UIPickupSound"         "Item.PickUpGemShop"
 	    "UIDropSound"           "Item.DropGemShop"
-	    "WorldDropSound"        "Item.DropGemWorld"
-	
+	    "WorldDropSound"        "Hero_Pudge.Footsteps"
+	    "precache"
+	    {
+	        "soundfile"    "soundevents/game_sounds_heroes/game_sounds_pudge.vsndevts"
+	    }
 	    "AbilitySpecial"
 	    {
 	        "01"
@@ -11290,7 +11293,7 @@
 	    }
 	    "Custom"
 	    {
-	        "ModelScale"    "0.8"
+	        "ModelScale"    "10.0"
 	    }
 	}
 	"item_medallion_thief"

@@ -4,7 +4,7 @@
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"item_shivas_guard"
-	"Model"	"models/items/windrunner/falconcloak/falconcloak.vmdl"
+	"Model"	"models/props_items/shivaguard.vmdl"
 	"Effect"	""
 	"ItemCost"	"96"
 	"ItemShopTags"	"consumable"

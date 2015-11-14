@@ -1496,11 +1496,13 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"ability_building_hatchegg"
+	    "MaxLevel"              "1"
 	}
 	"ability_hawks_evolution"
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"ability_building_hatchegg"
+	    "MaxLevel"              "1"
 	}
 	"ability_lizard_poisonattack"
 	{

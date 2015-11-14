@@ -120,7 +120,8 @@
 "error_not_enough_hides"             "Not enough of same hide to craft item."
 "error_no_meat_to_eat"               "No raw meat to eat."
 "error_no_meat_to_drop"              "No raw meat to drop."
-"error_not_enough_gold "             "Not enough gold."
+"error_not_enough_gold"              "Not enough gold."
+"error_invalid_build_position"       "Can't build there."
 "error_item_out_of_range "           "Item out of range to pick up."
 
 
