@@ -1,17 +1,30 @@
 "use strict";
+
+var queryBuildings = [];
+queryBuildings["npc_building_armory"] = "";
+queryBuildings["npc_building_tannery"] = "";
+queryBuildings["npc_building_workshop"] = "";
+queryBuildings["npc_building_mix_pot"] = "";
+queryBuildings["npc_building_hut_witch_doctor"] = "";
+queryBuildings["npc_building_omnitower"] = "";
+queryBuildings["npc_building_teleport_beacon"] = "";
+queryBuildings["npc_building_hatchery"] = "";
+queryBuildings["npc_building_spirit_ward"] = "";
+queryBuildings["npc_building_smoke_house"] = "";
+
 function UpdateTeamPanel()
 {
 	GameEvents.SendCustomGameEventToServer( "clearTeams", { });
 
 	//Check radiant
-	var radiantPlayers = Game.GetPlayerIDsOnTeam( 2 );
+	var radiantPlayers = Game.GetPlayerIDsOnTeam( DOTATeam_t.DOTA_TEAM_GOODGUYS );
     for ( var i = 0; i < radiantPlayers.length; ++i )
     {
         GameEvents.SendCustomGameEventToServer( "updateRadiant", { "key1" : radiantPlayers[i] });
     }
 
     //Check dire
-	var direPlayers = Game.GetPlayerIDsOnTeam( 3 );
+	var direPlayers = Game.GetPlayerIDsOnTeam( DOTATeam_t.DOTA_TEAM_BADGUYS );
     for ( var i = 0; i < direPlayers.length; ++i )
     {
     	if (direPlayers[i] == Game.GetLocalPlayerID) {
@@ -46,8 +59,12 @@ function UpdateAbilityList()
 	abilityListPanel.RemoveAndDeleteChildren();
 	
 	var queryUnit = Players.GetLocalPlayerPortraitUnit();
-	if(Entities.GetUnitName(queryUnit) == "npc_building_armory") {
-		UpdateTeamPanel;
+	
+	// Buildings
+	var unitName = Entities.GetUnitName(queryUnit);
+	if (queryBuildings[unitName] == "") 
+	{
+		//UpdateTeamPanel;
 		for ( var i = 0; i < Entities.GetAbilityCount( queryUnit ); ++i )
 		{
 			var ability = Entities.GetAbility( queryUnit, i );
@@ -58,12 +75,15 @@ function UpdateAbilityList()
 				continue;
 			MakeAbilityPanel( abilityListPanel, ability, queryUnit );
 		}
-
-
 	}
-    	if(Entities.GetUnitName(queryUnit) == "npc_building_tannery") {
-		UpdateTeamPanel;
-		for ( var i = 0; i < Entities.GetAbilityCount( queryUnit ); ++i )
+
+	// Main Hero
+	var iPlayerID = Players.GetLocalPlayer();
+	var hero = Players.GetPlayerHeroEntityIndex( iPlayerID );
+	if (hero == queryUnit)
+	{
+		$.Msg("Hero Panel")
+		for ( var i = 7; i < 15; ++i )
 		{
 			var ability = Entities.GetAbility( queryUnit, i );
 			if ( ability == -1 )
@@ -71,147 +91,10 @@ function UpdateAbilityList()
 
 			if ( !Abilities.IsDisplayedAbility(ability) )
 				continue;
+			
 			MakeAbilityPanel( abilityListPanel, ability, queryUnit );
 		}
-
-
 	}
-    	if(Entities.GetUnitName(queryUnit) == "npc_building_workshop") {
-		UpdateTeamPanel;
-		for ( var i = 0; i < Entities.GetAbilityCount( queryUnit ); ++i )
-		{
-			var ability = Entities.GetAbility( queryUnit, i );
-			if ( ability == -1 )
-				continue;
-
-			if ( !Abilities.IsDisplayedAbility(ability) )
-				continue;
-			MakeAbilityPanel( abilityListPanel, ability, queryUnit );
-		}
-
-
-	}
-    	if(Entities.GetUnitName(queryUnit) == "npc_building_mix_pot") {
-		UpdateTeamPanel;
-		for ( var i = 0; i < Entities.GetAbilityCount( queryUnit ); ++i )
-		{
-			var ability = Entities.GetAbility( queryUnit, i );
-			if ( ability == -1 )
-				continue;
-
-			if ( !Abilities.IsDisplayedAbility(ability) )
-				continue;
-			MakeAbilityPanel( abilityListPanel, ability, queryUnit );
-		}
-
-
-	}
-    	if(Entities.GetUnitName(queryUnit) == "npc_building_hut_witch_doctor") {
-		UpdateTeamPanel;
-		for ( var i = 0; i < Entities.GetAbilityCount( queryUnit ); ++i )
-		{
-			var ability = Entities.GetAbility( queryUnit, i );
-			if ( ability == -1 )
-				continue;
-
-			if ( !Abilities.IsDisplayedAbility(ability) )
-				continue;
-			MakeAbilityPanel( abilityListPanel, ability, queryUnit );
-		}
-
-
-	}
-    	if(Entities.GetUnitName(queryUnit) == "npc_building_omnitower") {
-		UpdateTeamPanel;
-		for ( var i = 0; i < Entities.GetAbilityCount( queryUnit ); ++i )
-		{
-			var ability = Entities.GetAbility( queryUnit, i );
-			if ( ability == -1 )
-				continue;
-
-			if ( !Abilities.IsDisplayedAbility(ability) )
-				continue;
-			MakeAbilityPanel( abilityListPanel, ability, queryUnit );
-		}
-
-
-	}
-    	if(Entities.GetUnitName(queryUnit) == "npc_building_teleport_beacon") {
-		UpdateTeamPanel;
-		for ( var i = 0; i < Entities.GetAbilityCount( queryUnit ); ++i )
-		{
-			var ability = Entities.GetAbility( queryUnit, i );
-			if ( ability == -1 )
-				continue;
-
-			if ( !Abilities.IsDisplayedAbility(ability) )
-				continue;
-			MakeAbilityPanel( abilityListPanel, ability, queryUnit );
-		}
-
-
-	}
-    	if(Entities.GetUnitName(queryUnit) == "npc_building_hatchery") {
-		UpdateTeamPanel;
-		for ( var i = 0; i < Entities.GetAbilityCount( queryUnit ); ++i )
-		{
-			var ability = Entities.GetAbility( queryUnit, i );
-			if ( ability == -1 )
-				continue;
-
-			if ( !Abilities.IsDisplayedAbility(ability) )
-				continue;
-			MakeAbilityPanel( abilityListPanel, ability, queryUnit );
-		}
-
-
-	}
-    	if(Entities.GetUnitName(queryUnit) == "npc_building_hatchery") {
-		UpdateTeamPanel;
-		for ( var i = 0; i < Entities.GetAbilityCount( queryUnit ); ++i )
-		{
-			var ability = Entities.GetAbility( queryUnit, i );
-			if ( ability == -1 )
-				continue;
-
-			if ( !Abilities.IsDisplayedAbility(ability) )
-				continue;
-			MakeAbilityPanel( abilityListPanel, ability, queryUnit );
-		}
-
-
-	}
-    	if(Entities.GetUnitName(queryUnit) == "npc_building_spirit_ward") {
-		UpdateTeamPanel;
-		for ( var i = 0; i < Entities.GetAbilityCount( queryUnit ); ++i )
-		{
-			var ability = Entities.GetAbility( queryUnit, i );
-			if ( ability == -1 )
-				continue;
-
-			if ( !Abilities.IsDisplayedAbility(ability) )
-				continue;
-			MakeAbilityPanel( abilityListPanel, ability, queryUnit );
-		}
-
-
-	}
-    	if(Entities.GetUnitName(queryUnit) == "npc_building_smoke_house") {
-		UpdateTeamPanel;
-		for ( var i = 0; i < Entities.GetAbilityCount( queryUnit ); ++i )
-		{
-			var ability = Entities.GetAbility( queryUnit, i );
-			if ( ability == -1 )
-				continue;
-
-			if ( !Abilities.IsDisplayedAbility(ability) )
-				continue;
-			MakeAbilityPanel( abilityListPanel, ability, queryUnit );
-		}
-
-
-	}
-    
 }
 
 (function()
