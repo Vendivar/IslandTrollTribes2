@@ -5069,6 +5069,29 @@
 		}
 	
 	}
+	"ability_mage_activate_runes"
+	{
+		"BaseClass"	"ability_datadriven"
+	    "AbilityBehavior"    	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityTextureName"	"ability_mage_dementiarunes"
+		"MaxLevel"	"1"
+		"AbilityCastPoint"	"0"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"custom_functions_ability.lua"
+				"Function"	"SwapSpellBook"
+				"activeBook"	"1"
+			}
+			"FireSound"
+			{
+				"EffectName"	"Hero_BountyHunter.Track"
+				"Target"	"CASTER"
+			}
+		}
+	
+	}
 	"ability_mage_anger"
 	{
 	"BaseClass"	"ability_datadriven"
@@ -5619,6 +5642,55 @@
 				}
 			}
 		}
+	}
+	"ability_mage_dementia_runes"
+	{
+	    "BaseClass"    			"ability_datadriven"
+	    "AbilityBehavior"    	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE"
+	    "AbilityTextureName"    "ability_mage_activerunes"
+	    "MaxLevel"    			"1"
+	    "AbilityCastPoint"    	"0"
+	
+	    "OnToggleOn"
+	    {
+	    	"RunScript"
+	        {
+	            "ScriptFile" "heroes/mage/dementia_runes.lua"
+	            "Function"   "ToggleOnRunes"
+	        }
+	    }
+	
+	    "OnToggleOff"
+	    {
+	    	"RunScript"
+	        {
+	            "ScriptFile" "heroes/mage/dementia_runes.lua"
+	            "Function"   "ToggleOffRunes"
+	        }
+	    }
+	}
+	"ability_mage_dementia_summoning"
+	{
+		"BaseClass"	"ability_datadriven"
+	    "AbilityBehavior"    	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityTextureName"	"ability_mage_dementiasummoning"
+		"MaxLevel"	"1"
+		"AbilityCastPoint"	"0"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"custom_functions_ability.lua"
+				"Function"	"SwapSpellBook"
+				"activeBook"	"1"
+			}
+			"FireSound"
+			{
+				"EffectName"	"Hero_BountyHunter.Track"
+				"Target"	"CASTER"
+			}
+		}
+	
 	}
 	"ability_mage_depress"
 	{
@@ -6345,7 +6417,7 @@
 	"ability_mage_flamespray"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityTextureName"	"ability_mage_flamespray"
 		"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
 		"AbilityCastPoint"	"0.2"
@@ -8442,6 +8514,29 @@
 			}
 		}
 	}
+	"ability_mage_spellbook_toggle"
+	{
+		"BaseClass"	"ability_datadriven"
+	    "AbilityBehavior"    	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE"
+		"AbilityTextureName"	"ability_mage_swap"
+		"MaxLevel"	"1"
+		"AbilityCastPoint"	"0"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"custom_functions_ability.lua"
+				"Function"	"SwapSpellBook"
+				"activeBook"	"1"
+			}
+			"FireSound"
+			{
+				"EffectName"	"Hero_BountyHunter.Track"
+				"Target"	"CASTER"
+			}
+		}
+	
+	}
 	"ability_mage_splittingfire"
 	{
 		"BaseClass"	"ability_datadriven"
@@ -8914,48 +9009,6 @@
 		        }
 		    }
 		}
-	"ability_mage_swap1"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityTextureName"	"ability_mage_swap"
-		"MaxLevel"	"1"
-		"AbilityCastPoint"	"0"
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"SwapSpellBook"
-				"activeBook"	"1"
-			}
-			"FireSound"
-			{
-				"EffectName"	"Hero_BountyHunter.Track"
-				"Target"	"CASTER"
-			}
-		}
-	
-	}
-	"ability_mage_swap2"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-		"AbilityTextureName"	"ability_mage_swap"
-		"MaxLevel"	"1"
-		"AbilityCastPoint"	"0"
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"SwapSpellBook"
-				"activeBook"	"2"
-			}
-	
-		}
-	
-	}
 	"ability_priest_angelicelemental"
 	{
 		"BaseClass"						"ability_datadriven"

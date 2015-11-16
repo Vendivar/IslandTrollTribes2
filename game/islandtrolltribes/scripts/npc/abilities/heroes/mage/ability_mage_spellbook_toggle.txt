@@ -1,7 +1,7 @@
-"ability_mage_swap2"
+"ability_mage_spellbook_toggle"
 {
 	"BaseClass"	"ability_datadriven"
-	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+    "AbilityBehavior"    	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE"
 	"AbilityTextureName"	"ability_mage_swap"
 	"MaxLevel"	"1"
 	"AbilityCastPoint"	"0"
@@ -11,9 +11,13 @@
 		{
 			"ScriptFile"	"custom_functions_ability.lua"
 			"Function"	"SwapSpellBook"
-			"activeBook"	"2"
+			"activeBook"	"1"
 		}
-
+		"FireSound"
+		{
+			"EffectName"	"Hero_BountyHunter.Track"
+			"Target"	"CASTER"
+		}
 	}
 
 }

@@ -7,8 +7,8 @@ CVModel CVModel_0
 		[
 			CVmesh
 			{
-				string m_meshName = "turkey_leg"
-				string m_meshFile = "models/turkey_leg.dmx"
+				string m_meshName = "turkey_leg2"
+				string m_meshFile = "models/turkey_leg2.dmx"
 				string m_materialSearchPath = ""
 				bool m_bSkinParentedObjects = true
 				bool m_bLegacySkinParentedTransforms = false
@@ -114,7 +114,7 @@ CVModel CVModel_0
 	[
 		
 	]
-	CVMaterialRemapList* m_pMaterialRemapList = &CVMaterialRemapList_0
+	CVMaterialRemapList* m_pMaterialRemapList = NULL
 	float m_flFbxScale = 1.000000
 	float m_flQCScale = 1.000000
 	float(3) m_vOrigin = ( 0.000000, 0.000000, 0.000000 )
@@ -150,8 +150,8 @@ CVhitBoxSetList CVhitBoxSetList_0
 					string m_sSurfaceProperty = "porcelain"
 					int m_nGroupId = 0
 					string m_sBoneName = "Cube"
-					float(3) m_vMinBounds = ( -27.600000, -26.437572, 0.837830 )
-					float(3) m_vMaxBounds = ( 26.728619, 27.600000, 41.891472 )
+					float(3) m_vMinBounds = ( -45.080002, -34.140301, 1.368455 )
+					float(3) m_vMaxBounds = ( 43.656742, 35.641415, 68.422737 )
 					bool m_bTranslationOnly = false
 					uint(4) m_cRenderColor = ( 0, 0, 0, 0 )
 				}
@@ -257,17 +257,5 @@ CVanimGroup CVanimGroup_0
 	string[] m_folderNames = 
 	[
 		
-	]
-}
-
-CVMaterialRemapList CVMaterialRemapList_0
-{
-	CVMaterialRemap[] m_vMaterialRemapList = 
-	[
-		CVMaterialRemap
-		{
-			string m_sSearchMaterial = "untitled.vmat"
-			string m_sReplaceMaterial = "materials/models/heroes/brewmaster/weapon_color.vmat"
-		}
 	]
 }

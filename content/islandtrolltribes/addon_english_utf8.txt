@@ -85,7 +85,43 @@
 		"npc_bush_stash"						"Stash"
 		"npc_bush_thief"						"Theif Bush"
 		"npc_bush_thistle"						"BushThistle"
-		
+        
+        "DOTA_Tooltip_ability_item_bush_mushroom"                                         "Mushroom Colony"
+        "DOTA_Tooltip_ability_item_bush_mushroom_Description"                             ""
+
+		"DOTA_Tooltip_ability_item_bush_herb"                                             "Haisetsu Bush"
+		"DOTA_Tooltip_ability_item_bush_herb_Description"                                 ""
+
+		"DOTA_Tooltip_ability_item_bush_herb_blue"                                        "Blue Herb Bush"
+		"DOTA_Tooltip_ability_item_bush_herb_blue_Description"                            ""
+
+		"DOTA_Tooltip_ability_item_bush_herb_orange"                                      "Orange Herb Bush"
+		"DOTA_Tooltip_ability_item_bush_herb_orange_Description"                          ""
+
+		"DOTA_Tooltip_ability_item_bush_herb_purple"                                      "Purple Herb Bush"
+		"DOTA_Tooltip_ability_item_bush_herb_purple_Description"                          ""
+
+		"DOTA_Tooltip_ability_item_bush_herb_yellow"                                      "Yellow Herb Bush"
+		"DOTA_Tooltip_ability_item_bush_herb_yellow_Description"                          ""
+
+		"DOTA_Tooltip_ability_item_bush_river"                                            "Water Bush"
+		"DOTA_Tooltip_ability_item_bush_river_Description"                                ""
+
+		"DOTA_Tooltip_ability_item_bush_scout"                                            "Scout Bush"
+		"DOTA_Tooltip_ability_item_bush_scout_Description"                                ""
+
+		"DOTA_Tooltip_ability_item_bush_stash"                                            "Hidden Stash"
+		"DOTA_Tooltip_ability_item_bush_stash_Description"                                ""
+
+		"DOTA_Tooltip_ability_item_bush_thief"                                            "Thief Bush"
+		"DOTA_Tooltip_ability_item_bush_thief_Description"                                ""
+
+		"DOTA_Tooltip_ability_item_bush_thistle"                                          "Thistle Shrub"
+		"DOTA_Tooltip_ability_item_bush_thistle_Description"                              ""
+
+	
+        
+        
 		"npc_creep_corpse"                                                                "Creep Corpse"
         "gravestone"                                                                      "Gravestone"
 		
@@ -560,10 +596,8 @@
 "DOTA_Tooltip_ability_ability_mage_forkedlightning_radius"		"RADIUS:"
 "DOTA_Tooltip_ability_ability_mage_forkedlightning_range"		"RANGE:"
 "DOTA_Tooltip_Ability_ability_mage_freezingblast"		"Freezing Blast"
-"DOTA_Tooltip_Ability_ability_mage_freezingblast"		"Freezing blast"
 "DOTA_Tooltip_ability_ability_mage_freezingblast_AttackSlow"		"ATTACKSLOW:"
 "DOTA_Tooltip_Ability_ability_mage_freezingblast_Description"		"Deals damage to all trolls in a 300 AoE. Units hit are slowed and lose extra heat over time over 25 seconds. Standing next to a fire removes the cold buff negating the heat loss.\n\nHEAT LOSS: <font color='#777777'>20</font>\nATTACK/MOVEMENT SPEED SLOW: <font color='#777777'>10%</font>"
-"DOTA_Tooltip_Ability_ability_mage_freezingblast_Description"		"Losing 20 heat over 25 seconds. Slowed by 10%. Find a fire to get warm!"
 "DOTA_Tooltip_ability_ability_mage_freezingblast_Moveslow"		"MOVESLOW:"
 "DOTA_Tooltip_Ability_ability_mage_giganegativeblast"		"Giga Negative Blast"
 "DOTA_Tooltip_Ability_ability_mage_giganegativeblast_Description"		"Enhanced version of a mage classic. Deals damage and slows the target.\n\nDeals 45 damage to the main target and 15 damage to all enemies in a 250 AoE\nSlows movement speed by 15%\nSlow lasts 3 seconds on Trolls and 5 seconds on Animals"
@@ -732,10 +766,8 @@
 "DOTA_Tooltip_stupefy_aura_Description"		""
 
 
-"DOTA_Tooltip_ability_ability_mage_swap1"		"Ability Mage Swap1"
-"DOTA_Tooltip_ability_ability_mage_swap1_Description"		""
-"DOTA_Tooltip_ability_ability_mage_swap2"		"Ability Mage Swap2"
-"DOTA_Tooltip_ability_ability_mage_swap2_Description"		""
+"DOTA_Tooltip_ability_ability_mage_spellbook_toggle"		            "Toggle Spellbook Spells"
+"DOTA_Tooltip_ability_ability_mage_spellbook_toggle_Description"		"Open's up your spellbook to reveal the extra magics you have learned as a mage! You can "
 
 "DOTA_Tooltip_ability_ability_metronome_cyclone"		"Metronome Cyclone"
 "DOTA_Tooltip_ability_ability_metronome_cyclone_Description"		""
@@ -756,7 +788,7 @@
 "DOTA_Tooltip_ability_ability_metronome_tsunami"		"Metronome Tsunami"
 "DOTA_Tooltip_ability_ability_metronome_tsunami_Description"		""
 
-"DOTA_Tooltip_Ability_modifier_cold"		"Freezing"
+"DOTA_Tooltip_Ability_modifier_cold"		"Freezing! Losing 20 heat over 25 seconds. Slowed by 10%. Find a fire to get warm!" 
 "DOTA_Tooltip_Ability_modifier_depress"		"Depressed"
 "DOTA_Tooltip_Ability_modifier_depress_Description"		"Losing 5 mana per 3 seconds. Attack speed slowed by 10%%, move speed slowed by 20%%."
 "DOTA_Tooltip_Ability_modifier_giganegativeblast"		"Negative Blast"
@@ -2934,9 +2966,6 @@
 "DOTA_Tooltip_modifier_meat_passive_Description"		"Current amount of raw meat you're carrying. Can carry up to 10."
 
 // HUD stuff
-"DOTA_Tooltip_ability_item_bush_mushroom"                                         "Mushroom Bush"
-"DOTA_Tooltip_ability_item_bush_mushroom_Description"                             ""
-
 "DOTA_Tooltip_ability_empty1"		"Empty"
 "DOTA_Tooltip_ability_empty2"		"Empty"
 "DOTA_Tooltip_ability_empty3"		"Empty"

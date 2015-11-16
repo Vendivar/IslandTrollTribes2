@@ -4,8 +4,8 @@
     "AbilityBehavior"    	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "BaseClass"    			"item_datadriven"
     "AbilityTextureName"    "meat_cooked"
-    "Model"    				"models/props_gameplay/cheese.vmdl"
-    "Effect"    			""
+    "Model"    				"models/turkey_leg.vmdl"
+    "Effect"    			"particles/custom/meat_smoke.vpcf"
     "AbilityCastPoint"    	"0.5"
     "ItemCost"    			"2"
     "ItemShopTags"    		"consumable"
@@ -65,6 +65,24 @@
 
     "Custom"
     {
-        "ModelScale"    "0.8"
+        "ModelScale"    "1.0"
+        
+        "ModelOffsets"
+		{
+			"Origin"
+			{
+				"x"	"0"
+				"y"	"0"
+				"z"	"-5"
+			}
+
+			"Angles"
+			{
+				"x"	"0"
+				"y"	"0"
+				"z"	"0"
+			}
+
+		}
     }
 }

@@ -4,7 +4,7 @@
     "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "BaseClass"             "item_datadriven"
     "AbilityTextureName"    "meat_smoked"
-    "Model"                 "models/props_gameplay/cheese.vmdl"
+    "Model"                 "models/turkey_leg.vmdl"
     "Effect"                "particles/custom/meat_smoke.vpcf"
     "AbilityCastPoint"      "0.5"
     "ItemCost"              "2"
@@ -58,6 +58,6 @@
     }
     "Custom"
     {
-        "ModelScale"    "0.8"
+        "ModelScale"    "1.0"
     }
 }

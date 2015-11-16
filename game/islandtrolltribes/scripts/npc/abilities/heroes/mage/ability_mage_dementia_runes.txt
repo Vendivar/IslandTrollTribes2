@@ -1,0 +1,26 @@
+"ability_mage_dementia_runes"
+{
+    "BaseClass"    			"ability_datadriven"
+    "AbilityBehavior"    	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE"
+    "AbilityTextureName"    "ability_mage_activerunes"
+    "MaxLevel"    			"1"
+    "AbilityCastPoint"    	"0"
+
+    "OnToggleOn"
+    {
+    	"RunScript"
+        {
+            "ScriptFile" "heroes/mage/dementia_runes.lua"
+            "Function"   "ToggleOnRunes"
+        }
+    }
+
+    "OnToggleOff"
+    {
+    	"RunScript"
+        {
+            "ScriptFile" "heroes/mage/dementia_runes.lua"
+            "Function"   "ToggleOffRunes"
+        }
+    }
+}

@@ -83,7 +83,7 @@ function UpdateAbilityList()
 	if (hero == queryUnit)
 	{
 		$.Msg("Hero Panel")
-		for ( var i = 7; i < 15; ++i )
+		for ( var i = 6; i < 15; ++i )
 		{
 			var ability = Entities.GetAbility( queryUnit, i );
 			if ( ability == -1 )

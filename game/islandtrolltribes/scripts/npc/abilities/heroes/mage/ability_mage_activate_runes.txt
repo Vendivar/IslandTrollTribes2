@@ -1,8 +1,8 @@
-"ability_mage_swap1"
+"ability_mage_activate_runes"
 {
 	"BaseClass"	"ability_datadriven"
-	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	"AbilityTextureName"	"ability_mage_swap"
+    "AbilityBehavior"    	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityTextureName"	"ability_mage_dementiarunes"
 	"MaxLevel"	"1"
 	"AbilityCastPoint"	"0"
 	"OnSpellStart"
