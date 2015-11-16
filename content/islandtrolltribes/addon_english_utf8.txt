@@ -475,15 +475,11 @@
 
 "DOTA_Tooltip_Ability_ability_giganulldamage"		"Giga Null Damage"
 "DOTA_Tooltip_Ability_ability_giganulldamage_Description"		"Slows movement speed and attack speeds and reduces the target's damage output.\n\nATTACK SPEED SLOW: <font color='#777777'>35%</font> MOVEMENT SPEED SLOW: <font color='#777777'>10%</font>\nREDUCES DAMAGE DELT: <font color='#777777'>60%</font>"
-"DOTA_Tooltip_Ability_ability_mage_ability_mage_swap1"		"Next Spells"
-"DOTA_Tooltip_Ability_ability_mage_ability_mage_swap2"		"Previous Spells"
 
 
-"DOTA_Tooltip_Ability_ability_mage_activaterunes"		"Activate Runes"
-"DOTA_Tooltip_Ability_ability_mage_activaterunes_Description"		"Activate the runes which you have invoked."
-"DOTA_Tooltip_Ability_ability_mage_activerunes"		"Active Runes"
-"DOTA_Tooltip_Ability_ability_mage_activerunes_Description"		"Casting this spell causes nearby runes to become active attack a target. This skill can also be used in a gate to perform a dementia summoning.\n<font color='#777777'>Hold ALT to view more information.</font>"
-"DOTA_Tooltip_Ability_ability_mage_activerunes_Note0"		"Combines the effects of the mage's runes.\nCooldown is reduced by 10 seconds if in a dark gate.\nClears runes after casting\nIf no runes are queued up this spell does nothing, but still wastes the cooldown."
+"DOTA_Tooltip_Ability_ability_mage_activate_runes"		"Active Runes"
+"DOTA_Tooltip_Ability_ability_mage_activate_runes_Description"		"Casting this spell causes nearby runes to become active attack a target. This skill can also be used in a gate to perform a dementia summoning.\n<font color='#777777'>Hold ALT to view more information.</font>"
+"DOTA_Tooltip_Ability_ability_mage_activate_runes_Note0"		"Combines the effects of the mage's runes.\nCooldown is reduced by 10 seconds if in a dark gate.\nClears runes after casting\nIf no runes are queued up this spell does nothing, but still wastes the cooldown."
 
 
 "DOTA_Tooltip_Ability_ability_mage_anger"		"Anger"
@@ -506,7 +502,7 @@
 "DOTA_Tooltip_modifier_mage_darkgate"		"Mage Darkgate"
 "DOTA_Tooltip_modifier_mage_darkgate_Description"		""
 
-
+		
 
 "DOTA_Tooltip_Ability_ability_mage_defenderenergy"		"Defender Energy"
 "DOTA_Tooltip_ability_ability_mage_defenderenergy_collide_interval"		"COLLIDE INTERVAL:"
@@ -529,10 +525,10 @@
 
 
 
-"DOTA_Tooltip_Ability_ability_mage_dementiarunes"		"Dementia Runes"
-"DOTA_Tooltip_Ability_ability_mage_dementiarunes_Description"		"The dementia master summons a rune. There are three types, each with its own speciality. You can have a total of 5 runes. When you cast ''activate runes'' it will cause them to go active and they will use their power to cast spells. The speciality of the runes is as follows:\nLez is plague attacks\nKa is fire attacks\nNel is ice attacks."
-"DOTA_Tooltip_Ability_ability_mage_dementiasummoning"		"Dementia Summoning"
-"DOTA_Tooltip_Ability_ability_mage_dementiasummoning_Description"		"Passively gives the Dementia Master the ability to summon a monster from dementia space using Dementia Runes. Summoning must be performed close to the center of an open dark gate and you must have a correct rune order.\nWarning! Dementia Summoning can be unpredictable and dangerous. No creature wants to be summoned for no reason!\n\nRune orders for Dementia summoning\nIce Demon: Lez Nel Lez Lez Ka\nPlague Demon: Nel Nel Ka Nel Lez\nFire Demon: Ka Lez Ka Nel Ka\n<font color='#777777'>Hold ALT to view more information.</font>"
+"DOTA_Tooltip_Ability_ability_mage_dementia_runes"		"Dementia Runes"
+"DOTA_Tooltip_Ability_ability_mage_dementia_runes_Description"		"The dementia master summons a rune. There are three types, each with its own speciality. You can have a total of 5 runes. When you cast ''activate runes'' it will cause them to go active and they will use their power to cast spells. The speciality of the runes is as follows:\nLez is plague attacks\nKa is fire attacks\nNel is ice attacks."
+"DOTA_Tooltip_ability_ability_mage_dementia_summoning"		"Dementia Summoning"
+"DOTA_Tooltip_ability_ability_mage_dementia_summoning_Description"		"Passively gives the Dementia Master the ability to summon a monster from dementia space using Dementia Runes. Summoning must be performed close to the center of an open dark gate and you must have a correct rune order.\nWarning! Dementia Summoning can be unpredictable and dangerous. No creature wants to be summoned for no reason!\n\nRune orders for Dementia summoning\nIce Demon: Lez Nel Lez Lez Ka\nPlague Demon: Nel Nel Ka Nel Lez\nFire Demon: Ka Lez Ka Nel Ka\n<font color='#777777'>Hold ALT to view more information.</font>"
 "DOTA_Tooltip_Ability_ability_mage_dementiasummoning_Note0"		"Summons one of several large demons if the combination is correct and the activation is within a dark gate.\n\nDemon will attack for 25 damage every 1 second at a target within 1000 range.\nSpells:\nIce Demon:\nAura: Slows movement and attack speed of everything within 1000 range by 25%\nFire Demon:\nThrows a fireball every 4 seconds at a target within 1000 range, dealing 60 damage to everything in 300AOE and levelling trees away.\nPlague Demon:\nRandom troll within 1000 range is plagued every 8 seconds. Plague deals 10 damage per second for 20 seconds. If they step within 300 of another troll the plague spreads to that troll for the full duration."
 "DOTA_Tooltip_Ability_ability_mage_depress"		"Depress"
 "DOTA_Tooltip_Ability_ability_mage_depress_Description"		"Reduces target's mana, will depress other enemy units nearby the depressed unit due to bad mood.\n\nDeals 1 damage per second.\nDepress lowers mana by 10 initially, then 5 mana per second for 3 seconds, then 5 mana per 3 seconds for the remaining duration.\nEnemies around the depressed unit will lose 5 mana per 3 seconds.\n\nATTACK SPEED SLOW: <font color='#777777'>-10%</font>\nMOVE SPEED SLOW<font color='#777777'>-20%</font>"

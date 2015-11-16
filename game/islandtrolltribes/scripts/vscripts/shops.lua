@@ -4,7 +4,7 @@ PATH2 = {"path_ship_waypoint_8","path_ship_waypoint_9","path_ship_waypoint_4","p
 PATH3 = {"path_ship_waypoint_1","path_ship_waypoint_2","path_ship_waypoint_3","path_ship_waypoint_4","path_ship_waypoint_5", "path_ship_waypoint_10", "path_ship_waypoint_11", "path_ship_waypoint_12"}
 PATH4 = {"path_ship_waypoint_8","path_ship_waypoint_9","path_ship_waypoint_4","path_ship_waypoint_5", "path_ship_waypoint_10", "path_ship_waypoint_11", "path_ship_waypoint_12"}
 PATH_LIST = {PATH1, PATH2, PATH3, PATH4}
-SHOP_UNIT_NAME_LIST = {"npc_ship_merchant_1", "npc_ship_merchant_2", "npc_ship_merchant_3"}
+SHOP_UNIT_NAME_LIST = {"npc_ship_merchant_1", "npc_ship_merchant_2", "npc_ship_merchant_3", "npc_ship_merchant_4", "npc_ship_merchant_5", "npc_ship_merchant_6", "npc_ship_merchant_7"}
 MAX_SHOPS_ON_MAP = 1
 
 -- At any given time there are two boats on map, sailing at 120 move speed. They take a random path around the islands to an exit point. 

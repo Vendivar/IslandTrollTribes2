@@ -11130,7 +11130,7 @@
 	
 	    "Custom"
 	    {
-	        "ModelScale"    "1.0"
+	        "ModelScale"    "1.3"
 	        
 	        "ModelOffsets"
 			{
@@ -11138,7 +11138,7 @@
 				{
 					"x"	"0"
 					"y"	"0"
-					"z"	"-5"
+					"z"	"30"
 				}
 	
 				"Angles"
