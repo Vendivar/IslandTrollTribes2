@@ -1,0 +1,19 @@
+"ability_phased"
+{
+    "BaseClass"         "ability_datadriven"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+    "MaxLevel"          "1"
+
+    "Modifiers"
+    {
+        "modifier_phased"
+        {
+            "Passive"   "1"
+            "IsHidden"         "1"
+            	"States"
+                    {
+                    "MODIFIER_STATE_NO_UNIT_COLLISION" "MODIFIER_STATE_VALUE_ENABLED"
+                    }
+        }
+    }
+}

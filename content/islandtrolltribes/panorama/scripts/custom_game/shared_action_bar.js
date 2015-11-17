@@ -89,7 +89,7 @@ function UpdateAbilityList()
 		$.Msg("Hero Panel")
     $.Msg(b)
     $.Msg(Entities.GetAbilityByName( queryUnit , "ability_mage_quantum_nulldamage" ))
-		for ( var i = b; i < 16; ++i )
+		for ( var i = b; i < 16 ; ++i )
         {
 			var ability = Entities.GetAbility( queryUnit, i );
 			if ( ability == -1 )

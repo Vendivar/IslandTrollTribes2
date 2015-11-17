@@ -1681,6 +1681,25 @@
 	
 		}
 	}
+	"ability_phased"
+	{
+	    "BaseClass"         "ability_datadriven"
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	    "MaxLevel"          "1"
+	
+	    "Modifiers"
+	    {
+	        "modifier_phased"
+	        {
+	            "Passive"   "1"
+	            "IsHidden"         "1"
+	            	"States"
+	                    {
+	                    "MODIFIER_STATE_NO_UNIT_COLLISION" "MODIFIER_STATE_VALUE_ENABLED"
+	                    }
+	        }
+	    }
+	}
 	"ability_skeleton_passive"
 	{
 		"BaseClass"	"ability_datadriven"
@@ -5837,6 +5856,46 @@
 				}
 			}
 		}
+	    
+	    "AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"damage"				"1"
+			}
+	        "02"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"manadrain"				"10"
+			}
+	        "03"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"manadrain2"				"5"
+			}
+	        "04"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"moveslow"				"20"
+			}
+	        "05"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"attackslow"				"10"
+			}
+	        "06"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"duration"				"0.5"
+			}
+	        "07"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"secondarydrain"	 	"5"
+			}
+	        
+	    }
 	}
 	"ability_mage_depressionaura"
 	{
@@ -8521,13 +8580,25 @@
 		"AbilityTextureName"	"ability_mage_swap"
 		"MaxLevel"	"1"
 		"AbilityCastPoint"	"0"
-		"OnSpellStart"
+		"OnToggleOn"
 		{
 			"RunScript"
 			{
 				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"SwapSpellBook"
-				"activeBook"	"1"
+				"Function"	"ToggleSpellBar" 
+			}
+			"FireSound"
+			{
+				"EffectName"	"Hero_BountyHunter.Track"
+				"Target"	"CASTER"
+			}
+		}
+	    	"OnToggleOff"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"custom_functions_ability.lua"
+				"Function"	"ToggleSpellBar" 
 			}
 			"FireSound"
 			{
@@ -13393,12 +13464,13 @@
 						"Target"        "CASTER"
 						"HealAmount"	"1" //15 ticks during 1.5 seconds
 					}
+	                
+	                "FireSound"
+	                {
+	                    "EffectName"    "Hero_Pudge.Dismember"
+	                    "Target"        "CASTER"
+	                }
 				}
-	            "FireSound"
-	            {
-	                "EffectName"    "Hero_Pudge.Dismember"
-	                "Target"        "CASTER"
-	            }
 			}
 		}
 	}

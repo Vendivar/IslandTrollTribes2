@@ -143,4 +143,44 @@
 			}
 		}
 	}
+    
+    "AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"			"FIELD_FLOAT"
+			"damage"				"1"
+		}
+        "02"
+		{
+			"var_type"			"FIELD_FLOAT"
+			"manadrain"				"10"
+		}
+        "03"
+		{
+			"var_type"			"FIELD_FLOAT"
+			"manadrain2"				"5"
+		}
+        "04"
+		{
+			"var_type"			"FIELD_FLOAT"
+			"moveslow"				"20"
+		}
+        "05"
+		{
+			"var_type"			"FIELD_FLOAT"
+			"attackslow"				"10"
+		}
+        "06"
+		{
+			"var_type"			"FIELD_FLOAT"
+			"duration"				"0.5"
+		}
+        "07"
+		{
+			"var_type"			"FIELD_FLOAT"
+			"secondarydrain"	 	"5"
+		}
+        
+    }
 }

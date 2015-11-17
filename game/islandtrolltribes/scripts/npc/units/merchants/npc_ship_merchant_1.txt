@@ -7,7 +7,7 @@
 	"ModelScale"	"1.3"
 	"SelectionGroup"	""
 	"vscripts"	"units/ai/boat_merchant_ai.lua"
-	"Ability1"	""
+	"Ability1"	"ability_phased"
 	"Ability2"	""
 	"Ability3"	""
 	"Ability4"	""

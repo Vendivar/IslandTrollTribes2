@@ -73,12 +73,13 @@
 					"Target"        "CASTER"
 					"HealAmount"	"1" //15 ticks during 1.5 seconds
 				}
+                
+                "FireSound"
+                {
+                    "EffectName"    "Hero_Pudge.Dismember"
+                    "Target"        "CASTER"
+                }
 			}
-            "FireSound"
-            {
-                "EffectName"    "Hero_Pudge.Dismember"
-                "Target"        "CASTER"
-            }
 		}
 	}
 }

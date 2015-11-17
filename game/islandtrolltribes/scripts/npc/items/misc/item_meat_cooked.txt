@@ -66,23 +66,5 @@
     "Custom"
     {
         "ModelScale"    "1.0"
-        
-        "ModelOffsets"
-		{
-			"Origin"
-			{
-				"x"	"0"
-				"y"	"0"
-				"z"	"-5"
-			}
-
-			"Angles"
-			{
-				"x"	"0"
-				"y"	"0"
-				"z"	"0"
-			}
-
-		}
     }
 }
