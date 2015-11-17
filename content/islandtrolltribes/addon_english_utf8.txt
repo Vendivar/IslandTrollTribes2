@@ -118,8 +118,15 @@
 
 		"DOTA_Tooltip_ability_item_bush_thistle"                                          "Thistle Shrub"
 		"DOTA_Tooltip_ability_item_bush_thistle_Description"                              ""
+   
+		"npc_ship_merchant_1"                                                             "Ship Merchant 1"
+		"npc_ship_merchant_2"                                                             "Ship Merchant 2"
+		"npc_ship_merchant_3"                                                             "Ship Merchant 3"
+		"npc_ship_merchant_4"                                                             "Ship Merchant 4"
+		"npc_ship_merchant_5"                                                             "Ship Merchant 5"
+		"npc_ship_merchant_6"                                                             "Ship Merchant 6"
+		"npc_ship_merchant_7"                                                             "Ship Merchant 7"
 
-	
         
         
 		"npc_creep_corpse"                                                                "Creep Corpse"
@@ -531,7 +538,7 @@
 "DOTA_Tooltip_ability_ability_mage_dementia_summoning_Description"		"Passively gives the Dementia Master the ability to summon a monster from dementia space using Dementia Runes. Summoning must be performed close to the center of an open dark gate and you must have a correct rune order.\nWarning! Dementia Summoning can be unpredictable and dangerous. No creature wants to be summoned for no reason!\n\nRune orders for Dementia summoning\nIce Demon: Lez Nel Lez Lez Ka\nPlague Demon: Nel Nel Ka Nel Lez\nFire Demon: Ka Lez Ka Nel Ka\n<font color='#777777'>Hold ALT to view more information.</font>"
 "DOTA_Tooltip_Ability_ability_mage_dementiasummoning_Note0"		"Summons one of several large demons if the combination is correct and the activation is within a dark gate.\n\nDemon will attack for 25 damage every 1 second at a target within 1000 range.\nSpells:\nIce Demon:\nAura: Slows movement and attack speed of everything within 1000 range by 25%\nFire Demon:\nThrows a fireball every 4 seconds at a target within 1000 range, dealing 60 damage to everything in 300AOE and levelling trees away.\nPlague Demon:\nRandom troll within 1000 range is plagued every 8 seconds. Plague deals 10 damage per second for 20 seconds. If they step within 300 of another troll the plague spreads to that troll for the full duration."
 "DOTA_Tooltip_Ability_ability_mage_depress"		"Depress"
-"DOTA_Tooltip_Ability_ability_mage_depress_Description"		"Reduces target's mana, will depress other enemy units nearby the depressed unit due to bad mood.\n\nDeals 1 damage per second.\nDepress lowers mana by 10 initially, then 5 mana per second for 3 seconds, then 5 mana per 3 seconds for the remaining duration.\nEnemies around the depressed unit will lose 5 mana per 3 seconds.\n\nATTACK SPEED SLOW: <font color='#777777'>-10%</font>\nMOVE SPEED SLOW<font color='#777777'>-20%</font>"
+"DOTA_Tooltip_Ability_ability_mage_depress_Description"		"Depress the enemy, and any enemies who remain near him. Primary target slowed, takes damage, and mana is sapped over time. Nearby enemies are affected by Depress, mana is sapped."
 "DOTA_Tooltip_modifier_depress"		"Depress"
 "DOTA_Tooltip_modifier_depress_Description"		""
 

@@ -124,6 +124,18 @@
 "error_invalid_build_position"       "Can't build there."
 "error_item_out_of_range "           "Item out of range to pick up."
 
+"item_bush_thistle"                                          "Thistle Shrub"
+"item_bush_mushroom"                                         "Mushroom Colony" 
+"item_bush_herb"                                             "Haisetsu Bush" 
+"item_bush_herb_blue"                                        "Blue Herb Bush" 
+"item_bush_herb_orange"                                      "Orange Herb Bush" 
+"item_bush_herb_purple"                                      "Purple Herb Bush"  
+"item_bush_herb_yellow"                                      "Yellow Herb Bush" 
+"item_bush_river"                                            "Water Bush" 
+"item_bush_scout"                                            "Scout Bush" 
+"item_bush_stash"                                            "Hidden Stash" 
+"item_bush_thief"                                            "Thief Bush" 
+
 
         // Toolkit Abilities
         "sleep_outside"                                          "Sleep Outside"

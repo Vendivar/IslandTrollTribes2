@@ -77,22 +77,30 @@ function UpdateAbilityList()
 		}
 	}
 
-	// Main Hero
+    //Hero Float bar
 	var iPlayerID = Players.GetLocalPlayer();
 	var hero = Players.GetPlayerHeroEntityIndex( iPlayerID );
-	if (hero == queryUnit)
-	{
+	var b = 6; 
+  if ((Entities.GetAbilityByName( queryUnit , "ability_mage_quantum_nulldamage" )) != -1 )
+  {
+  	b = 11;
+  }
+	if (hero == queryUnit){
 		$.Msg("Hero Panel")
-		for ( var i = 6; i < 15; ++i )
-		{
+    $.Msg(b)
+    $.Msg(Entities.GetAbilityByName( queryUnit , "ability_mage_quantum_nulldamage" ))
+		for ( var i = b; i < 16; ++i )
+        {
 			var ability = Entities.GetAbility( queryUnit, i );
 			if ( ability == -1 )
+      {
 				continue;
-
+      }
 			if ( !Abilities.IsDisplayedAbility(ability) )
+      {
 				continue;
-			
-			MakeAbilityPanel( abilityListPanel, ability, queryUnit );
+      }
+      MakeAbilityPanel( abilityListPanel, ability, queryUnit );
 		}
 	}
 }
