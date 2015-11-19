@@ -79,4 +79,22 @@
 
 	}
 
+    "AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"			"FIELD_FLOAT"
+			"damage"				"20"
+		}
+		"01"
+		{
+			"var_type"			"FIELD_FLOAT"
+			"max_targets"				"4"
+		}
+		"01"
+		{
+			"var_type"			"FIELD_FLOAT"
+			"radius"				"600"
+		}
+    }
 }

@@ -233,13 +233,14 @@
 
 
 "DOTA_Tooltip_Ability_ability_beastmaster_calltobattle"		"Call to Battle"
-"DOTA_Tooltip_Ability_ability_beastmaster_calltobattle_armor"		"ARMOR:"
+"DOTA_Tooltip_Ability_ability_beastmaster_calltobattle_armor"		"+ARMOR:"
 "DOTA_Tooltip_Ability_ability_beastmaster_calltobattle_damage"		"%DAMAGE:"
 "DOTA_Tooltip_Ability_ability_beastmaster_calltobattle_Description"		"A howl which temporarily increases the move speed, armor, and damage of all pets under your control for 6 seconds."
 "DOTA_Tooltip_Ability_ability_beastmaster_calltobattle_movespeed"		"%MOVESPEED:"
 "DOTA_Tooltip_modifier_troll_battle_call"		"Troll Battle Call"
 "DOTA_Tooltip_modifier_troll_battle_call_Description"		""
-
+"DOTA_Tooltip_ability_item_calltobattle_modifier_applier"		"Call to Battle"
+"DOTA_Tooltip_ability_item_calltobattle_modifier_applier_Description"		"You are called to battle!"
 
 
 "DOTA_Tooltip_Ability_ability_beastmaster_criticalstrike"		"(Wolf) Critical strike"
@@ -254,9 +255,11 @@
 
 
 "DOTA_Tooltip_Ability_ability_beastmaster_elkform"		"Shapeshift to Elk form"
-"DOTA_Tooltip_ability_ability_beastmaster_elkform_attack_damage"		"ATTACK DAMAGE:"
-"DOTA_Tooltip_ability_ability_beastmaster_elkform_attack_speed"		"%+$attack"
-"DOTA_Tooltip_Ability_ability_beastmaster_elkform_Description"		"Shapeshifts into an Elk. Drains energy at a faster rate. Gains additional abilities.\n\nMOVE SPEED: <font color='#777777'>+35%</font>\n+$damage <font color='#777777'>-4</font>\n%+$attack <font color='#777777'>+10% </font>\nMAGIC RESISTANCE: <font color='#777777'>+25%</font>\ns: 2x\nBONUS HP: <font color='#777777'>+50</font>"
+"DOTA_Tooltip_ability_ability_beastmaster_elkform_attack_damage"		"-ATTACK DAMAGE:"
+"DOTA_Tooltip_ability_ability_beastmaster_elkform_attack_speed"		"%+ATTACK SPEED:"
+"DOTA_Tooltip_ability_ability_beastmaster_elkform_magic_resist"		"%+MAGIC RESIST:"
+"DOTA_Tooltip_ability_ability_beastmaster_elkform_degen_rate"		"%DEGEN RATE:"
+"DOTA_Tooltip_Ability_ability_beastmaster_elkform_Description"		"Shapeshifts into an Elk altering the shape shifter's stats. Drains energy at a 2x rate."
 "DOTA_Tooltip_ability_ability_beastmaster_elkform_move_speed"		"MOVE SPEED:"
 "DOTA_Tooltip_modifier_elkform"		"Elkform"
 "DOTA_Tooltip_modifier_elkform_Description"		"Gaining +35 move speed, -4 damage, +10% attack speed, and +25% magic resistance while losing energy at 2x rate"
@@ -264,7 +267,7 @@
 
 
 "DOTA_Tooltip_Ability_ability_beastmaster_empathicrage"		"Empathic Rage"
-"DOTA_Tooltip_Ability_ability_beastmaster_empathicrage_attackspeed"		"%%+$attack"
+"DOTA_Tooltip_Ability_ability_beastmaster_empathicrage_attackspeed"		"%+$attack"
 "DOTA_Tooltip_Ability_ability_beastmaster_empathicrage_charges"		"CHARGES:"
 "DOTA_Tooltip_Ability_ability_beastmaster_empathicrage_Description"		"When one of your pets dies near you you receive a temporary buff to move speed and attack speed. Stacks for each pet that was killed. Lasts 10 seconds."
 "DOTA_Tooltip_Ability_ability_beastmaster_empathicrage_movespeed"		"%MOVE SPEED:"
@@ -371,8 +374,8 @@
 
 "DOTA_Tooltip_Ability_ability_beastmaster_tamepet"		"Tame Pet"
 "DOTA_Tooltip_Ability_ability_beastmaster_tamepet_Description"		"Tames a baby animal, placing it under your control, allowing it to grow and aid the beastmaster in combat or use it's special abilities. It will slowly age into upgraded forms (eg. fawn>elk>adult elk). If you have a pet this ability will become unusable until the pet is released/killed.\nCan only control 1 pet at a time."
-"DOTA_Tooltip_ability_ability_beastmaster_tamepet2"		"Ability Beastmaster Tamepet2"
-"DOTA_Tooltip_ability_ability_beastmaster_tamepet2_Description"		""
+"DOTA_Tooltip_ability_ability_beastmaster_tamepet2"		"Tame Pet (Enhanced)"
+"DOTA_Tooltip_ability_ability_beastmaster_tamepet2_Description"		"Tames a baby animal, placing it under your control, allowing it to grow and aid the beastmaster in combat or use it's special abilities. It will slowly age into upgraded forms (eg. fawn>elk>adult elk). If you have a pet this ability will become unusable until the pet is released/killed.\nAs a pack leader you can now control 2 pets at a time."
 
 
 "DOTA_Tooltip_Ability_ability_beastmaster_wolfform"		"Shapeshift to Wolf Form"
@@ -512,18 +515,12 @@
 		
 
 "DOTA_Tooltip_Ability_ability_mage_defenderenergy"		"Defender Energy"
-"DOTA_Tooltip_ability_ability_mage_defenderenergy_collide_interval"		"COLLIDE INTERVAL:"
 "DOTA_Tooltip_ability_ability_mage_defenderenergy_damage"		"DAMAGE:"
 "DOTA_Tooltip_Ability_ability_mage_defenderenergy_Description"		"Creates an orb of energy that swirls around the position of the targeted area, stunning and damaging every enemy it touches."
 "DOTA_Tooltip_ability_ability_mage_defenderenergy_duration"		"DURATION:"
-"DOTA_Tooltip_ability_ability_mage_defenderenergy_hit_radius"		"HIT RADIUS:"
-"DOTA_Tooltip_ability_ability_mage_defenderenergy_movement_rate"		"MOVEMENT RATE:"
-"DOTA_Tooltip_ability_ability_mage_defenderenergy_num_defenders"		"NUM DEFENDERS:"
 "DOTA_Tooltip_ability_ability_mage_defenderenergy_radius"		"RADIUS:"
 "DOTA_Tooltip_ability_ability_mage_defenderenergy_revolution_time"		"REVOLUTION TIME:"
 "DOTA_Tooltip_ability_ability_mage_defenderenergy_stun"		"STUN:"
-"DOTA_Tooltip_ability_ability_mage_defenderenergy_summon_interval"		"SUMMON INTERVAL:"
-"DOTA_Tooltip_ability_ability_mage_defenderenergy_turn_rate"		"TURN RATE:"
 "DOTA_Tooltip_modifier_mage_defender"		"Mage Defender"
 "DOTA_Tooltip_modifier_mage_defender_collide"		"Mage Defender Collide"
 "DOTA_Tooltip_modifier_mage_defender_collide_Description"		""
@@ -539,23 +536,31 @@
 "DOTA_Tooltip_Ability_ability_mage_dementiasummoning_Note0"		"Summons one of several large demons if the combination is correct and the activation is within a dark gate.\n\nDemon will attack for 25 damage every 1 second at a target within 1000 range.\nSpells:\nIce Demon:\nAura: Slows movement and attack speed of everything within 1000 range by 25%\nFire Demon:\nThrows a fireball every 4 seconds at a target within 1000 range, dealing 60 damage to everything in 300AOE and levelling trees away.\nPlague Demon:\nRandom troll within 1000 range is plagued every 8 seconds. Plague deals 10 damage per second for 20 seconds. If they step within 300 of another troll the plague spreads to that troll for the full duration."
 "DOTA_Tooltip_Ability_ability_mage_depress"		"Depress"
 "DOTA_Tooltip_Ability_ability_mage_depress_Description"		"Depress the enemy, and any enemies who remain near him. Primary target slowed, takes damage, and mana is sapped over time. Nearby enemies are affected by Depress, mana is sapped."
+"DOTA_Tooltip_ability_ability_mage_depress_damage"                                "PRIMARY TARGET DPS:" 
+"DOTA_Tooltip_ability_ability_mage_depress_moveslow"                              "%MOVESLOW:"
+"DOTA_Tooltip_ability_ability_mage_depress_attackslow"                            "%ATTACKSLOW:"
+"DOTA_Tooltip_ability_ability_mage_depress_manadrain"                             "MANA DRAIN INITIAL:"
+"DOTA_Tooltip_ability_ability_mage_depress_manadrain2"                            "MANA DRAIN PER 3 SECONDS:"
+"DOTA_Tooltip_ability_ability_mage_depress_secondarydrain"                        "SECONDARY MANA DRAIN:"
+"DOTA_Tooltip_ability_ability_mage_depress_durationx"                              "DURATION:"
+
+	
 "DOTA_Tooltip_modifier_depress"		"Depress"
 "DOTA_Tooltip_modifier_depress_Description"		""
 
 
 
 "DOTA_Tooltip_Ability_ability_mage_depressionaura"		"Depression Aura"
-"DOTA_Tooltip_ability_ability_mage_depressionaura_attack_slow"		"ATTACK SLOW:"
+"DOTA_Tooltip_ability_ability_mage_depressionaura_attack_slow"		"%ATTACK SLOW:"
 "DOTA_Tooltip_ability_ability_mage_depressionaura_depress_energyloss"		"DEPRESS ENERGYLOSS:"
-"DOTA_Tooltip_Ability_ability_mage_depressionaura_Description"		"A passive depression aura that slows enemies as well as zap mana. Stacks with Depression type effects.\nAny enemies in the area lose a random amount of energy between 1 and 10 every 3 seconds\n\nORB SLOW AURA: <font color='#777777'>-10%</font>"
+"DOTA_Tooltip_Ability_ability_mage_depressionaura_Description"		"A passive depression aura that slows enemies as well as zap mana. Stacks with Depression type effects.\nAny enemies in the area lose a random amount of energy between 1 and 10 every 3 seconds."
 "DOTA_Tooltip_ability_ability_mage_depressionaura_mana_loss_max"		"MANA LOSS MAX:"
 "DOTA_Tooltip_ability_ability_mage_depressionaura_mana_loss_min"		"MANA LOSS MIN:"
-"DOTA_Tooltip_ability_ability_mage_depressionaura_move_slow"		"MOVE SLOW:"
+"DOTA_Tooltip_ability_ability_mage_depressionaura_move_slow"		"%MOVE SLOW:"
 "DOTA_Tooltip_ability_ability_mage_depressionaura_radius"		"RADIUS:"
-"DOTA_Tooltip_ability_ability_mage_depressionaura_think_interval"		"THINK INTERVAL:"
-"DOTA_Tooltip_modifier_mage_depressionaura"		"Depression"
-"DOTA_Tooltip_modifier_mage_depressionaura_Description"		"Under effects of Depression."
-"DOTA_Tooltip_depression_aura"		"Depression Aura"
+"DOTA_Tooltip_modifier_mage_depressionaura"		"Depression Aura"
+"DOTA_Tooltip_modifier_mage_depressionaura_Description"		"Emanating a field of depression."
+"DOTA_Tooltip_depression_aura"		"Depressed"
 "DOTA_Tooltip_depression_aura_Description"		""
 
 
@@ -582,26 +587,32 @@
 "DOTA_Tooltip_ability_ability_mage_dreameater_heal"		"HEAL:"
 "DOTA_Tooltip_ability_ability_mage_dreameater_mana"		"MANA:"
 "DOTA_Tooltip_Ability_ability_mage_electromagnet"		"Electromagnet"
-"DOTA_Tooltip_Ability_ability_mage_electromagnet_Description"		"Pulls enemies towards you in a AOE.\n\nRADIUS: <font color='#777777'>700</font>"
+"DOTA_Tooltip_Ability_ability_mage_electromagnet_Description"		"Pulls enemies towards you in a AOE."
 "DOTA_Tooltip_ability_ability_mage_electromagnet_max_range"		"MAX RANGE:"
 "DOTA_Tooltip_ability_ability_mage_electromagnet_min_range"		"MIN RANGE:"
-"DOTA_Tooltip_ability_ability_mage_electromagnet_pull_interval"		"PULL INTERVAL:"
-"DOTA_Tooltip_ability_ability_mage_electromagnet_pull_scale"		"PULL SCALE:"
+"DOTA_Tooltip_modifier_pulled"                                                    "Pulled!"
+"DOTA_Tooltip_modifier_pulled_Description"                                        "You are currently being pulled in by the mage's electromagnetic magic!"
 "DOTA_Tooltip_Ability_ability_mage_eruption"		"Eruption"
 "DOTA_Tooltip_ability_ability_mage_eruption_damage"		"DAMAGE:"
-"DOTA_Tooltip_Ability_ability_mage_eruption_Description"		"Causes a pillar of fire to shoot forth around you dealing damage in a AoE to nearby targets.\n\nDAMAGE: <font color='#777777'>40</font>.\nRADIUS: <font color='#777777'>350</font>"
+"DOTA_Tooltip_Ability_ability_mage_eruption_Description"		"Causes a pillar of fire to shoot forth around you dealing damage in a AoE to nearby targets."
 "DOTA_Tooltip_ability_ability_mage_eruption_eruption_radius"		"ERUPTION RADIUS:"
 "DOTA_Tooltip_Ability_ability_mage_flamespray"		"Flame Spray"
-"DOTA_Tooltip_Ability_ability_mage_flamespray_Description"		"Deals damage to nearby enemies.\nMaximum of 4 targets in a 600 AoE\nDAMAGE: <font color='#777777'>20</font>\nRADIUS: <font color='#777777'>600</font>"
-"DOTA_Tooltip_ability_ability_mage_forkedlightning"		"Ability Mage Forkedlightning"
+"DOTA_Tooltip_Ability_ability_mage_flamespray_Description"		"Deals damage to nearby enemies."
+"DOTA_Tooltip_ability_ability_mage_flamespray_damage"                             "DAMAGE:"
+"DOTA_Tooltip_ability_ability_mage_flamespray_max_targets"                        "MAX TARGETS:"
+"DOTA_Tooltip_ability_ability_mage_flamespray_radius"                             "RADIUS:"
+
+		
+"DOTA_Tooltip_ability_ability_mage_forkedlightning"		"Forked Lightning"
 "DOTA_Tooltip_ability_ability_mage_forkedlightning_damage"		"DAMAGE:"
-"DOTA_Tooltip_ability_ability_mage_forkedlightning_Description"		""
+"DOTA_Tooltip_ability_ability_mage_forkedlightning_Description"		"Forked Lightning deals 20 damage, and casts once for each troll in the area, damaging multiple trolls each time it casts."
 "DOTA_Tooltip_ability_ability_mage_forkedlightning_radius"		"RADIUS:"
 "DOTA_Tooltip_ability_ability_mage_forkedlightning_range"		"RANGE:"
 "DOTA_Tooltip_Ability_ability_mage_freezingblast"		"Freezing Blast"
-"DOTA_Tooltip_ability_ability_mage_freezingblast_AttackSlow"		"ATTACKSLOW:"
-"DOTA_Tooltip_Ability_ability_mage_freezingblast_Description"		"Deals damage to all trolls in a 300 AoE. Units hit are slowed and lose extra heat over time over 25 seconds. Standing next to a fire removes the cold buff negating the heat loss.\n\nHEAT LOSS: <font color='#777777'>20</font>\nATTACK/MOVEMENT SPEED SLOW: <font color='#777777'>10%</font>"
-"DOTA_Tooltip_ability_ability_mage_freezingblast_Moveslow"		"MOVESLOW:"
+"DOTA_Tooltip_ability_ability_mage_freezingblast_AttackSlow"		"%ATTACK SLOW:"
+"DOTA_Tooltip_ability_ability_mage_freezingblast_heatloss"		"HEATLOSS:"
+"DOTA_Tooltip_Ability_ability_mage_freezingblast_Description"		"Deals damage to all trolls in a 300 AoE. Units hit are slowed and lose extra heat over time over 25 seconds. Standing next to a fire removes the cold buff negating the heat loss."
+"DOTA_Tooltip_ability_ability_mage_freezingblast_Moveslow"		"%MOVE SLOW:"
 "DOTA_Tooltip_Ability_ability_mage_giganegativeblast"		"Giga Negative Blast"
 "DOTA_Tooltip_Ability_ability_mage_giganegativeblast_Description"		"Enhanced version of a mage classic. Deals damage and slows the target.\n\nDeals 45 damage to the main target and 15 damage to all enemies in a 250 AoE\nSlows movement speed by 15%\nSlow lasts 3 seconds on Trolls and 5 seconds on Animals"
 "DOTA_Tooltip_ability_ability_mage_giganegativeblast_giga_negative_blast_duration_creep"		"GIGA NEGATIVE BLAST DURATION CREEP:"
@@ -612,7 +623,7 @@
 "DOTA_Tooltip_ability_ability_mage_hypnosis_duration"		"DURATION:"
 "DOTA_Tooltip_ability_ability_mage_hypnosis_duration_creep"		"DURATION CREEP:"
 "DOTA_Tooltip_ability_ability_mage_hypnosis_heat_removed"		"HEAT REMOVED:"
-"DOTA_Tooltip_ability_ability_mage_hypnosis_mana_restored"		"MANA RESTORED:"
+"DOTA_Tooltip_ability_ability_mage_hypnosis_mana_restored"		"+MANA RESTORED:"
 "DOTA_Tooltip_Ability_ability_mage_hypnosis_Note0"		"Puts enemy to sleep for 5 seconds, making him invulnerable. As with other sleep spells, attacking him will wake him up.\nDeals pure damage to the target and restores 75 mana to the enemy.\nRemoves 8 heat from the enemy.\nPlaces a buff called 'Hypnotized' on the enemy for the duration, that allows you to cast Dream Eater\nCan be used on animals."
 "DOTA_Tooltip_modifier_mage_hypnosis"		"Hypnosis"
 "DOTA_Tooltip_modifier_mage_hypnosis_Description"		"Zzz. Under the effects of hypnosis. Taking pure damage and gaining 75 mana."
@@ -655,7 +666,7 @@
 
 
 "DOTA_Tooltip_Ability_ability_mage_magefire"		"Mage Fire"
-"DOTA_Tooltip_Ability_ability_mage_magefire_Description"		"Conjures a Mage Fire that heats up faster, has better range and burns down enemy buildings faster.\nDeals 20 damage each second to all buildings in a 360 AoE.\nRestores heat at double the rate of normal Fire\nLasts 30 seconds."
+"DOTA_Tooltip_Ability_ability_mage_magefire_Description"		"Conjures a Mage Fire that heats up faster, has better range and burns down enemy buildings faster. Restores heat at double the rate of normal Fire Lasts 30 seconds."
 
 
 "DOTA_Tooltip_Ability_ability_mage_metronome"		"Metronome"
@@ -664,10 +675,11 @@
 
 
 "DOTA_Tooltip_Ability_ability_mage_negativeblast"		            "Negative Blast"
-"DOTA_Tooltip_ability_ability_mage_negativeblast_moveslow"		    "MOVE SLOW:"
+"DOTA_Tooltip_ability_ability_mage_negativeblast_moveslow"		    "%MOVE SLOW:"
 "DOTA_Tooltip_ability_ability_mage_negativeblast_secondarydamage"   "AOE SECONDARY DAMAGE:"
 "DOTA_Tooltip_ability_ability_mage_negativeblast_primarydamage"		"PRIMARY TARGET DAMAGE:"
-"DOTA_Tooltip_Ability_ability_mage_negativeblast_Description"		"Deals damage to a target  and slows the target and .\nDeals damage to the main target and extra damage to all enemies in a AoE around the target and slows affected target's movement speed.\nSlow lasts 3 seconds on Trolls and 5 seconds on Animals."
+"DOTA_Tooltip_ability_ability_mage_negativeblast_radius"            "RADIUS:"
+"DOTA_Tooltip_Ability_ability_mage_negativeblast_Description"		"Deals damage and slows the target and any nearby targets. The damage delt is only partial damage in an AoE."
 "DOTA_Tooltip_ability_ability_mage_negativeblast_negative_blast_duration_creep"		"NEGATIVE BLAST DURATION CREEP:"
 "DOTA_Tooltip_ability_ability_mage_negativeblast_negative_blast_duration_troll"		"NEGATIVE BLAST DURATION TROLL:"
 "DOTA_Tooltip_Ability_modifier_negativeblast"		"Negative Blast"
@@ -684,25 +696,25 @@
 
 
 "DOTA_Tooltip_Ability_ability_mage_nulldamage"		                    "Null Damage"
-"DOTA_Tooltip_Ability_ability_mage_nulldamage_Description"		        "Slows movement speed and attack speeds and reduces the target's damage output.\n\nMOVEMENT SLOW: <font color='#777777'>10%</font>\nATTACK SPEED SLOW: <font color='#777777'>25%</font>\nDAMAGE REDUCTION: <font color='#777777'>55%</font>"
+"DOTA_Tooltip_Ability_ability_mage_nulldamage_Description"		        "Slows movement speed and attack speeds and reduces the target's damage output."
 "DOTA_Tooltip_modifier_nulldamage_creep"		                        "Null Damage (Creep)"
 "DOTA_Tooltip_modifier_nulldamage_creep_Description"		            "Movement speed slowed by 10%% and attack speed slowed by 25%% also dealing 55%% less damage!"
 "DOTA_Tooltip_modifier_nulldamage_troll"		                        "Null Damage (Troll)"
 "DOTA_Tooltip_modifier_nulldamage_troll_Description"		            "Movement speed slowed by 10%% and attack speed slowed by 25%% also dealing 55%% less damage!"
-"DOTA_Tooltip_ability_ability_mage_nulldamage_damage"                   "DAMAGE:"
-"DOTA_Tooltip_ability_ability_mage_nulldamage_attackspeed"              "ATTACKSPEED:"
-"DOTA_Tooltip_ability_ability_mage_nulldamage_movespeed"                "MOVESPEED:"
+"DOTA_Tooltip_ability_ability_mage_nulldamage_damage"                   "%DAMAGE REDUCTION:"
+"DOTA_Tooltip_ability_ability_mage_nulldamage_attackspeed"              "%ATTACK SPEED:"
+"DOTA_Tooltip_ability_ability_mage_nulldamage_movespeed"                "%MOVE SPEED:"
 "DOTA_Tooltip_ability_ability_mage_nulldamage_null_duration_creep"		"NULL DURATION CREEP:"
 "DOTA_Tooltip_ability_ability_mage_nulldamage_null_duration_troll"		"NULL DURATION TROLL:"
 
 
 "DOTA_Tooltip_Ability_ability_mage_pumpup"		"Pump Up"
-"DOTA_Tooltip_ability_ability_mage_pumpup_attack_speed_bonus"		"ATTACK SPEED BONUS:"
+"DOTA_Tooltip_ability_ability_mage_pumpup_attack_speed_bonus"		"%ATTACK SPEED BONUS:"
 "DOTA_Tooltip_Ability_ability_mage_pumpup_Description"		"Pump's up your ally giving them increased size while buffing their swiftness by increasing their attack speed and movement speed."
 "DOTA_Tooltip_ability_ability_mage_pumpup_duration"		"DURATION:"
-"DOTA_Tooltip_ability_ability_mage_pumpup_move_speed_bonus"		"MOVE SPEED BONUS:"
-"DOTA_Tooltip_modifier_pumpup"		"Pumpup"
-"DOTA_Tooltip_modifier_pumpup_Description"		""
+"DOTA_Tooltip_ability_ability_mage_pumpup_move_speed_bonus"		"%MOVE SPEED BONUS:"
+"DOTA_Tooltip_modifier_pumpup"		"Pumped Up!"
+"DOTA_Tooltip_modifier_pumpup_Description"		"Stronger.. faster.. bigger.. and now with more red glow."
 
 
 
@@ -724,13 +736,14 @@
 
 
 "DOTA_Tooltip_Ability_ability_mage_reducefood"		"Reduce Food"
-"DOTA_Tooltip_Ability_ability_mage_reducefood_Description"		"If the enemy troll is carrying meat in their inventory it will reduce the number of meat in their inventory!\n\nLowers the enemy's food by 0-2. Cannot reduce to less than 1 food. (Removes 0-2 Cooked Meat)"
+"DOTA_Tooltip_Ability_ability_mage_reducefood_Description"		"Has a chance to remove up to 2 cooked meat from enemy. Enemy must have more than 1 food. (Removes 0-2 Cooked Meat)"
 
 "DOTA_Tooltip_Ability_ability_mage_seizures"		"Seizures"
 "DOTA_Tooltip_ability_ability_mage_seizures_chance"		"CHANCE:"
-"DOTA_Tooltip_Ability_ability_mage_seizures_Description"		"Manipulates the targets brain sending small electric pulses through his nerves causing him seizures. The seizures do a mini stun, casuing 4 damage per stun and have a random chance of occurring.\n\nDURATION: <font color='#777777'>8</font>"
+"DOTA_Tooltip_Ability_ability_mage_seizures_Description"		"Manipulates the targets brain sending small electric pulses through his nerves causing him seizures. The seizures do a mini stun, casuing 4 damage per stun and have a random chance of occurring."
 "DOTA_Tooltip_ability_ability_mage_seizures_stun_duration"		"STUN DURATION:"
 "DOTA_Tooltip_ability_ability_mage_seizures_think_interval"		"THINK INTERVAL:"
+"DOTA_Tooltip_ability_ability_mage_seizures_duration"		  "DURATION:"
 "DOTA_Tooltip_modifier_mage_seizures"		"Mage Seizures"
 "DOTA_Tooltip_modifier_mage_seizures_Description"		""
 "DOTA_Tooltip_modifier_seizure"		"Seizure"
@@ -749,9 +762,10 @@
 "DOTA_Tooltip_ability_ability_mage_stonethrow_Description"		"The ground is being torn asunder and you just got nailed."
 "DOTA_Tooltip_ability_ability_mage_stonethrow_stun"		"STUN:"
 "DOTA_Tooltip_Ability_ability_mage_stormearthfire"		"Storm, Earth, & Fire"
-"DOTA_Tooltip_ability_ability_mage_stormearthfire_damage"		"DAMAGE:"
+"DOTA_Tooltip_ability_ability_mage_stormearthfire_damage"		"PRIMARY AOE DAMAGE:"
 "DOTA_Tooltip_ability_ability_mage_stormearthfire_damage_per_sec"		"DAMAGE PER SEC:"
-"DOTA_Tooltip_Ability_ability_mage_stormearthfire_Description"		"The ultimate elemental spell. Hits nearby enemies with lightning, earth, and fire.\n\nDeals 40 damage to all enemies in a 315 AoE around the caster."
+"DOTA_Tooltip_Ability_ability_mage_stormearthfire_Description"		"The ultimate elemental spell. Hits nearby enemies with lightning, earth, and fire. Each element does a different effect. Holt ALT for more information."
+"DOTA_Tooltip_Ability_ability_mage_stormearthfire_Note0" "Forked Lightning deals 20 damage, and casts once for each troll in the area, damaging multiple trolls each time it casts.\n\nEntangling Roots functions the same as the scroll. Deals 5 damage per second and prevents the enemy from moving or attacking for 4 seconds.\n\nStone Throw deals 25 damage and stuns for 1 second."
 "DOTA_Tooltip_ability_ability_mage_stormearthfire_duration"		"DURATION:"
 "DOTA_Tooltip_ability_ability_mage_stormearthfire_radius"		"RADIUS:"
 
@@ -996,11 +1010,10 @@
 "DOTA_Tooltip_Ability_ability_priest_lightgate_Note0"		"Light Gate spell mutations:\nSelf Preservation -> Preserve All\nResist All -> Omniresist\nIncrease Metabolism -> The Heat\nMaximum Fervor -> Hidden Potential\nHealing Wave -> Multiwave"
 
 "DOTA_Tooltip_Ability_ability_priest_lightningshield"		"Lightning Shield"
-"DOTA_Tooltip_Ability_ability_priest_lightningshield_Description"		"Creates a shield around a friendly unit that deals damage per second to nearby units.\n\nDAMAGE: <font color='#777777'>6</font>"
+"DOTA_Tooltip_Ability_ability_priest_lightningshield_Description"		"Creates a shield around a friendly unit that deals damage per second to nearby units."
 "DOTA_Tooltip_ability_ability_priest_lightningshield_lightning_damage"		"LIGHTNING DAMAGE:"
-"DOTA_Tooltip_ability_ability_priest_lightningshield_lightning_duration"		"LIGHTNING DURATION:"
+"DOTA_Tooltip_ability_ability_priest_lightningshield_lightning_duration"	"SPELL DURATION:"
 "DOTA_Tooltip_ability_ability_priest_lightningshield_lightning_radius"		"LIGHTNING RADIUS:"
-"DOTA_Tooltip_ability_ability_priest_lightningshield_lightning_think_time"		"LIGHTNING THINK TIME:"
 "DOTA_Tooltip_modifier_lightning_shield_damage_aura"		"Lightning Shield Damage Aura"
 "DOTA_Tooltip_modifier_lightning_shield_damage_aura_Description"		""
 
@@ -1031,9 +1044,9 @@
 "DOTA_Tooltip_Ability_ability_priest_mixheat_Description"		"Equalizes the heat of the Priest and a target.\n\nSets both caster & user's Heat to the average of both of their heat."
 "DOTA_Tooltip_Ability_ability_priest_omnicure"		"Omnicure"
 "DOTA_Tooltip_Ability_ability_priest_omnicure_Description"		"Casts cure all on all nearby friendly trolls."
-"DOTA_Tooltip_ability_ability_priest_pacifyingsmoke"		"Ability Priest Pacifyingsmoke"
-"DOTA_Tooltip_ability_ability_priest_pacifyingsmoke_Description"		""
-"DOTA_Tooltip_modifier_smokeeffect"		"Smokeeffect"
+"DOTA_Tooltip_ability_ability_priest_pacifyingsmoke"		"Pacifying Smoke"
+"DOTA_Tooltip_ability_ability_priest_pacifyingsmoke_Description"		"Prevents all combat in a 400 AOE for 10 seconds."
+"DOTA_Tooltip_modifier_smokeeffect"		"Smoke Effect"
 "DOTA_Tooltip_modifier_smokeeffect_Description"		""
 "DOTA_Tooltip_modifier_smoketrail"		"Smoke Trail"
 "DOTA_Tooltip_modifier_smoketrail_Description"		""
@@ -1107,8 +1120,7 @@
 "DOTA_Tooltip_Ability_ability_priest_sprayhealing_Lore"		"Spray your healing all over your ally."
 
 
-"DOTA_Tooltip_Ability_ability_priest_swap1"		"Next Spells"
-"DOTA_Tooltip_Ability_ability_priest_swap2"		"Previous Spells"
+"DOTA_Tooltip_Ability_ability_priest_toggle_spellbar"		"Next Spells"
 
 
 "DOTA_Tooltip_ability_ability_priest_tearspirit"		"Ability Priest Tearspirit"
@@ -1966,8 +1978,7 @@
 "DOTA_Tooltip_ability_item_building_kit_workshop_Description"		"An advanced building with all sorts of tools to make advanced equipment and weapons."
 "DOTA_Tooltip_ability_item_building_kit_workshop_Lore"		"Does not come with instructions."
 "DOTA_Tooltip_ability_item_building_kit_workshop_Note0"		"Quick Build:\n    ò Grabs nearby items on the ground to make selected item. If not all items are available, will still grab everything that was available. Items already in the building will be pushed to the bottom of the building's inventory.\nQuick Drop:\n    ò Drops everything the building is currently holding in a very close radius around it."
-"DOTA_Tooltip_ability_item_calltobattle_modifier_applier"		"Call to Battle"
-"DOTA_Tooltip_ability_item_calltobattle_modifier_applier_Description"		"You are called to battle!"
+
 "DOTA_Tooltip_ability_item_clay_explosion"		"Clay Explosion"
 "DOTA_Tooltip_ability_item_clay_explosion_Description"		""
 "DOTA_Tooltip_ability_item_clay_explosion_max_stacks"		"MAX STACKS:"

@@ -12,7 +12,9 @@
 	"MaxLevel"	"1"
 	"precache"
 	{
-		"particle_folder"	"particles/items_fx"
+		"particles"	"particles/units/heroes/hero_oracle/oracle_false_promise_cast_enemy.vpcf"
+		"particles"	"particles/items_fx/black_king_bar_avatar.vpcf"
+        "soundfile" "soundevents/spells.vsndevts"
 	}
 
 	"OnSpellStart"
@@ -27,12 +29,16 @@
 
 		}
 
+		"FireSound"
+		{
+			"EffectName"	"Resist.All"
+			"Target"	"TARGET"
+		}
 		"FireEffect"
 		{
-			"EffectName"	"particles/items2_fx/smoke_of_deceit.vpcf"
+			"EffectName"	"particles/units/heroes/hero_oracle/oracle_false_promise_cast_enemy.vpcf"
 			"EffectAttachType"	"follow_origin"
 			"Target"	"TARGET"
-			"EffectRadius"	"%radius"
 		}
 
 	}

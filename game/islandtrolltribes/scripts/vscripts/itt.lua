@@ -513,8 +513,8 @@ function ITT:OnEntityKilled(keys)
         {"npc_creep_panther_elder", 8},
         {"npc_creep_lizard", 1},
         -- The follow 2 values look switched: in ITT1 green fish were rare, larger, and dropped 3 meat
-        {"npc_creep_fish", 3},
-        {"npc_creep_fish_green", 1},
+        {"npc_creep_fish", 1},
+        {"npc_creep_fish_green", 3},
         
         {"npc_creep_hawk", 2},
         {"npc_creep_mammoth", 15}
@@ -626,7 +626,7 @@ function ITT:OnEntityKilled(keys)
             print("Success! Spawning young animal")
             for _,v in pairs(spawnTable) do
                 if unitName == v[1] then
-                    local unit = CreateUnitByName(v[2],killedUnit:GetOrigin(), true,nil,nil,killer:GetTeam())
+                    local unit = CreateUnitByName(v[2],killedUnit:GetOrigin(), true,nil,nil,DOTA_TEAM_NEUTRALS)
                     unit.originalVision = unit:GetDayTimeVisionRange()
                     unit:SetNightTimeVisionRange(0)
                     unit:SetDayTimeVisionRange(0)

@@ -11,6 +11,10 @@
 	"AbilityCastRange"	"300"
 	"AbilityManaCost"	"30"
 	"MaxLevel"	"1"
+    "precache"
+    {
+    "soundfile" "soundevents/game_sounds_items.vsndevts"
+    }
 	"OnSpellStart"
 	{
 		"ApplyModifier"
@@ -23,7 +27,7 @@
 		"FireSound"
 		{
 			"Target"	"TARGET"
-			"FireSound"	"Hero_Zuus.GodsWrath.PreCast"
+			"FireSound"	"DOTA_Item.Mjollnir.Activate"
 		}
 
 	}

@@ -10,6 +10,16 @@
 	"AbilityCastRange"	"600"
 	"AbilityManaCost"	"20"
 	"MaxLevel"	"1"
+    "precache"
+        {
+        "soundfile" "soundevents/game_sounds_heroes/game_sounds_dazzle.vsndevts"
+        "soundfile" "soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
+        "soundfile" "soundevents/spells.vsndevts"
+        "particle" "particles/units/heroes/hero_dazzle/dazzle_weave.vpcf"
+        "particle" "particles/units/heroes/hero_omniknight/omniknight_purification.vpcf"
+        "particle" "particles/units/heroes/hero_dazzle/dazzle_armor_friend.vpcf"
+        }
+ 
 	"OnSpellStart"
 	{
 		"LinearProjectile"
@@ -17,8 +27,33 @@
 			"Target"	"POINT"
 			"MoveSpeed"	"600"
 			"ProvidesVision"	"false"
-		}
-
+		} 
+        "FireSound"
+        {
+            "EffectName" "Hero_Omniknight.Purification"
+            "Target" "CASTER"
+        }
+        "FireEffect"
+        {
+            "EffectName" "particles/units/heroes/hero_dazzle/dazzle_weave.vpcf"
+            "EffectAttachType" "start_at_customorigin"
+            "TargetPoint" "POINT"
+            "ControlPoints"
+            {
+                "01" "%radius 0 0"
+            }
+        }
+                "FireEffect"
+        {
+            "EffectName" "particles/units/heroes/hero_omniknight/omniknight_purification.vpcf"
+            "EffectAttachType" "start_at_customorigin"
+            "TargetPoint" "POINT"
+            "ControlPoints"
+            {
+                "01" "%radius 0 0"
+            }
+        }
+        
 	}
 
 	"OnProjectileFinish"

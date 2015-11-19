@@ -181,6 +181,10 @@
 			"var_type"			"FIELD_FLOAT"
 			"secondarydrain"	 	"5"
 		}
-        
+        "08"
+		{
+			"var_type"			"FIELD_FLOAT"
+			"durationx"				"20"
+		}
     }
 }

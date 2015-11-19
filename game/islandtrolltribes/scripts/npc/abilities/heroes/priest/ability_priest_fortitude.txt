@@ -8,6 +8,11 @@
 	"AbilityCooldown"	"7"
 	"AbilityCastRange"	"0"
 	"AbilityManaCost"	"30"
+    "precache"
+    {
+    "particles" "particles/items_fx/aura_endurance"
+    "soundfile"     "soundevents/spells.vsndevts"
+    }
 	"OnSpellStart"
 	{
 		"ApplyModifier"
@@ -23,7 +28,7 @@
 
 		"FireSound"
 		{
-			"EffectName"	"Hero_Invoker.Alacrity"
+			"EffectName"	"Fortitude"
 			"Target"	"TARGET"
 		}
 
@@ -38,7 +43,15 @@
 			{
 				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor_bonus"
 			}
-
+			"OnCreated"
+			{
+                "AttachEffect"
+                {
+                    "EffectName"    "particles/items_fx/aura_endurance.vpcf"
+                    "Target"        "TARGET"
+                    "EffectAttachType"      "attach_origin"
+                }
+            }
 		}
 
 	}

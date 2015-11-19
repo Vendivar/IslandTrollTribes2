@@ -102,10 +102,15 @@
 			"move_speed"	"35"
 		}
 
-		"03"
+		"04"
 		{
 			"var_type"	"FIELD_FLOAT"
-			"move_speed"	"25"
+			"degen_rate"	"-200"
+		}
+		"05"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"magic_resist"	"25"
 		}
 
 	}

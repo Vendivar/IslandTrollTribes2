@@ -39,6 +39,11 @@
 			"var_type"			"FIELD_FLOAT"
 			"think_interval"	"0.5"
 		}
+		"04"
+		{
+			"var_type"			"FIELD_FLOAT"
+			"duration"	"8"
+		}
 	}
 
 	"OnSpellStart"
@@ -89,7 +94,7 @@
 					{
 						"FireSound"
 						{
-							"EffectName"	Hero_Enigma.MaleficeTick
+							"EffectName"	"Hero_Enigma.MaleficeTick"
 							"Target" 		"TARGET"
 						}
 

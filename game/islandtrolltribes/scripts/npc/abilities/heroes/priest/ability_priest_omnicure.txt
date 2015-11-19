@@ -12,7 +12,10 @@
 	"AbilityCastPoint"	"0.2"
 	"AbilityCooldown"	"1"
 	"AbilityManaCost"	"1"
-	
+	"precache" 
+    {
+    "particles" "particles/units/heroes/hero_oracle/oracle_fatesedict_repel.vpcf"
+    }
 	"MaxLevel"	"1"
 	"OnSpellStart"
 	{

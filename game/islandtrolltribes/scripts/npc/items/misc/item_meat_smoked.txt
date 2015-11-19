@@ -5,7 +5,7 @@
     "BaseClass"             "item_datadriven"
     "AbilityTextureName"    "meat_smoked"
     "Model"                 "models/turkey_leg.vmdl"
-    "Effect"                "particles/custom/meat_smoke.vpcf"
+    "Effect"                "particles/units/heroes/hero_oracle/oracle_false_promise_indicator_ball_steam.vpcf"
     "AbilityCastPoint"      "0.5"
     "ItemCost"              "2"
     "ItemShopTags"          "consumable"
@@ -28,6 +28,7 @@
     "precache"
     {
         "soundfile"    "soundevents/game_sounds_heroes/game_sounds_pudge.vsndevts"
+        "particles"     "particles/units/heroes/hero_oracle/oracle_false_promise_indicator_ball_steam.vpcf"
     }
     "AbilitySpecial"
     {

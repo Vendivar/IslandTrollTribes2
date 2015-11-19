@@ -11,6 +11,14 @@
 	"AbilityCastRange"	"400"
 	"AbilityManaCost"	"15"
 	"MaxLevel"	"1"
+    "precache" 
+    { 
+		"particles"	"particles/units/heroes/hero_oracle/oracle_fatesedict_repel.vpcf"
+        "particles" "particles/units/heroes/hero_oracle/oracle_purifyingflames_hit.vpcf"
+		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_oracle.vsndevts"
+		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
+        "soundfile" "soundevents/spells.vsndevts"
+    }
 	"OnSpellStart"
 	{
 		"RunScript"
@@ -18,7 +26,25 @@
 			"ScriptFile" "heroes/priest/cure_all.lua"
 			"Function"	 "CureAll"
 		}
-
+        "FireSound"
+         {
+             "EffectName"	"Cure.All"
+             "Target" 		"TARGET"
+         }
+         "FireEffect"
+        {
+            "EffectName"    "particles/units/heroes/hero_oracle/oracle_purifyingflames_hit.vpcf"
+            "Target"        "TARGET"
+            "EffectAttachType" "start_at_customorigin"
+            "TargetPoint" "POINT"
+            
+             "ControlPointEntities"
+            {
+                "TARGET" "attach_origin"
+                "TARGET" "attach_origin"
+                "TARGET" "attach_origin"
+                "TARGET" "attach_origin"
+            }
+        }
 	}
-
 }

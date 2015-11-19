@@ -66,7 +66,7 @@
 				"Center"	"CASTER"
 				"Radius"	"%max_range"
 				"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-				"Types"		"DOTA_UNIT_TARGET_HERO"
+				"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_CREEP"
 			}
 
 			"Action"
@@ -105,7 +105,7 @@
 				"Center"	"CASTER"
 				"Radius"	"%max_range"
 				"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-				"Types"		"DOTA_UNIT_TARGET_HERO"
+				"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_CREEP"
 			}
 			"Action"
 			{
@@ -130,7 +130,7 @@
 	{
 		"modifier_pulled"
 		{
-			"IsHidden"	"1"
+			"IsHidden"	"0"
 			"IsPurgable"	"0"
 			 "OnCreated"
 			{

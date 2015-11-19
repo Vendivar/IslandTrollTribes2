@@ -137,6 +137,15 @@
 "item_bush_thief"                                            "Thief Bush" 
 
 
+"npc_ship_merchant_1"                                              "Orc Juggernaut"
+"npc_ship_merchant_2"                                              "Orc Transport Ship"
+"npc_ship_merchant_3"                                              "Human Transport Ship"
+"npc_ship_merchant_4"                                              "Night Elf Frigate"
+"npc_ship_merchant_5"                                              "Orc Frigate"
+"npc_ship_merchant_6"                                              "Human Frigate"
+"npc_ship_merchant_7"                                              "Undead Transport Ship"
+
+
         // Toolkit Abilities
         "sleep_outside"                                          "Sleep Outside"
         "DOTA_Tooltip_Ability_sleep_outside"                     "Sleep Outside"

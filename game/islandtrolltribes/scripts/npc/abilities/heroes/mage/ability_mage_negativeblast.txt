@@ -146,21 +146,36 @@
 
 	"AbilitySpecial"
 	{
-		"01"
+        "01"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"primarydamage"	"35"
+		}
+		"02"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"secondarydamage"	"5"
+		}
+		"03"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"moveslow"	"-10"
+		}
+		"04"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"radius"	"250"
+		}
+		"05"
 		{
 			"var_type"	"FIELD_FLOAT"
 			"negative_blast_duration_troll"	"3"
 		}
 
-		"02"
+		"06"
 		{
 			"var_type"	"FIELD_FLOAT"
 			"negative_blast_duration_creep"	"5"
-		}
-		"03"
-		{
-			"var_type"	"FIELD_FLOAT"
-			"%radius"	"250"
 		}
 
 	}

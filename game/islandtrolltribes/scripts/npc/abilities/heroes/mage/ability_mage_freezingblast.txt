@@ -72,8 +72,8 @@
 			{
 				"Center"	"POINT"
 				"Radius"	"300"
-				"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-				"Types"	"DOTA_UNIT_TARGET_HERO"
+				"Teams"	    "DOTA_UNIT_TARGET_TEAM_ENEMY"
+                "Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_CREEP"
 			}
 
 			"Action"
@@ -137,13 +137,19 @@
 		"01"
 		{
 			"var_type"	"FIELD_FLOAT"
-			"Moveslow"	"10"
+			"Moveslow"	"-10"
 		}
 
 		"02"
 		{
 			"var_type"	"FIELD_FLOAT"
-			"AttackSlow"	"10"
+			"AttackSlow"	"-10"
+		}
+
+		"03"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"Heatloss"	"-20"
 		}
 
 	}

@@ -4,6 +4,7 @@ function Metronome(keys)
     local target = keys.target
     local targetPosition = target:GetAbsOrigin()
     local dieroll = RandomInt(0, 99)
+    local metronomeParticle = "particles/metronome.vpcf"
 
     local dummy = CreateUnitByName("dummy_caster_metronome",
                                 targetPosition,
@@ -34,6 +35,7 @@ function Metronome(keys)
     poisonthistle:SetLevel(1)
     --start tick noise
     target:EmitSound("Tick")
+    ParticleManager:CreateParticle(metronomeParticle, PATTACH_ABSORIGIN_FOLLOW, target)
     if dieroll <=49 then
         Timers:CreateTimer(0.1, function()
                 dummy:CastAbilityOnTarget(target, frostnova, caster:GetPlayerID())
@@ -49,6 +51,7 @@ function Metronome(keys)
         dummy:SetContextThink("dummy_thinker"..dummy:GetEntityIndex(), MetronomeSpell, 0.7)
     end
     target:StopSound("tick")
+  ParticleManager:DestroyParticle(target.metronomeParticle,false)
     --should stop playing when metronome script finishes
 end
 
@@ -79,8 +82,8 @@ function MetronomeSpell(dummy)
         ability = poisonthistle
     elseif dieroll <= 89 then
         ability = frostnova
-    end
-
+    end 
+    target:StopSound("tick")
     -- pick a random target
     local units = FindUnitsInRadius(target:GetTeamNumber(),
                                     target:GetAbsOrigin(),

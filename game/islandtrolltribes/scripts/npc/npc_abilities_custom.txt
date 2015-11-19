@@ -2063,7 +2063,7 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"damage"	"30"
-	            }
+	        }
 	             "02"
 			{
 				"var_type"	"FIELD_INTEGER"
@@ -2074,7 +2074,7 @@
 				"var_type"	"FIELD_INTEGER"
 				"movespeed"	"25"
 			}
-	        }
+	    }
 	}
 	"ability_beastmaster_criticalstrike"
 	{
@@ -2267,10 +2267,15 @@
 				"move_speed"	"35"
 			}
 	
-			"03"
+			"04"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"move_speed"	"25"
+				"degen_rate"	"-200"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"magic_resist"	"25"
 			}
 	
 		}
@@ -5894,7 +5899,11 @@
 				"var_type"			"FIELD_FLOAT"
 				"secondarydrain"	 	"5"
 			}
-	        
+	        "08"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"durationx"				"20"
+			}
 	    }
 	}
 	"ability_mage_depressionaura"
@@ -5903,7 +5912,7 @@
 		"AbilityTextureName"			"ability_mage_depressionaura"
 		"MaxLevel" 						"1"
 	
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AURA"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_AURA"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 	
@@ -6254,7 +6263,7 @@
 					"Center"	"CASTER"
 					"Radius"	"%max_range"
 					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Types"		"DOTA_UNIT_TARGET_HERO"
+					"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_CREEP"
 				}
 	
 				"Action"
@@ -6293,7 +6302,7 @@
 					"Center"	"CASTER"
 					"Radius"	"%max_range"
 					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Types"		"DOTA_UNIT_TARGET_HERO"
+					"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_CREEP"
 				}
 				"Action"
 				{
@@ -6318,7 +6327,7 @@
 		{
 			"modifier_pulled"
 			{
-				"IsHidden"	"1"
+				"IsHidden"	"0"
 				"IsPurgable"	"0"
 				 "OnCreated"
 				{
@@ -6554,6 +6563,24 @@
 	
 		}
 	
+	    "AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"damage"				"20"
+			}
+			"01"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"max_targets"				"4"
+			}
+			"01"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"radius"				"600"
+			}
+	    }
 	}
 	"ability_mage_forkedlightning"
 	{
@@ -6688,8 +6715,8 @@
 				{
 					"Center"	"POINT"
 					"Radius"	"300"
-					"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Types"	"DOTA_UNIT_TARGET_HERO"
+					"Teams"	    "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	                "Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_CREEP"
 				}
 	
 				"Action"
@@ -6753,13 +6780,19 @@
 			"01"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"Moveslow"	"10"
+				"Moveslow"	"-10"
 			}
 	
 			"02"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"AttackSlow"	"10"
+				"AttackSlow"	"-10"
+			}
+	
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"Heatloss"	"-20"
 			}
 	
 		}
@@ -7764,21 +7797,36 @@
 	
 		"AbilitySpecial"
 		{
-			"01"
+	        "01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"primarydamage"	"35"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"secondarydamage"	"5"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"moveslow"	"-10"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"radius"	"250"
+			}
+			"05"
 			{
 				"var_type"	"FIELD_FLOAT"
 				"negative_blast_duration_troll"	"3"
 			}
 	
-			"02"
+			"06"
 			{
 				"var_type"	"FIELD_FLOAT"
 				"negative_blast_duration_creep"	"5"
-			}
-			"03"
-			{
-				"var_type"	"FIELD_FLOAT"
-				"%radius"	"250"
 			}
 	
 		}
@@ -8060,7 +8108,7 @@
 	"ability_mage_pumpup"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityTextureName"	"ability_mage_pumpup"
@@ -8134,13 +8182,13 @@
 					"EffectName"	"Hero_OgreMagi.Bloodlust.Cast"
 					"Target"	"TARGET"
 				}
-				"FireEffect"
+				"AttachEffect"
 				{
 					"EffectName" "particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff_circle_outer_pulse.vpcf"
 					"Target" "TARGET"
 					"EffectAttachType" "follow_origin"
 				}
-				"FireEffect"
+				"AttachEffect"
 				{
 					"EffectName" "particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_cast_smoke.vpcf"
 					"Target" "TARGET"
@@ -8163,7 +8211,7 @@
 						"Target"	"TARGET"
 						"EffectAttachType"	"follow_overhead"
 					}
-                    "FireEffect"
+                    "AttachEffect"
                     {
                         "EffectName" "particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff.vpcf"
                         "Target" "TARGET"
@@ -8488,6 +8536,11 @@
 				"var_type"			"FIELD_FLOAT"
 				"think_interval"	"0.5"
 			}
+			"04"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"duration"	"8"
+			}
 		}
 	
 		"OnSpellStart"
@@ -8538,7 +8591,7 @@
 						{
 							"FireSound"
 							{
-								"EffectName"	Hero_Enigma.MaleficeTick
+								"EffectName"	"Hero_Enigma.MaleficeTick"
 								"Target" 		"TARGET"
 							}
 	
@@ -8824,13 +8877,13 @@
 		{
 			"01"
 			{
-				"var_type"	"FIELD_INTEGER"
-				"radius"	"512"
+				"var_type"		"FIELD_INTEGER"
+				"damage"		"20"
 			}
 			"02"
 			{
 				"var_type"		"FIELD_INTEGER"
-				"damage"		"20"
+				"damage_per_sec"	"5"
 			}
 			"03"
 			{
@@ -8839,8 +8892,8 @@
 			}
 			"04"
 			{
-				"var_type"		"FIELD_INTEGER"
-				"damage_per_sec"	"5"
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"512"
 			}
 		}
 	
@@ -8853,7 +8906,7 @@
 					"Center"	"CASTER"
 					"Radius"	"%radius"
 					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Types"		"DOTA_UNIT_TARGET_HERO"
+                    "Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_CREEP"
 				}
 	
 				"Action"
@@ -9340,6 +9393,14 @@
 		"AbilityCastRange"	"400"
 		"AbilityManaCost"	"15"
 		"MaxLevel"	"1"
+	    "precache" 
+	    { 
+			"particles"	"particles/units/heroes/hero_oracle/oracle_fatesedict_repel.vpcf"
+	        "particles" "particles/units/heroes/hero_oracle/oracle_purifyingflames_hit.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_oracle.vsndevts"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
+	        "soundfile" "soundevents/spells.vsndevts"
+	    }
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -9347,9 +9408,27 @@
 				"ScriptFile" "heroes/priest/cure_all.lua"
 				"Function"	 "CureAll"
 			}
-	
+	        "FireSound"
+	         {
+	             "EffectName"	"Cure.All"
+	             "Target" 		"TARGET"
+	         }
+	         "FireEffect"
+	        {
+	            "EffectName"    "particles/units/heroes/hero_oracle/oracle_purifyingflames_hit.vpcf"
+	            "Target"        "TARGET"
+	            "EffectAttachType" "start_at_customorigin"
+	            "TargetPoint" "POINT"
+	            
+	             "ControlPointEntities"
+	            {
+	                "TARGET" "attach_origin"
+	                "TARGET" "attach_origin"
+	                "TARGET" "attach_origin"
+	                "TARGET" "attach_origin"
+	            }
+	        }
 		}
-	
 	}
 	"ability_priest_enhancingherbalbalm"
 	{
@@ -9424,6 +9503,11 @@
 		"AbilityCooldown"	"7"
 		"AbilityCastRange"	"0"
 		"AbilityManaCost"	"30"
+	    "precache"
+	    {
+	    "particles" "particles/items_fx/aura_endurance"
+	    "soundfile"     "soundevents/spells.vsndevts"
+	    }
 		"OnSpellStart"
 		{
 			"ApplyModifier"
@@ -9439,7 +9523,7 @@
 	
 			"FireSound"
 			{
-				"EffectName"	"Hero_Invoker.Alacrity"
+				"EffectName"	"Fortitude"
 				"Target"	"TARGET"
 			}
 	
@@ -9454,7 +9538,15 @@
 				{
 					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor_bonus"
 				}
-	
+				"OnCreated"
+				{
+	                "AttachEffect"
+	                {
+	                    "EffectName"    "particles/items_fx/aura_endurance.vpcf"
+	                    "Target"        "TARGET"
+	                    "EffectAttachType"      "attach_origin"
+	                }
+	            }
 			}
 	
 		}
@@ -9530,7 +9622,10 @@
 		"AbilityManaCost"				"30"
 	
 		"MaxLevel" 						"1"
-	
+	    "precache"
+	    {
+	        "soundfile" "soundevents/spells.vsndevts"
+	    }
 		"AbilitySpecial"
 		{
 			"01"
@@ -9552,6 +9647,12 @@
 				"ModifierName"	"modifier_priest_increasemetabolism"
 				"Target" 		"TARGET"
 				"Duration"		"%duration"
+			}
+	        
+			"FireSound"
+			{
+				"EffectName"	"Increase.Metabolim"
+				"Target"	"TARGET"
 			}
 		}
 	
@@ -9583,6 +9684,10 @@
 		"AbilityCastRange"	"300"
 		"AbilityManaCost"	"30"
 		"MaxLevel"	"1"
+	    "precache"
+	    {
+	    "soundfile" "soundevents/game_sounds_items.vsndevts"
+	    }
 		"OnSpellStart"
 		{
 			"ApplyModifier"
@@ -9595,7 +9700,7 @@
 			"FireSound"
 			{
 				"Target"	"TARGET"
-				"FireSound"	"Hero_Zuus.GodsWrath.PreCast"
+				"FireSound"	"DOTA_Item.Mjollnir.Activate"
 			}
 	
 		}
@@ -9731,7 +9836,7 @@
 	"ability_priest_mixenergy"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
 		"AbilityTextureName"	"ability_priest_mixenergy"
@@ -9740,6 +9845,13 @@
 		"AbilityCastRange"	"600"
 		"AbilityManaCost"	"10"
 		"MaxLevel"	"1"
+	    	"precache"
+	{
+	"soundfile" "soundevents/game_sounds_heroes/game_sounds_dazzle.vsndevts"
+	"particle" "particles/units/heroes/hero_dazzle/dazzle_shadow_wave.vpcf"
+	"particle" "particles/units/heroes/hero_dazzle/dazzle_shadow_wave_impact_damage.vpcf"
+	"particle" "particles/mix_mana.vpcf"
+	}
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -9747,14 +9859,43 @@
 				"ScriptFile" "heroes/priest/mix.lua"
 				"Function"	 "MixEnergy"
 			}
+	            "FireSound"
+	            {
+	            "EffectName" "Hero_Dazzle.Shadow_Wave"
+	            "Target" "CASTER"
+	            }
+	            "FireEffect"
+	            {
+	            "EffectName" "particles/units/heroes/hero_dazzle/dazzle_shadow_wave.vpcf"
+	            "EffectAttachType" "start_at_customorigin"
+	            "ControlPointEntities"
+	            {
+	            "CASTER" "attach_attack1"
+	            "TARGET" "follow_origin"
+	            }
+	            }
 	
+	            "FireEffect"
+	            {
+	            "EffectName" "particles/mix_mana.vpcf"
+	            "Target" "CASTER"
+	            "EffectAttachType" "attach_origin"
+	            }
+	            
+	            "FireEffect"
+	            {
+	            "EffectName" "particles/mix_mana.vpcf"
+	            "Target" "TARGET"
+	            "EffectAttachType" "attach_origin"
+	            }
 		}
+	
 	
 	}
 	"ability_priest_mixhealth"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
 		"AbilityTextureName"	"ability_priest_mixhealth"
@@ -9763,6 +9904,13 @@
 		"AbilityCastRange"	"600"
 		"AbilityManaCost"	"10"
 		"MaxLevel"	"1"
+	    	"precache"
+	        {
+	            "soundfile" "soundevents/game_sounds_heroes/game_sounds_dazzle.vsndevts"
+	            "particle" "particles/units/heroes/hero_dazzle/dazzle_shadow_wave.vpcf"
+	            "particle" "particles/units/heroes/hero_dazzle/dazzle_shadow_wave_impact_damage.vpcf"
+	            "particle" "particles/mix_health.vpcf"
+	        }
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -9770,14 +9918,39 @@
 				"ScriptFile" "heroes/priest/mix.lua"
 				"Function"   "MixHealth"
 			}
-	
+	            "FireSound"
+	            {
+	                "EffectName" "Hero_Dazzle.Shadow_Wave"
+	                "Target" "CASTER"
+	            }
+	            "FireEffect"
+	            {
+	                "EffectName" "particles/units/heroes/hero_dazzle/dazzle_shadow_wave.vpcf"
+	                "EffectAttachType" "start_at_customorigin"
+	                "ControlPointEntities"
+	                    {
+	                    "CASTER" "attach_attack1"
+	                    "TARGET" "follow_origin"
+	                    }
+	            }
+	            "FireEffect"
+	            {
+	            "EffectName" "particles/mix_health.vpcf"
+	            "Target" "CASTER"
+	            "EffectAttachType" "attach_origin"
+	            }
+	            "FireEffect"
+	            {
+	            "EffectName" "particles/mix_health.vpcf"
+	            "Target" "TARGET"
+	            "EffectAttachType" "attach_origin"
+	            }
 		}
-	
 	}
 	"ability_priest_mixheat"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
 		"AbilityTextureName"	"ability_priest_mixheat"
@@ -9786,6 +9959,13 @@
 		"AbilityCastRange"	"600"
 		"AbilityManaCost"	"10"
 		"MaxLevel"	"1"
+	    	"precache"
+	{
+	"soundfile" "soundevents/game_sounds_heroes/game_sounds_dazzle.vsndevts"
+	"particle" "particles/units/heroes/hero_dazzle/dazzle_shadow_wave.vpcf"
+	"particle" "particles/units/heroes/hero_dazzle/dazzle_shadow_wave_impact_damage.vpcf"
+	"particle" "particles/mix_heat.vpcf"
+	}
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -9794,6 +9974,35 @@
 				"Function"   "MixHeat"
 			}
 	
+	"FireSound"
+	{
+	"EffectName" "Hero_Dazzle.Shadow_Wave"
+	"Target" "CASTER"
+	}
+	"FireEffect"
+	{
+	"EffectName" "particles/units/heroes/hero_dazzle/dazzle_shadow_wave.vpcf"
+	"EffectAttachType" "start_at_customorigin"
+	"ControlPointEntities"
+	{
+	"CASTER" "attach_attack1"
+	"TARGET" "follow_origin"
+	}
+	}
+	
+	"FireEffect"
+	{
+	"EffectName" "particles/mix_heat.vpcf"
+	"Target" "CASTER"
+	"EffectAttachType" "attach_origin"
+	}
+	
+	"FireEffect"
+	{
+	"EffectName" "particles/mix_heat.vpcf"
+	"Target" "TARGET"
+	"EffectAttachType" "attach_origin"
+	}
 		}
 	
 	}
@@ -9811,7 +10020,10 @@
 		"AbilityCastPoint"	"0.2"
 		"AbilityCooldown"	"1"
 		"AbilityManaCost"	"1"
-		
+		"precache" 
+	    {
+	    "particles" "particles/units/heroes/hero_oracle/oracle_fatesedict_repel.vpcf"
+	    }
 		"MaxLevel"	"1"
 		"OnSpellStart"
 		{
@@ -9827,13 +10039,17 @@
 	"ability_priest_pacifyingsmoke"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityTextureName"	"ability_priest_magicmist"
 		"AbilityCastPoint"	"0.3"
 		"AbilityCooldown"	"35"
 		"AbilityCastRange"	"200"
 		"AbilityManaCost"	"20"
 		"MaxLevel"	"1"
+	    "precache"
+	    { 
+	        "soundfile" "soundevents/spells.vsndevts"
+	    }
 		"OnSpellStart"
 		{
 			"SpawnUnit"
@@ -9844,6 +10060,12 @@
 				"UnitLimit"	"64"
 				"SpawnRadius"	"0"
 				"Duration"	"10"
+			}
+	        
+			"FireSound"
+			{
+				"EffectName"	"Pacify.Smoke"
+				"Target"	"CASTER"
 			}
 	
 		}
@@ -10033,8 +10255,8 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
-		"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
-		"AbilityCastPoint"	"0.8"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_4"
+		"AbilityCastPoint"	"1.2"
 		"AbilityCooldown"	"20"
 		"AbilityCastRange"	"6000"
 		"AbilityManaCost"	"20"
@@ -10170,7 +10392,9 @@
 		"MaxLevel"	"1"
 		"precache"
 		{
-			"particle_folder"	"particles/items_fx"
+			"particles"	"particles/units/heroes/hero_oracle/oracle_false_promise_cast_enemy.vpcf"
+			"particles"	"particles/items_fx/black_king_bar_avatar.vpcf"
+	        "soundfile" "soundevents/spells.vsndevts"
 		}
 	
 		"OnSpellStart"
@@ -10185,12 +10409,16 @@
 	
 			}
 	
+			"FireSound"
+			{
+				"EffectName"	"Resist.All"
+				"Target"	"TARGET"
+			}
 			"FireEffect"
 			{
-				"EffectName"	"particles/items2_fx/smoke_of_deceit.vpcf"
+				"EffectName"	"particles/units/heroes/hero_oracle/oracle_false_promise_cast_enemy.vpcf"
 				"EffectAttachType"	"follow_origin"
 				"Target"	"TARGET"
-				"EffectRadius"	"%radius"
 			}
 	
 		}
@@ -10555,6 +10783,16 @@
 		"AbilityCastRange"	"600"
 		"AbilityManaCost"	"20"
 		"MaxLevel"	"1"
+	    "precache"
+	        {
+	        "soundfile" "soundevents/game_sounds_heroes/game_sounds_dazzle.vsndevts"
+	        "soundfile" "soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
+	        "soundfile" "soundevents/spells.vsndevts"
+	        "particle" "particles/units/heroes/hero_dazzle/dazzle_weave.vpcf"
+	        "particle" "particles/units/heroes/hero_omniknight/omniknight_purification.vpcf"
+	        "particle" "particles/units/heroes/hero_dazzle/dazzle_armor_friend.vpcf"
+	        }
+	 
 		"OnSpellStart"
 		{
 			"LinearProjectile"
@@ -10562,8 +10800,33 @@
 				"Target"	"POINT"
 				"MoveSpeed"	"600"
 				"ProvidesVision"	"false"
-			}
-	
+			} 
+	        "FireSound"
+	        {
+	            "EffectName" "Hero_Omniknight.Purification"
+	            "Target" "CASTER"
+	        }
+	        "FireEffect"
+	        {
+	            "EffectName" "particles/units/heroes/hero_dazzle/dazzle_weave.vpcf"
+	            "EffectAttachType" "start_at_customorigin"
+	            "TargetPoint" "POINT"
+	            "ControlPoints"
+	            {
+	                "01" "%radius 0 0"
+	            }
+	        }
+	                "FireEffect"
+	        {
+	            "EffectName" "particles/units/heroes/hero_omniknight/omniknight_purification.vpcf"
+	            "EffectAttachType" "start_at_customorigin"
+	            "TargetPoint" "POINT"
+	            "ControlPoints"
+	            {
+	                "01" "%radius 0 0"
+	            }
+	        }
+	        
 		}
 	
 		"OnProjectileFinish"
@@ -10606,25 +10869,6 @@
 					"MODIFIER_PROPERTY_DISABLE_HEALING"	"1"
 				}
 	
-			}
-	
-		}
-	
-	}
-	"ability_priest_swap1"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityTextureName"	"ability_mage_swap"
-		"MaxLevel"	"1"
-		"AbilityCastPoint"	"0"
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"SwapSpellBook"
-				"activeBook"	"1"
 			}
 	
 		}
@@ -10712,6 +10956,10 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"	"ability_priest_theglow"
 		"MaxLevel"	"1"
+	    "precache"
+	    {
+	    "particles" "particles/units/heroes/hero_oracle/oracle_false_promise_top_edge_flicker.vpcf"
+	    }
 		"Modifiers"
 		{
 			"modifier_priestglow"
@@ -10722,6 +10970,7 @@
 				"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 				"Aura_Types"	"DOTA_UNIT_TARGET_HERO"
 				"Aura_ApplyToCaster"	"1"
+				"IsHidden"	"1"
 			}
 	
 			"modifier_glow_restore"
@@ -10729,7 +10978,15 @@
 				"IsHidden"	"0"
 				"TextureName"	"ability_priest_theglow"
 				"IsPurgable"	"0"
-	
+				"OnCreated"
+				{
+	                "AttachEffect"
+	                {
+	                    "EffectName"    "particles/units/heroes/hero_oracle/oracle_false_promise_top_edge_flicker.vpcf"
+	                    "Target"        "TARGET"
+	                    "EffectAttachType"      "attach_origin"
+	                }
+	            }
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%move_speed"
@@ -10776,6 +11033,24 @@
 			{
 				"var_type"	"FIELD_FLOAT"
 				"radius"	"500"
+			}
+	
+		}
+	
+	}
+	"ability_priest_toggle_spellbar"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityTextureName"	"ability_mage_swap"
+		"MaxLevel"	"1"
+		"AbilityCastPoint"	"0"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"custom_functions_ability.lua"
+				"Function"	"ToggleSpellBar"
 			}
 	
 		}
@@ -12896,13 +13171,14 @@
 	"ability_gravestone"
 	{
 	    "BaseClass"         "ability_datadriven"
-	    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 	    "MaxLevel"              "1"
 	    "Modifiers"
 	    {
 	        "dummy_modifier"
 	        {
 	            "Passive"   "1"
+	            "IsHidden" "1"
 	            "States"
 	            {
 	                "MODIFIER_STATE_NO_UNIT_COLLISION"  "MODIFIER_STATE_VALUE_ENABLED"

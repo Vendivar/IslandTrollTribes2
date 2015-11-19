@@ -80,8 +80,20 @@ function UpdateAbilityList()
     //Hero Float bar
 	var iPlayerID = Players.GetLocalPlayer();
 	var hero = Players.GetPlayerHeroEntityIndex( iPlayerID );
-	var b = 6; 
+	var b = 19; 
   if ((Entities.GetAbilityByName( queryUnit , "ability_mage_quantum_nulldamage" )) != -1 )
+  {
+  	b = 11;
+  }
+  if ((Entities.GetAbilityByName( queryUnit , "ability_mage_nulldamage" )) != -1 )
+  {
+  	b = 6;
+  }
+  if ((Entities.GetAbilityByName( queryUnit , "ability_priest_theglow" )) != -1 )
+  {
+  	b = 6;
+  }
+  if ((Entities.GetAbilityByName( queryUnit , "ability_priest_angelicelemental" )) != -1 )
   {
   	b = 11;
   }

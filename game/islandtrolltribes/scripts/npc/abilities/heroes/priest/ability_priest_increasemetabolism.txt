@@ -13,7 +13,10 @@
 	"AbilityManaCost"				"30"
 
 	"MaxLevel" 						"1"
-
+    "precache"
+    {
+        "soundfile" "soundevents/spells.vsndevts"
+    }
 	"AbilitySpecial"
 	{
 		"01"
@@ -35,6 +38,12 @@
 			"ModifierName"	"modifier_priest_increasemetabolism"
 			"Target" 		"TARGET"
 			"Duration"		"%duration"
+		}
+        
+		"FireSound"
+		{
+			"EffectName"	"Increase.Metabolim"
+			"Target"	"TARGET"
 		}
 	}
 

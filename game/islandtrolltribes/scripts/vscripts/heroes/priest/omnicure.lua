@@ -8,10 +8,12 @@ function Omnicure(keys)
     targetPosition = caster:GetAbsOrigin()
     local units = FindUnitsInRadius(teamnumber, targetPosition, nil, radius, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_ALL, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
     for _,unit in pairs(units) do
+
             print("unit found")
             unit:RemoveModifierByName("modifier_lizard_slow")
             unit:RemoveModifierByName("modifier_disease1")
             unit:RemoveModifierByName("modifier_disease2")
             unit:RemoveModifierByName("modifier_disease3")
     end
+    
 end

@@ -4,6 +4,10 @@
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"AbilityTextureName"	"ability_priest_theglow"
 	"MaxLevel"	"1"
+    "precache"
+    {
+    "particles" "particles/units/heroes/hero_oracle/oracle_false_promise_top_edge_flicker.vpcf"
+    }
 	"Modifiers"
 	{
 		"modifier_priestglow"
@@ -14,6 +18,7 @@
 			"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 			"Aura_Types"	"DOTA_UNIT_TARGET_HERO"
 			"Aura_ApplyToCaster"	"1"
+			"IsHidden"	"1"
 		}
 
 		"modifier_glow_restore"
@@ -21,7 +26,15 @@
 			"IsHidden"	"0"
 			"TextureName"	"ability_priest_theglow"
 			"IsPurgable"	"0"
-
+			"OnCreated"
+			{
+                "AttachEffect"
+                {
+                    "EffectName"    "particles/units/heroes/hero_oracle/oracle_false_promise_top_edge_flicker.vpcf"
+                    "Target"        "TARGET"
+                    "EffectAttachType"      "attach_origin"
+                }
+            }
 			"Properties"
 			{
 				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%move_speed"

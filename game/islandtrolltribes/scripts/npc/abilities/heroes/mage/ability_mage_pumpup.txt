@@ -1,7 +1,7 @@
 	"ability_mage_pumpup"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityTextureName"	"ability_mage_pumpup"
@@ -75,13 +75,13 @@
 					"EffectName"	"Hero_OgreMagi.Bloodlust.Cast"
 					"Target"	"TARGET"
 				}
-				"FireEffect"
+				"AttachEffect"
 				{
 					"EffectName" "particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff_circle_outer_pulse.vpcf"
 					"Target" "TARGET"
 					"EffectAttachType" "follow_origin"
 				}
-				"FireEffect"
+				"AttachEffect"
 				{
 					"EffectName" "particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_cast_smoke.vpcf"
 					"Target" "TARGET"
@@ -104,7 +104,7 @@
 						"Target"	"TARGET"
 						"EffectAttachType"	"follow_overhead"
 					}
-                    "FireEffect"
+                    "AttachEffect"
                     {
                         "EffectName" "particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff.vpcf"
                         "Target" "TARGET"

@@ -1,4 +1,4 @@
-"ability_priest_swap1"
+"ability_priest_toggle_spellbar"
 {
 	"BaseClass"	"ability_datadriven"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
@@ -10,8 +10,7 @@
 		"RunScript"
 		{
 			"ScriptFile"	"custom_functions_ability.lua"
-			"Function"	"SwapSpellBook"
-			"activeBook"	"1"
+			"Function"	"ToggleSpellBar"
 		}
 
 	}
