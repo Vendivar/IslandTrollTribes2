@@ -11283,13 +11283,18 @@
 	    "OnSpellStart"
 	    {
 	        "SpendCharge"
-	        {}
-	
+	        {
+	        }
+	        "FireSound"
+	        {
+	            "EffectName"    "Hero_Pudge.Dismember"
+	            "Target"        "CASTER"
+	        }
 	        "RunScript"
 	        {
-	            "ScriptFile"    "items/meat.lua"
+	            "ScriptFile"	"items/meat.lua"
 	            "Function"      "EatMeat"
-	            "Heal"          "%heal_amount"
+	            "Heal"			"%heal_amount"
 	        }
 	    }
 	    "Custom"

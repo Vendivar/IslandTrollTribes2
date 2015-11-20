@@ -6,14 +6,15 @@
 	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
 	"AbilityTextureName"	"ability_priest_lightningshield"
 	"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_2"
-	"AbilityCastPoint"	"0.2"
+	"AbilityCastPoint"	"0.3"
 	"AbilityCooldown"	"30"
 	"AbilityCastRange"	"300"
 	"AbilityManaCost"	"30"
 	"MaxLevel"	"1"
     "precache"
     {
-    "soundfile" "soundevents/game_sounds_items.vsndevts"
+        "soundfile" "soundevents/game_sounds_items.vsndevts"
+        "soundfile" "soundevents/spells.vsndevts"
     }
 	"OnSpellStart"
 	{
@@ -23,15 +24,13 @@
 			"Duration"	"%lightning_duration"
 			"Target"	"TARGET"
 		}
-
-		"FireSound"
-		{
-			"Target"	"TARGET"
-			"FireSound"	"DOTA_Item.Mjollnir.Activate"
-		}
-
+         "FireSound"
+        {
+            "FireSound"	"lightning.shield"
+            "Target"	"TARGET"
+        }
 	}
-
+    
 	"Modifiers"
 	{
 		"modifier_lightning_shield_damage_aura"

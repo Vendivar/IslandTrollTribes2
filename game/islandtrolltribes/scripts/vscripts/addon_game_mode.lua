@@ -223,6 +223,7 @@ function Precache( context )
 	PrecacheItemByNameSync( "item_debug_spawn_all", context )
 	PrecacheItemByNameSync( "item_heat_modifier_applier", context )
 
+	PrecacheUnitByNameSync( "gravestone", context )
 	PrecacheUnitByNameSync( "npc_creep_fawn", context )
 	PrecacheUnitByNameSync( "npc_creep_wolf_pup", context )
 	PrecacheUnitByNameSync( "npc_creep_bear_cub", context )
@@ -359,6 +360,7 @@ function Precache( context )
 	PrecacheResource("model", "models/heroes/lycan/lycan_wolf.vmdl",context)
 	PrecacheResource("model", "models/projectiles/projectile_jar.vmdl",context)
 	PrecacheResource("model", "models/items/brewmaster/offhand_jug/offhand_jug.vmdl",context)
+	PrecacheResource("model", "models/heroes/phantom_assassin/arcana_tombstone.vmdl",context)
 	
 	
 	PrecacheResource("particle", "particles/units/heroes/hero_keeper_of_the_light/keeper_chakra_magic.vpcf", context)

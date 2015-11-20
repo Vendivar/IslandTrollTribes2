@@ -4,13 +4,14 @@
 	"AbilityTextureName"	"ability_priest_fortitude"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_3"
-	"AbilityCastPoint"	"0.0"
+	"AbilityCastPoint"	"0.5"
 	"AbilityCooldown"	"7"
 	"AbilityCastRange"	"0"
 	"AbilityManaCost"	"30"
     "precache"
     {
     "particles" "particles/items_fx/aura_endurance"
+    "particles" "particles/custom/fortitude.vpcf"
     "soundfile"     "soundevents/spells.vsndevts"
     }
 	"OnSpellStart"
@@ -25,13 +26,11 @@
 			}
 
 		}
-
-		"FireSound"
-		{
-			"EffectName"	"Fortitude"
-			"Target"	"TARGET"
-		}
-
+        "FireSound"
+         {
+             "EffectName"	"Fortitude.Cast"
+             "Target" 		"CASTER"
+         }
 	}
 
 	"Modifiers"
@@ -51,6 +50,13 @@
                     "Target"        "TARGET"
                     "EffectAttachType"      "attach_origin"
                 }
+                 "FireEffect"
+                {
+                    "EffectName"    "particles/custom/fortitude.vpcf"
+                    "Target"        "TARGET"
+                    "EffectAttachType"      "attach_origin"
+                }
+                
             }
 		}
 

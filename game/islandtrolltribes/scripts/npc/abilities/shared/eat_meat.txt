@@ -14,7 +14,7 @@
 
     "precache"
     {
-        "soundfile"    "soundevents/game_sounds_heroes/game_sounds_pudge.vsndevts"
+        "soundfile"    "soundevents/game_sounds_heroes/game_sounds_tidehunter.vsndevts"
     }
 	"AbilitySpecial"
     {
@@ -44,6 +44,11 @@
 			"Target"			"CASTER"
 			"ModifierName"		"modifier_eat_meat_raw"
 		}
+        "FireSound"
+	        {
+	            "EffectName"    "Hero_Tidehunter.Idle_bite"
+	            "Target"        "CASTER"
+	        }
 	}
 
 	"OnChannelFinish"
@@ -72,13 +77,7 @@
 				{
 					"Target"        "CASTER"
 					"HealAmount"	"1" //15 ticks during 1.5 seconds
-				}
-                
-                "FireSound"
-                {
-                    "EffectName"    "Hero_Pudge.Dismember"
-                    "Target"        "CASTER"
-                }
+				}                
 			}
 		}
 	}

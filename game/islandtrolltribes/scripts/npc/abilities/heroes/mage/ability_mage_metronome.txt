@@ -13,7 +13,7 @@
 	"precache"
 	{
 		"particle"	"particles/metronome.vpcf"
-		"soundfile"	"soundevents/tick.vsndevts"
+		"soundfile"	"soundevents/spells.vsndevts"
 		"soundfile"	"soundevents/game_sounds_items.vsndevts"
 	}
 	"OnSpellStart"
@@ -25,8 +25,8 @@
 		}
 		"FireSound"
 		{
-			"EffectName"	"DOTA_Item.HotD.Activate"
-			"Target"		"TARGET"			
+			"EffectName"	"metronome.cast"
+			"Target"		"CASTER"			
 		}	
 		
 		"ApplyModifier"
@@ -58,6 +58,11 @@
 					"EffectAttachType"	"follow_origin"
 				}
 
+            "FireSound"
+            {
+                "EffectName"	"metronome.cast"
+                "Target"		"TARGET"			
+            }	
 			}
 		}
 	}
