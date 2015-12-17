@@ -2024,7 +2024,11 @@
 				"var_type"	"FIELD_FLOAT"
 				"health_bonus"	"50"
 			}
-	
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"energy_drain"	"-1"
+			}
 		}
 	
 	}
@@ -2761,7 +2765,21 @@
 			}
 	
 		}
+	"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"stun_damage"	"20"
+			}
 	
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"stun_duration"	"2"
+			}
+	
+		}
 	}
 	"ability_beastmaster_shortness"
 	{
@@ -2916,7 +2934,7 @@
 				"damage"	"65"
 			}
 	
-			"02"
+			"03"
 			{
 				"var_type"	"FIELD_INTEGER"
 				"slow"	"-50"
@@ -3249,8 +3267,13 @@
 			{
 				"var_type"	"FIELD_FLOAT"
 				"move_speed"	"10"
-			}
+			} 
 	
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"degen_rate"	"2"
+			}
 		}
 	
 	}
@@ -9169,13 +9192,13 @@
 			}
 			"04"
 			{
-				"var_type"					"FIELD_INTEGER"
-				"orb_vision"				"800"
+				"var_type"					"FIELD_FLOAT"
+				"orb_vision"				"0"
 			}
 			"05"
 			{
 				"var_type"					"FIELD_FLOAT"
-				"vision_duration"			"3.0"
+				"vision_duration"			"0.0"
 			}
 			// Extra variables
 			"06"
@@ -9617,6 +9640,20 @@
 	
 		}
 	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"heal_amount"	"30"
+			}
+	
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bounces"	"7"
+			}
+		}
 	}
 	"ability_priest_increasemetabolism"
 	{
@@ -10265,14 +10302,29 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
-		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_4"
-		"AbilityCastPoint"	"1.2"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_3"
+		"AbilityCastPoint"	"0.2"
 		"AbilityCooldown"	"20"
 		"AbilityCastRange"	"6000"
 		"AbilityManaCost"	"20"
 		"MaxLevel"	"1"
+	    
+		"Precache"
+		{
+			"particle"	"particles/econ/items/pugna/pugna_ward_ti5/pugna_ward_attack_light_ti_5.vpcf"
+	        "particle" "particles/units/heroes/hero_oracle/oracle_fatesedict_arc_thin.vpcf"
+	        "soundfile" "soundevents/game_sounds_heroes/game_sounds_oracle.vsndevts"
+		}
+	    
 		"OnSpellStart"
 		{
+	        "ApplyModifier"
+			{
+				"ModifierName"	"ranged_heal"
+				"Target" 		"TARGET"
+	
+				"Duration"		"%duration"
+			}
 			"Heal"
 			{
 				"HealAmount"	"%heal_amount"
@@ -10281,12 +10333,51 @@
 	
 			"FireSound"
 			{
-				"EffectName"	"Hero_Dazzle.Shadow_Wave"
+				"EffectName"	"Hero_Oracle.FalsePromise.Target"
 				"Target"	"CASTER"
 			}
+	        
+			"FireSound"
+			{
+				"EffectName"	"Hero_Oracle.FalsePromise.Healed"
+				"Target"	"TARGET"
+			}
+	        "FireEffect"
+	        {
+	            "Target" "TARGET"
+	            "EffectName" "particles/econ/items/pugna/pugna_ward_ti5/pugna_ward_attack_light_ti_5.vpcf"
+	            "EffectAttachType" "follow_origin"
+	
+	            "ControlPointEntities"
+	            {
+	                "CASTER" "follow_origin"
+	                "TARGET" "follow_origin"
+	            }
+	        }
 	
 		}
-	
+	"Modifiers"
+		{
+			"ranged_heal"
+			{
+				"IsHidden"			"1"
+				"IsBuff"			"1"
+				
+				"OnCreated"
+				{
+	                "AttachEffect"
+	                {
+	                    "Target" "CASTER"
+	                    "EffectName" "particles/units/heroes/hero_oracle/oracle_fatesedict_arc_thin.vpcf"
+	                    "EffectAttachType" "follow_origin"
+	                }
+				}
+				"Properties"
+				{
+				
+				}
+			}
+		}
 		"AbilitySpecial"
 		{
 			"01"
@@ -10295,6 +10386,11 @@
 				"heal_amount"	"50"
 			}
 	
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"range"	"6000"
+			}
 		}
 	
 	}
@@ -10473,10 +10569,19 @@
 		"precache"
 		{
 			"particle"	"particles/items_fx/smoke_of_deceit.vpcf"
+	        "soundfile" "soundevents/game_sounds_heroes/game_sounds_dazzle.vsndevts"
+	        "soundfile" "soundevents/spells.vsndevts"
 		}
 	
 		"OnSpellStart"
 		{
+	        "ApplyModifier"
+			{
+				"ModifierName"	"self_preservation"
+				"Target" 		"TARGET"
+				"Duration"		"1"
+			}
+	        
 			"RunScript"
 			{
 				"ScriptFile"   "buildings/heat.lua"
@@ -10511,8 +10616,30 @@
 				"FireSound"	"Hero_Dazzle.Shallow_Grave"
 			}
 	
+			"FireSound"
+			{
+				"Target"	"TARGET"
+				"FireSound"	"self.preservation"
+			}
 		}
+	"Modifiers"
+		{
+			"self_preservation"
+			{
+				"IsHidden"			"1"
+				"IsBuff"			"1"
+				
+				"OnCreated"
+				{
+					
+				}
 	
+				"Properties"
+				{
+				
+				}
+			}
+		}
 	}
 	"ability_priest_smokecombatprevention"
 	{
@@ -10814,6 +10941,11 @@
 	        "FireSound"
 	        {
 	            "EffectName" "Hero_Omniknight.Purification"
+	            "Target" "CASTER"
+	        }
+	        "FireSound"
+	        {
+	            "EffectName" "splash.heal"
 	            "Target" "CASTER"
 	        }
 	        "FireEffect"
@@ -11121,7 +11253,7 @@
 	                "FireSound"
 	                {
 	                    "EffectName"	"troll.battle.call.buff"
-	                    "Target"	"TARGET"
+	                    "Target"	"CASTER"
 	                }
 	                "AttachEffect"
 	                {

@@ -113,7 +113,11 @@
 			"var_type"	"FIELD_FLOAT"
 			"health_bonus"	"50"
 		}
-
+		"05"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"energy_drain"	"-1"
+		}
 	}
 
 }

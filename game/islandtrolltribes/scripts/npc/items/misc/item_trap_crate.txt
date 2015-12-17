@@ -1,0 +1,179 @@
+"item_trap_crate"
+{
+    "ID"                        "1405"
+    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_POINT"
+    "BaseClass"                 "item_datadriven"
+    "AbilityTextureName"        "net_basic"
+    "Model"                     "models/props_debris/shop_set_cage001.vmdl"
+    "Effect"                    ""
+
+    "AbilityCastRange"          "800"
+    "AbilityCastPoint"          "0.5"
+    "AbilityCooldown"           "15"
+    "ItemCost"                  "2"
+
+    "ItemShopTags"              "consumable"
+    "ItemQuality"               "consumable"
+    "ItemShareability"          "ITEM_FULLY_SHAREABLE"
+    
+    "MaxStacks"                 "3"
+    "ItemInitialCharges"        "3"
+
+    "ItemPermanent"             "0"
+    "ItemDroppable"             "1"
+    "ItemAliases"               "quicktype"
+    "ItemDisassembleRule"       "DOTA_ITEM_DISASSEMBLE_NEVER"
+    "ItemKillable"              "1"
+    "ItemSellable"              "0"
+    "UIPickupSound"             "Item.PickUpGemShop"
+    "UIDropSound"               "Item.DropGemShop"
+    "WorldDropSound"            "Item.DropGemWorld"
+
+    "precache"
+    {
+        "particle"  "particles/custom/crate_trapped_main.vpcf"
+        "particle"  "particles/custom/crate_trap.vpcf"
+        "particle"  "particles/custom/crate_trap_projectile_fx.vpcf"
+        "particle"  "particles/custom/crate_trap_projectile_fx2.vpcf"
+        "particle"  "particles/custom/crate_trap_projectile_fx3.vpcf"
+        "soundfile" "soundevents/game_sounds_heroes/game_sounds_meepo.vsndevts"
+    }
+    
+    "AbilitySpecial"
+    {
+        "01"
+        {
+            "var_type"              "FIELD_FLOAT"
+            "duration_hero"         "5"
+        }
+        "02"
+        {
+            "var_type"              "FIELD_FLOAT"
+            "duration_animal"       "10"
+        }
+        "03"
+        {
+            "var_type"              "FIELD_INTEGER"
+            "projectile_speed"      "750"
+        }
+        "04"
+        {
+            "var_type"              "FIELD_INTEGER"
+            "max_stacks"            "8"
+        }
+        "05"
+        {
+            "var_type"              "FIELD_INTEGER"
+            "damage"       "2"
+        }
+    }
+
+	"OnSpellStart"
+	{
+		"FireSound"
+		{
+			"EffectName"			"Hero_Meepo.Earthbind.Cast"
+			"Target"				"CASTER"
+		}
+
+		"LinearProjectile"
+		{
+			"Target"      	"POINT"
+		    "EffectName"  	"particles/custom/crate_trap_projectile_fx3.vpcf"
+		    "MoveSpeed"   	"500"
+		    "StartRadius"   "100"
+		    "StartPosition" "attach_attack1"
+		    "EndRadius"     "100"
+		    "FixedDistance" "850"
+		    "TargetTeams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
+		    "TargetTypes"   "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+		    "TargetFlags"   "DOTA_UNIT_TARGET_FLAG_NONE"
+		    "HasFrontalCone"    "0"
+		    "ProvidesVision"	"0"
+		}
+ 
+	}
+
+	"OnProjectileHitUnit"
+	    {
+	        "FireSound"
+	        {
+	            "EffectName"    "Hero_Meepo.Earthbind.Target"
+	            "Target"        "TARGET"
+	        }
+	
+	        "ApplyModifier"
+	        {
+	            "ModifierName"  "crate_trapped"
+	            "Target"
+	            {
+	                "Center"    "TARGET"
+	                "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	                "Types"     "DOTA_UNIT_TARGET_HERO"
+	            }
+	            "Duration"      "%duration_hero"
+	        }
+	        
+	        "ApplyModifier"
+	        {
+	            "ModifierName"  "crate_trapped"
+	            "Target"
+	            {
+	                "Center"    "TARGET"
+	                "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	                "Types"     "DOTA_UNIT_TARGET_BASIC"
+	            }
+	            "Duration"      "%duration_animal"
+	        }
+	    }
+	
+	    "Modifiers"
+	    {
+	        "crate_trapped"
+	        {
+	            "IsDebuff"          "1"
+	            "IsPurgable"        "1"
+	    
+	            "EffectName"        "particles/custom/crate_trapped_main.vpcf"
+	            "EffectAttachType"  "follow_origin"
+	            "ThinkInterval" "0.5"
+	            "OnIntervalThink"
+	            {
+	                "Damage"
+	                {
+	                    "Type"   "DAMAGE_TYPE_PHYSICAL"
+	                    "Damage" "%damage"
+	                    "Target" "TARGET"
+	                }
+	            }
+	            "States"
+	            {
+	                "MODIFIER_STATE_ROOTED"    "MODIFIER_STATE_VALUE_ENABLED"
+	            }
+	
+	            "OnCreated"
+	            {
+	                "RunScript"
+	                {
+	                    "ScriptFile"    "mechanics/ensnare.lua"
+	                    "Function"      "LoseMovement"
+	                }
+	            }
+	
+	            "OnDestroy"
+	            {
+	                "RunScript"
+	                {
+	                    "ScriptFile"    "mechanics/ensnare.lua"
+	                    "Function"      "RegainMovement"
+	                }
+	            }
+	        }
+	    } 
+	"OnProjectileFinish"
+	{
+    "SpendCharge"
+    {
+    }
+	}
+}

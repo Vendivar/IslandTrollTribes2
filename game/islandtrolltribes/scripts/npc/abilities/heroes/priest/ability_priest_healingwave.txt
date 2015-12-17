@@ -30,4 +30,18 @@
 
 	}
 
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"heal_amount"	"30"
+		}
+
+		"02"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"bounces"	"7"
+		}
+	}
 }

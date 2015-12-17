@@ -940,28 +940,26 @@
 // PRIEST 
 
 "DOTA_Tooltip_Ability_ability_priest_angelicelemental"		"Angelic Elemental"
-"DOTA_Tooltip_ability_ability_priest_angelicelemental_bonus_armor"		"BONUS ARMOR:"
-"DOTA_Tooltip_Ability_ability_priest_angelicelemental_Description"		"Projects a ball of energy forward that buffs units it touches.\n\nDURATION:<font color='#777777'>20 SECONDS</font>\nDamage INCREASE: <font color='#777777'>25%</font>\nARMOR BONUS:<font color='#777777'>+3</font>"
+"DOTA_Tooltip_ability_ability_priest_angelicelemental_bonus_armor"		"+BONUS ARMOR:"
+"DOTA_Tooltip_Ability_ability_priest_angelicelemental_Description"		"Projects a ball of energy forward that buffs units it touches while also providing vision to the area."
 "DOTA_Tooltip_ability_ability_priest_angelicelemental_duration"		"DURATION:"
-"DOTA_Tooltip_ability_ability_priest_angelicelemental_max_distance"		"MAX DISTANCE:"
-"DOTA_Tooltip_ability_ability_priest_angelicelemental_num_extra_visions"		"NUM EXTRA VISIONS:"
-"DOTA_Tooltip_ability_ability_priest_angelicelemental_orb_speed"		"ORB SPEED:"
-"DOTA_Tooltip_ability_ability_priest_angelicelemental_orb_vision"		"ORB VISION:"
-"DOTA_Tooltip_ability_ability_priest_angelicelemental_percentage_bonus_damage"		"PERCENTAGE +$damage"
+"DOTA_Tooltip_ability_ability_priest_angelicelemental_percentage_bonus_damage"		"+DAMAGE BONUS:"
 "DOTA_Tooltip_ability_ability_priest_angelicelemental_radius"		"RADIUS:"
 "DOTA_Tooltip_ability_ability_priest_angelicelemental_vision_duration"		"VISION DURATION:"
-"DOTA_Tooltip_modifier_angelicelemental_datadriven"		"Angelicelemental Datadriven"
+"DOTA_Tooltip_modifier_angelicelemental_datadriven"		"Angelic Elemental"
 "DOTA_Tooltip_modifier_angelicelemental_datadriven_Description"		""
-"DOTA_Tooltip_modifier_angelicelemental_projectile_datadriven"		"Angelicelemental Projectile Datadriven"
+"DOTA_Tooltip_modifier_angelicelemental_projectile_datadriven"		"Angelic Elemental"
 "DOTA_Tooltip_modifier_angelicelemental_projectile_datadriven_Description"		""
-"DOTA_Tooltip_ability_ability_priest_bloodfrenzy"		"Ability Priest Bloodfrenzy"
+
+
+"DOTA_Tooltip_ability_ability_priest_bloodfrenzy"		"Bloodfrenzy"
 "DOTA_Tooltip_ability_ability_priest_bloodfrenzy_armor"		"ARMOR:"
-"DOTA_Tooltip_ability_ability_priest_bloodfrenzy_attack_speed"		"%+$attack"
+"DOTA_Tooltip_ability_ability_priest_bloodfrenzy_attack_speed"		"%ATTACK SPEED:"
 "DOTA_Tooltip_ability_ability_priest_bloodfrenzy_Description"		""
 "DOTA_Tooltip_ability_ability_priest_bloodfrenzy_duration"		"DURATION:"
-"DOTA_Tooltip_ability_ability_priest_bloodfrenzy_lifesteal"		"LIFESTEAL:"
+"DOTA_Tooltip_ability_ability_priest_bloodfrenzy_lifesteal"		"%LIFESTEAL:"
 "DOTA_Tooltip_ability_ability_priest_bloodfrenzy_radius"		"RADIUS:"
-"DOTA_Tooltip_modifier_priest_bloodfrenzy"		"Priest Bloodfrenzy"
+"DOTA_Tooltip_modifier_priest_bloodfrenzy"		"Bloodfrenzy"
 "DOTA_Tooltip_modifier_priest_bloodfrenzy_Description"		""
 
 
@@ -977,25 +975,28 @@
 "DOTA_Tooltip_ability_ability_priest_enhancingherbalbalm_health_per"		"HEALTH PER:"
 "DOTA_Tooltip_ability_ability_priest_enhancingherbalbalm_health_regen"		"HEALTH REGEN:"
 "DOTA_Tooltip_ability_ability_priest_enhancingherbalbalm_move_speed_bonus"		"MOVE SPEED BONUS:"
-"DOTA_Tooltip_modifier_priest_enhancingherbalbalm"		"Priest Enhancingherbalbalm"
+"DOTA_Tooltip_modifier_priest_enhancingherbalbalm"		"Enhancing Herbal Balm"
 "DOTA_Tooltip_modifier_priest_enhancingherbalbalm_Description"		""
 
 
 
 "DOTA_Tooltip_Ability_ability_priest_fortitude"		"Fortitude"
 "DOTA_Tooltip_ability_ability_priest_fortitude_armor_bonus"		"ARMOR BONUS:"
-"DOTA_Tooltip_Ability_ability_priest_fortitude_Description"		"Grants protection to all allies in a 900 radius.\n\nARMOR BONUS: <font color='#777777'>1.5</font>"
+"DOTA_Tooltip_Ability_ability_priest_fortitude_Description"		"Grants protection to all allies in a 900 radius."
 "DOTA_Tooltip_ability_ability_priest_fortitude_duration"		"DURATION:"
 "DOTA_Tooltip_ability_ability_priest_fortitude_radius"		"RADIUS:"
 "DOTA_Tooltip_modifier_fortitude"		"Fortitude"
-"DOTA_Tooltip_modifier_fortitude_Description"		""
+"DOTA_Tooltip_modifier_fortitude_Description"		"Gaining 1.5 bonus armor."
 
 
 "DOTA_Tooltip_Ability_ability_priest_healingspray"		"Healing Spray"
 "DOTA_Tooltip_Ability_ability_priest_healingspray_Description"		"Casts a healing spell on your target, healing a small portion of health initially. \n\nHeal: <font color='#777777'>30</font>"
 "DOTA_Tooltip_Ability_ability_priest_healingwave"		"Healing Wave"
-"DOTA_Tooltip_Ability_ability_priest_healingwave_Description"		"Casts a healing spell that bounces up to 7 times in a 3000 radius, healing a small portion of health initially. Amount healed decreases by 10% each bounce.\n\nInitial Heal: <font color='#777777'>30</font>"
+"DOTA_Tooltip_Ability_ability_priest_healingwave_Description"		"Casts a healing spell that bounces up to 7 times in a 3000 radius, healing a small portion of health initially. Amount healed decreases by 10% each bounce."
+"DOTA_Tooltip_ability_ability_priest_healingwave_heal_amount"                     "HEAL AMOUNT:"
+"DOTA_Tooltip_ability_ability_priest_healingwave_bounces"                         "BOUNCES:"
 
+		
 
 "DOTA_Tooltip_Ability_ability_priest_increasemetabolism"		"Increase Metabolism"
 "DOTA_Tooltip_Ability_ability_priest_increasemetabolism_Description"		"When cast on a troll, will cause them to gain an additional health per meat eaten, as well as giving a boost to move speed.\n\nDURATION: <font color='#777777'>20 seconds</font>\nMOVE SPEED BONUS: <font color='#777777'>20%</font>\nAdditional Health Gained: <font color='#777777'>+25</font>"
@@ -1063,10 +1064,10 @@
 "DOTA_Tooltip_ability_ability_priest_pumpup_duration"		"DURATION:"
 "DOTA_Tooltip_ability_ability_priest_pumpup_move_speed_bonus"		"MOVE SPEED BONUS:"
 "DOTA_Tooltip_Ability_ability_priest_rangedheal"		"Ranged Heal"
-"DOTA_Tooltip_Ability_ability_priest_rangedheal_Description"		"Heals a friendly unit at tremendous range\n\nHEAL AMOUNT: <font color='#777777'>50</font>\nRANGE: <font color='#777777'>6000</font>"
+"DOTA_Tooltip_Ability_ability_priest_rangedheal_Description"		"Heals a friendly unit at tremendous range."
 "DOTA_Tooltip_ability_ability_priest_rangedheal_heal_amount"		"HEAL AMOUNT:"
 "DOTA_Tooltip_Ability_ability_priest_replenish"		"Replenish"
-"DOTA_Tooltip_Ability_ability_priest_replenish_Description"		"Heals health and energy each second for a long duration. If the target is attacked in this time, Replenish will be dispelled.\n\nDURATION: <font color='#777777'>150 SECONDS</font>\nHEALTH AND ENERGY PER SECOND: <font color='#777777'>1</font>"
+"DOTA_Tooltip_Ability_ability_priest_replenish_Description"		"Heals health and energy each second for a long duration. If the target is attacked in this time, replenish will be dispelled."
 "DOTA_Tooltip_ability_ability_priest_replenish_heal_amount"		"HEAL AMOUNT:"
 "DOTA_Tooltip_ability_ability_priest_replenish_replenish_duration"		"REPLENISH DURATION:"
 "DOTA_Tooltip_modifier_replenish"		"Replenish"
@@ -1146,8 +1147,8 @@
 
 "DOTA_Tooltip_Ability_ability_priest_trollbattlecall"		"Troll Battle Call"
 "DOTA_Tooltip_ability_ability_priest_trollbattlecall_armor_bonus"		"ARMOR BONUS:"
-"DOTA_Tooltip_ability_ability_priest_trollbattlecall_damage_bonus"		"DAMAGE BONUS:"
-"DOTA_Tooltip_Ability_ability_priest_trollbattlecall_Description"		"Grants a damage bonus and armor bonus to all friendly units in a AOE.\n\nDAMAGE BONUS: <font color='#777777'>20%</font>\nARMOR BONUS: <font color='#777777'>+1</font>\nDURATION: <font color='#777777'>20 SECONDS</font>\nRADIUS: <font color='#777777'>2000</font>"
+"DOTA_Tooltip_ability_ability_priest_trollbattlecall_damage_bonus"		"%DAMAGE BONUS:"
+"DOTA_Tooltip_Ability_ability_priest_trollbattlecall_Description"		"Grants a damage bonus and armor bonus to all friendly units in a AOE."
 "DOTA_Tooltip_ability_ability_priest_trollbattlecall_duration"		"DURATION:"
 "DOTA_Tooltip_ability_ability_priest_trollbattlecall_radius"		"RADIUS:"
 

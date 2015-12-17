@@ -97,6 +97,10 @@ function UpdateAbilityList()
   {
   	b = 11;
   }
+    if ((Entities.GetAbilityByName( queryUnit , "ability_priest_rangedheal" )) != -1 )
+  {
+  	b = 8;
+  }
 	if (hero == queryUnit){
 		$.Msg("Hero Panel")
     $.Msg(b)

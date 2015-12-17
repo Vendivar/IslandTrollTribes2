@@ -53,7 +53,7 @@
                 "FireSound"
                 {
                     "EffectName"	"troll.battle.call.buff"
-                    "Target"	"TARGET"
+                    "Target"	"CASTER"
                 }
                 "AttachEffect"
                 {

@@ -93,7 +93,7 @@
 			"damage"	"65"
 		}
 
-		"02"
+		"03"
 		{
 			"var_type"	"FIELD_INTEGER"
 			"slow"	"-50"

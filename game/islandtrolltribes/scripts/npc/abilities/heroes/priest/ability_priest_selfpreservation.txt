@@ -11,10 +11,19 @@
 	"precache"
 	{
 		"particle"	"particles/items_fx/smoke_of_deceit.vpcf"
+        "soundfile" "soundevents/game_sounds_heroes/game_sounds_dazzle.vsndevts"
+        "soundfile" "soundevents/spells.vsndevts"
 	}
 
 	"OnSpellStart"
 	{
+        "ApplyModifier"
+		{
+			"ModifierName"	"self_preservation"
+			"Target" 		"TARGET"
+			"Duration"		"1"
+		}
+        
 		"RunScript"
 		{
 			"ScriptFile"   "buildings/heat.lua"
@@ -49,6 +58,28 @@
 			"FireSound"	"Hero_Dazzle.Shallow_Grave"
 		}
 
+		"FireSound"
+		{
+			"Target"	"TARGET"
+			"FireSound"	"self.preservation"
+		}
 	}
+"Modifiers"
+	{
+		"self_preservation"
+		{
+			"IsHidden"			"1"
+			"IsBuff"			"1"
+			
+			"OnCreated"
+			{
+				
+			}
 
+			"Properties"
+			{
+			
+			}
+		}
+	}
 }

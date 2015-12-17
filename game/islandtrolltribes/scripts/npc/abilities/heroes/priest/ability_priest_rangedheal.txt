@@ -5,14 +5,29 @@
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
-	"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_4"
-	"AbilityCastPoint"	"1.2"
+	"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_3"
+	"AbilityCastPoint"	"0.2"
 	"AbilityCooldown"	"20"
 	"AbilityCastRange"	"6000"
 	"AbilityManaCost"	"20"
 	"MaxLevel"	"1"
+    
+	"Precache"
+	{
+		"particle"	"particles/econ/items/pugna/pugna_ward_ti5/pugna_ward_attack_light_ti_5.vpcf"
+        "particle" "particles/units/heroes/hero_oracle/oracle_fatesedict_arc_thin.vpcf"
+        "soundfile" "soundevents/game_sounds_heroes/game_sounds_oracle.vsndevts"
+	}
+    
 	"OnSpellStart"
 	{
+        "ApplyModifier"
+		{
+			"ModifierName"	"ranged_heal"
+			"Target" 		"TARGET"
+
+			"Duration"		"%duration"
+		}
 		"Heal"
 		{
 			"HealAmount"	"%heal_amount"
@@ -21,12 +36,51 @@
 
 		"FireSound"
 		{
-			"EffectName"	"Hero_Dazzle.Shadow_Wave"
+			"EffectName"	"Hero_Oracle.FalsePromise.Target"
 			"Target"	"CASTER"
 		}
+        
+		"FireSound"
+		{
+			"EffectName"	"Hero_Oracle.FalsePromise.Healed"
+			"Target"	"TARGET"
+		}
+        "FireEffect"
+        {
+            "Target" "TARGET"
+            "EffectName" "particles/econ/items/pugna/pugna_ward_ti5/pugna_ward_attack_light_ti_5.vpcf"
+            "EffectAttachType" "follow_origin"
+
+            "ControlPointEntities"
+            {
+                "CASTER" "follow_origin"
+                "TARGET" "follow_origin"
+            }
+        }
 
 	}
-
+"Modifiers"
+	{
+		"ranged_heal"
+		{
+			"IsHidden"			"1"
+			"IsBuff"			"1"
+			
+			"OnCreated"
+			{
+                "AttachEffect"
+                {
+                    "Target" "CASTER"
+                    "EffectName" "particles/units/heroes/hero_oracle/oracle_fatesedict_arc_thin.vpcf"
+                    "EffectAttachType" "follow_origin"
+                }
+			}
+			"Properties"
+			{
+			
+			}
+		}
+	}
 	"AbilitySpecial"
 	{
 		"01"
@@ -35,6 +89,11 @@
 			"heal_amount"	"50"
 		}
 
+		"02"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"range"	"6000"
+		}
 	}
 
 }

@@ -33,6 +33,11 @@
             "EffectName" "Hero_Omniknight.Purification"
             "Target" "CASTER"
         }
+        "FireSound"
+        {
+            "EffectName" "splash.heal"
+            "Target" "CASTER"
+        }
         "FireEffect"
         {
             "EffectName" "particles/units/heroes/hero_dazzle/dazzle_weave.vpcf"

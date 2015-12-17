@@ -1,0 +1,88 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_nMaxParticles = 32
+	m_flConstantRadius = 12.000000
+	m_ConstantColor =
+	[
+		240,
+		187,
+		119,
+		255,
+	]
+	m_Operators =
+	[
+		{
+			_class = "C_OP_BasicMovement"
+			m_fDrag = 0.400000
+		},
+		{
+			_class = "C_OP_Decay"
+			m_nOpEndCapState = 1
+		},
+		{
+			_class = "C_OP_FadeInSimple"
+			m_flFadeInTime = 0.500000
+		},
+		{
+			_class = "C_OP_InterpolateRadius"
+			m_nOpEndCapState = 0
+			m_flEndScale = 2.000000
+			m_flBias = 0.150000
+		},
+		{
+			_class = "C_OP_OscillateScalar"
+			m_FrequencyMax = 16.000000
+			m_FrequencyMin = 3.000000
+			m_RateMax = -5.000000
+			m_RateMin = -3.000000
+			m_nField = 16
+		},
+	]
+	m_Initializers =
+	[
+		{
+			_class = "C_INIT_RandomLifeTime"
+			m_fLifetimeMax = 0.450000
+			m_fLifetimeMin = 0.450000
+		},
+		{
+			_class = "C_INIT_SetHitboxToClosest"
+			m_flHitBoxScale = 0.950000
+			m_bDisableOperator = true
+		},
+	]
+	m_Emitters =
+	[
+		{
+			_class = "C_OP_InstantaneousEmitter"
+			m_nParticlesToEmit = 32
+		},
+	]
+	m_Children =
+	[
+		{
+			m_ChildRef = resource:"particles/econ/items/meepo/meepo_colossal_crystal_chorus/meepo_divining_rod_poof_end_ring_warp.vpcf"
+			m_bEndCap = true
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_meepo/meepo_earthbind_flash.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/custom/cage_trapped.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_meepo/meepo_poof_sparks.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_meepo/meepo_earthbind_projectile_fx_b.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/econ/items/meepo/meepo_diggers_divining_rod/meepo_divining_rod_poof_start.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_meepo/meepo_earthbind_projectile_fx_sparkles.vpcf"
+		},
+	]
+}

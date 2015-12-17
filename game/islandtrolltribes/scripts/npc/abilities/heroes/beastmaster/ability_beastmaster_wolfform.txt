@@ -104,8 +104,13 @@
 		{
 			"var_type"	"FIELD_FLOAT"
 			"move_speed"	"10"
-		}
+		} 
 
+		"04"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"degen_rate"	"2"
+		}
 	}
 
 }
