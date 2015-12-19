@@ -15,16 +15,25 @@
     "soundfile"     "soundevents/spells.vsndevts"
     }
 	"OnSpellStart"
-	{
-		"ApplyModifier"
+	{		
+        "ActOnTargets"
 		{
-			"ModifierName"	"modifier_fortitude"
 			"Target"
 			{
-				"Center"	"CASTER"
-				"Radius"	"500"
+				"Center"  		"CASTER"
+				"Radius"		"500"
+				"Teams" 		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Types" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 			}
 
+			"Action"
+			{
+				"ApplyModifier"
+				{
+					"Target" 		"TARGET"
+					"ModifierName"	"modifier_fortitude"
+				}
+			}
 		}
         "FireSound"
          {

@@ -49,12 +49,12 @@
         {
             "Target" "TARGET"
             "EffectName" "particles/econ/items/pugna/pugna_ward_ti5/pugna_ward_attack_light_ti_5.vpcf"
-            "EffectAttachType" "follow_origin"
+            "EffectAttachType" "PATTACH_OVERHEAD_FOLLOW"
 
             "ControlPointEntities"
             {
-                "CASTER" "follow_origin"
-                "TARGET" "follow_origin"
+                "CASTER" "PATTACH_OVERHEAD_FOLLOW"
+                "TARGET" "PATTACH_OVERHEAD_FOLLOW"
             }
         }
 

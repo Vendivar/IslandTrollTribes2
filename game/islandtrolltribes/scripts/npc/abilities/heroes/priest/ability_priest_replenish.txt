@@ -11,6 +11,10 @@
 	"AbilityCastRange"	"500"
 	"AbilityManaCost"	"20"
 	"MaxLevel"	"1"
+	"Precache"
+	{
+		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_juggernaut.vsndevts"
+	}
 	"OnSpellStart"
 	{
 		"ApplyModifier"
@@ -34,15 +38,20 @@
 		{
 			"IsDebuff"	"0"
 			"IsPurgable"	"1"
-			"EffectName"	"particles/units/heroes/hero_alchemist/alchemist_acid_spray_debuff.vpcf"
 			"OnCreated"
 			{
-				"AttachEffect"
+				"FireEffect"
 				{
 					"Target"	"TARGET"
-					"EffectName"	"particles/econ/wards/bane/bane_ward/bane_ward_droplets.vpcf"
-					"EffectAttachType"	"follow_overhead"
+					"EffectName"	"particles/custom/replenish.vpcf"
+					"EffectAttachType"	"PATTACH_ABSORIGIN_FOLLOW"
 				}
+
+                "FireSound"
+                {
+                    "Target"	"TARGET"
+                    "EffectName"	"Hero_Juggernaut.HealingWard.Loop"
+                }
 
 			}
 
@@ -53,6 +62,20 @@
 				{
 					"HealAmount"	"%heal_amount"
 					"Target"	"TARGET"
+				}
+                
+                "RunScript"
+                {
+                    "ScriptFile"	"mechanics/mana.lua"
+                    "Function"		"RestoreMana"
+                    "ManaRestored"	"%heal_amount"
+                }
+            
+				"FireEffect"
+				{
+					"Target"	"TARGET"
+					"EffectName"	"particles/custom/replenish_base2.vpcf"
+					"EffectAttachType"	"PATTACH_ABSORIGIN_FOLLOW"
 				}
 
 			}
@@ -66,7 +89,14 @@
 				}
 
 			}
-
+            "OnDestroy"
+            { 
+            "RunScript"
+                {
+                    "ScriptFile"	"heroes/priest/replenish.lua"
+                    "Function"		"ReplenishStop"
+                }            
+            }
 		}
 
 	}
