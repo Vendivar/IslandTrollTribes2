@@ -49,5 +49,11 @@
 			"var_type"	"FIELD_INTEGER"
 			"bounces"	"7"
 		}
+        
+		"03"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"range"	"3000"
+		}
 	}
 }

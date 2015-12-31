@@ -9458,10 +9458,10 @@
 	        }
 		}
 	}
-	"ability_priest_enhancingherbalbalm"
+	"ability_priest_enhancingherbalism"
 	{
 		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"ability_priest_enhancingherbalbalm"
+		"AbilityTextureName"			"ability_priest_enhancingherbalism"
 		"MaxLevel" 						"1"
 	
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
@@ -9475,6 +9475,17 @@
 		"AbilityChannelTime"			"2"
 		"AbilityCastRange"				"300"
 	
+	    "precache"
+	        {
+	        "soundfile" "soundevents/spells.vsndevts"
+	       "particle" "particles/units/heroes/hero_oracle/oracle_purifyingflames.vpcf"
+	    "particle" "particles/units/heroes/hero_treant/treant_livingarmor_regen_leaves.vpcf"
+	    "particle" "particles/units/heroes/hero_treant/treant_livingarmor_beama.vpcf"
+	    "particle" "particles/units/heroes/hero_oracle/oracle_purifyingflames_lines_sml.vpcf"
+	        
+	        
+	        }
+	        
 		"AbilitySpecial"
 		{
 			"01"
@@ -9485,19 +9496,54 @@
 			"02"
 			{
 				"var_type"			"FIELD_FLOAT"
+				"attack_speed"			"5"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"move_speed"			"5"
+			}
+			"04"
+			{
+				"var_type"			"FIELD_FLOAT"
 				"duration"			"60"
 			}
 		}
 	
-		"OnSpellStart"
+	    
+	    
+	"OnSpellStart"
 		{
+			"FireSound"
+			{
+				"EffectName"	"enhancing.herbal"
+				"Target" 		"CASTER"
+			}
+	        "ApplyModifier"
+			{
+				"ModifierName"	"modifier_priest_herbal_channel"
+				"Target" 		"TARGET"
+	
+				"Duration"		"2"
+			}
+	    }
+	    
+		"OnChannelSucceeded"
+		{
+			"FireSound"
+			{
+				"EffectName"	"DOTA_Item.Mekansm.Target"
+				"Target" 		"TARGET"
+			}
+	    
 			"ApplyModifier"
 			{
 				"ModifierName"	"modifier_priest_enhancingherbalbalm"
 				"Target" 		"TARGET"
 				"Duration"		"%duration"
 			}
-		}
+	    
+	    }
 	
 		"Modifiers"
 		{
@@ -9505,10 +9551,20 @@
 			{
 				"IsHidden"			"0"
 				"IsBuff"			"1"
-		
+	            "ThinkInterval"  "1.0"
 				"OnCreated"
 				{
-					"ThinkInterval"  "1.0"
+	                "AttachEffect"
+	                {
+	                    "Target"	"TARGET"
+	                    "EffectName"	"particles/custom/enhancing_herbal.vpcf"
+	                    "EffectAttachType"	"follow_origin"
+	                    "ControlPointEntities"
+	                        {
+	                        "TARGET" "attach_origin"
+	                        }
+	                }
+	            }                
 					"OnIntervalThink"
 					{
 						"Heal"
@@ -9518,7 +9574,51 @@
 						}
 					}
 				}
-			}
+	            
+	        
+	    "modifier_priest_herbal_channel"
+			{
+				"IsHidden"			"1"
+				"IsBuff"			"0"
+				
+				"OnCreated"
+				{            
+	                "AttachEffect"
+	                {
+	                    "Target"	"TARGET"
+	                    "EffectName"	"particles/units/heroes/hero_treant/treant_livingarmor_beama.vpcf"
+	                    "EffectAttachType"	"follow_origin"
+	                    "ControlPointEntities"
+	                    {
+	                        "TARGET" "attach_origin"
+	                        "TARGET" "attach_origin"
+	                    }
+	                }
+	                "AttachEffect"
+	                {
+	                    "Target"	"TARGET"
+	                    "EffectName"	"particles/units/heroes/hero_treant/treant_livingarmor_regen_leaves.vpcf"
+	                    "EffectAttachType"	"follow_origin"
+	                    "ControlPointEntities"
+	                    {
+	                        "TARGET" "attach_origin"
+	                        "TARGET" "attach_origin"
+	                    }
+	                }        
+	                "AttachEffect"
+	                {
+	                    "Target"	"TARGET"
+	                    "EffectName"	"particles/units/heroes/hero_oracle/oracle_purifyingflames_lines_sml.vpcf"
+	                    "EffectAttachType"	"follow_origin"
+	                }                  
+	                "AttachEffect"
+	                {
+	                    "Target"	"CASTER"
+	                    "EffectName"	"particles/units/heroes/hero_oracle/oracle_purifyingflames_lines_sml.vpcf"
+	                    "EffectAttachType"	"follow_origin"
+	                }                                          
+				}    
+	        }
 		}
 	}
 	"ability_priest_fortitude"
@@ -9668,6 +9768,12 @@
 				"var_type"	"FIELD_INTEGER"
 				"bounces"	"7"
 			}
+	        
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"range"	"3000"
+			}
 		}
 	}
 	"ability_priest_increasemetabolism"
@@ -9684,11 +9790,19 @@
 		"AbilityCooldown"				"30"
 		"AbilityManaCost"				"30"
 	
+		"AbilityCastAnimation"	        "ACT_DOTA_CAST_ABILITY_3"
 		"MaxLevel" 						"1"
 	    "precache"
 	    {
 	        "soundfile" "soundevents/spells.vsndevts"
+	        "soundfile" "soundevents/game_sounds_heroes/game_sounds_axe.vsndevts"
+	        "particle" "particles/units/heroes/hero_oracle/oracle_purifyingflames_halo_open.vpcf"
+	        "particle" "particles/units/heroes/hero_oracle/oracle_purifyingflames_flash_glow.vpcf"
 	    }
+	    
+	    
+	    
+	    
 		"AbilitySpecial"
 		{
 			"01"
@@ -9701,10 +9815,48 @@
 				"var_type"			"FIELD_INTEGER"
 				"movement_speed"	"10"
 			}
+			"03"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"additional_health"	"25"
+			}
 		}
 	
 		"OnSpellStart"
 		{
+			"FireSound"
+			{
+				"EffectName"	"Hero_Axe.Berserkers_Call"
+				"Target"	"TARGET"
+			}
+	        
+	        "FireEffect"
+	        {
+	        "Target"	"TARGET"
+	        "EffectName"	"particles/units/heroes/hero_oracle/oracle_purifyingflames_halo_open.vpcf"
+	        "EffectAttachType"	"follow_origin"
+	        "ControlPointEntities"
+	            {
+	            "TARGET" "attach_origin"
+	            "TARGET" "attach_origin"
+	            "TARGET" "attach_origin"
+	            "TARGET" "attach_origin"
+	            }
+	        }
+	        "FireEffect"
+	        {
+	        "Target"	"CASTER"
+	        "EffectName"	"particles/units/heroes/hero_oracle/oracle_purifyingflames_halo_open.vpcf"
+	        "EffectAttachType"	"follow_origin"
+	        "ControlPointEntities"
+	            {
+	            "TARGET" "attach_origin"
+	            "TARGET" "attach_origin"
+	            "TARGET" "attach_origin"
+	            "TARGET" "attach_origin"
+	            }
+	        }
+	        
 			"ApplyModifier"
 			{
 				"ModifierName"	"modifier_priest_increasemetabolism"
@@ -9712,11 +9864,6 @@
 				"Duration"		"%duration"
 			}
 	        
-			"FireSound"
-			{
-				"EffectName"	"Increase.Metabolim"
-				"Target"	"TARGET"
-			}
 		}
 	
 		"Modifiers"
@@ -9727,9 +9874,194 @@
 				"IsHidden"			"0"
 				"IsBuff"			"1"
 				
+				"OnCreated"
+				{
+	                "AttachEffect"
+	                {
+	                    "Target"	"TARGET"
+	                    "EffectName"	"particles/custom/increase_metabolism.vpcf"
+	                    "EffectAttachType"	"follow_origin"
+	                }
+	                
+	                "FireEffect"
+	                {
+	                    "Target"	"CASTER"
+	                    "EffectName"	"particles/units/heroes/hero_oracle/oracle_purifyingflames_flash_glow.vpcf"
+	                    "EffectAttachType"	"follow_origin"
+	                }
+	                
+	                "FireSound"
+	                {
+	                    "EffectName"	"Hero_Axe.BerserkersCall.Item.Shoutmask"
+	                    "Target"	"TARGET"
+	                }
+	                
+	            }
 				"Properties"
 				{
 				    "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%movement_speed" 
+				}
+			}
+		}
+	}
+	"ability_priest_lightgate"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"ability_priest_lightgate"
+		"MaxLevel" 						"1"
+	
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	
+		"AbilityCooldown"				"%cooldown"
+		"AbilityManaCost"				"50"
+	
+		"AbilityCastRange"				"0"
+		"AbilityCastPoint"				"3.0"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_1"
+		"AOERadius"						"%radius"
+        "Precache"
+		{
+			"soundfile"	"sounds/weapons/hero/zuus/static_field.vsnd"
+			"particle"	"particles/custom/dark_gate.vpcf"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"radius"			"1500"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"spell_interval"	"3.0"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"damage_threshold"	"150"
+			}
+			"04"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"cooldown"			"40"
+			}
+		}
+	
+		"OnAbilityPhaseStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"heroes/mage/dark_gate.lua"
+				"Function"		"DarkGatePhaseStart"
+	
+				"modifier"		"modifier_mage_darkgate"
+			}
+		}
+	
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"heroes/mage/dark_gate.lua"
+				"Function"		"DarkGateStart"
+			}
+	
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_mage_darkgate"
+				"Target" 		"CASTER"
+				"Duration"		"-1"
+			}
+		}
+	
+	
+		"Modifiers"
+		{
+			"modifier_mage_darkgate"
+			{
+				"IsHidden"			"0"
+				"IsBuff"			"1"
+				"OnCreated"
+			{
+				"AttachEffect"
+				{
+					"Target"	"CASTER"
+					"EffectName"	"particles/custom/dark_gate.vpcf"
+					"EffectAttachType"	"attach_origin"
+                "ControlPointEntities"
+				{
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin"
+					"CASTER" "attach_origin" //CP2
+				}
+				}
+			}
+				"OnTakeDamage"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/mage/dark_gate.lua"
+						"Function"		"DarkGateDamaged"
+	
+						"attack_damage" "%attack_damage"
+						"damage_threshold" "%damage_threshold"
+	
+						"modifier"		"modifier_mage_darkgate"
+					}
+				}
+	
+				"ThinkInterval"  "%spell_interval"
+				"OnIntervalThink"
+				{
+					"ActOnTargets"
+					{
+						"Target"
+						{
+							"Center"  	"CASTER"
+							"Radius" 	"%radius"
+							"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+							"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+						}
+					
+						"Action"    
+						{
+							"RunScript"
+							{
+								"ScriptFile"	"heroes/mage/dark_gate.lua"
+								"Function"		"DarkGateThink"
+							}
+						}
+					}
+				}
+	
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/mage/dark_gate.lua"
+						"Function"		"DarkGateStop"
+	
+						"cooldown"		"%cooldown"
+					}
+				}
+	
+				"States"
+				{
+					"MODIFIER_STATE_DISARMED"		"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_ROOTED"			"MODIFIER_STATE_VALUE_ENABLED"
 				}
 			}
 		}
@@ -9762,7 +10094,7 @@
 			}
 	         "FireSound"
 	        {
-	            "FireSound"	"lightning.shield"
+	            "EffectName"	"lightning.shield"
 	            "Target"	"TARGET"
 	        }
 		}
@@ -9829,18 +10161,31 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"ability_priest_maximumfervor"
+		"MaxLevel" 						"1"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_2"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_4"
 		"AbilityCastPoint"	"0.5"
 		"AbilityCooldown"	"120"
 		"AbilityCastRange"	"0"
 		"AbilityManaCost"	"50"
+	    
+	    "precache"
+	    {
+	        "soundfile" "soundevents/spells.vsndevts"
+	        "soundfile" "soundevents/game_sounds_heroes/game_sounds_sven.vsndevts"
+	        "particle" "particles/units/heroes/hero_batrider/batrider_firefly_pulse.vpcf"
+	        "particle" "particles/units/heroes/hero_batrider/batrider_firefly_startflash.vpcf"
+	        "particle" "particles/units/heroes/hero_batrider/batrider_flaming_lasso_loop.vpcf"
+	        "particle" "particles/units/heroes/hero_oracle/oracle_fortune_aoe_dust_hit.vpcf"
+	    }
+	    
 		"OnSpellStart"
 		{
 			"ApplyModifier"
 			{
 				"Target"	"CASTER"
 				"ModifierName"	"modifier_maximumfervor"
+				"Duration"		"%duration"
 			}
 	
 			"FireSound"
@@ -9863,13 +10208,62 @@
 					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor_bonus"
 				}
 	
-				"States"
+				"OnCreated"
 				{
-					"MODIFIER_STATE_SILENCED"	"MODIFIER_STATE_VALUE_ENABLED"
+					"FireEffect"
+					{
+						"Target"	"TARGET"
+						"EffectName"	"particles/custom/maximum_fervor.vpcf"
+						"EffectAttachType"	"PATTACH_ABSORIGIN_FOLLOW"
+					}
+					"FireEffect"
+					{
+						"Target"	"TARGET"
+						"EffectName"	"particles/units/heroes/hero_oracle/oracle_fortune_aoe_ember.vpcf"
+						"EffectAttachType"	"PATTACH_ABSORIGIN_FOLLOW"
+					}
+					"FireEffect"
+					{
+						"Target"	"TARGET"
+						"EffectName"	"particles/units/heroes/hero_oracle/oracle_fortune_aoe_dust_hit.vpcf"
+						"EffectAttachType"	"PATTACH_ABSORIGIN_FOLLOW"
+					}
 				}
 	
+	
+				"StatusEffectName"		"particles/status_fx/status_effect_statue.vpcf"
+				"StatusEffectPriority"	"10"
+	
+				"OnAttacked"
+				{
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_frost_armor_slow"
+						"Target"		"ATTACKER"
+						"Duration"		"%slow_duration"
+					}
+	
+					"FireSound"
+					{
+						"EffectName"	"Hero_Lich.FrostArmorDamage"
+						"Target"		"TARGET"
+					}
+				}
 			}
 	
+			"modifier_frost_armor_slow"
+			{
+				"IsDebuff"	"1"
+	
+				"StatusEffectName"		"particles/status_fx/status_effect_frost.vpcf"
+				"StatusEffectPriority"	"10"
+	
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%slow_attack_speed"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%slow_movement_speed"
+				}
+			}
 		}
 	
 		"AbilitySpecial"
@@ -9889,9 +10283,29 @@
 			"03"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"armor_bonus"	"10"
+				"armor_bonus"	"15"
 			}
 	
+			"03"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"slow_duration"			"2.0"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"slow_movement_speed"	"-10"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"slow_attack_speed"		"-10"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"		"40s"
+			}
 		}
 	
 	}
@@ -10137,20 +10551,28 @@
 	{
 		"BaseClass"             		"ability_datadriven"
 		"AbilityTextureName"			"ability_priest_painkillerbalm"
-	
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_DONT_CANCEL_CHANNEL"
+		"AbilityCastAnimation"	        "ACT_DOTA_CAST_ABILITY_3"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
-		//CANNOT BE USED ON SELF
 		"AbilityChannelTime"			"2"
 		"AbilityCooldown"				"70"
 		"AbilityManaCost"				"35"
 		"AbilityDuration"				"%duration"
-	
+	    "AnimationPlayBackRate"             "0.6"
 		"AbilityCastRange"				"300"
 	
 		"MaxLevel" 						"1"
 	
+		"Precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_juggernaut.vsndevts"
+	        "soundfile" "soundevents/game_sounds_heroes/game_sounds_oracle.vsndevts"
+	        "particles" "particles/units/heroes/hero_oracle/oracle_fatesedict_arc_pnt.vpcf"
+	        "particles" "particles/units/heroes/hero_oracle/oracle_fatesedict_arc_glow.vpcf"
+	        "particles" "particles/units/heroes/hero_oracle/oracle_false_promise_cast_ring.vpcf"
+		}
+	    
 		"AbilitySpecial"
 		{
 			"01"
@@ -10169,12 +10591,28 @@
 				"remove_interval"	"2.0"
 			}
 		}
+	    
+	"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"	"Hero_Oracle.FortunesEnd.Channel"
+				"Target" 		"CASTER"
+			}
+	        "ApplyModifier"
+			{
+				"ModifierName"	"modifier_priest_painkillerbalm_channel"
+				"Target" 		"TARGET"
 	
+				"Duration"		"2"
+			}
+	    }
+	    
 		"OnChannelSucceeded"
 		{
 			"ApplyModifier"
 			{
-				"ModifierName"	"ability_priest_painkillerbalm"
+				"ModifierName"	"modifier_priest_painkillerbalm"
 				"Target" 		"TARGET"
 	
 				"Duration"		"%duration"
@@ -10183,11 +10621,12 @@
 	
 		"Modifiers"
 		{
-			"ability_priest_painkillerbalm"
+			"modifier_priest_painkillerbalm"
 			{
 				"IsHidden"			"0"
 				"IsBuff"			"1"
 				
+	            "ThinkInterval" "2"
 				"OnCreated"
 				{
 					"RunScript"
@@ -10195,11 +10634,43 @@
 						"ScriptFile"	"heroes/priest/pain_killer.lua"
 						"Function"		"PainKillerBalmStart"
 						"Target"		"TARGET"
-	
 						"stacks"		"%stacks"
 					}
-					"ThinkInterval"  "remove_interval"
-					"OnIntervalThink"
+	                
+	                "FireSound"
+	                {
+	                    "EffectName"	"Hero_Oracle.FortunesEnd.Target"
+	                    "Target" 		"TARGET"
+	                }
+	                 "AttachEffect"
+	                {
+	                    "Target"	"TARGET"
+	                    "EffectName"	"particles/units/heroes/hero_oracle/oracle_fatesedict.vpcf"
+	                    "EffectAttachType"	"follow_origin"
+	                    "ControlPointEntities"
+	                    {
+	                        "TARGET" "attach_origin"
+	                        "TARGET" "attach_origin"
+	                        "TARGET" "attach_origin"
+	                        "TARGET" "attach_origin"
+	                        "TARGET" "attach_origin"
+	                        "TARGET" "attach_origin"
+	                        "TARGET" "attach_origin"
+	                        "TARGET" "attach_origin"
+	                        "TARGET" "attach_origin"
+	                        "TARGET" "attach_origin"
+	                        "TARGET" "attach_origin"
+	                        "TARGET" "attach_origin"
+	                    }
+	                }
+	            }
+	            
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE" "20"
+				}
+	            
+	            "OnIntervalThink"
 					{
 						"RunScript"
 						{
@@ -10207,13 +10678,44 @@
 							"Function"		"PainKillerBalmThink"
 						}
 					}
-				}
-	
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE" "20"
-				}
 			}
+	    
+	    "modifier_priest_painkillerbalm_channel"
+			{
+				"IsHidden"			"1"
+				"IsBuff"			"0"
+				
+				"OnCreated"
+				{            
+	                "AttachEffect"
+	                {
+	                    "Target"	"TARGET"
+	                    "EffectName"	"particles/custom/painkiller_channel.vpcf"
+	                    "EffectAttachType"	"follow_origin"
+	                    "ControlPointEntities"
+	                    {
+	                        "TARGET" "attach_origin"
+	                        "TARGET" "attach_origin"
+	                        "TARGET" "attach_origin"
+	                        "TARGET" "attach_origin"
+	                        "TARGET" "attach_origin"
+	                        "TARGET" "attach_origin"
+	                        "TARGET" "attach_origin"
+	                        "TARGET" "attach_origin"
+	                        "TARGET" "attach_origin"
+	                        "TARGET" "attach_origin"
+	                        "TARGET" "attach_origin"
+	                        "TARGET" "attach_origin"
+	                    }
+	                }        
+	                "AttachEffect"
+	                {
+	                    "Target"	"CASTER"
+	                    "EffectName"	"particles/custom/painkiller_channel_caster.vpcf"
+	                    "EffectAttachType"	"follow_origin"
+	                }                                
+				}    
+	        }            
 		}
 	}
 	"ability_priest_pumpup"
@@ -10758,6 +11260,12 @@
 	
 		"MaxLevel" 						"1"
 	
+	    "precache"
+	        {
+	        "soundfile" "soundevents/spells.vsndevts"
+	        "particle" "particles/units/heroes/hero_dazzle/dazzle_weave.vpcf"
+	        "particle" "particles/items2_fx/rod_of_atos_debuff.vpcf"
+	        }
 		"AbilitySpecial"
 		{
 			"01"
@@ -10793,7 +11301,21 @@
 			{
 				"IsDebuff"	"1"
 				"IsHidden"	"0"
-	
+	            "OnCreated"
+	            {
+	                "FireSound"
+	                {
+	                    "EffectName" "spirit.break"
+	                    "Target" "TARGET"
+	                }
+	                              
+	                "AttachEffect"
+	                {
+	                    "Target"	"TARGET"
+	                    "EffectName"	"particles/items2_fx/rod_of_atos_debuff.vpcf"
+	                    "EffectAttachType"	"follow_origin"
+	                }              
+	            }
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%attack_speed"
@@ -10828,6 +11350,7 @@
 				{
 					"MODIFIER_STATE_MAGIC_IMMUNE"		"MODIFIER_STATE_VALUE_ENABLED"
 					"MODIFIER_STATE_ATTACK_IMMUNE"		"MODIFIER_STATE_VALUE_ENABLED"
+	                "MODIFIER_STATE_INVISIBLE"          "MODIFIER_STATE_VALUE_ENABLED"
 				}
 			}
 		}
@@ -10843,8 +11366,20 @@
 		"AbilityCooldown"				"90"
 		"AbilityManaCost"				"40"
 	
+		"AbilityCastAnimation"	        "ACT_DOTA_CAST_ABILITY_2"
 		"MaxLevel" 						"1"
 	
+	    "precache"
+	        {
+	        "soundfile" "soundevents/spells.vsndevts"
+	        "particle" "particles/units/heroes/hero_dazzle/dazzle_weave.vpcf"
+	        "particle" "particles/econ/items/meepo/meepo_colossal_crystal_chorus/meepo_divining_rod_poof_end_sparks.vpcf"
+	        "particle" "particles/econ/items/bristleback/bristle_spikey_spray/bristle_spikey_quill_spray_warp.vpcf"
+	        "particle" "particles/econ/items/phantom_assassin/phantom_assassin_arcana_elder_smith/pa_arcana_death_warp.vpcf"
+	        "particle" "particles/units/heroes/hero_winter_wyvern/wyvern_splinter_explosion_ring.vpcf"
+	        "particle" "particles/units/heroes/hero_winter_wyvern/wyvern_winters_curse_beams.vpcf"
+	        }
+	        
 		"AbilitySpecial"
 		{
 			"01"
@@ -10876,6 +11411,35 @@
 				"ModifierName"	"modifier_priest_spiritwalk"
 				"Target" 		"CASTER"
 			}
+	        "FireEffect"
+	        {
+	            "Target"	"CASTER"
+	            "EffectName"	"particles/units/heroes/hero_treant/treant_overgrowth_vine_core_sparkly.vpcf"
+	            "EffectAttachType"	"follow_origin"
+	        }          
+	        "FireEffect"
+	        {
+	            "Target"	"CASTER"
+	            "EffectName"	"particles/econ/items/bristleback/bristle_spikey_spray/bristle_spikey_quill_spray_warp.vpcf"
+	            "EffectAttachType"	"follow_origin"
+	        }           
+	        "FireEffect"
+	        {
+	            "Target"	"CASTER"
+	            "EffectName"	"particles/units/heroes/hero_winter_wyvern/wyvern_splinter_explosion_ring.vpcf"
+	            "EffectAttachType"	"follow_origin"
+	        }      
+	        "FireEffect"
+	        {
+	            "Target"	"CASTER"
+	            "EffectName"	"particles/units/heroes/hero_winter_wyvern/wyvern_winters_curse_beams.vpcf"
+	            "EffectAttachType"	"follow_origin"
+	        }                         
+	        "FireSound"
+	        {
+	            "EffectName" "spirit.walk"
+	            "Target" "CASTER"
+	        }
 			"SpawnUnit"
 			{
 				"UnitName"		"npc_hero_priest_sage_spirit"
@@ -10903,6 +11467,24 @@
 				"ModifierName"	"ability_priest_spiritwalk_channel"
 				"Target" 		"CASTER"
 			}
+	        "FireEffect"
+	        {
+	            "Target"	"CASTER"
+	            "EffectName"	"particles/econ/items/meepo/meepo_colossal_crystal_chorus/meepo_divining_rod_poof_end_sparks.vpcf"
+	            "EffectAttachType"	"follow_origin"
+	        } 
+	        "FireEffect"
+	        {
+	            "Target"	"CASTER"
+	            "EffectName"	"particles/econ/items/phantom_assassin/phantom_assassin_arcana_elder_smith/pa_arcana_death_warp.vpcf"
+	            "EffectAttachType"	"follow_origin"
+	        }         
+	        "FireSound"
+	        {
+	            "EffectName" "spirit.walk"
+	            "Target" "CASTER"
+	        }
+	        
 			"RunScript"
 			{
 				"ScriptFile"	"heroes/priest/spirit_walk.lua"
@@ -10931,7 +11513,21 @@
 						"per_unit"		"%per_unit"
 					}
 				}
-	
+	            "OnCreated"
+	            {
+	                "AttachEffect"
+	                {
+	                    "Target"	"CASTER"
+	                    "EffectName"	"particles/units/heroes/hero_oracle/oracle_ambient_body_elec.vpcf"
+	                    "EffectAttachType"	"follow_origin"
+	                }                     
+	                "AttachEffect"
+	                {
+	                    "Target"	"CASTER"
+	                    "EffectName"	"particles/custom/spirit_walk_glow_main.vpcf"
+	                    "EffectAttachType"	"follow_origin"
+	                }                     
+	            }
 				"OnTakeDamage"
 				{
 					"RunScript"
@@ -11053,6 +11649,14 @@
 	
 		}
 	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"heal_amount"	"30"
+			}
+	    }
 	}
 	"ability_priest_swap2"
 	{
@@ -11089,6 +11693,15 @@
 		"AOERadius"						"%range"
 		"MaxLevel" 						"1"
 	
+	    "precache"
+	        {
+	        "soundfile" "soundevents/spells.vsndevts"
+	        "particle" "particles/units/heroes/hero_treant/treant_overgrowth_conjure_rise.vpcf"
+	        "particle" "particles/units/heroes/hero_templar_assassin/templar_assassin_base_attack_explosion_warp.vpcf"
+	        "particle" "particles/units/heroes/hero_templar_assassin/templar_assassin_base_attack_explosion_warp.vpcf"
+	        }
+	        
+	        
 		"AbilitySpecial"
 		{
 			"01"
@@ -11120,7 +11733,33 @@
 				"Passive"			"0"
 				"IsHidden"			"0"
 				"IsDebuff"			"1"
-				
+				"OnCreated"
+	            {
+	                "FireSound"
+	                {
+	                    "EffectName" "tear.spirit"
+	                    "Target" "TARGET"
+	                }
+	                
+	                "FireEffect"
+	                {
+	                    "Target"	"TARGET"
+	                    "EffectName"	"particles/units/heroes/hero_templar_assassin/templar_assassin_base_attack_explosion_warp.vpcf"
+	                    "EffectAttachType"	"follow_origin"
+	                }                     
+	                "AttachEffect"
+	                {
+	                    "Target"	"TARGET"
+	                    "EffectName"	"particles/units/heroes/hero_treant/treant_overgrowth_conjure_rise.vpcf"
+	                    "EffectAttachType"	"follow_origin"
+	                }                  
+	                "AttachEffect"
+	                {
+	                    "Target"	"TARGET"
+	                    "EffectName"	"particles/units/heroes/hero_treant/treant_overgrowth_conjure_rise.vpcf"
+	                    "EffectAttachType"	"follow_origin"
+	                }                         
+	            }
 				"States"
 				{
 					"MODIFIER_STATE_ROOTED"			"MODIFIER_STATE_VALUE_ENABLED"

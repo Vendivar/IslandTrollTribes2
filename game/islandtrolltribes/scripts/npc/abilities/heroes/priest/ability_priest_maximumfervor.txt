@@ -2,18 +2,31 @@
 {
 	"BaseClass"	"ability_datadriven"
 	"AbilityTextureName"	"ability_priest_maximumfervor"
+	"MaxLevel" 						"1"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_2"
+	"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_4"
 	"AbilityCastPoint"	"0.5"
 	"AbilityCooldown"	"120"
 	"AbilityCastRange"	"0"
 	"AbilityManaCost"	"50"
+    
+    "precache"
+    {
+        "soundfile" "soundevents/spells.vsndevts"
+        "soundfile" "soundevents/game_sounds_heroes/game_sounds_sven.vsndevts"
+        "particle" "particles/units/heroes/hero_batrider/batrider_firefly_pulse.vpcf"
+        "particle" "particles/units/heroes/hero_batrider/batrider_firefly_startflash.vpcf"
+        "particle" "particles/units/heroes/hero_batrider/batrider_flaming_lasso_loop.vpcf"
+        "particle" "particles/units/heroes/hero_oracle/oracle_fortune_aoe_dust_hit.vpcf"
+    }
+    
 	"OnSpellStart"
 	{
 		"ApplyModifier"
 		{
 			"Target"	"CASTER"
 			"ModifierName"	"modifier_maximumfervor"
+			"Duration"		"%duration"
 		}
 
 		"FireSound"
@@ -36,13 +49,56 @@
 				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor_bonus"
 			}
 
-			"States"
+			"OnCreated"
 			{
-				"MODIFIER_STATE_SILENCED"	"MODIFIER_STATE_VALUE_ENABLED"
+				"FireEffect"
+				{
+					"Target"	"TARGET"
+					"EffectName"	"particles/custom/maximum_fervor.vpcf"
+					"EffectAttachType"	"PATTACH_ABSORIGIN_FOLLOW"
+				}
+				"FireEffect"
+				{
+					"Target"	"TARGET"
+					"EffectName"	"particles/units/heroes/hero_oracle/oracle_fortune_aoe_ember.vpcf"
+					"EffectAttachType"	"PATTACH_ABSORIGIN_FOLLOW"
+				}
 			}
 
+
+			"StatusEffectName"		"particles/status_fx/status_effect_statue.vpcf"
+			"StatusEffectPriority"	"10"
+
+			"OnAttacked"
+			{
+				"ApplyModifier"
+				{
+					"ModifierName"	"modifier_frost_armor_slow"
+					"Target"		"ATTACKER"
+					"Duration"		"%slow_duration"
+				}
+
+				"FireSound"
+				{
+					"EffectName"	"Hero_Lich.FrostArmorDamage"
+					"Target"		"TARGET"
+				}
+			}
 		}
 
+		"modifier_frost_armor_slow"
+		{
+			"IsDebuff"	"1"
+
+			"StatusEffectName"		"particles/status_fx/status_effect_frost.vpcf"
+			"StatusEffectPriority"	"10"
+
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%slow_attack_speed"
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%slow_movement_speed"
+			}
+		}
 	}
 
 	"AbilitySpecial"
@@ -62,9 +118,29 @@
 		"03"
 		{
 			"var_type"	"FIELD_FLOAT"
-			"armor_bonus"	"10"
+			"armor_bonus"	"15"
 		}
 
+		"03"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"slow_duration"			"2.0"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"slow_movement_speed"	"-10"
+		}
+		"05"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"slow_attack_speed"		"-10"
+		}
+		"06"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"		"40s"
+		}
 	}
 
 }

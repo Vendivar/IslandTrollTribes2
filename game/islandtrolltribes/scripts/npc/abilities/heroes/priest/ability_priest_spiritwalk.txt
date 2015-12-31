@@ -9,8 +9,20 @@
 	"AbilityCooldown"				"90"
 	"AbilityManaCost"				"40"
 
+	"AbilityCastAnimation"	        "ACT_DOTA_CAST_ABILITY_2"
 	"MaxLevel" 						"1"
 
+    "precache"
+        {
+        "soundfile" "soundevents/spells.vsndevts"
+        "particle" "particles/units/heroes/hero_dazzle/dazzle_weave.vpcf"
+        "particle" "particles/econ/items/meepo/meepo_colossal_crystal_chorus/meepo_divining_rod_poof_end_sparks.vpcf"
+        "particle" "particles/econ/items/bristleback/bristle_spikey_spray/bristle_spikey_quill_spray_warp.vpcf"
+        "particle" "particles/econ/items/phantom_assassin/phantom_assassin_arcana_elder_smith/pa_arcana_death_warp.vpcf"
+        "particle" "particles/units/heroes/hero_winter_wyvern/wyvern_splinter_explosion_ring.vpcf"
+        "particle" "particles/units/heroes/hero_winter_wyvern/wyvern_winters_curse_beams.vpcf"
+        }
+        
 	"AbilitySpecial"
 	{
 		"01"
@@ -42,6 +54,35 @@
 			"ModifierName"	"modifier_priest_spiritwalk"
 			"Target" 		"CASTER"
 		}
+        "FireEffect"
+        {
+            "Target"	"CASTER"
+            "EffectName"	"particles/units/heroes/hero_treant/treant_overgrowth_vine_core_sparkly.vpcf"
+            "EffectAttachType"	"follow_origin"
+        }          
+        "FireEffect"
+        {
+            "Target"	"CASTER"
+            "EffectName"	"particles/econ/items/bristleback/bristle_spikey_spray/bristle_spikey_quill_spray_warp.vpcf"
+            "EffectAttachType"	"follow_origin"
+        }           
+        "FireEffect"
+        {
+            "Target"	"CASTER"
+            "EffectName"	"particles/units/heroes/hero_winter_wyvern/wyvern_splinter_explosion_ring.vpcf"
+            "EffectAttachType"	"follow_origin"
+        }      
+        "FireEffect"
+        {
+            "Target"	"CASTER"
+            "EffectName"	"particles/units/heroes/hero_winter_wyvern/wyvern_winters_curse_beams.vpcf"
+            "EffectAttachType"	"follow_origin"
+        }                         
+        "FireSound"
+        {
+            "EffectName" "spirit.walk"
+            "Target" "CASTER"
+        }
 		"SpawnUnit"
 		{
 			"UnitName"		"npc_hero_priest_sage_spirit"
@@ -69,6 +110,24 @@
 			"ModifierName"	"ability_priest_spiritwalk_channel"
 			"Target" 		"CASTER"
 		}
+        "FireEffect"
+        {
+            "Target"	"CASTER"
+            "EffectName"	"particles/econ/items/meepo/meepo_colossal_crystal_chorus/meepo_divining_rod_poof_end_sparks.vpcf"
+            "EffectAttachType"	"follow_origin"
+        } 
+        "FireEffect"
+        {
+            "Target"	"CASTER"
+            "EffectName"	"particles/econ/items/phantom_assassin/phantom_assassin_arcana_elder_smith/pa_arcana_death_warp.vpcf"
+            "EffectAttachType"	"follow_origin"
+        }         
+        "FireSound"
+        {
+            "EffectName" "spirit.walk"
+            "Target" "CASTER"
+        }
+        
 		"RunScript"
 		{
 			"ScriptFile"	"heroes/priest/spirit_walk.lua"
@@ -97,7 +156,21 @@
 					"per_unit"		"%per_unit"
 				}
 			}
-
+            "OnCreated"
+            {
+                "AttachEffect"
+                {
+                    "Target"	"CASTER"
+                    "EffectName"	"particles/units/heroes/hero_oracle/oracle_ambient_body_elec.vpcf"
+                    "EffectAttachType"	"follow_origin"
+                }                     
+                "AttachEffect"
+                {
+                    "Target"	"CASTER"
+                    "EffectName"	"particles/custom/spirit_walk_glow_main.vpcf"
+                    "EffectAttachType"	"follow_origin"
+                }                     
+            }
 			"OnTakeDamage"
 			{
 				"RunScript"

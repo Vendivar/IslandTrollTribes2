@@ -2,20 +2,28 @@
 {
 	"BaseClass"             		"ability_datadriven"
 	"AbilityTextureName"			"ability_priest_painkillerbalm"
-
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_DONT_CANCEL_CHANNEL"
+	"AbilityCastAnimation"	        "ACT_DOTA_CAST_ABILITY_3"
 	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
-	//CANNOT BE USED ON SELF
 	"AbilityChannelTime"			"2"
 	"AbilityCooldown"				"70"
 	"AbilityManaCost"				"35"
 	"AbilityDuration"				"%duration"
-
+    "AnimationPlayBackRate"             "0.6"
 	"AbilityCastRange"				"300"
 
 	"MaxLevel" 						"1"
 
+	"Precache"
+	{
+		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_juggernaut.vsndevts"
+        "soundfile" "soundevents/game_sounds_heroes/game_sounds_oracle.vsndevts"
+        "particles" "particles/units/heroes/hero_oracle/oracle_fatesedict_arc_pnt.vpcf"
+        "particles" "particles/units/heroes/hero_oracle/oracle_fatesedict_arc_glow.vpcf"
+        "particles" "particles/units/heroes/hero_oracle/oracle_false_promise_cast_ring.vpcf"
+	}
+    
 	"AbilitySpecial"
 	{
 		"01"
@@ -34,12 +42,28 @@
 			"remove_interval"	"2.0"
 		}
 	}
+    
+"OnSpellStart"
+	{
+		"FireSound"
+		{
+			"EffectName"	"Hero_Oracle.FortunesEnd.Channel"
+			"Target" 		"CASTER"
+		}
+        "ApplyModifier"
+		{
+			"ModifierName"	"modifier_priest_painkillerbalm_channel"
+			"Target" 		"TARGET"
 
+			"Duration"		"2"
+		}
+    }
+    
 	"OnChannelSucceeded"
 	{
 		"ApplyModifier"
 		{
-			"ModifierName"	"ability_priest_painkillerbalm"
+			"ModifierName"	"modifier_priest_painkillerbalm"
 			"Target" 		"TARGET"
 
 			"Duration"		"%duration"
@@ -48,11 +72,12 @@
 
 	"Modifiers"
 	{
-		"ability_priest_painkillerbalm"
+		"modifier_priest_painkillerbalm"
 		{
 			"IsHidden"			"0"
 			"IsBuff"			"1"
 			
+            "ThinkInterval" "2"
 			"OnCreated"
 			{
 				"RunScript"
@@ -60,11 +85,43 @@
 					"ScriptFile"	"heroes/priest/pain_killer.lua"
 					"Function"		"PainKillerBalmStart"
 					"Target"		"TARGET"
-
 					"stacks"		"%stacks"
 				}
-				"ThinkInterval"  "remove_interval"
-				"OnIntervalThink"
+                
+                "FireSound"
+                {
+                    "EffectName"	"Hero_Oracle.FortunesEnd.Target"
+                    "Target" 		"TARGET"
+                }
+                 "AttachEffect"
+                {
+                    "Target"	"TARGET"
+                    "EffectName"	"particles/units/heroes/hero_oracle/oracle_fatesedict.vpcf"
+                    "EffectAttachType"	"follow_origin"
+                    "ControlPointEntities"
+                    {
+                        "TARGET" "attach_origin"
+                        "TARGET" "attach_origin"
+                        "TARGET" "attach_origin"
+                        "TARGET" "attach_origin"
+                        "TARGET" "attach_origin"
+                        "TARGET" "attach_origin"
+                        "TARGET" "attach_origin"
+                        "TARGET" "attach_origin"
+                        "TARGET" "attach_origin"
+                        "TARGET" "attach_origin"
+                        "TARGET" "attach_origin"
+                        "TARGET" "attach_origin"
+                    }
+                }
+            }
+            
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE" "20"
+			}
+            
+            "OnIntervalThink"
 				{
 					"RunScript"
 					{
@@ -72,12 +129,43 @@
 						"Function"		"PainKillerBalmThink"
 					}
 				}
-			}
-
-			"Properties"
-			{
-				"MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE" "20"
-			}
 		}
+    
+    "modifier_priest_painkillerbalm_channel"
+		{
+			"IsHidden"			"1"
+			"IsBuff"			"0"
+			
+			"OnCreated"
+			{            
+                "AttachEffect"
+                {
+                    "Target"	"TARGET"
+                    "EffectName"	"particles/custom/painkiller_channel.vpcf"
+                    "EffectAttachType"	"follow_origin"
+                    "ControlPointEntities"
+                    {
+                        "TARGET" "attach_origin"
+                        "TARGET" "attach_origin"
+                        "TARGET" "attach_origin"
+                        "TARGET" "attach_origin"
+                        "TARGET" "attach_origin"
+                        "TARGET" "attach_origin"
+                        "TARGET" "attach_origin"
+                        "TARGET" "attach_origin"
+                        "TARGET" "attach_origin"
+                        "TARGET" "attach_origin"
+                        "TARGET" "attach_origin"
+                        "TARGET" "attach_origin"
+                    }
+                }        
+                "AttachEffect"
+                {
+                    "Target"	"CASTER"
+                    "EffectName"	"particles/custom/painkiller_channel_caster.vpcf"
+                    "EffectAttachType"	"follow_origin"
+                }                                
+			}    
+        }            
 	}
 }

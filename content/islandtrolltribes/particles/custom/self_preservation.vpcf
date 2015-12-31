@@ -154,5 +154,18 @@
 		{
 			m_ChildRef = resource:"particles/custom/self_preservation_component_1.vpcf"
 		},
+		{
+			m_ChildRef = resource:"particles/econ/items/zeus/lightning_weapon_fx/zuus_base_attack_explosion_immortal_lightning_immortal_lightning.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_winter_wyvern/wyvern_winters_curse_ribbon.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_winter_wyvern/wyvern_winters_curse_beams.vpcf"
+			m_bDisableChild = true
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_winter_wyvern/wyvern_splinter_explosion_ring.vpcf"
+		},
 	]
 }

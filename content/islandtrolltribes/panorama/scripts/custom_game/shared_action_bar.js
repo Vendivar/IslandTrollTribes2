@@ -101,6 +101,10 @@ function UpdateAbilityList()
   {
   	b = 8;
   }
+    if ((Entities.GetAbilityByName( queryUnit , "ability_priest_spiritwalk" )) != -1 )
+  {
+  	b = 8;
+  }
 	if (hero == queryUnit){
 		$.Msg("Hero Panel")
     $.Msg(b)

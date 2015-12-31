@@ -11,6 +11,12 @@
 
 	"MaxLevel" 						"1"
 
+    "precache"
+        {
+        "soundfile" "soundevents/spells.vsndevts"
+        "particle" "particles/units/heroes/hero_dazzle/dazzle_weave.vpcf"
+        "particle" "particles/items2_fx/rod_of_atos_debuff.vpcf"
+        }
 	"AbilitySpecial"
 	{
 		"01"
@@ -46,7 +52,21 @@
 		{
 			"IsDebuff"	"1"
 			"IsHidden"	"0"
-
+            "OnCreated"
+            {
+                "FireSound"
+                {
+                    "EffectName" "spirit.break"
+                    "Target" "TARGET"
+                }
+                              
+                "AttachEffect"
+                {
+                    "Target"	"TARGET"
+                    "EffectName"	"particles/items2_fx/rod_of_atos_debuff.vpcf"
+                    "EffectAttachType"	"follow_origin"
+                }              
+            }
 			"Properties"
 			{
 				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%attack_speed"

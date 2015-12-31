@@ -45,6 +45,7 @@
 		"npc_hero_priest_booster"				"Booster"
 		"npc_hero_priest_master_healer"			"Master Healer"
 		"npc_hero_priest_sage"					"Sage"		
+        "npc_hero_priest_sage_spirit"           "Sage Spirit"
 		"npc_ghost"								"Ghost"
 
 // Unit Names
@@ -225,11 +226,13 @@
 
 "DOTA_Tooltip_Ability_ability_beastmaster_bearform"		"Shapeshift to Bear Form"
 "DOTA_Tooltip_ability_ability_beastmaster_bearform_attack_damage"		"ATTACK DAMAGE:"
-"DOTA_Tooltip_ability_ability_beastmaster_bearform_attack_speed"		"%+$attack"
-"DOTA_Tooltip_Ability_ability_beastmaster_bearform_Description"		"Shapeshifts into a Bear. Drains energy at a faster rate. Gains additional abilities.\n\nMOVE SPEED: <font color='#777777'>-15%</font>\n+$damage <font color='#777777'>+7</font>\n%+$attack <font color='#777777'>-10% </font>\nENERGY DEGEN RATE: 2x\nBONUS HP: <font color='#777777'>+50</font>"
+"DOTA_Tooltip_ability_ability_beastmaster_bearform_attack_speed"		"ATTACK SPEED:"
+"DOTA_Tooltip_ability_ability_beastmaster_bearform_attack_damage"		"DAMAGE BONUS:"
 "DOTA_Tooltip_ability_ability_beastmaster_bearform_health_bonus"		"HEALTH BONUS:"
-"DOTA_Tooltip_ability_ability_beastmaster_bearform_move_speed"		"MOVE SPEED:"
-"DOTA_Tooltip_Ability_ability_beastmaster_bearform_Note0"		"The bonus HP is +50 HP ontop of your max HP. By shapeshifting back if you have less then 50 HP you will die upon being shapeshifted."
+"DOTA_Tooltip_ability_ability_beastmaster_bearform_move_speed"		    "MOVE SPEED:"
+"DOTA_Tooltip_ability_ability_beastmaster_bearform_energy_drain"	    "ENERGY DRAIN RATE MULTIPLIER:"
+"DOTA_Tooltip_Ability_ability_beastmaster_bearform_Description"		"Shapeshifts into a Bear. Drains energy at a faster rate. Gains additional abilities."
+"DOTA_Tooltip_Ability_ability_beastmaster_bearform_Note0"		    "The bonus HP is +50 HP ontop of your max HP. By shapeshifting back if you have less then 50 HP you will die upon being shapeshifted."
 
 
 "DOTA_Tooltip_Ability_ability_beastmaster_calltobattle"		"Call to Battle"
@@ -243,10 +246,10 @@
 "DOTA_Tooltip_ability_item_calltobattle_modifier_applier_Description"		"You are called to battle!"
 
 
-"DOTA_Tooltip_Ability_ability_beastmaster_criticalstrike"		"(Wolf) Critical strike"
-"DOTA_Tooltip_ability_ability_beastmaster_criticalstrike_crit_bonus"		"CRIT BONUS:"
-"DOTA_Tooltip_ability_ability_beastmaster_criticalstrike_crit_chance"		"CRIT CHANCE:"
-"DOTA_Tooltip_Ability_ability_beastmaster_criticalstrike_Description"		"Gives a chance to deal critical damage.\n\nCHANCE: <font color='#777777'>30%</font>\nMULTIPLIER: <font color='#777777'>1.25x damage</font>"
+"DOTA_Tooltip_Ability_ability_beastmaster_criticalstrike"		            "(Wolf) Critical strike"
+"DOTA_Tooltip_ability_ability_beastmaster_criticalstrike_crit_bonus"		"%CRIT BONUS:"
+"DOTA_Tooltip_ability_ability_beastmaster_criticalstrike_crit_chance"		"%CRIT CHANCE:"
+"DOTA_Tooltip_Ability_ability_beastmaster_criticalstrike_Description"		"Gives a chance to deal critical damage"
 "DOTA_Tooltip_modifier_wolf_crit"		"Wolf Crit"
 "DOTA_Tooltip_modifier_wolf_crit_Description"		""
 "DOTA_Tooltip_modifier_wolf_lifesteal"		"Lifesteal"
@@ -254,8 +257,8 @@
 
 
 
-"DOTA_Tooltip_Ability_ability_beastmaster_elkform"		"Shapeshift to Elk form"
-"DOTA_Tooltip_ability_ability_beastmaster_elkform_attack_damage"		"-ATTACK DAMAGE:"
+"DOTA_Tooltip_Ability_ability_beastmaster_elkform"		            "Shapeshift to Elk form"
+"DOTA_Tooltip_ability_ability_beastmaster_elkform_attack_damage"	"+ATTACK DAMAGE:"
 "DOTA_Tooltip_ability_ability_beastmaster_elkform_attack_speed"		"%+ATTACK SPEED:"
 "DOTA_Tooltip_ability_ability_beastmaster_elkform_magic_resist"		"%+MAGIC RESIST:"
 "DOTA_Tooltip_ability_ability_beastmaster_elkform_degen_rate"		"%DEGEN RATE:"
@@ -270,7 +273,7 @@
 "DOTA_Tooltip_Ability_ability_beastmaster_empathicrage_attackspeed"		"%+$attack"
 "DOTA_Tooltip_Ability_ability_beastmaster_empathicrage_charges"		"CHARGES:"
 "DOTA_Tooltip_Ability_ability_beastmaster_empathicrage_Description"		"When one of your pets dies near you you receive a temporary buff to move speed and attack speed. Stacks for each pet that was killed. Lasts 10 seconds."
-"DOTA_Tooltip_Ability_ability_beastmaster_empathicrage_movespeed"		"%MOVE SPEED:"
+"DOTA_Tooltip_Ability_ability_beastmaster_empathicrage_movespeed"		"%+MOVE SPEED:"
 "DOTA_Tooltip_modifier_empathicrage"		"Empathic Rage"
 "DOTA_Tooltip_modifier_empathicrage_Description"		""
 
@@ -300,7 +303,7 @@
 "DOTA_Tooltip_Ability_ability_beastmaster_howl"		"(Wolf) Howl"
 "DOTA_Tooltip_ability_ability_beastmaster_howl_armor_reduction"		"-$ARMOR REDUCTION:"
 "DOTA_Tooltip_ability_ability_beastmaster_howl_attack_speed"		"%+$attack"
-"DOTA_Tooltip_Ability_ability_beastmaster_howl_Description"		"Reduces the armor and attack speed of enemies within range.\n\nBONUS ARMOR: <font color='#777777'>-4</font><font color='#777777'>+2</font>\n%+$attack <font color='#777777'>-15%</font>"
+"DOTA_Tooltip_Ability_ability_beastmaster_howl_Description"		"Reduces the armor and attack speed of enemies within range."
 "DOTA_Tooltip_ability_ability_beastmaster_howl_radius"		"RADIUS:"
 "DOTA_Tooltip_modifier_howl"		"Howl"
 "DOTA_Tooltip_modifier_howl_Description"		"Under the effect of howl. Losing -4 armor and -15% attack speed."
@@ -308,43 +311,63 @@
 
 
 "DOTA_Tooltip_Ability_ability_beastmaster_magicimmunity"		"(Elk) Magic Immunity"
-"DOTA_Tooltip_Ability_ability_beastmaster_magicimmunity_Description"		"Become completely magic immune for a duration\n\nDURATION: <font color='#777777'>10 SECONDS</font>."
+"DOTA_Tooltip_Ability_ability_beastmaster_magicimmunity_Description"		"Become completely magic immune for a duration."
 "DOTA_Tooltip_ability_ability_beastmaster_magicimmunity_duration"		"DURATION:"
+
+
 "DOTA_Tooltip_Ability_ability_beastmaster_normalform"		"Shapeshift to Normal form"
 "DOTA_Tooltip_Ability_ability_beastmaster_normalform_Description"		"Return to the shapeshifter's normal form."
 "DOTA_Tooltip_Ability_ability_beastmaster_normalform_Note0"		"Return to base form"
+
+
 "DOTA_Tooltip_ability_ability_beastmaster_pet_attack"		"Ability Beastmaster Pet Attack"
 "DOTA_Tooltip_ability_ability_beastmaster_pet_attack_Description"		""
+
 "DOTA_Tooltip_ability_ability_beastmaster_pet_follow"		"Ability Beastmaster Pet Follow"
 "DOTA_Tooltip_ability_ability_beastmaster_pet_follow_Description"		""
+
 "DOTA_Tooltip_ability_ability_beastmaster_pet_grow1"		"Ability Beastmaster Pet Grow1"
 "DOTA_Tooltip_ability_ability_beastmaster_pet_grow1_Description"		""
+
 "DOTA_Tooltip_ability_ability_beastmaster_pet_grow1fast"		"Ability Beastmaster Pet Grow1fast"
 "DOTA_Tooltip_ability_ability_beastmaster_pet_grow1fast_Description"		""
+
 "DOTA_Tooltip_ability_ability_beastmaster_pet_grow2"		"Ability Beastmaster Pet Grow2"
 "DOTA_Tooltip_ability_ability_beastmaster_pet_grow2_Description"		""
+
 "DOTA_Tooltip_ability_ability_beastmaster_pet_grow2fast"		"Ability Beastmaster Pet Grow2fast"
 "DOTA_Tooltip_ability_ability_beastmaster_pet_grow2fast_Description"		""
+
 "DOTA_Tooltip_ability_ability_beastmaster_pet_release"		"Ability Beastmaster Pet Release"
 "DOTA_Tooltip_ability_ability_beastmaster_pet_release_Description"		""
+
 "DOTA_Tooltip_ability_ability_beastmaster_pet_sleep"		"Ability Beastmaster Pet Sleep"
 "DOTA_Tooltip_ability_ability_beastmaster_pet_sleep_Description"		""
+
 "DOTA_Tooltip_ability_ability_beastmaster_pet_stay"		"Ability Beastmaster Pet Stay"
 "DOTA_Tooltip_ability_ability_beastmaster_pet_stay_Description"		""
+
 "DOTA_Tooltip_Ability_ability_beastmaster_ram"		"(Elk) Ram"
-"DOTA_Tooltip_Ability_ability_beastmaster_ram_Description"		"Charges at enemy unit dealing damage and stunning temporarily.\n\nDAMAGE: <font color='#777777'>30</font>\nSTUN DURATION: <font color='#777777'>2</font>"
+"DOTA_Tooltip_Ability_ability_beastmaster_ram_Description"		"Charges at enemy unit dealing damage and stunning temporarily."
+"DOTA_Tooltip_Ability_ability_beastmaster_ram_stun_duration"		"STUN DURATION:"
+"DOTA_Tooltip_Ability_ability_beastmaster_ram_stun_damage"		"STUN DAMAGE:"
+
 "DOTA_Tooltip_Ability_ability_beastmaster_releasepet"		">Release Pet"
 "DOTA_Tooltip_Ability_ability_beastmaster_releasepet_Description"		"You release the pet into the wild, losing control of it. The pet immediately becomes hostile and attacks anything around it"
+
 "DOTA_Tooltip_Ability_ability_beastmaster_shortness"		"Shortness"
 "DOTA_Tooltip_ability_ability_beastmaster_shortness_chance"		"CHANCE:"
 "DOTA_Tooltip_Ability_ability_beastmaster_shortness_Description"		"Being agile and small, this grants the chicken a passive 18% chance to evade a physical attack."
+
 "DOTA_Tooltip_Ability_ability_beastmaster_slam"		"(Bear) Slam"
 "DOTA_Tooltip_ability_ability_beastmaster_slam_damage"		"DAMAGE:"
-"DOTA_Tooltip_Ability_ability_beastmaster_slam_Description"		"Slams down on the ground slowing and damaging enemies in the area.\n\nDAMAGE: <font color='#777777'>65</font>\nMOVE AND ATTACK SPEED SLOW: <font color='#777777'>-50%</font>"
+"DOTA_Tooltip_Ability_ability_beastmaster_slam_Description"		"Slams down on the ground slowing and damaging enemies in the area."
 "DOTA_Tooltip_ability_ability_beastmaster_slam_slam_radius"		"SLAM RADIUS:"
-"DOTA_Tooltip_ability_ability_beastmaster_slam_slow"		"SLOW:"
+"DOTA_Tooltip_ability_ability_beastmaster_slam_slow"		"MOVE AND ATTACK SPEED SLOW:"
 "DOTA_Tooltip_bear_slam_slow"		"Bear Slam Slow"
 "DOTA_Tooltip_bear_slam_slow_Description"		"Disoriented from the slam you move and attack 50% slower."
+
+
 "DOTA_Tooltip_Ability_ability_beastmaster_sleep"		">Sleep Beast"
 "DOTA_Tooltip_Ability_ability_beastmaster_sleep_Description"		"The pet goes to into a deep sleep, regenerating hit points over time."
 
@@ -380,11 +403,12 @@
 
 "DOTA_Tooltip_Ability_ability_beastmaster_wolfform"		"Shapeshift to Wolf Form"
 "DOTA_Tooltip_ability_ability_beastmaster_wolfform_attack_damage"		"ATTACK DAMAGE:"
-"DOTA_Tooltip_ability_ability_beastmaster_wolfform_attack_speed"		"%+$attack"
-"DOTA_Tooltip_Ability_ability_beastmaster_wolfform_Description"		"Shapeshifts into a Wolf. Drains energy at a faster rate. Gains additional abilities.\n\nMOVE SPEED: <font color='#777777'>+10%</font>\n+$damage <font color='#777777'>+2</font>\n%+$attack <font color='#777777'>+5% </font>\nENERGY DEGEN RATE: 2x"
+"DOTA_Tooltip_ability_ability_beastmaster_wolfform_attack_speed"		"%ATTACK SPEED:"
+"DOTA_Tooltip_ability_ability_beastmaster_wolfform_degen_rate"		"ENERGY DEGEN RATE:"
 "DOTA_Tooltip_ability_ability_beastmaster_wolfform_move_speed"		"MOVE SPEED:"
-"DOTA_Tooltip_modifier_wolfform"		"Wolf Form"
-"DOTA_Tooltip_modifier_wolfform_Description"		""
+"DOTA_Tooltip_Ability_ability_beastmaster_wolfform_Description"		"Shapeshifts into a Wolf. Drains energy at a faster rate. Gains additional abilities."
+"DOTA_Tooltip_modifier_wolfform"		                            "Wolf Form"
+"DOTA_Tooltip_modifier_wolfform_Description"		                "Gaining +10 move speed, +2 damage, +5% attack speed, while losing energy at an rate of -2x"
 
 
 
@@ -485,9 +509,12 @@
 
 "DOTA_Tooltip_Ability_ability_giganulldamage"		"Giga Null Damage"
 "DOTA_Tooltip_Ability_ability_giganulldamage_Description"		"Slows movement speed and attack speeds and reduces the target's damage output.\n\nATTACK SPEED SLOW: <font color='#777777'>35%</font> MOVEMENT SPEED SLOW: <font color='#777777'>10%</font>\nREDUCES DAMAGE DELT: <font color='#777777'>60%</font>"
+"DOTA_Tooltip_Ability_modifier_giganulldamage_creep"		"Null Damage"
+"DOTA_Tooltip_Ability_modifier_giganulldamage_creep_Description"		"Movement slowed by 10%% and attack speed slowed by 35%%. Damage Reduced by 60%%."
+"DOTA_Tooltip_Ability_modifier_giganulldamage_troll"		"Null Damage"
+"DOTA_Tooltip_Ability_modifier_giganulldamage_troll_Description"		"Movement slowed by 10%% and attack speed slowed by 35%%. Damage Reduced by 60%%."
 
-
-"DOTA_Tooltip_Ability_ability_mage_activate_runes"		"Active Runes"
+"DOTA_Tooltip_Ability_ability_mage_activate_runes"		"Activate Runes"
 "DOTA_Tooltip_Ability_ability_mage_activate_runes_Description"		"Casting this spell causes nearby runes to become active attack a target. This skill can also be used in a gate to perform a dementia summoning.\n<font color='#777777'>Hold ALT to view more information.</font>"
 "DOTA_Tooltip_Ability_ability_mage_activate_runes_Note0"		"Combines the effects of the mage's runes.\nCooldown is reduced by 10 seconds if in a dark gate.\nClears runes after casting\nIf no runes are queued up this spell does nothing, but still wastes the cooldown."
 
@@ -536,7 +563,7 @@
 "DOTA_Tooltip_Ability_ability_mage_dementiasummoning_Note0"		"Summons one of several large demons if the combination is correct and the activation is within a dark gate.\n\nDemon will attack for 25 damage every 1 second at a target within 1000 range.\nSpells:\nIce Demon:\nAura: Slows movement and attack speed of everything within 1000 range by 25%\nFire Demon:\nThrows a fireball every 4 seconds at a target within 1000 range, dealing 60 damage to everything in 300AOE and levelling trees away.\nPlague Demon:\nRandom troll within 1000 range is plagued every 8 seconds. Plague deals 10 damage per second for 20 seconds. If they step within 300 of another troll the plague spreads to that troll for the full duration."
 "DOTA_Tooltip_Ability_ability_mage_depress"		"Depress"
 "DOTA_Tooltip_Ability_ability_mage_depress_Description"		"Depress the enemy, and any enemies who remain near him. Primary target slowed, takes damage, and mana is sapped over time. Nearby enemies are affected by Depress, mana is sapped."
-"DOTA_Tooltip_ability_ability_mage_depress_damage"                                "PRIMARY TARGET DPS:" 
+"DOTA_Tooltip_ability_ability_mage_depress_damage"                                "PRIMARY TARGET DPS:"
 "DOTA_Tooltip_ability_ability_mage_depress_moveslow"                              "%MOVESLOW:"
 "DOTA_Tooltip_ability_ability_mage_depress_attackslow"                            "%ATTACKSLOW:"
 "DOTA_Tooltip_ability_ability_mage_depress_manadrain"                             "MANA DRAIN INITIAL:"
@@ -814,11 +841,6 @@
 "DOTA_Tooltip_modifier_giga_negativeblast_Description"		""
 
 
-
-"DOTA_Tooltip_Ability_modifier_giganulldamage_creep"		"Null Damage"
-"DOTA_Tooltip_Ability_modifier_giganulldamage_creep_Description"		"Movement slowed by 10%% and attack speed slowed by 35%%. Damage Reduced by 60%%."
-"DOTA_Tooltip_Ability_modifier_giganulldamage_troll"		"Null Damage"
-"DOTA_Tooltip_Ability_modifier_giganulldamage_troll_Description"		"Movement slowed by 10%% and attack speed slowed by 35%%. Damage Reduced by 60%%."
 "DOTA_Tooltip_Ability_modifier_jealousy"		"Jealous"
 "DOTA_Tooltip_Ability_modifier_jealousy"		"Forcefully attacking in a jealous rage!"
 
@@ -967,6 +989,8 @@
 "DOTA_Tooltip_Ability_ability_priest_cureall"		"Cure All"
 "DOTA_Tooltip_Ability_ability_priest_cureall_Description"		"Cures a variety of ailments including snake venom and disease."
 "DOTA_Tooltip_Ability_ability_priest_cureall_Note0"		"Removes all debuffs related to poison and disease."
+
+
 "DOTA_Tooltip_ability_ability_priest_enhancingherbalbalm"		"Enhancing Herbalism"
 "DOTA_Tooltip_ability_ability_priest_enhancingherbalbalm_attack_speed_bonus"		"ATTACK SPEED BONUS:"
 "DOTA_Tooltip_ability_ability_priest_enhancingherbalbalm_channeling_time"		"CHANNELING TIME:"
@@ -978,7 +1002,12 @@
 "DOTA_Tooltip_modifier_priest_enhancingherbalbalm"		"Enhancing Herbal Balm"
 "DOTA_Tooltip_modifier_priest_enhancingherbalbalm_Description"		""
 
+"DOTA_Tooltip_ability_ability_priest_enhancingherbalism"                          "Ability Priest Enhancingherbalism"
+"DOTA_Tooltip_ability_ability_priest_enhancingherbalism_Description"              ""
+"DOTA_Tooltip_ability_ability_priest_enhancingherbalism_health_per"               "HEALTH PER:"
+"DOTA_Tooltip_ability_ability_priest_enhancingherbalism_duration"                 "DURATION:"
 
+		
 
 "DOTA_Tooltip_Ability_ability_priest_fortitude"		"Fortitude"
 "DOTA_Tooltip_ability_ability_priest_fortitude_armor_bonus"		"ARMOR BONUS:"
@@ -990,16 +1019,22 @@
 
 
 "DOTA_Tooltip_Ability_ability_priest_healingspray"		"Healing Spray"
-"DOTA_Tooltip_Ability_ability_priest_healingspray_Description"		"Casts a healing spell on your target, healing a small portion of health initially. \n\nHeal: <font color='#777777'>30</font>"
+"DOTA_Tooltip_Ability_ability_priest_healingspray_Description"		"Casts a healing spell on your target, healing a small portion of health instantly."
+"DOTA_Tooltip_ability_ability_priest_sprayhealing_heal_amount"                    "HEAL AMOUNT:"
+
+		
+        
 "DOTA_Tooltip_Ability_ability_priest_healingwave"		"Healing Wave"
 "DOTA_Tooltip_Ability_ability_priest_healingwave_Description"		"Casts a healing spell that bounces up to 7 times in a 3000 radius, healing a small portion of health initially. Amount healed decreases by 10% each bounce."
 "DOTA_Tooltip_ability_ability_priest_healingwave_heal_amount"                     "HEAL AMOUNT:"
 "DOTA_Tooltip_ability_ability_priest_healingwave_bounces"                         "BOUNCES:"
+"DOTA_Tooltip_ability_ability_priest_healingwave_range"                           "RANGE:"
 
 		
 
 "DOTA_Tooltip_Ability_ability_priest_increasemetabolism"		"Increase Metabolism"
-"DOTA_Tooltip_Ability_ability_priest_increasemetabolism_Description"		"When cast on a troll, will cause them to gain an additional health per meat eaten, as well as giving a boost to move speed.\n\nDURATION: <font color='#777777'>20 seconds</font>\nMOVE SPEED BONUS: <font color='#777777'>20%</font>\nAdditional Health Gained: <font color='#777777'>+25</font>"
+"DOTA_Tooltip_Ability_ability_priest_increasemetabolism_Description"		"When cast on a troll, will cause them to gain an additional health per meat eaten, as well as giving a boost to move speed."
+"DOTA_Tooltip_ability_ability_priest_increasemetabolism_additional_health"        "ADDITIONAL HEALTH:"
 "DOTA_Tooltip_ability_ability_priest_increasemetabolism_duration"		"DURATION:"
 "DOTA_Tooltip_ability_ability_priest_increasemetabolism_movement_speed"		"MOVEMENT SPEED:"
 "DOTA_Tooltip_modifier_priest_increasemetabolism"		"Priest Increasemetabolism"
@@ -1028,14 +1063,19 @@
 "DOTA_Tooltip_Ability_ability_priest_mapmagic_Description"		"Increases the range of radar skills of friendly units.\n\nDURATION: <font color='#777777'>90 SECONDS</font>"
 
 
-"DOTA_Tooltip_Ability_ability_priest_maximumfervor"		"Maximum Fervor"
-"DOTA_Tooltip_ability_ability_priest_maximumfervor_armor_bonus"		"ARMOR BONUS:"
-"DOTA_Tooltip_ability_ability_priest_maximumfervor_attack_speed"		"%+$attack"
-"DOTA_Tooltip_Ability_ability_priest_maximumfervor_Description"		"A spell that can only target himself that gives the effects of a Fervor Potion, surging them to move at maximum speed for a short time.\n\nDURATION: <font color='#777777'>10 SECONDS</font>"
-"DOTA_Tooltip_ability_ability_priest_maximumfervor_move_speed"		"MOVE SPEED:"
-"DOTA_Tooltip_modifier_maximumfervor"		"Maximumfervor"
-"DOTA_Tooltip_modifier_maximumfervor_Description"		""
+"DOTA_Tooltip_Ability_ability_priest_maximumfervor"		            "Maximum Fervor"
+"DOTA_Tooltip_ability_ability_priest_maximumfervor_armor_bonus"		"+ARMOR BONUS:"
+"DOTA_Tooltip_ability_ability_priest_maximumfervor_attack_speed"	 "%ATTACK SPEED:"
+"DOTA_Tooltip_Ability_ability_priest_maximumfervor_Description"		"A spell that can only target himself that gives the effects of a Fervor Potion, surging them to move at maximum speed for a short time."
+"DOTA_Tooltip_ability_ability_priest_maximumfervor_move_speed"		"%MOVE SPEED:"
+"DOTA_Tooltip_modifier_maximumfervor"		                        "Maximum Fervor"
+"DOTA_Tooltip_modifier_maximumfervor_Description"		            "Gaining +10%% movespeed, +30%% attack speed (pump up), +15 armor and slowing attacking enemies by 10% (Stone Skin)"
+"DOTA_Tooltip_ability_ability_priest_maximumfervor_slow_duration"                 "SLOW DURATION:"
+"DOTA_Tooltip_ability_ability_priest_maximumfervor_slow_movement_speed"           "SLOW MOVEMENT SPEED:"
+"DOTA_Tooltip_ability_ability_priest_maximumfervor_slow_attack_speed"             "SLOW ATTACK SPEED:"
+"DOTA_Tooltip_ability_ability_priest_maximumfervor_duration"                      "DURATION:"
 
+		
 
 "DOTA_Tooltip_Ability_ability_priest_mixenergy"		"Mix Energy"
 "DOTA_Tooltip_Ability_ability_priest_mixenergy_Description"		"Equalizes the mana of the Priest and a target.\n\nSets both caster & user's Energy to the average of both of their Energy."
@@ -1053,11 +1093,16 @@
 "DOTA_Tooltip_modifier_smoketrail_Description"		""
 
 
-"DOTA_Tooltip_ability_ability_priest_painkillerbalm"		"Ability Priest Painkillerbalm"
-"DOTA_Tooltip_ability_ability_priest_painkillerbalm_Description"		""
+"DOTA_Tooltip_ability_ability_priest_painkillerbalm"		"Pain Killer Balm"
+"DOTA_Tooltip_ability_ability_priest_painkillerbalm_Description"		"Friendly unit gains a reduction of all damage taken, tapering off over the duration. Cannot be used on self. Each stack reduces damage taken by 1%, for a total of 20% One stack is removed every 2 seconds"
 "DOTA_Tooltip_ability_ability_priest_painkillerbalm_duration"		"DURATION:"
 "DOTA_Tooltip_ability_ability_priest_painkillerbalm_remove_interval"		"REMOVE INTERVAL:"
 "DOTA_Tooltip_ability_ability_priest_painkillerbalm_stacks"		"STACKS:"
+
+"DOTA_Tooltip_ability_priest_painkillerbalm"		"Painkiller Balm"
+"DOTA_Tooltip_ability_priest_painkillerbalm_Description"		"Gaining a reduction of all damage taken, tapering off over the duration."
+
+
 "DOTA_Tooltip_ability_ability_priest_pumpup"		"Priest Pump Up (Priest)"
 "DOTA_Tooltip_ability_ability_priest_pumpup_attack_speed_bonus"		"ATTACK SPEED BONUS:"
 "DOTA_Tooltip_ability_ability_priest_pumpup_Description"		""
@@ -1066,8 +1111,11 @@
 "DOTA_Tooltip_Ability_ability_priest_rangedheal"		"Ranged Heal"
 "DOTA_Tooltip_Ability_ability_priest_rangedheal_Description"		"Heals a friendly unit at tremendous range."
 "DOTA_Tooltip_ability_ability_priest_rangedheal_heal_amount"		"HEAL AMOUNT:"
+"DOTA_Tooltip_ability_ability_priest_rangedheal_range"                            "RANGE:"
+
+		
 "DOTA_Tooltip_Ability_ability_priest_replenish"		"Replenish"
-"DOTA_Tooltip_Ability_ability_priest_replenish_Description"		"Heals health and energy each second for a long duration. If the target is attacked in this time, replenish will be dispelled."
+"DOTA_Tooltip_Ability_ability_priest_replenish_Description"		"Heals health and energy each second for a long duration. If the target is attacked in this time, Replenish will be dispelled."
 "DOTA_Tooltip_ability_ability_priest_replenish_heal_amount"		"HEAL AMOUNT:"
 "DOTA_Tooltip_ability_ability_priest_replenish_replenish_duration"		"REPLENISH DURATION:"
 "DOTA_Tooltip_modifier_replenish"		"Replenish"
@@ -1088,31 +1136,36 @@
 "DOTA_Tooltip_ability_ability_priest_smokecombatprevention_Description"		""
 
 
-"DOTA_Tooltip_ability_ability_priest_spiritbreak"		"Ability Priest Spiritbreak"
-"DOTA_Tooltip_ability_ability_priest_spiritbreak_attack_speed"		"%+$attack"
-"DOTA_Tooltip_ability_ability_priest_spiritbreak_Description"		""
-"DOTA_Tooltip_ability_ability_priest_spiritbreak_movement_speed"		"MOVEMENT SPEED:"
+"DOTA_Tooltip_ability_ability_priest_spiritbreak"		"Spirit Break"
+"DOTA_Tooltip_ability_ability_priest_spiritbreak_Description"		"While the spirit is near an enemy or allied troll their spirit will be heavily worn, slowing them."
+"DOTA_Tooltip_ability_ability_priest_spiritbreak_movement_speed"		"%MOVEMENT SPEED:"
+"DOTA_Tooltip_ability_ability_priest_spiritbreak_attack_speed"		"%ATTACK SPEED:"
 "DOTA_Tooltip_ability_ability_priest_spiritbreak_radius"		"RADIUS:"
-"DOTA_Tooltip_modifier_priest_spiritbreak"		"Priest Spiritbreak"
-"DOTA_Tooltip_modifier_priest_spiritbreak_Description"		""
+"DOTA_Tooltip_modifier_priest_spiritbreak"		"Spirit Break"
+"DOTA_Tooltip_modifier_priest_spiritbreak_Description"		"While the spirit is near an enemy or allied troll their spirit will be heavily worn, slowing them."
+
+"DOTA_Tooltip_aura_priest_spiritbreak"		"Spirit Break"
+"DOTA_Tooltip_aura_priest_spiritbreak_Description"		"While the spirit is near an enemy or allied troll their spirit will be heavily worn, slowing them."
+
 
 
 "DOTA_Tooltip_Ability_ability_priest_spiritlink"		"Spirit Link"
-"DOTA_Tooltip_Ability_ability_priest_spiritlink_Description"		"Links the health of up to 4 units in a 4000 AOE.\n\n<font color='#777777'>Hold ALT to view more information.</font>"
+"DOTA_Tooltip_Ability_ability_priest_spiritlink_Description"		"Links the health of up to 4 units in a 4000 AOE.\n\n<font color='#777777'>Hold ALT to view more information."
 "DOTA_Tooltip_ability_ability_priest_spiritpassive"		"Ability Priest Spiritpassive"
 "DOTA_Tooltip_ability_ability_priest_spiritpassive_Description"		""
-"DOTA_Tooltip_modifier_priest_spiritpassive"		"Priest Spiritpassive"
-"DOTA_Tooltip_modifier_priest_spiritpassive_Description"		""
 
 
-"DOTA_Tooltip_ability_ability_priest_spiritwalk"		"Ability Priest Spiritwalk"
-"DOTA_Tooltip_ability_ability_priest_spiritwalk_Description"		""
+"DOTA_Tooltip_modifier_priest_spiritpassive"		"Priest Sage Spirit"
+"DOTA_Tooltip_modifier_priest_spiritpassive_Description"		"This is the disembodied spirit of the sage!"
+
+
+"DOTA_Tooltip_ability_ability_priest_spiritwalk"		"Spirit Walk"
+"DOTA_Tooltip_ability_ability_priest_spiritwalk_Description"		"The shaman enters a trance and sends his spirit out of his body. The spirit cannot be attacked or targetted, and is invisible.\n\nThe Spirit can walk anywhere, and has truesight.\nThe farther the spirit gets from the sage the faster it will wear his mind.\nThe spirit has some unique abilities."
 "DOTA_Tooltip_ability_ability_priest_spiritwalk_drain_interval"		"DRAIN INTERVAL:"
 "DOTA_Tooltip_ability_ability_priest_spiritwalk_energy_rate"		"ENERGY RATE:"
-"DOTA_Tooltip_ability_ability_priest_spiritwalk_per_unit"		"PER UNIT:"
-"DOTA_Tooltip_ability_ability_priest_spiritwalk_vision"		"VISION:"
-"DOTA_Tooltip_modifier_priest_spiritwalk"		"Priest Spiritwalk"
-"DOTA_Tooltip_modifier_priest_spiritwalk_Description"		""
+"DOTA_Tooltip_ability_ability_priest_spiritwalk_vision"		"VISION RADIUS:"
+"DOTA_Tooltip_modifier_priest_spiritwalk"		"Spirit Walking"
+"DOTA_Tooltip_modifier_priest_spiritwalk_Description"		"This priest has entered a trance and his spirit is out of his body."
 
 
 
@@ -1128,8 +1181,8 @@
 "DOTA_Tooltip_ability_ability_priest_tearspirit_Description"		""
 "DOTA_Tooltip_ability_ability_priest_tearspirit_duration"		"DURATION:"
 "DOTA_Tooltip_ability_ability_priest_tearspirit_range"		"RANGE:"
-"DOTA_Tooltip_modifier_priest_tearspirit"		"Priest Tearspirit"
-"DOTA_Tooltip_modifier_priest_tearspirit_Description"		""
+"DOTA_Tooltip_modifier_priest_tearspirit"		"Tearspirit"
+"DOTA_Tooltip_modifier_priest_tearspirit_Description"		"The spirit strikes at the spirit of an enemy troll causing it to become disabled almost completely for a short period"
 
 
 "DOTA_Tooltip_Ability_ability_priest_theglow"		"The Glow"
@@ -1152,11 +1205,6 @@
 "DOTA_Tooltip_ability_ability_priest_trollbattlecall_duration"		"DURATION:"
 "DOTA_Tooltip_ability_ability_priest_trollbattlecall_radius"		"RADIUS:"
 
-"DOTA_Tooltip_ability_priest_painkillerbalm"		"Ability Priest Painkillerbalm"
-"DOTA_Tooltip_ability_priest_painkillerbalm_Description"		""
-
-"DOTA_Tooltip_aura_priest_spiritbreak"		"Aura Priest Spiritbreak"
-"DOTA_Tooltip_aura_priest_spiritbreak_Description"		""
 
 
 
@@ -1497,7 +1545,7 @@
 "DOTA_Tooltip_ability_item_axe_iron_Note0"		"Can cut down trees."
 "DOTA_Tooltip_ability_item_axe_mage_masher"		"Mage Masher"
 "DOTA_Tooltip_ability_item_axe_mage_masher_bonus_damage"		"+$damage"
-"DOTA_Tooltip_ability_item_axe_mage_masher_Description"		"PASSIVE: Silent Strike - Gives a 21%% chance to silence a target for 5 seconds, damaging the target 2 damage per second.\n\nPASSIVE: Mana Burn - Gives a 29%% chance to burn 25 mana for 25 damage if the attacked target is a preist, mage or subclass thereof.\nCackles with energy, particularly effective against spellcasters."
+"DOTA_Tooltip_ability_item_axe_mage_masher_Description"		"PASSIVE: Silent Strike - Gives a 21%% chance to silence a target for 5 seconds, damaging the target 2 damage per second.\n\nPASSIVE: Mana Burn - Gives a 29%% chance to burn 25 mana for 25 damage if the attacked target is a priest, mage or subclass thereof.\nCackles with energy, particularly effective against spellcasters."
 "DOTA_Tooltip_ability_item_axe_mage_masher_Lore"		"All magic flies before it."
 "DOTA_Tooltip_ability_item_axe_mage_masher_mage_masher_mana_burn_chance"		"MAGE MASHER MANA BURN CHANCE:"
 "DOTA_Tooltip_ability_item_axe_mage_masher_mage_masher_mana_burn_damage"		"MAGE MASHER MANA BURN DAMAGE:"

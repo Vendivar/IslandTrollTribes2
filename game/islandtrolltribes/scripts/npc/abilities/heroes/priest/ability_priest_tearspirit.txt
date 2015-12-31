@@ -14,6 +14,15 @@
 	"AOERadius"						"%range"
 	"MaxLevel" 						"1"
 
+    "precache"
+        {
+        "soundfile" "soundevents/spells.vsndevts"
+        "particle" "particles/units/heroes/hero_treant/treant_overgrowth_conjure_rise.vpcf"
+        "particle" "particles/units/heroes/hero_templar_assassin/templar_assassin_base_attack_explosion_warp.vpcf"
+        "particle" "particles/units/heroes/hero_templar_assassin/templar_assassin_base_attack_explosion_warp.vpcf"
+        }
+        
+        
 	"AbilitySpecial"
 	{
 		"01"
@@ -45,7 +54,33 @@
 			"Passive"			"0"
 			"IsHidden"			"0"
 			"IsDebuff"			"1"
-			
+			"OnCreated"
+            {
+                "FireSound"
+                {
+                    "EffectName" "tear.spirit"
+                    "Target" "TARGET"
+                }
+                
+                "FireEffect"
+                {
+                    "Target"	"TARGET"
+                    "EffectName"	"particles/units/heroes/hero_templar_assassin/templar_assassin_base_attack_explosion_warp.vpcf"
+                    "EffectAttachType"	"follow_origin"
+                }                     
+                "AttachEffect"
+                {
+                    "Target"	"TARGET"
+                    "EffectName"	"particles/units/heroes/hero_treant/treant_overgrowth_conjure_rise.vpcf"
+                    "EffectAttachType"	"follow_origin"
+                }                  
+                "AttachEffect"
+                {
+                    "Target"	"TARGET"
+                    "EffectName"	"particles/units/heroes/hero_treant/treant_overgrowth_conjure_rise.vpcf"
+                    "EffectAttachType"	"follow_origin"
+                }                         
+            }
 			"States"
 			{
 				"MODIFIER_STATE_ROOTED"			"MODIFIER_STATE_VALUE_ENABLED"
