@@ -13,9 +13,16 @@
 		{
 			"soundfile"			"sounds/weapons/hero/riki/riki_blinkstrike.vsnd"
             "particle"          "particles/custom/jump_land_smoke.vpcf"
-            "particle"          "particles/custom/jump.vpcf"
 		}
-	
+	"OnAbilityPhaseStart"
+    {
+    "FireEffect"
+			{
+				"EffectName"	"particles/custom/jump_takeoff.vpcf"
+				"EffectAttachType"	"world_origin"
+				"Target"	"CASTER"
+            }
+    }
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -26,7 +33,7 @@
 			}
             "FireEffect"
 			{
-				"EffectName"	"particles/custom/jump.vpcf"
+				"EffectName"	"particles/custom/jump_land_smoke.vpcf"
 				"EffectAttachType"	"world_origin"
 				"Target"	"CASTER"
                         "ControlPoints"

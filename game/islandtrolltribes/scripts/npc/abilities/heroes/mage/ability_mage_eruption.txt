@@ -23,7 +23,7 @@
 				"Center"	"CASTER"
 				"Radius"	"%eruption_radius"
 				"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-				"Types"	"DOTA_UNIT_TARGET_HERO"
+				"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
 			}
 
 			"Action"

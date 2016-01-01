@@ -32,7 +32,32 @@
 			"Target"	"CASTER"
 			"HealAmount"	"%heal_amount"
 		}
-
+		"FireSound"
+		{
+			"EffectName"	"healing.iv"
+			"Target" 		"CASTER"
+		}
+"FireEffect"
+                {
+                    "Target"	"CASTER"
+                    "EffectName"	"particles/custom/potion_healing_v.vpcf"
+                    "EffectAttachType"	"follow_origin"
+                    "ControlPointEntities"
+                    {
+                        "CASTER" "attach_origin"
+                        "CASTER" "attach_origin"
+                        "CASTER" "attach_origin"
+                        "CASTER" "attach_origin"
+                        "CASTER" "attach_origin"
+                        "CASTER" "attach_origin"
+                        "CASTER" "attach_origin"
+                        "CASTER" "attach_origin"
+                        "CASTER" "attach_origin"
+                        "CASTER" "attach_origin"
+                        "CASTER" "attach_origin"
+                        "CASTER" "attach_origin"
+                    }
+                }
 		"SpendCharge"
 		{
 		}

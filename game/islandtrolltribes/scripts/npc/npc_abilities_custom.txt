@@ -6434,7 +6434,7 @@
 					"Center"	"CASTER"
 					"Radius"	"%eruption_radius"
 					"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Types"	"DOTA_UNIT_TARGET_HERO"
+					"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
 				}
 	
 				"Action"
@@ -6694,44 +6694,13 @@
 			"FireEffect"
 			{
 			"TargetPoint" "POINT"
-			"EffectName" "particles/units/heroes/hero_crystalmaiden/maiden_crystal_nova.vpcf"
+			"EffectName" "particles/custom/freezing_blast.vpcf"
 			"EffectAttachType" "world_origin"
 				"ControlPoints"
 				{
 				"01" "%radius 2 %radius*2"
 				}
 			}
-			"FireEffect"
-			{
-			"TargetPoint" "POINT"
-			"EffectName" "particles/econ/items/crystal_maiden/crystal_maiden_cowl_of_ice/maiden_crystal_nova_f_cowlofice.vpcf"
-			"EffectAttachType" "world_origin"
-				"ControlPoints"
-				{
-				"01" "%radius 2 %radius*2"
-				}
-			}
-			"FireEffect"
-			{
-			"TargetPoint" "POINT"
-			"EffectName" "particles/econ/items/crystal_maiden/crystal_maiden_cowl_of_ice/maiden_crystal_nova_e_cowlofice.vpcf"
-			"EffectAttachType" "world_origin"
-				"ControlPoints"
-				{
-				"01" "%radius 2 %radius*2"
-				}
-			}
-			"FireEffect"
-			{
-			"TargetPoint" "POINT"
-			"EffectName" "particles/econ/items/crystal_maiden/crystal_maiden_cowl_of_ice/maiden_crystal_nova_flash_b_cowlofice.vpcf"
-			"EffectAttachType" "world_origin"
-				"ControlPoints"
-				{
-				"01" "%radius 2 %radius*2"
-				}
-			}
-			
 			"ActOnTargets"
 			{
 				"Target"
@@ -7099,7 +7068,7 @@
 	"ability_mage_jealousy"
 	{
 		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"ability_hunter_challenge"
+		"AbilityTextureName"			"ability_mage_jealousy"
 		"MaxLevel" 						"1"
 	
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
@@ -9167,11 +9136,12 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityCastAnimation"	        "ACT_DOTA_CAST_ABILITY_1"
 		"AbilityTextureName"			"ability_priest_angelicelemental"
-		"AbilityCastPoint"				"0.1"
+		"AbilityCastPoint"				"0.5"
 		"AbilityCastRange"				"3000"
-		"AbilityCooldown"				"1"
-		"AbilityManaCost"				"1"
+		"AbilityCooldown"				"35"
+		"AbilityManaCost"				"50"
 	
 		"AbilitySpecial"
 		{
@@ -9827,7 +9797,7 @@
 			"FireSound"
 			{
 				"EffectName"	"Hero_Axe.Berserkers_Call"
-				"Target"	"TARGET"
+				"Target"	"CASTER"
 			}
 	        
 	        "FireEffect"
@@ -10220,12 +10190,6 @@
 					{
 						"Target"	"TARGET"
 						"EffectName"	"particles/units/heroes/hero_oracle/oracle_fortune_aoe_ember.vpcf"
-						"EffectAttachType"	"PATTACH_ABSORIGIN_FOLLOW"
-					}
-					"FireEffect"
-					{
-						"Target"	"TARGET"
-						"EffectName"	"particles/units/heroes/hero_oracle/oracle_fortune_aoe_dust_hit.vpcf"
 						"EffectAttachType"	"PATTACH_ABSORIGIN_FOLLOW"
 					}
 				}
@@ -12680,7 +12644,7 @@
 	    "BaseClass"                 "ability_datadriven"
 	    "AbilityTextureName"        "ability_thief_camouflage"
 	    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	
+		"MaxLevel"	"1"
 	    "AbilityCooldown"           "0"
 	    "AbilityCastPoint"          "0.1"
 	    "AbilityManaCost"           "20"
@@ -12704,7 +12668,7 @@
 	        "RunScript"
 	        {
 	            "ScriptFile"    "heroes/thief/camouflage.lua"
-	            "Function"      "CheckTrees"
+	            "Function"      "CloakCamouflageInvis"
 	        }
 	    }
 	
@@ -12955,9 +12919,16 @@
 		{
 			"soundfile"			"sounds/weapons/hero/riki/riki_blinkstrike.vsnd"
             "particle"          "particles/custom/jump_land_smoke.vpcf"
-            "particle"          "particles/custom/jump.vpcf"
 		}
-	
+	"OnAbilityPhaseStart"
+    {
+    "FireEffect"
+			{
+				"EffectName"	"particles/custom/jump_takeoff.vpcf"
+				"EffectAttachType"	"world_origin"
+				"Target"	"CASTER"
+            }
+    }
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -12968,7 +12939,7 @@
 			}
             "FireEffect"
 			{
-				"EffectName"	"particles/custom/jump.vpcf"
+				"EffectName"	"particles/custom/jump_land_smoke.vpcf"
 				"EffectAttachType"	"world_origin"
 				"Target"	"CASTER"
                         "ControlPoints"
@@ -13366,35 +13337,51 @@
 		"MaxLevel"	"1"
 		"precache"
 		{
-			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_antimage.vsndevts"		
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_antimage.vsndevts"	
+	        "particle"          "particles/econ/events/fall_major_2015/teleport_end_fallmjr_2015_dust.vpcf"        
 		}
-	
+	    
 		"OnAbilityPhaseStart"
 		{
+	    "FireEffect"
+				{
+					"EffectName"	"particles/custom/teleport_vanish_smokeflash.vpcf"
+					"EffectAttachType"	"attach_origin"
+					"Target"	"CASTER"
+	            }
+			
+		}
+	    
+	    "OnSpellStart"
+		{
+	        "RunScript"
+			{
+				"ScriptFile" "heroes/thief/teleport.lua"
+				"Function"   "Teleport"
+				"Target"     "POINT"
+			}
 			"RunScript"
 			{
 				"ScriptFile" "heroes/thief/teleport.lua"
 				"Function"   "CheckTeleport"
 				"Target"     "POINT"
 			}
-		}
-	
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile" "heroes/thief/teleport.lua"
-				"Function"   "Teleport"
-				"Target"     "POINT"
-			}
+	        "FireEffect"
+	        {
+	            "EffectName"	"particles/econ/events/fall_major_2015/teleport_end_fallmjr_2015_dust.vpcf"
+	            "EffectAttachType"	"attach_origin"
+	            "Target"	"CASTER"
+	        }
 			"FireSound"
 			{
 				"EffectName"		"Hero_Antimage.Blink_in"
 				"Target"			"CASTER"
 			}
-		}
-	
+	            
+	    }
 	}
+	
+	
 	"ability_thief_telethief"
 	{
 		"BaseClass"	"ability_datadriven"

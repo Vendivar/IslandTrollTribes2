@@ -10,32 +10,48 @@
 	"MaxLevel"	"1"
 	"precache"
 	{
-		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_antimage.vsndevts"		
+		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_antimage.vsndevts"	
+        "particle"          "particles/econ/events/fall_major_2015/teleport_end_fallmjr_2015_dust.vpcf"        
 	}
-
+    
 	"OnAbilityPhaseStart"
 	{
+    "FireEffect"
+			{
+				"EffectName"	"particles/custom/teleport_vanish_smokeflash.vpcf"
+				"EffectAttachType"	"attach_origin"
+				"Target"	"CASTER"
+            }
+		
+	}
+    
+    "OnSpellStart"
+	{
+        "RunScript"
+		{
+			"ScriptFile" "heroes/thief/teleport.lua"
+			"Function"   "Teleport"
+			"Target"     "POINT"
+		}
 		"RunScript"
 		{
 			"ScriptFile" "heroes/thief/teleport.lua"
 			"Function"   "CheckTeleport"
 			"Target"     "POINT"
 		}
-	}
-
-	"OnSpellStart"
-	{
-		"RunScript"
-		{
-			"ScriptFile" "heroes/thief/teleport.lua"
-			"Function"   "Teleport"
-			"Target"     "POINT"
-		}
+        "FireEffect"
+        {
+            "EffectName"	"particles/econ/events/fall_major_2015/teleport_end_fallmjr_2015_dust.vpcf"
+            "EffectAttachType"	"attach_origin"
+            "Target"	"CASTER"
+        }
 		"FireSound"
 		{
 			"EffectName"		"Hero_Antimage.Blink_in"
 			"Target"			"CASTER"
 		}
-	}
-
+            
+    }
 }
+
+

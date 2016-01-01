@@ -5,9 +5,9 @@
 	m_nMaxParticles = 20
 	m_ConstantColor =
 	[
-		130,
-		195,
-		255,
+		0,
+		85,
+		0,
 		255,
 	]
 	m_Renderers =
@@ -81,9 +81,9 @@
 			m_flFadeEndTime = 0.700000
 			m_ColorFade =
 			[
-				170,
 				0,
-				127,
+				85,
+				0,
 				255,
 			]
 		},

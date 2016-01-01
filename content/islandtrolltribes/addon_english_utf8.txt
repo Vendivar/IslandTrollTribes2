@@ -1002,11 +1002,14 @@
 "DOTA_Tooltip_modifier_priest_enhancingherbalbalm"		"Enhancing Herbal Balm"
 "DOTA_Tooltip_modifier_priest_enhancingherbalbalm_Description"		""
 
-"DOTA_Tooltip_ability_ability_priest_enhancingherbalism"                          "Ability Priest Enhancingherbalism"
-"DOTA_Tooltip_ability_ability_priest_enhancingherbalism_Description"              ""
+"DOTA_Tooltip_ability_ability_priest_enhancingherbalism"                          "Enhancing Herbalism"
+"DOTA_Tooltip_ability_ability_priest_enhancingherbalism_Description"              "Friendly unit gains a gradual hp regen, move speed, and attack speed for a long time. Cannot be used on self."
 "DOTA_Tooltip_ability_ability_priest_enhancingherbalism_health_per"               "HEALTH PER:"
 "DOTA_Tooltip_ability_ability_priest_enhancingherbalism_duration"                 "DURATION:"
+"DOTA_Tooltip_ability_ability_priest_enhancingherbalism_attack_speed"             "ATTACK SPEED:"
+"DOTA_Tooltip_ability_ability_priest_enhancingherbalism_move_speed"               "MOVE SPEED:"
 
+		
 		
 
 "DOTA_Tooltip_Ability_ability_priest_fortitude"		"Fortitude"
@@ -1064,7 +1067,7 @@
 
 
 "DOTA_Tooltip_Ability_ability_priest_maximumfervor"		            "Maximum Fervor"
-"DOTA_Tooltip_ability_ability_priest_maximumfervor_armor_bonus"		"+ARMOR BONUS:"
+"DOTA_Tooltip_ability_ability_priest_maximumfervor_armor_bonus"		"ARMOR BONUS:"
 "DOTA_Tooltip_ability_ability_priest_maximumfervor_attack_speed"	 "%ATTACK SPEED:"
 "DOTA_Tooltip_Ability_ability_priest_maximumfervor_Description"		"A spell that can only target himself that gives the effects of a Fervor Potion, surging them to move at maximum speed for a short time."
 "DOTA_Tooltip_ability_ability_priest_maximumfervor_move_speed"		"%MOVE SPEED:"
@@ -1094,7 +1097,7 @@
 
 
 "DOTA_Tooltip_ability_ability_priest_painkillerbalm"		"Pain Killer Balm"
-"DOTA_Tooltip_ability_ability_priest_painkillerbalm_Description"		"Friendly unit gains a reduction of all damage taken, tapering off over the duration. Cannot be used on self. Each stack reduces damage taken by 1%, for a total of 20% One stack is removed every 2 seconds"
+"DOTA_Tooltip_ability_ability_priest_painkillerbalm_Description"		"Friendly unit gains a reduction of all damage taken, tapering off over the duration. Cannot be used on self. Each stack reduces damage taken by 1%%, for a total of 20%%. One stack is removed every 2 seconds."
 "DOTA_Tooltip_ability_ability_priest_painkillerbalm_duration"		"DURATION:"
 "DOTA_Tooltip_ability_ability_priest_painkillerbalm_remove_interval"		"REMOVE INTERVAL:"
 "DOTA_Tooltip_ability_ability_priest_painkillerbalm_stacks"		"STACKS:"
@@ -1160,7 +1163,8 @@
 
 
 "DOTA_Tooltip_ability_ability_priest_spiritwalk"		"Spirit Walk"
-"DOTA_Tooltip_ability_ability_priest_spiritwalk_Description"		"The shaman enters a trance and sends his spirit out of his body. The spirit cannot be attacked or targetted, and is invisible.\n\nThe Spirit can walk anywhere, and has truesight.\nThe farther the spirit gets from the sage the faster it will wear his mind.\nThe spirit has some unique abilities."
+"DOTA_Tooltip_ability_ability_priest_spiritwalk_Description"		"The shaman enters a trance and sends his spirit out of his body. The spirit cannot be attacked or targetted, and is invisible.\n\nThe Spirit can walk anywhere, and has truesight.\nThe farther the spirit gets from the sage the faster it will wear his mind.\nThe spirit has some unique abilities.\n<font color='#777777'>Hold ALT to view more information."
+"DOTA_Tooltip_ability_ability_priest_spiritwalk_Note0"		"Spirit Walk Spirit Abilities:\n\nSpirit Break:\nWhile the spirit is near an enemy or allied troll their spirit will be heavily worn, slowing them.\n\nTear Spirit:\nThe spirit strikes at the spirit of an enemy troll causing it to become disabled almost completely for a short period."
 "DOTA_Tooltip_ability_ability_priest_spiritwalk_drain_interval"		"DRAIN INTERVAL:"
 "DOTA_Tooltip_ability_ability_priest_spiritwalk_energy_rate"		"ENERGY RATE:"
 "DOTA_Tooltip_ability_ability_priest_spiritwalk_vision"		"VISION RADIUS:"
@@ -1177,25 +1181,25 @@
 "DOTA_Tooltip_Ability_ability_priest_toggle_spellbar"		"Next Spells"
 
 
-"DOTA_Tooltip_ability_ability_priest_tearspirit"		"Ability Priest Tearspirit"
-"DOTA_Tooltip_ability_ability_priest_tearspirit_Description"		""
+"DOTA_Tooltip_ability_ability_priest_tearspirit"		"Tear Spirit"
+"DOTA_Tooltip_ability_ability_priest_tearspirit_Description"		"The spirit strikes at the spirit of an enemy troll causing it to become disabled almost completely for a short period."
 "DOTA_Tooltip_ability_ability_priest_tearspirit_duration"		"DURATION:"
 "DOTA_Tooltip_ability_ability_priest_tearspirit_range"		"RANGE:"
 "DOTA_Tooltip_modifier_priest_tearspirit"		"Tearspirit"
-"DOTA_Tooltip_modifier_priest_tearspirit_Description"		"The spirit strikes at the spirit of an enemy troll causing it to become disabled almost completely for a short period"
+"DOTA_Tooltip_modifier_priest_tearspirit_Description"		"The spirit strikes at the spirit of an enemy troll causing it to become disabled almost completely for a short period."
 
 
 "DOTA_Tooltip_Ability_ability_priest_theglow"		"The Glow"
-"DOTA_Tooltip_ability_ability_priest_theglow_attack_speed"		"%+$attack"
-"DOTA_Tooltip_Ability_ability_priest_theglow_Description"		"Grants a movement bonus and attack speed bonus in a AOE. Also grants periodic bonus heat.\n\nMOVEMENT BONUS: <font color='#777777'>10%</font>\nATTACK SPEED BONUS: <font color='#777777'>5%</font>\nPERIODIC HEAT BONUS: <font color='#777777'>+5</font>\nRADIUS: <font color='#777777'>400</font>"
+"DOTA_Tooltip_ability_ability_priest_theglow_attack_speed"		"ATTACK SPEED:"
+"DOTA_Tooltip_Ability_ability_priest_theglow_Description"		"Grants a movement bonus and attack speed bonus in a AOE. Also grants periodic bonus heat."
 "DOTA_Tooltip_ability_ability_priest_theglow_heat"		"HEAT:"
 "DOTA_Tooltip_ability_ability_priest_theglow_move_speed"		"MOVE SPEED:"
 "DOTA_Tooltip_ability_ability_priest_theglow_radius"		"RADIUS:"
 "DOTA_Tooltip_ability_ability_priest_theglow_tick_rate"		"TICK RATE:"
 "DOTA_Tooltip_modifier_glow_restore"		"Glow Restore"
-"DOTA_Tooltip_modifier_glow_restore_Description"		""
-"DOTA_Tooltip_modifier_priestglow"		"Priestglow"
-"DOTA_Tooltip_modifier_priestglow_Description"		""
+"DOTA_Tooltip_modifier_glow_restore_Description"		"Gaining a movement bonus and attack speed bonus and also periodic bonus heat."
+"DOTA_Tooltip_modifier_priestglow"		"The Glow"
+"DOTA_Tooltip_modifier_priestglow_Description"		"Gaining a movement bonus and attack speed bonus and also periodic bonus heat."
 
 
 "DOTA_Tooltip_Ability_ability_priest_trollbattlecall"		"Troll Battle Call"

@@ -28,44 +28,13 @@
 		"FireEffect"
 		{
 		"TargetPoint" "POINT"
-		"EffectName" "particles/units/heroes/hero_crystalmaiden/maiden_crystal_nova.vpcf"
+		"EffectName" "particles/custom/freezing_blast.vpcf"
 		"EffectAttachType" "world_origin"
 			"ControlPoints"
 			{
 			"01" "%radius 2 %radius*2"
 			}
 		}
-		"FireEffect"
-		{
-		"TargetPoint" "POINT"
-		"EffectName" "particles/econ/items/crystal_maiden/crystal_maiden_cowl_of_ice/maiden_crystal_nova_f_cowlofice.vpcf"
-		"EffectAttachType" "world_origin"
-			"ControlPoints"
-			{
-			"01" "%radius 2 %radius*2"
-			}
-		}
-		"FireEffect"
-		{
-		"TargetPoint" "POINT"
-		"EffectName" "particles/econ/items/crystal_maiden/crystal_maiden_cowl_of_ice/maiden_crystal_nova_e_cowlofice.vpcf"
-		"EffectAttachType" "world_origin"
-			"ControlPoints"
-			{
-			"01" "%radius 2 %radius*2"
-			}
-		}
-		"FireEffect"
-		{
-		"TargetPoint" "POINT"
-		"EffectName" "particles/econ/items/crystal_maiden/crystal_maiden_cowl_of_ice/maiden_crystal_nova_flash_b_cowlofice.vpcf"
-		"EffectAttachType" "world_origin"
-			"ControlPoints"
-			{
-			"01" "%radius 2 %radius*2"
-			}
-		}
-		
 		"ActOnTargets"
 		{
 			"Target"

@@ -33,7 +33,32 @@
 			"Function"       "PotionManaUse"
 			"ManaRestored"   "%energy_restore"
 		}
-
+		"FireSound"
+		{
+			"EffectName"	"mana.i"
+			"Target" 		"CASTER"
+		}
+        "FireEffect"
+                {
+                    "Target"	"CASTER"
+                    "EffectName"	"particles/custom/potion_mana_iii.vpcf"
+                    "EffectAttachType"	"follow_origin"
+                    "ControlPointEntities"
+                    {
+                        "CASTER" "attach_origin"
+                        "CASTER" "attach_origin"
+                        "CASTER" "attach_origin"
+                        "CASTER" "attach_origin"
+                        "CASTER" "attach_origin"
+                        "CASTER" "attach_origin"
+                        "CASTER" "attach_origin"
+                        "CASTER" "attach_origin"
+                        "CASTER" "attach_origin"
+                        "CASTER" "attach_origin"
+                        "CASTER" "attach_origin"
+                        "CASTER" "attach_origin"
+                    }
+                }
 		"SpendCharge"
 		{
 		}
