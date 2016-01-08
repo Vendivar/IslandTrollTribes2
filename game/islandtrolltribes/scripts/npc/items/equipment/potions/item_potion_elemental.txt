@@ -27,7 +27,24 @@
 	"WorldDropSound"	"Hero_Alchemist.Foley"
 	"Custom"
 	{
-		"ModelScale"	"2.5"
+		"ModelScale"	"2.0"
+        "ModelOffsets"
+		{
+			"Origin"
+			{
+				"x"	"0"
+				"y"	"0"
+				"z"	"-250"
+			}
+
+			"Angles"
+			{
+				"x"	"0"
+				"y"	"0"
+				"z"	"0"
+			}
+
+		}
 	}
 
 	"OnSpellStart"

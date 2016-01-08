@@ -12,6 +12,7 @@ CHEAT_CODES = {
     ["ingredients"] = function(...) ITT:CreateIngredients(...) end, -- Creates ingredients for an item
     ["pets"] = function(...) ITT:SpawnPets(...) end, -- Creates pets around the hero
     ["bush"] = function( ... ) ITT:TestBush(...) end,
+    ["potions"] = function( ... ) ITT:TestPotions(...) end,
 }
 
 PLAYER_COMMANDS = {}
@@ -303,4 +304,62 @@ function ITT:TestBush( playerID )
     local position = hero:GetAbsOrigin() + hero:GetForwardVector() * 200
 
     CreateBushContainer("item_bush_mushroom", position)
+end
+
+
+
+function ITT:TestPotions( playerID )
+    local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+    local origin = hero:GetAbsOrigin()
+
+    -- Put a fire on front
+    local fv = hero:GetForwardVector()
+    local position = origin + fv * 200
+
+
+    local testItems = { 
+        ["item_potion_acid"] = 1,
+        ["item_potion_anabolic"] = 1,
+        ["item_potion_anti_magic"] = 1,
+        ["item_potion_cure_all"] = 1,
+        ["item_potion_disease"] = 1,
+        ["item_potion_drunk"] = 1,
+        ["item_potion_elemental"] = 1,
+        ["item_potion_fervor"] = 1,
+        ["item_potion_healingi"] = 1,
+        ["item_potion_healingiii"] = 1,
+        ["item_potion_healingiv"] = 1,
+        ["item_potion_manai"] = 1,
+        ["item_potion_manaiii"] = 1,
+        ["item_potion_manaiv"] = 1,
+        ["item_potion_nether"] = 1,
+        ["item_potion_poison"] = 1,
+        ["item_potion_poison_ultra"] = 1,
+        ["item_potion_twin_island"] = 1,
+    }
+
+    for itemName,num in pairs(testItems) do
+        for i=1,num do
+            local item = CreateItem(itemName, nil, nil)
+            local drop = CreateItemOnPositionSync( position, item )
+            if itemName == "item_meat_raw" then
+                drop:SetAbsOrigin(position+RandomVector(RandomInt(100,200)))
+            else
+                local pos_launch = position+RandomVector(RandomInt(100,200))
+                item:LaunchLoot(false, 200, 0.75, pos_launch)
+            end
+        end     
+    end
+
+    local buildingItems = {
+        "item_building_kit_armory",
+    }
+
+    for k,itemKit in pairs(buildingItems) do
+        local item = CreateItem(itemKit, nil, nil)
+        local drop = CreateItemOnPositionSync( origin, item )
+        local pos_launch = origin+RandomVector(RandomInt(100,200))
+        item:LaunchLoot(false, 200, 0.75, pos_launch)   
+    end
+
 end

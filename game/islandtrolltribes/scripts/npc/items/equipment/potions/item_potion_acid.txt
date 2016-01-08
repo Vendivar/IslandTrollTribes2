@@ -93,6 +93,27 @@
 
 	}
 
+	"Custom"
+	{
+		"ModelScale"	"1.5"
+        "ModelOffsets"
+		{
+			"Origin"
+			{
+				"x"	"0"
+				"y"	"0"
+				"z"	"-250"
+			}
+
+			"Angles"
+			{
+				"x"	"0"
+				"y"	"0"
+				"z"	"0"
+			}
+
+		}
+	}
 	"AbilitySpecial"
 	{
 		"01"
