@@ -75,11 +75,6 @@ function IsTeamControlled ( entityIndex ) {
     return false
 }
 
-function IsCustomBuilding( entityIndex ){
-    var ability_building = Entities.GetAbilityByName( entityIndex, "ability_building")
-    return (ability_building != -1)
-}
-
 // Builders require the "builder" label in its unit definition
 function IsBuilder( entIndex ) {
     return (Entities.GetUnitLabel( entIndex ) == "builder")

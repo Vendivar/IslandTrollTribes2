@@ -69,15 +69,17 @@ function Build( event )
 
     -- The construction failed and was never confirmed due to the gridnav being blocked in the attempted area
 	event:OnConstructionFailed(function()
-		local name = player.activeBuilding
-		DebugPrint("[BH] Failed placement of " .. name)
+		local playerTable = BuildingHelper:GetPlayerTable(playerID)
+        local name = playerTable.activeBuilding
+        
+		BuildingHelper:print("Failed placement of " .. name)
 		SendErrorMessage(caster:GetPlayerOwnerID(), "#error_invalid_build_position")
 	end)
 
 	-- Cancelled due to ClearQueue
 	event:OnConstructionCancelled(function(work)
 		local name = work.name
-		DebugPrint("[BH] Cancelled construction of " .. name)
+		BuildingHelper:print("Cancelled construction of " .. name)
 
 		-- Refund resources for this cancelled work
 		if work.refund then
@@ -87,7 +89,7 @@ function Build( event )
 
 	-- A building unit was created
 	event:OnConstructionStarted(function(unit)
-		DebugPrint("[BH] Started construction of " .. unit:GetUnitName() .. " " .. unit:GetEntityIndex())
+		BuildingHelper:print("Started construction of " .. unit:GetUnitName() .. " " .. unit:GetEntityIndex())
 		-- Play construction sound
 
 		-- Store the Build Time, Gold Cost and secondary resource the building 
@@ -178,7 +180,7 @@ function Build( event )
 
 	-- A building finished construction
 	event:OnConstructionCompleted(function(unit)
-		DebugPrint("[BH] Completed construction of " .. unit:GetUnitName() .. " " .. unit:GetEntityIndex())
+		BuildingHelper:print("Completed construction of " .. unit:GetUnitName() .. " " .. unit:GetEntityIndex())
 		
 		-- Play construction complete sound
 
@@ -193,16 +195,13 @@ function Build( event )
 	-- These callbacks will only fire when the state between below half health/above half health changes.
 	-- i.e. it won't fire multiple times unnecessarily.
 	event:OnBelowHalfHealth(function(unit)
-		DebugPrint("[BH] " .. unit:GetUnitName() .. " is below half health.")
+		BuildingHelper:print(unit:GetUnitName() .. " is below half health.")
 				
-		local item = CreateItem("item_apply_modifiers", nil, nil)
-    	item:ApplyDataDrivenModifier(unit, unit, "modifier_onfire", {})
-    	item = nil
 
 	end)
 
 	event:OnAboveHalfHealth(function(unit)
-		DebugPrint("[BH] " ..unit:GetUnitName().. " is above half health.")
+		BuildingHelper:print(unit:GetUnitName().. " is above half health.")
 
 		unit:RemoveModifierByName("modifier_onfire")
 		
