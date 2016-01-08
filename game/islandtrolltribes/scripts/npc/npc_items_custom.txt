@@ -2538,14 +2538,13 @@
 		"WorldDropSound"	"Item.DropGemWorld"
 	
 		// BuildingHelper info
-	    "Building"                      "1" //bool
-	    "BuildingSize"                  "2" 
+	    "Building"                      "1" //bool 
 	    "BuildTime"                     "10.0"
 	    "AbilityCastRange"              "300"
 	    "UpdateHealth"                  "1" //bool
 	    "Scale"                         "0" //bool
 	    "PlayerCanControl"              "1" //bool
-	        "ModelRotation"                 "90.0"
+	    "ModelRotation"                 "90.0"
 	    "UnitName"                      "npc_building_armory"
 	    "AbilityCooldown"               "0"
 	    "AbilityGoldCost"               "0"
@@ -2601,7 +2600,6 @@
 		
 		// BuildingHelper info
 	    "Building"                      "1" //bool
-	    "BuildingSize"                  "0" 
 	    "BuildTime"                     "10.0"
 	    "AbilityCastRange"              "300"
 	    "UpdateHealth"                  "1" //bool
@@ -2664,7 +2662,6 @@
 		
 		// BuildingHelper info
 	    "Building"                      "1" //bool
-	    "BuildingSize"                  "0" 
 	    "BuildTime"                     "10.0"
 	    "AbilityCastRange"              "300"
 	    "UpdateHealth"                  "1" //bool
@@ -2722,7 +2719,6 @@
 	
 		// BuildingHelper info
 	    "Building"                      "1" //bool
-	    "BuildingSize"                  "2" 
 	    "BuildTime"                     "10.0"
 	    "AbilityCastRange"              "300"
 	    "UpdateHealth"                  "1" //bool
@@ -2783,7 +2779,6 @@
 	
 		// BuildingHelper info
 	    "Building"                      "1" //bool
-	    "BuildingSize"                  "2" 
 	    "BuildTime"                     "10.0"
 	    "AbilityCastRange"              "300"
 	    "UpdateHealth"                  "1" //bool
@@ -2849,7 +2844,6 @@
 	
 		// BuildingHelper info
 	    "Building"                      "1" //bool
-	    "BuildingSize"                  "2" 
 	    "BuildTime"                     "10.0"
 	    "AbilityCastRange"              "300"
 	    "UpdateHealth"                  "1" //bool
@@ -2911,7 +2905,6 @@
 	
 		// BuildingHelper info
 	    "Building"                      "1" //bool
-	    "BuildingSize"                  "2" 
 	    "BuildTime"                     "10.0"
 	    "AbilityCastRange"              "300"
 	    "UpdateHealth"                  "1" //bool
@@ -2941,6 +2934,11 @@
 	            "Function"      "Build"
 	        }
 	    }
+	
+	    // Building Size
+	    //----------------------------------------------------------------
+	    "ConstructionSize"          "2"
+	    "BlockPathingSize"          "2"
 	}
 	"item_building_kit_mixing_pot"
 	{
@@ -2972,13 +2970,12 @@
 	
 		// BuildingHelper info
 	    "Building"                      "1" //bool
-	    "BuildingSize"                  "2" 
 	    "BuildTime"                     "10.0"
 	    "AbilityCastRange"              "300"
 	    "UpdateHealth"                  "1" //bool
 	    "Scale"                         "0" //bool
 	    "PlayerCanControl"              "1" //bool
-	        "ModelRotation"                 "-90"
+	    "ModelRotation"                 "-90"
 	    "UnitName"                      "npc_building_mix_pot"
 	    "AbilityCooldown"               "0"
 	    "AbilityGoldCost"               "0"
@@ -3002,6 +2999,11 @@
 	            "Function"      "Build"
 	        }
 	    }
+	
+	    // Building Size
+	    //----------------------------------------------------------------
+	    "ConstructionSize"          "2"
+	    "BlockPathingSize"          "2"
 	}
 	"item_building_kit_smoke_house"
 	{
@@ -3033,7 +3035,6 @@
 	
 		// BuildingHelper info
 	    "Building"                      "1" //bool
-	    "BuildingSize"                  "2" 
 	    "BuildTime"                     "10.0"
 	    "AbilityCastRange"              "300"
 	    "UpdateHealth"                  "1" //bool
@@ -3064,6 +3065,10 @@
 	        }
 	    }
 	
+	    // Building Size
+	    //----------------------------------------------------------------
+	    "ConstructionSize"          "2"
+	    "BlockPathingSize"          "2"
 	}
 	"item_building_kit_spirit_ward"
 	{
@@ -3094,8 +3099,7 @@
 	    }
 	
 		// BuildingHelper info
-	    "Building"                      "1" //bool
-	    "BuildingSize"                  "2" 
+	    "Building"                      "1" //bool 
 	    "BuildTime"                     "30.0"
 	    "AbilityCastRange"              "300"
 	    "UpdateHealth"                  "1" //bool
@@ -3157,7 +3161,6 @@
 	
 		// BuildingHelper info
 	    "Building"                      "1" //bool
-	    "BuildingSize"                  "2" 
 	    "BuildTime"                     "12.0"
 	    "AbilityCastRange"              "300"
 	    "UpdateHealth"                  "1" //bool
@@ -3188,6 +3191,10 @@
 	        }
 	    }
 	
+	    // Building Size
+	    //----------------------------------------------------------------
+	    "ConstructionSize"          "2"
+	    "BlockPathingSize"          "2"
 	}
 	"item_building_kit_tannery"
 	{
@@ -3219,7 +3226,6 @@
 	
 		// BuildingHelper info
 	    "Building"                      "1" //bool
-	    "BuildingSize"                  "2" 
 	    "BuildTime"                     "10.0"
 	    "AbilityCastRange"              "300"
 	    "UpdateHealth"                  "1" //bool
@@ -3250,6 +3256,10 @@
 	        }
 	    }
 	
+	    // Building Size
+	    //----------------------------------------------------------------
+	    "ConstructionSize"          "2"
+	    "BlockPathingSize"          "2"
 	}
 	"item_building_kit_teleport_beacon"
 	{
@@ -3281,7 +3291,6 @@
 	
 		// BuildingHelper info
 	    "Building"                      "1" //bool
-	    "BuildingSize"                  "2" 
 	    "BuildTime"                     "10.0"
 	    "AbilityCastRange"              "300"
 	    "UpdateHealth"                  "1" //bool
@@ -3342,7 +3351,6 @@
 	
 		// BuildingHelper info
 	    "Building"                      "1" //bool
-	    "BuildingSize"                  "2" 
 	    "BuildTime"                     "7.0"
 	    "AbilityCastRange"              "300"
 	    "UpdateHealth"                  "1" //bool
@@ -3403,7 +3411,6 @@
 	
 		// BuildingHelper info
 	    "Building"                      "1" //bool
-	    "BuildingSize"                  "2" 
 	    "BuildTime"                     "10.0"
 	    "AbilityCastRange"              "300"
 	    "UpdateHealth"                  "1" //bool
@@ -3465,7 +3472,6 @@
 	
 		// BuildingHelper info
 	    "Building"                      "1" //bool
-	    "BuildingSize"                  "0"
 	    "BuildTime"                     "10.0"
 	    "AbilityCastRange"              "300"
 	    "UpdateHealth"                  "1" //bool
@@ -3527,7 +3533,6 @@
 	
 		// BuildingHelper info
 	    "Building"                      "1" //bool
-	    "BuildingSize"                  "2" 
 	    "BuildTime"                     "13.0"
 	    "AbilityCastRange"              "300"
 	    "UpdateHealth"                  "1" //bool

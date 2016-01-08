@@ -153,6 +153,11 @@
 		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 		"VisionDaytimeRange"	"0"
 		"VisionNighttimeRange"	"0"
+	
+		// Building Size
+		//----------------------------------------------------------------
+		"ConstructionSize"			"2"
+		"BlockPathingSize"			"2"
 	}
 	"npc_building_craftmaster"
 	{
@@ -193,6 +198,11 @@
 		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 		"VisionDaytimeRange"	"0"
 		"VisionNighttimeRange"	"0"
+	
+		// Building Size
+		//----------------------------------------------------------------
+		"ConstructionSize"			"2"
+		"BlockPathingSize"			"2"
 	}
 	"npc_building_emp"
 	{
@@ -230,6 +240,11 @@
 		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 		"VisionDaytimeRange"	"0"
 		"VisionNighttimeRange"	"0"
+	
+		// Building Size
+		//----------------------------------------------------------------
+		"ConstructionSize"			"2"
+		"BlockPathingSize"			"2"
 	}
 	"npc_building_ensnare_trap"
 	{
@@ -271,6 +286,11 @@
 		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 		"VisionDaytimeRange"	"0"
 		"VisionNighttimeRange"	"0"
+	
+		// Building Size
+		//----------------------------------------------------------------
+		"ConstructionSize"			"2"
+		"BlockPathingSize"			"0"
 	}
 	"npc_building_fire_basic"
 	{
@@ -312,6 +332,11 @@
 		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 		"VisionDaytimeRange"	"1200"
 		"VisionNighttimeRange"	"800"
+	
+		// Building Size
+		//----------------------------------------------------------------
+		"ConstructionSize"			"2"
+		"BlockPathingSize"			"0"
 	}
 	"npc_building_fire_mage"
 	{
@@ -353,6 +378,11 @@
 		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 		"VisionDaytimeRange"	"1200"
 		"VisionNighttimeRange"	"800"
+	
+		// Building Size
+		//----------------------------------------------------------------
+		"ConstructionSize"			"2"
+		"BlockPathingSize"			"0"
 	}
 	"npc_building_hatchery"
 	{
@@ -394,6 +424,11 @@
 		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 		"VisionDaytimeRange"	"0"
 		"VisionNighttimeRange"	"0"
+	
+		// Building Size
+		//----------------------------------------------------------------
+		"ConstructionSize"			"2"
+		"BlockPathingSize"			"2"
 	}
 	"npc_building_hut_mud"
 	{
@@ -433,6 +468,11 @@
 		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 		"VisionDaytimeRange"	"0"
 		"VisionNighttimeRange"	"0"
+	
+		// Building Size
+		//----------------------------------------------------------------
+		"ConstructionSize"			"2"
+		"BlockPathingSize"			"2"
 	}
 	"npc_building_hut_troll"
 	{
@@ -473,6 +513,11 @@
 		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 		"VisionDaytimeRange"	"0"
 		"VisionNighttimeRange"	"0"
+	
+		// Building Size
+		//----------------------------------------------------------------
+		"ConstructionSize"			"2"
+		"BlockPathingSize"			"2"
 	}
 	"npc_building_hut_witch_doctor"
 	{
@@ -514,6 +559,11 @@
 		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 		"VisionDaytimeRange"	"0"
 		"VisionNighttimeRange"	"0"
+	
+		// Building Size
+		//----------------------------------------------------------------
+		"ConstructionSize"			"2"
+		"BlockPathingSize"			"2"
 	}
 	"npc_building_mix_pot"
 	{
@@ -555,6 +605,11 @@
 		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 		"VisionDaytimeRange"	"0"
 		"VisionNighttimeRange"	"0"
+	
+		// Building Size
+		//----------------------------------------------------------------
+		"ConstructionSize"			"2"
+		"BlockPathingSize"			"2"
 	}
 	"npc_building_omnitower"
 	{
@@ -596,6 +651,11 @@
 		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 		"VisionDaytimeRange"	"0"
 		"VisionNighttimeRange"	"0"
+	
+		// Building Size
+		//----------------------------------------------------------------
+		"ConstructionSize"			"2"
+		"BlockPathingSize"			"2"
 	}
 	"npc_building_smoke_house"
 	{
@@ -637,6 +697,11 @@
 		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 		"VisionDaytimeRange"	"0"
 		"VisionNighttimeRange"	"0"
+	
+		// Building Size
+		//----------------------------------------------------------------
+		"ConstructionSize"			"2"
+		"BlockPathingSize"			"2"
 	}
 	"npc_building_spirit_ward"
 	{
@@ -676,6 +741,11 @@
 		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 		"VisionDaytimeRange"	"0"
 		"VisionNighttimeRange"	"0"
+	
+		// Building Size
+		//----------------------------------------------------------------
+		"ConstructionSize"			"2"
+		"BlockPathingSize"			"2"
 	}
 	"npc_building_storage_chest"
 	{
@@ -715,6 +785,11 @@
 		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 		"VisionDaytimeRange"	"0"
 		"VisionNighttimeRange"	"0"
+	
+		// Building Size
+		//----------------------------------------------------------------
+		"ConstructionSize"			"2"
+		"BlockPathingSize"			"2"
 	}
 	"npc_building_tannery"
 	{
@@ -758,6 +833,11 @@
 		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 		"VisionDaytimeRange"	"0"
 		"VisionNighttimeRange"	"0"
+	
+		// Building Size
+		//----------------------------------------------------------------
+		"ConstructionSize"			"2"
+		"BlockPathingSize"			"2"
 	}
 	"npc_building_teleport_beacon"
 	{
@@ -796,6 +876,11 @@
 		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 		"VisionDaytimeRange"	"0"
 		"VisionNighttimeRange"	"0"
+	
+		// Building Size
+		//----------------------------------------------------------------
+		"ConstructionSize"			"2"
+		"BlockPathingSize"			"2"
 	}
 	"npc_building_tent"
 	{
@@ -836,6 +921,11 @@
 		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 		"VisionDaytimeRange"	"0"
 		"VisionNighttimeRange"	"0"
+	
+		// Building Size
+		//----------------------------------------------------------------
+		"ConstructionSize"			"2"
+		"BlockPathingSize"			"2"
 	}
 	"npc_building_workshop"
 	{
@@ -879,6 +969,11 @@
 		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 		"VisionDaytimeRange"	"0"
 		"VisionNighttimeRange"	"0"
+	
+		// Building Size
+		//----------------------------------------------------------------
+		"ConstructionSize"			"2"
+		"BlockPathingSize"			"2"
 	}
 	"npc_bush_herb"
 	{
@@ -2698,6 +2793,16 @@
 			"soundfile"	"scripts/game_sounds_heroes/game_sounds_witchdoctor.txt"
 		}
 	
+	}
+	"tree_chopped"
+	{
+	    "BaseClass"                 "npc_dota_creature"
+	    "AttackCapabilities"        "DOTA_UNIT_CAP_NO_ATTACK"
+	    "VisionDaytimeRange"        "0" 
+	    "VisionNighttimeRange"      "0"
+	    "UnitRelationshipClass"     "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
+	    "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_NONE"
+	    "Ability1"                  "dummy_tree"
 	}
 	"blur_illusion"
 	{

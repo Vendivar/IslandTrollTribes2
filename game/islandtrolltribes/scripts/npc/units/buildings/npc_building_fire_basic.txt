@@ -38,4 +38,9 @@
 	"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 	"VisionDaytimeRange"	"1200"
 	"VisionNighttimeRange"	"800"
+
+	// Building Size
+	//----------------------------------------------------------------
+	"ConstructionSize"			"2"
+	"BlockPathingSize"			"0"
 }

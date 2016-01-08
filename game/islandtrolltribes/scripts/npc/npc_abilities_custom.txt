@@ -1,119 +1,5 @@
 "DOTAAbilities"
 {
-	"move_to_point_100"
-	{
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-		"BaseClass"						"ability_datadriven"
-		"AbilityCastPoint"				"0"
-		"AbilityCooldown"				"0"
-		"AbilityCastRange"				"100"
-		"MaxLevel"						"1"
-	
-		"AbilityManaCost"				"0"
-		"IsCastableWhileHidden"	"1"
-	
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"Target"		"POINT"
-				"ScriptFile"	"buildings/build.lua"
-				"Function"		"StartBuilding"
-			}
-		}
-	}
-	
-	"move_to_point_150"
-	{
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-		"BaseClass"						"ability_datadriven"
-		"AbilityCastPoint"				"0"
-		"AbilityCooldown"				"0"
-		"AbilityCastRange"				"150"
-		"MaxLevel"						"1"
-	
-		"AbilityManaCost"				"0"
-		"IsCastableWhileHidden"	"1"
-	
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"Target"		"POINT"
-				"ScriptFile"	"buildings/build.lua"
-				"Function"		"StartBuilding"
-			}
-		}
-	}
-	
-	"move_to_point_200"
-	{
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-		"BaseClass"						"ability_datadriven"
-		"AbilityCastPoint"				"0"
-		"AbilityCooldown"				"0"
-		"AbilityCastRange"				"200"
-		"MaxLevel"						"1"
-	
-		"AbilityManaCost"				"0"
-		"IsCastableWhileHidden"	"1"
-	
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"Target"		"POINT"
-				"ScriptFile"	"buildings/build.lua"
-				"Function"		"StartBuilding"
-			}
-		}
-	}
-	
-	"move_to_point_250"
-	{
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-		"BaseClass"						"ability_datadriven"
-		"AbilityCastPoint"				"0"
-		"AbilityCooldown"				"0"
-		"AbilityCastRange"				"250"
-		"MaxLevel"						"1"
-	
-		"AbilityManaCost"				"0"
-		"IsCastableWhileHidden"	"1"
-	
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"Target"		"POINT"
-				"ScriptFile"	"buildings/build.lua"
-				"Function"		"StartBuilding"
-			}
-		}
-	}
-	
-	"move_to_point_300"
-	{
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-		"BaseClass"						"ability_datadriven"
-		"AbilityCastPoint"				"0"
-		"AbilityCooldown"				"0"
-		"AbilityCastRange"				"300"
-		"MaxLevel"						"1"
-	
-		"AbilityManaCost"				"0"
-		"IsCastableWhileHidden"	"1"
-	
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"Target"		"POINT"
-				"ScriptFile"	"buildings/build.lua"
-				"Function"		"StartBuilding"
-			}
-		}
-	}
 	"ability_mammoth_passive_hardened_skin"
 	{
 		"BaseClass"	"ability_datadriven"
@@ -508,32 +394,66 @@
 	}
 	"ability_building"
 	{
-	    "BaseClass"                     "ability_datadriven"
-	    "MaxLevel"                      "1"
+		"BaseClass"             		"ability_datadriven"
+		"MaxLevel" 						"1"
 	
-	    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 	
-	    "Modifiers"
-	    {
-	        "modifier_building"
-	        {
-	            "Passive"           "1"
-	            "IsHidden"          "1"
-	            "Attributes"        "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE | MODIFIER_ATTRIBUTE_PERMANENT" 
-	            "States"
-	            {
-	                "MODIFIER_STATE_MAGIC_IMMUNE" "MODIFIER_STATE_VALUE_ENABLED" // Makes most abilities don't affect this. Use custom damage
-	                "MODIFIER_STATE_ROOTED"     "MODIFIER_STATE_VALUE_ENABLED" // Prevents moving
-	                "MODIFIER_STATE_LOW_ATTACK_PRIORITY" "MODIFIER_STATE_VALUE_ENABLED" // Makes it a secondary target when A-clicking ground
-	            }
-	            "Properties"
-	            {
-	                "MODIFIER_PROPERTY_DISABLE_TURNING" "1"
-	                "MODIFIER_PROPERTY_IGNORE_CAST_ANGLE" "1"
-	                "MODIFIER_PROPERTY_MOVESPEED_ABSOLUTE"  "0.1"
-	            }
-	        }
-	    }       
+		"Modifiers"
+		{
+			"modifier_building"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes"		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE | MODIFIER_ATTRIBUTE_PERMANENT"	
+				"States"
+				{
+					"MODIFIER_STATE_MAGIC_IMMUNE" "MODIFIER_STATE_VALUE_ENABLED" // Makes most abilities don't affect this. Use custom damage
+					"MODIFIER_STATE_ROOTED"		"MODIFIER_STATE_VALUE_ENABLED" // Prevents moving
+					"MODIFIER_STATE_SPECIALLY_DENIABLE" "MODIFIER_STATE_VALUE_ENABLED" // Allows attacking own buildings
+					"MODIFIER_STATE_LOW_ATTACK_PRIORITY" "MODIFIER_STATE_VALUE_ENABLED" // Makes it a secondary target when A-clicking ground
+					"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED" // GridNav is blocked
+				}
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_DISABLE_TURNING" "1"
+					"MODIFIER_PROPERTY_IGNORE_CAST_ANGLE" "1"
+					"MODIFIER_PROPERTY_MOVESPEED_ABSOLUTE"	"0.1"
+				}
+			}
+		}		
+	}
+	
+	"ability_tower"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"MaxLevel" 						"1"
+	
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	
+		"Modifiers"
+		{
+			"modifier_tower"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes"		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE | MODIFIER_ATTRIBUTE_PERMANENT"	
+				"States"
+				{
+					"MODIFIER_STATE_MAGIC_IMMUNE" "MODIFIER_STATE_VALUE_ENABLED" // Makes most abilities don't affect this. Use custom damage
+					"MODIFIER_STATE_ROOTED"		"MODIFIER_STATE_VALUE_ENABLED" // Prevents moving
+					"MODIFIER_STATE_SPECIALLY_DENIABLE" "MODIFIER_STATE_VALUE_ENABLED" // Allows attacking own buildings
+					"MODIFIER_STATE_LOW_ATTACK_PRIORITY" "MODIFIER_STATE_VALUE_ENABLED" // Makes it a secondary target when A-clicking ground
+					"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED" // GridNav is blocked
+				}
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_DISABLE_TURNING" "1"
+					"MODIFIER_PROPERTY_IGNORE_CAST_ANGLE" "1"
+					"MODIFIER_PROPERTY_MOVESPEED_ABSOLUTE"	"0.1"
+				}
+			}
+		}		
 	}
 	"ability_building_cookmeat"
 	{
@@ -1331,6 +1251,32 @@
 	    "AbilityChannelTime"    "4.0"
 	
 	    "AbilitySharedWithTeammates" "1"
+	}
+	"dummy_tree"
+	{
+	    "BaseClass"         "ability_datadriven"
+	    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	    "Modifiers"
+	    {
+	        "dummy_modifier"
+	        {
+	            "Passive"   "1"
+	            "States"
+	            {
+	                "MODIFIER_STATE_NO_UNIT_COLLISION"  "MODIFIER_STATE_VALUE_ENABLED"
+	                "MODIFIER_STATE_NO_TEAM_MOVE_TO"    "MODIFIER_STATE_VALUE_ENABLED"
+	                "MODIFIER_STATE_NO_TEAM_SELECT" "MODIFIER_STATE_VALUE_ENABLED"
+	                "MODIFIER_STATE_COMMAND_RESTRICTED" "MODIFIER_STATE_VALUE_ENABLED"
+	                "MODIFIER_STATE_ATTACK_IMMUNE"  "MODIFIER_STATE_VALUE_ENABLED"
+	                "MODIFIER_STATE_INVULNERABLE"   "MODIFIER_STATE_VALUE_ENABLED"
+	                //"MODIFIER_STATE_FLYING"   "MODIFIER_STATE_VALUE_ENABLED"
+	                "MODIFIER_STATE_NOT_ON_MINIMAP" "MODIFIER_STATE_VALUE_ENABLED"
+	                "MODIFIER_STATE_UNSELECTABLE"   "MODIFIER_STATE_VALUE_ENABLED"
+	                //"MODIFIER_STATE_OUT_OF_GAME"  "MODIFIER_STATE_VALUE_ENABLED"
+	                "MODIFIER_STATE_NO_HEALTH_BAR"         "MODIFIER_STATE_VALUE_ENABLED"
+	            }
+	        }
+	    }
 	}
 	"ability_bush_passive"
 	{

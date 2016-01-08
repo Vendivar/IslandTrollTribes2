@@ -23,14 +23,13 @@
 	"WorldDropSound"	"Item.DropGemWorld"
 
 	// BuildingHelper info
-    "Building"                      "1" //bool
-    "BuildingSize"                  "2" 
+    "Building"                      "1" //bool 
     "BuildTime"                     "10.0"
     "AbilityCastRange"              "300"
     "UpdateHealth"                  "1" //bool
     "Scale"                         "0" //bool
     "PlayerCanControl"              "1" //bool
-        "ModelRotation"                 "90.0"
+    "ModelRotation"                 "90.0"
     "UnitName"                      "npc_building_armory"
     "AbilityCooldown"               "0"
     "AbilityGoldCost"               "0"

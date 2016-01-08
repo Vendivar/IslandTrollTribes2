@@ -28,7 +28,6 @@
 
 	// BuildingHelper info
     "Building"                      "1" //bool
-    "BuildingSize"                  "2" 
     "BuildTime"                     "10.0"
     "AbilityCastRange"              "300"
     "UpdateHealth"                  "1" //bool
@@ -59,4 +58,8 @@
         }
     }
 
+    // Building Size
+    //----------------------------------------------------------------
+    "ConstructionSize"          "2"
+    "BlockPathingSize"          "2"
 }

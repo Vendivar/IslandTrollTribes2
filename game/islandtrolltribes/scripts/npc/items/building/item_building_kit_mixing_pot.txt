@@ -28,13 +28,12 @@
 
 	// BuildingHelper info
     "Building"                      "1" //bool
-    "BuildingSize"                  "2" 
     "BuildTime"                     "10.0"
     "AbilityCastRange"              "300"
     "UpdateHealth"                  "1" //bool
     "Scale"                         "0" //bool
     "PlayerCanControl"              "1" //bool
-        "ModelRotation"                 "-90"
+    "ModelRotation"                 "-90"
     "UnitName"                      "npc_building_mix_pot"
     "AbilityCooldown"               "0"
     "AbilityGoldCost"               "0"
@@ -58,4 +57,9 @@
             "Function"      "Build"
         }
     }
+
+    // Building Size
+    //----------------------------------------------------------------
+    "ConstructionSize"          "2"
+    "BlockPathingSize"          "2"
 }
