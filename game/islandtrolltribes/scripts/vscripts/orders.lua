@@ -131,11 +131,6 @@ function ITT:FilterExecuteOrder( filterTable )
     if order_type == DOTA_UNIT_ORDER_DROP_ITEM then
         local item = EntIndexToHScript(abilityIndex)
         local origin = unit:GetAbsOrigin()
-
-        -- BuildingHelper clear queue when a item is dropped
-        if IsBuilder(unit) then
-            BuildingHelper:ClearQueue(unit)
-        end
         
         -- Drop the item if within the extended range
         local distance = (origin - point):Length2D()
@@ -240,26 +235,6 @@ function ITT:FilterExecuteOrder( filterTable )
         end
 
         return false
-    end
-
-    ------------------------------------------------
-    --              ClearQueue Order              --
-    ------------------------------------------------
-    -- Cancel queue on Stop and Hold
-    if order_type == DOTA_UNIT_ORDER_STOP or order_type == DOTA_UNIT_ORDER_HOLD_POSITION then
-        for n, unit_index in pairs(units) do 
-            local unit = EntIndexToHScript(unit_index)
-            if IsBuilder(unit) then
-                BuildingHelper:ClearQueue(unit)
-            end
-        end
-
-    -- Cancel builder queue when casting non building abilities
-    elseif (abilityIndex and abilityIndex > 0) and IsBuilder(unit) then
-        local ability = EntIndexToHScript(abilityIndex)
-        if not IsBuildingAbility(ability) then
-            BuildingHelper:ClearQueue(unit)
-        end
     end
 
     return true

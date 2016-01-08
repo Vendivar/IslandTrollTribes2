@@ -300,9 +300,6 @@ end
 function ITT:OnNPCSpawned( keys )
     local spawnedUnit = EntIndexToHScript( keys.entindex )
     --print("spawned unit: ", spawnedUnit:GetUnitName(), spawnedUnit:GetClassname(), spawnedUnit:GetName(), spawnedUnit:GetEntityIndex())
-    
-    -- add it to the gridnav to stop people building on it
-    --BuildingHelper:AddUnit(spawnedUnit)
 
     if spawnedUnit:IsRealHero() then
         if not spawnedUnit.bFirstSpawned then
@@ -554,10 +551,6 @@ function ITT:OnEntityKilled(keys)
                 corpse:RemoveSelf()
             end
         end)
-    end
-
-    if IsCustomBuilding(killedUnit) then
-        BuildingHelper:RemoveBuilding(killedUnit, false)
     end
 
     -- Heroes
