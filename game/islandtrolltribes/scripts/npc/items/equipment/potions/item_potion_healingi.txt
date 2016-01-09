@@ -65,6 +65,10 @@
 
 	}
 
+    "Custom"
+	{
+		"ModelScale"	"0.8"
+    }
 	"AbilitySpecial"
 	{
 		"01"

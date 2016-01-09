@@ -6,8 +6,8 @@
 	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"potion_acid"
-	"Model"	"models/items/alchemist/toxic_siege_corrosive_flasks/toxic_siege_corrosive_flasks.vmdl"
-	"Effect"	"units/heroes/hero_alchemist/alchemist_unstableconc_bottlesright.vpcf"
+	"Model"	"models/props_gameplay/salve_red.vmdl"
+	"Effect"	""
 	"AbilityCastRange"	"800"
 	"AbilityCastPoint"	"0.25"
 	"AbilityCooldown"	"10"
@@ -34,6 +34,7 @@
 			"Target"	"TARGET"
 			"EffectName"	"particles/units/heroes/hero_bristleback/bristleback_viscous_nasal_goo.vpcf"
 			"MoveSpeed"	"1500"
+            "ProvidesVision" "0"
 		}
 
 	}
@@ -95,24 +96,7 @@
 
 	"Custom"
 	{
-		"ModelScale"	"1.5"
-        "ModelOffsets"
-		{
-			"Origin"
-			{
-				"x"	"0"
-				"y"	"0"
-				"z"	"-250"
-			}
-
-			"Angles"
-			{
-				"x"	"0"
-				"y"	"0"
-				"z"	"0"
-			}
-
-		}
+		"ModelScale"	"1.0"
 	}
 	"AbilitySpecial"
 	{

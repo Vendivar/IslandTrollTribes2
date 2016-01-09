@@ -4,7 +4,7 @@
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"potion_anti_magic"
-	"Model"	"models/items/alchemist/flask/flask.vmdl"
+	"Model"	"models/potion_acid.vmdl"
 	"Effect"	""
 	"AbilityCastPoint"	"0.5"
 	"ItemCost"	"6"
@@ -27,7 +27,7 @@
 	"WorldDropSound"	"Hero_Alchemist.Foley"
 	"Custom"
 	{
-		"ModelScale"	"2.5"
+		"ModelScale"	"1.5"
 	}
 	
 	"AbilitySpecial"

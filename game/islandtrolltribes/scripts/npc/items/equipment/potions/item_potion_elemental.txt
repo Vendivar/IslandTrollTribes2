@@ -4,7 +4,7 @@
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"potion_elemental"
-	"Model"	"models/items/alchemist/alchemeyerflask/alchemeyerflask.vmdl"
+	"Model"	"models/potion_elemental.vmdl"
 	"Effect"	""
 	"AbilityCastPoint"	"0.5"
 	"ItemCost"	"8"
@@ -25,6 +25,7 @@
 	"UIPickupSound"	"Item.PickUpGemShop"
 	"UIDropSound"	"Item.DropGemShop"
 	"WorldDropSound"	"Hero_Alchemist.Foley"
+    
 	"Custom"
 	{
 		"ModelScale"	"2.0"
@@ -34,7 +35,7 @@
 			{
 				"x"	"0"
 				"y"	"0"
-				"z"	"-250"
+				"z"	"0"
 			}
 
 			"Angles"

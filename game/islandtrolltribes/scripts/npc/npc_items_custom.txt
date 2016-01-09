@@ -6577,8 +6577,8 @@
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"potion_acid"
-		"Model"	"models/items/alchemist/toxic_siege_corrosive_flasks/toxic_siege_corrosive_flasks.vmdl"
-		"Effect"	"units/heroes/hero_alchemist/alchemist_unstableconc_bottlesright.vpcf"
+		"Model"	"models/props_gameplay/salve_red.vmdl"
+		"Effect"	""
 		"AbilityCastRange"	"800"
 		"AbilityCastPoint"	"0.25"
 		"AbilityCooldown"	"10"
@@ -6605,6 +6605,7 @@
 				"Target"	"TARGET"
 				"EffectName"	"particles/units/heroes/hero_bristleback/bristleback_viscous_nasal_goo.vpcf"
 				"MoveSpeed"	"1500"
+	            "ProvidesVision" "0"
 			}
 	
 		}
@@ -6666,24 +6667,7 @@
 	
 		"Custom"
 		{
-			"ModelScale"	"1.5"
-	        "ModelOffsets"
-			{
-				"Origin"
-				{
-					"x"	"0"
-					"y"	"0"
-					"z"	"-250"
-				}
-	
-				"Angles"
-				{
-					"x"	"0"
-					"y"	"0"
-					"z"	"0"
-				}
-	
-			}
+			"ModelScale"	"1.0"
 		}
 		"AbilitySpecial"
 		{
@@ -6815,7 +6799,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"potion_anti_magic"
-		"Model"	"models/items/alchemist/flask/flask.vmdl"
+		"Model"	"models/potion_acid.vmdl"
 		"Effect"	""
 		"AbilityCastPoint"	"0.5"
 		"ItemCost"	"6"
@@ -6838,7 +6822,7 @@
 		"WorldDropSound"	"Hero_Alchemist.Foley"
 		"Custom"
 		{
-			"ModelScale"	"2.5"
+			"ModelScale"	"1.5"
 		}
 		
 		"AbilitySpecial"
@@ -6970,8 +6954,8 @@
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"item_urn_of_shadows"
-		"Model"	"models/items/alchemist/convict_trophy_offhand/convict_trophy_offhand.vmdl"
-		"Effect"	"particles/units/heroes/hero_alchemist/alchemist_unstableconc_bottles.vpcf"
+		"Model"	"models/potion_2.vmdl"
+		"Effect"	""
 		"AbilityCastRange"	"800"
 		"AbilityCastPoint"	"0.5"
 		"ItemCost"	"58"
@@ -7393,7 +7377,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"potion_elemental"
-		"Model"	"models/items/alchemist/alchemeyerflask/alchemeyerflask.vmdl"
+		"Model"	"models/potion_elemental.vmdl"
 		"Effect"	""
 		"AbilityCastPoint"	"0.5"
 		"ItemCost"	"8"
@@ -7414,6 +7398,7 @@
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Hero_Alchemist.Foley"
+	    
 		"Custom"
 		{
 			"ModelScale"	"2.0"
@@ -7423,7 +7408,7 @@
 				{
 					"x"	"0"
 					"y"	"0"
-					"z"	"-250"
+					"z"	"0"
 				}
 	
 				"Angles"
@@ -7533,7 +7518,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"item_bottle_haste"
-		"Model"	"models/heroes/alchemist/alchemist_leftbottle.vmdl"
+		"Model"	"models/potion_anabolic.vmdl"
 		"Effect"	""
 		"AbilityCastRange"	"100"
 		"AbilityCastPoint"	"0.0"
@@ -7596,6 +7581,10 @@
 			{
 			}
 	
+	    "Custom"
+		{
+			"ModelScale"	"1.3"
+	    }
 		}
 	
 		"Modifiers"
@@ -7715,6 +7704,10 @@
 	
 		}
 	
+	    "Custom"
+		{
+			"ModelScale"	"0.8"
+	    }
 		"AbilitySpecial"
 		{
 			"01"
@@ -7798,6 +7791,10 @@
 	
 		}
 	
+	    "Custom"
+		{
+			"ModelScale"	"0.8"
+	    }
 		"AbilitySpecial"
 		{
 			"01"
@@ -7881,6 +7878,10 @@
 	
 		}
 	
+	    "Custom"
+		{
+			"ModelScale"	"0.8"
+	    }
 		"AbilitySpecial"
 		{
 			"01"
@@ -7904,7 +7905,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"potion_manai"
-		"Model"	"models/props_gameplay/bottle_mango001.vmdl"
+		"Model"	"models/props_gameplay/salve_blue.vmdl"
 		"Effect"	""
 		"AbilityCastPoint"	"0.5"
 		"ItemCost"	"6"
@@ -7992,7 +7993,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET |  DOTA_ABILITY_BEHAVIOR_ITEM"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"item_clarity"
-		"Model"	"models/props_gameplay/bottle_mango001.vmdl"
+		"Model"	"models/props_gameplay/salve_blue.vmdl"
 		"Effect"	""
 		"AbilityCastPoint"	"0.5"
 		"ItemCost"	"12"
@@ -8080,7 +8081,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"potion_manaiv"
-		"Model"	"models/props_gameplay/bottle_mango001.vmdl"
+		"Model"	"models/props_gameplay/salve_blue.vmdl"
 		"Effect"	""
 		"AbilityCastPoint"	"0.5"
 		"ItemCost"	"14"
@@ -8331,7 +8332,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"potion_twin_island"
-		"Model"	"models/props_debris/terracotta_pot005.vmdl"
+		"Model"	"models/props_gameplay/bottle_mango001.vmdl"
 		"Effect"	""
 		"AbilityCastPoint"	"0.5"
 		"ItemCost"	"78"
@@ -8369,7 +8370,7 @@
 	
 	    "Custom"
 		{
-			"ModelScale"	"1.3"
+			"ModelScale"	"0.7"
 	    }
 		"AbilitySpecial"
 		{

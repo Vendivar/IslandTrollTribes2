@@ -4,7 +4,7 @@
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET |  DOTA_ABILITY_BEHAVIOR_ITEM"
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"item_clarity"
-	"Model"	"models/props_gameplay/bottle_mango001.vmdl"
+	"Model"	"models/props_gameplay/salve_blue.vmdl"
 	"Effect"	""
 	"AbilityCastPoint"	"0.5"
 	"ItemCost"	"12"
