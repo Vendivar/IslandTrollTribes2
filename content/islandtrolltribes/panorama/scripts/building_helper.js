@@ -26,8 +26,6 @@ var distance_to_gold_mine;
 var last_tree_update = Game.GetGameTime();
 var treeGrid = [];
 var cutTrees = [];
-var BLOCKED = 2;
-var GRID_TYPES = [];
 
 // building_settings.kv options
 var grid_alpha = CustomNetTables.GetTableValue( "building_settings", "grid_alpha").value
@@ -38,13 +36,19 @@ var model_alpha = CustomNetTables.GetTableValue( "building_settings", "model_alp
 var recolor_ghost = CustomNetTables.GetTableValue( "building_settings", "recolor_ghost").value;
 var turn_red = CustomNetTables.GetTableValue( "building_settings", "turn_red").value;
 var permanent_alt_grid = CustomNetTables.GetTableValue( "building_settings", "permanent_alt_grid").value;
+var update_trees = CustomNetTables.GetTableValue( "building_settings", "update_trees").value;
 
-var HEIGHT_RESTRICTION
+var height_restriction
 if (CustomNetTables.GetTableValue( "building_settings", "height_restriction") !== undefined)
-    HEIGHT_RESTRICTION = CustomNetTables.GetTableValue( "building_settings", "height_restriction").value;
+    height_restriction = CustomNetTables.GetTableValue( "building_settings", "height_restriction").value;
+
+var GRID_TYPES = CustomNetTables.GetTableValue( "building_settings", "grid_types")
+CustomNetTables.SubscribeNetTableListener( "building_settings", function() {
+    GRID_TYPES = CustomNetTables.GetTableValue( "building_settings", "grid_types")
+})
 
 var Root = $.GetContextPanel()
-var localHeroIndex = Players.GetPlayerHeroEntityIndex( Players.GetLocalPlayer() );
+var localHeroIndex
 
 if (! Root.loaded)
 {
@@ -59,23 +63,19 @@ function StartBuildingHelper( params )
     if (params !== undefined)
     {
         // Set the parameters passed by AddBuilding
+        localHeroIndex = Players.GetPlayerHeroEntityIndex( Players.GetLocalPlayer() );
         state = params.state;
         size = params.size;
         range = params.range;
         overlay_size = size + alt_grid_squares * 2;
         builderIndex = params.builderIndex;
-        requires = params.requires;
         var scale = params.scale;
         var entindex = params.entindex;
         var propScale = params.propScale;
         offsetZ = params.offsetZ;
 
-        if (requires !== undefined)
-        {
-            if (GRID_TYPES[requires] === undefined)
-                GRID_TYPES[requires] = GRID_TYPES.length + BLOCKED + 1
-        }
-
+        requires = GetRequiredGridType(entindex)
+        $.Msg(Entities.GetUnitName(entindex)," requires ", requires)
         distance_to_gold_mine = HasGoldMineDistanceRestriction(entindex)
         
         // If we chose to not recolor the ghost model, set it white
@@ -140,12 +140,16 @@ function StartBuildingHelper( params )
     {   
         $.Schedule(frame_rate, StartBuildingHelper);
 
-        // Get all the creature entities on the screen
+        // Get all the visible entities
         var entities = Entities.GetAllEntitiesByClassname('npc_dota_building')
         var hero_entities = Entities.GetAllHeroEntities()
         var creature_entities = Entities.GetAllEntitiesByClassname('npc_dota_creature')
+        var dummy_entities = Entities.GetAllEntitiesByName('npc_dota_thinker')
+        var building_entities = Entities.GetAllBuildingEntities()
         entities = entities.concat(hero_entities)
+        entities = entities.concat(building_entities)
         entities = entities.concat(creature_entities)
+        entities = entities.concat(dummy_entities)
 
         // Build the entity grid with the construction sizes and entity origins
         entityGrid = []
@@ -155,40 +159,61 @@ function StartBuildingHelper( params )
             var entPos = Entities.GetAbsOrigin( entities[i] )
             var squares = GetConstructionSize(entities[i])
             
-            if (squares > 0 && ( IsCustomBuilding(entities[i]) || IsGoldMine(entities[i])))
+            if (squares > 0)
             {
-                if (IsGoldMine(entities[i]))
-                    BlockGridSquares(entPos, squares, requires)
-                else
-                    // Block squares centered on the origin
-                    BlockGridSquares(entPos, squares)
+                // Block squares centered on the origin
+                BlockGridSquares(entPos, squares, GRID_TYPES["BLOCKED"])
             }
             else
             {
-                // Put visible chopped tree dummies on a separate table to skip trees
-                if (Entities.GetUnitName(entities[i]) == 'tree_chopped')
+                // Put tree dummies on a separate table to skip trees
+                if (Entities.GetUnitName(entities[i]) == 'npc_dota_thinker')
                 {
-                    cutTrees[entPos] = entities[i]
+                    if (Entities.GetAbilityByName(entities[i], "dummy_tree") != -1)
+                        cutTrees[entPos] = entities[i]
                 }
                 // Block 2x2 squares if its an enemy unit
                 else if (Entities.GetTeamNumber(entities[i]) != Entities.GetTeamNumber(builderIndex))
                 {
-                    BlockGridSquares(entPos, 2)
+                    BlockGridSquares(entPos, 2, GRID_TYPES["BLOCKED"])
                 }
-            }      
+            }
+
+            var specialGrid = GetCustomGrid(entities[i])
+            if (specialGrid)
+            {
+                for (var gridType in specialGrid)
+                {
+                    if (specialGrid[gridType].Square)
+                    {
+                        //$.Msg("Setting ",specialGrid[gridType].Square," grid squares with ",gridType.toUpperCase()," [",GRID_TYPES[gridType.toUpperCase()],"]")
+                        BlockGridSquares(entPos, Number(specialGrid[gridType].Square), GRID_TYPES[gridType.toUpperCase()])
+                    }
+                    else if (specialGrid[gridType].Radius)
+                    {
+                        //$.Msg("Setting ",specialGrid[gridType].Radius," grid radius with ",gridType.toUpperCase()," [",GRID_TYPES[gridType.toUpperCase()],"]")
+                        BlockGridInRadius(entPos, Number(specialGrid[gridType].Radius), GRID_TYPES[gridType.toUpperCase()])
+                    }
+                }              
+            }
         }
 
         // Update treeGrid (slowly, as its the most expensive)
-        var time = Game.GetGameTime()
-        var time_since_last_tree_update = time - last_tree_update
-        if (time_since_last_tree_update > tree_update_interval)
+        if (update_trees)
         {
-            last_tree_update = time
-            tree_entities = Entities.GetAllEntitiesByClassname('ent_dota_tree')
-            for (var i = 0; i < tree_entities.length; i++)
+            var time = Game.GetGameTime()
+            var time_since_last_tree_update = time - last_tree_update
+            if (time_since_last_tree_update > tree_update_interval)
             {
-                var treePos = Entities.GetAbsOrigin(tree_entities[i])
-                BlockGridSquares(treePos, 2, "TREE")
+                last_tree_update = time
+                tree_entities = Entities.GetAllEntitiesByClassname('ent_dota_tree')
+                for (var i = 0; i < tree_entities.length; i++)
+                {
+                    var treePos = Entities.GetAbsOrigin(tree_entities[i])
+                    // Block the grid if the tree isn't chopped
+                    if (cutTrees[treePos] === undefined)
+                        BlockGridSquares(treePos, 2, "TREE")                    
+                }
             }
         }
 
@@ -405,7 +430,7 @@ function RegisterGNV(msg){
     for (var i = 0; i < squareX; i++) {
         GridNav[i] = []
         for (var j = 0; j < squareY; j++) {
-            GridNav[i][j] = arr[x]
+            GridNav[i][j] = (arr[x] == 1) ? GRID_TYPES["BUILDABLE"] : GRID_TYPES["BLOCKED"]
             x++
         }
 
@@ -467,24 +492,33 @@ function IsBlocked(position) {
     var x = WorldToGridPosX(position[0]) + Root.squareX/2
     var y = WorldToGridPosY(position[1]) + Root.squareY/2
 
-    if (requires !== undefined)
-        return !IsSpecialGrid(x,y, requires)
+    //{"BLIGHT":8,"BUILDABLE":2,"GOLDMINE":4,"BLOCKED":1}
+    // Check height restriction
+    if (height_restriction !== undefined && position[2] < height_restriction)
+        return true
 
-    var restrictHeight = (HEIGHT_RESTRICTION !== undefined) ? position[2] < HEIGHT_RESTRICTION : false
+    // Merge grids together into the same value
+    var flag = Root.GridNav[x][y]
+    var entGridValue = (entityGrid[x] !== undefined && entityGrid[x][y] !== undefined) ? entityGrid[x][y] : GRID_TYPES["BUILDABLE"]
+    if (entityGrid[x] && entityGrid[x][y])
+        flag = flag | entityGrid[x][y]
 
-    return restrictHeight || Root.GridNav[x][y] == BLOCKED || IsEntityGridBlocked(x,y) || IsTreeGridBlocked(x,y)
-}
+    // Don't count buildable if its blocked
+    var adjust = (GRID_TYPES["BUILDABLE"]+GRID_TYPES["BLOCKED"])
+    if ((flag & adjust)==adjust)
+        flag-=GRID_TYPES["BUILDABLE"]
 
-function IsEntityGridBlocked(x,y) {
-    return (entityGrid[x] && entityGrid[x][y] == BLOCKED)
-}
+    //$.Msg('GRID:',Root.GridNav[x][y],' ENTGRID:',entGridValue,' FLAG:',flag,' REQUIRES:', requires)
 
-function IsTreeGridBlocked(x,y) {
-    return (treeGrid[x] && treeGrid[x][y] == BLOCKED)
-}
+    // If the bits don't match, its invalid
+    if ((flag & requires) != requires)
+        return true
 
-function IsSpecialGrid (x,y, gridType) {
-    return (entityGrid[x] && entityGrid[x][y] == GRID_TYPES[gridType])
+    // If there's a tree standing, its invalid
+    if (update_trees && treeGrid[x] && (treeGrid[x][y] & GRID_TYPES["BLOCKED"]))
+        return true
+
+    return false
 }
 
 function BlockEntityGrid(position, gridType) {
@@ -492,13 +526,9 @@ function BlockEntityGrid(position, gridType) {
     var y = WorldToGridPosY(position[1]) + Root.squareY/2
 
     if (entityGrid[x] === undefined) entityGrid[x] = []
+    if (entityGrid[x][y] === undefined) entityGrid[x][y] = 0
 
-    if (gridType !== undefined)
-    {
-        entityGrid[x][y] = GRID_TYPES[gridType]
-    }
-    else
-        entityGrid[x][y] = BLOCKED
+    entityGrid[x][y] = entityGrid[x][y] | gridType
 }
 
 // Trees block 2x2
@@ -508,7 +538,7 @@ function BlockTreeGrid (position) {
 
     if (treeGrid[x] === undefined) treeGrid[x] = []
 
-    treeGrid[x][y] = BLOCKED
+    treeGrid[x][y] = GRID_TYPES["BLOCKED"]
 }
 
 function BlockGridSquares (position, squares, gridType) {
@@ -525,8 +555,7 @@ function BlockGridSquares (position, squares, gridType) {
         {
             for (var y=boundingRect["topBorderY"]-32; y >= boundingRect["bottomBorderY"]+32; y-=64)
             {
-                var pos = [x,y,0]
-                BlockTreeGrid(pos)
+                BlockTreeGrid([x,y,0])
             }
         }
     }
@@ -536,8 +565,26 @@ function BlockGridSquares (position, squares, gridType) {
         {
             for (var y=boundingRect["topBorderY"]-32; y >= boundingRect["bottomBorderY"]+32; y-=64)
             {
-                var pos = [x,y,0]
-                BlockEntityGrid(pos, gridType)
+                BlockEntityGrid([x,y,0], gridType)
+            }
+        }
+    }
+}
+
+function BlockGridInRadius (position, radius, gridType) {
+    var boundingRect = {}
+    boundingRect["leftBorderX"] = position[0]-radius
+    boundingRect["rightBorderX"] = position[0]+radius
+    boundingRect["topBorderY"] = position[1]+radius
+    boundingRect["bottomBorderY"] = position[1]-radius
+
+    for (var x=boundingRect["leftBorderX"]+32; x <= boundingRect["rightBorderX"]-32; x+=64)
+    {
+        for (var y=boundingRect["topBorderY"]-32; y >= boundingRect["bottomBorderY"]+32; y-=64)
+        {
+            if (Length2D(position, [x,y,0]) <= radius)
+            {
+                BlockEntityGrid([x,y,0], gridType)
             }
         }
     }
@@ -555,6 +602,30 @@ function GetConstructionSize(entIndex) {
     var entName = Entities.GetUnitName(entIndex)
     var table = CustomNetTables.GetTableValue( "construction_size", entName)
     return table ? table.size : 0
+}
+
+function GetRequiredGridType(entIndex) {
+    var entName = Entities.GetUnitName(entIndex)
+    var table = CustomNetTables.GetTableValue( "construction_size", entName)
+    if (table && table.requires !== undefined)
+    {
+        var types = table.requires.split(" ")
+        var value = 0
+        for (var i = 0; i < types.length; i++)
+        {
+            value+=GRID_TYPES[types[i]]
+        }
+        return value
+    }
+    else
+        return GRID_TYPES["BUILDABLE"]
+}
+
+function GetCustomGrid(entIndex) {
+    var entName = Entities.GetUnitName(entIndex)
+    var table = CustomNetTables.GetTableValue( "construction_size", entName)
+    if (table && table.grid !== undefined)
+        return table.grid
 }
 
 function HasGoldMineDistanceRestriction(entIndex) {
@@ -584,7 +655,7 @@ function TooCloseToGoldmine(position) {
 }
 
 function Length2D(v1, v2) {
-    return Math.sqrt( (v2[0]-v1[0])*(v2[0]-v1[0]) + (v2[1]-v1[1])*(v2[1]-v1[1]) + (v2[2]-v1[2])*(v2[2]-v1[2]) )
+    return Math.sqrt( (v2[0]-v1[0])*(v2[0]-v1[0]) + (v2[1]-v1[1])*(v2[1]-v1[1]) )
 }
 
 function PrintGridCoords(x,y) {
