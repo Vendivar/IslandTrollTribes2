@@ -212,6 +212,20 @@ function BuildingHelper:InitGNV()
    
     BuildingHelper:print("Max World Bounds: ")
     BuildingHelper:print(GetWorldMaxX()..' '..GetWorldMaxY()..' '..GetWorldMaxX()..' '..GetWorldMaxY())
+    BuildingHelper:print(boundX1..' '..boundX2..' '..boundY1..' '..boundY2)
+
+    local squareX = math.abs(boundX1) + math.abs(boundX2) + 1
+    local squareY = math.abs(boundY1) + math.abs(boundY2) + 1
+
+    if (squareX % 2 == 1) then
+        boundX2 = boundX2 + 1
+        squareX = squareX + 1
+    end
+
+    if (squareY % 2 == 1) then
+        boundY2 = boundY2 - 1
+        squareY = squareY - 1
+    end
 
     local blockedCount = 0
     local unblockedCount = 0
@@ -262,10 +276,6 @@ function BuildingHelper:InitGNV()
     end
 
     local gnv_string = table.concat(gnv,'')
-
-    BuildingHelper:print(boundX1..' '..boundX2..' '..boundY1..' '..boundY2)
-    local squareX = math.abs(boundX1) + math.abs(boundX2)+1
-    local squareY = math.abs(boundY1) + math.abs(boundY2)+1
     print("Free: "..unblockedCount.." Blocked: "..blockedCount)
 
     -- Initially, the construction grid equals the terrain grid
