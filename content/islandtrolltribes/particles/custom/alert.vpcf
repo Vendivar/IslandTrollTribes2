@@ -39,6 +39,10 @@
 			_class = "C_OP_Decay"
 			m_nOpEndCapState = 1
 		},
+		{
+			_class = "C_OP_FadeOutSimple"
+			m_flFadeOutTime = 0.100000
+		},
 	]
 	m_Initializers =
 	[
@@ -93,6 +97,13 @@
 		{
 			_class = "C_OP_InstantaneousEmitter"
 			m_nParticlesToEmit = 1
+		},
+		{
+			_class = "C_OP_ContinuousEmitter"
+			m_flEmissionDuration = 2.000000
+			m_flEmitRate = 1.000000
+			m_bDisableOperator = true
+			m_nOpEndCapState = 0
 		},
 	]
 }

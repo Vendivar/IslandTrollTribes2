@@ -3332,7 +3332,7 @@
 					}
 				}
 	
-				"ThinkInterval"  "3.0"
+				"ThinkInterval"  "1.0"
 				"OnIntervalThink"
 				{
 					"RunScript"

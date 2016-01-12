@@ -7,6 +7,7 @@ function PetRelease( event )
     pet:RemoveAbility("ability_pet")
     pet:RemoveModifierByName("modifier_pet")
     pet:RemoveModifierByName("modifier_grow")
+    pet:RemoveModifierByName("modifier_pet_grow")
     pet:RemoveAbility("ability_pet_release")
     pet:RemoveAbility("ability_pet_sleep")
     pet:RemoveAbility("ability_pet_stay")
@@ -15,6 +16,7 @@ function PetRelease( event )
     pet:EmitSound("Hero_Beastmaster.Call.Boar")
     pet:EmitSound("Hero_Beastmaster.Call.Hawk")
     pet:SetControllableByPlayer(hero:GetPlayerID(), false)
+    pet:ForceKill(true) 
 
     -- Go back to being a not-attackable animal
     if IsValidPetName( pet ) then
@@ -104,9 +106,15 @@ function PetThink( event )
     local pet = event.caster
     local hero = pet:GetOwner()
 
+    local pID = hero:GetPlayerID()
+    
     -- Never go outside the leashRange of the player, defined when the tame ability is cast
-    if pet:GetRangeToUnit(hero) > pet.leashRange then
+    if pet:GetRangeToUnit(hero) > pet.leashRange and hero:IsAlive() then
+     
         ExecuteOrderFromTable({ UnitIndex = pet:GetEntityIndex(), OrderType = DOTA_UNIT_ORDER_MOVE_TO_TARGET, TargetIndex = hero:GetEntityIndex(), Queue = false})
+        EmitSoundOn( "General.Ping", pet )
+        local particle = ParticleManager:CreateParticle("particles/custom/alert.vpcf", PATTACH_ABSORIGIN_FOLLOW, pet)
+        SendErrorMessage(pID, "#error_pet_leash_range")
         return
     end
 
