@@ -7,6 +7,7 @@
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"scroll_stoneskin"
 	"Model"	"models/props_gameplay/recipe.vmdl"
+    "Effect" "particles/custom/floating_stones.vpcf"
 	"AbilityCastRange"	"%range"
 	"AbilityCastPoint"	"0.5"
 	"AbilityCooldown"	"60.0"
@@ -34,6 +35,13 @@
 			"Target"	"TARGET"
 			"Duration"	"%duration"
 		}
+        
+            "FireEffect"
+			{
+				"EffectName"	"particles/custom/scroll_stoneskin_burst.vpcf"
+				"EffectAttachType"	"attach_origin"
+				"Target"	"CASTER"
+            }
 
 	}
 
@@ -46,6 +54,9 @@
 				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor_bonus"
 			}
 
+			"StatusEffectName"		"particles/status_fx/status_effect_statue.vpcf"
+			"StatusEffectPriority"	"10"
+            
 			"OnAttacked"
 			{
 				"ApplyModifier"

@@ -13,6 +13,9 @@ CHEAT_CODES = {
     ["pets"] = function(...) ITT:SpawnPets(...) end, -- Creates pets around the hero
     ["bush"] = function( ... ) ITT:TestBush(...) end,
     ["potions"] = function( ... ) ITT:TestPotions(...) end,
+    ["scrolls"] = function( ... ) ITT:TestScroll(...) end,
+    ["axes"] = function( ... ) ITT:TestAxe(...) end,
+    ["coats"] = function( ... ) ITT:TestCoat(...) end,
 }
 
 PLAYER_COMMANDS = {}
@@ -306,7 +309,110 @@ function ITT:TestBush( playerID )
     CreateBushContainer("item_bush_mushroom", position)
 end
 
+function ITT:TestAxe( playerID )
+    local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+    local origin = hero:GetAbsOrigin()
 
+    -- Put a fire on front
+    local fv = hero:GetForwardVector()
+    local position = origin + fv * 200
+
+
+    local testItems = { 
+        ["item_axe_battle "] = 1,
+        ["item_axe_flint"] = 1,
+        ["item_axe_iron"] = 1,
+        ["item_axe_mage_masher"] = 1,
+        ["item_axe_steel"] = 1,
+        ["item_axe_stone"] = 1,
+                        }
+    
+    for itemName,num in pairs(testItems) do
+        for i=1,num do
+            local item = CreateItem(itemName, nil, nil)
+            local drop = CreateItemOnPositionSync( position, item )
+            if itemName == "item_meat_raw" then
+                drop:SetAbsOrigin(position+RandomVector(RandomInt(100,200)))
+            else
+                local pos_launch = position+RandomVector(RandomInt(100,200))
+                item:LaunchLoot(false, 200, 0.75, pos_launch)
+            end
+        end     
+    end
+
+end
+
+
+
+function ITT:TestCoat( playerID )
+    local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+    local origin = hero:GetAbsOrigin()
+
+    -- Put a fire on front
+    local fv = hero:GetForwardVector()
+    local position = origin + fv * 200
+
+
+    local testItems = { 
+        ["item_cloak_firen"] = 1,
+        ["item_cloak_frost"] = 1,
+        ["item_cloak_protection "] = 1,
+        ["item_coat_bear"] = 1,
+        ["item_coat_bone"] = 1,
+        ["item_coat_camouflage"] = 1,
+        ["item_coat_elk"] = 1,
+        ["item_coat_iron"] = 1,
+        ["item_coat_stee"] = 1,
+        ["item_coat_wolf"] = 1,
+                        }
+    
+    for itemName,num in pairs(testItems) do
+        for i=1,num do
+            local item = CreateItem(itemName, nil, nil)
+            local drop = CreateItemOnPositionSync( position, item )
+            if itemName == "item_meat_raw" then
+                drop:SetAbsOrigin(position+RandomVector(RandomInt(100,200)))
+            else
+                local pos_launch = position+RandomVector(RandomInt(100,200))
+                item:LaunchLoot(false, 200, 0.75, pos_launch)
+            end
+        end     
+    end
+
+end
+
+function ITT:TestScroll( playerID )
+    local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+    local origin = hero:GetAbsOrigin()
+
+    -- Put a fire on front
+    local fv = hero:GetForwardVector()
+    local position = origin + fv * 200
+
+
+    local testItems = { 
+        ["item_scroll_cyclone"] = 1,
+        ["item_scroll_entangling"] = 1,
+        ["item_scroll_fireball"] = 1,
+        ["item_scroll_living_dead"] = 1,
+        ["item_scroll_stoneskin"] = 1,
+        ["item_scroll_tsunami"] = 1,
+                        }
+    
+    for itemName,num in pairs(testItems) do
+        for i=1,num do
+            local item = CreateItem(itemName, nil, nil)
+            local drop = CreateItemOnPositionSync( position, item )
+            if itemName == "item_meat_raw" then
+                drop:SetAbsOrigin(position+RandomVector(RandomInt(100,200)))
+            else
+                local pos_launch = position+RandomVector(RandomInt(100,200))
+                item:LaunchLoot(false, 200, 0.75, pos_launch)
+            end
+        end     
+    end
+
+end
 
 function ITT:TestPotions( playerID )
     local hero = PlayerResource:GetSelectedHeroEntity(playerID)
@@ -351,15 +457,5 @@ function ITT:TestPotions( playerID )
         end     
     end
 
-    local buildingItems = {
-        "item_building_kit_armory",
-    }
-
-    for k,itemKit in pairs(buildingItems) do
-        local item = CreateItem(itemKit, nil, nil)
-        local drop = CreateItemOnPositionSync( origin, item )
-        local pos_launch = origin+RandomVector(RandomInt(100,200))
-        item:LaunchLoot(false, 200, 0.75, pos_launch)   
-    end
 
 end

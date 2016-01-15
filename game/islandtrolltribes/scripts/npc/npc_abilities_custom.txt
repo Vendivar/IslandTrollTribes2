@@ -10093,6 +10093,7 @@
 	        "particle" "particles/units/heroes/hero_batrider/batrider_firefly_startflash.vpcf"
 	        "particle" "particles/units/heroes/hero_batrider/batrider_flaming_lasso_loop.vpcf"
 	        "particle" "particles/units/heroes/hero_oracle/oracle_fortune_aoe_dust_hit.vpcf"
+	        "particle" "particles/units/heroes/hero_oracle/oracle_fortune_aoe_ember.vpcf"
 	    }
 	    
 		"OnSpellStart"
@@ -13296,6 +13297,12 @@
 					"Target"	"CASTER"
 	            }
 			
+			"RunScript"
+			{
+				"ScriptFile" "heroes/thief/teleport.lua"
+				"Function"   "CheckTeleport"
+				"Target"     "POINT"
+			}
 		}
 	    
 	    "OnSpellStart"
@@ -13304,12 +13311,6 @@
 			{
 				"ScriptFile" "heroes/thief/teleport.lua"
 				"Function"   "Teleport"
-				"Target"     "POINT"
-			}
-			"RunScript"
-			{
-				"ScriptFile" "heroes/thief/teleport.lua"
-				"Function"   "CheckTeleport"
 				"Target"     "POINT"
 			}
 	        "FireEffect"

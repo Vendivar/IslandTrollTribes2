@@ -7,7 +7,7 @@
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"scroll_cyclone"
 	"Model"	"models/props_gameplay/tpscroll01.vmdl"
-	"Effect"	"particles/items_fx/cyclone_d.vpcf"
+	"Effect"	"particles/custom/cyclone_component.vpcf"
 	"AbilityCastRange"	"%range"
 	"AbilityCastPoint"	"0.5"
 	"AbilityCooldown"	"30.0"

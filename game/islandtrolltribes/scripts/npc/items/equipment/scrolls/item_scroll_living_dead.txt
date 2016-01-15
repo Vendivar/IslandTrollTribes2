@@ -4,8 +4,8 @@
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"scroll_living_dead"
-	"Model"	"models/items/warlock/warlocks_summoning_scroll/warlocks_summoning_scroll.vmdl"
-	"Effect"	""
+	"Model"	"models/scroll_undead.vmdl"
+	"Effect"	"particles/custom/skeleton_scroll.vpcf"
 	"AbilityCastPoint"	"0.5"
 	"AbilityCooldown"	"60"
 	"ItemCost"	"8"
@@ -34,7 +34,7 @@
 
 		"FireSound"
 		{
-			"EffectName"	"Hero_TrollWarlord.BattleTrance.Cast"
+			"EffectName"	"scroll.undead"
 			"Target"	"CASTER"
 		}
 

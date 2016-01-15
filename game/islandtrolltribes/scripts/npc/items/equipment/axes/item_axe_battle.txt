@@ -6,7 +6,7 @@
     "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_TREE | DOTA_UNIT_TARGET_CUSTOM"
     "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_CUSTOM"
     "AbilityTextureName"        "axe_battle"
-    "Model"                     "models/items/antimage/arc_of_manta/arc_of_manta.vmdl" //Should be models/items/faceless_void/battlefury/battlefury.vmdl
+    "Model"                     "models/items/faceless_void/battlefury/battlefury.vmdl"
     "Effect"                    ""
     
     "AbilityCastRange"          "125"

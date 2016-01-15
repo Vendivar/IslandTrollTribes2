@@ -42,6 +42,7 @@ function RawMagicUse(keys)
     else -- 20% disco duck
         if (duckBoss == nil) then
             duckBoss = CreateUnitByName("npc_boss_disco_duck", Vector(0,0,0), true, nil, nil, DOTA_TEAM_NEUTRALS)
+            EmitGlobalSound("ancient.evil")
             print(duckBoss:GetClassname())
             print(duckBoss:GetUnitName())
             print("AN ANCIENT EVIL HAS AWOKEN")

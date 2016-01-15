@@ -3769,7 +3769,7 @@
 	    "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_TREE | DOTA_UNIT_TARGET_CUSTOM"
 	    "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_CUSTOM"
 	    "AbilityTextureName"        "axe_battle"
-	    "Model"                     "models/items/antimage/arc_of_manta/arc_of_manta.vmdl" //Should be models/items/faceless_void/battlefury/battlefury.vmdl
+	    "Model"                     "models/items/faceless_void/battlefury/battlefury.vmdl"
 	    "Effect"                    ""
 	    
 	    "AbilityCastRange"          "125"
@@ -8392,7 +8392,7 @@
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"scroll_cyclone"
 		"Model"	"models/props_gameplay/tpscroll01.vmdl"
-		"Effect"	"particles/items_fx/cyclone_d.vpcf"
+		"Effect"	"particles/custom/cyclone_component.vpcf"
 		"AbilityCastRange"	"%range"
 		"AbilityCastPoint"	"0.5"
 		"AbilityCooldown"	"30.0"
@@ -8717,8 +8717,8 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"scroll_living_dead"
-		"Model"	"models/items/warlock/warlocks_summoning_scroll/warlocks_summoning_scroll.vmdl"
-		"Effect"	""
+		"Model"	"models/scroll_undead.vmdl"
+		"Effect"	"particles/custom/skeleton_scroll.vpcf"
 		"AbilityCastPoint"	"0.5"
 		"AbilityCooldown"	"60"
 		"ItemCost"	"8"
@@ -8747,7 +8747,7 @@
 	
 			"FireSound"
 			{
-				"EffectName"	"Hero_TrollWarlord.BattleTrance.Cast"
+				"EffectName"	"scroll.undead"
 				"Target"	"CASTER"
 			}
 	
@@ -8763,6 +8763,7 @@
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"scroll_stoneskin"
 		"Model"	"models/props_gameplay/recipe.vmdl"
+	    "Effect" "particles/custom/floating_stones.vpcf"
 		"AbilityCastRange"	"%range"
 		"AbilityCastPoint"	"0.5"
 		"AbilityCooldown"	"60.0"
@@ -8790,6 +8791,13 @@
 				"Target"	"TARGET"
 				"Duration"	"%duration"
 			}
+	        
+	            "FireEffect"
+				{
+					"EffectName"	"particles/custom/scroll_stoneskin_burst.vpcf"
+					"EffectAttachType"	"attach_origin"
+					"Target"	"CASTER"
+	            }
 	
 		}
 	
@@ -8802,6 +8810,9 @@
 					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor_bonus"
 				}
 	
+				"StatusEffectName"		"particles/status_fx/status_effect_statue.vpcf"
+				"StatusEffectPriority"	"10"
+	            
 				"OnAttacked"
 				{
 					"ApplyModifier"
@@ -8901,7 +8912,7 @@
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"scroll_tsunami"
 		"Model"	"models/props_gameplay/tpscroll01.vmdl"
-		"Effect"	"particles/econ/items/kunkka/kunkka_weapon_whaleblade/kunkka_tidebringer_whaleblade_glow.vpcf"
+		"Effect"	"particles/custom/tsunami_swirl.vpcf"
 		"AbilityCastRange"	"600"
 		"AbilityCooldown"	"8"
 		"AbilityCastPoint"	"0.5"

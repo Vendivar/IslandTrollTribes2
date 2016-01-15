@@ -23,6 +23,12 @@
 				"Target"	"CASTER"
             }
 		
+		"RunScript"
+		{
+			"ScriptFile" "heroes/thief/teleport.lua"
+			"Function"   "CheckTeleport"
+			"Target"     "POINT"
+		}
 	}
     
     "OnSpellStart"
@@ -31,12 +37,6 @@
 		{
 			"ScriptFile" "heroes/thief/teleport.lua"
 			"Function"   "Teleport"
-			"Target"     "POINT"
-		}
-		"RunScript"
-		{
-			"ScriptFile" "heroes/thief/teleport.lua"
-			"Function"   "CheckTeleport"
 			"Target"     "POINT"
 		}
         "FireEffect"

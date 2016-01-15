@@ -5,7 +5,7 @@
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"scroll_tsunami"
 	"Model"	"models/props_gameplay/tpscroll01.vmdl"
-	"Effect"	"particles/econ/items/kunkka/kunkka_weapon_whaleblade/kunkka_tidebringer_whaleblade_glow.vpcf"
+	"Effect"	"particles/custom/tsunami_swirl.vpcf"
 	"AbilityCastRange"	"600"
 	"AbilityCooldown"	"8"
 	"AbilityCastPoint"	"0.5"
