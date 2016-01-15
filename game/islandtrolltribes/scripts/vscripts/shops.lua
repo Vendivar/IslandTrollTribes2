@@ -38,11 +38,6 @@ function SpawnBoat(pathNum)
     shopUnit.pathNum = pathNum
     shopUnit.trigger = Entities:FindAllByName("ent_shop_*")
 
-    print("printing trigger")
-    local test1 = shopUnit.trigger[1]
-    local test = test1:GetOrigin()
-    print("trigger origin x ".. test.x .. " y " .. test.y)
-    test1:SetOrigin(Vector(0,0,0))
     print("Spawned "..unitName.." at path "..pathNum)
 
     TieShopToUnit(shopUnit)    
