@@ -19,6 +19,11 @@ function boatmerchantthink()
 	local waypointEnt = Entities:FindByName(nil, waypointName)
 	local waypointPos = waypointEnt:GetOrigin()
 
+	local triggerNum = (thisEntity.pathNum%2) + 1
+	local shopTrigger = thisEntity.trigger[triggerNum]
+
+	shopTrigger:SetOrigin(thisEntity:GetOrigin())
+
 	if not IsValidAlive(thisEntity) then
 		return nil
 	end
