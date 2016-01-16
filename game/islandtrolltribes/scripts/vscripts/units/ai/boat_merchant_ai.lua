@@ -21,6 +21,10 @@ function boatmerchantthink()
 
 	local triggerNum = (thisEntity.pathNum%2) + 1
 	local shopTrigger = thisEntity.trigger[triggerNum]
+    if not shopTrigger then
+        print("ERROR: No trigger["..triggerNum.."] found for "..thisEntity:GetUnitName())
+        return
+    end
 
 	shopTrigger:SetOrigin(thisEntity:GetOrigin())
 
