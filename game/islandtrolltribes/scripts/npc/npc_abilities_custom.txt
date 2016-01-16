@@ -12122,7 +12122,8 @@
 		"MaxLevel"	"5"
 		"precache"
 		{
-			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"		
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_chen.vsndevts"		
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_obsidian_destroyer.vsndevts"		
 		}
 		"OnSpellStart"
 		{
@@ -12134,8 +12135,13 @@
 			}
 				"FireSound"
 			{
-				"EffectName"		"Hero_Chen.TestOfFaith.Target"
+				"EffectName"		"Hero_ObsidianDestroyer.AstralImprisonment.Cast"
 				"Target"			"CASTER"
+			}
+				"FireSound"
+			{
+				"EffectName"		"Hero_Chen.TestOfFaith.Target"
+				"Target"			"POINT"
 			}
 	
 		}

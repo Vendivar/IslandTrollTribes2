@@ -105,22 +105,12 @@ function ITT:OnSubclassChange(event)
     hero.subclass = new_name
     if hero.subclassAvailableParticle then
         ParticleManager:DestroyParticle(hero.subclassAvailableParticle, false)
-        EmitSoundOnClient("SubSelectReady", PlayerResource:GetPlayer(playerID))
+        EmitSoundOnClient("SubSelected", PlayerResource:GetPlayer(playerID))
         local subParticle = ParticleManager:CreateParticle("particles/custom/subclass_selection.vpcf", PATTACH_ABSORIGIN_FOLLOW, hero)
         ParticleManager:SetParticleControl( subParticle, 0, hero:GetAbsOrigin() )
         ParticleManager:SetParticleControl( subParticle, 1, hero:GetAbsOrigin() )
         ParticleManager:SetParticleControl( subParticle, 2, hero:GetAbsOrigin() )
         ParticleManager:SetParticleControl( subParticle, 3, hero:GetAbsOrigin() )
-       -- local endParticle1 = ParticleManager:CreateParticle("particles/custom/subselect.vpcf", PATTACH_ABSORIGIN_FOLLOW, hero)
-       -- local endParticle2 = ParticleManager:CreateParticle("particles/custom/subselect2.vpcf", PATTACH_ABSORIGIN_FOLLOW, hero)
-       --    ParticleManager:SetParticleControl( endParticle2, 2,  Vector(255,255,255))
-       --   ParticleManager:SetParticleControl( endParticle2, 16,  Vector(1,0,0))
-       --   ParticleManager:SetParticleControl( endParticle2, 15,  Vector(0,0,0))
-        
-        Timers:CreateTimer(2, function()
-            ParticleManager:DestroyParticle(endParticle1, false) 
-            ParticleManager:DestroyParticle(endParticle2, false) 
-        end)
     end
     -- Change Vision range
     local stats = subclassInfo[new_name]['Vision']

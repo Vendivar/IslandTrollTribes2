@@ -9,7 +9,8 @@
 	"MaxLevel"	"5"
 	"precache"
 	{
-		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"		
+		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_chen.vsndevts"		
+		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_obsidian_destroyer.vsndevts"		
 	}
 	"OnSpellStart"
 	{
@@ -18,6 +19,11 @@
 			"ScriptFile" "heroes/scout/scry.lua"
 			"Function"   "ScryActive"
 			"Target"		"POINT"
+		}
+			"FireSound"
+		{
+			"EffectName"		"Hero_ObsidianDestroyer.AstralImprisonment.Cast"
+			"Target"			"CASTER"
 		}
 			"FireSound"
 		{
