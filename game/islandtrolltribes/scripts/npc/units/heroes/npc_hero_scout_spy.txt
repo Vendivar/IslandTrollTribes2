@@ -12,7 +12,7 @@
 	"ModelScale"	"0.70"
 	"Ability1"	"ability_scout_placeward"
 	"Ability2"	"ability_scout_destroyward"
-	"Ability3"	"ability_scout_scry"
+	"Ability3"	""
 	"Ability4"	""
 	"Ability5"	""
 	"Ability6"	""
