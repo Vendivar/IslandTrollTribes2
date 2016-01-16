@@ -156,6 +156,36 @@ function split(inputstr, sep)
     return t
 end
 
+--Compares two tables to see if they have the same values
+function CompareTables(table1, table2)
+    if type(table1) ~= "table" or type(table2) ~= "table" then
+        return false
+    end
+
+    for key,value in pairs(table1) do
+        if table2[key] == nil then
+            return false
+        elseif table2[key] ~= table1[key] then
+            return false
+        end
+    end
+
+    for key,value in pairs(table2) do
+        print(key, table2[key], table1[key])
+        if table1[key] == nil then
+            return false
+        elseif table1[key] ~= table2[key] then
+            return false
+        end
+    end
+    
+    return true
+end
+
+function compareHelper(a,b)
+    return a[2] > b[2]
+end
+
 function table_slice (values,i1,i2)
     local res = {}
     local n = #values
