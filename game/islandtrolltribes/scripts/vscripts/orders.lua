@@ -12,11 +12,19 @@ function ITT:FilterExecuteOrder( filterTable )
     local y = tonumber(filterTable["position_y"])
     local z = tonumber(filterTable["position_z"])
     local point = Vector(x,y,z)
-    local queue = (filterTable["queue"]==1 and true) or false
-
-    -- Skip Prevents order loops
+    local queue = filterTable["queue"]==1
     local unitIndex = units["0"]
     local unit = EntIndexToHScript(unitIndex)
+
+    -- Drop orders for units that we don't want to be shared
+    if unit then
+        local owner = unit:GetPlayerOwnerID()
+        if issuer ~= owner and not unit:IsSharedWithTeammates() then
+            return false
+        end
+    end
+
+    -- Skip Prevents order loops
     if unit and unit.skip then
         unit.skip = false
         return true

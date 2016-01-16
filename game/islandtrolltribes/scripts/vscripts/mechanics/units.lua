@@ -1,3 +1,12 @@
+------------------------------------------------
+
+-- Used to drop orders of units that shouldn't be generally shared
+function CDOTA_BaseNPC:IsSharedWithTeammates()
+    return GameRules.UnitKV[self:GetUnitName()]["SharedWithTeammates"]==1
+end
+
+------------------------------------------------
+
 -- Returns Int
 function GetGoldCost( unit )
     if unit and IsValidEntity(unit) then

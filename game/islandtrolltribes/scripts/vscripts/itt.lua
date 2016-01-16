@@ -169,6 +169,9 @@ function ITT:InitGameMode()
     GameRules.ItemKV = LoadKeyValues("scripts/npc/npc_items_custom.txt")
     GameRules.UnitKV = LoadKeyValues("scripts/npc/npc_units_custom.txt")
     GameRules.HeroKV = LoadKeyValues("scripts/npc/npc_heroes_custom.txt")
+    MergeTables(GameRules.UnitKV, LoadKeyValues("scripts/npc/npc_heroes_custom.txt")) --Load HeroKV into UnitKV
+
+    print(GameRules.UnitKV['npc_dota_hero_lycan'])
 
     -- Check Syntax
     if (not GameRules.AbilityKV) or (not GameRules.ItemKV) or (not GameRules.UnitKV) or (not GameRules.HeroKV) then
@@ -936,6 +939,8 @@ function ITT:OnGameRulesStateChange()
         -- Place entities starting with spawner_ plus the appropriate name to spawn to corresponding bush on game start
         ITT:SpawnBushes()
 
+        ITT:ShareUnits()
+
     elseif nNewState == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
 
         Timers:CreateTimer(function()
@@ -985,4 +990,41 @@ function ITT:GetTeamCount()
         end
     end
     return teamCount
+end
+
+---------------------------------------------------------------------------
+-- Sets the shared unit mask to allow teammate unit control
+-- Only units with "SharedWithTeammates" KV will be controllable
+---------------------------------------------------------------------------
+function ITT:ShareUnits()
+    local playersOnTeams = {}
+    playersOnTeams[DOTA_TEAM_GOODGUYS] = ITT:GetPlayersOnTeam(DOTA_TEAM_GOODGUYS)
+    playersOnTeams[DOTA_TEAM_BADGUYS]  = ITT:GetPlayersOnTeam(DOTA_TEAM_BADGUYS)
+    playersOnTeams[DOTA_TEAM_CUSTOM_1] = ITT:GetPlayersOnTeam(DOTA_TEAM_CUSTOM_1)
+    playersOnTeams[DOTA_TEAM_CUSTOM_2] = ITT:GetPlayersOnTeam(DOTA_TEAM_CUSTOM_2)
+
+    -- Share for each player to teammates
+    for i=0,DOTA_MAX_TEAM_PLAYERS do
+        if PlayerResource:IsValidPlayerID(i) then
+            local teamNumber = PlayerResource:GetTeam(i)
+            for _,playerID in pairs(playersOnTeams[teamNumber]) do
+                if playerID~=i then
+                    PlayerResource:SetUnitShareMaskForPlayer(i, playerID, 2, true)
+                end
+            end
+        end
+    end
+end
+
+---------------------------------------------------------------------------
+-- Gets a list of playerIDs on a team
+---------------------------------------------------------------------------
+function ITT:GetPlayersOnTeam( teamNumber )
+    local players = {}
+    for playerID=DOTA_TEAM_FIRST,DOTA_MAX_TEAM_PLAYERS do
+        if PlayerResource:GetTeam(playerID) == teamNumber then
+            table.insert(players, playerID)
+        end
+    end
+    return players
 end
