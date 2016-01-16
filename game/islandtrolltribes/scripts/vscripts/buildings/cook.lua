@@ -1,5 +1,4 @@
 function CookFood(keys)
-    print("Cooking Food")
     local caster = keys.caster
     local range = keys.Range
 

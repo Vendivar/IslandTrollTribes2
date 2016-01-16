@@ -19,7 +19,8 @@ function ITT:FilterExecuteOrder( filterTable )
     -- Drop orders for units that we don't want to be shared
     if unit then
         local owner = unit:GetPlayerOwnerID()
-        if issuer ~= owner and not unit:IsSharedWithTeammates() then
+        if issuer ~= -1 and owner ~= -1 and issuer ~= owner and not unit:IsSharedWithTeammates() then
+            print("Denied order because issuer is "..issuer.." owner is "..owner.." and the unit is not shared with teammates")
             return false
         end
     end
