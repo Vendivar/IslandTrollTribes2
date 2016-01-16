@@ -20,5 +20,8 @@
 		{
 			m_ChildRef = resource:"particles/units/unit_greevil/loot_greevil_death_spark_pnt.vpcf"
 		},
+		{
+			m_ChildRef = resource:"particles/custom/subselect_new.vpcf"
+		},
 	]
 }

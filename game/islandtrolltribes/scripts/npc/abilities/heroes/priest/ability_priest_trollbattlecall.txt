@@ -16,7 +16,14 @@
     "particles" "particles/units/heroes/hero_omniknight/omniknight_guardian_angel_ally.vpcf"
     "soundfile"     "soundevents/spells.vsndevts"
     }
-    
+    "OnAbilityPhaseStart"
+    {    
+		"FireSound"
+		{
+			"EffectName"	"troll.battle.call.cast"
+			"Target"	"CASTER"
+		}
+    }
 	"OnSpellStart"
 	{		
         "ActOnTargets"
@@ -38,14 +45,13 @@
 				}
 			}
 		}
-		"FireSound"
-		{
-			"EffectName"	"troll.battle.call.cast"
-			"Target"	"CASTER"
-		}
-        
+        "FireSound"
+            {
+                "EffectName"	"troll.battle.call.buff"
+                "Target"	    "CASTER"
+            }        
 	}
-
+     
 	"Modifiers"
 	{
 		"modifier_troll_battle_call"
@@ -59,11 +65,6 @@
             
             "OnCreated"
             {
-                "FireSound"
-                {
-                    "EffectName"	"troll.battle.call.buff"
-                    "Target"	"CASTER"
-                }
                 "AttachEffect"
                 {
                     "EffectName"    "particles/units/heroes/hero_omniknight/omniknight_guardian_angel_ally.vpcf"
@@ -80,7 +81,6 @@
                     }
                 }  
             }
-            
 		}
 
 	}

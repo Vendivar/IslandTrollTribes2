@@ -320,6 +320,14 @@
 "DOTA_Tooltip_Ability_ability_beastmaster_normalform_Note0"		"Return to base form"
 
 
+"DOTA_Tooltip_ability_ability_pet_release"                                        "Pet Release"
+"DOTA_Tooltip_ability_ability_pet_release_Description"                            "Release pet into the wild and it will disappear forever."
+
+"DOTA_Tooltip_ability_ability_baby_animal"                                        "Baby Animal"
+"DOTA_Tooltip_ability_ability_baby_animal_Description"                            "It's just a baby, it doesn't know any better!"
+"DOTA_Tooltip_modifier_pet_grow"                                                  "This pet is growing and soon it will become the next stage."
+		
+
 "DOTA_Tooltip_ability_ability_beastmaster_pet_attack"		"Ability Beastmaster Pet Attack"
 "DOTA_Tooltip_ability_ability_beastmaster_pet_attack_Description"		""
 
@@ -2612,6 +2620,8 @@
 "DOTA_Tooltip_ability_item_shield_battle_silence_duration"		"SILENCE DURATION:"
 "DOTA_Tooltip_ability_item_shield_battle_spell_block"		"SPELL BLOCK:"
 "DOTA_Tooltip_ability_item_shield_battle_spellblock_cd"		"SPELLBLOCK CD:"
+"DOTA_Tooltip_modifier_shield_battle_spell_block"           "Battle Shield Spell Block: The next spell will be blocked!"
+
 "DOTA_Tooltip_ability_item_shield_bone"		"Bone Shield"
 "DOTA_Tooltip_ability_item_shield_bone_armor"		"+$armor"
 "DOTA_Tooltip_ability_item_shield_bone_block_amount"		"BLOCK CHANCE:"

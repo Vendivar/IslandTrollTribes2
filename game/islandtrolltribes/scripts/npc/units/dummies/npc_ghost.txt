@@ -5,7 +5,7 @@
 	"ConsideredHero"	"1"
 	"ModelScale"	"1"
 	"Model"	"models/creeps/neutral_creeps/n_creep_ghost_b/n_creep_ghost_frost.vmdl"
-	"Ability1"	"ability_mage_darkgate"
+	"Ability1"	"ability_scout_scry"
 	"Ability2"	""
 	"Ability3"	""
 	"Ability4"	""

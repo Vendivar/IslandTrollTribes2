@@ -17,6 +17,7 @@
 		{
 			"ScriptFile" "heroes/scout/scry.lua"
 			"Function"   "ScryActive"
+			"Target"		"POINT"
 		}
 			"FireSound"
 		{
@@ -30,7 +31,7 @@
 		"01"
 		{
 			"var_type"	"FIELD_FLOAT"
-			"radius"	"200 300 400"
+			"radius"	"200 300 400 450 500"
 		}
             "02"
 		{
