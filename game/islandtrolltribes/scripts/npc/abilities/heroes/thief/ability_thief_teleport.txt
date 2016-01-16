@@ -16,13 +16,13 @@
     
 	"OnAbilityPhaseStart"
 	{
-    "FireEffect"
-			{
-				"EffectName"	"particles/custom/teleport_vanish_smokeflash.vpcf"
-				"EffectAttachType"	"attach_origin"
-				"Target"	"CASTER"
-            }
-		
+
+		        "FireEffect"
+        {
+            "EffectName"	"particles/econ/events/fall_major_2015/teleport_end_fallmjr_2015_dust.vpcf"
+            "EffectAttachType"	"attach_origin"
+            "Target"	"CASTER"
+        }
 		"RunScript"
 		{
 			"ScriptFile" "heroes/thief/teleport.lua"
@@ -39,12 +39,12 @@
 			"Function"   "Teleport"
 			"Target"     "POINT"
 		}
-        "FireEffect"
-        {
-            "EffectName"	"particles/econ/events/fall_major_2015/teleport_end_fallmjr_2015_dust.vpcf"
-            "EffectAttachType"	"attach_origin"
-            "Target"	"CASTER"
-        }
+    "FireEffect"
+			{
+				"EffectName"	"particles/custom/teleport_vanish_smokeflash.vpcf"
+				"EffectAttachType"	"attach_origin"
+				"Target"	"CASTER"
+            }
 		"FireSound"
 		{
 			"EffectName"		"Hero_Antimage.Blink_in"

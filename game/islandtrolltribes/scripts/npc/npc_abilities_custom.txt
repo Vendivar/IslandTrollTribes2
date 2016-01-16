@@ -12111,6 +12111,47 @@
 	        }
 	    }
 	}
+	"ability_scout_scry"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityTextureName"	"ability_scout_wardthearea"
+		"AbilityCastPoint"	"0.2 0.2 0.2"
+		"AbilityCooldown"	"70 60 50"
+		"AbilityManaCost"	"10 10 10"
+		"MaxLevel"	"5"
+		"precache"
+		{
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"		
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile" "heroes/scout/scry.lua"
+				"Function"   "ScryActive"
+			}
+				"FireSound"
+			{
+				"EffectName"		"Hero_Chen.TestOfFaith.Target"
+				"Target"			"CASTER"
+			}
+	
+		}
+	"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"radius"	"200 300 400"
+			}
+	            "02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"duration"	"2 4 6 7 7.5"
+			}
+		}
+	}
 	"ability_scout_shadowsight"
 	{
 		"BaseClass"	"ability_datadriven"
@@ -13290,13 +13331,13 @@
 	    
 		"OnAbilityPhaseStart"
 		{
-	    "FireEffect"
-				{
-					"EffectName"	"particles/custom/teleport_vanish_smokeflash.vpcf"
-					"EffectAttachType"	"attach_origin"
-					"Target"	"CASTER"
-	            }
-			
+	
+			        "FireEffect"
+	        {
+	            "EffectName"	"particles/econ/events/fall_major_2015/teleport_end_fallmjr_2015_dust.vpcf"
+	            "EffectAttachType"	"attach_origin"
+	            "Target"	"CASTER"
+	        }
 			"RunScript"
 			{
 				"ScriptFile" "heroes/thief/teleport.lua"
@@ -13313,12 +13354,12 @@
 				"Function"   "Teleport"
 				"Target"     "POINT"
 			}
-	        "FireEffect"
-	        {
-	            "EffectName"	"particles/econ/events/fall_major_2015/teleport_end_fallmjr_2015_dust.vpcf"
-	            "EffectAttachType"	"attach_origin"
-	            "Target"	"CASTER"
-	        }
+	    "FireEffect"
+				{
+					"EffectName"	"particles/custom/teleport_vanish_smokeflash.vpcf"
+					"EffectAttachType"	"attach_origin"
+					"Target"	"CASTER"
+	            }
 			"FireSound"
 			{
 				"EffectName"		"Hero_Antimage.Blink_in"

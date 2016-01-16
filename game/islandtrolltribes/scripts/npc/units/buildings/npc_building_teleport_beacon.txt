@@ -40,4 +40,5 @@
 	//----------------------------------------------------------------
 	"ConstructionSize"			"2"
 	"BlockPathingSize"			"2"
+    "SharedWithTeammates" "1"
 }

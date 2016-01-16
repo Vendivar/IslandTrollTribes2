@@ -158,6 +158,7 @@
 		//----------------------------------------------------------------
 		"ConstructionSize"			"2"
 		"BlockPathingSize"			"2"
+	    "SharedWithTeammates" "1"
 	}
 	"npc_building_craftmaster"
 	{
@@ -203,6 +204,7 @@
 		//----------------------------------------------------------------
 		"ConstructionSize"			"2"
 		"BlockPathingSize"			"2"
+	    "SharedWithTeammates" "1"
 	}
 	"npc_building_emp"
 	{
@@ -429,6 +431,7 @@
 		//----------------------------------------------------------------
 		"ConstructionSize"			"2"
 		"BlockPathingSize"			"2"
+	    "SharedWithTeammates" "1"
 	}
 	"npc_building_hut_mud"
 	{
@@ -473,6 +476,7 @@
 		//----------------------------------------------------------------
 		"ConstructionSize"			"2"
 		"BlockPathingSize"			"2"
+	    "SharedWithTeammates" "1"
 	}
 	"npc_building_hut_troll"
 	{
@@ -518,6 +522,7 @@
 		//----------------------------------------------------------------
 		"ConstructionSize"			"2"
 		"BlockPathingSize"			"2"
+	    "SharedWithTeammates" "1"
 	}
 	"npc_building_hut_witch_doctor"
 	{
@@ -564,6 +569,7 @@
 		//----------------------------------------------------------------
 		"ConstructionSize"			"2"
 		"BlockPathingSize"			"2"
+	    "SharedWithTeammates" "1"
 	}
 	"npc_building_mix_pot"
 	{
@@ -610,6 +616,7 @@
 		//----------------------------------------------------------------
 		"ConstructionSize"			"2"
 		"BlockPathingSize"			"2"
+	    "SharedWithTeammates" "1"
 	}
 	"npc_building_omnitower"
 	{
@@ -656,6 +663,7 @@
 		//----------------------------------------------------------------
 		"ConstructionSize"			"2"
 		"BlockPathingSize"			"2"
+	    "SharedWithTeammates" "1"
 	}
 	"npc_building_smoke_house"
 	{
@@ -702,6 +710,7 @@
 		//----------------------------------------------------------------
 		"ConstructionSize"			"2"
 		"BlockPathingSize"			"2"
+	    "SharedWithTeammates" "1"
 	}
 	"npc_building_spirit_ward"
 	{
@@ -746,6 +755,7 @@
 		//----------------------------------------------------------------
 		"ConstructionSize"			"2"
 		"BlockPathingSize"			"2"
+	    "SharedWithTeammates" "1"
 	}
 	"npc_building_storage_chest"
 	{
@@ -838,6 +848,7 @@
 		//----------------------------------------------------------------
 		"ConstructionSize"			"2"
 		"BlockPathingSize"			"2"
+	    "SharedWithTeammates" "1"
 	}
 	"npc_building_teleport_beacon"
 	{
@@ -881,6 +892,7 @@
 		//----------------------------------------------------------------
 		"ConstructionSize"			"2"
 		"BlockPathingSize"			"2"
+	    "SharedWithTeammates" "1"
 	}
 	"npc_building_tent"
 	{
@@ -926,6 +938,8 @@
 		//----------------------------------------------------------------
 		"ConstructionSize"			"2"
 		"BlockPathingSize"			"2"
+	    "SharedWithTeammates" "1"
+	
 	}
 	"npc_building_workshop"
 	{
@@ -974,6 +988,8 @@
 		//----------------------------------------------------------------
 		"ConstructionSize"			"2"
 		"BlockPathingSize"			"2"
+	    "SharedWithTeammates" "1"
+	
 	}
 	"npc_bush_herb"
 	{
