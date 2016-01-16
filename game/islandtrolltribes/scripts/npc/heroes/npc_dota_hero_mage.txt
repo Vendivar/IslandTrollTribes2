@@ -1,4 +1,4 @@
-"npc_dota_hero_mage"
+"npc_dota_hero_witch_doctor"
 {
 	"UnitLabel"    "mage"
 

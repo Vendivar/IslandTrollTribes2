@@ -1,4 +1,4 @@
-"npc_dota_hero_priest"
+"npc_dota_hero_dazzle"
 {
 	"UnitLabel"    "priest"
 

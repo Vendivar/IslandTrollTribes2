@@ -2,7 +2,6 @@
 --               Class functions              --
 ------------------------------------------------
 
--- Unit Label for now
 function GetHeroClass( hero )
     return GameRules.ClassInfo['HeroClassNames'][hero:GetUnitName()]
 end

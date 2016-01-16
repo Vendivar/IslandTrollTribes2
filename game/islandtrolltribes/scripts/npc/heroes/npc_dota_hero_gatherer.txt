@@ -1,4 +1,4 @@
-"npc_dota_hero_gatherer"
+"npc_dota_hero_shadow_shaman"
 {
 	"UnitLabel"    "gatherer"
 

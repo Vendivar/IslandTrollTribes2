@@ -1,4 +1,4 @@
-"npc_dota_hero_beastmaster"
+"npc_dota_hero_lycan"
 {
 	"UnitLabel"    "beastmaster"
 

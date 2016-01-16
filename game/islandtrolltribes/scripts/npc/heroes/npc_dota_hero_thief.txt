@@ -1,4 +1,4 @@
-"npc_dota_hero_thief"
+"npc_dota_hero_riki"
 {
 
 	"UnitLabel"    "thief"

@@ -1,4 +1,4 @@
-"npc_dota_hero_scout"
+"npc_dota_hero_lion"
 {
 	"UnitLabel"    "scout"
 

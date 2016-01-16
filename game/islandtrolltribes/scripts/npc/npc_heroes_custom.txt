@@ -1,6 +1,6 @@
 "DOTAHeroes"
 {
-	"npc_dota_hero_beastmaster"
+	"npc_dota_hero_lycan"
 	{
 		"UnitLabel"    "beastmaster"
 	
@@ -48,7 +48,7 @@
 		"VisionDaytimeRange"	"1400"
 		"VisionNighttimeRange"	"675"
 	}
-	"npc_dota_hero_gatherer"
+	"npc_dota_hero_shadow_shaman"
 	{
 		"UnitLabel"    "gatherer"
 	
@@ -100,7 +100,7 @@
 		"VisionDaytimeRange"	"1800"
 		"VisionNighttimeRange"	"900"
 	}
-	"npc_dota_hero_hunter"
+	"npc_dota_hero_huskar"
 	{
 		"UnitLabel"    "hunter"
 	
@@ -144,7 +144,7 @@
 		"VisionDaytimeRange"	"1000"
 		"VisionNighttimeRange"	"500"
 	}
-	"npc_dota_hero_mage"
+	"npc_dota_hero_witch_doctor"
 	{
 		"UnitLabel"    "mage"
 	
@@ -194,7 +194,7 @@
 		"VisionDaytimeRange"	"950"
 		"VisionNighttimeRange"	"500"
 	}
-	"npc_dota_hero_priest"
+	"npc_dota_hero_dazzle"
 	{
 		"UnitLabel"    "priest"
 	
@@ -244,7 +244,7 @@
 		"VisionDaytimeRange"	"950"
 		"VisionNighttimeRange"	"500"
 	}
-	"npc_dota_hero_scout"
+	"npc_dota_hero_lion"
 	{
 		"UnitLabel"    "scout"
 	
@@ -332,7 +332,7 @@
 		"MovementSpeed"	"300"
 		"MovementTurnRate"	"1.0"
 	}
-	"npc_dota_hero_thief"
+	"npc_dota_hero_riki"
 	{
 	
 		"UnitLabel"    "thief"

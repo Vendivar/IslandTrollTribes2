@@ -1,4 +1,4 @@
-"npc_dota_hero_hunter"
+"npc_dota_hero_huskar"
 {
 	"UnitLabel"    "hunter"
 
