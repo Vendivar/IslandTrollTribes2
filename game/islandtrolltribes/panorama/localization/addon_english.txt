@@ -98,7 +98,7 @@
 		"scout_sub2_desc" "The Radar Scout is the master of detection, able to automatically spot moving creatures that trigger his radar, as well as see otherwise invisible units.\n\n\n\n\nFunction Enemy: Detection\nInitial Abilities: Enemy Radar, Shadow Sight\nLearnable Ability: Motion Sensor Radar\nBase Damage: 16-16\nAttack Cooldown: 1.70\nMovement Speed: 315"
 		
 		"scout_sub3_name" "Spy"
-		"scout_sub3_desc" "The Spy excels at foreseeing assaults by enemy trolls. His vision can bounce from wards to enemies, and can potentially reveal an entire island with careful ward placement.\n\n\nFunction: Reconnaissance, Enemy Detection\nInitial Abilities: Place ward, Destroy ward\nLearnable Abilities: Chain Reveal\nBase Damage: 16-16\nAttack Cooldown: 1.70\nMovement Speed: 335"
+		"scout_sub3_desc" "The Spy excels at foreseeing assaults by enemy trolls. His vision can bounce from wards to enemies, and can potentially reveal an entire island with careful ward placement.\n\n\nFunction: Reconnaissance, Enemy Detection\nInitial Abilities: Place Ward, Destroy Ward\nLearnable Abilities: Scry\nBase Damage: 16-16\nAttack Cooldown: 1.70\nMovement Speed: 335"
 		
 		"thief_sub1_name" "Escape Artist"
 		"thief_sub1_desc" "The Escape Artist is an expert at getting in and out of anywhere, and fast. His mobility-themed skills make him very hard to catch, and very hard to get away from.\n\n\n\nFunction: Stealing, Escape\nInitial Abilities: Teleport, Cloak\nLearnable Ability: Jump, Camouflage, Blur\nBase Damage: 16-16\nAttack Cooldown: 1.75\nMovement Speed: 330"
