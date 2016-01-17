@@ -4,7 +4,7 @@
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"item_chainmail"
-	"Model"	"models/items/phantom_assassin/sentcloak_001/sentcloak_001.vmdl"
+	"Model"	"models/coat_iron.vmdl"
 	"Effect"	""
 	"ItemCost"	"80"
 	"ItemShopTags"	"consumable"

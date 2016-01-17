@@ -4,7 +4,7 @@
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"item_cloak"
-	"Model"	"models/items/sniper/sharpshooter_cloak/sharpshooter_cloak.vmdl"
+	"Model"	"models/coat_elk.vmdl"
 	"Effect"	""
 	"ItemCost"	"56"
 	"ItemShopTags"	"consumable"

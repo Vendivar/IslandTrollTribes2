@@ -4886,7 +4886,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"cloak_fire"
-		"Model"	"models/items/windrunner/falconcloak/falconcloak.vmdl"
+		"Model"	"models/coat_fire.vmdl"
 		"Effect"	""
 		"ItemCost"	"88"
 		"ItemShopTags"	"consumable"
@@ -5058,7 +5058,7 @@
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"cloak_protection"
-		"Model"	"models/props_items/shivaguard.vmdl"
+		"Model"	"models/coat_protect.vmdl"
 		"Effect"	""
 		"ItemCost"	"88"
 		"ItemShopTags"	"consumable"
@@ -5230,7 +5230,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"item_cloak"
-		"Model"	"models/items/sniper/sharpshooter_cloak/sharpshooter_cloak.vmdl"
+		"Model"	"models/coat_bear.vmdl"
 		"Effect"	""
 		"ItemCost"	"92"
 		"ItemShopTags"	"consumable"
@@ -5319,7 +5319,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"coat_bone"
-		"Model"	"models/items/witchdoctor/stormcrowcloak/stormcrowcloak.vmdl"
+		"Model"	"models/coat_bone.vmdl"
 		"Effect"	""
 		"ItemCost"	"74"
 		"ItemShopTags"	"consumable"
@@ -5336,27 +5336,6 @@
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"ui.inv_pickup_robes"
-		"Custom"
-		{
-			"ModelOffsets"
-			{
-				"Origin"
-				{
-					"x"	"0"
-					"y"	"0"
-					"z"	"-50"
-				}
-	
-				"Angles"
-				{
-					"x"	"0"
-					"y"	"0"
-					"z"	"-201"
-				}
-	
-			}
-	
-		}
 	
 		"Modifiers"
 		{
@@ -5408,7 +5387,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_MOVEMENT"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"item_hood_of_defiance"
-		"Model"	"models/items/alchemist/armor/armor.vmdl"
+		"Model"	"models/coat_camo.vmdl"
 		"Effect"	""
 		"AbilityCastPoint"	"0.1"
 		"AbilityCooldown"	"30.0"
@@ -5510,7 +5489,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"item_cloak"
-		"Model"	"models/items/sniper/sharpshooter_cloak/sharpshooter_cloak.vmdl"
+		"Model"	"models/coat_elk.vmdl"
 		"Effect"	""
 		"ItemCost"	"56"
 		"ItemShopTags"	"consumable"
@@ -5599,7 +5578,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"item_chainmail"
-		"Model"	"models/items/phantom_assassin/sentcloak_001/sentcloak_001.vmdl"
+		"Model"	"models/coat_iron.vmdl"
 		"Effect"	""
 		"ItemCost"	"80"
 		"ItemShopTags"	"consumable"
@@ -5666,7 +5645,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"item_platemail"
-		"Model"	"models/items/phantom_assassin/sentcloak_001/sentcloak_001.vmdl"
+		"Model"	"models/coat_steel.vmdl"
 		"Effect"	""
 		"ItemCost"	"88"
 		"ItemShopTags"	"consumable"
@@ -5733,7 +5712,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"item_cloak"
-		"Model"	"models/items/sniper/sharpshooter_cloak/sharpshooter_cloak.vmdl"
+		"Model"	"models/coat_wolf.vmdl"
 		"Effect"	""
 		"ItemCost"	"78"
 		"ItemShopTags"	"consumable"
@@ -8241,6 +8220,7 @@
 				"States"
 				{
 					"MODIFIER_STATE_ATTACK_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_DISARMED"	"MODIFIER_STATE_VALUE_ENABLED"
 				}
 	
 			}

@@ -12141,7 +12141,7 @@
 				"FireSound"
 			{
 				"EffectName"		"Hero_Chen.TestOfFaith.Target"
-				"Target"			"POINT"
+				"Target"			"CASTER"
 			}
 	
 		}

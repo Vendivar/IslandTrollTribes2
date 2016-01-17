@@ -354,7 +354,7 @@ function ITT:TestCoat( playerID )
 
 
     local testItems = { 
-        ["item_cloak_firen"] = 1,
+        ["item_cloak_fire"] = 1,
         ["item_cloak_frost"] = 1,
         ["item_cloak_protection "] = 1,
         ["item_coat_bear"] = 1,
@@ -362,7 +362,8 @@ function ITT:TestCoat( playerID )
         ["item_coat_camouflage"] = 1,
         ["item_coat_elk"] = 1,
         ["item_coat_iron"] = 1,
-        ["item_coat_stee"] = 1,
+        ["item_coat_steel"] = 1,
+        ["item_coat_wolf"] = 1,
         ["item_coat_wolf"] = 1,
                         }
     

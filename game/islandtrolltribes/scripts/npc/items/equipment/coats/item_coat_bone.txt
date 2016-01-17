@@ -4,7 +4,7 @@
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"coat_bone"
-	"Model"	"models/items/witchdoctor/stormcrowcloak/stormcrowcloak.vmdl"
+	"Model"	"models/coat_bone.vmdl"
 	"Effect"	""
 	"ItemCost"	"74"
 	"ItemShopTags"	"consumable"
@@ -21,27 +21,6 @@
 	"UIPickupSound"	"Item.PickUpGemShop"
 	"UIDropSound"	"Item.DropGemShop"
 	"WorldDropSound"	"ui.inv_pickup_robes"
-	"Custom"
-	{
-		"ModelOffsets"
-		{
-			"Origin"
-			{
-				"x"	"0"
-				"y"	"0"
-				"z"	"-50"
-			}
-
-			"Angles"
-			{
-				"x"	"0"
-				"y"	"0"
-				"z"	"-201"
-			}
-
-		}
-
-	}
 
 	"Modifiers"
 	{

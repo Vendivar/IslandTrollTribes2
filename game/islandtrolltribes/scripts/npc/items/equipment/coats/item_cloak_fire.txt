@@ -4,7 +4,7 @@
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"cloak_fire"
-	"Model"	"models/items/windrunner/falconcloak/falconcloak.vmdl"
+	"Model"	"models/coat_fire.vmdl"
 	"Effect"	""
 	"ItemCost"	"88"
 	"ItemShopTags"	"consumable"
