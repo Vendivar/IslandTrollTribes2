@@ -16,7 +16,7 @@ function ToggleOnRadar( event )
     -- Toggle off the secondary subclass ability
     local advRadarAbility = caster:FindAbilityByName("ability_gatherer_advanced_radarmanipulations")
     if advRadarAbility then
-        ToggleOff(advRadarAbility)
+        ToggleOffRadar(event)
     end
 
     local radarSkillTable = {
@@ -49,9 +49,8 @@ function ToggleOnRadar( event )
 end
 
 -- Turns the layout back to normal
-function ToggleOffRadar( event )
+function ToggleOffRadar(event)
     local caster = event.caster
-    
     local abilityTable = {
         ["ability_gatherer_findmushroomstickortinder"]="",
         ["ability_gatherer_findhide"]="",
@@ -68,7 +67,7 @@ function ToggleOffRadar( event )
             if abilityTable[abilityName] then
                 ability:SetHidden(true)
                 ability:SetLevel(0)
-            elseif ability:GetLevel() > 0 and not IsCastableWhileHidden(abilityName) then
+            elseif not IsCastableWhileHidden(abilityName) then
                 ability:SetHidden(false)
             end
         end        
