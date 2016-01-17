@@ -3,7 +3,7 @@
 	"ID"	"1304"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"item_boots_any"
+	"AbilityTextureName"	"boots_any"
 	"Model"	" "
 	"Effect"	""
 	"ItemCost"	"2"
