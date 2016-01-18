@@ -1512,6 +1512,17 @@
 
 // Items
 
+"DOTA_Tooltip_ability_item_any_herb"                                              "Any Herb"
+"DOTA_Tooltip_ability_item_any_herb_Description"                                  ""
+
+"DOTA_Tooltip_ability_item_any_hide"                                              "Any Hide"
+"DOTA_Tooltip_ability_item_any_hide_Description"                                  ""
+
+"DOTA_Tooltip_ability_item_any_stick_bone"                                        "Any Stick or Bone"
+"DOTA_Tooltip_ability_item_any_stick_bone_Description"                            ""
+
+
+
 "DOTA_Tooltip_ability_item_acorn"		"Acorn"
 "DOTA_Tooltip_ability_item_acorn_Description"		"ACTIVE: Consume acorn for health.\n\nA tiny seed found in the wild."
 "DOTA_Tooltip_ability_item_acorn_heal_amount"		"HEAL AMOUNT:"
