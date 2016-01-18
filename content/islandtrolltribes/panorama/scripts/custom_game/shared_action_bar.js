@@ -106,9 +106,6 @@ function UpdateAbilityList()
   	b = 8;
   }
 	if (hero == queryUnit){
-		$.Msg("Hero Panel")
-    $.Msg(b)
-    $.Msg(Entities.GetAbilityByName( queryUnit , "ability_mage_quantum_nulldamage" ))
 		for ( var i = b; i < 16 ; ++i )
         {
 			var ability = Entities.GetAbility( queryUnit, i );

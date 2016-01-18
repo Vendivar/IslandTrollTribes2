@@ -170,8 +170,7 @@ function ITT:InitGameMode()
     GameRules.UnitKV = LoadKeyValues("scripts/npc/npc_units_custom.txt")
     GameRules.HeroKV = LoadKeyValues("scripts/npc/npc_heroes_custom.txt")
     MergeTables(GameRules.UnitKV, LoadKeyValues("scripts/npc/npc_heroes_custom.txt")) --Load HeroKV into UnitKV
-
-    print(GameRules.UnitKV['npc_dota_hero_lycan'])
+    LoadCraftingTable()
 
     -- Check Syntax
     if (not GameRules.AbilityKV) or (not GameRules.ItemKV) or (not GameRules.UnitKV) or (not GameRules.HeroKV) then

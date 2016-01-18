@@ -59,7 +59,7 @@ function AggressiveNeutralThink()
             ability:ApplyDataDrivenModifier(thisEntity, thisEntity, "modifier_sleep", {duration = -1})
 
 			thisEntity.state = "sleep"
-			print("wander -> sleep")
+			--print("wander -> sleep")
 		end
 	elseif (thisEntity.state == "attack") then
 		-- if you get 450 out, break attack

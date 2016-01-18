@@ -1,3 +1,11 @@
+-- Init nettable for crafting UI
+function LoadCraftingTable()
+    for k,v in pairs(GameRules.Crafting) do
+        CustomNetTables:SetTableValue("crafting", k, v)
+    end
+end
+
+
 -- Checks for combines in heroes or units
 function InventoryCheck( unit )
     local recipeTable = GameRules.Crafting[unit:GetUnitName()] or GameRules.Crafting['Recipes']
