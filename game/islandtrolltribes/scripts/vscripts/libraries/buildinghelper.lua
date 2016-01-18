@@ -34,7 +34,7 @@ function BuildingHelper:Init()
     -- Panorama Event Listeners
     CustomGameEventManager:RegisterListener("building_helper_build_command", Dynamic_Wrap(BuildingHelper, "BuildCommand"))
     CustomGameEventManager:RegisterListener("building_helper_cancel_command", Dynamic_Wrap(BuildingHelper, "CancelCommand"))
-    CustomGameEventManager:RegisterListener("update_selected_entities", Dynamic_Wrap(BuildingHelper, 'OnPlayerSelectedEntities'))
+    CustomGameEventManager:RegisterListener("bh_update_selected_entities", Dynamic_Wrap(BuildingHelper, 'OnPlayerSelectedEntities'))
     CustomGameEventManager:RegisterListener("gnv_request", Dynamic_Wrap(BuildingHelper, "SendGNV"))
 
      -- Game Event Listeners
@@ -222,6 +222,9 @@ function BuildingHelper:InitGNV()
     local line = {}
     local ASCII_ART = false
 
+    -- Trigger zones named "bh_blocked" will block the terrain for construction
+    local blocked_map_zones = Entities:FindAllByName("*bh_blocked")
+
     for y=boundY1,boundY2 do
         local shift = 4
         local byte = 0
@@ -236,6 +239,17 @@ function BuildingHelper:InitGNV()
             local terrainBlocked = not GridNav:IsTraversable(position) or GridNav:IsBlocked(position)
             if BuildingHelper.Settings["UPDATE_TREES"] then
                 terrainBlocked = terrainBlocked and not treeBlocked
+            end
+
+            if not terrainBlocked then
+                -- Check if the position is inside any blocking trigger
+                for _,ent in pairs(blocked_map_zones) do
+                    local triggerBlocked = BuildingHelper:IsInsideEntityBounds(ent, position)
+                    if triggerBlocked then
+                        terrainBlocked = true
+                        break
+                    end
+                end
             end
 
             if terrainBlocked then
@@ -384,7 +398,10 @@ function BuildingHelper:OrderFilter(order)
     local order_type = order.order_type
     local units = order.units
     local abilityIndex = order.entindex_ability
-    local unit = EntIndexToHScript(units["0"])
+    local unit = nil
+    if units["0"] then
+        unit = EntIndexToHScript(units["0"])
+    end
 
     -- Item is dropped
     if order_type == DOTA_UNIT_ORDER_DROP_ITEM and IsBuilder(unit) then
@@ -1742,22 +1759,8 @@ end
 ]]--
 function BuildingHelper:StopGhost( builder )
     local player = builder:GetPlayerOwner()
-    local playerID = builder:GetPlayerOwnerID()
-    local entIndex = builder:GetEntityIndex()
-
-    local bCurrentlySelected = false
-    local selectedEntities = BuildingHelper:GetPlayerTable(playerID).SelectedEntities
-    if selectedEntities then
-        for _,v in pairs(selectedEntities) do
-            if v==entIndex then
-                bCurrentlySelected = true
-            end
-        end
-    end
-
-    if bCurrentlySelected then
-        CustomGameEventManager:Send_ServerToPlayer(player, "building_helper_end", {})
-    end
+    
+    CustomGameEventManager:Send_ServerToPlayer(player, "building_helper_end", {})
 end
 
 
@@ -1875,7 +1878,7 @@ end
 
 function BuildingHelper:ShowBuilder(unit)
     unit:RemoveModifierByName("modifier_builder_hidden")
-    unit:SetAbsOrigin(unit.entrance_to_build)
+    FindClearSpaceForUnit(unit, unit.entrance_to_build, true)
     unit:RemoveNoDraw()
 end
 
@@ -1911,7 +1914,7 @@ function BuildingHelper:FindClosestEmptyPositionNearby( location, construction_s
 
     for x = lowerBoundX, upperBoundX do
         for y = lowerBoundY, upperBoundY do
-            if BuildingHelper.Grid[y][x] == GRID_FREE then
+            if BuildingHelper:CellHasGridType(x,y,"BUILDABLE") then
                 local pos = Vector(GridNav:GridPosToWorldCenterX(x), GridNav:GridPosToWorldCenterY(y), 0)
                 BuildingHelper:SnapToGrid(construction_size, pos)
                 if not BuildingHelper:IsAreaBlocked(construction_size, pos) then
@@ -1926,6 +1929,24 @@ function BuildingHelper:FindClosestEmptyPositionNearby( location, construction_s
     end
     BuildingHelper:SnapToGrid(construction_size, towerPos)
     return towerPos
+end
+
+-- Used to find if a position is insde the trigger entity bounds
+function BuildingHelper:IsInsideEntityBounds(entity, location)
+    local origin = entity:GetAbsOrigin()
+    local bounds = entity:GetBounds()
+    local min = bounds.Mins
+    local max = bounds.Maxs
+    local X = location.x
+    local Y = location.y
+    local minX = min.x + origin.x
+    local minY = min.y + origin.y
+    local maxX = max.x + origin.x
+    local maxY = max.y + origin.y
+    local betweenX = X >= minX and X <= maxX
+    local betweenY = Y >= minY and Y <= maxY
+
+    return betweenX and betweenY
 end
 
 -- A BuildingHelper ability is identified by the "Building" key.

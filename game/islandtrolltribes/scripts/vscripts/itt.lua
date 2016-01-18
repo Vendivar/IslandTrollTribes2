@@ -1006,12 +1006,9 @@ function ITT:ShareUnits()
     -- Share for each player to teammates
     for i=0,DOTA_MAX_TEAM_PLAYERS do
         if PlayerResource:IsValidPlayerID(i) then
-            print(i)
             local teamNumber = PlayerResource:GetTeam(i)
             for _,playerID in pairs(playersOnTeams[teamNumber]) do
-                print(playerID)
                 if playerID~=i then
-                    print(playerID,"sharing units with ",i)
                     PlayerResource:SetUnitShareMaskForPlayer(i, playerID, 2, true)
                 end
             end

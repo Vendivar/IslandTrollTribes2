@@ -15,8 +15,7 @@ CHEAT_CODES = {
     ["potions"] = function( ... ) ITT:TestPotions(...) end,
     ["scrolls"] = function( ... ) ITT:TestScroll(...) end,
     ["axes"] = function( ... ) ITT:TestAxe(...) end,
-    ["coats"] = function( ... ) ITT:TestCoat(...) end,
-    ["share"] = function( ... ) ITT:ShareUnits() end,    
+    ["coats"] = function( ... ) ITT:TestCoat(...) end,  
 }
 
 PLAYER_COMMANDS = {}
