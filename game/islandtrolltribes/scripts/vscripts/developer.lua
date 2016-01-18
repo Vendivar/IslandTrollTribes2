@@ -16,6 +16,7 @@ CHEAT_CODES = {
     ["scrolls"] = function( ... ) ITT:TestScroll(...) end,
     ["axes"] = function( ... ) ITT:TestAxe(...) end,
     ["coats"] = function( ... ) ITT:TestCoat(...) end,
+    ["share"] = function( ... ) ITT:ShareUnits() end,    
 }
 
 PLAYER_COMMANDS = {}
