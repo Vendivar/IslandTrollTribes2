@@ -1,0 +1,11 @@
+<root>
+    <styles>
+        <include src="file://{resources}/styles/custom_game/crafting.css" />
+    </styles>
+    <scripts>
+        <include src="file://{resources}/scripts/crafting/crafting_item.js" />
+    </scripts>
+    <Panel class="CraftingItem">
+        <Image id="Item" onmouseover="ShowToolTip()" onmouseout="HideToolTip()"></Image>
+    </Panel>
+</root>

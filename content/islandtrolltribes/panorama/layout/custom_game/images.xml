@@ -225,6 +225,10 @@
         <Image style="opacity:0;" src="file://{images}/items/weapon_emp.png" />
         <Image style="opacity:0;" src="file://{images}/items/wolf hide.png" />
         <Image style="opacity:0;" src="file://{images}/items/yellow_herb.png" />
+        <Image style="opacity:0;" src="file://{images}/items/any_herb.png" />
+        <Image style="opacity:0;" src="file://{images}/items/any_hide.png" />
+        <Image style="opacity:0;" src="file://{images}/items/any_stick_bone.png" />
+        <Image style="opacity:0;" src="file://{images}/items/stick.png" />
 
 <Image style="opacity:0;" src="file://{images}/spellicons/ability_beastmaster_attack.png" />
 <Image style="opacity:0;" src="file://{images}/spellicons/ability_beastmaster_bash.png" />
