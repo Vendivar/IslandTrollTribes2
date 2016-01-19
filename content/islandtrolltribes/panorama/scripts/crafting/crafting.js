@@ -102,6 +102,6 @@ function GlowItems()
 
 (function () {
     CreateCraftingList()
-    GameUI.CustomUIConfig().ToggleCraftingList()
+    Root.visible = false
     $.Msg("Done creating crafting list")
 })();

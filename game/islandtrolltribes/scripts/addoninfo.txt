@@ -1,4 +1,19 @@
 "AddonInfo"
 {
-	"TeamCount"		"3"
+	"maps"         "islandtrolltribesa8"
+    "IsPlayable"    "1"
+    "islandtrolltribesa8"
+    {
+        "MaxPlayers" "12"
+    }
+
+    "Default_Keys"
+    {
+        "01"
+        {
+            "Key"       "C"
+            "Command"   "+ToggleCraft"
+            "Name"      "Show/Hide the crafting UI"
+        }
+    }
 }

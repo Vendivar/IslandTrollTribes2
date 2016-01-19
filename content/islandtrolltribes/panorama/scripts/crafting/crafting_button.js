@@ -4,5 +4,5 @@ function ToggleCraftingList() {
 }
 
 (function () {
-    
+    Game.AddCommand( "+ToggleCraft", ToggleCraftingList, "", 0 );
 })();
