@@ -99,6 +99,7 @@
         <Image style="opacity:0;" src="file://{images}/items/boots_iron.png" />
         <Image style="opacity:0;" src="file://{images}/items/boots_steel.png" />
         <Image style="opacity:0;" src="file://{images}/items/bow_blood_god.png" />
+        <Image style="opacity:0;" src="file://{images}/items/building_kit_armory.png" />
         <Image style="opacity:0;" src="file://{images}/items/building_kit_craftmaster.png" />
         <Image style="opacity:0;" src="file://{images}/items/building_kit_fire_mage.png" />
         <Image style="opacity:0;" src="file://{images}/items/building_kit_hatchery.png" />
@@ -107,11 +108,13 @@
         <Image style="opacity:0;" src="file://{images}/items/building_kit_hut_troll.png" />
         <Image style="opacity:0;" src="file://{images}/items/building_kit_hut_witch_doctor.png" />
         <Image style="opacity:0;" src="file://{images}/items/building_kit_mixing_pot.png" />
+        <Image style="opacity:0;" src="file://{images}/items/building_kit_fire_basic.png" />
         <Image style="opacity:0;" src="file://{images}/items/building_kit_smoke_house.png" />
         <Image style="opacity:0;" src="file://{images}/items/building_kit_spirit_ward.png" />
         <Image style="opacity:0;" src="file://{images}/items/building_kit_storage_chest.png" />
         <Image style="opacity:0;" src="file://{images}/items/building_kit_tannery.png" />
         <Image style="opacity:0;" src="file://{images}/items/building_kit_teleport_beacon.png" />
+        <Image style="opacity:0;" src="file://{images}/items/building_kit_tent.png" />
         <Image style="opacity:0;" src="file://{images}/items/building_kit_tent_basic.png" />
         <Image style="opacity:0;" src="file://{images}/items/building_kit_tower_omni.png" />
         <Image style="opacity:0;" src="file://{images}/items/building_kit_trap_ensnare.png" />
@@ -179,11 +182,14 @@
         <Image style="opacity:0;" src="file://{images}/items/potion_anti_magic.png" />
         <Image style="opacity:0;" src="file://{images}/items/potion_cure_all.png" />
         <Image style="opacity:0;" src="file://{images}/items/potion_drunk.png" />
+        <Image style="opacity:0;" src="file://{images}/items/potion_disease.png" />
+        <Image style="opacity:0;" src="file://{images}/items/potion_nether.png" />
         <Image style="opacity:0;" src="file://{images}/items/potion_elemental.png" />
         <Image style="opacity:0;" src="file://{images}/items/potion_healingi.png" />
         <Image style="opacity:0;" src="file://{images}/items/potion_manai.png" />
         <Image style="opacity:0;" src="file://{images}/items/potion_manaiv.png" />
         <Image style="opacity:0;" src="file://{images}/items/potion_poison.png" />
+        <Image style="opacity:0;" src="file://{images}/items/potion_poison_ultra.png" />
         <Image style="opacity:0;" src="file://{images}/items/potion_twin_island.png" />
         <Image style="opacity:0;" src="file://{images}/items/potion_x.png" />
         <Image style="opacity:0;" src="file://{images}/items/raw_meat.png" />
@@ -197,6 +203,8 @@
         <Image style="opacity:0;" src="file://{images}/items/scroll_tsunami.png" />
         <Image style="opacity:0;" src="file://{images}/items/seed_magic.png" />
         <Image style="opacity:0;" src="file://{images}/items/shield_battle.png" />
+        <Image style="opacity:0;" src="file://{images}/items/shield_basic.png" />
+        <Image style="opacity:0;" src="file://{images}/items/shield_iron.png" />
         <Image style="opacity:0;" src="file://{images}/items/ship_transport.png" />
         <Image style="opacity:0;" src="file://{images}/items/slot_locked.png" />
         <Image style="opacity:0;" src="file://{images}/items/sonar_compass.png" />
@@ -214,7 +222,6 @@
         <Image style="opacity:0;" src="file://{images}/items/stone.png" />
         <Image style="opacity:0;" src="file://{images}/items/Stout_Shield_icon.png" />
         <Image style="opacity:0;" src="file://{images}/items/teleport_beacon.png" />
-        <Image style="opacity:0;" src="file://{images}/items/tent.png" />
         <Image style="opacity:0;" src="file://{images}/items/thistles.png" />
         <Image style="opacity:0;" src="file://{images}/items/thistles_dark.png" />
         <Image style="opacity:0;" src="file://{images}/items/tinder.png" />
@@ -229,6 +236,7 @@
         <Image style="opacity:0;" src="file://{images}/items/any_hide.png" />
         <Image style="opacity:0;" src="file://{images}/items/any_stick_bone.png" />
         <Image style="opacity:0;" src="file://{images}/items/stick.png" />
+        <Image style="opacity:0;" src="file://{images}/items/flint.png" />
 
 <Image style="opacity:0;" src="file://{images}/spellicons/ability_beastmaster_attack.png" />
 <Image style="opacity:0;" src="file://{images}/spellicons/ability_beastmaster_bash.png" />
