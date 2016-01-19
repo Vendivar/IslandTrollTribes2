@@ -7,6 +7,5 @@
     </scripts>
     <Panel class="CraftingRoot">
         <Label id="CraftingListTitle" text="#itt_craft_menu" />
-        <Button id="CraftToggleButton" onactivate="ToggleCraftingList()"/>
     </Panel>
 </root>

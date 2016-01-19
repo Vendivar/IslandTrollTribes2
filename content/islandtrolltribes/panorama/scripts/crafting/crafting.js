@@ -1,5 +1,10 @@
 var Root = $.GetContextPanel()
 
+// Global lazy toggle
+GameUI.CustomUIConfig().ToggleCraftingList = function() {
+    Root.visible = !Root.visible
+}
+
 function CreateCraftingList()
 { 
     
@@ -95,18 +100,8 @@ function GlowItems()
     $.Schedule(1, GlowItems())
 }
 
-var visible = true
-function ToggleCraftingList() {
-    visible = !visible
-    var childNum = Root.GetChildCount()
-    for (var i = 0; i < childNum; i++) {
-        var child = Root.GetChild( i )
-        if (child.id !="CraftToggleButton")
-            child.visible = !child.visible
-    };
-}
-
 (function () {
     CreateCraftingList()
+    GameUI.CustomUIConfig().ToggleCraftingList()
     $.Msg("Done creating crafting list")
 })();

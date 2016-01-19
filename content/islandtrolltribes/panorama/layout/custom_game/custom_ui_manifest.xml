@@ -11,6 +11,7 @@
         <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/building_helper.xml" />
         <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/containers/container_base.xml" />
         <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/shared_action_bar.xml" />
+        <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/crafting/crafting_button.xml" />
         <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/crafting/crafting_list.xml" />
         
         <CustomUIElement type="GameInfo"            layoutfile="file://{resources}/layout/custom_game/images.xml" />

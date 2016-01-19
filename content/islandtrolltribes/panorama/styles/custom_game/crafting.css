@@ -1,7 +1,7 @@
 .CraftingRoot
 {
     width: 30%;
-    height: 70%;
+    //height: 70%;
     overflow: scroll;
     flow-children: down;
     margin-bottom: 200px;
@@ -15,7 +15,6 @@
 
     padding: 10px;
     flow-children: down; 
-    z-index: 3;
 }
 
 .CraftingSection
@@ -82,6 +81,13 @@
 
 //-- Copied from custom_ui.css
 
+.CraftingButtonRoot
+{
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
 #CraftToggleButton
 {
     padding: 4px;
@@ -90,8 +96,9 @@
     height: 64px;
     background-color: #25292f;
     vertical-align: top;
+    horizontal-align: left;
     transform: translateY( 50% );
-    transform: translateY( 64px );
+    transform: translateY( 150px );
     transition-delay: 0.5s;
     transition-duration: 0.7s;
     transition-property: transform, box-shadow, opacity;
@@ -100,58 +107,23 @@
     border-radius: 8px;
 }
 
-.gameinfo_visible #CraftToggleButton
+#CraftToggleIcon
 {
-    box-shadow: fill #ffffff88 -2px -2px 4px 4px;
+    color: gradient( linear, 0% 0%, 0% 100%, from( #E0E0E0 ), to( #686868 ) );
+    font-size: 35px;
+    font-family: Goudy Trajan Medium;
+    font-weight: bold;
+    text-align: center;
+    horizontal-align: center;
+    vertical-align: center;
+    text-shadow: 0px 0px 3px 3.0 #000000;
+    opacity: 0.4;
+    margin-left: 5px;
 }
 
-#GameInfoIcon
-{
-    width: 24px;
-    height: 24px;
-
-    opacity: 0.3;
-
-    vertical-align: top;
-    horizontal-align: right;
-
-   background-image: url("s2r://panorama/images/custom_gameinfo_icon_psd.vtex");
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-}
-
-
-#CraftToggleButton:hover #GameInfoOpenClose,
-#CraftToggleButton:hover #GameInfoIcon
-{
-    opacity: 0.7;
-}
-
-#CraftToggleButton:active #GameInfoOpenClose,
-#CraftToggleButton:active #GameInfoIcon
+#CraftToggleIcon:hover
 {
     opacity: 1;
-}
-
-#GameInfoOpenClose
-{
-    width: 24px;
-    height: 24px;
-
-    horizontal-align: right;
-    vertical-align: bottom;
-    opacity: 0.3;
-    
-
-    background-image: url("s2r://panorama/images/custom_gameinfo_open_psd.vtex");
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-}
-
-.gameinfo_visible #GameInfoOpenClose
-{
-    background-image: url("s2r://panorama/images/custom_gameinfo_close_psd.vtex");
-    background-size: 100% 100%;
 }
 
 //-------------------------------

@@ -1,0 +1,13 @@
+<root>
+    <styles>
+        <include src="file://{resources}/styles/custom_game/crafting.css" />
+    </styles>
+    <scripts>
+        <include src="file://{resources}/scripts/crafting/crafting_button.js" />
+    </scripts>
+    <Panel class="CraftingButtonRoot" hittest="false">
+        <Panel id="CraftToggleButton" onactivate="ToggleCraftingList()">
+            <Label id="CraftToggleIcon" text="C"/>
+        </Panel>
+    </Panel>
+</root>
