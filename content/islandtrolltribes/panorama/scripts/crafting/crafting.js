@@ -52,7 +52,7 @@ function CreateCraftingSection (name, table) {
                         ingredients.push(ingredient)
                     }
                 }
-                CreateCraftingRecipe(section, item_result,ingredients)
+                CreateCraftingRecipe(section, item_result, ingredients, subtable[item_result])
             }
         }
     }
@@ -69,7 +69,7 @@ function CreateCraftingSection (name, table) {
                     ingredients.push(ingredient)
                 }
             }
-            CreateCraftingRecipe(section, item_result,ingredients)
+            CreateCraftingRecipe(section, item_result, ingredients, table[item_result])
         }
     }
 
@@ -87,11 +87,12 @@ function CreateCraftingSection (name, table) {
 
 
 // Create a crafting recipe panel
-function CreateCraftingRecipe (section, result, ingredients) {
+function CreateCraftingRecipe (section, result, ingredients, table) {
 
     var crafting_item = $.CreatePanel("Panel", section, result)
     crafting_item.itemname = result
     crafting_item.ingredients = ingredients
+    crafting_item.table = table
     crafting_item.BLoadLayout("file://{resources}/layout/custom_game/crafting/crafting_recipe.xml", false, false);
 }
 
@@ -100,8 +101,12 @@ function GlowItems()
     $.Schedule(1, GlowItems())
 }
 
+function Hide() {
+    Root.visible = false
+}
+
 (function () {
     CreateCraftingList()
-    Root.visible = false
+    $.Schedule(0.1, Hide)
     $.Msg("Done creating crafting list")
 })();
