@@ -3,8 +3,10 @@ var LocalPlayerID = Game.GetLocalPlayerID()
 var hero = Players.GetPlayerHeroEntityIndex( LocalPlayerID )
 var ingredients = Root.ingredients
 var table = Root.table
-var itemName = Root.itemname
-var itemsRequired = []
+var itemResult = Root.itemname
+
+if (itemsRequired === undefined)
+    var itemsRequired = {}
 
 for (var i = 0; i < ingredients.length; i++) {
     MakeItemPanel(ingredients[i], ingredients.length, i)
@@ -14,35 +16,32 @@ var equal = $.CreatePanel("Label", Root, "EqualSign")
 equal.text = "="
 
 // Resulting from craft
-MakeItemPanel(itemName, 0)
+var resultPanel = MakeItemPanel(itemResult, 0)
 
 CheckInventory()
 
 function MakeItemPanel(name, elements, num) {
-    var item = $.CreatePanel("Panel", Root, name)
-    item.itemname = name
-    item.elements = elements
+    var itemPanel = $.CreatePanel("Panel", Root, name)
+    itemPanel.itemname = name
+    itemPanel.elements = elements
 
     // Track how many of this item does the recipe need
-    itemsRequired[name] ? itemsRequired[name]++ : itemsRequired[name]=1
+    if (name != itemResult)
+        itemsRequired[name] ? itemsRequired[name]++ : itemsRequired[name]=1
 
-    if (num)
-    {
-        item.count = itemsRequired[name]
-    }
-    item.BLoadLayout("file://{resources}/layout/custom_game/crafting/crafting_item.xml", false, false);
+    itemPanel.BLoadLayout("file://{resources}/layout/custom_game/crafting/crafting_item.xml", false, false);
     
+    return itemPanel
+
     /*if (elements>0)
     {
         var spacing = 70/elements
-        item.style["width"] = spacing+"%"
+        itemPanel.style["width"] = spacing+"%"
     }*/
 }
 
 function CheckInventory()
 {
-    var meetsAllIngredients = true
-
     // Build an array of items (with count) in inventory 
     var itemsOnInventory = []
     for (var i = 0; i < 6; i++) {
@@ -56,27 +55,50 @@ function CheckInventory()
 
     if (Root.visible)
     {
+        var meetsAllRequirements = true
+        for (var i in itemsRequired) {
+            if (itemsOnInventory[i] === undefined || itemsRequired[i] > itemsOnInventory[i])
+            {
+                meetsAllRequirements = false
+                break
+            }
+        };
+
         var childNum = Root.GetChildCount()
         for (var i = 0; i < childNum; i++) {
             var child = Root.GetChild(i)
             if (Entities.HasItemInInventory( hero, child.itemname ) && itemsOnInventory[child.itemname] > 0)
             {
-                //$.Msg(itemName, " Requires ",itemsRequired[child.itemname], " ", child.itemname, " | Has ", itemsOnInventory[child.itemname])
+                //$.Msg(resultName, " Requires ",itemsRequired[child.itemname], " ", child.itemname, " | Has ", itemsOnInventory[child.itemname])
                 itemsOnInventory[child.itemname]--
                 AddGlow(child)
+            }
+            else
+            {
+                RemoveGlow(child)
             }
         };
     }
 
+    if (meetsAllRequirements)
+        GlowCraft(resultPanel)
+    else
+        RemoveGlow(resultPanel)
+
     $.Schedule(1, CheckInventory)
 }
+
 
 function AddGlow(panel) {
     panel.style['box-shadow'] = "0px 0px 100% gold";
 }
 
 function RemoveGlow(panel) {
-    panel.style['box-shadow'] = "";
+    panel.style['box-shadow'] = "0px 0px 0%";
+}
+
+function GlowCraft(panel) {
+    panel.style['box-shadow'] = "0px 0px 100% green";
 }
 
 /* 
