@@ -6,9 +6,6 @@ var table = Root.table
 var itemResult = Root.itemname
 var aliasTable = CustomNetTables.GetTableValue( "crafting", "Alias" )
 
-if (itemsRequired === undefined)
-    var itemsRequired = {}
-
 for (var i = 0; i < ingredients.length; i++) {
     MakeItemPanel(ingredients[i], ingredients.length, i)
 };
@@ -26,10 +23,6 @@ function MakeItemPanel(name, elements, num) {
     itemPanel.itemname = name
     itemPanel.elements = elements
 
-    // Track how many of this item does the recipe need
-    if (name != itemResult)
-        itemsRequired[name] ? itemsRequired[name]++ : itemsRequired[name]=1
-
     itemPanel.BLoadLayout("file://{resources}/layout/custom_game/crafting/crafting_item.xml", false, false);
     
     return itemPanel
@@ -43,40 +36,38 @@ function MakeItemPanel(name, elements, num) {
 
 function CheckInventory()
 {
-    // Build an array of items (with count) in inventory 
+    // Build an array of items in inventory 
     var itemsOnInventory = []
+
     for (var i = 0; i < 6; i++) {
         var item = Entities.GetItemInSlot( hero, i )
         if (item)
         {
             var item_name = Abilities.GetAbilityName(item)
-            itemsOnInventory[item_name] ? itemsOnInventory[item_name]++ : itemsOnInventory[item_name]=1
+            if (item_name != "item_slot_locked")
+                itemsOnInventory.push(item_name)
         }
     };
 
     if (Root.visible)
     {
         var meetsAllRequirements = true
-        for (var i in itemsRequired) {
-            if (itemsOnInventory[i] === undefined || itemsRequired[i] > itemsOnInventory[i])
-            {
-                meetsAllRequirements = false
-                break
-            }
-        };
-
         var childNum = Root.GetChildCount()
         for (var i = 0; i < childNum; i++) {
             var child = Root.GetChild(i)
-            if (Entities.HasItemInInventory( hero, child.itemname ) && itemsOnInventory[child.itemname] > 0)
+            if (child.itemname !== undefined && child.itemname != itemResult)
             {
-                //$.Msg(resultName, " Requires ",itemsRequired[child.itemname], " ", child.itemname, " | Has ", itemsOnInventory[child.itemname])
-                itemsOnInventory[child.itemname]--
-                AddGlow(child)
-            }
-            else
-            {
-                RemoveGlow(child)
+                var itemIndex = FindItemInArray(child.itemname, itemsOnInventory)
+                if (itemIndex > -1)
+                {
+                    itemsOnInventory.splice(itemIndex, 1)
+                    AddGlow(child)
+                }
+                else
+                {
+                    meetsAllRequirements = false
+                    RemoveGlow(child)
+                }
             }
         };
     }
@@ -89,18 +80,30 @@ function CheckInventory()
     $.Schedule(1, CheckInventory)
 }
 
-function MatchesAlias( aliasName, targetItemName ) {
-    if (aliasName !== undefined && (aliasName.indexOf("any_") > -1))
+// Search for an item by name taking alias into account
+function FindItemInArray(itemName, itemList) {
+    for (var index in itemList)
     {
-        for (var i in aliasTable)
+        if (itemList[index] == itemName)
         {
-            for (var itemName in aliasTable[i])
+            return index
+        }
+        else if (MatchesAlias(itemName, itemList[index]))
+        {
+            return index
+        }
+    }
+    return -1
+}
+
+function MatchesAlias( aliasName, targetItemName ) {
+    if (aliasName.indexOf("any_") > -1)
+    {
+        for (var itemName in aliasTable[aliasName])
+        {
+            if (itemName==targetItemName)
             {
-                $.Msg(itemName, " ", targetItemName)
-                if (itemName==targetItemName)
-                {
-                    return true
-                }
+                return true
             }
         }
     }
@@ -118,8 +121,3 @@ function RemoveGlow(panel) {
 function GlowCraft(panel) {
     panel.style['box-shadow'] = "0px 0px 100% green";
 }
-
-/* 
-    
-    Entities.GetItemInSlot( integer nEntityIndex, integer nSlotIndex )
-*/
