@@ -11884,35 +11884,6 @@
 		
 			}
 		}
-	"item_any_herb"
-	{
-		"ID"	"1301"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_any_herb"
-		"Model"	" "
-		"Effect"	""
-		"ItemCost"	"2"
-		"ItemShopTags"	"consumable"
-		"ItemQuality"	"consumable"
-		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
-		"ItemStackable"	"0"
-		"ItemPermanent"	"1"
-		"ItemDroppable"	"1"
-		"ItemAliases"	"quicktype"
-		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
-		"ItemKillable"	"1"
-		"ItemSellable"	"0"
-	
-		"UIPickupSound"	"ui.inv_pickup_robes"
-		"UIDropSound"	"ui.inv_drop_robes"
-		"WorldDropSound"	"ui.inv_equip_robes"
-		"Custom"
-		{
-			"ModelScale"	"2.0"
-		}
-	
-	}
 	"item_any_hide"
 	{
 		"ID"	"1302"
@@ -12077,6 +12048,64 @@
 	
 		}
 	}
+	"item_boots_any"
+	{
+		"ID"	"1304"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_boots_any"
+		"Model"	" "
+		"Effect"	""
+		"ItemCost"	"2"
+		"ItemShopTags"	"consumable"
+		"ItemQuality"	"consumable"
+		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
+		"ItemStackable"	"0"
+		"ItemPermanent"	"1"
+		"ItemDroppable"	"1"
+		"ItemAliases"	"quicktype"
+		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+		"ItemKillable"	"1"
+		"ItemSellable"	"0"
+	
+		"UIPickupSound"	"ui.inv_pickup_robes"
+		"UIDropSound"	"ui.inv_drop_robes"
+		"WorldDropSound"	"ui.inv_equip_robes"
+		"Custom"
+		{
+			"ModelScale"	"2.0"
+		}
+	
+	}
+	"item_coat_any"
+	{
+		"ID"	"1305"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_coat_any"
+		"Model"	" "
+		"Effect"	""
+		"ItemCost"	"2"
+		"ItemShopTags"	"consumable"
+		"ItemQuality"	"consumable"
+		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
+		"ItemStackable"	"0"
+		"ItemPermanent"	"1"
+		"ItemDroppable"	"1"
+		"ItemAliases"	"quicktype"
+		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+		"ItemKillable"	"1"
+		"ItemSellable"	"0"
+	
+		"UIPickupSound"	"ui.inv_pickup_robes"
+		"UIDropSound"	"ui.inv_drop_robes"
+		"WorldDropSound"	"ui.inv_equip_robes"
+		"Custom"
+		{
+			"ModelScale"	"2.0"
+		}
+	
+	}
 	"item_crystal_mana"
 	{
 		"ID"	"1008"
@@ -12130,6 +12159,35 @@
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"item_ultimate_orb"
 		"Model"	"models/props_destruction/lion_groundspikes.vmdl"
+		"Effect"	""
+		"ItemCost"	"2"
+		"ItemShopTags"	"consumable"
+		"ItemQuality"	"consumable"
+		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
+		"ItemStackable"	"0"
+		"ItemPermanent"	"1"
+		"ItemDroppable"	"1"
+		"ItemAliases"	"quicktype"
+		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+		"ItemKillable"	"1"
+		"ItemSellable"	"0"
+	
+		"UIPickupSound"	"ui.inv_pickup_robes"
+		"UIDropSound"	"ui.inv_drop_robes"
+		"WorldDropSound"	"ui.inv_equip_robes"
+		"Custom"
+		{
+			"ModelScale"	"2.0"
+		}
+	
+	}
+	"item_gloves_any"
+	{
+		"ID"	"1303"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_gloves_any"
+		"Model"	" "
 		"Effect"	""
 		"ItemCost"	"2"
 		"ItemShopTags"	"consumable"
@@ -12247,6 +12305,35 @@
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"ui.inv_equip_robes"
+	}
+	"item_herb_special_any"
+	{
+		"ID"	"1301"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_any_herb"
+		"Model"	" "
+		"Effect"	""
+		"ItemCost"	"2"
+		"ItemShopTags"	"consumable"
+		"ItemQuality"	"consumable"
+		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
+		"ItemStackable"	"0"
+		"ItemPermanent"	"1"
+		"ItemDroppable"	"1"
+		"ItemAliases"	"quicktype"
+		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+		"ItemKillable"	"1"
+		"ItemSellable"	"0"
+	
+		"UIPickupSound"	"ui.inv_pickup_robes"
+		"UIDropSound"	"ui.inv_drop_robes"
+		"WorldDropSound"	"ui.inv_equip_robes"
+		"Custom"
+		{
+			"ModelScale"	"2.0"
+		}
+	
 	}
 	"item_herb_yellow"
 	{

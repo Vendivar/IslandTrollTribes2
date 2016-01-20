@@ -94,7 +94,10 @@
         <Image style="opacity:0;" src="file://{images}/items/blue_herb.png" />
         <Image style="opacity:0;" src="file://{images}/items/bomb_smoke.png" />
         <Image style="opacity:0;" src="file://{images}/items/bone.png" />
+        <Image style="opacity:0;" src="file://{images}/items/boots_any.png" />
         <Image style="opacity:0;" src="file://{images}/items/boots_bear.png" />
+        <Image style="opacity:0;" src="file://{images}/items/boots_elk.png" />
+        <Image style="opacity:0;" src="file://{images}/items/boots_wolf.png" />
         <Image style="opacity:0;" src="file://{images}/items/boots_bone.png" />
         <Image style="opacity:0;" src="file://{images}/items/boots_iron.png" />
         <Image style="opacity:0;" src="file://{images}/items/boots_steel.png" />
@@ -127,6 +130,11 @@
         <Image style="opacity:0;" src="file://{images}/items/cloak_protection.png" />
         <Image style="opacity:0;" src="file://{images}/items/Clove_Studded_Ham_icon.png" />
         <Image style="opacity:0;" src="file://{images}/items/coat_bone.png" />
+        <Image style="opacity:0;" src="file://{images}/items/coat_iron.png" />
+        <Image style="opacity:0;" src="file://{images}/items/coat_elk.png" />
+        <Image style="opacity:0;" src="file://{images}/items/coat_bear.png" />
+        <Image style="opacity:0;" src="file://{images}/items/coat_wolf.png" />
+        <Image style="opacity:0;" src="file://{images}/items/coat_frost.png" />
         <Image style="opacity:0;" src="file://{images}/items/compass_sonar.png" />
         <Image style="opacity:0;" src="file://{images}/items/craftmaster.png" />
         <Image style="opacity:0;" src="file://{images}/items/crystal_mana.png" />
@@ -135,6 +143,10 @@
         <Image style="opacity:0;" src="file://{images}/items/egg_hawk.png" />
         <Image style="opacity:0;" src="file://{images}/items/essence_bees.png" />
         <Image style="opacity:0;" src="file://{images}/items/fire_mage.png" />
+        <Image style="opacity:0;" src="file://{images}/items/gloves_any.png" />
+        <Image style="opacity:0;" src="file://{images}/items/gloves_wolf.png" />
+        <Image style="opacity:0;" src="file://{images}/items/gloves_elk.png" />
+        <Image style="opacity:0;" src="file://{images}/items/gloves_bear.png" />
         <Image style="opacity:0;" src="file://{images}/items/gloves_bone.png" />
         <Image style="opacity:0;" src="file://{images}/items/gloves_iron.png" />
         <Image style="opacity:0;" src="file://{images}/items/gloves_steel.png" />
@@ -144,14 +156,20 @@
         <Image style="opacity:0;" src="file://{images}/items/gun_blow_empty.png" />
         <Image style="opacity:0;" src="file://{images}/items/gun_blow_thistles.png" />
         <Image style="opacity:0;" src="file://{images}/items/gun_blow_thistles_dark.png" />
-        <Image style="opacity:0;" src="file://{images}/items/healing_i.png" />
+        <Image style="opacity:0;" src="file://{images}/items/potion_healingi.png" />
+        <Image style="opacity:0;" src="file://{images}/items/potion_healingiii.png" />
+        <Image style="opacity:0;" src="file://{images}/items/potion_healingiv.png" />
         <Image style="opacity:0;" src="file://{images}/items/heat_modifier_applier.png" />
         <Image style="opacity:0;" src="file://{images}/items/herb_blue.png" />
         <Image style="opacity:0;" src="file://{images}/items/herb_butsu.png" />
         <Image style="opacity:0;" src="file://{images}/items/herb_mushroom.png" />
+        <Image style="opacity:0;" src="file://{images}/items/mushroom.png" />
         <Image style="opacity:0;" src="file://{images}/items/herb_orange.png" />
         <Image style="opacity:0;" src="file://{images}/items/herb_purple.png" />
         <Image style="opacity:0;" src="file://{images}/items/herb_yellow.png" />
+        <Image style="opacity:0;" src="file://{images}/items/herb_special_any.png" />
+        <Image style="opacity:0;" src="file://{images}/items/beehive.png" />
+        <Image style="opacity:0;" src="file://{images}/items/gem_knowledge.png" />
         <Image style="opacity:0;" src="file://{images}/items/hide_elk.png" />
         <Image style="opacity:0;" src="file://{images}/items/hide_jungle_bear.png" />
         <Image style="opacity:0;" src="file://{images}/items/hide_wolf.png" />
@@ -165,8 +183,9 @@
         <Image style="opacity:0;" src="file://{images}/items/Juggernaut_healing_ward.png" />
         <Image style="opacity:0;" src="file://{images}/items/magic.png" />
         <Image style="opacity:0;" src="file://{images}/items/magic_raw.png" />
-        <Image style="opacity:0;" src="file://{images}/items/mana_i.png" />
-        <Image style="opacity:0;" src="file://{images}/items/mana_iv.png" />
+        <Image style="opacity:0;" src="file://{images}/items/potion_manai.png" />
+        <Image style="opacity:0;" src="file://{images}/items/potion_manaiii.png" />
+        <Image style="opacity:0;" src="file://{images}/items/potion_manaiv.png" />
         <Image style="opacity:0;" src="file://{images}/items/meat_cooked.png" />
         <Image style="opacity:0;" src="file://{images}/items/meat_cooked_old.png" />
         <Image style="opacity:0;" src="file://{images}/items/meat_diseased.png" />
@@ -177,8 +196,10 @@
         <Image style="opacity:0;" src="file://{images}/items/medallion_thief.png" />
         <Image style="opacity:0;" src="file://{images}/items/mixing_pot.png" />
         <Image style="opacity:0;" src="file://{images}/items/net.png" />
+        <Image style="opacity:0;" src="file://{images}/items/rock_dark.png" />
         <Image style="opacity:0;" src="file://{images}/items/net_basic.png" />
         <Image style="opacity:0;" src="file://{images}/items/potion_acid.png" />
+        <Image style="opacity:0;" src="file://{images}/items/potion_anabolic.png" />
         <Image style="opacity:0;" src="file://{images}/items/potion_anti_magic.png" />
         <Image style="opacity:0;" src="file://{images}/items/potion_cure_all.png" />
         <Image style="opacity:0;" src="file://{images}/items/potion_drunk.png" />
@@ -211,16 +232,20 @@
         <Image style="opacity:0;" src="file://{images}/items/spear_basic.png" />
         <Image style="opacity:0;" src="file://{images}/items/spear_dark.png" />
         <Image style="opacity:0;" src="file://{images}/items/spear_iron.png" />
+        <Image style="opacity:0;" src="file://{images}/items/spear_steel.png" />
         <Image style="opacity:0;" src="file://{images}/items/spear_poison.png" />
         <Image style="opacity:0;" src="file://{images}/items/spear_poison_refined.png" />
         <Image style="opacity:0;" src="file://{images}/items/spear_poison_ultra.png" />
         <Image style="opacity:0;" src="file://{images}/items/spirit_of_wind.png" />
         <Image style="opacity:0;" src="file://{images}/items/spirit_ward.png" />
         <Image style="opacity:0;" src="file://{images}/items/spirit_wind.png" />
+        <Image style="opacity:0;" src="file://{images}/items/spirit_water.png" />
         <Image style="opacity:0;" src="file://{images}/items/steel_ingot.png" />
         <Image style="opacity:0;" src="file://{images}/items/stone old.png" />
         <Image style="opacity:0;" src="file://{images}/items/stone.png" />
-        <Image style="opacity:0;" src="file://{images}/items/Stout_Shield_icon.png" />
+        <Image style="opacity:0;" src="file://{images}/items/shield_bone.png" />
+        <Image style="opacity:0;" src="file://{images}/items/shield_steel.png" />
+        <Image style="opacity:0;" src="file://{images}/items/shield_iron.png" />
         <Image style="opacity:0;" src="file://{images}/items/teleport_beacon.png" />
         <Image style="opacity:0;" src="file://{images}/items/thistles.png" />
         <Image style="opacity:0;" src="file://{images}/items/thistles_dark.png" />

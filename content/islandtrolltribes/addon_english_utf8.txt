@@ -325,35 +325,37 @@
 
 "DOTA_Tooltip_ability_ability_baby_animal"                                        "Baby Animal"
 "DOTA_Tooltip_ability_ability_baby_animal_Description"                            "It's just a baby, it doesn't know any better!"
-"DOTA_Tooltip_modifier_pet_grow"                                                  "This pet is growing and soon it will become the next stage."
+"DOTA_Tooltip_modifier_pet_grow"                                                  "Pet Grow"
+"DOTA_Tooltip_modifier_pet_grow_Description"                                      "This pet is growing and soon it will become the next stage!"
 		
 
-"DOTA_Tooltip_ability_ability_beastmaster_pet_attack"		"Ability Beastmaster Pet Attack"
-"DOTA_Tooltip_ability_ability_beastmaster_pet_attack_Description"		""
+"DOTA_Tooltip_ability_ability_beastmaster_pet_attack"		"Pet Attack"
+"DOTA_Tooltip_ability_ability_beastmaster_pet_attack_Description"		"Commands the pet to be aggressive, attacking nearby enemies."
 
-"DOTA_Tooltip_ability_ability_beastmaster_pet_follow"		"Ability Beastmaster Pet Follow"
-"DOTA_Tooltip_ability_ability_beastmaster_pet_follow_Description"		""
+"DOTA_Tooltip_ability_ability_beastmaster_pet_follow"		"Pet Follow"
+"DOTA_Tooltip_ability_ability_beastmaster_pet_follow_Description"		"Commands the pet to strictly follow you, passing by hostile units."
 
-"DOTA_Tooltip_ability_ability_beastmaster_pet_grow1"		"Ability Beastmaster Pet Grow1"
+"DOTA_Tooltip_ability_ability_beastmaster_pet_grow1"		"Pet Grow"
 "DOTA_Tooltip_ability_ability_beastmaster_pet_grow1_Description"		""
 
-"DOTA_Tooltip_ability_ability_beastmaster_pet_grow1fast"		"Ability Beastmaster Pet Grow1fast"
+"DOTA_Tooltip_ability_ability_beastmaster_pet_grow1fast"		"Pet Grow Fast"
 "DOTA_Tooltip_ability_ability_beastmaster_pet_grow1fast_Description"		""
 
-"DOTA_Tooltip_ability_ability_beastmaster_pet_grow2"		"Ability Beastmaster Pet Grow2"
+"DOTA_Tooltip_ability_ability_beastmaster_pet_grow2"		"Pet Grow"
 "DOTA_Tooltip_ability_ability_beastmaster_pet_grow2_Description"		""
 
-"DOTA_Tooltip_ability_ability_beastmaster_pet_grow2fast"		"Ability Beastmaster Pet Grow2fast"
+"DOTA_Tooltip_ability_ability_beastmaster_pet_grow2fast"		"Pet Grow"
 "DOTA_Tooltip_ability_ability_beastmaster_pet_grow2fast_Description"		""
 
-"DOTA_Tooltip_ability_ability_beastmaster_pet_release"		"Ability Beastmaster Pet Release"
-"DOTA_Tooltip_ability_ability_beastmaster_pet_release_Description"		""
+"DOTA_Tooltip_ability_ability_beastmaster_pet_release"		"Pet Release"
+"DOTA_Tooltip_ability_ability_beastmaster_pet_release_Description"		"Releases the pet into the wild, you will never see it again. Gain partial experience depending on what stage the pet is in.\n<font color='#777777'>Hold ALT to view more information.</font>"
+"DOTA_Tooltip_ability_ability_beastmaster_pet_release_Note0"		"Stage 1: 300 XP\n\nStage 2: 500 XP\n\nStage 3: 600 XP"
 
-"DOTA_Tooltip_ability_ability_beastmaster_pet_sleep"		"Ability Beastmaster Pet Sleep"
-"DOTA_Tooltip_ability_ability_beastmaster_pet_sleep_Description"		""
+"DOTA_Tooltip_ability_ability_beastmaster_pet_sleep"		"Pet Sleep"
+"DOTA_Tooltip_ability_ability_beastmaster_pet_sleep_Description"		"Puts the pet into a uninterrupted slumber, regaining HP over time while slept."
 
-"DOTA_Tooltip_ability_ability_beastmaster_pet_stay"		"Ability Beastmaster Pet Stay"
-"DOTA_Tooltip_ability_ability_beastmaster_pet_stay_Description"		""
+"DOTA_Tooltip_ability_ability_beastmaster_pet_stay"		"Pet Stay"
+"DOTA_Tooltip_ability_ability_beastmaster_pet_stay_Description"		"Commands the pet to stay put, doing nothing else but waiting for the master's next command.\nThe pet will return if the master gets too far."
 
 "DOTA_Tooltip_Ability_ability_beastmaster_ram"		"(Elk) Ram"
 "DOTA_Tooltip_Ability_ability_beastmaster_ram_Description"		"Charges at enemy unit dealing damage and stunning temporarily."

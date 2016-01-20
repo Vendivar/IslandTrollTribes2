@@ -1,9 +1,9 @@
-"item_any_herb"
+"item_herb_special_any"
 {
 	"ID"	"1301"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"item_any_herb"
+	"AbilityTextureName"	"item_herb_special_any"
 	"Model"	" "
 	"Effect"	""
 	"ItemCost"	"2"
