@@ -4,6 +4,7 @@ var hero = Players.GetPlayerHeroEntityIndex( LocalPlayerID )
 var ingredients = Root.ingredients
 var table = Root.table
 var itemResult = Root.itemname
+var aliasTable = CustomNetTables.GetTableValue( "crafting", "Alias" )
 
 if (itemsRequired === undefined)
     var itemsRequired = {}
@@ -88,6 +89,23 @@ function CheckInventory()
     $.Schedule(1, CheckInventory)
 }
 
+function MatchesAlias( aliasName, targetItemName ) {
+    if (aliasName !== undefined && (aliasName.indexOf("any_") > -1))
+    {
+        for (var i in aliasTable)
+        {
+            for (var itemName in aliasTable[i])
+            {
+                $.Msg(itemName, " ", targetItemName)
+                if (itemName==targetItemName)
+                {
+                    return true
+                }
+            }
+        }
+    }
+    return false
+}
 
 function AddGlow(panel) {
     panel.style['box-shadow'] = "0px 0px 100% gold";
