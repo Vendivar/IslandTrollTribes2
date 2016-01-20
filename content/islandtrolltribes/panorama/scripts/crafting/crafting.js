@@ -52,7 +52,7 @@ function CreateCraftingSection (name, table) {
                         ingredients.push(ingredient)
                     }
                 }
-                CreateCraftingRecipe(section, item_result, ingredients, subtable[item_result])
+                CreateCraftingRecipe(section, item_result, ingredients, subtable[item_result], name)
             }
         }
     }
@@ -69,7 +69,7 @@ function CreateCraftingSection (name, table) {
                     ingredients.push(ingredient)
                 }
             }
-            CreateCraftingRecipe(section, item_result, ingredients, table[item_result])
+            CreateCraftingRecipe(section, item_result, ingredients, table[item_result], name)
         }
     }
 
@@ -85,11 +85,11 @@ function CreateCraftingSection (name, table) {
     }
 }
 
-
 // Create a crafting recipe panel
-function CreateCraftingRecipe (section, result, ingredients, table) {
+function CreateCraftingRecipe (section, result, ingredients, table, name) {
 
     var crafting_item = $.CreatePanel("Panel", section, result)
+    crafting_item.section_name = name
     crafting_item.itemname = result
     crafting_item.ingredients = ingredients
     crafting_item.table = table

@@ -3,8 +3,38 @@ function LoadCraftingTable()
     for k,v in pairs(GameRules.Crafting) do
         CustomNetTables:SetTableValue("crafting", k, v)
     end
+
+    CustomGameEventManager:RegisterListener( "craft_item", Dynamic_Wrap( ITT, "CraftItem" ) )
 end
 
+-- Recieve a craft_item event
+function ITT:CraftItem(event)
+    local playerID = event.PlayerID
+    local itemName = event.itemname
+    local section = event.section
+    local unit
+    if section == "Recipes" then
+        unit = PlayerResource:GetSelectedHeroEntity(playerID)
+    else
+        local item_string = GetEnglishTranslation(itemName, "ability") or itemName
+        local building_string = GetEnglishTranslation(section) or section
+        SendErrorMessage(playerID, "Put items on "..building_string.." to craft "..item_string)
+        return
+    end
+
+    local craftingItems = CanCombine(unit, itemName)
+    if craftingItems then
+        -- Clear the inventory items returned by the CanCombine aux
+        ClearItems(craftingItems)   
+
+        -- Create the resulting item
+        unit:AddItem(CreateItem(itemName, nil, nil))
+
+        FireCombineParticle(unit)
+
+        unit:EmitSound("General.Combine")
+    end
+end
 
 -- Checks for combines in heroes or units
 function InventoryCheck( unit )
@@ -15,7 +45,6 @@ function InventoryCheck( unit )
         -- If the inventory contains enough of the ingredient items defined in the recipeTable, combine and clear
         local craftingItems = CanCombine(unit, recipeName)
         if craftingItems then
-            match = recipeName
             -- Clear the inventory items returned by the CanCombine aux
             ClearItems(craftingItems)   
 

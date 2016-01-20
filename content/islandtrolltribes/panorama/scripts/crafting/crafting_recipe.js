@@ -3,6 +3,7 @@ var LocalPlayerID = Game.GetLocalPlayerID()
 var hero = Players.GetPlayerHeroEntityIndex( LocalPlayerID )
 var ingredients = Root.ingredients
 var table = Root.table
+var section_name = Root.section_name
 var itemResult = Root.itemname
 var aliasTable = CustomNetTables.GetTableValue( "crafting", "Alias" )
 
@@ -75,7 +76,7 @@ function CheckInventory()
     if (meetsAllRequirements)
         GlowCraft(resultPanel)
     else
-        RemoveGlow(resultPanel)
+        RemoveGlowCraft(resultPanel)
 
     $.Schedule(1, CheckInventory)
 }
@@ -119,5 +120,18 @@ function RemoveGlow(panel) {
 }
 
 function GlowCraft(panel) {
+    panel.SetPanelEvent('onactivate', SendCraft)
+
     panel.style['box-shadow'] = "0px 0px 100% green";
+    panel.craft = true
+}
+
+function SendCraft() {
+    GameEvents.SendCustomGameEventToServer( "craft_item", {itemname: itemResult, section: section_name} );
+}
+
+function RemoveGlowCraft(panel) {  
+    panel.ClearPanelEvent('onactivate')
+    panel.craft = false
+    RemoveGlow(panel)
 }

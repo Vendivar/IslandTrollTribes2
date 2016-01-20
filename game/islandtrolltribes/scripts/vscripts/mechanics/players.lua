@@ -12,14 +12,6 @@ function PlayerHasEnoughGold( player, gold_cost )
     end
 end
 
-function SendErrorMessage( pID, string )
-    Notifications:ClearBottom(pID)
-    Notifications:ClearBottomFromAll()
-    Notifications:Bottom(pID, {text=string, style={color='#E62020'}, duration=2})
-    EmitSoundOnClient("General.Cancel", PlayerResource:GetPlayer(pID))
-end
-
-
 ------------------------------------------------
 --            Global item applier             --
 ------------------------------------------------

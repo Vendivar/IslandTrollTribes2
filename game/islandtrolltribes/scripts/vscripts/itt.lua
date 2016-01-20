@@ -169,7 +169,9 @@ function ITT:InitGameMode()
     GameRules.ItemKV = LoadKeyValues("scripts/npc/npc_items_custom.txt")
     GameRules.UnitKV = LoadKeyValues("scripts/npc/npc_units_custom.txt")
     GameRules.HeroKV = LoadKeyValues("scripts/npc/npc_heroes_custom.txt")
+    GameRules.EnglishTooltips = LoadKeyValues("resource/addon_english.txt")
     MergeTables(GameRules.UnitKV, LoadKeyValues("scripts/npc/npc_heroes_custom.txt")) --Load HeroKV into UnitKV
+
     LoadCraftingTable()
 
     -- Check Syntax
