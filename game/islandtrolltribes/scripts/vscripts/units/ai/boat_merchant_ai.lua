@@ -19,14 +19,12 @@ function boatmerchantthink()
 	local waypointEnt = Entities:FindByName(nil, waypointName)
 	local waypointPos = waypointEnt:GetOrigin()
 
-	local triggerNum = (thisEntity.pathNum%2) + 1
-	local shopTrigger = thisEntity.trigger[triggerNum]
-    if not shopTrigger then
-        print("ERROR: No trigger["..triggerNum.."] found for "..thisEntity:GetUnitName())
-        return
+    -- Move the trigger with the ship
+	if thisEntity.trigger then
+        thisEntity.trigger:SetOrigin(thisEntity:GetOrigin())
+    else
+        print("ERROR: No trigger found for "..thisEntity:GetUnitName())
     end
-
-	shopTrigger:SetOrigin(thisEntity:GetOrigin())
 
 	if not IsValidAlive(thisEntity) then
 		return nil

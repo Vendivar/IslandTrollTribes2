@@ -36,7 +36,10 @@ function SpawnBoat(pathNum)
     local shopUnit = CreateUnitByName(unitName, spawnOrigin, false, nil, nil, DOTA_TEAM_NEUTRALS)
     shopUnit.path = path
     shopUnit.pathNum = pathNum
-    shopUnit.trigger = Entities:FindAllByName("ent_shop_*")
+
+    local shopEnt = Entities:FindByName(nil, "*trigger_shop_2") -- entity name in hammer
+    local modelName = shopEnt:GetModelName()
+    shopUnit.trigger = SpawnEntityFromTableSynchronous('trigger_shop', {origin = spawnOrigin, shoptype = 0, model = modelName}) -- shoptype is 0 for a "home" shop, 1 for a side shop and 2 for a secret shop
 
     print("Spawned "..unitName.." at path "..pathNum)
 
