@@ -1,0 +1,35 @@
+"item_any_hide"
+{
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "BaseClass"             "item_datadriven"
+}
+
+"item_any_gloves"
+{
+    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "BaseClass" "item_datadriven"
+}
+
+"item_any_coat"
+{
+    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "BaseClass" "item_datadriven"
+}
+
+"item_any_special_herb"
+{
+    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "BaseClass"         "item_datadriven"
+}
+
+"item_any_stick_bone"
+{
+    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "BaseClass"         "item_datadriven"
+}
+
+"item_any_boots"
+{
+    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "BaseClass"         "item_datadriven"
+}

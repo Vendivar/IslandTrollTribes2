@@ -11012,6 +11012,41 @@
 	        }
 	    }
 	}
+	"item_any_hide"
+	{
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	    "BaseClass"             "item_datadriven"
+	}
+	
+	"item_any_gloves"
+	{
+	    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	    "BaseClass" "item_datadriven"
+	}
+	
+	"item_any_coat"
+	{
+	    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	    "BaseClass" "item_datadriven"
+	}
+	
+	"item_any_special_herb"
+	{
+	    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	    "BaseClass"         "item_datadriven"
+	}
+	
+	"item_any_stick_bone"
+	{
+	    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	    "BaseClass"         "item_datadriven"
+	}
+	
+	"item_any_boots"
+	{
+	    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	    "BaseClass"         "item_datadriven"
+	}
 	"item_clay_explosion"
 	{
 		"ID"	"1098"
@@ -11884,64 +11919,6 @@
 		
 			}
 		}
-	"item_any_hide"
-	{
-		"ID"	"1302"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"any_hide"
-		"Model"	" "
-		"Effect"	""
-		"ItemCost"	"2"
-		"ItemShopTags"	"consumable"
-		"ItemQuality"	"consumable"
-		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
-		"ItemStackable"	"0"
-		"ItemPermanent"	"1"
-		"ItemDroppable"	"1"
-		"ItemAliases"	"quicktype"
-		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
-		"ItemKillable"	"1"
-		"ItemSellable"	"0"
-	
-		"UIPickupSound"	"ui.inv_pickup_robes"
-		"UIDropSound"	"ui.inv_drop_robes"
-		"WorldDropSound"	"ui.inv_equip_robes"
-		"Custom"
-		{
-			"ModelScale"	"2.0"
-		}
-	
-	}
-	"item_any_stick_bone"
-	{
-		"ID"	"1300"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"any_stick_bone"
-		"Model"	" "
-		"Effect"	""
-		"ItemCost"	"2"
-		"ItemShopTags"	"consumable"
-		"ItemQuality"	"consumable"
-		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
-		"ItemStackable"	"0"
-		"ItemPermanent"	"1"
-		"ItemDroppable"	"1"
-		"ItemAliases"	"quicktype"
-		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
-		"ItemKillable"	"1"
-		"ItemSellable"	"0"
-	
-		"UIPickupSound"	"ui.inv_pickup_robes"
-		"UIDropSound"	"ui.inv_drop_robes"
-		"WorldDropSound"	"ui.inv_equip_robes"
-		"Custom"
-		{
-			"ModelScale"	"2.0"
-		}
-	
-	}
 	"item_ball_clay"
 	{
 		"ID"	"1011"
@@ -12047,35 +12024,6 @@
 			}
 	
 		}
-	}
-	"item_boots_any"
-	{
-		"ID"	"1304"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"boots_any"
-		"Model"	" "
-		"Effect"	""
-		"ItemCost"	"2"
-		"ItemShopTags"	"consumable"
-		"ItemQuality"	"consumable"
-		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
-		"ItemStackable"	"0"
-		"ItemPermanent"	"1"
-		"ItemDroppable"	"1"
-		"ItemAliases"	"quicktype"
-		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
-		"ItemKillable"	"1"
-		"ItemSellable"	"0"
-	
-		"UIPickupSound"	"ui.inv_pickup_robes"
-		"UIDropSound"	"ui.inv_drop_robes"
-		"WorldDropSound"	"ui.inv_equip_robes"
-		"Custom"
-		{
-			"ModelScale"	"2.0"
-		}
-	
 	}
 	"item_coat_any"
 	{
@@ -12305,35 +12253,6 @@
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"ui.inv_equip_robes"
-	}
-	"item_herb_special_any"
-	{
-		"ID"	"1301"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_herb_special_any"
-		"Model"	" "
-		"Effect"	""
-		"ItemCost"	"2"
-		"ItemShopTags"	"consumable"
-		"ItemQuality"	"consumable"
-		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
-		"ItemStackable"	"0"
-		"ItemPermanent"	"1"
-		"ItemDroppable"	"1"
-		"ItemAliases"	"quicktype"
-		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
-		"ItemKillable"	"1"
-		"ItemSellable"	"0"
-	
-		"UIPickupSound"	"ui.inv_pickup_robes"
-		"UIDropSound"	"ui.inv_drop_robes"
-		"WorldDropSound"	"ui.inv_equip_robes"
-		"Custom"
-		{
-			"ModelScale"	"2.0"
-		}
-	
 	}
 	"item_herb_yellow"
 	{

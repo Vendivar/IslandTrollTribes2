@@ -94,7 +94,6 @@
         <Image style="opacity:0;" src="file://{images}/items/blue_herb.png" />
         <Image style="opacity:0;" src="file://{images}/items/bomb_smoke.png" />
         <Image style="opacity:0;" src="file://{images}/items/bone.png" />
-        <Image style="opacity:0;" src="file://{images}/items/boots_any.png" />
         <Image style="opacity:0;" src="file://{images}/items/boots_bear.png" />
         <Image style="opacity:0;" src="file://{images}/items/boots_elk.png" />
         <Image style="opacity:0;" src="file://{images}/items/boots_wolf.png" />
@@ -134,7 +133,7 @@
         <Image style="opacity:0;" src="file://{images}/items/coat_elk.png" />
         <Image style="opacity:0;" src="file://{images}/items/coat_bear.png" />
         <Image style="opacity:0;" src="file://{images}/items/coat_wolf.png" />
-        <Image style="opacity:0;" src="file://{images}/items/coat_frost.png" />
+        <Image style="opacity:0;" src="file://{images}/items/cloak_frost.png" />
         <Image style="opacity:0;" src="file://{images}/items/compass_sonar.png" />
         <Image style="opacity:0;" src="file://{images}/items/craftmaster.png" />
         <Image style="opacity:0;" src="file://{images}/items/crystal_mana.png" />
@@ -143,7 +142,6 @@
         <Image style="opacity:0;" src="file://{images}/items/egg_hawk.png" />
         <Image style="opacity:0;" src="file://{images}/items/essence_bees.png" />
         <Image style="opacity:0;" src="file://{images}/items/fire_mage.png" />
-        <Image style="opacity:0;" src="file://{images}/items/gloves_any.png" />
         <Image style="opacity:0;" src="file://{images}/items/gloves_wolf.png" />
         <Image style="opacity:0;" src="file://{images}/items/gloves_elk.png" />
         <Image style="opacity:0;" src="file://{images}/items/gloves_bear.png" />
@@ -167,9 +165,8 @@
         <Image style="opacity:0;" src="file://{images}/items/herb_orange.png" />
         <Image style="opacity:0;" src="file://{images}/items/herb_purple.png" />
         <Image style="opacity:0;" src="file://{images}/items/herb_yellow.png" />
-        <Image style="opacity:0;" src="file://{images}/items/herb_special_any.png" />
         <Image style="opacity:0;" src="file://{images}/items/beehive.png" />
-        <Image style="opacity:0;" src="file://{images}/items/gem_knowledge.png" />
+        <Image style="opacity:0;" src="file://{images}/items/gem_of_knowledge.png" />
         <Image style="opacity:0;" src="file://{images}/items/hide_elk.png" />
         <Image style="opacity:0;" src="file://{images}/items/hide_jungle_bear.png" />
         <Image style="opacity:0;" src="file://{images}/items/hide_wolf.png" />
@@ -257,11 +254,16 @@
         <Image style="opacity:0;" src="file://{images}/items/weapon_emp.png" />
         <Image style="opacity:0;" src="file://{images}/items/wolf hide.png" />
         <Image style="opacity:0;" src="file://{images}/items/yellow_herb.png" />
-        <Image style="opacity:0;" src="file://{images}/items/any_herb.png" />
-        <Image style="opacity:0;" src="file://{images}/items/any_hide.png" />
-        <Image style="opacity:0;" src="file://{images}/items/any_stick_bone.png" />
         <Image style="opacity:0;" src="file://{images}/items/stick.png" />
         <Image style="opacity:0;" src="file://{images}/items/flint.png" />
+        <Image style="opacity:0;" src="file://{images}/items/potion_fervor.png" />
+
+        <Image style="opacity:0;" src="file://{images}/items/any_boots.png" />
+        <Image style="opacity:0;" src="file://{images}/items/any_coat.png" />
+        <Image style="opacity:0;" src="file://{images}/items/any_gloves.png" />
+        <Image style="opacity:0;" src="file://{images}/items/any_hide.png" />
+        <Image style="opacity:0;" src="file://{images}/items/any_special_herb.png" />
+        <Image style="opacity:0;" src="file://{images}/items/any_stick_bone.png" />
 
 <Image style="opacity:0;" src="file://{images}/spellicons/ability_beastmaster_attack.png" />
 <Image style="opacity:0;" src="file://{images}/spellicons/ability_beastmaster_bash.png" />
