@@ -2008,13 +2008,14 @@
 			}
 	
 		}
-	"AbilitySpecial"
-		{	"01"
+		"AbilitySpecial"
+		{	
+			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
 				"damage"	"30"
 	        }
-	             "02"
+	        "02"
 			{
 				"var_type"	"FIELD_INTEGER"
 				"armor"	"2"
