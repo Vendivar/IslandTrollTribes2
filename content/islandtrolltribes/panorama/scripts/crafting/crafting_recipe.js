@@ -132,5 +132,5 @@ function SendCraft() {
 function RemoveGlowCraft(panel) {  
     panel.ClearPanelEvent('onactivate')
     panel.craft = false
-    RemoveGlow(panel)
+    panel.RemoveClass("GlowGreen");
 }
