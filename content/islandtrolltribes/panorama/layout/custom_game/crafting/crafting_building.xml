@@ -4,9 +4,8 @@
     </styles>
     <scripts>
         <include src="file://{resources}/scripts/crafting/crafting.js" />
-        <include src="file://{resources}/scripts/crafting/crafting_list.js" />
+        <include src="file://{resources}/scripts/crafting/crafting_building.js" />
     </scripts>
-    <Panel class="CraftingRoot">
-        <Label id="CraftingListTitle" text="#itt_craft_menu" />
+    <Panel class="CraftingBuildingRoot">
     </Panel>
 </root>

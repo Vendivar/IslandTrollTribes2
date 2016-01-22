@@ -1,5 +1,5 @@
 var Root = $.GetContextPanel()
-var visible = Root.name == "Recipes"
+var visible = !Root.bFold
 
 $('#CraftingListTitle').text = $.Localize(Root.name)
 

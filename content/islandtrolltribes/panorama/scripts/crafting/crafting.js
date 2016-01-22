@@ -1,43 +1,13 @@
-var Root = $.GetContextPanel()
-
-// Global lazy toggle
-GameUI.CustomUIConfig().ToggleCraftingList = function() {
-    Root.visible = !Root.visible
-}
-
-function CreateCraftingList()
-{ 
-    
-    var values = CustomNetTables.GetAllTableValues("crafting")
-
-    // Order: Basic Recipes first, then all the rest alphabetically
-    CreateByName(values, "Recipes")
-    CreateByName(values, "npc_building_armory")
-    CreateByName(values, "npc_building_hut_witch_doctor")
-    CreateByName(values, "npc_building_mix_pot")
-    CreateByName(values, "Tannery")
-    CreateByName(values, "npc_building_workshop")    
-}
-
-function CreateByName(values, name) {
-    
-    for (var i in values)
-    {
-        var crafting_table = values[i]
-        if (crafting_table.key==name)
-            CreateCraftingSection(name, crafting_table.value)
-    }
-}
-
 // Create a section to hold a list of crafting items
-function CreateCraftingSection (name, table) {
+function CreateCraftingSection (name, table, panel, bFold) {
     $.Msg("CreateCraftingSection ",name)
-    var section = $.CreatePanel("Panel", Root, name)
+    var section = $.CreatePanel("Panel", panel, name)
     section.name = name
+    section.bFold = bFold //Whether the panel starts initially folded
     section.BLoadLayout("file://{resources}/layout/custom_game/crafting/crafting_section.xml", false, false);
 
     // Tannery takes an extra level second level
-    if (name == "Tannery")
+    if (name == "npc_building_tannery")
     {
         for (var type in table)
         {
@@ -73,8 +43,8 @@ function CreateCraftingSection (name, table) {
         }
     }
 
-    // All sections but Recipes are initially hidden
-    if (name != "Recipes")
+    // Hide elements if the panel should start fold
+    if (section.bFold)
     {
         var childNum = section.GetChildCount()
         for (var i = 0; i < childNum; i++) {
@@ -83,11 +53,12 @@ function CreateCraftingSection (name, table) {
                 child.visible = false
         };
     }
+
+    return section
 }
 
 // Create a crafting recipe panel
 function CreateCraftingRecipe (section, result, ingredients, table, name) {
-
     var crafting_item = $.CreatePanel("Panel", section, result)
     crafting_item.section_name = name
     crafting_item.itemname = result
@@ -96,17 +67,3 @@ function CreateCraftingRecipe (section, result, ingredients, table, name) {
     crafting_item.BLoadLayout("file://{resources}/layout/custom_game/crafting/crafting_recipe.xml", false, false);
 }
 
-function GlowItems()
-{   
-    $.Schedule(1, GlowItems())
-}
-
-function Hide() {
-    Root.visible = false
-}
-
-(function () {
-    CreateCraftingList()
-    $.Schedule(0.1, Hide)
-    $.Msg("Done creating crafting list")
-})();
