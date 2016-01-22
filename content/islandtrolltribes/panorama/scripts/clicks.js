@@ -39,12 +39,12 @@ function OnRightButtonPressed()
 
             return true
         }
-        else if (IsRestBuilding(entityIndex) && IsTeamControlled(entityIndex) )
+        /*else if (IsRestBuilding(entityIndex) && IsTeamControlled(entityIndex) )
         {
             $.Msg("Right clicked on a rest building")
             GameEvents.SendCustomGameEventToServer( "player_rest_building", { entityIndex : entityIndex } );
             return false
-        }
+        }*/
     }
 
 	return false;
