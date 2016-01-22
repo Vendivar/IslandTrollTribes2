@@ -112,17 +112,17 @@ function MatchesAlias( aliasName, targetItemName ) {
 }
 
 function AddGlow(panel) {
-    panel.style['box-shadow'] = "0px 0px 100% gold";
+    panel.AddClass("GlowGold");
 }
 
 function RemoveGlow(panel) {
-    panel.style['box-shadow'] = "0px 0px 0%";
+    panel.RemoveClass("GlowGold");
 }
 
 function GlowCraft(panel) {
     panel.SetPanelEvent('onactivate', SendCraft)
 
-    panel.style['box-shadow'] = "0px 0px 100% green";
+    panel.RemoveClass("GlowGreen");
     panel.craft = true
 }
 

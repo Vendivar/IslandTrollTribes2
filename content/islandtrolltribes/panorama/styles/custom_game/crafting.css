@@ -133,6 +133,17 @@
     opacity: 1;
 }
 
+.GlowGold
+{
+    box-shadow: 0px 0px 100% gold;
+}
+
+.GlowGreen
+{
+    box-shadow: 0px 0px 100% green;
+}
+
+// Unused stuff
 //-------------------------------
 
 .ButtonContainer{
