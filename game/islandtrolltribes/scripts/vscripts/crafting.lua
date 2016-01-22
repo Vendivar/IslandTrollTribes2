@@ -27,7 +27,7 @@ function ITT:CraftItem(event)
         end
 
         -- Disallow crafting on buildings under construction
-        if not unit.state = "complete" then
+        if not unit.state == "complete" then
             SendErrorMessage(playerID, "Building still under construction!")
         end
     end

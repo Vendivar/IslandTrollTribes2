@@ -6,40 +6,22 @@ function CreateCraftingSection (name, table, panel, bFold, entity) {
     section.bFold = bFold //Whether the panel starts initially folded
     section.BLoadLayout("file://{resources}/layout/custom_game/crafting/crafting_section.xml", false, false);
 
-    // Tannery takes an extra level second level
-    if (name == "npc_building_tannery")
+    // Create the recipes in order
+    for (var i in table)
     {
-        for (var type in table)
-        {
-            var subtable = table[type]
-            for (var item_result in subtable)
-            {
-                var ingredients = []
-                for (var ingredient in subtable[item_result])
-                {
-                    var times = subtable[item_result][ingredient]
-                    for (var i = 0; i < times; i++) {
-                        ingredients.push(ingredient)
-                    }
-                }
-                CreateCraftingRecipe(section, item_result, ingredients, subtable[item_result], name, entity)
-            }
-        }
-    }
-
-    else
-    {
-        for (var item_result in table)
+        var subtable = table[i]  
+        for (var item_result in subtable)
         {
             var ingredients = []
-            for (var ingredient in table[item_result])
+            for (var ingredient in subtable[item_result])
             {
-                var times = table[item_result][ingredient]
+                var times = subtable[item_result][ingredient]
                 for (var i = 0; i < times; i++) {
                     ingredients.push(ingredient)
                 }
             }
-            CreateCraftingRecipe(section, item_result, ingredients, table[item_result], name, entity)
+            $.Msg(ingredients)
+            CreateCraftingRecipe(section, item_result, ingredients, subtable[item_result], name, entity)
         }
     }
 
