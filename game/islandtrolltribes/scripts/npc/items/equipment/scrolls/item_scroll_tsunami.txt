@@ -55,6 +55,10 @@
 			"EffectName"	"Hero_Morphling.Waveform"
 		}
 
+		"SpendCharge"
+		{
+		}
+
 	}
 
 	"OnProjectileHitUnit"

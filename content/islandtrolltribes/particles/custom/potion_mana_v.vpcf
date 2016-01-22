@@ -151,7 +151,7 @@
 			m_ChildRef = resource:"particles/units/heroes/hero_obsidian_destroyer/obsidian_destroyer_prison_end_mana_flash.vpcf"
 		},
 		{
-			m_ChildRef = resource:"particles/econ/items/meepo/meepo_colossal_crystal_chorus/meepo_divining_rod_poof_end_ring_warp.vpcf"
+			m_ChildRef = resource:"particles/custom/mana_component_2.vpcf"
 		},
 		{
 			m_ChildRef = resource:"particles/econ/items/crystal_maiden/crystal_maiden_maiden_of_icewrack/cm_arcana_pup_lvlup_spiral.vpcf"

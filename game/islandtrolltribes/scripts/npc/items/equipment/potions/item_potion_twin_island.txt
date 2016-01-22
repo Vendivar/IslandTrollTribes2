@@ -33,7 +33,11 @@
 			"Function"       "PotionTwinUse"
 			"Range"          "2500"
 		}
-
+        "FireSound"
+        {
+            "Target"	"CASTER"
+            "EffectName"	"Twin.Island"
+        }
 		"SpendCharge"
 		{
 		}

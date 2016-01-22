@@ -38,6 +38,10 @@
 			"Target"	"CASTER"
 		}
 
+		"SpendCharge"
+		{
+		}
+
 	}
 
 }

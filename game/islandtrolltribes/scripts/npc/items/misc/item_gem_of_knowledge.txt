@@ -2,7 +2,7 @@
 {
 	"ID"	"1096"
 	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"item_gem_of_true_sight"
+	"AbilityTextureName"	"gem_knowledge"
 	"Model"	"models/props_gameplay/gem01.vmdl"
 	"Effect"	""
 	"AbilityCastPoint"	"0.5"

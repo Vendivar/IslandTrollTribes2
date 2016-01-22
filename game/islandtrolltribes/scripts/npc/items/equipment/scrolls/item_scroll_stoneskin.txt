@@ -43,6 +43,10 @@
 				"Target"	"CASTER"
             }
 
+		"SpendCharge"
+		{
+		}
+
 	}
 
 	"Modifiers"

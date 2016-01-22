@@ -76,6 +76,10 @@
 			"Target"	"TARGET"
 		}
 
+		"SpendCharge"
+		{
+		}
+
 	}
 
 	"AbilitySpecial"
