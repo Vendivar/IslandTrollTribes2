@@ -14,6 +14,7 @@ function ITT:CraftItem(event)
     local section = event.section
     local entity = event.entity
     local unit
+    print("Attempting to craft ",itemName," at ",section)
     if section == "Recipes" then
         unit = PlayerResource:GetSelectedHeroEntity(playerID)
     else
@@ -23,6 +24,11 @@ function ITT:CraftItem(event)
             local building_string = GetEnglishTranslation(section) or section
             SendErrorMessage(playerID, "Put items on "..building_string.." to craft "..item_string)
             return
+        end
+
+        -- Disallow crafting on buildings under construction
+        if not unit.state = "complete" then
+            SendErrorMessage(playerID, "Building still under construction!")
         end
     end
 
@@ -37,6 +43,8 @@ function ITT:CraftItem(event)
         FireCombineParticle(unit)
 
         unit:EmitSound("General.Combine")
+    else
+        print("Error, couldn't combine ",itemName)
     end
 end
 
@@ -122,7 +130,7 @@ end
 
 -- Returns whether the itemName can be matched to an specific alias
 function MatchesAlias( aliasName, itemName )
-    if string.match(itemName, "any_") then
+    if string.match(aliasName, "any_") then
         local aliasTable = GameRules.Crafting['Alias'][aliasName]
 
         for k,v in pairs(aliasTable) do
