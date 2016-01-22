@@ -38,6 +38,13 @@ function ITT:FilterExecuteOrder( filterTable )
     end
 
     ------------------------------------------------
+    --          Hide Building Crafting UI         --
+    ------------------------------------------------
+    if issuer ~= -1 and (order_type == DOTA_UNIT_ORDER_ATTACK_TARGET or order_type == DOTA_UNIT_ORDER_MOVE_TO_POSITION or order_type == DOTA_UNIT_ORDER_ATTACK_MOVE) then
+        CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(issuer), "building_crafting_hide", {} )
+    end
+
+    ------------------------------------------------
     --            Attacks vs Flying Units         --
     ------------------------------------------------
     if targetIndex and order_type == DOTA_UNIT_ORDER_ATTACK_TARGET then

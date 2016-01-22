@@ -1,4 +1,6 @@
 var Root = $.GetContextPanel()
+var iPlayerID = Players.GetLocalPlayer();
+var hero = Players.GetPlayerHeroEntityIndex( iPlayerID )
 var currentBuilding = 0
 var fold = false
 
@@ -10,15 +12,13 @@ Buildings['npc_building_tannery'] = 1;
 Buildings['npc_building_workshop'] = 1;
 
 function Crafting_OnUpdateSelectedUnits() {
-    var iPlayerID = Players.GetLocalPlayer();
     var selectedEntities = Players.GetSelectedEntities( iPlayerID );
     var mainSelected = selectedEntities[0]
     var name = Entities.GetUnitName(mainSelected)
 
-    Hide(Buildings[currentBuilding])
-
     if (Buildings[name])
     {
+        HideCurrent()
         currentBuilding = name
         if (Buildings[name]==1)
         {
@@ -40,6 +40,10 @@ function Crafting_OnUpdateSelectedUnits() {
     }
 }
 
+function HideCurrent() {
+    Hide(Buildings[currentBuilding])
+}
+
 function Hide(panel) {
     if (panel !== undefined)
         panel.visible = false
@@ -50,5 +54,6 @@ function MakeVisible(panel) {
 }
 
 (function () {
+    GameEvents.Subscribe( "building_crafting_hide", HideCurrent );
     GameEvents.Subscribe( "dota_player_update_selected_unit", Crafting_OnUpdateSelectedUnits );
 })();
