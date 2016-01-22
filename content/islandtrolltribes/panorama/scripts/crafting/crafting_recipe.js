@@ -1,6 +1,5 @@
 var Root = $.GetContextPanel()
-var LocalPlayerID = Game.GetLocalPlayerID()
-var hero = Players.GetPlayerHeroEntityIndex( LocalPlayerID )
+var entity = Root.entity
 var ingredients = Root.ingredients
 var table = Root.table
 var section_name = Root.section_name
@@ -41,7 +40,7 @@ function CheckInventory()
     var itemsOnInventory = []
 
     for (var i = 0; i < 6; i++) {
-        var item = Entities.GetItemInSlot( hero, i )
+        var item = Entities.GetItemInSlot( entity, i )
         if (item)
         {
             var item_name = Abilities.GetAbilityName(item)
@@ -122,12 +121,12 @@ function RemoveGlow(panel) {
 function GlowCraft(panel) {
     panel.SetPanelEvent('onactivate', SendCraft)
 
-    panel.RemoveClass("GlowGreen");
+    panel.AddClass("GlowGreen");
     panel.craft = true
 }
 
 function SendCraft() {
-    GameEvents.SendCustomGameEventToServer( "craft_item", {itemname: itemResult, section: section_name} );
+    GameEvents.SendCustomGameEventToServer( "craft_item", {itemname: itemResult, section: section_name, entity: entity} );
 }
 
 function RemoveGlowCraft(panel) {  

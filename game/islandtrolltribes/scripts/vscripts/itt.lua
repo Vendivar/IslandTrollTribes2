@@ -790,9 +790,6 @@ function ITT:OnItemPickedUp(event)
     local originalItem = EntIndexToHScript( event.ItemEntityIndex )
     local itemName = event.itemname
 
-    -- Check for combines
-    InventoryCheck(unit)
-
     -- A unit/building picked an item, don't continue with the rest of the hero logic
     if not event.HeroEntityIndex then
         return

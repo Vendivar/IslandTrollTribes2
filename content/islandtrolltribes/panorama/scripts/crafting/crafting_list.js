@@ -1,4 +1,5 @@
 var Root = $.GetContextPanel()
+var hero = Players.GetPlayerHeroEntityIndex( Game.GetLocalPlayerID() )
 
 // Global lazy toggle
 GameUI.CustomUIConfig().ToggleCraftingList = function() {
@@ -24,7 +25,7 @@ function CreateByName(values, name, bFold) {
     {
         var crafting_table = values[i]
         if (crafting_table.key==name)
-            CreateCraftingSection(name, crafting_table.value, Root, bFold)
+            CreateCraftingSection(name, crafting_table.value, Root, bFold, hero)
     }
 }
 function Hide() {

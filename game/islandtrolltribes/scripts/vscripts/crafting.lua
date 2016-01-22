@@ -12,14 +12,18 @@ function ITT:CraftItem(event)
     local playerID = event.PlayerID
     local itemName = event.itemname
     local section = event.section
+    local entity = event.entity
     local unit
     if section == "Recipes" then
         unit = PlayerResource:GetSelectedHeroEntity(playerID)
     else
-        local item_string = GetEnglishTranslation(itemName, "ability") or itemName
-        local building_string = GetEnglishTranslation(section) or section
-        SendErrorMessage(playerID, "Put items on "..building_string.." to craft "..item_string)
-        return
+        unit = EntIndexToHScript(entity)
+        if unit:GetUnitName() ~= section then
+            local item_string = GetEnglishTranslation(itemName, "ability") or itemName
+            local building_string = GetEnglishTranslation(section) or section
+            SendErrorMessage(playerID, "Put items on "..building_string.." to craft "..item_string)
+            return
+        end
     end
 
     local craftingItems = CanCombine(unit, itemName)
@@ -61,7 +65,7 @@ function InventoryCheck( unit )
 end
 
 function CanCombine( unit, recipeName )
-    local requirements = GameRules.Crafting['Recipes'][recipeName] or GameRules.Crafting[unit:GetUnitName()][recipeName]
+    local requirements = GameRules.Crafting['Recipes'][recipeName] or GetRecipeFromTable(GameRules.Crafting[unit:GetUnitName()], recipeName)
 
     local result = {}
     for itemName,num in pairs(requirements) do
@@ -177,6 +181,20 @@ function FireCombineParticle( unit )
         local combineFX = ParticleManager:CreateParticle(particleName, PATTACH_ABSORIGIN_FOLLOW, unit)
         ParticleManager:SetParticleControl(combineFX, 0, unit:GetAbsOrigin())
         ParticleManager:SetParticleControl(combineFX, 1, unit:GetAbsOrigin())
+    end
+end
+
+function GetRecipeFromTable(unitTable, recipeName )
+    if unitTable[recipeName] then
+        return unitTable[recipeName]
+    else
+        for k,v in pairs(unitTable) do
+            for key,value in pairs(v) do
+                if key==recipeName then
+                    return value
+                end
+            end
+        end
     end
 end
 

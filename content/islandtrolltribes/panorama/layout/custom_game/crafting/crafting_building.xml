@@ -6,6 +6,6 @@
         <include src="file://{resources}/scripts/crafting/crafting.js" />
         <include src="file://{resources}/scripts/crafting/crafting_building.js" />
     </scripts>
-    <Panel class="CraftingBuildingRoot">
+    <Panel hittest="false" class="CraftingBuildingRoot">
     </Panel>
 </root>

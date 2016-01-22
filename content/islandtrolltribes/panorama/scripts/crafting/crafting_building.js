@@ -28,7 +28,7 @@ function Crafting_OnUpdateSelectedUnits() {
                 var crafting_table = values[i]
                 if (crafting_table.key==name)
                 {
-                    var panel = CreateCraftingSection(name, crafting_table.value, Root, false)
+                    var panel = CreateCraftingSection(name, crafting_table.value, Root, false, mainSelected)
                     Buildings[name] = panel
                 }
             }

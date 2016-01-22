@@ -1,5 +1,5 @@
 // Create a section to hold a list of crafting items
-function CreateCraftingSection (name, table, panel, bFold) {
+function CreateCraftingSection (name, table, panel, bFold, entity) {
     $.Msg("CreateCraftingSection ",name)
     var section = $.CreatePanel("Panel", panel, name)
     section.name = name
@@ -22,7 +22,7 @@ function CreateCraftingSection (name, table, panel, bFold) {
                         ingredients.push(ingredient)
                     }
                 }
-                CreateCraftingRecipe(section, item_result, ingredients, subtable[item_result], name)
+                CreateCraftingRecipe(section, item_result, ingredients, subtable[item_result], name, entity)
             }
         }
     }
@@ -39,7 +39,7 @@ function CreateCraftingSection (name, table, panel, bFold) {
                     ingredients.push(ingredient)
                 }
             }
-            CreateCraftingRecipe(section, item_result, ingredients, table[item_result], name)
+            CreateCraftingRecipe(section, item_result, ingredients, table[item_result], name, entity)
         }
     }
 
@@ -58,12 +58,13 @@ function CreateCraftingSection (name, table, panel, bFold) {
 }
 
 // Create a crafting recipe panel
-function CreateCraftingRecipe (section, result, ingredients, table, name) {
+function CreateCraftingRecipe (section, result, ingredients, table, name, entity) {
     var crafting_item = $.CreatePanel("Panel", section, result)
     crafting_item.section_name = name
     crafting_item.itemname = result
     crafting_item.ingredients = ingredients
     crafting_item.table = table
+    crafting_item.entity = entity
     crafting_item.BLoadLayout("file://{resources}/layout/custom_game/crafting/crafting_recipe.xml", false, false);
 }
 
