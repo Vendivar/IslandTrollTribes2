@@ -8341,7 +8341,11 @@
 				"Function"       "PotionTwinUse"
 				"Range"          "2500"
 			}
-	
+	        "FireSound"
+	        {
+	            "Target"	"CASTER"
+	            "EffectName"	"Twin.Island"
+	        }
 			"SpendCharge"
 			{
 			}
@@ -8426,6 +8430,10 @@
 				"ModifierName"	"modifier_brewmaster_storm_cyclone"
 			}
 	
+			"SpendCharge"
+			{
+			}
+	
 		}
 	
 		"AbilitySpecial"
@@ -8506,6 +8514,10 @@
 					"Types"	"DOTA_UNIT_TARGET_CREEP"
 				}
 	
+			}
+	
+			"SpendCharge"
+			{
 			}
 	
 		}
@@ -8666,6 +8678,10 @@
 				"Target"	"TARGET"
 			}
 	
+			"SpendCharge"
+			{
+			}
+	
 		}
 	
 		"AbilitySpecial"
@@ -8731,6 +8747,10 @@
 				"Target"	"CASTER"
 			}
 	
+			"SpendCharge"
+			{
+			}
+	
 		}
 	
 	}
@@ -8778,6 +8798,10 @@
 					"EffectAttachType"	"attach_origin"
 					"Target"	"CASTER"
 	            }
+	
+			"SpendCharge"
+			{
+			}
 	
 		}
 	
@@ -8940,6 +8964,10 @@
 			{
 				"Target"	"CASTER"
 				"EffectName"	"Hero_Morphling.Waveform"
+			}
+	
+			"SpendCharge"
+			{
 			}
 	
 		}
@@ -11237,7 +11265,7 @@
 	{
 		"ID"	"1096"
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_gem_of_true_sight"
+		"AbilityTextureName"	"gem_knowledge"
 		"Model"	"models/props_gameplay/gem01.vmdl"
 		"Effect"	""
 		"AbilityCastPoint"	"0.5"

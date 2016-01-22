@@ -100,6 +100,7 @@
         <Image style="opacity:0;" src="file://{images}/items/boots_bone.png" />
         <Image style="opacity:0;" src="file://{images}/items/boots_iron.png" />
         <Image style="opacity:0;" src="file://{images}/items/boots_steel.png" />
+        <Image style="opacity:0;" src="file://{images}/items/boots_anabolic.png" />
         <Image style="opacity:0;" src="file://{images}/items/bow_blood_god.png" />
         <Image style="opacity:0;" src="file://{images}/items/building_kit_armory.png" />
         <Image style="opacity:0;" src="file://{images}/items/building_kit_craftmaster.png" />
@@ -133,7 +134,9 @@
         <Image style="opacity:0;" src="file://{images}/items/coat_elk.png" />
         <Image style="opacity:0;" src="file://{images}/items/coat_bear.png" />
         <Image style="opacity:0;" src="file://{images}/items/coat_wolf.png" />
+        <Image style="opacity:0;" src="file://{images}/items/coat_camouflage.png" />        
         <Image style="opacity:0;" src="file://{images}/items/cloak_frost.png" />
+        <Image style="opacity:0;" src="file://{images}/items/claw_attack.png" />
         <Image style="opacity:0;" src="file://{images}/items/compass_sonar.png" />
         <Image style="opacity:0;" src="file://{images}/items/craftmaster.png" />
         <Image style="opacity:0;" src="file://{images}/items/crystal_mana.png" />
@@ -148,6 +151,7 @@
         <Image style="opacity:0;" src="file://{images}/items/gloves_bone.png" />
         <Image style="opacity:0;" src="file://{images}/items/gloves_iron.png" />
         <Image style="opacity:0;" src="file://{images}/items/gloves_steel.png" />
+        <Image style="opacity:0;" src="file://{images}/items/gloves_battle.png" />
         <Image style="opacity:0;" src="file://{images}/items/Greater_Salve_icon.png" />
         <Image style="opacity:0;" src="file://{images}/items/gun_blow.png" />
         <Image style="opacity:0;" src="file://{images}/items/gun_blow_bones.png" />
