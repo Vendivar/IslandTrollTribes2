@@ -1,6 +1,7 @@
 "ability_revive"
 {
     "BaseClass"             "ability_lua"
+	"AbilityTextureName"	"ability_building_revive"
     "ScriptFile"            "buildings/ability_revive.lua"
 
     "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
@@ -9,10 +10,10 @@
     "AbilityUnitTargetFlags" "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
     "MaxLevel"              "1"
 
-    "AbilityCooldown"       "1.0"
+    "AbilityCooldown"       "30.0"
     "AbilityManaCost"       "0"
     "AbilityCastPoint"      "0.0"
-    "AbilityChannelTime"    "4.0"
+    "AbilityChannelTime"    "25.0"
 
     "AbilitySharedWithTeammates" "1"
 }

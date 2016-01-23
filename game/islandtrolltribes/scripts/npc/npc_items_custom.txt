@@ -6735,6 +6735,11 @@
 				"ModifierName"	"modifier_anabolic_potion"
 			}
 	
+	        "FireSound"
+	        {
+	            "Target"	"CASTER"
+	            "EffectName"	"potion.anabolic"
+	        }
 			"SpendCharge"
 			{
 			}
@@ -6908,6 +6913,11 @@
 				"Target"	"CASTER"
 			}
 	
+	        "FireSound"
+	        {
+	            "Target"	"CASTER"
+	            "EffectName"	"potion.cureall"
+	        }
 			"SpendCharge"
 			{
 			}

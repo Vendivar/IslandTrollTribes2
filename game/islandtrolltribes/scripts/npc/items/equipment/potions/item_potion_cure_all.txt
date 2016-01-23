@@ -36,6 +36,11 @@
 			"Target"	"CASTER"
 		}
 
+        "FireSound"
+        {
+            "Target"	"CASTER"
+            "EffectName"	"potion.cureall"
+        }
 		"SpendCharge"
 		{
 		}
