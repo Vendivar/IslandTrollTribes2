@@ -6,6 +6,10 @@ GameUI.CustomUIConfig().ToggleCraftingList = function() {
     Root.visible = !Root.visible
 }
 
+function CloseList() {
+    GameUI.CustomUIConfig().ToggleCraftingList()
+}
+
 function CreateCraftingList()
 {
     var values = CustomNetTables.GetAllTableValues("crafting")
@@ -18,6 +22,7 @@ function CreateCraftingList()
     CreateByName(values, "npc_building_tannery", true)
     CreateByName(values, "npc_building_workshop", true) 
 }
+
 
 function CreateByName(values, name, bFold) {
     

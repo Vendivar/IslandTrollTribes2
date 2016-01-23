@@ -67,6 +67,19 @@
 #CraftingListTitle
 {
     color: gradient( linear, 0% 0%, 0% 100%, from( #E0E0E0 ), to( #686868 ) );
+    font-size: 25px;
+    font-family: Goudy Trajan Medium;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 0px 0px 3px 3.0 #000000;
+    margin-bottom: 5px;
+    vertical-align: center;
+    horizontal-align: center;
+}
+
+#CraftingSectionTitle
+{
+    color: gradient( linear, 0% 0%, 0% 100%, from( #E0E0E0 ), to( #686868 ) );
     font-size: 20px;
     font-family: Goudy Trajan Medium;
     font-weight: bold;
@@ -74,6 +87,12 @@
     text-shadow: 0px 0px 3px 3.0 #000000;
     margin-bottom: 5px;
     vertical-align: center;
+}
+
+#CraftingTitlePanel
+{
+    width: 100%;
+    margin-bottom: 5px;
 }
 
 #EqualSign
@@ -104,6 +123,20 @@
     
     horizontal-align: right;
     margin-right: 20px;
+}
+
+#CloseIcon
+{
+    width: 35px;
+    height: 35px;
+    
+    background-image: url("s2r://panorama/images/crafting/close.png"); 
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    
+    horizontal-align: right;
+    margin-right: 25px;
+
 }
 
 //-- Copied from custom_ui.css

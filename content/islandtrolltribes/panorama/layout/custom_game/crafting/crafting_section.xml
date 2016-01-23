@@ -7,7 +7,7 @@
     </scripts>
     <Panel class="CraftingSection">
         <Panel id="Toggle" onactivate="FoldSection()">
-            <Label id="CraftingListTitle"/>
+            <Label id="CraftingSectionTitle"/>
             <Image id="FoldIcon"/>
         </Panel>
     </Panel>

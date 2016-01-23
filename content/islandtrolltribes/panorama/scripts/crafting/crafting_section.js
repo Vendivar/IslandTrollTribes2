@@ -1,7 +1,7 @@
 var Root = $.GetContextPanel()
 var visible = !Root.bFold
 
-$('#CraftingListTitle').text = $.Localize(Root.name)
+$('#CraftingSectionTitle').text = $.Localize(Root.name)
 
 function FoldSection()
 {
