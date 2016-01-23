@@ -48,6 +48,7 @@
 	[
 		{
 			_class = "C_INIT_CreateWithinSphere"
+			m_bDisableOperator = true
 		},
 		{
 			_class = "C_INIT_RandomLifeTime"
@@ -102,6 +103,7 @@
 				0.000000,
 				150.000000,
 			]
+			m_bDisableOperator = true
 		},
 		{
 			_class = "C_INIT_RandomSequence"
