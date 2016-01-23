@@ -49,7 +49,7 @@ function ITT:InitGameMode()
 
     -- Disable buybacks to stop instant respawning.
     GameMode:SetBuybackEnabled( false )
-    GameMode:SetStashPurchasingDisabled(true)
+    GameMode:SetStashPurchasingDisabled(false)
 
     --GameRules:GetGameModeEntity():ClientLoadGridNav()
     GameRules:SetSameHeroSelectionEnabled( true )
@@ -62,6 +62,7 @@ function ITT:InitGameMode()
     GameRules:SetCreepMinimapIconScale( 0.7 )
     GameRules:SetRuneMinimapIconScale( 0.7 )
     GameRules:SetGoldTickTime( 60.0 )
+    GameRules:SetGoldPerTick( 0 )
     GameRules:SetGoldPerTick( 0 )
 
     -- Listeners

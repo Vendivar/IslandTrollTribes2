@@ -120,13 +120,14 @@
 		"DOTA_Tooltip_ability_item_bush_thistle"                                          "Thistle Shrub"
 		"DOTA_Tooltip_ability_item_bush_thistle_Description"                              ""
    
-		"npc_ship_merchant_1"                                                             "Ship Merchant 1"
-		"npc_ship_merchant_2"                                                             "Ship Merchant 2"
-		"npc_ship_merchant_3"                                                             "Ship Merchant 3"
-		"npc_ship_merchant_4"                                                             "Ship Merchant 4"
-		"npc_ship_merchant_5"                                                             "Ship Merchant 5"
-		"npc_ship_merchant_6"                                                             "Ship Merchant 6"
-		"npc_ship_merchant_7"                                                             "Ship Merchant 7"
+        
+        "npc_ship_merchant_1"                                              "Orc Juggernaut"
+        "npc_ship_merchant_2"                                              "Orc Transport Ship"
+        "npc_ship_merchant_3"                                              "Human Transport Ship"
+        "npc_ship_merchant_4"                                              "Night Elf Frigate"
+        "npc_ship_merchant_5"                                              "Orc Frigate"
+        "npc_ship_merchant_6"                                              "Human Frigate"
+        "npc_ship_merchant_7"                                              "Undead Transport Ship"
 
         
         
@@ -1524,6 +1525,19 @@
 "DOTA_Tooltip_ability_item_any_stick_bone_Description"                            ""
 
 
+"DOTA_Tooltip_ability_item_boots_any"                                             "Boots Any"
+
+"DOTA_Tooltip_ability_item_boots_any_Description"                                 ""
+"DOTA_Tooltip_ability_item_coat_any"                                              "Any Basic Coat"
+"DOTA_Tooltip_ability_item_coat_any_Description"                                  ""
+
+"DOTA_Tooltip_ability_item_gloves_any"                                            "Any Basic Gloves"
+"DOTA_Tooltip_ability_item_gloves_any_Description"                                ""
+
+"DOTA_Tooltip_ability_item_herb_special_any"                                      "Any Special Herb"
+"DOTA_Tooltip_ability_item_herb_special_any_Description"                          "Herbs Include: Red Herb, Blue Herb, Yellow Herb, Purple Herb"
+
+		
 
 "DOTA_Tooltip_ability_item_acorn"		"Acorn"
 "DOTA_Tooltip_ability_item_acorn_Description"		"ACTIVE: Consume acorn for health.\n\nA tiny seed found in the wild."
@@ -1914,11 +1928,13 @@
 "DOTA_Tooltip_ability_item_boots_bear_Description"		"PASSIVE: Increases the movement speed of the wearer as well as providing bonus armor.\n\nA basic pair of boots that increase movement speed. Can be upgraded in the armory."
 "DOTA_Tooltip_ability_item_boots_bear_Lore"		"A bear once lived in those.."
 "DOTA_Tooltip_ability_item_boots_bear_move_speed"		"+$move_speed"
-"DOTA_Tooltip_ability_item_boots_bone"		"Boots covered in animal bones. Provides protection while also increasing movement speed."
+
+"DOTA_Tooltip_ability_item_boots_bone"		"Bone Boots"
 "DOTA_Tooltip_ability_item_boots_bone_armor"		"+$armor"
 "DOTA_Tooltip_ability_item_boots_bone_Description"		"PASSIVE: Increases the movement speed of the wearer as well as providing bonus armor.\n\nBoots covered in animal bones. Provides protection while also increasing movement speed."
 "DOTA_Tooltip_ability_item_boots_bone_Lore"		"Maybe the animal's spirit will run with you?"
 "DOTA_Tooltip_ability_item_boots_bone_move_speed"		"+$move_speed"
+
 "DOTA_Tooltip_ability_item_boots_elk"		"Elk Skin Boots"
 "DOTA_Tooltip_ability_item_boots_elk_armor"		"+$armor"
 "DOTA_Tooltip_ability_item_boots_elk_Description"		"PASSIVE: Increases the movement speed of the wearer as well as providing bonus armor.\n\nA basic pair of boots that increase movement speed. Can be upgraded in the armory."
