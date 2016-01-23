@@ -1,16 +1,7 @@
 "use strict";
 
 var queryBuildings = [];
-queryBuildings["npc_building_armory"] = "";
-queryBuildings["npc_building_tannery"] = "";
-queryBuildings["npc_building_workshop"] = "";
-queryBuildings["npc_building_mix_pot"] = "";
-queryBuildings["npc_building_hut_witch_doctor"] = "";
 queryBuildings["npc_building_omnitower"] = "";
-queryBuildings["npc_building_teleport_beacon"] = "";
-queryBuildings["npc_building_hatchery"] = "";
-queryBuildings["npc_building_spirit_ward"] = "";
-queryBuildings["npc_building_smoke_house"] = "";
 
 function UpdateTeamPanel()
 {
