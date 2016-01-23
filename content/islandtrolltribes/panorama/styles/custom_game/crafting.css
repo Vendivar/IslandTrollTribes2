@@ -176,7 +176,7 @@
     text-align: center;
     horizontal-align: center;
     vertical-align: center;
-    text-shadow: 0px 0px 3px 3.0 #000000;
+    text-shadow: 0px 0px 4px 4.0 #000000;
     opacity: 0.4;
     margin-left: 5px;
 }
@@ -184,6 +184,18 @@
 #CraftToggleIcon:hover
 {
     opacity: 1;
+}
+
+#CraftLabel
+{
+    width: 100%;
+    color: white;
+    font-size: 18px;
+    font-family: Goudy Trajan Medium;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 0px 0px 3px 3.0 #000000;
+    vertical-align: center;
 }
 
 .GlowGold
@@ -194,6 +206,12 @@
 .GlowGreen
 {
     box-shadow: 0px 0px 100% green;
+}
+
+.GlowBright
+{
+    opacity: 2.0;
+    brightness: 1.2;
 }
 
 // Unused stuff

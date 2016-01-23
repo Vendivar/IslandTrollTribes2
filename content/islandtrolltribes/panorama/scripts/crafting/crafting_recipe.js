@@ -122,7 +122,7 @@ function GlowCraft(panel) {
     panel.SetPanelEvent('onactivate', SendCraft)
 
     panel.AddClass("GlowGreen");
-    panel.craft = true
+    panel.craft = true //Show a craft button when hovering
 }
 
 function SendCraft() {
