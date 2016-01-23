@@ -16,6 +16,7 @@
 
 .CraftingBuildingRoot
 {
+    overflow: scroll;
     width: 30%;
     height: 50%;
     flow-children: down;
