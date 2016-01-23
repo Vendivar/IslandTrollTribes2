@@ -269,6 +269,10 @@
         <Image style="opacity:0;" src="file://{images}/items/any_special_herb.png" />
         <Image style="opacity:0;" src="file://{images}/items/any_stick_bone.png" />
 
+        <Image style="opacity:0;" src="file://{images}/crafting/close.png" />
+        <Image style="opacity:0;" src="file://{images}/crafting/minus.png" />
+        <Image style="opacity:0;" src="file://{images}/crafting/plus.png" />
+
 <Image style="opacity:0;" src="file://{images}/spellicons/ability_beastmaster_attack.png" />
 <Image style="opacity:0;" src="file://{images}/spellicons/ability_beastmaster_bash.png" />
 <Image style="opacity:0;" src="file://{images}/spellicons/ability_beastmaster_bearform.png" />

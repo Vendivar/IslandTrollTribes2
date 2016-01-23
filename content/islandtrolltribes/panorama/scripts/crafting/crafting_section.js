@@ -13,4 +13,10 @@ function FoldSection()
         if (child.id !="Toggle")
             child.visible = visible
     };
+
+    // Update the fold icon
+    if (visible)
+        $('#FoldIcon').SetImage("s2r://panorama/images/crafting/minus.png"); 
+    else
+        $('#FoldIcon').SetImage("s2r://panorama/images/crafting/plus.png");
 }
