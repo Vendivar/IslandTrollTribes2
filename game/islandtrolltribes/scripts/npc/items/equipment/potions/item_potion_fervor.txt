@@ -55,7 +55,7 @@
 			{
 				"RunScript"
 				{
-					"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+					"ScriptFile"	"scripts/vscripts/items/potions.lua"
 					"Function"	"PotionFervorSecondary"
 				}
 

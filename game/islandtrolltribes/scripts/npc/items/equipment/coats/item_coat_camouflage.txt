@@ -27,7 +27,7 @@
 	{
 		"RunScript"
 		{
-			"ScriptFile" "items/cloak.lua"
+			"ScriptFile" "items/cloak_camo.lua"
 			"Function"   "CloakCamouflageInvis"
 		}
 

@@ -5410,7 +5410,7 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile" "items/cloak.lua"
+				"ScriptFile" "items/cloak_camo.lua"
 				"Function"   "CloakCamouflageInvis"
 			}
 	
@@ -7558,7 +7558,7 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+						"ScriptFile"	"scripts/vscripts/items/potions.lua"
 						"Function"	"PotionFervorSecondary"
 					}
 	

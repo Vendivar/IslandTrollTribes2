@@ -1935,65 +1935,6 @@ function SwapSpellBook(keys)
     end
 end
 
-function callModApplier( caster, modName, abilityLevel)
-    if abilityLevel == nil then
-        abilityLevel = 1
-    end
-    local applier = modName .. "_applier"
-    local ab = caster:FindAbilityByName(applier)
-    if ab == nil then
-        caster:AddAbility(applier)
-        ab = caster:FindAbilityByName( applier )
-        ab:SetLevel(abilityLevel)
-        print("trying to cast ability ", applier, "level", ab:GetLevel())
-    end
-    caster:CastAbilityNoTarget(ab, -1)
-    caster:RemoveAbility(applier)
-end
-
-function ToggleAbility(keys)
-    local caster = keys.caster
-
-    if caster:HasAbility(keys.Ability) then
-        local ability = caster:FindAbilityByName(keys.Ability)
-        if ability:IsActivated() == true then
-            ability:SetActivated(false)
-        else
-            ability:SetActivated(true)
-        end
-    end
-end
-
-function SetAbilityVisibility(unit, abilityName, visibility)
-    local ability = unit:FindAbilityByName(abilityName)
-    local hidden = (visibility == false)
-    if ability ~= nil and unit ~= nil then
-        ability:SetHidden(hidden)
-    end
-end
-
-function KillDummyUnit(keys)
-    local unitName = keys.UnitName
-    local caster = keys.caster
-    local teamnumber = caster:GetTeamNumber()
-    local casterPosition = caster:GetAbsOrigin()
-
-    local units = FindUnitsInRadius(teamnumber,
-                                    casterPosition,
-                                    nil,
-                                    0,
-                                    DOTA_UNIT_TARGET_TEAM_FRIENDLY,
-                                    DOTA_UNIT_TARGET_ALL,
-                                    DOTA_UNIT_TARGET_FLAG_NONE,
-                                    FIND_ANY_ORDER,
-                                    false)
-
-    for _,unit in pairs(units) do
-        if unit:GetName() == unitName then
-            unit:ForceKill(true)
-        end
-    end
-end
 
 --[[function PackUp(keys)
     local building = keys.caster
@@ -2023,47 +1964,7 @@ function RemoveEntity(keys)
     building:RemoveSelf()
 end]]
 
-function QuickDrop(keys)
-    local caster = keys.caster
-    local point = keys.target_points[1]
-  	local itemsToDrop = {}
-    for i=0,5 do
-        local item = caster:GetItemInSlot(i)
-    		if item then
-      		table.insert(itemsToDrop, item)
-        end
-    end
 
-  	local itemCount = #itemsToDrop
-		if itemCount > 0 then
-        local origin = caster:GetAbsOrigin()
-        local rotate_pos = point + Vector(1,0,0) * 50
-        local angle = 360 / itemCount
-        for k,item in pairs(itemsToDrop) do
-            local position = RotatePosition(point, QAngle(0, angle*k, 0), rotate_pos)
-     				caster:DropItemAtPositionImmediate(item, origin) --Drops the item where the unit is standing
-            DropLaunch(caster, item, 0.75, position)
-           -- print(k)
-           -- DebugDrawCircle(point, Vector(255,0,0), 100, 50, true, 10)
-        end
-    end
-end
-
-function DropAllItems(keys)
-    local caster = keys.caster
-    if caster:HasInventory() then
-        for itemSlot = 0, 5, 1 do
-            local Item = caster:GetItemInSlot( itemSlot )
-            if Item ~= nil then
-                local itemCharges = Item:GetCurrentCharges()
-                local newItem = CreateItem(Item:GetName(), nil, nil)
-                newItem:SetCurrentCharges(itemCharges)
-                CreateItemOnPositionSync(caster:GetOrigin() + RandomVector(RandomInt(100,160)), newItem)
-                caster:RemoveItem(Item)
-            end
-        end
-    end
-end
 --[[
 function QuickCraftWorkshop(keys)
     print("QuickCrafting")
@@ -2185,16 +2086,3 @@ function BushZoneOut(keys)
     bush:SetTeam(majority)
 
 end]]
-
-function MammothBlockSuccess(keys)
-    attacker = keys.attacker
-    caster = keys.caster
-
-    local damage = attacker:GetAverageTrueAttackDamage()
-    local block = 17
-    if damage - block < 1 then
-        block = damage - 1
-    end
-
-    caster:SetHealth(caster:GetHealth() + block)
-end
