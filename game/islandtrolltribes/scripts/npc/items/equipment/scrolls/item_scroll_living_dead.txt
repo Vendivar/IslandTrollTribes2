@@ -37,11 +37,6 @@
 			"EffectName"	"scroll.undead"
 			"Target"	"CASTER"
 		}
-
-		"SpendCharge"
-		{
-		}
-
 	}
 
 }

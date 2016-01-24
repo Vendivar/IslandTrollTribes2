@@ -55,10 +55,6 @@
 
 		}
 
-		"SpendCharge"
-		{
-		}
-
 	}
 
 	"Modifiers"

@@ -61,10 +61,6 @@
 			"ModifierName"	"modifier_brewmaster_storm_cyclone"
 		}
 
-		"SpendCharge"
-		{
-		}
-
 	}
 
 	"AbilitySpecial"

@@ -8440,10 +8440,6 @@
 				"ModifierName"	"modifier_brewmaster_storm_cyclone"
 			}
 	
-			"SpendCharge"
-			{
-			}
-	
 		}
 	
 		"AbilitySpecial"
@@ -8524,10 +8520,6 @@
 					"Types"	"DOTA_UNIT_TARGET_CREEP"
 				}
 	
-			}
-	
-			"SpendCharge"
-			{
 			}
 	
 		}
@@ -8688,10 +8680,6 @@
 				"Target"	"TARGET"
 			}
 	
-			"SpendCharge"
-			{
-			}
-	
 		}
 	
 		"AbilitySpecial"
@@ -8756,11 +8744,6 @@
 				"EffectName"	"scroll.undead"
 				"Target"	"CASTER"
 			}
-	
-			"SpendCharge"
-			{
-			}
-	
 		}
 	
 	}
@@ -8808,11 +8791,6 @@
 					"EffectAttachType"	"attach_origin"
 					"Target"	"CASTER"
 	            }
-	
-			"SpendCharge"
-			{
-			}
-	
 		}
 	
 		"Modifiers"
@@ -8975,11 +8953,6 @@
 				"Target"	"CASTER"
 				"EffectName"	"Hero_Morphling.Waveform"
 			}
-	
-			"SpendCharge"
-			{
-			}
-	
 		}
 	
 		"OnProjectileHitUnit"
