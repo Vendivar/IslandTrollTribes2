@@ -3,7 +3,7 @@
 	"BaseClass"	"npc_dota_creature"
 	"ConsideredHero"	"0"
 	"ModelScale"	"0.91"
-	"Model"	"models/items/keeper_of_the_light/northlight_spirit_stag/northlight_spirit_stag.vmdl"
+	"Model"	"models/creeps/neutral_creeps/n_creep_centaur_lrg/n_creep_centaur_lrg.vmdl"
 	"Level"	"7"
 
 	"Ability1"	""

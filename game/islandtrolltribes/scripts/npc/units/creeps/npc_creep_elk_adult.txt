@@ -2,7 +2,7 @@
 {
 	"BaseClass"	"npc_dota_creature"
 	"ConsideredHero"	"0"
-	"ModelScale"	"1.25"
+	"ModelScale"	"1.15"
 	"Model"	"models/creeps/neutral_creeps/n_creep_centaur_lrg/n_creep_centaur_lrg.vmdl"
 	"Level"	"10"
 	"Ability1"	"ability_npc_spellimmunity"

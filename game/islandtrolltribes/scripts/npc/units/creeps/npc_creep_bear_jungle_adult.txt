@@ -2,7 +2,7 @@
 {
 	"BaseClass"	"npc_dota_creature"
 	"ConsideredHero"	"0"
-	"ModelScale"	"1.30"
+	"ModelScale"	"1.10"
 	"Model"	"models/heroes/lone_druid/spirit_bear.vmdl"
 	"Level"	"13"
 	"Ability1"	"ability_npc_bash"
@@ -39,7 +39,7 @@
 	"AttributeBaseAgility"	"0"
 	"AttributeAgilityGain"	"0"
 	"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
-	"MovementSpeed"	"200"
+	"MovementSpeed"	"320"
 	"MovementTurnRate"	"0.5"
 	"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 	"HealthBarOffset"	"140"
