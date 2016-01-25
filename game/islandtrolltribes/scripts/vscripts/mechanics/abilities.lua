@@ -152,6 +152,18 @@ function ToggleAbility(keys)
     end
 end
 
+function ToggleOn(ability)
+    if ability:GetToggleState() == false then
+        ability:ToggleAbility()
+    end
+end
+
+function ToggleOff(ability)
+    if ability:GetToggleState() == true then
+        ability:ToggleAbility()
+    end
+end
+
 function SetAbilityVisibility(unit, abilityName, visibility)
     local ability = unit:FindAbilityByName(abilityName)
     local hidden = (visibility == false)
