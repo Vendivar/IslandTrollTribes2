@@ -57,7 +57,7 @@
 		"AbilityLayout"	"4"
 		"Ability1"	"ability_gatherer_itemradar"
 		"Ability2"	"ability_gatherer_radarmanipulations"
-		"Ability3"	"ability_gatherer_advanced_radarmanipulations"
+		"Ability3"	""
 		"Ability4"	""
 		"Ability5"	""
 		"Ability6"	""
