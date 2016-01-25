@@ -1,4 +1,4 @@
-BH_VERSION = "1.0"
+BH_VERSION = "1.0.0"
 
 if not BuildingHelper then
     BuildingHelper = class({})
@@ -45,9 +45,8 @@ function BuildingHelper:Init()
         ListenToGameEvent('tree_cut', Dynamic_Wrap(BuildingHelper, 'OnTreeCut'), self)
     end
 
-    -- Lua modifiers
-    LinkLuaModifier("modifier_out_of_world", "libraries/modifiers/modifier_out_of_world", LUA_MODIFIER_MOTION_NONE)
-    LinkLuaModifier("modifier_builder_hidden", "libraries/modifiers/modifier_builder_hidden", LUA_MODIFIER_MOTION_NONE)
+    -- Modifier applier
+    BuildingHelper.Applier = CreateItem("item_bh_modifiers", nil, nil)
     
     BuildingHelper.KV = {} -- Merge KVs into a single table
     BuildingHelper:ParseKV(BuildingHelper.AbilityKV, BuildingHelper.KV)
@@ -82,6 +81,7 @@ function BuildingHelper:LoadSettings()
     BuildingHelper.Settings["TESTING"] = tobool(BuildingHelper.Settings["TESTING"])
     BuildingHelper.Settings["RECOLOR_BUILDING_PLACED"] = tobool(BuildingHelper.Settings["RECOLOR_BUILDING_PLACED"])
     BuildingHelper.Settings["UPDATE_TREES"] = tobool(BuildingHelper.Settings["UPDATE_TREES"])
+    BuildingHelper.Settings["DISABLE_BUILDING_TURNING"] = tobool(BuildingHelper.Settings["DISABLE_BUILDING_TURNING"])
 
     CustomNetTables:SetTableValue("building_settings", "grid_alpha", { value = BuildingHelper.Settings["GRID_ALPHA"] })
     CustomNetTables:SetTableValue("building_settings", "alt_grid_alpha", { value = BuildingHelper.Settings["ALT_GRID_ALPHA"] })
@@ -165,7 +165,7 @@ function BuildingHelper:OnEntityKilled(keys)
         BuildingHelper:ClearQueue(killed)
     elseif IsCustomBuilding(killed) or gridTable then
         -- Building Helper grid cleanup
-        BuildingHelper:RemoveBuilding(killed, true)
+        BuildingHelper:RemoveBuilding(killed, false)
 
         if gridTable then
             for grid_type,v in pairs(gridTable) do
@@ -506,6 +506,9 @@ function BuildingHelper:AddBuilding(keys)
     playerTable.activeBuildingTable = buildingTable
     playerTable.activeCallbacks = callbacks
 
+    -- Offset Z on the model particle
+    event.modelOffset = BuildingHelper.UnitKV[unitName]["ModelOffset"] or 0
+
     -- npc_dota_creature doesn't render cosmetics on the particle ghost, use hero names instead
     local overrideGhost = buildingTable:GetVal("OverrideBuildingGhost", "string")
     if overrideGhost then
@@ -743,12 +746,22 @@ function BuildingHelper:PlaceBuilding(player, name, location, construction_size,
     -- Spawn point obstructions before placing the building
     local gridNavBlockers = BuildingHelper:BlockGridSquares(construction_size, pathing_size, location)
 
+    -- Adjust the model position z
+    local model_offset = BuildingHelper.UnitKV[name]["ModelOffset"] or 0
+    local model_location = Vector(location.x, location.y, location.z + model_offset)
+
     -- Spawn the building
-    local building = CreateUnitByName(name, location, false, playersHero, player, playersHero:GetTeamNumber())
+    local building = CreateUnitByName(name, model_location, false, playersHero, player, playersHero:GetTeamNumber())
     building:SetControllableByPlayer(playerID, true)
     building:SetOwner(playersHero)
     building.construction_size = construction_size
     building.blockers = gridNavBlockers
+
+    -- Create pedestal
+    local pedestal = BuildingHelper.UnitKV[name]["PedestalModel"]
+    if pedestal then
+        local prop = BuildingHelper:CreatePedestalForBuilding(building, name, location, pedestal)
+    end
 
     if angle then
         building:SetAngles(0,-angle,0)
@@ -761,22 +774,77 @@ function BuildingHelper:PlaceBuilding(player, name, location, construction_size,
 end
 
 --[[
+    UpgradeBuilding
+    * Replaces a building by a new one by name, updating the necessary references and returning the new created unit
+]]
+function BuildingHelper:UpgradeBuilding(building, newName)
+    BuildingHelper:print("Upgrading Building: "..building:GetUnitName().." -> "..newName)
+    local playerID = building:GetPlayerOwnerID()
+    local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+    local oldBuildingName = building:GetUnitName()
+    local position = building:GetAbsOrigin()
+    local newBuilding = CreateUnitByName(newName, position, false, nil, nil, building:GetTeamNumber()) 
+    newBuilding:SetOwner(hero)
+    newBuilding:SetControllableByPlayer(playerID, true)
+    
+    -- Update visuals
+    local angles = building:GetAngles()
+    newBuilding:SetAngles(angles.x, angles.y, angles.z)
+
+    -- Disable turning. If DisableTurning unit KV setting is not defined, use the global setting
+    local disableTurning = BuildingHelper.UnitKV[newName]["DisableTurning"]
+    if not disableTurning then
+        if BuildingHelper.Settings["DISABLE_BUILDING_TURNING"] then
+            BuildingHelper:ApplyModifier(newBuilding, "modifier_disable_turning")
+        end
+    elseif disableTurning == 1 then
+        BuildingHelper:ApplyModifier(newBuilding, "modifier_disable_turning")
+    end
+    
+    local pedestalName = BuildingHelper.UnitKV[newName]["PedestalModel"]
+    if pedestalName then
+        BuildingHelper:CreatePedestalForBuilding(newBuilding, newName, GetGroundPosition(position, nil), pedestalName)
+    end    
+
+    -- Kill the old building without visual effects
+    building.upgraded = true
+    building:AddEffects(EF_NODRAW)
+    building:ForceKill(true) --This will call RemoveBuilding
+
+    -- Block the grid
+    newBuilding.construction_size = BuildingHelper:GetConstructionSize(newName)
+    newBuilding.blockers = BuildingHelper:BlockGridSquares(newBuilding.construction_size, BuildingHelper:GetBlockPathingSize(newName), position)
+    newBuilding:SetAbsOrigin(position)
+
+    if not newBuilding:HasAbility("ability_building") then
+        newBuilding:AddAbility("ability_building")
+    end
+
+    return newBuilding
+end
+
+--[[
     RemoveBuilding
     * Removes a building, removing it from the gridnav, with an optional parameter to kill it
 ]]--
 function BuildingHelper:RemoveBuilding( building, bForcedKill )
-     if bForcedKill then
+    BuildingHelper:print("Removing Building: "..building:GetUnitName())
+
+    if bForcedKill then
         building:ForceKill(bForcedKill)
     end
 
-    local particleName = BuildingHelper.UnitKV[building:GetUnitName()]["DestructionEffect"]
-    if particleName then
-        local particle = ParticleManager:CreateParticle(particleName, PATTACH_CUSTOMORIGIN, building)
-        ParticleManager:SetParticleControl(particle, 0, building:GetAbsOrigin())
-    end
+    -- Don't show the destruction effects when it was killed to due UpgradeBuilding
+    if not building.upgraded then
+        local particleName = BuildingHelper.UnitKV[building:GetUnitName()]["DestructionEffect"]
+        if particleName then
+            local particle = ParticleManager:CreateParticle(particleName, PATTACH_CUSTOMORIGIN, building)
+            ParticleManager:SetParticleControl(particle, 0, building:GetAbsOrigin())
+        end
 
-    if building.fireEffectParticle then
-        ParticleManager:DestroyParticle(building.fireEffectParticle, false)
+        if building.fireEffectParticle then
+            ParticleManager:DestroyParticle(building.fireEffectParticle, false)
+        end
     end
 
     if building.prop then
@@ -845,6 +913,8 @@ function BuildingHelper:StartBuilding( builder )
     end
 
     -- Initialize the building
+    local model_offset = BuildingHelper.UnitKV[unitName]["ModelOffset"] or 0
+    location.z = location.z + model_offset
     building:SetAbsOrigin(location)
     building:SetControllableByPlayer(playerID, true)
     building.blockers = gridNavBlockers
@@ -864,6 +934,11 @@ function BuildingHelper:StartBuilding( builder )
     -- Adjust the Model Orientation
     local yaw = buildingTable:GetVal("ModelRotation", "float")
     building:SetAngles(0, -yaw, 0)
+
+    -- Disable turning
+    if BuildingHelper.UnitKV[unitName]["DisableTurning"]==1 or BuildingHelper.Settings["DISABLE_BUILDING_TURNING"] then
+        BuildingHelper:ApplyModifier(building, "modifier_disable_turning")
+    end
 
     -- Prevent regen messing with the building spawn hp gain
     local regen = building:GetBaseHealthRegen()
@@ -1587,13 +1662,17 @@ function BuildingHelper:AddToQueue( builder, location, bQueued )
             unitName = overrideGhost
         end
 
+        -- Adjust the model position z
+        local model_offset = BuildingHelper.UnitKV[buildingName]["ModelOffset"] or 0
+        local model_location = Vector(location.x, location.y, location.z + model_offset)
+
         -- Create the building entity that will be used to start construction and project the queue particles
-        local entity = CreateUnitByName(unitName, location, false, nil, nil, builder:GetTeam())
+        local entity = CreateUnitByName(unitName, model_location, false, nil, nil, builder:GetTeam())
         entity:AddEffects(EF_NODRAW)
-        entity:AddNewModifier(entity, nil, "modifier_out_of_world", {})
+        BuildingHelper:ApplyModifier(entity, "modifier_out_of_world")
 
         local modelParticle = ParticleManager:CreateParticleForPlayer("particles/buildinghelper/ghost_model.vpcf", PATTACH_ABSORIGIN, entity, player)
-        ParticleManager:SetParticleControl(modelParticle, 0, location)
+        ParticleManager:SetParticleControl(modelParticle, 0, model_location)
         ParticleManager:SetParticleControlEnt(modelParticle, 1, entity, 1, "attach_hitloc", entity:GetAbsOrigin(), true) -- Model attach          
         ParticleManager:SetParticleControl(modelParticle, 3, Vector(BuildingHelper.Settings["MODEL_ALPHA"],0,0)) -- Alpha
         ParticleManager:SetParticleControl(modelParticle, 4, Vector(fMaxScale,0,0)) -- Scale
@@ -1603,14 +1682,11 @@ function BuildingHelper:AddToQueue( builder, location, bQueued )
 
         -- Create pedestal
         local pedestal = buildingTable:GetVal("PedestalModel")
-        local offset = buildingTable:GetVal("PedestalOffset", "float") or 0
         if pedestal then
-            local prop = SpawnEntityFromTableSynchronous("prop_dynamic", {model = pedestal})
+            local prop = BuildingHelper:CreatePedestalForBuilding(entity, buildingName, location, pedestal)
             local scale = buildingTable:GetVal("PedestalModelScale", "float") or entity:GetModelScale()
+            local offset = buildingTable:GetVal("PedestalOffset", "float") or 0
             local offset_location = Vector(location.x, location.y, location.z + offset)
-            prop:SetModelScale(scale)
-            prop:SetAbsOrigin(offset_location)
-            entity.prop = prop -- Store the pedestal prop
 
             prop:AddEffects(EF_NODRAW)
             prop.pedestalParticle = ParticleManager:CreateParticleForPlayer("particles/buildinghelper/ghost_model.vpcf", PATTACH_ABSORIGIN, prop, player)
@@ -1818,7 +1894,7 @@ function BuildingHelper:GetOrCreateDummy( unitName )
         BuildingHelper:print("AddBuilding "..unitName)
         local mgd = CreateUnitByName(unitName, Vector(0,0,0), false, nil, nil, 0)
         mgd:AddEffects(EF_NODRAW)
-        mgd:AddNewModifier(mgd, nil, "modifier_out_of_world", {})
+        BuildingHelper:ApplyModifier(mgd, "modifier_out_of_world")
         BuildingHelper.Dummies[unitName] = mgd
         return mgd
     end
@@ -1833,6 +1909,17 @@ function BuildingHelper:GetOrCreateProp( propName )
         BuildingHelper.Dummies[propName] = prop
         return prop
     end
+end
+
+function BuildingHelper:CreatePedestalForBuilding(entity, buildingName, location, pedestalName)
+    local offset = BuildingHelper.UnitKV[buildingName]["PedestalOffset"] or 0
+    local prop = SpawnEntityFromTableSynchronous("prop_dynamic", {model = pedestalName})
+    local scale = BuildingHelper.UnitKV[buildingName]["PedestalModelScale"] or entity:GetModelScale()
+    local offset_location = Vector(location.x, location.y, location.z + offset)
+    prop:SetModelScale(scale)
+    prop:SetAbsOrigin(offset_location)
+    entity.prop = prop -- Store the pedestal prop
+    return prop
 end
 
 -- Retrieves the handle of the ability marked as "RepairAbility" on the unit key values
@@ -1864,7 +1951,7 @@ function BuildingHelper:GetBlockPathingSize(unit)
 end
 
 function BuildingHelper:HideBuilder(unit, location, building)
-    unit:AddNewModifier(unit, nil, "modifier_builder_hidden", {})
+    BuildingHelper:ApplyModifier(unit, "modifier_builder_hidden")
     unit.entrance_to_build = unit:GetAbsOrigin()
 
     local location_builder = Vector(location.x, location.y, location.z - 200)
@@ -1915,9 +2002,9 @@ function BuildingHelper:FindClosestEmptyPositionNearby( location, construction_s
     for x = lowerBoundX, upperBoundX do
         for y = lowerBoundY, upperBoundY do
             if BuildingHelper:CellHasGridType(x,y,"BUILDABLE") then
-                local pos = Vector(GridNav:GridPosToWorldCenterX(x), GridNav:GridPosToWorldCenterY(y), 0)
+                local pos = GetGroundPosition(Vector(GridNav:GridPosToWorldCenterX(x), GridNav:GridPosToWorldCenterY(y), 0), nil)
                 BuildingHelper:SnapToGrid(construction_size, pos)
-                if not BuildingHelper:IsAreaBlocked(construction_size, pos) then
+                if BuildingHelper:MeetsHeightCondition(pos) and not BuildingHelper:IsAreaBlocked(construction_size, pos) then
                     local distance = (pos - location):Length2D()
                     if distance < closestDistance then
                         towerPos = pos
@@ -1927,7 +2014,9 @@ function BuildingHelper:FindClosestEmptyPositionNearby( location, construction_s
             end
         end
     end
-    BuildingHelper:SnapToGrid(construction_size, towerPos)
+    if towerPos then
+        BuildingHelper:SnapToGrid(construction_size, towerPos)
+    end
     return towerPos
 end
 
@@ -1947,6 +2036,18 @@ function BuildingHelper:IsInsideEntityBounds(entity, location)
     local betweenY = Y >= minY and Y <= maxY
 
     return betweenX and betweenY
+end
+
+-- In case a height restriction was defined, checks if the location passes the height test
+function BuildingHelper:MeetsHeightCondition(location)
+    if BuildingHelper.Settings["HEIGHT_RESTRICTION"] ~= "" then
+        return location.z >= BuildingHelper.Settings["HEIGHT_RESTRICTION"]
+    end
+end
+
+-- Applies a modifier from item_bh_modifiers
+function BuildingHelper:ApplyModifier( unit, modifierName )
+    BuildingHelper.Applier:ApplyDataDrivenModifier(unit, unit, modifierName, {})
 end
 
 -- A BuildingHelper ability is identified by the "Building" key.
