@@ -2734,7 +2734,7 @@
 	"minimap_icon_red"
 	{
 	    "MinimapIcon"               "minimap_icon_red"
-	    "MinimapIconSize"           "500"
+	    "MinimapIconSize"           "400"
 	    "MinimapDisableTint"        "1"
 	
 	    "BaseClass"                 "npc_dota_building"
@@ -2749,7 +2749,7 @@
 	"minimap_icon_grey"
 	{
 	    "MinimapIcon"               "minimap_icon_grey"
-	    "MinimapIconSize"           "500"
+	    "MinimapIconSize"           "400"
 	    "MinimapDisableTint"        "1"
 	
 	    "BaseClass"                 "npc_dota_building"
@@ -2764,7 +2764,7 @@
 	"minimap_icon_dark_green"
 	{
 	    "MinimapIcon"               "minimap_icon_dark_green"
-	    "MinimapIconSize"           "500"
+	    "MinimapIconSize"           "400"
 	    "MinimapDisableTint"        "1"
 	
 	    "BaseClass"                 "npc_dota_building"
@@ -2779,7 +2779,7 @@
 	"minimap_icon_green"
 	{
 	    "MinimapIcon"               "minimap_icon_green"
-	    "MinimapIconSize"           "500"
+	    "MinimapIconSize"           "400"
 	    "MinimapDisableTint"        "1"
 	
 	    "BaseClass"                 "npc_dota_building"
@@ -2794,7 +2794,7 @@
 	"minimap_icon_light_blue"
 	{
 	    "MinimapIcon"               "minimap_icon_light_blue"
-	    "MinimapIconSize"           "500"
+	    "MinimapIconSize"           "400"
 	    "MinimapDisableTint"        "1"
 	
 	    "BaseClass"                 "npc_dota_building"
@@ -2809,7 +2809,7 @@
 	"minimap_icon_blue"
 	{
 	    "MinimapIcon"               "minimap_icon_blue"
-	    "MinimapIconSize"           "500"
+	    "MinimapIconSize"           "400"
 	    "MinimapDisableTint"        "1"
 	
 	    "BaseClass"                 "npc_dota_building"
@@ -2824,7 +2824,7 @@
 	"minimap_icon_dark_red"
 	{
 	    "MinimapIcon"               "minimap_icon_dark_red"
-	    "MinimapIconSize"           "500"
+	    "MinimapIconSize"           "400"
 	    "MinimapDisableTint"        "1"
 	
 	    "BaseClass"                 "npc_dota_building"
@@ -2839,7 +2839,7 @@
 	"minimap_icon_white"
 	{
 	    "MinimapIcon"               "minimap_icon_white"
-	    "MinimapIconSize"           "500"
+	    "MinimapIconSize"           "400"
 	    "MinimapDisableTint"        "1"
 	
 	    "BaseClass"                 "npc_dota_building"
@@ -2854,7 +2854,7 @@
 	"minimap_icon_pink"
 	{
 	    "MinimapIcon"               "minimap_icon_pink"
-	    "MinimapIconSize"           "500"
+	    "MinimapIconSize"           "400"
 	    "MinimapDisableTint"        "1"
 	
 	    "BaseClass"                 "npc_dota_building"
@@ -2866,10 +2866,10 @@
 	    "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_NONE"
 	}
 	
-	"minimap_purple"
+	"minimap_icon_purple"
 	{
 	    "MinimapIcon"               "minimap_icon_purple"
-	    "MinimapIconSize"           "500"
+	    "MinimapIconSize"           "400"
 	    "MinimapDisableTint"        "1"
 	
 	    "BaseClass"                 "npc_dota_building"

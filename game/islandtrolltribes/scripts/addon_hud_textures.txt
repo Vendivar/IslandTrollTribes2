@@ -92,9 +92,9 @@
             "height"    "64"
         }
 
-        "minimap_purple"
+        "minimap_icon_purple"
         {
-            "file"      "materials/vgui/hud/minimap_purple.vmat"
+            "file"      "materials/vgui/hud/minimap_icon_purple.vmat"
             "x"         "0"
             "y"         "0"
             "width"     "64"
