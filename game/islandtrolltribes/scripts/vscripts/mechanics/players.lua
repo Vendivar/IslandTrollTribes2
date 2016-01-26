@@ -19,10 +19,3 @@ end
 function ApplyModifier( unit, modifier_name )
     GameRules.APPLIER:ApplyDataDrivenModifier(unit, unit, modifier_name, {})
 end
-
---general "ping minimap" function
-function PingMap(entity, pos, r, g, b, teamNumber)
-  
-    local radius = 400
-    GameRules:AddMinimapDebugPointForTeam( -entity:entindex(), pos, r, g, b, radius, 100, teamNumber )
-end

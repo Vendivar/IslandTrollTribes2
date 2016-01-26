@@ -17,18 +17,21 @@ function EnemyRadar(keys)
     local redVal = 0
     local greenVal = 0
     local blueVal = 0
+    local color = "white"
 
     for _, unit in pairs(units) do
         if unit:IsHero() then
             redVal = 255
+            color = "red"
         elseif unit:IsCreature() then
             blueVal = 255
+            color = "blue"
         end
 
         local thisParticle = ParticleManager:CreateParticle("particles/ui_mouseactions/ping_world.vpcf", PATTACH_ABSORIGIN, caster:GetOwner())
         ParticleManager:SetParticleControl(thisParticle, 0, unit:GetAbsOrigin())
         ParticleManager:SetParticleControl(thisParticle, 1, Vector(redVal, greenVal, blueVal))
-        PingMap(caster:GetPlayerID(),unit:GetAbsOrigin(),redVal,greenVal,blueVal)
+        PingMap(caster:GetPlayerID(),unit:GetAbsOrigin(),color, teamnumber)
         ParticleManager:ReleaseParticleIndex(thisParticle)
         unit:EmitSound("General.Ping")   --may be deafening
     end

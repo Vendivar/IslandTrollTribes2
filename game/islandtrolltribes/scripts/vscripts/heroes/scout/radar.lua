@@ -12,10 +12,13 @@ function EnemyRadar(keys)
             local r = 0
             local g = 0
             local b = 0
+            local color = "white"
             if unit:IsRealHero() then
                 r = 255
+                color = "red"
             else
                 b = 255
+                color = "blue"
             end
 
             local position = unit:GetAbsOrigin()
@@ -28,7 +31,7 @@ function EnemyRadar(keys)
             ParticleManager:SetParticleControl(particle, 1, Vector(r, g, b))
             Timers:CreateTimer(3, function() ParticleManager:DestroyParticle(particle, true) end)
 
-            PingMap(unit, position, r, g, b, teamnumber)
+            PingMap(unit, position, color, teamnumber)
         end
 
         EmitSoundOnLocationForAllies(caster:GetAbsOrigin(), "General.Ping", caster)

@@ -28,10 +28,8 @@ function PingItemInRange(event)
         if itemName ~= "item_meat_raw" and (not itemList or itemList[itemName]) then
 
             -- Get item color from table, else default white
-            local itemColor = itemColorTable[itemName]
-            if not itemColor then
-                itemColor = "255 255 255"
-            end
+            local itemColor = itemColorTable[itemName] or "white"
+            local colorCode = itemColorTable["Colors"][itemColor]
             
             -- Iterate over item color string and parse into specific values
             local color = split(itemColor)
@@ -59,7 +57,7 @@ function PingItemInRange(event)
             end)
 
             --Ping Minimap
-            PingMap(drop, position, r, g, b, team)
+            PingMap(drop, position, itemColor, team)
 
             foundItem = true
         end

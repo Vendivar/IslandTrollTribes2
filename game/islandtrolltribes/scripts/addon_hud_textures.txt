@@ -10,5 +10,95 @@
             "width"    "64"
             "height"   "64"
         }
+
+        "minimap_icon_red"
+        {
+            "file"      "materials/vgui/hud/minimap_icon_red.vmat"
+            "x"         "0"
+            "y"         "0"
+            "width"     "64"
+            "height"    "64"
+        }
+
+        "minimap_icon_grey"
+        {
+            "file"      "materials/vgui/hud/minimap_icon_grey.vmat"
+            "x"         "0"
+            "y"         "0"
+            "width"     "64"
+            "height"    "64"
+        }
+
+        "minimap_icon_dark_green"
+        {
+            "file"      "materials/vgui/hud/minimap_icon_dark_green.vmat"
+            "x"         "0"
+            "y"         "0"
+            "width"     "64"
+            "height"    "64"
+        }
+
+        "minimap_icon_green"
+        {
+            "file"      "materials/vgui/hud/minimap_icon_green.vmat"
+            "x"         "0"
+            "y"         "0"
+            "width"     "64"
+            "height"    "64"
+        }
+
+        "minimap_icon_light_blue"
+        {
+            "file"      "materials/vgui/hud/minimap_icon_light_blue.vmat"
+            "x"         "0"
+            "y"         "0"
+            "width"     "64"
+            "height"    "64"
+        }
+
+        "minimap_icon_blue"
+        {
+            "file"      "materials/vgui/hud/minimap_icon_blue.vmat"
+            "x"         "0"
+            "y"         "0"
+            "width"     "64"
+            "height"    "64"
+        }
+
+        "minimap_icon_dark_red"
+        {
+            "file"      "materials/vgui/hud/minimap_icon_dark_red.vmat"
+            "x"         "0"
+            "y"         "0"
+            "width"     "64"
+            "height"    "64"
+        }
+
+        "minimap_icon_white"
+        {
+            "file"      "materials/vgui/hud/minimap_icon_white.vmat"
+            "x"         "0"
+            "y"         "0"
+            "width"     "64"
+            "height"    "64"
+        }
+
+        "minimap_icon_pink"
+        {
+            "file"      "materials/vgui/hud/minimap_icon_pink.vmat"
+            "x"         "0"
+            "y"         "0"
+            "width"     "64"
+            "height"    "64"
+        }
+
+        "minimap_purple"
+        {
+            "file"      "materials/vgui/hud/minimap_purple.vmat"
+            "x"         "0"
+            "y"         "0"
+            "width"     "64"
+            "height"    "64"
+        }
     }
 }
