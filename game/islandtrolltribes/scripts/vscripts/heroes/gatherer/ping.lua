@@ -32,7 +32,7 @@ function PingItemInRange(event)
             local colorCode = itemColorTable["Colors"][itemColor]
             
             -- Iterate over item color string and parse into specific values
-            local color = split(itemColor)
+            local color = split(colorCode)
             local r = tonumber(color[1])
             local g = tonumber(color[2])
             local b = tonumber(color[3])

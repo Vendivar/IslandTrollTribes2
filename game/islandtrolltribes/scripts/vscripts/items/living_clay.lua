@@ -13,9 +13,12 @@ function MakeClayExplosion(keys)
     
     local dieRoll = RandomInt(0, 10)
     for i=1,dieRoll do
-
-        local item1 = CreateItem("item_clay_living", nil, nil)
-        CreateItemOnPositionSync(caster:GetOrigin() + RandomVector(RandomInt(20,100)), item1)
+    
+        local pos_launch = origin + RandomVector(RandomInt(1,200))
+        local item = CreateItem("item_clay_living", nil, nil)
+        local drop = CreateItemOnPositionSync( origin, item )
+        item:LaunchLoot(false, 200, 0.75, pos_launch)
+        print(dieRoll)
     end
     
 end

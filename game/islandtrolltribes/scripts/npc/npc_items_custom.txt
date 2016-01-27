@@ -11147,7 +11147,7 @@
 	"item_clay_explosion"
 	{
 		"ID"	"1098"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"item_clay_living"
 		"Model"	"models/particle/lion_attack_sphere.vmdl"
@@ -11170,7 +11170,7 @@
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
 	    
-	        "OnAbilityPhaseStart"
+	    "OnAbilityPhaseStart"
 	    {
 	        "RunScript"
 	        {
@@ -11182,8 +11182,6 @@
 	
 	    "OnSpellStart"
 	    {
-	        "SpendCharge" {}
-	
 	        "RunScript"
 	        {
 	            "ScriptFile"    "items/living_clay.lua"
@@ -11195,6 +11193,10 @@
 	        {
 	            "EffectName"    "Hero_Treant.Overgrowth.Cast"
 	            "Target"        "CASTER"
+	        }
+	        
+	        "SpendCharge" 
+	        {
 	        }
 	    }
 	    
