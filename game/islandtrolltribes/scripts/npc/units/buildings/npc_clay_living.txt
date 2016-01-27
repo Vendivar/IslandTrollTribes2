@@ -1,0 +1,42 @@
+"npc_clay_living"
+{
+	"BaseClass"	"npc_dota_creature"
+	"Model"	"models/armory.vmdl"
+	"SoundSet"	"Creep_Good_Melee"
+	"HasInventory"	"1"
+	"MinimapIconSize"	"250"
+	"HealthBarOffset"	"400"		
+	"ModelScale"	"0.50"
+	"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
+	"RingRadius"	"100"
+	"precache"
+	{
+	}
+
+	"Ability1"	"ability_explode"
+	
+	"ArmorPhysical"	"5"
+	"MagicalResistance"	"0"
+	"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
+	"BountyXP"	"0"
+	"BountyGoldMin"	"0"
+	"BountyGoldMax"	"0"
+	"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
+	"MovementSpeed"	"0"
+	"MovementTurnRate"	"0"
+	"StatusHealth"	"250"
+	"StatusHealthRegen"	"0"
+	"StatusMana"	"1"
+	"StatusManaRegen"	"0"
+	"TeamName"	"DOTA_TEAM_GOODGUYS"
+	"CombatClassDefend"	"DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
+	"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+	"VisionDaytimeRange"	"400"
+	"VisionNighttimeRange"	"350"
+
+	// Building Size
+	//----------------------------------------------------------------
+	"ConstructionSize"			"1"
+	"BlockPathingSize"			"0"
+    "SharedWithTeammates" "1"
+}

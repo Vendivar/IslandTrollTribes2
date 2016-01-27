@@ -23,20 +23,35 @@
 	"UIPickupSound"	"Item.PickUpGemShop"
 	"UIDropSound"	"Item.DropGemShop"
 	"WorldDropSound"	"Item.DropGemWorld"
-	"OnSpellStart"
-	{
-		"SpendCharge"
-		{
-		}
+    
+        "OnAbilityPhaseStart"
+    {
+        "RunScript"
+        {
+            "ScriptFile"    "items/living_clay.lua"
+            "Function"      "CheckPosition"
+            "Target"        "POINT"
+        }
+    }
 
-		"SpawnUnit"
-		{
-			"Target"	"POINT"
-			"UnitName"	"npc_clay_living"
-			"UnitCount"	"1"
-		}
+    "OnSpellStart"
+    {
+        "SpendCharge" {}
 
-	}
+        "RunScript"
+        {
+            "ScriptFile"    "items/living_clay.lua"
+            "Function"      "MakeClayExplosion"
+            "Target"        "POINT"
+        }
+
+        "FireSound"
+        {
+            "EffectName"    "Hero_Treant.Overgrowth.Cast"
+            "Target"        "CASTER"
+        }
+    }
+    
 
 	"AbilitySpecial"
 	{
