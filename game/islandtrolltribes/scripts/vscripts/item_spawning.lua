@@ -38,8 +38,8 @@ REGIONS                     = {}
 --                            {xmin, xmax, ymin, ymax, spawnrate}
 TOPLEFT                     = {-8000, -600, 8000, 500, 1}  
 TOPRIGHT                    = {550, 8000, 8000, 800, 1}
-BOTTOMRIGHT                 = {-1100, -8000, -600, -8000, 1}
-BOTTOMLEFT                  = {950, 8000, -350, -8000, 1}
+BOTTOMLEFT                  = {-8000, -600, -600, -8000, 1}
+BOTTOMRIGHT                 = {550, 8000, -350, -8000, 1}
 REGIONS[1]                  = TOPLEFT
 REGIONS[2]                  = TOPRIGHT
 REGIONS[3]                  = BOTTOMRIGHT
@@ -50,16 +50,29 @@ function ITT:OnItemThink()
     -- if its the first time, we need to set the relative values
     if REL_TINDER_RATE == 0 then
         ITT:UpdateRelativePool()
+        ITT:createInitialItemSet()
     -- over time the spawnrates change, tending from simple fire components, to components for more complex buildings, update these every spawn wave
     else
         ITT:AdjustItemSpawns()
+        ITT:createItemsOnEeachRegion()
     end
+    return GAME_ITEM_TICK_TIME
+end
+
+--Create one item on each region
+function ITT:createItemsOnEeachRegion()
     for i=1, #REGIONS, 1 do
         for ii=1, math.floor(ITEM_BASE * REGIONS[i][5]), 1 do
             item = ITT:SpawnItem(REGIONS[i])
         end
     end
-    return GAME_ITEM_TICK_TIME
+end
+
+--Initially creating some items
+function ITT:createInitialItemSet()
+    for i=1, 10, 1 do
+        ITT:createItemsOnEeachRegion()
+    end
 end
 
 -- Handles spawning in one region
