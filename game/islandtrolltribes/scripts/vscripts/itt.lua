@@ -291,7 +291,7 @@ function ITT:SetHeroIslandPosition(hero, teamID)
     local possiblePositions = GameRules.StartingPositions[hero.Tribe]
 
     for k,v in pairs(possiblePositions) do
-        if v.playerID == -1 then
+        if v.playerID == hero:GetPlayerID() or  v.playerID == -1 then
             FindClearSpaceForUnit(hero, v.position, true)
             hero:SetRespawnPosition(v.position)
             v.playerID = hero:GetPlayerID()
@@ -356,6 +356,9 @@ function ITT:OnHeroInGame( hero )
 end
 
 function ITT:OnHeroRespawn( hero )
+
+    -- Setting the position of the respawned hero
+    ITT:SetHeroIslandPosition(hero, hero:GetTeamNumber())
 
     -- Restart Heat
     Heat:Start(hero)
@@ -576,8 +579,10 @@ function ITT:OnEntityKilled(keys)
             if item and item:GetAbilityName() ~= "item_slot_locked" then
                 killedUnit:DropItemAtPositionImmediate(item, killedUnit:GetAbsOrigin())
                 local pos = killedUnit:GetAbsOrigin()
-                local pos_launch = pos+RandomVector(RandomFloat(100,150))
-                item:LaunchLoot(false, 200, 0.75, pos_launch)
+                local pos_launch = pos + RandomVector(RandomFloat(100,150))
+                local clonedItem = CreateItem(item:GetName(), nil, nil)
+                CreateItemOnPositionSync(pos,clonedItem)
+                clonedItem:LaunchLoot(false, 200, 0.75, pos_launch)
             end
         end
 
