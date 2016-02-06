@@ -10,13 +10,13 @@ function HealingWave(keys)
     local healedUnits = {}
 
     -- heal initial target
-    target:Heal(healing,caster)
-    table.insert(healedUnits, target)
+    --target:Heal(healing,caster)
+    --table.insert(healedUnits, target)
     local healingWave = ParticleManager:CreateParticle("particles/units/heroes/hero_dazzle/dazzle_shadow_wave.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster)
-    ParticleManager:SetParticleControl(healingWave,1,Vector(target:GetAbsOrigin().x,target:GetAbsOrigin().y,target:GetAbsOrigin().z+((target:GetBoundingMaxs().z - target:GetBoundingMins().z)/2)))
+    ParticleManager:SetParticleControl(healingWave,1,Vector(caster:GetAbsOrigin().x,caster:GetAbsOrigin().y,caster:GetAbsOrigin().z+((caster:GetBoundingMaxs().z - caster:GetBoundingMins().z)/2)))
 
     for i=0,bounces do
-        targetPosition = target:GetAbsOrigin()
+        targetPosition = caster:GetAbsOrigin()
         local units = FindUnitsInRadius(teamnumber,
                                     targetPosition,
                                     nil,

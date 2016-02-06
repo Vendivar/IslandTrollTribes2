@@ -7,18 +7,37 @@
 	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
 	"AbilityCastPoint"	"0.2"
 	"AbilityCooldown"	"60"
-	"AbilityCastRange"	"800"
+	"AbilityCastRange"	"3000"
 	"AbilityManaCost"	"30"
 	"MaxLevel"	"1"
 	"Precache"
 	{
-		"particle"	"particles/units/heroes/hero_dazzle/dazzle_shadow_wave.vpcf"
-        "soundfile" "soundevents/game_sounds_heroes/game_sounds_chen.vsndevts"
+	    "particle"  "particles/units/heroes/hero_furion/furion_wrath_of_nature_cast.vpcf"
+	    "soundfile" "soundevents/game_sounds_heroes/game_sounds_furion.vsndevts"
 	}
+
+	"OnAbilityPhaseStart"
+    {
+	    "FireEffect"
+    	{
+            "EffectName"        "particles/units/heroes/hero_furion/furion_wrath_of_nature_cast.vpcf"
+            "EffectAttachType"  "follow_origin"
+            "Target"            "CASTER"
+            "ControlPointEntities"
+            {
+                "CASTER"	"attach_origin"
+                "CASTER"	"attach_hitloc" //attach_weapon in furion.vmdl
+            }
+    	}
+        "FireSound"
+        {
+            "EffectName"	"Hero_Furion.WrathOfNature_Cast.Self"
+            "Target" 		"CASTER"
+        }
+    }
 
 	"OnSpellStart"
 	{
-		// TODO: Ability Specials and take yellow recolor particle from dotacraft
 		"RunScript"
 		{
 			"ScriptFile" "heroes/priest/healing_wave.lua"
@@ -29,11 +48,11 @@
 			"BounceHealingFactor"	"0.9"
 		}
         
-                "FireSound"
-                {
-                    "Target"	"TARGET"
-                    "EffectName"	"Hero_Chen.HandOfGodHealHero"
-                }
+        "FireSound"
+         {
+            "Target"	"TARGET"
+            "EffectName"	"Hero_Chen.HandOfGodHealHero"
+         }
 	}
 
 	"AbilitySpecial"
