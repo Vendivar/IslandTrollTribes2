@@ -111,7 +111,7 @@ function SetLayout(layout)
     for (var j=0; j<layout[key]; j++){
       var child = $.CreatePanel( "Panel", row, "slot" + slot); 
       child.BLoadLayout("file://{resources}/layout/custom_game/containers/inventory_item.xml", false, false);
-      child.data().SetItem( -1, contID, slot, $.GetContextPanel() );
+      child.SetItem( -1, contID, slot, $.GetContextPanel() );
 
       slot++;
     }

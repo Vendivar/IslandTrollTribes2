@@ -1120,6 +1120,26 @@
 	        }
 	    }
 	}
+	"ability_hatch_egg"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityTextureName"	"ability_building_hatchegg"
+	    "MaxLevel"              "1"
+		"Precache"
+		{
+		    "particle"  "particles/custom/fowl_play.vpcf"
+		}
+	
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile" "buildings/hatch_egg.lua"
+				"Function"	"HatchEgg"
+			}
+		}
+	}
 	"ability_pack_up"
 	{
 	    "BaseClass"             "ability_datadriven"
@@ -1434,12 +1454,6 @@
 	            "IsHidden"         "1"
 	        }
 	    }
-	}
-	"ability_hatch_egg"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"ability_building_hatchegg"
-	    "MaxLevel"              "1"
 	}
 	"ability_hawks_evolution"
 	{

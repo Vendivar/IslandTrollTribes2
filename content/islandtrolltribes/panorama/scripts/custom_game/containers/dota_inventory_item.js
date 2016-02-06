@@ -155,7 +155,7 @@ function RightClickItem()
 	var contextMenu = $.CreatePanel( "DOTAContextMenuScript", $.GetContextPanel(), "" );
 	contextMenu.AddClass( "ContextMenu_NoArrow" );
 	contextMenu.AddClass( "ContextMenu_NoBorder" );
-	contextMenu.GetContentsPanel().data().Item = m_Item;
+	contextMenu.GetContentsPanel().Item = m_Item;
 	contextMenu.GetContentsPanel().SetHasClass( "bSellable", bSellable );
 	contextMenu.GetContentsPanel().SetHasClass( "bDisassemble", bDisassemble );
 	contextMenu.GetContentsPanel().SetHasClass( "bShowInShop", bShowInShop );
@@ -167,7 +167,7 @@ function RightClickItem()
 
 function OnDragEnter( a, draggedPanel )
 {
-	var draggedItem = draggedPanel.data().m_DragItem;
+	var draggedItem = draggedPanel.m_DragItem;
 
 	// only care about dragged items other than us
 	if ( draggedItem === null || draggedItem == m_Item )
@@ -180,7 +180,7 @@ function OnDragEnter( a, draggedPanel )
 
 function OnDragDrop( panelId, draggedPanel )
 {
-	var draggedItem = draggedPanel.data().m_DragItem;
+	var draggedItem = draggedPanel.m_DragItem;
 	
 	// only care about dragged items other than us
 	if ( draggedItem === null )
@@ -190,13 +190,13 @@ function OnDragDrop( panelId, draggedPanel )
 	$.GetContextPanel().RemoveClass( "potential_drop_target" );
 
 	// executing a slot swap - don't drop on the world
-	draggedPanel.data().m_DragCompleted = true;
+	draggedPanel.m_DragCompleted = true;
 	
 	// item dropped on itself? don't acutally do the swap (but consider the drag completed)
 	if ( draggedItem == m_Item )
 		return true;
 
-	var fromCont = draggedPanel.data().m_contID;
+	var fromCont = draggedPanel.m_contID;
 
 	if (fromCont == -1){
 		// create the order
@@ -210,7 +210,7 @@ function OnDragDrop( panelId, draggedPanel )
 	}
 	else{
 		GameEvents.SendCustomGameEventToServer( "Containers_OnDragFrom", {unit:Players.GetLocalPlayerPortraitUnit(), contID:fromCont, itemID:draggedItem, 
-			fromSlot:draggedPanel.data().m_OriginalPanel.data().GetSlot(), toContID:-1, toSlot:m_ItemSlot} );
+			fromSlot:draggedPanel.m_OriginalPanel.GetSlot(), toContID:-1, toSlot:m_ItemSlot} );
 	}
 
 	return true;
@@ -218,7 +218,7 @@ function OnDragDrop( panelId, draggedPanel )
 
 function OnDragLeave( panelId, draggedPanel )
 {
-	var draggedItem = draggedPanel.data().m_DragItem;
+	var draggedItem = draggedPanel.m_DragItem;
 	if ( draggedItem === null || draggedItem == m_Item )
 		return false;
 
@@ -242,11 +242,11 @@ function OnDragStart( panelId, dragCallbacks )
 	var displayPanel = $.CreatePanel( "DOTAItemImage", $.GetContextPanel(), "dragImage" );
 	displayPanel.itemname = itemName;
 	displayPanel.contextEntityIndex = m_Item;
-	displayPanel.data().m_DragItem = m_Item;
-	displayPanel.data().m_contID = -1;
-	displayPanel.data().m_DragCompleted = false; // whether the drag was successful
-	displayPanel.data().m_OriginalPanel = $.GetContextPanel();
-	displayPanel.data().m_QueryUnit = m_QueryUnit;
+	displayPanel.m_DragItem = m_Item;
+	displayPanel.m_contID = -1;
+	displayPanel.m_DragCompleted = false; // whether the drag was successful
+	displayPanel.m_OriginalPanel = $.GetContextPanel();
+	displayPanel.m_QueryUnit = m_QueryUnit;
 
 	// hook up the display panel, and specify the panel offset from the cursor
 	dragCallbacks.displayPanel = displayPanel;
@@ -261,7 +261,7 @@ function OnDragStart( panelId, dragCallbacks )
 function OnDragEnd( panelId, draggedPanel )
 {
 
-	if (!IsInStash() && !draggedPanel.data().m_DragCompleted){
+	if (!IsInStash() && !draggedPanel.m_DragCompleted){
 		var position = GameUI.GetScreenWorldPosition( GameUI.GetCursorPosition() );
 		var mouseEntities = GameUI.FindScreenEntities( GameUI.GetCursorPosition() );
 		var entity = null;
@@ -307,9 +307,9 @@ function GetSlot()
 
 (function()
 {
-	$.GetContextPanel().data().SetItem = SetItem;
-	$.GetContextPanel().data().SetItemSlot = SetItemSlot;
-	$.GetContextPanel().data().GetSlot = GetSlot;
+	$.GetContextPanel().SetItem = SetItem;
+	$.GetContextPanel().SetItemSlot = SetItemSlot;
+	$.GetContextPanel().GetSlot = GetSlot;
 
 	// Drag and drop handlers ( also requires 'draggable="true"' in your XML, or calling panel.SetDraggable(true) )
 	$.RegisterEventHandler( 'DragEnter', $.GetContextPanel(), OnDragEnter );

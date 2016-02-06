@@ -1,0 +1,20 @@
+"ability_hatch_egg"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityTextureName"	"ability_building_hatchegg"
+    "MaxLevel"              "1"
+	"Precache"
+	{
+	    "particle"  "particles/custom/fowl_play.vpcf"
+	}
+
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile" "buildings/hatch_egg.lua"
+			"Function"	"HatchEgg"
+		}
+	}
+}

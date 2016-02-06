@@ -1,6 +1,0 @@
-"ability_hatch_egg"
-{
-	"BaseClass"	"ability_datadriven"
-	"AbilityTextureName"	"ability_building_hatchegg"
-    "MaxLevel"              "1"
-}
