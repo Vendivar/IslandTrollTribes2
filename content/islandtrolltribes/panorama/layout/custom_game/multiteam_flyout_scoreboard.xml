@@ -63,7 +63,7 @@
 				<Label class="LegendPanel ScoreCol_Deaths" text="#custom_end_screen_legend_deaths" />
 				<Label class="LegendPanel ScoreCol_Assists" text="#custom_end_screen_legend_assists" />
 			</Panel>
-			<Panel hittest="false" id="_dynamic_team_4" class="FlyoutTeam">
+			<Panel hittest="false" id="_dynamic_team_6" class="FlyoutTeam">
 				<Panel class="FlyoutTeamData">
 					<Panel class="TeamInfo ScoreCol_TeamInfo">
 						<Panel id="TeamColor_GradentFromTransparentLeft" />
@@ -84,7 +84,7 @@
 				<Label class="LegendPanel ScoreCol_Deaths" text="#custom_end_screen_legend_deaths" />
 				<Label class="LegendPanel ScoreCol_Assists" text="#custom_end_screen_legend_assists" />
 			</Panel>
-			<Panel hittest="false" id="_dynamic_team_5" class="FlyoutTeam">
+			<Panel hittest="false" id="_dynamic_team_7" class="FlyoutTeam">
 				<Panel class="FlyoutTeamData">
 					<Panel class="TeamInfo ScoreCol_TeamInfo">
 						<Panel id="TeamColor_GradentFromTransparentLeft" />
