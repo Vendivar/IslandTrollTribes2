@@ -19,8 +19,12 @@ function GetInventoryDetails(hatchery)
         {type="thistle", decides = "bird_type", count=0, selects = "npc_creep_hawk", count=0},
         {type="mushroom", decides = "bird_type", count=0, selects = "npc_creep_hawk", count=0},
         {type="rock_dark", decides = "bird_type", count=0, selects = "npc_creep_hawk", count=0},
-        {type="stick", decides = "ability", count=0, incleases = "health", by = "5%", count=0},
+        
+        {type="clay", decides = "ability", count=0, incleases = "health", by = "5%", count=0},
+        {type="hide",decides = "ability", count=0, incleases = "health", by = "50", count=0},
         {type="butsu",decides = "ability", count=0, incleases = "movement_speed", by = "5%", count=0},
+        {type="stick",decides = "ability", count=0, incleases = "movement_speed", by = "5%", count=0},
+        {type="rock_dark",decides = "ability", count=0, incleases = "all_bonus", by = "1", count=0},
     }
     local inventoryDetails = { isValid = false, totalItemCount = 0, itemTypes = itemTypes,  errorMessage="", firstItem ="" }
     for i=0,5 do
