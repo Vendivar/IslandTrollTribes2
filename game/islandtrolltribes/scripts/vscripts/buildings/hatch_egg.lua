@@ -5,6 +5,7 @@ function HatchEgg(keys)
     if inventoryDetails.isValid then
         local spawnedBird = SpawnBird(SelectBird(inventoryDetails, hero), hatchery)
         ImproveAbility(spawnedBird, inventoryDetails)
+        RemoveInventoryItems( inventoryDetails, hatchery )
     else
         SendErrorMessage(hero:GetPlayerOwnerID(), inventoryDetails.errorMessage)
     end
@@ -12,19 +13,20 @@ end
 
 
 function GetInventoryDetails(hatchery)
+
     local itemTypes = {
         {type="hide", decides = "bird_type", selects = "npc_creep_hawk",  count=0 },
-        {type="clay", decides = "bird_type", count=0, selects = "npc_creep_drake_bone", count=0},
-        {type="spirit", decides = "bird_type", count=0, selects = "npc_creep_hawk", count=0},
-        {type="thistle", decides = "bird_type", count=0, selects = "npc_creep_hawk", count=0},
-        {type="mushroom", decides = "bird_type", count=0, selects = "npc_creep_hawk", count=0},
-        {type="rock_dark", decides = "bird_type", count=0, selects = "npc_creep_hawk", count=0},
+        {type="clay", decides = "bird_type",  selects = "npc_creep_drake_bone", count=0},
+        {type="spirit", decides = "bird_type", selects = "npc_creep_hawk", count=0},
+        {type="thistle", decides = "bird_type", selects = "npc_creep_hawk", count=0},
+        {type="mushroom", decides = "bird_type", selects = "npc_creep_hawk", count=0},
+        {type="rock_dark", decides = "bird_type",  selects = "npc_creep_hawk", count=0},
         
-        {type="clay", decides = "ability", count=0, incleases = "health", by = "5%", count=0},
-        {type="hide",decides = "ability", count=0, incleases = "health", by = "50", count=0},
-        {type="butsu",decides = "ability", count=0, incleases = "movement_speed", by = "5%", count=0},
-        {type="stick",decides = "ability", count=0, incleases = "movement_speed", by = "5%", count=0},
-        {type="rock_dark",decides = "ability", count=0, incleases = "all_bonus", by = "1", count=0},
+        {type="clay", decides = "ability", incleases = "health", by = "5%", count=0},
+        {type="hide",decides = "ability", incleases = "health", by = "50", count=0},
+        {type="butsu",decides = "ability", incleases = "movement_speed", by = "5%", count=0},
+        {type="stick",decides = "ability", incleases = "movement_speed", by = "5%", count=0},
+        {type="rock_dark",decides = "ability", incleases = "all_bonus", by = "1", count=0},
     }
     local inventoryDetails = { isValid = false, totalItemCount = 0, itemTypes = itemTypes,  errorMessage="", firstItem ="" }
     for i=0,5 do
@@ -43,6 +45,29 @@ function GetInventoryDetails(hatchery)
     return inventoryDetails
 end
 
+function RemoveInventoryItems( inventoryDetails, hatchery )
+
+    local resetInventoryDetails = function ()
+        for i,itemType in pairs(inventoryDetails.itemTypes) do
+            itemType.count = 0
+        end
+        inventoryDetails.isValid = false
+        inventoryDetails.totalItemCount = 0
+        inventoryDetails.errorMessage = ""
+        inventoryDetails.firstItem = ""
+    end
+
+    local removeInventoryItems = function( inventoryDetails )
+        for i=0,5 do
+            local item = hatchery:GetItemInSlot(i)
+            if item then
+                hatchery:RemoveItem(item)
+            end
+        end
+        resetInventoryDetails( inventoryDetails )
+    end
+    removeInventoryItems( inventoryDetails, hatchery )
+end
 
 function GetFirstItemofInventory( hatchery )
     if hatchery:GetItemInSlot(0) then
@@ -74,6 +99,7 @@ function SelectBird(inventoryDetails, hero)
     for  i,itemType in pairs(inventoryDetails.itemTypes) do
         if ( itemType.decides == "bird_type" and itemType.count >= 3  ) then
             inventoryDetails.selectedBird = itemType.selects
+            return inventoryDetails.selectedBird
         end
     end
     return inventoryDetails.selectedBird
@@ -91,26 +117,41 @@ end
 
 
 function ImproveAbility(selectedBird, inventoryDetails)
-    local functionList = {}
+    local getIncrement = function(value,by,itemcount)
+        local increment = 0
+        if string.find(by,"%%") then
+            by = string.gsub(by,"%%","") -- Removing percentage sign
+            increment = math.floor(value * ( itemcount * by / 100.0))
+        else
+            increment = itemcount * by
+        end
+        return increment
+    end
 
+    local functionList = {}
     functionList["health"] = function (creep, by, itemcount)
-        local newHealthValue = creep:GetHealth()+  math.floor(creep:GetHealth()* (itemcount*by/100.0))
+        local newHealthValue = creep:GetHealth() + getIncrement(creep:GetHealth(),by,itemcount)
         creep:SetMaxHealth(newHealthValue)
         creep:SetHealth(newHealthValue)
         return creep
     end
 
     functionList["movement_speed"] = function(creep, by, itemcount)
-        creep:SetBaseMoveSpeed(creep:GetBaseMoveSpeed()+ math.floor(creep:GetBaseMoveSpeed()* (itemcount*by/100.0)))
+        local newMovementSpeed = creep:GetBaseMoveSpeed() + getIncrement( creep:GetBaseMoveSpeed(), by, itemcount)
+        creep:SetBaseMoveSpeed(newMovementSpeed)
         return creep
     end
 
+    functionList["all_bonus"] = function(creep, by, itemcount)
+        creep = functionList["health"](creep, by, itemcount )
+        creep = functionList["movement_speed"](creep, by, itemcount )
+        return creep
+    end
 
     for i,itemType in pairs(inventoryDetails.itemTypes) do
         if itemType.decides == "ability" and itemType.count > 0 then
-           local by = string.gsub(itemType.by,"%%","") -- Removing percentage sign
-           local f = functionList[itemType.incleases]
-           selectedBird = f( selectedBird, by, itemType.count )
+            local f = functionList[itemType.incleases]
+            selectedBird = f( selectedBird, itemType.by , itemType.count )
         end
     end
     return selectedBird
