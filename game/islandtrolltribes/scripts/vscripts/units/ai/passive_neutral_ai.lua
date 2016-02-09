@@ -1,5 +1,5 @@
 function Spawn(entityKeyValues)
-	thisEntity:SetContextThink("passive_neutral_ai_think"..thisEntity:GetEntityIndex(), PassiveNeutralThink, 0.5)
+	-- thisEntity:SetContextThink("passive_neutral_ai_think"..thisEntity:GetEntityIndex(), PassiveNeutralThink, 0.5)
 	thisEntity.state = "wander"		--possible states = wander, flee
 	if string.find(thisEntity:GetUnitName(), "elk") then
 		thisEntity.WanderDistance = 1000
@@ -20,10 +20,11 @@ function Spawn(entityKeyValues)
 	--print("starting passive neutral ai for "..thisEntity:GetUnitName()..thisEntity:GetEntityIndex())
 
 	thisEntity.spawnTime = GameRules:GetGameTime()
-	thisEntity.wander_wait_time = GameRules:GetGameTime() + 0	
+	thisEntity.wander_wait_time = GameRules:GetGameTime() + 0
+	Timers:CreateTimer(PassiveNeutralThink, thisEntity)
 end
 
-function PassiveNeutralThink()
+function PassiveNeutralThink(thisEntity)
 	if not thisEntity:IsAlive() then
 		return nil
 	end
@@ -31,19 +32,8 @@ function PassiveNeutralThink()
 	if (thisEntity.state == "wander") then
 		if GameRules:GetGameTime() >= thisEntity.wander_wait_time then
 			local newPosition = thisEntity:GetAbsOrigin() + RandomVector(thisEntity.WanderDistance)
-            -- Keep fish on land
-            if string.find(thisEntity:GetUnitName(), "fish") then
-                -- Use an if so fish don't crash it if they spawn in a bad spot
-                if newPosition.x > 8000 or newPosition.x < -8000 or newPosition.y > 8000 or newPosition.y < -8000 or newPosition.z < 130 then
-                    newPosition = thisEntity:GetAbsOrigin() + RandomVector(thisEntity.WanderDistance)
-                end
-            else
-                while newPosition.x > 8000 or newPosition.x < -8000 or newPosition.y > 8000 or newPosition.y < -8000 do
-                    newPosition = thisEntity:GetAbsOrigin() + RandomVector(thisEntity.WanderDistance)
-                end
-            end
             thisEntity:MoveToPosition(newPosition)
-            
+
 			thisEntity.wander_wait_time = GameRules:GetGameTime() + RandomFloat(thisEntity.MinWaitTime, thisEntity.MaxWaitTime)
 		end
 	elseif (thisEntity.state == "flee") then

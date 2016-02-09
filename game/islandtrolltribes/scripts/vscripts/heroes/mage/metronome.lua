@@ -28,7 +28,7 @@ function Metronome(keys)
         return
     end
 
-    if dieroll <=5 then
+    if dieroll <=49 then
         Timers:CreateTimer(0.1, spellFrostnova)
     else
         print("full metro cast")

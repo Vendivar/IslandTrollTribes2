@@ -1,6 +1,6 @@
 function Spawn(entityKeyValues)
-	thisEntity:SetContextThink("boatmerchantthink"..thisEntity:GetEntityIndex(), boatmerchantthink, 0.25)
-		
+	-- thisEntity:SetContextThink("boatmerchantthink"..thisEntity:GetEntityIndex(), boatmerchantthink, 0.25)
+	Timers:CreateTimer(boatmerchantthink, thisEntity)
 	print("Starting "..thisEntity:GetUnitName().." AI")
 
 	thisEntity.waypointNum = 2
@@ -9,7 +9,10 @@ function Spawn(entityKeyValues)
     thisEntity.state = "move"       --possible states = move, wait
 end
 
-function boatmerchantthink()
+function boatmerchantthink(thisEntity)
+	if not IsValidAlive(thisEntity) then
+		return nil
+	end
 	local path = thisEntity.path
 	if path == nil then
 		path = {"path_ship_waypoint_1","path_ship_waypoint_2","path_ship_waypoint_3","path_ship_waypoint_4","path_ship_waypoint_5", "path_ship_waypoint_6", "path_ship_waypoint_7"}
@@ -24,10 +27,6 @@ function boatmerchantthink()
         thisEntity.trigger:SetOrigin(thisEntity:GetOrigin())
     else
         print("ERROR: No trigger found for "..thisEntity:GetUnitName())
-    end
-
-	if not IsValidAlive(thisEntity) then
-		return nil
 	end
 
 	local distanceToWaypoint = (thisEntity:GetOrigin() - waypointPos):Length2D()

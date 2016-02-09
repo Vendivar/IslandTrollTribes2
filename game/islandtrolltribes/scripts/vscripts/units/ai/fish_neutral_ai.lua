@@ -8,7 +8,7 @@ function Spawn(entityKeyValues)
             return
         end
 
-        thisEntity:SetContextThink("fish_neutral_ai_think"..thisEntity:GetEntityIndex(), FishNeutralThink, 0.5)
+        --thisEntity:SetContextThink("fish_neutral_ai_think"..thisEntity:GetEntityIndex(), FishNeutralThink, 0.5)
         thisEntity.state = "wander"     --possible states = wander, flee
         thisEntity.WanderDistance = 300
         thisEntity.FleeDistance = 300
@@ -19,10 +19,11 @@ function Spawn(entityKeyValues)
 
         thisEntity.spawnTime = GameRules:GetGameTime()
         thisEntity.wander_wait_time = GameRules:GetGameTime()
+        Timers:CreateTimer(FishNeutralThink, thisEntity)
     end)
 end
 
-function FishNeutralThink()
+function FishNeutralThink(thisEntity)
     if not thisEntity:IsAlive() then
         return nil
     end
