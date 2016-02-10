@@ -15,7 +15,8 @@ function TrackUnit(keys)
     dummySpotter.startTime = GameRules:GetGameTime()
     dummySpotter.duration = dur
     dummySpotter.target = target
-    dummySpotter:SetContextThink("dummy_spotter_thinker"..dummySpotter:GetEntityIndex(), MoveDummySpotter, 0.1)
+    -- dummySpotter:SetContextThink("dummy_spotter_thinker"..dummySpotter:GetEntityIndex(), MoveDummySpotter, 0.1)
+    Timers:CreateTimer(MoveDummySpotter, dummySpotter)
 end
 
 function MoveDummySpotter(dummySpotter)
