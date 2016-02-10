@@ -40,7 +40,7 @@
         }
         "FireEffect"
         {
-            "EffectName" "particles/units/heroes/hero_dazzle/dazzle_weave.vpcf"
+            "EffectName" "particles/custom/spray_healing.vpcf"
             "EffectAttachType" "start_at_customorigin"
             "TargetPoint" "POINT"
             "ControlPoints"
@@ -111,6 +111,11 @@
 		{
 			"var_type"	"FIELD_INTEGER"
 			"heal_amount"	"30"
+		}
+		"02"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"radius"	"400"
 		}
     }
 }
