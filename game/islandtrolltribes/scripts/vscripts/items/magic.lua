@@ -66,16 +66,17 @@ function RawMagicMeteor(keys)
     ParticleManager:SetParticleControl(particle, 0, startPoint)
     ParticleManager:SetParticleControl(particle, 1, endPoint)
     ParticleManager:SetParticleControl(particle, 2, duration)
-    
-    caster:SetContextThink(DoUniqueString('meteor_timer'),
-            function()
-                local endMeteor = ParticleManager:CreateParticle('particles/units/heroes/hero_invoker/invoker_chaos_meteor.vpcf', PATTACH_CUSTOMORIGIN, dummy_unit)
-                ParticleManager:SetParticleControl(endMeteor, 0, endPoint)
-                ParticleManager:DestroyParticle(endMeteor, false)
-                ParticleManager:ReleaseParticleIndex(endMeteor)
-                ParticleManager:DestroyParticle(particle, true)
-                ParticleManager:ReleaseParticleIndex(particle)
-            end,
-            0.75)
 
+    local context = {particle =  particle, startPoint= startPoint, endPoint = endPoint,}
+    Timers:CreateTimer(DoUniqueString("meteor_timer"), {callback=RemoveParticles, endTime = 1}, context)
+end
+
+function RemoveParticles(context)
+    local endMeteor = ParticleManager:CreateParticle('particles/units/heroes/hero_invoker/invoker_chaos_meteor.vpcf', PATTACH_CUSTOMORIGIN, dummy_unit)
+    ParticleManager:SetParticleControl(endMeteor, 0, context.endPoint)
+    ParticleManager:DestroyParticle(endMeteor, false)
+    ParticleManager:ReleaseParticleIndex(endMeteor)
+    ParticleManager:DestroyParticle(context.particle, true)
+    ParticleManager:ReleaseParticleIndex(context.particle)
+    return
 end

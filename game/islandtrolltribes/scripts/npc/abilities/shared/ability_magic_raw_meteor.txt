@@ -1,10 +1,10 @@
 "ability_magic_raw_meteor"
 {
 	"BaseClass"	"ability_datadriven"
-	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
 	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_ALL"
-	"AbilityUnitDamageType"	"DAMAGE_TYPE_COMPOSITE"
+	"AbilityUnitDamageType"	"DAMAGE_TYPE_PHYSICAL"
 	"AbilityTextureName"	""
 	"AbilityCastPoint"	"0.0"
 	"AbilityCooldown"	"0"
@@ -78,7 +78,7 @@
 			{
 				"Damage"
 				{
-					"Type"	"DAMAGE_TYPE_COMPOSITE"
+					"Type"	"DAMAGE_TYPE_PHYSICAL"
 					"Damage"	"40"
 					"Target"	"TARGET"
 				}
