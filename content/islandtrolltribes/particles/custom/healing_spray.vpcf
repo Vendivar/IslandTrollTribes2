@@ -32,6 +32,7 @@
 			_class = "C_OP_InterpolateRadius"
 			m_flEndScale = 0.500000
 			m_flBias = 0.750000
+			m_flStartScale = 3.000000
 		},
 		{
 			_class = "C_OP_FadeOutSimple"
@@ -103,7 +104,7 @@
 		},
 		{
 			_class = "C_INIT_CreateWithinSphere"
-			m_fRadiusMax = 16.000000
+			m_fRadiusMax = 160.000000
 			m_vecDistanceBiasAbs =
 			[
 				0.000000,
@@ -112,7 +113,6 @@
 			]
 			m_fSpeedMin = 100.000000
 			m_fSpeedMax = 150.000000
-			m_nControlPointNumber = 3
 		},
 		{
 			_class = "C_INIT_InitialVelocityNoise"
@@ -153,7 +153,6 @@
 			m_fForceAmount = -2000.000000
 			m_fFalloffPower = 0.000000
 			m_flOpEndFadeOutTime = 0.200000
-			m_nControlPointNumber = 3
 		},
 		{
 			_class = "C_OP_AttractToControlPoint"
