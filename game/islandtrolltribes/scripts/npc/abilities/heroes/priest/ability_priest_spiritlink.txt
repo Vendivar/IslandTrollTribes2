@@ -1,0 +1,37 @@
+"ability_priest_spiritlink"
+{
+	"BaseClass"             		"ability_datadriven"
+	"AbilityTextureName"			"ability_priest_spiritlink"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityCooldown"				"30"
+	"AbilityManaCost"				"20"
+	"MaxLevel" 						"1"
+
+    "precache"
+    {
+		"particles"	"particles/blue_grow_pulse_out.vpcf"
+        "particles" "particles/addons_gameplay/pit_lava_blast.vpcf"
+		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_oracle.vsndevts"
+		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
+        "soundfile" "soundevents/spells.vsndevts"
+    }
+
+	"OnSpellStart"
+	{
+        "FireSound"
+        {
+             "EffectName"	"Cure.All"
+             "Target" 		"CASTER"
+        }
+
+        "RunScript"
+        {
+            "ScriptFile" "heroes/priest/spirit_link.lua"
+            "Function" "SpiritLink"
+            "Radius" "4000"
+            "Duration" "130"
+            "Links" "4"
+            "Particle" "particles/units/heroes/hero_dazzle/dazzle_shadow_wave.vpcf"
+        }
+	}
+}
