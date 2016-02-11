@@ -8584,7 +8584,7 @@
 	"ability_mage_spellbook_toggle"
 	{
 		"BaseClass"	"ability_datadriven"
-	    "AbilityBehavior"    	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE"
+	    "AbilityBehavior"    	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityTextureName"	"ability_mage_swap"
 		"MaxLevel"	"1"
 		"AbilityCastPoint"	"0"
@@ -8592,8 +8592,8 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"ToggleSpellBar" 
+				"ScriptFile"	"mechanics\spellbook.lua"
+				"Function"	"SwapSpellBook" 
 			}
 			"FireSound"
 			{
@@ -8605,8 +8605,8 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"ToggleSpellBar" 
+				"ScriptFile"	"mechanics\spellbook.lua"
+				"Function"	"SwapSpellBook" 
 			}
 			"FireSound"
 			{
