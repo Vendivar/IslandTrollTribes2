@@ -62,7 +62,7 @@ function GetNearbyAllies(caster, radius)
         nil,
         radius,
         DOTA_UNIT_TARGET_TEAM_FRIENDLY,
-        DOTA_UNIT_TARGET_CREEP,
+        DOTA_UNIT_TARGET_HERO,
         DOTA_UNIT_TARGET_FLAG_NONE,
         FIND_ANY_ORDER,
         false

@@ -1,0 +1,13 @@
+<root class="Hidden">
+    <styles>
+        <include src="file://{resources}/styles/custom_game/spell_bar.css" />
+    </styles>
+    <scripts>
+        <include src="file://{resources}/scripts/spell_bar_toggle_button.js" />
+    </scripts>
+    <Panel class="SpellBarButtonRoot" hittest="false">
+        <Panel id="SpellBarToggleButton" onactivate="ToggleSpellBar()">
+            <Label id="SpellBarToggleIcon" text="S"/>
+        </Panel>
+    </Panel>
+</root>

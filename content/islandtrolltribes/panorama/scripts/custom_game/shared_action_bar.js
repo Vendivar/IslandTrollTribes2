@@ -1,5 +1,5 @@
 "use strict";
-
+var SpellBar = $.GetContextPanel()
 var queryBuildings = [];
 queryBuildings["npc_building_omnitower"] = "";
 
@@ -96,19 +96,22 @@ function UpdateAbilityList()
   {
   	b = 8;
   }
+  if (b != 19 ){
+    GameUI.CustomUIConfig().EnableToggleSpellBarButton()
+  } else {
+    GameUI.CustomUIConfig().DisableToggleSpellBarButton()
+  }
 	if (hero == queryUnit){
 		for ( var i = b; i < 16 ; ++i )
         {
 			var ability = Entities.GetAbility( queryUnit, i );
-			if ( ability == -1 )
-      {
+			if ( ability == -1 ) {
 				continue;
-      }
-			if ( !Abilities.IsDisplayedAbility(ability) )
-      {
+            }
+			if ( !Abilities.IsDisplayedAbility(ability) ) {
 				continue;
-      }
-      MakeAbilityPanel( abilityListPanel, ability, queryUnit );
+            }
+            MakeAbilityPanel( abilityListPanel, ability, queryUnit );
 		}
 	}
 }
@@ -119,6 +122,8 @@ function UpdateAbilityList()
 	GameEvents.Subscribe( "dota_player_update_selected_unit", UpdateAbilityList );
 	GameEvents.Subscribe( "dota_player_update_query_unit", UpdateAbilityList );
 	GameEvents.Subscribe( "dota_player_pick_hero", UpdateTeamPanel );
-	
+	GameUI.CustomUIConfig().ToggleSpellBar = function() {
+        SpellBar.visible = !SpellBar.visible
+    }
 	UpdateAbilityList(); // initial update
 })();

@@ -10,15 +10,16 @@
 		<CustomUIElement type="FlyoutScoreboard"	layoutfile="file://{resources}/layout/custom_game/multiteam_flyout_scoreboard.xml" />
 		<CustomUIElement type="EndScreen" 			layoutfile="file://{resources}/layout/custom_game/multiteam_end_screen.xml" />
         <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/notifications.xml" />
-        <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/subclass_picker.xml" /> 
-        <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/toolkit.xml" /> 
+        <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/subclass_picker.xml" />
+        <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/toolkit.xml" />
         <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/building_helper.xml" />
         <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/containers/container_base.xml" />
         <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/shared_action_bar.xml" />
+        <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/spell_bar_toggle_button.xml" />
         <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/crafting/crafting_button.xml" />
         <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/crafting/crafting_list.xml" />
         <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/crafting/crafting_building.xml" />
-        
+
         <CustomUIElement type="GameInfo"            layoutfile="file://{resources}/layout/custom_game/images.xml" />
   </Panel>
 </root>
