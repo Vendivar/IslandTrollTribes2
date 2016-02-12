@@ -1,5 +1,6 @@
 function Spawn(entityKeyValues)
-	thisEntity:SetContextThink("skellythink", skellythink, 0.25)
+
+	-- thisEntity:SetContextThink("skellythink", skellythink, 0.25)
 	thisEntity.state = "follow"		--possible states = follow, attack
 	local owner = thisEntity:GetOwner()
 	--FindUnitsInRadius( iTeamNumber, vPosition, hCacheUnit, flRadius, iTeamFilter, iTypeFilter, iFlagFilter, iOrder, bCanGrowCache)
@@ -8,9 +9,11 @@ function Spawn(entityKeyValues)
 	print("starting skelly ai")
 
 	thisEntity.spawnTime = GameRules:GetGameTime()
+	Timers:CreateTimer(skellythink, thisEntity)
+
 end
 
-function skellythink()
+function skellythink( thisEntity )
 	local owner = thisEntity:GetOwner()
 	local followAngle = thisEntity.position
 	local followPosition = owner:GetOrigin() + RotatePosition(Vector(0,0,0), QAngle(0,thisEntity.position,0), owner:GetForwardVector()) * 100

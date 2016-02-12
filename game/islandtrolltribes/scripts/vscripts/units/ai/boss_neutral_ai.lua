@@ -1,5 +1,5 @@
 function Spawn(entityKeyValues)
-	thisEntity:SetContextThink("boss_neutral_ai_think"..thisEntity:GetEntityIndex(), BossNeutralThink, 0.5)
+--	thisEntity:SetContextThink("boss_neutral_ai_think"..thisEntity:GetEntityIndex(), BossNeutralThink, 0.5)
 	thisEntity.state = "wander"		--possible states = wander, attack, sleep, flee
 	thisEntity.WanderDistance = 300
 	thisEntity.FleeDistance = 300
@@ -15,13 +15,14 @@ function Spawn(entityKeyValues)
     thisEntity.MaxFightWaitTime = 20
     thisEntity.Home = thisEntity:GetAbsOrigin()
     thisEntity.Pregame=0;
+	Timers:CreateTimer(BossNeutralThink, thisEntity)
 end
 
 function distance(vec1,vec2) 
  	return math.sqrt((vec1.x-vec2.x)^2 + (vec1.y-vec2.y)^2 + (vec1.z-vec2.z)^2) 
 end
 
-function BossNeutralThink()
+function BossNeutralThink( thisEntity )
 	if not thisEntity:IsAlive() then
 		return nil
 	end
