@@ -77,8 +77,11 @@ end
 
 -- Goes through items and modifiers determining the rate at which the hero should lose heat
 function Heat:CalculateLoss(hero)
-    local heatLoss = -1/3
-    
+    local heatLoss = -1/3 --heat loss is 20 per minute
+    if not GameRules:IsDaytime() then
+        heatLoss = -1/2 --heat loss is 30 per minute
+    end
+
     -- Boots +2 every 35 seconds
     if hero:HasModifier("modifier_boots_heat") then
         heatLoss = heatLoss + 2/35
