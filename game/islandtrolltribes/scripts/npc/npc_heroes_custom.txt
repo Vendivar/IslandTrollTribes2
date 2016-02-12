@@ -205,7 +205,7 @@
 		"Ability2"	"ability_priest_theglow"
 		"Ability3"	"ability_priest_resistall"
 		"Ability4"	"ability_priest_cureall"
-		"Ability5"	"ability_mage_pumpup"
+		"Ability5"	"ability_priest_pumpup"
 		"Ability6"	"ability_priest_sprayhealing"
 		"Ability7"	"ability_priest_pacifyingsmoke"
 		"Ability8"	"ability_priest_mixhealth"
