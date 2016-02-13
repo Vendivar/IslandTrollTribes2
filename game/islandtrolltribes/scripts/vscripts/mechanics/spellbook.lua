@@ -55,12 +55,11 @@ function SwapSpellBook(keys)
         "ability_mage_magefire",
         "ability_mage_reducefood",
         "ability_mage_hypnosis",
-        "ability_mage_dreameater"
+        "ability_mage_anger"
     }
 
     spellBooks[MAGE]["hypnotist"]["book2"] = {
         "ability_mage_spellbook_toggle",
-        "ability_mage_anger",
         "ability_mage_depressionorb",
         "ability_mage_depressionaura",
         "ability_mage_jealousy",
