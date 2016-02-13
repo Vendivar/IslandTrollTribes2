@@ -6,10 +6,13 @@
         <include src="file://{resources}/scripts/crafting/crafting.js" />
         <include src="file://{resources}/scripts/crafting/crafting_list.js" />
     </scripts>
-    <Panel class="CraftingRoot">
+    <Panel class="CraftingRootContainer">
+        <Panel class="CraftingRoot" id="CraftingRoot" onblur="OnBlur()">
+        </Panel>
         <Panel id="CraftingTitlePanel">
             <Label id="CraftingListTitle" text="#itt_craft_menu" />
             <Image id="CloseIcon" onactivate="CloseList()"/>
         </Panel>
     </Panel>
+
 </root>

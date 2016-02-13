@@ -4,10 +4,18 @@ var hero = Players.GetPlayerHeroEntityIndex( Game.GetLocalPlayerID() )
 // Global lazy toggle
 GameUI.CustomUIConfig().ToggleCraftingList = function() {
     Root.visible = !Root.visible
+    if ( Root.visible ) {
+        FocusCraftingList() //When the focus is lost the list should be disappear
+    }
 }
 
 function CloseList() {
     GameUI.CustomUIConfig().ToggleCraftingList()
+}
+
+function FocusCraftingList() {
+   $("#CraftingRoot").SetAcceptsFocus(true)
+   $("#CraftingRoot").SetFocus()
 }
 
 function CreateCraftingList()
@@ -37,8 +45,14 @@ function Hide() {
     Root.visible = false
 }
 
+function OnBlur(){
+    Hide()
+}
+
 (function () {
     CreateCraftingList()
     $.Schedule(0.1, Hide)
+    GameEvents.Subscribe( "dota_player_update_hero_selection", OnBlur);
+    GameEvents.Subscribe( "dota_player_update_query_unit", OnBlur);
     $.Msg("Done creating crafting list")
 })();
