@@ -1,0 +1,57 @@
+//-- Copied from custom_ui.css
+
+.HelpButtonRoot
+{
+    vertical-align: top;
+    horizontal-align: left;
+    margin-top: 90px;
+    margin-left: -1px;
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+#HelpToggleButton
+{
+    padding: 4px;
+    margin-left: -8px;
+    width: 40px;
+    height: 64px;
+    background-color: #25292f;
+    vertical-align: top;
+    horizontal-align: left;
+    transform: translateY( 50% );
+    transform: translateY( 150px );
+    transition-delay: 0.5s;
+    transition-duration: 0.7s;
+    transition-property: transform, box-shadow, opacity;
+    transition-timing-function: ease-in;
+    box-shadow: fill #00000088 -4px -4px 8px 8px;
+    border-radius: 8px;
+}
+
+#HelpToggleIcon
+{
+    color: gradient( linear, 0% 0%, 0% 100%, from( #E0E0E0 ), to( #686868 ) );
+    font-size: 32px;
+    font-family: Goudy Trajan Medium;
+    font-weight: bold;
+    text-align: center;
+    horizontal-align: center;
+    vertical-align: center;
+    text-shadow: 0px 0px 4px 4.0 #000000;
+    opacity: 0.4;
+    margin-left: 5px;
+}
+
+#HelpToggleIcon:hover
+{
+    opacity: 1;
+}
+
+.Hidden
+{
+    visibility: collapse;
+    opacity: 0;
+}

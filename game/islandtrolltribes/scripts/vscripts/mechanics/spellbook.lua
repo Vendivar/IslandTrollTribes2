@@ -30,31 +30,60 @@ function SwapSpellBook(keys)
         "ability_mage_depress",
         "ability_mage_metronome"
     }
-
-    spellBooks[MAGE]["elementalist"]["book1"] = {
+    
+    spellBooks[MAGE]["elementalist"]["book1"] = { 
         "ability_mage_spellbook_toggle",
+        "ability_mage_pumpup",
+        "ability_mage_magefire",
+        "ability_mage_reducefood",
+        "ability_mage_defenderenergy",
+        "ability_mage_electromagnet"
     }
 
     spellBooks[MAGE]["elementalist"]["book2"] = {
         "ability_mage_spellbook_toggle",
+        "ability_mage_eruption",
+        "ability_mage_splittingfire",
+        "ability_mage_chainlightning",
+        "ability_mage_freezingblast",        
+        "ability_mage_stormearthfire"
     }
 
     spellBooks[MAGE]["hypnotist"]["book1"] = {
         "ability_mage_spellbook_toggle",
+        "ability_mage_nulldamage",
+        "ability_mage_magefire",
+        "ability_mage_reducefood",
+        "ability_mage_hypnosis",
+        "ability_mage_dreameater"
     }
 
     spellBooks[MAGE]["hypnotist"]["book2"] = {
         "ability_mage_spellbook_toggle",
+        "ability_mage_anger",
+        "ability_mage_depressionorb",
+        "ability_mage_depressionaura",
+        "ability_mage_jealousy",
+        "ability_mage_seizures",
+        "ability_mage_stupefyingfield"
     }
-
+    
     spellBooks[MAGE]["dementia_master"]["book1"] = {
         "ability_mage_spellbook_toggle",
+        "ability_mage_magefire",
+        "ability_mage_reducefood",
+        "ability_mage_quantum_nulldamage",
+        "ability_mage_giganegativeblast"
     }
 
     spellBooks[MAGE]["dementia_master"]["book2"] = {
         "ability_mage_spellbook_toggle",
+        "ability_mage_metronome",
+        "ability_mage_maddeningdischarge",
+        "ability_mage_dementia_runes",
+        "ability_mage_activate_runes"
     }
-
+    
     spellBooks[PRIEST]["none"]["book1"] = {
         "ability_priest_toggle_spellbar",
         "ability_priest_theglow",

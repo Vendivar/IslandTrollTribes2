@@ -1,0 +1,13 @@
+<root class="Hidden">
+    <styles>
+        <include src="file://{resources}/styles/custom_game/help.css" />
+    </styles>
+    <scripts>
+        <include src="file://{resources}/scripts/help_toggle_button.jsx" />
+    </scripts>
+    <Panel class="HelpButtonRoot" hittest="false">
+        <Panel id="HelpToggleButton" onactivate="ToggleHelp()">
+            <Label id="HelpToggleIcon" text="H"/>
+        </Panel>
+    </Panel>
+</root>

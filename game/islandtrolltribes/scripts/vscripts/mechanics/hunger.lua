@@ -6,8 +6,19 @@ function HungerCheck( event )
     local ability = "sleep_outside"
     if health <= 1 then
         hero:ForceKill(true)
-  --pleasefix elseif mana < 10 then 
-       --pleasefix      hero:CastAbilityNoTarget("sleep_outside", -1)
+        
+   elseif mana < 10 then 
+       if hero then
+        local abilityName = "sleep_outside"
+        local ability = hero:FindAbilityByName(abilityName)
+        if not ability then
+            ability = TeachAbility(hero, abilityName, 1)
+        end
+        if ability:IsFullyCastable() then
+            hero:CastAbilityNoTarget(ability, -1)
+        end
+    end
+    
     elseif mana < 1 then
         hero:ForceKill(true)
     end 
