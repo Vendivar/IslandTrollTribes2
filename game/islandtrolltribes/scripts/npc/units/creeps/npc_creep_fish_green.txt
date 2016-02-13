@@ -2,7 +2,7 @@
 {
 	"BaseClass"	"npc_dota_creature"
 	"ConsideredHero"	"0"
-	"ModelScale"	"0.60"
+	"ModelScale"	"1.10"
 	"Model"	"models/items/hex/fish_hex/fish_hex.vmdl"
 	"Level"	"1"
 	"vscripts"	"units/ai/fish_neutral_ai.lua"
