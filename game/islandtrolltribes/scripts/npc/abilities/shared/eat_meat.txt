@@ -6,7 +6,7 @@
 	"AbilityCastPoint"		"0.0"
 	"AbilityCastAnimation"	"ACT_DOTA_CHANNEL_ABILITY_4"
 	"AbilityChannelTime"	"1.5"
-	"AbilityCooldown"		"0"
+	"AbilityCooldown"		"1.5"
 	"AbilityManaCost"		"0"
     "MaxLevel"              "1"
 
