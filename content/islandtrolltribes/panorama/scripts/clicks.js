@@ -80,8 +80,20 @@ function IsBuilder( entIndex ) {
     return (Entities.GetUnitLabel( entIndex ) == "builder")
 }
 
-// Main mouse event callback
-GameUI.SetMouseCallback( function( eventName, arg ) {
+function ManageCraftListMouseEvents(eventName, arg){
+    if ( eventName === "pressed" || eventName === "doublepressed"){
+        var CONSUME_EVENT = true;
+        var CONTINUE_PROCESSING_EVENT = false;
+        var mPos = GameUI.GetCursorPosition();
+        var GamePos = Game.ScreenXYToWorld(mPos[0], mPos[1]);
+        if (GamePos != null && eventName === "pressed") { //User has clicked on the game area
+            GameUI.CustomUIConfig().HideCraftingList()
+        }
+    }
+    return CONTINUE_PROCESSING_EVENT
+}
+
+function ManageBuildHelperMouseEvents(eventName, arg) {
     var CONSUME_EVENT = true;
     var CONTINUE_PROCESSING_EVENT = false;
     var LEFT_CLICK = (arg === 0)
@@ -109,11 +121,17 @@ GameUI.SetMouseCallback( function( eventName, arg ) {
 
     if ( eventName === "pressed" || eventName === "doublepressed")
     {
-        if (LEFT_CLICK) 
+        if (LEFT_CLICK)
             return false;
-        else if (RIGHT_CLICK) 
-            return OnRightButtonPressed(); 
-        
+        else if (RIGHT_CLICK)
+            return OnRightButtonPressed();
+
     }
     return CONTINUE_PROCESSING_EVENT;
+}
+
+// Main mouse event callback
+GameUI.SetMouseCallback( function( eventName, arg ) {
+    ManageCraftListMouseEvents(eventName, arg) //CraftListener doesn't want to consume events
+    return ManageBuildHelperMouseEvents( eventName, arg ) // It's up to Build helper to decide to consume the event or not.
 } );

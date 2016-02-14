@@ -1,22 +1,17 @@
 .CraftingRoot
 {
-    padding: 0px;
-}
-
-.CraftingRootContainer
-{
     width: 30%;
-    max-height: 830px;
     overflow: scroll;
     flow-children: down;
+    margin-bottom: 200px;
     margin-top: 45px;
+
     vertical-align: top;
     horizontal-align: left;
 
     background-color: gradient( linear, 0% 0%, 0% 100%, from( #191e1e ), to( #292e2e ) );
     border: 2px solid #5e686966;
-    padding: 20px  0px 20px 0px;
-
+    padding: 10px;
 }
 
 .CraftingBuildingRoot
