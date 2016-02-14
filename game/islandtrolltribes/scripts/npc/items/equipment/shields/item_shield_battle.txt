@@ -14,6 +14,7 @@
 
     "AbilityCastRange"          "200" //800
     "AbilityCastPoint"          "0.5"
+    "AbilityCooldown"          "0.5"
     "AbilityDamage"             "25"
 
     "ItemCost"                  "106"
@@ -74,6 +75,46 @@
             "var_type"      "FIELD_INTEGER"
             "bonus_str"     "2"
         }
+        "09"
+        {
+            "var_type"      "FIELD_INTEGER"
+            "bash_damage"     "25"
+        }
+        "10"
+		{
+			"var_type"			"FIELD_FLOAT"
+			"wave_speed"		"2000.0"
+		}
+		"11"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"wave_range_tooltip"	"200"
+		}
+		"12"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"wave_width"		"250"
+		}
+		"13"
+		{
+			"var_type"			"FIELD_FLOAT"
+			"silence_duration"	"5"
+		}
+		"14"
+		{
+			"var_type"			"FIELD_FLOAT"
+			"knockback_distance_max"	"200"
+		}
+		"15"
+		{
+			"var_type"			"FIELD_FLOAT"
+			"knockback_duration"		"0.3"
+		}
+		"16"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"knockback_height"		"0"
+		}
     }
 
     "precache"
@@ -84,6 +125,27 @@
 
     "OnSpellStart"
     {
+    "LinearProjectile"
+		{
+			"Target"			"POINT"
+			"EffectName"		"particles/units/heroes/hero_drow/drow_silence_wave.vpcf"
+			"MoveSpeed"			"%wave_speed"
+			"StartRadius"		"%wave_width"
+			"StartPosition"		"attach_attack1"
+			"EndRadius"			"%wave_width"
+			"FixedDistance"		"%wave_range_tooltip"
+			"TargetTeams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+			"TargetTypes"		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+			"TargetFlags"		"DOTA_UNIT_TARGET_FLAG_NONE"
+			"HasFrontalCone"	"0"
+		}
+		
+		"FireSound"
+		{
+			"EffectName"		"Hero_DrowRanger.Silence"
+			"Target"			"CASTER"
+		}
+        
         "ApplyModifier"
         {
             "ModifierName"   "modifier_shield_battle_debuff"
@@ -116,7 +178,7 @@
         {
             "Target"        "TARGET"
             "Type"          "DAMAGE_TYPE_MAGICAL"
-            "Damage"        "%AbilityDamage"
+            "Damage"        "%bash_damage"
         }
 
         "RunScript"
