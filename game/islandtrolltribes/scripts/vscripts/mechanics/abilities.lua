@@ -64,6 +64,16 @@ function ClearAbilities( unit )
     end
 end
 
+function EnableAllAbilities( unit, visibility )
+    for i=0,15 do
+        local ability = unit:GetAbilityByIndex(i)
+        if ability then
+--            SetAbilityVisibility(unit,ability:GetAbilityName(),visibility)
+            ability:SetActivated(visibility)
+        end
+    end
+end
+
 function QuickDrop(keys)
     local caster = keys.caster
     local point = keys.target_points[1]

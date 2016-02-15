@@ -374,6 +374,27 @@
             }
         }
 
+        "modifier_building_under_construction"
+		{
+			"IsHidden"				"1"
+
+			"OnCreated"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"buildings/build.lua"
+					"Function"		"ApplyUnderConstructionBehavior"
+				}
+			}
+			"OnDestroy"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"buildings/build.lua"
+					"Function"		"RemoveUnderConstructionBehavior"
+				}
+			}
+		}
         ////////////////////////////////////////////////////////
     }
 }

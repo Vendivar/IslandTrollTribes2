@@ -124,6 +124,7 @@ function Build( event )
 
     	-- Particle effect
     	ApplyModifier(unit, "modifier_construction")
+    	ApplyModifier(unit, "modifier_building_under_construction")
 
 	end)
 
@@ -138,6 +139,7 @@ function Build( event )
 
 		-- Let the building cast abilities
 		unit:RemoveModifierByName("modifier_construction")
+		unit:RemoveModifierByName("modifier_building_under_construction")
 
 	end)
 
@@ -497,3 +499,16 @@ function RepairAnimation( event )
 	local caster = event.caster
 	caster:StartGesture(ACT_DOTA_ATTACK)
 end
+
+function ApplyUnderConstructionBehavior( event )
+	print("Appying..")
+	local target = event.target
+	EnableAllAbilities(target, false) -- Disabling all the abilities
+end
+
+function RemoveUnderConstructionBehavior( event )
+	print("Removing..")
+	local target = event.target
+	EnableAllAbilities(target, true) -- Enabling all the abilities
+end
+

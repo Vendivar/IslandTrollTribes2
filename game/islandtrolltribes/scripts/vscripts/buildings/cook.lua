@@ -17,7 +17,7 @@ function AutoCookFood( event )
     local ability = event.ability
     local caster = event.caster
 
-    if ability:GetAutoCastState() and ability:IsFullyCastable() then
+    if ability:GetAutoCastState() and ability:IsFullyCastable() and ability:IsActivated() then
         caster:CastAbilityNoTarget(ability, -1)
     end
 end
