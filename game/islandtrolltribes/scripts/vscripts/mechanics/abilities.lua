@@ -64,6 +64,17 @@ function ClearAbilities( unit )
     end
 end
 
+function GetAllAbilities( unit )
+    local abilityList = {}
+    for i=0,15 do
+        local ability = unit:GetAbilityByIndex(i)
+        if ability then
+            table.insert(abilityList,ability)
+        end
+    end
+    return abilityList
+end
+
 function EnableAllAbilities( unit, visibility )
     for i=0,15 do
         local ability = unit:GetAbilityByIndex(i)

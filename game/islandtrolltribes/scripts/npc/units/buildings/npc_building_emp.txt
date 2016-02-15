@@ -15,6 +15,7 @@
 
 	"Ability1"	""
 	"Ability10"	"ability_building"
+	"Ability11"	"ability_cancel_building"
 	
 	"ArmorPhysical"	"0"
 	"MagicalResistance"	"0"

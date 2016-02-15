@@ -878,6 +878,29 @@
 		}
 	
 	}
+	"ability_cancel_building"
+	{
+	    "BaseClass"             "ability_datadriven"
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	    "AbilityTextureName"    "ability_building_packup"
+	    "AbilityCooldown"       "0.0"
+	    "AbilityChannelTime"    "0.5"
+	    "AbilityManaCost"       "0"
+	
+	    "OnChannelSucceeded"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"    "buildings/cancel_building.lua"
+	            "Function"      "CancelBuilding"
+	        }
+	        "FireSound"
+	        {
+	            "EffectName"    "DOTA_Item.SmokeOfDeceit.Activate"
+	            "Target"        "CASTER"
+	        }
+	    }
+	}
 	// Immobilizes animals for 8 seconds, trolls for 3.25, with a 10 second cooldown.
 	// It can be set to auto-cast for when hostile units are nearby. Autocast is automatically on.
 	"ability_ensnaretrap_ensnare"

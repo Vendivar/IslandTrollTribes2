@@ -19,6 +19,7 @@
 	"Ability3"	"ability_building_restoreheat"
 	"Ability4"	"ability_burn_building"
 	"Ability10"	"ability_building"
+	"Ability11"	"ability_cancel_building"
 	
 	"ArmorPhysical"	"5"
 	"MagicalResistance"	"0"

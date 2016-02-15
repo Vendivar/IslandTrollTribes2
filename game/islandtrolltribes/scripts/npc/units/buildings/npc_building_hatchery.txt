@@ -19,6 +19,7 @@
 	"Ability1"	"ability_hatch_egg"
 	"Ability2"	"ability_hawks_evolution"
 	"Ability10"	"ability_building"
+	"Ability11"	"ability_cancel_building"
 	
 	"ArmorPhysical"	"2"
 	"MagicalResistance"	"0"

@@ -501,14 +501,45 @@ function RepairAnimation( event )
 end
 
 function ApplyUnderConstructionBehavior( event )
-	print("Appying..")
 	local target = event.target
-	EnableAllAbilities(target, false) -- Disabling all the abilities
+	local abilityList = GetAllAbilities(target)
+	local abilityListToDispaly = {}
+
+	for _,ability in pairs(abilityList) do
+		if ability:IsActivated() and not ability:IsHidden() then
+			table.insert(abilityListToDispaly, ability)
+			ability:SetActivated(false)
+			ability:SetHidden(true)
+		end
+	end
+	target.abilityListToDispaly = abilityListToDispaly
+	AddCancelBuildButton(target)
 end
 
 function RemoveUnderConstructionBehavior( event )
-	print("Removing..")
 	local target = event.target
-	EnableAllAbilities(target, true) -- Enabling all the abilities
+	for _, ability in pairs(target.abilityListToDispaly) do
+		ability:SetActivated(true)
+		ability:SetHidden(false)
+	end
+	RemoveCancelBuildButton(target)
+	target.abilityListToDispaly = nil
 end
+
+function AddCancelBuildButton(target)
+	local cancelAbility = target:FindAbilityByName("ability_cancel_building")
+	if cancelAbility ~= nil then
+		cancelAbility:SetActivated(true)
+		cancelAbility:SetHidden(false)
+	end
+end
+
+function RemoveCancelBuildButton(target)
+	local cancelAbility = target:FindAbilityByName("ability_cancel_building")
+	if cancelAbility ~= nil then
+		cancelAbility:SetActivated(false)
+		cancelAbility:SetHidden(true)
+	end
+end
+
 

@@ -134,7 +134,8 @@
 		"Ability1"	"ability_quick_build_armory"
 		"Ability2"	"ability_quick_drop"
 		"Ability10"	"ability_building"
-		
+		"Ability11"	"ability_cancel_building"
+	
 		"ArmorPhysical"	"5"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
@@ -180,6 +181,7 @@
 		"Ability1"	"ability_duel"
 		"Ability2"	"ability_quick_drop"
 		"Ability10"	"ability_building"
+		"Ability11"	"ability_cancel_building"
 		
 		"ArmorPhysical"	"0"
 		"MagicalResistance"	"0"
@@ -223,6 +225,7 @@
 	
 		"Ability1"	""
 		"Ability10"	"ability_building"
+		"Ability11"	"ability_cancel_building"
 		
 		"ArmorPhysical"	"0"
 		"MagicalResistance"	"0"
@@ -269,6 +272,7 @@
 		"Ability1"	"ability_ensnaretrap_ensnare"
 		"Ability2"	"ability_get_corpse"
 		"Ability10"	"ability_building"
+		"Ability11"	"ability_cancel_building"
 		
 		"ArmorPhysical"	"3"
 		"MagicalResistance"	"0"
@@ -315,6 +319,7 @@
 		"Ability3"	"ability_building_restoreheat"
 		"Ability4"	"ability_burn_building"
 		"Ability10"	"ability_building"
+		"Ability11"	"ability_cancel_building"
 		
 		"ArmorPhysical"	"5"
 		"MagicalResistance"	"0"
@@ -361,6 +366,7 @@
 		"Ability3"	"ability_building_restoreheat_magic"
 		"Ability4"	"ability_burn_building_Magic"
 		"Ability10"	"ability_building"
+		"Ability11"	"ability_cancel_building"
 	
 		"ArmorPhysical"	"5"
 		"MagicalResistance"	"0"
@@ -407,6 +413,7 @@
 		"Ability1"	"ability_hatch_egg"
 		"Ability2"	"ability_hawks_evolution"
 		"Ability10"	"ability_building"
+		"Ability11"	"ability_cancel_building"
 		
 		"ArmorPhysical"	"2"
 		"MagicalResistance"	"0"
@@ -452,6 +459,7 @@
 	
 		"Ability1"	"ability_rest_big"
 		"Ability10"	"ability_building"
+		"Ability11"	"ability_cancel_building"
 		
 		"ArmorPhysical"	"5"
 		"MagicalResistance"	"0"
@@ -498,6 +506,7 @@
 	
 		"Ability1"	"ability_rest_big"
 		"Ability10"	"ability_building"
+		"Ability11"	"ability_cancel_building"
 		
 		"ArmorPhysical"	"5"
 		"MagicalResistance"	"0"
@@ -545,6 +554,7 @@
 		"Ability1"	"ability_quick_build_wd_hut"
 		"Ability2"	"ability_quick_drop"
 		"Ability10"	"ability_building"
+		"Ability11"	"ability_cancel_building"
 		
 		"ArmorPhysical"	"5"
 		"MagicalResistance"	"0"
@@ -592,6 +602,7 @@
 		"Ability1"	"ability_mix"
 		"Ability2"	"ability_quick_drop"
 		"Ability10"	"ability_building"
+		"Ability11"	"ability_cancel_building"
 		
 		"ArmorPhysical"	"2"
 		"MagicalResistance"	"0"
@@ -639,6 +650,7 @@
 	
 		"Ability1"	"ability_enemy_target"
 		"Ability10"	"ability_building"
+		"Ability11"	"ability_cancel_building"
 		
 		"ArmorPhysical"	"5"
 		"MagicalResistance"	"0"
@@ -686,6 +698,7 @@
 		"Ability1"	"ability_get_corpse"
 		"Ability2"	"ability_smoke_meat"
 		"Ability10"	"ability_building"
+		"Ability11"	"ability_cancel_building"
 		
 		"ArmorPhysical"	"5"
 		"MagicalResistance"	"0"
@@ -731,6 +744,7 @@
 	
 		"Ability1"	"ability_revive"
 		"Ability10"	"ability_building"
+		"Ability11"	"ability_cancel_building"
 		
 		"ArmorPhysical"	"5"
 		"MagicalResistance"	"0"
@@ -776,6 +790,7 @@
 		}
 	
 		"Ability10"	"ability_building"
+		"Ability11"	"ability_cancel_building"
 	
 		"ArmorPhysical"	"5"
 		"MagicalResistance"	"0"
@@ -824,6 +839,7 @@
 		"Ability3"	"ability_make_coat"
 		"Ability4"	"ability_quick_drop"
 		"Ability10"	"ability_building"
+		"Ability11"	"ability_cancel_building"
 		
 		"ArmorPhysical"	"5"
 		"MagicalResistance"	"0"
@@ -868,6 +884,7 @@
 	
 		"Ability1"	"ability_teleport"
 		"Ability10"	"ability_building"
+		"Ability11"	"ability_cancel_building"
 		
 		"ArmorPhysical"	"5"
 		"MagicalResistance"	"0"
@@ -914,6 +931,7 @@
 		"Ability1"	"ability_rest_small"
 		"Ability2"	"ability_pack_up"
 		"Ability10"	"ability_building"
+		"Ability11"	"ability_cancel_building"
 		
 		"ArmorPhysical"	"0"
 		"MagicalResistance"	"0"
@@ -964,6 +982,7 @@
 		"Ability1"	"ability_quick_build_workshop"
 		"Ability2"	"ability_quick_drop"
 		"Ability10"	"ability_building"
+		"Ability11"	"ability_cancel_building"
 	
 		"ArmorPhysical"	"2"
 		"MagicalResistance"	"0"
