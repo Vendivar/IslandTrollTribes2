@@ -146,6 +146,14 @@ function CheckShopSchedule()
   $.Schedule(1/10, CheckShopSchedule);
 }
 
+function OnEntityKilled( keys) {
+    if (lastSel == keys.entindex_killed) {
+        var sel = Players.GetPlayerHeroEntityIndex(Players.GetLocalPlayer())
+        GameEvents.SendCustomGameEventToServer( "Containers_Select", {entity:sel} );
+        lastSel = sel
+    }
+}
+
 function CheckCouriers()
 {
   var cours = Entities.GetAllEntitiesByClassname("npc_dota_courier");
@@ -233,6 +241,7 @@ function ScreenHeightWidth()
 
   GameEvents.Subscribe( "dota_player_update_selected_unit", CheckShop );
   GameEvents.Subscribe( "dota_player_update_query_unit", CheckShop );
+  GameEvents.Subscribe( "entity_killed", OnEntityKilled );
 
   var use = CustomNetTables.GetTableValue( "containers_lua", "use_panorama_inventory" );
   if (use)
