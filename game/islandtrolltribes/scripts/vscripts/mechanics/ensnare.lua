@@ -12,7 +12,11 @@ end
 
 function RegainMovement( event )
     local target = event.target
+    local attacker = event.caster
     if target.flying and target:IsAlive() then
         target:SetMoveCapability(DOTA_UNIT_CAP_MOVE_FLY)
+    end
+    if attacker:IsAttacking() then
+       attacker:Stop()
     end
 end

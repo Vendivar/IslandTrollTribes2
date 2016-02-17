@@ -72,5 +72,4 @@ function MakeVisible(panel) {
     GameEvents.Subscribe( "building_crafting_hide", HideCurrent );
     GameEvents.Subscribe( "dota_player_update_selected_unit", Crafting_OnUpdateSelectedUnits );
     GameEvents.Subscribe( "building_updated", UpdateUnfinishedBuildingList );
-    GameEvents.Subscribe( "building_updated", UpdateUnfinishedBuildingList );
 })();
