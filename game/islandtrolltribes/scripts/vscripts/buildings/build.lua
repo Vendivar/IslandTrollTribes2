@@ -502,6 +502,7 @@ end
 
 function ApplyUnderConstructionBehavior( event )
 	local target = event.target
+	CustomGameEventManager:Send_ServerToAllClients("building_updated",{building=target:GetEntityIndex(), status="started"})
 	local abilityList = GetAllAbilities(target)
 	local abilityListToDispaly = {}
 
@@ -524,6 +525,7 @@ function RemoveUnderConstructionBehavior( event )
 	end
 	RemoveCancelBuildButton(target)
 	target.abilityListToDispaly = nil
+	CustomGameEventManager:Send_ServerToAllClients("building_updated",{building=target:GetEntityIndex(), status="completed"})
 end
 
 function AddCancelBuildButton(target)
