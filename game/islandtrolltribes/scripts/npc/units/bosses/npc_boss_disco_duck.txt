@@ -42,5 +42,4 @@
 	"BountyGoldMax"	"0"
 	"RingRadius"	"100"
 	"HealthBarOffset"	"250"
-	"BoundsHullName"	"DOTA_HULL_SIZE_HUGE"
 }
