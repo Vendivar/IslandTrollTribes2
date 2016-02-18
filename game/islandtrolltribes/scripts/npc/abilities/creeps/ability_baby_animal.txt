@@ -16,6 +16,15 @@
                 "MODIFIER_STATE_NOT_ON_MINIMAP" "MODIFIER_STATE_VALUE_ENABLED"
                 //"MODIFIER_STATE_NO_HEALTH_BAR"  "MODIFIER_STATE_VALUE_ENABLED"
             }
+            "OnCreated"
+            {
+                "RunScript"
+                {
+                    "ScriptFile"    "units/baby_animal.lua"
+                    "Function"      "StartDespawnTimer"
+                    "Lifetime"      "120.0"
+                }
+            }
         }
     }
 }
