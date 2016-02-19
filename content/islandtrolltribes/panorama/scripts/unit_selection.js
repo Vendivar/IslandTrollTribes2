@@ -133,10 +133,15 @@ function OnUpdateQueryUnit( event )
 	$.Msg( "OnUpdateQueryUnit" );
 }
 
+function SelectSingleUnit(event) {
+    GameUI.SelectUnit(event.unit, false)
+}
+
 (function () {
 	GameEvents.Subscribe( "add_to_selection", AddToSelection );
 	GameEvents.Subscribe( "remove_from_selection", RemoveFromSelection);
 	GameEvents.Subscribe( "new_selection", NewSelection);
+	GameEvents.Subscribe( "custom_event_select_unit", SelectSingleUnit);
 	GameEvents.Subscribe( "dota_player_update_selected_unit", OnUpdateSelectedUnit );
 	GameEvents.Subscribe( "dota_player_update_query_unit", OnUpdateQueryUnit );
 })();
