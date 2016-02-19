@@ -16,19 +16,22 @@ function ITT:FilterExecuteOrder( filterTable )
     local unitIndex = units["0"]
     local unit = EntIndexToHScript(unitIndex)
 
+    local CONSUME_EVENT = false
+    local CONTINUE_PROCESSING_EVENT = true
+
     -- Drop orders for units that we don't want to be shared
     if unit then
         local owner = unit:GetPlayerOwnerID()
         if issuer ~= -1 and owner ~= -1 and issuer ~= owner and not unit:IsSharedWithTeammates() then
             print("Denied order because issuer is "..issuer.." owner is "..owner.." and the unit is not shared with teammates")
-            return false
-        end
+            return CONSUME_EVENT
+    end
     end
 
     -- Skip Prevents order loops
     if unit and unit.skip then
         unit.skip = false
-        return true
+        return CONTINUE_PROCESSING_EVENT
     end
 
     -- Order Timers Reset
@@ -51,8 +54,8 @@ function ITT:FilterExecuteOrder( filterTable )
         local target = EntIndexToHScript(targetIndex)
         if target.HasFlyMovementCapability and IsFlyingUnit(target) then
             SendErrorMessage(issuer, "#error_cant_attack_air")
-            return false
-        end
+            return CONSUME_EVENT
+    end
     end
 
     ------------------------------------------------
@@ -67,12 +70,12 @@ function ITT:FilterExecuteOrder( filterTable )
         local rangeToTarget = unit:GetRangeToUnit(target)
         if not CanTakeItem(target) then
             SendErrorMessage(issuer, "#error_inventory_full")
-            return false
-        end
-        
+            return CONSUME_EVENT
+    end
+
         if rangeToTarget <= ITEM_TRANSFER_RANGE then
             TransferItem(unit, target, item)
-            return false
+            return CONSUME_EVENT
         else
             -- If its a building targeting a hero, order the hero to move towards the building
             -- The building will transfer the item to the hero inventory as soon as it gets close
@@ -81,8 +84,8 @@ function ITT:FilterExecuteOrder( filterTable )
             if IsCustomBuilding(unit) then
                 local transfer_position = origin + (target_origin - origin):Normalized() * ITEM_TRANSFER_RANGE
                 target.skip = true
-                ExecuteOrderFromTable({ UnitIndex = targetIndex, OrderType = DOTA_UNIT_ORDER_MOVE_TO_POSITION, Position = transfer_position, Queue = queue}) 
-                                
+                ExecuteOrderFromTable({ UnitIndex = targetIndex, OrderType = DOTA_UNIT_ORDER_MOVE_TO_POSITION, Position = transfer_position, Queue = queue})
+
                 -- Transfer the item when the hero gets within the transfer range
                 unit.orderTimer = Timers:CreateTimer(function()
                     if IsValidAlive(unit) and IsValidAlive(target) and (unit:GetAbsOrigin() - target:GetAbsOrigin()):Length2D() <= ITEM_TRANSFER_RANGE+25 then
@@ -100,8 +103,8 @@ function ITT:FilterExecuteOrder( filterTable )
                 local transfer_position = target_origin + (origin - target_origin):Normalized() * ITEM_TRANSFER_RANGE
 
                 unit.skip = true
-                ExecuteOrderFromTable({ UnitIndex = unitIndex, OrderType = DOTA_UNIT_ORDER_MOVE_TO_POSITION, Position = transfer_position, Queue = queue}) 
-                
+                ExecuteOrderFromTable({ UnitIndex = unitIndex, OrderType = DOTA_UNIT_ORDER_MOVE_TO_POSITION, Position = transfer_position, Queue = queue})
+
                 -- Check for drop distance
                 unit.orderTimer = Timers:CreateTimer(function()
                     if IsValidAlive(unit) and IsValidAlive(target) and (unit:GetAbsOrigin() - target:GetAbsOrigin()):Length2D() <= ITEM_TRANSFER_RANGE+25 then
@@ -114,13 +117,13 @@ function ITT:FilterExecuteOrder( filterTable )
                     return 0.1
                 end)
 
-                return false
+                return CONSUME_EVENT
 
             -- Hero to Hero
             else
                 unit.skip = true
-                ExecuteOrderFromTable({ UnitIndex = unitIndex, OrderType = DOTA_UNIT_ORDER_MOVE_TO_TARGET, TargetIndex = targetIndex, Queue = queue}) 
-              
+                ExecuteOrderFromTable({ UnitIndex = unitIndex, OrderType = DOTA_UNIT_ORDER_MOVE_TO_TARGET, TargetIndex = targetIndex, Queue = queue})
+
                 -- Check for drop distance
                 unit.orderTimer = Timers:CreateTimer(function()
                     if IsValidAlive(unit) and IsValidAlive(target) and (unit:GetAbsOrigin() - target:GetAbsOrigin()):Length2D() <= ITEM_TRANSFER_RANGE+25 then
@@ -134,11 +137,11 @@ function ITT:FilterExecuteOrder( filterTable )
                     return 0.1
                 end)
 
-                return false
-            end
+                return CONSUME_EVENT
+        end
         end
 
-        return true
+        return CONTINUE_PROCESSING_EVENT
     end
 
     ------------------------------------------------
@@ -147,7 +150,7 @@ function ITT:FilterExecuteOrder( filterTable )
     if order_type == DOTA_UNIT_ORDER_DROP_ITEM then
         local item = EntIndexToHScript(abilityIndex)
         local origin = unit:GetAbsOrigin()
-        
+
         -- Drop the item if within the extended range
         local distance = (origin - point):Length2D()
         if distance <= ITEM_TRANSFER_RANGE then
@@ -165,8 +168,8 @@ function ITT:FilterExecuteOrder( filterTable )
                 -- Move towards the position and drop the item at the extended range
                 local drop_position = point - (point - origin):Normalized() * ITEM_TRANSFER_RANGE
                 unit.skip = true
-                ExecuteOrderFromTable({ UnitIndex = unitIndex, OrderType = DOTA_UNIT_ORDER_MOVE_TO_POSITION, Position = drop_position, Queue = queue}) 
-                
+                ExecuteOrderFromTable({ UnitIndex = unitIndex, OrderType = DOTA_UNIT_ORDER_MOVE_TO_POSITION, Position = drop_position, Queue = queue})
+
                 -- Check for drop distance
                 unit.orderTimer = Timers:CreateTimer(function()
                     if IsValidAlive(unit) and (unit:GetAbsOrigin() - point):Length2D() <= ITEM_TRANSFER_RANGE+25 then
@@ -179,8 +182,8 @@ function ITT:FilterExecuteOrder( filterTable )
                 end)
             end
         end
-        
-        return false
+
+        return CONSUME_EVENT
     end
 
     ------------------------------------------------
@@ -198,7 +201,7 @@ function ITT:FilterExecuteOrder( filterTable )
         if drop.container then
             return true
         end
-        
+
         local position = drop:GetAbsOrigin()
         local origin = unit:GetAbsOrigin()
 
@@ -222,7 +225,7 @@ function ITT:FilterExecuteOrder( filterTable )
                 end
 
                 local pickedUp = PickupItem(unit, drop)
-                if not pickedUp then 
+                if not pickedUp then
                     SendErrorMessage(issuer, "#error_inventory_full")
                 end
             else
@@ -234,8 +237,8 @@ function ITT:FilterExecuteOrder( filterTable )
 
             -- Move towards the drop position and pickup the item
             unit.skip = true
-            ExecuteOrderFromTable({ UnitIndex = unitIndex, OrderType = DOTA_UNIT_ORDER_MOVE_TO_POSITION, Position = position, Queue = queue}) 
-            
+            ExecuteOrderFromTable({ UnitIndex = unitIndex, OrderType = DOTA_UNIT_ORDER_MOVE_TO_POSITION, Position = position, Queue = queue})
+
             -- Check for drop distance
             unit.orderTimer = Timers:CreateTimer(function()
                 if IsValidAlive(unit) and (unit:GetAbsOrigin() - position):Length2D() <= DEFAULT_TRANSFER_RANGE then
@@ -250,10 +253,27 @@ function ITT:FilterExecuteOrder( filterTable )
             end)
         end
 
-        return false
+        return CONSUME_EVENT
     end
+    if ITT:HandleOrdersIssuedByBuildings( filterTable ) then
+        return CONSUME_EVENT
+    end
+    return CONTINUE_PROCESSING_EVENT
+end
 
-    return true
+function ITT:HandleOrdersIssuedByBuildings( order )
+    local unitIndex = order["units"]["0"]
+    local unit = EntIndexToHScript(unitIndex)
+    local targetPosition = Vector(tonumber(order["position_x"]),tonumber(order["position_y"]),tonumber(order["position_z"]))
+    local CONSUME_EVENT = true
+    local CONTINUE_PROCESSING_EVENT = false
+
+    if not string.find(unit:GetUnitName(),"npc_building") then
+        return CONTINUE_PROCESSING_EVENT
+    end
+    unit:GetOwner().skip = true
+    ExecuteOrderFromTable({ UnitIndex = unit:GetOwner():GetEntityIndex(), OrderType = DOTA_UNIT_ORDER_MOVE_TO_POSITION, Position = targetPosition, Queue = false})
+    return CONSUME_EVENT
 end
 
 -- Orders casting a rest ability on the playerID hero
