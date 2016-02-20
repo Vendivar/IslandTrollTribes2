@@ -17,6 +17,7 @@ function ability_revive:OnChannelFinish( bInterrupted )
         if not bInterrupted and not hero:IsAlive() then
             hero:SetRespawnPosition(caster:GetAbsOrigin())
             hero:RespawnUnit()
+            ITT:SetDefaultCosmetics(hero)
             FindClearSpaceForUnit(hero, caster:GetAbsOrigin(), true)
             --caster:EmitSound("Hero_SkeletonKing.Reincarnation") --Gotta precache, not sure how to, in KV or here?
         end

@@ -284,7 +284,7 @@ function HandleOrdersIssuedByBuildings( order )
     if  IsMoveOrder(order)  then
         handledTheOrder =  HandleMoveOrdersByBuildings(order)
     end
-    return handledTheOrder
+    return not handledTheOrder -- If successfully processed, false should be returned to consume the event.
 end
 
 -- Orders casting a rest ability on the playerID hero
