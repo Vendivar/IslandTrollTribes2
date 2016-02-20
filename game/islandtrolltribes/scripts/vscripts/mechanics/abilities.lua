@@ -55,6 +55,15 @@ function PrintAbilities( unit )
     end
 end
 
+function HideAllAbilities(unit)
+    for i=0,15 do
+        local ability = unit:GetAbilityByIndex(i)
+        if ability then
+            ability:SetHidden(true)
+        end
+    end
+end
+
 function ClearAbilities( unit )
     for i=0,15 do
         local ability = unit:GetAbilityByIndex(i)

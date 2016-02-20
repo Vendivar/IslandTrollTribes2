@@ -102,10 +102,20 @@ function SwapSpellBook(keys)
 
     spellBooks[PRIEST]["booster"]["book1"] = {
         "ability_priest_toggle_spellbar",
+        "ability_priest_theglow",
+        "ability_priest_resistall",
+        "ability_priest_cureall",
+        "ability_priest_pumpup",
+        "ability_priest_omnicure",
     }
 
     spellBooks[PRIEST]["booster"]["book2"] = {
         "ability_priest_toggle_spellbar",
+        "ability_priest_lightningshield",
+        "ability_priest_fortitude",
+        "ability_priest_trollbattlecall",
+        "ability_priest_spiritlink",
+        "ability_priest_angelicelemental",
     }
 
     spellBooks[PRIEST]["master_healer"]["book1"] = {
@@ -140,9 +150,10 @@ function SwapTheSpellBook(caster)
 end
 
 function HideTheSpellBook(caster, spellbook)
-    for _,spell in pairs(spellbook) do
+--[[    for _,spell in pairs(spellbook) do
         SetAbilityVisibility (caster, spell,false)
-    end
+    end]]
+    HideAllAbilities(caster)
 end
 
 function ShowTheSpellBook(caster, spellbook)
