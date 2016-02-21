@@ -22,3 +22,9 @@ settings.kv
 # Sounds
 *.wav
 content/islandtrolltribes/models/mixing_potbone.vmdl
+content/islandtrolltribes/tooltips_english.txt
+*.vmat_c
+game/islandtrolltribes/panorama/images/custom_game/game_info/fire_psd.vtex_c
+*.vmat_c
+game/islandtrolltribes/materials/overviews/islandtrolltribesa8.vmat_c
+*.vmat_c

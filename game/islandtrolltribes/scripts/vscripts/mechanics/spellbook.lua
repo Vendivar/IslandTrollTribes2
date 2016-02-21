@@ -89,7 +89,7 @@ function SwapSpellBook(keys)
         "ability_priest_cureall",
         "ability_priest_resistall",
         "ability_priest_pumpup",
-        "ability_priest_sprayhealing",
+        "ability_priest_sprayhealing"
     }
 
     spellBooks[PRIEST]["none"]["book2"] = {
@@ -106,7 +106,7 @@ function SwapSpellBook(keys)
         "ability_priest_resistall",
         "ability_priest_cureall",
         "ability_priest_pumpup",
-        "ability_priest_omnicure",
+        "ability_priest_omnicure"
     }
 
     spellBooks[PRIEST]["booster"]["book2"] = {
@@ -115,15 +115,24 @@ function SwapSpellBook(keys)
         "ability_priest_fortitude",
         "ability_priest_trollbattlecall",
         "ability_priest_spiritlink",
-        "ability_priest_angelicelemental",
+        "ability_priest_angelicelemental"
     }
 
     spellBooks[PRIEST]["master_healer"]["book1"] = {
         "ability_priest_toggle_spellbar",
+        "ability_priest_theglow",
+        "ability_priest_resistall",
+        "ability_priest_cureall",
+        "ability_priest_omnicure",
+		"ability_priest_selfpreservation"
     }
-
     spellBooks[PRIEST]["master_healer"]["book2"] = {
         "ability_priest_toggle_spellbar",
+		"ability_priest_sprayhealing",
+		"ability_priest_healingwave",
+		"ability_priest_rangedheal",
+		"ability_priest_mixall",
+		"ability_priest_replenish"
     }
 
     spellBooks[PRIEST]["shaman"]["book1"] = {

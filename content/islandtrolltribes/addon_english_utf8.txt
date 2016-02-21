@@ -9,9 +9,10 @@
 		"Neutrals"        							"Neutral Team"
 		"NoTeam"          							"No Team"
 
-		"DOTA_GoodGuys"   							"East Tribe"	
-		"DOTA_BadGuys"    							"West Tribe"
-		"DOTA_Custom1"    							"South Tribe"	
+		"DOTA_GoodGuys"   							"North Tribe"	
+		"DOTA_BadGuys"    							"East Tribe"
+		"DOTA_Custom1"    							"West Tribe"	
+		"DOTA_Custom2"    							"South Tribe"	
 
 		"error_must_target_baby_animal"           "Must target a wild baby animal."
 		
@@ -883,9 +884,10 @@
 
 //HUNTER
 
-"DOTA_Tooltip_ability_ability_hunter_challenge"		"Ability Hunter Challenge"
-"DOTA_Tooltip_ability_ability_hunter_challenge_Description"		""
+"DOTA_Tooltip_ability_ability_hunter_challenge"		"Challenge"
+"DOTA_Tooltip_ability_ability_hunter_challenge_Description"		"Enemies are forced to attack the juggernaut, but he cannot attack or move during this time. Enemies can still use items during this time."
 "DOTA_Tooltip_ability_ability_hunter_challenge_movement_decrease"		"MOVEMENT DECREASE:"
+"DOTA_Tooltip_ability_ability_hunter_challenge_attack_decrease"		"ATTACK SPEED DECREASE:"
 "DOTA_Tooltip_ability_ability_hunter_challenge_radius"		"RADIUS:"
 "DOTA_Tooltip_modifier_hunter_challenge_caster_Description"		""
 "DOTA_Tooltip_modifier_hunter_challenge_target"		"Hunter Challenge Target"
@@ -1035,6 +1037,10 @@
 "DOTA_Tooltip_Ability_ability_priest_healingspray"		"Healing Spray"
 "DOTA_Tooltip_Ability_ability_priest_healingspray_Description"		"Casts a healing spell on your target, healing a small portion of health instantly."
 "DOTA_Tooltip_ability_ability_priest_sprayhealing_heal_amount"                    "HEAL AMOUNT:"
+"DOTA_Tooltip_ability_ability_priest_sprayhealing_radius"                        "RADIUS:"
+"DOTA_Tooltip_Ability_ability_priest_sprayhealing"		"Spray Healing"
+"DOTA_Tooltip_Ability_ability_priest_sprayhealing_Description"		"Heals other units for in a AoE. Does not heal the Priest himself."
+"DOTA_Tooltip_Ability_ability_priest_sprayhealing_Lore"		"Spray your healing all over your ally."
 
 		
         
@@ -1184,11 +1190,6 @@
 
 
 
-"DOTA_Tooltip_Ability_ability_priest_sprayhealing"		"Spray Healing"
-"DOTA_Tooltip_Ability_ability_priest_sprayhealing_Description"		"Heals other units for in a AoE. Does not heal the Priest himself.\n\nHEAL AMOUNT: <font color='#777777'>50</font>\nRADIUS: <font color='#777777'>400</font>"
-"DOTA_Tooltip_Ability_ability_priest_sprayhealing_Lore"		"Spray your healing all over your ally."
-
-
 "DOTA_Tooltip_Ability_ability_priest_toggle_spellbar"		"Next Spells"
 
 
@@ -1201,10 +1202,10 @@
 
 
 "DOTA_Tooltip_Ability_ability_priest_theglow"		"The Glow"
-"DOTA_Tooltip_ability_ability_priest_theglow_attack_speed"		"ATTACK SPEED:"
+"DOTA_Tooltip_ability_ability_priest_theglow_attack_speed"		"%ATTACK SPEED:"
 "DOTA_Tooltip_Ability_ability_priest_theglow_Description"		"Grants a movement bonus and attack speed bonus in a AOE. Also grants periodic bonus heat."
 "DOTA_Tooltip_ability_ability_priest_theglow_heat"		"HEAT:"
-"DOTA_Tooltip_ability_ability_priest_theglow_move_speed"		"MOVE SPEED:"
+"DOTA_Tooltip_ability_ability_priest_theglow_move_speed"		"%MOVE SPEED:"
 "DOTA_Tooltip_ability_ability_priest_theglow_radius"		"RADIUS:"
 "DOTA_Tooltip_ability_ability_priest_theglow_tick_rate"		"TICK RATE:"
 "DOTA_Tooltip_modifier_glow_restore"		"Glow Restore"
@@ -1257,7 +1258,12 @@
 "DOTA_Tooltip_modifier_shadowsight_Description"		""
 
 
+"DOTA_Tooltip_ability_ability_scout_scry"                                         "Scry"
+"DOTA_Tooltip_ability_ability_scout_scry_Description"                             "Allows the spy to see into a small area for a brief duration. Time and duration increase with each level."
+"DOTA_Tooltip_ability_ability_scout_scry_radius"                                  "RADIUS:"
+"DOTA_Tooltip_ability_ability_scout_scry_duration"                                "DURATION:"
 
+		
 "DOTA_Tooltip_ability_ability_scout_ward_collision"		"Scout Ward"
 "DOTA_Tooltip_ability_ability_scout_ward_collision_Description"		""
 "DOTA_Tooltip_ability_ability_scout_ward_lifetime"		"Scout Ward"
@@ -1516,29 +1522,44 @@
 // Items
 
 "DOTA_Tooltip_ability_item_any_herb"                                              "Any Herb"
-"DOTA_Tooltip_ability_item_any_herb_Description"                                  ""
+"DOTA_Tooltip_ability_item_any_herb_Description"                                  "Any herb means anything found from any plant bush."
 
 "DOTA_Tooltip_ability_item_any_hide"                                              "Any Hide"
-"DOTA_Tooltip_ability_item_any_hide_Description"                                  ""
+"DOTA_Tooltip_ability_item_any_hide_Description"                                  "Hides include: Elk, Wolf, and Bear Hide"
 
 "DOTA_Tooltip_ability_item_any_stick_bone"                                        "Any Stick or Bone"
 "DOTA_Tooltip_ability_item_any_stick_bone_Description"                            ""
 
 
-"DOTA_Tooltip_ability_item_boots_any"                                             "Boots Any"
+"DOTA_Tooltip_ability_item_any_gloves"                                            "Any Basic Gloves"
+"DOTA_Tooltip_ability_item_any_gloves_Description"                                "Gloves Include: Elk Gloves, Wolf Gloves, Bear Gloves"
 
-"DOTA_Tooltip_ability_item_boots_any_Description"                                 ""
-"DOTA_Tooltip_ability_item_coat_any"                                              "Any Basic Coat"
+"DOTA_Tooltip_ability_item_any_coat"                                              "Any Basic Coat"
+"DOTA_Tooltip_ability_item_any_coat_Description"                                  "Coats Include: Elk Coat, Wolf Coat, Bear Coat"
+
+"DOTA_Tooltip_ability_item_any_special_herb"                                      "Any Special Herb"
+"DOTA_Tooltip_ability_item_any_special_herb_Description"                          "Herbs Include: Red Herb, Blue Herb, Yellow Herb, Purple Herb"
+
+"DOTA_Tooltip_ability_item_any_boots"                                             "Any Basic Boots"
+"DOTA_Tooltip_ability_item_any_boots_Description"                                 "Boots Include: Elk Boots, Wolf Boots, Bear Boots"
+
+
+"DOTA_Tooltip_ability_item_coat_any"                                              "Coat Any"
 "DOTA_Tooltip_ability_item_coat_any_Description"                                  ""
 
-"DOTA_Tooltip_ability_item_gloves_any"                                            "Any Basic Gloves"
+"DOTA_Tooltip_ability_item_gloves_any"                                            "Gloves Any"
 "DOTA_Tooltip_ability_item_gloves_any_Description"                                ""
 
-"DOTA_Tooltip_ability_item_herb_special_any"                                      "Any Special Herb"
-"DOTA_Tooltip_ability_item_herb_special_any_Description"                          "Herbs Include: Red Herb, Blue Herb, Yellow Herb, Purple Herb"
+"DOTA_Tooltip_ability_item_coat_any"                                              "Coat Any"
+"DOTA_Tooltip_ability_item_coat_any_Description"                                  ""
+
+"DOTA_Tooltip_ability_item_gloves_any"                                            "Gloves Any"
+"DOTA_Tooltip_ability_item_gloves_any_Description"                                ""
 
 		
-
+"DOTA_Tooltip_ability_item_trap_crate"                                            "Trap Crate"
+"DOTA_Tooltip_ability_item_trap_crate_Description"                                ""
+	
 "DOTA_Tooltip_ability_item_acorn"		"Acorn"
 "DOTA_Tooltip_ability_item_acorn_Description"		"ACTIVE: Consume acorn for health.\n\nA tiny seed found in the wild."
 "DOTA_Tooltip_ability_item_acorn_heal_amount"		"HEAL AMOUNT:"
@@ -2642,7 +2663,7 @@
 "DOTA_Tooltip_ability_item_shield_battle_bonus_agi"		"+$AGI"
 "DOTA_Tooltip_ability_item_shield_battle_bonus_int"		"+$INT"
 "DOTA_Tooltip_ability_item_shield_battle_bonus_str"		"+$STR"
-"DOTA_Tooltip_ability_item_shield_battle_Description"		"ACTIVE: Shield Bash - Bashes the opponent with the shield causing them to be silenced and deal damage.\nPASSIVE: Provides armor, as well as giving a chance to block physical damage and a spell every 75 seconds.\n"
+"DOTA_Tooltip_ability_item_shield_battle_Description"		"ACTIVE: Shield Bash - Bashes the opponent with the shield causing them to be silenced and deal damage, while pushing them back slightly.\nPASSIVE: Provides armor, as well as giving a chance to block physical damage and a spell every 75 seconds.\n"
 "DOTA_Tooltip_ability_item_shield_battle_duration"		"DURATION:"
 "DOTA_Tooltip_ability_item_shield_battle_Lore"		"Bloodstains coat the outside of the shield."
 "DOTA_Tooltip_ability_item_shield_battle_silence_damage"		"SILENCE DAMAGE:"

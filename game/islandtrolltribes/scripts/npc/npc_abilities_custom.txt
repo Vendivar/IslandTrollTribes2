@@ -10262,6 +10262,97 @@
 		}
 	
 	}
+	"ability_priest_mixall"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
+		"AbilityTextureName"	"ability_priest_mixhealth"
+		"AbilityCastPoint"	"0.3"
+		"AbilityCooldown"	"30"
+		"AbilityCastRange"	"600"
+		"AbilityManaCost"	"10"
+		"MaxLevel"	"1"
+	    	"precache"
+	        {
+	            "soundfile" "soundevents/game_sounds_heroes/game_sounds_dazzle.vsndevts"
+	            "particle" "particles/units/heroes/hero_dazzle/dazzle_shadow_wave.vpcf"
+	            "particle" "particles/units/heroes/hero_dazzle/dazzle_shadow_wave_impact_damage.vpcf"
+	            "particle" "particles/mix_health.vpcf"
+	        }
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile" "heroes/priest/mix.lua"
+				"Function"   "MixHealth"
+			}
+			"RunScript"
+			{
+				"ScriptFile" "heroes/priest/mix.lua"
+				"Function"   "MixHeat"
+			}
+			"RunScript"
+			{
+				"ScriptFile" "heroes/priest/mix.lua"
+				"Function"   "MixEnergy"
+			}
+	            "FireSound"
+	            {
+	                "EffectName" "Hero_Dazzle.Shadow_Wave"
+	                "Target" "CASTER"
+	            }
+	            "FireEffect"
+	            {
+	                "EffectName" "particles/units/heroes/hero_dazzle/dazzle_shadow_wave.vpcf"
+	                "EffectAttachType" "start_at_customorigin"
+	                "ControlPointEntities"
+	                    {
+	                    "CASTER" "attach_attack1"
+	                    "TARGET" "follow_origin"
+	                    }
+	            }
+	            "FireEffect"
+	            {
+	            "EffectName" "particles/mix_health.vpcf"
+	            "Target" "CASTER"
+	            "EffectAttachType" "attach_origin"
+	            }
+	            "FireEffect"
+	            {
+	            "EffectName" "particles/mix_health.vpcf"
+	            "Target" "TARGET"
+	            "EffectAttachType" "attach_origin"
+	            }
+				"FireEffect"
+	            {
+	            "EffectName" "particles/mix_mana.vpcf"
+	            "Target" "CASTER"
+	            "EffectAttachType" "attach_origin"
+	            }
+	            
+	            "FireEffect"
+	            {
+	            "EffectName" "particles/mix_mana.vpcf"
+	            "Target" "TARGET"
+	            "EffectAttachType" "attach_origin"
+	            }
+				"FireEffect"
+				{
+				"EffectName" "particles/mix_heat.vpcf"
+				"Target" "CASTER"
+				"EffectAttachType" "attach_origin"
+				}
+	
+				"FireEffect"
+				{
+				"EffectName" "particles/mix_heat.vpcf"
+				"Target" "TARGET"
+				"EffectAttachType" "attach_origin"
+				}
+		}
+	}
 	"ability_priest_mixenergy"
 	{
 		"BaseClass"	"ability_datadriven"
