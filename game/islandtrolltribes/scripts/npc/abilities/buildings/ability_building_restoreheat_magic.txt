@@ -5,7 +5,10 @@
 	"AbilityTextureName"	"ability_building_restoreheat"
 
 	"AbilityCastRange"	"290" //This should be a %radius Ability Special
-
+	"Precache"
+	{
+	    "particle"  "particles/custom/screen_indicator_fire.vpcf"
+	}
 	"Modifiers"
 	{
 		"modifier_restore_heat_aura"

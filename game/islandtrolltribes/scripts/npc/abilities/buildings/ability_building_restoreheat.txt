@@ -5,7 +5,12 @@
 	"AbilityTextureName"	"ability_building_restoreheat"
 
 	"AbilityCastRange"	"290" //To show the range when hovering over the ability
-
+	
+	"Precache"
+	{
+	    "particle"  "particles/custom/screen_indicator_fire.vpcf"
+	}
+	
 	"OnSpellStart"
 	{
 		"RunScript"
