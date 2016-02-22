@@ -17,7 +17,12 @@ function ability_revive:OnChannelFinish( bInterrupted )
         if not bInterrupted and not hero:IsAlive() then
             hero:SetRespawnPosition(caster:GetAbsOrigin())
             hero:RespawnUnit()
-            ITT:SetDefaultCosmetics(hero)
+            if GetSubClass(hero) == "none" then
+                ITT:SetDefaultCosmetics(hero)     --Reset default wearables and hides the wearables need to be hidden
+            else
+                ITT:SetDefaultWearables(hero)     --Reset default wearables and doesn't hide wearables
+                ITT:SetSubclassCosmetics(hero)
+            end
             FindClearSpaceForUnit(hero, caster:GetAbsOrigin(), true)
             --caster:EmitSound("Hero_SkeletonKing.Reincarnation") --Gotta precache, not sure how to, in KV or here?
         end
