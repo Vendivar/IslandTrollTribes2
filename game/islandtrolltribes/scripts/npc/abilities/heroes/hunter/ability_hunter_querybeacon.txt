@@ -1,0 +1,26 @@
+"ability_hunter_querybeacon"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityTextureName"	"ability_hunter_querybeacon"
+	"AbilityCastPoint"	"0.2"
+	"AbilityCooldown"	"30.0"
+	"AbilityCastRange"  "5000"
+	"MaxLevel"	"1"
+
+    "precache"
+    {
+        "particles" "particles/custom/ping_static.vpcf"
+        "particles" "particles/custom/ping_world.vpcf"
+    }
+
+    "OnSpellStart"
+    {
+        "RunScript"
+        {
+            "ScriptFile" "heroes/hunter/querybeacon.lua"
+            "Function"   "PingUnitsInRange"
+            "Duration"   "30.0"
+        }
+    }
+}
