@@ -1,12 +1,12 @@
 .ToolkitRoot
 {
-    width: 100px;
-    height: 500px;
+    width: 200px;
+    height: 70px;
     vertical-align: top;
     horizontal-align: right;
-    margin-top: 70px;
+    margin-top: 920px;
     margin-right: 10px;
-    flow-children: down;
+    flow-children: right;
     background-color: #000000f0;
     border-radius: 10px;
 }
@@ -18,26 +18,27 @@
 
 .ImageLabel
 {
-    width: 80px;
-    height: 80px;
+    width: 50px;
+    height: 50px;
 	color: gradient( linear, 0% 0%, 0% 100%, from( #E0E0E0 ), to( #686868 ) );
-    font-size: 20px;
+    font-size: 12px;
     font-family: Goudy Trajan Medium;
     font-weight: bold;
     text-align: center;
     text-shadow: 0px 0px 3px 3.0 #000000;
+	text-overflow: ellipsis;
 }
 
 .ToolkitContainer
 {
-    flow-children: down;
+    flow-children: right;
     horizontal-align: center;
 }
 
 .ToolkitAbility
 {
-    width: 80px;
-    height: 80px;
+    width: 50px;
+    height: 50px;
     margin-bottom: 10px;
     margin-top: 10px;
     border-radius: 10px;
@@ -45,6 +46,6 @@
 
 .ToolkitImage
 {
-    width: 80px;
-    height: 80px;
+    width: 50px;
+    height: 50px;
 }

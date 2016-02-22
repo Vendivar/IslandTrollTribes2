@@ -589,7 +589,7 @@
 	            "IsHidden"      "1"
 	            "Passive"       "1"
 	            "OnCreated"
-	            {
+	            {				
 	                "RunScript"
 	                {
 	                    "ScriptFile"    "buildings/restore_heat.lua"
@@ -601,8 +601,23 @@
 	 	    "modifier_fire_heat"
 	 	    {
 	 	    	"Passive"    "1"
-	 	    	"IsHidden"   "1"
+	 	    	"IsHidden"   "0"
 	 	    	"IsPurgable" "0"
+				
+				"OnCreated"
+				{
+				"AttachEffect"
+					{
+						 "EffectName" "particles/custom/screen_indicator_fire.vpcf"
+						 "EffectAttachType" "PATTACH_EYES_FOLLOW"
+						 "Target" "TARGET"
+						 "ControlPointEntities"
+						{
+							"TARGET" "PATTACH_EYES_FOLLOW"
+							"TARGET" "PATTACH_EYES_FOLLOW"
+						}
+					}
+				}
 	 	    }
 	    }
 	
@@ -674,8 +689,22 @@
 			"modifier_mage_fire_heat"
 			{
 				"Passive"    "1"
-				"IsHidden"   "1"
+				"IsHidden"   "0"
 				"IsPurgable" "0"
+				"OnCreated"
+				{
+				"AttachEffect"
+					{
+						 "EffectName" "particles/custom/screen_indicator_fire.vpcf"
+						 "EffectAttachType" "PATTACH_EYES_FOLLOW"
+						 "Target" "TARGET"
+						 "ControlPointEntities"
+						{
+							"TARGET" "PATTACH_EYES_FOLLOW"
+							"TARGET" "PATTACH_EYES_FOLLOW"
+						}
+					}
+				}
 			}
 		}
 	

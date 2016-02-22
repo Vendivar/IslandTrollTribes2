@@ -156,24 +156,24 @@
         "DOTA_Tooltip_Ability_sleep_outside_rest_duration"       "REST DURATION:"
         "DOTA_Tooltip_Ability_sleep_outside_mana_restored"       "MANA RESTORED:"
         
-        "eat_meat"                                       "Eat\nMeat"
+        "eat_meat"                                       "Eat\nRaw Meat"
         
-        "DOTA_Tooltip_Ability_eat_meat"                  "Eat Meat"
+        "DOTA_Tooltip_Ability_eat_meat"                  "Eat Raw Meat"
         "DOTA_Tooltip_Ability_eat_meat_Description"      "Eat the raw meat your troll is currently holding (seen in the buff bar) once per use of this ability. You will eat it over time (channeling) gaining a total of 15 health over 1.5 seconds."
         "DOTA_Tooltip_Ability_eat_meat_channel_time"     "EAT TIME:"
         "DOTA_Tooltip_Ability_eat_meat_heal_amount"      "HEALTH RESTORED:"
         
-        "drop_meat"     "Drop\nMeat"
+        "drop_meat"     "Drop\nRaw Meat"
         
         "DOTA_Tooltip_Ability_drop_meat"                  "Drop Raw Meat"
         "DOTA_Tooltip_Ability_drop_meat_Description"                  "Drop one raw meat per use that your troll is currently holding. It will go to the ground once this ability is used."
         
-        "drop_all_meat" "Drop\nAll Meat"
+        "drop_all_meat" "Drop\nAll Raw Meat"
         
         "DOTA_Tooltip_Ability_drop_all_meat"                            "Drop All Raw Meat"
         "DOTA_Tooltip_Ability_drop_all_meat_Description"                  "Drop all raw meat your troll is currently holding. It will go to the ground once this ability is used. This is best used near a camp fire where the raw meat can quickly be cooked into cooked meat."
         
-        "panic"         "Panic!"
+        "panic"         "\nPanic!"
         
         "DOTA_Tooltip_Ability_Panic" "Panic"
         "DOTA_Tooltip_Ability_Panic_Description"         "Use this ability to send your troll into a panic to gain attack damage and move speed! Be warned, during your state of frenzy you take increased damage." 

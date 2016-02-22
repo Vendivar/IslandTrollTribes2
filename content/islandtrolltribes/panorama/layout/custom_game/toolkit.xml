@@ -22,11 +22,6 @@
 				<Label id="label_drop_meat" class="ImageLabel" text="" />
 			</Panel>
 
-			<Panel id="drop_all_meat" class="ToolkitAbility" onactivate="Cast('drop_all_meat')" onmouseover="MouseOver('drop_all_meat')" onmouseout="MouseOut('drop_all_meat')" >
-				<Image class="ToolkitImage" src="file://{images}/toolkit/drop_all_meat.png" />
-				<Label id="label_drop_all_meat" class="ImageLabel" text="" />
-			</Panel>
-
 			<Panel id="panic" class="ToolkitAbility" onactivate="Cast('panic')" onmouseover="MouseOver('panic')" onmouseout="MouseOut('panic')" >
 				<Image class="ToolkitImage" src="file://{images}/toolkit/panic.png" />
 				<Label id="label_panic" class="ImageLabel" text="" />

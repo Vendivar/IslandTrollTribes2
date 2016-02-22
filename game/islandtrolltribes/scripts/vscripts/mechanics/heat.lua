@@ -58,6 +58,18 @@ function Heat:Think( hero )
         Heat:UpdateLoss(hero)
         Heat:Modify(hero, hero.HeatLoss)
      
+        if Heat:Get( hero ) <= 20 then
+		
+          EmitSoundOn( "Hero_Ancient_Apparition.IceBlastRelease.Tick", hero )
+
+          local playerID = hero:GetPlayerID()
+          local player = PlayerResource:GetPlayer(playerID)
+          if player then
+            local particle = ParticleManager:CreateParticleForPlayer("particles/custom/screen_freeze_indicator.vpcf", PATTACH_EYES_FOLLOW, hero, player)
+            SendErrorMessage(playerID, "#error_heat_low")
+          end
+        end
+		
         if Heat:Get( hero ) <= 0 then
             hero:ForceKill(true)
         end
