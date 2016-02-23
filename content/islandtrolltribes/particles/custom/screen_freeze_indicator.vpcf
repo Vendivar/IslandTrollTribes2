@@ -106,7 +106,6 @@
 			_class = "C_OP_RemapCPtoScalar"
 			m_nCPInput = 1
 			m_nFieldOutput = 16
-			m_flOutputMax = 0.500000
 		},
 		{
 			_class = "C_OP_RemapCPtoScalar"
