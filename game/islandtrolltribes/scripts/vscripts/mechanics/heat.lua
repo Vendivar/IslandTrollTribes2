@@ -167,7 +167,7 @@ function AddFreezingIndicator(hero)
         if player then
             hero.freezing_indicator = ParticleManager:CreateParticleForPlayer("particles/custom/screen_freeze_indicator.vpcf", PATTACH_EYES_FOLLOW, player, player)
             ParticleManager:SetParticleControl(hero.freezing_indicator, 1, Vector(1,0,0))
-            SendErrorMessage(hero:GetPlayerID(), "#error_heat_low")
+            SendFreezeMessage(hero:GetPlayerID(), "#error_heat_low")
         end
     end
 end

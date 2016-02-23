@@ -21,7 +21,7 @@
 				"ApplyModifier"
 				{
 					"Target"	"TARGET"
-					"Duration"	"300"
+					"Duration"	"15"
 					"ModifierName"	"modifier_lizard_slow"
 				}
 
@@ -38,7 +38,15 @@
 				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"-7"
 				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"-35"
 			}
-
+			"OnCreated"
+			{
+                "AttachEffect"
+                {
+                    "EffectName"    "particles/neutral_fx/gnoll_poison_debuff.vpcf"
+                    "Target"        "TARGET"
+                    "EffectAttachType"      "attach_origin"
+                }
+			}
 		}
 
 	}
