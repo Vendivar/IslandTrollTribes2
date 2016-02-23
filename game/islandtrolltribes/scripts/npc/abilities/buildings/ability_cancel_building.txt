@@ -2,7 +2,7 @@
 {
     "BaseClass"             "ability_datadriven"
     "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-    "AbilityTextureName"    "ability_building_packup"
+    "AbilityTextureName"    "ability_building_cancel"
     "AbilityCooldown"       "0.0"
     "AbilityChannelTime"    "0.5"
     "AbilityManaCost"       "0"
