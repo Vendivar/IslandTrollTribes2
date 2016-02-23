@@ -59,6 +59,13 @@ function ability_beastmaster_tamepet2:OnSpellStart()
     -- Abilities on BM: Follow, Stay
     TeachAbility(caster, "ability_beastmaster_pet_follow")
     TeachAbility(caster, "ability_beastmaster_pet_stay")
+    SetAbilityVisibility(caster,"ability_beastmaster_pet_follow",false)
+    SetAbilityVisibility(caster,"ability_beastmaster_pet_stay",false)
+
+    local petControllAbility = caster:FindAbilityByName("ability_beastmaster_petcontroll")
+    if petControllAbility:GetToggleState() == false then
+        ToggleOn(petControllAbility)
+    end
 
     -- Attack gets added on the first growth
     --TeachAbility(caster, "ability_beastmaster_pet_attack")

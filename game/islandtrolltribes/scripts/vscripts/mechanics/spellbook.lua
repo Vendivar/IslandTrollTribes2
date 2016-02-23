@@ -14,6 +14,72 @@ function SwapSpellBook(keys)
     local spellBooks = {}
     spellBooks[MAGE] = {none={},elementalist={},hypnotist={},dementia_master={}}
     spellBooks[PRIEST] = {none={}, booster={}, master_healer={}, shaman={}}
+    spellBooks[BEASTMASTER] = {none={}, pack_leader={}, chicken_form={}, shapeshifter={} }
+
+    spellBooks[BEASTMASTER]["none"]["book1"] = {
+        "ability_beastmaster_petcontroll",
+        "ability_beastmaster_tamepet",
+        "ability_beastmaster_spiritofthebeast"
+    }
+
+    spellBooks[BEASTMASTER]["none"]["book2"] = {
+        "ability_beastmaster_petcontroll",
+        "ability_beastmaster_pet_release",
+        "ability_beastmaster_pet_follow",
+        "ability_beastmaster_pet_stay",
+        "ability_beastmaster_pet_sleep",
+        "ability_beastmaster_pet_attack"
+    }
+
+    spellBooks[BEASTMASTER]["pack_leader"]["book1"] = {
+        "ability_beastmaster_petcontroll",
+        "ability_beastmaster_tamepet2",
+        "ability_beastmaster_spiritofthebeast",
+        "ability_beastmaster_calltobattle",
+        "ability_beastmaster_empathicrage"
+    }
+
+    spellBooks[BEASTMASTER]["pack_leader"]["book2"] = {
+        "ability_beastmaster_petcontroll",
+        "ability_beastmaster_pet_release",
+        "ability_beastmaster_pet_follow",
+        "ability_beastmaster_pet_stay",
+        "ability_beastmaster_pet_sleep",
+        "ability_beastmaster_pet_attack"
+    }
+
+    spellBooks[BEASTMASTER]["chicken_form"]["book1"] = {
+        "ability_beastmaster_petcontroll",
+        "ability_beastmaster_fleaattackaura",
+        "ability_beastmaster_shortness",
+        "ability_beastmaster_fowlplay"
+    }
+
+    spellBooks[BEASTMASTER]["chicken_form"]["book2"] = {
+        "ability_beastmaster_petcontroll",
+        "ability_beastmaster_pet_release",
+        "ability_beastmaster_pet_follow",
+        "ability_beastmaster_pet_stay",
+        "ability_beastmaster_pet_sleep",
+        "ability_beastmaster_pet_attack"
+    }
+
+    spellBooks[BEASTMASTER]["shapeshifter"]["book1"] = {
+        "ability_beastmaster_petcontroll",
+        "ability_beastmaster_elkform",
+        "ability_beastmaster_normalform",
+        "ability_beastmaster_wolfform",
+        "ability_beastmaster_bearform"
+    }
+
+    spellBooks[BEASTMASTER]["shapeshifter"]["book2"] = {
+        "ability_beastmaster_petcontroll",
+        "ability_beastmaster_pet_release",
+        "ability_beastmaster_pet_follow",
+        "ability_beastmaster_pet_stay",
+        "ability_beastmaster_pet_sleep",
+        "ability_beastmaster_pet_attack"
+    }
 
     spellBooks[MAGE]["none"]["book1"] = {
         "ability_mage_spellbook_toggle",
@@ -167,7 +233,9 @@ end
 
 function ShowTheSpellBook(caster, spellbook)
     for _,spell in pairs(spellbook) do
-        print(caster:FindAbilityByName(spell):GetAbilityName())
-        SetAbilityVisibility (caster, spell,true)
+        if caster:HasAbility(spell) then
+            print(caster:FindAbilityByName(spell):GetAbilityName())
+            SetAbilityVisibility (caster, spell,true)
+        end
     end
 end

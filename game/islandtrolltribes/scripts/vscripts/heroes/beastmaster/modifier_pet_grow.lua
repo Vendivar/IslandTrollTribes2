@@ -59,6 +59,9 @@ function modifier_pet_grow:OnDestroy()
             -- Second growth
             if growYoung then
                 TeachAbility(hero, "ability_beastmaster_pet_attack")
+                if hero:FindAbilityByName("ability_beastmaster_petcontroll"):GetToggleState() == false then
+                    SetAbilityVisibility(hero,"ability_beastmaster_petcontroll",false)
+                end
                 AdjustAbilityLayout(hero)
 
                 local bPackLeader = GetSubClass(hero) == "pack_leader" -- Pack leaders grow their pets faster
