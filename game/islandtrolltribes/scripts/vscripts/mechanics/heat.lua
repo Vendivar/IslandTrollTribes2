@@ -20,6 +20,12 @@ function Heat:Modify( hero, amount )
     local currentHeat = Heat:Get(hero)
     local newStacks = currentHeat + amount
 
+    if newStacks > currentHeat then
+        AddHeatingIndicator(hero)
+    else
+        RemoveHeatingIndicator(hero)
+    end
+
     -- Cap the max
     if newStacks > Heat.MAX then
         newStacks = Heat.MAX
@@ -59,17 +65,11 @@ function Heat:Think( hero )
         Heat:Modify(hero, hero.HeatLoss)
      
         if Heat:Get( hero ) <= 20 then
-		
-          EmitSoundOn( "Hero_Ancient_Apparition.IceBlastRelease.Tick", hero )
-
-          local playerID = hero:GetPlayerID()
-          local player = PlayerResource:GetPlayer(playerID)
-          if player then
-            local particle = ParticleManager:CreateParticleForPlayer("particles/custom/screen_freeze_indicator.vpcf", PATTACH_EYES_FOLLOW, hero, player)
-            SendErrorMessage(playerID, "#error_heat_low")
-          end
+            AddFreezingIndicator(hero)
+        else
+            RemoveFreezingIndicator(hero)
         end
-		
+    
         if Heat:Get( hero ) <= 0 then
             hero:ForceKill(true)
         end
@@ -145,4 +145,43 @@ function AddHeat(keys)
     end
 
     Heat:Modify(target, heatToAdd)
+end
+
+function AddHeatingIndicator(hero)
+    if not hero.heating_indicator then
+        local player = PlayerResource:GetPlayer(hero:GetPlayerID())
+        if player then
+            print("Creating Heat Indicator")
+            hero.heating_indicator = ParticleManager:CreateParticleForPlayer("particles/generic_gameplay/screen_damage_indicator.vpcf", PATTACH_EYES_FOLLOW, hero, player)
+        end
+    end
+end
+
+function AddFreezingIndicator(hero)
+    if not hero.freezing_indicator then
+        EmitSoundOn( "Hero_Ancient_Apparition.IceBlastRelease.Tick", hero )
+
+        local player = PlayerResource:GetPlayer(hero:GetPlayerID())
+        if player then
+            print("Adding Freeze Indicator")
+            hero.freezing_indicator = ParticleManager:CreateParticle("particles/custom/screen_freeze_indicator.vpcf", PATTACH_EYES_FOLLOW, hero)
+            SendErrorMessage(hero:GetPlayerID(), "#error_heat_low")
+        end
+    end
+end
+
+function RemoveHeatingIndicator(hero)
+    if hero.heating_indicator then
+        print("Removing Heat Indicator")
+        ParticleManager:DestroyParticle(hero.heating_indicator, true)
+        hero.heating_indicator = nil
+    end
+end
+
+function RemoveFreezingIndicator(hero)
+    if hero.freezing_indicator then
+        print("Removing Freeze Indicator")
+        ParticleManager:DestroyParticle(hero.freezing_indicator, true)
+        hero.freezing_indicator = nil
+    end
 end

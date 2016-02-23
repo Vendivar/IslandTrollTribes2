@@ -57,20 +57,6 @@
 			"Passive"    "1"
 			"IsHidden"   "0"
 			"IsPurgable" "0"
-			"OnCreated"
-			{
-			"AttachEffect"
-				{
-					 "EffectName" "particles/custom/screen_indicator_fire.vpcf"
-					 "EffectAttachType" "PATTACH_EYES_FOLLOW"
-					 "Target" "TARGET"
-					 "ControlPointEntities"
-					{
-						"TARGET" "PATTACH_EYES_FOLLOW"
-						"TARGET" "PATTACH_EYES_FOLLOW"
-					}
-				}
-			}
 		}
 	}
 
