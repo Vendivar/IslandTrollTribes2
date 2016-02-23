@@ -1103,6 +1103,13 @@
 "DOTA_Tooltip_Ability_ability_priest_mixhealth_Description"		"Equalizes the health of the Priest and a target.\n\nSets both caster & user's Health to the average of both of their Health."
 "DOTA_Tooltip_Ability_ability_priest_mixheat"		"Mix Heat"
 "DOTA_Tooltip_Ability_ability_priest_mixheat_Description"		"Equalizes the heat of the Priest and a target.\n\nSets both caster & user's Heat to the average of both of their heat."
+
+"DOTA_Tooltip_ability_ability_priest_mixall"                                      "Mix All"
+"DOTA_Tooltip_ability_ability_priest_mixall_Description"                          "Harnessing the power of the healing element you are able to equalize the targets health, mana, and heat all at once."
+
+		
+
+
 "DOTA_Tooltip_Ability_ability_priest_omnicure"		"Omnicure"
 "DOTA_Tooltip_Ability_ability_priest_omnicure_Description"		"Casts cure all on all nearby friendly trolls."
 "DOTA_Tooltip_ability_ability_priest_pacifyingsmoke"		"Pacifying Smoke"
