@@ -39,6 +39,13 @@
             "Duration"      "%invuln_duration"
             "Target"        "TARGET"
         }
+		
+        "ApplyModifier"
+        {
+            "ModifierName"  "modifier_rested"
+            "Duration"      "%invuln_duration"
+            "Target"        "TARGET"
+        }
     }
 
     "Modifiers"
@@ -84,6 +91,10 @@
                 "MODIFIER_STATE_INVULNERABLE"    "MODIFIER_STATE_VALUE_ENABLED"
             }
         }
+		
+		"modifier_rested"
+        {
+		}
     }
 
     "AbilitySpecial"
@@ -116,6 +127,12 @@
         {
             "var_type"          "FIELD_FLOAT"
             "invuln_duration"   "1.0"
+        }
+		
+        "06"
+        {
+            "var_type"    "FIELD_FLOAT"
+            "rested_duration"    "15"
         }
 
     }

@@ -330,6 +330,11 @@
 "DOTA_Tooltip_modifier_pet_grow"                                                  "Pet Grow"
 "DOTA_Tooltip_modifier_pet_grow_Description"                                      "This pet is growing and soon it will become the next stage!"
 		
+		
+"DOTA_Tooltip_modifier_baby_animal"                                               "Baby Animal"
+"DOTA_Tooltip_modifier_baby_animal_Description"                                   ""
+
+		
 
 "DOTA_Tooltip_ability_ability_beastmaster_pet_attack"		"Pet Attack"
 "DOTA_Tooltip_ability_ability_beastmaster_pet_attack_Description"		"Commands the pet to be aggressive, attacking nearby enemies."
@@ -1528,6 +1533,11 @@
 
 // Items
 
+"DOTA_Tooltip_ability_ability_cancel_building"                                    "Cancel Building"
+"DOTA_Tooltip_ability_ability_cancel_building_Description"                        "Stops building the building and returns it to it's kit state."
+
+		
+
 "DOTA_Tooltip_ability_item_any_herb"                                              "Any Herb"
 "DOTA_Tooltip_ability_item_any_herb_Description"                                  "Any herb means anything found from any plant bush."
 
@@ -1579,6 +1589,15 @@
 "DOTA_Tooltip_ability_item_acorn_magic_Note0"		"Does not stack with regular Acorns. Cannot be used to create Smoke Bombs."
 "DOTA_Tooltip_ability_item_acorn_max_stacks"		"MAXIMUM STACKS:"
 "DOTA_Tooltip_ability_item_acorn_Note0"		"Does not stack with Magic Acorns"
+
+"DOTA_Tooltip_modifier_spell_immunity_block"                                      "Spell Immunity Block"
+"DOTA_Tooltip_modifier_spell_immunity_block_Description"                          ""
+
+"DOTA_Tooltip_modifier_shield_battle_debuff"                                      "Battle Shield Debuff"
+"DOTA_Tooltip_modifier_shield_battle_debuff_Description"                          ""
+
+		
+
 
 "DOTA_Tooltip_ability_item_armor_battle"		"Battle Armor"
 "DOTA_Tooltip_ability_item_armor_battle_all_stats"		"+$all"
@@ -2887,6 +2906,9 @@
 "DOTA_Tooltip_ability_ability_boat_passive"		"Boat"
 "DOTA_Tooltip_ability_ability_boat_passive_Description"		""
 
+
+"DOTA_Tooltip_modifier_fire_heat"  "Fire Warmth"
+"DOTA_Tooltip_modifier_fire_heat_Description"  "Restoring heat per tick."
 
 "DOTA_Tooltip_ability_ability_building"		"Ability Building"
 "DOTA_Tooltip_Ability_ability_building_burnbuilding"		"Burn Building"

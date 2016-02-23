@@ -32,10 +32,17 @@
             "Duration"      "%rest_duration"
             "Target"        "TARGET"
         }
+		
+        "ApplyModifier"
+        {
+            "ModifierName"  "modifier_sleep"
+            "Duration"      "%rested_duration"
+            "Target"        "TARGET"
+        }
 
         "ApplyModifier"
         {
-            "ModifierName"  "modifier_invuln"
+            "ModifierName"  "modifier_rested"
             "Duration"      "%invuln_duration"
             "Target"        "TARGET"
         }
@@ -86,6 +93,9 @@
             }
 
         }
+		"modifier_rested"
+        {
+		}
 
     }
 
@@ -96,6 +106,7 @@
             "var_type"    "FIELD_FLOAT"
             "rest_duration"    "6"
         }
+
 
         "02"
         {
@@ -119,6 +130,12 @@
         {
             "var_type"    "FIELD_FLOAT"
             "invuln_duration"    "1.0"
+        }
+		
+        "06"
+        {
+            "var_type"    "FIELD_FLOAT"
+            "rested_duration"    "15"
         }
     }
 }
