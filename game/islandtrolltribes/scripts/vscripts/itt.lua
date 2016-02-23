@@ -879,7 +879,8 @@ function ITT:OnPlayerGainedLevel(event)
         if level == 6 then
             local particleName = "particles/units/heroes/hero_keeper_of_the_light/keeper_of_the_light_spirit_form_ambient.vpcf"
             hero.subclassAvailableParticle = ParticleManager:CreateParticleForTeam(particleName, PATTACH_ABSORIGIN_FOLLOW, hero, hero:GetTeamNumber())
-            Notifications:Bottom(0, {text="Hero subclass selection now available!", duration=10, style={color="white"}, continue=true})
+            Notifications:Bottom(PlayerResource:GetPlayer(playerID), {text="Hero subclass selection now available!", duration=10, style={color="white"}, continue=true})
+
             EmitSoundOnClient("Hero_Chen.HandOfGodHealHero", PlayerResource:GetPlayer(playerID))
         end
     end

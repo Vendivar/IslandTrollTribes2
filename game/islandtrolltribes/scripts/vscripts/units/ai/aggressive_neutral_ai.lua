@@ -67,7 +67,7 @@ function AggressiveNeutralThink(thisEntity)
         local targets = FindUnitsInRadius(
                             thisEntity:GetTeam(),
                             thisEntity:GetOrigin(),
-                            nil, 450,
+                            nil, 550,
                             DOTA_UNIT_TARGET_TEAM_ENEMY,
                             DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC,
                             DOTA_UNIT_TARGET_FLAG_FOW_VISIBLE + DOTA_UNIT_TARGET_FLAG_NO_INVIS,

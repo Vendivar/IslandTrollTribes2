@@ -58,7 +58,7 @@
 		"modifier_mage_fire_heat"
 		{
 			"Passive"    "1"
-			"IsHidden"   "0"
+			"IsHidden"   "1"
 			"IsPurgable" "0"
 		}
 	}
