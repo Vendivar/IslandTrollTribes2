@@ -126,6 +126,7 @@
 "error_item_out_of_range"           "Item out of range to pick up."
 "error_pet_leash_range"              "Pet is being ordered too far away, returning to a safe range!"
 "error_must_target_allied_gravestone" "Must target an allied gravestone!"
+"error_heat_low"          			 "Your heat is too low! Get to a fire to warm up or you will die!"
 
 "item_bush_thistle"                                          "Thistle Shrub"
 "item_bush_mushroom"                                         "Mushroom Colony" 
