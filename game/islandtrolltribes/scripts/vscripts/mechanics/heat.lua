@@ -71,6 +71,8 @@ function Heat:Think( hero )
         end
     
         if Heat:Get( hero ) <= 0 then
+            RemoveHeatingIndicator(hero)
+            RemoveFreezingIndicator(hero)
             hero:ForceKill(true)
         end
 
@@ -151,8 +153,8 @@ function AddHeatingIndicator(hero)
     if not hero.heating_indicator then
         local player = PlayerResource:GetPlayer(hero:GetPlayerID())
         if player then
-            print("Creating Heat Indicator")
-            hero.heating_indicator = ParticleManager:CreateParticleForPlayer("particles/generic_gameplay/screen_damage_indicator.vpcf", PATTACH_EYES_FOLLOW, hero, player)
+            hero.heating_indicator = ParticleManager:CreateParticleForPlayer("particles/custom/screen_indicator_fire.vpcf", PATTACH_EYES_FOLLOW, player, player)
+            ParticleManager:SetParticleControl(hero.heating_indicator, 1, Vector(1,0,0))
         end
     end
 end
@@ -163,8 +165,8 @@ function AddFreezingIndicator(hero)
 
         local player = PlayerResource:GetPlayer(hero:GetPlayerID())
         if player then
-            print("Adding Freeze Indicator")
-            hero.freezing_indicator = ParticleManager:CreateParticle("particles/custom/screen_freeze_indicator.vpcf", PATTACH_EYES_FOLLOW, hero)
+            hero.freezing_indicator = ParticleManager:CreateParticleForPlayer("particles/custom/screen_freeze_indicator.vpcf", PATTACH_EYES_FOLLOW, player, player)
+            ParticleManager:SetParticleControl(hero.freezing_indicator, 1, Vector(1,0,0))
             SendErrorMessage(hero:GetPlayerID(), "#error_heat_low")
         end
     end
@@ -172,16 +174,14 @@ end
 
 function RemoveHeatingIndicator(hero)
     if hero.heating_indicator then
-        print("Removing Heat Indicator")
-        ParticleManager:DestroyParticle(hero.heating_indicator, true)
+        ParticleManager:DestroyParticle(hero.heating_indicator, false)
         hero.heating_indicator = nil
     end
 end
 
 function RemoveFreezingIndicator(hero)
     if hero.freezing_indicator then
-        print("Removing Freeze Indicator")
-        ParticleManager:DestroyParticle(hero.freezing_indicator, true)
+        ParticleManager:DestroyParticle(hero.freezing_indicator, false)
         hero.freezing_indicator = nil
     end
 end
