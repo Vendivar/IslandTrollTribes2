@@ -34,7 +34,7 @@ function ability_beastmaster_tamepet:OnSpellStart()
             end
 
             AdjustAbilityLayout(pet)
-
+            AdjustAbilityLayout(caster)
             caster.pets = {}
         end
     end

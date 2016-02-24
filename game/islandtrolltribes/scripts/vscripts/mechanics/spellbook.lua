@@ -238,4 +238,5 @@ function ShowTheSpellBook(caster, spellbook)
             SetAbilityVisibility (caster, spell,true)
         end
     end
+    AdjustAbilityLayout(caster)
 end

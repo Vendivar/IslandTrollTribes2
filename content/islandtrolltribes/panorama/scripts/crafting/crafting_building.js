@@ -6,6 +6,7 @@ var fold = false
 
 var Buildings = {}
 var UnFinishedBuildings = []
+var KilledBuildings = []
 Buildings['npc_building_armory'] = 1;
 Buildings['npc_building_hut_witch_doctor'] = 1;
 Buildings['npc_building_mix_pot'] = 1;
@@ -15,7 +16,7 @@ Buildings['npc_building_workshop'] = 1;
 function Crafting_OnUpdateSelectedUnits() {
     var selectedEntities = Players.GetSelectedEntities( iPlayerID );
     var mainSelected = selectedEntities[0]
-    if (UnFinishedBuildings.indexOf(mainSelected)!= -1) { //Return if the building is unfinished
+    if (IsUnfinishedBuilding(mainSelected) || IsKilledBuilding(mainSelected) ) { //If building is unfinished or killed, don't show the crafting menu.
         return
     }
     var name = Entities.GetUnitName(mainSelected)
@@ -41,6 +42,28 @@ function Crafting_OnUpdateSelectedUnits() {
         {
             MakeVisible(Buildings[name])
         }
+    }
+}
+
+function IsUnfinishedBuilding(building) {
+    return UnFinishedBuildings.indexOf(building)!= -1 ? true: false
+}
+
+function IsKilledBuilding(building) {
+    return KilledBuildings.indexOf(building)!= -1 ? true: false
+}
+
+function UpdateKilledBuildingList(event) {
+    var name = Entities.GetUnitName(event.building)
+    if (Buildings[name]) {
+        KilledBuildings.push(event.building)
+        if (event.building == currentBuilding) {
+             Hide(Buildings[currentBuilding])
+        }
+    }
+
+    if ( KilledBuildings.length > 10) {
+        KilledBuildings.splice(0, 1) //Up to 10 killed buildings can be stored in this list
     }
 }
 
@@ -70,6 +93,7 @@ function MakeVisible(panel) {
 
 (function () {
     GameEvents.Subscribe( "building_crafting_hide", HideCurrent );
+    GameEvents.Subscribe( "building_killed", UpdateKilledBuildingList);
     GameEvents.Subscribe( "dota_player_update_selected_unit", Crafting_OnUpdateSelectedUnits );
     GameEvents.Subscribe( "building_updated", UpdateUnfinishedBuildingList );
 })();

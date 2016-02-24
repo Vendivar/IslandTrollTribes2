@@ -8,3 +8,7 @@ function CallToBattle(keys)
         item:ApplyDataDrivenModifier(caster, pet, "modifier_calltobattle", {duration=dur})
     end
 end
+
+function GetPets( hero )
+    return hero.pets
+end

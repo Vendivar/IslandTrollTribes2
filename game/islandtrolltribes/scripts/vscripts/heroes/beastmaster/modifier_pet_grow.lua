@@ -60,7 +60,7 @@ function modifier_pet_grow:OnDestroy()
             if growYoung then
                 TeachAbility(hero, "ability_beastmaster_pet_attack")
                 if hero:FindAbilityByName("ability_beastmaster_petcontroll"):GetToggleState() == false then
-                    SetAbilityVisibility(hero,"ability_beastmaster_petcontroll",false)
+                    SetAbilityVisibility(hero,"ability_beastmaster_pet_attack",false)
                 end
                 AdjustAbilityLayout(hero)
 

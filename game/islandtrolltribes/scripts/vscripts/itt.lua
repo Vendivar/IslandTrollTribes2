@@ -643,6 +643,11 @@ function ITT:OnEntityKilled(keys)
             Spawns.neutralCount[unitName] = Spawns.neutralCount[unitName] - 1
         end
     end
+
+    --Buildings
+    if IsCustomBuilding(killedUnit) then
+        CustomGameEventManager:Send_ServerToAllClients("building_killed",{building = killedUnit:GetEntityIndex()})
+    end
 end
 
 function ITT:On_entity_hurt(data)
