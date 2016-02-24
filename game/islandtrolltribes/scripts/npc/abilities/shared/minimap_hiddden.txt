@@ -1,0 +1,21 @@
+// For Tooltip purposes
+"drop_all_meat"
+{
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	"AbilityTextureName"	"life_stealer_open_wounds"
+	
+	"Modifiers"
+	{
+		"modifier_blur_datadriven"
+		{
+			"Passive"	"1"
+			"IsHidden"	"1"
+
+			"States"
+			{
+				"MODIFIER_STATE_NOT_ON_MINIMAP_FOR_ENEMIES"		"MODIFIER_STATE_VALUE_ENABLED"
+			}
+		}
+	}
+}

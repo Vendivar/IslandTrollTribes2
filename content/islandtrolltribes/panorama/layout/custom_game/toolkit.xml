@@ -17,7 +17,7 @@
 				<Label id="label_eat_meat" class="ImageLabel" text="" />
 			</Panel>
 
-			<Panel id="drop_meat" class="ToolkitAbility" onactivate="Cast('drop_meat')" onmouseover="MouseOver('drop_meat')" onmouseout="MouseOut('drop_meat')" >
+			<Panel id="drop_meat" class="ToolkitAbility" onactivate="Cast('drop_meat')" onmouseover="MouseOver('drop_meat')" onmouseout="MouseOut('drop_meat')" oncontextmenu="Cast('drop_all_meat')">
 				<Image class="ToolkitImage" src="file://{images}/toolkit/drop_meat.png" />
 				<Label id="label_drop_meat" class="ImageLabel" text="" />
 			</Panel>

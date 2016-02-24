@@ -11,7 +11,8 @@
     "VisionDaytimeRange"        "0" 
     "VisionNighttimeRange"      "0"
     "UnitRelationshipClass"     "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
-    "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_NONE"
+    "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_NONE"	
+	"Ability1"	"ability_minimaphidden"
 }
 
 "minimap_icon_grey"
@@ -27,6 +28,7 @@
     "VisionNighttimeRange"      "0"
     "UnitRelationshipClass"     "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
     "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_NONE"
+	"Ability1"	"ability_minimaphidden"
 }
 
 "minimap_icon_dark_green"
@@ -42,6 +44,7 @@
     "VisionNighttimeRange"      "0"
     "UnitRelationshipClass"     "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
     "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_NONE"
+	"Ability1"	"ability_minimaphidden"
 }
 
 "minimap_icon_green"
@@ -57,6 +60,7 @@
     "VisionNighttimeRange"      "0"
     "UnitRelationshipClass"     "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
     "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_NONE"
+	"Ability1"	"ability_minimaphidden"
 }
 
 "minimap_icon_light_blue"
@@ -72,6 +76,7 @@
     "VisionNighttimeRange"      "0"
     "UnitRelationshipClass"     "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
     "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_NONE"
+	"Ability1"	"ability_minimaphidden"
 }
 
 "minimap_icon_blue"
@@ -87,6 +92,7 @@
     "VisionNighttimeRange"      "0"
     "UnitRelationshipClass"     "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
     "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_NONE"
+	"Ability1"	"ability_minimaphidden"
 }
 
 "minimap_icon_dark_red"
@@ -102,6 +108,7 @@
     "VisionNighttimeRange"      "0"
     "UnitRelationshipClass"     "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
     "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_NONE"
+	"Ability1"	"ability_minimaphidden"
 }
 
 "minimap_icon_white"
@@ -117,6 +124,7 @@
     "VisionNighttimeRange"      "0"
     "UnitRelationshipClass"     "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
     "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_NONE"
+	"Ability1"	"ability_minimaphidden"
 }
 
 "minimap_icon_pink"
@@ -132,6 +140,7 @@
     "VisionNighttimeRange"      "0"
     "UnitRelationshipClass"     "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
     "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_NONE"
+	"Ability1"	"ability_minimaphidden"
 }
 
 "minimap_icon_purple"
@@ -147,4 +156,5 @@
     "VisionNighttimeRange"      "0"
     "UnitRelationshipClass"     "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
     "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_NONE"
+	"Ability1"	"ability_minimaphidden"
 }

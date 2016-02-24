@@ -167,7 +167,7 @@
         "drop_meat"     "Drop\nRaw Meat"
         
         "DOTA_Tooltip_Ability_drop_meat"                  "Drop Raw Meat"
-        "DOTA_Tooltip_Ability_drop_meat_Description"                  "Drop one raw meat per use that your troll is currently holding. It will go to the ground once this ability is used."
+        "DOTA_Tooltip_Ability_drop_meat_Description"                  "Drop one raw meat per use that your troll is currently holding. <font color='#00CC00'>Right click</font> to drop all carried meat. It will go to the ground once this ability is used."
         
         "drop_all_meat" "Drop\nAll Raw Meat"
         
