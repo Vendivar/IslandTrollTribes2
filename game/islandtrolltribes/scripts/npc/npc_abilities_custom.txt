@@ -1271,12 +1271,21 @@
 	    "AbilityUnitTargetFlags" "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
 	    "MaxLevel"              "1"
 	
-	    "AbilityCooldown"       "30.0"
 	    "AbilityManaCost"       "0"
 	    "AbilityCastPoint"      "0.0"
 	    "AbilityChannelTime"    "25.0"
 	
 	    "AbilitySharedWithTeammates" "1"
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"revive_duration"	"15.0"
+			}
+		}
+	
 	}
 	"dummy_tree"
 	{

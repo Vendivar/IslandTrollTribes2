@@ -56,8 +56,10 @@ function AggressiveNeutralThink(thisEntity)
                 thisEntity:AddAbility(abilityName)
                 ability = thisEntity:FindAbilityByName( abilityName )
                 ability:SetLevel(1)
-            end
-            ability:ApplyDataDrivenModifier(thisEntity, thisEntity, "modifier_sleep", {duration = -1})
+			end
+			if not thisEntity:HasAbility("ability_pet") then --Pet animals should not fall asleep at night
+            	ability:ApplyDataDrivenModifier(thisEntity, thisEntity, "modifier_sleep", {duration = -1})
+			end
 
 			thisEntity.state = "sleep"
 			--print("wander -> sleep")

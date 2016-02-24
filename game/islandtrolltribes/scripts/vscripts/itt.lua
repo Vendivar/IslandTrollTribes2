@@ -577,12 +577,12 @@ function ITT:OnEntityKilled(keys)
         for i=0,5 do
             local item = killedUnit:GetItemInSlot(i)
             if item and item:GetAbilityName() ~= "item_slot_locked" then
-                killedUnit:DropItemAtPositionImmediate(item, killedUnit:GetAbsOrigin())
                 local pos = killedUnit:GetAbsOrigin()
                 local pos_launch = pos + RandomVector(RandomFloat(100,150))
                 local clonedItem = CreateItem(item:GetName(), nil, nil)
                 CreateItemOnPositionSync(pos,clonedItem)
                 clonedItem:LaunchLoot(false, 200, 0.75, pos_launch)
+                item:RemoveSelf()
             end
         end
 
