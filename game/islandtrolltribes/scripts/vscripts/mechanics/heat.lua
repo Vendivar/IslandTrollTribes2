@@ -153,8 +153,8 @@ function AddHeatingIndicator(hero)
     if not hero.heating_indicator then
         local player = PlayerResource:GetPlayer(hero:GetPlayerID())
         if player then
-            hero.heating_indicator = ParticleManager:CreateParticleForPlayer("particles/custom/screen_indicator_fire.vpcf", PATTACH_EYES_FOLLOW, player, player)
-            ParticleManager:SetParticleControl(hero.heating_indicator, 1, Vector(1,0,0))
+         --   hero.heating_indicator = ParticleManager:CreateParticleForPlayer("particles/custom/screen_indicator_fire.vpcf", PATTACH_EYES_FOLLOW, player, player)
+         --  ParticleManager:SetParticleControl(hero.heating_indicator, 1, Vector(1,0,0))
         end
     end
 end
