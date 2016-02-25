@@ -1,3 +1,4 @@
+
 "item_spear_basic"
 {
     "ID"    "1028"

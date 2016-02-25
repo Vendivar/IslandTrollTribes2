@@ -1,3 +1,4 @@
+
 "item_boots_elk"
 {
 	"ID"	"1076"

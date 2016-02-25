@@ -1,3 +1,4 @@
+
 "item_coat_elk"
 {
 	"ID"	"1063"

@@ -22,7 +22,7 @@
 	"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_ALWAYS"
 	"ItemKillable"	"1"
 	"ItemInitialCharges"	"1"
-	"ItemSellable"	"0"
+	"ItemSellable"	"1"
 	"UIPickupSound"	"Item.PickUpGemShop"
 	"UIDropSound"	"Item.DropGemShop"
 	"WorldDropSound"	"Item.DropGemWorld"

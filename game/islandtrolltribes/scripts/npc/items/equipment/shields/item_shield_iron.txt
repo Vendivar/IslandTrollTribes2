@@ -9,7 +9,7 @@
 	"Model"	"models/heroes/chaos_knight/chaos_knight_shield.vmdl"
 	"Effect"	""
 	"ItemCost"	"1"
-	"ItemSellable"	"0"
+	"ItemSellable"	"1"
 	"ItemShopTags"	"consumable"
 	"ItemQuality"	"consumable"
 	"ItemShareability"	"ITEM_FULLY_SHAREABLE"

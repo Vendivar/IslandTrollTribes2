@@ -2632,7 +2632,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -2693,7 +2693,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -2755,7 +2755,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -2812,7 +2812,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -2854,6 +2854,7 @@
 	        }
 	    }
 	}
+	
 	"item_building_kit_hut_mud"
 	{
 		"ID"	"1121"
@@ -2872,7 +2873,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -2933,7 +2934,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -2994,7 +2995,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -3059,7 +3060,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -3124,7 +3125,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -3189,7 +3190,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -3250,7 +3251,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -3315,7 +3316,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -3380,7 +3381,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -3440,7 +3441,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -3500,7 +3501,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -3560,7 +3561,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -3622,7 +3623,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -3955,7 +3956,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 		"Custom"
 		{
 			"ModelOffsets"
@@ -4017,6 +4018,7 @@
 		}
 	
 	}
+	
 	"item_axe_iron"
 	{
 		"ID"	"1024"
@@ -4041,7 +4043,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 		"Custom"
 		{
 			"ModelScale"	"0.6"
@@ -4302,7 +4304,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 		"Custom"
 		{
 			"ModelScale"	"0.6"
@@ -4366,6 +4368,7 @@
 		}
 	
 	}
+	
 	"item_axe_stone"
 	{
 		"ID"	"1023"
@@ -4390,7 +4393,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 		"Custom"
 		{
 			"ModelScale"	"0.6"
@@ -4525,6 +4528,7 @@
 		}
 	
 	}
+	
 	"item_boots_bear"
 	{
 		"ID"	"1078"
@@ -4648,6 +4652,7 @@
 		}
 	
 	}
+	
 	"item_boots_elk"
 	{
 		"ID"	"1076"
@@ -4770,6 +4775,7 @@
 		}
 	
 	}
+	
 	"item_boots_steel"
 	{
 		"ID"	"1081"
@@ -4894,6 +4900,7 @@
 		}
 	
 	}
+	
 	"item_armor_battle"
 	{
 		"ID"	"1069"
@@ -5584,6 +5591,7 @@
 		}
 	
 	}
+	
 	"item_coat_elk"
 	{
 		"ID"	"1063"
@@ -6595,7 +6603,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -6619,7 +6627,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -6643,7 +6651,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -6673,7 +6681,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -6800,7 +6808,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 		"Custom"
 		{
 			"ModelScale"	"0.6"
@@ -6899,7 +6907,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 		"ItemInitialCharges"   "2"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
@@ -7000,7 +7008,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -7061,7 +7069,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -7329,7 +7337,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -7483,7 +7491,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -7625,7 +7633,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -7749,7 +7757,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -7837,7 +7845,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -7924,7 +7932,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -8011,7 +8019,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -8099,7 +8107,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -8187,7 +8195,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -8276,7 +8284,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -8381,7 +8389,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -8411,7 +8419,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -8439,7 +8447,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -8502,7 +8510,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -8590,7 +8598,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -8727,7 +8735,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -8827,7 +8835,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -8872,7 +8880,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -9020,7 +9028,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -9174,6 +9182,7 @@
 		}
 	
 	}
+	
 	//  Castable ability to silence an enemy unit for 5 seconds and deal 25 damage.
 	//  10% chance of blocking 20 physical damage
 	//  Blocks a target spell every 75 seconds
@@ -9504,7 +9513,7 @@
 		"Model"	"models/items/dragon_knight/shield_of_the_drake/shield_of_the_drake.vmdl"
 		"Effect"	""
 		"ItemCost"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
@@ -9603,7 +9612,7 @@
 		"Model"	"models/heroes/chaos_knight/chaos_knight_shield.vmdl"
 		"Effect"	""
 		"ItemCost"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
@@ -9789,6 +9798,7 @@
 		}
 	
 	}
+	
 	"item_spear_basic"
 	{
 	    "ID"    "1028"
@@ -10145,6 +10155,7 @@
 	        }
 	    }
 	}
+	
 	"item_spear_iron"
 	{
 	    "ID"    "1029"
@@ -11247,7 +11258,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -11317,7 +11328,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 		"ItemInitialCharges"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
@@ -11423,7 +11434,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -11449,7 +11460,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -11498,7 +11509,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -11558,7 +11569,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -11748,6 +11759,7 @@
 	        }
 	    }
 	}
+	
 	"item_meat_smoked"
 	{
 	    "ID"                    "1099"
@@ -12055,7 +12067,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -12126,7 +12138,7 @@
 			"ItemAliases"	"quicktype"
 			"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 			"ItemKillable"	"1"
-			"ItemSellable"	"0"
+			"ItemSellable"	"1"
 		
 			"UIPickupSound"	"Item.PickUpGemShop"
 			"UIDropSound"	"Item.DropGemShop"
@@ -12190,7 +12202,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -12214,7 +12226,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"inv_pickup_bone"
 		"UIDropSound"	"inv_pickup_bone"
@@ -12296,7 +12308,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"ui.inv_pickup_robes"
 		"UIDropSound"	"ui.inv_drop_robes"
@@ -12324,7 +12336,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -12371,7 +12383,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"ui.inv_pickup_robes"
 		"UIDropSound"	"ui.inv_drop_robes"
@@ -12400,7 +12412,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"ui.inv_pickup_robes"
 		"UIDropSound"	"ui.inv_drop_robes"
@@ -12429,7 +12441,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -12453,7 +12465,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -12477,7 +12489,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -12501,7 +12513,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -12525,7 +12537,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -12549,7 +12561,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -12587,7 +12599,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -12616,7 +12628,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -12636,7 +12648,7 @@
 		"Model"	"models/props_nature/mushroom_wild_00.vmdl"
 		"Effect"	""
 		"ItemCost"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
@@ -12646,7 +12658,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -12674,7 +12686,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -12711,7 +12723,7 @@
 		"Model"	"models/props_nature/mushroom_wild_02.vmdl"
 		"Effect"	""
 		"ItemCost"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
@@ -12721,7 +12733,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -12745,7 +12757,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -12773,7 +12785,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -12881,7 +12893,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -12938,7 +12950,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -12995,7 +13007,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 	
 		"UIPickupSound"	"inv_drop_wood"
 		"UIDropSound"	"inv_drop_wood"
@@ -13177,6 +13189,7 @@
 	        }
 	    }
 	}
+	
 	"item_thistles"
 	{
 		"ID"	"1014"
@@ -13198,7 +13211,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -13247,7 +13260,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 		"precache"
 		{
 			"soundfile"	"soundevents/game_sounds_ui.vsndevts"
@@ -13397,7 +13410,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -13466,7 +13479,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -13489,6 +13502,7 @@
 		}
 	
 	}
+	
 	"item_gun_blow_bones"
 	{
 		"ID"	"1134"
@@ -13513,7 +13527,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_ALWAYS"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -13627,7 +13641,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_ALWAYS"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -13656,7 +13670,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_ALWAYS"
 		"ItemKillable"	"1"
 		"ItemInitialCharges"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -13826,7 +13840,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_ALWAYS"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -14212,7 +14226,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -14249,7 +14263,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -14273,7 +14287,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -14315,7 +14329,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"0"
+		"ItemSellable"	"1"
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"

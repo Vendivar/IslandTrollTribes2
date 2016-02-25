@@ -66,7 +66,8 @@ function Heat:Think( hero )
      
         if Heat:Get( hero ) <= 20 then
 		AddFreezingIndicator(hero)			
-        EmitSoundOn( "Hero_Ancient_Apparition.IceBlastRelease.Tick", hero )
+        EmitSoundOn( "Hero_Ancient_Apparition.IceB
+		lastRelease.Tick", hero )
         else
             RemoveFreezingIndicator(hero)
         end
