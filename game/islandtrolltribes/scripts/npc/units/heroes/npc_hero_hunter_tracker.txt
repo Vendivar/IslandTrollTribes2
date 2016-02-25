@@ -14,7 +14,7 @@
 	"Ability2"	"ability_hunter_greatertrack"
 	"Ability3"	"ability_hunter_dysenterytrack"
 	"Ability4"	"ability_hunter_sniff"
-	"Ability5"	"ability_hunter_hidetrackingbeacon"
+	"Ability5"	"ability_hunter_placetrackingbeacon"
 	"Ability6"	"ability_hunter_querybeacon"
 	"Ability7"	""
 	"Ability8"	""

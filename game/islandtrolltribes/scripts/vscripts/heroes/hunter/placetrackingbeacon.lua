@@ -10,11 +10,12 @@ function TrackUnit(keys)
     end
 
     local dummySpotter = CreateUnitByName("dummy_spotter", target:GetAbsOrigin(), false, caster, caster, caster:GetTeamNumber())
-    dummySpotter:SetDayTimeVisionRange(200)
-    dummySpotter:SetNightTimeVisionRange(200)
+    dummySpotter:SetDayTimeVisionRange(0)
+    dummySpotter:SetNightTimeVisionRange(0)
     dummySpotter.startTime = GameRules:GetGameTime()
     dummySpotter.duration = dur
     dummySpotter.target = target
+    dummySpotter.isTrackingBeaconDummy = true
     -- dummySpotter:SetContextThink("dummy_spotter_thinker"..dummySpotter:GetEntityIndex(), MoveDummySpotter, 0.1)
     Timers:CreateTimer(MoveDummySpotter, dummySpotter)
 end

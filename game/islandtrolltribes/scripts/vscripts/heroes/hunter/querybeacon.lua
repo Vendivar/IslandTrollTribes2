@@ -34,7 +34,7 @@ function FindTrackingUnits(caster, range)
     local foundUnits
     local units = Entities:FindAllByClassnameWithin("npc_dota_creature", caster:GetAbsOrigin(), range)
     for _,unit in pairs(units) do
-        if (unit:GetUnitName()=="dummy_spotter" and unit.isTrackingDummy ) then
+        if (unit:GetUnitName()=="dummy_spotter" and unit.isTrackingBeaconDummy ) then
             --            print("Unit found")
             table.insert(trackingUnits, unit)
             foundUnits = true

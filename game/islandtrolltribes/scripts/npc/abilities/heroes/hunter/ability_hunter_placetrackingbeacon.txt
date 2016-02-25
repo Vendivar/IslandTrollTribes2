@@ -1,0 +1,146 @@
+"ability_hunter_placetrackingbeacon"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	"AbilityTextureName"	"ability_hunter_track"
+	"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
+	"AbilityCastPoint"	"0.0 0.0 0.0"
+	"AbilityCooldown"	"45.0 40.0 35.0"
+	"AbilityCastRange"	"700"
+	"AbilityManaCost"	"0"
+	"MaxLevel"	"1"
+	"RequiredLevel"	"%required_level"
+	"precache"
+	{
+		"particle_folder"	"particles/units/heroes/hero_bounty_hunter"
+		"particle_folder"	"particles/units/heroes/hero_tinker"
+		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_bounty_hunter.vsndevts"
+	}
+
+	"OnSpellStart"
+	{
+		"TrackingProjectile"
+		{
+			"Target"	"TARGET"
+			"EffectName"	"particles/units/heroes/hero_tinker/tinker_missile.vpcf"
+			"Dodgeable"	"false"
+			"ProvidesVision"	"false"
+			"MoveSpeed"	"2000"
+		}
+
+	}
+
+	"OnProjectileHitUnit"
+	{
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_track"
+			"Target"
+			{
+				"Center"	"TARGET"
+				"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Types"	"DOTA_UNIT_TARGET_HERO"
+			}
+
+			"Duration"	"%duration"
+		}
+
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_track"
+			"Target"
+			{
+				"Center"	"TARGET"
+				"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Types"	"DOTA_UNIT_TARGET_CREEP"
+			}
+
+			"Duration"	"%duration_creep"
+		}
+
+		"RunScript"
+		{
+			"ScriptFile" "heroes/hunter/placetrackingbeacon.lua"
+			"Function"	"TrackUnit"
+			"Target"	"TARGET"
+			"Duration"	"%duration"
+		}
+		"FireSound"
+		{
+			"EffectName"		"Hero_BountyHunter.Target"
+			"Target"			"TARGET"
+		}
+
+	}
+
+	"Modifiers"
+	{
+		"modifier_track"
+		{
+			"IsDebuff"	"1"
+			"IsHidden"	"1"
+			"IsPurgable"	"1"
+			"OnCreated"
+			{
+				"AttachEffect"
+				{
+					"Target"	"TARGET"
+					"EffectName"	"particles/units/heroes/hero_bounty_hunter/bounty_hunter_track_shield.vpcf"
+					"EffectAttachType"	"follow_overhead"
+				}
+
+				"AttachEffect"
+				{
+					"Target"	"TARGET"
+					"EffectName"	"particles/units/heroes/hero_bounty_hunter/bounty_hunter_track_trail.vpcf"
+					"EffectAttachType"	"follow_origin"
+				}
+
+			}
+
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%minus_armor"
+			}
+
+		}
+
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"duration"	"15.0 20.0 25.0"
+		}
+
+		"02"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"duration_creep"	"30.0"
+		}
+
+		"03"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"cooldown"	"45.0 40.0 35.0"
+		}
+
+		"04"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"minus_armor"	"-1 -2 -3"
+		}
+
+		"05"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"required_level"	"2 3 4"
+		}
+
+	}
+
+}
