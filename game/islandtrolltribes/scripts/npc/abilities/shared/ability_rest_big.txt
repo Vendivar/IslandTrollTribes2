@@ -7,7 +7,7 @@
     "AbilityUnitTargetFlags"    "DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
     "AbilityTextureName"        "ability_building_rest"
     "AbilityCastPoint"          "0.0"
-    "AbilityCooldown"           "0"
+    "AbilityCooldown"           "15.0"
     "AbilityCastRange"          "%cast_range"
     "AbilityManaCost"           "0"
     "MaxLevel"              "1"
@@ -18,46 +18,44 @@
     }
 
     "OnSpellStart"
-    {
-        "RunScript"
         {
-            "ScriptFile"    "mechanics/mana.lua"
-            "Function"      "RestoreMana"
-            "ManaRestored"  "%mana_restored"
-        }
+            "RunScript"
+            {
+                "ScriptFile"    "mechanics/mana.lua"
+                "Function"      "RestoreMana"
+                "ManaRestored"  "%mana_restored"
+            }
 
-        "ApplyModifier"
-        {
-            "ModifierName"  "modifier_sleep"
-            "Duration"      "%rest_duration"
-            "Target"        "TARGET"
-        }
-		
-        "ApplyModifier"
-        {
-            "ModifierName"  "modifier_sleep"
-            "Duration"      "%rested_duration"
-            "Target"        "TARGET"
-        }
+            "ApplyModifier"
+            {
+                "ModifierName"  "modifier_sleep"
+                "Duration"      "%rest_duration"
+                "Target"        "TARGET"
+            }
 
-        "ApplyModifier"
-        {
-            "ModifierName"  "modifier_rested"
-            "Duration"      "%invuln_duration"
-            "Target"        "TARGET"
-        }
-    }
+            "ApplyModifier"
+            {
+                "ModifierName"  "modifier_sleep"
+                "Duration"      "%rested_duration"
+                "Target"        "TARGET"
+            }
 
+            "ApplyModifier"
+            {
+                "ModifierName"  "modifier_rested"
+                "Duration"      "%invuln_duration"
+                "Target"        "TARGET"
+            }
+        }
     "Modifiers"
     {
         "modifier_sleep"
         {
             "IsPurgable"    "0"
-            "States"
+             "States"
             {
                 "MODIFIER_STATE_STUNNED"    "MODIFIER_STATE_VALUE_ENABLED"
             }
-
             "OnCreated"
             {
                 "AttachEffect"
@@ -73,16 +71,14 @@
                     "Target"         "TARGET"
                 }
             }
-
             "OnAttacked"
             {
                 "RemoveModifier"
-                {
+                 {
                     "ModifierName"    "modifier_sleep"
                     "Target"    "TARGET"
-                }
+                 }
             }
-
         }
 
         "modifier_invuln"
@@ -93,32 +89,31 @@
             }
 
         }
-		"modifier_rested"
-        {
-		}
 
+    	"modifier_rested"
+        {
+    	}
     }
 
     "AbilitySpecial"
-    {
+     {
         "01"
         {
             "var_type"    "FIELD_FLOAT"
             "rest_duration"    "6"
         }
 
-
         "02"
-        {
+         {
             "var_type"    "FIELD_INTEGER"
             "cast_range"    "250"
-        }
+         }
 
         "03"
-        {
+         {
             "var_type"    "FIELD_INTEGER"
             "mana_restored"    "200"
-        }
+         }
 
         "04"
         {
@@ -129,13 +124,13 @@
         "05"
         {
             "var_type"    "FIELD_FLOAT"
-            "invuln_duration"    "1.0"
+             "invuln_duration"    "1.0"
         }
-		
+
         "06"
         {
             "var_type"    "FIELD_FLOAT"
             "rested_duration"    "15"
         }
-    }
+     }
 }
