@@ -4,7 +4,7 @@
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	"AbilityTextureName"	"ability_hunter_track"
+	"AbilityTextureName"	"ability_hunter_placetrackingbeacon"
 	"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
 	"AbilityCastPoint"	"0.0 0.0 0.0"
 	"AbilityCooldown"	"45.0 40.0 35.0"
@@ -24,7 +24,7 @@
 		"TrackingProjectile"
 		{
 			"Target"	"TARGET"
-			"EffectName"	"particles/units/heroes/hero_tinker/tinker_missile.vpcf"
+			"EffectName"	"particles/econ/items/clockwerk/clockwerk_paraflare/clockwerk_para_rocket_flare_model.vpcf"
 			"Dodgeable"	"false"
 			"ProvidesVision"	"false"
 			"MoveSpeed"	"2000"
@@ -72,7 +72,12 @@
 			"EffectName"		"Hero_BountyHunter.Target"
 			"Target"			"TARGET"
 		}
-
+		 "FireEffect"
+		{
+			"EffectName"    	"particles/econ/items/clockwerk/clockwerk_paraflare/clockwerk_para_rocket_flare_illumination.vpcf"
+			"EffectAttachType"  "follow_origin"
+			"Target"    		"TARGET"
+		}
 	}
 
 	"Modifiers"
