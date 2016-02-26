@@ -7,7 +7,7 @@
 	"Model"	"models/props_nature/mushroom_wild_00.vmdl"
 	"Effect"	""
 	"ItemCost"	"1"
-	"ItemSellable"	"0"
+	"ItemSellable"	"1"
 	"ItemShopTags"	"consumable"
 	"ItemQuality"	"consumable"
 	"ItemShareability"	"ITEM_FULLY_SHAREABLE"
@@ -17,7 +17,7 @@
 	"ItemAliases"	"quicktype"
 	"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 	"ItemKillable"	"1"
-	"ItemSellable"	"0"
+	"ItemSellable"	"1"
 
 	"UIPickupSound"	"Item.PickUpGemShop"
 	"UIDropSound"	"Item.DropGemShop"

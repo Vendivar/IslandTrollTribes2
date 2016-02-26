@@ -1,3 +1,4 @@
+
 "item_spear_iron"
 {
     "ID"    "1029"

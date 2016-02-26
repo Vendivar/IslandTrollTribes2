@@ -65,7 +65,8 @@ function Heat:Think( hero )
         Heat:Modify(hero, hero.HeatLoss)
      
         if Heat:Get( hero ) <= 20 then
-            AddFreezingIndicator(hero)
+		AddFreezingIndicator(hero)			
+        EmitSoundOn( "Hero_Ancient_Apparition.IceBlastRelease.Tick", hero )
         else
             RemoveFreezingIndicator(hero)
         end
@@ -162,7 +163,6 @@ end
 function AddFreezingIndicator(hero)
     if not hero.freezing_indicator then
         EmitSoundOn( "Hero_Ancient_Apparition.IceBlastRelease.Tick", hero )
-
         local player = PlayerResource:GetPlayer(hero:GetPlayerID())
         if player then
             hero.freezing_indicator = ParticleManager:CreateParticleForPlayer("particles/custom/screen_freeze_indicator.vpcf", PATTACH_EYES_FOLLOW, player, player)

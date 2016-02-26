@@ -1,3 +1,4 @@
+
 "item_boots_bear"
 {
 	"ID"	"1078"

@@ -22,7 +22,7 @@
 	"ItemAliases"	"quicktype"
 	"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 	"ItemKillable"	"1"
-	"ItemSellable"	"0"
+	"ItemSellable"	"1"
 
 	"UIPickupSound"	"Item.PickUpGemShop"
 	"UIDropSound"	"Item.DropGemShop"

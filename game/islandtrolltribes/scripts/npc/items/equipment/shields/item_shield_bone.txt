@@ -1,4 +1,5 @@
-"item_shield_bone"{
+"item_shield_bone"
+{
 	"ID"	"1139"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
@@ -8,7 +9,7 @@
 	"Model"	"models/items/dragon_knight/shield_of_the_drake/shield_of_the_drake.vmdl"
 	"Effect"	""
 	"ItemCost"	"1"
-	"ItemSellable"	"0"
+	"ItemSellable"	"1"
 	"ItemShopTags"	"consumable"
 	"ItemQuality"	"consumable"
 	"ItemShareability"	"ITEM_FULLY_SHAREABLE"

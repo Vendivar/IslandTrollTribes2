@@ -1,3 +1,4 @@
+
 //  Castable ability to silence an enemy unit for 5 seconds and deal 25 damage.
 //  10% chance of blocking 20 physical damage
 //  Blocks a target spell every 75 seconds
