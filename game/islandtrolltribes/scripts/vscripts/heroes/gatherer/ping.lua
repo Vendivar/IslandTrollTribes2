@@ -5,6 +5,9 @@ function PingItemInRange(event)
     local playerID = caster:GetPlayerID()
     local team = caster:GetTeamNumber()
     local range = ability:GetCastRange()
+--    print("Ability cast range.."..range)
+    range = range + GetMapMagicBonusRange(caster)
+--    print("Ability cast range after mapmagic bonus.."..range)
     local itemColorTable = GameRules.ItemInfo["PingColors"]
     
     -- Handle specific item pings
@@ -66,4 +69,13 @@ function PingItemInRange(event)
     if foundItem then
         EmitSoundOnLocationForAllies(caster:GetAbsOrigin(), "General.Ping", caster)
     end
+end
+
+function GetMapMagicBonusRange(caster)
+    local mapMagicBonus =  0
+    print("Caster: "..caster:GetUnitName())
+    if caster:HasModifier("modifier_mapmagic") then
+        mapMagicBonus = 1000
+    end
+    return mapMagicBonus
 end

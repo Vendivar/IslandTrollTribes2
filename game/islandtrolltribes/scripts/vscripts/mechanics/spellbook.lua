@@ -181,7 +181,8 @@ function SwapSpellBook(keys)
         "ability_priest_fortitude",
         "ability_priest_trollbattlecall",
         "ability_priest_spiritlink",
-        "ability_priest_angelicelemental"
+--        "ability_priest_angelicelemental",
+        "ability_priest_mapmagic"
     }
 
     spellBooks[PRIEST]["master_healer"]["book1"] = {

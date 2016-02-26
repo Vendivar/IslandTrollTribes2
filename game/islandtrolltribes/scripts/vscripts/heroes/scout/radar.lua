@@ -1,7 +1,9 @@
 function EnemyRadar(keys)
     local caster = keys.caster
     local ability = keys.ability
-    local range = ability:GetCastRange()
+--    print("Ability cast range: "..ability:GetCastRange())
+    local range = ability:GetCastRange() + GetMapMagicBonusRange(caster)
+--    print("Ability cast range after mapmagic bonus: "..range)
     local casterPosition = caster:GetAbsOrigin()
     local teamnumber = caster:GetTeamNumber()
 
@@ -36,4 +38,12 @@ function EnemyRadar(keys)
 
         EmitSoundOnLocationForAllies(caster:GetAbsOrigin(), "General.Ping", caster)
     end
+end
+
+function GetMapMagicBonusRange(caster)
+    local mapMagicBonus =  0
+    if caster:HasModifier("modifier_mapmagic") then
+        mapMagicBonus = 1000
+    end
+    return mapMagicBonus
 end
