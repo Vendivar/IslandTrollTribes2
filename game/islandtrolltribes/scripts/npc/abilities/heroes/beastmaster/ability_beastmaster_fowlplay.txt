@@ -9,6 +9,7 @@
     "AbilityCooldown"           "60"
     "AbilityCastRange"          "0"
     "AbilityManaCost"           "40"
+    "AoERadius"                 "%radius"
     "MaxLevel"                  "1"
 
     "precache"
@@ -16,6 +17,7 @@
         "particle"  "particles/custom/fowl_play.vpcf"
         "soundfile" "soundevents/game_sounds_heroes/game_sounds_skywrath_mage.vsndevts"
         "soundfile" "soundevents/game_sounds.vsndevts"
+        "model"     "models/props_gameplay/chicken.vmdl"
     }
 
     "OnSpellStart"
@@ -71,6 +73,16 @@
                 "EffectName"            "particles/custom/fowl_play.vpcf"
                 "EffectAttachType"      "follow_origin"
                 "Target"                "CASTER"
+            }
+            "OnCreated"
+            {
+                "RunScript"
+                {
+                    "ScriptFile"    "heroes/beastmaster/fowlplay.lua"
+                    "Function"      "SetModel"
+                    "Target"        "TARGET"
+                    "Duration"      "%duration"
+                }
             }
         }
     }
