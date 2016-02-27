@@ -3,9 +3,11 @@ function CallToBattle(keys)
     local pets = GetPets(caster)
     local dur = keys.Duration
 
-    for _,pet in pairs(pets) do
-        local item = CreateItem("item_calltobattle_modifier_applier", caster, caster)
-        item:ApplyDataDrivenModifier(caster, pet, "modifier_calltobattle", {duration=dur})
+    if pets then
+        for _,pet in pairs(pets) do
+            local item = CreateItem("item_calltobattle_modifier_applier", caster, caster)
+            item:ApplyDataDrivenModifier(caster, pet, "modifier_calltobattle", {duration=dur})
+        end
     end
 end
 

@@ -43,6 +43,7 @@ function modifier_pet_grow:OnDestroy()
             TeachAbility(newPet, "ability_pet")
             TeachAbility(newPet, "ability_pet_sleep")
             TeachAbility(newPet, "ability_pet_release")
+            TeachAbility(newPet, "ability_pet_empathicrage")
 
             -- Update table with the new pet
             local pets = hero.pets

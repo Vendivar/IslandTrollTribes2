@@ -1,0 +1,48 @@
+// Increases the movement speed and attack speed of the owner when it dies near the owner
+"ability_pet_empathicrage"
+{
+	"BaseClass"             "ability_datadriven"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_HIDDEN"
+    "AbilityCastPoint"      "0"
+    "AbilityCooldown"       "0"
+    "AbilityManaCost"       "0"
+    "MaxLevel"              "1"
+
+    "Modifiers"
+    {
+        "modifier_pet_empathicrage"
+        {
+            "Passive"   "1"
+            "OnCreated"
+            {
+                "RunScript"
+                {
+                    "ScriptFile"    "heroes/beastmaster/petempathicrage.lua"
+                    "Function"      "StartEmpathicRage"
+                    "Range"         "600"
+                    "Duration"      "10.0"
+
+                }
+            }
+        }
+
+        "modifer_empathicrage_buff"
+        {   "IsHidden"    "0"
+            "IsBuff"      "1"
+            "Properties"
+            {
+                "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"10"
+            	"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"20"
+            }
+        }
+    }
+
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile" "heroes/beastmaster/pets.lua"
+			"Function"   "PetRelease"
+		}
+	}
+}

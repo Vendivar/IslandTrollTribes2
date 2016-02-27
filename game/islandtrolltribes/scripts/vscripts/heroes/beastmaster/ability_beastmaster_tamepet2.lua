@@ -23,6 +23,7 @@ function ability_beastmaster_tamepet2:OnSpellStart()
             pet1:RemoveModifierByName("modifier_pet") --This will remove it from the list of pets
             pet:RemoveModifierByName("modifier_grow")
             pet1:RemoveAbility("ability_pet_release")
+            pet1:RemoveAbility("ability_pet_empathicrage")
             pet1:RemoveAbility("ability_pet_sleep")
             pet1:EmitSound("Hero_Beastmaster.Call.Boar")
             pet1:EmitSound("Hero_Beastmaster.Call.Hawk")
@@ -55,6 +56,7 @@ function ability_beastmaster_tamepet2:OnSpellStart()
     TeachAbility(newPet, "ability_pet")
     TeachAbility(newPet, "ability_pet_sleep")
     TeachAbility(newPet, "ability_pet_release")
+    TeachAbility(newPet, "ability_pet_empathicrage")
 
     -- Abilities on BM: Follow, Stay
     TeachAbility(caster, "ability_beastmaster_pet_follow")
