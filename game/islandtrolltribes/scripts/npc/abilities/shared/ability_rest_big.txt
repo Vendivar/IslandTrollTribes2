@@ -7,7 +7,7 @@
     "AbilityUnitTargetFlags"    "DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
     "AbilityTextureName"        "ability_building_rest"
     "AbilityCastPoint"          "0.0"
-    "AbilityCooldown"           "15.0"
+    "AbilityCooldown"           "0"
     "AbilityCastRange"          "%cast_range"
     "AbilityManaCost"           "0"
     "MaxLevel"              "1"
@@ -18,35 +18,15 @@
     }
 
     "OnSpellStart"
-        {
+    {
             "RunScript"
             {
                 "ScriptFile"    "mechanics/mana.lua"
-                "Function"      "RestoreMana"
+                "Function"      "RestAndRestoreMana"
                 "ManaRestored"  "%mana_restored"
             }
 
-            "ApplyModifier"
-            {
-                "ModifierName"  "modifier_sleep"
-                "Duration"      "%rest_duration"
-                "Target"        "TARGET"
-            }
-
-            "ApplyModifier"
-            {
-                "ModifierName"  "modifier_sleep"
-                "Duration"      "%rested_duration"
-                "Target"        "TARGET"
-            }
-
-            "ApplyModifier"
-            {
-                "ModifierName"  "modifier_rested"
-                "Duration"      "%invuln_duration"
-                "Target"        "TARGET"
-            }
-        }
+    }
     "Modifiers"
     {
         "modifier_sleep"

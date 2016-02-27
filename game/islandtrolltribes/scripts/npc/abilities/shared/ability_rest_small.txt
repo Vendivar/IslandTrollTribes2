@@ -22,29 +22,8 @@
         "RunScript"
         {
             "ScriptFile"    "mechanics/mana.lua"
-            "Function"      "RestoreMana"
+            "Function"      "RestAndRestoreMana"
             "ManaRestored"  "%mana_restored"
-        }
-
-        "ApplyModifier"
-        {
-            "ModifierName"  "modifier_sleep"
-            "Duration"      "%rest_duration"
-            "Target"        "TARGET"
-        }
-
-        "ApplyModifier"
-        {
-            "ModifierName"  "modifier_invuln"
-            "Duration"      "%invuln_duration"
-            "Target"        "TARGET"
-        }
-		
-        "ApplyModifier"
-        {
-            "ModifierName"  "modifier_rested"
-            "Duration"      "%invuln_duration"
-            "Target"        "TARGET"
         }
     }
 

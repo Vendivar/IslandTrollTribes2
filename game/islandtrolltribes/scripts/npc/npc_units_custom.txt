@@ -490,7 +490,7 @@
 		"BaseClass"	"npc_dota_creature"
 		"Model"	"models/props_structures/tent_dk_med.vmdl"
 		"SoundSet"	"Creep_Good_Melee"
-		"HasInventory"	"0"
+		"HasInventory"	"1"
 		"MinimapIconSize"	"250"
 		"HealthBarOffset"	"400"
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
@@ -618,54 +618,6 @@
 		"StatusManaRegen"	"0"
 		"TeamName"	"DOTA_TEAM_GOODGUYS"
 		"CombatClassDefend"	"DOTA_COMBAT_CLASS_DEFEND_STRONG"
-		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
-		"VisionDaytimeRange"	"0"
-		"VisionNighttimeRange"	"0"
-	
-		// Building Size
-		//----------------------------------------------------------------
-		"ConstructionSize"			"2"
-		"BlockPathingSize"			"2"
-	    "SharedWithTeammates" "1"
-	}
-	"npc_building_omnitower"
-	{
-		"BaseClass"	"npc_dota_creature"
-		"Model"	"models/props_structures/wooden_sentry_tower001.vmdl"
-		"SoundSet"	"Creep_Good_Melee"
-		"HasInventory"	"0"
-		"ModelScale"	"0.65"
-		"MinimapIconSize"	"250"
-		"HealthBarOffset"	"400"
-		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
-		"RingRadius"	"100"
-		"ModelScale"	"0.6"
-		"precache"
-		{
-			"model"	"models/props_debris/camp_fire001.vmdl"
-			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts"
-			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
-		}
-	
-		"Ability1"	"ability_enemy_target"
-		"Ability10"	"ability_building"
-		"Ability11"	"ability_cancel_building"
-		
-		"ArmorPhysical"	"5"
-		"MagicalResistance"	"0"
-		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
-		"BountyXP"	"0"
-		"BountyGoldMin"	"0"
-		"BountyGoldMax"	"0"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"	"0"
-		"MovementTurnRate"	"0"
-		"StatusHealth"	"220"
-		"StatusHealthRegen"	"0"
-		"StatusMana"	"1"
-		"StatusManaRegen"	"0"
-		"TeamName"	"DOTA_TEAM_GOODGUYS"
-		"CombatClassDefend"	"DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
 		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 		"VisionDaytimeRange"	"0"
 		"VisionNighttimeRange"	"0"
@@ -957,6 +909,54 @@
 		"BlockPathingSize"			"2"
 	    "SharedWithTeammates" "1"
 	
+	}
+	"npc_building_tower_omni"
+	{
+		"BaseClass"	"npc_dota_creature"
+		"Model"	"models/props_structures/wooden_sentry_tower001.vmdl"
+		"SoundSet"	"Creep_Good_Melee"
+		"HasInventory"	"0"
+		"ModelScale"	"0.65"
+		"MinimapIconSize"	"250"
+		"HealthBarOffset"	"400"
+		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
+		"RingRadius"	"100"
+		"ModelScale"	"0.6"
+		"precache"
+		{
+			"model"	"models/props_debris/camp_fire001.vmdl"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts"
+			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
+		}
+	
+		"Ability1"	"ability_enemy_target"
+		"Ability10"	"ability_building"
+		"Ability11"	"ability_cancel_building"
+		
+		"ArmorPhysical"	"5"
+		"MagicalResistance"	"0"
+		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
+		"BountyXP"	"0"
+		"BountyGoldMin"	"0"
+		"BountyGoldMax"	"0"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"	"0"
+		"MovementTurnRate"	"0"
+		"StatusHealth"	"220"
+		"StatusHealthRegen"	"0"
+		"StatusMana"	"1"
+		"StatusManaRegen"	"0"
+		"TeamName"	"DOTA_TEAM_GOODGUYS"
+		"CombatClassDefend"	"DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
+		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+		"VisionDaytimeRange"	"0"
+		"VisionNighttimeRange"	"0"
+	
+		// Building Size
+		//----------------------------------------------------------------
+		"ConstructionSize"			"2"
+		"BlockPathingSize"			"2"
+	    "SharedWithTeammates" "1"
 	}
 	"npc_building_workshop"
 	{

@@ -1,4 +1,4 @@
-"npc_building_omnitower"
+"npc_building_tower_omni"
 {
 	"BaseClass"	"npc_dota_creature"
 	"Model"	"models/props_structures/wooden_sentry_tower001.vmdl"
