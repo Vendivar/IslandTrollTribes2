@@ -138,6 +138,9 @@ function ITT:OnSubclassChange(event)
         end
     end
 
+    -- Post subclass select actions
+    PostSubclassSelectActions(hero)
+
     -- Update skills
     ITT:AdjustSkills( hero )
 
@@ -151,6 +154,14 @@ function ITT:OnSubclassChange(event)
 
     for slot,modelName in pairs(defaultWearables) do
         SwapWearable(hero, defaultWearables[slot], newWearables[slot])
+    end
+end
+
+function PostSubclassSelectActions(hero)
+    if (hero.subclass == "chicken_form"  or hero.subclass == "shapeshifter") and hero.pets then
+        for _,pet in pairs(hero.pets) do
+            pet:ForceKill(false)
+        end
     end
 end
 
