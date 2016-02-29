@@ -1,0 +1,11 @@
+"dummy_caster_stormearthfire"
+{
+	"BaseClass"	"npc_dota_creature"
+	"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
+	"VisionDaytimeRange"	"0"
+	"VisionNighttimeRange"	"0"
+	"Ability1"	"dummy_passive"
+	"Ability3"	""
+	"Ability4"	""
+	"Ability5"	""
+}
