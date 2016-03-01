@@ -6431,7 +6431,7 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitTargetFlag"			"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
 		"SpellImmunityType" 			"SPELL_IMMUNITY_ENEMIES_YES"
 		"AbilityCastRange"				"500"
@@ -6439,6 +6439,10 @@
 		"AbilityCooldown"				"30"
 		"AbilityManaCost"				"0"
 		"MaxLevel" 						"1"
+		"precache"
+		{
+		    "particle"      "particles/econ/wards/bane/bane_ward/bane_ward_droplets.vpcf"
+		}
 	
 		"AbilitySpecial"
 		{
@@ -6467,31 +6471,35 @@
 				"Target" 		"TARGET"
 			}
 	
-			"FireEffect"
-			{
-				"EffectName"        "particles/econ/wards/bane/bane_ward/bane_ward_droplets.vpcf"
-				"EffectAttachType"  "follow_origin"
-				"Target"            "TARGET"
-			}
-	
-			"FireEffect"
-			{
-				"EffectName"        "particles/econ/wards/bane/bane_ward/bane_ward_droplets.vpcf"
-				"EffectAttachType"  "follow_origin"
-				"Target"            "TARGET"
-			}
-	
 			"RunScript"
 			{
 				"ScriptFile"	"heroes/mage/dream_eater.lua"
 				"Function"		"DreamEater"
 	
-				"hypnosis"	"modifier_mage_hypnosis"
+				"hypnosis"	        "modifier_mage_hypnosis"
+				"particle_modifier" "modifier_dreameater_effect"
 	
 				"heal"		"%heal"
 				"mana"		"%mana"
 				"damage"	"%damage"
 			}
+		}
+	
+		Modifiers
+		{
+		    "modifier_dreameater_effect"
+		    {
+		        "IsHidden" "1"
+		        "OnCreated"
+		        {
+		            "AttachEffect"
+	        		{
+	        			"EffectName"        "particles/econ/wards/bane/bane_ward/bane_ward_droplets.vpcf"
+	        			"EffectAttachType"  "follow_origin"
+	        			"Target"            "TARGET"
+	        		}
+		        }
+		    }
 		}
 	}
 	"ability_mage_electromagnet"
@@ -7243,6 +7251,12 @@
 		"AbilityManaCost"				"10"
 		"MaxLevel" 						"1"
 	
+		"precache"
+		{
+			"particle"			"particles/units/heroes/hero_bane/bane_enfeeble_grand.vpcf"
+			"particle"			"particles/generic_gameplay/generic_sleep.vpcf"
+		}
+	
 		"AbilitySpecial"
 		{
 			"01"
@@ -7310,33 +7324,29 @@
 			{
 				"IsHidden"			"0"
 				"IsDebuff"			"1"
+	            "OnCreated"
+	            {
+	                "AttachEffect"
+				    {
+					    "EffectName"			"particles/generic_gameplay/generic_sleep.vpcf"
+					    "EffectAttachType"		"follow_overhead"
+					    "Target"            	"TARGET"
+				    }
 	
-				"AttachEffect"
-				{
-					"EffectName"			"particles/generic_gameplay/generic_sleep.vpcf"
-					"EffectAttachType"		"follow_overhead"
-					"Target"            	"TARGET"
-				}
+				    "AttachEffect"
+				    {
+					    "EffectName"        	"particles/units/heroes/hero_bane/bane_enfeeble_grand.vpcf"
+					    "EffectAttachType"  	"follow_origin"
+					    "EffectRadius"          "0"
+					    "Target"            	"TARGET"
+				    }
 	
-				"AttachEffect"
-				{
-					"EffectName"        	"particles/generic_gameplay/generic_sleep_b.vpcf"
-					"EffectAttachType"  	"follow_overhead"
-					"Target"            	"TARGET"
-				}
-	
-				"AttachEffect"
-				{
-					"EffectName"        	"particles/units/heroes/hero_bane/bane_enfeeble_grand.vpcf"
-					"EffectAttachType"  	"follow_origin"
-					"Target"            	"TARGET"
-				}
-	
-				"States"
-				{
-					"MODIFIER_STATE_ATTACK_IMMUNE"		"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_MAGIC_IMMUNE"		"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_STUNNED"			"MODIFIER_STATE_VALUE_ENABLED"
+	            }
+	            "States"
+	            {
+			        "MODIFIER_STATE_ATTACK_IMMUNE"		"MODIFIER_STATE_VALUE_ENABLED"
+				    "MODIFIER_STATE_MAGIC_IMMUNE"		"MODIFIER_STATE_VALUE_ENABLED"
+				    "MODIFIER_STATE_STUNNED"			"MODIFIER_STATE_VALUE_ENABLED"
 				}
 			}
 		}

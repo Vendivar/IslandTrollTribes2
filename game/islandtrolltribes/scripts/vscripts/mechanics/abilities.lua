@@ -45,7 +45,7 @@ end
 
 function PrintAbilities( unit )
     print("List of Abilities in "..unit:GetUnitName())
-    for i=0,15 do
+    for i=0,16 do
         local ability = unit:GetAbilityByIndex(i)
         if ability then
             local output = i.." - "..ability:GetAbilityName()
@@ -56,7 +56,7 @@ function PrintAbilities( unit )
 end
 
 function HideAllAbilities(unit)
-    for i=0,15 do
+    for i=0,16 do
         local ability = unit:GetAbilityByIndex(i)
         if ability then
             ability:SetHidden(true)
@@ -65,7 +65,7 @@ function HideAllAbilities(unit)
 end
 
 function ClearAbilities( unit )
-    for i=0,15 do
+    for i=0,16 do
         local ability = unit:GetAbilityByIndex(i)
         if ability then
             unit:RemoveAbility(ability:GetAbilityName())
@@ -75,7 +75,7 @@ end
 
 function GetAllAbilities( unit )
     local abilityList = {}
-    for i=0,15 do
+    for i=0,16 do
         local ability = unit:GetAbilityByIndex(i)
         if ability then
             table.insert(abilityList,ability)
@@ -85,7 +85,7 @@ function GetAllAbilities( unit )
 end
 
 function EnableAllAbilities( unit, visibility )
-    for i=0,15 do
+    for i=0,16 do
         local ability = unit:GetAbilityByIndex(i)
         if ability then
 --            SetAbilityVisibility(unit,ability:GetAbilityName(),visibility)

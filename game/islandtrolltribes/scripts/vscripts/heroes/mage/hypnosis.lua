@@ -1,5 +1,5 @@
 function Hypnosis(keys)
-    local ability = keys.ability
+    local hypnosisAbility = keys.ability
     local caster  = keys.caster
     local target  = keys.target
 
@@ -14,5 +14,23 @@ function Hypnosis(keys)
     end
     target:GiveMana(mana)
 
-    ability:ApplyDataDrivenModifier(caster, target, hypnosis, {duration = dur})
+    hypnosisAbility:ApplyDataDrivenModifier(caster, target, hypnosis, {duration = dur})
+
+    if not caster:HasAbility("ability_mage_dreameater") then
+        caster:AddAbility("ability_mage_dreameater")
+        local dreamEaterAbility = caster:FindAbilityByName("ability_mage_dreameater")
+        dreamEaterAbility:SetLevel(1)
+        dreamEaterAbility:SetAbilityIndex(hypnosisAbility:GetAbilityIndex()+1)
+    end
+    local dreamEaterAbility = caster:FindAbilityByName("ability_mage_dreameater")
+
+    ReplaceAbility(caster, hypnosisAbility, dreamEaterAbility)
+    Timers:CreateTimer(dur,function()
+        ReplaceAbility(caster,dreamEaterAbility, hypnosisAbility)
+    end)
+end
+
+function ReplaceAbility(caster,oldAbility, newAbility)
+    SetAbilityVisibility(caster,newAbility:GetAbilityName(),true)
+    SetAbilityVisibility(caster,oldAbility:GetAbilityName(),false)
 end

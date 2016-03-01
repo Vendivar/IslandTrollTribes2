@@ -315,7 +315,7 @@ end
 
 function GetVisibleAbilityCount( unit )
     local count = 0
-    for i=0,15 do
+    for i=0,16 do
         local ability = unit:GetAbilityByIndex(i)
         if ability and not ability:IsHidden() and (ability:GetAbilityName() ~= "attribute_bonus") then
             count = count + 1

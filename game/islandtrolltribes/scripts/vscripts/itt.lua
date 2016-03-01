@@ -450,7 +450,24 @@ function ITT:AdjustSkills( hero )
     end
 
     AdjustAbilityLayout(hero)
+    EnableSpellBookAbilities(hero)
     PrintAbilities(hero)
+end
+
+function EnableSpellBookAbilities(hero)
+    local toggleAbilityName
+    local heroClass = GetHeroClass(hero)
+    if heroClass == "mage" then
+        toggleAbilityName = "ability_mage_spellbook_toggle"
+    elseif heroClass == "priest" then
+        toggleAbilityName = "ability_priest_toggle_spellbar"
+    end
+
+    if toggleAbilityName then
+        local spellBookAbility = hero:FindAbilityByName(toggleAbilityName)
+        ToggleOn(spellBookAbility)
+        ToggleOff(spellBookAbility)
+    end
 end
 
 --[[
