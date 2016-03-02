@@ -162,6 +162,7 @@ function ITT:InitGameMode()
 
     -- KV Tables
     GameRules.ClassInfo = LoadKeyValues("scripts/kv/class_info.kv")
+    GameRules.SpellBookInfo = LoadKeyValues("scripts/kv/spellbook_info.kv")
     GameRules.BushInfo = LoadKeyValues("scripts/kv/bush_info.kv")
     GameRules.ItemInfo = LoadKeyValues("scripts/kv/item_info.kv")
     GameRules.SpawnInfo = LoadKeyValues("scripts/kv/spawn_info.kv")

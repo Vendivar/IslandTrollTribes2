@@ -64,6 +64,16 @@ function HideAllAbilities(unit)
     end
 end
 
+function ShowTheSpellBook(caster, spellbook)
+    for _,spell in pairs(spellbook) do
+        if caster:HasAbility(spell) then
+            print(caster:FindAbilityByName(spell):GetAbilityName())
+            SetAbilityVisibility (caster, spell,true)
+        end
+    end
+    AdjustAbilityLayout(caster)
+end
+
 function ClearAbilities( unit )
     for i=0,16 do
         local ability = unit:GetAbilityByIndex(i)

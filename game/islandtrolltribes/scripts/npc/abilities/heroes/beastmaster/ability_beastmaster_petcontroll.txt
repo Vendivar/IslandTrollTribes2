@@ -5,30 +5,34 @@
 	"AbilityTextureName"	"ability_mage_swap"
 	"MaxLevel"	"1"
 	"AbilityCastPoint"	"0"
+
 	"OnToggleOn"
 	{
 		"RunScript"
 		{
 			"ScriptFile"	"mechanics\spellbook.lua"
-			"Function"	"SwapSpellBook"
+			"Function"	    "SwapSpellBook"
+			"ActiveBook"    "book2"
 		}
 		"FireSound"
 		{
 			"EffectName"	"Hero_BountyHunter.Track"
-			"Target"	"CASTER"
+			"Target"	    "CASTER"
 		}
 	}
+
     "OnToggleOff"
 	{
 		"RunScript"
 		{
 			"ScriptFile"	"mechanics\spellbook.lua"
-			"Function"	"SwapSpellBook"
+			"Function"	    "SwapSpellBook"
+			"ActiveBook"    "book1"
 		}
 		"FireSound"
 		{
 			"EffectName"	"Hero_BountyHunter.Track"
-			"Target"	"CASTER"
+			"Target"	    "CASTER"
 		}
 	}
 

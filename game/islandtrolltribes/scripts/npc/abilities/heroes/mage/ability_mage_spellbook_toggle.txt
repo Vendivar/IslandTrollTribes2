@@ -10,7 +10,8 @@
 		"RunScript"
 		{
 			"ScriptFile"	"mechanics\spellbook.lua"
-			"Function"	"SwapSpellBook" 
+			"Function"	    "SwapSpellBook"
+			"ActiveBook"    "book2"
 		}
 		"FireSound"
 		{
@@ -23,12 +24,13 @@
 		"RunScript"
 		{
 			"ScriptFile"	"mechanics\spellbook.lua"
-			"Function"	"SwapSpellBook" 
+			"Function"	    "SwapSpellBook"
+			"ActiveBook"    "book1"
 		}
 		"FireSound"
 		{
 			"EffectName"	"Hero_BountyHunter.Track"
-			"Target"	"CASTER"
+			"Target"	    "CASTER"
 		}
 	}
 
