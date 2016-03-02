@@ -31,9 +31,8 @@
 
 		"RunScript"
 		{
-			"ScriptFile"	"custom_functions_ability.lua"
-			"Function"	"NelRune"
-			"Target"	"SELF"
+			"ScriptFile"    "heroes/mage/dementia_runes.lua"
+			"Function"      "NelRune"
 		}
 
 	}

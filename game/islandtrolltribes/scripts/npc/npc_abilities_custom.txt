@@ -5995,6 +5995,14 @@
 	            "Function"   "ToggleOffRunes"
 	        }
 	    }
+	
+	    "Modifiers"
+	    {
+	        "dementia_runes"
+	        {
+	 
+	        }
+	    }
 	}
 	"ability_mage_dementia_summoning"
 	{
@@ -7538,9 +7546,8 @@
 	
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
+				"ScriptFile"	"heroes/mage/dementia_runes.lua"
 				"Function"	"KaRune"
-				"Target"	"SELF"
 			}
 	
 		}
@@ -7601,9 +7608,8 @@
 	
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
+				"ScriptFile"	"heroes/mage/dementia_runes.lua"
 				"Function"	"LezRune"
-				"Target"	"SELF"
 			}
 	
 		}
@@ -8152,9 +8158,8 @@
 	
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"NelRune"
-				"Target"	"SELF"
+				"ScriptFile"    "heroes/mage/dementia_runes.lua"
+				"Function"      "NelRune"
 			}
 	
 		}

@@ -31,9 +31,8 @@
 
 		"RunScript"
 		{
-			"ScriptFile"	"custom_functions_ability.lua"
+			"ScriptFile"	"heroes/mage/dementia_runes.lua"
 			"Function"	"KaRune"
-			"Target"	"SELF"
 		}
 
 	}

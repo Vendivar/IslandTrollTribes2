@@ -23,4 +23,12 @@
             "Function"   "ToggleOffRunes"
         }
     }
+
+    "Modifiers"
+    {
+        "dementia_runes"
+        {
+
+        }
+    }
 }
