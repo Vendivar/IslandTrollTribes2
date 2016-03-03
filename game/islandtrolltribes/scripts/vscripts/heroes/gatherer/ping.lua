@@ -6,8 +6,8 @@ function PingItemInRange(event)
     local team = caster:GetTeamNumber()
     local range = ability:GetCastRange()
 --    print("Ability cast range.."..range)
-    range = range + GetMapMagicBonusRange(caster)
---    print("Ability cast range after mapmagic bonus.."..range)
+    range = range + GetBonusRange(caster)
+--    print("Ability cast range after adding bonus.."..range)
     local itemColorTable = GameRules.ItemInfo["PingColors"]
     
     -- Handle specific item pings
@@ -71,11 +71,13 @@ function PingItemInRange(event)
     end
 end
 
-function GetMapMagicBonusRange(caster)
-    local mapMagicBonus =  0
-    print("Caster: "..caster:GetUnitName())
-    if caster:HasModifier("modifier_mapmagic") then
-        mapMagicBonus = 1000
+function GetBonusRange(caster)
+    local bonusDistance =  0
+    if caster:HasModifier("modifier_mapmagic") then --Map magic bonus
+        bonusDistance = bonusDistance + 1000
     end
-    return mapMagicBonus
+    if caster:HasModifier("modifier_radar_extender") then --Radar telegatherer bonus
+        bonusDistance = bonusDistance + 500
+    end
+    return bonusDistance
 end

@@ -4070,6 +4070,25 @@
 		}
 	
 	}
+	"ability_gatherer_radarextender"
+	{
+	    "BaseClass"             "ability_datadriven"
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	    "AbilityTextureName"    ""
+	    "MaxLevel"              "1"
+	    "AbilityCastPoint"      "0"
+	
+	
+	    "Modifiers"
+	    {
+	        "modifier_radar_extender"
+	        {
+	            "Passive"   "1"
+	            "IsHidden"  "0"
+	            "IsBuff"    "1"
+	        }
+	    }
+	}
 	"ability_gatherer_radarmanipulations"
 	{
 	    "BaseClass"    			"ability_datadriven"
