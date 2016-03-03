@@ -27,28 +27,25 @@ function ToggleOffRunes( event )
 end
 
 function NelRune(keys)
-    print("NelRune is called..")
     local caster = keys.caster
     local runeInfo = {name = "particles/customgames/capturepoints/cp_fire.vpcf", type = "nelrune"}
     AddNewRune(caster,runeInfo)
 end
 
 function LezRune(keys)
-    print("LezRune is called..")
     local caster = keys.caster
     local runeInfo = {name = "particles/customgames/capturepoints/cp_allied_metal.vpcf", type = "lezrune"}
     AddNewRune(caster,runeInfo)
 end
 
 function KaRune(keys)
-    print("KaRune is called..")
     local caster = keys.caster
     local runeInfo = {name = "particles/customgames/capturepoints/cp_wind_captured.vpcf", type = "karune"}
     AddNewRune(caster,runeInfo)
 end
 
 function CasterMovementCheck(caster)
-    if caster.runeList ~=nil and HasCasterMoved(caster) then --draw the rune particles only if the caster has runes and when he has changed his poistion in the world.
+    if caster.runeList ~=nil and HasCasterMoved(caster) then --Redraw rune particles only if the caster has runes poistion in the world has changed.
         RedrawParticles(caster)
     end
     return 2.0
@@ -72,12 +69,10 @@ function HasCasterMoved(caster)
     local hasMoved =  false
     local currentPosition = caster:GetAbsOrigin()
     local oldPosition = caster.demLastPosition
-
     if not oldPosition or (oldPosition.x ~= currentPosition.x or oldPosition.y ~=  currentPosition.y or oldPosition.z ~=  currentPosition.z) then
         caster.demLastPosition = currentPosition
         hasMoved = true
     end
-    print(string.format("User has moved? : %s",hasMoved))
     return hasMoved
 end
 
@@ -94,7 +89,7 @@ function AddNewRune(caster,runeInfo)
         Timers:CreateTimer(DoUniqueString("dementia_runes"),{callback=CasterMovementCheck},caster)
     end
     if caster.runeCount >= 5 then
-        for i=1,4  do
+        for i=1,4  do --Shifting the rune list to get a space for the new rune.
             caster.runeList[i] = caster.runeList[i+1]
         end
         caster.runeList[5] = runeInfo
