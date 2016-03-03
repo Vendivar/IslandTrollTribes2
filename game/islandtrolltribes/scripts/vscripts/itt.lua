@@ -847,20 +847,7 @@ function ITT:OnItemPickedUp(event)
 
     -- Related to RadarTelegathererInit
     if hasTelegather then
-
-        local targetFire = hero.targetFire
-        local newItem = CreateItem(originalItem:GetName(), nil, nil)
-
-        local itemList = {"item_tinder", "item_flint", "item_stone", "item_stick", "item_bone", "item_meat_raw", "item_crystal_mana", "item_clay_ball", "item_river_root", "item_river_stem", "item_thistles", "item_acorn", "item_acorn_magic", "item_mushroom"}
-        for key,value in pairs(itemList) do
-            if value == originalItem:GetName() then
-                print( "Teleporting Item", originalItem:GetName())
-                hero:RemoveItem(originalItem)
-                local itemPosition = targetFire:GetAbsOrigin() + RandomVector(RandomInt(100,150))
-                CreateItemOnPositionSync(itemPosition,newItem)
-                newItem:SetOrigin(itemPosition)
-            end
-        end
+        TeleportItem(hero,originalItem)
     end
 
     -- Related to TeleThiefInit
@@ -883,6 +870,26 @@ function ITT:OnItemPickedUp(event)
             print("Did not find enemy buildings")
         end
     end
+end
+
+function TeleportItem(hero,originalItem)
+    local targetFire = hero.targetFire
+    local newItem = CreateItem(originalItem:GetName(), nil, nil)
+    local teleportSuccess = false
+
+    local itemList = {"item_tinder", "item_flint", "item_stone", "item_stick", "item_bone", "item_meat_raw", "item_crystal_mana", "item_clay_ball", "item_river_root", "item_river_stem", "item_thistles", "item_acorn", "item_acorn_magic", "item_mushroom"}
+    for key,value in pairs(itemList) do
+        if value == originalItem:GetName() then
+            print( "Teleporting Item", originalItem:GetName())
+            hero:RemoveItem(originalItem)
+            local itemPosition = targetFire:GetAbsOrigin() + RandomVector(RandomInt(100,150))
+            CreateItemOnPositionSync(itemPosition,newItem)
+            newItem:SetOrigin(itemPosition)
+            teleportSuccess = true
+            return teleportSuccess
+        end
+    end
+    return teleportSuccess
 end
 
 --Listener to handle level up
