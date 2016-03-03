@@ -47,28 +47,38 @@ function KaRune(keys)
     AddNewRune(caster,runeInfo)
 end
 
---[[
-function CreateRuneParticle(caster, particleName)
-    local particleLocations = GetParticlePositions(caster, 1)
-    for _,particleLocation in pairs(particleLocations) do
-        local runeParticle  = ParticleManager:CreateParticle(particleName, PATTACH_CUSTOMORIGIN, nil)
-        ParticleManager:SetParticleControl(runeParticle,0,particleLocation)
-    end
-end
-]]
-
-function CreateRuneParticles(caster)
-    local particleList = {}
-    if caster.runeList ~=nil then
-        local particleLocations = GetParticlePositions(caster, caster.runeCount)
-        for i,runeInfo in pairs(caster.runeList) do
-            local runeParticle  = ParticleManager:CreateParticle(runeInfo.name, PATTACH_CUSTOMORIGIN, nil)
-            ParticleManager:SetParticleControl(runeParticle,0,particleLocations[i])
-            table.insert(particleList,runeParticle)
-        end
-        Timers:CreateTimer(DoUniqueString("dementia_runes_destroy"),{callback=DestroyParticles, endTime = 1.9},particleList)
+function CasterMovementCheck(caster)
+    if caster.runeList ~=nil and HasCasterMoved(caster) then --draw the rune particles only if the caster has runes and when he has changed his poistion in the world.
+        RedrawParticles(caster)
     end
     return 2.0
+end
+
+function RedrawParticles(caster)
+    local particleList = {}
+    if caster.demParticles then --Remove old particles
+        DestroyParticles(caster.demParticles)
+    end
+    local particleLocations = GetParticlePositions(caster, caster.runeCount)
+    for i,runeInfo in pairs(caster.runeList) do
+        local runeParticle  = ParticleManager:CreateParticle(runeInfo.name, PATTACH_CUSTOMORIGIN, nil)
+        ParticleManager:SetParticleControl(runeParticle,0,particleLocations[i])
+        table.insert(particleList,runeParticle)
+    end
+    caster.demParticles = particleList
+end
+
+function HasCasterMoved(caster)
+    local hasMoved =  false
+    local currentPosition = caster:GetAbsOrigin()
+    local oldPosition = caster.demLastPosition
+
+    if not oldPosition or (oldPosition.x ~= currentPosition.x or oldPosition.y ~=  currentPosition.y or oldPosition.z ~=  currentPosition.z) then
+        caster.demLastPosition = currentPosition
+        hasMoved = true
+    end
+    print(string.format("User has moved? : %s",hasMoved))
+    return hasMoved
 end
 
 function DestroyParticles(particleList)
@@ -81,14 +91,18 @@ function AddNewRune(caster,runeInfo)
     if caster.runeCount == nil then
         caster.runeCount = 0
         caster.runeList = {}
-        Timers:CreateTimer(DoUniqueString("dementia_runes"),{callback=CreateRuneParticles},caster)
+        Timers:CreateTimer(DoUniqueString("dementia_runes"),{callback=CasterMovementCheck},caster)
     end
     if caster.runeCount >= 5 then
-        SendErrorMessage(caster:GetPlayerOwnerID(),"#error_maximum_number_of_runes_reached")
-        return
+        for i=1,4  do
+            caster.runeList[i] = caster.runeList[i+1]
+        end
+        caster.runeList[5] = runeInfo
+    else
+        table.insert(caster.runeList,runeInfo)
+        caster.runeCount = caster.runeCount + 1
     end
-    table.insert(caster.runeList,runeInfo)
-    caster.runeCount = caster.runeCount + 1
+    RedrawParticles(caster)
 end
 
 function GetParticlePositions(caster, numberOfRunes)
