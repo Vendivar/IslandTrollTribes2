@@ -1399,7 +1399,7 @@
 	    "ModelScale"    "1"
 	    "Model" "models/creeps/neutral_creeps/n_creep_troll_skeleton/n_creep_troll_skeleton_fx.vmdl"
 	    "Level" "1"
-	    "Ability1"  "dummy_passive"
+	    "Ability1"  "dummy_passive_corpse"
 	    "RingRadius"    "35"
 	    "ArmorPhysical" "0"
 	    "MagicalResistance" "0"

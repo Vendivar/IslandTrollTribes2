@@ -559,7 +559,7 @@ function ITT:OnEntityKilled(keys)
 
     -- Corpses
     if string.find(unitName, "creep") and not killedUnit.no_corpse then
-        corpse = CreateUnitByName("npc_creep_corpse", killedUnit:GetAbsOrigin(), false, nil, nil, 0)
+        local corpse = CreateUnitByName("npc_creep_corpse", killedUnit:GetAbsOrigin(), false, nil, nil, 0)
         corpse.killer = killer
 
         -- Set the corpse invisible until the dota corpse disappears

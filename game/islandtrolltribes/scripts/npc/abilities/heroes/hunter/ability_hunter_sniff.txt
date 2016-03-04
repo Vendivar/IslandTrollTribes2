@@ -1,0 +1,44 @@
+"ability_hunter_sniff"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
+	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_MECHANICAL"
+	"AbilityTextureName"	"ability_hunter_sniff"
+	"AbilityCastAnimation"	"ACT_DOTA_IDLE"
+	"AbilityCastPoint"	"0.0 0.0 0.0"
+	"AbilityCooldown"	"45.0 40.0 35.0"
+	"AbilityCastRange"	"700"
+	"AbilityManaCost"	"0"
+	"MaxLevel"	"1"
+	"RequiredLevel"	"%required_level"
+	"precache"
+	{
+		"particle"	"particles/econ/courier/courier_trail_fungal/courier_trail_fungal_e.vpcf"
+		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_bounty_hunter.vsndevts"
+	}
+
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile" "heroes/hunter/sniff.lua"
+			"Function"	"Sniff"
+			"Target"	"TARGET"
+			"SniffDuration"	"%duration"
+			"TrailInterval"	"0.5"
+			"FootprintDuration"	"45.0"
+			"FootprintPfx"	"particles/econ/courier/courier_trail_fungal/courier_trail_fungal_b.vpcf"
+		}
+
+	}
+
+	"AbilitySpecial"
+	{
+	    "01"
+	    {
+	        "var_type"  "FIELD_FLOAT"
+	        "duration"  "50.0"
+	    }
+	}
+}

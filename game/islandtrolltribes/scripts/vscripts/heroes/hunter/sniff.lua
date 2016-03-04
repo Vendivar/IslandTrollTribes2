@@ -25,21 +25,20 @@ function SniffThink( event )
     local ability = event.ability
     local caster = event.caster
 
-    local sniffDuration = event.sniff_duration
-    local trailInterval = event.trail_interval
-    local footprintDuration = event.footprint_duration
+    local sniffDuration = event.SniffDuration
+    local trailInterval = event.TrailInterval
+    local footprintDuration = event.FootprintDuration
 
     Timers:CreateTimer(trailInterval, function()
-        tracker = ability.tracker
-        
-        thisParticle = ParticleManager:CreateParticle(event.footprint_pfx, PATTACH_ABSORIGIN, tracker)
+        local tracker = ability.tracker
+        local thisParticle = ParticleManager:CreateParticle(event.FootprintPfx, PATTACH_ABSORIGIN, tracker)
         ParticleManager:SetParticleControl(thisParticle, 0, tracker:GetAbsOrigin())
         ParticleManager:SetParticleControl(thisParticle, 15, Vector(139,69,19))
         table.insert(ability.sniffParticleTable, thisParticle)
 
         ability.elapsed = ability.elapsed + trailInterval
         if ability.elapsed >= footprintDuration then
-            particle = ability.sniffParticleTable[1]
+            local particle = ability.sniffParticleTable[1]
             if particle ~= nil then
                 ParticleManager:DestroyParticle( particle, false )
                 ParticleManager:ReleaseParticleIndex( particle )

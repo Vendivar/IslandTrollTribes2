@@ -5218,6 +5218,50 @@
 	        }
 	    }
 	}
+	"ability_hunter_sniff"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_MECHANICAL"
+		"AbilityTextureName"	"ability_hunter_sniff"
+		"AbilityCastAnimation"	"ACT_DOTA_IDLE"
+		"AbilityCastPoint"	"0.0 0.0 0.0"
+		"AbilityCooldown"	"45.0 40.0 35.0"
+		"AbilityCastRange"	"700"
+		"AbilityManaCost"	"0"
+		"MaxLevel"	"1"
+		"RequiredLevel"	"%required_level"
+		"precache"
+		{
+			"particle"	"particles/econ/courier/courier_trail_fungal/courier_trail_fungal_e.vpcf"
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_bounty_hunter.vsndevts"
+		}
+	
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile" "heroes/hunter/sniff.lua"
+				"Function"	"Sniff"
+				"Target"	"TARGET"
+				"SniffDuration"	"%duration"
+				"TrailInterval"	"0.5"
+				"FootprintDuration"	"45.0"
+				"FootprintPfx"	"particles/econ/courier/courier_trail_fungal/courier_trail_fungal_b.vpcf"
+			}
+	
+		}
+	
+		"AbilitySpecial"
+		{
+		    "01"
+		    {
+		        "var_type"  "FIELD_FLOAT"
+		        "duration"  "50.0"
+		    }
+		}
+	}
 	"ability_hunter_stayingpower"
 	{
 		"BaseClass"             		"ability_datadriven"
@@ -15196,6 +15240,26 @@
 					"MODIFIER_STATE_UNSELECTABLE"	"MODIFIER_STATE_VALUE_ENABLED"
 					"MODIFIER_STATE_NO_HEALTH_BAR"	"MODIFIER_STATE_VALUE_ENABLED"
 					"MODIFIER_STATE_OUT_OF_GAME" "MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+		}
+	}
+	"dummy_passive_corpse"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"Modifiers"
+		{
+			"dummy_modifier"
+			{
+				"Passive"	"1"
+				"States"
+				{
+					"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_COMMAND_RESTRICTED"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_ATTACK_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NOT_ON_MINIMAP"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_HEALTH_BAR"	"MODIFIER_STATE_VALUE_ENABLED"
 				}
 			}
 		}
