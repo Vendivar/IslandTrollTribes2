@@ -1,10 +1,10 @@
 .CraftingRoot
 {
     width: 30%;
-    overflow: scroll;
+    height: 68.5%;
+    overflow: clip scroll;
     flow-children: down;
-    margin-bottom: 200px;
-    margin-top: 45px;
+    position: 0px 4% 0px;
 
     vertical-align: top;
     horizontal-align: left;
@@ -16,12 +16,17 @@
 
 .CraftingBuildingRoot
 {
-    overflow: scroll;
+    overflow: clip scroll;
     width: 30%;
     height: 50%;
     flow-children: down;
     horizontal-align: center;
-    margin-top: 65px;
+    position: 0px 8% 0px;
+}
+
+.CraftingBuildingRoot VerticalScrollBar
+{
+    margin: 0px 15px 0px 0px;
 }
 
 .CraftingSection

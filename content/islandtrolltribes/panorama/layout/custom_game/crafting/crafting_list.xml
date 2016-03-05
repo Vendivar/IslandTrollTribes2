@@ -1,6 +1,7 @@
 <root>
     <styles>
         <include src="file://{resources}/styles/custom_game/crafting.css" />
+        <include src="s2r://panorama/styles/dotastyles.vcss_c" />
     </styles>
     <scripts>
         <include src="file://{resources}/scripts/crafting/crafting.js" />
