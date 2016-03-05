@@ -2,7 +2,6 @@ ITEM_TRANSFER_RANGE = 300
 DEFAULT_TRANSFER_RANGE = 150
 
 function ITT:FilterExecuteOrder( filterTable )
-
     local units = filterTable["units"]
     local order_type = filterTable["order_type"]
     local issuer = filterTable["issuer_player_id_const"]
@@ -21,11 +20,33 @@ function ITT:FilterExecuteOrder( filterTable )
 
     -- Drop orders for units that we don't want to be shared
     if unit then
-        local owner = unit:GetPlayerOwnerID()
-        if issuer ~= -1 and owner ~= -1 and issuer ~= owner and not unit:IsSharedWithTeammates() then
-            print("Denied order because issuer is "..issuer.." owner is "..owner.." and the unit is not shared with teammates")
+        local playerID = unit:GetPlayerOwnerID()
+        if issuer ~= -1 and playerID ~= -1 and issuer ~= playerID and not unit:IsSharedWithTeammates() then
+            print("Denied order because issuer is "..issuer.." owner is "..playerID.." and the unit is not shared with teammates")
             return CONSUME_EVENT
-    end
+        end
+
+        -- Prevent moving to stash
+        local hero = unit:IsRealHero() and unit or unit:GetOwner()
+        if order_type == DOTA_UNIT_ORDER_MOVE_ITEM then
+            Timers:CreateTimer(0.03, function()
+                if hero:GetNumItemsInStash() >= 0 then
+                    for i=6,11 do
+                        local item = hero:GetItemInSlot(i)
+                        if item then
+                            hero:EjectItemFromStash(item)
+                            if hero:GetNumItemsInInventory() <= 5 then
+                                hero:AddItem(item)
+                            else
+                                item:GetContainer():SetAbsOrigin(hero:GetAbsOrigin())
+                            end
+                        end
+                    end
+                end
+            end)
+            return CONTINUE_PROCESSING_EVENT
+        end
+
     end
 
     -- Skip Prevents order loops
@@ -55,7 +76,7 @@ function ITT:FilterExecuteOrder( filterTable )
         if target.HasFlyMovementCapability and IsFlyingUnit(target) then
             SendErrorMessage(issuer, "#error_cant_attack_air")
             return CONSUME_EVENT
-    end
+        end
     end
 
     ------------------------------------------------
