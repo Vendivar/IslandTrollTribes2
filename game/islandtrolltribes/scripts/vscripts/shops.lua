@@ -14,7 +14,6 @@ function ITT:SetupShops()
     boatStartTime = math.floor(GameRules:GetGameTime())
     GameMode.spawnedShops = {}
     GameMode.shopEntities = Entities:FindAllByName("entity_ship_merchant_*")
-    GameMode.shopTriggers = Entities:FindAllByName("trigger_shop_*")
 
     GameRules.ShopKV = LoadKeyValues("scripts/kv/shop_info.kv")
 

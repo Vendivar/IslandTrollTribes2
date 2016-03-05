@@ -15,7 +15,8 @@ CHEAT_CODES = {
     ["potions"] = function( ... ) ITT:TestPotions(...) end,
     ["scrolls"] = function( ... ) ITT:TestScroll(...) end,
     ["axes"] = function( ... ) ITT:TestAxe(...) end,
-    ["coats"] = function( ... ) ITT:TestCoat(...) end,  
+    ["coats"] = function( ... ) ITT:TestCoat(...) end,
+    ["debug_shops"] = function(...) ITT:DebugShops() end,
 }
 
 PLAYER_COMMANDS = {}
@@ -457,6 +458,15 @@ function ITT:TestPotions( playerID )
             end
         end     
     end
+end
 
+function ITT:DebugShops(playerID)
+    local shops = Entities:FindAllByClassname("trigger_shop")
 
+    Timers:CreateTimer(1, function()
+        for k,v in pairs(shops) do
+            DebugDrawCircle(v:GetAbsOrigin(), Vector(255,0,0), 100, 250, true, 2)
+        end
+        return 1
+    end)
 end
