@@ -25,7 +25,25 @@
             "modifier_chickensound"
 			{
 				"IsHidden"	"1"
-				"ThinkInterval"	"10"
+				"Passive"  "1"
+				"OnCreated"
+				{
+                    "AttachEffect"
+					{
+						"EffectName" "particles/econ/courier/courier_shagbark/courier_shagbark_feather_white.vpcf"
+						"Target" "CASTER"
+						"EffectAttachType" "follow_hitloc"
+					}
+
+                    "AttachEffect"
+					{
+						"EffectName" "particles/econ/courier/courier_shagbark/courier_shagbark_feather_white.vpcf"
+						"Target" "CASTER"
+						"EffectAttachType" "follow_origin"
+					}
+				}
+
+				"ThinkInterval" "10"
 				"OnIntervalThink"
 				{
 					"FireSound"
@@ -33,12 +51,6 @@
                         "EffectName"		"ChickenRandom"
                         "Target"			"CASTER"
                     }
-                    "FireEffect"
-					{
-						"EffectName" "particles/econ/courier/courier_shagbark/courier_shagbark_feather_white.vpcf"
-						"Target" "CASTER"
-						"EffectAttachType" "follow_origin"
-					}	
 				}
 					
 			}
