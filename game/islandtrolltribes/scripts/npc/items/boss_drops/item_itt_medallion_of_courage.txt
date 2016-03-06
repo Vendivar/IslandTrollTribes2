@@ -23,11 +23,7 @@
 	"WorldDropSound"	"ui.inv_pickup_quiver"
 	"OnSpellStart"
 	{
-		"RunScript"
-		{
-			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-			"Function"	"item_medallion_use"
-		}
+		//TODO
 
 		"SpendCharge"
 		{

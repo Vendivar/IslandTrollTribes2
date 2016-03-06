@@ -1,3 +1,4 @@
+// TODO
 "ability_mage_activate_runes"
 {
 	"BaseClass"	"ability_datadriven"
@@ -5,19 +6,4 @@
 	"AbilityTextureName"	"ability_mage_dementiarunes"
 	"MaxLevel"	"1"
 	"AbilityCastPoint"	"0"
-	"OnSpellStart"
-	{
-		"RunScript"
-		{
-			"ScriptFile"	"custom_functions_ability.lua"
-			"Function"	"SwapSpellBook"
-			"activeBook"	"1"
-		}
-		"FireSound"
-		{
-			"EffectName"	"Hero_BountyHunter.Track"
-			"Target"	"CASTER"
-		}
-	}
-
 }

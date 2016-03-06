@@ -24,11 +24,7 @@
 	"WorldDropSound"	"Item.DropGemWorld"
 	"OnSpellStart"
 	{
-		"RunScript"
-		{
-			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-			"Function"	"item_emp_use"
-		}
+		//TODO
 
 		"SpendCharge"
 		{

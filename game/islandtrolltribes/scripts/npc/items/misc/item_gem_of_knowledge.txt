@@ -35,11 +35,7 @@
 				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%all_stats"
 			}
 
-			"RunScript" //TODO
-			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"item_gem_knowledge"
-			}
+			//TODO
 
 		}
 

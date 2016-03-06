@@ -28,7 +28,7 @@
 						{
 							"RunScript"
 							{
-								"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
+								"ScriptFile"	"units/mammoth.lua"
 								"Function"	"MammothBlockSuccess"
 								"Attacker"	"ATTACKER"
 							}
@@ -202,7 +202,7 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
+				"ScriptFile" "units/the_one.lua"
 				"Function"	"EnsnareUnit"
 				"Target"	"TARGET"
 			}
@@ -235,39 +235,7 @@
 					"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"	"%bonus_damage"
 				}
 	
-				"OnAttackLanded"
-				{
-					"Random"
-					{
-						"Chance"	"%chance"
-						"OnSuccess"
-						{
-							"ApplyModifier"
-							{
-								"Target"	"TARGET"
-								"Duration"	"%purge_duration"
-								"ModifierName"	"modifier_satyr_trickster_purge"
-							}
-	
-							"RunScript"
-							{
-								"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-								"Function"	"CastPurge"
-								"Target"	"TARGET"
-							}
-	
-							"FireEffect"
-							{
-								"Target"	"TARGET"
-								"EffectName"	"particles/units/heroes/hero_disruptor/disruptor_thunder_strike_bolt.vpcf"
-								"EffectAttachType"	"follow_origin"
-							}
-	
-						}
-	
-					}
-	
-				}
+				//TODO - Take the scripts from dotacraft
 	
 			}
 	
@@ -1172,6 +1140,25 @@
 	        }
 	    }
 	}
+	"ability_pack_up_magefire"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityTextureName"	"ability_building_packup"
+		"AbilityCooldown"	"0.0"
+		"AbilityCastPoint"	"0.5"
+		"AbilityManaCost"	"0"
+	    "MaxLevel"              "1"
+		
+		// TODO
+		"OnSpellStart"
+		{
+			"RemoveUnit"
+			{
+				"Target"	"CASTER"
+			}
+		}
+	}
 	"ability_quick_build_armory"
 	{
 		"BaseClass"	"ability_datadriven"
@@ -1258,6 +1245,142 @@
 	            "Function"       "QuickCraft"
 	        }
 	    }
+	}
+	"ability_quick_drop"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT_TARGET"
+		"AbilityTextureName"	"ability_building_quickdrop"
+	    "AbilityCastRange"          "500"
+		"MaxLevel"	"1"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"buildings/quick_drop.lua"
+				"Function"	"QuickDrop"
+                "Target"     "POINT"
+	        }	
+		}
+	}
+	"ability_rest_small"
+	{
+	    "BaseClass"                 "ability_datadriven"
+	    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_MOVEMENT"
+	    "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	    "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO"
+	    "AbilityUnitTargetFlags"    "DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
+	    "AbilityTextureName"        "ability_building_rest"
+	    "AbilityCastPoint"          "0.0"
+	    "AbilityCooldown"           "0"
+	    "AbilityCastRange"          "%cast_range"
+	    "AbilityManaCost"           "0"
+	    "MaxLevel"              "1"
+	    
+	    "precache"
+	    {
+	        "particle_folder" "particles/newplayer_fx"
+	    }
+	
+	    "OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"    "mechanics/mana.lua"
+	            "Function"      "RestAndRestoreMana"
+	            "ManaRestored"  "%mana_restored"
+	        }
+	    }
+	
+	    "Modifiers"
+	    {
+	        "modifier_sleep"
+	        {
+	            "IsPurgable"    "0"
+	            "States"
+	            {
+	                "MODIFIER_STATE_STUNNED"    "MODIFIER_STATE_VALUE_ENABLED"
+	            }
+	
+	            "OnCreated"
+	            {
+	                "FireSound"
+	                {
+	                    "EffectName"    "DOTA_Item.SmokeOfDeceit.Activate"
+	                    "Target"         "TARGET"
+	                }
+	                "AttachEffect"
+	                {
+	                    "Target"    "TARGET"
+	                    "EffectName"    "particles/newplayer_fx/npx_sleeping.vpcf"
+	                    "EffectAttachType"    "follow_overhead"
+	                    "EffectLifeDurationScale"    "1"
+	                }
+	            }
+	
+	            "OnAttacked"
+	            {
+	                "RemoveModifier"
+	                {
+	                    "ModifierName"    "modifier_sleep"
+	                    "Target"    "TARGET"
+	                }
+	            }
+	        }
+	
+	        "modifier_invuln"
+	        {
+	            "States"
+	            {
+	                "MODIFIER_STATE_INVULNERABLE"    "MODIFIER_STATE_VALUE_ENABLED"
+	            }
+	        }
+			
+			"modifier_rested"
+	        {
+			}
+	    }
+	
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"          "FIELD_FLOAT"
+	            "rest_duration"     "6"
+	        }
+	
+	        "02"
+	        {
+	            "var_type"          "FIELD_INTEGER"
+	            "cast_range"        "250"
+	        }
+	
+	        "03"
+	        {
+	            "var_type"          "FIELD_INTEGER"
+	            "mana_restored"     "80"
+	        }
+	
+	        "04"
+	        {
+	            "var_type"          "FIELD_FLOAT"
+	            "cooldown"          "0.0"
+	        }
+	
+	        "05"
+	        {
+	            "var_type"          "FIELD_FLOAT"
+	            "invuln_duration"   "1.0"
+	        }
+			
+	        "06"
+	        {
+	            "var_type"    "FIELD_FLOAT"
+	            "rested_duration"    "15"
+	        }
+	
+	    }
+	
 	}
 	"ability_revive"
 	{
@@ -5544,6 +5667,7 @@
 		}
 	
 	}
+	// TODO
 	"ability_mage_activate_runes"
 	{
 		"BaseClass"	"ability_datadriven"
@@ -5551,21 +5675,6 @@
 		"AbilityTextureName"	"ability_mage_dementiarunes"
 		"MaxLevel"	"1"
 		"AbilityCastPoint"	"0"
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"SwapSpellBook"
-				"activeBook"	"1"
-			}
-			"FireSound"
-			{
-				"EffectName"	"Hero_BountyHunter.Track"
-				"Target"	"CASTER"
-			}
-		}
-	
 	}
 	"ability_mage_anger"
 	{
@@ -6152,6 +6261,7 @@
 	        }
 	    }
 	}
+	// TODO
 	"ability_mage_dementia_summoning"
 	{
 		"BaseClass"	"ability_datadriven"
@@ -6159,21 +6269,6 @@
 		"AbilityTextureName"	"ability_mage_dementiasummoning"
 		"MaxLevel"	"1"
 		"AbilityCastPoint"	"0"
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"SwapSpellBook"
-				"activeBook"	"1"
-			}
-			"FireSound"
-			{
-				"EffectName"	"Hero_BountyHunter.Track"
-				"Target"	"CASTER"
-			}
-		}
-	
 	}
 	"ability_mage_depress"
 	{
@@ -12317,25 +12412,6 @@
 			}
 	    }
 	}
-	"ability_priest_swap2"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-		"AbilityTextureName"	"ability_mage_swap"
-		"MaxLevel"	"1"
-		"AbilityCastPoint"	"0"
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"SwapSpellBook"
-				"activeBook"	"2"
-			}
-	
-		}
-	
-	}
 	"ability_priest_tearspirit"
 	{
 		"BaseClass"             		"ability_datadriven"
@@ -14541,7 +14617,7 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
+				"ScriptFile"	"heroes/mage/metronome.lua"
 				"Function"	"MetronomeManaBurn"
 				"Damage"	"25"
 			}
@@ -14694,7 +14770,7 @@
 	
 			"RunScript"
 			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+				"ScriptFile"	"items/tsunami.lua"
 				"Function"	"TsunamiProjectiles"
 			}
 	
@@ -14935,44 +15011,6 @@
 		"AbilityTextureName"	"ability_building_mix"
 	    "MaxLevel"              "1"
 	}
-	"ability_pack_up_magefire"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityTextureName"	"ability_building_packup"
-		"AbilityCooldown"	"0.0"
-		"AbilityCastPoint"	"0.5"
-		"AbilityManaCost"	"0"
-	    "MaxLevel"              "1"
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"Target"	"CASTER"
-				"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
-				"Function"	"RemoveEntity"
-			}
-	
-		}
-	
-	}
-	"ability_quick_drop"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT_TARGET"
-		"AbilityTextureName"	"ability_building_quickdrop"
-	    "AbilityCastRange"          "500"
-		"MaxLevel"	"1"
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"custom_functions_ability.lua"
-				"Function"	"QuickDrop"
-                "Target"     "POINT"
-	        }	
-		}
-	}
 	"ability_rest_big"
 	{
 	    "BaseClass"                 "ability_datadriven"
@@ -15088,125 +15126,6 @@
 	            "rested_duration"    "15"
 	        }
 	     }
-	}
-	"ability_rest_small"
-	{
-	    "BaseClass"                 "ability_datadriven"
-	    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_MOVEMENT"
-	    "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	    "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO"
-	    "AbilityUnitTargetFlags"    "DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
-	    "AbilityTextureName"        "ability_building_rest"
-	    "AbilityCastPoint"          "0.0"
-	    "AbilityCooldown"           "0"
-	    "AbilityCastRange"          "%cast_range"
-	    "AbilityManaCost"           "0"
-	    "MaxLevel"              "1"
-	    
-	    "precache"
-	    {
-	        "particle_folder" "particles/newplayer_fx"
-	    }
-	
-	    "OnSpellStart"
-	    {
-	        "RunScript"
-	        {
-	            "ScriptFile"    "mechanics/mana.lua"
-	            "Function"      "RestAndRestoreMana"
-	            "ManaRestored"  "%mana_restored"
-	        }
-	    }
-	
-	    "Modifiers"
-	    {
-	        "modifier_sleep"
-	        {
-	            "IsPurgable"    "0"
-	            "States"
-	            {
-	                "MODIFIER_STATE_STUNNED"    "MODIFIER_STATE_VALUE_ENABLED"
-	            }
-	
-	            "OnCreated"
-	            {
-	                "FireSound"
-	                {
-	                    "EffectName"    "DOTA_Item.SmokeOfDeceit.Activate"
-	                    "Target"         "TARGET"
-	                }
-	                "AttachEffect"
-	                {
-	                    "Target"    "TARGET"
-	                    "EffectName"    "particles/newplayer_fx/npx_sleeping.vpcf"
-	                    "EffectAttachType"    "follow_overhead"
-	                    "EffectLifeDurationScale"    "1"
-	                }
-	            }
-	
-	            "OnAttacked"
-	            {
-	                "RemoveModifier"
-	                {
-	                    "ModifierName"    "modifier_sleep"
-	                    "Target"    "TARGET"
-	                }
-	            }
-	        }
-	
-	        "modifier_invuln"
-	        {
-	            "States"
-	            {
-	                "MODIFIER_STATE_INVULNERABLE"    "MODIFIER_STATE_VALUE_ENABLED"
-	            }
-	        }
-			
-			"modifier_rested"
-	        {
-			}
-	    }
-	
-	    "AbilitySpecial"
-	    {
-	        "01"
-	        {
-	            "var_type"          "FIELD_FLOAT"
-	            "rest_duration"     "6"
-	        }
-	
-	        "02"
-	        {
-	            "var_type"          "FIELD_INTEGER"
-	            "cast_range"        "250"
-	        }
-	
-	        "03"
-	        {
-	            "var_type"          "FIELD_INTEGER"
-	            "mana_restored"     "80"
-	        }
-	
-	        "04"
-	        {
-	            "var_type"          "FIELD_FLOAT"
-	            "cooldown"          "0.0"
-	        }
-	
-	        "05"
-	        {
-	            "var_type"          "FIELD_FLOAT"
-	            "invuln_duration"   "1.0"
-	        }
-			
-	        "06"
-	        {
-	            "var_type"    "FIELD_FLOAT"
-	            "rested_duration"    "15"
-	        }
-	
-	    }
-	
 	}
 	"ability_smoke_meat"
 	{

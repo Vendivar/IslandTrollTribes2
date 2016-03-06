@@ -9,7 +9,7 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"custom_functions_ability.lua"
+				"ScriptFile"	"buildings/quick_drop.lua"
 				"Function"	"QuickDrop"
                 "Target"     "POINT"
 	        }	

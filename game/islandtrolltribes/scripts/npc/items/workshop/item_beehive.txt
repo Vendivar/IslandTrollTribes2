@@ -41,12 +41,7 @@
 
 	"OnProjectileHitUnit"
 	{
-		"RunScript"
-		{
-			"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-			"Function"	"item_beehive_throw"
-		}
-
+		//TODO
 	}
 
 	"FireSound"

@@ -33,7 +33,7 @@
 	{
 		"RunScript"
 		{
-			"ScriptFile"	"custom_functions_ability.lua"
+			"ScriptFile" "units/the_one.lua"
 			"Function"	"EnsnareUnit"
 			"Target"	"TARGET"
 		}

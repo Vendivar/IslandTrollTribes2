@@ -28,10 +28,6 @@ require('libraries/buildinghelper')
 -- This should be a KV Table
 require('recipe_list')
 
--- These should be gone
-require('custom_functions_item' )
---require('custom_functions_ability' )
-
 ---------------------------------------------------------------------------
 
 function Precache( context )

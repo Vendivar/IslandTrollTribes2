@@ -13,7 +13,7 @@
 	{
 		"RunScript"
 		{
-			"ScriptFile"	"custom_functions_ability.lua"
+			"ScriptFile"	"heroes/mage/metronome.lua"
 			"Function"	"MetronomeManaBurn"
 			"Damage"	"25"
 		}

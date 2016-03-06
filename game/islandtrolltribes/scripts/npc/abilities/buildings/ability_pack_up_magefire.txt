@@ -7,15 +7,13 @@
 	"AbilityCastPoint"	"0.5"
 	"AbilityManaCost"	"0"
     "MaxLevel"              "1"
+	
+	// TODO
 	"OnSpellStart"
 	{
-		"RunScript"
+		"RemoveUnit"
 		{
 			"Target"	"CASTER"
-			"ScriptFile"	"scripts/vscripts/custom_functions_ability.lua"
-			"Function"	"RemoveEntity"
 		}
-
 	}
-
 }
