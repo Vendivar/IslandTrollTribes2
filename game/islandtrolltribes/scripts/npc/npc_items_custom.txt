@@ -7466,7 +7466,7 @@
 	
 	    "AbilityCastRange"          "200" //800
 	    "AbilityCastPoint"          "0.5"
-	    "AbilityCooldown"          "0.5"
+	    "AbilityCooldown"           "5.0"
 	    "AbilityDamage"             "25"
 	
 	    "ItemCost"                  "106"
@@ -7637,6 +7637,8 @@
 	        {
 	            "ScriptFile"    "items/battle_shield.lua"
 	            "Function"      "ShieldBash"
+	            "KnockbackDistance" "150"
+	            "KnockbackDuration" "0.3"
 	        }
 	    }
 	
@@ -7749,6 +7751,7 @@
 	            "States"
 	            {
 	                "MODIFIER_STATE_SILENCED" "MODIFIER_STATE_VALUE_ENABLED"
+	                "MODIFIER_STATE_STUNNED" "MODIFIER_STATE_VALUE_ENABLED"
 	            }
 	        }
 	

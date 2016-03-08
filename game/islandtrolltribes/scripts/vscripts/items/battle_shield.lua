@@ -26,17 +26,14 @@ function SpellBlockThink( event )
     end
 end
 
-function shield_knockback( keys )
-	local vCaster = keys.caster:GetAbsOrigin()
-	local vTarget = keys.target:GetAbsOrigin()
-	local len = ( vTarget - vCaster ):Length2D()
-	len = keys.distance - keys.distance * ( len / keys.range )
+function ShieldBash( keys )
+
 	local knockbackModifierTable =
 	{
 		should_stun = 0,
-		knockback_duration = keys.duration,
-		duration = keys.duration,
-		knockback_distance = len,
+		knockback_duration = keys.KnockbackDuration,
+		duration = keys.KnockbackDuration,
+		knockback_distance = keys.KnockbackDistance,
 		knockback_height = 0,
 		center_x = keys.caster:GetAbsOrigin().x,
 		center_y = keys.caster:GetAbsOrigin().y,
