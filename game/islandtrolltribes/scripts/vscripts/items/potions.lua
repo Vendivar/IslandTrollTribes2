@@ -189,10 +189,10 @@ function PotionDiseaseUse(keys)
     print("Test your luck! " .. dieRoll)
     
     if dieRoll == 0 then
-        ability:ApplyDataDrivenModifier(caster, target, "modifier_disease1", {duration = 10})
+        ability:ApplyDataDrivenModifier(caster, target, "modifier_disease1", {duration = 100})
     elseif dieRoll == 1 then
-        ability:ApplyDataDrivenModifier(caster, target, "modifier_disease2", { duration = 30})
+        ability:ApplyDataDrivenModifier(caster, target, "modifier_disease2", { duration = 300})
     elseif dieRoll == 2 then
-        ability:ApplyDataDrivenModifier(caster, target, "modifier_disease3", { duration = 15})
+        ability:ApplyDataDrivenModifier(caster, target, "modifier_disease3", { duration = 150})
     end
 end
