@@ -59,14 +59,11 @@
 			"MoveSpeed"	"900"
 		}
 
-		"SpendCharge"
-		{
-		}
-
 	}
 
 	"OnProjectileHitUnit"
 	{
+	    "DeleteOnHit"   "1"
 		"RunScript"
 		{
 			"ScriptFile" "items/potions.lua"
@@ -98,6 +95,13 @@
 
 			}
 
+			"OnCreated"
+			{
+			    "SpendCharge"
+                {
+                }
+			}
+
 		}
 
 		"modifier_disease2"
@@ -127,7 +131,9 @@
 					"EffectName"	"particles/econ/wards/bane/bane_ward/bane_ward_droplets.vpcf"
 					"EffectAttachType"	"follow_overhead"
 				}
-
+				"SpendCharge"
+                {
+                }
 			}
 
 			"OnDestroy"
@@ -199,6 +205,10 @@
 					"Target"	"TARGET"
 					"EffectName"	"particles/econ/wards/bane/bane_ward/bane_ward_droplets.vpcf"
 					"EffectAttachType"	"follow_overhead"
+				}
+
+				"SpendCharge"
+				{
 				}
 
 			}

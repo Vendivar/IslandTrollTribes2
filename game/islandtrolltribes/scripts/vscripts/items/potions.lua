@@ -183,15 +183,16 @@ end
 function PotionDiseaseUse(keys)
     local caster = keys.caster
     local target = keys.target
+    local ability = keys.ability
     local dieRoll = RandomInt(0, 2)
     
     print("Test your luck! " .. dieRoll)
     
     if dieRoll == 0 then
-        target:AddNewModifier(caster, nil, "modifier_disease1", { duration = 100})
+        ability:ApplyDataDrivenModifier(caster, target, "modifier_disease1", {duration = 10})
     elseif dieRoll == 1 then
-        target:AddNewModifier(caster, nil, "modifier_disease2", { duration = 300})
+        ability:ApplyDataDrivenModifier(caster, target, "modifier_disease2", { duration = 30})
     elseif dieRoll == 2 then
-        target:AddNewModifier(caster, nil, "modifier_disease3", { duration = 150})
+        ability:ApplyDataDrivenModifier(caster, target, "modifier_disease3", { duration = 15})
     end
 end
