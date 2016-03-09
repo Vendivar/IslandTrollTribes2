@@ -11898,9 +11898,10 @@
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"item_aegis"
 		"Model"	"models/props_winter/nest_01.vmdl"
-		"Effect"	"particles/custom/bee_swarm.vpcf"
-		"AbilityCastRange"	"800"
+		"Effect"	""
+		"AbilityCastRange"	"500"
 		"AbilityCastPoint"	"0.5"
+		"AbilityCooldown"	"10.0"
 		"ItemCost"	"14"
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
@@ -11915,14 +11916,29 @@
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
+		"precache"
+		 {
+	        "particle"  "particles/units/heroes/hero_bristleback/bristleback_viscous_nasal_goo.vpcf"
+	        "soundfile" "soundevents/game_sounds_heroes/game_sounds_pugna.vsndevts"
+	        "particle"  "particles/custom/bee_swarm_throw.vpcf"
+	        "particle"  "particles/custom/bee_swarm_2.vpcf"
+	        "soundfile" "soundevents/spells.vsndevts"
+		 }
+	
 		"OnSpellStart"
 		{
 			"TrackingProjectile"
 			{
 				"Target"	"TARGET"
-				"EffectName"	"particles/units/heroes/hero_bristleback/bristleback_viscous_nasal_goo.vpcf"
+				"EffectName"	"particles/custom/bee_swarm_throw.vpcf"
 				"MoveSpeed"	"500"
 			}
+	
+			"FireSound"
+	    	{
+	    		"EffectName"	"item.throw"
+	    		"Target"	"TARGET"
+	    	}
 	
 			"SpendCharge"
 			{
@@ -11932,28 +11948,63 @@
 	
 		"OnProjectileHitUnit"
 		{
-			//TODO
-		}
-	
-		"FireSound"
-		{
-			"EffectName"	"Creep_Bad_Engine.Attack"
-			"Target"	"TARGET"
-		}
-	
-		"OnProjectileFinish"
-		{
+			"ApplyModifier"
+			{
+			    "ModifierName"	"modifier_beehive_attack"
+			    "Target"	"TARGET"
+			    "Duration"	"10.0"
+			}
 			"FireSound"
 			{
-				"EffectName"	"Creep_Bad_Engine.ProjectileImpact"
+				"EffectName"	"item.softhit"
 				"Target"	"TARGET"
 			}
-	
 		}
-			"Custom"
+	
+		"Custom"
 		{
 			"ModelScale"	"0.65"
 		}
+	
+		"Modifiers"
+		{
+		    "modifier_beehive_attack"
+		    {
+		        "IsDebuff"  "1"
+		        "OnCreated"
+		        {
+			        "AttachEffect"
+	    	        {
+	    			    "EffectName"			"particles/custom/bee_swarm_2.vpcf"
+	    			    "Target"            	"TARGET"
+	    			    "EffectAttachType"      "follow_customorigin"
+	    			    "ControlPointEntities"
+	    			    {
+	    			        "TARGET" "attach_hiloc"
+	    			    }
+	    	        }
+	
+	    	        "FireSound"
+	    		    {
+	    			    "EffectName"	"item.beeswarm"
+	    			    "Target"	"TARGET"
+	    		    }
+		        }
+		        "ThinkInterval" "1.0"
+	            "OnIntervalThink"
+	            {
+	                "Damage"
+	                {
+	                    "Target"    "TARGET"
+	                    "Damage"    "5"
+	                    "Type"  "DAMAGE_TYPE_PHYSICAL"
+	                }
+	            }
+	
+		    }
+	
+		}
+	
 	}
 	"item_compass_sonar"
 	{
