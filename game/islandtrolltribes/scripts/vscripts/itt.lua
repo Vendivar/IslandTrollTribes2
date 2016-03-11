@@ -98,6 +98,7 @@ function ITT:InitGameMode()
     -- Filters
     GameMode:SetExecuteOrderFilter( Dynamic_Wrap( ITT, "FilterExecuteOrder" ), self )
     GameMode:SetDamageFilter( Dynamic_Wrap( ITT, "FilterDamage" ), self )
+    GameMode:SetModifyExperienceFilter( Dynamic_Wrap( ITT, "FilterExperience" ), self )
 
     self.m_GatheredShuffledTeams = {}
     self.m_NumAssignedPlayers = 0
