@@ -358,13 +358,23 @@ function ITT:FilterDamage( filterTable )
     local victim = EntIndexToHScript( victim_index )
     local attacker = EntIndexToHScript( attacker_index )
     local damagetype = filterTable["damagetype_const"]
+    local inflictor = filterTable["entindex_inflictor_const"]
+    local damage = filterTable["damage"] --Post reduction
 
-    -- Store damage done to the victim for splitting the experience later on
+    -- Store each entity that does damage to a creature to split XP later
+    -- When 2 enemy players are fighting for a unit, who lasthits won't matter
+    if not victim.attackers then
+        victim.attackers = {}
+    else
+        local hero = attacker:GetOwner()
+        if hero then
+            local heroIndex = hero:GetEntityIndex() -- Associate the damage done to the hero, ignores summons
+            victim.attackers[heroIndex] = victim.attackers[heroIndex] and (victim.attackers[heroIndex] + damage) or damage
+        end
+    end
 
     -- Physical attack damage filtering
     if damagetype == DAMAGE_TYPE_PHYSICAL then
-        local inflictor = filterTable["entindex_inflictor_const"]
-        local damage = filterTable["damage"] --Post reduction
         if not inflictor then
             -- Physical autoattack filtering here
             
@@ -377,20 +387,6 @@ end
 ------------------------------------------------------------------
 -- Experience Filter
 ------------------------------------------------------------------
-
-XP_MULTIPLIER = 4
-XP_BOUNTY_TABLE = {
-    25, --1
-    40, --2 +15
-    60, --3 +20
-    85, --4 +25
-    115,--5 +30
-    150,--6 +35
-    190,--7 +40
-    235,--8 +45
-    285,--9 +50
-    340--10 +55
-}
 
 function ITT:FilterExperience( filterTable )
     --for k, v in pairs( filterTable ) do
