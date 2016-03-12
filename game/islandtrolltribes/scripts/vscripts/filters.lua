@@ -1,3 +1,7 @@
+------------------------------------------------------------------
+-- Order Filter
+------------------------------------------------------------------
+
 ITEM_TRANSFER_RANGE = 300
 DEFAULT_TRANSFER_RANGE = 150
 
@@ -159,7 +163,7 @@ function ITT:FilterExecuteOrder( filterTable )
                 end)
 
                 return CONSUME_EVENT
-        end
+            end
         end
 
         return CONTINUE_PROCESSING_EVENT
@@ -283,7 +287,7 @@ function ITT:FilterExecuteOrder( filterTable )
 end
 
 function IsMoveOrder(order)
-    if  order["order_type"] == DOTA_UNIT_ORDER_MOVE_TO_POSITION then return true else return false end
+    if order["order_type"] == DOTA_UNIT_ORDER_MOVE_TO_POSITION then return true else return false end
 end
 
 function HandleMoveOrdersByBuildings(order)
@@ -337,6 +341,67 @@ function printOrderTable( filterTable )
     print("-----------------------------------------")
 end
 
+------------------------------------------------------------------
+-- Damage Filter
+------------------------------------------------------------------
+
+function ITT:FilterDamage( filterTable )
+    --for k, v in pairs( filterTable ) do
+    --  print("Damage: " .. k .. " " .. tostring(v) )
+    --end
+    local victim_index = filterTable["entindex_victim_const"]
+    local attacker_index = filterTable["entindex_attacker_const"]
+    if not victim_index or not attacker_index then
+        return true
+    end
+
+    local victim = EntIndexToHScript( victim_index )
+    local attacker = EntIndexToHScript( attacker_index )
+    local damagetype = filterTable["damagetype_const"]
+    local inflictor = filterTable["entindex_inflictor_const"]
+    local damage = filterTable["damage"] --Post reduction
+
+    -- Store each entity that does damage to a creature to split XP later
+    -- When 2 enemy players are fighting for a unit, who lasthits won't matter
+    if not victim.attackers then
+        victim.attackers = {}
+    else
+        local hero = attacker:GetOwner()
+        if hero then
+            local heroIndex = hero:GetEntityIndex() -- Associate the damage done to the hero, ignores summons
+            victim.attackers[heroIndex] = victim.attackers[heroIndex] and (victim.attackers[heroIndex] + damage) or damage
+        end
+    end
+
+    -- Physical attack damage filtering
+    if damagetype == DAMAGE_TYPE_PHYSICAL then
+        if not inflictor then
+            -- Physical autoattack filtering here
+            
+        end
+    end
+
+    return true
+end
+
+------------------------------------------------------------------
+-- Experience Filter
+------------------------------------------------------------------
+
+function ITT:FilterExperience( filterTable )
+    --for k, v in pairs( filterTable ) do
+        --print("Experience: " .. k .. " " .. tostring(v) )
+    --end
+
+    local experience = filterTable["experience"]
+    local playerID = filterTable["player_id_const"]
+    local reason = filterTable["reason_const"]
+
+    return true
+end
+
+
+------------------------------------------------------------------
 
 ORDERS = {
     [0] = "DOTA_UNIT_ORDER_NONE",
@@ -368,4 +433,20 @@ ORDERS = {
     [26] = "DOTA_UNIT_ORDER_CAST_RUNE",
     [27] = "DOTA_UNIT_ORDER_PING_ABILITY",
     [28] = "DOTA_UNIT_ORDER_MOVE_TO_DIRECTION",
+}
+
+DAMAGE_TYPES = {
+    [0] = "DAMAGE_TYPE_NONE",
+    [1] = "DAMAGE_TYPE_PHYSICAL",
+    [2] = "DAMAGE_TYPE_MAGICAL",
+    [4] = "DAMAGE_TYPE_PURE",
+    [7] = "DAMAGE_TYPE_ALL",
+    [8] = "DAMAGE_TYPE_HP_REMOVAL",
+}
+
+XP_REASONS = {
+    [0] = "Unspecified",
+    [1] = "HeroKill",
+    [2] = "CreepKill",
+    [3] = "RoshanKill", 
 }

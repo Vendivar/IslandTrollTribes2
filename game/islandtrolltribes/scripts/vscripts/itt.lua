@@ -98,6 +98,7 @@ function ITT:InitGameMode()
     -- Filters
     GameMode:SetExecuteOrderFilter( Dynamic_Wrap( ITT, "FilterExecuteOrder" ), self )
     GameMode:SetDamageFilter( Dynamic_Wrap( ITT, "FilterDamage" ), self )
+    GameMode:SetModifyExperienceFilter( Dynamic_Wrap( ITT, "FilterExperience" ), self )
 
     self.m_GatheredShuffledTeams = {}
     self.m_NumAssignedPlayers = 0
@@ -557,7 +558,7 @@ function ITT:OnEntityKilled(keys)
     local unitName = killedUnit:GetUnitName()
     print(unitName .. " has been killed")
 
-    -- Corpses
+    -- Creeps
     if string.find(unitName, "creep") and not killedUnit.no_corpse then
         local corpse = CreateUnitByName("npc_creep_corpse", killedUnit:GetAbsOrigin(), false, nil, nil, 0)
         corpse.killer = killer
@@ -578,6 +579,9 @@ function ITT:OnEntityKilled(keys)
                 corpse:RemoveSelf()
             end
         end)
+
+        -- Experience split in area
+        killedUnit:SplitExperienceBounty(killer:GetTeamNumber())
     end
 
     -- Heroes
