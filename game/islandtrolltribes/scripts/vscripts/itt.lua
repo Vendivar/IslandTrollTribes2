@@ -393,6 +393,15 @@ function ITT:CreateLockedSlots(hero)
     end
 end
 
+function ITT:CreateLockedSlotsForUnits(unit, lockedSlotCount)
+    local lockN = 5
+    for n=0,lockedSlotCount-1 do
+        unit:AddItem(CreateItem("item_slot_locked", nil, nil))
+        unit:SwapItems(0, lockN)
+        lockN = lockN -1
+    end
+end
+
 -- Sets the hero skills for the level as defined in the 'SkillProgression' class_info.kv
 -- Called on spawn and every time a hero gains a level or chooses a subclass
 function ITT:AdjustSkills( hero )
