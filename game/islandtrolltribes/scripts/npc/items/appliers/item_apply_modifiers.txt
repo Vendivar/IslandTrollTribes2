@@ -396,5 +396,36 @@
 			}
 		}
         ////////////////////////////////////////////////////////
+
+        "modifier_living_clay_explode_particle_effect"
+        {
+            "OnCreated"
+            {
+                "AttachEffect"
+                {
+                    "Target"    "TARGET"
+                    "EffectName"    "particles/units/heroes/hero_tiny/tiny_avalanche_projectile_explode.vpcf"
+                    "EffectAttachType"    "attach_hitloc"
+                }
+
+            }
+        }
+
+        ////////////////////////////////////////////////////////////
+
+        "modifier_living_clay_explode_sound_effect"
+        {
+            "OnCreated"
+            {
+                "FireSound"
+                {
+                    "EffectName"    "Hero_Treant.Overgrowth.Cast"
+                    "Target"        "TARGET"
+                }
+
+            }
+        }
+
+        ////////////////////////////////////////////////////////////
     }
 }

@@ -26,6 +26,11 @@
 	"UIPickupSound"	"Item.PickUpGemShop"
 	"UIDropSound"	"Item.DropGemShop"
 	"WorldDropSound"	"Item.DropGemWorld"
+
+	"precache"
+	{
+	    "particle"  "particles/units/heroes/hero_tiny/tiny_avalanche_projectile_explode.vpcf"
+	}
     
     "OnAbilityPhaseStart"
     {
@@ -39,24 +44,35 @@
 
     "OnSpellStart"
     {
-        "SpendCharge" 
-        {
-        }
 
         "RunScript"
         {
             "ScriptFile"    "items/living_clay.lua"
             "Function"      "PlaceClay"
             "Target"        "POINT"
+            "modifier_caster"   "modifier_living_clay_caster"
+            "modifier_tracker"   "modifier_living_clay_tracker"
+            "modifier_living_clay"   "modifier_living_clay"
         }
 
-        "FireSound"
-        {
-            "EffectName"    "Hero_Treant.Overgrowth.Cast"
-            "Target"        "CASTER"
-        }
     }
     
+    "Modifiers"
+    {
+        "modifier_living_clay"
+        {
+            "States"
+            {
+                "MODIFIER_STATE_NO_HEALTH_BAR" "MODIFIER_STATE_VALUE_ENABLED"
+            }
+
+            "OnCreated"
+            {
+                "SpendCharge" {}
+            }
+
+        }
+    }
 
 	"AbilitySpecial"
 	{
@@ -93,7 +109,7 @@
 		"07"
 		{
 			"var_type"					"FIELD_FLOAT"
-			"fade_time"					"1.0"
+			"fade_time"					"2.0"
 		}
 		// Extra
 		"08"
