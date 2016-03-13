@@ -4,6 +4,7 @@
   [
     "crafting",
     "builders",
+    "selection",
     "construction_size",
     "building_settings",
     "containers_lua",
