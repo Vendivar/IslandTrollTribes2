@@ -51,7 +51,6 @@ function ITT:InitGameMode()
     GameMode:SetBuybackEnabled( false )
     GameMode:SetStashPurchasingDisabled(false)
 
-    --GameRules:GetGameModeEntity():ClientLoadGridNav()
     GameRules:SetSameHeroSelectionEnabled( true )
     GameRules:SetTimeOfDay( 0.75 )
     GameRules:SetHeroRespawnEnabled( true )
@@ -98,6 +97,7 @@ function ITT:InitGameMode()
     GameMode:SetExecuteOrderFilter( Dynamic_Wrap( ITT, "FilterExecuteOrder" ), self )
     GameMode:SetDamageFilter( Dynamic_Wrap( ITT, "FilterDamage" ), self )
     GameMode:SetModifyExperienceFilter( Dynamic_Wrap( ITT, "FilterExperience" ), self )
+    GameMode:SetModifyGoldFilter( Dynamic_Wrap( ITT, "FilterGold" ), self )
 
     self.m_GatheredShuffledTeams = {}
     self.m_NumAssignedPlayers = 0

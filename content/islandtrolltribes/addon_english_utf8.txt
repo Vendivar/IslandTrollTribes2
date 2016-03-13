@@ -12,11 +12,18 @@
 		"DOTA_GoodGuys"   							"North Tribe"	
 		"DOTA_BadGuys"    							"East Tribe"
 		"DOTA_Custom1"    							"West Tribe"	
-		"DOTA_Custom2"    							"South Tribe"	
+		"DOTA_Custom2"    							"South Tribe"
+
+		"DOTA_Chat_PlayerKilled"        			"%s1 just pwned %s2's head!"
+        "DOTA_Chat_PlayerKilledNearby"      		"%s1 just pwned %s2's head!"
+        "DOTA_Chat_PlayerKilledNearbySingle"        "%s1 just pwned %s2's head!"
+        "DOTA_Chat_PlayerKilledAssist"  			"%s1 was just killed!"
+        "DOTA_Chat_PlayerKilledAssistNearby"    	"%s1 was just killed!"
+        "DOTA_Chat_PlayerKilledAssistNearbySingle"  "%s1 was just killed!"
 
 		"error_must_target_baby_animal"           "Must target a wild baby animal."
 		
-//Hero Names
+		//Hero Names
 		"npc_dota_hero_shadow_shaman"			"Gatherer"
 		"npc_hero_herbmaster_tele_gatherer"		"Herb Master Telegatherer"
 		"npc_hero_radar_tele_gatherer"			"Radar Telegatherer"
@@ -303,7 +310,7 @@
 
 
 "DOTA_Tooltip_Ability_ability_beastmaster_howl"		"(Wolf) Howl"
-"DOTA_Tooltip_ability_ability_beastmaster_howl_armor_reduction"		"-$ARMOR REDUCTION:"
+"DOTA_Tooltip_ability_ability_beastmaster_howl_armor_reduction"		"ARMOR REDUCTION:"
 "DOTA_Tooltip_ability_ability_beastmaster_howl_attack_speed"		"%+$attack"
 "DOTA_Tooltip_Ability_ability_beastmaster_howl_Description"		"Reduces the armor and attack speed of enemies within range."
 "DOTA_Tooltip_ability_ability_beastmaster_howl_radius"		"RADIUS:"
@@ -947,7 +954,7 @@
 "DOTA_Tooltip_Ability_ability_hunter_greatertrack_Description"		"Gives vision of the target and heavily reduces armor, amplifying the damage the target receives."
 "DOTA_Tooltip_ability_ability_hunter_greatertrack_duration"		"TROLL DURATION:"
 "DOTA_Tooltip_ability_ability_hunter_greatertrack_duration_creep"		"CREEP DURATION:"
-"DOTA_Tooltip_ability_ability_hunter_greatertrack_minus_armor"		"-$ARMOR REDUCTION:"
+"DOTA_Tooltip_ability_ability_hunter_greatertrack_minus_armor"		"ARMOR REDUCTION:"
 "DOTA_Tooltip_Ability_ability_hunter_placetrackingbeacon"		"Place Tracking Beacon"
 "DOTA_Tooltip_Ability_ability_hunter_placetrackingbeacon_Description"		"Permanently places a tracking beacon on an enemy. The beacon cannot be removed with a Cure All."
 "DOTA_Tooltip_Ability_ability_hunter_querybeacon"		"Query Beacon"
@@ -963,12 +970,12 @@
 "DOTA_Tooltip_Ability_ability_hunter_stayingpower_bonus_stats"		"BONUS STATS:"
 "DOTA_Tooltip_Ability_ability_hunter_stayingpower_Description"		"Increases the toughness of the Juggernaut.\nThe Juggernaught gains spell resistance, damage resistance, stat bonus, armor, and a chance to block damage."
 "DOTA_Tooltip_Ability_ability_hunter_track"		"Track"
-"DOTA_Tooltip_Ability_ability_hunter_track_armor_reduction"		"-ARMOR REDUCTION:"
+"DOTA_Tooltip_Ability_ability_hunter_track_armor_reduction"		"ARMOR REDUCTION:"
 "DOTA_Tooltip_Ability_ability_hunter_track_Description"		"Gives vision of the target and reduces armor, amplifying the damage the target receives. The ability will always last 30 seconds on animals, but a variable time on trolls based off of the skill level."
 "DOTA_Tooltip_ability_ability_hunter_track_duration"		"TROLL DURATION:"
 "DOTA_Tooltip_Ability_ability_hunter_track_duration_creep"		"CREEP DURATION:"
 "DOTA_Tooltip_Ability_ability_hunter_track_duration_troll"		"TROLL DURATION:"
-"DOTA_Tooltip_ability_ability_hunter_track_minus_armor"		"-ARMOR REDUCTION:"
+"DOTA_Tooltip_ability_ability_hunter_track_minus_armor"		"ARMOR REDUCTION:"
 
 "DOTA_Tooltip_Ability_ability_modifier_stayingpower"		"Staying Power"
 "DOTA_Tooltip_Ability_ability_modifier_stayingpower_Description"		"20% Spell Damage Reduction and a bonus to all stats, armor and a chance to block 10 damage."
@@ -2906,6 +2913,11 @@
 "DOTA_Tooltip_ability_ability_boat_passive"		"Boat"
 "DOTA_Tooltip_ability_ability_boat_passive_Description"		""
 
+"DOTA_Tooltip_modifier_rested"                                                    "Rested"
+"DOTA_Tooltip_modifier_rested_Description"                                        "Can not use sleep again for a short time."
+
+
+	
 
 "DOTA_Tooltip_modifier_fire_heat"  "Fire Warmth"
 "DOTA_Tooltip_modifier_fire_heat_Description"  "Restoring heat per tick."
@@ -3161,7 +3173,7 @@
         "drop_meat"     "Drop\nMeat"
         
         "DOTA_Tooltip_Ability_drop_meat"                  "Drop Raw Meat"
-        "DOTA_Tooltip_Ability_drop_meat_Description"                  "Drop one raw meat per use that your troll is currently holding. It will go to the ground once this ability is used."
+        "DOTA_Tooltip_Ability_drop_meat_Description"                  "Drop one raw meat per use that your troll is currently holding. <font color='#00CC00'>Right click</font> to drop all carried meat. It will go to the ground once this ability is used."
         
         "drop_all_meat" "Drop\nAll Meat"
         
