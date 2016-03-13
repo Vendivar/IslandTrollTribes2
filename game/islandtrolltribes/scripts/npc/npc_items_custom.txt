@@ -10297,13 +10297,12 @@
 	            "Target"            "CASTER"
 	        }
 	
-	        "TrackingProjectile"
+	        "LinearProjectile"
 	        {
 	            "Target"            "POINT"
 	            "EffectName"        "particles/units/heroes/hero_meepo/meepo_earthbind_projectile_fx.vpcf"
-	            "Dodgeable"         "1"
 	            "ProvidesVision"    "0"
-	            "MoveSpeed"         "%projectile_speed"
+	            "MoveSpeed"         "500"
 	            "SourceAttachment"  "DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
 	        }
 	    }

@@ -96,6 +96,7 @@
 <Image style="opacity:0;" src="file://{images}/items/mixing_pot.png" />
 <Image style="opacity:0;" src="file://{images}/items/net.png" />
 <Image style="opacity:0;" src="file://{images}/items/net_basic.png" />
+<Image style="opacity:0;" src="file://{images}/items/net_hunting.png" />
 <Image style="opacity:0;" src="file://{images}/items/potion_acid.png" />
 <Image style="opacity:0;" src="file://{images}/items/potion_anti_magic.png" />
 <Image style="opacity:0;" src="file://{images}/items/potion_cure_all.png" />
