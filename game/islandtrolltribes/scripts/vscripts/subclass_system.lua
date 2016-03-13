@@ -73,6 +73,7 @@ function ITT:OnSubclassChange(event)
     local subclassID = tostring(event.subclassID)
 
     local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+    local level = hero:GetLevel()
     local class = hero:GetHeroClass()
     print("Current class:",class)
 
@@ -88,6 +89,7 @@ function ITT:OnSubclassChange(event)
 
     print("New Subclass:", new_name)
     hero.subclass = new_name
+    hero.subclass_leveled = level --Keep track of when the hero invested into a subclass
     if hero.subclassAvailableParticle then
         ParticleManager:DestroyParticle(hero.subclassAvailableParticle, false)
         EmitSoundOnClient("SubSelected", PlayerResource:GetPlayer(playerID))

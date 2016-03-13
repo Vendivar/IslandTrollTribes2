@@ -342,12 +342,6 @@ function ITT:OnHeroInGame( hero )
     -- Adjust Stats
     Stats:ModifyBonuses(hero)
 
-    -- Crafting Think
-    --[[Timers:CreateTimer(function()
-        InventoryCheck(hero)
-        return 1
-    end)]]
-
     -- This handles spawning heroes through dota_bot_populate
     --[[if PlayerResource:IsFakeClient(hero:GetPlayerID()) then
         Timers:CreateTimer(1, function()
@@ -420,10 +414,30 @@ function ITT:AdjustSkills( hero )
         return
     end
 
+    -- For every level past 6, we need to check for old levels of abilities could have been missed
+    if hero.subclass_leveled and hero.subclass_leveled > 6 then
 
-    -- Check for any skill in the 'unlearn' subtable
+        for level = 6, hero.subclass_leveled do
+            ITT:UnlearnAbilities(hero, class_skills, level)
+            ITT:LearnAbilities(hero, class_skills, level)
+        end
+
+        hero.subclass_leveled = nil --Already subclassed, next time it will just adjust skills normally
+    else
+        ITT:UnlearnAbilities(hero, class_skills, level)
+        ITT:LearnAbilities(hero, class_skills, level)
+    end
+
+    AdjustAbilityLayout(hero)
+    EnableSpellBookAbilities(hero)
+    PrintAbilities(hero)
+    PlayerResource:RefreshSelection()
+end
+
+-- Check for any skill in the 'unlearn' subtable
+function ITT:UnlearnAbilities(hero, class_skills, level)
     Timers:CreateTimer(function()
-        local unlearn_skills = skillProgressionTable[class]['unlearn']
+        local unlearn_skills = class_skills['unlearn']
         if unlearn_skills then
             local unlearn_skills_level = unlearn_skills[tostring(level)]
             if unlearn_skills_level then
@@ -437,9 +451,12 @@ function ITT:AdjustSkills( hero )
             end
         end
     end)
-    
-    -- Learn/Upgrade all abilities for this level    
-    local level_skills = skillProgressionTable[class][tostring(level)]
+end
+
+-- Learn/Upgrade all abilities for this level    
+function ITT:LearnAbilities(hero, class_skills, level)
+    local level_skills = class_skills[tostring(level)]
+    local class = hero:GetHeroClass().." ("..hero:GetSubClass()..")"
     if level_skills and level_skills ~= "" then
         print("[ITT] AdjustSkills for "..class.." at level "..level)
         local ability_names = split(level_skills, ",")
@@ -458,10 +475,6 @@ function ITT:AdjustSkills( hero )
     else
         print("No skills to change for "..class.." at level "..level)
     end
-
-    AdjustAbilityLayout(hero)
-    EnableSpellBookAbilities(hero)
-    PrintAbilities(hero)
 end
 
 function EnableSpellBookAbilities(hero)
