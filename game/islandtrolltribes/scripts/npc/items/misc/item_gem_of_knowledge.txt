@@ -4,8 +4,7 @@
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"gem_knowledge"
 	"Model"	"models/props_gameplay/gem01.vmdl"
-	"Effect"	""
-	"AbilityCastPoint"	"0.5"
+	"Effect"	"particles/generic_gameplay/dropped_gem.vpcf"
 	"ItemCost"	"52"
 	"ItemShopTags"	"consumable"
 	"ItemQuality"	"consumable"
@@ -21,6 +20,7 @@
 	"UIPickupSound"	"Item.PickUpGemShop"
 	"UIDropSound"	"Item.DropGemShop"
 	"WorldDropSound"	"Item.DropGemWorld"
+
 	"Modifiers"
 	{
 		"modifier_gem_knolwedge_stats"
@@ -34,21 +34,20 @@
 				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%all_stats"
 				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%all_stats"
 			}
-
-			//TODO
-
 		}
-
 	}
 
 	"AbilitySpecial"
 	{
 		"01"
 		{
-			"var_type"	"FIELD_INTEGER"
-			"all_stats"	"1"
+			"var_type"		"FIELD_INTEGER"
+			"all_stats"		"1"
 		}
-
+		"02"
+		{
+			"var_type"		"FIELD_FLOAT"
+			"bonus_xp_pct"	"75"
+		}
 	}
-
 }
