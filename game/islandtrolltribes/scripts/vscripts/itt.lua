@@ -381,7 +381,7 @@ end
 function ITT:CreateLockedSlots(hero)
     
     local lockedSlotsTable = GameRules.ClassInfo['LockedSlots']
-    local className = GetHeroClass(hero)
+    local className = hero:GetHeroClass()
     local lockedSlotNumber = lockedSlotsTable[className]
     
     local lockN = 5
@@ -405,13 +405,13 @@ end
 -- Called on spawn and every time a hero gains a level or chooses a subclass
 function ITT:AdjustSkills( hero )
     local skillProgressionTable = GameRules.ClassInfo['SkillProgression']
-    local class = GetHeroClass(hero)
+    local class = hero:GetHeroClass()
     local level = hero:GetLevel() --Level determines what skills to add or levelup
     hero:SetAbilityPoints(0) --All abilities are learned innately
 
     -- If the hero has a subclass, use that table instead
-    if HasSubClass(hero) then
-        class = GetSubClass(hero)
+    if hero:HasSubClass() then
+        class = hero:GetSubClass()
     end
 
     local class_skills = skillProgressionTable[class]
@@ -466,7 +466,7 @@ end
 
 function EnableSpellBookAbilities(hero)
     local toggleAbilityName
-    local heroClass = GetHeroClass(hero)
+    local heroClass = hero:GetHeroClass()
     if heroClass == "mage" then
         toggleAbilityName = "ability_mage_spellbook_toggle"
     elseif heroClass == "priest" then
@@ -821,7 +821,7 @@ function ITT:OnPlayerConnectFull(keys)
     local hero = PlayerResource:GetSelectedHeroEntity(playerID)
     if hero then
         local level = hero:GetLevel()
-        if level >= 6 and not HasSubClass(hero) then
+        if level >= 6 and not hero:HasSubClass() then
             CustomGameEventManager:Send_ServerToPlayer(ply, "player_unlock_subclass", {})
 
             if level == 6 then
@@ -905,7 +905,7 @@ function TeleportItem(hero,originalItem)
     local teleportSuccess = false
 
     local itemList = {"item_tinder", "item_flint", "item_stone", "item_stick", "item_bone", "item_meat_raw", "item_crystal_mana", "item_clay_ball", "item_river_root", "item_river_stem", "item_thistles", "item_acorn", "item_acorn_magic", "item_mushroom" }
-    if GetSubClass(hero) == "herbal_master_telegatherer" then
+    if hero:GetSubClass() == "herbal_master_telegatherer" then
         itemList = {"item_herb_blue", "item_herb_butsu", "item_herb_orange", "item_herb_purple", "item_herb_yellow", "item_river_root", "item_river_stem", "item_spirit_water", "item_spirit_wind"}
     end
     for key,value in pairs(itemList) do
@@ -927,13 +927,13 @@ function ITT:OnPlayerGainedLevel(event)
     local player = EntIndexToHScript(event.player)
     local playerID = player:GetPlayerID()
     local hero = player:GetAssignedHero()
-    local class = GetHeroClass(hero)
+    local class = hero:GetHeroClass()
     local level = event.level
 
     print("[ITT] OnPlayerLevelUp - Player "..playerID.." ("..class..") has reached level "..level)
 	
     -- If the hero reached level 6 and hasn't unlocked a subclass, make the button clickable
-    if level >= 6 and not HasSubClass(hero) then
+    if level >= 6 and not hero:HasSubClass() then
         CustomGameEventManager:Send_ServerToPlayer(player, "player_unlock_subclass", {})
 
         if level == 6 then

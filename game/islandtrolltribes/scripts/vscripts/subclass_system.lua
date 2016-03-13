@@ -28,8 +28,8 @@ end
 
 -- When a hero gets ingame, check its cosmetics, find out the slot and replace by the defaults
 function ITT:SetDefaultCosmetics(hero)
-    local defaultWearables = GameRules.ClassInfo['SubClasses'][GetHeroClass(hero)]['defaults']
-    local hideSlots = GameRules.ClassInfo['SubClasses'][GetHeroClass(hero)]['hide']
+    local defaultWearables = GameRules.ClassInfo['SubClasses'][hero:GetHeroClass()]['defaults']
+    local hideSlots = GameRules.ClassInfo['SubClasses'][hero:GetHeroClass()]['hide']
     ITT:SetDefaultWearables(hero)
      -- Handle Hunter hidden wearables
     Timers:CreateTimer(function()
@@ -54,7 +54,7 @@ end
 
 --Reset default wearables and doesn't hide wearables
 function ITT:SetDefaultWearables(hero)
-    local defaultWearables = GameRules.ClassInfo['SubClasses'][GetHeroClass(hero)]['defaults']
+    local defaultWearables = GameRules.ClassInfo['SubClasses'][hero:GetHeroClass()]['defaults']
     local currentWearableList = GetCurrentlyWornWearables(hero)
     for _,wearable in pairs(currentWearableList) do
         local modelName = wearable:GetModelName()
@@ -73,11 +73,11 @@ function ITT:OnSubclassChange(event)
     local subclassID = tostring(event.subclassID)
 
     local hero = PlayerResource:GetSelectedHeroEntity(playerID)
-    local class = GetHeroClass(hero)
+    local class = hero:GetHeroClass()
     print("Current class:",class)
 
     -- Reset subclass (just for testing purposes)
-    if GetSubClass(hero) ~= "none" then
+    if hero:HasSubClass() then
         ITT:ResetSubclass(playerID)
     end
 
@@ -168,8 +168,8 @@ end
 -- Change the current wearables by defaults
 function ITT:ResetSubclass(playerID)
     local hero = PlayerResource:GetSelectedHeroEntity(playerID)
-    local class = GetHeroClass(hero)
-    local subclass = GetSubClass(hero)
+    local class = hero:GetHeroClass()
+    local subclass = hero:GetSubClass()
     print("Current class and subclass:",class, subclass)
 
     local subclassInfo = GameRules.ClassInfo['SubClasses']
@@ -208,8 +208,8 @@ function ITT:ResetSubclass(playerID)
 end
 
 function ITT:SetSubclassCosmetics(hero)
-    local subclassName = GetSubClass(hero)
-    local heroClassName = GetHeroClass(hero)
+    local subclassName = hero:GetSubClass()
+    local heroClassName = hero:GetHeroClass()
     print("Subclass name:"..subclassName..", hero class: "..heroClassName)
     if subclassName == "none" then return end
     local subclassWearables = GameRules.ClassInfo['SubClasses'][subclassName]["Wearables"]

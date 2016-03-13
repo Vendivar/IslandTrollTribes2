@@ -1,7 +1,7 @@
 function SwapSpellBook(keys)
     local caster = keys.caster
     caster.activeBook = keys.ActiveBook
-    local subclass = GetSubClass(caster)
+    local subclass = caster:GetSubClass()
 
     if(caster.activeBook == nil) then --Setting up the default spell book
         caster.activeBook = "book1"

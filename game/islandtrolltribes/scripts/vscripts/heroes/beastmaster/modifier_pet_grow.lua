@@ -65,7 +65,7 @@ function modifier_pet_grow:OnDestroy()
                 end
                 AdjustAbilityLayout(hero)
 
-                local bPackLeader = GetSubClass(hero) == "pack_leader" -- Pack leaders grow their pets faster
+                local bPackLeader = hero:GetSubClass() == "pack_leader" -- Pack leaders grow their pets faster
                 local grow_duration = bPackLeader and 220 or 300
                 print("Young -> Adult in "..grow_duration)
 

@@ -2,7 +2,7 @@ function MageMasherManaBurn(keys)
     local caster = keys.caster
     local target = keys.target
     local damage = tonumber(keys.Damage)
-    local attackedClass = GetHeroClass(target)
+    local attackedClass = target:IsRealHero() and target:GetHeroClass()
 
     --look for mage and priests only
     if (attackedClass == "priest") or (attackedClass == "mage") then
