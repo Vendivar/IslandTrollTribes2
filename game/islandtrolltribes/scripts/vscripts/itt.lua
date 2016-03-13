@@ -594,6 +594,8 @@ function ITT:OnEntityKilled(keys)
 
     -- Heroes
     if killedUnit.IsHero and killedUnit:IsHero() then
+        local pos = killedUnit:GetAbsOrigin()
+
         --if it's a hero, drop all carried raw meat, plus 3, and a bone
         local meatStacksBase = killedUnit:GetModifierStackCount("modifier_meat_passive", nil) + 3
         local meatStacks = GetMeatStacksToDrop(meatStacksBase, killedUnit, killer)
@@ -601,13 +603,12 @@ function ITT:OnEntityKilled(keys)
         CreateRawMeatAtLoc(killedUnit:GetOrigin(), meatStacks, decayTime, GameRules:GetGameTime())
         
         local newItem = CreateItem("item_bone", nil, nil)
-        CreateItemOnPositionSync(killedUnit:GetOrigin() + RandomVector(RandomInt(20,100)), newItem)
+        CreateItemOnPositionSync(pos + RandomVector(RandomInt(20,100)), newItem)
 
         -- Launch all carried items excluding the fillers
         for i=0,5 do
             local item = killedUnit:GetItemInSlot(i)
             if item and item:GetAbilityName() ~= "item_slot_locked" then
-                local pos = killedUnit:GetAbsOrigin()
                 local pos_launch = pos + RandomVector(RandomFloat(100,150))
                 local clonedItem = CreateItem(item:GetName(), nil, nil)
                 CreateItemOnPositionSync(pos,clonedItem)
@@ -622,6 +623,20 @@ function ITT:OnEntityKilled(keys)
             killedUnit.grave = CreateUnitByName("gravestone", killedUnit:GetAbsOrigin(), false, killedUnit, killedUnit, killedUnit:GetTeamNumber())
             killedUnit.grave.hero = killedUnit
         end
+
+        -- Lose all gold create a bag containing all of it, can be picked up by allies or enemies
+        local goldBag = CreateItem("item_gold_bag", nil, nil)
+        local gold = killedUnit:GetGold()
+        goldBag.gold = gold
+        killedUnit:SetGold(0, true)
+        killedUnit:SetGold(0, false)
+
+        local pos_launch = pos + RandomVector(RandomInt(50,100))
+        CreateItemOnPositionSync(pos, goldBag)
+        goldBag:LaunchLoot(true, 300, 1, pos_launch)
+
+        local size = (gold / 500) + 1
+        goldBag:GetContainer():SetModelScale(size)
     else
         --drop system
         -- Items
