@@ -77,7 +77,6 @@ function ITT:InitGameMode()
     ListenToGameEvent( "game_rules_state_change", Dynamic_Wrap( ITT, 'OnGameRulesStateChange' ), self )
 
     -- Panorama Listeners
-    CustomGameEventManager:RegisterListener( "update_selected_entities", Dynamic_Wrap(ITT, 'OnPlayerSelectedEntities'))
     CustomGameEventManager:RegisterListener( "player_selected_class", Dynamic_Wrap( ITT, "OnClassSelected" ) )
     CustomGameEventManager:RegisterListener( "player_selected_subclass", Dynamic_Wrap( ITT, "OnSubclassChange" ) )
 
@@ -1001,23 +1000,6 @@ function ITT:OnGameRulesStateChange()
         end)
     end
 end
-
----------------------------------------------------------------------------
-
--- Called whenever a player changes its current selection, it keeps a list of entity indexes
-function ITT:OnPlayerSelectedEntities( event )
-    local pID = event.pID
-
-    GameRules.SELECTED_UNITS[pID] = event.selected_entities
-
-    -- This is for Building Helper to know which is the currently active builder
-    local mainSelected = GetMainSelectedEntity(pID)
-    if IsValidEntity(mainSelected) and IsBuilder(mainSelected) then
-        local player = PlayerResource:GetPlayer(pID)
-        player.activeBuilder = mainSelected
-    end
-end
-
 
 ---------------------------------------------------------------------------
 -- Get the color associated with a given teamID
