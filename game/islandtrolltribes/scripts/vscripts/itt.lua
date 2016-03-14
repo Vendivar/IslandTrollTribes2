@@ -51,11 +51,14 @@ function ITT:InitGameMode()
     GameMode:SetBuybackEnabled( false )
     GameMode:SetStashPurchasingDisabled(false)
 
+    -- Grace Period
+    GameMode:SetFixedRespawnTime(GRACE_PERIOD_RESPAWN_TIME)
+    GameRules:SetPreGameTime(GAME_PERIOD_GRACE)
+
     GameRules:SetSameHeroSelectionEnabled( true )
     GameRules:SetTimeOfDay( 0.75 )
     GameRules:SetHeroRespawnEnabled( true )
     GameRules:SetHeroSelectionTime(0)
-    GameRules:SetPreGameTime(GAME_PERIOD_GRACE)
     GameRules:SetPostGameTime( 60.0 )
     GameRules:SetTreeRegrowTime( 60.0 )
     GameRules:SetCreepMinimapIconScale( 0.7 )
@@ -201,17 +204,6 @@ function ITT:InitGameMode()
     LinkLuaModifier("modifier_pack_leader", "heroes/beastmaster/subclass_modifiers.lua", LUA_MODIFIER_MOTION_NONE)
     LinkLuaModifier("modifier_shapeshifter", "heroes/beastmaster/subclass_modifiers.lua", LUA_MODIFIER_MOTION_NONE)
     LinkLuaModifier("modifier_minimap", "libraries/modifiers/modifier_minimap", LUA_MODIFIER_MOTION_NONE)
-    
-    -- Grace Period
-    GameMode:SetFixedRespawnTime(GRACE_PERIOD_RESPAWN_TIME)
-    Timers:CreateTimer({
-        endTime = GAME_PERIOD_GRACE,
-        callback = function()
-            print("End of grace period.")
-            GameRules:SetHeroRespawnEnabled( false )
-            UnblockMammoth()
-        end
-    })
 
     -- Initialize the roaming trading ships
     ITT:SetupShops()
@@ -845,6 +837,10 @@ function ITT:OnPlayerConnectFull(keys)
             end
         end
     end
+
+    if GameRules:GetGameTime() > GAME_PERIOD_GRACE and not ply:GetAssignedHero() then
+        CustomGameEventManager:Send_ServerToPlayer(ply, "player_force_pick", {})
+    end
 end
 
 -- Listener to handle item pickup (the rest of the pickup logic is tied to the order filter and item function mechanics)
@@ -1021,6 +1017,10 @@ function ITT:OnGameRulesStateChange()
         ITT:ShareUnits()
 
     elseif nNewState == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
+
+        GameRules:SetHeroRespawnEnabled( false )
+        RandomUnpickedPlayers()
+        UnblockMammoth()
 
         Timers:CreateTimer(function()
             ITT:CheckWinCondition()

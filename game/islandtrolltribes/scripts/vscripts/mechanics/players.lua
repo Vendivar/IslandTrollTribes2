@@ -12,6 +12,17 @@ function PlayerHasEnoughGold( player, gold_cost )
     end
 end
 
+function RandomUnpickedPlayers()
+    for playerID = 0, DOTA_MAX_TEAM_PLAYERS do
+        if PlayerResource:IsValidPlayerID(playerID) then
+            local player = PlayerResource:GetPlayer(playerID)
+            if player and not player:GetAssignedHero() then
+                CustomGameEventManager:Send_ServerToPlayer(player, "player_force_pick", {})
+            end
+        end
+    end
+end
+
 ------------------------------------------------
 --            Global item applier             --
 ------------------------------------------------

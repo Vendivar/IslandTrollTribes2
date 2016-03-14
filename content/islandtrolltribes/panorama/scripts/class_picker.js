@@ -143,6 +143,7 @@ function TeamUpdate(keys) {
     $.Msg("Class Picker Load")
 
     GameEvents.Subscribe( "team_update_class", TeamUpdate );
+    GameEvents.Subscribe( "player_force_pick", ChooseClass );
 
     $("#vid_beastmaster").visible = false;
     $("#vid_gatherer").visible = false;

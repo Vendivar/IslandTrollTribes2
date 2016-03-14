@@ -3,7 +3,7 @@
         <include src="file://{resources}/styles/custom_game/help.css" />
     </styles>
     <scripts>
-        <include src="file://{resources}/scripts/help_toggle_button.jsx" />
+        <include src="file://{resources}/scripts/help_toggle_button.js" />
     </scripts>
     <Panel class="HelpButtonRoot" hittest="false">
         <Panel id="HelpToggleButton" onactivate="ToggleHelp()">
