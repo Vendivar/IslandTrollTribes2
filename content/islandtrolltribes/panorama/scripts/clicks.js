@@ -45,6 +45,13 @@ function OnRightButtonPressed()
             GameEvents.SendCustomGameEventToServer( "player_rest_building", { entityIndex : entityIndex } );
             return false
         }*/
+		else if (IsTeleportBeacon(entityIndex) && IsTeamControlled(entityIndex))
+		{
+			$.Msg("I think we lcicked on a tele beacon");
+			// If we rightlicked a teleport beacon... 
+			GameEvents.SendCustomGameEventToServer("player_teleport_beacon", { entityIndex: entityIndex });
+			return true;
+		}
     }
 
 	return false;
@@ -78,6 +85,11 @@ function IsTeamControlled ( entityIndex ) {
 // Builders require the "builder" label in its unit definition
 function IsBuilder( entIndex ) {
     return (Entities.GetUnitLabel( entIndex ) == "builder")
+}
+
+function IsTeleportBeacon(entIndex)
+{
+	return (Entities.GetUnitName(entIndex) == "npc_building_teleport_beacon")
 }
 
 function ManageCraftListMouseEvents(eventName, arg){

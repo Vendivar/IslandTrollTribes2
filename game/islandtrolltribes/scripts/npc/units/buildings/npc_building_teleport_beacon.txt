@@ -2,16 +2,20 @@
 {
 	"BaseClass"	"npc_dota_creature"
 	"Model"	"models/items/pugna/ward/nether_grandmasters_ward/nether_grandmasters_ward.vmdl"
+	"vscripts"	"buildings/teleport_beacon.lua"
 	"SoundSet"	"Creep_Good_Melee"
+	"HasInventory"	"1"
 	"MinimapIconSize"	"25"
 	"HealthBarOffset"	"400"
 	"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 	"RingRadius"	"100"
+	"Level" "1"
 	"precache"
 	{
 		"model"	"models/items/pugna/ward/nether_grandmasters_ward/nether_grandmasters_ward.vmdl"
 		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts"
 		"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
+		"particle_folder"	"particles/units/heroes/hero_dragon_knight/dragon_knight_transform_blue.vpcf"
 	}
 
 	"Ability1"	"ability_teleport"
@@ -36,10 +40,12 @@
 	"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 	"VisionDaytimeRange"	"0"
 	"VisionNighttimeRange"	"0"
+	
 
 	// Building Size
 	//----------------------------------------------------------------
 	"ConstructionSize"			"2"
 	"BlockPathingSize"			"2"
     "SharedWithTeammates" "1"
+
 }

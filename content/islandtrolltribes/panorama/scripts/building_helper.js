@@ -411,6 +411,14 @@ function SendBuildCommand( params )
     return true;
 }
 
+function SendTeleportCommand ( params )
+{
+	$.Msg(params);
+	EndBuildingHelper();
+	//console.log(params);
+	GameEvents.SendCustomGameEventToServer("building_helper_issue_teleport", {})
+} 
+
 function SendCancelCommand( params )
 {
     EndBuildingHelper();
