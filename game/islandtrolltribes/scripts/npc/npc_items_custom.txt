@@ -1853,13 +1853,17 @@
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
-		"ItemStackable"	"0"
+		
+		"MaxStacks" "3"
+		
+		"ItemStackable"	"1"
 		"ItemPermanent"	"0"
 		"ItemDroppable"	"1"
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"1"
+		
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -9707,7 +9711,7 @@
 	        "02"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"damage"					"225 300 375 450"
+				"damage"					"10"
 			}
 			"03"
 			{
@@ -9828,8 +9832,7 @@
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"gem_knowledge"
 		"Model"	"models/props_gameplay/gem01.vmdl"
-		"Effect"	""
-		"AbilityCastPoint"	"0.5"
+		"Effect"	"particles/generic_gameplay/dropped_gem.vpcf"
 		"ItemCost"	"52"
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
@@ -9845,6 +9848,7 @@
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
+	
 		"Modifiers"
 		{
 			"modifier_gem_knolwedge_stats"
@@ -9858,23 +9862,43 @@
 					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%all_stats"
 					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%all_stats"
 				}
-	
-				//TODO
-	
 			}
-	
 		}
 	
 		"AbilitySpecial"
 		{
 			"01"
 			{
-				"var_type"	"FIELD_INTEGER"
-				"all_stats"	"1"
+				"var_type"		"FIELD_INTEGER"
+				"all_stats"		"1"
 			}
-	
+			"02"
+			{
+				"var_type"		"FIELD_FLOAT"
+				"bonus_xp_pct"	"75"
+			}
 		}
+	}
+	"item_gold_bag"
+	{
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+	    "BaseClass"             "item_datadriven"
 	
+	    "ItemPermanent"         "0"
+	    "ItemDroppable"         "1"
+	    "ItemKillable"          "0"
+	    "ItemSellable"          "0"
+	
+	    "Model"                 "models/props_gameplay/gold_bag.vmdl"
+	
+	    "OnEquip"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"    "items/gold_bag.lua"
+	            "Function"      "GrantGold"
+	        }
+	    }
 	}
 	"item_magic_raw"
 	{
@@ -10277,13 +10301,12 @@
 	            "Target"            "CASTER"
 	        }
 	
-	        "TrackingProjectile"
+	        "LinearProjectile"
 	        {
 	            "Target"            "POINT"
 	            "EffectName"        "particles/units/heroes/hero_meepo/meepo_earthbind_projectile_fx.vpcf"
-	            "Dodgeable"         "1"
 	            "ProvidesVision"    "0"
-	            "MoveSpeed"         "%projectile_speed"
+	            "MoveSpeed"         "500"
 	            "SourceAttachment"  "DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
 	        }
 	    }
@@ -11734,7 +11757,7 @@
 	        "02"
 	        {
 	            "var_type"    "FIELD_INTEGER"
-	            "stone_damage"    "1"
+	            "stone_damage"    "25"
 	        }
 	
 	        "03"

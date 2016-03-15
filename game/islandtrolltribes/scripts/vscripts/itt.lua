@@ -51,12 +51,14 @@ function ITT:InitGameMode()
     GameMode:SetBuybackEnabled( false )
     GameMode:SetStashPurchasingDisabled(false)
 
-    --GameRules:GetGameModeEntity():ClientLoadGridNav()
+    -- Grace Period
+    GameMode:SetFixedRespawnTime(GRACE_PERIOD_RESPAWN_TIME)
+    GameRules:SetPreGameTime(GAME_PERIOD_GRACE)
+
     GameRules:SetSameHeroSelectionEnabled( true )
     GameRules:SetTimeOfDay( 0.75 )
     GameRules:SetHeroRespawnEnabled( true )
     GameRules:SetHeroSelectionTime(0)
-    GameRules:SetPreGameTime(GAME_PERIOD_GRACE)
     GameRules:SetPostGameTime( 60.0 )
     GameRules:SetTreeRegrowTime( 60.0 )
     GameRules:SetCreepMinimapIconScale( 0.7 )
@@ -98,6 +100,7 @@ function ITT:InitGameMode()
     GameMode:SetExecuteOrderFilter( Dynamic_Wrap( ITT, "FilterExecuteOrder" ), self )
     GameMode:SetDamageFilter( Dynamic_Wrap( ITT, "FilterDamage" ), self )
     GameMode:SetModifyExperienceFilter( Dynamic_Wrap( ITT, "FilterExperience" ), self )
+    GameMode:SetModifyGoldFilter( Dynamic_Wrap( ITT, "FilterGold" ), self )
 
     self.m_GatheredShuffledTeams = {}
     self.m_NumAssignedPlayers = 0
@@ -201,17 +204,6 @@ function ITT:InitGameMode()
     LinkLuaModifier("modifier_pack_leader", "heroes/beastmaster/subclass_modifiers.lua", LUA_MODIFIER_MOTION_NONE)
     LinkLuaModifier("modifier_shapeshifter", "heroes/beastmaster/subclass_modifiers.lua", LUA_MODIFIER_MOTION_NONE)
     LinkLuaModifier("modifier_minimap", "libraries/modifiers/modifier_minimap", LUA_MODIFIER_MOTION_NONE)
-    
-    -- Grace Period
-    GameMode:SetFixedRespawnTime(GRACE_PERIOD_RESPAWN_TIME)
-    Timers:CreateTimer({
-        endTime = GAME_PERIOD_GRACE,
-        callback = function()
-            print("End of grace period.")
-            GameRules:SetHeroRespawnEnabled( false )
-            UnblockMammoth()
-        end
-    })
 
     -- Initialize the roaming trading ships
     ITT:SetupShops()
@@ -342,12 +334,6 @@ function ITT:OnHeroInGame( hero )
     -- Adjust Stats
     Stats:ModifyBonuses(hero)
 
-    -- Crafting Think
-    --[[Timers:CreateTimer(function()
-        InventoryCheck(hero)
-        return 1
-    end)]]
-
     -- This handles spawning heroes through dota_bot_populate
     --[[if PlayerResource:IsFakeClient(hero:GetPlayerID()) then
         Timers:CreateTimer(1, function()
@@ -381,7 +367,7 @@ end
 function ITT:CreateLockedSlots(hero)
     
     local lockedSlotsTable = GameRules.ClassInfo['LockedSlots']
-    local className = GetHeroClass(hero)
+    local className = hero:GetHeroClass()
     local lockedSlotNumber = lockedSlotsTable[className]
     
     local lockN = 5
@@ -405,13 +391,13 @@ end
 -- Called on spawn and every time a hero gains a level or chooses a subclass
 function ITT:AdjustSkills( hero )
     local skillProgressionTable = GameRules.ClassInfo['SkillProgression']
-    local class = GetHeroClass(hero)
+    local class = hero:GetHeroClass()
     local level = hero:GetLevel() --Level determines what skills to add or levelup
     hero:SetAbilityPoints(0) --All abilities are learned innately
 
     -- If the hero has a subclass, use that table instead
-    if HasSubClass(hero) then
-        class = GetSubClass(hero)
+    if hero:HasSubClass() then
+        class = hero:GetSubClass()
     end
 
     local class_skills = skillProgressionTable[class]
@@ -420,10 +406,30 @@ function ITT:AdjustSkills( hero )
         return
     end
 
+    -- For every level past 6, we need to check for old levels of abilities could have been missed
+    if hero.subclass_leveled and hero.subclass_leveled > 6 then
 
-    -- Check for any skill in the 'unlearn' subtable
+        for level = 6, hero.subclass_leveled do
+            ITT:UnlearnAbilities(hero, class_skills, level)
+            ITT:LearnAbilities(hero, class_skills, level)
+        end
+
+        hero.subclass_leveled = nil --Already subclassed, next time it will just adjust skills normally
+    else
+        ITT:UnlearnAbilities(hero, class_skills, level)
+        ITT:LearnAbilities(hero, class_skills, level)
+    end
+
+    AdjustAbilityLayout(hero)
+    EnableSpellBookAbilities(hero)
+    PrintAbilities(hero)
+    PlayerResource:RefreshSelection()
+end
+
+-- Check for any skill in the 'unlearn' subtable
+function ITT:UnlearnAbilities(hero, class_skills, level)
     Timers:CreateTimer(function()
-        local unlearn_skills = skillProgressionTable[class]['unlearn']
+        local unlearn_skills = class_skills['unlearn']
         if unlearn_skills then
             local unlearn_skills_level = unlearn_skills[tostring(level)]
             if unlearn_skills_level then
@@ -437,9 +443,12 @@ function ITT:AdjustSkills( hero )
             end
         end
     end)
-    
-    -- Learn/Upgrade all abilities for this level    
-    local level_skills = skillProgressionTable[class][tostring(level)]
+end
+
+-- Learn/Upgrade all abilities for this level    
+function ITT:LearnAbilities(hero, class_skills, level)
+    local level_skills = class_skills[tostring(level)]
+    local class = hero:GetHeroClass().." ("..hero:GetSubClass()..")"
     if level_skills and level_skills ~= "" then
         print("[ITT] AdjustSkills for "..class.." at level "..level)
         local ability_names = split(level_skills, ",")
@@ -458,15 +467,11 @@ function ITT:AdjustSkills( hero )
     else
         print("No skills to change for "..class.." at level "..level)
     end
-
-    AdjustAbilityLayout(hero)
-    EnableSpellBookAbilities(hero)
-    PrintAbilities(hero)
 end
 
 function EnableSpellBookAbilities(hero)
     local toggleAbilityName
-    local heroClass = GetHeroClass(hero)
+    local heroClass = hero:GetHeroClass()
     if heroClass == "mage" then
         toggleAbilityName = "ability_mage_spellbook_toggle"
     elseif heroClass == "priest" then
@@ -594,6 +599,8 @@ function ITT:OnEntityKilled(keys)
 
     -- Heroes
     if killedUnit.IsHero and killedUnit:IsHero() then
+        local pos = killedUnit:GetAbsOrigin()
+
         --if it's a hero, drop all carried raw meat, plus 3, and a bone
         local meatStacksBase = killedUnit:GetModifierStackCount("modifier_meat_passive", nil) + 3
         local meatStacks = GetMeatStacksToDrop(meatStacksBase, killedUnit, killer)
@@ -601,13 +608,12 @@ function ITT:OnEntityKilled(keys)
         CreateRawMeatAtLoc(killedUnit:GetOrigin(), meatStacks, decayTime, GameRules:GetGameTime())
         
         local newItem = CreateItem("item_bone", nil, nil)
-        CreateItemOnPositionSync(killedUnit:GetOrigin() + RandomVector(RandomInt(20,100)), newItem)
+        CreateItemOnPositionSync(pos + RandomVector(RandomInt(20,100)), newItem)
 
         -- Launch all carried items excluding the fillers
         for i=0,5 do
             local item = killedUnit:GetItemInSlot(i)
             if item and item:GetAbilityName() ~= "item_slot_locked" then
-                local pos = killedUnit:GetAbsOrigin()
                 local pos_launch = pos + RandomVector(RandomFloat(100,150))
                 local clonedItem = CreateItem(item:GetName(), nil, nil)
                 CreateItemOnPositionSync(pos,clonedItem)
@@ -622,6 +628,20 @@ function ITT:OnEntityKilled(keys)
             killedUnit.grave = CreateUnitByName("gravestone", killedUnit:GetAbsOrigin(), false, killedUnit, killedUnit, killedUnit:GetTeamNumber())
             killedUnit.grave.hero = killedUnit
         end
+
+        -- Lose all gold create a bag containing all of it, can be picked up by allies or enemies
+        local goldBag = CreateItem("item_gold_bag", nil, nil)
+        local gold = killedUnit:GetGold()
+        goldBag.gold = gold
+        killedUnit:SetGold(0, true)
+        killedUnit:SetGold(0, false)
+
+        local pos_launch = pos + RandomVector(RandomInt(50,100))
+        CreateItemOnPositionSync(pos, goldBag)
+        goldBag:LaunchLoot(true, 300, 1, pos_launch)
+
+        local size = (gold / 500) + 1
+        goldBag:GetContainer():SetModelScale(size)
     else
         --drop system
         -- Items
@@ -806,7 +826,7 @@ function ITT:OnPlayerConnectFull(keys)
     local hero = PlayerResource:GetSelectedHeroEntity(playerID)
     if hero then
         local level = hero:GetLevel()
-        if level >= 6 and not HasSubClass(hero) then
+        if level >= 6 and not hero:HasSubClass() then
             CustomGameEventManager:Send_ServerToPlayer(ply, "player_unlock_subclass", {})
 
             if level == 6 then
@@ -816,6 +836,10 @@ function ITT:OnPlayerConnectFull(keys)
                 EmitSoundOnClient("SubSelectReady", PlayerResource:GetPlayer(playerID))
             end
         end
+    end
+
+    if GameRules:GetGameTime() > GAME_PERIOD_GRACE and not ply:GetAssignedHero() then
+        CustomGameEventManager:Send_ServerToPlayer(ply, "player_force_pick", {})
     end
 end
 
@@ -890,7 +914,7 @@ function TeleportItem(hero,originalItem)
     local teleportSuccess = false
 
     local itemList = {"item_tinder", "item_flint", "item_stone", "item_stick", "item_bone", "item_meat_raw", "item_crystal_mana", "item_clay_ball", "item_river_root", "item_river_stem", "item_thistles", "item_acorn", "item_acorn_magic", "item_mushroom" }
-    if GetSubClass(hero) == "herbal_master_telegatherer" then
+    if hero:GetSubClass() == "herbal_master_telegatherer" then
         itemList = {"item_herb_blue", "item_herb_butsu", "item_herb_orange", "item_herb_purple", "item_herb_yellow", "item_river_root", "item_river_stem", "item_spirit_water", "item_spirit_wind"}
     end
     for key,value in pairs(itemList) do
@@ -912,13 +936,13 @@ function ITT:OnPlayerGainedLevel(event)
     local player = EntIndexToHScript(event.player)
     local playerID = player:GetPlayerID()
     local hero = player:GetAssignedHero()
-    local class = GetHeroClass(hero)
+    local class = hero:GetHeroClass()
     local level = event.level
 
     print("[ITT] OnPlayerLevelUp - Player "..playerID.." ("..class..") has reached level "..level)
 	
     -- If the hero reached level 6 and hasn't unlocked a subclass, make the button clickable
-    if level >= 6 and not HasSubClass(hero) then
+    if level >= 6 and not hero:HasSubClass() then
         CustomGameEventManager:Send_ServerToPlayer(player, "player_unlock_subclass", {})
 
         if level == 6 then
@@ -993,6 +1017,10 @@ function ITT:OnGameRulesStateChange()
         ITT:ShareUnits()
 
     elseif nNewState == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
+
+        GameRules:SetHeroRespawnEnabled( false )
+        RandomUnpickedPlayers()
+        UnblockMammoth()
 
         Timers:CreateTimer(function()
             ITT:CheckWinCondition()

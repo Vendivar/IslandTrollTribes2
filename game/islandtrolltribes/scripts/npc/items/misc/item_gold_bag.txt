@@ -1,0 +1,21 @@
+"item_gold_bag"
+{
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+    "BaseClass"             "item_datadriven"
+
+    "ItemPermanent"         "0"
+    "ItemDroppable"         "1"
+    "ItemKillable"          "0"
+    "ItemSellable"          "0"
+
+    "Model"                 "models/props_gameplay/gold_bag.vmdl"
+
+    "OnEquip"
+    {
+        "RunScript"
+        {
+            "ScriptFile"    "items/gold_bag.lua"
+            "Function"      "GrantGold"
+        }
+    }
+}

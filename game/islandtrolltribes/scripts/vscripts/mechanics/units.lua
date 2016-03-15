@@ -5,6 +5,18 @@ function CDOTA_BaseNPC:IsSharedWithTeammates()
     return GameRules.UnitKV[self:GetUnitName()]["SharedWithTeammates"]==1
 end
 
+-- Returns an item handle if the item is in inventory
+function CDOTA_BaseNPC:FindItemByName(item_name)
+    local unit = self
+    for i=0,5 do
+        local item = unit:GetItemInSlot(i)
+        if item and item:GetAbilityName() == item_name then
+            return item
+        end
+    end
+    return nil
+end
+
 ------------------------------------------------
 
 -- Returns Int

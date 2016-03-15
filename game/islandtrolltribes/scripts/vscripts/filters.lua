@@ -400,6 +400,27 @@ function ITT:FilterExperience( filterTable )
     return true
 end
 
+------------------------------------------------------------------
+-- Gold Filter
+------------------------------------------------------------------
+
+function ITT:FilterGold( filterTable )
+    --for k, v in pairs( filterTable ) do
+        --print("Gold: " .. k .. " " .. tostring(v) )
+    --end
+
+    local gold = filterTable["gold"]
+    local playerID = filterTable["player_id_const"]
+    local reason = filterTable["reason_const"]
+
+    -- Disable all hero kill gold
+    if reason == DOTA_ModifyGold_HeroKill then
+        return false
+    end
+
+    return true
+end
+
 
 ------------------------------------------------------------------
 
@@ -445,8 +466,28 @@ DAMAGE_TYPES = {
 }
 
 XP_REASONS = {
-    [0] = "Unspecified",
-    [1] = "HeroKill",
-    [2] = "CreepKill",
-    [3] = "RoshanKill", 
+    [0] = "DOTA_ModifyXP_Unspecified",
+    [1] = "DOTA_ModifyXP_HeroKill",
+    [2] = "DOTA_ModifyXP_CreepKill",
+    [3] = "DOTA_ModifyXP_RoshanKill", 
+}
+
+GOLD_REASONS = {
+    [0] = "DOTA_ModifyGold_Unspecified",  
+    [1] = "DOTA_ModifyGold_Death",  
+    [2] = "DOTA_ModifyGold_Buyback",
+    [3] = "DOTA_ModifyGold_PurchaseConsumable",
+    [4] = "DOTA_ModifyGold_PurchaseItem",
+    [5] = "DOTA_ModifyGold_AbandonedRedistribute",
+    [6] = "DOTA_ModifyGold_SellItem",
+    [7] = "DOTA_ModifyGold_AbilityCost",
+    [8] = "DOTA_ModifyGold_CheatCommand",
+    [9] = "DOTA_ModifyGold_SelectionPenalty",
+    [10] = "DOTA_ModifyGold_GameTick",
+    [11] = "DOTA_ModifyGold_Building",
+    [12] = "DOTA_ModifyGold_HeroKill",
+    [13] = "DOTA_ModifyGold_CreepKill",
+    [14] = "DOTA_ModifyGold_RoshanKill",
+    [15] = "DOTA_ModifyGold_CourierKill",
+    [16] = "DOTA_ModifyGold_SharedGold",
 }

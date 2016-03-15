@@ -133,7 +133,7 @@
         "02"
         {
             "var_type"    "FIELD_INTEGER"
-            "stone_damage"    "1"
+            "stone_damage"    "25"
         }
 
         "03"

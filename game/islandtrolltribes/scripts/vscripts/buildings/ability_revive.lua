@@ -28,7 +28,7 @@ function ability_revive:OnChannelFinish( bInterrupted )
         if not bInterrupted and not hero:IsAlive() then
             hero:SetRespawnPosition(caster:GetAbsOrigin())
             hero:RespawnUnit()
-            if GetSubClass(hero) == "none" then
+            if hero:GetSubClass() == "none" then
                 ITT:SetDefaultCosmetics(hero)     --Reset default wearables and hides the wearables need to be hidden
             else
                 ITT:SetDefaultWearables(hero)     --Reset default wearables and doesn't hide wearables

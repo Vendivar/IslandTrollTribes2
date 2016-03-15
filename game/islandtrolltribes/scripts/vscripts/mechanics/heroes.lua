@@ -2,15 +2,14 @@
 --               Class functions              --
 ------------------------------------------------
 
-function GetHeroClass( hero )
-    return GameRules.ClassInfo['HeroClassNames'][hero:GetUnitName()]
+function CDOTA_BaseNPC_Hero:GetHeroClass()
+    return GameRules.ClassInfo['HeroClassNames'][self:GetUnitName()]
 end
 
-function GetSubClass( hero )
-    return hero.subclass or 'none'
+function CDOTA_BaseNPC_Hero:GetSubClass()
+    return self.subclass or 'none'
 end
 
-function HasSubClass( hero )
-    return GetSubClass(hero) ~= 'none'
+function CDOTA_BaseNPC_Hero:HasSubClass()
+    return self:GetSubClass() ~= 'none'
 end
-

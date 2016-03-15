@@ -12,11 +12,18 @@
 		"DOTA_GoodGuys"   							"North Tribe"	
 		"DOTA_BadGuys"    							"East Tribe"
 		"DOTA_Custom1"    							"West Tribe"	
-		"DOTA_Custom2"    							"South Tribe"	
+		"DOTA_Custom2"    							"South Tribe"
+
+		"DOTA_Chat_PlayerKilled"        			"%s1 just pwned %s2's head!"
+        "DOTA_Chat_PlayerKilledNearby"      		"%s1 just pwned %s2's head!"
+        "DOTA_Chat_PlayerKilledNearbySingle"        "%s1 just pwned %s2's head!"
+        "DOTA_Chat_PlayerKilledAssist"  			"%s1 was just killed!"
+        "DOTA_Chat_PlayerKilledAssistNearby"    	"%s1 was just killed!"
+        "DOTA_Chat_PlayerKilledAssistNearbySingle"  "%s1 was just killed!"
 
 		"error_must_target_baby_animal"           "Must target a wild baby animal."
 		
-//Hero Names
+		//Hero Names
 		"npc_dota_hero_shadow_shaman"			"Gatherer"
 		"npc_hero_herbmaster_tele_gatherer"		"Herb Master Telegatherer"
 		"npc_hero_radar_tele_gatherer"			"Radar Telegatherer"
@@ -48,6 +55,9 @@
 		"npc_hero_priest_sage"					"Sage"		
         "npc_hero_priest_sage_spirit"           "Sage Spirit"
 		"npc_ghost"								"Ghost"
+		"npc_building_tower_omni"				"Building Tower Omni"
+		"npc_clay_living"						"Clay Living"
+	
 
 // Unit Names
 		"npc_dota_creature_basic_zombie"		"Zombie"
@@ -278,6 +288,13 @@
 "DOTA_Tooltip_Ability_ability_beastmaster_empathicrage_movespeed"		"%+MOVE SPEED:"
 "DOTA_Tooltip_modifier_empathicrage"		"Empathic Rage"
 "DOTA_Tooltip_modifier_empathicrage_Description"		""
+"DOTA_Tooltip_modifier_pet_empathicrage"                                          "Pet Empathicrage"
+"DOTA_Tooltip_modifier_pet_empathicrage_Description"                              ""
+
+"DOTA_Tooltip_modifer_empathicrage_buff"                                          "Modifer Empathicrage Buff"
+"DOTA_Tooltip_modifer_empathicrage_buff_Description"                              ""
+
+	
 
 
 "DOTA_Tooltip_Ability_ability_beastmaster_fleaattackaura"		"Flea Attack Aura"
@@ -303,7 +320,7 @@
 
 
 "DOTA_Tooltip_Ability_ability_beastmaster_howl"		"(Wolf) Howl"
-"DOTA_Tooltip_ability_ability_beastmaster_howl_armor_reduction"		"-$ARMOR REDUCTION:"
+"DOTA_Tooltip_ability_ability_beastmaster_howl_armor_reduction"		"ARMOR REDUCTION:"
 "DOTA_Tooltip_ability_ability_beastmaster_howl_attack_speed"		"%+$attack"
 "DOTA_Tooltip_Ability_ability_beastmaster_howl_Description"		"Reduces the armor and attack speed of enemies within range."
 "DOTA_Tooltip_ability_ability_beastmaster_howl_radius"		"RADIUS:"
@@ -334,6 +351,10 @@
 "DOTA_Tooltip_modifier_baby_animal"                                               "Baby Animal"
 "DOTA_Tooltip_modifier_baby_animal_Description"                                   ""
 
+"DOTA_Tooltip_ability_ability_beastmaster_petcontroll"                            "Pet Controlls"
+"DOTA_Tooltip_ability_ability_beastmaster_petcontroll_Description"                ""
+
+		
 		
 
 "DOTA_Tooltip_ability_ability_beastmaster_pet_attack"		"Pet Attack"
@@ -521,6 +542,13 @@
 "DOTA_Tooltip_modifier_telegather"		"Telegather"
 "DOTA_Tooltip_modifier_telegather_Description"		""
 
+"DOTA_Tooltip_ability_ability_gatherer_findherb"                                  "Find Herb"
+"DOTA_Tooltip_ability_ability_gatherer_findherb_Description"                      "Pings all Herb locations in an area. TOOL TIP IN WORK"
+"DOTA_Tooltip_ability_ability_gatherer_radarextender"                             "Radar extender passive"
+"DOTA_Tooltip_ability_ability_gatherer_radarextender_Description"                 "Tooltip in work"
+
+		
+		
 
 // MAGE
 
@@ -578,6 +606,13 @@
 "DOTA_Tooltip_ability_ability_mage_dementia_summoning"		"Dementia Summoning"
 "DOTA_Tooltip_ability_ability_mage_dementia_summoning_Description"		"Passively gives the Dementia Master the ability to summon a monster from dementia space using Dementia Runes. Summoning must be performed close to the center of an open dark gate and you must have a correct rune order.\nWarning! Dementia Summoning can be unpredictable and dangerous. No creature wants to be summoned for no reason!\n\nRune orders for Dementia summoning\nIce Demon: Lez Nel Lez Lez Ka\nPlague Demon: Nel Nel Ka Nel Lez\nFire Demon: Ka Lez Ka Nel Ka\n<font color='#777777'>Hold ALT to view more information.</font>"
 "DOTA_Tooltip_Ability_ability_mage_dementiasummoning_Note0"		"Summons one of several large demons if the combination is correct and the activation is within a dark gate.\n\nDemon will attack for 25 damage every 1 second at a target within 1000 range.\nSpells:\nIce Demon:\nAura: Slows movement and attack speed of everything within 1000 range by 25%\nFire Demon:\nThrows a fireball every 4 seconds at a target within 1000 range, dealing 60 damage to everything in 300AOE and levelling trees away.\nPlague Demon:\nRandom troll within 1000 range is plagued every 8 seconds. Plague deals 10 damage per second for 20 seconds. If they step within 300 of another troll the plague spreads to that troll for the full duration."
+"DOTA_Tooltip_dementia_runes"                                                     "Dementia Runes"
+"DOTA_Tooltip_dementia_runes_Description"                                         ""
+
+		
+
+
+
 "DOTA_Tooltip_Ability_ability_mage_depress"		"Depress"
 "DOTA_Tooltip_Ability_ability_mage_depress_Description"		"Depress the enemy, and any enemies who remain near him. Primary target slowed, takes damage, and mana is sapped over time. Nearby enemies are affected by Depress, mana is sapped."
 "DOTA_Tooltip_ability_ability_mage_depress_damage"                                "PRIMARY TARGET DPS:"
@@ -947,7 +982,7 @@
 "DOTA_Tooltip_Ability_ability_hunter_greatertrack_Description"		"Gives vision of the target and heavily reduces armor, amplifying the damage the target receives."
 "DOTA_Tooltip_ability_ability_hunter_greatertrack_duration"		"TROLL DURATION:"
 "DOTA_Tooltip_ability_ability_hunter_greatertrack_duration_creep"		"CREEP DURATION:"
-"DOTA_Tooltip_ability_ability_hunter_greatertrack_minus_armor"		"-$ARMOR REDUCTION:"
+"DOTA_Tooltip_ability_ability_hunter_greatertrack_minus_armor"		"ARMOR REDUCTION:"
 "DOTA_Tooltip_Ability_ability_hunter_placetrackingbeacon"		"Place Tracking Beacon"
 "DOTA_Tooltip_Ability_ability_hunter_placetrackingbeacon_Description"		"Permanently places a tracking beacon on an enemy. The beacon cannot be removed with a Cure All."
 "DOTA_Tooltip_Ability_ability_hunter_querybeacon"		"Query Beacon"
@@ -963,12 +998,12 @@
 "DOTA_Tooltip_Ability_ability_hunter_stayingpower_bonus_stats"		"BONUS STATS:"
 "DOTA_Tooltip_Ability_ability_hunter_stayingpower_Description"		"Increases the toughness of the Juggernaut.\nThe Juggernaught gains spell resistance, damage resistance, stat bonus, armor, and a chance to block damage."
 "DOTA_Tooltip_Ability_ability_hunter_track"		"Track"
-"DOTA_Tooltip_Ability_ability_hunter_track_armor_reduction"		"-ARMOR REDUCTION:"
+"DOTA_Tooltip_Ability_ability_hunter_track_armor_reduction"		"ARMOR REDUCTION:"
 "DOTA_Tooltip_Ability_ability_hunter_track_Description"		"Gives vision of the target and reduces armor, amplifying the damage the target receives. The ability will always last 30 seconds on animals, but a variable time on trolls based off of the skill level."
 "DOTA_Tooltip_ability_ability_hunter_track_duration"		"TROLL DURATION:"
 "DOTA_Tooltip_Ability_ability_hunter_track_duration_creep"		"CREEP DURATION:"
 "DOTA_Tooltip_Ability_ability_hunter_track_duration_troll"		"TROLL DURATION:"
-"DOTA_Tooltip_ability_ability_hunter_track_minus_armor"		"-ARMOR REDUCTION:"
+"DOTA_Tooltip_ability_ability_hunter_track_minus_armor"		"ARMOR REDUCTION:"
 
 "DOTA_Tooltip_Ability_ability_modifier_stayingpower"		"Staying Power"
 "DOTA_Tooltip_Ability_ability_modifier_stayingpower_Description"		"20% Spell Damage Reduction and a bonus to all stats, armor and a chance to block 10 damage."
@@ -1086,7 +1121,10 @@
 
 "DOTA_Tooltip_Ability_ability_priest_mapmagic"		"Map Magic"
 "DOTA_Tooltip_Ability_ability_priest_mapmagic_Description"		"Increases the range of radar skills of friendly units.\n\nDURATION: <font color='#777777'>90 SECONDS</font>"
+"DOTA_Tooltip_modifier_mapmagic"                                                  "Mapmagic"
+"DOTA_Tooltip_modifier_mapmagic_Description"                                      ""
 
+		
 
 "DOTA_Tooltip_Ability_ability_priest_maximumfervor"		            "Maximum Fervor"
 "DOTA_Tooltip_ability_ability_priest_maximumfervor_armor_bonus"		"ARMOR BONUS:"
@@ -1130,6 +1168,10 @@
 "DOTA_Tooltip_ability_ability_priest_painkillerbalm_duration"		"DURATION:"
 "DOTA_Tooltip_ability_ability_priest_painkillerbalm_remove_interval"		"REMOVE INTERVAL:"
 "DOTA_Tooltip_ability_ability_priest_painkillerbalm_stacks"		"STACKS:"
+"DOTA_Tooltip_modifier_priest_painkillerbalm"                                     "Priest Painkillerbalm"
+"DOTA_Tooltip_modifier_priest_painkillerbalm_Description"                         ""
+
+		
 
 "DOTA_Tooltip_ability_priest_painkillerbalm"		"Painkiller Balm"
 "DOTA_Tooltip_ability_priest_painkillerbalm_Description"		"Gaining a reduction of all damage taken, tapering off over the duration."
@@ -1254,7 +1296,8 @@
 "DOTA_Tooltip_Ability_ability_scout_placeward"		"Place Ward"
 "DOTA_Tooltip_Ability_ability_scout_placeward_Description"		"Places a ward up to 400 range away. Wards explode when stepped on and have timed life.\n\nSTEP DAMAGE: <font color='#777777'>10</font>"
 
-
+"DOTA_Tooltip_modifier_thief_reveal_vision"                                       "Thief Reveal Vision"
+"DOTA_Tooltip_modifier_thief_reveal_vision_Description"                           ""
 "DOTA_Tooltip_Ability_ability_scout_reveal"		"Reveal"
 "DOTA_Tooltip_Ability_ability_scout_reveal_aoe"		"AoE:"
 "DOTA_Tooltip_Ability_ability_scout_reveal_Description"		"Reveals a large area around the scout, showing invisible units. AOE increases with level."
@@ -2123,6 +2166,12 @@
 "DOTA_Tooltip_ability_item_clay_living_Description"		"ACTIVE: Use - Places a ward with 'x' vision. Deals 10 damage to any enemy unit that steps on it, then disappears. Lasts until stepped on. Acts as a sentry to friendly trolls. Lasts forever until a unit steps on it, dealing damage to that unit."
 "DOTA_Tooltip_ability_item_clay_living_Lore"		"It seems to bubble and shift on it's own accord."
 "DOTA_Tooltip_ability_item_clay_living_max_stacks"		"MAX STACKS:"
+"DOTA_Tooltip_modifier_living_clay"                                               "Living Clay"
+"DOTA_Tooltip_modifier_living_clay_Description"                                   ""
+
+		
+
+
 "DOTA_Tooltip_ability_item_cloak_camouflage"		"Camouflage Coat"
 "DOTA_Tooltip_ability_item_cloak_camouflage_all_stats"		"+$all"
 "DOTA_Tooltip_ability_item_cloak_camouflage_armor"		"+$armor"
@@ -2140,6 +2189,10 @@
 "DOTA_Tooltip_ability_item_cloak_frost_Description"		"PASSIVE: Frost Cloak - Gives a chance to slow an attacker and deal damage.\n\nA frozen mantle, it chills attackers on contact, slowing and dealing damage."
 "DOTA_Tooltip_ability_item_cloak_frost_Lore"		"Do not apply directly to the skin."
 "DOTA_Tooltip_ability_item_cloak_frost_slow"		"SLOW AMOUNT:"
+"DOTA_Tooltip_modifier_frost_armor_slow"                                          "Frost Armor Slow"
+"DOTA_Tooltip_modifier_frost_armor_slow_Description"                              ""
+
+		
 "DOTA_Tooltip_ability_item_cloak_protection"		"Cloak of Protection"
 "DOTA_Tooltip_ability_item_cloak_protection_armor"		"+$armor"
 "DOTA_Tooltip_ability_item_cloak_protection_block_chance"		"BLOCK CHANCE:"
@@ -2906,6 +2959,11 @@
 "DOTA_Tooltip_ability_ability_boat_passive"		"Boat"
 "DOTA_Tooltip_ability_ability_boat_passive_Description"		""
 
+"DOTA_Tooltip_modifier_rested"                                                    "Rested"
+"DOTA_Tooltip_modifier_rested_Description"                                        "Can not use sleep again for a short time."
+
+
+	
 
 "DOTA_Tooltip_modifier_fire_heat"  "Fire Warmth"
 "DOTA_Tooltip_modifier_fire_heat_Description"  "Restoring heat per tick."
@@ -3161,7 +3219,7 @@
         "drop_meat"     "Drop\nMeat"
         
         "DOTA_Tooltip_Ability_drop_meat"                  "Drop Raw Meat"
-        "DOTA_Tooltip_Ability_drop_meat_Description"                  "Drop one raw meat per use that your troll is currently holding. It will go to the ground once this ability is used."
+        "DOTA_Tooltip_Ability_drop_meat_Description"                  "Drop one raw meat per use that your troll is currently holding. <font color='#00CC00'>Right click</font> to drop all carried meat. It will go to the ground once this ability is used."
         
         "drop_all_meat" "Drop\nAll Meat"
         
