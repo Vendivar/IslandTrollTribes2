@@ -106,7 +106,9 @@ function ManageCraftListMouseEvents(eventName, arg){
 }
 
 
-var cameraDistance = 1200
+var cameraDistance = 1000
+var maxCameraDistance = 1200
+
 GameUI.SetCameraDistance( cameraDistance )
 
 function ManageBuildHelperMouseEvents(eventName, arg) {
@@ -147,6 +149,7 @@ function ManageBuildHelperMouseEvents(eventName, arg) {
 	    if ( eventName === "wheeled" )
     {
         arg == 1 ? cameraDistance -= 10 : cameraDistance += 10;
+		if (cameraDistance > maxCameraDistance) cameraDistance = maxCameraDistance
         GameUI.SetCameraDistance( cameraDistance )
         return CONSUME_EVENT;  
     }
