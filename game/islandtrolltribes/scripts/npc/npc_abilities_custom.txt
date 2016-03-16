@@ -1410,6 +1410,37 @@
 		}
 	
 	}
+	"ability_teleport"
+	{
+	    "BaseClass"             "ability_lua"
+	    "AbilityTextureName"    "ability_building_teleport"
+	    "ScriptFile"            "buildings/ability_teleport.lua"
+	
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	    "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	    "AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO"
+	    "AbilityUnitTargetFlags" "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+	    "MaxLevel"              "4"
+	
+	    "AbilityManaCost"       "0"
+	    "AbilityCastPoint"      "0.0"
+	    "AbilityCastRange"  "500 700 900 1100"
+	    "AbilityCooldown"   "5.0"
+	
+	    "AbilitySharedWithTeammates" "1"
+	
+	
+	    "OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"        "buildings/teleport.lua"
+	            "Function"          "Teleport"
+	            "Target"            "TARGET"
+	        }
+	    }
+	
+	}
 	"dummy_tree"
 	{
 	    "BaseClass"         "ability_datadriven"

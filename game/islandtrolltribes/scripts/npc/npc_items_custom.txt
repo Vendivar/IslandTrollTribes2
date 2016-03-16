@@ -10922,6 +10922,15 @@
 		"ItemKillable"	"1"
 		"ItemSellable"	"1"
 	
+		"OnEquip"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"items/mana_crystal.lua"
+				"Function"      "CheckForBeacon"
+			}
+		}
+	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
