@@ -280,6 +280,24 @@ function ITT:FilterExecuteOrder( filterTable )
 
         return CONSUME_EVENT
     end
+
+    ------------------------------------------------
+    --       Teleport Beacon Range Handling       --
+    ------------------------------------------------
+    if order_type == DOTA_UNIT_ORDER_CAST_TARGET then
+        if unit:GetUnitName() == "npc_building_teleport_beacon" then
+            local targetEntity = EntIndexToHScript(targetIndex)
+            -- Since the spell targetting is handled in KV, don't have to do any checks here... ?
+            local ability_being_cast = EntIndexToHScript(abilityIndex)
+            if ability_being_cast:GetAbilityName() == "ability_teleport" then
+                if (unit:GetOrigin() - targetEntity:GetOrigin()):Length2D() > ability_being_cast:GetCastRange() then
+                    -- Out of range, we can't continue or the spell will be "queued" and cast when the unit is in range
+                    return false
+                end
+            end
+        end
+    end
+
     if IsCustomBuilding(unit) then
         return HandleOrdersIssuedByBuildings(filterTable)
     end

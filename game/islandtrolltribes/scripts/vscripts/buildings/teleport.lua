@@ -1,7 +1,7 @@
 function Teleport (event)
 	--PrintTable(event.target)
 
-	print('keke')
+--	print('keke')
 
 	local hTarget = event.target;
 	local hCaster = event.caster;
