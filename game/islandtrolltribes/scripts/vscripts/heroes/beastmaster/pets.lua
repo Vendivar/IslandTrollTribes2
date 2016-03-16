@@ -113,9 +113,9 @@ function PetThink( event )
     if pet:GetRangeToUnit(hero) > pet.leashRange and hero:IsAlive() then
      
         ExecuteOrderFromTable({ UnitIndex = pet:GetEntityIndex(), OrderType = DOTA_UNIT_ORDER_MOVE_TO_TARGET, TargetIndex = hero:GetEntityIndex(), Queue = false})
-        EmitSoundOn( "General.Ping", pet )
+       -- EmitSoundOn( "General.Ping", pet )
         local particle = ParticleManager:CreateParticle("particles/custom/alert.vpcf", PATTACH_ABSORIGIN_FOLLOW, pet)
-        SendErrorMessage(pID, "#error_pet_leash_range")
+      --  SendErrorMessage(pID, "#error_pet_leash_range")
         return
     end
 

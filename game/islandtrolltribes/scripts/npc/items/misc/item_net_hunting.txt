@@ -6,9 +6,10 @@
     "AbilityTextureName"        "net_hunting"
     "Model"                     "models/particle/net.vmdl"
     "Effect"                    ""
+    "AoERadius"                 "%radius"
 
     "AbilityCastRange"          "800"
-    "AbilityCastPoint"          "0.5"
+    "AbilityCastPoint"          "0.2"
     "AbilityCooldown"           "15"
     "ItemCost"                  "2"
 
@@ -17,7 +18,7 @@
     "ItemShareability"          "ITEM_FULLY_SHAREABLE"
     
     "MaxStacks"                 "8"
-    "ItemInitialCharges"        "1"
+    "ItemInitialCharges"        "3"
 
     "ItemPermanent"             "0"
     "ItemDroppable"             "1"
@@ -62,7 +63,12 @@
         "05"
         {
             "var_type"              "FIELD_INTEGER"
-            "damage"       "2"
+            "damage"                "2"
+        }
+        "06"
+        {
+            "var_type"              "FIELD_INTEGER"
+            "radius"                "200"
         }
     }
 
@@ -81,114 +87,16 @@
             "Target"            "CASTER"
         }
 
-        "LinearProjectile"
+        "RunScript"
         {
-            "Target"            "POINT"
-            "EffectName"        "particles/units/heroes/hero_meepo/meepo_earthbind_projectile_fx.vpcf"
-            "ProvidesVision"    "0"
-            "MoveSpeed"         "500"
-            "SourceAttachment"  "DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
+            "ScriptFile"    "items/net.lua"
+            "Function"      "NetGround"
+            "Target"        "POINT"
         }
-    }
-"OnProjectileHitUnit"
-	{
-		"DeleteOnHit"		"0"
-	}
-	
-	"OnProjectileFinish"
-	{
-		"FireEffect"
-		{
-			"TargetPoint"		"POINT"
-			"EffectName"		"particles/units/heroes/hero_phoenix/phoenix_fire_spirit_ground_ribbon.vpcf"
-			"EffectAttachType"	"world_origin"
-			
-			"ControlPoints"
-			{
-				"01" "%radius 0 0"
-			}
-		}
-		
-		"ActOnTargets"
-		{
-			"Target"
-			{
-				"Center"	"POINT"
-				"Radius"	"%radius"
-				"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY" 
-				"Types"		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
-			}
-			
-			"Action"
-			{
-				"FireSound"
-				{
-					"EffectName"    "Hero_Meepo.Earthbind.Target"
-					"Target"        "TARGET"
-				}
-
-				"ApplyModifier"
-				{
-					"ModifierName"  "modifier_ensnare"
-					"Duration"      "%duration_hero"
-					"Target"
-					{
-						"Center"    "TARGET"
-						"Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-						"Types"     "DOTA_UNIT_TARGET_HERO"
-					}
-				}
-				
-				"ApplyModifier"
-				{
-					"ModifierName"  "modifier_ensnare"
-					"Duration"      "%duration_animal"
-					"Target"
-					{
-						"Center"    "TARGET"
-						"Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-						"Types"     "DOTA_UNIT_TARGET_BASIC"
-					}
-				}
-			}
-		}
-	}
-	
+    } 
+    
     "Modifiers"
     {
-        "modifier_ensnare_trap"
-        {
-            "IsHidden"      "1"
-            "Passive"       "1"
-            "OnCreated"
-            {
-                "RunScript"
-                {
-                    "ScriptFile"    "mechanics/autocast.lua"
-                    "Function"      "AutocastOn"
-                }
-            }
-
-            "ThinkInterval"  "1.0"
-            "OnIntervalThink"
-            {
-                "RunScript"
-                {
-                    "ScriptFile"    "buildings/ensnare.lua"
-                    "Function"      "CastTrap"
-                    "Target"
-                    {
-                        "Center"    "TARGET"
-                        "Radius"    "%autocast_radius"
-                        "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-                        "Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-                        "MaxTargets" "1"
-                        "Random"     "1"
-                    }
-                }
-            }
-        }
-
         "modifier_ensnare"
         {
             "IsDebuff"          "1"
@@ -196,13 +104,13 @@
     
             "EffectName"        "particles/units/heroes/hero_meepo/meepo_earthbind.vpcf"
             "EffectAttachType"  "follow_origin"
-            "ThinkInterval" "0.5"
+            "ThinkInterval"     "0.5"
             "OnIntervalThink"
             {
                 "Damage"
                 {
                     "Type"   "DAMAGE_TYPE_PHYSICAL"
-                    "Damage" "%damage"
+                    "Damage" "%damage/2"
                     "Target" "TARGET"
                 }
             }
