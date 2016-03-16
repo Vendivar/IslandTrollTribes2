@@ -878,6 +878,9 @@ function ITT:OnItemPickedUp(event)
         end
     end
 
+    -- Set item ownership to whoever picked it up
+    originalItem:SetOwner(hero)
+
     local hasTelegather = hero:HasModifier("modifier_telegather")
     local hasTelethief = hero:HasModifier("modifier_thief_telethief")
 
