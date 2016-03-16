@@ -3,7 +3,7 @@
 ------------------------------------------------------------------
 
 ITEM_TRANSFER_RANGE = 300
-DEFAULT_TRANSFER_RANGE = 150
+DEFAULT_TRANSFER_RANGE = 200
 
 function ITT:FilterExecuteOrder( filterTable )
     local units = filterTable["units"]
