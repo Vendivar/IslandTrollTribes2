@@ -3,11 +3,13 @@
 {
     "BaseClass"                 "ability_datadriven"
     "AbilityTextureName"        "ability_thief_camouflage"
-    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	"MaxLevel"	"1"
+    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_TREE | DOTA_UNIT_TARGET_BASIC"
+    "MaxLevel"  "1"
     "AbilityCooldown"           "0"
     "AbilityCastPoint"          "0.1"
     "AbilityManaCost"           "20"
+    "AbilityCastRange"          "150"
 
     "precache"
     {
@@ -40,6 +42,13 @@
             "Target"        "CASTER"
         }
 
+        "FireEffect"
+        {
+            "EffectName"    "particles/units/heroes/hero_treant/treant_naturesguise_cast.vpcf"
+            "EffectAttachType"  "PATTACH_ABSORIGIN"
+            "Target"        "CASTER"
+        }
+
         "ApplyModifier"
         {
             "ModifierName"     "modifier_thief_camouflage"
@@ -54,7 +63,9 @@
             "IsHidden"    "0"
             "IsBuff"    "1"
 
-            "EffectName"    "particles/status_fx/status_effect_medusa_stone_gaze.vpcf"
+            "EffectName"    "particles/custom/green_smoke.vpcf"
+            "EffectAttachType"  "PATTACH_ABSORIGIN"
+            "Target"        "CASTER"
 
             "ThinkInterval"  "3.0"
             "OnIntervalThink"
