@@ -21,7 +21,7 @@ function ability_beastmaster_tamepet2:OnSpellStart()
             pet1:SetTeam(DOTA_TEAM_NEUTRALS)
             pet1:RemoveAbility("ability_pet")
             pet1:RemoveModifierByName("modifier_pet") --This will remove it from the list of pets
-            pet:RemoveModifierByName("modifier_grow")
+            pet1:RemoveModifierByName("modifier_grow")
             pet1:RemoveAbility("ability_pet_release")
             pet1:RemoveAbility("ability_pet_empathicrage")
             pet1:RemoveAbility("ability_pet_sleep")
