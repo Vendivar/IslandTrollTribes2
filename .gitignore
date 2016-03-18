@@ -8,6 +8,8 @@
 *.vxml_c
 *.vcss_c
 *.vmdl_c
+*.vmat_c
+*.vtex_c
 *.vmesh_c
 *.vanim_c
 *.vagrp_c
@@ -21,11 +23,9 @@ settings.kv
 
 # Sounds
 *.wav
+
+# Misc files
 content/islandtrolltribes/models/mixing_potbone.vmdl
 content/islandtrolltribes/tooltips_english.txt
-*.vmat_c
 game/islandtrolltribes/panorama/images/custom_game/game_info/fire_psd.vtex_c
-*.vmat_c
 game/islandtrolltribes/materials/overviews/islandtrolltribesa8.vmat_c
-*.vmat_c
-*.vmdl_c
