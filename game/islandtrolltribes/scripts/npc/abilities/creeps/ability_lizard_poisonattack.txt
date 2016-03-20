@@ -21,7 +21,7 @@
 				"ApplyModifier"
 				{
 					"Target"	"TARGET"
-					"Duration"	"15"
+					"Duration"	"25"
 					"ModifierName"	"modifier_lizard_slow"
 				}
 

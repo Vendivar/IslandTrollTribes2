@@ -107,7 +107,7 @@ function ManageCraftListMouseEvents(eventName, arg){
 
 
 var cameraDistance = 1000
-var maxCameraDistance = 1200
+var maxCameraDistance = 1500
 
 GameUI.SetCameraDistance( cameraDistance )
 

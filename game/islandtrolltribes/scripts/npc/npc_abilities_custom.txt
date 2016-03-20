@@ -555,6 +555,8 @@
 				"Target"		"CASTER"
 			}
 		}
+		
+	
 	    "Modifiers"
 	    {
 	    "modifier_restoreheat"
@@ -1120,9 +1122,9 @@
 	"ability_pack_up"
 	{
 	    "BaseClass"             "ability_datadriven"
-	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
 	    "AbilityTextureName"    "ability_building_packup"
-	    "AbilityCooldown"       "0.0"
+	    "AbilityCooldown"       "1.0"
 	    "AbilityChannelTime"    "0.5"
 	    "AbilityManaCost"       "0"
 	
@@ -1139,6 +1141,10 @@
 	            "Target"        "CASTER"
 	        }
 	    }
+		"OnChannelInterrupted"
+		{
+		
+		}
 	}
 	"ability_pack_up_magefire"
 	{
@@ -1665,7 +1671,7 @@
 					"ApplyModifier"
 					{
 						"Target"	"TARGET"
-						"Duration"	"15"
+						"Duration"	"25"
 						"ModifierName"	"modifier_lizard_slow"
 					}
 	
@@ -13514,12 +13520,12 @@
 	    "BaseClass"                 "ability_datadriven"
 	    "AbilityTextureName"        "ability_thief_camouflage"
 	    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-    	"AbilityUnitTargetType"     "DOTA_UNIT_TARGET_TREE | DOTA_UNIT_TARGET_BASIC"
-		"MaxLevel"	"1"
+	    "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_TREE | DOTA_UNIT_TARGET_BASIC"
+	    "MaxLevel"  "1"
 	    "AbilityCooldown"           "0"
 	    "AbilityCastPoint"          "0.1"
 	    "AbilityManaCost"           "20"
-	    "AbilityCastRange"			"150"
+	    "AbilityCastRange"          "150"
 	
 	    "precache"
 	    {
@@ -13551,14 +13557,14 @@
 	            "EffectName"    "Hero_Treant.NaturesGuise.On"
 	            "Target"        "CASTER"
 	        }
-
+	
 	        "FireEffect"
 	        {
-	        	"EffectName"	"particles/units/heroes/hero_treant/treant_naturesguise_cast.vpcf"
-				"EffectAttachType"	"PATTACH_ABSORIGIN"
-				"Target"		"CASTER"
+	            "EffectName"    "particles/units/heroes/hero_treant/treant_naturesguise_cast.vpcf"
+	            "EffectAttachType"  "PATTACH_ABSORIGIN"
+	            "Target"        "CASTER"
 	        }
-
+	
 	        "ApplyModifier"
 	        {
 	            "ModifierName"     "modifier_thief_camouflage"
@@ -13572,10 +13578,10 @@
 	        {
 	            "IsHidden"    "0"
 	            "IsBuff"    "1"
-
-	            "EffectName"	"particles/custom/green_smoke.vpcf"
-				"EffectAttachType"	"PATTACH_ABSORIGIN"
-				"Target"		"CASTER"
+	
+	            "EffectName"    "particles/custom/green_smoke.vpcf"
+	            "EffectAttachType"  "PATTACH_ABSORIGIN"
+	            "Target"        "CASTER"
 	
 	            "ThinkInterval"  "3.0"
 	            "OnIntervalThink"
@@ -15221,7 +15227,7 @@
 	"dummy_passive_corpse"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"Modifiers"
 		{
 			"dummy_modifier"
@@ -15235,6 +15241,9 @@
 					"MODIFIER_STATE_ATTACK_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
 					"MODIFIER_STATE_NOT_ON_MINIMAP"	"MODIFIER_STATE_VALUE_ENABLED"
 					"MODIFIER_STATE_NO_HEALTH_BAR"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED" // GridNav is blocked
+					"MODIFIER_STATE_LOW_ATTACK_PRIORITY" "MODIFIER_STATE_VALUE_ENABLED" // Makes it a secondary target when A-clicking ground
+					"MODIFIER_STATE_ROOTED"		"MODIFIER_STATE_VALUE_ENABLED" // Prevents moving
 				}
 			}
 		}

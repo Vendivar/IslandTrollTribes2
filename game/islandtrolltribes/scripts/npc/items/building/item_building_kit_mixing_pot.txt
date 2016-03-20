@@ -34,7 +34,7 @@
     "Scale"                         "0" //bool
     "PlayerCanControl"              "1" //bool
     "ModelRotation"                 "-90"
-    "UnitName"                      "npc_building_mix_pot"
+    "UnitName"                      "npc_building_mixing_pot"
     "AbilityCooldown"               "0"
     "AbilityGoldCost"               "0"
     "ItemInitialCharges"            "1"

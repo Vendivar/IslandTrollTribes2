@@ -52,7 +52,7 @@ function FleaAttackHit(keys)
     local level = caster:GetLevel()
 
     local dmg = ability:GetLevelSpecialValueFor("damage", level-1)
-    local dpsDur = 2
+    local dpsDur = 1.65
     
     -- apply damage
     local damageTable = {
