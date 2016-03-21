@@ -10288,12 +10288,12 @@
 	        "05"
 	        {
 	            "var_type"              "FIELD_INTEGER"
-	            "damage"                "2"
+	            "damage"                "0"
 	        }
 	        "06"
 	        {
 	            "var_type"              "FIELD_INTEGER"
-	            "radius"                "150"
+	            "radius"                "125"
 	        }
 	    }
 	
@@ -10322,7 +10322,7 @@
 	    
 	    "Modifiers"
 	    {
-	        "modifier_ensnare"
+	        "modifier_hunting_ensnare"
 	        {
 	            "IsDebuff"          "1"
 	            "IsPurgable"        "1"
@@ -11257,7 +11257,7 @@
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
-		"ItemStackable"	"1"
+		"ItemStackable"	"0"
 		"ItemPermanent"	"0"
 		"ItemDroppable"	"1"
 		"ItemAliases"	"quicktype"
@@ -12054,7 +12054,6 @@
 		}
 	
 	}
-	
 	"item_gun_blow_bones"
 	{
 		"ID"	"1134"
@@ -12072,7 +12071,7 @@
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
-		"ItemStackable"	"1"
+		"ItemStackable"	"0"
 		"ItemPermanent"	"1"
 		"ItemInitialCharges"	"1"
 		"ItemDroppable"	"1"

@@ -199,6 +199,7 @@
         <Image style="opacity:0;" src="file://{images}/items/net.png" />
         <Image style="opacity:0;" src="file://{images}/items/rock_dark.png" />
         <Image style="opacity:0;" src="file://{images}/items/net_basic.png" />
+        <Image style="opacity:0;" src="file://{images}/items/net_hunting.png" />
         <Image style="opacity:0;" src="file://{images}/items/potion_acid.png" />
         <Image style="opacity:0;" src="file://{images}/items/potion_anabolic.png" />
         <Image style="opacity:0;" src="file://{images}/items/potion_anti_magic.png" />

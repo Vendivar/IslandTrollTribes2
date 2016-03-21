@@ -839,8 +839,8 @@
 	    "BaseClass"             "ability_datadriven"
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 	    "AbilityTextureName"    "ability_building_cancel"
-	    "AbilityCooldown"       "0.0"
-	    "AbilityChannelTime"    "0.5"
+	    "AbilityCooldown"       "5.0"
+	    "AbilityChannelTime"    "1.0"
 	    "AbilityManaCost"       "0"
 	
 	    "OnChannelSucceeded"
@@ -855,6 +855,12 @@
 	            "EffectName"    "DOTA_Item.SmokeOfDeceit.Activate"
 	            "Target"        "CASTER"
 	        }
+			
+			"RemoveAbility"
+			{
+				"Target"			"CASTER"
+				"AbilityName"		"ability_pack_up"
+			}
 	    }
 	}
 	// Immobilizes animals for 8 seconds, trolls for 3.25, with a 10 second cooldown.
@@ -1124,8 +1130,8 @@
 	    "BaseClass"             "ability_datadriven"
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
 	    "AbilityTextureName"    "ability_building_packup"
-	    "AbilityCooldown"       "1.0"
-	    "AbilityChannelTime"    "0.5"
+	    "AbilityCooldown"       "5.0"
+	    "AbilityChannelTime"    "1.0"
 	    "AbilityManaCost"       "0"
 	
 	    "OnChannelSucceeded"
@@ -1140,6 +1146,11 @@
 	            "EffectName"    "DOTA_Item.SmokeOfDeceit.Activate"
 	            "Target"        "CASTER"
 	        }
+			"RemoveAbility"
+			{
+				"Target"			"CASTER"
+				"AbilityName"		"ability_pack_up"
+			}
 	    }
 		"OnChannelInterrupted"
 		{
@@ -15000,7 +15011,7 @@
 					"Damage"
 					{
 						"Type"	"DAMAGE_TYPE_PHYSICAL"
-						"Damage"	"40"
+						"Damage"	"1"
 						"Target"	"TARGET"
 					}
 	
@@ -15047,7 +15058,7 @@
 			"06"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"burn_dps"	"40"
+				"burn_dps"	"1"
 			}
 	
 		}

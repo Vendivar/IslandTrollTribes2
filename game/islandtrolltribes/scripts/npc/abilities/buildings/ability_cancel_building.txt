@@ -3,8 +3,8 @@
     "BaseClass"             "ability_datadriven"
     "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
     "AbilityTextureName"    "ability_building_cancel"
-    "AbilityCooldown"       "0.0"
-    "AbilityChannelTime"    "0.5"
+    "AbilityCooldown"       "5.0"
+    "AbilityChannelTime"    "1.0"
     "AbilityManaCost"       "0"
 
     "OnChannelSucceeded"
@@ -19,5 +19,11 @@
             "EffectName"    "DOTA_Item.SmokeOfDeceit.Activate"
             "Target"        "CASTER"
         }
+		
+		"RemoveAbility"
+		{
+			"Target"			"CASTER"
+			"AbilityName"		"ability_pack_up"
+		}
     }
 }

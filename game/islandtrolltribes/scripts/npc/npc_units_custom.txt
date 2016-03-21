@@ -444,7 +444,7 @@
 		"BaseClass"	"npc_dota_creature"
 		"Model"	"models/heroes/nerubian_assassin/mound.vmdl"
 		"SoundSet"	"Creep_Good_Melee"
-		"HasInventory"	"0"
+		"HasInventory"	"1"
 		"MinimapIconSize"	"250"
 		"HealthBarOffset"	"400"
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
@@ -928,12 +928,24 @@
 		"HealthBarOffset"	"400"
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
-		"ModelScale"	"0.6"
+		"ModelScale"	"0.5"
+		"AutoAttacksByDefault"         "1"
+		"AttackDamageMin"            "4"       // Damage range min.
+		"AttackDamageMax"            "5"       // Damage range max.
+		"AttackRate"                 "1.7"     // Speed of attack.
+		"AttackAnimationPoint"       "0.75"    // Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"     "800"     // Range within a target can be acquired.
+		"AttackRange"                "600"     // Range within a target can be attacked.
+		"AttackRangeBuffer"          "250"     // Extra range the target can move without canceling the attack
+		"ProjectileModel"            "particles/units/heroes/hero_clinkz/clinkz_base_attack.vpcf"
+		"ProjectileSpeed"            "900"
+		
 		"precache"
 		{
 			"model"	"models/props_debris/camp_fire001.vmdl"
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts"
-			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
+			"particles"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
+			"particles" "particles/units/heroes/hero_clinkz/clinkz_base_attack.vpcf"
 		}
 	
 		"Ability1"	"ability_enemy_target"
@@ -942,7 +954,7 @@
 		
 		"ArmorPhysical"	"5"
 		"MagicalResistance"	"0"
-		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
+		"AttackCapabilities"	"DOTA_UNIT_CAP_RANGED_ATTACK"
 		"BountyXP"	"0"
 		"BountyGoldMin"	"0"
 		"BountyGoldMax"	"0"

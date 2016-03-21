@@ -164,7 +164,7 @@
 		"npc_building_hut_mud"			"Mud Hut"
 		"npc_building_hut_troll"		"Troll Hut"
 		"npc_building_hut_witch_doctor"	"Witch Doctor Hut"
-		"npc_building_mix_pot"			"Mixing Pot"
+		"npc_building_mixing_pot"			"Mixing Pot"
 		"npc_building_omnitower"		"Omni Tower"
 		"npc_building_smoke_house"		"Smoke House"
 		"npc_building_spirit_ward"		"Spirit Ward"
@@ -2512,6 +2512,10 @@
 "DOTA_Tooltip_ability_item_net_basic_duration_hero"                               "DURATION HERO:"
 "DOTA_Tooltip_ability_item_net_basic_duration_animal"                             "DURATION ANIMAL:"
 "DOTA_Tooltip_ability_item_net_basic_damage"                                      "DAMAGE:"
+
+"DOTA_Tooltip_ability_item_net_hunting"                                           "Hunting Net"
+"DOTA_Tooltip_ability_item_net_hunting_Description"                               "Lob this on a elk. Be careful as this requires timing and precision!"
+		
 
 
 "DOTA_Tooltip_ability_item_pinion_fire"		"Fire Pinion"
