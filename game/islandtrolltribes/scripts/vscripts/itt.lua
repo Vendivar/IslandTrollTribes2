@@ -88,14 +88,7 @@ function ITT:InitGameMode()
     CustomGameEventManager:RegisterListener( "player_drop_all_meat", Dynamic_Wrap( ITT, "DropAllMeat" ) )
     CustomGameEventManager:RegisterListener( "player_panic", Dynamic_Wrap( ITT, "Panic" ) )
     CustomGameEventManager:RegisterListener( "player_rest_building", Dynamic_Wrap( ITT, "RestBuilding" ) )
-
-    -- Building Helper commands
-    CustomGameEventManager:RegisterListener( "building_helper_build_command", Dynamic_Wrap(BuildingHelper, "BuildCommand"))
-    CustomGameEventManager:RegisterListener( "building_helper_cancel_command", Dynamic_Wrap(BuildingHelper, "CancelCommand"))
     
-    -- Store and update selected units of each pID
-    GameRules.SELECTED_UNITS = {}
-
     -- Filters
     GameMode:SetExecuteOrderFilter( Dynamic_Wrap( ITT, "FilterExecuteOrder" ), self )
     GameMode:SetDamageFilter( Dynamic_Wrap( ITT, "FilterDamage" ), self )

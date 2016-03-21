@@ -1,4 +1,4 @@
-BH_VERSION = "1.1.0"
+BH_VERSION = "1.1.1"
 
 require('libraries/timers')
 require('libraries/selection')
@@ -98,7 +98,7 @@ function BuildingHelper:LoadSettings()
     CustomNetTables:SetTableValue("building_settings", "permanent_alt_grid", { value = tobool(BuildingHelper.Settings["PERMANENT_ALT_GRID"]) })
     CustomNetTables:SetTableValue("building_settings", "update_trees", { value = BuildingHelper.Settings["UPDATE_TREES"] })
 
-    if BuildingHelper.Settings["HEIGHT_RESTRICTION"] ~= "" then
+    if BuildingHelper.Settings["HEIGHT_RESTRICTION"] and BuildingHelper.Settings["HEIGHT_RESTRICTION"] ~= "" then
         CustomNetTables:SetTableValue("building_settings", "height_restriction", { value = BuildingHelper.Settings["HEIGHT_RESTRICTION"] })
     end
 end
@@ -598,6 +598,11 @@ function BuildingHelper:SetupBuildingTable(abilityName, builderHandle)
 
     function buildingTable:GetVal(key, expectedType)
         local val = buildingTable[key]
+
+        -- Return value directly if no second parameter
+        if not expectedType then
+            return val
+        end
 
         -- Handle missing values.
         if val == nil then
@@ -2044,8 +2049,10 @@ end
 
 -- In case a height restriction was defined, checks if the location passes the height test
 function BuildingHelper:MeetsHeightCondition(location)
-    if BuildingHelper.Settings["HEIGHT_RESTRICTION"] ~= "" then
+    if BuildingHelper.Settings["HEIGHT_RESTRICTION"] and BuildingHelper.Settings["HEIGHT_RESTRICTION"] ~= "" then
         return location.z >= BuildingHelper.Settings["HEIGHT_RESTRICTION"]
+    else
+        return true
     end
 end
 
