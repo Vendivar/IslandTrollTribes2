@@ -170,6 +170,14 @@ function ITT:InitGameMode()
     GameRules.EnglishTooltips = LoadKeyValues("resource/addon_english.txt")
     MergeTables(GameRules.UnitKV, LoadKeyValues("scripts/npc/npc_heroes_custom.txt")) --Load HeroKV into UnitKV
 
+    --The location behavior for creep spawning
+    --Available values : predefined, random, mix
+    -- predefined: Uses the predefined nodes on the map
+    -- random: Select the location randomly
+    -- mix: Use the both of the above.
+    GameRules.SpawnLocationType = "random"
+    GameRules.SpawnRegion = "Island"
+
     LoadCraftingTable()
 
     -- Check Syntax
@@ -682,8 +690,8 @@ function ITT:OnEntityKilled(keys)
         end
 
         -- Tracking number of neutrals
-        if Spawns.neutralCount[unitName] then
-            Spawns.neutralCount[unitName] = Spawns.neutralCount[unitName] - 1
+        if killedUnit.locationDetails then
+            Spawns.neutralCount[killedUnit.locationDetails.regionType][killedUnit.locationDetails.regionId][unitName] = Spawns.neutralCount[killedUnit.locationDetails.regionType][killedUnit.locationDetails.regionId][unitName] - 1
         end
     end
 

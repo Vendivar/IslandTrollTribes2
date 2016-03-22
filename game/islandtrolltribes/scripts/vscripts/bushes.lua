@@ -9,7 +9,8 @@ function ITT:SpawnBushes()
     for _,spawner in pairs(bush_herb_spawners) do
         local spawnerName = spawner:GetName()
         if string.find(spawnerName, "_bush_") then
-            local bushName = string.sub(string.gsub(spawnerName, "spawner_npc_", ""), 5)
+            local cutoff = string.find(spawnerName,"s")
+            local bushName = string.gsub(string.sub(spawnerName, cutoff), "spawner_npc_", "")
             local itemName = "item_"..bushName
             CreateBushContainer(itemName, spawner:GetAbsOrigin())
         end
