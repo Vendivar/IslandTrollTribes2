@@ -60,6 +60,14 @@ function GetRandomVectorGivenBounds(minx, miny, maxx, maxy)
     return Vector(RandomFloat(minx, miny),RandomFloat(maxx, maxy),0)
 end
 
+-- Checks whether the vector is bound to the given cordinates.
+function IsVectorInBounds(vector, minx, maxx, miny,  maxy)
+    if vector.x >= minx and vector.x <= maxx and vector.y  >= miny and vector.y <=maxy then
+        return true
+    end
+    return false
+end
+
 -- Gets a random vector on the map
 function GetRandomVectorInBounds()
     return Vector(RandomFloat(GetWorldMinX(), GetWorldMaxX()),RandomFloat(GetWorldMinY(), GetWorldMaxY()),0)

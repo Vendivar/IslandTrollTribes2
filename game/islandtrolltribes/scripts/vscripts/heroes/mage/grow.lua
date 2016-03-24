@@ -11,5 +11,5 @@ function Shrink(keys)
     if target == nil then
         target = keys.caster
     end
-    target:SetModelScale(1)
+ target:SetModelScale(target:GetModelScale() - keys.GrowAmmt)
 end

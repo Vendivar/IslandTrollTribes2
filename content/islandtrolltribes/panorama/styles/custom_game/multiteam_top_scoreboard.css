@@ -25,6 +25,7 @@
     vertical-align: top;
     height: 80px;
     width: 100%;
+    flow-children: right;
 }
 
 #LeftSideTeams
@@ -54,13 +55,13 @@
 {
     width: 65px;
     height: 100%;
+    vertical-align: top;
+    horizontal-align: left;
 }
-
-.ScoreboardTeamWrapper #_dynamic_team_2 
+#PlayersContainer
 {
-    position: 50% 0px 0px;
+    background-color:black;
 }
-
 #ScoreboardTeam
 {
     padding-left: 2px;
@@ -301,7 +302,7 @@ DOTAAvatarImage
     background-color: gradient( linear, 0% 0%, 0% 100%, from( #529a52 ), color-stop( 0.5, #0d570d ), color-stop( 0.75, #186510 ), to( #084e08 ) );
 }
 
-#_dynamic_team_2 #HealthIndicatorHealth
+.ScoreboardTeamWrapper #HealthIndicatorHealth
 {
     background-color: gradient( linear, 0% 0%, 0% 100%, from( #529a52 ), color-stop( 0.5, #0d570d ), color-stop( 0.75, #186510 ), to( #084e08 ) );
 }

@@ -1,5 +1,5 @@
 
-unction DefenderEnergyOnSpellStart(event)
+function DefenderEnergyOnSpellStart(event)
     local ability   =   event.ability
     ability.cast_origin = event.target_points[1]
 end

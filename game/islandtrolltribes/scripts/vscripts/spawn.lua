@@ -16,21 +16,26 @@ function Spawns:Init()
     print("Spawns Init")
     GameRules.SpawnInfo = LoadKeyValues("scripts/kv/spawn_info.kv")
 
-    Spawns.locations = {}
+    Spawns.predefinedLocations = {}
     local spawnerNames = GameRules.SpawnInfo['SpawnerNames']
 
     for unitName,spawnerName in pairs(spawnerNames) do
         local spawners = Entities:FindAllByName("*"..spawnerName.."*")
         -- Store the position of each spawner under a table associated to the creep name
-        Spawns.locations[unitName] = {}
+        Spawns.predefinedLocations[unitName] = {}
         for k,spawnerEnt in pairs(spawners) do
-            table.insert(Spawns.locations[unitName], spawnerEnt:GetAbsOrigin())
+            table.insert(Spawns.predefinedLocations[unitName], spawnerEnt:GetAbsOrigin())
         end
     end
 
     Spawns.neutralCount = {}
+    Spawns.neutralCount["World"]= {{}}
+    Spawns.neutralCount["Island"]= {{},{},{},{}}
     for unitName,_ in pairs(spawnerNames) do
-        Spawns.neutralCount[unitName] = 0
+        Spawns.neutralCount["World"][1][unitName] = 0
+        for i,_ in pairs(REGIONS) do
+            Spawns.neutralCount["Island"][i][unitName] = 0
+        end
     end
 
     Timers:CreateTimer(function()
@@ -45,57 +50,131 @@ function Spawns:Init()
     end]]
 
 end
-   
-function Spawns:Think()
 
+function GetPredefinedLocationsOnRegion(region, unitName)
+    local locations  = {}
+    for _,predefinedLocation in pairs(Spawns.predefinedLocations[unitName]) do
+        if IsVectorInBounds(predefinedLocation, region[1], region[2], region[4], region[3]) then
+            table.insert(locations,predefinedLocation)
+        end
+    end
+    return locations
+end
+
+function GetSpawnInstructions()
     -- Determine which spawn table to use depending on the game time
     local time = math.floor(GameRules:GetGameTime())
-    local spawnTable = GameRules.SpawnInfo['Start']
+    local spawnTable = GameRules.SpawnInfo['Initial']
     if time > GAME_PERIOD_EARLY then
         spawnTable = GameRules.SpawnInfo['Early']
     elseif time > GAME_PERIOD_GRACE then
         spawnTable = GameRules.SpawnInfo['Grace']
+    elseif time > GAME_CREATURE_TICK_TIME then
+        spawnTable = GameRules.SpawnInfo['Start']
     end
+    return spawnTable
+end
 
+function Spawns:Think()
     -- Roll chance and restrict creature spawns up to the max allowed
-    local neutralMaxTable = GameRules.SpawnInfo['Max']
+    local spawnTable = GetSpawnInstructions()
+    local locationTypeTable = GameRules.SpawnInfo['LocationTypes'][GameRules.SpawnLocationType]
     for unitName,creepTable in pairs(spawnTable) do
         local spawnChance = creepTable['Chance']
         local numToSpawn = creepTable['Number']
-
         for i=1,numToSpawn do
-            if RollPercentage(spawnChance) and (Spawns.neutralCount[unitName] < neutralMaxTable[unitName]) then
-                Spawns:Create(unitName)
+            if RollPercentage(spawnChance) then
+                if unitName == "npc_creep_fish" or unitName == "npc_creep_fish_green" or GameRules.SpawnRegion == "World" then
+                    SpawnUnitInWorld(unitName, locationTypeTable[unitName])
+                else
+                    SpawnUnitOnEachIsland(unitName, locationTypeTable[unitName])
+                end
             end
         end
     end
 end
 
+function SpawnUnitOnEachIsland(unitName, locationType)
+    local regionType = "Island"
+    local neutralMaxTable = GameRules.SpawnInfo['Max'][regionType]
+    for i,region in pairs(REGIONS)  do
+        if (Spawns.neutralCount[regionType][i][unitName] < neutralMaxTable[unitName]) then
+            local location = GetSpawnLocation(unitName, region, locationType)
+            local unit = CreateUnitByName(unitName, location, true, nil, nil, DOTA_TEAM_NEUTRALS)
+            unit.locationDetails = {regionType = regionType, regionId = i}
+--            Timers:CreateTimer(function() FindClearSpaceForUnit(unit, location, false) end)
+            Spawns.neutralCount[regionType][i][unitName] = Spawns.neutralCount[regionType][i][unitName] + 1
+        end
+    end
+end
+--and (Spawns.neutralCount[GameRules.SpawnRegion][unitName] < neutralMaxTable[unitName]
+function SpawnUnitInWorld(unitName, locationType)
+    local regionType = "World"
+    local neutralMaxTable = GameRules.SpawnInfo['Max'][regionType]
+    local world =  {-8000, 8000, 8000, -8000, 1 }
+    if (Spawns.neutralCount[regionType][1][unitName] < neutralMaxTable[unitName]) then
+        local location = GetSpawnLocation(unitName, world, locationType)
+        local unit = CreateUnitByName(unitName, location, true, nil, nil, DOTA_TEAM_NEUTRALS)
+        unit.locationDetails = {regionType = regionType, regionId = 1}
+        Timers:CreateTimer(function() FindClearSpaceForUnit(unit, location, false) end)
+        Spawns.neutralCount[regionType][1][unitName] = Spawns.neutralCount[regionType][1][unitName] + 1
+    end
+end
+
+function GetSpawnLocation(unitName, region, locationType)
+    local location
+    if locationType == "random" then
+        location = Spawns:GetRandomLocation(region, unitName)
+    elseif locationType == "predefined" then
+        location = Spawns:GetPredefinedLocation(region , unitName)
+    elseif locationType == "mix" then
+        if RollPercentage(50) then
+            location = Spawns:GetRandomLocation(region, unitName)
+        else
+            location = Spawns:GetPredefinedLocation(region , unitName)
+        end
+    end
+    return location
+end
+
 -- Creates a neutral on a predefined spawner position
-function Spawns:Create( unitName )
-    local locations = Spawns.locations[unitName]
+function Spawns:GetPredefinedLocation(region, unitName )
+    local locations = GetPredefinedLocationsOnRegion(region, unitName)
     if not locations then
         print("ERROR: no spawner locations stored for "..unitName)
     end
+    local location = GetEmptyLocation(locations)
+    return location
+end
 
-    local position = GetEmptyLocation(locations)
-
-    local unit = CreateUnitByName(unitName, position, true, nil, nil, DOTA_TEAM_NEUTRALS)
-    Timers:CreateTimer(function() FindClearSpaceForUnit(unit, position, false) end)
-
-    Spawns.neutralCount[unitName] = Spawns.neutralCount[unitName] + 1
+-- Creates a nutral on a random location
+function Spawns:GetRandomLocation(region)
+    local location = GetRandomVectorGivenBounds(region[1], region[2], region[3], region[4])
+    while IsNearABuilding(location) do
+        location = GetRandomVectorGivenBounds(region[1], region[2], region[3], region[4])
+    end
+    return location
 end
 
 -- Find a spawner location that doesn't have something nearby
 function GetEmptyLocation( locations )
     local possibleLocations = ShuffledList(locations)
-
-    for k,possibleLocation in pairs(possibleLocations) do
+    for _,possibleLocation in pairs(possibleLocations) do
         local nearbyUnits = FindUnitsInRadius(DOTA_TEAM_NEUTRALS, possibleLocation, nil, 100, DOTA_UNIT_TARGET_TEAM_BOTH, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, 0, 0, false)
-        if #nearbyUnits == 0 then
+        if #nearbyUnits == 0 and not IsNearABuilding(possibleLocation) then
             return possibleLocation
         end
     end
-    
-    return locations(RandomInt(1, #locations))
+    return locations[RandomInt(1, #locations)]
+end
+
+function IsNearABuilding(location)
+    local isNearABuilding = false
+    local nearbyUnits = FindUnitsInRadius(DOTA_TEAM_NEUTRALS, location, nil, 300, DOTA_UNIT_TARGET_TEAM_BOTH, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_CREEP, 0, 0, false )
+    for _,unit in pairs(nearbyUnits) do
+        if IsCustomBuilding(unit) then
+            return true
+        end
+    end
+    return isNearABuilding
 end

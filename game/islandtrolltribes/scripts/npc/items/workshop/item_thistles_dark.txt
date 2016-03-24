@@ -28,7 +28,7 @@
 			"ScriptFile" "items/gun.lua"
 			"Function"   "ReloadItem"
 			"EmptyItem"  "item_gun_blow_empty"
-			"LoadedItem" "item_gun_blow_thistles"
+			"LoadedItem" "item_gun_blow_thistles_dark"
 		}
 
 	}

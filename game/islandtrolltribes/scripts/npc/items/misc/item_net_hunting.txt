@@ -63,12 +63,12 @@
         "05"
         {
             "var_type"              "FIELD_INTEGER"
-            "damage"                "2"
+            "damage"                "0"
         }
         "06"
         {
             "var_type"              "FIELD_INTEGER"
-            "radius"                "200"
+            "radius"                "125"
         }
     }
 
@@ -97,7 +97,7 @@
     
     "Modifiers"
     {
-        "modifier_ensnare"
+        "modifier_hunting_ensnare"
         {
             "IsDebuff"          "1"
             "IsPurgable"        "1"

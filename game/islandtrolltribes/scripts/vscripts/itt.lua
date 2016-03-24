@@ -88,14 +88,7 @@ function ITT:InitGameMode()
     CustomGameEventManager:RegisterListener( "player_drop_all_meat", Dynamic_Wrap( ITT, "DropAllMeat" ) )
     CustomGameEventManager:RegisterListener( "player_panic", Dynamic_Wrap( ITT, "Panic" ) )
     CustomGameEventManager:RegisterListener( "player_rest_building", Dynamic_Wrap( ITT, "RestBuilding" ) )
-
-    -- Building Helper commands
-    CustomGameEventManager:RegisterListener( "building_helper_build_command", Dynamic_Wrap(BuildingHelper, "BuildCommand"))
-    CustomGameEventManager:RegisterListener( "building_helper_cancel_command", Dynamic_Wrap(BuildingHelper, "CancelCommand"))
     
-    -- Store and update selected units of each pID
-    GameRules.SELECTED_UNITS = {}
-
     -- Filters
     GameMode:SetExecuteOrderFilter( Dynamic_Wrap( ITT, "FilterExecuteOrder" ), self )
     GameMode:SetDamageFilter( Dynamic_Wrap( ITT, "FilterDamage" ), self )
@@ -176,6 +169,14 @@ function ITT:InitGameMode()
     GameRules.HeroKV = LoadKeyValues("scripts/npc/npc_heroes_custom.txt")
     GameRules.EnglishTooltips = LoadKeyValues("resource/addon_english.txt")
     MergeTables(GameRules.UnitKV, LoadKeyValues("scripts/npc/npc_heroes_custom.txt")) --Load HeroKV into UnitKV
+
+    --The location behavior for creep spawning
+    --Available values : predefined, random, mix
+    -- predefined: Uses the predefined nodes on the map
+    -- random: Select the location randomly
+    -- mix: Use the both of the above.
+    GameRules.SpawnLocationType = "random"
+    GameRules.SpawnRegion = "Island"
 
     LoadCraftingTable()
 
@@ -540,7 +541,8 @@ function ITT:OnEntityKilled(keys)
         {"npc_creep_panther", {"item_bone", 100}, {"item_bone", 100}},
         {"npc_creep_panther_elder", {"item_bone", 100}, {"item_bone", 100}},
         {"npc_creep_hawk", {"item_bone", 100}, {"item_egg_hawk", 10}},
-        {"npc_creep_mammoth", {"item_bone", 100},{"item_bone", 100},{"item_bone", 100},{"item_bone", 100}, {"item_horn_mammoth", 100}, {"item_horn_mammoth", 50}}
+        {"npc_creep_mammoth", {"item_bone", 100},{"item_bone", 100},{"item_bone", 100},{"item_bone", 100}, {"item_horn_mammoth", 100}, {"item_horn_mammoth", 50}},
+        {"npc_building_fire_basic", {"item_building_kit_fire_basic", 100}, {"item_flint", 10}}
     }
     local meatTable = {
     	{"npc_creep_elk_wild", 6},
@@ -550,7 +552,6 @@ function ITT:OnEntityKilled(keys)
         {"npc_creep_panther", 8},
         {"npc_creep_panther_elder", 8},
         {"npc_creep_lizard", 1},
-        -- The follow 2 values look switched: in ITT1 green fish were rare, larger, and dropped 3 meat
         {"npc_creep_fish", 1},
         {"npc_creep_fish_green", 3},
         
@@ -689,8 +690,8 @@ function ITT:OnEntityKilled(keys)
         end
 
         -- Tracking number of neutrals
-        if Spawns.neutralCount[unitName] then
-            Spawns.neutralCount[unitName] = Spawns.neutralCount[unitName] - 1
+        if killedUnit.locationDetails then
+            Spawns.neutralCount[killedUnit.locationDetails.regionType][killedUnit.locationDetails.regionId][unitName] = Spawns.neutralCount[killedUnit.locationDetails.regionType][killedUnit.locationDetails.regionId][unitName] - 1
         end
     end
 

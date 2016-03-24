@@ -50,12 +50,24 @@ function Build( event )
 			return false
 		end
 
+		-- if its an item with charges, check that we aren't at 0 charges
+		if not IsValidEntity(ability) then
+			return false
+		end
+
+		if ability:IsItem() then
+			local charges = ability:GetCurrentCharges()
+			if charges and charges == 0 then
+				SendErrorMessage(caster:GetPlayerOwnerID(), "#error_cant_queue")
+				return false
+			end
+		end
+
 		return true
     end)
 
 	-- Position for a building was confirmed and valid
     event:OnBuildingPosChosen(function(vPos)
-		
     	-- Spend resources
     	hero:ModifyGold(-gold_cost, false, 0)
 
@@ -63,8 +75,16 @@ function Build( event )
     	EmitSoundOnClient("DOTA_Item.ObserverWard.Activate", player)
 
     	-- Move the units away from the building place
-	
 
+    	-- If it's an item-ability remove a charge
+		if ability:IsItem() then
+			local charges = ability:GetCurrentCharges()
+			if charges > 0 then
+				charges = charges-1
+			end
+
+			ability:SetCurrentCharges(charges)
+		end
 	end)
 
     -- The construction failed and was never confirmed due to the gridnav being blocked in the attempted area
@@ -84,6 +104,9 @@ function Build( event )
 		-- Refund resources for this cancelled work
 		if work.refund then
 			hero:ModifyGold(gold_cost, false, 0)
+
+			local charges = ability:GetCurrentCharges()
+			ability:SetCurrentCharges(charges+1)
     	end
 	end)
 
@@ -96,20 +119,6 @@ function Build( event )
 	    -- This is necessary for repair to know what was the cost of the building and use resources periodically
 	    unit.GoldCost = gold_cost
 	    unit.BuildTime = build_time
-
-	    -- If it's an item-ability and has charges, remove a charge or remove the item if no charges left
-		if ability:IsItem() then
-			local charges = ability:GetCurrentCharges()
-			if charges > 0 then
-				charges = charges-1
-			end
-
-			if charges==0 and not ability:IsPermanent() then
-				ability:RemoveSelf()
-			else
-				ability:SetCurrentCharges(charges)
-			end
-		end
 
 	    -- Units can't attack while building
 	    unit.original_attack = unit:GetAttackCapability()
@@ -126,6 +135,9 @@ function Build( event )
     	ApplyModifier(unit, "modifier_construction")
     	ApplyModifier(unit, "modifier_building_under_construction")
 
+    	if IsValidEntity(ability) and ability:IsItem() and ability:GetCurrentCharges() == 0 then
+    		ability:RemoveSelf()
+    	end
 	end)
 
 	-- A building finished construction

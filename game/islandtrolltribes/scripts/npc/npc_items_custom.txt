@@ -559,7 +559,7 @@
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"10"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"10"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"20"
 				}
 	
 			}
@@ -1376,7 +1376,7 @@
 	    "Scale"                         "0" //bool
 	    "PlayerCanControl"              "1" //bool
 	    "ModelRotation"                 "-90"
-	    "UnitName"                      "npc_building_mix_pot"
+	    "UnitName"                      "npc_building_mixing_pot"
 	    "AbilityCooldown"               "0"
 	    "AbilityGoldCost"               "0"
 	    "ItemInitialCharges"            "1"
@@ -6823,6 +6823,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"1"
+		"AbilitySharedCooldown" "scroll"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -6911,6 +6912,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"1"
+		"AbilitySharedCooldown" "scroll"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -7048,6 +7050,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"1"
+		"AbilitySharedCooldown" "scroll"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -7148,6 +7151,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"1"
+		"AbilitySharedCooldown" "scroll"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -7193,6 +7197,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"1"
+		"AbilitySharedCooldown" "scroll"
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -7341,7 +7346,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"1"
-	
+		"AbilitySharedCooldown" "scroll"
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropRecipeWorld"
@@ -10283,12 +10288,12 @@
 	        "05"
 	        {
 	            "var_type"              "FIELD_INTEGER"
-	            "damage"                "2"
+	            "damage"                "0"
 	        }
 	        "06"
 	        {
 	            "var_type"              "FIELD_INTEGER"
-	            "radius"                "200"
+	            "radius"                "125"
 	        }
 	    }
 	
@@ -10317,7 +10322,7 @@
 	    
 	    "Modifiers"
 	    {
-	        "modifier_ensnare"
+	        "modifier_hunting_ensnare"
 	        {
 	            "IsDebuff"          "1"
 	            "IsPurgable"        "1"
@@ -10703,7 +10708,7 @@
 	"item_bone"
 	{
 		"ID"	"1005"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"bone"
 		"Model"	"models/props_bones/bone002.vmdl"
@@ -11252,7 +11257,7 @@
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
-		"ItemStackable"	"1"
+		"ItemStackable"	"0"
 		"ItemPermanent"	"0"
 		"ItemDroppable"	"1"
 		"ItemAliases"	"quicktype"
@@ -12049,7 +12054,6 @@
 		}
 	
 	}
-	
 	"item_gun_blow_bones"
 	{
 		"ID"	"1134"
@@ -12067,7 +12071,7 @@
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
-		"ItemStackable"	"1"
+		"ItemStackable"	"0"
 		"ItemPermanent"	"1"
 		"ItemInitialCharges"	"1"
 		"ItemDroppable"	"1"
@@ -12845,7 +12849,7 @@
 				"ScriptFile" "items/gun.lua"
 				"Function"   "ReloadItem"
 				"EmptyItem"  "item_gun_blow_empty"
-				"LoadedItem" "item_gun_blow_thistles"
+				"LoadedItem" "item_gun_blow_thistles_dark"
 			}
 	
 		}
@@ -12884,10 +12888,9 @@
 
 		"precache"
 	    {
-	        "particle"  "particles/units/heroes/hero_meepo/meepo_earthbind.vpcf"
-	        "particle"  "particles/units/heroes/hero_meepo/meepo_earthbind_flash.vpcf"
-	        "particle"  "particles/units/heroes/hero_meepo/meepo_earthbind_projectile_fx.vpcf"
-	        "soundfile" "soundevents/game_sounds_heroes/game_sounds_meepo.vsndevts"
+	        "particle"	"particles/units/heroes/hero_arc_warden/arc_warden_tempest_cast_ring.vpcf"
+			"particle"	"particles/econ/items/lanaya/lanaya_epit_trap/templar_assassin_epit_trap_explode_arcs.vpcf"
+			"particle"	"particles/units/heroes/hero_arc_warden/arc_warden_tempest_cast_ring.vpcf"
 	    }
 	    
 	    "AbilitySpecial"
@@ -12924,27 +12927,27 @@
 	            "Target"            "CASTER"
 	        }
 
-	   //      "ApplyModifier"
-	   //      {
-	   //      	"Target"
-				// {
-				// 	"Center"	"CASTER"
-				// 	"Radius"	"%radius"
-				// 	"Teams"		"DOTA_UNIT_TARGET_TEAM_BOTH"
-				// 	"Types"		"DOTA_UNIT_TARGET_ALL"
-				// }
-
-				// "ModifierName"	"modifier_emp"
-				// "Duration"		"%duration"
-	   //      }
+	        "FireEffect"
+			{
+				"EffectName"    "particles/units/heroes/hero_arc_warden/arc_warden_tempest_cast_ring.vpcf"
+				"Target"        "CASTER"
+				"EffectAttachType"      "attach_origin"
+			}
+			
+			"FireEffect"
+			{
+				"EffectName"    "particles/units/heroes/hero_arc_warden/arc_warden_tempest_cast_ring.vpcf"
+				"Target"        "CASTER"
+				"EffectAttachType"      "attach_origin"
+			}
 
 	        "RunScript"
 			{
 				"ScriptFile" "items/emp.lua"
 				"Function"   "EMP"
 			}
-	    }
-	
+		}
+
 	    "Modifiers"
 	    {	
 	        "modifier_emp"
@@ -12963,6 +12966,5 @@
 	            }
 	        }
 	    }
-	
 	}
 }

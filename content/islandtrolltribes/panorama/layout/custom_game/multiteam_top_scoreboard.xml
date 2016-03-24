@@ -13,6 +13,8 @@
 	<script>
 		$( "#_dynamic_team_2" ).SetAttributeInt( "team_id", 2 );
 		$( "#_dynamic_team_3" ).SetAttributeInt( "team_id", 3 );
+		$( "#_dynamic_team_6" ).SetAttributeInt( "team_id", 6 );
+		$( "#_dynamic_team_7" ).SetAttributeInt( "team_id", 7 );
 	</script>
 
 	<Panel hittest="false" class="CustomHudRoot">
@@ -21,18 +23,42 @@
 				<Panel hittest="false" id="MultiteamScoreboard">
 					<Panel hittest="false" class="ScoreboardTeamWrapper" id="_dynamic_team_2">
 						<Panel hittest="false" id="ScoreboardTeam">
-							<Panel hittest="false" id="TeamPadding"/>
-							<Panel hittest="false" id="PlayersContainer"/>
 							<Panel hittest="false" id="LogoAndScore">
 								<Panel hittest="false" id="TeamLogo" />
+								<Label hittest="false" text="N"/>
 								<Label hittest="false" id="TeamScore" text="999"/>
 							</Panel>
+							<Panel hittest="false" id="PlayersContainer"/>
+							<Panel hittest="false" id="TeamPadding"/>
 						</Panel>
 					</Panel>
 					<Panel hittest="false" class="ScoreboardTeamWrapper" id="_dynamic_team_3">
 						<Panel hittest="false" id="ScoreboardTeam">
 							<Panel hittest="false" id="LogoAndScore">
 								<Panel hittest="false" id="TeamLogo" />
+								<Label hittest="false" text="E"/>
+								<Label hittest="false" id="TeamScore" text="999"/>
+							</Panel>
+							<Panel hittest="false" id="PlayersContainer"/>
+							<Panel hittest="false" id="TeamPadding"/>
+						</Panel>
+					</Panel>
+					<Panel hittest="false" class="ScoreboardTeamWrapper" id="_dynamic_team_6">
+						<Panel hittest="false" id="ScoreboardTeam">
+							<Panel hittest="false" id="LogoAndScore">
+								<Panel hittest="false" id="TeamLogo" />
+								<Label hittest="false" text="S"/>
+								<Label hittest="false" id="TeamScore" text="999"/>
+							</Panel>
+							<Panel hittest="false" id="PlayersContainer"/>
+							<Panel hittest="false" id="TeamPadding"/>
+						</Panel>
+					</Panel>
+					<Panel hittest="false" class="ScoreboardTeamWrapper" id="_dynamic_team_7">
+						<Panel hittest="false" id="ScoreboardTeam">
+							<Panel hittest="false" id="LogoAndScore">
+								<Panel hittest="false" id="TeamLogo" />
+								<Label hittest="false" text="W"/>
 								<Label hittest="false" id="TeamScore" text="999"/>
 							</Panel>
 							<Panel hittest="false" id="PlayersContainer"/>

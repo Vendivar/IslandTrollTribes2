@@ -444,7 +444,7 @@
 		"BaseClass"	"npc_dota_creature"
 		"Model"	"models/heroes/nerubian_assassin/mound.vmdl"
 		"SoundSet"	"Creep_Good_Melee"
-		"HasInventory"	"0"
+		"HasInventory"	"1"
 		"MinimapIconSize"	"250"
 		"HealthBarOffset"	"400"
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
@@ -580,7 +580,7 @@
 		"BlockPathingSize"			"2"
 	    "SharedWithTeammates" "1"
 	}
-	"npc_building_mix_pot"
+	"npc_building_mixing_pot"
 	{
 		"BaseClass"	"npc_dota_creature"
 		"Model"	"models/mixing_pot.vmdl"
@@ -928,12 +928,24 @@
 		"HealthBarOffset"	"400"
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
-		"ModelScale"	"0.6"
+		"ModelScale"	"0.5"
+		"AutoAttacksByDefault"         "1"
+		"AttackDamageMin"            "4"       // Damage range min.
+		"AttackDamageMax"            "5"       // Damage range max.
+		"AttackRate"                 "1.7"     // Speed of attack.
+		"AttackAnimationPoint"       "0.75"    // Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"     "800"     // Range within a target can be acquired.
+		"AttackRange"                "600"     // Range within a target can be attacked.
+		"AttackRangeBuffer"          "250"     // Extra range the target can move without canceling the attack
+		"ProjectileModel"            "particles/units/heroes/hero_clinkz/clinkz_base_attack.vpcf"
+		"ProjectileSpeed"            "900"
+		
 		"precache"
 		{
 			"model"	"models/props_debris/camp_fire001.vmdl"
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts"
-			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
+			"particles"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
+			"particles" "particles/units/heroes/hero_clinkz/clinkz_base_attack.vpcf"
 		}
 	
 		"Ability1"	"ability_enemy_target"
@@ -1426,6 +1438,28 @@
 	    "StatusHealthRegen" "0"
 	    "VisionDaytimeRange"    "0"
 	    "VisionNighttimeRange"  "0"
+		
+		"Modifiers"
+		{
+			"modifier_tower"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes"		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE | MODIFIER_ATTRIBUTE_PERMANENT"	
+				"States"
+				{
+					"MODIFIER_STATE_MAGIC_IMMUNE" "MODIFIER_STATE_VALUE_ENABLED" // Makes most abilities don't affect this. Use custom damage
+					"MODIFIER_STATE_ROOTED"		"MODIFIER_STATE_VALUE_ENABLED" // Prevents moving
+					"MODIFIER_STATE_SPECIALLY_DENIABLE" "MODIFIER_STATE_VALUE_ENABLED" // Allows attacking own buildings
+					"MODIFIER_STATE_LOW_ATTACK_PRIORITY" "MODIFIER_STATE_VALUE_ENABLED" // Makes it a secondary target when A-clicking ground
+					"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED" // GridNav is blocked
+				}
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_ABSOLUTE"	"0.1"
+				}
+			}
+		}		
 	}
 	"npc_creature_scroll_skeleton"
 	{

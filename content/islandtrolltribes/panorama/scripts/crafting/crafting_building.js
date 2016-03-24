@@ -9,7 +9,7 @@ var UnFinishedBuildings = []
 var KilledBuildings = []
 Buildings['npc_building_armory'] = 1;
 Buildings['npc_building_hut_witch_doctor'] = 1;
-Buildings['npc_building_mix_pot'] = 1;
+Buildings['npc_building_mixing_pot'] = 1;
 Buildings['npc_building_tannery'] = 1;
 Buildings['npc_building_workshop'] = 1;
 

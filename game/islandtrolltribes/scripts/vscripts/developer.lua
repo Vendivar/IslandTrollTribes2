@@ -17,6 +17,7 @@ CHEAT_CODES = {
     ["axes"] = function( ... ) ITT:TestAxe(...) end,
     ["coats"] = function( ... ) ITT:TestCoat(...) end,
     ["debug_shops"] = function(...) ITT:DebugShops() end,
+    ["spawnstats"] = function( ... ) ITT:SpawnStats(...) end,
 }
 
 PLAYER_COMMANDS = {}
@@ -469,4 +470,18 @@ function ITT:DebugShops(playerID)
         end
         return 1
     end)
+end
+
+function ITT:SpawnStats()
+    local spawnerNames = GameRules.SpawnInfo['SpawnerNames']
+    print("=========Spawning stats============")
+    print("Game time : "..math.floor(GameRules:GetGameTime()))
+    print("World region  : "..math.floor(GameRules:GetGameTime()))
+    for unitName,_ in pairs(spawnerNames) do
+        print("Unit counts on world ("..unitName..") : "..Spawns.neutralCount["World"][1][unitName])
+        for i=1,4 do
+            print("Unit counts on Island #"..i.." ("..unitName..") : "..Spawns.neutralCount["Island"][i][unitName])
+        end
+    end
+    print("=========Spawning stats============")
 end

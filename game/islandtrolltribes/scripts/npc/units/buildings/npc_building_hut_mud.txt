@@ -3,7 +3,7 @@
 	"BaseClass"	"npc_dota_creature"
 	"Model"	"models/heroes/nerubian_assassin/mound.vmdl"
 	"SoundSet"	"Creep_Good_Melee"
-	"HasInventory"	"0"
+	"HasInventory"	"1"
 	"MinimapIconSize"	"250"
 	"HealthBarOffset"	"400"
 	"BoundsHullName"	"DOTA_HULL_SIZE_HERO"

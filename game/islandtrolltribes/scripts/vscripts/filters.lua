@@ -23,7 +23,7 @@ function ITT:FilterExecuteOrder( filterTable )
     local CONTINUE_PROCESSING_EVENT = true
 
     -- Drop orders for units that we don't want to be shared
-    if unit then
+    if unit and unit:GetClassname() ~= "player" then
         if not Convars:GetBool("developer") then --Don't prevent inside tools
             local playerID = unit:GetPlayerOwnerID()
             if issuer ~= -1 and playerID ~= -1 and issuer ~= playerID and not unit:IsSharedWithTeammates() then

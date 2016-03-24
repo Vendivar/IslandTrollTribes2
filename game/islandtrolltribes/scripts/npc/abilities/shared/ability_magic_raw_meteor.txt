@@ -79,7 +79,7 @@
 				"Damage"
 				{
 					"Type"	"DAMAGE_TYPE_PHYSICAL"
-					"Damage"	"40"
+					"Damage"	"1"
 					"Target"	"TARGET"
 				}
 
@@ -126,7 +126,7 @@
 		"06"
 		{
 			"var_type"	"FIELD_FLOAT"
-			"burn_dps"	"40"
+			"burn_dps"	"1"
 		}
 
 	}

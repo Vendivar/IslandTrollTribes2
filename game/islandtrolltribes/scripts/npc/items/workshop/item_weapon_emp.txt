@@ -1,7 +1,7 @@
 "item_weapon_emp"
 {
 	"ID"	"1110"
-	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_POINT"
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"weapon_emp"
 	"Model"	"models/heroes/juggernaut/jugg_healing_ward.vmdl"
@@ -22,14 +22,62 @@
 	"UIPickupSound"	"Item.PickUpGemShop"
 	"UIDropSound"	"Item.DropGemShop"
 	"WorldDropSound"	"Item.DropGemWorld"
+	
+	"Precache"
+	{
+		"particle"	"particles/units/heroes/hero_arc_warden/arc_warden_tempest_cast_ring.vpcf"
+		"particle"	"particles/econ/items/lanaya/lanaya_epit_trap/templar_assassin_epit_trap_explode_arcs.vpcf"
+		"particle"	"particles/units/heroes/hero_arc_warden/arc_warden_tempest_cast_ring.vpcf"
+	}
+
+	
 	"OnSpellStart"
 	{
-		//TODO
+	
+		"RunScript"
+		{
+			"ScriptFile"	"items/emp.lua"
+			"Function"	"EmpDetonate"
+            "Target"        "POINT"
+		}
 
+		"FireEffect"
+		{
+			"EffectName"    "particles/units/heroes/hero_arc_warden/arc_warden_tempest_cast_ring.vpcf"
+			"Target"        "CASTER"
+			"EffectAttachType"      "attach_origin"
+		}
+		
+		"FireEffect"
+		{
+			"EffectName"    "particles/units/heroes/hero_arc_warden/arc_warden_tempest_cast_ring.vpcf"
+			"Target"        "CASTER"
+			"EffectAttachType"      "attach_origin"
+		}
+
+		"FireSound"
+		{
+			"EffectName"	"Hero_Invoker.EMP.Cast"
+			"Target"	"CASTER"
+		}
+		
 		"SpendCharge"
 		{
 		}
-
 	}
 
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"disarm_radius"	"1000"
+		}
+		"02"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"disarm_duration"	"60"
+		}
+
+	}
 }
