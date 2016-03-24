@@ -12859,12 +12859,11 @@
 	"item_weapon_emp"
 	{
 		"ID"	"1110"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK |DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"weapon_emp"
 		"Model"	"models/heroes/juggernaut/jugg_healing_ward.vmdl"
 		"Effect"	""
-		"AbilityCastRange"	"300"
 		"AbilityCastPoint"	"0.5"
 		"ItemCost"	"14"
 		"ItemShopTags"	"consumable"
@@ -12880,15 +12879,90 @@
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
-		"OnSpellStart"
-		{
-			//TODO
+		"Duration"		"%duration"
+		"Radius"		"%radius"
+
+		"precache"
+	    {
+	        "particle"  "particles/units/heroes/hero_meepo/meepo_earthbind.vpcf"
+	        "particle"  "particles/units/heroes/hero_meepo/meepo_earthbind_flash.vpcf"
+	        "particle"  "particles/units/heroes/hero_meepo/meepo_earthbind_projectile_fx.vpcf"
+	        "soundfile" "soundevents/game_sounds_heroes/game_sounds_meepo.vsndevts"
+	    }
+	    
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"              "FIELD_FLOAT"
+	            "duration"         		"60"
+	        }
+	        "02"
+	        {
+	            "var_type"              "FIELD_INTEGER"
+	            "max_stacks"            "1"
+	        }
+	        "03"
+	        {
+	            "var_type"              "FIELD_INTEGER"
+	            "radius"       			"1000"
+	        }
+	    }
 	
-			"SpendCharge"
+	    "OnSpellStart"
+	    {
+	        "FireSound"
+	        {
+	            "EffectName"    "Hero_Invoker.EMP.Discharge"
+	            "Target"        "CASTER"
+	        }
+	
+	        "FireEffect"
+	        {
+	            "EffectName"        "particles/units/heroes/hero_invoker/invoker_emp_explode.vpcf"
+	            "EffectAttachType"  "follow_origin"
+	            "Target"            "CASTER"
+	        }
+
+	   //      "ApplyModifier"
+	   //      {
+	   //      	"Target"
+				// {
+				// 	"Center"	"CASTER"
+				// 	"Radius"	"%radius"
+				// 	"Teams"		"DOTA_UNIT_TARGET_TEAM_BOTH"
+				// 	"Types"		"DOTA_UNIT_TARGET_ALL"
+				// }
+
+				// "ModifierName"	"modifier_emp"
+				// "Duration"		"%duration"
+	   //      }
+
+	        "RunScript"
 			{
+				"ScriptFile" "items/emp.lua"
+				"Function"   "EMP"
 			}
+	    }
 	
-		}
+	    "Modifiers"
+	    {	
+	        "modifier_emp"
+	        {
+	            "IsDebuff"          "1"
+	            "IsPurgable"        "0"
+	    
+	            "EffectName"        "particles/units/heroes/hero_razor/razor_static_link_debuff.vpcf"
+	            "EffectAttachType"  "follow_origin"
+	            
+	            "States"
+	            {
+	            	"MODIFIER_STATE_DISARMED" 	"MODIFIER_STATE_VALUE_ENABLED"
+	            	"MODIFIER_STATE_SILENCED" 	"MODIFIER_STATE_VALUE_ENABLED"
+	            	"MODIFIER_STATE_MUTED"		"MODIFIER_STATE_VALUE_ENABLED"
+	            }
+	        }
+	    }
 	
 	}
 }
