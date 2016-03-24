@@ -108,6 +108,7 @@ function ManageCraftListMouseEvents(eventName, arg){
 
 var cameraDistance = 1000
 var maxCameraDistance = 1500
+var minCameraDistance = 500
 
 GameUI.SetCameraDistance( cameraDistance )
 
@@ -150,6 +151,7 @@ function ManageBuildHelperMouseEvents(eventName, arg) {
     {
         arg == 1 ? cameraDistance -= 10 : cameraDistance += 10;
 		if (cameraDistance > maxCameraDistance) cameraDistance = maxCameraDistance
+        if (cameraDistance < minCameraDistance) cameraDistance = minCameraDistance
         GameUI.SetCameraDistance( cameraDistance )
         return CONSUME_EVENT;  
     }
