@@ -210,6 +210,7 @@
 #DeathsContainer,
 #AssistsContainer
 #HeatContainer,
+#EnergyContainer
 {
 	height: 100%;
 }
@@ -259,7 +260,9 @@
 
 #Kills,
 #Deaths,
-#Assists
+#Assists,
+#Heat,
+#Energy
 {
 	vertical-align: center;
 	font-size: 18px;
@@ -352,6 +355,8 @@
 .is_local_player #Kills,
 .is_local_player #Deaths,
 .is_local_player #Assists,
+.is_local_player #Heat,
+.is_local_player #Energy,
 .is_local_player #Level,
 .is_local_player #HeroName
 {
@@ -386,7 +391,9 @@
 
 .ScoreCol_Kills,
 .ScoreCol_Deaths,
-.ScoreCol_Assists
+.ScoreCol_Assists,
+.ScoreCol_Heat,
+.ScoreCol_Energy
 {
 	width: 50px;
 	text-align: center;

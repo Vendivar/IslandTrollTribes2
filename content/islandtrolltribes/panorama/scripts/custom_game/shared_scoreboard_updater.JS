@@ -18,6 +18,7 @@ function _ScoreboardUpdater_SetTextSafe( panel, childName, textValue )
 function _ScoreboardUpdater_UpdatePlayerPanel( scoreboardConfig, playersContainer, playerId, localPlayerTeamId )
 {
 	var playerPanelName = "_dynamic_player_" + playerId;
+	var playerEntityId = Players.GetPlayerHeroEntityIndex( playerId )
 //	$.Msg( playerPanelName );
 	var playerPanel = playersContainer.FindChild( playerPanelName );
 	if ( playerPanel === null )
@@ -52,7 +53,9 @@ function _ScoreboardUpdater_UpdatePlayerPanel( scoreboardConfig, playersContaine
 		_ScoreboardUpdater_SetTextSafe( playerPanel, "Kills", playerInfo.player_kills );
 		_ScoreboardUpdater_SetTextSafe( playerPanel, "Deaths", playerInfo.player_deaths );
 		_ScoreboardUpdater_SetTextSafe( playerPanel, "Assists", playerInfo.player_assists );
-		_ScoreboardUpdater_SetTextSafe( playerPanel, "Heat", playerInfo.player_assists );
+		
+		_ScoreboardUpdater_SetTextSafe( playerPanel, "Heat", Entities.GetHealthPercent(playerEntityId)+"%");
+		_ScoreboardUpdater_SetTextSafe( playerPanel, "Energy", 100*Entities.GetMana( playerEntityId )/Entities.GetMaxMana( playerEntityId ) +"%");
 
 		var playerPortrait = playerPanel.FindChildInLayoutFile( "HeroIcon" );
 		if ( playerPortrait )
