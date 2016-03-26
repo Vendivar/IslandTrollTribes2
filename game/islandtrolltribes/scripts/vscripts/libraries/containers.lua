@@ -486,7 +486,7 @@ function Containers:AddItemToUnit(unit, item)
         unit:AddItem(item)
       elseif full then
         SendErrorMessage(unit:GetPlayerOwnerID(), "#error_inventory_full")
-        unit:DropItemAtPositionImmediate(item, origin)
+        CreateItemOnPositionSync(unit:GetAbsOrigin() + RandomVector(10), item)
       end
     end
   end
