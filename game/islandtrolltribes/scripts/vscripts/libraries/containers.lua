@@ -505,13 +505,6 @@ function Containers:UsePanoramaInventory(useInventory)
   CustomGameEventManager:Send_ServerToAllClients("cont_use_panorama_inventory", {use=useInventory})
 end
 
-function Containers:DisplayError(pid, message)
-  local player = PlayerResource:GetPlayer(pid)
-  if player then
-    CustomGameEventManager:Send_ServerToPlayer(player, "cont_create_error_message", {message=message})
-  end
-end
-
 function Containers:EmitSoundOnClient(pid, sound)
   local player = PlayerResource:GetPlayer(pid)
   if player then
@@ -945,7 +938,7 @@ function Containers:Containers_OnLeftClick(args)
   local ent = container:GetEntity()
   if range == nil and ent and unit ~= ent then return end
   if range and ent and unit and (ent:GetAbsOrigin() - unit:GetAbsOrigin()):Length2D() >= range then 
-    Containers:DisplayError(playerID,"#dota_hud_error_target_out_of_range")
+    SendErrorMessage(playerID,"#dota_hud_error_target_out_of_range")
     return 
   end
 
@@ -985,7 +978,7 @@ function Containers:Containers_OnRightClick(args)
   local ent = container:GetEntity()
   if range == nil and ent and unit ~= ent then return end
   if range and ent and unit and (ent:GetAbsOrigin() - unit:GetAbsOrigin()):Length2D() >= range then 
-    Containers:DisplayError(playerID,"#dota_hud_error_target_out_of_range")
+    SendErrorMessage(playerID,"#dota_hud_error_target_out_of_range")
     return 
   end
 
@@ -1045,7 +1038,7 @@ function Containers:Containers_OnDragFrom(args)
   local ent = container:GetEntity()
   if range == nil and ent and unit ~= ent then return end
   if range and ent and unit and (ent:GetAbsOrigin() - unit:GetAbsOrigin()):Length2D() >= range then 
-    Containers:DisplayError(playerID,"#dota_hud_error_target_out_of_range")
+    SendErrorMessage(playerID,"#dota_hud_error_target_out_of_range")
     return 
   end
   
@@ -1066,7 +1059,7 @@ function Containers:Containers_OnDragFrom(args)
     local range = toContainer:GetRange()
     local ent = toContainer:GetEntity()
     if range and ent and unit and (ent:GetAbsOrigin() - unit:GetAbsOrigin()):Length2D() >= range then 
-      Containers:DisplayError(playerID,"#dota_hud_error_target_out_of_range")
+      SendErrorMessage(playerID,"#dota_hud_error_target_out_of_range")
       return 
     end
 
@@ -1122,7 +1115,7 @@ function Containers:Containers_OnDragWorld(args)
   if container.canDragFrom[playerID] == false then return end
 
   if not item:IsDroppable() then
-    Containers:DisplayError(playerID,"#dota_hud_error_item_cant_be_dropped")
+    SendErrorMessage(playerID,"#dota_hud_error_item_cant_be_dropped")
     return
   end
 
@@ -1130,7 +1123,7 @@ function Containers:Containers_OnDragWorld(args)
   local ent = container:GetEntity()
   if range == nil and ent and unit ~= ent then return end
   if range and ent and unit and (ent:GetAbsOrigin() - unit:GetAbsOrigin()):Length2D() >= range then 
-    Containers:DisplayError(playerID,"#dota_hud_error_target_out_of_range")
+    SendErrorMessage(playerID,"#dota_hud_error_target_out_of_range")
     return 
   end
 
@@ -1191,7 +1184,7 @@ function Containers:Containers_OnButtonPressed(args)
   local ent = container:GetEntity()
   if range == nil and ent and unit ~= ent then return end
   if range and ent and unit and (ent:GetAbsOrigin() - unit:GetAbsOrigin()):Length2D() >= range then 
-    Containers:DisplayError(playerID,"#dota_hud_error_target_out_of_range")
+    SendErrorMessage(playerID,"#dota_hud_error_target_out_of_range")
     return 
   end
 
@@ -1744,11 +1737,11 @@ function Containers:CreateContainer(cont)
     local treeTarget =   bit.band(targetType, DOTA_UNIT_TARGET_TREE) ~= 0
 
     if unit:IsStunned() and not unrestricted then
-      Containers:DisplayError(playerID, "#dota_hud_error_unit_command_restricted")
+      SendErrorMessage(playerID, "#dota_hud_error_unit_command_restricted")
       return
     end
     if unit:IsRooted() and rootDisables then
-      Containers:DisplayError(playerID, "#dota_hud_error_ability_disabled_by_root")
+      SendErrorMessage(playerID, "#dota_hud_error_ability_disabled_by_root")
       return
     end
     if noTarget and not channelled then
