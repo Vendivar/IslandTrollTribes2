@@ -458,6 +458,21 @@ function Containers:AddItemToUnit(unit, item)
       local iname = item:GetAbilityName()
       local exists = false
       local full = true
+
+      --ideally this is never used and Containers:BuyItem will catch any restricted items
+      local itemSlotRestriction = GameRules.ItemInfo['ItemSlots'][iname]
+      if itemSlotRestriction then
+          local maxCarried = GameRules.ItemInfo['MaxCarried'][itemSlotRestriction]
+          local count = GetNumItemsOfSlot(unit, itemSlotRestriction)
+
+          if count > maxCarried then
+              local origin = unit:GetAbsOrigin()
+              unit:DropItemAtPositionImmediate(item, origin)
+
+              SendErrorMessage(unit:GetPlayerOwnerID(), "#error_cant_carry_more_"..itemSlotRestriction)
+          end
+      end
+
       for i=0,5 do
         local it = unit:GetItemInSlot(i)
         if not it then
@@ -469,8 +484,9 @@ function Containers:AddItemToUnit(unit, item)
 
       if not full or (full and item:IsStackable() and exists) then
         unit:AddItem(item)
-      else
-        CreateItemOnPositionSync(unit:GetAbsOrigin() + RandomVector(10), item)
+      elseif full then
+        SendErrorMessage(unit:GetPlayerOwnerID(), "#error_inventory_full")
+        unit:DropItemAtPositionImmediate(item, origin)
       end
     end
   end
@@ -1444,24 +1460,54 @@ function Containers:CreateShop(cont)
     local stock = self:GetStock(item)
     local owner = PlayerResource:GetSelectedHeroEntity(playerID)
     local gold = PlayerResource:GetGold(playerID)
-    if gold >= cost and (stock == nil or stock > 0) then
-      local newItem = CreateItem(item:GetAbilityName(), owner, owner)
-      newItem:SetLevel(item:GetLevel())
-      newItem:SetCurrentCharges(item:GetCurrentCharges())
 
-      PlayerResource:SpendGold(playerID, cost, DOTA_ModifyGold_PurchaseItem)
+    local iname = item:GetAbilityName()
+    local exists = false
+    local full = true
+    local restricted = false
 
-      if stock then
-        self:SetStock(item, stock-1)
+    local itemSlotRestriction = GameRules.ItemInfo['ItemSlots'][iname]
+
+    for i=0,5 do
+      local it = unit:GetItemInSlot(i)
+      if not it then
+        full = false
+      elseif it:GetAbilityName() == iname then
+        exists = true
       end
+    end
 
-      Containers:EmitSoundOnClient(playerID, "General.Buy")
+    if full then
+      SendErrorMessage(playerID, "#error_inventory_full")
+    elseif     itemSlotRestriction then
+      local maxCarried = GameRules.ItemInfo['MaxCarried'][itemSlotRestriction]
+      local count = GetNumItemsOfSlot(unit, itemSlotRestriction)
 
-      return newItem
-    elseif stock ~= nil and stock <= 0 then
-      Containers:DisplayError(playerID, "#dota_hud_error_item_out_of_stock")
-    elseif gold < cost then
-      Containers:DisplayError(playerID, "#dota_hud_error_not_enough_gold")
+      if count >= maxCarried then
+        print("carrying too many "..iname)
+        SendErrorMessage(playerID, "#error_cant_carry_more_"..itemSlotRestriction)
+        return nil
+      end
+    elseif not full or (full and item:IsStackable() and exists)then
+      if gold >= cost and (stock == nil or stock > 0) then
+        local newItem = CreateItem(item:GetAbilityName(), nil, nil)
+        newItem:SetLevel(item:GetLevel())
+        newItem:SetCurrentCharges(item:GetCurrentCharges())
+
+        PlayerResource:SpendGold(playerID, cost, DOTA_ModifyGold_PurchaseItem)
+
+        if stock then
+          self:SetStock(item, stock-1)
+        end
+
+        Containers:EmitSoundOnClient(playerID, "General.Buy")
+
+        return newItem
+      elseif stock ~= nil and stock <= 0 then
+        SendErrorMessage(playerID, "#dota_hud_error_item_out_of_stock")
+      elseif gold < cost then
+        SendErrorMessage(playerID, "#dota_hud_error_not_enough_gold")
+      end
     end
   end
 
