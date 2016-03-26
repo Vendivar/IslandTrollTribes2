@@ -458,6 +458,21 @@ function Containers:AddItemToUnit(unit, item)
       local iname = item:GetAbilityName()
       local exists = false
       local full = true
+
+      --ideally this is never used and Containers:BuyItem will catch any restricted items
+      local itemSlotRestriction = GameRules.ItemInfo['ItemSlots'][iname]
+      if itemSlotRestriction then
+          local maxCarried = GameRules.ItemInfo['MaxCarried'][itemSlotRestriction]
+          local count = GetNumItemsOfSlot(unit, itemSlotRestriction)
+
+          if count > maxCarried then
+              local origin = unit:GetAbsOrigin()
+              unit:DropItemAtPositionImmediate(item, origin)
+
+              SendErrorMessage(unit:GetPlayerOwnerID(), "#error_cant_carry_more_"..itemSlotRestriction)
+          end
+      end
+
       for i=0,5 do
         local it = unit:GetItemInSlot(i)
         if not it then
@@ -469,8 +484,9 @@ function Containers:AddItemToUnit(unit, item)
 
       if not full or (full and item:IsStackable() and exists) then
         unit:AddItem(item)
-      else
-        CreateItemOnPositionSync(unit:GetAbsOrigin() + RandomVector(10), item)
+      elseif full then
+        SendErrorMessage(unit:GetPlayerOwnerID(), "#error_inventory_full")
+        unit:DropItemAtPositionImmediate(item, origin)
       end
     end
   end
@@ -487,13 +503,6 @@ end
 function Containers:UsePanoramaInventory(useInventory)
   CustomNetTables:SetTableValue("containers_lua", "use_panorama_inventory", {value=useInventory})
   CustomGameEventManager:Send_ServerToAllClients("cont_use_panorama_inventory", {use=useInventory})
-end
-
-function Containers:DisplayError(pid, message)
-  local player = PlayerResource:GetPlayer(pid)
-  if player then
-    CustomGameEventManager:Send_ServerToPlayer(player, "cont_create_error_message", {message=message})
-  end
 end
 
 function Containers:EmitSoundOnClient(pid, sound)
@@ -929,7 +938,7 @@ function Containers:Containers_OnLeftClick(args)
   local ent = container:GetEntity()
   if range == nil and ent and unit ~= ent then return end
   if range and ent and unit and (ent:GetAbsOrigin() - unit:GetAbsOrigin()):Length2D() >= range then 
-    Containers:DisplayError(playerID,"#dota_hud_error_target_out_of_range")
+    SendErrorMessage(playerID,"#dota_hud_error_target_out_of_range")
     return 
   end
 
@@ -969,7 +978,7 @@ function Containers:Containers_OnRightClick(args)
   local ent = container:GetEntity()
   if range == nil and ent and unit ~= ent then return end
   if range and ent and unit and (ent:GetAbsOrigin() - unit:GetAbsOrigin()):Length2D() >= range then 
-    Containers:DisplayError(playerID,"#dota_hud_error_target_out_of_range")
+    SendErrorMessage(playerID,"#dota_hud_error_target_out_of_range")
     return 
   end
 
@@ -1029,7 +1038,7 @@ function Containers:Containers_OnDragFrom(args)
   local ent = container:GetEntity()
   if range == nil and ent and unit ~= ent then return end
   if range and ent and unit and (ent:GetAbsOrigin() - unit:GetAbsOrigin()):Length2D() >= range then 
-    Containers:DisplayError(playerID,"#dota_hud_error_target_out_of_range")
+    SendErrorMessage(playerID,"#dota_hud_error_target_out_of_range")
     return 
   end
   
@@ -1050,7 +1059,7 @@ function Containers:Containers_OnDragFrom(args)
     local range = toContainer:GetRange()
     local ent = toContainer:GetEntity()
     if range and ent and unit and (ent:GetAbsOrigin() - unit:GetAbsOrigin()):Length2D() >= range then 
-      Containers:DisplayError(playerID,"#dota_hud_error_target_out_of_range")
+      SendErrorMessage(playerID,"#dota_hud_error_target_out_of_range")
       return 
     end
 
@@ -1106,7 +1115,7 @@ function Containers:Containers_OnDragWorld(args)
   if container.canDragFrom[playerID] == false then return end
 
   if not item:IsDroppable() then
-    Containers:DisplayError(playerID,"#dota_hud_error_item_cant_be_dropped")
+    SendErrorMessage(playerID,"#dota_hud_error_item_cant_be_dropped")
     return
   end
 
@@ -1114,7 +1123,7 @@ function Containers:Containers_OnDragWorld(args)
   local ent = container:GetEntity()
   if range == nil and ent and unit ~= ent then return end
   if range and ent and unit and (ent:GetAbsOrigin() - unit:GetAbsOrigin()):Length2D() >= range then 
-    Containers:DisplayError(playerID,"#dota_hud_error_target_out_of_range")
+    SendErrorMessage(playerID,"#dota_hud_error_target_out_of_range")
     return 
   end
 
@@ -1175,7 +1184,7 @@ function Containers:Containers_OnButtonPressed(args)
   local ent = container:GetEntity()
   if range == nil and ent and unit ~= ent then return end
   if range and ent and unit and (ent:GetAbsOrigin() - unit:GetAbsOrigin()):Length2D() >= range then 
-    Containers:DisplayError(playerID,"#dota_hud_error_target_out_of_range")
+    SendErrorMessage(playerID,"#dota_hud_error_target_out_of_range")
     return 
   end
 
@@ -1444,24 +1453,54 @@ function Containers:CreateShop(cont)
     local stock = self:GetStock(item)
     local owner = PlayerResource:GetSelectedHeroEntity(playerID)
     local gold = PlayerResource:GetGold(playerID)
-    if gold >= cost and (stock == nil or stock > 0) then
-      local newItem = CreateItem(item:GetAbilityName(), owner, owner)
-      newItem:SetLevel(item:GetLevel())
-      newItem:SetCurrentCharges(item:GetCurrentCharges())
 
-      PlayerResource:SpendGold(playerID, cost, DOTA_ModifyGold_PurchaseItem)
+    local iname = item:GetAbilityName()
+    local exists = false
+    local full = true
+    local restricted = false
 
-      if stock then
-        self:SetStock(item, stock-1)
+    local itemSlotRestriction = GameRules.ItemInfo['ItemSlots'][iname]
+
+    for i=0,5 do
+      local it = unit:GetItemInSlot(i)
+      if not it then
+        full = false
+      elseif it:GetAbilityName() == iname then
+        exists = true
       end
+    end
 
-      Containers:EmitSoundOnClient(playerID, "General.Buy")
+    if full then
+      SendErrorMessage(playerID, "#error_inventory_full")
+    elseif     itemSlotRestriction then
+      local maxCarried = GameRules.ItemInfo['MaxCarried'][itemSlotRestriction]
+      local count = GetNumItemsOfSlot(unit, itemSlotRestriction)
 
-      return newItem
-    elseif stock ~= nil and stock <= 0 then
-      Containers:DisplayError(playerID, "#dota_hud_error_item_out_of_stock")
-    elseif gold < cost then
-      Containers:DisplayError(playerID, "#dota_hud_error_not_enough_gold")
+      if count >= maxCarried then
+        print("carrying too many "..iname)
+        SendErrorMessage(playerID, "#error_cant_carry_more_"..itemSlotRestriction)
+        return nil
+      end
+    elseif not full or (full and item:IsStackable() and exists)then
+      if gold >= cost and (stock == nil or stock > 0) then
+        local newItem = CreateItem(item:GetAbilityName(), nil, nil)
+        newItem:SetLevel(item:GetLevel())
+        newItem:SetCurrentCharges(item:GetCurrentCharges())
+
+        PlayerResource:SpendGold(playerID, cost, DOTA_ModifyGold_PurchaseItem)
+
+        if stock then
+          self:SetStock(item, stock-1)
+        end
+
+        Containers:EmitSoundOnClient(playerID, "General.Buy")
+
+        return newItem
+      elseif stock ~= nil and stock <= 0 then
+        SendErrorMessage(playerID, "#dota_hud_error_item_out_of_stock")
+      elseif gold < cost then
+        SendErrorMessage(playerID, "#dota_hud_error_not_enough_gold")
+      end
     end
   end
 
@@ -1698,11 +1737,11 @@ function Containers:CreateContainer(cont)
     local treeTarget =   bit.band(targetType, DOTA_UNIT_TARGET_TREE) ~= 0
 
     if unit:IsStunned() and not unrestricted then
-      Containers:DisplayError(playerID, "#dota_hud_error_unit_command_restricted")
+      SendErrorMessage(playerID, "#dota_hud_error_unit_command_restricted")
       return
     end
     if unit:IsRooted() and rootDisables then
-      Containers:DisplayError(playerID, "#dota_hud_error_ability_disabled_by_root")
+      SendErrorMessage(playerID, "#dota_hud_error_ability_disabled_by_root")
       return
     end
     if noTarget and not channelled then
