@@ -44,20 +44,16 @@ function ITT:OnPlayerChat(keys)
         CHEAT_CODES[command](playerID, input[2], input[3], input[4])
     
     elseif PLAYER_COMMANDS[command] then
-		PLAYER_COMMANDS[command](playerID, input[2])
+        PLAYER_COMMANDS[command](playerID, input[2])
     end
 end
 
-
-
 function ITT:Zoom( playerID, value )
-  	value = value or 1300
+    value = value or 1134
     print("Player "..playerID.." zooming to "..value)
 
     -- Build an event call (same as the panorama event)
-		CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(player), "zoom", {zoom_distance = value});
-
-	 
+    CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(playerID), "zoom", {zoom_distance = value});     
 end
 
 function ITT:ChangeSubclass( playerID, subclassID )

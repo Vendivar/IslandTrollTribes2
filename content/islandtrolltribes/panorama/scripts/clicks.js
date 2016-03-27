@@ -93,7 +93,7 @@ function IsTeleportBeacon(entIndex)
 }
 
 function ManageCraftListMouseEvents(eventName, arg){
-    if ( eventName === "pressed" || eventName === "doublepressed"){
+    if ( arg === 1 && (eventName === "pressed" || eventName === "doublepressed")){
         var CONSUME_EVENT = true;
         var CONTINUE_PROCESSING_EVENT = false;
         var mPos = GameUI.GetCursorPosition();
@@ -105,33 +105,22 @@ function ManageCraftListMouseEvents(eventName, arg){
     return CONTINUE_PROCESSING_EVENT
 }
 
-
 var maxCameraDistance = 1500
 var minCameraDistance = 500
 
 function ZoomEvent ( data )
 {
-    $.Msg(data) //this is the table containing all the passed info by Lua
-    var distance = data.zoom_distance
+    var zoom_distance = Number(data.zoom_distance)
     if (zoom_distance > maxCameraDistance) zoom_distance = maxCameraDistance
     if (zoom_distance < minCameraDistance) zoom_distance = minCameraDistance
 
-        GameUI.SetCameraDistance( zoom_distance )
-
-  // Do something with the zoom_distance here
+    GameUI.SetCameraDistance( zoom_distance )
 }
    
-    // jquery in use on DotA2 api?
-    // just standard 'self calling' when the file loads. It's not really necessary but valve does it in their UIs
-    // it could be done without the whole function encompasing just fine.
-      
-      // yeah, fair enough
 (function()
 {
-        GameEvents.Subscribe ("zoom", ZoomEvent); //When the "zoom" event is detected, resolve ZoomEvent
+    GameEvents.Subscribe ("zoom", ZoomEvent); //When the "zoom" event is detected, resolve ZoomEvent
 })();
-
-
 
 function ManageBuildHelperMouseEvents(eventName, arg) {
     var CONSUME_EVENT = true;

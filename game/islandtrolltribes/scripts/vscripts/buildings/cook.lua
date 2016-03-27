@@ -19,7 +19,6 @@ function AutoCookFood( event )
     local caster = event.caster
 
     if ability:GetAutoCastState() and ability:IsFullyCastable() and ability:IsActivated() then
-        print("cast", caster:GetUnitName())
         ability:CastAbility()
     end
 end
