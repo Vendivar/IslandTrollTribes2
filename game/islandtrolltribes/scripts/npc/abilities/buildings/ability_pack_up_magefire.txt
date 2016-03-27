@@ -8,12 +8,12 @@
 	"AbilityManaCost"	"0"
     "MaxLevel"              "1"
 	
-	// TODO
 	"OnSpellStart"
 	{
-		"RemoveUnit"
-		{
-			"Target"	"CASTER"
-		}
+		"RunScript"
+        {
+            "ScriptFile"    "buildings/cancel_building.lua"
+            "Function"      "RemoveBuilding"
+        }
 	}
 }

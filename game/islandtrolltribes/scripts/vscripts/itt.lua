@@ -574,6 +574,13 @@ function ITT:OnEntityKilled(keys)
     local unitName = killedUnit:GetUnitName()
     print(unitName .. " has been killed")
 
+    -- Remove dead units from selection group
+    for playerID,_ in pairs(Selection.entities) do
+        if PlayerResource:IsUnitSelected(playerID, killedUnit) then
+            PlayerResource:RemoveFromSelection(playerID, killedUnit)
+        end
+    end
+
     -- Creeps
     if string.find(unitName, "creep") and not killedUnit.no_corpse then
         local corpse = CreateUnitByName("npc_creep_corpse", killedUnit:GetAbsOrigin(), false, nil, nil, 0)
