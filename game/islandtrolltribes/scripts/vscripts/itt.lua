@@ -177,7 +177,7 @@ function ITT:InitGameMode()
     -- mix: Use the both of the above.
     GameRules.SpawnLocationType = "random"
     GameRules.SpawnRegion = "Island"
-    GameRules.BushSpawnLocationType = "random"
+    GameRules.BushSpawnLocationType = "predefined"
     GameRules.BushSpawnRegion = "Island"
 
     LoadCraftingTable()
