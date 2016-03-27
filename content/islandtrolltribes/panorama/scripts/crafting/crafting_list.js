@@ -3,7 +3,7 @@ var hero = Players.GetPlayerHeroEntityIndex( Game.GetLocalPlayerID() )
 
 // Global lazy toggle
 GameUI.CustomUIConfig().ToggleCraftingList = function() {
-    Show()
+    Root.ToggleClass( "Hidden" )
 }
 
 GameUI.CustomUIConfig().HideCraftingList = function() {

@@ -1,0 +1,24 @@
+"ability_smoke_meat"
+{
+    "BaseClass"             "ability_datadriven"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "AbilityTextureName"    "ability_building_smokemeat"
+    "MaxLevel"              "1"
+
+    "AbilitySharedWithTeammates" "1"
+    
+    "OnSpellStart"
+    {
+        "RunScript"
+        {
+            "ScriptFile"    "buildings/cook.lua"
+            "Function"      "SmokeMeat"
+        }
+        
+        "FireSound"
+        {
+            "EffectName"    "Hero_Lina.attack"
+            "Target"        "CASTER"
+        }
+    }
+}

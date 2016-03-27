@@ -1,6 +1,0 @@
-"ability_smoke_meat"
-{
-	"BaseClass"	"ability_datadriven"
-	"AbilityTextureName"	"ability_building_smokemeat"
-    "MaxLevel"              "1"
-}

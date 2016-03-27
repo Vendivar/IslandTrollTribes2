@@ -21,3 +21,18 @@ function AutoCookFood( event )
         caster:CastAbilityNoTarget(ability, -1)
     end
 end
+
+--ability_smoke_meat
+function SmokeMeat( event )
+    local building = event.caster
+
+    local cooked_meat = building:FindItemByName("item_meat_cooked")
+    if cooked_meat then
+        local charges = cooked_meat:GetCurrentCharges()
+        cooked_meat:RemoveSelf()
+
+        local smoked_meat = CreateItem("item_meat_smoked", nil, nil)
+        building:AddItem(smoked_meat)
+        smoked_meat:SetCurrentCharges(charges)
+    end
+end
