@@ -113,6 +113,8 @@ function ZoomEvent ( data )
 {
     $.Msg(data) //this is the table containing all the passed info by Lua
     var distance = data.zoom_distance
+if (zoom_distance > maxCameraDistance) zoom_distance = maxCameraDistance
+if (zoom_distance < minCameraDistance) zoom_distance = minCameraDistance
 
 		GameUI.SetCameraDistance( zoom_distance )
 
