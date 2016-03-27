@@ -7,9 +7,10 @@ function RestoreHeat(spellInfo)
     local ability = spellInfo.ability
     local radius = spellInfo.Radius
 
-    if IsValidEntity(caster) or not caster:IsAlive() then
+    if not IsValidEntity(caster) or not caster:IsAlive() then
         return
     end
+
     local targetPosition = caster:GetAbsOrigin()
     local teamNumber = caster:GetTeamNumber()
     local units = FindUnitsInRadius(teamNumber,
