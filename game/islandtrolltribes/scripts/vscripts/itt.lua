@@ -652,7 +652,7 @@ function ITT:OnEntityKilled(keys)
 
         local size = (gold / 500) + 1
         goldBag:GetContainer():SetModelScale(size)
-    else
+    elseif not killedUnit.deleted then --use the deleted flag to make the killing not roll the item drops
         --drop system
         -- Items
         for _,v in pairs(dropTable) do
