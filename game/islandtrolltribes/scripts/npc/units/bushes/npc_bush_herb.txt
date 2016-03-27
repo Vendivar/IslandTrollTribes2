@@ -4,7 +4,7 @@
 	"Model"	"models/props_nature/plant002.vmdl"
 	"SoundSet"	"0"
 	"Level"	"1"
-	"ModelScale"	"2.0"
+	"ModelScale"	"0.8"
 	"Ability1"	"ability_bush_passive"
 	"Ability2"	""
 	"Ability3"	""
