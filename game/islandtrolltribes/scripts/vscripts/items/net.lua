@@ -23,9 +23,9 @@ function NetGround( event )
         for _,enemy in pairs(units) do
             enemy:EmitSound("Hero_Meepo.Earthbind.Target")
             if enemy:IsHero() then
-                item:ApplyDataDrivenModifier(caster, enemy, "modifier_ensnare", {duration=duration_hero})
+                item:ApplyDataDrivenModifier(caster, enemy, "modifier_hunting_ensnare", {duration=duration_hero})
             else
-                item:ApplyDataDrivenModifier(caster, enemy, "modifier_ensnare", {duration=duration_animal})
+                item:ApplyDataDrivenModifier(caster, enemy, "modifier_hunting_ensnare", {duration=duration_animal})
             end
         end
 

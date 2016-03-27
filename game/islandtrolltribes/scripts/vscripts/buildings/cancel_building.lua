@@ -7,18 +7,19 @@ function CancelBuilding( event )
     print("Packing up "..buildingName.." into "..itemName)
     local position = building:GetAbsOrigin()
     
+    building.deleted = true
     building:ForceKill(true)
     building:AddNoDraw()
     building:SetAbsOrigin(Vector(position.x, position.y, position.z+3000)) --hides in case of particles (fire)
     
     local itemKit = CreateItem(itemName, nil, nil)
-    --local drop = CreateItemOnPositionSync( position, itemKit )
+    local drop = CreateItemOnPositionSync( position, itemKit )
     if not itemKit then
         print("Item Kit "..itemName.." couldn't be created, item is invalid")
         return
     end
 
-    itemKit:LaunchLoot(false, 400, 1, position+RandomVector(10))
+    itemKit:LaunchLoot(false, 400, 1, position)
 end
 
 function RemoveBuilding( event )
