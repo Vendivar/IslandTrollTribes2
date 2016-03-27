@@ -21,8 +21,8 @@ CHEAT_CODES = {
 }
 
 PLAYER_COMMANDS = {
-    ["help"] = function( ... ) ITT:SpawnStats(...) end,
-    ["zoom"] = function( ... ) ITT:SpawnStats(...) end,
+    ["help"] = function( ... ) ITT:Help(...) end,
+    ["zoom"] = function( ... ) ITT:Zoom(...) end,
 }
 
 -- A player has typed something into the chat
@@ -44,21 +44,19 @@ function ITT:OnPlayerChat(keys)
         CHEAT_CODES[command](playerID, input[2], input[3], input[4])
     
     elseif PLAYER_COMMANDS[command] then
-        PLAYER_COMMANDS[command](playerID)
+		PLAYER_COMMANDS[command](playerID, input[2])
     end
 end
 
 
 
-function ITT:Zoom( playerID )
-    print("Player ",playerID,"changing subclass")
+function ITT:Zoom( playerID, value )
+  	value = value or 1300
+    print("Player "..playerID.." zooming to "..value)
 
     -- Build an event call (same as the panorama event)
-    local event = {}
-    event.PlayerID = playerID
-    player = PlayerResource:GetPlayer(player)
-	
-	 CustomGameEventManager:Send_ServerToPlayer(player, "zoom", {distance=distance} )
+		CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(player), "zoom", {zoom_distance = value});
+
 	 
 end
 

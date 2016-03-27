@@ -106,18 +106,31 @@ function ManageCraftListMouseEvents(eventName, arg){
 }
 
 
-var cameraDistance = 1000
 var maxCameraDistance = 1500
 var minCameraDistance = 500
 
-GameUI.SetCameraDistance( cameraDistance )
+function ZoomEvent ( data )
+{
+    $.Msg(data) //this is the table containing all the passed info by Lua
+    var distance = data.zoom_distance
 
-function PlayerZoom (eventName, arg) {
-	
-	GameUI.SetCameraDistance( zoom_distance )
-	
-	GameEvents.Subscribe( "zoom", ZoomDistance );
+		GameUI.SetCameraDistance( zoom_distance )
+
+  // Do something with the zoom_distance here
 }
+
+    
+    // jquery in use on DotA2 api?
+    // just standard 'self calling' when the file loads. It's not really necessary but valve does it in their UIs
+    // it could be done without the whole function encompasing just fine.
+      
+      // yeah, fair enough
+(function()
+{
+		GameEvents.Subscribe ("zoom", ZoomEvent); //When the "zoom" event is detected, resolve ZoomEvent
+})();
+
+
 
 function ManageBuildHelperMouseEvents(eventName, arg) {
     var CONSUME_EVENT = true;
