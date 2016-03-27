@@ -43,7 +43,6 @@ function Build( event )
 
 	-- Additional checks to confirm a valid building position can be performed here
 	event:OnPreConstruction(function(vPos)
-
        	-- If not enough resources to queue, stop
 		if not PlayerHasEnoughGold( player, gold_cost ) then
        		SendErrorMessage(caster:GetPlayerOwnerID(), "#error_not_enough_gold")

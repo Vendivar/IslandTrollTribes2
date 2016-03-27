@@ -455,35 +455,30 @@
 	}
 	"ability_building_cookmeat"
 	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
-		"AbilityTextureName"	"ability_building_cookmeat"
-		"AbilityCooldown"	"1.0"
-		"AbilityManaCost"	"0"
-		"precache"
-		{
-			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_lina.vsndevts"
-		}
+	    "BaseClass"             "ability_datadriven"
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
+	    "AbilityTextureName"    "ability_building_cookmeat"
+	    "AbilityManaCost"       "0"
+	    "precache"
+	    {
+	        "soundfile" "soundevents/game_sounds_heroes/game_sounds_lina.vsndevts"
+	    }
 	
-		"AbilitySharedWithTeammates" "1"
-		
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"buildings/cook.lua"
-				"Function"      "CookFood"
-				"Range"         "%radius"
-			}
-				"FireSound"
-			{
-				"EffectName"	"Hero_Lina.attack"
-				"Target"		"CASTER"
-			}
-		}
+	    "AbilitySharedWithTeammates" "1"
+	    
+	    "OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"    "buildings/cook.lua"
+	            "Function"      "CookFood"
+	            "Range"         "%radius"
+	        }
+	    }
+	
 	    "Modifiers"
 	    {
-	    "modifier_cookmeatauto"
+	        "modifier_smokemeatauto"
 	        {
 	            "IsHidden"      "1"
 	            "Passive"       "1"
@@ -496,27 +491,25 @@
 	                }
 	            }
 	
-	            "ThinkInterval"  "5.0"
+	            "ThinkInterval"  "1.0"
 	            "OnIntervalThink"
 	            {
 	                "RunScript"
 	                {
-	                    "ScriptFile"	"buildings/cook.lua"
+	                    "ScriptFile"    "buildings/cook.lua"
 	                    "Function"      "AutoCookFood"
 	                }
 	            }
 	        }
 	    }
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"radius"	"600"
-			}
-	
-		}
-	
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"  "FIELD_INTEGER"
+	            "radius"    "600"
+	        }
+	    }
 	}
 	"ability_building_disable"
 	{
@@ -1455,7 +1448,7 @@
 	"ability_smoke_meat"
 	{
 	    "BaseClass"             "ability_datadriven"
-	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
 	    "AbilityTextureName"    "ability_building_smokemeat"
 	    "MaxLevel"              "1"
 	
@@ -1468,11 +1461,32 @@
 	            "ScriptFile"    "buildings/cook.lua"
 	            "Function"      "SmokeMeat"
 	        }
-	        
-	        "FireSound"
+	    }
+	
+	    "Modifiers"
+	    {
+	        "modifier_cookmeatauto"
 	        {
-	            "EffectName"    "Hero_Lina.attack"
-	            "Target"        "CASTER"
+	            "IsHidden"      "1"
+	            "Passive"       "1"
+	            "OnCreated"
+	            {
+	                "RunScript"
+	                {
+	                    "ScriptFile"    "mechanics/autocast.lua"
+	                    "Function"      "AutocastOn"
+	                }
+	            }
+	
+	            "ThinkInterval"  "1.0"
+	            "OnIntervalThink"
+	            {
+	                "RunScript"
+	                {
+	                    "ScriptFile"    "buildings/cook.lua"
+	                    "Function"      "AutoCookFood"
+	                }
+	            }
 	        }
 	    }
 	}

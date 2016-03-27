@@ -1,10 +1,11 @@
 function CookFood(keys)
-    local caster = keys.caster
+    local building = keys.caster
     local range = keys.Range
 
-    for _,item in pairs( Entities:FindAllByClassnameWithin("dota_item_drop", caster:GetOrigin(), range)) do
+    for _,item in pairs( Entities:FindAllByClassnameWithin("dota_item_drop", building:GetAbsOrigin(), range)) do
         local containedItem = item:GetContainedItem()
         if containedItem:GetAbilityName() == "item_meat_raw" then
+            building:EmitSound("Hero_Lina.attack")
             local newItem = CreateItem("item_meat_cooked", nil, nil)
             CreateItemOnPositionSync(item:GetAbsOrigin(), newItem)
             UTIL_RemoveImmediate(containedItem)
@@ -18,7 +19,8 @@ function AutoCookFood( event )
     local caster = event.caster
 
     if ability:GetAutoCastState() and ability:IsFullyCastable() and ability:IsActivated() then
-        caster:CastAbilityNoTarget(ability, -1)
+        print("cast", caster:GetUnitName())
+        ability:CastAbility()
     end
 end
 
@@ -28,6 +30,7 @@ function SmokeMeat( event )
 
     local cooked_meat = building:FindItemByName("item_meat_cooked")
     if cooked_meat then
+        building:EmitSound("Hero_Lina.attack")
         local charges = cooked_meat:GetCurrentCharges()
         cooked_meat:RemoveSelf()
 

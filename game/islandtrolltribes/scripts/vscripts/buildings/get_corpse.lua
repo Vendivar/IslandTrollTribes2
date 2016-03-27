@@ -48,12 +48,8 @@ end
 function FillSlots( event )
     local unit = event.caster
 
-    local lockN = 5
-    for n=0,4 do
-        unit:AddItem(CreateItem("item_slot_locked", nil, nil))
-        unit:SwapItems(0, lockN)
-        lockN = lockN-1
-    end
+    local lockN = GameRules.UnitKV[unit:GetUnitName()]["FillSlots"] or 5
+    ITT:CreateLockedSlotsForUnits(unit, lockN)
 end
 
 function GetMeatRawStack( unit )

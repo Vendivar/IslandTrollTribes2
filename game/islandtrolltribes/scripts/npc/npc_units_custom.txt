@@ -650,6 +650,8 @@
 		"Ability2"	"ability_smoke_meat"
 		"Ability10"	"ability_building"
 		"Ability11"	"ability_cancel_building"
+	
+		"FillSlots"	"3"
 		
 		"ArmorPhysical"	"5"
 		"MagicalResistance"	"0"
