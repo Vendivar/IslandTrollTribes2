@@ -16,9 +16,29 @@ Buildings['npc_building_workshop'] = 1;
 function Crafting_OnUpdateSelectedUnits() {
     var selectedEntities = Players.GetSelectedEntities( iPlayerID );
     var mainSelected = selectedEntities[0]
-    if (IsUnfinishedBuilding(mainSelected) || IsKilledBuilding(mainSelected) ) { //If building is unfinished or killed, don't show the crafting menu.
+
+    //If building is unfinished or killed, don't show the crafting menu.
+    if (IsUnfinishedBuilding(mainSelected) || IsKilledBuilding(mainSelected) ) {
         return
     }
+
+    //If building isn't owned by anyone on the team, don't show the crafting menu
+    $.Msg("Crafting_OnUpdateSelectedUnits")
+    var teamID = Game.GetPlayerInfo(iPlayerID).player_team_id
+    var teamMembers = Game.GetPlayerIDsOnTeam(teamID)
+    var controllable = false
+    for (var i in teamMembers)
+    {
+        if (Entities.IsControllableByPlayer(mainSelected, teamMembers[i]))
+        {
+            controllable = true
+            break
+        }
+    }
+    if (!controllable)
+        return
+
+    $.Msg("Building is owned by your team, continue showing the crafting UI")
     var name = Entities.GetUnitName(mainSelected)
 
     if (Buildings[name])
