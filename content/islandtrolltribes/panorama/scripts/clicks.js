@@ -112,6 +112,12 @@ var minCameraDistance = 500
 
 GameUI.SetCameraDistance( cameraDistance )
 
+function PlayerZoom (eventName, arg) {
+	
+	
+	GameEvents.Subscribe( "zoom", ZoomDistance );
+}
+
 function ManageBuildHelperMouseEvents(eventName, arg) {
     var CONSUME_EVENT = true;
     var CONTINUE_PROCESSING_EVENT = false;
@@ -147,13 +153,13 @@ function ManageBuildHelperMouseEvents(eventName, arg) {
 
     }
 	
-	    if ( eventName === "wheeled" )
-    {
-        arg == 1 ? cameraDistance -= 10 : cameraDistance += 10;
-		if (cameraDistance > maxCameraDistance) cameraDistance = maxCameraDistance
-        if (cameraDistance < minCameraDistance) cameraDistance = minCameraDistance
-        GameUI.SetCameraDistance( cameraDistance )
-        return CONSUME_EVENT;  
+//	    if ( eventName === "wheeled" )
+//    {
+//        arg == 1 ? cameraDistance -= 10 : cameraDistance += 10;
+//		if (cameraDistance > maxCameraDistance) cameraDistance = maxCameraDistance
+//        if (cameraDistance < minCameraDistance) cameraDistance = minCameraDistance
+//       GameUI.SetCameraDistance( cameraDistance )
+//        return CONSUME_EVENT;  
     }
 
     return CONTINUE_PROCESSING_EVENT;

@@ -20,7 +20,10 @@ CHEAT_CODES = {
     ["spawnstats"] = function( ... ) ITT:SpawnStats(...) end,
 }
 
-PLAYER_COMMANDS = {}
+PLAYER_COMMANDS = {
+    ["help"] = function( ... ) ITT:SpawnStats(...) end,
+    ["zoom"] = function( ... ) ITT:SpawnStats(...) end,
+}
 
 -- A player has typed something into the chat
 function ITT:OnPlayerChat(keys)
@@ -43,6 +46,20 @@ function ITT:OnPlayerChat(keys)
     elseif PLAYER_COMMANDS[command] then
         PLAYER_COMMANDS[command](playerID)
     end
+end
+
+
+
+function ITT:Zoom( playerID )
+    print("Player ",playerID,"changing subclass")
+
+    -- Build an event call (same as the panorama event)
+    local event = {}
+    event.PlayerID = playerID
+    player = PlayerResource:GetPlayer(player)
+	
+	 CustomGameEventManager:Send_ServerToPlayer(player, "zoom", {distance=distance} )
+	 
 end
 
 function ITT:ChangeSubclass( playerID, subclassID )
