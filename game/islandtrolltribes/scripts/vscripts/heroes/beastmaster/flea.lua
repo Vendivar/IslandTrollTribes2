@@ -15,7 +15,7 @@ function FleaAttack(keys)
         
         if #units > 0 then
             for k,v in pairs(units) do
-                if not IsFlyingUnit(v) then
+                -- if not IsFlyingUnit(v) then
             
                     -- select random target
                     local target = units[RandomInt(1,#units)]
@@ -39,7 +39,6 @@ function FleaAttack(keys)
                     ability:StartCooldown(cooldown)
 
                     break
-                end
             end
         end
     end
