@@ -114,6 +114,7 @@ GameUI.SetCameraDistance( cameraDistance )
 
 function PlayerZoom (eventName, arg) {
 	
+	GameUI.SetCameraDistance( zoom_distance )
 	
 	GameEvents.Subscribe( "zoom", ZoomDistance );
 }
