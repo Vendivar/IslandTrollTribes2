@@ -1,0 +1,55 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_nMaxParticles = 0
+	m_Children =
+	[
+		{
+			m_ChildRef = resource:"particles/econ/items/shadow_shaman/shadow_shaman_sheepstick/shadowshaman_stick_sheepstick_fire_embers.vpcf"
+			m_bDisableChild = true
+		},
+		{
+			m_ChildRef = resource:"particles/econ/items/shadow_shaman/shadow_shaman_sheepstick/shadowshaman_stick_sheepstick_fire_ash.vpcf"
+			m_bDisableChild = true
+		},
+		{
+			m_ChildRef = resource:"particles/econ/items/shadow_shaman/shadow_shaman_sheepstick/shadowshaman_stick_sheepstick_fire_smoke_b.vpcf"
+			m_bDisableChild = true
+		},
+		{
+			m_ChildRef = resource:"particles/econ/items/shadow_shaman/shadow_shaman_sheepstick/shadowshaman_stick_sheepstick_fire_smoke.vpcf"
+			m_bDisableChild = true
+		},
+		{
+			m_ChildRef = resource:"particles/econ/items/shadow_shaman/shadow_shaman_sheepstick/shadowshaman_stick_sheepstick_fire_flame.vpcf"
+			m_bDisableChild = true
+		},
+		{
+			m_ChildRef = resource:"particles/econ/items/shadow_shaman/shadow_shaman_sheepstick/shadowshaman_stick_sheepstick_c.vpcf"
+			m_bDisableChild = true
+		},
+		{
+			m_ChildRef = resource:"particles/econ/items/shadow_shaman/shadow_shaman_sheepstick/shadowshaman_stick_sheepstick_b.vpcf"
+			m_bDisableChild = true
+		},
+		{
+			m_ChildRef = resource:"particles/econ/items/shadow_shaman/shadow_shaman_sheepstick/shadowshaman_stick_sheepstick_fire_light.vpcf"
+			m_bDisableChild = true
+		},
+		{
+			m_ChildRef = resource:"particles/econ/items/shadow_shaman/shadow_shaman_sheepstick/shadowshaman_stick_sheepstick_fire_smoke_c.vpcf"
+			m_bDisableChild = true
+		},
+		{
+			m_flDelay = 0.500000
+			m_ChildRef = resource:"particles/econ/items/shadow_shaman/shadow_shaman_sheepstick/shadowshaman_stick_sheepstick_fire_smoke_c.vpcf"
+			m_bDisableChild = true
+		},
+		{
+			m_flDelay = 1.200000
+			m_ChildRef = resource:"particles/econ/items/shadow_shaman/shadow_shaman_sheepstick/shadowshaman_stick_sheepstick_fire_smoke_c.vpcf"
+			m_bDisableChild = true
+		},
+	]
+}
