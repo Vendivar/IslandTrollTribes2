@@ -3,17 +3,17 @@
 // Handle Right Button events
 function OnRightButtonPressed()
 {
-	//$.Msg("OnRightButtonPressed")
+    //$.Msg("OnRightButtonPressed")
 
-	var iPlayerID = Players.GetLocalPlayer();
-	var mainSelected = Players.GetLocalPlayerPortraitUnit(); 
+    var iPlayerID = Players.GetLocalPlayer();
+    var mainSelected = Players.GetLocalPlayerPortraitUnit(); 
     var hero = Players.GetPlayerHeroEntityIndex( iPlayerID );
-	var mainSelectedName = Entities.GetUnitName( mainSelected );
-	var cursor = GameUI.GetCursorPosition();
-	var mouseEntities = GameUI.FindScreenEntities( cursor );
-	//mouseEntities = mouseEntities.filter( function(e) { return e.entityIndex != mainSelected; } )
-	
-	var pressedShift = GameUI.IsShiftDown();
+    var mainSelectedName = Entities.GetUnitName( mainSelected );
+    var cursor = GameUI.GetCursorPosition();
+    var mouseEntities = GameUI.FindScreenEntities( cursor );
+    //mouseEntities = mouseEntities.filter( function(e) { return e.entityIndex != mainSelected; } )
+    
+    var pressedShift = GameUI.IsShiftDown();
 
     // Builder Right Click
     if ( IsBuilder( mainSelected ) )
@@ -45,16 +45,16 @@ function OnRightButtonPressed()
             GameEvents.SendCustomGameEventToServer( "player_rest_building", { entityIndex : entityIndex } );
             return false
         }*/
-		else if (IsTeleportBeacon(entityIndex) && IsTeamControlled(entityIndex))
-		{
-			$.Msg("I think we lcicked on a tele beacon");
-			// If we rightlicked a teleport beacon... 
-			GameEvents.SendCustomGameEventToServer("player_teleport_beacon", { entityIndex: entityIndex });
-			return true;
-		}
+        else if (IsTeleportBeacon(entityIndex) && IsTeamControlled(entityIndex))
+        {
+            $.Msg("I think we lcicked on a tele beacon");
+            // If we rightlicked a teleport beacon... 
+            GameEvents.SendCustomGameEventToServer("player_teleport_beacon", { entityIndex: entityIndex });
+            return true;
+        }
     }
 
-	return false;
+    return false;
 }
 
 function IsBush( entityIndex ){
@@ -89,7 +89,7 @@ function IsBuilder( entIndex ) {
 
 function IsTeleportBeacon(entIndex)
 {
-	return (Entities.GetUnitName(entIndex) == "npc_building_teleport_beacon")
+    return (Entities.GetUnitName(entIndex) == "npc_building_teleport_beacon")
 }
 
 function ManageCraftListMouseEvents(eventName, arg){
@@ -113,15 +113,14 @@ function ZoomEvent ( data )
 {
     $.Msg(data) //this is the table containing all the passed info by Lua
     var distance = data.zoom_distance
-if (zoom_distance > maxCameraDistance) zoom_distance = maxCameraDistance
-if (zoom_distance < minCameraDistance) zoom_distance = minCameraDistance
+    if (zoom_distance > maxCameraDistance) zoom_distance = maxCameraDistance
+    if (zoom_distance < minCameraDistance) zoom_distance = minCameraDistance
 
-		GameUI.SetCameraDistance( zoom_distance )
+        GameUI.SetCameraDistance( zoom_distance )
 
   // Do something with the zoom_distance here
 }
-
-    
+   
     // jquery in use on DotA2 api?
     // just standard 'self calling' when the file loads. It's not really necessary but valve does it in their UIs
     // it could be done without the whole function encompasing just fine.
@@ -129,7 +128,7 @@ if (zoom_distance < minCameraDistance) zoom_distance = minCameraDistance
       // yeah, fair enough
 (function()
 {
-		GameEvents.Subscribe ("zoom", ZoomEvent); //When the "zoom" event is detected, resolve ZoomEvent
+        GameEvents.Subscribe ("zoom", ZoomEvent); //When the "zoom" event is detected, resolve ZoomEvent
 })();
 
 
@@ -168,15 +167,15 @@ function ManageBuildHelperMouseEvents(eventName, arg) {
             return OnRightButtonPressed();
 
     }
-	
-//	    if ( eventName === "wheeled" )
+    
+//      if ( eventName === "wheeled" )
 //    {
 //        arg == 1 ? cameraDistance -= 10 : cameraDistance += 10;
-//		if (cameraDistance > maxCameraDistance) cameraDistance = maxCameraDistance
+//      if (cameraDistance > maxCameraDistance) cameraDistance = maxCameraDistance
 //        if (cameraDistance < minCameraDistance) cameraDistance = minCameraDistance
 //       GameUI.SetCameraDistance( cameraDistance )
 //        return CONSUME_EVENT;  
-    }
+//    }
 
     return CONTINUE_PROCESSING_EVENT;
 }
