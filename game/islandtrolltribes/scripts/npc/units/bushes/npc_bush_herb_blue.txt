@@ -1,10 +1,10 @@
 "npc_bush_herb_blue"
 {
 	"BaseClass"	"npc_dota_creature"
-	"Model"	"models/props_nature/fern003.vmdl"
+	"Model"	"models/heroes/enchantress/enchantress_flower.vmdl"
 	"SoundSet"	"0"
 	"Level"	"1"
-	"ModelScale"	"1.5"
+	"ModelScale"	"1.0"
 	"Ability1"	"ability_bush_passive"
 	"Ability2"	""
 	"Ability3"	""
