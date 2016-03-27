@@ -10,7 +10,7 @@
         "ModelScale"    "0.4"
     }
     
-    "ItemInitialCharges"    "0"
+    "ItemInitialCharges"    "3"
     "ItemDroppable"         "0"
     "ItemSellable"          "0"
     "ItemPurchasable"       "0"
