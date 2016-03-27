@@ -34,9 +34,22 @@ end
 
 function SpawnBushes(bushItem, regionType, locationType)
     if regionType == "World"  then
-        SpawnBushInWorld(bushItem, locationType)
-    else
-        SpawnBushOnEachIsland(bushItem, locationType)
+        SpawnBushesCommon(bushItem, locationType, regionType, WORLD)
+    elseif regionType == "Island" then
+        SpawnBushesCommon(bushItem, locationType,regionType, REGIONS)
+    end
+end
+
+function SpawnBushesCommon(bushItem, locationType, regionType, regions)
+    local bushMaxTable = GameRules.BushInfo["BushSpawnInfo"]['Max'][regionType]
+    for i,region in pairs(regions)  do
+        for count=1,bushMaxTable[bushItem] do
+            local spawnLocation = GetBushSpawnLocation(bushItem, region, locationType)
+            if spawnLocation then
+                CreateBushContainer(bushItem, spawnLocation)
+            end
+            Spawns.bushCount[regionType][i][bushItem] = Spawns.bushCount[regionType][i][bushItem] + 1
+        end
     end
 end
 
@@ -52,51 +65,22 @@ function GetPredefinedBushLocations(bushSpawnerTable)
             local cutoff = string.find(spawnerName,"s")
             local bushName = "npc_".. string.gsub(string.sub(spawnerName, cutoff), "spawner_npc_", "")
             local itemName = "item_"..bushName
-            print("bushname " .. bushName)
+--            print("bushname " .. bushName)
             table.insert(bushSpawners[bushName],spawner)
         end
     end
     return bushSpawners
 end
 
-function SpawnBushOnEachIsland(bushItem, locationType)
-    local regionType = "Island"
-    local bushMaxTable = GameRules.BushInfo["BushSpawnInfo"]['Max'][regionType]
-    for i,region in pairs(REGIONS)  do
-        for count=1,bushMaxTable[bushItem] do
-            local spawnLocation = GetBushSpawnLocation(bushItem, region, locationType)
-            if spawnLocation then
-                CreateBushContainer(bushItem, spawnLocation)
-            end
-            Spawns.bushCount[regionType][i][bushItem] = Spawns.bushCount[regionType][i][bushItem] + 1
-        end
-    end
-end
-
-function SpawnBushInWorld(bushItem, locationType)
-    local regionType = "World"
-    local bushMaxTable = GameRules.BushInfo["BushSpawnInfo"]['Max'][regionType]
-    local world =  {-8000, 8000, 8000, -8000, 1 }
-    if (Spawns.bushCount[regionType][1][bushItem] < bushMaxTable[bushItem]) then
-        local spawnLocation = GetBushSpawnLocation(bushItem, world, locationType)
-        if spawnLocation then
-            CreateBushContainer(bushItem, spawnLocation)
-        end
-        Spawns.bushCount[regionType][1][bushItem] = Spawns.bushCount[regionType][1][bushItem] + 1
-    end
-end
-
-
-
 function GetBushSpawnLocation(bushItem, region, locationType)
     local location
     if locationType == "random" then
-        location = GetRandomBushLocation(region)
+        location = GetRandomBushLocation(region, bushItem)
     elseif locationType == "predefined" then
         location = GetPredefinedBushLocation(region, bushItem)
     elseif locationType == "mix" then
         if RollPercentage(50) then
-            location = GetRandomBushLocation(region)
+            location = GetRandomBushLocation(region, bushItem)
         else
             location = GetPredefinedBushLocation(region,  bushItem)
         end
@@ -117,16 +101,30 @@ end
 function GetPredefinedBushLocationsOnRegion(region, bushItem)
     local locations  = {}
     for _,predefinedLocation in pairs(GameRules.PredefinedBushLocations[bushItem]) do
-        if IsVectorInBounds(predefinedLocation:GetAbsOrigin(), region[1], region[2], region[4], region[3]) then
-            table.insert(locations,predefinedLocation:GetAbsOrigin() + RandomVector(RandomInt(20,100)))
+        local location = predefinedLocation:GetAbsOrigin()
+        if IsVectorInBounds(location, region[1], region[2], region[4], region[3]) and not IsNearABush(location, bushItem) then
+            table.insert(locations, location)
         end
     end
     return locations
 end
 
+function IsNearABush(location, bushItem)
+    local nearbyBushes = Entities:FindAllByClassnameWithin("npc_dota_creature", location, 200)
+    for _,bushName in pairs(nearbyBushes) do
+        if bushName:GetUnitName() == bushItem then
+            return true
+        end
+    end
+    return false
+end
+
 -- Creates a nutral on a random location
-function GetRandomBushLocation(region)
+function GetRandomBushLocation(region, bushItem)
     local location = GetRandomVectorGivenBounds(region[1], region[2], region[3], region[4])
+    while IsNearABush(location, bushItem) do
+        location = GetRandomVectorGivenBounds(region[1], region[2], region[3], region[4])
+    end
     return location
 end
 
@@ -134,7 +132,7 @@ function ITT:OnBushThink()
     print("--Creating Items on Bushes--")
     
     local bushes = GameRules.Bushes
-    
+
     for k,bush in pairs(bushes) do
 --        print("Bush name.."..bush:GetContainedItem():GetAbilityName())
         if bush.RngWeight == nil then --rng weight maks it so there's a chance a bush won't spawn but you won't get rng fucked
@@ -143,7 +141,7 @@ function ITT:OnBushThink()
 
         local rand = RandomInt(-4,4) --randomize between -4 and +4, since the min is 0 with the best rng on the minimum number you will still not get a spawn
         local items = bush.container:GetAllItems()
-        if rand + bush.RngWeight >= 5 and #items <= 6 then 
+        if rand + bush.RngWeight >= 5 and #items <= 6 then
             bush.RngWeight = bush.RngWeight - 1 --if spawn succeeds reduce the odds of the next spawn
 
             local bush_name = bush:GetUnitName()
@@ -154,7 +152,7 @@ function ITT:OnBushThink()
 
             --GiveItemStack(bush, bush_random_item)
             bush.container:AddItem(CreateItem(bush_random_item, nil, nil)) --Missing stack handling
-            print("adding " .. bush_random_item .. " to ".. bush_name)
+--            print("adding " .. bush_random_item .. " to ".. bush_name)
 
         else
             bush.RngWeight = bush.RngWeight + 1 --if spawn fails increase odds for next run

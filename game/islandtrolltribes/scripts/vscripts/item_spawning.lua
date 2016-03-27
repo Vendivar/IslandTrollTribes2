@@ -44,6 +44,9 @@ REGIONS[1]                  = TOPLEFT
 REGIONS[2]                  = TOPRIGHT
 REGIONS[3]                  = BOTTOMRIGHT
 REGIONS[4]                  = BOTTOMLEFT
+-- Boundaries of the world
+WORLD = {}
+WORLD[1] = {-8000, 8000, 8000, -8000, 1}
 
 -- Handles one spawn wave
 function ITT:OnItemThink()
