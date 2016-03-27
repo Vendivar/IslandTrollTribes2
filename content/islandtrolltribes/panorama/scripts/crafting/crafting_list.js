@@ -3,7 +3,7 @@ var hero = Players.GetPlayerHeroEntityIndex( Game.GetLocalPlayerID() )
 
 // Global lazy toggle
 GameUI.CustomUIConfig().ToggleCraftingList = function() {
-    Root.visible = !Root.visible
+    Show()
 }
 
 GameUI.CustomUIConfig().HideCraftingList = function() {
@@ -27,7 +27,6 @@ function CreateCraftingList()
     CreateByName(values, "npc_building_workshop", true) 
 }
 
-
 function CreateByName(values, name, bFold) {
     
     for (var i in values)
@@ -37,13 +36,18 @@ function CreateByName(values, name, bFold) {
             CreateCraftingSection(name, crafting_table.value, Root, bFold, hero)
     }
 }
+
 function Hide() {
-    Root.visible = false
+    Root.AddClass( "Hidden" )
+}
+
+function Show() {
+    Root.RemoveClass( "Hidden" )
 }
 
 (function () {
     CreateCraftingList()
-    $.Schedule(0.1, Hide)
+    Hide()
     GameEvents.Subscribe( "dota_player_update_hero_selection", Hide);
     GameEvents.Subscribe( "dota_player_update_query_unit", Hide);
     $.Msg("Done creating crafting list")

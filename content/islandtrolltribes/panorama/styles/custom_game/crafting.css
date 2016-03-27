@@ -14,6 +14,12 @@
     padding: 10px;
 }
 
+.Hidden
+{
+    opacity: 0;
+    visibility: collapse;
+}
+
 .CraftingBuildingRoot
 {
     overflow: clip scroll;
