@@ -50,9 +50,10 @@ function GetPredefinedBushLocations(bushSpawnerTable)
         local spawnerName = spawner:GetName()
         if string.find(spawnerName, "_bush_") then
             local cutoff = string.find(spawnerName,"s")
-            local bushName = string.gsub(string.sub(spawnerName, cutoff), "spawner_npc_", "")
+            local bushName = "npc_".. string.gsub(string.sub(spawnerName, cutoff), "spawner_npc_", "")
             local itemName = "item_"..bushName
-            table.insert(bushSpawners[itemName],spawner)
+            print("bushname " .. bushName)
+            table.insert(bushSpawners[bushName],spawner)
         end
     end
     return bushSpawners
@@ -130,7 +131,7 @@ function GetRandomBushLocation(region)
 end
 
 function ITT:OnBushThink()
-    --print("--Creating Items on Bushes--")
+    print("--Creating Items on Bushes--")
     
     local bushes = GameRules.Bushes
     
@@ -145,7 +146,7 @@ function ITT:OnBushThink()
         if rand + bush.RngWeight >= 5 and #items <= 6 then 
             bush.RngWeight = bush.RngWeight - 1 --if spawn succeeds reduce the odds of the next spawn
 
-            local bush_name = string.gsub(bush:GetContainedItem():GetAbilityName(), "item_", "")
+            local bush_name = bush:GetUnitName()
             local bushTable = GameRules.BushInfo["Bushes"][bush_name]
             local possibleChoices = TableCount(bushTable)
             local randomN = tostring(RandomInt(1, possibleChoices))
@@ -153,6 +154,7 @@ function ITT:OnBushThink()
 
             --GiveItemStack(bush, bush_random_item)
             bush.container:AddItem(CreateItem(bush_random_item, nil, nil)) --Missing stack handling
+            print("adding " .. bush_random_item .. " to ".. bush_name)
 
         else
             bush.RngWeight = bush.RngWeight + 1 --if spawn fails increase odds for next run
@@ -163,8 +165,11 @@ function ITT:OnBushThink()
 end
 
 function CreateBushContainer( name, position )
-    local newItem = CreateItem(name, nil, nil)
-    local bush = CreateItemOnPositionSync(position, newItem)
+    --local newItem = CreateItem(name, nil, nil)
+    --local bush = CreateItemOnPositionSync(position, newItem)
+    print("spawning bush " .. name)
+    local bush = CreateUnitByName(name, position, true, nil, nil, DOTA_TEAM_NEUTRALS)
+    --( szUnitName, vLocation, bFindClearSpace, hNPCOwner, hUnitOwner, iTeamNumber )
 
     --Particle refused to show through fog for an hour so give vision instead
     for _,v in pairs(VALID_TEAMS) do AddFOWViewer ( v, position, 100, 0.1, false) end
@@ -174,7 +179,7 @@ function CreateBushContainer( name, position )
     local cont = Containers:CreateContainer({
         layout =      {3,3},
         --skins =       {"Hourglass"},
-        headerText =  newItem:GetAbilityName(),
+        headerText =  name,
         buttons =     {"Grab All"},
         position =    "entity", --"mouse",--"900px 200px 0px",
         draggable = false,
