@@ -176,7 +176,7 @@ function ManageBuildHelperMouseEvents(eventName, arg) {
 //        if (cameraDistance < minCameraDistance) cameraDistance = minCameraDistance
 //       GameUI.SetCameraDistance( cameraDistance )
 //        return CONSUME_EVENT;  
-    }
+//    }
 
     return CONTINUE_PROCESSING_EVENT;
 }
