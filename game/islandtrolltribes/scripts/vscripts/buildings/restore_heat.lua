@@ -7,9 +7,8 @@ function RestoreHeat(spellInfo)
     local ability = spellInfo.ability
     local radius = spellInfo.Radius
 
---    print("Entity instance id: "..caster:GetEntityIndex()..",entity class name : "..caster:GetUnitName())
-    if (caster:IsAlive() == false ) then
-        return nil
+    if IsValidEntity(caster) or not caster:IsAlive() then
+        return
     end
     local targetPosition = caster:GetAbsOrigin()
     local teamNumber = caster:GetTeamNumber()
@@ -22,8 +21,8 @@ function RestoreHeat(spellInfo)
         DOTA_UNIT_TARGET_FLAG_NONE,
         FIND_ANY_ORDER,
         false)
+    
     for _,unit in pairs(units) do
---        print("Found the unit: "..unit:GetName())
         if ability:IsActivated() then
             ability:ApplyDataDrivenModifier( caster, unit, "modifier_fire_heat", {duration=1.0})
         end

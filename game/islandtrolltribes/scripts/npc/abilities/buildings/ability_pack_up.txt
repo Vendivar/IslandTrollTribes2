@@ -11,22 +11,13 @@
     {
         "RunScript"
         {
-            "ScriptFile"    "buildings/pack_up.lua"
-            "Function"      "PackUp"
+            "ScriptFile"    "buildings/cancel_building.lua"
+            "Function"      "CancelBuilding"
         }
         "FireSound"
         {
             "EffectName"    "DOTA_Item.SmokeOfDeceit.Activate"
             "Target"        "CASTER"
         }
-		"RemoveAbility"
-		{
-			"Target"			"CASTER"
-			"AbilityName"		"ability_pack_up"
-		}
     }
-	"OnChannelInterrupted"
-	{
-	
-	}
 }
