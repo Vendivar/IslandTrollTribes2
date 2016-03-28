@@ -4,7 +4,7 @@
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"river_root"
-	"Model"	"models/heroes/treant_protector/treant_ground_root.vmdl"
+	"Model"	"models/river_root.vmdl"
 	"Effect"	""
 	"ItemCost"	"2"
 	"ItemShopTags"	"consumable"
@@ -21,26 +21,6 @@
 	"UIPickupSound"	"Item.PickUpGemShop"
 	"UIDropSound"	"Item.DropGemShop"
 	"WorldDropSound"	"Item.DropGemWorld"
-	"Custom"
-	{
-		"ModelOffsets"
-		{
-			"Origin"
-			{
-				"x"	"-15"
-				"y"	"-15"
-				"z"	"-31"
-			}
 
-			"Angles"
-			{
-				"x"	"-433"
-				"y"	"-433"
-				"z"	"0"
-			}
-
-		}
-
-	}
 
 }
