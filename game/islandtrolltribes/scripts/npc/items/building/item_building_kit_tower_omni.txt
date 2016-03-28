@@ -4,7 +4,7 @@
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"building_kit_tower_omni"
-	"Model"	"models/props_debris/battle_debris2.vmdl"
+	"Model"	"models/props_debris/creep_camp001j.vmdl"
 	"Effect"	""
 	"ItemCost"	"18"
 	"ItemShopTags"	"consumable"
@@ -23,7 +23,7 @@
 	"WorldDropSound"	"Item.DropGemWorld"
 		    "Custom"
     {
-        "ModelScale"    "0.65"
+        "ModelScale"    "0.55"
     }
 
 	// BuildingHelper info

@@ -4,7 +4,7 @@
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"building_kit_trap_ensnare"
-	"Model"	"models/props_debris/battle_debris2.vmdl"
+	"Model"	"models/props_debris/creep_camp001j.vmdl"
 	"Effect"	"particles/units/heroes/hero_templar_assassin/templar_assassin_trap_core_arc.vpcf"
 	"ItemCost"	"10"
 	"ItemShopTags"	"consumable"
@@ -28,7 +28,7 @@
 	
     "Custom"
     {
-        "ModelScale"    "0.65"
+        "ModelScale"    "0.55"
     }
 
 	// BuildingHelper info

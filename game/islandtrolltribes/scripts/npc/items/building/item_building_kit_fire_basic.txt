@@ -4,7 +4,7 @@
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"item_dagon_5"
-	"Model"	"models/props_debris/battle_debris2.vmdl"
+	"Model"	"models/props_debris/creep_camp001j.vmdl"
 	"Effect"	""
 	"ItemCost"	"5"
 	"ItemShopTags"	"consumable"
@@ -39,7 +39,7 @@
 	
     "Custom"
     {
-        "ModelScale"    "0.65"
+        "ModelScale"    "0.55"
     }
 
     "AbilitySpecial"
