@@ -14,7 +14,7 @@ function PickupItem( unit, drop )
     -- Raw meat uses modifier stacks instead of inventory slots
     if itemName == "item_meat_raw" and not IsCustomBuilding(unit) then
         local meatStacks = unit:GetModifierStackCount("modifier_meat_passive", nil)
-        if meatStacks < 10 then
+        if meatStacks < 8 then
             unit:SetModifierStackCount("modifier_meat_passive", nil, meatStacks + 1)
             UTIL_Remove(drop)
             return true
