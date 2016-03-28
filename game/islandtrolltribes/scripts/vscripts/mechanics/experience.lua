@@ -1,5 +1,5 @@
 XP_RANGE = 1200
-XP_MULTIPLIER = 1
+XP_MULTIPLIER = 2.5
 XP_BOUNTY_TABLE = {
     25, --1
     40, --2 +15
@@ -12,7 +12,7 @@ XP_BOUNTY_TABLE = {
     285,--9 +50
     340--10 +55
 }
-XP_BOUNTY_TABLE[0] = 25
+XP_BOUNTY_TABLE[0] = 10
 
 function CDOTA_BaseNPC_Creature:SplitExperienceBounty(teamID)
     local killed = self
