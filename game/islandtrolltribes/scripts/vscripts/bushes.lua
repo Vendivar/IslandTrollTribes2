@@ -1,4 +1,4 @@
-GAME_BUSH_TICK_TIME = 30
+GAME_BUSH_TICK_TIME = 300
 
 function ITT:SpawnBushes()
     Containers:SetDisableItemLimit(true)

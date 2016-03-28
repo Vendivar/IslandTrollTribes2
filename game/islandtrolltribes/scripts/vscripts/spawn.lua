@@ -1,4 +1,4 @@
-GAME_CREATURE_TICK_TIME     = 20   -- Time for each creature spawn
+GAME_CREATURE_TICK_TIME     = 40   -- Time for each creature spawn
 MAXIMUM_PASSIVE_NEUTRALS    = 300
 MAXIMUM_AGGRESSIVE_NEUTRALS = 20
 
