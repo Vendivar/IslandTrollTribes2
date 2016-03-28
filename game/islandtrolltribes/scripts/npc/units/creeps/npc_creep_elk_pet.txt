@@ -7,13 +7,13 @@
 	"Level"	"7"
 
 	"Ability1"	""
-
+	
 	"ArmorPhysical"	"0"
 	"AttackCapabilities"	"DOTA_UNIT_CAP_MELEE_ATTACK"
 	"AttackDamageMin"	"9"
 	"AttackDamageMax"	"11"
-	"AttackRate"	"1.0"
-	"AttackAnimationPoint"	"1.0"
+	"AttackRate"	"1.25"
+	"AttackAnimationPoint"	"0.43"
 	"AttackAcquisitionRange"	"200"
 	"AttackRange"	"150"
 	"ProjectileModel"	""
@@ -26,7 +26,7 @@
 	"AttributeBaseAgility"	"0"
 	"AttributeAgilityGain"	"0"
 	"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
-	"MovementSpeed"	"350"
+	"MovementSpeed"			"350"
 	"MovementTurnRate"	"0.5"
 	"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 	"HealthBarOffset"	"140"

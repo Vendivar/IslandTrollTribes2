@@ -22,6 +22,35 @@ GRACE_PERIOD_RESPAWN_TIME    = 3
 
 DEBUG_SPEW = 1
 
+XP_PER_LEVEL_TABLE = {
+	0, -- 1
+	200, -- 2 +200
+	500, -- 3 +300
+	900, -- 4 +400
+	1400, -- 5 +500
+	2000, -- 6 +600
+	2700, -- 7 +700
+	3500, -- 8 +800
+	4400, -- 9 +900
+	5400, -- 10 +1000
+	6400, -- 11 +1000
+	7400, -- 12 +1000
+	8400, -- 13 +1000
+	9400, -- 14 +1000
+	10400, -- 15 +1000	
+	11400, -- 16 +1000
+	12400, -- 16 +1000
+	13400, -- 17 +1000
+	14400, -- 18 +1000
+	15400, -- 19 +1000
+	16400, -- 20 +1000
+	17400, -- 21 +1000
+	18400, -- 22 +1000
+	19400, -- 23 +1000
+	100400, -- 24 +1000
+	120400 -- 25 +1000
+ }
+
 -- Tick time is 300s
 -- https://github.com/island-troll-tribes/wc3-client/blob/1562854dd098180752f0f4a99df0c4968697b38b/src/systems/spawning/Spawn%20Normal.j#L3
 -- GAME_ITEM_TICK_TIME         = 300
@@ -38,6 +67,10 @@ GAME_TESTING_CHECK          = true
 -- It can be used to pre-initialize any values/tables that will be needed later
 function ITT:InitGameMode()
     GameMode = GameRules:GetGameModeEntity()
+	
+	GameRules:GetGameModeEntity():SetCustomXPRequiredToReachNextLevel( XP_PER_LEVEL_TABLE )
+	GameRules:SetUseCustomHeroXPValues ( true )
+
 
     -- DebugPrint
     --Convars:RegisterConvar('debug_spew', tostring(DEBUG_SPEW), 'Set to 1 to start spewing debug info. Set to 0 to disable.', 0)

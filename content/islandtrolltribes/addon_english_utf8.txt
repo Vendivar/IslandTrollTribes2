@@ -282,7 +282,7 @@
 
 
 "DOTA_Tooltip_Ability_ability_beastmaster_empathicrage"		"Empathic Rage"
-"DOTA_Tooltip_Ability_ability_beastmaster_empathicrage_attackspeed"		"%+$attack"
+"DOTA_Tooltip_Ability_ability_beastmaster_empathicrage_attackspeed"		"%+ATTACK SPEED:"
 "DOTA_Tooltip_Ability_ability_beastmaster_empathicrage_charges"		"CHARGES:"
 "DOTA_Tooltip_Ability_ability_beastmaster_empathicrage_Description"		"When one of your pets dies near you you receive a temporary buff to move speed and attack speed. Stacks for each pet that was killed. Lasts 10 seconds."
 "DOTA_Tooltip_Ability_ability_beastmaster_empathicrage_movespeed"		"%+MOVE SPEED:"
@@ -2515,7 +2515,9 @@
 
 "DOTA_Tooltip_ability_item_net_hunting"                                           "Hunting Net"
 "DOTA_Tooltip_ability_item_net_hunting_Description"                               "Lob this on a elk. Be careful as this requires timing and precision!"
-		
+"DOTA_Tooltip_ability_item_net_hunting_duration_animal"                           "DURATION ANIMAL:"
+"DOTA_Tooltip_ability_item_net_hunting_max_stacks"                                "MAX STACKS:"
+"DOTA_Tooltip_ability_item_net_hunting_radius"                                    "RADIUS:"
 
 
 "DOTA_Tooltip_ability_item_pinion_fire"		"Fire Pinion"
