@@ -23,32 +23,32 @@ GRACE_PERIOD_RESPAWN_TIME    = 3
 DEBUG_SPEW = 1
 
 XP_PER_LEVEL_TABLE = {
-	0, -- 1
-	200, -- 2 +200
-	500, -- 3 +300
-	900, -- 4 +400
-	1400, -- 5 +500
-	2000, -- 6 +600
-	2700, -- 7 +700
-	3500, -- 8 +800
-	4400, -- 9 +900
-	5400, -- 10 +1000
-	6400, -- 11 +1000
-	7400, -- 12 +1000
-	8400, -- 13 +1000
-	9400, -- 14 +1000
-	10400, -- 15 +1000	
-	11400, -- 16 +1000
-	12400, -- 16 +1000
-	13400, -- 17 +1000
-	14400, -- 18 +1000
-	15400, -- 19 +1000
-	16400, -- 20 +1000
-	17400, -- 21 +1000
-	18400, -- 22 +1000
-	19400, -- 23 +1000
-	100400, -- 24 +1000
-	120400 -- 25 +1000
+    0, -- 1
+    200, -- 2 +200
+    500, -- 3 +300
+    900, -- 4 +400
+    1400, -- 5 +500
+    2000, -- 6 +600
+    2700, -- 7 +700
+    3500, -- 8 +800
+    4400, -- 9 +900
+    5400, -- 10 +1000
+    6400, -- 11 +1000
+    7400, -- 12 +1000
+    8400, -- 13 +1000
+    9400, -- 14 +1000
+    10400, -- 15 +1000  
+    11400, -- 16 +1000
+    12400, -- 16 +1000
+    13400, -- 17 +1000
+    14400, -- 18 +1000
+    15400, -- 19 +1000
+    16400, -- 20 +1000
+    17400, -- 21 +1000
+    18400, -- 22 +1000
+    19400, -- 23 +1000
+    100400, -- 24 +1000
+    120400 -- 25 +1000
  }
 
 -- Tick time is 300s
@@ -67,10 +67,11 @@ GAME_TESTING_CHECK          = true
 -- It can be used to pre-initialize any values/tables that will be needed later
 function ITT:InitGameMode()
     GameMode = GameRules:GetGameModeEntity()
-	
-	GameRules:GetGameModeEntity():SetCustomXPRequiredToReachNextLevel( XP_PER_LEVEL_TABLE )
-	GameRules:SetUseCustomHeroXPValues ( true )
-
+    
+    GameMode:SetCustomXPRequiredToReachNextLevel(XP_PER_LEVEL_TABLE)
+    GameRules:SetUseCustomHeroXPValues(true)
+    GameMode:SetUseCustomHeroLevels(true)
+    GameMode:SetCustomHeroMaxLevel(25)
 
     -- DebugPrint
     --Convars:RegisterConvar('debug_spew', tostring(DEBUG_SPEW), 'Set to 1 to start spewing debug info. Set to 0 to disable.', 0)
@@ -580,7 +581,7 @@ function ITT:OnEntityKilled(keys)
         {"npc_building_fire_basic", {"item_building_kit_fire_basic", 100}, {"item_flint", 10}}
     }
     local meatTable = {
-    	{"npc_creep_elk_wild", 6},
+        {"npc_creep_elk_wild", 6},
         {"npc_creep_wolf_jungle", 4},
         {"npc_creep_bear_jungle", 7},
         {"npc_creep_bear_jungle_adult", 7},
@@ -701,14 +702,14 @@ function ITT:OnEntityKilled(keys)
                 end
             end
         end
-		-- Meat
+        -- Meat
      
         for _,v in pairs(meatTable) do
             if unitName == v[1] then
                 local meatStacksBase = v[2]
-       			local meatStacks = GetMeatStacksToDrop(meatStacksBase, killedUnit, killer)
-        		local decayTime = GetMeatDecayTime(killedUnit, killer)
-        		CreateRawMeatAtLoc(killedUnit:GetOrigin(), meatStacks, decayTime, GameRules:GetGameTime())
+                local meatStacks = GetMeatStacksToDrop(meatStacksBase, killedUnit, killer)
+                local decayTime = GetMeatDecayTime(killedUnit, killer)
+                CreateRawMeatAtLoc(killedUnit:GetOrigin(), meatStacks, decayTime, GameRules:GetGameTime())
             end
         end
         --spawn young animals
@@ -986,7 +987,7 @@ function ITT:OnPlayerGainedLevel(event)
     local level = event.level
 
     print("[ITT] OnPlayerLevelUp - Player "..playerID.." ("..class..") has reached level "..level)
-	
+    
     -- If the hero reached level 6 and hasn't unlocked a subclass, make the button clickable
     if level >= 6 and not hero:HasSubClass() then
         CustomGameEventManager:Send_ServerToPlayer(player, "player_unlock_subclass", {})
@@ -999,7 +1000,7 @@ function ITT:OnPlayerGainedLevel(event)
             EmitSoundOnClient("Hero_Chen.HandOfGodHealHero", PlayerResource:GetPlayer(playerID))
         end
     end
-	
+    
     -- Update skills
     ITT:AdjustSkills( hero )
 end
