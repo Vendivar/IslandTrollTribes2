@@ -187,10 +187,16 @@ function ITT:FilterExecuteOrder( filterTable )
         else
             -- For buildings, Best Effort drop
             if IsCustomBuilding(unit) then
+                local itemDropRangeForBuildings = 800
                 local drop_point = origin + (point - origin):Normalized() * ITEM_TRANSFER_RANGE
-                unit:DropItemAtPositionImmediate(item, origin)
-                DropLaunch(unit, item, 0.75, point)
-                unit:Stop()
+                local dropDistance = (origin - point):Length2D()
+                if not (dropDistance >= itemDropRangeForBuildings) then
+                    unit:DropItemAtPositionImmediate(item, origin)
+                    DropLaunch(unit, item, 0.75, point)
+                    unit:Stop()
+                else
+                    SendErrorMessage(issuer, "#Can't drop the item here")
+                end
             else
                 -- Move towards the position and drop the item at the extended range
                 local drop_position = point - (point - origin):Normalized() * ITEM_TRANSFER_RANGE
