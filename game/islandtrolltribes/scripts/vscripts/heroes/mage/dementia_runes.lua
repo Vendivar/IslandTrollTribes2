@@ -48,7 +48,7 @@ function CasterMovementCheck(caster)
     if caster.runeList ~=nil and HasCasterMoved(caster) then --Redraw rune particles only if the caster has runes poistion in the world has changed.
         RedrawParticles(caster)
     end
-    return 2.0
+    return 1.5
 end
 
 function RedrawParticles(caster)
@@ -56,11 +56,11 @@ function RedrawParticles(caster)
     if caster.demParticles then --Remove old particles
         DestroyParticles(caster.demParticles)
     end
-    local particleLocations = GetParticlePositions(caster, caster.runeCount)
+    local particleLocations = GetParticlePositions(caster, #caster.runeList)
     for i,runeInfo in pairs(caster.runeList) do
         local runeParticle  = ParticleManager:CreateParticle(runeInfo.name, PATTACH_CUSTOMORIGIN, nil)
         ParticleManager:SetParticleControl(runeParticle,0,particleLocations[i])
-        table.insert(particleList,runeParticle)
+        table.insert(particleList, runeParticle)
     end
     caster.demParticles = particleList
 end
@@ -83,20 +83,23 @@ function DestroyParticles(particleList)
 end
 
 function AddNewRune(caster,runeInfo)
-    if caster.runeCount == nil then
-        caster.runeCount = 0
+    if caster.runeList == nil then
         caster.runeList = {}
         Timers:CreateTimer(DoUniqueString("dementia_runes"),{callback=CasterMovementCheck},caster)
     end
-    if caster.runeCount >= 5 then
+    if #caster.runeList >= 5 then
         for i=1,4  do --Shifting the rune list to get a space for the new rune.
             caster.runeList[i] = caster.runeList[i+1]
         end
         caster.runeList[5] = runeInfo
     else
         table.insert(caster.runeList,runeInfo)
-        caster.runeCount = caster.runeCount + 1
     end
+    RedrawParticles(caster)
+end
+
+function RemoveRune(caster, runeId)
+    table.remove(caster.runeList,runeId)
     RedrawParticles(caster)
 end
 
@@ -107,9 +110,38 @@ function GetParticlePositions(caster, numberOfRunes)
     if numberOfRunes == 1 then
         table.insert(particleLocations,Vector(casterOrigin.x , casterOrigin.y, casterOrigin.z))
     else
-        for i=1,5 do
+        for i=1,numberOfRunes do
             table.insert(particleLocations,Vector(casterOrigin.x + (math.cos(i*2*math.pi/numberOfRunes) * radius), casterOrigin.y + (math.sin(i*2*math.pi/numberOfRunes) * radius), casterOrigin.z))
         end
     end
     return particleLocations
+end
+
+function ActivateRunes(keys)
+    local caster = keys.caster
+    local target = keys.target
+    for i,rune in pairs(caster.runeList) do
+        Timers:CreateTimer(i-1,function()
+            local dummyDementiaRune = CreateUnitByName("dummy_dementia_rune", caster:GetAbsOrigin(), false, caster, caster, caster:GetTeamNumber())
+            ParticleManager:CreateParticle(rune.name, PATTACH_ABSORIGIN_FOLLOW, dummyDementiaRune)
+            Timers:CreateTimer(0.1, function()
+                dummyDementiaRune:MoveToNPC(target)
+                dummyDementiaRune.caster = caster
+                dummyDementiaRune.target = target
+                Timers:CreateTimer(DoUniqueString("movement_check"),{callback=dummyMovementCheck}, dummyDementiaRune)
+                return
+            end)
+            RemoveRune(caster, 1)
+        end)
+    end
+end
+
+function dummyMovementCheck(dummyDementiaRune)
+    local length = (dummyDementiaRune:GetAbsOrigin() - dummyDementiaRune.target:GetAbsOrigin()):Length2D()
+    if length <= 130.0 then
+        dummyDementiaRune:SetOrigin(dummyDementiaRune.target:GetAbsOrigin())
+        dummyDementiaRune:ForceKill(true)
+        return nil
+    end
+    return 0.1
 end

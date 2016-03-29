@@ -1,9 +1,20 @@
-// TODO
 "ability_mage_activate_runes"
 {
 	"BaseClass"	"ability_datadriven"
-    "AbilityBehavior"    	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
 	"AbilityTextureName"	"ability_mage_dementiarunes"
 	"MaxLevel"	"1"
 	"AbilityCastPoint"	"0"
+
+	"OnSpellStart"
+	{
+	    "RunScript"
+	    {
+	        "ScriptFile"    "heroes/mage/dementia_runes.lua"
+	        "Function"      "ActivateRunes"
+	        "Target"        "TARGET"
+	    }
+	}
 }
