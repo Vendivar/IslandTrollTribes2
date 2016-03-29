@@ -18,6 +18,7 @@
 
 	"Ability1"	"ability_get_corpse"
 	"Ability2"	"ability_smoke_meat"
+	"Ability3"	"ability_building_droprawmeat"
 	"Ability10"	"ability_building"
 	"Ability11"	"ability_cancel_building"
 

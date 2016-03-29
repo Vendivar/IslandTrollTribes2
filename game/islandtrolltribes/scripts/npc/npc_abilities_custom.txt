@@ -555,6 +555,24 @@
 		}
 	
 	}
+	"ability_building_droprawmeat"
+	{
+		"BaseClass"	            "ability_datadriven"
+		"AbilityBehavior"	    "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityTextureName"    "ability_building_droprawmeat"
+		"MaxLevel"	            "1"
+		"AbilityCastPoint"	    "0"
+	
+	    "OnSpellStart"
+	    {
+	        "RunScript"
+	         {
+	            "ScriptFile"    "buildings\drop_raw_meat.lua"
+	            "Function"      "DropMeatStack"
+	         }
+	    }
+	
+	}
 	"ability_building_restoreheat"
 	{
 		"BaseClass"	"ability_datadriven"

@@ -2,34 +2,20 @@ function GetCorpses( event )
     local ability = event.ability
     local caster = event.caster
     local range = ability:GetCastRange()
-
-    local meatStacks = GetCurrentMeatRawStacks(caster)
+    if not caster:HasModifier("modifier_meat_passive") then
+        ApplyModifier(caster, "modifier_meat_passive")
+    end
+    local meatStacks = GetMeatRawStackCount(caster)
     if (meatStacks < 10) then
         local drops = Entities:FindAllByClassnameWithin("dota_item_drop", caster:GetAbsOrigin(), range)
-
         for k,drop in pairs(drops) do
             if (meatStacks < 10) then
                 local item = drop:GetContainedItem()
                 local itemName = item:GetAbilityName()
-
-                if itemName == "item_meat_raw" then
-                    local hasMeat = GetMeatRawStack(caster)
-                    if hasMeat then
-                        local charges = item:GetCurrentCharges()
-                        if charges + meatStacks <= 10 then
-                            drop:RemoveSelf()
-                            hasMeat:SetCurrentCharges(charges+meatStacks)
-                            meatStacks = meatStacks + charges
-                        else
-                            hasMeat:SetCurrentCharges(10)
-                            item:SetCurrentCharges(charges - (10-meatStacks))
-                            return
-                        end
-                    else
-                        caster:AddItem(item)
-                        meatStacks = item:GetCurrentCharges()
-                        drop:RemoveSelf()
-                    end
+                if itemName == "item_meat_raw" and not item.dropped then
+                    meatStacks = meatStacks + 1
+                    caster:SetModifierStackCount("modifier_meat_passive", nil, meatStacks)
+                    drop:RemoveSelf()
                 end
             end
         end
@@ -52,6 +38,11 @@ function FillSlots( event )
     ITT:CreateLockedSlotsForUnits(unit, lockN)
 end
 
+function GetMeatRawStackCount( unit )
+    return unit:GetModifierStackCount("modifier_meat_passive", nil)
+end
+
+--[[
 function GetMeatRawStack( unit )
     for i=0,5 do
         local item = unit:GetItemInSlot(i)
@@ -69,4 +60,4 @@ function GetCurrentMeatRawStacks( unit )
     else
         return meat:GetCurrentCharges()
     end
-end
+end]]
