@@ -7,18 +7,16 @@ function DropMeatStack(keys)
         CreateRawMeat(position)
         stackCounter = stackCounter - 1
         caster:SetModifierStackCount("modifier_meat_passive", nil, stackCounter)
-        keys.ability:ApplyDataDrivenModifier(thisEntity, thisEntity, "modifier_just_dropped", {duration = -1})
     end
 end
 
 function CreateRawMeat(position)
-    local dropDuration = 20.0
+    local droppedStateDuration = 20.0
     local launchPosition = position + RandomVector(RandomFloat(100,150))
     local rawMeat = CreateItem("item_meat_raw", nil, nil)
-    CreateItemOnPositionSync(position,rawMeat)
-    rawMeat:LaunchLoot(false, 200, 0.75, launchPosition)
+    CreateItemOnPositionSync(launchPosition, rawMeat)
     rawMeat.dropped = true
-    Timers:CreateTimer(dropDuration, function()
+    Timers:CreateTimer(droppedStateDuration, function()
         rawMeat.dropped = nil
     end)
 end

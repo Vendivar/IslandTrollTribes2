@@ -2,6 +2,15 @@
 --                Item functions              --
 ------------------------------------------------
 
+function PickupRawMeat(unit, drop)
+    local meatStacks = unit:GetModifierStackCount("modifier_meat_passive", nil)
+    if meatStacks < 10 then
+        unit:SetModifierStackCount("modifier_meat_passive", nil, meatStacks + 1)
+        UTIL_Remove(drop)
+        return true
+    end
+end
+
 -- This attempts to pick up items from any range and resolves custom stacking
 function PickupItem( unit, drop )
     local item = drop:GetContainedItem()
@@ -83,6 +92,18 @@ function TransferItem( unit, target, item )
         end)
     else
         return false
+    end
+end
+
+function DropItemAndSpendCharge(unit, item, point)
+    if (item:GetCurrentCharges() > 1) then
+        item:SetCurrentCharges(item:GetCurrentCharges() - 1)
+        local clonedItem = CreateItem(item:GetName(), nil, nil)
+        CreateItemOnPositionSync(unit:GetAbsOrigin(), clonedItem)
+        DropLaunch(unit, clonedItem, 0.5, point)
+    else
+        unit:DropItemAtPositionImmediate(item, unit:GetAbsOrigin())
+        DropLaunch(unit, item, 0.5, point)
     end
 end
 
