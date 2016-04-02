@@ -684,8 +684,15 @@ function ITT:OnEntityKilled(keys)
         CreateItemOnPositionSync(pos, goldBag)
         goldBag:LaunchLoot(true, 300, 1, pos_launch)
 
+        gold = gold > 500 and 500 or gold --Restrict the size to 2.0
         local size = (gold / 500) + 1
-        goldBag:GetContainer():SetModelScale(size)
+        if goldBag then
+            local drop = goldBag:GetContainer()
+            if drop then
+                drop:SetModelScale(size)
+            end
+        end
+
     elseif not killedUnit.deleted then --use the deleted flag to make the killing not roll the item drops
         --drop system
         -- Items
