@@ -61,8 +61,7 @@
 					"RunScript"
 				{
 					"ScriptFile"    "heroes/mage/grow.lua"
-					"Function"      "Grow"
-					"GrowAmmt"      "1.0"
+					"Function"      "Shrink"
 				}
                 "FireEffect"
 				{

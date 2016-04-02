@@ -105,7 +105,11 @@ function ITT:OnSubclassChange(event)
         hero:SetDayTimeVisionRange(stats['VisionDaytimeRange'])
         hero:SetDayTimeVisionRange(stats['VisionNighttimeRange'])
     end
-
+    -- Change Size
+    local stats = subclassInfo[new_name]['Size']
+    if stats then
+        hero:SetModelScale(stats['ModelSizeChange'])
+    end
     -- Give bonus attack, mana, health, attack rate and MS
     local modifier_name = "modifier_"..class.."_"..new_name
     ApplyModifier(hero, modifier_name)

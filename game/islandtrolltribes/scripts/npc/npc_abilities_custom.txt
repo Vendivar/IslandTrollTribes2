@@ -2621,6 +2621,11 @@
 	            "EffectName"    "Hero_ShadowDemon.projectileImpact"
 	            "Target"        "TARGET"
 	        }
+	        "FireSound"
+	        {
+	        "EffectName"		"ChickenAttack"
+	        "Target"			"CASTER"
+	        }
 	    }
 	
 	    "Modifiers"
@@ -8847,8 +8852,7 @@
 					"RunScript"
 				{
 					"ScriptFile"    "heroes/mage/grow.lua"
-					"Function"      "Grow"
-					"GrowAmmt"      "1.0"
+					"Function"      "Shrink"
 				}
                 "FireEffect"
 				{
