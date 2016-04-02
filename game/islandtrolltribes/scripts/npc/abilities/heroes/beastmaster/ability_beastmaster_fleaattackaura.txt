@@ -49,6 +49,11 @@
             "EffectName"    "Hero_ShadowDemon.projectileImpact"
             "Target"        "TARGET"
         }
+        "FireSound"
+        {
+        "EffectName"		"ChickenAttack"
+        "Target"			"CASTER"
+        }
     }
 
     "Modifiers"
