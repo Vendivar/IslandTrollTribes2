@@ -29,12 +29,23 @@ function SmokeMeat( event )
 
     local cooked_meat = building:FindItemByName("item_meat_cooked")
     if cooked_meat then
-        building:EmitSound("Hero_Lina.attack")
-        local charges = cooked_meat:GetCurrentCharges()
-        cooked_meat:RemoveSelf()
 
-        local smoked_meat = CreateItem("item_meat_smoked", nil, nil)
-        building:AddItem(smoked_meat)
-        smoked_meat:SetCurrentCharges(charges)
+        -- First remove the cooked meat, makes space for the smoked
+        local charges = cooked_meat:GetCurrentCharges()
+        if charges <= 1 then
+            cooked_meat:RemoveSelf()        
+        else
+            cooked_meat:SetCurrentCharges(charges - 1)
+        end
+
+        local smoked_meat = GiveItemStack(building, "item_meat_smoked")
+        if smoked_meat then
+            building:EmitSound("Hero_Lina.attack")
+
+        -- Item can't be stacked but we just consumed a cooked meat for nothing.
+        else
+            print("Smoked Meat could not be created on "..building:GetUnitName())
+            -- We can either ignore this or eject a smoked meat outside of the building
+        end
     end
 end
