@@ -44,8 +44,8 @@ function CDOTA_BaseNPC_Creature:SplitExperienceBounty(teamID)
         local heroClass = hero:GetHeroClass()
         local benefits_from_gem = heroClass == "gatherer" or heroClass == "mage" or heroClass == "priest" or heroClass == "scout" or hero:HasSubClass()
         if gem and benefits_from_gem then
-            local bonus = gem:GetSpecialValueFor("bonus_xp_pct") or 0
-            xp = xp * (1 + bonus * 0.01)
+            local bonus = gem:GetSpecialValueFor("exp_bonus") or 0
+            xp = xp + (1 + bonus * 0.01)
         end
 
         hero:AddExperience(xp, 0, false, false)

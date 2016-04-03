@@ -21,13 +21,6 @@
 	}
 	"OnSpellStart"
 	{
-		"RunScript"
-		{
-			"ScriptFile" "heroes/beastmaster/shapeshift.lua"
-			"Function"   "Shapeshift"
-			"Form"       "Bear"
-		}
-
 		"ApplyModifier"
 		{
 			"ModifierName"	"modifier_bearform"
@@ -83,7 +76,28 @@
 				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%attack_damage"
 				"MODIFIER_PROPERTY_HEALTH_BONUS"	"%health_bonus"
 			}
+            "OnCreated"
+            {
+            "AddAbility"
+                {
+                    "Target"        "CASTER"
+                    "AbilityName"   "ability_beastmaster_bash"
+                }
 
+                "LevelUpAbility"
+                {
+                    "Target"        "CASTER"
+                    "AbilityName"   "ability_beastmaster_bash"
+                }
+            }
+            "OnDestroy"
+            {
+            "RemoveAbility"
+                {
+                    "Target"        "CASTER"
+                    "AbilityName"   "ability_beastmaster_bash"
+                }
+            }
 		}
 
 	}

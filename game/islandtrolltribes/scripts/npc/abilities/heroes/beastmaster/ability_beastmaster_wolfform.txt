@@ -20,13 +20,6 @@
 	}
 	"OnSpellStart"
 	{
-		"RunScript"
-		{
-			"ScriptFile" "heroes/beastmaster/shapeshift.lua"
-			"Function"   "Shapeshift"
-			"Form"       "Wolf"
-		}
-
 		"ApplyModifier"
 		{
 			"Target"	"CASTER"
@@ -81,9 +74,29 @@
 				"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"%move_speed"
 				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%attack_damage"
 			}
+            "OnCreated"
+            {
+            "AddAbility"
+                {
+                    "Target"        "CASTER"
+                    "AbilityName"   "ability_beastmaster_criticalstrike"
+                }
 
-		}
-
+                "LevelUpAbility"
+                {
+                    "Target"        "CASTER"
+                    "AbilityName"   "ability_beastmaster_criticalstrike"
+                }
+            }
+            "OnDestroy"
+            {
+            "RemoveAbility"
+                {
+                    "Target"        "CASTER"
+                    "AbilityName"   "ability_beastmaster_criticalstrike"
+                }
+            }
+         }
 	}
 
 	"AbilitySpecial"

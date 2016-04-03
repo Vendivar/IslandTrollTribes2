@@ -19,13 +19,6 @@
 	}
 	"OnSpellStart"
 	{
-		"RunScript"
-		{
-			"ScriptFile" "heroes/beastmaster/shapeshift.lua"
-			"Function"   "Shapeshift"
-			"Form"       "Elk"
-		}
-
 		"ApplyModifier"
 		{
 			"Target"	"CASTER"
@@ -77,6 +70,28 @@
 				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%attack_damage"
 				"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%magic_resist"
 			}
+            "OnCreated"
+            {
+            "AddAbility"
+                {
+                    "Target"        "CASTER"
+                    "AbilityName"   "ability_beastmaster_magicimmunity"
+                }
+
+                "LevelUpAbility"
+                {
+                    "Target"        "CASTER"
+                    "AbilityName"   "ability_beastmaster_magicimmunity"
+                }
+            }
+            "OnDestroy"
+            {
+            "RemoveAbility"
+                {
+                    "Target"        "CASTER"
+                    "AbilityName"   "ability_beastmaster_magicimmunity"
+                }
+            }
 
 		}
 
