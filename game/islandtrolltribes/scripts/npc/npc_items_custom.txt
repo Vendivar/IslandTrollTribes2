@@ -6802,8 +6802,8 @@
 	{
 		"ID"	"1088"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
-		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY | DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"scroll_cyclone"
 		"Model"	"models/props_gameplay/tpscroll01.vmdl"
@@ -6856,12 +6856,11 @@
 				{
 					"Center"	"TARGET"
 					"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY | DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-					"Types"	"DOTA_UNIT_TARGET_CREEP"
+					"Types"	"DOTA_UNIT_TARGET_BASIC"
 				}
 	
 				"ModifierName"	"modifier_brewmaster_storm_cyclone"
 			}
-	
 		}
 	
 		"AbilitySpecial"
@@ -7350,33 +7349,24 @@
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropRecipeWorld"
+	
+		"precache"
+		{
+			"particle"  "particles/units/heroes/hero_morphling/morphling_waveform.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_morphling.vsndevts"
+		}
+	
 		"OnSpellStart"
 		{
-			"LinearProjectile"
-			{
-				"EffectName"	""
-				"MoveSpeed"	"600"
-				"StartPosition"	"attach_attack1"
-				"FixedDistance"	"300"
-				"StartRadius"	"100"
-				"EndRadius"	"300"
-				"TargetTeams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-				"TargetTypes"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-				"TargetFlags"	"DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS"
-				"HasFrontalCone"	"0"
-				"ProvidesVision"	"1"
-				"VisionRadius"	"300"
-			}
-	
 			"RunScript"
 			{
-				"ScriptFile"	"items/tsunami.lua"
-				"Function"	"TsunamiProjectiles"
+				"ScriptFile"	"items/scroll_tsunami.lua"
+				"Function"		"TsunamiProjectiles"
 			}
 	
 			"FireSound"
 			{
-				"Target"	"CASTER"
+				"Target"		"CASTER"
 				"EffectName"	"Hero_Morphling.Waveform"
 			}
 		}
@@ -7388,18 +7378,16 @@
 			{
 				"Damage"	"25"
 				"Target"	"TARGET"
-				"Type"	"DAMAGE_TYPE_MAGICAL"
+				"Type"		"DAMAGE_TYPE_MAGICAL"
 			}
 	
 			"RunScript"
 			{
-				"ScriptFile"	"items/tsunami.lua"
-				"Function"	"TsunamiDestroyFire"
-				"Target"	"TARGET"
+				"ScriptFile"	"items/scroll_tsunami.lua"
+				"Function"		"TsunamiDestroyFire"
+				"Target"		"TARGET"
 			}
-	
 		}
-	
 	}
 	"item_shield_basic"
 	{

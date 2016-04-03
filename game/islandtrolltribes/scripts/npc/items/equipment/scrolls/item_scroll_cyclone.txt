@@ -2,8 +2,8 @@
 {
 	"ID"	"1088"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
-	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY | DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
+	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
+	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"scroll_cyclone"
 	"Model"	"models/props_gameplay/tpscroll01.vmdl"
@@ -56,12 +56,11 @@
 			{
 				"Center"	"TARGET"
 				"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY | DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-				"Types"	"DOTA_UNIT_TARGET_CREEP"
+				"Types"	"DOTA_UNIT_TARGET_BASIC"
 			}
 
 			"ModifierName"	"modifier_brewmaster_storm_cyclone"
 		}
-
 	}
 
 	"AbilitySpecial"
