@@ -23,7 +23,7 @@
         }
         "FireSound"
         {
-            "EffectName"    "Hero_LifeStealer.Infest"
+            "EffectName"    "Hero_LifeStealer.Assimilate.Target"
             "Target"        "CASTER"
         }        
     }
