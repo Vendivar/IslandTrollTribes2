@@ -12,7 +12,7 @@ end
 
 function CreateRawMeat(position)
     local droppedStateDuration = 20.0
-    local launchPosition = position + RandomVector(RandomFloat(100,150))
+    local launchPosition = position + RandomVector(RandomFloat(200,250))
     local rawMeat = CreateItem("item_meat_raw", nil, nil)
     CreateItemOnPositionSync(launchPosition, rawMeat)
     rawMeat.dropped = true

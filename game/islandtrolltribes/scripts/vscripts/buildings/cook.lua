@@ -23,9 +23,18 @@ function AutoCookFood( event )
     end
 end
 
+function AutoSmokeMeat( event )
+    local ability = event.ability
+    local caster = event.caster
+
+    if ability:GetAutoCastState() and ability:IsFullyCastable() and ability:IsActivated() then
+        ability:CastAbility()
+    end
+end
+
 --ability_smoke_meat
-function SmokeMeat( event )
-    local building = event.caster
+function SmokeMeat( keys )
+    local building = keys.caster
 
     local cooked_meat = building:FindItemByName("item_meat_cooked")
     if cooked_meat then

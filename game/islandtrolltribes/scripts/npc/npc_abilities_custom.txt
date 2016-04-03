@@ -507,7 +507,7 @@
 	        "01"
 	        {
 	            "var_type"  "FIELD_INTEGER"
-	            "radius"    "600"
+	            "radius"    "350"
 	        }
 	    }
 	}
@@ -1105,7 +1105,13 @@
 	    "AbilityTextureName"    "ability_building_getcorpse"
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
 	    "MaxLevel"              "1"
+	    "AbilityCooldown"       "1.5"
 	    "AbilityCastRange"      "300"
+	
+	    "precache"
+	    {
+	        "soundfile" "soundevents/game_sounds_heroes/game_sounds_life_stealer"
+	    }
 	
 	    "OnSpellStart"
 	    {
@@ -1114,6 +1120,11 @@
 	            "ScriptFile"    "buildings/get_corpse.lua"
 	            "Function"      "GetCorpses"
 	        }
+	        "FireSound"
+	        {
+	            "EffectName"    "Hero_LifeStealer.Infestt"
+	            "Target"        "CASTER"
+	        }        
 	    }
 	
 	    "Modifiers"
@@ -1470,9 +1481,50 @@
 	    "AbilityTextureName"    "ability_building_smokemeat"
 	    "MaxLevel"              "1"
 	    "AbilityChannelTime"      "15"
+	    "AbilityCooldown"       "1.0"
 	    
 	    "AbilitySharedWithTeammates" "1"
 	    
+	    
+	    "OnSpellStart"
+	    {
+	        "ApplyModifier"
+	        {
+	            "Target" "CASTER"
+	            "ModifierName" "modifier_smoking"
+	        }
+	        "FireSound"
+	        {
+	            "EffectName"    "DOTA_Item.Armlet.Activate"
+	            "Target"        "CASTER"
+	        }
+	    }
+	    "OnChannelFinish"
+	    {
+	        "RemoveModifier"
+	        {
+	            "Target" "CASTER"
+	            "ModifierName" "modifier_smoking"
+	        }
+	        "FireSound"
+	        {
+	            "EffectName"    "DOTA_Item.Armlet.DeActivate"
+	            "Target"        "CASTER"
+	        }
+	    }
+	    "OnChannelInterrupted"
+	    {
+	        "RemoveModifier"
+	        {
+	            "Target" "CASTER"
+	            "ModifierName" "modifier_smoking"
+	        }
+	        "FireSound"
+	        {
+	            "EffectName"    "DOTA_Item.Armlet.DeActivate"
+	            "Target"        "CASTER"
+	        }
+	    }
 	    "OnChannelSucceeded"
 	    {
 	        "RunScript"
@@ -1480,10 +1532,35 @@
 	            "ScriptFile"    "buildings/cook.lua"
 	            "Function"      "SmokeMeat"
 	        }
+	        
+	        "FireSound"
+	        {
+	            "EffectName"    "DOTA_Item.Armlet.DeActivate"
+	            "Target"        "CASTER"
+	        }
+	        "FireEffect"
+	        {
+	            "EffectName"        "particles/econ/items/techies/techies_arcana/techies_spawn_smokeburst_arcana.vpcf"
+	            "EffectAttachType"  "follow_origin"
+	            "Target"            "CASTER"
+	        }       
+	        
 	    }
 	
 	    "Modifiers"
 	    {
+	        "modifier_smoking"
+	        {
+	            "OnCreated"
+	            {
+	                "AttachEffect"
+	                {
+	                    "Target" "CASTER"
+	                    "EffectName" "particles/custom/smoke_meat_cooking.vpcf"
+	                    "EffectAttachType" "follow_origin"
+	                }
+	            }
+	        }
 	        "modifier_cookmeatauto"
 	        {
 	            "IsHidden"      "1"
@@ -1497,13 +1574,13 @@
 	                }
 	            }
 	
-	            "ThinkInterval"  "1.0"
+	            "ThinkInterval"  "2.0"
 	            "OnIntervalThink"
 	            {
 	                "RunScript"
 	                {
 	                    "ScriptFile"    "buildings/cook.lua"
-	                    "Function"      "AutoCookFood"
+	                    "Function"      "AutoSmokeMeat"
 	                }
 	            }
 	        }

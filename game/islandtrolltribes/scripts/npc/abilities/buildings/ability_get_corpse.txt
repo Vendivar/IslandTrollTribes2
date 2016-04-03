@@ -6,7 +6,13 @@
     "AbilityTextureName"    "ability_building_getcorpse"
     "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
     "MaxLevel"              "1"
+    "AbilityCooldown"       "1.5"
     "AbilityCastRange"      "300"
+
+    "precache"
+    {
+        "soundfile" "soundevents/game_sounds_heroes/game_sounds_life_stealer"
+    }
 
     "OnSpellStart"
     {
@@ -15,6 +21,11 @@
             "ScriptFile"    "buildings/get_corpse.lua"
             "Function"      "GetCorpses"
         }
+        "FireSound"
+        {
+            "EffectName"    "Hero_LifeStealer.Infest"
+            "Target"        "CASTER"
+        }        
     }
 
     "Modifiers"

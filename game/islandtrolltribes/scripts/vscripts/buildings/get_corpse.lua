@@ -12,7 +12,13 @@ function GetCorpses( event )
             if (meatStacks < 10) then
                 local item = drop:GetContainedItem()
                 local itemName = item:GetAbilityName()
-                if itemName == "item_meat_raw" and not item.dropped then
+                if itemName == "item_meat_raw" then
+                 local position = drop:GetAbsOrigin()
+            local meatParticle = ParticleManager:CreateParticle("particles/units/heroes/hero_life_stealer/life_stealer_infest_cast.vpcf", PATTACH_ABSORIGIN, caster)
+        ParticleManager:SetParticleControl( meatParticle, 0, drop:GetAbsOrigin() )
+        ParticleManager:SetParticleControl( meatParticle, 1, caster:GetAbsOrigin() )
+        ParticleManager:SetParticleControl( meatParticle, 2, drop:GetAbsOrigin() )
+        ParticleManager:SetParticleControl( meatParticle, 3, drop:GetAbsOrigin() )
                     meatStacks = meatStacks + 1
                     caster:SetModifierStackCount("modifier_meat_passive", nil, meatStacks)
                     drop:RemoveSelf()
