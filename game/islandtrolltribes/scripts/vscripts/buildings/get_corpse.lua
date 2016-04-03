@@ -20,6 +20,7 @@ function GetCorpses( event )
         ParticleManager:SetParticleControl( meatParticle, 2, drop:GetAbsOrigin() )
         ParticleManager:SetParticleControl( meatParticle, 3, drop:GetAbsOrigin() )
                     meatStacks = meatStacks + 1
+                    caster:EmitSound("Hero_LifeStealer.Assimilate.Target")
                     caster:SetModifierStackCount("modifier_meat_passive", nil, meatStacks)
                     drop:RemoveSelf()
                 end

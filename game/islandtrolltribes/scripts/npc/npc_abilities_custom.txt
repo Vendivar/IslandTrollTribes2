@@ -1120,11 +1120,6 @@
 	            "ScriptFile"    "buildings/get_corpse.lua"
 	            "Function"      "GetCorpses"
 	        }
-	        "FireSound"
-	        {
-	            "EffectName"    "Hero_LifeStealer.Assimilate.Target"
-	            "Target"        "CASTER"
-	        }        
 	    }
 	
 	    "Modifiers"
