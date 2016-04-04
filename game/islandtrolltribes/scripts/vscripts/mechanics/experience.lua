@@ -12,7 +12,7 @@ XP_BOUNTY_TABLE = {
     285,--9 +50
     340--10 +55
 }
-XP_BOUNTY_TABLE[0] = 10
+XP_BOUNTY_TABLE[0] = 1
 
  
 function CDOTA_BaseNPC_Creature:SplitExperienceBounty(teamID)

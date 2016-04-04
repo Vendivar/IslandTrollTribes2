@@ -27,8 +27,9 @@ function AutoSmokeMeat( event )
     local ability = event.ability
     local caster = event.caster
 
-    if ability:GetAutoCastState() and ability:IsFullyCastable() and ability:IsActivated() then
-        ability:CastAbility()
+
+    if ability:GetAutoCastState() and ability:IsFullyCastable() then
+        caster:CastAbilityNoTarget(ability, -1)
     end
 end
 

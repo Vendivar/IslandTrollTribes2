@@ -225,6 +225,9 @@
 "DOTA_Tooltip_ability_ability_empty7"		" "
 "DOTA_Tooltip_ability_ability_empty7_Description"		""
 
+
+		
+
 // BEASTMASTER
 
 "DOTA_Tooltip_Ability_ability_beastmaster_attack"		">Attack"
@@ -3208,6 +3211,10 @@
 
 "DOTA_Tooltip_modifier_vision_increase_Description"		""
 
+"DOTA_Tooltip_ability_item_gem_of_knowledge_bonus_xp_pct"                         "BONUS XP PCT:"
+
+"DOTA_Tooltip_ability_item_gold_bag"                                              "Gold Bag"
+"DOTA_Tooltip_ability_item_gold_bag_Description"                                  ""
 
          "sleep_outside"                                          "Sleep Outside"
         "DOTA_Tooltip_Ability_sleep_outside"                     "Sleep Outside"

@@ -1103,7 +1103,7 @@
 	{
 	    "BaseClass"             "ability_datadriven"
 	    "AbilityTextureName"    "ability_building_getcorpse"
-	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
 	    "MaxLevel"              "1"
 	    "AbilityCooldown"       "1.5"
 	    "AbilityCastRange"      "300"
@@ -1472,11 +1472,11 @@
 	"ability_smoke_meat"
 	{
 	    "BaseClass"             "ability_datadriven"
-	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
 	    "AbilityTextureName"    "ability_building_smokemeat"
 	    "MaxLevel"              "1"
-	    "AbilityChannelTime"      "15"
-	    "AbilityCooldown"       "1.0"
+	    "AbilityChannelTime"    "15"
+	    "AbilityCooldown"       "3.0"
 	    
 	    "AbilitySharedWithTeammates" "1"
 	    

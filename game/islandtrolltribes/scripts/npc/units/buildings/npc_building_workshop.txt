@@ -5,7 +5,6 @@
 	"SoundSet"	"Creep_Good_Melee"
 	"ModelScale"	"1.2"
 	"HasInventory"	"1"
-	"ConsideredHero"	"1"
 	"Level"	"1"
 	"MinimapIconSize"	"250"
 	"HealthBarOffset"	"400"
