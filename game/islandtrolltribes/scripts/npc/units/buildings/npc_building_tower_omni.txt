@@ -11,7 +11,7 @@
 	"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 	"RingRadius"	"100"
 	"ModelScale"	"0.5"
-	"AutoAttacksByDefault"         "1"
+	"AutoAttacksByDefault"         "0"
 	"AttackDamageMin"	"3"
 	"AttackDamageMax"	"7"    // Damage range max.
 	"AttackRate"	"0.55"     // Speed of attack.
@@ -30,7 +30,7 @@
 		"particles" "particles/units/heroes/hero_clinkz/clinkz_base_attack.vpcf"
 	}
 
-	"Ability1"	"ability_enemy_target"
+	"Ability1"	"ability_building_enemytargetting"
 	"Ability10"	"ability_building"
 	"Ability11"	"ability_cancel_building"
 	

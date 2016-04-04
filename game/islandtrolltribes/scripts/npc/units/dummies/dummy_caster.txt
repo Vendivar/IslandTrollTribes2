@@ -4,6 +4,7 @@
 	"Model"	"models/development/invisiblebox.mdl"
 	"Level"	"1"
 	"ModelScale"	"1.0"
+	"HasInventory"	"1"
 	"Ability1"	"dummy_passive"
 	"ArmorPhysical"	"0"
 	"MagicalResistance"	"0"

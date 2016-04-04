@@ -1,0 +1,28 @@
+"ability_building_enemytargetting"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityTextureName"	"ability_building_enemytargetting"
+	"AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "MaxLevel"              "1"
+
+
+    "Modifiers"
+    {
+        "modifier_enemytargeting"
+        {
+            "Passive"           "1"
+            "IsHidden"          "0"
+            "IsPurgable"        "0"
+            "ThinkInterval"     "0.5"
+            "OnIntervalThink"
+            {
+                "RunScript"
+                {
+                    "ScriptFile"   "buildings/enemy_targeting.lua"
+                    "Function"     "TargetEnemies"
+                }
+            }
+        }
+
+    }
+}
