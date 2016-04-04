@@ -28,12 +28,12 @@ function ITT:EatMeat(event)
             if not ability then
                 ability = TeachAbility(hero, abilityName)
             end
-
-            if ability:IsFullyCastable() then
+            if ability:IsFullyCastable() and not ability:IsChanneling() then
                 hero:CastAbilityNoTarget(ability, -1)
+                hero:SetModifierStackCount("modifier_meat_passive", nil, meatStacks-1)
+            else
+                SendErrorMessage(playerID, "#eat_raw_meat_channeling_is_in_progress")
             end
-
-            hero:SetModifierStackCount("modifier_meat_passive", nil, meatStacks-1)
         else
             print("No Meat to eat!")
             SendErrorMessage(playerID, "#error_no_meat_to_eat")
