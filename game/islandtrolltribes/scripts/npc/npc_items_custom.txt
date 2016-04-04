@@ -9883,15 +9883,6 @@
 	    "ItemSellable"          "0"
 	
 	    "Model"                 "models/props_gameplay/gold_bag.vmdl"
-	
-	    "OnEquip"
-	    {
-	        "RunScript"
-	        {
-	            "ScriptFile"    "items/gold_bag.lua"
-	            "Function"      "GrantGold"
-	        }
-	    }
 	}
 	"item_magic_raw"
 	{

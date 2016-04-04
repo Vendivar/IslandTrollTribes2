@@ -537,22 +537,16 @@ function CreateRawMeatAtLoc(position, stacks, decayTimeInSec, meatCreateTimestam
         local physicalItem =  CreateItemOnPositionSync(position + RandomVector(RandomInt(20,100)), newItem)
         local decayTime = decayTimeInSec
         physicalItem.spawn_time = meatCreateTimestamp
+        
         if (decayTime > 0) then
-            Timers:CreateTimer({
-                endTime = decayTime, -- when this timer should first execute, you can omit this if you want it to run first on the next frame
-                callback = 
-                    function()
-                        print ("Removing raw meat due to time")
-                        --TODO: add particle effect to dissapearing meat
-                        if (physicalItem ~= nil) then
-                            UTIL_Remove(physicalItem:GetContainedItem())
-                            UTIL_Remove(physicalItem)
-                            --RemoveUnit(physicalItem)
-                        else
-                            print("Nil meat")
-                        end
-                    end
-            })
+            Timers(decayTime, function()
+                --TODO: add particle effect to dissapearing meat
+                if (IsValidEntity(physicalItem)) then
+                    UTIL_Remove(physicalItem:GetContainedItem())
+                    UTIL_Remove(physicalItem)
+                    --RemoveUnit(physicalItem)
+                end
+            end)
         end
     end
 end
@@ -665,22 +659,27 @@ function ITT:OnEntityKilled(keys)
         end
 
         -- Lose all gold create a bag containing all of it, can be picked up by allies or enemies
-        local goldBag = CreateItem("item_gold_bag", nil, nil)
-        local gold = killedUnit:GetGold()
-        goldBag.gold = gold
         killedUnit:SetGold(0, true)
         killedUnit:SetGold(0, false)
 
+        local goldBag = CreateItem("item_gold_bag", nil, nil)
+        local gold = killedUnit:GetGold() or 0
         local pos_launch = pos + RandomVector(RandomInt(50,100))
-        CreateItemOnPositionSync(pos, goldBag)
+        local goldBagLaunch = CreateItemOnPositionSync(pos, CreateItem("item_gold_bag", nil, nil))
         goldBag:LaunchLoot(true, 300, 1, pos_launch)
 
         gold = gold > 500 and 500 or gold --Restrict the size to 2.0
         local size = (gold / 500) + 1
         if goldBag then
             local drop = goldBag:GetContainer()
+            goldBagLaunch.gold = 322--gold
+            goldBag.gold = 322--gold
+            print("CreatedGoldBag", goldBag:GetEntityIndex())
+            print("CreatedgoldBagLaunch", goldBagLaunch:GetEntityIndex())
+
             if drop then
                 drop:SetModelScale(size)
+                print("The Container: ", drop:GetEntityIndex())
             end
         end
 
@@ -901,6 +900,34 @@ function ITT:OnItemPickedUp(event)
         return
     end
 
+    local teamNumber = unit:GetTeamNumber()
+
+    -- Gold bag share
+    if itemName == "item_gold_bag" then
+        local teamID = unit:GetTeamNumber()
+        local gold = originalItem.gold or 0 -- Stored on player death
+        local split_radius = 500
+
+        print("OnItemPickedUp item_gold_bag", originalItem:GetEntityIndex())
+
+        local heroesNearby = FindUnitsInRadius(teamNumber, unit:GetAbsOrigin(), nil, split_radius, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_INVULNERABLE, FIND_ANY_ORDER, false)
+        local validHeroes = {}
+        for _,hero in pairs(heroesNearby) do
+            if hero:IsRealHero() then
+                table.insert(validHeroes, hero)
+            end
+        end
+
+        local gold_per_hero = math.floor(gold/#validHeroes+0.5)
+        for _,hero in pairs(validHeroes) do
+            hero:ModifyGold(gold_per_hero, false, 0)
+            PopupGoldGain(hero, gold_per_hero, teamID)
+        end
+
+        UTIL_Remove(originalItem)
+        return
+    end
+
     local hero = unit
     local itemSlotRestriction = GameRules.ItemInfo['ItemSlots'][itemName]
     if itemSlotRestriction then
@@ -936,8 +963,7 @@ function ITT:OnItemPickedUp(event)
         local fireLocation = hero.fire_location
 
         local radius = hero.radius
-        local teamNumber = hero:GetTeamNumber()
-        local buildings = FindUnitsInRadius(teamNumber, caster:GetAbsOrigin(), nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BUILDING, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
+        local buildings = FindUnitsInRadius(teamNumber, unit:GetAbsOrigin(), nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BUILDING, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
         
         if buildings ~= null then
             print("Teleporting Item", originalItem:GetName())
