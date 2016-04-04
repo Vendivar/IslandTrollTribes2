@@ -16,7 +16,7 @@ function TrackUnit(keys)
     dummySpotter.duration = dur
     dummySpotter.target = target
     dummySpotter.isTrackingBeaconDummy = true
-    -- dummySpotter:SetContextThink("dummy_spotter_thinker"..dummySpotter:GetEntityIndex(), MoveDummySpotter, 0.1)
+    
     Timers:CreateTimer(MoveDummySpotter, dummySpotter)
 end
 

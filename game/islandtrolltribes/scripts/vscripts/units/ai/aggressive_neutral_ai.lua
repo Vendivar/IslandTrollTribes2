@@ -1,5 +1,5 @@
 function Spawn(entityKeyValues)
-	-- thisEntity:SetContextThink("aggressive_neutral_ai_think"..thisEntity:GetEntityIndex(), AggressiveNeutralThink, 0.5)
+	
 	thisEntity.state = "wander"		--possible states = wander, attack, sleep, flee
 	thisEntity.WanderDistance = 300
 	thisEntity.FleeDistance = 300

@@ -59,7 +59,6 @@ function ITT:OnItemThink()
         ITT:AdjustItemSpawns()
         ITT:createItemsOnEeachRegion()
     end
-    return GAME_ITEM_TICK_TIME
 end
 
 --Create one item on each region

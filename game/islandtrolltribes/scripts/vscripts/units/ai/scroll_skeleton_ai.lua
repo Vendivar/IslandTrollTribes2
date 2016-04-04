@@ -1,6 +1,5 @@
 function Spawn(entityKeyValues)
 
-	-- thisEntity:SetContextThink("skellythink", skellythink, 0.25)
 	thisEntity.state = "follow"		--possible states = follow, attack
 	local owner = thisEntity:GetOwner()
 	--FindUnitsInRadius( iTeamNumber, vPosition, hCacheUnit, flRadius, iTeamFilter, iTypeFilter, iFlagFilter, iOrder, bCanGrowCache)

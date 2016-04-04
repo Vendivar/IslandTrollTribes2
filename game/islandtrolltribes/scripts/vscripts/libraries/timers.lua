@@ -1,4 +1,4 @@
-TIMERS_VERSION = "1.04"
+TIMERS_VERSION = "1.05"
 
 --[[
 
@@ -82,26 +82,6 @@ if Timers == nil then
   --Timers.__index = Timers
 end
 
-function Timers:_xpcall (f, ...)
-  print(f)
-  print({...})
-  PrintTable({...})
-  local result = xpcall (function () return f(unpack(arg)) end,
-    function (msg)
-      -- build the error message
-      return msg..'\n'..debug.traceback()..'\n'
-    end)
-
-  print(result)
-  PrintTable(result)
-  if not result[1] then
-    -- throw an error
-  end
-  -- remove status code
-  table.remove (result, 1)
-  return unpack (result)
-end
-
 function Timers:start()
   Timers = self
   self.timers = {}
@@ -141,6 +121,9 @@ function Timers:Think()
     if now >= v.endTime then
       -- Remove from timers list
       Timers.timers[k] = nil
+
+      Timers.runningTimer = k
+      Timers.removeSelf = false
       
       -- Run the callback
       local status, nextCall
@@ -154,10 +137,12 @@ function Timers:Think()
                                   end)
       end
 
+      Timers.runningTimer = nil
+
       -- Make sure it worked
       if status then
         -- Check if it needs to loop
-        if nextCall then
+        if nextCall and not Timers.removeSelf then
           -- Change its end time
 
           if bOldStyle then
@@ -240,10 +225,14 @@ end
 
 function Timers:RemoveTimer(name)
   Timers.timers[name] = nil
+  if Timers.runningTimer == name then
+    Timers.removeSelf = true
+  end
 end
 
 function Timers:RemoveTimers(killAll)
   local timers = {}
+  Timers.removeSelf = true
 
   if not killAll then
     for k,v in pairs(Timers.timers) do

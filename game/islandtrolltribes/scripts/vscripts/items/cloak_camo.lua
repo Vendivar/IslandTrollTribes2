@@ -7,7 +7,6 @@ function CloakCamouflageInvis(keys)
 	if GridNav:IsNearbyTree(caster:GetOrigin(), 150, true) then
 		caster.invisLocation = caster:GetOrigin()
 		caster.startTime = GameRules:GetGameTime()
-		-- caster:SetContextThink("CloakCamouflageInvis", CamouflageInvisCheck, 1.0)
 		Timers:CreateTimer(CamouflageInvisCheck, caster)
 	end
 end

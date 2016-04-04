@@ -1,5 +1,5 @@
 function Spawn(entityKeyValues)
-	-- thisEntity:SetContextThink("passive_neutral_ai_think"..thisEntity:GetEntityIndex(), PassiveNeutralThink, 0.5)
+	
 	thisEntity.state = "wander"		--possible states = wander, flee
 	if string.find(thisEntity:GetUnitName(), "elk") then
 		thisEntity.WanderDistance = 1000

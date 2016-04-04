@@ -51,17 +51,8 @@ XP_PER_LEVEL_TABLE = {
     120400 -- 25 +1000
  }
 
--- Tick time is 300s
--- https://github.com/island-troll-tribes/wc3-client/blob/1562854dd098180752f0f4a99df0c4968697b38b/src/systems/spawning/Spawn%20Normal.j#L3
--- GAME_ITEM_TICK_TIME         = 300
-
--- Using a shorter time for testing's sake
---GAME_ITEM_TICK_TIME         = 15
-
 -- If this is enabled the game is in testing mode, and as a result nobody can win
 GAME_TESTING_CHECK          = true 
--- Use this variable for anything that can ONLY happen during testing
--- REMEMBER TO DISABLE BEFORE PUBLIC RELEASE
 
 -- This function initializes the game mode and is called before anyone loads into the game
 -- It can be used to pre-initialize any values/tables that will be needed later
@@ -76,10 +67,10 @@ function ITT:InitGameMode()
     -- DebugPrint
     --Convars:RegisterConvar('debug_spew', tostring(DEBUG_SPEW), 'Set to 1 to start spewing debug info. Set to 0 to disable.', 0)
 
-    -- Thinkers. Should get rid of these in favor of timers
-    GameMode:SetThink( "OnBuildingThink", ITT, "BuildingThink", 0 )
-    GameMode:SetThink( "OnItemThink", ITT, "ItemThink", 0 )
-    GameMode:SetThink("FixDropModels", ITT, "FixDropModels", 0)
+    -- Game logic timers
+    Timers(function() ITT:OnBuildingThink() return GAME_TROLL_TICK_TIME end)
+    Timers(function() ITT:OnItemThink() return GAME_ITEM_TICK_TIME end) --item_spawning.lua
+    Timers(function() ITT:FixDropModels() return DROPMODEL_TICK_TIME end)
 
     -- Disable buybacks to stop instant respawning.
     GameMode:SetBuybackEnabled( false )
@@ -785,7 +776,6 @@ function ITT:FixDropModels(dt)
             end
         end
     end
-    return DROPMODEL_TICK_TIME
 end
 
 function ITT:OnBuildingThink()
@@ -810,7 +800,6 @@ function ITT:OnBuildingThink()
             CraftItems(building, WDHUT_RECIPE_TABLE, ITEM_ALIAS_TABLE)
         end
     end
-    return GAME_TROLL_TICK_TIME
 end
 
 -- This function checks if you won the game or not

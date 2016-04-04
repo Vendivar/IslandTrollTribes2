@@ -1,5 +1,5 @@
 function Spawn(entityKeyValues)
-	-- thisEntity:SetContextThink("boatmerchantthink"..thisEntity:GetEntityIndex(), boatmerchantthink, 0.25)
+	
 	Timers:CreateTimer(boatmerchantthink, thisEntity)
 	print("Starting "..thisEntity:GetUnitName().." AI")
 
