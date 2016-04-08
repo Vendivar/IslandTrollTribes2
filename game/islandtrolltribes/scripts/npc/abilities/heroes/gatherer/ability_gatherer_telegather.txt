@@ -3,7 +3,7 @@
 	"BaseClass"	"ability_datadriven"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_ALL"
+	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_CREEP"
 	"AbilityTextureName"	"ability_gatherer_telegather"
 	"MaxLevel"	"3"
 	"AbilityCastPoint"	"0"
@@ -16,25 +16,12 @@
 	}
 	"OnSpellStart"
 	{
-		"ApplyModifier"
-		{
-			"ModifierName"	"modifier_telegather"
-			"Target"	"CASTER"
-			"Duration"	"%duration"
-		}
-
 		"RunScript"
 		{
 			"ScriptFile" "heroes/gatherer/radar.lua"
 			"Function"   "RadarTelegatherInit"
 			"Target"     "TARGET"
 		}
-		"FireSound"
-		{
-			"EffectName"	"Hero_ShadowShaman.Shackles.Cast"
-			"Target"	"CASTER"
-		}
-
 	}
 
 	"Modifiers"

@@ -1,9 +1,16 @@
 function RadarTelegatherInit(keys)
     local caster = keys.caster
     local target = keys.target
-
-    keys.caster.targetFire = target
-
+    local ability = keys.ability
+    local duration  = ability:GetSpecialValueFor("duration")
+    if target:GetUnitName() == "npc_building_fire_basic" then
+        keys.caster.targetFire = target
+        ability:ApplyDataDrivenModifier(caster, caster, "modifier_telegather", {duration = duration})
+        caster:EmitSound("Hero_ShadowShaman.Shackles.Cast")
+    else
+        SendErrorMessage(caster:GetPlayerOwnerID(),"#invalid_telegatherer_target")
+        caster:Interrupt()
+    end
 end
 
 -- ItemRadar, RadarManip
