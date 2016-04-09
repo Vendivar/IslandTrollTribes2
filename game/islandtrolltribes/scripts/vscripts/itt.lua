@@ -658,30 +658,7 @@ function ITT:OnEntityKilled(keys)
             killedUnit.grave.hero = killedUnit
         end
 
-        -- Lose all gold create a bag containing all of it, can be picked up by allies or enemies
-        killedUnit:SetGold(0, true)
-        killedUnit:SetGold(0, false)
-
-        local goldBag = CreateItem("item_gold_bag", nil, nil)
-        local gold = killedUnit:GetGold() or 0
-        local pos_launch = pos + RandomVector(RandomInt(50,100))
-        local goldBagLaunch = CreateItemOnPositionSync(pos, CreateItem("item_gold_bag", nil, nil))
-        goldBag:LaunchLoot(true, 300, 1, pos_launch)
-
-        gold = gold > 500 and 500 or gold --Restrict the size to 2.0
-        local size = (gold / 500) + 1
-        if goldBag then
-            local drop = goldBag:GetContainer()
-            goldBagLaunch.gold = 322--gold
-            goldBag.gold = 322--gold
-            print("CreatedGoldBag", goldBag:GetEntityIndex())
-            print("CreatedgoldBagLaunch", goldBagLaunch:GetEntityIndex())
-
-            if drop then
-                drop:SetModelScale(size)
-                print("The Container: ", drop:GetEntityIndex())
-            end
-        end
+        CreateGoldBag(killedUnit)
 
     elseif not killedUnit.deleted then --use the deleted flag to make the killing not roll the item drops
         --drop system
@@ -901,34 +878,14 @@ function ITT:OnItemPickedUp(event)
     end
 
     local teamNumber = unit:GetTeamNumber()
+    local hero = unit
 
     -- Gold bag share
     if itemName == "item_gold_bag" then
-        local teamID = unit:GetTeamNumber()
-        local gold = originalItem.gold or 0 -- Stored on player death
-        local split_radius = 500
-
-        print("OnItemPickedUp item_gold_bag", originalItem:GetEntityIndex())
-
-        local heroesNearby = FindUnitsInRadius(teamNumber, unit:GetAbsOrigin(), nil, split_radius, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_INVULNERABLE, FIND_ANY_ORDER, false)
-        local validHeroes = {}
-        for _,hero in pairs(heroesNearby) do
-            if hero:IsRealHero() then
-                table.insert(validHeroes, hero)
-            end
-        end
-
-        local gold_per_hero = math.floor(gold/#validHeroes+0.5)
-        for _,hero in pairs(validHeroes) do
-            hero:ModifyGold(gold_per_hero, false, 0)
-            PopupGoldGain(hero, gold_per_hero, teamID)
-        end
-
-        UTIL_Remove(originalItem)
+        SplitGoldBag(unit, originalItem)
         return
     end
 
-    local hero = unit
     local itemSlotRestriction = GameRules.ItemInfo['ItemSlots'][itemName]
     if itemSlotRestriction then
         local maxCarried = GameRules.ItemInfo['MaxCarried'][itemSlotRestriction]
