@@ -1,28 +1,16 @@
 "use strict";
 
-function OpenInventory()
-{
-  GameEvents.SendCustomGameEventToServer( "OpenInventory", {} );
-}
-
-function DefaultInventory()
-{
-  GameEvents.SendCustomGameEventToServer( "DefaultInventory", {} );
-}
-
-
-
-
-
-
+var PlayerTables = GameUI.CustomUIConfig().PlayerTables;
 var containers = {};
+var eventHandlers = {};
 var lastUnit = null;
-
 
 /*var fun = function(tableName, changes, delete)
 {
   $.Msg("fun callback -- ", tableName, " -- " , changes); 
 };*/
+
+$.Msg("[containers_base.js] Loaded");
 
 function DisableFocus(panel)
 {
@@ -36,14 +24,19 @@ function DisableFocus(panel)
 
 function OpenContainer(msg)
 {
-  $.Msg("OpenContainer -- ", msg);
+  //$.Msg("OpenContainer -- ", msg);
   var panel = $.GetContextPanel();
   var id = msg.id; 
   var containerPanel = containers[id];
 
+
+
   if (!containerPanel){
+    var idString = "cont_" + id;
+    var layoutFile = PlayerTables.GetTableValue(idString, "layoutFile") || "file://{resources}/layout/custom_game/containers/container.xml";
+
     containerPanel = $.CreatePanel( "Panel", panel, "" );
-    containerPanel.BLoadLayout("file://{resources}/layout/custom_game/containers/container.xml", false, false);
+    containerPanel.BLoadLayout(layoutFile, false, false);
     containers[id] = containerPanel;
 
     containerPanel.NewContainer(id);
@@ -58,7 +51,7 @@ function OpenContainer(msg)
 
 function CloseContainer(msg)
 {
-  $.Msg("CloseContainer -- ", msg);
+  //$.Msg("CloseContainer -- ", msg);
   var id = msg.id;
   var containerPanel = containers[id];
 
@@ -72,7 +65,7 @@ function CloseContainer(msg)
 
 function DeleteContainer(msg)
 {
- $.Msg("DeleteContainer -- ", msg); 
+ //$.Msg("DeleteContainer -- ", msg); 
  var id = msg.id;
  var containerPanel = containers[id];
  if (containerPanel){
@@ -88,7 +81,7 @@ function DeleteContainer(msg)
 
 function ExecuteProxy(msg)
 {
-  $.Msg("ExecuteProxy");
+  //$.Msg("ExecuteProxy");
   var localHeroIndex = Players.GetPlayerHeroEntityIndex( Players.GetLocalPlayer());
   var abil = Entities.GetAbilityByName( localHeroIndex , "containers_lua_targeting" );
   if (abil === -1)
@@ -122,7 +115,7 @@ function CheckShop()
   if (sel !== lastSel){
     GameEvents.SendCustomGameEventToServer( "Containers_Select", {entity:sel} );
     lastSel = sel;
-    $.Msg("CheckShop ", sel, ' -- ', lastSel);
+    //$.Msg("CheckShop ", sel, ' -- ', lastSel);
   }
 
   if (sel >= 1 && (Entities.IsCreepHero(sel) || Entities.IsRealHero(sel))) {
@@ -144,14 +137,6 @@ function CheckShopSchedule()
 {
   CheckShop();
   $.Schedule(1/10, CheckShopSchedule);
-}
-
-function OnEntityKilled( keys) {
-    if (lastSel == keys.entindex_killed) {
-        var sel = Players.GetPlayerHeroEntityIndex(Players.GetLocalPlayer())
-        GameEvents.SendCustomGameEventToServer( "Containers_Select", {entity:sel} );
-        lastSel = sel
-    }
 }
 
 function CheckCouriers()
@@ -222,6 +207,11 @@ function ScreenHeightWidth()
   $.Schedule(1/4, ScreenHeightWidth);
 }
 
+function RegisterEventHandler(name, func)
+{
+  eventHandlers[name] = func;
+}
+
 (function(){
   var panel = $.GetContextPanel();
 
@@ -241,7 +231,6 @@ function ScreenHeightWidth()
 
   GameEvents.Subscribe( "dota_player_update_selected_unit", CheckShop );
   GameEvents.Subscribe( "dota_player_update_query_unit", CheckShop );
-  GameEvents.Subscribe( "entity_killed", OnEntityKilled );
 
   var use = CustomNetTables.GetTableValue( "containers_lua", "use_panorama_inventory" );
   if (use)
@@ -264,7 +253,12 @@ function ScreenHeightWidth()
     return;  
   }
 
-  panel.containers = containers; 
+  GameUI.CustomUIConfig().Containers = {}
+  GameUI.CustomUIConfig().Containers.containers = containers;
+  GameUI.CustomUIConfig().Containers.eventHandlers = eventHandlers;
+  GameUI.CustomUIConfig().Containers.RegisterEventHandler = RegisterEventHandler;
+
+  panel.containers = containers;
   panel.initialized = true; 
 })()
 

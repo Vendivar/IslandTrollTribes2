@@ -6,65 +6,194 @@ require('libraries/playertables')
 local ID_BASE = "cont_"
 FORCE_NIL = false
 
+
+CONTAINERS_DEBUG = IsInToolsMode() -- Should we print debugging prints for containers
+
 --[[
-  Lua-controlled Frankenstein Containers Library by BMD
 
-  Installation
-  -"require" this file inside your code in order to gain access to the Containers global table.
-  -Optionally require "libraries/notifications" before this file so that the Attachment Configuration GUI can display messages via the Notifications library.
-  -Additionally, ensure that this file is placed in the vscripts/libraries path
-  -Additionally, ensure that you have the barebones_Containers.xml, barebones_Containers.js, and barebones_Containers.css files in your panorama content folder to use the GUI.
-  -Finally, include the "Containers.txt" in your scripts directory if you have a pre-build database of attachment settings.
+  Containers API Calls
+    Containers:AddItemToUnit(unit, item)
+    Containers:CreateContainer(cont)
+    Containers:CreateShop(cont)
+    Containers:DeleteContainer(c, deleteContents)
+    Containers:DisplayError(pid, message)
+    Containers:EmitSoundOnClient(pid, sound)
+    Containers:GetDefaultInventory(unit)
+    Containers:GetEntityContainers(entity)
+    Containers:SetDefaultInventory(unit, container)
+    Containers:SetItemLimit(limit)
+    Containers:SetRangeAction(unit, tab)
+    Containers:UsePanoramaInventory(useInventory)
 
-  Library Usage
-  -The library when required in loads in the "scripts/Containers.txt" file containing the attachment properties database for use during your game mode.
-  -Attachment properties are specified as a 3-tuple of unit model name, attachment point string, and attachment prop model name.
-    -Ex: ("models/heroes/antimage/antimage.vmdl" // "attach_hitloc" // "models/items/axe/weapon_heavy_cutter.vmdl")
-  -Optional particles can be specified in the "Particles" block of attachmets.txt.
-  -To attach a prop to a unit, use the Containers:AttachProp(unit, attachPoint, model[, scale[, properties] ]) function
-    -Ex: Containers:AttachProp(unit, "attach_hitloc", "models/items/axe/weapon_heavy_cutter.vmdl", 1.0)
-    -This will create the prop and retrieve the properties from the database to attach it to the provided unit
-    -If you pass in an already created prop or unit as the 'model' parameter, the attachment system will scale, position, and attach that prop/unit without creating a new one
-    -Scale is the prop scale to be used, and defaults to 1.0.  The scale of the prop will also be scaled based on the unit model scale.
-    -It is possible not to use the attachment database, but to instead provide the properties directly in the 'properties' parameter.
-    -This properties table will look like:
-      {
-        pitch = 45.0,
-        yaw = 55.0,
-        roll = 65.0,
-        XPos = 10.0,
-        YPos = -10.0,
-        ZPos = -33.0,
-        Animation = "idle_hurt"
-      }
-  -To retrieve the currently attached prop entity, you can call Containers:GetCurrentAttachment(unit, attachPoint)
-    -Ex: local prop = Containers:AttachProp(unit, "attach_hitloc")
-    -Calling prop:RemoveSelf() will automatically detach the prop from the unit
-  -To access the loaded Attachment database directly (for reading properties directly), you can call Containers:GetAttachmentDatabase()
+    Containers:OnButtonPressed(playerID, container, unit, buttonNumber, buttonName)
+    Containers:OnCloseClicked(playerID, container, unit)
+    Containers:OnDragFrom(playerID, container, unit, item, fromSlot, toContainer, toSlot)
+    Containers:OnDragTo(playerID, container, unit, item, fromSlot, toContainer, toSlot)
+    Containers:OnDragWithin(playerID, container, unit, item, fromSlot, toSlot)
+    Containers:OnDragWorld(playerID, container, unit, item, slot, position, entity)
+    Containers:OnLeftClick(playerID, container, unit, item, slot)
+    Containers:OnRightClick(playerID, container, unit, item, slot)
 
-  Attachment Configuration Usage
-  -In tools-mode, execute "attachment_configure <ADDON_NAME>" to activate the attachment configuration GUI for setting up the attachment database.
-  -See https://www.youtube.com/watch?v=PS1XmHGP3sw for an example of how to generally use the GUI
-  -The Load button will reload the database from disk and update the current attach point/prop model if values are stored therein.
-  -The Hide button will hide/remove the current atatach point/prop model being displayed
-  -The Save button will save the current properties as well as any other adjusted properties in the attachment database to disk.  
-  -Databases will be saved to the scripts/Containers.txt file of the addon you set when calling the attachment_configure <ADDON_NAME> command.
-  -More detail to come...
 
-  Notes
-  -"attach_origin" can be used as the attachment string for attaching a prop do the origin of the unit, even if that unit has no attachment point named "attach_origin"
-  -Attached props will automatically scale when the parent unit/models are scaled, so rescaling individual props after attachment is not necessary.
-  -This library requires that the "libraries/timers.lua" be present in your vscripts directory.
+  Container Creation:
+    Containers:CreateContainer({
+      layout             = {3,2,2},
+      skins              = {"Skin1", "Another"}, --{}
+      buttons            = {}, -- {"Take All"}
+      headerText         = "#lootbox",
+      draggable          = true,
+      position           = "200px 200px 0px",  -- "30% 40%"   -- "mouse"    -- "entity"
+      equipment          = true,
+      range              = 250,
+      closeOnOrder       = true,
+      forceOwner         = false,
+      forcePurchaser     = false,
+      entity             = PlayerResource:GetSelectedHeroEntity(0),
+      
+      pids               = {0}, -- {[2]=true, [4]=true}
+      items              = {}, -- {CreateItem(...), CreateItem(...)}    -- {[3]=CreateItem(...), [5]=CreateItem(...):GetEntityIndex()}
+      
+      cantDragFrom       = {}, -- {3,5}
+      cantDragTo         = {},
 
-  Examples:
-  --Attach an Axe axe model to the "attach_hitloc" to a given unit at a 1.0 Scale.
-    Containers:AttachProp(unit, "attach_hitloc", "models/items/axe/weapon_heavy_cutter.vmdl", 1.0)
+      layoutFile         = "file://{resources}/layout/custom_game/containers/alt_container_example.xml", nil->default
+      
+      OnLeftClick        = function(playerID, container, unit, item, slot) ... end,  -- nil->default, false->do nothing
+      OnRightClick       = function(playerID, container, unit, item, slot) ... end,  -- nil->default, false->do nothing
+      OnDragFrom         = function(playerID, container, unit, item, fromSlot, toContainer, toSlot) ... end,  -- nil->default, false->do nothing
+      OnDragTo           = function(playerID, container, unit, item, fromSlot, toContainer, toSlot) ... end,  -- nil->default, false->do nothing
+      OnDragWithin       = function(playerID, container, unit, item, fromSlot, toSlot) ... end,  -- nil->default, false->do nothing
+      OnDragWorld        = function(playerID, container, unit, item, slot, position, entity) ... end,  -- nil->default, false->do nothing
+      OnCloseClicked     = function(playerID, container, unit) ... end,  -- nil->default, false->do nothing
+      OnButtonPressed    = function(playerID, container, unit, buttonNumber, buttonName) ... end,  -- nil->default, false->do nothing
+      OnEntityOrder      = function(playerID, container, unit, target),  -- nil->do nothing
+      OnEntityDrag       = function(playerID, container, unit, target, fromContainer, item) ... end,  -- nil->do nothing
+      OnClose            = function(playerID, container) ... end,  -- nil->default
+      OnOpen             = function(playerID, container) ... end,  -- nil->default,
+      OnSelect           = function(playerID, container, selectedEntity) ... end,  -- nil->default,
+      OnDeselect         = function(playerID, container, deselectedEntity) ... end,  -- nil->default,,
+      
+      -- return true to allow the item add event.  slot is -1 if no slot is specified.
+      AddItemFilter      = function(container, item, slot),  -- nil->no filter
+      
 
-  --For GUI use, see https://www.youtube.com/watch?v=PS1XmHGP3sw
+      -- See containers/container_events.js for javascript callback registration and handling
+      -- nil means to use the default
+      OnLeftClickJS      = "ExampleLeftClick",
+      OnRightClickJS     = "ExampleRightClick",
+      OnDoubleClickJS    = "ExampleDoubleClick",
+      OnMouseOutJS       = "ExampleMouseOut",
+      OnMouseOverJS      = "ExampleMouseOver",
+      OnButtonPressedJS  = "ExampleButtonPressed",
+      OnCloseClickedJS   = "ExampleCloseClicked",
+    )} 
+
+  Container Functions:
+      c:ActivateItem(unit, item, playerID)
+      c:AddItem(item, slot, column, bypassFilter)
+      c:AddSkin(skin)
+      c:AddSubscription(pid)
+      c:CanDragFrom(pid)
+      c:CanDragTo(pid)
+      c:CanDragWithin(pid)
+      c:ClearSlot(slot)
+      c:Close(pid)
+      c:ContainsItem(item)
+      c:Delete(deleteContents)
+      c:GetAllItems()
+      c:GetAllOpen()
+      c:GetButtonName(number)
+      c:GetButtons()
+      c:GetCanDragFromPlayers()
+      c:GetCanDragToPlayers()
+      c:GetCanDragWithinPlayers()
+      c:GetContainerIndex()
+      c:GetEntity()
+      c:GetForceOwner()
+      c:GetForcePurchaser()
+      c:GetHeaderText()
+      c:GetItemInRowColumn(row, column)
+      c:GetItemInSlot(slot)
+      c:GetItemsByName(name)
+      c:GetLayout()
+      c:GetNumItems()
+      c:GetRange()
+      c:GetRowColumnForItem(item)
+      c:GetSize()
+      c:GetSkins()
+      c:GetSlotForItem(item)
+      c:GetSubscriptions()
+      c:HasSkin(skin)
+      c:IsCloseOnOrder()
+      c:IsDraggable()
+      c:IsEquipment()
+      c:IsInventory()
+      c:IsOpen(pid)
+      c:IsSubscribed(pid)
+      c:OnButtonPressed(fun)
+      c:OnButtonPressedJS(jsCallback)
+      c:OnClose(fun)
+      c:OnCloseClicked(fun)
+      c:OnCloseClickedJS(jsCallback)
+      c:OnDeselect(fun)
+      c:OnDoubleClickJS(jsCallback)
+      c:OnDragFrom(fun)
+      c:OnDragTo(fun)
+      c:OnDragWithin(fun)
+      c:OnDragWorld(fun)
+      c:OnEntityDrag(fun)
+      c:OnEntityOrder(fun)
+      c:OnLeftClick(fun)
+      c:OnLeftClickJS(jsCallback)
+      c:OnMouseOutJS(jsCallback)
+      c:OnMouseOverJS(jsCallback)
+      c:OnOpen(fun)
+      c:OnRightClick(fun)
+      c:OnRightClickJS(jsCallback)
+      c:OnSelect(fun)
+      c:Open(pid)
+      c:RemoveButton(number)
+      c:RemoveItem(item)
+      c:RemoveSkin(skin)
+      c:RemoveSubscription(pid)
+      c:SetButton(number, name)
+      c:SetCanDragFrom(pid, canDrag)
+      c:SetCanDragTo(pid, canDrag)
+      c:SetCanDragWithin(pid, canDrag)
+      c:SetCloseOnOrder(close)
+      c:SetDraggable(drag)
+      c:SetEntity(entity)
+      c:SetEquipment(equip)
+      c:SetForceOwner(owner)
+      c:SetForcePurchaser(purchaser)
+      c:SetHeaderText(header)
+      c:SetLayout(layout, removeOnContract)
+      c:SetRange(range)
+      c:SwapItems(item1, item2, allowCombine)
+      c:SwapSlots(slot1, slot2, allowCombine)
+
+
+
+
+  Shop Creation:
+    Containers:CreateShop({
+      -- Same as CreateContainer but with the additions of
+      items              = {}, -- {CreateItem(...), CreateItem(...)}    -- {[3]=CreateItem(...), [5]=CreateItem(...):GetEntityIndex()}
+      prices             = {}, -- {500, 800}   -- {[3]=500, [5]=800}
+      stocks             = {}, -- {[5]=10}
+    }
+
+  Shop Functions:
+    -- Same as a Container but with the additions of
+    shop:BuyItem(playerID, unit, item)
+    shop:GetPrice(item)
+    shop:GetStock(item)
+    shop:SetPrice(item, price)
+    shop:SetStock(item, stock)
 
 ]]
 
---LinkLuaModifier( "modifier_animation_freeze", "libraries/modifiers/modifier_animation_freeze.lua", LUA_MODIFIER_MOTION_NONE )
+
 LinkLuaModifier( "modifier_shopkeeper", "libraries/modifiers/modifier_shopkeeper.lua", LUA_MODIFIER_MOTION_NONE )
 
 --"dota_hud_error_not_enough_gold"        "Not Enough Gold"
@@ -90,13 +219,6 @@ LinkLuaModifier( "modifier_shopkeeper", "libraries/modifiers/modifier_shopkeeper
 -- aghs probably not for sure
 -- treads don't work in equipment
 
---search bar?
--- max stacks?
-
--- layoutfile property
-
--- container context menu?
--- add filter checks on stuff?
 
 local ApplyPassives = nil
 ApplyPassives = function(container, item, entOverride)
@@ -312,19 +434,49 @@ if not Containers then
   Containers = class({})
 end
 
-function Containers:Init()
-  local mode = GameRules:GetGameModeEntity()
-  mode:SetExecuteOrderFilter(Dynamic_Wrap(Containers, 'OrderFilter'), Containers)
-  self.oldFilter = mode.SetExecuteOrderFilter
-  mode.SetExecuteOrderFilter = function(mode, fun, context)
-    --print('SetExecuteOrderFilter', fun, context)
-    Containers.nextFilter = fun
-    Containers.nextContext = context
-  end
-  self.initialized = true
-end
-
 function Containers:start()
+  if not __ACTIVATE_HOOK then
+    __ACTIVATE_HOOK = {funcs={}}
+    setmetatable(__ACTIVATE_HOOK, {
+      __call = function(t, func)
+        table.insert(t.funcs, func)
+      end
+    })
+
+    debug.sethook(function(...)
+      local info = debug.getinfo(2)
+      local src = tostring(info.short_src)
+      local name = tostring(info.name)
+      if name ~= "__index" then
+        if string.find(src, "addon_game_mode") then
+          if GameRules:GetGameModeEntity() then
+            for _, func in ipairs(__ACTIVATE_HOOK.funcs) do
+              local status, err = pcall(func)
+              if not status then
+                print("__ACTIVATE_HOOK callback error: " .. err)
+              end
+            end
+
+            debug.sethook(nil, "c")
+          end
+        end
+      end
+    end, "c")
+  end
+
+  __ACTIVATE_HOOK(function()
+    local mode = GameRules:GetGameModeEntity()
+    mode:SetExecuteOrderFilter(Dynamic_Wrap(Containers, 'OrderFilter'), Containers)
+    Containers.oldFilter = mode.SetExecuteOrderFilter
+    mode.SetExecuteOrderFilter = function(mode, fun, context)
+      --print('SetExecuteOrderFilter', fun, context)
+      Containers.nextFilter = fun
+      Containers.nextContext = context
+    end
+    Containers.initialized = true
+  end)
+  
+
   self.initialized = false
   self.containers = {}
   self.nextID = 0
@@ -390,6 +542,9 @@ function Containers:start()
     Containers.universalShopMode = universal
     Containers.oldUniversal(gamerules, universal)
   end
+  if GameRules.FDesc then
+    GameRules.FDesc["SetUseUniversalShopMode"] = nil
+  end
 
   CustomGameEventManager:RegisterListener("Containers_EntityShopRange", Dynamic_Wrap(Containers, "Containers_EntityShopRange"))
   CustomGameEventManager:RegisterListener("Containers_Select", Dynamic_Wrap(Containers, "Containers_Select"))
@@ -401,6 +556,8 @@ function Containers:start()
   CustomGameEventManager:RegisterListener("Containers_OnDragWorld", Dynamic_Wrap(Containers, "Containers_OnDragWorld"))
   CustomGameEventManager:RegisterListener("Containers_OnCloseClicked", Dynamic_Wrap(Containers, "Containers_OnCloseClicked"))
   CustomGameEventManager:RegisterListener("Containers_OnButtonPressed", Dynamic_Wrap(Containers, "Containers_OnButtonPressed"))
+
+  CustomGameEventManager:RegisterListener("Containers_OnSell", Dynamic_Wrap(Containers, "Containers_OnSell"))
 
 
 
@@ -423,7 +580,6 @@ function Containers:start()
           if (dist.x * dist.x + dist.y * dist.y) <= range2 then
             local status, err = pcall(action.action, action.playerID, action.container, unit, action.entity or action.position, action.fromContainer or action.orderType, action.item)
             if not status then print('[containers.lua] RangeAction failure:' .. err) end
-
             Containers.rangeActions[id] = nil  
           end
         end
@@ -444,7 +600,9 @@ local closeOnOrderSkip = {
   [DOTA_UNIT_ORDER_EJECT_ITEM_FROM_STASH] = true,
   [DOTA_UNIT_ORDER_DISASSEMBLE_ITEM] = true,
   [DOTA_UNIT_ORDER_PING_ABILITY] = true,
-  --[DOTA_UNIT_ORDER_TRAIN_ABILITY] = true,
+  [DOTA_UNIT_ORDER_TRAIN_ABILITY] = true,
+  [DOTA_UNIT_ORDER_CAST_NO_TARGET] = true,
+  [DOTA_UNIT_ORDER_CAST_TOGGLE] = true,
 }
 
 function Containers:AddItemToUnit(unit, item)
@@ -458,21 +616,6 @@ function Containers:AddItemToUnit(unit, item)
       local iname = item:GetAbilityName()
       local exists = false
       local full = true
-
-      --ideally this is never used and Containers:BuyItem will catch any restricted items
-      local itemSlotRestriction = GameRules.ItemInfo['ItemSlots'][iname]
-      if itemSlotRestriction then
-          local maxCarried = GameRules.ItemInfo['MaxCarried'][itemSlotRestriction]
-          local count = GetNumItemsOfSlot(unit, itemSlotRestriction)
-
-          if count > maxCarried then
-              local origin = unit:GetAbsOrigin()
-              unit:DropItemAtPositionImmediate(item, origin)
-
-              SendErrorMessage(unit:GetPlayerOwnerID(), "#error_cant_carry_more_"..itemSlotRestriction)
-          end
-      end
-
       for i=0,5 do
         local it = unit:GetItemInSlot(i)
         if not it then
@@ -484,25 +627,35 @@ function Containers:AddItemToUnit(unit, item)
 
       if not full or (full and item:IsStackable() and exists) then
         unit:AddItem(item)
-      elseif full then
-        SendErrorMessage(unit:GetPlayerOwnerID(), "#error_inventory_full")
+      else
         CreateItemOnPositionSync(unit:GetAbsOrigin() + RandomVector(10), item)
       end
     end
   end
 end
 
+function Containers:SetItemLimit(limit)
+  SendToServerConsole("dota_max_physical_items_purchase_limit " .. limit)
+end
+
 function Containers:SetDisableItemLimit(disable)
   if not self.initialized then
-    print('[containers.lua] FATAL: Containers:Init() has not been called in the Activate() function chain!')
+    print('[containers.lua] FATAL: Containers:Init() has not been initialized!')
     return
   end
-  self.disableItemLimit = disable
+  --self.disableItemLimit = disable
 end
 
 function Containers:UsePanoramaInventory(useInventory)
   CustomNetTables:SetTableValue("containers_lua", "use_panorama_inventory", {value=useInventory})
   CustomGameEventManager:Send_ServerToAllClients("cont_use_panorama_inventory", {use=useInventory})
+end
+
+function Containers:DisplayError(pid, message)
+  local player = PlayerResource:GetPlayer(pid)
+  if player then
+    CustomGameEventManager:Send_ServerToPlayer(player, "cont_create_error_message", {message=message})
+  end
 end
 
 function Containers:EmitSoundOnClient(pid, sound)
@@ -687,9 +840,12 @@ function Containers:OrderFilter(order)
       end
 
       local item = CreateItem(itemName, owner, owner)
+      local cost = item:GetCost()
       if not defInventory:AddItem(item) then
         CreateItemOnPositionSync(unit:GetAbsOrigin() + RandomVector(10), item)
       end
+
+      PlayerResource:SpendGold(ownerID, cost, DOTA_ModifyGold_PurchaseItem)
       return false
     elseif Containers.disableItemLimit then
       if not unit:HasInventory() then
@@ -700,6 +856,7 @@ function Containers:OrderFilter(order)
       local itemDefinition = Containers.itemKV[itemName]
       local itemSide = itemDefinition["SideShop"] == 1
       local itemSecret = itemDefinition["SecretShop"] == 1
+      if itemDefinition["ItemPurchasable"] == 0 then return false end
 
       local toStash = true
       local full = true
@@ -909,9 +1066,9 @@ function Containers:Containers_HideProxy(args)
   end
 end
 
-function Containers:Containers_OnLeftClick(args)
-  print('Containers_OnLeftClick')
-  PrintTable(args)
+function Containers:Containers_OnSell(args)
+  Containers:print('Containers_OnSell')
+  Containers:PrintTable(args)
 
   local playerID = args.PlayerID
   local unit = args.unit == nil and nil or EntIndexToHScript(args.unit)
@@ -920,7 +1077,64 @@ function Containers:Containers_OnLeftClick(args)
   local slot =  args.slot
 
   if not playerID then return end
-  if unit and unit:GetMainControllingPlayer() ~= playerID then return end
+  --if unit and unit:GetMainControllingPlayer() ~= playerID then return end
+
+  local container = Containers.containers[contID]
+  if not container then return end
+
+  local item = EntIndexToHScript(args.itemID)
+  if not (item and IsValidEntity(item) and item.IsItem and item:IsItem()) then return end
+
+  if item:GetOwner() ~= unit or item:GetPurchaser() ~= unit then return end
+
+  local itemInSlot = container:GetItemInSlot(slot)
+  if itemInSlot ~= item then return end
+
+  local range = container:GetRange()
+  local ent = container:GetEntity()
+  if range == nil and ent and unit ~= ent then return end
+  if range and ent and unit and (ent:GetAbsOrigin() - unit:GetAbsOrigin()):Length2D() >= range then 
+    Containers:DisplayError(playerID,"#dota_hud_error_target_out_of_range")
+    return 
+  end
+
+  local shops = Containers.entityShops[unit:GetEntityIndex()] or {home=false, side=false, secret=false}
+  local player = PlayerResource:GetPlayer(playerID)
+
+  if not shops.home and not shops.side and not shops.secret then
+    if player then
+      CustomGameEventManager:Send_ServerToPlayer(player, "cont_create_error_message", {reason=67})
+    end
+    return
+  end
+
+  local cost = item:GetCost()
+  if GameRules:GetGameTime() - item:GetPurchaseTime() > 10 then
+    cost = cost /2
+  end
+
+  container:RemoveItem(item)
+  item:RemoveSelf()
+  PlayerResource:ModifyGold(playerID, cost, false, DOTA_ModifyGold_SellItem)
+
+  if player then
+    SendOverheadEventMessage(player, OVERHEAD_ALERT_GOLD, unit, cost, player)
+    EmitSoundOnClient("General.Sell", player)
+  end
+end
+
+function Containers:Containers_OnLeftClick(args)
+  Containers:print('Containers_OnLeftClick')
+  Containers:PrintTable(args)
+
+  local playerID = args.PlayerID
+  local unit = args.unit == nil and nil or EntIndexToHScript(args.unit)
+  local contID = args.contID
+  local itemID = args.itemID
+  local slot =  args.slot
+
+  if not playerID then return end
+  --if unit and unit:GetMainControllingPlayer() ~= playerID then return end
 
   local container = Containers.containers[contID]
   if not container then return end
@@ -938,7 +1152,7 @@ function Containers:Containers_OnLeftClick(args)
   local ent = container:GetEntity()
   if range == nil and ent and unit ~= ent then return end
   if range and ent and unit and (ent:GetAbsOrigin() - unit:GetAbsOrigin()):Length2D() >= range then 
-    SendErrorMessage(playerID,"#dota_hud_error_target_out_of_range")
+    Containers:DisplayError(playerID,"#dota_hud_error_target_out_of_range")
     return 
   end
 
@@ -950,8 +1164,8 @@ function Containers:Containers_OnLeftClick(args)
 end
 
 function Containers:Containers_OnRightClick(args)
-  print('Containers_OnRightClick')
-  PrintTable(args)
+  Containers:print('Containers_OnRightClick')
+  Containers:PrintTable(args)
 
   local playerID = args.PlayerID
   local unit = args.unit == nil and nil or EntIndexToHScript(args.unit)
@@ -960,7 +1174,7 @@ function Containers:Containers_OnRightClick(args)
   local slot =  args.slot
 
   if not playerID then return end
-  if unit and unit:GetMainControllingPlayer() ~= playerID then return end
+  --if unit and unit:GetMainControllingPlayer() ~= playerID then return end
 
   local container = Containers.containers[contID]
   if not container then return end
@@ -978,7 +1192,7 @@ function Containers:Containers_OnRightClick(args)
   local ent = container:GetEntity()
   if range == nil and ent and unit ~= ent then return end
   if range and ent and unit and (ent:GetAbsOrigin() - unit:GetAbsOrigin()):Length2D() >= range then 
-    SendErrorMessage(playerID,"#dota_hud_error_target_out_of_range")
+    Containers:DisplayError(playerID,"#dota_hud_error_target_out_of_range")
     return 
   end
 
@@ -990,8 +1204,8 @@ function Containers:Containers_OnRightClick(args)
 end
 
 function Containers:Containers_OnDragFrom(args)
-  print('Containers_OnDragFrom')
-  PrintTable(args)
+  Containers:print('Containers_OnDragFrom')
+  Containers:PrintTable(args)
 
   local playerID = args.PlayerID
   local unit = args.unit == nil and nil or EntIndexToHScript(args.unit)
@@ -1002,7 +1216,7 @@ function Containers:Containers_OnDragFrom(args)
   local toSlot = args.toSlot
 
   if not playerID then return end
-  if unit and unit:GetMainControllingPlayer() ~= playerID then return end
+  --if unit and unit:GetMainControllingPlayer() ~= playerID then return end
 
   local container = nil
   if contID == -1 then
@@ -1038,7 +1252,7 @@ function Containers:Containers_OnDragFrom(args)
   local ent = container:GetEntity()
   if range == nil and ent and unit ~= ent then return end
   if range and ent and unit and (ent:GetAbsOrigin() - unit:GetAbsOrigin()):Length2D() >= range then 
-    SendErrorMessage(playerID,"#dota_hud_error_target_out_of_range")
+    Containers:DisplayError(playerID,"#dota_hud_error_target_out_of_range")
     return 
   end
   
@@ -1059,7 +1273,7 @@ function Containers:Containers_OnDragFrom(args)
     local range = toContainer:GetRange()
     local ent = toContainer:GetEntity()
     if range and ent and unit and (ent:GetAbsOrigin() - unit:GetAbsOrigin()):Length2D() >= range then 
-      SendErrorMessage(playerID,"#dota_hud_error_target_out_of_range")
+      Containers:DisplayError(playerID,"#dota_hud_error_target_out_of_range")
       return 
     end
 
@@ -1075,8 +1289,8 @@ function Containers:Containers_OnDragFrom(args)
 end
 
 function Containers:Containers_OnDragWorld(args)
-  print('Containers_OnDragWorld')
-  PrintTable(args)
+  Containers:print('Containers_OnDragWorld')
+  Containers:PrintTable(args)
 
   local playerID = args.PlayerID
   local unit = args.unit == nil and nil or EntIndexToHScript(args.unit)
@@ -1088,7 +1302,7 @@ function Containers:Containers_OnDragWorld(args)
   if type(args.entity) == "number" then entity = EntIndexToHScript(args.entity) end
 
   if not playerID then return end
-  if unit and unit:GetMainControllingPlayer() ~= playerID then return end
+  --if unit and unit:GetMainControllingPlayer() ~= playerID then return end
 
   local container = nil
   if contID == -1 then
@@ -1115,7 +1329,7 @@ function Containers:Containers_OnDragWorld(args)
   if container.canDragFrom[playerID] == false then return end
 
   if not item:IsDroppable() then
-    SendErrorMessage(playerID,"#dota_hud_error_item_cant_be_dropped")
+    Containers:DisplayError(playerID,"#dota_hud_error_item_cant_be_dropped")
     return
   end
 
@@ -1123,7 +1337,7 @@ function Containers:Containers_OnDragWorld(args)
   local ent = container:GetEntity()
   if range == nil and ent and unit ~= ent then return end
   if range and ent and unit and (ent:GetAbsOrigin() - unit:GetAbsOrigin()):Length2D() >= range then 
-    SendErrorMessage(playerID,"#dota_hud_error_target_out_of_range")
+    Containers:DisplayError(playerID,"#dota_hud_error_target_out_of_range")
     return 
   end
 
@@ -1135,8 +1349,8 @@ function Containers:Containers_OnDragWorld(args)
 end
 
 function Containers:Containers_OnCloseClicked(args)
-  print('Containers_OnCloseClicked')
-  PrintTable(args)
+  Containers:print('Containers_OnCloseClicked')
+  Containers:PrintTable(args)
 
   local playerID = args.PlayerID
   local unit = args.unit == nil and nil or EntIndexToHScript(args.unit)
@@ -1158,8 +1372,8 @@ function Containers:Containers_OnCloseClicked(args)
 end
 
 function Containers:Containers_OnButtonPressed(args)
-  print('Containers_OnButtonPressed')
-  PrintTable(args)
+  Containers:print('Containers_OnButtonPressed')
+  Containers:PrintTable(args)
 
   local playerID = args.PlayerID
   local unit = args.unit == nil and nil or EntIndexToHScript(args.unit)
@@ -1167,7 +1381,7 @@ function Containers:Containers_OnButtonPressed(args)
   local buttonNumber = args.button
 
   if not playerID then return end
-  if unit and unit:GetMainControllingPlayer() ~= playerID then return end
+  --if unit and unit:GetMainControllingPlayer() ~= playerID then return end
 
   local container = Containers.containers[contID]
   if not container then return end
@@ -1184,7 +1398,7 @@ function Containers:Containers_OnButtonPressed(args)
   local ent = container:GetEntity()
   if range == nil and ent and unit ~= ent then return end
   if range and ent and unit and (ent:GetAbsOrigin() - unit:GetAbsOrigin()):Length2D() >= range then 
-    SendErrorMessage(playerID,"#dota_hud_error_target_out_of_range")
+    Containers:DisplayError(playerID,"#dota_hud_error_target_out_of_range")
     return 
   end
 
@@ -1197,26 +1411,27 @@ end
 
 
 function Containers:OnLeftClick(playerID, container, unit, item, slot)
-  print("Containers:OnLeftClick", playerID, container, unit, item:GetEntityIndex(), slot)
+  Containers:print("Containers:OnLeftClick", playerID, container, unit, item:GetEntityIndex(), slot)
 
   local hero = PlayerResource:GetSelectedHeroEntity(playerID)
   container:ActivateItem(hero, item, playerID)
 end
 
 function Containers:OnRightClick(playerID, container, unit, item, slot)
-  print("Containers:OnRightClick", playerID, container, unit, item:GetEntityIndex(), slot)
+  Containers:print("Containers:OnRightClick", playerID, container, unit, item:GetEntityIndex(), slot)
 end
 
 function Containers:OnDragWithin(playerID, container, unit, item, fromSlot, toSlot)
-  print('Containers:OnDragWithin', playerID, container, unit, item, fromSlot, toSlot)
+  Containers:print('Containers:OnDragWithin', playerID, container, unit, item, fromSlot, toSlot)
 
   container:SwapSlots(fromSlot, toSlot, true)
 end
 
 function Containers:OnDragFrom(playerID, container, unit, item, fromSlot, toContainer, toSlot)
-  print('Containers:OnDragFrom', playerID, container, unit, item, fromSlot, toContainer, toSlot)
+  Containers:print('Containers:OnDragFrom', playerID, container, unit, item, fromSlot, toContainer, toSlot)
 
-  if toContainer._OnDragTo == false then return end
+  local canChange = Containers.itemKV[item:GetAbilityName()].ItemCanChangeContainer
+  if toContainer._OnDragTo == false or canChange == 0 then return end
 
   local fun = nil
   if type(toContainer._OnDragTo) == "function" then
@@ -1232,11 +1447,14 @@ function Containers:OnDragFrom(playerID, container, unit, item, fromSlot, toCont
 end
 
 function Containers:OnDragTo(playerID, container, unit, item, fromSlot, toContainer, toSlot)
-  print('Containers:OnDragTo', playerID, container, unit, item, fromSlot, toContainer, toSlot)
+  Containers:print('Containers:OnDragTo', playerID, container, unit, item, fromSlot, toContainer, toSlot)
 
   local item2 = toContainer:GetItemInSlot(toSlot)
   local addItem = nil
   if item2 and IsValidEntity(item2) and (item2:GetAbilityName() ~= item:GetAbilityName() or not item2:IsStackable() or not item:IsStackable()) then
+    if Containers.itemKV[item2:GetAbilityName()].ItemCanChangeContainer == 0 then
+      return false
+    end
     toContainer:RemoveItem(item2)
     addItem = item2
   end
@@ -1244,16 +1462,25 @@ function Containers:OnDragTo(playerID, container, unit, item, fromSlot, toContai
   if toContainer:AddItem(item, toSlot) then
     container:ClearSlot(fromSlot)
     if addItem then
-      container:AddItem(addItem, fromSlot)
+      if container:AddItem(addItem, fromSlot) then
+        return true
+      else
+        toContainer:RemoveItem(item)
+        toContainer:AddItem(item2, toSlot, nil, true)
+        container:AddItem(item, fromSlot, nil, true)
+        return false
+      end
     end
     return true
+  elseif addItem then
+    toContainer:AddItem(item2, toSlot, nil, true)
   end
    
   return false 
 end
 
 function Containers:OnDragWorld(playerID, container, unit, item, slot, position, entity)
-  print('Containers:OnDragWorld', playerID, container, unit, item, slot, position, entity)
+  Containers:print('Containers:OnDragWorld', playerID, container, unit, item, slot, position, entity)
 
   local unitpos = unit:GetAbsOrigin()
   local diff = unitpos - position
@@ -1307,6 +1534,41 @@ function Containers:OnDragWorld(playerID, container, unit, item, slot, position,
         unit:Stop()
       end,
     }
+  elseif IsValidEntity(entity) and entity:GetClassname() == "ent_dota_shop" and item:IsSellable() then
+    ExecuteOrderFromTable({
+      UnitIndex=   unit:GetEntityIndex(),
+      OrderType=   DOTA_UNIT_ORDER_MOVE_TO_TARGET,
+      TargetIndex= entity:GetEntityIndex(),
+    })
+
+    Containers.rangeActions[unit:GetEntityIndex()] = {
+      unit = unit,
+      entity = entity,
+      range = 425,
+      container = container,
+      playerID = playerID,
+      action = function(playerID, container, unit, target)
+        if IsValidEntity(target) and container:ContainsItem(item) then
+          local cost = item:GetCost()
+          if GameRules:GetGameTime() - item:GetPurchaseTime() > 10 then
+            cost = cost /2
+          end
+
+          container:RemoveItem(item)
+          item:RemoveSelf()
+          PlayerResource:ModifyGold(playerID, cost, false, DOTA_ModifyGold_SellItem)
+
+          local player = PlayerResource:GetPlayer(playerID)
+
+          if player then
+            SendOverheadEventMessage(player, OVERHEAD_ALERT_GOLD, unit, cost, player)
+            EmitSoundOnClient("General.Sell", player)
+          end
+        end
+
+        unit:Stop()
+      end,
+    }
   else
     local pos = unitpos
     if dist > 150 *.9 then
@@ -1341,7 +1603,7 @@ end
 
 
 function Containers:OnCloseClicked(playerID, container, unit)
-  print('Containers:OnCloseClicked', playerID, container, unit)
+  Containers:print('Containers:OnCloseClicked', playerID, container, unit)
   container:Close(playerID)
 end
 
@@ -1353,7 +1615,7 @@ end
 
 
 function Containers:GetEntityContainers(entity)
-  if entity and type(entity) ~= "number" and entity.GetEntityIndex and IsValidEntity(entity) then
+  if entity and type(entity) ~= "number" and entity.GetEntityIndex then
     entity = entity:GetEntityIndex()
   end
 
@@ -1453,54 +1715,24 @@ function Containers:CreateShop(cont)
     local stock = self:GetStock(item)
     local owner = PlayerResource:GetSelectedHeroEntity(playerID)
     local gold = PlayerResource:GetGold(playerID)
+    if gold >= cost and (stock == nil or stock > 0) then
+      local newItem = CreateItem(item:GetAbilityName(), owner, owner)
+      newItem:SetLevel(item:GetLevel())
+      newItem:SetCurrentCharges(item:GetCurrentCharges())
 
-    local iname = item:GetAbilityName()
-    local exists = false
-    local full = true
-    local restricted = false
+      PlayerResource:SpendGold(playerID, cost, DOTA_ModifyGold_PurchaseItem)
 
-    local itemSlotRestriction = GameRules.ItemInfo['ItemSlots'][iname]
-
-    for i=0,5 do
-      local it = unit:GetItemInSlot(i)
-      if not it then
-        full = false
-      elseif it:GetAbilityName() == iname then
-        exists = true
+      if stock then
+        self:SetStock(item, stock-1)
       end
-    end
 
-    if full then
-      SendErrorMessage(playerID, "#error_inventory_full")
-    elseif     itemSlotRestriction then
-      local maxCarried = GameRules.ItemInfo['MaxCarried'][itemSlotRestriction]
-      local count = GetNumItemsOfSlot(unit, itemSlotRestriction)
+      Containers:EmitSoundOnClient(playerID, "General.Buy")
 
-      if count >= maxCarried then
-        print("carrying too many "..iname)
-        SendErrorMessage(playerID, "#error_cant_carry_more_"..itemSlotRestriction)
-        return nil
-      end
-    elseif not full or (full and item:IsStackable() and exists)then
-      if gold >= cost and (stock == nil or stock > 0) then
-        local newItem = CreateItem(item:GetAbilityName(), nil, nil)
-        newItem:SetLevel(item:GetLevel())
-        newItem:SetCurrentCharges(item:GetCurrentCharges())
-
-        PlayerResource:SpendGold(playerID, cost, DOTA_ModifyGold_PurchaseItem)
-
-        if stock then
-          self:SetStock(item, stock-1)
-        end
-
-        Containers:EmitSoundOnClient(playerID, "General.Buy")
-
-        return newItem
-      elseif stock ~= nil and stock <= 0 then
-        SendErrorMessage(playerID, "#dota_hud_error_item_out_of_stock")
-      elseif gold < cost then
-        SendErrorMessage(playerID, "#dota_hud_error_not_enough_gold")
-      end
+      return newItem
+    elseif stock ~= nil and stock <= 0 then
+      Containers:DisplayError(playerID, "#dota_hud_error_item_out_of_stock")
+    elseif gold < cost then
+      Containers:DisplayError(playerID, "#dota_hud_error_not_enough_gold")
     end
   end
 
@@ -1534,29 +1766,35 @@ function Containers:CreateShop(cont)
     end
   end
 
-  shop.canDragWithin = {}
+  if not cont.canDragWithin then shop.canDragWithin = {} end
   shop:AddSkin("ContainerShop")
-  shop:OnDragWorld(false)
-  shop:OnDragWithin(false)
-  shop:OnLeftClick(false)
-  shop:OnDragTo(function(playerID, container, unit, item, fromSlot, toContainer, toSlot)
-    print('Shop:OnDragTo', playerID, container, unit, item, fromSlot, toContainer, toSlot)
-  end)
-  shop:OnDragFrom(function(playerID, container, unit, item, fromSlot, toContainer, toSlot)
-    print('Shop:OnDragFrom', playerID, container, unit, item, fromSlot, toContainer, toSlot)
-  end)
+  if not cont.OnDragWorld then shop:OnDragWorld(false) end
+  if not cont.OnDragWithin then shop:OnDragWithin(false) end
+  if not cont.OnLeftClick then shop:OnLeftClick(false) end
+  if not cont.OnDragTo then 
+    shop:OnDragTo(function(playerID, container, unit, item, fromSlot, toContainer, toSlot)
+      Containers:print('Shop:OnDragTo', playerID, container, unit, item, fromSlot, toContainer, toSlot)
+    end)
+  end
+  if not cont.OnDragFrom then
+    shop:OnDragFrom(function(playerID, container, unit, item, fromSlot, toContainer, toSlot)
+      Containers:print('Shop:OnDragFrom', playerID, container, unit, item, fromSlot, toContainer, toSlot)
+    end)
+  end
   --[[shop:OnLeftClick(function(playerID, container, unit, item, slot)
     print("Shop:OnLeftClick", playerID, container, unit, item:GetEntityIndex(), slot)
   end)]]
-  shop:OnRightClick(function(playerID, container, unit, item, slot)
-    print("Shop:OnRightClick", playerID, container, unit, item:GetEntityIndex(), slot)
+  if not cont.OnRightClick then
+    shop:OnRightClick(function(playerID, container, unit, item, slot)
+      Containers:print("Shop:OnRightClick", playerID, container, unit, item:GetEntityIndex(), slot)
 
-    local defInventory = Containers:GetDefaultInventory(unit)
-    if not defInventory and not unit:HasInventory() then return end
+      local defInventory = Containers:GetDefaultInventory(unit)
+      if not defInventory and not unit:HasInventory() then return end
 
-    local item = container:BuyItem(playerID, unit, item)
-    Containers:AddItemToUnit(unit, item)
-  end)
+      local item = container:BuyItem(playerID, unit, item)
+      Containers:AddItemToUnit(unit, item)
+    end)
+  end
 
 
   return shop
@@ -1584,12 +1822,22 @@ function Containers:CreateContainer(cont)
      position =    cont.position or "100px 200px 0px",
      equipment =   cont.equipment,
 
+     layoutFile =  cont.layoutFile,
+
      OnLeftClick =     type(cont.OnLeftClick) == "function" and true or cont.OnLeftClick,
      OnRightClick =    type(cont.OnRightClick) == "function" and true or cont.OnRightClick,
      OnDragFrom  =     type(cont.OnDragFrom) == "function" and true or cont.OnDragFrom,
      OnDragWorld =     false,
      OnCloseClicked =  type(cont.OnCloseClicked) == "function" and true or cont.OnCloseClicked,
      OnButtonPressed = type(cont.OnButtonPressed) == "function" and true or cont.OnButtonPressed,
+     
+     OnLeftClickJS =   cont.OnLeftClickJS,
+     OnRightClickJS =  cont.OnRightClickJS,
+     OnDoubleClickJS = cont.OnDoubleClickJS,
+     OnMouseOutJS =    cont.OnMouseOutJS,
+     OnMouseOverJS =   cont.OnMouseOverJS,
+     OnButtonPressedJS=cont.OnButtonPressedJS,
+     OnCloseClickedJS =cont.OnCloseClickedJS,
     }
 
   local c = {id = pt.id,
@@ -1625,6 +1873,7 @@ function Containers:CreateContainer(cont)
     _OnOpen =          cont.OnOpen,
     _OnSelect =        cont.OnSelect,
     _OnDeselect =      cont.OnDeselect,
+    AddItemFilter =    cont.AddItemFilter,
   }
 
   if cont.OnDragWorld ~= nil and (type(cont.OnDragWorld) == "function" or cont.OnDragWorld == true) then
@@ -1730,6 +1979,7 @@ function Containers:CreateContainer(cont)
 
     local behavior =     item:GetBehavior()
     local targetType =   item:GetAbilityTargetType()
+    local toggle =       bit.band(behavior, DOTA_ABILITY_BEHAVIOR_TOGGLE) ~= 0
     local unrestricted = bit.band(behavior, DOTA_ABILITY_BEHAVIOR_UNRESTRICTED) ~= 0
     local rootDisables = bit.band(behavior, DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES) ~= 0
     local channelled =   bit.band(behavior, DOTA_ABILITY_BEHAVIOR_CHANNELLED) ~= 0
@@ -1737,24 +1987,28 @@ function Containers:CreateContainer(cont)
     local treeTarget =   bit.band(targetType, DOTA_UNIT_TARGET_TREE) ~= 0
 
     if unit:IsStunned() and not unrestricted then
-      SendErrorMessage(playerID, "#dota_hud_error_unit_command_restricted")
+      Containers:DisplayError(playerID, "#dota_hud_error_unit_command_restricted")
       return
     end
     if unit:IsRooted() and rootDisables then
-      SendErrorMessage(playerID, "#dota_hud_error_ability_disabled_by_root")
+      Containers:DisplayError(playerID, "#dota_hud_error_ability_disabled_by_root")
       return
     end
     if noTarget and not channelled then
       item:PayGoldCost()
       item:PayManaCost()
       item:StartCooldown(item:GetCooldown(item:GetLevel()))
-      item:OnSpellStart()
+      if toggle then
+        item:OnToggle()
+      else
+        item:OnSpellStart()
+      end
     else
       local abil = unit:FindAbilityByName("containers_lua_targeting")
       if treeTarget then
-        unit:RemoveAbility("containers_lua_targeting")
+        if unit:HasAbility("containers_lua_targeting") then unit:RemoveAbility("containers_lua_targeting") end
         abil = unit:FindAbilityByName("containers_lua_targeting_tree")
-      else
+      elseif unit:HasAbility("containers_lua_targeting_tree") then 
         unit:RemoveAbility("containers_lua_targeting_tree")
       end
       if not abil then
@@ -1796,7 +2050,8 @@ function Containers:CreateContainer(cont)
 
       CustomNetTables:SetTableValue("containers_lua", tostring(abil:GetEntityIndex()), {behavior=behavior, aoe=aoe, range=item:GetCastRange(), 
         targetType=targetType, targetTeam=item:GetAbilityTargetTeam(), targetFlags=item:GetAbilityTargetFlags(), 
-        channelTime=item:GetChannelTime(), channelCost=item:GetChannelledManaCostPerSecond(item:GetLevel())})
+        channelTime=item:GetChannelTime(), channelCost=item:GetChannelledManaCostPerSecond(item:GetLevel()),
+        proxyItem=item:GetEntityIndex()})
 
       local player = PlayerResource:GetPlayer(playerID)
       if player then
@@ -2034,7 +2289,7 @@ function Containers:CreateContainer(cont)
     return self:GetItemInSlot(slot)
   end
 
-  function c:AddItem(item, slot, column)
+  function c:AddItem(item, slot, column, bypassFilter)
     item = GetItem(item)
     if slot and type(slot) == "number" and column and type(column) == "number" then
       local rowStarts = PlayerTables:GetTableValue(self.ptID, "rowStarts")
@@ -2061,6 +2316,19 @@ function Containers:CreateContainer(cont)
     if slot > size then
       print("[containers.lua]  Request to add item in slot " .. slot .. " -- exceeding container size " .. size)
       return false
+    end
+
+    local func = c.AddItemFilter
+    if not bypassFilter and c.AddItemFilter then
+      local status, result = pcall(c.AddItemFilter, c, item, findstack and -1 or slot)
+      if not status then
+        print("[containers.lua] AddItemFilter callback error: " .. result)
+        return false
+      end
+
+      if not result then
+        return false
+      end
     end
 
     local itemid = item:GetEntityIndex()
@@ -2406,7 +2674,6 @@ function Containers:CreateContainer(cont)
       local c = self
 
       self.cleanupTimer = Timers:CreateTimer(1, function()
-        print('cleanupTimer')
         for itemID, mods in pairs(c.appliedPassives) do
           if not IsValidEntity(EntIndexToHScript(itemID)) or not c:ContainsItem(itemID) then
             for _, mod in ipairs(mods) do
@@ -2418,7 +2685,6 @@ function Containers:CreateContainer(cont)
         return 1
       end)
     elseif not equip and isEq then
-      PrintTable(self.appliedPassives)
       local items = self:GetAllItems()
       for itemID,mods in pairs(self.appliedPassives) do
         for _, mod in ipairs(mods) do
@@ -2569,6 +2835,62 @@ function Containers:CreateContainer(cont)
     self._OnDeselect = fun
   end
 
+  function c:OnLeftClickJS(jsCallback)
+    if jsCallback == nil then
+      PlayerTables:DeleteTableKey(self.ptID, "OnLeftClickJS")
+    else
+      PlayerTables:SetTableValue(self.ptID, "OnLeftClickJS", jsCallback)
+    end
+  end
+
+  function c:OnRightClickJS(jsCallback)
+    if jsCallback == nil then
+      PlayerTables:DeleteTableKey(self.ptID, "OnRightClickJS")
+    else
+      PlayerTables:SetTableValue(self.ptID, "OnRightClickJS", jsCallback)
+    end
+  end
+
+  function c:OnDoubleClickJS(jsCallback)
+    if jsCallback == nil then
+      PlayerTables:DeleteTableKey(self.ptID, "OnDoubleClickJS")
+    else
+      PlayerTables:SetTableValue(self.ptID, "OnDoubleClickJS", jsCallback)
+    end
+  end
+
+  function c:OnMouseOutJS(jsCallback)
+    if jsCallback == nil then
+      PlayerTables:DeleteTableKey(self.ptID, "OnMouseOutJS")
+    else
+      PlayerTables:SetTableValue(self.ptID, "OnMouseOutJS", jsCallback)
+    end
+  end
+
+  function c:OnMouseOverJS(jsCallback)
+    if jsCallback == nil then
+      PlayerTables:DeleteTableKey(self.ptID, "OnMouseOverJS")
+    else
+      PlayerTables:SetTableValue(self.ptID, "OnMouseOverJS", jsCallback)
+    end
+  end
+
+  function c:OnButtonPressedJS(jsCallback)
+    if jsCallback == nil then
+      PlayerTables:DeleteTableKey(self.ptID, "OnButtonPressedJS")
+    else
+      PlayerTables:SetTableValue(self.ptID, "OnButtonPressedJS", jsCallback)
+    end
+  end
+
+  function c:OnCloseClickedJS(jsCallback)
+    if jsCallback == nil then
+      PlayerTables:DeleteTableKey(self.ptID, "OnCloseClickedJS")
+    else
+      PlayerTables:SetTableValue(self.ptID, "OnCloseClickedJS", jsCallback)
+    end
+  end
+
   function c:IsInventory()
     return false
   end
@@ -2605,6 +2927,18 @@ function Containers:DeleteContainer(c, deleteContents)
 
   for k,v in pairs(c) do
     c[k] = nil
+  end
+end
+
+function Containers:print(...)
+  if CONTAINERS_DEBUG then 
+    print(unpack({...})) 
+  end
+end
+
+function Containers:PrintTable(t)
+  if CONTAINERS_DEBUG then 
+    PrintTable(t) 
   end
 end
 

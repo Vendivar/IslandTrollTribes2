@@ -8,6 +8,13 @@ function DismissMenu()
 function OnSell()
 {
 	Items.LocalPlayerSellItem( $.GetContextPanel().Item );
+
+	GameEvents.SendCustomGameEventToServer( "Containers_OnSell", {unit:Players.GetLocalPlayerPortraitUnit(), 
+		contID:$.GetContextPanel().Container, 
+		itemID:$.GetContextPanel().Item, 
+		slot:$.GetContextPanel().Slot
+	});
+
 	DismissMenu();
 }
 

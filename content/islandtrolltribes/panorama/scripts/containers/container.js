@@ -1,5 +1,8 @@
 "use strict";
 
+var Containers = GameUI.CustomUIConfig().Containers;
+var PlayerTables = GameUI.CustomUIConfig().PlayerTables;
+
 var contID = -1;
 var idString = "";
 var subscription = -1;
@@ -7,12 +10,6 @@ var isShop = false;
 var positionString = null;
 
 var oldSkins = {};
-
-function TakeAll()
-{
-  var panel = $.GetContextPanel();
-  panel.ToggleClass("Hourglass");
-}
 
 function GetID()
 {
@@ -27,7 +24,7 @@ function GetIDString()
 function ContainerChange(tableName, changes, del)
 {
   var panel = $.GetContextPanel();
-  $.Msg('ContainerChange -- ', tableName, ' -- ', changes, ' -- ', del);
+  //$.Msg('ContainerChange -- ', tableName, ' -- ', changes, ' -- ', del);
   if (!changes)
     return;
 
@@ -75,13 +72,13 @@ function SetSkins(skins)
   var panel = $.GetContextPanel();
 
   for (var key in skins){
-    $.Msg("skin: ", key);
+    //$.Msg("skin: ", key);
     panel.SetHasClass(key, true);
     delete oldSkins[key];
   }
 
   for (var key in oldSkins){
-    $.Msg("oldskin: ", key);
+    //$.Msg("oldskin: ", key);
     panel.SetHasClass(key, false);
   }
 
@@ -118,13 +115,32 @@ function SetLayout(layout)
   }
 }
 
-function ButtonPress(number)
+function ButtonPress(number, name)
 {
-  $.Msg('ButtonPress', ' -- ', number);
+  //$.Msg('ButtonPress', ' -- ', number);
 
+  var jsAction = PlayerTables.GetTableValue(idString, "OnButtonPressedJS");
   var action = PlayerTables.GetTableValue(idString, "OnButtonPressed");
+
+  var pid = Game.GetLocalPlayerID();
+  var unit = Players.GetLocalPlayerPortraitUnit()
+  unit = Entities.IsControllableByPlayer( unit, pid ) ? unit : Players.GetPlayerHeroEntityIndex(pid);
+
+  var handler = Containers.eventHandlers[jsAction]
+  if (handler){
+    var ret = false;
+    try{
+      ret = handler({unit:unit, containerID:contID, containerPanel:$.GetContextPanel(), buttonID:number, buttonName:name});
+    }catch(err){
+      $.Msg("[container.js] OnButtonPressed callback error for '", jsAction, "': ", err.stack);
+    }
+
+    if (!ret)
+      return;
+  }
+  
   if (action !== 0){
-    GameEvents.SendCustomGameEventToServer( "Containers_OnButtonPressed", {unit:Players.GetLocalPlayerPortraitUnit(), contID:contID, button:parseInt(number)} );
+    GameEvents.SendCustomGameEventToServer( "Containers_OnButtonPressed", {unit:unit, contID:contID, button:parseInt(number)} );
     return;
   }
 }
@@ -138,9 +154,9 @@ function SetButtons(buttons)
     var button = $.CreatePanel( "Button", footer, "Button" + number);
     button.SetDraggable(true);
     button.AddClass("ButtonBevel");
-    button.SetPanelEvent("onactivate", (function(num){
-      return function(){ ButtonPress(num); };
-    })(number));
+    button.SetPanelEvent("onactivate", (function(num, buttonName){
+      return function(){ ButtonPress(num, buttonName); };
+    })(number, buttons[number]));
 
     var label =  $.CreatePanel( "Label", button, "");
     label.text = $.Localize(buttons[number]);
@@ -153,12 +169,14 @@ function SetButtons(buttons)
 function SetPosition(pos)
 {
   var panel = $.GetContextPanel();
+  var percMatch = /([^%]+)%\s+([^%]+)%/g.exec(pos);
+
   if (pos == "mouse"){
     positionString = "mouse";
     var cursor = GameUI.GetCursorPosition();
-    $.Msg(panel.contentwidth, " -- ", panel.contentheight);
-    $.Msg(panel.actuallayoutwidth, " -- ", panel.actuallayoutheight);
-    $.Msg(panel.desiredlayoutwidth, " -- ", panel.desiredlayoutheight);
+    //$.Msg(panel.contentwidth, " -- ", panel.contentheight);
+    //$.Msg(panel.actuallayoutwidth, " -- ", panel.actuallayoutheight);
+    //$.Msg(panel.desiredlayoutwidth, " -- ", panel.desiredlayoutheight);
 
     var x = cursor[0] - panel.desiredlayoutwidth/2;
     var y = cursor[1] - 25;
@@ -186,6 +204,22 @@ function SetPosition(pos)
       panel.style.position = "0px 0px 0px;";
     }
   }
+  else if (percMatch){
+    var sw = GameUI.CustomUIConfig().screenwidth;
+    var sh = GameUI.CustomUIConfig().screenheight
+    var scale = 1080 / sh;
+
+    var x = Number(percMatch[1]);
+    var y = Number(percMatch[2]);;
+    if (isNaN(x) || isNaN(y)){
+      panel.style.position = "0px 0px 0px;";
+    }
+    else{
+      x = x*sw/100*scale
+      y = y*sh/100*scale
+      panel.style.position = x + "px " + y + "px 0px;";
+    }
+  }
   else {
     panel.style.position = pos;
     positionString = null;
@@ -201,9 +235,9 @@ function NewContainer(id)
   subscription = PlayerTables.SubscribeNetTableListener(idString, ContainerChange);
 
   var pt = PlayerTables.GetAllTableValues(idString);
-  $.Msg(pt);
+  //$.Msg(pt);
   
-  $.Msg("container panel created ", panel.id);
+  //$.Msg("container panel created ", panel.id);
 
   SetSkins(pt.skins);
   SetHeaderText(pt.headerText);
@@ -234,7 +268,7 @@ function NewContainer(id)
     $.Schedule(1/30, f);
   }
   else{
-    panel.style.position = pt.position || "200px 200px 0px";
+    SetPosition(pt.position);
   }
 }
 
@@ -273,11 +307,31 @@ function IsShop()
 
 function CloseClicked()
 {
-  $.Msg("CloseClicked");
+  //$.Msg("CloseClicked");
 
+  var jsAction = PlayerTables.GetTableValue(idString, "OnCloseClickedJS");
   var action = PlayerTables.GetTableValue(idString, "OnCloseClicked");
+
+  var pid = Game.GetLocalPlayerID();
+  var unit = Players.GetLocalPlayerPortraitUnit()
+  unit = Entities.IsControllableByPlayer( unit, pid ) ? unit : Players.GetPlayerHeroEntityIndex(pid);
+
+  var handler = Containers.eventHandlers[jsAction]
+  if (handler){
+    var ret = false;
+    try{
+      ret = handler({unit:unit, containerID:contID, containerPanel:$.GetContextPanel()});
+    }catch(err){
+      $.Msg("[container.js] OnButtonPressed callback error for '", jsAction, "': ", err.stack);
+    }
+
+    if (!ret)
+      return;
+  }
+
+  
   if (action !== 0){
-    GameEvents.SendCustomGameEventToServer( "Containers_OnCloseClicked", {unit:Players.GetLocalPlayerPortraitUnit(), contID:contID} );
+    GameEvents.SendCustomGameEventToServer( "Containers_OnCloseClicked", {unit:unit, contID:contID} );
     return;
   }
 }
@@ -287,7 +341,7 @@ function CloseClicked()
 
 function OnDragStart( panelId, dragCallbacks )
 {
-  $.Msg('OnDragStart -- ', panelId)
+  //$.Msg('OnDragStart -- ', panelId)
   var panel = $('#' + panelId);
 
   dragCallbacks.displayPanel = panel;//panel;

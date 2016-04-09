@@ -1,12 +1,11 @@
 <root>
 	<styles>
-		<include src="file://{resources}/styles/dotastyles.css" />
-		<include src="file://{resources}/styles/custom_game/containers/container.css" />
-		<include src="file://{resources}/styles/custom_game/containers/container_skins.css" />
+		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
+		<include src="file://{resources}/styles/containers/container.css" />
+		<include src="file://{resources}/styles/containers/container_skins.css" />
 	</styles>
 	<scripts>
-		<include src="file://{resources}/scripts/custom_game/playertables/playertables.js" /> 
-		<include src="file://{resources}/scripts/custom_game/containers/inventory_context_menu.js" />
+		<include src="file://{resources}/scripts/containers/inventory_context_menu.js" />
 	</scripts>
 	<Panel class="ItemMenu">
 		<Button class="ItemMenuButton" id="ShowInShop" onmouseactivate="OnShowInShop()">
@@ -29,3 +28,4 @@
 		</Button>
 	</Panel>
 </root>
+ 

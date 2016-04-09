@@ -79,14 +79,14 @@
 @keyframes 'goleft'
 {
   0%   {transform: translateX( 0px ) translateY( 0px );}
-  50%  {transform: translateX( -50px ) translateY( 0px );}
+  50%  {transform: translateX( -25px ) translateY( 0px );}
   100% {transform: translateX( 0px ) translateY( 0px );}
 }
 
 @keyframes 'goright'
 {
   0%   {transform: translateX( 0px ) translateY( 0px );}
-  50%  {transform: translateX( 50px ) translateY( 0px );}
+  50%  {transform: translateX( 25px ) translateY( 0px );}
   100% {transform: translateX( 0px ) translateY( 0px );}
 }
 

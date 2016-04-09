@@ -1,10 +1,10 @@
 <root>
   <styles>
-    <include src="file://{resources}/styles/dotastyles.css" />
-    <include src="file://{resources}/styles/custom_game/containers/container.css" />
+    <include src="s2r://panorama/styles/dotastyles.vcss_c" />
+    <include src="file://{resources}/styles/containers/container.css" />
   </styles>
   <scripts>
-    <include src="file://{resources}/scripts/custom_game/containers/dota_inventory.js" />
+    <include src="file://{resources}/scripts/containers/dota_inventory.js" />
   </scripts>
   <Panel class="InventoryOverlayRoot" hittest="false">
     <Panel id="stash_row" />
@@ -13,4 +13,4 @@
       <Panel id="inventory_row_2" />
     </Panel>
   </Panel>
-</root>
+</root> 

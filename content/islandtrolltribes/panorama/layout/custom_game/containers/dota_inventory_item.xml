@@ -1,12 +1,11 @@
 <root>
 	<styles>
-		<include src="file://{resources}/styles/dotastyles.css" />
-		<include src="file://{resources}/styles/custom_game/containers/container.css" />
-		<include src="file://{resources}/styles/custom_game/containers/container_skins.css" />
+		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
+		<include src="file://{resources}/styles/containers/container.css" />
+		<include src="file://{resources}/styles/containers/container_skins.css" />
 	</styles>
 	<scripts>
-		<include src="file://{resources}/scripts/custom_game/playertables/playertables.js" /> 
-		<include src="file://{resources}/scripts/custom_game/containers/dota_inventory_item.js" />
+		<include src="file://{resources}/scripts/containers/dota_inventory_item.js" />
 	</scripts>
 	<Panel class="ItemPanel" draggable="true">
 		<Button id="ItemButton"
@@ -34,3 +33,4 @@
 		</Panel>
 	</Panel>
 </root>
+ 

@@ -1,28 +1,17 @@
 <root>
   <styles>
     <include src="s2r://panorama/styles/dotastyles.vcss_c" />
-    <include src="file://{resources}/styles/custom_game/containers/container.css" />
-    <include src="file://{resources}/styles/custom_game/containers/container_skins.css" />
+    <include src="file://{resources}/styles/containers/container.css" />
+    <include src="file://{resources}/styles/containers/container_skins.css" />
 
     <include src="s2r://panorama/styles/hero_splash.vcss_c" />
   </styles>
   <scripts>
-    <include src="file://{resources}/scripts/custom_game/playertables/playertables.js" /> 
-    <include src="file://{resources}/scripts/custom_game/containers/container_base.js" /> 
-    <include src="file://{resources}/scripts/custom_game/containers/dota_inventory.js" /> 
+    <include src="file://{resources}/scripts/containers/container_base.js" /> 
+    <include src="file://{resources}/scripts/containers/container_events.js" /> 
+    <include src="file://{resources}/scripts/containers/dota_inventory.js" /> 
   </scripts>
   <Panel hittest="false" class="ContainersBase">
-
-    <!--
-    <Panel hittest="false" style="opacity:1;flow-children:down;">
-      <Button class="SplashButton" style="width:250px;margin-top:80px;" onactivate="OpenInventory()">
-        <Label text="Open Inventory"/>
-      </Button>
-      <Button class="SplashButton" style="width:250px;" onactivate="DefaultInventory()">
-        <Label text="Change Default Inventory"/>
-      </Button>
-    </Panel>
-    -->
 
     <Panel hittest="false" style="width:100%; height:100%;" id="PanoramaInventory">
       <Panel id="stash_row" />
@@ -34,3 +23,4 @@
 
   </Panel>
 </root>
+ 

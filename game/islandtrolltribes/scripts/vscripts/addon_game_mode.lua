@@ -487,7 +487,6 @@ end
 -- Create our game mode and initialize it
 function Activate()
 	print ( '[ITT] Creating Game Mode' )
-	Containers:Init()
 	ITT:InitGameMode()
 end
 
