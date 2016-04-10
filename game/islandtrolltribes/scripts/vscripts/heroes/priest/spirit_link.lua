@@ -1,59 +1,57 @@
 function SpiritLink (keys)
-    local spellInfo = {caster = keys.caster, radius = keys.Radius, links = keys.Links, duration = keys.Duration, particle = keys.Particle}
-    spellInfo.startTime = GameRules:GetGameTime()
-    Timers:CreateTimer(SpiritLinkSpell, spellInfo)
-end
-
-function SpiritLinkSpell(spellInfo)
-    local unitCounts, units = SelectUnits(GetNearbyAllies(spellInfo.caster, spellInfo.radius), spellInfo.links)
---    print("Number of units foun (Spirit Link): "..unitCounts)
-    table.insert(units, spellInfo.caster)
-    UpdateHP(units)
-    if((spellInfo.startTime + spellInfo.duration) <= GameRules:GetGameTime()) then
-        return nil
+    local caster = keys.caster
+    local startTime = GameRules:GetGameTime()
+    if not caster.spirtLinkUnits then
+        caster.spirtLinkUnits = SelectUnits(GetNearbyAllies(caster, keys.Radius), caster, keys.Links)
+        table.insert(caster.spirtLinkUnits, caster)
+        for _,unit in pairs(caster.spirtLinkUnits) do
+            keys.ability:ApplyDataDrivenModifier( caster, unit, "modifier_spiritlink", {duration = keys.Duration})
+        end
     end
-    return 0.2
+    Timers:CreateTimer(0.1, function()
+        UpdateHP(caster.spirtLinkUnits)
+        if((startTime + keys.Duration) <= GameRules:GetGameTime()) then
+            caster.spirtLinkUnits = nil
+            return nil
+        end
+        return 0.2
+    end)
 end
 
 function UpdateHP(units)
-    local particleName = "particles/units/heroes/hero_dazzle/dazzle_shadow_wave.vpcf"
-    local particles = {}
-    local totalHP = 0
-    local averageHP = 0
-    local unitCount = 0
+    local totalHealthPercentage = 0
     for _,unit in pairs(units) do
         if unit:IsAlive() then
-            totalHP = totalHP + unit:GetHealth()
-            unitCount =  unitCount + 1
+            local unitHealthPecerntage = (unit:GetHealth()/unit:GetMaxHealth()) * 100
+            totalHealthPercentage = totalHealthPercentage + unitHealthPecerntage
         end
     end
-    averageHP =  math.ceil(totalHP / unitCount)
---    print("Unit count: "..unitCount..", Total HP: "..totalHP..", Average HP: "..averageHP)
-    for i,unit in pairs(units) do
+    local averageHealthPercentage =  math.ceil(totalHealthPercentage / #units)
+--    print("Unit count: "..#units..", Total HP: "..totalHealthPercentage..", Average HP: "..averageHealthPercentage)
+    for _,unit in pairs(units) do
         if unit:IsAlive() then
-            unit:SetHealth(averageHP)
-            local particle = ParticleManager:CreateParticle(particleName, PATTACH_ABSORIGIN_FOLLOW, unit )
-            ParticleManager:SetParticleControl(particle,1,Vector(unit:GetAbsOrigin().x,unit:GetAbsOrigin().y,unit:GetAbsOrigin().z+((unit:GetBoundingMaxs().z - unit:GetBoundingMins().z)/2)))
-            table.insert(particles,  particle)
+            local newHP = (unit:GetMaxHealth()/100) * averageHealthPercentage
+            unit:SetHealth(newHP)
         end
     end
     return units
 end
 
 
-function SelectUnits(units, links)
+function SelectUnits(units, caster, links)
     local numberOfUnitsToGet = links
---    print("Required unit count: "..numberOfUnitsToGet)
     local selectedUnits = {}
     local unitCount = 0
-    for i,unit in pairs(units) do
-        table.insert(selectedUnits, unit)
-        unitCount = unitCount + 1
+    for _,unit in pairs(units) do
+        if unit:GetEntityIndex() ~= caster:GetEntityIndex() then
+            table.insert(selectedUnits, unit)
+            unitCount = unitCount + 1
+        end
         if(unitCount == numberOfUnitsToGet) then
             break
         end
     end
-    return unitCount, selectedUnits
+    return selectedUnits
 end
 
 function GetNearbyAllies(caster, radius)

@@ -3,16 +3,13 @@
 	"BaseClass"             		"ability_datadriven"
 	"AbilityTextureName"			"ability_priest_spiritlink"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	"AbilityCooldown"				"30"
+	"AbilityCooldown"				"130"
 	"AbilityManaCost"				"20"
 	"MaxLevel" 						"1"
 
     "precache"
     {
-		"particles"	"particles/blue_grow_pulse_out.vpcf"
-        "particles" "particles/addons_gameplay/pit_lava_blast.vpcf"
-		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_oracle.vsndevts"
-		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
+		"particles"	"particles/flare_core_2.vpcf"
         "soundfile" "soundevents/spells.vsndevts"
     }
 
@@ -31,7 +28,22 @@
             "Radius" "4000"
             "Duration" "130"
             "Links" "4"
-            "Particle" "particles/units/heroes/hero_dazzle/dazzle_shadow_wave.vpcf"
         }
+	}
+
+	"Modifiers"
+	{
+	    "modifier_spiritlink"
+	    {
+            "OnCreated"
+            {
+                "AttachEffect"
+                {
+                    "Target"	"TARGET"
+                    "EffectName"	"particles/flare_core_2.vpcf"
+                    "EffectAttachType"	"follow_origin"
+                }
+            }
+	    }
 	}
 }
