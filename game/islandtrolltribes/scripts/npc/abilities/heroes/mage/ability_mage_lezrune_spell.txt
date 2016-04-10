@@ -1,0 +1,47 @@
+"ability_mage_lezrune_spell"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+	"AbilityTextureName"	"ability_mage_lezrune"
+	"AbilityCastPoint"	"0.0"
+	"AbilityCooldown"	"1"
+	"AbilityManaCost"	"0"
+	"MaxLevel"	"1"
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_lezrune"
+			"Duration"	"7.0"
+			"Target"	"TARGET"
+
+		}
+
+		"FireSound"
+		{
+			"EffectName"	"Hero_ElderTitan.AncestralSpirit.Damage"
+			"Target"	"TARGET"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_lezrune"
+		{
+            "IsDebuff"    "1"
+            "ThinkInterval"    "1.0"
+            "OnIntervalThink"
+            {
+				"Damage"
+				{
+					"Damage"	"5"
+					"Target"	"TARGET"
+					"Type"	"DAMAGE_TYPE_MAGICAL"
+				}
+            }
+		}
+
+	}
+}

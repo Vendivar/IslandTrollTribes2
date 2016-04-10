@@ -28,19 +28,19 @@ end
 
 function NelRune(keys)
     local caster = keys.caster
-    local runeInfo = {name = "particles/customgames/capturepoints/cp_fire.vpcf", type = "nelrune"}
+    local runeInfo = {name = "particles/customgames/capturepoints/cp_fire.vpcf", type = "nelrune", abilityName = "ability_mage_nelrune_spell"}
     AddNewRune(caster,runeInfo)
 end
 
 function LezRune(keys)
     local caster = keys.caster
-    local runeInfo = {name = "particles/customgames/capturepoints/cp_allied_metal.vpcf", type = "lezrune"}
+    local runeInfo = {name = "particles/customgames/capturepoints/cp_allied_metal.vpcf", type = "lezrune", abilityName = "ability_mage_lezrune_spell"}
     AddNewRune(caster,runeInfo)
 end
 
 function KaRune(keys)
     local caster = keys.caster
-    local runeInfo = {name = "particles/customgames/capturepoints/cp_wind_captured.vpcf", type = "karune"}
+    local runeInfo = {name = "particles/customgames/capturepoints/cp_wind_captured.vpcf", type = "karune", abilityName = "ability_mage_karune_spell"}
     AddNewRune(caster,runeInfo)
 end
 
@@ -128,6 +128,7 @@ function ActivateRunes(keys)
                 dummyDementiaRune:MoveToNPC(target)
                 dummyDementiaRune.caster = caster
                 dummyDementiaRune.target = target
+                dummyDementiaRune.runeAbilityName =  rune.abilityName
                 Timers:CreateTimer(DoUniqueString("movement_check"),{callback=dummyMovementCheck}, dummyDementiaRune)
                 return
             end)
@@ -140,7 +141,11 @@ function dummyMovementCheck(dummyDementiaRune)
     local length = (dummyDementiaRune:GetAbsOrigin() - dummyDementiaRune.target:GetAbsOrigin()):Length2D()
     if length <= 130.0 then
         dummyDementiaRune:SetOrigin(dummyDementiaRune.target:GetAbsOrigin())
-        dummyDementiaRune:ForceKill(true)
+        local runeAbility = dummyDementiaRune:FindAbilityByName(dummyDementiaRune.runeAbilityName)
+        dummyDementiaRune:CastAbilityOnTarget(dummyDementiaRune.target, runeAbility, -1)
+        Timers:CreateTimer(1.0, function()
+            dummyDementiaRune:ForceKill(true)
+        end)
         return nil
     end
     return 0.1

@@ -1,0 +1,34 @@
+"ability_mage_karune_spell"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+	"AbilityTextureName"	"ability_mage_karune"
+	"AbilityCastPoint"	"0.0"
+	"AbilityCooldown"	"1"
+	"AbilityManaCost"	"0"
+	"MaxLevel"	"1"
+	"OnSpellStart"
+	{
+	    "Damage"
+	    {
+	        "Damage"	"25"
+	        "Target"	"TARGET"
+	        "Type"	"DAMAGE_TYPE_MAGICAL"
+	    }
+
+		"FireSound"
+		{
+			"EffectName"	"Hero_ElderTitan.AncestralSpirit.Damage"
+			"Target"	"TARGET"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_karune"
+		{
+		}
+	}
+}
