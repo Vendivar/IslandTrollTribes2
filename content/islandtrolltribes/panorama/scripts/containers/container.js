@@ -204,6 +204,11 @@ function SetPosition(pos)
       panel.style.position = "0px 0px 0px;";
     }
   }
+  else if (pos == "worldpanel" && GameUI.AddWorldPanel && PlayerTables.GetTableValue(idString, "entity")){
+    var entIndex = PlayerTables.GetTableValue(idString, "entity");
+    var wp = {"panel":panel, "entity":entIndex, "entityHeight":200, "hAlign":0, "vAlign":0, "edge":-1, "offsetX":0, "offsetY":0};
+    GameUI.AddWorldPanel(idString, wp);
+  }
   else if (percMatch){
     var sw = GameUI.CustomUIConfig().screenwidth;
     var sh = GameUI.CustomUIConfig().screenheight
@@ -280,13 +285,13 @@ function OpenContainer()
     SetPosition(positionString);
   }
 
-  panel.visible = true;
+  panel.style.opacity = 1;
 }
 
 function CloseContainer()
 {
   var panel = $.GetContextPanel();
-  panel.visible = false;
+  panel.style.opacity = 0;
 }
 
 function DeleteContainer()

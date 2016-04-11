@@ -179,7 +179,7 @@ function CreateBushContainer( name, position )
         --skins =       {"Hourglass"},
         headerText =  name,
         buttons =     {"Grab All"},
-        position =    "entity", --"mouse",--"900px 200px 0px",
+        position="worldpanel", --"mouse",--"900px 200px 0px",
         draggable = false,
         closeOnOrder= true,
         items = {},

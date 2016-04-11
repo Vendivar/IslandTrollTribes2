@@ -41,7 +41,6 @@ function OpenContainer(msg)
 
     containerPanel.NewContainer(id);
 
-
     DisableFocus(panel);
   }
   else{

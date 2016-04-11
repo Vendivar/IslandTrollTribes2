@@ -17,6 +17,8 @@ var entities = [];
 // panel deletion call?
 // Delete call to server for cleanup
 
+GameUI.AddWorldPanel = function (name, wp) {  panels[name] = wp; }
+
 function WorldPanelChange(id, changes, dels)
 {
   //$.Msg("change ", id, ' -- ', changes, ' -- ', dels);
