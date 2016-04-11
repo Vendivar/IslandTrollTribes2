@@ -41,8 +41,6 @@ function OpenContainer(msg)
 
     containerPanel.NewContainer(id);
 
-    //GameUI.AddWorldPanel(idString, {"panel":containerPanel, "entity":PlayerTables.GetTableValue(idString, "entity"), "entityHeight":200, "hAlign":0, "vAlign":0, "edge":-1, "offsetX":0, "offsetY":0})
-
     DisableFocus(panel);
   }
   else{
