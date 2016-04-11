@@ -122,7 +122,7 @@ function LivingClayTracker( trackingInfo )
 	local trigger_radius = trackingInfo.trigger_radius
 	local target_team = DOTA_UNIT_TARGET_TEAM_ENEMY
 	local target_types = DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_BUILDING
-	local target_flags = DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES
+	local target_flags = DOTA_UNIT_TARGET_FLAG_NONE
 	local units = FindUnitsInRadius(livingClay:GetTeamNumber(), livingClay:GetAbsOrigin(), nil, trigger_radius, target_team, target_types, target_flags, FIND_CLOSEST, false)
 
 	if #units > 0 then
