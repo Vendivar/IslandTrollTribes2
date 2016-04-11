@@ -6,7 +6,7 @@
 	    "BaseClass"             "item_datadriven"
 	    "AbilityTextureName"    "item_blades_of_attack"
 	    "Model"                 "models/items/rikimaru/bladearmorgloves/bladearmorgloves.vmdl"
-	    "Effect"                ""
+	    "Effect"	"particles/custom/dropped_item_normal.vpcf"
 	    "ItemCost"              "106"
 	    "ItemShopTags"          "consumable"
 	    "ItemQuality"           "consumable"

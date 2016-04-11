@@ -5,7 +5,7 @@
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"compass_sonar"
 	"Model"	"models/items/rattletrap/cog_tesla/cog_tesla.vmdl"
-	"Effect"	""
+	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"AbilityCooldown"	"35"
 	"AbilityCastPoint"	"0.5"
 	"ItemCost"	"18"

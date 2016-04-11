@@ -5,7 +5,7 @@
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"item_gloves_of_haste"
 	"Model"	"models/items/kunkka/singsingkunkkaset_gloves/singsingkunkkaset_gloves.vmdl"
-	"Effect"	""
+	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"ItemCost"	"62"
 	"ItemShopTags"	"consumable"
 	"ItemQuality"	"consumable"

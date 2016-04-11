@@ -7,7 +7,7 @@
     "BaseClass"                 "item_datadriven"
     "AbilityTextureName"        "net_basic"
     "Model"                     "models/particle/net.vmdl"
-    "Effect"                    ""
+    "Effect"	"particles/custom/dropped_item_normal.vpcf"
 
     "AbilityCastRange"          "800"
     "AbilityCastPoint"          "0.5"

@@ -12,7 +12,7 @@
     "AbilityChannelTime"        "1.5"
  
     "Model"                     "models/items/antimage/arc_of_manta/arc_of_manta.vmdl"
-    "Effect"                    ""
+    "Effect"	"particles/custom/dropped_item_normal.vpcf"
 
     "ItemCost"                  "52"
     "ItemShopTags"              "consumable"

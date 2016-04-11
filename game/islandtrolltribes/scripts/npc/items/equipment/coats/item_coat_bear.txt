@@ -5,7 +5,7 @@
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"item_cloak"
 	"Model"	"models/coat_bear.vmdl"
-	"Effect"	""
+	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"ItemCost"	"92"
 	"ItemShopTags"	"consumable"
 	"ItemQuality"	"consumable"

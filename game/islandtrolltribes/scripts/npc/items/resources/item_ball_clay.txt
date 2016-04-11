@@ -5,7 +5,7 @@
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"ball_clay"
 	"Model"	"models/particle/tiny_simrocks.vmdl"
-	"Effect"	""
+	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"ItemCost"	"2"
 	"ItemShopTags"	"consumable"
 	"ItemQuality"	"consumable"

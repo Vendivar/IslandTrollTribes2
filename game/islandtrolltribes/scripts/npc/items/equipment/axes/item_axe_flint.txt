@@ -11,7 +11,7 @@
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"axe_flint"
 	"Model"	"models/items/tuskarr/ancestors_frozen_axe/ancestors_frozen_axe.vmdl"
-	"Effect"	""
+	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"ItemCost"	"10"
 	"ItemShopTags"	"consumable"
 	"ItemQuality"	"consumable"

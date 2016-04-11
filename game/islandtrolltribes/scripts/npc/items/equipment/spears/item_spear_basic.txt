@@ -8,7 +8,7 @@
     "BaseClass"    "item_datadriven"
     "AbilityTextureName"    "spear_basic"
     "Model"    "models/particle/legion_arrow.vmdl"
-    "Effect"    ""
+    "Effect"	"particles/custom/dropped_item_normal.vpcf"
     "ItemCost"    "10"
     "ItemShopTags"    "consumable"
     "ItemQuality"    "consumable"

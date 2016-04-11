@@ -5,7 +5,7 @@
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"potion_twin_island"
 	"Model"	"models/props_gameplay/bottle_mango001.vmdl"
-	"Effect"	""
+	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"AbilityCastPoint"	"0.5"
 	"ItemCost"	"78"
 	"ItemShopTags"	"consumable"

@@ -5,7 +5,7 @@
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"item_hood_of_defiance"
 	"Model"	"models/coat_camo.vmdl"
-	"Effect"	""
+	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"AbilityCastPoint"	"0.1"
 	"AbilityCooldown"	"30.0"
 	"ItemCost"	"104"

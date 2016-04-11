@@ -5,7 +5,7 @@
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"hide_elk"
 	"Model"	"models/heroes/lone_druid/lone_druid_claw_fx.vmdl"
-	"Effect"	""
+	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"ItemCost"	"26"
 	"ItemShopTags"	"consumable"
 	"ItemQuality"	"consumable"

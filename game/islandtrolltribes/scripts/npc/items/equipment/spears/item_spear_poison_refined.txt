@@ -7,7 +7,7 @@
     "BaseClass"    "item_datadriven"
     "AbilityTextureName"    "spear_poison_refined"
     "Model"    "models/heroes/enchantress/enchantress_spear.vmdl"
-    "Effect"    ""
+    "Effect"	"particles/custom/dropped_item_normal.vpcf"
     "ItemCost"    "18"
     "ItemShopTags"    "consumable"
     "ItemQuality"    "consumable"

@@ -11,7 +11,7 @@
     "BaseClass"                 "item_datadriven"
     "AbilityTextureName"        "shield_battle"
     "Model"                     "models/heroes/chaos_knight/chaos_knight_shield.vmdl"
-    "Effect"                    ""
+    "Effect"	"particles/custom/dropped_item_normal.vpcf"
 
     "AbilityCastRange"          "200" //800
     "AbilityCastPoint"          "0.5"

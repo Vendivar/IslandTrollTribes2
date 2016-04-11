@@ -7,7 +7,7 @@
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"cloak_protection"
 	"Model"	"models/coat_protect.vmdl"
-	"Effect"	""
+	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"ItemCost"	"88"
 	"ItemShopTags"	"consumable"
 	"ItemQuality"	"consumable"

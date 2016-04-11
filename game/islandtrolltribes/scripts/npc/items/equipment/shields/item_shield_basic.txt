@@ -7,7 +7,7 @@
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"item_stout_shield"
 	"Model"	"models/props_gameplay/stout_shield.vmdl"
-	"Effect"	""
+	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"ItemCost"	"40"
 	"ItemShopTags"	"consumable"
 	"ItemQuality"	"consumable"

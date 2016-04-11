@@ -5,7 +5,7 @@
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"building_kit_witch_doctor_hut"
 	"Model"	"models/props_debris/creep_camp001j.vmdl"
-	"Effect"	""
+	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"ItemCost"	"30"
 	"ItemShopTags"	"consumable"
 	"ItemQuality"	"consumable"

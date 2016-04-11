@@ -5,7 +5,7 @@
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"item_travel_boots"
 	"Model"	"models/items/tinker/boots_of_travel.vmdl"
-	"Effect"	""
+	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"ItemCost"	"110"
 	"ItemShopTags"	"consumable"
 	"ItemQuality"	"consumable"

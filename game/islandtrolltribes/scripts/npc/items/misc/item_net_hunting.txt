@@ -5,7 +5,7 @@
     "BaseClass"                 "item_datadriven"
     "AbilityTextureName"        "net_hunting"
     "Model"                     "models/particle/net.vmdl"
-    "Effect"                    ""
+    "Effect"	"particles/custom/dropped_item_normal.vpcf"
     "AoERadius"                 "%radius"
 
     "AbilityCastRange"          "800"

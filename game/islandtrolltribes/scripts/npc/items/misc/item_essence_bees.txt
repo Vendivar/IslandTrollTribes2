@@ -5,7 +5,7 @@
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"essence_bees"
 	"Model"	"models/heroes/oracle/weapon.vmdl"
-	"Effect"	""
+	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"AbilityCastRange"	"500"
 	"AbilityCastPoint"	"0.5"
 	"ItemCost"	"78"

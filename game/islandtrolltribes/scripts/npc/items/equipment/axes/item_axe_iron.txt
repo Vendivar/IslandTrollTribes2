@@ -12,7 +12,7 @@
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"axe_iron"
 	"Model"	"models/items/axe/blacksmith_weapon.vmdl"
-	"Effect"	""
+	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"ItemCost"	"32"
 	"ItemShopTags"	"consumable"
 	"ItemQuality"	"consumable"

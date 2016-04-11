@@ -5,7 +5,7 @@
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"acorn"
 	"Model"	"models/heroes/crystal_maiden/crystal_maiden_ice_debris_01.vmdl"
-	"Effect"	""
+	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"ItemCost"	"2"
 	"ItemShopTags"	"consumable"
 	"ItemQuality"	"consumable"

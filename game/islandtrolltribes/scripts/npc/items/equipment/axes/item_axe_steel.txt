@@ -11,7 +11,7 @@
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"axe_steel"
 	"Model"	"models/items/axe/greek_weapon.vmdl"
-	"Effect"	""
+	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"ItemCost"	"62"
 	"ItemShopTags"	"consumable"
 	"ItemQuality"	"consumable"

@@ -5,7 +5,7 @@
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"meat_diseased"
 	"Model"	"models/particle/green_rocks.vmdl"
-	"Effect"	""
+	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"AbilityCastPoint"	"0.5"
 	"ItemCost"	"1"
 	"ItemShopTags"	"consumable"

@@ -5,7 +5,7 @@
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"item_refresher"
 	"Model"	"models/items/shadowshaman/vagabond_drink/vagabond_drink.vmdl"
-	"Effect"	""
+	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"AbilityCastPoint"	"0.5"
 	"ItemCost"	"20"
 	"ItemShopTags"	"consumable"

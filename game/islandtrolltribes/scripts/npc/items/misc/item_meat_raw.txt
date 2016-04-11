@@ -6,7 +6,7 @@
     "BaseClass"    			"item_datadriven"
     "AbilityTextureName"    "meat_raw"
     "Model"    				"models/items/lifestealer/transmuted_armaments_back/transmuted_armaments_back.vmdl"
-    "Effect"    			""
+    "Effect"	"particles/custom/dropped_item_normal.vpcf"
     "ItemCost"    			"1"
     "ItemShopTags"    		"consumable"
     "ItemQuality"    		"consumable"

@@ -12,7 +12,7 @@
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"axe_stone"
 	"Model"	"models/items/axe/axe_executioner.vmdl"
-	"Effect"	""
+	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"ItemCost"	"14"
 	"ItemShopTags"	"consumable"
 	"ItemQuality"	"consumable"

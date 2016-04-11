@@ -5,7 +5,7 @@
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"gloves_bone"
 	"Model"	"models/items/clinkz/clinkz_skeleton_hands/clinkz_skeleton_hands.vmdl"
-	"Effect"	""
+	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"ItemCost"	"54"
 	"ItemShopTags"	"consumable"
 	"ItemQuality"	"consumable"

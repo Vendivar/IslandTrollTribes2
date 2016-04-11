@@ -5,7 +5,7 @@
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"boots_iron"
 	"Model"	"models/items/kunkka/singsingkunkkaset_boots/singsingkunkkaset_boots.vmdl"
-	"Effect"	""
+	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"ItemCost"	"70"
 	"ItemShopTags"	"consumable"
 	"ItemQuality"	"consumable"

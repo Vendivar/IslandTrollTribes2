@@ -7,7 +7,7 @@
     "BaseClass"    "item_datadriven"
     "AbilityTextureName"    "spear_poison_ultra"
     "Model"    "models/items/enchantress/anuxi_summer_spear/anuxi_summer_spear.vmdl"
-    "Effect"    ""
+    "Effect"	"particles/custom/dropped_item_normal.vpcf"
     "ItemCost"    "24"
     "ItemShopTags"    "consumable"
     "ItemQuality"    "consumable"

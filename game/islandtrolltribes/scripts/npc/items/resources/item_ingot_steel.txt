@@ -5,7 +5,7 @@
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"ingot_steel"
 	"Model"	"models/props_magic/bad_crystals002.vmdl"
-	"Effect"	""
+	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"ItemCost"	"28" 
 	"ItemShopTags"	"consumable"
 	"ItemQuality"	"consumable"

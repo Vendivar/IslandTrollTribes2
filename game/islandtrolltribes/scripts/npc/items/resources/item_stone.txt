@@ -7,7 +7,7 @@
     "BaseClass"                 "item_datadriven"
     "AbilityTextureName"        "stone"
     "Model"                     "models/particle/tiny_rocks.vmdl"
-    "Effect"                    ""
+    "Effect"	"particles/custom/dropped_item_normal.vpcf"
     
     "AbilityCastRange"          "1000"
     "AbilityCastPoint"          "0.4"

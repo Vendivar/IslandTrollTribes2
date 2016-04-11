@@ -5,7 +5,7 @@
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"gloves_steel"
 	"Model"	"models/heroes/clinkz/clinkz_gloves.vmdl"
-	"Effect"	""
+	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"ItemCost"	"78"
 	"ItemShopTags"	"consumable"
 	"ItemQuality"	"consumable"

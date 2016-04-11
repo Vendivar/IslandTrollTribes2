@@ -7,7 +7,7 @@
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"item_skadi"
 	"Model"	"models/items/dragon_knight/shield_of_the_drake/shield_of_the_drake.vmdl"
-	"Effect"	""
+	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"ItemCost"	"1"
 	"ItemSellable"	"1"
 	"ItemShopTags"	"consumable"

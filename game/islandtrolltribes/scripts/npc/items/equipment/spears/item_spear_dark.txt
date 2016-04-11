@@ -7,7 +7,7 @@
     "BaseClass"    "item_datadriven"
     "AbilityTextureName"    "spear_dark"
     "Model"    "models/items/huskar/obsidian_blade_spear/obsidian_blade_spear.vmdl"
-    "Effect"    ""
+    "Effect"	"particles/custom/dropped_item_normal.vpcf"
     "ItemCost"    "26"
     "ItemShopTags"    "consumable"
     "ItemQuality"    "consumable"

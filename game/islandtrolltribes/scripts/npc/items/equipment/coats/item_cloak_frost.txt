@@ -5,7 +5,7 @@
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"item_shivas_guard"
 	"Model"	"models/props_items/shivaguard.vmdl"
-	"Effect"	""
+	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"ItemCost"	"96"
 	"ItemShopTags"	"consumable"
 	"ItemQuality"	"consumable"

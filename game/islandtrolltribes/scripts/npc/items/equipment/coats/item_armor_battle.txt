@@ -6,7 +6,7 @@
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"armor_battle"
 	"Model"	"models/props_items/assault_cuirass.vmdl"
-	"Effect"	""
+	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"ItemCost"	"104"
 	"ItemShopTags"	"consumable"
 	"ItemQuality"	"consumable"

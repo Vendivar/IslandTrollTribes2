@@ -5,7 +5,7 @@
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"item_clarity"
 	"Model"	"models/props_gameplay/salve_blue.vmdl"
-	"Effect"	""
+	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"AbilityCastPoint"	"0.5"
 	"ItemCost"	"12"
 	"ItemShopTags"	"consumable"

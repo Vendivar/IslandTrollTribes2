@@ -5,7 +5,7 @@
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"ship_transport"
 	"Model"	"models/items/courier/corsair_ship/corsair_ship_flying.vmdl"
-	"Effect"	""
+	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"AbilityCastRange"	"800"
 	"AbilityCastPoint"	"0.5"
 	"ItemCost"	"52"

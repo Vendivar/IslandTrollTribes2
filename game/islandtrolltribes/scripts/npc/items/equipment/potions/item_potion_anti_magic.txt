@@ -5,7 +5,7 @@
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"potion_anti_magic"
 	"Model"	"models/potion_acid.vmdl"
-	"Effect"	""
+	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"AbilityCastPoint"	"0.5"
 	"ItemCost"	"6"
 	"ItemShopTags"	"consumable"

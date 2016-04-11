@@ -5,7 +5,7 @@
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"item_smoke_of_deceit"
 	"Model"	"models/props_gameplay/smoke.vmdl"
-	"Effect"	""
+	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"AbilityCastRange"	"800"
 	"AbilityCastPoint"	"0.5"
 	"ItemCost"	"8"

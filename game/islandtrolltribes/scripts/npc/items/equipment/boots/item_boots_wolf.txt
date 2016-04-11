@@ -5,7 +5,7 @@
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"item_tranquil_boots"
 	"Model"	"models/props_items/powertreads.vmdl"
-	"Effect"	""
+	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"AbilityCastRange"	"800"
 	"AbilityCastPoint"	"0.5"
 	"ItemCost"	"52"

@@ -7,7 +7,7 @@
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"potion_acid"
 	"Model"	"models/props_gameplay/salve_red.vmdl"
-	"Effect"	""
+	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"AbilityCastRange"	"800"
 	"AbilityCastPoint"	"0.25"
 	"AbilityCooldown"	"10"

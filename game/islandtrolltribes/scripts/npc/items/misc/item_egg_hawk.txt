@@ -5,7 +5,7 @@
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"egg_hawk"
 	"Model"	"models/props_winter/egg.vmdl"
-	"Effect"	""
+	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"ItemCost"	"44"
 	"ItemShopTags"	"consumable"
 	"ItemQuality"	"consumable"

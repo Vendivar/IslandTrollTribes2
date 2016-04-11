@@ -7,7 +7,7 @@
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"item_urn_of_shadows"
 	"Model"	"models/potion_2.vmdl"
-	"Effect"	""
+	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"AbilityCastRange"	"800"
 	"AbilityCastPoint"	"0.5"
 	"ItemCost"	"58"

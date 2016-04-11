@@ -5,7 +5,7 @@
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"cloak_fire"
 	"Model"	"models/coat_fire.vmdl"
-	"Effect"	""
+	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"ItemCost"	"88"
 	"ItemShopTags"	"consumable"
 	"ItemQuality"	"consumable"

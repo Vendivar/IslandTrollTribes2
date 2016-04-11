@@ -5,7 +5,7 @@
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"item_chainmail"
 	"Model"	"models/coat_iron.vmdl"
-	"Effect"	""
+	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"ItemCost"	"80"
 	"ItemShopTags"	"consumable"
 	"ItemQuality"	"consumable"

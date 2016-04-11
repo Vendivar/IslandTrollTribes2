@@ -7,7 +7,7 @@
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"pinion_shadow"
 	"Model"	"models/items/clinkz/runic_bow_of_corruption/runic_bow_of_corruption.vmdl"
-	"Effect"	""
+	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"AbilityCastRange"	"800"
 	"AbilityCastPoint"	"0.5"
 	"ItemCost"	"1"

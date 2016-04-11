@@ -8,7 +8,7 @@
     "BaseClass"    "item_datadriven"
     "AbilityTextureName"    "spear_iron"
     "Model"    "models/items/huskar/sacred_bones_spear/sacred_bones_spear.vmdl"
-    "Effect"    ""
+    "Effect"	"particles/custom/dropped_item_normal.vpcf"
     "ItemCost"    "14"
     "ItemShopTags"    "consumable"
     "ItemQuality"    "consumable"

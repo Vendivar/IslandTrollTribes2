@@ -7,7 +7,7 @@
     "BaseClass"    "item_datadriven"
     "AbilityTextureName"    "item_heavens_halberd"
     "Model"    "models/items/huskar/sacred_bones_spear/sacred_bones_spear.vmdl"
-    "Effect"    ""
+    "Effect"	"particles/custom/dropped_item_normal.vpcf"
     "ItemCost"    "28"
     "ItemShopTags"    "consumable"
     "ItemQuality"    "consumable"
