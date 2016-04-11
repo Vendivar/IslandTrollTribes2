@@ -15,3 +15,11 @@ function PingMap(entity, pos, color, teamNumber)
 
     Timers:CreateTimer(duration, function() map_entity:RemoveSelf() end)
 end
+
+
+--Pings units on map
+function PingUnitInMap(map_entity, color, duration, team)
+    local map_entity = CreateUnitByName("minimap_icon_"..color, map_entity:GetAbsOrigin(), false, nil, nil, team)
+    map_entity:AddNewModifier(map_entity, nil, "modifier_minimap", {})
+    Timers:CreateTimer(duration, function() map_entity:RemoveSelf() end)
+end

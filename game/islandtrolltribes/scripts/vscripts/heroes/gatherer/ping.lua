@@ -71,6 +71,24 @@ function PingItemInRange(event)
     end
 end
 
+function PingUnitsInRange(event)
+    local caster = event.caster
+    local range =  event.ability:GetCastRange()
+    local duration = event.Duration
+    local unitList = event.Units
+    local flagColor = Vector(255, 255, 255) --white
+    local mapEntityColor = "white"
+    local foundUnits = FindUnitsInRadiusByUnitList(unitList, caster:GetAbsOrigin(), range)
+
+    if #foundUnits > 0 then
+        EmitSoundOnLocationForAllies(caster:GetAbsOrigin(), "General.Ping", caster)
+        for _,foundUnit in pairs(foundUnits) do
+            CreatePingFlag(foundUnit, flagColor, duration, caster:GetTeamNumber())
+            PingUnitInMap(foundUnit, mapEntityColor, duration, caster:GetTeamNumber())
+        end
+    end
+end
+
 function GetBonusRange(caster)
     local bonusDistance =  0
     if caster:HasModifier("modifier_mapmagic") then --Map magic bonus

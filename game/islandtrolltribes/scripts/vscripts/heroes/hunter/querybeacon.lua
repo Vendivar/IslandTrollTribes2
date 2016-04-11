@@ -24,8 +24,8 @@ function StartPinging(trackingUnit)
     if(trackingUnit:IsAlive() == false or GameRules:GetGameTime() >= trackingUnit.tracingEndTime ) then
         return nil
     end
-    CreateFlag(trackingUnit, trackingUnit.flagColor, particleLifeTime)
-    PingUnitInMap(trackingUnit, trackingUnit.mapEntityColor, particleLifeTime)
+    CreatePingFlag(trackingUnit, trackingUnit.flagColor, particleLifeTime, trackingUnit:GetTeamNumber())
+    PingUnitInMap(trackingUnit, trackingUnit.mapEntityColor, particleLifeTime, trackingUnit:GetTeamNumber())
     return 1.5
 end
 
@@ -41,29 +41,4 @@ function FindTrackingUnits(caster, range)
         end
     end
     return trackingUnits, foundUnits
-end
-
-function CreateFlag(unit, color, duration)
-    local particleNames = {"particles/custom/ping_world.vpcf","particles/custom/ping_static.vpcf" }
-    local particles = {}
-    for _,particleName in pairs(particleNames) do
-        local particle = ParticleManager:CreateParticleForTeam(particleName, PATTACH_ABSORIGIN, unit, unit:GetTeamNumber())
-        ParticleManager:SetParticleControl(particle, 0, unit:GetAbsOrigin())
-        ParticleManager:SetParticleControl(particle, 1, color)
-        table.insert (particles,particle)
-    end
-    Timers:CreateTimer(DoUniqueString("ping_unit"), {callback=DestroyParticle, endTime = duration}, particles)
-end
-
-function DestroyParticle(particles)
-    for _,particle in pairs(particles) do
-        ParticleManager:DestroyParticle(particle, true)
-    end
-    return
-end
-
-function PingUnitInMap(map_entity, color, duration)
-    local map_entity = CreateUnitByName("minimap_icon_"..color, map_entity:GetAbsOrigin(), false, nil, nil, map_entity:GetTeamNumber())
-    map_entity:AddNewModifier(map_entity, nil, "modifier_minimap", {})
-    Timers:CreateTimer(duration, function() map_entity:RemoveSelf() end)
 end
