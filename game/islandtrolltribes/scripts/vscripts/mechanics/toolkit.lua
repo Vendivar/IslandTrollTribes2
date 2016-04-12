@@ -93,5 +93,8 @@ function ITT:Panic(event)
         if ability:IsFullyCastable() then
             hero:CastAbilityNoTarget(ability, -1)
         end
+        if hero:GetMana() < ability:GetManaCost(1) then
+            SendErrorMessage(playerID, "#error_no_mana")
+        end
     end
 end

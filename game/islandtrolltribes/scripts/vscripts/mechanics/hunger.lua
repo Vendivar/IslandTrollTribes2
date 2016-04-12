@@ -16,6 +16,8 @@ function HungerCheck( event )
         end
         if ability:IsFullyCastable() then
             hero:CastAbilityNoTarget(ability, -1)
+            local playerID = hero:GetPlayerID()
+            SendErrorMessage(playerID, "#error_mana_low")
         end
     end
     
