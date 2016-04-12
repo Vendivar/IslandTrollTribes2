@@ -32,7 +32,7 @@ function ITT:CraftItem(event)
         end
     end
 
-    local craftingItems = CanCombine(unit, itemName)
+    local craftingItems = CanCombine(unit, section, itemName)
     if craftingItems then
         -- Clear the inventory items returned by the CanCombine aux
         ClearItems(craftingItems)   
@@ -48,8 +48,8 @@ function ITT:CraftItem(event)
     end
 end
 
-function CanCombine( unit, recipeName )
-    local requirements = GetRecipeForItem(unit, recipeName)
+function CanCombine( unit, section, recipeName )
+    local requirements = GetRecipeForItem(section, recipeName)
 
     local result = {}
     for itemName,num in pairs(requirements) do
@@ -168,14 +168,8 @@ function FireCombineParticle( unit )
     end
 end
 
-function GetRecipeForItem(unit, itemName)
-    local unitTable
-    if unit:IsHero() then
-        unitTable = GameRules.Crafting['Recipes']
-    else
-        unitTable = GameRules.Crafting[unit:GetUnitName()]
-    end
-
+function GetRecipeForItem(section, itemName)
+    local unitTable = GameRules.Crafting[section]
     -- Recipes are in 1,2,3... order
     for _,recipe in pairs(unitTable) do
         for recipeName,ingredients in pairs(recipe) do

@@ -2,9 +2,11 @@ var Root = $.GetContextPanel()
 var iPlayerID = Players.GetLocalPlayer();
 var hero = Players.GetPlayerHeroEntityIndex( iPlayerID )
 var currentBuilding = 0
+var currentUnit = 0
 var fold = false
 
 var Buildings = {}
+var Units = {}
 var UnFinishedBuildings = []
 var KilledBuildings = []
 Buildings['npc_building_armory'] = 1;
@@ -12,6 +14,7 @@ Buildings['npc_building_hut_witch_doctor'] = 1;
 Buildings['npc_building_mixing_pot'] = 1;
 Buildings['npc_building_tannery'] = 1;
 Buildings['npc_building_workshop'] = 1;
+Units['npc_dota_hero_shadow_shaman'] = 1;
 
 function Crafting_OnUpdateSelectedUnits() {
     var selectedEntities = Players.GetSelectedEntities( iPlayerID );
@@ -98,8 +101,27 @@ function UpdateUnfinishedBuildingList(event) {
     }
 }
 
+function ShowUnitCraftingMenu(event) {
+    var unitName = event.unitName
+    currentUnit = unitName
+    var values = CustomNetTables.GetAllTableValues("crafting")
+    if (Units[unitName]==1){
+        for (var i in values)
+        {
+            var crafting_table = values[i]
+            if (crafting_table.key==unitName) {
+                var panel = CreateCraftingSection(unitName, crafting_table.value, Root, false, event.caster)
+                Units[unitName] = panel
+            }
+        }
+    } else {
+         MakeVisible(Units[unitName])
+    }
+}
+
 function HideCurrent() {
     Hide(Buildings[currentBuilding])
+    Hide(Units[currentUnit])
 }
 
 function Hide(panel) {
@@ -114,6 +136,7 @@ function MakeVisible(panel) {
 (function () {
     GameEvents.Subscribe( "building_crafting_hide", HideCurrent );
     GameEvents.Subscribe( "building_killed", UpdateKilledBuildingList);
+    GameEvents.Subscribe( "show_crafting_menu", ShowUnitCraftingMenu);
     GameEvents.Subscribe( "dota_player_update_selected_unit", Crafting_OnUpdateSelectedUnits );
     GameEvents.Subscribe( "building_updated", UpdateUnfinishedBuildingList );
 })();
