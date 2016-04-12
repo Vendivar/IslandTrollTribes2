@@ -15748,12 +15748,6 @@
 	            "EffectName"    "Panic"
 	            "Target"        "CASTER"
 	        }
-	
-	        "RemoveAbility"
-	        {
-	            "Target"        "CASTER"
-	            "AbilityName"   "panic"
-	        }
 	    }
 	
 	    "Modifiers"
