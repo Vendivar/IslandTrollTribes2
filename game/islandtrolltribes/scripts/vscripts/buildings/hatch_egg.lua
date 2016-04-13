@@ -6,6 +6,9 @@ function HatchEgg(keys)
         local spawnedBird = SpawnBird(SelectBird(inventoryDetails, hero), hatchery)
         ImproveAbility(spawnedBird, inventoryDetails)
         RemoveInventoryItems( inventoryDetails, hatchery )
+        
+    local lockedSlotCount = 5
+    ITT:CreateLockedSlotsForUnits(spawnedBird, lockedSlotCount)
     else
         SendErrorMessage(hero:GetPlayerOwnerID(), inventoryDetails.errorMessage)
     end
@@ -22,11 +25,11 @@ function GetInventoryDetails(hatchery)
         {type="mushroom", decides = "bird_type", selects = "npc_creep_hawk", count=0},
         {type="rock_dark", decides = "bird_type",  selects = "npc_creep_hawk", count=0},
         
-        {type="clay", decides = "ability", incleases = "health", by = "5%", count=0},
-        {type="hide",decides = "ability", incleases = "health", by = "50", count=0},
-        {type="butsu",decides = "ability", incleases = "movement_speed", by = "5%", count=0},
-        {type="stick",decides = "ability", incleases = "movement_speed", by = "5%", count=0},
-        {type="rock_dark",decides = "ability", incleases = "all_bonus", by = "1", count=0},
+        {type="clay", decides = "ability", incleases = "health", by = "5%", count=0}, --Red Dragon
+        {type="hide",decides = "ability", incleases = "health", by = "50", count=0},  --Red Dragon
+        {type="butsu",decides = "ability", incleases = "movement_speed", by = "5%", count=0}, --Blue Dragon
+        {type="stick",decides = "ability", incleases = "movement_speed", by = "5%", count=0},  --Blue Dragon
+        {type="rock_dark",decides = "ability", incleases = "all_bonus", by = "1", count=0}, --Black Dragon
     }
     local inventoryDetails = { isValid = false, totalItemCount = 0, itemTypes = itemTypes,  errorMessage="", firstItem ="" }
     for i=0,5 do

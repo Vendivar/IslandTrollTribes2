@@ -5,7 +5,7 @@
     "AbilityTextureName"    "ability_building_smokemeat"
     "MaxLevel"              "1"
     "AbilityChannelTime"    "15"
-    "AbilityCooldown"       "3.0"
+    "AbilityCooldown"       "16"
     
     "AbilitySharedWithTeammates" "1"
     
