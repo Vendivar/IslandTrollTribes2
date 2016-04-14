@@ -1138,7 +1138,7 @@
 	
 	    "precache"
 	    {
-	        "soundfile" "soundevents/game_sounds_heroes/game_sounds_life_stealer"
+	        "soundfile" "soundevents/game_sounds_heroes/game_sounds_life_stealer.vsndevts"
 	    }
 	
 	    "OnSpellStart"
@@ -2000,7 +2000,7 @@
 	
 			"modifier_bash"
 			{
-				"EffectName"	"generic_stunned"
+				"EffectName"	"particles/generic_gameplay/generic_stunned.vpcf"
 				"EffectAttachType"	"follow_overhead"
 				"Duration"	"1.0"
 				"OverrideAnimation"	"ACT_DOTA_DISABLED"
@@ -2228,7 +2228,7 @@
 	
 			"modifier_bear_bash"
 			{
-				"EffectName"	"generic_stunned"
+				"EffectName"	"particles/generic_gameplay/generic_stunned.vpcf"
 				"EffectAttachType"	"follow_overhead"
 				"Duration"	"1.0"
 				"OverrideAnimation"	"ACT_DOTA_DISABLED"
@@ -6560,7 +6560,7 @@
 		"precache"
 		{
 			"particle_folder"	"particles/units/heroes/hero_visage"
-			"particles"	"particles/depress.vpcf"
+			"particle"	"particles/depress.vpcf"
 			"soundfile"	"sounds/weapons/hero/visage/grave_chill_target.vsnd"
 		}
 	
@@ -10328,8 +10328,8 @@
 		"MaxLevel"	"1"
 	    "precache" 
 	    { 
-			"particles"	"particles/units/heroes/hero_oracle/oracle_fatesedict_repel.vpcf"
-	        "particles" "particles/units/heroes/hero_oracle/oracle_purifyingflames_hit.vpcf"
+			"particle"	"particles/units/heroes/hero_oracle/oracle_fatesedict_repel.vpcf"
+	        "particle"  "particles/units/heroes/hero_oracle/oracle_purifyingflames_hit.vpcf"
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_oracle.vsndevts"
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
 	        "soundfile" "soundevents/spells.vsndevts"
@@ -11555,7 +11555,7 @@
 		"AbilityCastRange"  "400"
 		"precache" 
 	    {
-	    "particles" "particles/units/heroes/hero_oracle/oracle_fatesedict_repel.vpcf"
+	    	"particle" "particles/units/heroes/hero_oracle/oracle_fatesedict_repel.vpcf"
 	    }
 		"MaxLevel"	"1"
 		"OnSpellStart"
@@ -11566,7 +11566,6 @@
 				"Radius"     "400"
 				"Function"   "Omnicure"
 			}
-	
 		}
 	}
 	"ability_priest_pacifyingsmoke"
@@ -12152,8 +12151,7 @@
 		"MaxLevel"	"1"
 		"precache"
 		{
-			"particles"	"particles/units/heroes/hero_oracle/oracle_false_promise_cast_enemy.vpcf"
-			"particles"	"particles/items_fx/black_king_bar_avatar.vpcf"
+			"particle"	"particles/units/heroes/hero_oracle/oracle_false_promise_cast_enemy.vpcf"
 	        "soundfile" "soundevents/spells.vsndevts"
 		}
 	
@@ -12919,7 +12917,7 @@
 		"MaxLevel"	"1"
 	    "precache"
 	    {
-	    "particles" "particles/units/heroes/hero_oracle/oracle_false_promise_top_edge_flicker.vpcf"
+	    	"particle" "particles/units/heroes/hero_oracle/oracle_false_promise_top_edge_flicker.vpcf"
 	    }
 		"Modifiers"
 		{

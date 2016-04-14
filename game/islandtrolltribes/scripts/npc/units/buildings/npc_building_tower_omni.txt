@@ -21,14 +21,6 @@
 	"AttackRangeBuffer"          "250"     // Extra range the target can move without canceling the attack
 	"ProjectileModel"	"particles/units/heroes/hero_windrunner/windrunner_base_attack.vpcf"
 	"ProjectileSpeed"	"600"
-	
-	"precache"
-	{
-		"model"	"models/props_debris/camp_fire001.vmdl"
-		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts"
-		"particles"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
-		"particles" "particles/units/heroes/hero_clinkz/clinkz_base_attack.vpcf"
-	}
 
 	"Ability1"	"ability_building_enemytargetting"
 	"Ability10"	"ability_building"

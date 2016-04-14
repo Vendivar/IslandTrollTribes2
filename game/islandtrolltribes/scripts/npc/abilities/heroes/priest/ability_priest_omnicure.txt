@@ -15,7 +15,7 @@
 	"AbilityCastRange"  "400"
 	"precache" 
     {
-    "particles" "particles/units/heroes/hero_oracle/oracle_fatesedict_repel.vpcf"
+    	"particle" "particles/units/heroes/hero_oracle/oracle_fatesedict_repel.vpcf"
     }
 	"MaxLevel"	"1"
 	"OnSpellStart"
@@ -26,6 +26,5 @@
 			"Radius"     "400"
 			"Function"   "Omnicure"
 		}
-
 	}
 }

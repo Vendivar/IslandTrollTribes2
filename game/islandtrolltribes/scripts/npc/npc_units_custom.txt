@@ -123,12 +123,6 @@
 		"ModelScale"	"0.50"
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
-		"precache"
-		{
-			"model"	"models/armory.vmdl"
-			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts"
-			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
-		}
 	
 		"Ability1"	"ability_quick_build_armory"
 		"Ability2"	"ability_quick_drop"
@@ -170,12 +164,6 @@
 		"HealthBarOffset"	"400"
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
-		"precache"
-		{
-			"model"	"models/props_debris/camp_fire001.vmdl"
-			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts"
-			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
-		}
 	
 		"Ability1"	"ability_duel"
 		"Ability2"	"ability_quick_drop"
@@ -216,11 +204,6 @@
 		"HealthBarOffset"	"400"
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
-		"precache"
-		{
-			"model"	"models/items/rattletrap/clockmaster_cog/clockmaster_cog.vmdl"
-			"particle_folder"	"particles/units/heroes/hero_invoker"
-		}
 	
 		"Ability1"	""
 		"Ability10"	"ability_building"
@@ -261,12 +244,6 @@
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
 		"ModelScale"	"0.5"
-		"precache"
-		{
-			"model"	"models/props_debris/camp_fire001.vmdl"
-			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts"
-			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
-		}
 	
 		"Ability1"	"ability_ensnaretrap_ensnare"
 		"Ability2"	"ability_get_corpse"
@@ -307,12 +284,6 @@
 		"HealthBarOffset"	"100"
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
-		"precache"
-		{
-			"model"	"models/props_debris/camp_fire001.vmdl"
-			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts"
-			"particle"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
-		}
 	
 		"Ability1"	"ability_building_cookmeat"
 		"Ability2"	"ability_pack_up"
@@ -354,12 +325,6 @@
 		"HealthBarOffset"	"400"
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
-		"precache"
-		{
-			"model"	"models/props_debris/creep_camp001d.vmdl"
-			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts"
-			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
-		}
 	
 		"Ability1"	"ability_building_cookmeat"
 		"Ability2"	"ability_pack_up_magefire"
@@ -403,12 +368,6 @@
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
 		"ModelScale"	"1.0"
-		"precache"
-		{
-			"model"	"models/props_debris/camp_fire001.vmdl"
-			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts"
-			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
-		}
 	
 		"Ability1"	"ability_hatch_egg"
 		"Ability2"	"ability_hawks_evolution"
@@ -450,12 +409,6 @@
 		"HealthBarOffset"	"400"
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
-		"precache"
-		{
-			"model"	"models/props_debris/camp_fire001.vmdl"
-			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts"
-			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
-		}
 	
 		"Ability1"	"ability_rest_big"
 		"Ability10"	"ability_building"
@@ -497,13 +450,7 @@
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
 		"ModelScale"	"0.65"
-		"precache"
-		{
-			"model"	"models/props_debris/camp_fire001.vmdl"
-			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts"
-			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
-		}
-	
+		
 		"Ability1"	"ability_rest_big"
 		"Ability10"	"ability_building"
 		"Ability11"	"ability_cancel_building"
@@ -544,12 +491,6 @@
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
 		"ModelScale"	"0.5"
-		"precache"
-		{
-			"model"	"models/props_structures/sniper_hut.vmdl"
-			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts"
-			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
-		}
 	
 		"Ability1"	"ability_quick_build_wd_hut"
 		"Ability2"	"ability_quick_drop"
@@ -592,13 +533,7 @@
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
 		"ModelScale"	"0.9"
-		"precache"
-		{
-			"model"	"models/props_debris/camp_fire001.vmdl"
-			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts"
-			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
-		}
-	
+		
 		"Ability1"	"ability_mix"
 		"Ability2"	"ability_quick_drop"
 		"Ability10"	"ability_building"
@@ -640,12 +575,6 @@
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
 		"ModelScale"	"1.0"
-		"precache"
-		{
-			"model"	"models/props_debris/camp_fire001.vmdl"
-			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts"
-			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
-		}
 	
 		"Ability1"	"ability_get_corpse"
 		"Ability2"	"ability_smoke_meat"
@@ -690,12 +619,6 @@
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
 		"ModelScale"	"0.60"
-		"precache"
-		{
-			"model"	"models/heroes/undying/undying_tower.vmdl"
-			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts"
-			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
-		}
 	
 		"Ability1"	"ability_revive"
 		"Ability10"	"ability_building"
@@ -737,12 +660,6 @@
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
 		"ModelScale"	"0.6"
-		"precache"
-		{
-			"model"	"models/props_debris/camp_fire001.vmdl"
-			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts"
-			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
-		}
 	
 		"Ability10"	"ability_building"
 		"Ability11"	"ability_cancel_building"
@@ -782,12 +699,6 @@
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
 		"ModelScale"	"0.6"
-		"precache"
-		{
-			"model"	"models/props_debris/camp_fire001.vmdl"
-			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts"
-			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
-		}
 	
 		"Ability1"	"ability_make_gloves"
 		"Ability2"	"ability_make_boots"
@@ -837,8 +748,7 @@
 		{
 			"model"	"models/items/pugna/ward/nether_grandmasters_ward/nether_grandmasters_ward.vmdl"
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts"
-			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
-			"particle_folder"	"particles/units/heroes/hero_dragon_knight/dragon_knight_transform_blue.vpcf"
+			"particle"	"particles/units/heroes/hero_dragon_knight/dragon_knight_transform_blue.vpcf"
 		}
 	
 		"Ability1"	"ability_teleport"
@@ -943,14 +853,6 @@
 		"AttackRangeBuffer"          "250"     // Extra range the target can move without canceling the attack
 		"ProjectileModel"	"particles/units/heroes/hero_windrunner/windrunner_base_attack.vpcf"
 		"ProjectileSpeed"	"600"
-		
-		"precache"
-		{
-			"model"	"models/props_debris/camp_fire001.vmdl"
-			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts"
-			"particles"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
-			"particles" "particles/units/heroes/hero_clinkz/clinkz_base_attack.vpcf"
-		}
 	
 		"Ability1"	"ability_building_enemytargetting"
 		"Ability10"	"ability_building"

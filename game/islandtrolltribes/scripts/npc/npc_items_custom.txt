@@ -10125,7 +10125,7 @@
 	    "precache"
 	    {
 	        "soundfile"    "soundevents/game_sounds_heroes/game_sounds_pudge.vsndevts"
-	        "particles"     "particles/units/heroes/hero_oracle/oracle_false_promise_indicator_ball_steam.vpcf"
+	        "particle"     "particles/units/heroes/hero_oracle/oracle_false_promise_indicator_ball_steam.vpcf"
 	    }
 	    "AbilitySpecial"
 	    {

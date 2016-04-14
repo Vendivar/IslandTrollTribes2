@@ -41,7 +41,7 @@
 
 		"modifier_bear_bash"
 		{
-			"EffectName"	"generic_stunned"
+			"EffectName"	"particles/generic_gameplay/generic_stunned.vpcf"
 			"EffectAttachType"	"follow_overhead"
 			"Duration"	"1.0"
 			"OverrideAnimation"	"ACT_DOTA_DISABLED"

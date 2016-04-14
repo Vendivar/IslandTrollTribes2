@@ -9,12 +9,6 @@
 	"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 	"RingRadius"	"100"
 	"ModelScale"	"0.5"
-	"precache"
-	{
-		"model"	"models/props_structures/sniper_hut.vmdl"
-		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts"
-		"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
-	}
 
 	"Ability1"	"ability_quick_build_wd_hut"
 	"Ability2"	"ability_quick_drop"

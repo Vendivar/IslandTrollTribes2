@@ -14,7 +14,7 @@
 	"precache"
 	{
 		"particle_folder"	"particles/units/heroes/hero_visage"
-		"particles"	"particles/depress.vpcf"
+		"particle"	"particles/depress.vpcf"
 		"soundfile"	"sounds/weapons/hero/visage/grave_chill_target.vsnd"
 	}
 

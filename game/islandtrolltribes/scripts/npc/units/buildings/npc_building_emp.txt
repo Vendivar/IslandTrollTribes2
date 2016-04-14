@@ -7,11 +7,6 @@
 	"HealthBarOffset"	"400"
 	"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 	"RingRadius"	"100"
-	"precache"
-	{
-		"model"	"models/items/rattletrap/clockmaster_cog/clockmaster_cog.vmdl"
-		"particle_folder"	"particles/units/heroes/hero_invoker"
-	}
 
 	"Ability1"	""
 	"Ability10"	"ability_building"

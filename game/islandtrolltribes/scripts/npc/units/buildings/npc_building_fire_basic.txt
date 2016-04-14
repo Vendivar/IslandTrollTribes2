@@ -7,12 +7,6 @@
 	"HealthBarOffset"	"100"
 	"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 	"RingRadius"	"100"
-	"precache"
-	{
-		"model"	"models/props_debris/camp_fire001.vmdl"
-		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts"
-		"particle"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
-	}
 
 	"Ability1"	"ability_building_cookmeat"
 	"Ability2"	"ability_pack_up"

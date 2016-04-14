@@ -6,7 +6,7 @@
 	"MaxLevel"	"1"
     "precache"
     {
-    "particles" "particles/units/heroes/hero_oracle/oracle_false_promise_top_edge_flicker.vpcf"
+    	"particle" "particles/units/heroes/hero_oracle/oracle_false_promise_top_edge_flicker.vpcf"
     }
 	"Modifiers"
 	{

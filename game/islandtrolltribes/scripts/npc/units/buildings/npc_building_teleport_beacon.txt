@@ -14,8 +14,7 @@
 	{
 		"model"	"models/items/pugna/ward/nether_grandmasters_ward/nether_grandmasters_ward.vmdl"
 		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts"
-		"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
-		"particle_folder"	"particles/units/heroes/hero_dragon_knight/dragon_knight_transform_blue.vpcf"
+		"particle"	"particles/units/heroes/hero_dragon_knight/dragon_knight_transform_blue.vpcf"
 	}
 
 	"Ability1"	"ability_teleport"
