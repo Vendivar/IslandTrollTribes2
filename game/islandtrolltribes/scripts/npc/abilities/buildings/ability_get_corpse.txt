@@ -11,7 +11,7 @@
 
     "precache"
     {
-        "soundfile" "soundevents/game_sounds_heroes/game_sounds_life_stealer"
+        "soundfile" "soundevents/game_sounds_heroes/game_sounds_life_stealer.vsndevts"
     }
 
     "OnSpellStart"

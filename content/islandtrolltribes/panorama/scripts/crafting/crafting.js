@@ -1,6 +1,6 @@
 // Create a section to hold a list of crafting items
 function CreateCraftingSection (name, table, panel, bFold, entity) {
-    $.Msg("CreateCraftingSection ",name)
+    //$.Msg("CreateCraftingSection ",name)
     var section = $.CreatePanel("Panel", panel, name)
     section.name = name
     section.bFold = bFold //Whether the panel starts initially folded
@@ -20,7 +20,7 @@ function CreateCraftingSection (name, table, panel, bFold, entity) {
                     ingredients.push(ingredient)
                 }
             }
-            $.Msg(ingredients)
+            //$.Msg(ingredients)
             CreateCraftingRecipe(section, item_result, ingredients, subtable[item_result], name, entity)
         }
     }
