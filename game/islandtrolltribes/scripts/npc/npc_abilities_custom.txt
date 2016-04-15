@@ -5211,7 +5211,7 @@
 					"RunScript"
 					{
 						"ScriptFile"	"mechanics/ensnare.lua"
-						"Function"		"ElectroMagnetStart"
+						"Function"		"HunterEnsnareStart"
 						"Target"		"TARGET"
 						"pfx"			"particles/ensnare_rope.vpcf"
 					}
@@ -5232,7 +5232,7 @@
 					"RunScript"
 					{
 						"ScriptFile"	"mechanics/ensnare.lua"
-						"Function"		"ElectroMagnetEnd"
+						"Function"		"HunterEnsnareEnd"
 						"Target"		"TARGET"
 	
 					}
@@ -5249,7 +5249,7 @@
 					"RunScript"
 					{
 						"ScriptFile"	"mechanics/ensnare.lua"
-						"Function"		"ElectroMagnetThink"
+						"Function"		"HunterEnsnareThink"
 						"Target"        "TARGET"
 						"min_range"		"%min_range"
 						"pull_scale" 	"%pull_scale"

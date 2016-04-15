@@ -36,7 +36,7 @@ function EscapeAttackers( flyingTarget )
     end
 end
 
-function ElectroMagnetStart(keys)
+function HunterEnsnareStart(keys)
     local caster = keys.caster
     local target = keys.target
     local pfx = keys.pfx
@@ -69,7 +69,7 @@ function HasUnitMoved(target)
     return hasMoved
 end
 
-function ElectroMagnetThink(keys)
+function HunterEnsnareThink(keys)
     local caster = keys.caster
     local origin = caster:GetAbsOrigin()
     local target = keys.target
@@ -85,7 +85,7 @@ function ElectroMagnetThink(keys)
     ParticleManager:SetParticleControl(target.pull_pfx, 1, Vector( targetPosition.x, targetPosition.y, targetPosition.z + ( target:GetBoundingMaxs().z - target:GetBoundingMins().z ) / 2 ) )
 end
 
-function ElectroMagnetEnd(keys)
+function HunterEnsnareEnd(keys)
     local target = keys.target
     ParticleManager:DestroyParticle(target.pull_pfx, false)
     ParticleManager:DestroyParticle(target.ensnareParticle, false)
