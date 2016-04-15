@@ -83,8 +83,22 @@ function ITT:SpawnItem(island)
     local item = CreateItem(itemSpawned, nil, nil)
     --item:SetPurchaseTime(Time)
     local randomVector = GetRandomVectorGivenBounds(island[1], island[2], island[3], island[4])
+    while IsNearByBuildingOrBush(randomVector) do
+        randomVector = GetRandomVectorGivenBounds(island[1], island[2], island[3], island[4])
+    end
     CreateItemOnPositionSync(randomVector, item)
     item:SetOrigin(randomVector)
+end
+
+function IsNearByBuildingOrBush(location)
+    local isNearBy = false
+    local nearbyUnits = Entities:FindAllByClassnameWithin("npc_dota_creature", location, 200)
+    for _,unit in pairs(nearbyUnits) do
+        if IsCustomBuilding(unit) or string.find(unit:GetUnitName(), "npc_bush") then
+            return true
+        end
+    end
+    return isNearBy
 end
 
 -- Updates the relative probabilties, called only when the actual probabilties are changed
