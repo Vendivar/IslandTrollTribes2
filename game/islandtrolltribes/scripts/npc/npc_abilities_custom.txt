@@ -4156,6 +4156,32 @@
 	}
 	"ability_gatherer_findherb"
 	{
+	    "BaseClass"    			"ability_datadriven"
+	    "AbilityBehavior"    	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE"
+	    "AbilityTextureName"    "ability_gatherer_radarmanipulations"
+	    "MaxLevel"    			"3"
+	    "AbilityCastPoint"    	"0"
+	
+	    "OnToggleOn"
+	    {
+	    	"RunScript"
+	        {
+	            "ScriptFile" "heroes/gatherer/radar.lua"
+	            "Function"   "ToggleOnHerbRadar"
+	        }
+	    }
+	
+	    "OnToggleOff"
+	    {
+	    	"RunScript"
+	        {
+	            "ScriptFile" "heroes/gatherer/radar.lua"
+	            "Function"   "ToggleOffRadar"
+	        }
+	    }
+	}
+	"ability_gatherer_findherbbutsu"
+	{
 	    "BaseClass"             "ability_datadriven"
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 	    "AbilityTextureName"    "ability_gatherer_findhide"
@@ -4177,7 +4203,154 @@
 	        {
 	            "ScriptFile"    "heroes/gatherer/ping.lua"
 	            "Function"      "PingUnitsInRange"
-	            "Units"         "npc_bush_herb,npc_bush_herb_blue,npc_bush_herb_orange,npc_bush_herb_purple,npc_bush_herb_yellow"
+	            "Units"         "npc_bush_herb"
+	            "Duration"      "45.0"
+	        }
+	        
+	        "FireSound"
+	        {
+	            "EffectName"    "Hero_WitchDoctor.Voodoo_Restoration"
+	            "Target"        "CASTER"
+	        }
+	    }
+	
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"        "FIELD_INTEGER"
+	            "cooldown"        "45"
+	        }
+	
+	        "02"
+	        {
+	            "var_type"        "FIELD_INTEGER"
+	            "range"            "2500"
+	        }
+	    }
+	}
+	"ability_gatherer_findherbmushroom"
+	{
+	    "BaseClass"             "ability_datadriven"
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	    "AbilityTextureName"    "ability_gatherer_findhide"
+	    "MaxLevel"              "1"
+	    "AbilityCastPoint"      "0"
+	
+	    "AbilityCooldown"       "45"
+	    "AbilityCastRange"      "2500"
+	
+	    "precache"
+	    {
+	        "soundfile"         "sounds/ui/ping.vsnd"
+	        "soundfile"         "soundevents/game_sounds_heroes/game_sounds_witchdoctor.vsndevts"
+	    }
+	
+	    "OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"    "heroes/gatherer/ping.lua"
+	            "Function"      "PingUnitsInRange"
+	            "Units"         "npc_bush_herb_mushroom"
+	            "Duration"      "45.0"
+	        }
+	        
+	        "FireSound"
+	        {
+	            "EffectName"    "Hero_WitchDoctor.Voodoo_Restoration"
+	            "Target"        "CASTER"
+	        }
+	    }
+	
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"        "FIELD_INTEGER"
+	            "cooldown"        "45"
+	        }
+	
+	        "02"
+	        {
+	            "var_type"        "FIELD_INTEGER"
+	            "range"            "2500"
+	        }
+	    }
+	}
+	"ability_gatherer_findherbriver"
+	{
+	    "BaseClass"             "ability_datadriven"
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	    "AbilityTextureName"    "ability_gatherer_findhide"
+	    "MaxLevel"              "1"
+	    "AbilityCastPoint"      "0"
+	
+	    "AbilityCooldown"       "45"
+	    "AbilityCastRange"      "2500"
+	
+	    "precache"
+	    {
+	        "soundfile"         "sounds/ui/ping.vsnd"
+	        "soundfile"         "soundevents/game_sounds_heroes/game_sounds_witchdoctor.vsndevts"
+	    }
+	
+	    "OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"    "heroes/gatherer/ping.lua"
+	            "Function"      "PingUnitsInRange"
+	            "Units"         "npc_bush_river"
+	            "Duration"      "45.0"
+	        }
+	        
+	        "FireSound"
+	        {
+	            "EffectName"    "Hero_WitchDoctor.Voodoo_Restoration"
+	            "Target"        "CASTER"
+	        }
+	    }
+	
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"        "FIELD_INTEGER"
+	            "cooldown"        "45"
+	        }
+	
+	        "02"
+	        {
+	            "var_type"        "FIELD_INTEGER"
+	            "range"            "2500"
+	        }
+	    }
+	}
+	"ability_gatherer_findherbspecial"
+	{
+	    "BaseClass"             "ability_datadriven"
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	    "AbilityTextureName"    "ability_gatherer_findhide"
+	    "MaxLevel"              "1"
+	    "AbilityCastPoint"      "0"
+	
+	    "AbilityCooldown"       "45"
+	    "AbilityCastRange"      "2500"
+	
+	    "precache"
+	    {
+	        "soundfile"         "sounds/ui/ping.vsnd"
+	        "soundfile"         "soundevents/game_sounds_heroes/game_sounds_witchdoctor.vsndevts"
+	    }
+	
+	    "OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"    "heroes/gatherer/ping.lua"
+	            "Function"      "PingUnitsInRange"
+	            "Units"         "npc_bush_herb_butsu"
 	            "Duration"      "45.0"
 	        }
 	        
@@ -4405,6 +4578,55 @@
 	
 	    }
 	
+	}
+	"ability_gatherer_findthistles"
+	{
+	    "BaseClass"             "ability_datadriven"
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	    "AbilityTextureName"    "ability_gatherer_findhide"
+	    "MaxLevel"              "1"
+	    "AbilityCastPoint"      "0"
+	
+	    "AbilityCooldown"       "45"
+	    "AbilityCastRange"      "2500"
+	
+	    "precache"
+	    {
+	        "soundfile"         "sounds/ui/ping.vsnd"
+	        "soundfile"         "soundevents/game_sounds_heroes/game_sounds_witchdoctor.vsndevts"
+	    }
+	
+	    "OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"    "heroes/gatherer/ping.lua"
+	            "Function"      "PingUnitsInRange"
+	            "Units"         "npc_bush_thistles"
+	            "Duration"      "45.0"
+	        }
+	        
+	        "FireSound"
+	        {
+	            "EffectName"    "Hero_WitchDoctor.Voodoo_Restoration"
+	            "Target"        "CASTER"
+	        }
+	    }
+	
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"        "FIELD_INTEGER"
+	            "cooldown"        "45"
+	        }
+	
+	        "02"
+	        {
+	            "var_type"        "FIELD_INTEGER"
+	            "range"            "2500"
+	        }
+	    }
 	}
 	"ability_gatherer_itemradar"
 	{

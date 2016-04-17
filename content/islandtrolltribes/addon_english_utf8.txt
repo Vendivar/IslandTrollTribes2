@@ -1750,6 +1750,7 @@
 "DOTA_Tooltip_ability_item_boat_building_kit_hut_basic_Lore"		"The hut whispers something about your mother.."
 "DOTA_Tooltip_ability_item_boat_building_kit_hut_basic_Note0"		"Rest:\n    ò Puts someone to sleep to restore 200 energy."
 "DOTA_Tooltip_ability_item_boat_building_kit_hut_mud"		"Mud Hut Kit"
+"DOTA_Tooltip_ability_item_boat_building_kit_hut_mud"		"Mud Hut Kit"
 "DOTA_Tooltip_ability_item_boat_building_kit_hut_mud_Description"		"An insulated hut that allows a good night's sleep."
 "DOTA_Tooltip_ability_item_boat_building_kit_hut_mud_Lore"		"Much quieter than the Troll Hut."
 "DOTA_Tooltip_ability_item_boat_building_kit_hut_mud_Note0"		"Rest:\n    ò Puts someone to sleep to restore 200 energy."
@@ -3061,7 +3062,7 @@
 "DOTA_Tooltip_ability_ability_ensnaretrap_ensnare_duration_animal"		"DURATION ANIMAL:"
 "DOTA_Tooltip_ability_ability_ensnaretrap_ensnare_duration_hero"		"DURATION HERO:"
 "DOTA_Tooltip_Ability_ability_get_corpse"		"Get Corpse"
-"DOTA_Tooltip_Ability_ability_getcorpse_Description"		"Picks up a nearby corpse. Can be auto-cast which will continuously pick up meat around the building until at full capacity (8 corpses) or until no more corpses remain."
+"DOTA_Tooltip_Ability_ability_get_corpse_Description"		"Picks up a nearby corpse. Can be auto-cast which will continuously pick up meat around the building until at full capacity (8 corpses) or until no more corpses remain."
 
 "DOTA_Tooltip_Ability_ability_hatch_egg"		"Hatch Egg"
 "DOTA_Tooltip_Ability_ability_hatch_egg_Description"		"The first slot in the hatchery must contain a Hawk Egg. The other 5 slots must contain items labeled with 'hatchery transmutable.' The items will be used up and a untamed baby hawk will be created above the hatchery."
@@ -3137,6 +3138,12 @@
 
 "DOTA_Tooltip_Ability_ability_smoke_meat"		"Smoke Meat"
 "DOTA_Tooltip_Ability_ability_smoke_meat_Description"		"Converts Diseased/Cook meat into 'Smoked Meat', which restores less HP but can have a larger stack in the inventory."
+"DOTA_Tooltip_ability_ability_building_droprawmeat"                               "Drop Raw Meat"
+"DOTA_Tooltip_ability_ability_building_droprawmeat_Description"                   "Drops the raw meat randomly around the smoke house."
+
+		
+
+
 "DOTA_Tooltip_Ability_ability_teleport"		"Teleport"
 "DOTA_Tooltip_Ability_ability_teleport_Description"		"Use this ability on an allied troll. The troll is teleported to the same position on the opposite side of the tower. Maximum Range is determined by the level of the tower.\nThe teleport beacon starts at level one.\nBy putting a mana crystal in it, it upgrades the teleport beacon another level permanently. Maximum level is 4. Mana crystals are used up permanently in the process.\nThe higher level the beacon, the longer the maximum range of teleportation."
 "DOTA_Tooltip_Ability_ability_teleport_Note0"		"Level 1: 500 Maximum range.\nLevel 2: 700 Maximum range.\nLevel 3: 900 Maximum range.\nLevel 4: 1100 Maximum range."
@@ -3186,7 +3193,7 @@
 "DOTA_Tooltip_modifier_invuln_Description"		"How are you reading this? You're invulnerable, now piss off."
 
 "DOTA_Tooltip_modifier_meat_passive"		"Raw Meat"
-"DOTA_Tooltip_modifier_meat_passive_Description"		"Current amount of raw meat you're carrying. Can carry up to 10."
+"DOTA_Tooltip_modifier_meat_passive_Description"		"Current amount of raw meat you're carrying. Can carry up to 8."
 
 // HUD stuff
 "DOTA_Tooltip_ability_empty1"		"Empty"

@@ -8,7 +8,7 @@ function Stats:Init()
     local HP_REGEN_PER_STR = 0
     local MANA_PER_INT = 8
     local MANA_REGEN_PER_INT = 0
-    local ARMOR_PER_AGI = 0
+    local ARMOR_PER_AGI = 0.1
     local ATKSPD_PER_AGI = 0
 
     -- Default Dota Values

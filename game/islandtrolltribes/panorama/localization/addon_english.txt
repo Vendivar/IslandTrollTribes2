@@ -130,6 +130,13 @@
 "error_must_target_allied_gravestone" "Must target an allied gravestone!"
 "error_heat_low"          			 "Your heat is too low! Get to a fire to warm up or you will die!"
 "error_mana_low"					"You've run out of mana and fell asleep outside!"
+"eat_raw_meat_channeling_is_in_progress" "Raw Meat Channeling is progress already."
+"error_already_rested"                  "You are already rested. Please wait a moment before resting again."
+"error_must_target_baby_animal"         "Must target a baby animal."
+"invalid_telegatherer_target"           "Must target a camp fire."
+
+
+
 
 "item_bush_thistle"                                          "Thistle Shrub"
 "item_bush_mushroom"                                         "Mushroom Colony" 

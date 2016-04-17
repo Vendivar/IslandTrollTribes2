@@ -25,7 +25,7 @@
     horizontal-align: center;
     vertical-align: middle;
     animation-name: scalein;
-    animation-duration: .5s;
+    animation-duration: .005s;
     animation-timing-function: linear;
 }
 

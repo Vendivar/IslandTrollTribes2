@@ -65,6 +65,10 @@ function ToggleOffRadar(event)
         ["ability_gatherer_findmanacrystalorstone"]="",
         ["ability_gatherer_findflint"]="",
         ["ability_gatherer_findmagic"]="",
+        ["ability_gatherer_findherbriver"]="",
+        ["ability_gatherer_findherbmushroom"]="",
+        ["ability_gatherer_findherbspecial"]="",
+        ["ability_gatherer_findthistles"]=""
     }
 
     for i=0,15 do
@@ -90,6 +94,40 @@ function ToggleOnAdvancedRadar( event )
 
     local abilityTable = { "ability_gatherer_findflint", "ability_gatherer_findmagic" }
     local currentSlot = 4
+
+    for k,abilityName in pairs(abilityTable) do
+        local swapAbility = GetAbilityOnVisibleSlot(caster, currentSlot)
+
+        -- If there is already an ability on slot 4~5, swap it
+        if swapAbility then
+            caster:SwapAbilities(swapAbility:GetAbilityName(), abilityName, false, true)
+        end
+
+        -- All the _find abilities should already be added as hidden on the gatherer skill list
+        local ability = caster:FindAbilityByName(abilityName)
+        if ability then
+            ability:SetHidden(false)
+            ability:SetLevel(1)
+            currentSlot = currentSlot+1
+        end
+    end
+
+    -- Force the Radar Advanced into slot 3
+    local swapAbility = GetAbilityOnVisibleSlot(caster, 3)
+    caster:SwapAbilities(swapAbility:GetAbilityName(), "ability_gatherer_advanced_radarmanipulations", false, true)
+
+    AdjustAbilityLayout(caster)
+end
+
+
+
+function ToggleOnHerbRadar( event )
+    local caster = event.caster
+    local ability = event.ability
+    local level = ability:GetLevel()
+
+    local abilityTable = { "ability_gatherer_findherbriver", "ability_gatherer_findherbbutsu", "ability_gatherer_findherbmushroom", "ability_gatherer_findherbspecial", "ability_gatherer_findthistles" }
+    local currentSlot = 3
 
     for k,abilityName in pairs(abilityTable) do
         local swapAbility = GetAbilityOnVisibleSlot(caster, currentSlot)

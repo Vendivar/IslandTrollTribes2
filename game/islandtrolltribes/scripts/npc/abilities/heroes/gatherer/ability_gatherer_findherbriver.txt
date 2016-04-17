@@ -1,0 +1,49 @@
+"ability_gatherer_findherbriver"
+{
+    "BaseClass"             "ability_datadriven"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+    "AbilityTextureName"    "ability_gatherer_findhide"
+    "MaxLevel"              "1"
+    "AbilityCastPoint"      "0"
+
+    "AbilityCooldown"       "45"
+    "AbilityCastRange"      "2500"
+
+    "precache"
+    {
+        "soundfile"         "sounds/ui/ping.vsnd"
+        "soundfile"         "soundevents/game_sounds_heroes/game_sounds_witchdoctor.vsndevts"
+    }
+
+    "OnSpellStart"
+    {
+        "RunScript"
+        {
+            "ScriptFile"    "heroes/gatherer/ping.lua"
+            "Function"      "PingUnitsInRange"
+            "Units"         "npc_bush_river"
+            "Duration"      "45.0"
+        }
+        
+        "FireSound"
+        {
+            "EffectName"    "Hero_WitchDoctor.Voodoo_Restoration"
+            "Target"        "CASTER"
+        }
+    }
+
+    "AbilitySpecial"
+    {
+        "01"
+        {
+            "var_type"        "FIELD_INTEGER"
+            "cooldown"        "45"
+        }
+
+        "02"
+        {
+            "var_type"        "FIELD_INTEGER"
+            "range"            "2500"
+        }
+    }
+}
