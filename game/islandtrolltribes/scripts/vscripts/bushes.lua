@@ -46,6 +46,7 @@ function SpawnBushesCommon(bushItem, locationType, regionType, regions)
         for count=1,bushMaxTable[bushItem] do
             local spawnLocation = GetBushSpawnLocation(bushItem, region, locationType)
             if spawnLocation then
+                CreateBush(bushItem, spawnLocation)
                 CreateBushContainer(bushItem, spawnLocation)
             end
             Spawns.bushCount[regionType][i][bushItem] = Spawns.bushCount[regionType][i][bushItem] + 1

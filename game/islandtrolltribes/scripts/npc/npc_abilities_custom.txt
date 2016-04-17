@@ -4169,14 +4169,59 @@
 	            "ScriptFile" "heroes/gatherer/radar.lua"
 	            "Function"   "ToggleOnHerbRadar"
 	        }
+	        "RemoveModifier"
+			{
+				"ModifierName"	"modifier_ability_layout4"
+				"Target" 		"CASTER"
+			}
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_ability_layout6"
+				"Target" 		"CASTER"            
+			}
 	    }
 	
 	    "OnToggleOff"
 	    {
+	        "RemoveModifier"
+			{
+				"ModifierName"	"modifier_ability_layout6"
+				"Target" 		"CASTER"
+			}
+	        
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_ability_layout4"
+				"Target" 		"CASTER"
+	        }
 	    	"RunScript"
 	        {
 	            "ScriptFile" "heroes/gatherer/radar.lua"
 	            "Function"   "ToggleOffRadar"
+	        }
+	    }
+	       
+	       
+	    "Modifiers"
+	    {
+	     "modifier_ability_layout4"
+	        {
+	            "IsHidden"  "1"
+	            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
+	            "Properties"
+	            {
+	                "MODIFIER_PROPERTY_ABILITY_LAYOUT" "4"
+	            }
+	        }
+	    
+	     "modifier_ability_layout6"
+	        {
+	            "IsHidden"  "1"
+	            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
+	            "Properties"
+	            {
+	                "MODIFIER_PROPERTY_ABILITY_LAYOUT" "6"
+	            }
 	        }
 	    }
 	}
@@ -4252,7 +4297,7 @@
 	        {
 	            "ScriptFile"    "heroes/gatherer/ping.lua"
 	            "Function"      "PingUnitsInRange"
-	            "Units"         "npc_bush_herb_mushroom"
+	            "Units"         "npc_bush_mushroom"
 	            "Duration"      "45.0"
 	        }
 	        

@@ -127,7 +127,7 @@ function ToggleOnHerbRadar( event )
     local level = ability:GetLevel()
 
     local abilityTable = { "ability_gatherer_findherbriver", "ability_gatherer_findherbbutsu", "ability_gatherer_findherbmushroom", "ability_gatherer_findherbspecial", "ability_gatherer_findthistles" }
-    local currentSlot = 3
+    local currentSlot = 2
 
     for k,abilityName in pairs(abilityTable) do
         local swapAbility = GetAbilityOnVisibleSlot(caster, currentSlot)
@@ -148,7 +148,7 @@ function ToggleOnHerbRadar( event )
 
     -- Force the Radar Advanced into slot 3
     local swapAbility = GetAbilityOnVisibleSlot(caster, 3)
-    caster:SwapAbilities(swapAbility:GetAbilityName(), "ability_gatherer_advanced_radarmanipulations", false, true)
+    caster:SwapAbilities(swapAbility:GetAbilityName(), "ability_gatherer_findherb", false, true)
 
     AdjustAbilityLayout(caster)
 end
