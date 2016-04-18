@@ -504,6 +504,8 @@ function EnableSpellBookAbilities(hero)
         toggleAbilityName = "ability_mage_spellbook_toggle"
     elseif heroClass == "priest" then
         toggleAbilityName = "ability_priest_toggle_spellbar"
+    elseif heroClass == "gatherer" and hero:GetSubClass() == "herbal_master_telegatherer" then
+        toggleAbilityName = "ability_gatherer_findherb"
     end
 
     if toggleAbilityName then

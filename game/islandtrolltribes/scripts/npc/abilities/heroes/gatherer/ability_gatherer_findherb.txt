@@ -3,69 +3,37 @@
     "BaseClass"    			"ability_datadriven"
     "AbilityBehavior"    	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE"
     "AbilityTextureName"    "ability_gatherer_radarmanipulations"
-    "MaxLevel"    			"3"
+    "MaxLevel"    			"1"
     "AbilityCastPoint"    	"0"
 
-    "OnToggleOn"
-    {
-    	"RunScript"
-        {
-            "ScriptFile" "heroes/gatherer/radar.lua"
-            "Function"   "ToggleOnHerbRadar"
-        }
-        "RemoveModifier"
+	"OnToggleOn"
+	{
+		"RunScript"
 		{
-			"ModifierName"	"modifier_ability_layout4"
-			"Target" 		"CASTER"
+			"ScriptFile"	"mechanics\spellbook.lua"
+			"Function"	    "SwapSpellBook"
+			"ActiveBook"    "book2"
 		}
-		"ApplyModifier"
+		"FireSound"
 		{
-			"ModifierName"	"modifier_ability_layout6"
-			"Target" 		"CASTER"            
+			"EffectName"	"Hero_BountyHunter.Track"
+			"Target"	    "CASTER"
 		}
-    }
+	}
 
     "OnToggleOff"
-    {
-        "RemoveModifier"
+	{
+		"RunScript"
 		{
-			"ModifierName"	"modifier_ability_layout6"
-			"Target" 		"CASTER"
+			"ScriptFile"	"mechanics\spellbook.lua"
+			"Function"	    "SwapSpellBook"
+			"ActiveBook"    "book1"
 		}
-        
-		"ApplyModifier"
+		"FireSound"
 		{
-			"ModifierName"	"modifier_ability_layout4"
-			"Target" 		"CASTER"
-        }
-    	"RunScript"
-        {
-            "ScriptFile" "heroes/gatherer/radar.lua"
-            "Function"   "ToggleOffRadar"
-        }
-    }
-       
-       
-    "Modifiers"
-    {
-     "modifier_ability_layout4"
-        {
-            "IsHidden"  "1"
-            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
-            "Properties"
-            {
-                "MODIFIER_PROPERTY_ABILITY_LAYOUT" "4"
-            }
-        }
-    
-     "modifier_ability_layout6"
-        {
-            "IsHidden"  "1"
-            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
-            "Properties"
-            {
-                "MODIFIER_PROPERTY_ABILITY_LAYOUT" "6"
-            }
-        }
-    }
+			"EffectName"	"Hero_BountyHunter.Track"
+			"Target"	    "CASTER"
+		}
+	}
+
 }
