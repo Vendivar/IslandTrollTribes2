@@ -1,0 +1,58 @@
+"ability_pet_gather_items"
+{
+	"BaseClass"             "ability_datadriven"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE | DOTA_ABILITY_BEHAVIOR_TOGGLE"
+    "AbilityTextureName"    "ability_pet_collect_items"
+    "AbilityCastPoint"      "0"
+    "AbilityCooldown"       "0"
+    "AbilityManaCost"       "0"
+    "MaxLevel"              "1"
+
+    "OnToggleOn"
+    {
+        "ApplyModifier"
+        {
+            "Target" "CASTER"
+            "ModifierName"   "modifier_itemgather_mode"
+        }
+    }
+
+    "OnToggleOff"
+    {
+        "RunScript"
+        {
+            "ScriptFile" "mechanics/gather_items.lua"
+            "Function"   "ToggleOffGathering"
+        }
+    }
+
+    "Modifiers"
+    {
+        "modifier_itemgather_mode"
+        {
+            "ThinkInterval"  "1.0"
+            "OnIntervalThink"
+            {
+                "RunScript"
+                {
+                    "ScriptFile" "mechanics/gather_items.lua"
+                    "Function"   "GatherItemThink"
+                    "Range"      "1000"
+                }
+            }
+        }
+
+        "modifier_itemstore_mode"
+        {
+            "ThinkInterval"  "1.0"
+            "OnIntervalThink"
+            {
+                "RunScript"
+                {
+                    "ScriptFile" "mechanics/gather_items.lua"
+                    "Function"   "StoreItemThink"
+                }
+            }
+        }
+    }
+}

@@ -8,6 +8,7 @@
 	"vscripts"	"units/ai/passive_neutral_ai.lua"
 
 	"Ability1"	"hawk_passive"
+	"Ability2"	"ability_pet_gather_items"
 
 	"ArmorPhysical"	"0"
 	"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
