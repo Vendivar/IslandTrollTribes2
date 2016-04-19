@@ -2,13 +2,7 @@ function GatherItemThink(keys)
     local caster = keys.caster
     local ability = keys.ability
     caster.wander_wait_time = GameRules:GetGameTime() + 20 --Disabling the normal wandering
-    local range = 100
-    local itemDrops = Entities:FindAllByClassnameWithin("dota_item_drop", caster:GetAbsOrigin(),range)
-    while #itemDrops <= 0 do
-        range =  range + 50
-        itemDrops = Entities:FindAllByClassnameWithin("dota_item_drop", caster:GetAbsOrigin(),range)
-    end
-    local itemDrop = SelectItem(itemDrops)
+    local itemDrop = SelectItemToPick(caster, 50)
     if IsInventoryFull(caster) then
         caster:Stop()
         caster:RemoveModifierByName("modifier_itemgather_mode")
@@ -38,8 +32,19 @@ function IsInventoryFull(unit)
     return false
 end
 
-function SelectItem(itemsDrops)
-    return itemsDrops[1]
+function SelectItemToPick(caster, range)
+    local itemDrops = Entities:FindAllByClassnameWithin("dota_item_drop", caster:GetAbsOrigin(),range)
+    while #itemDrops <= 0 do
+        range =  range + 50
+        itemDrops = Entities:FindAllByClassnameWithin("dota_item_drop", caster:GetAbsOrigin(),range)
+    end
+    for _,itemDrop in pairs(itemDrops) do
+        local nearByHatchery = FindHatchery(caster, itemDrop:GetAbsOrigin(), 400)
+        if not nearByHatchery then
+            return itemDrop
+        end
+    end
+    return SelectItemToPick(caster, range + 50)
 end
 
 function ToggleOffGathering(keys)
@@ -53,9 +58,10 @@ end
 function StoreItemThink(keys)
     local caster = keys.caster
     local ability = keys.ability
+    local hatcherySearchRange = 10000
     if not caster.hatchery then
         caster.wander_wait_time = GameRules:GetGameTime() + 20 --Disabling the normal wandering
-        local hatchery = FindHatchery(caster)
+        local hatchery = FindHatchery(caster, caster:GetAbsOrigin(), hatcherySearchRange)
         if hatchery then
             caster.hatchery = hatchery
             caster:MoveToNPC(hatchery)
@@ -89,7 +95,8 @@ function TransferItems(keys)
         if item then
             if not IsInventoryFull(hatchery) then
                 local clonedItem = CreateItem(item:GetName(), nil, nil)
-                hatchery:AddItem(clonedItem)
+--                hatchery:AddItem(clonedItem)
+                CreateItemOnPositionSync(hatchery:GetAbsOrigin() + RandomVector(RandomFloat(100,150)),clonedItem)
                 item:RemoveSelf()
             else
                 SendErrorMessage(caster:GetPlayerOwnerID(),"#hatchery_is_full")
@@ -109,11 +116,11 @@ function RestartGathering(keys)
     end
 end
 
-function FindHatchery(caster)
+function FindHatchery(caster, center, range)
     local units = FindUnitsInRadius(caster:GetTeamNumber(),
-        caster:GetAbsOrigin(),
+        center,
         nil,
-        10000,
+        range,
         DOTA_UNIT_TARGET_TEAM_FRIENDLY,
         DOTA_UNIT_TARGET_CREEP,
         DOTA_UNIT_TARGET_FLAG_NONE,
