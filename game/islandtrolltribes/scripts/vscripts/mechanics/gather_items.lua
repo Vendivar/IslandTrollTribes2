@@ -93,15 +93,9 @@ function TransferItems(keys)
     for i=0,5 do
         local item = caster:GetItemInSlot(i)
         if item then
-            if not IsInventoryFull(hatchery) then
-                local clonedItem = CreateItem(item:GetName(), nil, nil)
---                hatchery:AddItem(clonedItem)
-                CreateItemOnPositionSync(hatchery:GetAbsOrigin() + RandomVector(RandomFloat(100,150)),clonedItem)
-                item:RemoveSelf()
-            else
-                SendErrorMessage(caster:GetPlayerOwnerID(),"#hatchery_is_full")
-                ToggleOff(ability)
-            end
+            local clonedItem = CreateItem(item:GetName(), nil, nil)
+            CreateItemOnPositionSync(hatchery:GetAbsOrigin() + RandomVector(RandomFloat(100,150)),clonedItem)
+            item:RemoveSelf()
         end
     end
 end
