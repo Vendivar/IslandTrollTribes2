@@ -2768,7 +2768,7 @@
 	    "MinimapIconSize"           "300"
 	    "MinimapDisableTint"        "1"
 	
-	    "BaseClass"                 "npc_dota_building"
+	    "BaseClass"                 "npc_dota_creature"
 	    "Model"                     "models/development/invisiblebox.vmdl"  
 	    "AttackCapabilities"        "DOTA_UNIT_CAP_NO_ATTACK"
 	    "VisionDaytimeRange"        "0" 
@@ -2783,7 +2783,7 @@
 	    "MinimapIconSize"           "300"
 	    "MinimapDisableTint"        "1"
 	
-	    "BaseClass"                 "npc_dota_building"
+	    "BaseClass"                 "npc_dota_creature"
 	    "Model"                     "models/development/invisiblebox.vmdl"  
 	    "AttackCapabilities"        "DOTA_UNIT_CAP_NO_ATTACK"
 	    "VisionDaytimeRange"        "0" 
@@ -2798,7 +2798,7 @@
 	    "MinimapIconSize"           "300"
 	    "MinimapDisableTint"        "1"
 	
-	    "BaseClass"                 "npc_dota_building"
+	    "BaseClass"                 "npc_dota_creature"
 	    "Model"                     "models/development/invisiblebox.vmdl"  
 	    "AttackCapabilities"        "DOTA_UNIT_CAP_NO_ATTACK"
 	    "VisionDaytimeRange"        "0" 
@@ -2813,7 +2813,7 @@
 	    "MinimapIconSize"           "300"
 	    "MinimapDisableTint"        "1"
 	
-	    "BaseClass"                 "npc_dota_building"
+	    "BaseClass"                 "npc_dota_creature"
 	    "Model"                     "models/development/invisiblebox.vmdl"  
 	    "AttackCapabilities"        "DOTA_UNIT_CAP_NO_ATTACK"
 	    "VisionDaytimeRange"        "0" 
@@ -2828,7 +2828,7 @@
 	    "MinimapIconSize"           "300"
 	    "MinimapDisableTint"        "1"
 	
-	    "BaseClass"                 "npc_dota_building"
+	    "BaseClass"                 "npc_dota_creature"
 	    "Model"                     "models/development/invisiblebox.vmdl"  
 	    "AttackCapabilities"        "DOTA_UNIT_CAP_NO_ATTACK"
 	    "VisionDaytimeRange"        "0" 
@@ -2843,7 +2843,7 @@
 	    "MinimapIconSize"           "300"
 	    "MinimapDisableTint"        "1"
 	
-	    "BaseClass"                 "npc_dota_building"
+	    "BaseClass"                 "npc_dota_creature"
 	    "Model"                     "models/development/invisiblebox.vmdl"  
 	    "AttackCapabilities"        "DOTA_UNIT_CAP_NO_ATTACK"
 	    "VisionDaytimeRange"        "0" 
@@ -2858,7 +2858,7 @@
 	    "MinimapIconSize"           "300"
 	    "MinimapDisableTint"        "1"
 	
-	    "BaseClass"                 "npc_dota_building"
+	    "BaseClass"                 "npc_dota_creature"
 	    "Model"                     "models/development/invisiblebox.vmdl"  
 	    "AttackCapabilities"        "DOTA_UNIT_CAP_NO_ATTACK"
 	    "VisionDaytimeRange"        "0" 
@@ -2873,7 +2873,7 @@
 	    "MinimapIconSize"           "300"
 	    "MinimapDisableTint"        "1"
 	
-	    "BaseClass"                 "npc_dota_building"
+	    "BaseClass"                 "npc_dota_creature"
 	    "Model"                     "models/development/invisiblebox.vmdl"  
 	    "AttackCapabilities"        "DOTA_UNIT_CAP_NO_ATTACK"
 	    "VisionDaytimeRange"        "0" 
@@ -2888,7 +2888,7 @@
 	    "MinimapIconSize"           "300"
 	    "MinimapDisableTint"        "1"
 	
-	    "BaseClass"                 "npc_dota_building"
+	    "BaseClass"                 "npc_dota_creature"
 	    "Model"                     "models/development/invisiblebox.vmdl"  
 	    "AttackCapabilities"        "DOTA_UNIT_CAP_NO_ATTACK"
 	    "VisionDaytimeRange"        "0" 
@@ -2903,7 +2903,7 @@
 	    "MinimapIconSize"           "300"
 	    "MinimapDisableTint"        "1"
 	
-	    "BaseClass"                 "npc_dota_building"
+	    "BaseClass"                 "npc_dota_creature"
 	    "Model"                     "models/development/invisiblebox.vmdl"  
 	    "AttackCapabilities"        "DOTA_UNIT_CAP_NO_ATTACK"
 	    "VisionDaytimeRange"        "0" 
