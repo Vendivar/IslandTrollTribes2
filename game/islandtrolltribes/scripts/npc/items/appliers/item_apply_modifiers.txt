@@ -16,13 +16,12 @@
             "TextureName"   "item_meat_modifier_applier"
         }
 
-        "modifier_hunger"
+        "modifier_hunger_mana"
         {
             "IsHidden"  "1"
             "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
             "Properties"
             {
-                "MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT" "-0.3"
                 "MODIFIER_PROPERTY_MANA_REGEN_CONSTANT" "-0.3"
             }
             "ThinkInterval" "1.0"
@@ -33,6 +32,29 @@
                     "ScriptFile"    "mechanics/hunger.lua"
                     "Function"      "HungerCheck"
                 }
+                
+            }
+        }
+
+        "modifier_hunger_health"
+        {
+            "IsHidden"  "1"
+            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
+
+            "Properties"
+            {
+                "MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT" "-0.3"
+            }
+
+            "ThinkInterval" "3.333"
+            "OnIntervalThink"
+            {
+                "Damage"
+                {
+                    "Target"    "CASTER"
+                    "Type"      "DAMAGE_TYPE_PHYSICAL"
+                    "Damage"    "1.0"
+                }                   
             }
         }
 

@@ -354,7 +354,8 @@ function ITT:OnHeroInGame( hero )
 
     -- Init Meat, Health and Energy Loss
     ApplyModifier(hero, "modifier_meat_passive")
-    ApplyModifier(hero, "modifier_hunger")
+    ApplyModifier(hero, "modifier_hunger_health")
+    ApplyModifier(hero, "modifier_hunger_mana")
 
     -- Set Wearables
     ITT:SetDefaultCosmetics(hero)
