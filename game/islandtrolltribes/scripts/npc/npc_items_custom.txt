@@ -10050,7 +10050,6 @@
 		}
 	
 	}
-	// The item is placeholder, the real ability is eat_meat
 	"item_meat_raw"
 	{
 	    "ID"    				"1006"

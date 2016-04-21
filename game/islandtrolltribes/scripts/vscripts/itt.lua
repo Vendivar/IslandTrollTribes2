@@ -882,12 +882,6 @@ function ITT:OnItemPickedUp(event)
     local teamNumber = unit:GetTeamNumber()
     local hero = unit
 
-    -- Gold bag share
-    if itemName == "item_gold_bag" then
-        SplitGoldBag(unit, originalItem)
-        return
-    end
-
     local itemSlotRestriction = GameRules.ItemInfo['ItemSlots'][itemName]
     if itemSlotRestriction then
         local maxCarried = GameRules.ItemInfo['MaxCarried'][itemSlotRestriction]

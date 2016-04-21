@@ -20,6 +20,13 @@ function PickupItem( unit, drop )
     end
     local itemName = item:GetAbilityName()
 
+        -- Gold bag share
+    if itemName == "item_gold_bag" then
+        SplitGoldBag(unit, drop:GetContainedItem())
+        UTIL_Remove(drop)
+        return true
+    end
+
     -- Raw meat uses modifier stacks instead of inventory slots
     if itemName == "item_meat_raw" and not IsCustomBuilding(unit) then
         local meatStacks = unit:GetModifierStackCount("modifier_meat_passive", nil)
