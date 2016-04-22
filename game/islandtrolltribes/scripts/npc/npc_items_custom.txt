@@ -37,26 +37,26 @@
 	                
 	            }
 	        }
-
+	
 	        "modifier_hunger_health"
 	        {
-	        	"IsHidden"  "1"
+	            "IsHidden"  "1"
 	            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
-
+	
 	            "Properties"
 	            {
 	                "MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT" "-0.3"
 	            }
-
-	        	"ThinkInterval" "3.333"
+	
+	            "ThinkInterval" "3.333"
 	            "OnIntervalThink"
 	            {
 	                "Damage"
 	                {
-	                	"Target"	"CASTER"
-	                	"Type"		"DAMAGE_TYPE_PHYSICAL"
-	                	"Damage"	"1.0"
-	                }	                
+	                    "Target"    "CASTER"
+	                    "Type"      "DAMAGE_TYPE_PHYSICAL"
+	                    "Damage"    "1.0"
+	                }                   
 	            }
 	        }
 	

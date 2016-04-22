@@ -29,7 +29,7 @@
 	"AttackRange"	"125"
 	"ProjectileModel"	""
 	"ProjectileSpeed"	"0"
-	"AttributePrimary"	"DOTA_ATTRIBUTE_INTELLECT"
+	"AttributePrimary"	"DOTA_ATTRIBUTE_AGILITY"
 	"AttributeBaseStrength"	"1"
 	"AttributeStrengthGain"	"1"
 	"AttributeBaseIntelligence"	"1"
