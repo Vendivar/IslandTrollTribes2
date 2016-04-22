@@ -54,8 +54,8 @@ function _ScoreboardUpdater_UpdatePlayerPanel( scoreboardConfig, playersContaine
 		_ScoreboardUpdater_SetTextSafe( playerPanel, "Deaths", playerInfo.player_deaths );
 		_ScoreboardUpdater_SetTextSafe( playerPanel, "Assists", playerInfo.player_assists );
 		
-		_ScoreboardUpdater_SetTextSafe( playerPanel, "Heat", Entities.GetHealthPercent(playerEntityId)+"%");
-		_ScoreboardUpdater_SetTextSafe( playerPanel, "Energy", 100*Entities.GetMana( playerEntityId )/Entities.GetMaxMana( playerEntityId ) +"%");
+		_ScoreboardUpdater_SetTextSafe( playerPanel, "Heat", Entities.GetHealthPercent(playerEntityId).toFixed(0)+"%");
+		_ScoreboardUpdater_SetTextSafe( playerPanel, "Energy", (100*Entities.GetMana( playerEntityId )/Entities.GetMaxMana( playerEntityId )).toFixed(0) +"%");
 
 		var playerPortrait = playerPanel.FindChildInLayoutFile( "HeroIcon" );
 		if ( playerPortrait )

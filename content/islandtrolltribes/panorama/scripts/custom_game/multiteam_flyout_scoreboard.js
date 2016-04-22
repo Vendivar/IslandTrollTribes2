@@ -1,17 +1,26 @@
 "use strict";
 
 var g_ScoreboardHandle = null;
+var nextPressActivatesScoreboard = true;
 
-function SetFlyoutScoreboardVisible( bVisible )
+function SetFlyoutScoreboardVisible(bVisible)
 {
-	$.GetContextPanel().SetHasClass( "flyout_scoreboard_visible", bVisible );
+	// Gotta skip the release button event
 	if ( bVisible )
 	{
-		ScoreboardUpdater_SetScoreboardActive( g_ScoreboardHandle, true );
-	}
-	else
-	{
-		ScoreboardUpdater_SetScoreboardActive( g_ScoreboardHandle, false );
+		if (nextPressActivatesScoreboard)
+		{
+			// set values to true, and next press will deactivate
+			ScoreboardUpdater_SetScoreboardActive( g_ScoreboardHandle, true );
+			$.GetContextPanel().SetHasClass( "flyout_scoreboard_visible", true );			
+			nextPressActivatesScoreboard = false
+		}
+		else
+		{
+			ScoreboardUpdater_SetScoreboardActive( g_ScoreboardHandle, false );
+			$.GetContextPanel().SetHasClass( "flyout_scoreboard_visible", false );	
+			nextPressActivatesScoreboard = true
+		}
 	}
 }
 
