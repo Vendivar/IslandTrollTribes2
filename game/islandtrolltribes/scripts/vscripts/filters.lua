@@ -24,7 +24,7 @@ function ITT:FilterExecuteOrder( filterTable )
 
     -- Drop orders for units that we don't want to be shared
     if unit and unit:GetClassname() ~= "player" then
-        if not Convars:GetBool("developer") then --Don't prevent inside tools
+        if not IsInToolsMode() then --Don't prevent inside tools
             local playerID = unit:GetPlayerOwnerID()
             if issuer ~= -1 and playerID ~= -1 and issuer ~= playerID and not unit:IsSharedWithTeammates() then
                 print("Denied order because issuer is "..issuer.." owner is "..playerID.." and the unit is not shared with teammates")
@@ -52,7 +52,6 @@ function ITT:FilterExecuteOrder( filterTable )
             end)
             return CONTINUE_PROCESSING_EVENT
         end
-
     end
 
     -- Skip Prevents order loops
