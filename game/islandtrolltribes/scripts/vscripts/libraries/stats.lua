@@ -3,13 +3,7 @@ if not Stats then
 end
 
 function Stats:Init()
-    -- Custom Stat Values
-    local HP_PER_STR = 8
-    local HP_REGEN_PER_STR = 0
-    local MANA_PER_INT = 8
-    local MANA_REGEN_PER_INT = 0
-    local ARMOR_PER_AGI = 0.1
-    local ATKSPD_PER_AGI = 0
+    local v = LoadKeyValues("scripts/kv/attributes.kv")
 
     -- Default Dota Values
     local DEFAULT_HP_PER_STR = 19
@@ -18,13 +12,16 @@ function Stats:Init()
     local DEFAULT_MANA_REGEN_PER_INT = 0.04
     local DEFAULT_ARMOR_PER_AGI = 0.14
     local DEFAULT_ATKSPD_PER_AGI = 1
+    local DEFAULT_DMG_MAIN_STAT = 1
 
-    Stats.hp_adjustment = HP_PER_STR - DEFAULT_HP_PER_STR
-    Stats.hp_regen_adjustment = HP_REGEN_PER_STR - DEFAULT_HP_REGEN_PER_STR
-    Stats.mana_adjustment = MANA_PER_INT - DEFAULT_MANA_PER_INT
-    Stats.mana_regen_adjustment = MANA_REGEN_PER_INT - DEFAULT_MANA_REGEN_PER_INT
-    Stats.armor_adjustment = ARMOR_PER_AGI - DEFAULT_ARMOR_PER_AGI
-    Stats.attackspeed_adjustment = ATKSPD_PER_AGI - DEFAULT_ATKSPD_PER_AGI
+    Stats.hp_adjustment = v.HP_PER_STR - DEFAULT_HP_PER_STR
+    Stats.hp_regen_adjustment = v.HP_REGEN_PER_STR - DEFAULT_HP_REGEN_PER_STR
+    Stats.mana_adjustment = v.MANA_PER_INT - DEFAULT_MANA_PER_INT
+    Stats.mana_regen_adjustment = v.MANA_REGEN_PER_INT - DEFAULT_MANA_REGEN_PER_INT
+    Stats.armor_adjustment = v.ARMOR_PER_AGI - DEFAULT_ARMOR_PER_AGI
+    Stats.attackspeed_adjustment = v.ATKSPD_PER_AGI - DEFAULT_ATKSPD_PER_AGI
+    Stats.damage_adjustment = v.DMG_PER_MAIN_STAT - DEFAULT_DMG_MAIN_STAT
+    Stats.ms_per_agility = v.MS_PER_AGI
 
     Stats.applier = CreateItem("item_stat_modifier", nil, nil)
 end
@@ -87,6 +84,24 @@ function Stats:ModifyBonuses(hero)
 
 			local attackspeed_stacks = math.abs(agility * Stats.attackspeed_adjustment)
 			hero:SetModifierStackCount("modifier_negative_attackspeed_bonus_constant", Stats.applier, attackspeed_stacks)
+
+            -- Movement Speed Bonus
+            if not hero:HasModifier("modifier_ms_bonus") then
+                Stats.applier:ApplyDataDrivenModifier(hero, hero, "modifier_ms_bonus", {})
+            end
+
+            local ms_stacks = math.abs(agility * Stats.ms_per_agility)
+            hero:SetModifierStackCount("modifier_ms_bonus", Stats.applier, ms_stacks)
+
+            -- Base damage
+            if hero:GetPrimaryAttribute() == 1 then
+                if not hero:HasModifier("modifier_negative_damage_bonus") then
+                    Stats.applier:ApplyDataDrivenModifier(hero, hero, "modifier_negative_damage_bonus", {})
+                end
+
+                local damage_stacks = math.abs(agility * Stats.damage_adjustment)
+                hero:SetModifierStackCount("modifier_negative_damage_bonus", Stats.applier, damage_stacks)
+            end
 		end
 
 		-- INT

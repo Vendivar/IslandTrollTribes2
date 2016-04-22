@@ -5,6 +5,27 @@
 
     "Modifiers"
     {
+        "modifier_ms_bonus"
+        {
+            "IsHidden"  "1"
+            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
+            "Properties"
+            {
+                
+                "MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"    "1"
+            }
+        }
+
+        "modifier_negative_damage_bonus"
+        {
+            "IsHidden"  "1"
+            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
+            "Properties"
+            {
+                
+                "MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"    "-1"
+            }
+        }
 
         "modifier_health_bonus"
         {
