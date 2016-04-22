@@ -6,16 +6,16 @@
 	m_Children =
 	[
 		{
-			m_ChildRef = resource:"particles/units/unit_greevil/loot_greevil_tgt_end_glow.vpcf"
+			m_ChildRef = resource:"particles/custom/loot_greevil_tgt_end_glow.vpcf"
 		},
 		{
-			m_ChildRef = resource:"particles/units/unit_greevil/loot_greevil_tgt_end_rings.vpcf"
+			m_ChildRef = resource:"particles/custom/loot_greevil_tgt_end_rings.vpcf"
 		},
 		{
-			m_ChildRef = resource:"particles/units/unit_greevil/loot_greevil_tgt_end_sparks.vpcf"
+			m_ChildRef = resource:"particles/custom/loot_greevil_tgt_end_sparks.vpcf"
 		},
 		{
-			m_ChildRef = resource:"particles/units/unit_greevil/loot_greevil_tgt_end_twinkle.vpcf"
+			m_ChildRef = resource:"particles/custom/loot_greevil_tgt_end_twinkle.vpcf"
 		},
 		{
 			m_ChildRef = resource:"particles/units/unit_greevil/loot_greevil_death_spark_pnt.vpcf"

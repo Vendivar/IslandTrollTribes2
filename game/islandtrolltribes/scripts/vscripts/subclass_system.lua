@@ -1,7 +1,3 @@
---[[
-    TODO: Destroy particles from cosmetics such as immortals
---]]
-
 function ITT:PrecacheSubclassModels(context)
     local subclassInfo = LoadKeyValues("scripts/kv/class_info.kv").SubClasses
 
@@ -94,10 +90,6 @@ function ITT:OnSubclassChange(event)
         ParticleManager:DestroyParticle(hero.subclassAvailableParticle, false)
         EmitSoundOnClient("SubSelected", PlayerResource:GetPlayer(playerID))
         local subParticle = ParticleManager:CreateParticle("particles/custom/subclass_selection.vpcf", PATTACH_ABSORIGIN_FOLLOW, hero)
-        ParticleManager:SetParticleControl( subParticle, 0, hero:GetAbsOrigin() )
-        ParticleManager:SetParticleControl( subParticle, 1, hero:GetAbsOrigin() )
-        ParticleManager:SetParticleControl( subParticle, 2, hero:GetAbsOrigin() )
-        ParticleManager:SetParticleControl( subParticle, 3, hero:GetAbsOrigin() )
     end
     -- Change Vision range
     local stats = subclassInfo[new_name]['Vision']

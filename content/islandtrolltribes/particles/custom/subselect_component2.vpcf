@@ -91,6 +91,9 @@
 			_class = "C_INIT_RandomTrailLength"
 			m_flMaxLength = 0.200000
 		},
+		{
+			_class = "C_INIT_CreateWithinSphere"
+		},
 	]
 	m_Emitters =
 	[
