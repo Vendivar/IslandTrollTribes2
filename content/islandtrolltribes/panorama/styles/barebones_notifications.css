@@ -25,7 +25,7 @@
     horizontal-align: center;
     vertical-align: middle;
     animation-name: scalein;
-    animation-duration: .005s;
+    animation-duration: .2s;
     animation-timing-function: linear;
 }
 
@@ -57,9 +57,9 @@
     color: white;
     vertical-align: center;
     horizontal-align: center;
-    text-shadow: 4px 4px 4px #121212;
-    font-size: 36px;
-    font-weight: bold;
+    font-family: Tahoma;
+    text-shadow: 1px 1px 4px 3.0 #121212;
+    font-size: 30px;
     text-align: center;
 }
 
@@ -72,7 +72,7 @@
 @keyframes 'scalein' {
   from {
     opacity:0;
-    transform: scaleX(2) scaleY(2);
+    transform: scaleX(.75) scaleY(.75);
   }
 
   to {
