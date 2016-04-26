@@ -224,12 +224,16 @@ end
 function SwapWearable( unit, target_model, new_model )
     local currentWearableList = GetCurrentlyWornWearables(unit)
     local wearable = FindWearableByModelName(currentWearableList, target_model)
-    wearable:SetModel( new_model )
-    print("Swapped Wearable ",target_model,"->",new_model)
-    -- If the original wearable was hidden, and we are replacing it by a new one, reveal it
-    if wearable.hidden then
-        print("Set Wearable revealed")
-        wearable:RemoveEffects(EF_NODRAW)
+    if new_model then
+        wearable:SetModel( new_model )
+        print("Swapped Wearable ",target_model,"->",new_model)
+        -- If the original wearable was hidden, and we are replacing it by a new one, reveal it
+        if wearable.hidden then
+            print("Set Wearable revealed")
+            wearable:RemoveEffects(EF_NODRAW)
+        end
+    else
+        print("Couldn't find a wearable to swap from ", target_model)
     end
     return
 end
