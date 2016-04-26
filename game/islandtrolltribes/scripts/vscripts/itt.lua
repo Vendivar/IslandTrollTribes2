@@ -794,7 +794,7 @@ function ITT:WinConditionThink()
         -- Check if all the heroes still in game belong to the same team
         local AllHeroes = HeroList:GetAllHeroes()
         for k,hero in pairs(AllHeroes) do
-            if hero:IsAlive() and then
+            if hero:IsAlive() then
                 local teamNumber = hero:GetTeamNumber()
                 if not winnerTeamID then
                     winnerTeamID = teamNumber
@@ -896,11 +896,7 @@ function ITT:OnItemPickedUp(event)
 
         -- Drop the item if the hero exceeds the possible max carried amount
         if count > maxCarried then
-            local origin = hero:GetAbsOrigin()
-            hero:DropItemAtPositionImmediate(originalItem, origin)
-            local pos_launch = origin+RandomVector(100)
-            originalItem:LaunchLoot(false, 200, 0.75, pos_launch)
-
+            hero:DropItemAtPositionImmediate(originalItem, hero:GetAbsOrigin())
             SendErrorMessage(hero:GetPlayerOwnerID(), "#error_cant_carry_more_"..itemSlotRestriction) --Concatenated error message
         end
     end
