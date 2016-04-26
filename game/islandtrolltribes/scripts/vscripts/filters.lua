@@ -401,6 +401,13 @@ function ITT:FilterDamage( filterTable )
         end
     end
 
+    -- Revert damage from MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE
+    if attacker:IsHero() then
+        if damagetype == DAMAGE_TYPE_MAGICAL or damagetype == DAMAGE_TYPE_PURE then
+            filterTable["damage"] = filterTable["damage"]/(1+((attacker:GetIntellect()/16)/100))
+        end
+    end
+
     -- Physical attack damage filtering
     if damagetype == DAMAGE_TYPE_PHYSICAL then
         if not inflictor then
