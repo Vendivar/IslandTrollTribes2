@@ -782,31 +782,37 @@ function ITT:OnBuildingThink()
 end
 
 -- This function checks if you won the game or not
-function ITT:CheckWinCondition()
-    local winnerTeamID = nil
+function ITT:WinConditionThink()
+    Timers(function()
+        local winnerTeamID = nil
 
-    -- Don't end single team lobbies
-    if ITT:GetTeamCount() == 1 then
-        return
-    end
-
-    -- Check if all the heroes still in game belong to the same team
-    local AllHeroes = HeroList:GetAllHeroes()
-    for k,hero in pairs(AllHeroes) do
-        if hero:IsAlive() then
-            local teamNumber = hero:GetTeamNumber()
-            if not winnerTeamID then
-                winnerTeamID = teamNumber
-            elseif winnerTeamID ~= teamNumber then
-                return
-            end
+        -- Don't end single team lobbies
+        if ITT:GetTeamCount() == 1 then
+            return
         end
-    end    
 
-    if winnerTeamID and not GameRules.Winner then
-        ITT:PrintWinMessageForTeam(winnerTeamID)
-        GameRules:SetGameWinner(winnerTeamID)
-    end
+        -- Check if all the heroes still in game belong to the same team
+        local AllHeroes = HeroList:GetAllHeroes()
+        for k,hero in pairs(AllHeroes) do
+            if hero:IsAlive() and then
+                local teamNumber = hero:GetTeamNumber()
+                if not winnerTeamID then
+                    winnerTeamID = teamNumber
+                elseif winnerTeamID ~= teamNumber then
+                    return
+                end
+            end
+        end    
+
+        if winnerTeamID and not GameRules.Winner then
+            GameRules.Winner = winnerTeamID
+            ITT:PrintWinMessageForTeam(winnerTeamID)
+            GameRules:SetGameWinner(winnerTeamID)
+            return
+        end
+
+        return WIN_GAME_THINK
+    end)
 end
 
 function ITT:PrintWinMessageForTeam( teamID )
@@ -1044,11 +1050,7 @@ function ITT:OnGameRulesStateChange()
         GameRules:SetHeroRespawnEnabled( false )
         RandomUnpickedPlayers()
         UnblockMammoth()
-
-        Timers:CreateTimer(function()
-            ITT:CheckWinCondition()
-            return WIN_GAME_THINK
-        end)
+        ITT:WinConditionThink()
     end
 end
 
