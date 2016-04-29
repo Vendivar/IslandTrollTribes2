@@ -130,7 +130,13 @@ function LivingClayTracker( trackingInfo )
 			livingClay:RemoveModifierByName("modifier_invisible")
 		end
 		for _,unit in pairs(units) do
-			KillUnit(unit)
+			local damageTable = {
+				victim = unit,
+				attacker = trackingInfo.caster,
+				damage = 10,
+				damage_type = DAMAGE_TYPE_MAGICAL,
+			}
+			ApplyDamage(damageTable)
 		end
 		KillLivingClay(trackingInfo)
 	end
@@ -145,17 +151,6 @@ function KillLivingClay(trackingInfo)
 		LivingClayDeath(trackingInfo)
 		if livingClay:IsAlive() then
 			livingClay:ForceKill(true)
-		end
-	end)
-end
-
-function KillUnit(unit)
-	ApplyModifier(unit,"modifier_living_clay_explode_particle_effect")
-	Timers:CreateTimer(0.5, function()
-		if unit:IsAlive() then
-			if unit:IsAlive() then
-				unit:ForceKill(true)
-			end
 		end
 	end)
 end
