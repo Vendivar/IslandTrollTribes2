@@ -125,20 +125,26 @@ function LivingClayTracker( trackingInfo )
 	local target_flags = DOTA_UNIT_TARGET_FLAG_NONE
 	local units = FindUnitsInRadius(livingClay:GetTeamNumber(), livingClay:GetAbsOrigin(), nil, trigger_radius, target_team, target_types, target_flags, FIND_CLOSEST, false)
 
+	local killMine = 0
 	if #units > 0 then
 		if livingClay:HasModifier("modifier_invisible") then
 			livingClay:RemoveModifierByName("modifier_invisible")
 		end
 		for _,unit in pairs(units) do
-			local damageTable = {
-				victim = unit,
-				attacker = trackingInfo.caster,
-				damage = 10,
-				damage_type = DAMAGE_TYPE_MAGICAL,
-			}
-			ApplyDamage(damageTable)
+			if unit:GetUnitName() ~= "npc_creep_hawk" then
+				local damageTable = {
+					victim = unit,
+					attacker = trackingInfo.caster,
+					damage = 10,
+					damage_type = DAMAGE_TYPE_MAGICAL,
+				}
+				ApplyDamage(damageTable)
+				killMine = 1
+			end
 		end
-		KillLivingClay(trackingInfo)
+		if killMine == 1 then
+			KillLivingClay(trackingInfo)
+		end
 	end
 	return 1.0
 end
