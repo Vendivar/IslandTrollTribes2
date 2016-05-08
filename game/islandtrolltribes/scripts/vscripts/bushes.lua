@@ -1,4 +1,4 @@
-GAME_BUSH_TICK_TIME = 300
+GAME_BUSH_TICK_TIME = 60
 
 function ITT:SpawnBushes()
     Containers:SetDisableItemLimit(true)
@@ -136,7 +136,7 @@ function ITT:OnBushThink()
 
     for k,bush in pairs(bushes) do
         if bush.RngWeight == nil then --rng weight maks it so there's a chance a bush won't spawn but you won't get rng fucked
-            bush.RngWeight = 0 --if rng weight doesnt exist declare it to a value that's unlikely to spawn for the first few ticks
+            bush.RngWeight = 1 --if rng weight doesnt exist declare it to a value that's unlikely to spawn for the first few ticks
         end
 
         local rand = RandomInt(-4,4) --randomize between -4 and +4, since the min is 0 with the best rng on the minimum number you will still not get a spawn
@@ -156,9 +156,10 @@ function ITT:OnBushThink()
             print("Added " .. bush_random_item .. " to ".. bush_name .. " " .. bush:GetEntityIndex())
         else
             bush.RngWeight = bush.RngWeight + 1 --if spawn fails increase odds for next run
+            --print("Spawn Failed " .. bush:GetUnitName() .. " " .. bush:GetEntityIndex())
         end
     end
-
+    --print("bush spawning time: " .. math.floor(GameRules:GetGameTime()))
     return GAME_BUSH_TICK_TIME
 end
 
