@@ -152,7 +152,8 @@ function ITT:OnBushThink()
             local bush_random_item = bushTable[randomN]
 
             --GiveItemStack(bush, bush_random_item)
-            bush:AddItem(CreateItem(bush_random_item, nil, nil)) --Missing stack handling
+            local item = CreateItem(bush_random_item, nil, nil)
+            bush.container:AddItem(item) --Missing stack handling
             print("Added " .. bush_random_item .. " to ".. bush_name .. " " .. bush:GetEntityIndex())
         else
             bush.RngWeight = bush.RngWeight + 1 --if spawn fails increase odds for next run
