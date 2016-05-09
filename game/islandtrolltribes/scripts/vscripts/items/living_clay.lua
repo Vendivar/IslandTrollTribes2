@@ -87,24 +87,70 @@ function PlaceClay( keys )
 	ability:ApplyDataDrivenModifier(caster, living_clay, modifier_living_clay, {})
 end
 
+function WardTheArea( keys )
+	local caster = keys.caster
+	local ability = keys.ability
+	local ability_level = ability:GetLevel() - 1
+
+	-- Modifiers
+	local modifier_living_clay = keys.modifier_living_clay
+	local modifier_tracker = keys.modifier_tracker
+	local modifier_caster = keys.modifier_caster
+
+	-- Ability variables
+	local activation_time = ability:GetLevelSpecialValueFor("explode_delay", ability_level)
+	local expiration_time = ability:GetLevelSpecialValueFor("lifetime", ability_level)
+	local num_wards = ability:GetLevelSpecialValueFor("wards", ability_level)
+	local fade_time = ability:GetLevelSpecialValueFor("fade_time", ability_level)
+	local aoe = ability:GetLevelSpecialValueFor("aoe", ability_level)
+
+	--Generate random locations
+	for i = 1, num_wards do
+		local rand_vector = RandomVector(RandomFloat(0,aoe))
+		local rand_point = caster:GetOrigin() + rand_vector
+		print("random point for clay x:" .. rand_point.x .. " y:" .. rand_point.y .. " z:" .. rand_point.z)
+
+		-- Create the land mine and apply the land mine modifier
+		local living_clay = CreateUnitByName("npc_clay_living", rand_point, true, nil, nil, caster:GetTeamNumber())
+
+		local trackingInfo = {}
+		trackingInfo.livingClay = living_clay
+		trackingInfo.caster = caster
+		trackingInfo.trigger_radius = ability:GetLevelSpecialValueFor("radius", ability_level)
+		trackingInfo.explode_delay = ability:GetLevelSpecialValueFor("explode_delay", ability_level)
+		trackingInfo.expiration_time = GameRules:GetGameTime() + expiration_time
+
+		-- Apply the tracker after the activation time
+		Timers:CreateTimer(DoUniqueString("living_clay_tracker"),{callback = LivingClayTracker, endTime = activation_time}, trackingInfo)
+		-- Apply the invisibility after the fade time
+
+		Timers:CreateTimer(fade_time, function()
+			living_clay:AddNewModifier(living_clay,nil,"modifier_invisible",{duration = -1, hidden = true})
+		end)
+		ability:ApplyDataDrivenModifier(caster, living_clay, "modifier_living_clay", {})
+	end
+
+end
+
 --[[Author: Pizzalol
 	Date: 24.03.2015.
 	Stop tracking the mine and create vision on the mine area]]
 function LivingClayDeath( livingClayInfo )
 	local caster = livingClayInfo.caster
 	local unit = livingClayInfo.livingClay
-
-	for i = 1, #caster.living_clay_table do
-		if caster.living_clay_table[i] == unit then
-			table.remove(caster.living_clay_table, i)
-			caster.living_clay_count = caster.living_clay_count - 1
-			break
+	if caster.living_clay_table then
+		for i = 1, #caster.living_clay_table do
+			if caster.living_clay_table[i] == unit then
+				table.remove(caster.living_clay_table, i)
+				caster.living_clay_count = caster.living_clay_count - 1
+				break
+			end
 		end
-	end
-	-- Update the stack count
-	caster:SetModifierStackCount("modifier_living_clay_caster", caster, caster.living_clay_count)
-	if caster.living_clay_count < 1 then
-		caster:RemoveModifierByNameAndCaster("modifier_living_clay_caster", caster)
+		-- Update the stack count
+		caster:SetModifierStackCount("modifier_living_clay_caster", caster, caster.living_clay_count)
+		if caster.living_clay_count < 1 then
+			caster:RemoveModifierByNameAndCaster("modifier_living_clay_caster", caster)
+		end
 	end
 end
 
@@ -116,6 +162,14 @@ function LivingClayTracker( trackingInfo )
 
 	if not livingClay:IsAlive() then
 		return nil
+	end
+
+	--check if the mine has an expiration time
+	if trackingInfo.expiration_time then	
+		if GameRules:GetGameTime() >= trackingInfo.expiration_time then
+			KillLivingClay(trackingInfo)
+			return nil
+		end
 	end
 
 	-- Find the valid units in the trigger radius

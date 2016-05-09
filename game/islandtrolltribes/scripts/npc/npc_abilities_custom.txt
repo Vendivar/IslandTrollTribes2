@@ -13649,6 +13649,7 @@
 	            "States"
 	            {
 	                "MODIFIER_STATE_NO_HEALTH_BAR" "MODIFIER_STATE_VALUE_ENABLED"
+	                "MODIFIER_STATE_NO_UNIT_COLLISION" "MODIFIER_STATE_VALUE_ENABLED"
 	            }
 	
 	            "OnCreated"
@@ -13907,6 +13908,7 @@
 		"AbilityCastPoint"	"0.2 0.2 0.2"
 		"AbilityCooldown"	"70 60 50"
 		"AbilityManaCost"	"10 10 10"
+		"AbilityCastRange"  "500"
 		"MaxLevel"	"3"
 		"precache"
 		{
@@ -13916,33 +13918,73 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile" "heroes/scout/ward.lua"
-				"Function"   "WardArea"
-				"Radius"     "800"
+				"ScriptFile" "items/living_clay.lua"
+				"Function"   "WardTheArea"
 			}
-				"FireSound"
+			"FireSound"
 			{
 				"EffectName"		"Hero_Techies.StasisTrap.Plant"
 				"Target"			"CASTER"
 			}
 	
 		}
-	"AbilitySpecial"
+		"Modifiers"
+		{
+			"modifier_living_clay"
+	        {
+	            "States"
+	            {
+	                "MODIFIER_STATE_NO_HEALTH_BAR" "MODIFIER_STATE_VALUE_ENABLED"
+	                "MODIFIER_STATE_NO_UNIT_COLLISION" "MODIFIER_STATE_VALUE_ENABLED"
+	            }	
+	        }
+		}
+		"AbilitySpecial"
 		{
 			"01"
 			{
 				"var_type"	"FIELD_FLOAT"
 				"wards"	"2 3 4"
 			}
-	            "02"
+	        "02"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"lifetime"	"6 8 10"
+				"lifetime"	"360 480 600"
 			}
-	            "03"
+	        "03"
 			{
 				"var_type"	"FIELD_FLOAT"
 				"stepdamage"	"10"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"aoe"	"500"
+			}
+			"05"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"radius"				    "300"
+			}
+			"06"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"explode_delay"				"0.1"
+			}
+			"07"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"fade_time"					"2.0"
+			}
+			"08"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"vision_radius"				"300"
+			}
+			"09"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"vision_duration"			"1.0"
 			}
 		}
 	}
