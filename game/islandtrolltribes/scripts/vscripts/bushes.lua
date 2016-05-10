@@ -145,7 +145,7 @@ function ITT:OnBushThink()
         if rand + bush.RngWeight >= 5 and numItems <= 6 then
             bush.RngWeight = bush.RngWeight - 1 --if spawn succeeds reduce the odds of the next spawn
 
-            local bush_name = bush:GetUnitName()
+            local bush_name = bush.name
             local bushTable = GameRules.BushInfo["Bushes"][bush_name]
             local possibleChoices = TableCount(bushTable)
             local randomN = tostring(RandomInt(1, possibleChoices))
@@ -164,10 +164,16 @@ function ITT:OnBushThink()
     return GAME_BUSH_TICK_TIME
 end
 
-function CreateBush( name, position )
-    --local newItem = CreateItem(name, nil, nil)
-    --local bush = CreateItemOnPositionSync(position, newItem)
-    local bush = CreateUnitByName(name, position, true, nil, nil, DOTA_TEAM_NEUTRALS)
+function CreateBush(name, position)
+    local bush
+    -- Scout bush has to be a unit for invisibility
+    if name:match("scout") then
+        bush = CreateUnitByName(name, position, true, nil, nil, DOTA_TEAM_NEUTRALS)
+    else
+        name = name:gsub("npc","item")
+        bush = CreateItemOnPositionSync(position, CreateItem(name, nil, nil))
+    end
+    bush.name = name
 
     --Particle refused to show through fog for an hour so give vision instead
     for _,v in pairs(VALID_TEAMS) do AddFOWViewer ( v, position, 100, 0.1, false) end
