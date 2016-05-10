@@ -17,16 +17,84 @@
 
     "OnSpellStart"
     {
+
         "RunScript"
         {
-            "ScriptFile" "heroes/scout/ward.lua"
-            "Function"   "PlaceWard"
-            "Target"     "POINT"
+            "ScriptFile"    "items/living_clay.lua"
+            "Function"      "PlaceClay"
+            "Target"        "POINT"
+            "modifier_caster"   "modifier_living_clay_caster"
+            "modifier_tracker"   "modifier_living_clay_tracker"
+            "modifier_living_clay"   "modifier_living_clay"
         }
-        "FireSound"
+
+    }
+    
+    "Modifiers"
+    {
+        "modifier_living_clay"
         {
-            "EffectName"        "Hero_Techies.StasisTrap.Plant"
-            "Target"            "CASTER"
+            "States"
+            {
+                "MODIFIER_STATE_NO_HEALTH_BAR" "MODIFIER_STATE_VALUE_ENABLED"
+                "MODIFIER_STATE_NO_UNIT_COLLISION" "MODIFIER_STATE_VALUE_ENABLED"
+            }
+
+            "OnCreated"
+            {
+                "SpendCharge" {}
+            }
+
+        }
+    }
+
+    "AbilitySpecial"
+    {
+        "01"
+        {
+            "var_type"  "FIELD_INTEGER"
+            "max_stacks"    "6"
+        }
+        "02"
+        {
+            "var_type"                  "FIELD_INTEGER"
+            "damage"                    "10"
+        }
+        "03"
+        {
+            "var_type"                  "FIELD_INTEGER"
+            "radius"                    "300"
+        }
+        "04"
+        {
+            "var_type"                  "FIELD_FLOAT"
+            "activation_time"           "0.5"
+        }
+        "05"
+        {
+            "var_type"                  "FIELD_INTEGER"
+            "max_clay"                  "10"
+        }
+        "06"
+        {
+            "var_type"                  "FIELD_FLOAT"
+            "explode_delay"             "0.1"
+        }
+        "07"
+        {
+            "var_type"                  "FIELD_FLOAT"
+            "fade_time"                 "2.0"
+        }
+        // Extra
+        "08"
+        {
+            "var_type"                  "FIELD_FLOAT"
+            "vision_radius"             "300"
+        }
+        "09"
+        {
+            "var_type"                  "FIELD_FLOAT"
+            "vision_duration"           "1.0"
         }
     }
 }
