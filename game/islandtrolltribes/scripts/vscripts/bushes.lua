@@ -155,6 +155,9 @@ function ITT:OnBushThink()
             local item = CreateItem(bush_random_item, nil, nil)
             bush.container:AddItem(item) --Missing stack handling
             print("Added " .. bush_random_item .. " to ".. bush_name .. " " .. bush:GetEntityIndex())
+
+            -- Particle glow
+            AddBushGlow(bush)
         else
             bush.RngWeight = bush.RngWeight + 1 --if spawn fails increase odds for next run
             --print("Spawn Failed " .. bush:GetUnitName() .. " " .. bush:GetEntityIndex())
@@ -170,18 +173,32 @@ function CreateBush(name, position)
     if name:match("scout") then
         bush = CreateUnitByName(name, position, true, nil, nil, DOTA_TEAM_NEUTRALS)
     else
-        name = name:gsub("npc","item")
-        bush = CreateItemOnPositionSync(position, CreateItem(name, nil, nil))
+        bush = CreateItemOnPositionSync(position, CreateItem(name:gsub("npc","item"), nil, nil))
     end
-    bush.name = name
-
-    --Particle refused to show through fog for an hour so give vision instead
-    for _,v in pairs(VALID_TEAMS) do AddFOWViewer ( v, position, 100, 0.1, false) end
+    bush.name = name --keep the name as npc to not need to change the kv table
 
     table.insert(GameRules.Bushes, bush)
 
     CreateBushContainer(name, bush)
     --Containers:SetDefaultInventory(bush, container)
+end
+
+function AddBushGlow(entity)
+    if not entity.whiteGlowParticle then
+        --Particle refused to show through fog for an hour so give vision instead
+        for _,v in pairs(VALID_TEAMS) do AddFOWViewer(v, entity:GetAbsOrigin(), 100, 0.1, false) end
+
+        local particleName = "particles/custom/dropped_item_white.vpcf"
+        entity.whiteGlowParticle = ParticleManager:CreateParticle(particleName, PATTACH_CUSTOMORIGIN, entity)
+        ParticleManager:SetParticleControlEnt(entity.whiteGlowParticle, 0, entity, PATTACH_POINT_FOLLOW, "attach_hitloc", entity:GetAbsOrigin(), true)
+    end
+end
+
+function RemoveBushGlow(entity)
+    if entity.whiteGlowParticle then
+        ParticleManager:DestroyParticle(entity.whiteGlowParticle, true)
+        entity.whiteGlowParticle = nil
+    end
 end
 
 function CreateBushContainer(name, bush)
@@ -211,11 +228,15 @@ function CreateBushContainer(name, bush)
             else
                 SendErrorMessage(playerID, "#error_inventory_full")
             end]]
+
+            if container:GetNumItems() == 0 then RemoveBushGlow(bush) end
         end,
 
         OnRightClick = function(playerID, container, unit, item, slot)
             container:RemoveItem(item)
             Containers:AddItemToUnit(unit,item)
+
+            if container:GetNumItems() == 0 then RemoveBushGlow(bush) end
         end,
 
         OnButtonPressed = function(playerID, container, unit, button, buttonName)
@@ -231,6 +252,7 @@ function CreateBushContainer(name, bush)
                 end
 
                 container:Close(playerID)
+                RemoveBushGlow(bush)
             end
         end,
 

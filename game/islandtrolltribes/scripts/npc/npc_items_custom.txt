@@ -2015,7 +2015,7 @@
 	    "BaseClass"         "item_datadriven"
 	    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	    "Model"             "models/props_nature/fern003.vmdl"
-	    "Effect"            "particles/custom/dropped_item_white.vpcf"
+	    "Effect"            "particles/custom/dropped_item_normal.vpcf"
 	    
 	    "Custom"
 	    {
@@ -2033,7 +2033,7 @@
 	    "BaseClass"         "item_datadriven"
 	    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	    "Model"             "models/props_nature/fern003.vmdl"
-	    "Effect"            "particles/custom/dropped_item_white.vpcf"
+	    "Effect"            "particles/custom/dropped_item_normal.vpcf"
 	    
 	    "Custom"
 	    {
@@ -2051,7 +2051,7 @@
 	    "BaseClass"         "item_datadriven"
 	    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	    "Model"             "models/props_nature/fern003.vmdl"
-	    "Effect"            "particles/custom/dropped_item_white.vpcf"
+	    "Effect"            "particles/custom/dropped_item_normal.vpcf"
 	    
 	    "Custom"
 	    {
@@ -2069,7 +2069,7 @@
 	    "BaseClass"         "item_datadriven"
 	    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	    "Model"             "models/props_nature/fern003.vmdl"
-	    "Effect"            "particles/custom/dropped_item_white.vpcf"
+	    "Effect"            "particles/custom/dropped_item_normal.vpcf"
 	    
 	    "Custom"
 	    {
@@ -2087,7 +2087,7 @@
 	    "BaseClass"         "item_datadriven"
 	    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	    "Model"             "models/props_nature/fern003.vmdl"
-	    "Effect"            "particles/custom/dropped_item_white.vpcf"
+	    "Effect"            "particles/custom/dropped_item_normal.vpcf"
 	    
 	    "Custom"
 	    {
@@ -2105,6 +2105,7 @@
 	    "BaseClass"         "item_datadriven"
 	    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	    "Model"             "models/props_nature/mushroom_wild001.vmdl"
+	    "Effect"            "particles/custom/dropped_item_normal.vpcf"
 	    
 	    "Custom"
 	    {
@@ -2122,7 +2123,7 @@
 	    "BaseClass"         "item_datadriven"
 	    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	    "Model"             "models/props_nature/cattails002.vmdl"
-	    "Effect"            "particles/custom/dropped_item_white.vpcf"
+	    "Effect"            "particles/custom/dropped_item_normal.vpcf"
 	    
 	    "Custom"
 	    {
@@ -2135,13 +2136,13 @@
 	    "ItemPurchasable"       "0"
 	    "ItemShareability"      "ITEM_NOT_SHAREABLE"
 	}
-	// Missing new "ability_bush_scout_passive" for item
+	// Unused. This one is done as a unit instead
 	"item_bush_scout"
 	{
 	    "BaseClass"         "item_datadriven"
 	    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	    "Model"             "models/props_nature/fern003.vmdl"
-	    "Effect"            "particles/custom/dropped_item_white.vpcf"
+	    "Effect"            "particles/custom/dropped_item_normal.vpcf"
 	    
 	    "Custom"
 	    {
@@ -2177,7 +2178,7 @@
 	    "BaseClass"         "item_datadriven"
 	    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	    "Model"             "models/props_nature/bush_00_sfm.vmdl"
-	    "Effect"			"particles/custom/dropped_item_white.vpcf"
+	    "Effect"			"particles/custom/dropped_item_normal.vpcf"
 	    
 	    "Custom"
 	    {
@@ -2195,7 +2196,7 @@
 	    "BaseClass"         "item_datadriven"
 	    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	    "Model"             "models/props_nature/ivy004.vmdl"
-	    "Effect"            "particles/custom/dropped_item_white.vpcf"
+	    "Effect"            "particles/custom/dropped_item_normal.vpcf"
 	    
 	    "Custom"
 	    {

@@ -3,7 +3,7 @@
     "BaseClass"         "item_datadriven"
     "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_PASSIVE"
     "Model"             "models/props_nature/ivy004.vmdl"
-    "Effect"            "particles/custom/dropped_item_white.vpcf"
+    "Effect"            "particles/custom/dropped_item_normal.vpcf"
     
     "Custom"
     {

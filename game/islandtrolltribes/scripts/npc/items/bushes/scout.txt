@@ -1,10 +1,10 @@
-// Missing new "ability_bush_scout_passive" for item
+// Unused. This one is done as a unit instead
 "item_bush_scout"
 {
     "BaseClass"         "item_datadriven"
     "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_PASSIVE"
     "Model"             "models/props_nature/fern003.vmdl"
-    "Effect"            "particles/custom/dropped_item_white.vpcf"
+    "Effect"            "particles/custom/dropped_item_normal.vpcf"
     
     "Custom"
     {
