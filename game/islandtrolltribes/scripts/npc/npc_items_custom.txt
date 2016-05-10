@@ -6975,6 +6975,12 @@
 	
 			}
 	
+			"FireSound"
+			{
+				"EffectName"	"Hero_Treant.Overgrowth.Cast"
+				"Target"	"TARGET"
+			}
+	
 			"ApplyModifier"
 			{
 				"Duration"	"%duration_creep"
