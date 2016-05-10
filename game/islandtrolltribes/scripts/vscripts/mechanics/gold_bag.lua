@@ -1,17 +1,16 @@
-MIN_GOLD_BAG_VALUE = 10  -- Set a base value for the gold bag
-
 -- Lose all gold, create a bag containing all of it, can be picked up by allies or enemies
 function CreateGoldBag(hero)
+    local gold = hero:GetGold()
     hero:SetGold(0, true)
     hero:SetGold(0, false)
-    local pos = hero:GetAbsOrigin()
-    local goldBag = CreateItem("item_gold_bag", nil, nil)
-    local gold = hero:GetGold()
 
-    if not gold or gold < MIN_GOLD_BAG_VALUE then
-        gold = MIN_GOLD_BAG_VALUE
+    -- Don't make a gold bag with 0 gold
+    if not gold or gold == 0 then
+        return
     end
 
+    local pos = hero:GetAbsOrigin()
+    local goldBag = CreateItem("item_gold_bag", nil, nil)
     local pos_launch = pos + RandomVector(RandomInt(50,100))
     local goldBagLaunch = CreateItemOnPositionSync(pos, goldBag)
     goldBag:LaunchLoot(false, 300, 1, pos_launch)
@@ -41,7 +40,7 @@ function SplitGoldBag(hero, item)
         end
     end
 
-    local gold_per_hero = math.floor(gold/#validHeroes+0.5)
+    local gold_per_hero = math.ceil(gold/#validHeroes)
     for _,v in pairs(validHeroes) do
         v:ModifyGold(gold_per_hero, false, 0)
         PopupGoldGain(v, gold_per_hero, teamNumber)
