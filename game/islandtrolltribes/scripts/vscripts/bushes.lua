@@ -207,6 +207,11 @@ function CreateBushContainer(name, bush)
             end]]
         end,
 
+        OnRightClick = function(playerID, container, unit, item, slot)
+            container:RemoveItem(item)
+            Containers:AddItemToUnit(unit,item)
+        end,
+
         OnButtonPressed = function(playerID, container, unit, button, buttonName)
             if button == 1 then
                 local items = container:GetAllItems()
