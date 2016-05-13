@@ -35,10 +35,6 @@
     {
         "modifier_panic"
         {
-            "Passive"       "1"
-            "Hidden"        "0"
-            "IsDebuff"      "0"
-            "IsPurgable"    "0"
             "TextureName"   "huskar_berserkers_blood"
             "Properties"
             {
