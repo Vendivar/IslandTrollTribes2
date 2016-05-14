@@ -1,8 +1,5 @@
 "Crafting"
 {
-    //Iron Boots, Gloves, Coat:     Basic Boots/Gloves/Coat, Iron Ingot, Iron Ingot
-    //Steel Boots, Gloves, Coat:     Basic Boots/Gloves/Coat, Steel Ingot, Steel Ingot
-
     // Auto combinable items on any hero inventory
     // BUG: Some recipes might not be able to be built because of how auto-combine will craft before you pickup the whole ingredients
     "Recipes"
@@ -621,11 +618,27 @@
         }
         "22"
         {
-        "item_shield_steel"
+            "item_shield_steel"
             {
                 "item_shield_basic"     "1"
                 "item_ingot_steel"      "2"
             } 
+        }
+        "23"
+        {
+            "item_boots_steel"
+            {
+                "item_ingot_steel"     "2"
+                "item_any_boots"       "1"
+            }  
+        }
+        "24"
+        {
+            "item_coat_steel"
+            {
+                "item_ingot_iron"      "2"
+                "item_any_coat"        "1"
+            }
         }
     }
 
