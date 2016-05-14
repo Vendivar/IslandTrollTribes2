@@ -1,6 +1,6 @@
 -- Ping minimap with a colored icon
-function PingMap(entity, pos, color, teamNumber)
-    local duration = duration or 45
+function PingMap(entity, pos, color, teamNumber, duration)
+    duration = duration or 45
 
     if type(color)=="table" then
         print("ERROR: function expected a color string, not this table:")

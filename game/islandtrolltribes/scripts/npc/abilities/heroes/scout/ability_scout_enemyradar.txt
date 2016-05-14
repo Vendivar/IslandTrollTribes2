@@ -19,12 +19,12 @@
     }
     
     
-	"AbilitySpecial"
-	{
+    "AbilitySpecial"
+    {
         "01"
-		{
-			"var_type"	"FIELD_FLOAT"
-			"duation"	"3"
-		}
-	}
+        {
+            "var_type"  "FIELD_FLOAT"
+            "duation"   "3"
+        }
+    }
 }
