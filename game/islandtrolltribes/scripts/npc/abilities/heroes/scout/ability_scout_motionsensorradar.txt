@@ -1,0 +1,106 @@
+"ability_scout_motionsensorradar"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+	"AbilityTextureName"	"ability_scout_motionsensorradar"
+	"AbilityCastPoint"	"0.4 0.4 0.4"
+	"AbilityCooldown"	"60.0 60.0 60.0"
+	"AbilityManaCost"	"0 0 0"
+    "AbilityChannelTime" "3"
+    "AbilityCastRange"      "%range"
+	"MaxLevel"	"3"
+	"precache"
+	{
+		"soundfile"				"sounds/items/Shadow_Amulet.vsnd"		
+	}
+
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"Target"	"CASTER"
+			"ModifierName"	"modifier_motionsensorradar"
+            "Duration"      "3.0"
+		}
+
+        "RunScript"
+        {
+            "ScriptFile" "heroes/scout/radar.lua"
+            "Function"   "EnemyRadar"
+        }
+	}
+
+    "OnChannelInterrupted"
+    {
+            "RemoveModifier"
+            {
+                "ModifierName"    "modifier_motionsensorradar"
+                "Target"          "CASTER"
+            }
+    }
+
+    "OnChannelFinish"
+    {
+            "RemoveModifier"
+            {
+                "ModifierName"    "modifier_motionsensorradar"
+                "Target"          "CASTER"
+            }
+    }
+
+    "OnChannelSucceeded"
+    {
+            "RemoveModifier"
+            {
+                "ModifierName"    "modifier_motionsensorradar"
+                "Target"          "CASTER"
+            }
+    }
+
+"OnOwnerDied"
+    {
+            "RemoveModifier"
+            {
+                "ModifierName"    "modifier_motionsensorradar"
+                "Target"          "CASTER"
+            }
+    }
+    
+	"Modifiers"
+	{
+		"modifier_motionsensorradar"
+		{
+			"Passive"	"1"
+			"IsHidden"	"1"
+            "Duration"  "3"
+			"ThinkInterval"  "0.5"
+			"OnIntervalThink"
+			{
+               
+                "RunScript"
+                {
+                    "ScriptFile" "heroes/scout/radar.lua"
+                    "Function"   "EnemyRadar"
+                }
+			}
+		}
+
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"range"	"3000 4000 5000"
+		}
+        "02"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"duration"	"0.5"
+		}
+
+
+	}
+
+}

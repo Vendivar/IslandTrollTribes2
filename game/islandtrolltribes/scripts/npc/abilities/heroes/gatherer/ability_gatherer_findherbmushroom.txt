@@ -20,8 +20,8 @@
         "RunScript"
         {
             "ScriptFile"    "heroes/gatherer/ping.lua"
-            "Function"      "PingUnitsInRange"
-            "Units"         "npc_bush_mushroom"
+            "Function"      "PingItemInRange"
+            "Items"         "npc_bush_mushroom"
             "Duration"      "45.0"
         }
         
