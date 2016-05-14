@@ -12077,7 +12077,7 @@
 	                {
 	                    "ScriptFile"    "heroes/gatherer/ping.lua"
 	                    "Function"      "PingUnitsInRange"
-	                    "Units"        "npc_ship_merchant_1,npc_ship_merchant_2,npc_ship_merchant_3,npc_ship_transport"
+	                    "Units"        "npc_ship_merchant_1,npc_ship_merchant_2,npc_ship_merchant_3,npc_ship_merchant_4,npc_ship_merchant_5,npc_ship_merchant_6,npc_ship_merchant_7,npc_ship_transport"
 	                    "Duration"      "1.0"
 	                }
 				}
