@@ -893,6 +893,12 @@ function ITT:OnItemPickedUp(event)
         local maxCarried = GameRules.ItemInfo['MaxCarried'][itemSlotRestriction]
         local count = GetNumItemsOfSlot(hero, itemSlotRestriction)
 
+        -- Drop gloves and axes on chicken
+        if hero:GetSubClass() == "chicken_form" and (itemSlotRestriction == "AxesShields" or itemSlotRestriction == "Gloves") then
+            hero:DropItemAtPositionImmediate(originalItem, hero:GetAbsOrigin())
+            SendErrorMessage(hero:GetPlayerOwnerID(), "#error_chicken_cant_carry_"..itemSlotRestriction) --Concatenated error message
+        end
+
         -- Drop the item if the hero exceeds the possible max carried amount
         if count > maxCarried then
             hero:DropItemAtPositionImmediate(originalItem, hero:GetAbsOrigin())

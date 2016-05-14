@@ -161,6 +161,19 @@ function PostSubclassSelectActions(hero)
             pet:ForceKill(false)
         end
     end
+
+    -- Drop axes and gloves
+    if hero.subclass == "chicken_form" then
+        for i=0,5 do
+            local item = hero:GetItemInSlot(i)
+            if item then
+                local itemSlotRestriction = GameRules.ItemInfo['ItemSlots'][item:GetAbilityName()]
+                if itemSlotRestriction == "AxesShields" or itemSlotRestriction == "Gloves" then
+                    hero:DropItemAtPositionImmediate(item, hero:GetAbsOrigin())
+                end
+            end
+        end
+    end
 end
 
 -- Change the current wearables by defaults
