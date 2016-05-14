@@ -44,8 +44,18 @@ function CheckInventory()
         if (item)
         {
             var item_name = Abilities.GetAbilityName(item)
-            if (item_name != "item_slot_locked")
-                itemsOnInventory.push(item_name)
+            if (item_name !== undefined && item_name != "item_slot_locked")
+            {
+                var charges = Items.GetCurrentCharges(item)
+                if (charges > 1)
+                {
+                    for (var x = 0; x < charges; x++) {
+                        itemsOnInventory.push(item_name)
+                    };
+                }
+                else
+                    itemsOnInventory.push(item_name)
+            }
         }
     };
 
