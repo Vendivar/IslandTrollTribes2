@@ -13,7 +13,12 @@
 		"RunScript"
         {
             "ScriptFile"    "buildings/cancel_building.lua"
-            "Function"      "RemoveBuilding"
+            "Function"      "CancelBuilding"
+        }
+        "FireSound"
+        {
+            "EffectName"    "DOTA_Item.SmokeOfDeceit.Activate"
+            "Target"        "CASTER"
         }
 	}
 }

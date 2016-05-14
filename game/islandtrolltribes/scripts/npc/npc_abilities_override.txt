@@ -147,7 +147,7 @@
 	"item_recipe_hood_of_defiance"		"REMOVE"
 	"item_hood_of_defiance"			"REMOVE"
 	"item_recipe_rapier"			"REMOVE"
-	"item_rapier"				"REMOVE"
+	//"item_rapier"				"REMOVE"
 	"item_recipe_monkey_king_bar"		"REMOVE"
 	"item_monkey_king_bar"			"REMOVE"
 	"item_recipe_radiance"			"REMOVE"

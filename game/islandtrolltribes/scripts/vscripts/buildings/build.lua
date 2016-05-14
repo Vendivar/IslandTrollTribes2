@@ -137,6 +137,11 @@ function Build( event )
     	if IsValidEntity(ability) and ability:IsItem() and ability:GetCurrentCharges() == 0 then
     		ability:RemoveSelf()
     	end
+
+    	-- Handle magefire 
+		if ability_name == "ability_mage_magefire" then
+			unit.skip_kit_creation = true
+		end
 	end)
 
 	-- A building finished construction

@@ -3,14 +3,18 @@ function CancelBuilding( event )
     local unitName = building:GetUnitName()
     local buildingName = string.gsub(unitName, "npc_building_", "")
     local itemName = "item_building_kit_"..buildingName
-
-    print("Packing up "..buildingName.." into "..itemName)
     local position = building:GetAbsOrigin()
     
     building.deleted = true
     building:ForceKill(true)
     building:AddNoDraw()
     building:SetAbsOrigin(Vector(position.x, position.y, position.z+3000)) --hides in case of particles (fire)
+
+    if building.skip_kit_creation then
+        return
+    end
+
+    print("Packing up "..buildingName.." into "..itemName)
     
     local itemKit = CreateItem(itemName, nil, nil)
     local drop = CreateItemOnPositionSync( position, itemKit )
@@ -20,10 +24,4 @@ function CancelBuilding( event )
     end
 
     itemKit:LaunchLoot(false, 400, 1, position)
-end
-
-function RemoveBuilding( event )
-    local building = event.caster
-    building:ForceKill(true)
-    building:AddNoDraw()
 end
