@@ -125,6 +125,11 @@
             }
             "Duration"      "%duration_animal"
         }
+        
+		"SpendCharge"
+		{
+		}
+
     }
 
     "Modifiers"

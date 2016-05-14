@@ -5691,6 +5691,10 @@
 				"Target"	"TARGET"
 			}
 	
+			"SpendCharge"
+			{
+			}
+	
 		}
 	
 		"OnProjectileHitUnit"
@@ -11932,6 +11936,10 @@
 	    		"Target"	"TARGET"
 	    	}
 	
+			"SpendCharge"
+			{
+			}
+	
 		}
 	
 		"OnProjectileHitUnit"
@@ -12038,6 +12046,10 @@
 					"ModifierName"	"modifier_sonar_compasing"
 					"Duration"	"5.0"
 				}
+	
+			"SpendCharge"
+			{
+			}
 	
 		}
 	    
@@ -12686,6 +12698,11 @@
 	            }
 	            "Duration"      "%duration_animal"
 	        }
+	        
+			"SpendCharge"
+			{
+			}
+	
 	    }
 	
 	    "Modifiers"
@@ -12954,6 +12971,11 @@
 				"ScriptFile" "items/emp.lua"
 				"Function"   "EMP"
 			}
+            
+		"SpendCharge"
+		{
+		}
+
 		}
 
 	    "Modifiers"
