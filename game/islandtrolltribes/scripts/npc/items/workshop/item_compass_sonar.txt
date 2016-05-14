@@ -36,7 +36,7 @@
 			{
 				"Target"	"CASTER"
 				"ModifierName"	"modifier_sonar_compasing"
-				"Duration"	"10.0"
+				"Duration"	"5.0"
 			}
 
 	}
@@ -47,6 +47,7 @@
 		{
 			"Passive"	"1"
 			"IsHidden"	"1"
+            "Duration"  "5"
 			"ThinkInterval"  "1.0"
 			"OnIntervalThink"
 			{
