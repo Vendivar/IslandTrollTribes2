@@ -83,6 +83,14 @@ function TieShopToUnit( unit )
             container:Close(playerID)
         end,
 
+        OnRightClick = function(playerID, container, unit, item, slot)
+          Containers:print("Shop:OnRightClick", playerID, container, unit, item:GetEntityIndex(), slot)
+
+            local item = container:BuyItem(playerID, unit, item)
+            Containers:AddItemToUnit(unit, item)
+            item:SetPurchaseTime(0) --disables the 10 second full price refund
+        end,
+
         OnEntityOrder = function(playerID, container, unit, target)
             container:Open(playerID)
             local player = PlayerResource:GetPlayer(playerID)
