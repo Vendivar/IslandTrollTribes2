@@ -25,6 +25,10 @@ function Build( event )
 		building_name = AbilityKV[ability_name].UnitName
 	end
 
+	-- Handle abilities with manacost and cooldown
+	ability:RefundManaCost()
+	ability:EndCooldown()
+
 	-- Checks if there is enough resources to start the building, else stop.
 	local unit_table = UnitKV[building_name]
 	local build_time = ability:GetSpecialValueFor("build_time")
@@ -51,6 +55,11 @@ function Build( event )
 
 		-- if its an item with charges, check that we aren't at 0 charges
 		if not IsValidEntity(ability) then
+			return false
+		end
+
+		if not ability:IsCooldownReady() then
+			SendErrorMessage(caster:GetPlayerOwnerID(), "#error_cant_queue")
 			return false
 		end
 
@@ -84,6 +93,9 @@ function Build( event )
 
 			ability:SetCurrentCharges(charges)
 		end
+
+		ability:StartCooldown(ability:GetCooldown(0))
+		ability:PayManaCost()
 	end)
 
     -- The construction failed and was never confirmed due to the gridnav being blocked in the attempted area
