@@ -24,20 +24,40 @@
 	"WorldDropSound"	"Item.DropGemWorld"
 	"OnSpellStart"
 	{
-		"RunScript"
-		{
-			"ScriptFile"	 "items/sonar.lua"
-			"Function"       "SonarCompassUse"
-			"UnitTable"
+        
+        "RunScript"
+        {
+            "ScriptFile"    "heroes/gatherer/ping.lua"
+            "Function"      "PingUnitsInRange"
+             "Units"        "npc_ship_merchant_1,npc_ship_merchant_2,npc_ship_merchant_3,npc_ship_transport"
+            "Duration"      "1.0"
+        }
+        "ApplyModifier"
 			{
-				"npc_ship_merchant_1"	"255 255 255"
-				"npc_ship_merchant_2"	"255 255 255"
-				"npc_ship_merchant_3"	"255 255 255"
-				"npc_ship_transport"	"255 0   0"
+				"Target"	"CASTER"
+				"ModifierName"	"modifier_sonar_compasing"
+				"Duration"	"10.0"
 			}
 
-		}
-
 	}
-
+    
+"Modifiers"
+	{
+		"modifier_sonar_compasing"
+		{
+			"Passive"	"1"
+			"IsHidden"	"1"
+			"ThinkInterval"  "1.0"
+			"OnIntervalThink"
+			{
+                "RunScript"
+                {
+                    "ScriptFile"    "heroes/gatherer/ping.lua"
+                    "Function"      "PingUnitsInRange"
+                     "Units"        "npc_ship_merchant_1,npc_ship_merchant_2,npc_ship_merchant_3,npc_ship_transport"
+                    "Duration"      "1.0"
+                }
+			}
+		}
+	}
 }

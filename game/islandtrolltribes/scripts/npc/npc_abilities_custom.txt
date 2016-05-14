@@ -4421,7 +4421,7 @@
 	        {
 	            "ScriptFile"    "heroes/gatherer/ping.lua"
 	            "Function"      "PingUnitsInRange"
-	            "Units"         "npc_bush_herb_butsu"
+	             "Units"        "npc_bush_herb_blue,npc_bush_herb_orange,npc_bush_herb_purple,npc_bush_herb_yellow"
 	            "Duration"      "45.0"
 	        }
 	        
