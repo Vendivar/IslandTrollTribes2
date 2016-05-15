@@ -124,6 +124,7 @@
 		},
 		{
 			m_ChildRef = resource:"particles/beehive_rotate.vpcf"
+			m_bDisableChild = true
 		},
 	]
 }
