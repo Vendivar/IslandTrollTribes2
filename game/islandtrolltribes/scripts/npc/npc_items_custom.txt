@@ -10199,7 +10199,7 @@
 	"item_medallion_thief"
 	{
 		"ID"	"1153"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"medallion_thief"
 		"Model"	"models/props_gameplay/status_shield.vmdl"
@@ -10221,10 +10221,12 @@
 		"WorldDropSound"	"Item.DropGemWorld"
 		"OnSpellStart"
 		{
-			"RunScript" //TODO
+	
+	        "RunScript"
 			{
-				"ScriptFile" "scripts/vscripts/custom_functions_item.lua"
-				"Function"   "item_medallion_theif_use"
+				"ScriptFile" "heroes/thief/teleport.lua"
+				"Function"   "Teleport"
+				"Target"     "POINT"
 			}
 	
 			"SpendCharge"
@@ -12047,10 +12049,6 @@
 					"Duration"	"5.0"
 				}
 	
-			"SpendCharge"
-			{
-			}
-	
 		}
 	    
 	"Modifiers"
@@ -12971,11 +12969,6 @@
 				"ScriptFile" "items/emp.lua"
 				"Function"   "EMP"
 			}
-            
-		"SpendCharge"
-		{
-		}
-
 		}
 
 	    "Modifiers"

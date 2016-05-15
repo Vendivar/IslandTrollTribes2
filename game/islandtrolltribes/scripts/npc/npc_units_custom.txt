@@ -978,7 +978,7 @@
 	"npc_bush_herb"
 	{
 		"BaseClass"	"npc_dota_creature"
-		"Model"	"models/props_nature/plant002.vmdl"
+		"Model"	"models/bush_butsu.vmdl"
 		"SoundSet"	"0"
 		"Level"	"1"
 		"ModelScale"	"0.8"
@@ -1133,7 +1133,7 @@
 	"npc_bush_mushroom"
 	{
 		"BaseClass"	"npc_dota_creature"
-		"Model"	"models/props_nature/mushroom_wild001.vmdl"
+		"Model"	"models/bush_mushroom.vmdl"
 		"SoundSet"	"0"
 		"Level"	"1"
 		"ModelScale"	"0.5"
@@ -1164,7 +1164,7 @@
 	"npc_bush_river"
 	{
 		"BaseClass"	"npc_dota_creature"
-		"Model"	"models/props_nature/cattails002.vmdl"
+		"Model"	"models/bush_river.vmdl"
 		"SoundSet"	"0"
 		"Level"	"1"
 		"ModelScale"	"1.5"
@@ -1226,7 +1226,7 @@
 	"npc_bush_stash"
 	{
 		"BaseClass"	"npc_dota_creature"
-		"Model"	"models/props_tree/stump001.vmdl"
+		"Model"	"models/bush_stash.vmdl"
 		"SoundSet"	"0"
 		"Level"	"1"
 		"ModelScale"	"1.5"
@@ -1288,7 +1288,7 @@
 	"npc_bush_thistle"
 	{
 		"BaseClass"	"npc_dota_creature"
-		"Model"	"models/props_nature/ivy004.vmdl"
+		"Model"	"models/bush_thistles.vmdl"
 		"SoundSet"	"0"
 		"Level"	"1"
 		"ModelScale"	"0.4"
