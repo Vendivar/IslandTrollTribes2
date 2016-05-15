@@ -1,7 +1,7 @@
 "npc_bush_mushroom"
 {
 	"BaseClass"	"npc_dota_creature"
-	"Model"	"models/props_nature/mushroom_wild001.vmdl"
+	"Model"	"models/bush_mushroom.vmdl"
 	"SoundSet"	"0"
 	"Level"	"1"
 	"ModelScale"	"0.5"

@@ -1,7 +1,7 @@
 "npc_bush_stash"
 {
 	"BaseClass"	"npc_dota_creature"
-	"Model"	"models/props_tree/stump001.vmdl"
+	"Model"	"models/bush_stash.vmdl"
 	"SoundSet"	"0"
 	"Level"	"1"
 	"ModelScale"	"1.5"
