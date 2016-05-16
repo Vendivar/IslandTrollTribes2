@@ -89,7 +89,7 @@ end
 
 -- This handles transfering an item handle from a unit to a target
 function TransferItem( unit, target, item )
-    if CanTakeItem(target) then
+    if CanTakeItem(target, item) then
         unit:DropItemAtPositionImmediate(item, unit:GetAbsOrigin())
 
         item:LaunchLoot(false, 200, 0.75, target:GetAbsOrigin())
@@ -97,6 +97,25 @@ function TransferItem( unit, target, item )
         Timers:CreateTimer(0.75, function()
             local pickedUp = PickupItem( target, item:GetContainer() )
         end)
+    else
+        return false
+    end
+end
+
+-- This handles transfering an item handle from a bush container to a target
+function ContainerTransferItem(container, bush, target, item)
+    if CanTakeItem(target, item) then
+        local physicalItem = CreateItemOnPositionSync(bush:GetAbsOrigin(), nil)
+        physicalItem:SetContainedItem(item)
+    
+        local speed = RandomInt(200,300)
+        item:LaunchLoot(false, speed, speed/400, target:GetAbsOrigin())
+
+        Timers:CreateTimer(speed/400, function()
+            local pickedUp = PickupItem( target, physicalItem )
+            container:RemoveItem(item)
+        end)
+        return true
     else
         return false
     end

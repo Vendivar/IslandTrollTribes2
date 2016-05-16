@@ -217,24 +217,21 @@ function CreateBushContainer(name, bush)
 
         OnLeftClick = function(playerID, container, unit, item, slot)
 
-            container:RemoveItem(item)
-            Containers:AddItemToUnit(unit,item)
-
-            --[[if CanTakeMoreItems(unit) or CanTakeMoreStacksOfItem(unit, item) then
+            if ContainerTransferItem(container, bush, unit, item) then
                 unit:StartGesture(ACT_DOTA_ATTACK)
-
-                TransferItem(container, unit, item)
-
             else
                 SendErrorMessage(playerID, "#error_inventory_full")
-            end]]
+            end
 
             if container:GetNumItems() == 0 then RemoveBushGlow(bush) end
         end,
 
         OnRightClick = function(playerID, container, unit, item, slot)
-            container:RemoveItem(item)
-            Containers:AddItemToUnit(unit,item)
+            if ContainerTransferItem(container, bush, unit, item) then
+                unit:StartGesture(ACT_DOTA_ATTACK)
+            else
+                SendErrorMessage(playerID, "#error_inventory_full")
+            end
 
             if container:GetNumItems() == 0 then RemoveBushGlow(bush) end
         end,
@@ -242,13 +239,15 @@ function CreateBushContainer(name, bush)
         OnButtonPressed = function(playerID, container, unit, button, buttonName)
             if button == 1 then
                 local items = container:GetAllItems()
-
+                local errorMsg
+                unit:StartGesture(ACT_DOTA_ATTACK)
                 for _,item in ipairs(items) do
-
-                    --TransferItem(container, unit, item)
-                    container:RemoveItem(item)
-                    Containers:AddItemToUnit(unit,item)
-
+                    if CanTakeItem(unit) then
+                        ContainerTransferItem(container, bush, unit, item)
+                    elseif not errorMsg then
+                        errorMsg = true
+                        SendErrorMessage(playerID, "#error_inventory_full")
+                    end
                 end
 
                 container:Close(playerID)

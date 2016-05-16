@@ -106,7 +106,7 @@ function ManageCraftListMouseEvents(eventName, arg){
 }
 
 var cameraDistance = 1134
-var maxCameraDistance = 1600
+var maxCameraDistance = 1500
 var minCameraDistance = 500
 
 function ZoomEvent( data )
