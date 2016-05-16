@@ -28,6 +28,13 @@
 	"UIPickupSound"	"Item.PickUpGemShop"
 	"UIDropSound"	"Item.DropGemShop"
 	"WorldDropSound"	"Item.DropRecipeWorld"
+    
+	"precache"
+	{
+		"particle"  "particles/units/heroes/hero_dragon_knight/dragon_knight_elder_dragon_fire.vpcf"        
+		"particle"  "particles/units/heroes/hero_dragon_knight/dragon_knight_elder_dragon_fire_explosion.vpcf"        
+		"soundfile" "soundevents/game_sounds_heroes/game_sounds_morphling.vsndevts"
+	}
 	"OnSpellStart"
 	{
 		"TrackingProjectile"
@@ -45,7 +52,6 @@
 			"EffectName"	"Hero_DragonKnight.ElderDragonShoot2.Attack"
 			"Target"	"CASTER"
 		}
-
 	}
 
 	"OnProjectileHitUnit"

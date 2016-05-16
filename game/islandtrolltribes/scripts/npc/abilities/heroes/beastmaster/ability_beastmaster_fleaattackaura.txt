@@ -10,6 +10,7 @@
     "precache"
     {
         "soundfile" "soundevents/game_sounds_heroes/game_sounds_shadow_demon.vsndevts"
+		"particle"  "particles/units/heroes/hero_weaver/weaver_base_attack.vpcf"
     }
 
     "AbilitySpecial"
@@ -34,7 +35,7 @@
         "04"
         {
             "var_type"    "FIELD_FLOAT"
-            "radius"      "300"
+            "radius"      "250"
         }
     }
 
