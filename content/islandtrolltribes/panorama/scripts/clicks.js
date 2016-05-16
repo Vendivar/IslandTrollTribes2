@@ -105,15 +105,17 @@ function ManageCraftListMouseEvents(eventName, arg){
     return CONTINUE_PROCESSING_EVENT
 }
 
-var maxCameraDistance = 1500
+var cameraDistance = 1134
+var maxCameraDistance = 1600
 var minCameraDistance = 500
 
-function ZoomEvent ( data )
+function ZoomEvent( data )
 {
     var zoom_distance = Number(data.zoom_distance)
     if (zoom_distance > maxCameraDistance) zoom_distance = maxCameraDistance
     if (zoom_distance < minCameraDistance) zoom_distance = minCameraDistance
 
+    cameraDistance = zoom_distance
     GameUI.SetCameraDistance( zoom_distance )
 }
    
@@ -133,7 +135,7 @@ function ManageBuildHelperMouseEvents(eventName, arg) {
     var mainSelected = Players.GetLocalPlayerPortraitUnit()
 
     // BuildingHelper clicks
-    if ( eventName === "pressed" && IsBuilder(mainSelected))
+    if (eventName === "pressed" && IsBuilder(mainSelected))
     {
         // Left-click with a builder while BH is active
         if ( arg === 0 && state == "active")
@@ -148,7 +150,7 @@ function ManageBuildHelperMouseEvents(eventName, arg) {
         }
     }
 
-    if ( eventName === "pressed" || eventName === "doublepressed")
+    if (eventName === "pressed" || eventName === "doublepressed")
     {
         if (LEFT_CLICK)
             return false;
@@ -156,27 +158,16 @@ function ManageBuildHelperMouseEvents(eventName, arg) {
             return OnRightButtonPressed();
 
     }
-    
-//      if ( eventName === "wheeled" )
-//    {
-//        arg == 1 ? cameraDistance -= 10 : cameraDistance += 10;
-//      if (cameraDistance > maxCameraDistance) cameraDistance = maxCameraDistance
-//        if (cameraDistance < minCameraDistance) cameraDistance = minCameraDistance
-//       GameUI.SetCameraDistance( cameraDistance )
-//        return CONSUME_EVENT;  
-//    }
 
-    if ( eventName === "wheeled" && GameUI.AcceptWheeling)
+    if (eventName === "wheeled" && GameUI.AcceptWheeling)
     {
-        arg == 1 ? cameraDistance -= 10 : cameraDistance += 10;
-        GameUI.SetCameraDistance( cameraDistance )
+        var value = arg == 1 ? -10 : 10;
+        ZoomEvent({zoom_distance: cameraDistance+value})
         return CONSUME_EVENT;  
     }
 
     return CONTINUE_PROCESSING_EVENT;
 }
-
-
 
 // Main mouse event callback
 GameUI.SetMouseCallback( function( eventName, arg ) {
