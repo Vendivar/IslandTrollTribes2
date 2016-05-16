@@ -305,14 +305,20 @@
 	
 
 
-"DOTA_Tooltip_Ability_ability_beastmaster_fleaattackaura"		"Flea Attack Aura"
-"DOTA_Tooltip_Ability_ability_beastmaster_fleaattackaura_damage"		"DAMAGE"
+"DOTA_Tooltip_Ability_ability_beastmaster_fleaattackaura"		            "Flea Attack Aura"
+"DOTA_Tooltip_Ability_ability_beastmaster_fleaattackaura_damage"		    "DAMAGE"
 "DOTA_Tooltip_Ability_ability_beastmaster_fleaattackaura_Description"		"The chicken does not attack like normal trolls. Instead, the chicken has a magical attack that automatically attacks any nearby hostile unit. The damage upgrades automatically depending on his level."
-"DOTA_Tooltip_Ability_ability_beastmaster_fleaattackaura_DPS"		"DAMAGE PER SECOND:"
-"DOTA_Tooltip_Ability_ability_beastmaster_fleaattackaura_Initial_Damage"		"INITAL DAMAGE:"
-"DOTA_Tooltip_modifier_flea_debuff"		"Flea Attack Debuff"
-"DOTA_Tooltip_modifier_flea_debuff_Description"		"Flea's are attacking you and you are taking damage per second!"
+"DOTA_Tooltip_Ability_ability_beastmaster_fleaattackaura_DPS"		        "DAMAGE PER SECOND:"
+"DOTA_Tooltip_Ability_ability_beastmaster_fleaattackaura_Initial_Damage"    "INITAL DAMAGE:"
+"DOTA_Tooltip_modifier_flea_debuff"		                                    "Flea Attack Debuff"
+"DOTA_Tooltip_modifier_flea_debuff_Description"		                        "Flea's are attacking you and you are taking damage per second!"
+"DOTA_Tooltip_modifier_flea_attack_aura_aura_emitter"                       "Flea Attack Aura"
+"DOTA_Tooltip_modifier_flea_attack_aura_aura_emitter_Description"           "You are a dirty chicken and have fleas. Thankfully they will attack your foes!"
 
+"DOTA_Tooltip_modifier_flea_attack_aura"                                          "Flea Attack Aura"
+"DOTA_Tooltip_modifier_flea_attack_aura_Description"                              "Flea's are attacking you and you are taking damage per second!"
+
+		
 
 "DOTA_Tooltip_Ability_ability_beastmaster_follow"		">Follow"
 "DOTA_Tooltip_Ability_ability_beastmaster_follow"		"The pet follows the Beastmaster around, in a passive state"

@@ -6,7 +6,8 @@
 	"AbilityTextureName"	"potion_twin_island"
 	"Model"	"models/props_gameplay/bottle_mango001.vmdl"
 	"Effect"	"particles/custom/dropped_item_normal.vpcf"
-	"AbilityCastPoint"	"0.5"
+	"AbilityCastPoint"	"0.2"
+    "AbilityCastRange"      "5500"
 	"ItemCost"	"78"
 	"ItemShopTags"	"consumable"
 	"ItemQuality"	"consumable"
@@ -27,17 +28,29 @@
 	"WorldDropSound"	"Hero_Alchemist.Foley"
 	"OnSpellStart"
 	{
-		"RunScript"
-		{
-			"ScriptFile"     "items/potions.lua"
-			"Function"       "PotionTwinUse"
-			"Range"          "2500"
-		}
+        "RunScript"
+        {
+            "ScriptFile"    "heroes/gatherer/ping.lua"
+            "Function"      "PingUnitsInRange"
+            "Units"        "npc_ship_merchant_1,npc_ship_merchant_2,npc_ship_merchant_3,npc_ship_merchant_4,npc_ship_merchant_5,npc_ship_merchant_6,npc_ship_merchant_7,npc_ship_transport,"
+            "Duration"      "2.5"
+        }
+        "RunScript"
+        {
+            "ScriptFile" "heroes/scout/radar.lua"
+            "Function"   "EnemyRadar"
+        }
         "FireSound"
         {
-            "Target"	"CASTER"
+            "Target"	    "CASTER"
             "EffectName"	"Twin.Island"
-        }
+        }				
+        "FireEffect"
+            {
+            "EffectName"	    "particles/custom/map_magic.vpcf"
+            "EffectAttachType"	"follow_origin"
+            "Target"	        "CASTER"
+            }
 		"SpendCharge"
 		{
 		}
@@ -55,7 +68,10 @@
 			"var_type"	"FIELD_INTEGER"
 			"max_stacks"	"2"
 		}
-
+        "02"
+        {
+            "var_type"  "FIELD_FLOAT"
+            "duration"   "3"
+        }
 	}
-
 }
