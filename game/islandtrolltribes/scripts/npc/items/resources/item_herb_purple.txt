@@ -9,7 +9,7 @@
 	"ItemCost"	"12"
 	"ItemShopTags"	"consumable"
 	"ItemQuality"	"consumable"
-	"ItemShareability"	"ITEM_FULLY_SHAREABLE"
+	"ItemShareability"	"ITEM_FULLY_SHAREABLE_STACKING"
 	"ItemStackable"	"0"
 	"ItemPermanent"	"1"
 	"ItemDroppable"	"1"
