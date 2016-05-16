@@ -308,36 +308,45 @@ function ITT:FilterExecuteOrder( filterTable )
         end
     end
 
+    ------------------------------------------------
+    --       Redirect Building Orders to Hero     --
+    ------------------------------------------------
     if IsCustomBuilding(unit) then
-        return HandleOrdersIssuedByBuildings(filterTable)
+        -- When a move/attack order issued by a building, the order should be passed to the hero and the hero should be auto selected.
+        local bMoveOrder = order_type == DOTA_UNIT_ORDER_MOVE_TO_POSITION or DOTA_UNIT_ORDER_MOVE_TO_TARGET
+
+        local hero = PlayerResource:GetSelectedHeroEntity(issuer)
+        if hero and bMoveOrder then
+            hero.skip = true
+
+            -- Move to a position or towards a target
+            if order_type == DOTA_UNIT_ORDER_MOVE_TO_POSITION then
+                ExecuteOrderFromTable({UnitIndex = hero:GetEntityIndex(), OrderType = order_type, Position = point, Queue = false})
+
+            else
+
+                -- If the target is an enemy, send an attack order instead
+                local target = EntIndexToHScript(targetIndex)
+                if order_type == DOTA_UNIT_ORDER_MOVE_TO_TARGET and target:GetTeamNumber() ~= hero:GetTeamNumber() then
+                    order_type = DOTA_UNIT_ORDER_ATTACK_TARGET
+                end
+
+                ExecuteOrderFromTable({UnitIndex = hero:GetEntityIndex(), OrderType = order_type, TargetIndex = targetIndex, Queue = false})
+            end
+
+            PlayerResource:NewSelection(issuer, hero)
+        end
     end
+
     return CONTINUE_PROCESSING_EVENT
 end
 
-function IsMoveOrder(order)
-    if order["order_type"] == DOTA_UNIT_ORDER_MOVE_TO_POSITION then return true else return false end
+function IsTargetOrder( ... )
+    return 
 end
 
-function HandleMoveOrdersByBuildings(order)
-    -- When a move order issued by a building, the order should be passed to the hero and the hero should be auto selected.
-    local unitIndex = order["units"]["0"]
-    local unit = EntIndexToHScript(unitIndex)
-    local targetPosition = Vector(tonumber(order["position_x"]),tonumber(order["position_y"]),tonumber(order["position_z"]))
-    local CONSUME_EVENT = true
-    local CONTINUE_PROCESSING_EVENT = false
-    local hero = unit:GetOwner()
-    hero.skip = true
-    ExecuteOrderFromTable({ UnitIndex = hero:GetEntityIndex(), OrderType = DOTA_UNIT_ORDER_MOVE_TO_POSITION, Position = targetPosition, Queue = false})
-    CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(hero:GetPlayerID()),"custom_event_select_unit",{unit=hero:GetEntityIndex()})
-    return CONSUME_EVENT
-end
-
-function HandleOrdersIssuedByBuildings( order )
-    local handledTheOrder = false
-    if  IsMoveOrder(order)  then
-        handledTheOrder =  HandleMoveOrdersByBuildings(order)
-    end
-    return not handledTheOrder -- If successfully processed, false should be returned to consume the event.
+function IsPositionOrder(order_type)
+    return order_type == DOTA_UNIT_ORDER_MOVE_TO_POSITION or order_type == DOTA_UNIT_ORDER_ATTACK_MOVE
 end
 
 -- Orders casting a rest ability on the playerID hero
