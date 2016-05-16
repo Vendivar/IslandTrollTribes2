@@ -2,7 +2,7 @@
 {
     "BaseClass"         "item_datadriven"
     "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-    "Model"             "models/props_nature/fern003.vmdl"
+    "Model"             "models/bush_special_purple.vmdl"
     "Effect"            "particles/custom/dropped_item_normal.vpcf"
     
     "Custom"

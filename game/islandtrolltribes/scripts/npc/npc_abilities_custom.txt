@@ -2710,7 +2710,6 @@
 	    
 	    "precache"
 	    {
-	        "particle"  "particles/units/heroes/hero_weaver/weaver_base_attack.vpcf"
 	        "soundfile" "soundevents/game_sounds_heroes/game_sounds_shadow_demon.vsndevts"
 	    }
 	
@@ -2731,7 +2730,12 @@
 	        "03"
 	        {
 	            "var_type"    "FIELD_FLOAT"
-	            "dps"         "1.0"
+	            "dps"         "5.0"
+	        }
+	        "04"
+	        {
+	            "var_type"    "FIELD_FLOAT"
+	            "radius"      "300"
 	        }
 	    }
 	
@@ -2775,6 +2779,60 @@
 	            }
 	        }
 	
+			"modifier_flea_attack_aura_aura_emitter"
+			{
+				"Passive"				"1"
+				"IsHidden"				"0"			
+				"Aura" 					"modifier_flea_attack_aura"
+				"Aura_Radius" 			"%radius"
+				"Aura_Teams" 			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Aura_Types" 			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				"Aura_Flags" 			""
+				"Aura_ApplyToCaster" 	"0"
+			}
+			"modifier_flea_attack_aura"
+			{
+				"Passive"			"0"
+				"IsHidden"			"0"
+				"IsBuff"			"0"
+				"IsDebuff"			"1"
+				"IsPurgable"		"0"
+	
+	            "OnCreated"
+	                {
+	                "AttachEffect"
+					{
+					"EffectName"        "particles/custom/flea_aura_debuff.vpcf"
+	                "EffectAttachType"  "follow_origin"
+	                "Target"            "CASTER"
+	                "ControlPointEntities"
+	                    {
+	                        "CASTER" "attach_origin"
+	                        "CASTER" "attach_origin"
+	                        "CASTER" "attach_origin"
+	                        "CASTER" "attach_origin"
+	                        "CASTER" "attach_origin"
+	                        "CASTER" "attach_origin"
+	                        "CASTER" "attach_origin"
+	                        "CASTER" "attach_origin"
+	                        "CASTER" "attach_origin"
+	                        "CASTER" "attach_origin"
+	                        "CASTER" "attach_origin" //CP2
+	                    }
+					}
+	              }
+				"ThinkInterval" 		"1"
+				"OnIntervalThink"
+				{
+	                        "Damage"
+							{
+								"Target"		"TARGET"
+								"Type"			"DAMAGE_TYPE_MAGICAL"
+								"Damage"		"%dps"
+							}
+				}
+				
+			}
 	        "modifier_flea_debuff"
 	        {
 	            "IsDebuff"       "1"
@@ -3270,7 +3328,7 @@
 					}
 				}
 
-				"ThinkInterval" "10"
+				"ThinkInterval" "50"
 				"OnIntervalThink"
 				{
 					"FireSound"
@@ -3278,8 +3336,13 @@
                         "EffectName"		"ChickenRandom"
                         "Target"			"CASTER"
                     }
+                    "FireEffect"
+					{
+						"EffectName" "particles/econ/courier/courier_shagbark/courier_shagbark_feather_white.vpcf"
+						"Target" "CASTER"
+						"EffectAttachType" "follow_origin"
+					}                    
 				}
-					
 			}
 	
 		}
@@ -13554,7 +13617,7 @@
 	        "01"
 	        {
 	            "var_type"  "FIELD_FLOAT"
-	            "duation"   "3"
+	            "duration"   "3"
 	        }
 	    }
 	}
@@ -16348,7 +16411,9 @@
 	    {
 	        "modifier_panic"
 	        {
-	            "TextureName"   "huskar_berserkers_blood"
+				"EffectName"			"particles/status_fx/status_effect_beserkers_call.vpcf"
+				"EffectAttachType"		"follow_origin"
+	            "TextureName"           "huskar_berserkers_blood"
 	            "Properties"
 	            {
 	                "MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE"    "%incoming_damage"

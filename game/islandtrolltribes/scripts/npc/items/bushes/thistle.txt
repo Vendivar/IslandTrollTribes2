@@ -2,7 +2,7 @@
 {
     "BaseClass"         "item_datadriven"
     "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-    "Model"             "models/props_nature/ivy004.vmdl"
+    "Model"             "models/bush_thistles.vmdl"
     "Effect"            "particles/custom/dropped_item_normal.vpcf"
     
     "Custom"

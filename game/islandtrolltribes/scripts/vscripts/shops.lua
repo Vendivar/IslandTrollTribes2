@@ -71,7 +71,7 @@ function TieShopToUnit( unit )
         prices =      prices,
         stocks =      stocks,
         closeOnOrder= true,
-        range =       300,
+        range =       350,
 
         OnSelect = function(playerID, container, selected)
             print("Selected", selected:GetUnitName())

@@ -43,7 +43,7 @@
 					}
 				}
 
-				"ThinkInterval" "10"
+				"ThinkInterval" "50"
 				"OnIntervalThink"
 				{
 					"FireSound"
@@ -51,8 +51,13 @@
                         "EffectName"		"ChickenRandom"
                         "Target"			"CASTER"
                     }
+                    "FireEffect"
+					{
+						"EffectName" "particles/econ/courier/courier_shagbark/courier_shagbark_feather_white.vpcf"
+						"Target" "CASTER"
+						"EffectAttachType" "follow_origin"
+					}                    
 				}
-					
 			}
 	
 		}

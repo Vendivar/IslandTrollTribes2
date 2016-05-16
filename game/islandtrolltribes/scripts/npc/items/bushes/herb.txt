@@ -2,12 +2,12 @@
 {
     "BaseClass"         "item_datadriven"
     "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-    "Model"             "models/props_nature/fern003.vmdl"
+    "Model"             "models/bush_butsu.vmdl"
     "Effect"            "particles/custom/dropped_item_normal.vpcf"
     
     "Custom"
     {
-        "ModelScale"    "2.0"
+        "ModelScale"    "0.75"
     }
     
     "ItemInitialCharges"    "0"

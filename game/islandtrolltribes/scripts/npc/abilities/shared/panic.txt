@@ -35,7 +35,9 @@
     {
         "modifier_panic"
         {
-            "TextureName"   "huskar_berserkers_blood"
+			"EffectName"			"particles/status_fx/status_effect_beserkers_call.vpcf"
+			"EffectAttachType"		"follow_origin"
+            "TextureName"           "huskar_berserkers_blood"
             "Properties"
             {
                 "MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE"    "%incoming_damage"

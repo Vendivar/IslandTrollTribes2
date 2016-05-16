@@ -45,7 +45,7 @@
 	{
 		"modifier_sonar_compasing"
 		{
-			"Passive"	"1"
+			"Passive"	"0"
 			"IsHidden"	"1"
             "Duration"  "5"
 			"ThinkInterval"  "1.0"

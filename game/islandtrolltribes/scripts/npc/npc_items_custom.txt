@@ -2014,12 +2014,12 @@
 	{
 	    "BaseClass"         "item_datadriven"
 	    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	    "Model"             "models/props_nature/fern003.vmdl"
+	    "Model"             "models/bush_butsu.vmdl"
 	    "Effect"            "particles/custom/dropped_item_normal.vpcf"
 	    
 	    "Custom"
 	    {
-	        "ModelScale"    "2.0"
+	        "ModelScale"    "0.75"
 	    }
 	    
 	    "ItemInitialCharges"    "0"
@@ -2032,7 +2032,7 @@
 	{
 	    "BaseClass"         "item_datadriven"
 	    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	    "Model"             "models/props_nature/fern003.vmdl"
+	    "Model"             "models/bush_special_blue.vmdl"
 	    "Effect"            "particles/custom/dropped_item_normal.vpcf"
 	    
 	    "Custom"
@@ -2050,7 +2050,7 @@
 	{
 	    "BaseClass"         "item_datadriven"
 	    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	    "Model"             "models/props_nature/fern003.vmdl"
+	    "Model"             "models/bush_special_orange.vmdl"
 	    "Effect"            "particles/custom/dropped_item_normal.vpcf"
 	    
 	    "Custom"
@@ -2068,7 +2068,7 @@
 	{
 	    "BaseClass"         "item_datadriven"
 	    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	    "Model"             "models/props_nature/fern003.vmdl"
+	    "Model"             "models/bush_special_purple.vmdl"
 	    "Effect"            "particles/custom/dropped_item_normal.vpcf"
 	    
 	    "Custom"
@@ -2086,7 +2086,7 @@
 	{
 	    "BaseClass"         "item_datadriven"
 	    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	    "Model"             "models/props_nature/fern003.vmdl"
+	    "Model"             "models/bush_special_yellow.vmdl"
 	    "Effect"            "particles/custom/dropped_item_normal.vpcf"
 	    
 	    "Custom"
@@ -2104,7 +2104,7 @@
 	{
 	    "BaseClass"         "item_datadriven"
 	    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	    "Model"             "models/props_nature/mushroom_wild001.vmdl"
+	    "Model"             "models/bush_mushroom.vmdl"
 	    "Effect"            "particles/custom/dropped_item_normal.vpcf"
 	    
 	    "Custom"
@@ -2122,7 +2122,7 @@
 	{
 	    "BaseClass"         "item_datadriven"
 	    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	    "Model"             "models/props_nature/cattails002.vmdl"
+	    "Model"             "models/bush_river.vmdl"
 	    "Effect"            "particles/custom/dropped_item_normal.vpcf"
 	    
 	    "Custom"
@@ -2159,7 +2159,7 @@
 	{
 	    "BaseClass"         "item_datadriven"
 	    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	    "Model"             "models/props_nature/stump002.vmdl"
+	    "Model"             "models/bush_stash.vmdl"
 	    "Effect"            "particles/custom/dropped_item_white.vpcf"
 	    
 	    "Custom"
@@ -2195,7 +2195,7 @@
 	{
 	    "BaseClass"         "item_datadriven"
 	    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	    "Model"             "models/props_nature/ivy004.vmdl"
+	    "Model"             "models/bush_thistles.vmdl"
 	    "Effect"            "particles/custom/dropped_item_normal.vpcf"
 	    
 	    "Custom"
@@ -11706,7 +11706,7 @@
 	
 		"ItemPermanent"	"0"
 		"ItemDroppable"	"1"
-		"ItemInitialCharges"	"1"
+		"ItemInitialCharges"	"3"
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
@@ -12055,7 +12055,7 @@
 		{
 			"modifier_sonar_compasing"
 			{
-				"Passive"	"1"
+				"Passive"	"0"
 				"IsHidden"	"1"
 	            "Duration"  "5"
 				"ThinkInterval"  "1.0"

@@ -2,7 +2,7 @@
 {
     "BaseClass"         "item_datadriven"
     "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-    "Model"             "models/props_nature/cattails002.vmdl"
+    "Model"             "models/bush_river.vmdl"
     "Effect"            "particles/custom/dropped_item_normal.vpcf"
     
     "Custom"
