@@ -6772,7 +6772,7 @@
 		"Model"	"models/props_gameplay/bottle_mango001.vmdl"
 		"Effect"	"particles/custom/dropped_item_normal.vpcf"
 		"AbilityCastPoint"	"0.2"
-	    "AbilityCastRange"      "2500"
+	    "AbilityCastRange"      "5500"
 		"ItemCost"	"78"
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
