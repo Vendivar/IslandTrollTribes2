@@ -1,10 +1,15 @@
 "AddonInfo"
 {
-	"maps"         "islandtrolltribesa8"
+	"maps"         "itt_quad itt_trio"
     "IsPlayable"    "1"
-    "islandtrolltribesa8"
+    "itt_trio"
     {
-        "MaxPlayers" "12"
+        "MaxPlayers" "9"
+    }
+
+    "itt_quad"
+    {
+        "MaxPlayers" "16"
     }
 
     "Default_Keys"

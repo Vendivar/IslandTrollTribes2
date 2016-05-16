@@ -161,11 +161,19 @@ function ITT:InitGameMode()
     local islandList = {"Radiant", "Dire", "Winter", "Desert"}
     islandList = ShuffledList(islandList)
 
-    VALID_TEAMS = {DOTA_TEAM_GOODGUYS, DOTA_TEAM_BADGUYS, DOTA_TEAM_CUSTOM_1, DOTA_TEAM_CUSTOM_2}
+    ITT_MAX_PLAYERS = 9
+    ITT_MAX_TEAM_PLAYERS = 3
+    VALID_TEAMS = {DOTA_TEAM_GOODGUYS, DOTA_TEAM_BADGUYS, DOTA_TEAM_CUSTOM_1}
     TEAM_ISLANDS = {}
 
+    if GetMapName() == "itt_quad" then
+        ITT_MAX_PLAYERS = 16
+        ITT_MAX_TEAM_PLAYERS = 4
+        table.insert(VALID_TEAMS, DOTA_TEAM_CUSTOM_2)
+    end
+
     for k,v in pairs(VALID_TEAMS) do
-        GameRules:SetCustomGameTeamMaxPlayers( v, 4 )
+        GameRules:SetCustomGameTeamMaxPlayers( v, ITT_MAX_TEAM_PLAYERS )
         TEAM_ISLANDS[v] = islandList[k]
     end
 

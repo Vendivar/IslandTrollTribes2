@@ -15,9 +15,6 @@
 *.vagrp_c
 *.vphys_c
 
-# Map files
-*.vpk
-
 # Stat keys
 settings.kv
 
