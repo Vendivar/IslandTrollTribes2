@@ -42,16 +42,9 @@ function Precache( context )
                 PrecacheResource(key, entry, context)
             end
         end
-    end
-
-	--PrecacheResource("particle_folder", "particles/custom",context)
-	--PrecacheResource("soundfile", "soundevents/chicken.vsndevts",context)
-	--PrecacheResource("soundfile", "soundevents/spells.vsndevts",context)
-    --PrecacheResource("soundfile", "soundevents/trollgeneral.vsndevts",context)
-    
+    end    
     
 	ITT:PrecacheSubclassModels(context)
-
 end
 
 -- Create our game mode and initialize it
