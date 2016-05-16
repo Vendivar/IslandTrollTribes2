@@ -2200,7 +2200,7 @@
 	    
 	    "Custom"
 	    {
-	        "ModelScale"    "0.4"
+	        "ModelScale"    "0.65"
 	    }
 	    
 	    "ItemInitialCharges"    "3"
@@ -11227,7 +11227,7 @@
 		"AbilityTextureName"	"river_stem"
 		"Model"	"models/props_nature/mushroom_wild_02.vmdl"
 		"Effect"	"particles/custom/dropped_item_normal.vpcf"
-		"ItemCost"	"1"
+		"ItemCost"	"3"
 		"ItemSellable"	"1"
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"

@@ -50,7 +50,7 @@
 		},
 		{
 			_class = "C_OP_InterpolateRadius"
-			m_flEndScale = 2.000000
+			m_flStartScale = 0.500000
 		},
 	]
 	m_Initializers =

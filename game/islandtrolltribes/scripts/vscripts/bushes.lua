@@ -1,4 +1,4 @@
-GAME_BUSH_TICK_TIME = 60
+GAME_BUSH_TICK_TIME = 100
 
 function ITT:SpawnBushes()
     Containers:SetDisableItemLimit(true)
@@ -111,7 +111,7 @@ function GetPredefinedBushLocationsOnRegion(region, bushItem)
 end
 
 function IsNearABush(location, bushItem)
-    local nearbyBushes = Entities:FindAllByClassnameWithin("npc_dota_creature", location, 200)
+    local nearbyBushes = Entities:FindAllByClassnameWithin("npc_dota_creature", location, 800)
     for _,bushName in pairs(nearbyBushes) do
         if bushName:GetUnitName() == bushItem then
             return true

@@ -2799,7 +2799,7 @@
 				"IsHidden"			"0"
 				"IsBuff"			"0"
 				"IsDebuff"			"1"
-				"IsPurgable"		"0"
+				"IsPurgable"		"1"
 	            "EffectName"        "particles/custom/flea_aura_debuff.vpcf"
 	            "EffectAttachType"  "follow_origin"
 				"ThinkInterval" 		"1"
@@ -2818,6 +2818,15 @@
 	        {
 	            "IsDebuff"       "1"
 	            "ThinkInterval"  "0.5"
+	            "OnCreated"
+				{
+	                "AttachEffect"
+	                {
+	                    "EffectName"    "particles/custom/flea_aura_debuff.vpcf"
+	                    "EffectAttachType"      "follow_origin"
+	                    "Target"        "TARGET"
+	                }
+	            }
 	            "OnIntervalThink"
 	            {
 	                "Damage"
@@ -2868,7 +2877,7 @@
 	
 	        "FireSound"
 	        {
-	            "EffectName"    "Hero_SkywrathMage.ChickenTaunt"
+	            "EffectName"    "ChickenTaunt"
 	            "Target"        "CASTER"
 	        }
 	

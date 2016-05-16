@@ -1,5 +1,5 @@
 GAME_CREATURE_TICK_TIME     = 40   -- Time for each creature spawn
-MAXIMUM_PASSIVE_NEUTRALS    = 300
+MAXIMUM_PASSIVE_NEUTRALS    = 100
 MAXIMUM_AGGRESSIVE_NEUTRALS = 20
 
 -- Game periods determine what is allowed to spawn, from start (0) to X seconds in
@@ -160,7 +160,7 @@ end
 function GetEmptyLocation( locations )
     local possibleLocations = ShuffledList(locations)
     for _,possibleLocation in pairs(possibleLocations) do
-        local nearbyUnits = FindUnitsInRadius(DOTA_TEAM_NEUTRALS, possibleLocation, nil, 400, DOTA_UNIT_TARGET_TEAM_BOTH, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, 0, 0, false)
+        local nearbyUnits = FindUnitsInRadius(DOTA_TEAM_NEUTRALS, possibleLocation, nil, 500, DOTA_UNIT_TARGET_TEAM_BOTH, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, 0, 0, false)
         if #nearbyUnits == 0 and not IsNearABuilding(possibleLocation) then
             return possibleLocation
         end

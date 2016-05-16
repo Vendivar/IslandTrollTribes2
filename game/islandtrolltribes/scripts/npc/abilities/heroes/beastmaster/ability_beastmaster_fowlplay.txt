@@ -36,7 +36,7 @@
 
         "FireSound"
         {
-            "EffectName"    "Hero_SkywrathMage.ChickenTaunt"
+            "EffectName"    "ChickenTaunt"
             "Target"        "CASTER"
         }
 

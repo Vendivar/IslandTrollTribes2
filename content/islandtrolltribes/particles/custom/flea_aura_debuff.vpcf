@@ -55,6 +55,7 @@
 			m_flTraceOffset = 256.000000
 			m_flMaxTraceLength = 1024.000000
 			m_flOffset = 4.000000
+			m_bDisableOperator = true
 		},
 		{
 			_class = "C_OP_SetControlPointToCenter"
@@ -87,6 +88,7 @@
 		},
 		{
 			_class = "C_OP_PositionLock"
+			m_bDisableOperator = true
 		},
 		{
 			_class = "C_OP_FadeIn"
@@ -96,6 +98,7 @@
 			_class = "C_OP_LerpEndCapScalar"
 			m_flOutput = 0.000000
 			m_flLerpTime = 0.600000
+			m_bDisableOperator = true
 		},
 	]
 	m_Initializers =

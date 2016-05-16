@@ -39,15 +39,15 @@ function Precache( context )
             elseif key == "item" then
             	PrecacheItemByNameSync(entry, context)
             else
-                PrecacheResource(k, entry, context)
+                PrecacheResource(key, entry, context)
             end
         end
     end
 
-	PrecacheResource("particle_folder", "particles/custom",context)
-	PrecacheResource("soundfile", "soundevents/chicken.vsndevts",context)
-	PrecacheResource("soundfile", "soundevents/spells.vsndevts",context)
-    PrecacheResource("soundfile", "soundevents/trollgeneral.vsndevts",context)
+	--PrecacheResource("particle_folder", "particles/custom",context)
+	--PrecacheResource("soundfile", "soundevents/chicken.vsndevts",context)
+	--PrecacheResource("soundfile", "soundevents/spells.vsndevts",context)
+    --PrecacheResource("soundfile", "soundevents/trollgeneral.vsndevts",context)
     
     
 	ITT:PrecacheSubclassModels(context)

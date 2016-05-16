@@ -166,11 +166,21 @@ function ManageBuildHelperMouseEvents(eventName, arg) {
 //        return CONSUME_EVENT;  
 //    }
 
+    if ( eventName === "wheeled" && GameUI.AcceptWheeling)
+    {
+        arg == 1 ? cameraDistance -= 10 : cameraDistance += 10;
+        GameUI.SetCameraDistance( cameraDistance )
+        return CONSUME_EVENT;  
+    }
+
     return CONTINUE_PROCESSING_EVENT;
 }
+
+
 
 // Main mouse event callback
 GameUI.SetMouseCallback( function( eventName, arg ) {
     ManageCraftListMouseEvents(eventName, arg) //CraftListener doesn't want to consume events
     return ManageBuildHelperMouseEvents( eventName, arg ) // It's up to Build helper to decide to consume the event or not.
+
 } );
