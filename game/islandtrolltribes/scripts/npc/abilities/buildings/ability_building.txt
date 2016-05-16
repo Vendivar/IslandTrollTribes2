@@ -24,6 +24,8 @@
 			"Properties"
 			{
 				"MODIFIER_PROPERTY_MOVESPEED_ABSOLUTE"	"0.1"
+                "MODIFIER_PROPERTY_BONUS_DAY_VISION" "250"
+                "MODIFIER_PROPERTY_BONUS_NIGHT_VISION" "250"
 			}
 		}
 	}		

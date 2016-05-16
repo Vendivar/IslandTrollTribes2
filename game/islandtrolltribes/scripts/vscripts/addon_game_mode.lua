@@ -44,6 +44,12 @@ function Precache( context )
         end
     end
 
+	PrecacheResource("particle_folder", "particles/custom",context)
+	PrecacheResource("soundfile", "soundevents/chicken.vsndevts",context)
+	PrecacheResource("soundfile", "soundevents/spells.vsndevts",context)
+    PrecacheResource("soundfile", "soundevents/trollgeneral.vsndevts",context)
+    
+    
 	ITT:PrecacheSubclassModels(context)
 
 end

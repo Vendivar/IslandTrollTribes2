@@ -58,6 +58,7 @@
 		},
 		{
 			_class = "C_OP_SetControlPointToCenter"
+			m_bDisableOperator = true
 		},
 		{
 			_class = "C_OP_OscillateVector"
@@ -184,6 +185,7 @@
 				1400.000000,
 				0.000000,
 			]
+			m_bDisableOperator = true
 		},
 		{
 			_class = "C_OP_AttractToControlPoint"
@@ -196,6 +198,7 @@
 			m_fFalloffPower = -0.100000
 			m_fForceAmount = 50.000000
 			m_flOpEndFadeInTime = 2.000000
+			m_bDisableOperator = true
 		},
 		{
 			_class = "C_OP_AttractToControlPoint"
@@ -209,6 +212,7 @@
 			m_fFalloffPower = -0.250000
 			m_fForceAmount = 200.000000
 			m_flOpEndFadeInTime = 2.000000
+			m_bDisableOperator = true
 		},
 	]
 	m_Constraints =
@@ -221,6 +225,7 @@
 				0.000000,
 				-8.000000,
 			]
+			m_bDisableOperator = true
 		},
 		{
 			_class = "C_OP_PlanarConstraint"
@@ -236,12 +241,14 @@
 				0.000000,
 				24.000000,
 			]
+			m_bDisableOperator = true
 		},
 		{
 			_class = "C_OP_ConstrainDistance"
 			m_fMaxDistance = 200.000000
 			m_fMinDistance = 16.000000
 			m_nOpEndCapState = 0
+			m_bDisableOperator = true
 		},
 	]
 }

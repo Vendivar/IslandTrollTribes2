@@ -386,6 +386,8 @@
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_MOVESPEED_ABSOLUTE"	"0.1"
+	                "MODIFIER_PROPERTY_BONUS_DAY_VISION" "250"
+	                "MODIFIER_PROPERTY_BONUS_NIGHT_VISION" "250"
 				}
 			}
 		}		
@@ -2711,7 +2713,7 @@
 	    "precache"
 	    {
 	        "soundfile" "soundevents/game_sounds_heroes/game_sounds_shadow_demon.vsndevts"
-			"particle"  "particles/units/heroes/hero_weaver/weaver_base_attack.vpcf"
+			"particle"  "particles/custom/flea_aura_debuff.vpcf"
 	    }
 	
 	    "AbilitySpecial"
@@ -2798,30 +2800,8 @@
 				"IsBuff"			"0"
 				"IsDebuff"			"1"
 				"IsPurgable"		"0"
-	
-	            "OnCreated"
-	                {
-	                "AttachEffect"
-					{
-					"EffectName"        "particles/custom/flea_aura_debuff.vpcf"
-	                "EffectAttachType"  "follow_origin"
-	                "Target"            "CASTER"
-	                "ControlPointEntities"
-	                    {
-	                        "CASTER" "attach_origin"
-	                        "CASTER" "attach_origin"
-	                        "CASTER" "attach_origin"
-	                        "CASTER" "attach_origin"
-	                        "CASTER" "attach_origin"
-	                        "CASTER" "attach_origin"
-	                        "CASTER" "attach_origin"
-	                        "CASTER" "attach_origin"
-	                        "CASTER" "attach_origin"
-	                        "CASTER" "attach_origin"
-	                        "CASTER" "attach_origin" //CP2
-	                    }
-					}
-	              }
+	            "EffectName"        "particles/custom/flea_aura_debuff.vpcf"
+	            "EffectAttachType"  "follow_origin"
 				"ThinkInterval" 		"1"
 				"OnIntervalThink"
 				{

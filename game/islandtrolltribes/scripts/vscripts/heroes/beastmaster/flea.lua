@@ -4,7 +4,7 @@ function FleaAttack(keys)
     local level = caster:GetLevel()
     local casterPosition = caster:GetAbsOrigin()
     local teamnumber = caster:GetTeamNumber()
-    local particleName = "particles/units/heroes/hero_weaver/weaver_base_attack.vpcf"
+    local particleName = "particles/custom/weaver_base_attack.vpcf"
 
     local cooldown = ability:GetLevelSpecialValueFor("cooldown", level-1)
 
