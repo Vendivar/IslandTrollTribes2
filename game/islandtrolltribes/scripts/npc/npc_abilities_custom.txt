@@ -2797,12 +2797,11 @@
 	            "IsPurgable"        "1"
 	            "OnCreated"
 	            {
-	                "EffectName"        "particles/custom/flea_aura_debuff.vpcf"
-	                "EffectAttachType"  "attach_customorigin"
-	                "Target"            "TARGET"
-	                "ControlPointEntities"
+	                "AttachEffect"
 	                {
-	                    "TARGET"    "attach_hitloc"
+	                    "EffectName"    "particles/custom/flea_aura_debuff_minor.vpcf"
+	                    "EffectAttachType"      "follow_origin"
+	                    "Target"        "TARGET"
 	                }
 	            }
 	            "ThinkInterval"         "1"
