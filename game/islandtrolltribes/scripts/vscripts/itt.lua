@@ -3,8 +3,8 @@ print ('[ITT] itt.lua' )
 TEAM_COLORS = {}
 TEAM_COLORS[DOTA_TEAM_GOODGUYS] = { 52, 85, 255 }  -- Blue
 TEAM_COLORS[DOTA_TEAM_BADGUYS]  = { 255, 52, 85 }  -- Red
-TEAM_COLORS[DOTA_TEAM_CUSTOM_1] = { 243, 201, 9 }  -- Yellow
-TEAM_COLORS[DOTA_TEAM_CUSTOM_2] = { 101, 212, 19 } -- Green
+TEAM_COLORS[DOTA_TEAM_CUSTOM_1] = { 101, 212, 19 } -- Green
+TEAM_COLORS[DOTA_TEAM_CUSTOM_2] = { 243, 201, 9 }  -- Yellow
 
 playerList = {}
 maxPlayerID = 0

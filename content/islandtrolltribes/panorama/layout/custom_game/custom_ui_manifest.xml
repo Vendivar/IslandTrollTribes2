@@ -1,9 +1,17 @@
 <root>
-  <scripts>
-    <include src="file://{resources}/scripts/playertables/playertables_base.js" />
-    <include src="file://{resources}/scripts/custom_game_ui_expanded.js" />
-  </scripts>
-  <Panel>
+    <script>
+        GameUI.CustomUIConfig().team_colors = {}
+        GameUI.CustomUIConfig().team_colors[DOTATeam_t.DOTA_TEAM_GOODGUYS] = "#3455FF;"; // { 52, 85, 255 }  --      Blue
+        GameUI.CustomUIConfig().team_colors[DOTATeam_t.DOTA_TEAM_BADGUYS] = "#ff3455;"; // { 255, 52, 85 }   --      Red
+        GameUI.CustomUIConfig().team_colors[DOTATeam_t.DOTA_TEAM_CUSTOM_1] = "#65d413;"; // { 101, 212, 19 } --      Green
+        GameUI.CustomUIConfig().team_colors[DOTATeam_t.DOTA_TEAM_CUSTOM_2] = "#F3C909;"; // { 243, 201, 9 }  --      Yellow
+
+    </script>
+    <scripts>
+        <include src="file://{resources}/scripts/playertables/playertables_base.js" />
+        <include src="file://{resources}/scripts/custom_game_ui_expanded.js" />
+    </scripts>
+    <Panel>
         <CustomUIElement type="GameInfo"            layoutfile="file://{resources}/layout/custom_game/islandtrolltribes_game_info.xml" />
         <CustomUIElement type="HeroSelection"       layoutfile="file://{resources}/layout/custom_game/class_picker.xml" />
         <CustomUIElement type="HudTopBar"			layoutfile="file://{resources}/layout/custom_game/multiteam_top_scoreboard.xml" />
@@ -27,5 +35,5 @@
         <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/selection.xml" />
 
         <CustomUIElement type="GameInfo"            layoutfile="file://{resources}/layout/custom_game/images.xml" />
-  </Panel>
+    </Panel>
 </root>
