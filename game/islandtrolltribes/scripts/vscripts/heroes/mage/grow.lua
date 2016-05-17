@@ -68,3 +68,4 @@ function BloodlustDelete(event)
                 return
             end
         end)
+end
