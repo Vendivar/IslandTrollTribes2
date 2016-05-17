@@ -2,9 +2,13 @@
     <styles>
         <include src="file://{resources}/styles/custom_game/custom_loading_screen.css" />
     </styles>
+    <scripts>
+        <include src="file://{resources}/scripts/custom_game/loading_screen.js" />
+    </scripts>
     <Panel class="AddonLoadingRoot">
         <Panel id="seq">
             <Image id="background" class="SeqBg" src="file://{images}/loading_screen/gamemode.png" />
+            <Label id="Tip" text=""/>
 
             <Panel id="Content">
                 <Panel id="Changelog">
