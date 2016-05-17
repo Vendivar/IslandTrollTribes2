@@ -5448,6 +5448,7 @@
 	            "Target"    "TARGET"
 	            "EffectName"    "particles/base_attacks/ranged_siege_bad.vpcf"
 	            "MoveSpeed" "900"
+	            "ProvidesVision" "False"
 	        }
 	
 	        // Can't use SpendCharge before the projectile hits otherwise we lose the ability effects
