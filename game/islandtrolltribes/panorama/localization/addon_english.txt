@@ -192,6 +192,9 @@
 
         "loading_screen_change_text" "<h1>LATEST CHANGES</h1><i>Beta Version</i><br><h2>General</h2>• Added <b>changelog</b>. <i>Wow!</i><br>"
         
+        "loading_screen_tip_0"  "Such Tips."
+        "loading_screen_tip_1"  "Very Helpful."
+        "loading_screen_tip_2"  "Wow."
 
     }
 }
