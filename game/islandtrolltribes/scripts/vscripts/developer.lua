@@ -18,6 +18,7 @@ CHEAT_CODES = {
     ["coats"] = function( ... ) ITT:TestCoat(...) end,
     ["debug_shops"] = function(...) ITT:DebugShops() end,
     ["spawnstats"] = function( ... ) ITT:SpawnStats(...) end,
+    ["gg_end"] = function( ... ) GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS) end,
 }
 
 PLAYER_COMMANDS = {
