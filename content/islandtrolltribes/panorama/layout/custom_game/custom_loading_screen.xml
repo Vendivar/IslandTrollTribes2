@@ -5,6 +5,12 @@
     <Panel class="AddonLoadingRoot">
         <Panel id="seq">
             <Image id="background" class="SeqBg" src="file://{images}/loading_screen/gamemode.png" />
+
+            <Panel id="Content">
+                <Panel id="Changelog">
+                    <Label id="ChangelogText" text="#loading_screen_change_text" html="true"/>
+                </Panel>
+            </Panel>
         </Panel>
   </Panel>
 </root>
