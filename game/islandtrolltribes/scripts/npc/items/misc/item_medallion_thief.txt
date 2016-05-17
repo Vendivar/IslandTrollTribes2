@@ -10,29 +10,30 @@
 	"ItemShopTags"	"consumable"
 	"ItemQuality"	"consumable"
 	"ItemShareability"	"ITEM_FULLY_SHAREABLE"
-	"ItemStackable"	"1"
+	"ItemStackable"	"0"
 	"ItemPermanent"	"0"
 	"ItemDroppable"	"1"
 	"ItemAliases"	"quicktype"
 	"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 	"ItemKillable"	"1"
 	"ItemSellable"	"0"
+	"ItemInitialCharges" "1"
 
 	"UIPickupSound"	"Item.PickUpGemShop"
 	"UIDropSound"	"Item.DropGemShop"
 	"WorldDropSound"	"Item.DropGemWorld"
 	"OnSpellStart"
 	{
+		
+		"SpendCharge"
+		{
+		}
 
         "RunScript"
 		{
 			"ScriptFile" "heroes/thief/teleport.lua"
 			"Function"   "Teleport"
 			"Target"     "POINT"
-		}
-
-		"SpendCharge"
-		{
 		}
 
 	}
