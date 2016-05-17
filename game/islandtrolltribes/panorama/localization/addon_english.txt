@@ -189,7 +189,14 @@
         "DOTA_Tooltip_Ability_Panic_move_speed"         "MOVE SPEED:"
         "DOTA_Tooltip_Ability_Panic_incoming_damage"    "INCOMING DAMAGE:"
 
-
+        // Usage
+        //  <br> for break lines
+        //  • for bullets
+        //  <font color='#hex'>text</font> for color
+        //  <b>text</b> for bold, 
+        //  <h1>text</h1> header1, <h2>text</h2> header2  
+        //  <i> italic/underlined.
+        //  Styles can be changed in custom_loading_screen.css
         "loading_screen_change_text" "<h1>LATEST CHANGES</h1><i>Beta Version</i><br><h2>General</h2>• Added <b>changelog</b>. <i>Wow!</i><br>"
         
         "loading_screen_tip_0"  "Such Tips."
