@@ -3,6 +3,7 @@ var iPlayerID = Players.GetLocalPlayer();
 var hero = Players.GetPlayerHeroEntityIndex( iPlayerID )
 var currentBuilding = 0
 var currentUnit = 0
+var currentSelected
 var fold = false
 
 var Buildings = {}
@@ -26,28 +27,19 @@ function Crafting_OnUpdateSelectedUnits() {
     }
 
     //If building isn't owned by anyone on the team, don't show the crafting menu
-    $.Msg("Crafting_OnUpdateSelectedUnits")
-    var teamID = Game.GetPlayerInfo(iPlayerID).player_team_id
-    var teamMembers = Game.GetPlayerIDsOnTeam(teamID)
-    var controllable = false
-    for (var i in teamMembers)
-    {
-        if (Entities.IsControllableByPlayer(mainSelected, teamMembers[i]))
-        {
-            controllable = true
-            break
-        }
-    }
+    var controllable = IsControllableByMyTeam(iPlayerID, mainSelected)
     if (!controllable)
         return
 
-    $.Msg("Building is owned by your team, continue showing the crafting UI")
+    //$.Msg("Unit is owned by your team, continue showing the crafting UI")
     var name = Entities.GetUnitName(mainSelected)
+    $.Msg("Crafting_OnUpdateSelectedUnits "+name)
 
     if (Buildings[name])
     {
         HideCurrent()
         currentBuilding = name
+        currentSelected = mainSelected
         if (Buildings[name]==1)
         {
             var values = CustomNetTables.GetAllTableValues("crafting")
@@ -66,6 +58,26 @@ function Crafting_OnUpdateSelectedUnits() {
             MakeVisible(Buildings[name])
         }
     }
+    else
+    {
+        if (currentSelected == mainSelected) //Selected the same unit again
+            HideCurrent()
+        
+        else //Selected a non crafting unit
+            currentSelected = mainSelected
+    }
+}
+
+function IsControllableByMyTeam(iPlayerID, entity) {
+    var teamID = Game.GetPlayerInfo(iPlayerID).player_team_id
+    var teamMembers = Game.GetPlayerIDsOnTeam(teamID)
+
+    for (var i in teamMembers)
+    {
+        if (Entities.IsControllableByPlayer(entity, teamMembers[i]))
+            return true
+    }
+    return false
 }
 
 function IsUnfinishedBuilding(building) {

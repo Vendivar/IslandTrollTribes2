@@ -50,3 +50,17 @@ function CreateCraftingRecipe (section, result, ingredients, table, name, entity
     crafting_item.BLoadLayout("file://{resources}/layout/custom_game/crafting/crafting_recipe.xml", false, false);
 }
 
+var crafting_currentSelected
+var iPlayerID = Players.GetLocalPlayer();
+function Crafting_OnUpdateSelectedUnits() {
+    var selectedEntities = Players.GetSelectedEntities( iPlayerID );
+    var mainSelected = selectedEntities[0]
+    if (crafting_currentSelected == mainSelected)
+        GameUI.CustomUIConfig().HideCraftingList()
+    else
+        crafting_currentSelected = mainSelected
+}
+
+(function () {
+    GameEvents.Subscribe( "dota_player_update_selected_unit", Crafting_OnUpdateSelectedUnits );
+})();
