@@ -52,6 +52,11 @@
 			"var_type"	"FIELD_FLOAT"
 			"duration"	"50.0 70.0 90.0"
 		}
+		"02"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"percent_chance"	"40.0 40.0 40.0"
+		}
 
 	}
 
