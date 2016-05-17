@@ -120,6 +120,12 @@ function ITT:InitGameMode()
     GameMode:SetModifyExperienceFilter( Dynamic_Wrap( ITT, "FilterExperience" ), self )
     GameMode:SetModifyGoldFilter( Dynamic_Wrap( ITT, "FilterGold" ), self )
 
+    -- Don't end the game if everyone is unassigned
+    SendToServerConsole("dota_surrender_on_disconnect 0")
+
+    -- Increase time to load and start even if not all players loaded
+    SendToServerConsole("dota_wait_for_players_to_load_timeout 240")
+
     self.m_GatheredShuffledTeams = {}
     self.m_NumAssignedPlayers = 0
 
