@@ -218,6 +218,10 @@ function CreateBushContainer(name, bush)
         OnLeftClick = function(playerID, container, unit, item, slot)
 
             if ContainerTransferItem(container, bush, unit, item) then
+                local hasTelegather = unit:HasModifier("modifier_telegather")
+                if hasTelegather then
+                    local didTeleport = TeleportItem(unit,item)
+                end
                 unit:StartGesture(ACT_DOTA_ATTACK)
             else
                 SendErrorMessage(playerID, "#error_inventory_full")
@@ -229,6 +233,10 @@ function CreateBushContainer(name, bush)
         OnRightClick = function(playerID, container, unit, item, slot)
             if ContainerTransferItem(container, bush, unit, item) then
                 unit:StartGesture(ACT_DOTA_ATTACK)
+                local hasTelegather = unit:HasModifier("modifier_telegather")
+                if hasTelegather then
+                    local didTeleport = TeleportItem(unit,item)
+                end
             else
                 SendErrorMessage(playerID, "#error_inventory_full")
             end
@@ -244,6 +252,10 @@ function CreateBushContainer(name, bush)
                 for _,item in ipairs(items) do
                     if CanTakeItem(unit) then
                         ContainerTransferItem(container, bush, unit, item)
+                        local hasTelegather = unit:HasModifier("modifier_telegather")
+                        if hasTelegather then
+                            local didTeleport = TeleportItem(unit,item)
+                        end
                     elseif not errorMsg then
                         errorMsg = true
                         SendErrorMessage(playerID, "#error_inventory_full")
@@ -275,4 +287,36 @@ function CreateBushContainer(name, bush)
 
     bush.container = cont
     bush.phys = phys
+end
+
+function TeleportItem(hero,originalItem)
+    local targetFire = hero.targetFire
+    local newItem = CreateItem(originalItem:GetName(), nil, nil)
+    local teleportSuccess = false
+
+    local telegatherBuff = hero:FindModifierByName("modifier_telegather")
+    local telegatherAbility = telegatherBuff:GetAbility()
+    local percentChance = telegatherAbility:GetSpecialValueFor("percent_chance")
+   --print("Teleporting item : " .. telegatherAbility:GetAbilityName() .. ", " .. percentChance .."% chance")
+
+    local itemList = {"item_tinder", "item_flint", "item_stone", "item_stick", "item_bone", "item_meat_raw", "item_crystal_mana", "item_clay_ball", "item_river_root", "item_river_stem", "item_thistles", "item_acorn", "item_acorn_magic", "item_mushroom" }
+    if hero:GetSubClass() == "herbal_master_telegatherer" then
+        itemList = {"item_herb_blue", "item_herb_butsu", "item_herb_orange", "item_herb_purple", "item_herb_yellow", "item_river_root", "item_river_stem", "item_spirit_water", "item_spirit_wind"}
+    end
+    for key,value in pairs(itemList) do
+        if value == originalItem:GetName() then
+            local diceRoll = RandomFloat(0,100)
+            --print("telegather roll " .. diceRoll)
+            if diceRoll <= percentChance then
+                --print( "Teleporting Item", originalItem:GetName())
+                hero:RemoveItem(originalItem)
+                local itemPosition = targetFire:GetAbsOrigin() + RandomVector(RandomInt(100,150))
+                CreateItemOnPositionSync(itemPosition,newItem)
+                newItem:SetOrigin(itemPosition)
+                teleportSuccess = true
+                return teleportSuccess
+            end
+        end
+    end
+    return teleportSuccess
 end
