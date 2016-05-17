@@ -84,11 +84,44 @@ function TieShopToUnit( unit )
         end,
 
         OnRightClick = function(playerID, container, unit, item, slot)
-          Containers:print("Shop:OnRightClick", playerID, container, unit, item:GetEntityIndex(), slot)
+          --shop item restriction check
+          local iname = item:GetAbilityName()
+          local exists = false
+          local full = true
+          local restricted = false
+
+          local itemSlotRestriction = GameRules.ItemInfo['ItemSlots'][iname]
+
+          for i=0,5 do
+            local it = unit:GetItemInSlot(i)
+            if not it then
+              full = false
+            elseif it:GetAbilityName() == iname then
+              exists = true
+            end
+          end
+          -- if itemSlotRestriction then
+          --   print("trying to buy restricted item " .. iname .. " type: " ..itemSlotRestriction)
+          -- end
+          if full then
+            SendErrorMessage(playerID, "#error_inventory_full")
+          elseif itemSlotRestriction then
+            local maxCarried = GameRules.ItemInfo['MaxCarried'][itemSlotRestriction]
+            local count = GetNumItemsOfSlot(unit, itemSlotRestriction)
+
+            if count >= maxCarried then
+              --print("carrying too many "..iname)
+              SendErrorMessage(playerID, "#error_cant_carry_more_"..itemSlotRestriction)
+              return
+            end
+          end
+          if not full or (full and item:IsStackable() and exists)then
+            Containers:print("Shop:OnRightClick", playerID, container, unit, item:GetEntityIndex(), slot)
 
             local item = container:BuyItem(playerID, unit, item)
             Containers:AddItemToUnit(unit, item)
             item:SetPurchaseTime(0) --disables the 10 second full price refund
+          end
         end,
 
         OnEntityOrder = function(playerID, container, unit, target)
