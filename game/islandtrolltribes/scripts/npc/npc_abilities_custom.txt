@@ -940,7 +940,7 @@
 	}
 	// Immobilizes animals for 8 seconds, trolls for 3.25, with a 10 second cooldown.
 	// It can be set to auto-cast for when hostile units are nearby. Autocast is automatically on.
-	"ability_ensnaretrap_ensnare"
+	"ability_ensnaretower_ensnare"
 	{
 	    "BaseClass"                     "ability_datadriven"
 	    "AbilityTextureName"            "ability_ensnaretrap_ensnare"
@@ -1126,6 +1126,165 @@
 	            }
 	        }
 	    }
+	}
+	// Immobilizes animals for 8 seconds, trolls for 3.25, with a 10 second cooldown.
+	// It can be set to auto-cast for when hostile units are nearby. Autocast is automatically on.
+	"ability_ensnaretrap_ensnare"
+	{
+	    "BaseClass"                     "ability_datadriven"
+	    "AbilityTextureName"            "ability_ensnaretrap_ensnare"
+	    "MaxLevel"                      "1"
+	
+	    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
+	    "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	    "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	
+	    "AbilityCooldown"               "10"
+	    "AbilityManaCost"               "0"
+	    "AbilityCastRange"              "300"
+	
+	    "precache"
+	    {
+	        "particle"  "particles/units/heroes/hero_meepo/meepo_earthbind.vpcf"
+	        "particle"  "particles/units/heroes/hero_meepo/meepo_earthbind_flash.vpcf"
+	        "particle"  "particles/units/heroes/hero_meepo/meepo_earthbind_projectile_fx.vpcf"
+	        "soundfile" "soundevents/game_sounds_heroes/game_sounds_meepo.vsndevts"
+	    }
+	
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"              "FIELD_FLOAT"
+	            "duration_hero"         "3.25"
+	        }
+	        "02"
+	        {
+	            "var_type"              "FIELD_FLOAT"
+	            "duration_animal"       "8.0"
+	        }
+	        "03"
+	        {
+	            "var_type"              "FIELD_INTEGER"
+	            "projectile_speed"      "750"
+	        }
+	        "04"
+	        {
+	            "var_type"              "FIELD_INTEGER"
+	            "autocast_radius"       "500"
+	        }
+	        "05"
+	        {
+	            "var_type"              "FIELD_INTEGER"
+	            "damage"       "2"
+	        }
+	    }
+	    
+	    "OnAbilityPhaseStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"    "items/living_clay.lua"
+	            "Function"      "CheckPosition"
+	            "Target"        "POINT"
+	        }
+	    }
+	
+	    "OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"    "items/living_clay.lua"
+	            "Function"      "MakeClayExplosion"
+	            "Target"        "POINT"
+	        }
+	
+	        "FireSound"
+	        {
+	            "EffectName"    "Hero_Treant.Overgrowth.Cast"
+	            "Target"        "CASTER"
+	        }
+	        
+	        "SpendCharge" 
+	        {
+	        }
+	    }
+		"Modifiers"
+		{
+			"modifier_scroll_entanglingroots"
+			{
+				"States"
+				{
+					"MODIFIER_STATE_ROOTED"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+	
+				"ThinkInterval"	"%tick_duration"
+				"OnIntervalThink"
+				{
+					"Damage"
+					{
+						"Damage"	"%damage_per_second"
+						"Type"	"DAMAGE_TYPE_MAGICAL"
+						"Target"	"TARGET"
+					}
+	
+					"FireSound"
+					{
+						"EffectName"	"Hero_Treant.Overgrowth.Target"
+						"Target"	"TARGET"
+					}
+	
+				}
+	
+				"EffectName"	"particles/units/heroes/hero_treant/treant_overgrowth_vines.vpcf"
+				"EffectAttachType"	"follow_origin"
+				"OnCreated"
+				{
+					"FireSound"
+					{
+						"EffectName"	"Hero_Treant.Overgrowth.Cast"
+						"Target"	"TARGET"
+					}
+	
+				}
+	
+			}
+	
+		}
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"range"	"450"
+			}
+	
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"duration_hero"	"4"
+			}
+	
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"duration_creep"	"8"
+			}
+	
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage_per_second"	"5"
+			}
+	
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"tick_duration"	"1.0"
+			}
+	
+		}
 	}
 	// Picks up a nearby corpse.
 	// Can be autocast which will continuously pick up meat around the building until at full capacity or until no more corpses remain.
@@ -4334,7 +4493,7 @@
 	        {
 	            "ScriptFile"    "heroes/gatherer/ping.lua"
 	            "Function"      "PingItemInRange"
-	            "Items"         "npc_bush_herb"
+	            "Items"         "item_bush_herb"
 	        }
 	        
 	        "FireSound"
@@ -4382,7 +4541,7 @@
 	        {
 	            "ScriptFile"    "heroes/gatherer/ping.lua"
 	            "Function"      "PingItemInRange"
-	            "Items"         "npc_bush_mushroom"
+	            "Items"         "item_bush_mushroom"
 	        }
 	        
 	        "FireSound"
@@ -4430,7 +4589,7 @@
 	        {
 	            "ScriptFile"    "heroes/gatherer/ping.lua"
 	            "Function"      "PingItemInRange"
-	            "Items"         "npc_bush_river"
+	            "Items"         "item_bush_river"
 	        }
 	        
 	        "FireSound"
@@ -4478,7 +4637,7 @@
 	        {
 	            "ScriptFile"    "heroes/gatherer/ping.lua"
 	            "Function"      "PingItemInRange"
-	            "Items"        "npc_bush_herb_blue,npc_bush_herb_orange,npc_bush_herb_purple,npc_bush_herb_yellow"
+	            "Items"        "item_bush_herb_blue,item_bush_herb_orange,item_bush_herb_purple,item_bush_herb_yellow"
 	        }
 	        
 	        "FireSound"
@@ -4672,7 +4831,7 @@
 	        {
 	            "ScriptFile"    "heroes/gatherer/ping.lua"
 	            "Function"      "PingItemInRange"
-	            "Items"         "item_crystal_mana,item_stick,item_tinder"       
+	            "Items"         "item_mushroom,item_stick,item_tinder"       
 	        }
 	
 	        "RunScript"
@@ -4729,7 +4888,7 @@
 	        {
 	            "ScriptFile"    "heroes/gatherer/ping.lua"
 	            "Function"      "PingItemInRange"
-	            "Items"         "npc_bush_thistles"
+	            "Items"         "item_bush_thistle"
 	        }
 	        
 	        "FireSound"

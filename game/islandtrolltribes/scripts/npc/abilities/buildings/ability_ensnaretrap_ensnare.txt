@@ -50,140 +50,110 @@
             "damage"       "2"
         }
     }
+    
+    "OnAbilityPhaseStart"
+    {
+        "RunScript"
+        {
+            "ScriptFile"    "items/living_clay.lua"
+            "Function"      "CheckPosition"
+            "Target"        "POINT"
+        }
+    }
 
     "OnSpellStart"
     {
+        "RunScript"
+        {
+            "ScriptFile"    "items/living_clay.lua"
+            "Function"      "MakeClayExplosion"
+            "Target"        "POINT"
+        }
+
         "FireSound"
         {
-            "EffectName"    "Hero_Meepo.Earthbind.Cast"
+            "EffectName"    "Hero_Treant.Overgrowth.Cast"
             "Target"        "CASTER"
         }
-
-        "FireEffect"
-        {
-            "EffectName"        "particles/units/heroes/hero_meepo/meepo_earthbind_flash.vpcf"
-            "EffectAttachType"  "follow_origin"
-            "Target"            "CASTER"
-        }
-
-        "TrackingProjectile"
-        {
-            "Target"            "TARGET"
-            "EffectName"        "particles/units/heroes/hero_meepo/meepo_earthbind_projectile_fx.vpcf"
-            "Dodgeable"         "1"
-            "ProvidesVision"    "0"
-            "MoveSpeed"         "%projectile_speed"
-            "SourceAttachment"  "DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
-        }
-    }
-
-    "OnProjectileHitUnit"
-    {
-        "FireSound"
-        {
-            "EffectName"    "Hero_Meepo.Earthbind.Target"
-            "Target"        "TARGET"
-        }
-
-        "ApplyModifier"
-        {
-            "ModifierName"  "modifier_ensnare"
-            "Target"
-            {
-                "Center"    "TARGET"
-                "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-                "Types"     "DOTA_UNIT_TARGET_HERO"
-            }
-            "Duration"      "%duration_hero"
-        }
         
-        "ApplyModifier"
+        "SpendCharge" 
         {
-            "ModifierName"  "modifier_ensnare"
-            "Target"
-            {
-                "Center"    "TARGET"
-                "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-                "Types"     "DOTA_UNIT_TARGET_BASIC"
-            }
-            "Duration"      "%duration_animal"
         }
     }
+	"Modifiers"
+	{
+		"modifier_scroll_entanglingroots"
+		{
+			"States"
+			{
+				"MODIFIER_STATE_ROOTED"	"MODIFIER_STATE_VALUE_ENABLED"
+			}
 
-    "Modifiers"
-    {
-        "modifier_ensnare_trap"
-        {
-            "IsHidden"      "1"
-            "Passive"       "1"
-            "OnCreated"
-            {
-                "RunScript"
-                {
-                    "ScriptFile"    "mechanics/autocast.lua"
-                    "Function"      "AutocastOn"
-                }
-            }
+			"ThinkInterval"	"%tick_duration"
+			"OnIntervalThink"
+			{
+				"Damage"
+				{
+					"Damage"	"%damage_per_second"
+					"Type"	"DAMAGE_TYPE_MAGICAL"
+					"Target"	"TARGET"
+				}
 
-            "ThinkInterval"  "1.0"
-            "OnIntervalThink"
-            {
-                "RunScript"
-                {
-                    "ScriptFile"    "buildings/ensnare.lua"
-                    "Function"      "CastTrap"
-                    "Target"
-                    {
-                        "Center"    "TARGET"
-                        "Radius"    "%autocast_radius"
-                        "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-                        "Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-                        "MaxTargets" "1"
-                        "Random"     "1"
-                    }
-                }
-            }
-        }
+				"FireSound"
+				{
+					"EffectName"	"Hero_Treant.Overgrowth.Target"
+					"Target"	"TARGET"
+				}
 
-        "modifier_ensnare"
-        {
-            "IsDebuff"          "1"
-            "IsPurgable"        "1"
-    
-            "EffectName"        "particles/units/heroes/hero_meepo/meepo_earthbind.vpcf"
-            "EffectAttachType"  "follow_origin"
-            "ThinkInterval" "0.5"
-            "OnIntervalThink"
-            {
-                "Damage"
-                {
-                    "Type"   "DAMAGE_TYPE_PHYSICAL"
-                    "Damage" "%damage"
-                    "Target" "TARGET"
-                }
-            }
-            "States"
-            {
-                "MODIFIER_STATE_ROOTED"    "MODIFIER_STATE_VALUE_ENABLED"
-            }
+			}
 
-            "OnCreated"
-            {
-                "RunScript"
-                {
-                    "ScriptFile"    "mechanics/ensnare.lua"
-                    "Function"      "LoseMovement"
-                }
-            }
+			"EffectName"	"particles/units/heroes/hero_treant/treant_overgrowth_vines.vpcf"
+			"EffectAttachType"	"follow_origin"
+			"OnCreated"
+			{
+				"FireSound"
+				{
+					"EffectName"	"Hero_Treant.Overgrowth.Cast"
+					"Target"	"TARGET"
+				}
 
-            "OnDestroy"
-            {
-                "RunScript"
-                {
-                    "ScriptFile"    "mechanics/ensnare.lua"
-                    "Function"      "RegainMovement"
-                }
-            }
-        }
-    }
+			}
+
+		}
+
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"range"	"450"
+		}
+
+		"02"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"duration_hero"	"4"
+		}
+
+		"03"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"duration_creep"	"8"
+		}
+
+		"04"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"damage_per_second"	"5"
+		}
+
+		"05"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"tick_duration"	"1.0"
+		}
+
+	}
 }

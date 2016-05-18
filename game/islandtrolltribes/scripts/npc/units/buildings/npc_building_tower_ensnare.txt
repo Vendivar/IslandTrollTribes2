@@ -1,0 +1,56 @@
+"npc_building_tower_ensnare"
+{
+	"BaseClass"	"npc_dota_creature"
+	"Model"	"models/tower_ensnare_test.vmdl"
+	"vscripts"	"buildings/omni_tower.lua"
+	"SoundSet"	"Creep_Good_Melee"
+	"HasInventory"	"1"
+	"ModelScale"	"0.65"
+	"MinimapIconSize"	"250"
+	"HealthBarOffset"	"400"
+	"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
+	"RingRadius"	"100"
+	"ModelScale"	"0.5"
+	"AutoAttacksByDefault"         "0"
+	"AttackDamageMin"	"3"
+	"AttackDamageMax"	"7"    // Damage range max.
+	"AttackRate"	"0.55"     // Speed of attack.
+	"AttackAnimationPoint"	"0.4"    // Normalized time in animation cycle to attack.
+	"AttackAcquisitionRange"	"750"     // Range within a target can be acquired.
+	"AttackRange"                "700"     // Range within a target can be attacked.
+	"AttackRangeBuffer"          "250"     // Extra range the target can move without canceling the attack
+	"ProjectileModel"	"particles/units/heroes/hero_windrunner/windrunner_base_attack.vpcf"
+	"ProjectileSpeed"	"1000"
+
+
+	"Ability1"	"ability_ensnaretower_ensnare"
+	"Ability2"	"ability_get_corpse"
+	"Ability3"	"ability_building_droprawmeat"
+	"Ability10"	"ability_building"
+	"Ability11"	"ability_cancel_building"
+	
+	"ArmorPhysical"	"5"
+	"MagicalResistance"	"0"
+	"AttackCapabilities"	"DOTA_UNIT_CAP_RANGED_ATTACK"
+	"BountyXP"	"0"
+	"BountyGoldMin"	"0"
+	"BountyGoldMax"	"0"
+	"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
+	"MovementSpeed"	"0"
+	"MovementTurnRate"	"0"
+	"StatusHealth"	"220"
+	"StatusHealthRegen"	"0"
+	"StatusMana"	"1"
+	"StatusManaRegen"	"0"
+	"TeamName"	"DOTA_TEAM_GOODGUYS"
+	"CombatClassDefend"	"DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
+	"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+	"VisionDaytimeRange"	"0"
+	"VisionNighttimeRange"	"0"
+
+	// Building Size
+	//----------------------------------------------------------------
+	"ConstructionSize"			"2"
+	"BlockPathingSize"			"2"
+    "SharedWithTeammates" "1"
+}
