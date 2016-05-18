@@ -7,7 +7,11 @@
     </scripts>
     <Panel class="AddonLoadingRoot">
         <Panel id="seq">
-            <Image id="background" class="SeqBg" src="file://{images}/loading_screen/gamemode.png" />
+            <Image id="background" class="SeqBg" src="file://{images}/loading_screen/background.png" />
+            <Panel id="CenterTitle">
+                <Image id="logo" src="file://{images}/loading_screen/logo.png" />
+                <Image id="name" src="file://{images}/loading_screen/itt_text.png" />
+            </Panel>
             <Label id="Tip" text=""/>
 
             <Panel id="Content">

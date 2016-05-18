@@ -2,6 +2,7 @@ var transition_time = 2
 var time_per_tip = 20
 var count = CountTips();
 var currentTip = -1;
+$.Msg(count+1+" Tips Loaded")
 
 function ShowTips(){
     var random_number = Math.floor(Math.random() * count);
