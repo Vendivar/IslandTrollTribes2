@@ -2,8 +2,8 @@
 {
 	"BaseClass"	"ability_datadriven"
 	"AbilityTextureName"	"ability_beastmaster_wolfform"
-	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	"AbilityCastPoint"	"0.0"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityCastPoint"	"0.5"
 	"AbilityCooldown"	"5"
 	"AbilityCastRange"	"0"
 	"AbilityManaCost"	"30"
@@ -18,8 +18,13 @@
             "particle"          "particles/econ/items/puck/puck_merry_wanderer/puck_illusory_orb_sphere_sparks_merry_wanderer.vpcf"
             "particle"          "particles/items2_fx/medallion_of_courage_friend_sparks.vpcf"
 	}
-	"OnSpellStart"
+	"OnToggleOn"
 	{
+        "RunScript"
+        {
+            "ScriptFile" "heroes/beastmaster/shapeshift.lua"
+            "Function"   "WolfForm"
+        }
 		"ApplyModifier"
 		{
 			"Target"	"CASTER"
@@ -61,6 +66,16 @@
                 "Target"	            "CASTER"
 		}
 	}
+
+    "OnToggleOff"
+    {
+		"RemoveModifier"
+		{
+			"Target"	"CASTER"
+			"ModifierName"	"modifier_wolfform"
+		}
+    }
+    
 	"Modifiers"
 	{
 		"modifier_wolfform"
@@ -73,6 +88,7 @@
 				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed"
 				"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"%move_speed"
 				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%attack_damage"
+                "MODIFIER_PROPERTY_ABILITY_LAYOUT" "6"
 			}
             "OnCreated"
             {

@@ -2,7 +2,7 @@
 {
 	"BaseClass"	"ability_datadriven"
 	"AbilityTextureName"	"ability_beastmaster_slam"
-	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	"AbilityCastAnimation"	"1"
 	"AbilityCastPoint"	"0.5"
 	"MaxLevel"	"1"

@@ -2354,7 +2354,7 @@
 	"ability_beastmaster_bash"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"	"ability_beastmaster_bash"
 		"MaxLevel"	"1"
 		"precache"
@@ -2422,12 +2422,13 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"ability_beastmaster_bearform"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityCastPoint"	"0.0"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityCastPoint"	"0.5"
 		"AbilityCooldown"	"5"
 		"AbilityCastRange"	"0"
 		"AbilityManaCost"	"30"
 		"MaxLevel"	"1"
+	    
 	        "precache"
 		{
 			
@@ -2439,7 +2440,7 @@
 	            "particle"          "particles/econ/items/puck/puck_merry_wanderer/puck_illusory_orb_sphere_sparks_merry_wanderer.vpcf"
 	            "particle"          "particles/items2_fx/medallion_of_courage_friend_sparks.vpcf"
 		}
-		"OnSpellStart"
+		"OnToggleOn"
 		{
 			"ApplyModifier"
 			{
@@ -2482,6 +2483,15 @@
 			}
 		}
 	
+	    "OnToggleOff"
+	    {
+			"RemoveModifier"
+			{
+				"Target"	"CASTER"
+				"ModifierName"	"modifier_bearform"
+			}
+	    }
+	    
 		"Modifiers"
 		{
 			"modifier_bearform"
@@ -2495,6 +2505,7 @@
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"%move_speed"
 					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%attack_damage"
 					"MODIFIER_PROPERTY_HEALTH_BONUS"	"%health_bonus"
+	                "MODIFIER_PROPERTY_ABILITY_LAYOUT" "6"
 				}
 	            "OnCreated"
 	            {
@@ -2607,7 +2618,7 @@
 	"ability_beastmaster_criticalstrike"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_PHYSICAL"
 		"AbilityTextureName"	"ability_beastmaster_criticalstrike"
 		"MaxLevel"	"1"
@@ -2695,8 +2706,8 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"ability_beastmaster_elkform"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityCastPoint"	"0.0"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityCastPoint"	"0.5"
 		"AbilityCooldown"	"5"
 		"AbilityCastRange"	"0"
 		"AbilityManaCost"	"30"
@@ -2710,7 +2721,7 @@
 	            "particle"          "particles/econ/items/puck/puck_merry_wanderer/puck_illusory_orb_sphere_sparks_merry_wanderer.vpcf"
 	            "particle"          "particles/items2_fx/medallion_of_courage_friend_sparks.vpcf"
 		}
-		"OnSpellStart"
+		"OnToggleOn"
 		{
 			"ApplyModifier"
 			{
@@ -2749,6 +2760,14 @@
 			}
 		}
 	
+	    "OnToggleOff"
+	    {
+			"RemoveModifier"
+			{
+				"Target"	"CASTER"
+				"ModifierName"	"modifier_elkform"
+			}
+	    }
 		"Modifiers"
 		{
 			"modifier_elkform"
@@ -2762,6 +2781,7 @@
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"%move_speed"
 					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%attack_damage"
 					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%magic_resist"
+	                "MODIFIER_PROPERTY_ABILITY_LAYOUT" "6"
 				}
 	            "OnCreated"
 	            {
@@ -3198,7 +3218,7 @@
 	"ability_beastmaster_magicimmunity"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityTextureName"	"ability_beastmaster_magicimmunity"
 		"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
 		"AbilityCastPoint"	"0.3"
@@ -3259,8 +3279,8 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"ability_beastmaster_normalform"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityCastPoint"	"0.0"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityCastPoint"	"0.5"
 		"AbilityCooldown"	"5"
 		"AbilityCastRange"	"0"
 		"AbilityManaCost"	"0"
@@ -3310,8 +3330,23 @@
 				"EffectName"			"particles/econ/items/puck/puck_merry_wanderer/puck_illusory_orb_sphere_sparks_merry_wanderer.vpcf"
 				"EffectAttachType"  	"follow_origin"
 	                "Target"	            "CASTER"
+			}		
+	        "ApplyModifier"
+			{
+				"Target"	"CASTER"
+				"ModifierName"	"modifier_normalform"
 			}
 		}
+	    "Modifiers"
+		{
+			"modifier_normalform"
+			{
+				"Properties"
+				{
+	                "MODIFIER_PROPERTY_ABILITY_LAYOUT" "4"
+				}
+	        }
+	    }
 	
 	}
 	"ability_beastmaster_petcontroll"
@@ -3356,7 +3391,7 @@
 	"ability_beastmaster_ram"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
 		"AbilityTextureName"	"ability_beastmaster_ram"
@@ -3513,7 +3548,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"ability_beastmaster_slam"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityCastAnimation"	"1"
 		"AbilityCastPoint"	"0.5"
 		"MaxLevel"	"1"
@@ -3835,8 +3870,8 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"ability_beastmaster_wolfform"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityCastPoint"	"0.0"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityCastPoint"	"0.5"
 		"AbilityCooldown"	"5"
 		"AbilityCastRange"	"0"
 		"AbilityManaCost"	"30"
@@ -3851,8 +3886,13 @@
 	            "particle"          "particles/econ/items/puck/puck_merry_wanderer/puck_illusory_orb_sphere_sparks_merry_wanderer.vpcf"
 	            "particle"          "particles/items2_fx/medallion_of_courage_friend_sparks.vpcf"
 		}
-		"OnSpellStart"
+		"OnToggleOn"
 		{
+	        "RunScript"
+	        {
+	            "ScriptFile" "heroes/beastmaster/shapeshift.lua"
+	            "Function"   "WolfForm"
+	        }
 			"ApplyModifier"
 			{
 				"Target"	"CASTER"
@@ -3894,6 +3934,16 @@
 	                "Target"	            "CASTER"
 			}
 		}
+	
+	    "OnToggleOff"
+	    {
+			"RemoveModifier"
+			{
+				"Target"	"CASTER"
+				"ModifierName"	"modifier_wolfform"
+			}
+	    }
+	    
 		"Modifiers"
 		{
 			"modifier_wolfform"
@@ -3906,6 +3956,7 @@
 					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed"
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"%move_speed"
 					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%attack_damage"
+	                "MODIFIER_PROPERTY_ABILITY_LAYOUT" "6"
 				}
 	            "OnCreated"
 	            {

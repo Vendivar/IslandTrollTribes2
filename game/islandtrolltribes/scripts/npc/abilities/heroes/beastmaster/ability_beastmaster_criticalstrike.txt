@@ -1,7 +1,7 @@
 "ability_beastmaster_criticalstrike"
 {
 	"BaseClass"	"ability_datadriven"
-	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"AbilityUnitDamageType"	"DAMAGE_TYPE_PHYSICAL"
 	"AbilityTextureName"	"ability_beastmaster_criticalstrike"
 	"MaxLevel"	"1"
