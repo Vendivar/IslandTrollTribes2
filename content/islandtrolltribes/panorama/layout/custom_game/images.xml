@@ -135,7 +135,8 @@
         <Image style="opacity:0;" src="file://{images}/items/coat_bear.png" />
         <Image style="opacity:0;" src="file://{images}/items/coat_wolf.png" />
         <Image style="opacity:0;" src="file://{images}/items/coat_camouflage.png" />        
-        <Image style="opacity:0;" src="file://{images}/items/cloak_frost.png" />
+        <Image style="opacity:0;" src="file://{images}/items/cloak_frost.png" />     
+        <Image style="opacity:0;" src="file://{images}/items/coat_steel.png" />
         <Image style="opacity:0;" src="file://{images}/items/claw_attack.png" />
         <Image style="opacity:0;" src="file://{images}/items/compass_sonar.png" />
         <Image style="opacity:0;" src="file://{images}/items/craftmaster.png" />

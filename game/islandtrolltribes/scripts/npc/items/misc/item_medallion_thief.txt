@@ -4,6 +4,7 @@
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"medallion_thief"
+    "AbilityCastRange"      "1000"
 	"Model"	"models/props_gameplay/status_shield.vmdl"
 	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"ItemCost"	"10"
@@ -37,5 +38,12 @@
 		}
 
 	}
-
+    "AbilitySpecial"
+    {
+        "01"
+        {
+            "var_type"        "FIELD_INTEGER"
+            "range"            "1000"
+        }
+    }
 }

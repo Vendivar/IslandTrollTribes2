@@ -22,7 +22,6 @@
             "ScriptFile"    "heroes/gatherer/ping.lua"
             "Function"      "PingItemInRange"
             "Items"         "npc_bush_herb"
-            "Duration"      "45.0"
         }
         
         "FireSound"

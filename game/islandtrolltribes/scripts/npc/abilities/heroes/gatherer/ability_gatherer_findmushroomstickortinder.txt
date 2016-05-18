@@ -21,7 +21,7 @@
         {
             "ScriptFile"    "heroes/gatherer/ping.lua"
             "Function"      "PingItemInRange"
-            "Items"         "item_crystal_mana,item_stick,item_tinder"       
+            "Items"         "item_mushroom,item_stick,item_tinder"       
         }
 
         "RunScript"
