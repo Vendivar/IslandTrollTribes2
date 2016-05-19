@@ -32,7 +32,7 @@
 		"FireSound"
 		{
 			"Target"	"TARGET"
-			"EffectName"	"Brewmaster_Storm.Cyclone"
+			"EffectName"	"scroll.cyclone"
 		}
 
 		"ApplyModifier"

@@ -6906,6 +6906,101 @@
 	        }
 		}
 	}
+	"item_scroll_boulder"
+	{
+		"ID"	"1587"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"scroll_stoneskin"
+		"Model"	"models/props_gameplay/recipe.vmdl"
+	    "Effect" "particles/custom/floating_stones.vpcf"
+		"AbilityCastRange"	"950"
+		"AbilityCastPoint"	"0.5"
+		"AbilityChannelTime" "5.0"
+		"AbilityCooldown"	"60.0"
+		"ItemCost"	"10"
+		"ItemShopTags"	"consumable"
+		"ItemQuality"	"consumable"
+		"ItemShareability"	"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemStackable"	"0"
+		"ItemPermanent"	"1"
+		"ItemDroppable"	"1"
+		"ItemAliases"	"quicktype"
+		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+		"ItemKillable"	"1"
+		"ItemSellable"	"1"
+		"AbilitySharedCooldown" "scroll"
+	
+		"UIPickupSound"	"Item.PickUpGemShop"
+		"UIDropSound"	"Item.DropGemShop"
+		"WorldDropSound"	"Item.DropRecipeWorld"
+		"OnSpellStart"
+		{
+	        "FireEffect"
+				{
+	            "EffectName"	"particles/custom/boulder_scroll_summon.vpcf"
+	            "EffectAttachType"	"PATTACH_ABSORIGIN"
+	            "Target"	"CASTER"
+	            }
+			"FireSound"
+			{
+				"Target"	"TARGET"
+				"FireSound"	"scroll.boulder"
+			}
+		}
+	    
+	    "OnChannelSucceeded"
+	    {
+	            "RunScript"
+	        {
+	            "ScriptFile"    "items/magic_seed.lua"
+	            "Function"      "MakeBoulder"
+	            "Target"        "POINT"
+	        }
+	        
+	        "FireEffect"
+	        {
+	            "EffectName"	"particles/custom/boulder_scroll_drop.vpcf"
+	            "EffectAttachType"	"PATTACH_WORLDORIGIN"
+	            "Target"	"POINT"
+	            }
+	            
+	        "FireSound"
+			{
+				"Target"	"CASTER"
+				"FireSound"	"scroll.boulder"
+			}
+	    }
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"range"	"450"
+			}
+	
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"duration"	"45.0"
+			}
+	
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"attack_speed_slow"	"-10"
+			}
+	
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"slow_debuff_duration"	"2.0"
+			}
+	
+		}
+	
+	}
 	"item_scroll_cyclone"
 	{
 		"ID"	"1088"
@@ -6940,7 +7035,7 @@
 			"FireSound"
 			{
 				"Target"	"TARGET"
-				"EffectName"	"Brewmaster_Storm.Cyclone"
+				"EffectName"	"scroll.cyclone"
 			}
 	
 			"ApplyModifier"

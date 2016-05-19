@@ -57,7 +57,7 @@
         }
         "FireSound"
         {
-            "EffectName"    "Hero_Undying.Decay.Transfer"
+            "EffectName"    "flea.attack"
             "Target"        "TARGET"
         }
         "FireSound"
