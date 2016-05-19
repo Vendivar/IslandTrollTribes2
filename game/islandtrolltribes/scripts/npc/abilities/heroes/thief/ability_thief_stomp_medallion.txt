@@ -1,0 +1,79 @@
+"ability_thief_stomp_medallion"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET  | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+	"AbilityTextureName"	"ability_centaur_hoofstomp"
+	"AbilityCastPoint"	"0"
+	"AbilityCooldown"	"0"
+	"AbilityCastRange"	"900"
+	"AbilityManaCost"	"0"
+	"MaxLevel"	"1"
+
+	"precache"
+	{
+		"soundfile"				"sounds/weapons/hero/centaur/hoof_stomp.vsnd"		
+	}
+
+	"OnSpellStart"
+	{
+
+		"ApplyModifier"
+		{
+			"ModifierName" "modifier_thief_stomp_stun"
+			"Target"
+			{
+				"Center" "CASTER"
+				"Radius" "%radius"
+				"Teams" "DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Types" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL | DOTA_UNIT_TARGET_OTHER"
+			}
+		}
+        
+		"FireSound"
+		{
+			"EffectName"	"Hero_Centaur.HoofStomp"
+			"Target"		"CASTER"
+		}
+
+		"FireEffect"
+		{
+			"EffectName"	"particles/units/heroes/hero_centaur/centaur_warstomp.vpcf"
+			"EffectAttachType" "world_origin"
+			"Target"		"CASTER"
+		}
+
+	}
+
+	"Modifiers"
+	{
+		"modifier_thief_stomp_stun"
+		{
+			"IsHidden"	"1"
+			"IsDebuff"	"1"
+			"IsPurgable""1"
+			"EffectName" "particles/generic_gameplay/generic_stunned.vpcf"
+			"EffectAttachType" "follow_overhead"
+			"Duration"  "%stun_duration"
+			"OverrideAnimation" "ACT_DOTA_DISABLED"
+			"States"
+			{
+				"MODIFIER_STATE_STUNNED" "MODIFIER_STATE_VALUE_ENABLED"
+			}
+		}
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"						"FIELD_INTEGER"
+			"radius"						"300"
+		}
+		"04"
+		{
+			"var_type"						"FIELD_FLOAT"
+			"stun_duration"					"1.0"
+		}
+	}
+
+}

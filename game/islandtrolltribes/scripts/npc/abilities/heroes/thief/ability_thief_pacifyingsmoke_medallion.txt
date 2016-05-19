@@ -1,0 +1,35 @@
+"ability_thief_pacifyingsmoke_medallion"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET  | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+	"AbilityTextureName"	"ability_priest_magicmist"
+	"AbilityCastPoint"	"0"
+	"AbilityCooldown"	"0"
+	"AbilityCastRange"	"900"
+	"AbilityManaCost"	"0"
+	"MaxLevel"	"1"
+    "precache"
+    { 
+        "soundfile" "soundevents/spells.vsndevts"
+    }
+	"OnSpellStart"
+	{
+		"SpawnUnit"
+		{
+			"Target"	"CASTER"
+			"UnitName"	"dummy_caster_pacifyingsmoke"
+			"UnitCount"	"1"
+			"UnitLimit"	"64"
+			"SpawnRadius"	"0"
+			"Duration"	"4"
+		}
+        
+		"FireSound"
+		{
+			"EffectName"	"Pacify.Smoke"
+			"Target"	"CASTER"
+		}
+
+	}
+
+}

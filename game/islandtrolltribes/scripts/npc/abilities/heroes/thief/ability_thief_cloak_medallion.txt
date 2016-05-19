@@ -1,0 +1,70 @@
+"ability_thief_cloak_medallion"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+	"AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_BOTH"
+    "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_ALL"
+	"AbilityTextureName"	"ability_thief_cloak"
+	"AbilityCastPoint"	"0"
+	"AbilityCooldown"	"0"
+	"AbilityManaCost"	"0 0 0"
+	"AbilityCastRange"  "900"
+	"MaxLevel"	"3"
+	"precache"
+	{
+		"soundfile"				"sounds/items/Shadow_Amulet.vsnd"		
+	}
+
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"Target"	"TARGET"
+			"ModifierName"	"modifier_cloak_fade"
+		}
+
+		"FireSound"
+		{
+			"EffectName"		"DOTA_Item.ShadowAmulet.Activate"
+			"Target"			"TARGET"
+		}
+
+	}
+
+	"Modifiers"
+	{
+		"modifier_cloak_fade"
+		{
+			"Duration"	"%fade_time"
+			"OnDestroy"
+			{
+				"ApplyModifier"
+				{
+					"Target"	"TARGET"
+					"Duration"	"%duration"
+					"ModifierName"	"modifier_invisible"
+				}
+
+			}
+
+		}
+
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"duration"	"4.0 5.5 7.0"
+		}
+
+		"02"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"fade_time"	"0.6 0.5 0.4"
+		}
+
+	}
+
+}

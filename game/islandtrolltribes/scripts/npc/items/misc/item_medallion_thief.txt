@@ -38,12 +38,53 @@
 		}
 
 	}
+
+	"OnEquip"
+	{
+		"RunScript"
+		{
+			"ScriptFile" "items/medallion_thief"
+			"Function"   "checkClass"
+		}
+	}
+
+
+	"Modifiers"
+	{
+		"modifier_medallion_thief"
+		{
+			"IsPurgable" "0"
+			"IsHidden"	"0"
+
+			"OnAttacked"
+			{
+				"RunScript"
+				{
+					"ScriptFile" "items/medallion_thief"
+					"Function"   "rollEffects"
+				}
+			}
+		}
+
+		"modifier_medallion_thief_false"
+		{
+			"IsPurgable" "0"
+			"IsHidden"	"0"
+		}
+
+	}
+
     "AbilitySpecial"
     {
         "01"
         {
             "var_type"        "FIELD_INTEGER"
             "range"            "1000"
+        }
+        "02"
+        {
+        	"var_type"			"FIELD_FLOAT"
+        	"percent_chance"	"33.3"
         }
     }
 }
