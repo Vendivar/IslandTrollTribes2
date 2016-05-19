@@ -21,7 +21,7 @@
         {
             "ScriptFile"    "heroes/gatherer/ping.lua"
             "Function"      "PingItemInRange"
-            "Items"         "item_bush_river"
+            "Items"         "npc_bush_river"
         }
         
         "FireSound"

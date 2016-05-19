@@ -8,13 +8,19 @@ function TargetEnemies(keys)
         item = caster:GetItemInSlot(i)
         if item and item:GetAbilityName() ~= "item_slot_locked" and ability:IsCooldownReady() then
     
-        item:SetCurrentCharges(item:GetCurrentCharges() - 1)
             local units = FindUnitsInRadius(teamnumber, casterPosition, nil, item:GetCastRange(), DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, 0, 0, false)
             if #units > 0 then
+                ability:StartCooldown(5.0)
                 local target = units[RandomInt(1,#units)]
-                Timers:CreateTimer(0.1, function()
+                Timers:CreateTimer(0.5, function()
                     caster:CastAbilityOnTarget(target, caster:GetItemInSlot(0), -1)
-                    ability:StartCooldown(2.0)
+                    item:SetCurrentCharges(item:GetCurrentCharges() - 1)
+                    --INSERT RESTRICT DROP HERE
+                    Timers:CreateTimer(1.0, function()                     
+                    if item:IsPermanent() == false and item:GetCurrentCharges() == 0 then
+                    item:RemoveSelf()
+                    end
+                    end)
                     end)
                     return
                 --caster:CastAbilityOnTarget(target, item, -1)

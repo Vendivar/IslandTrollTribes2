@@ -258,10 +258,15 @@ function ITT:FilterExecuteOrder( filterTable )
                     SendErrorMessage(issuer, "#error_traps_cant_pickup_that")
                     return false
                 end
-
+                
+                if unit:GetUnitName() == "npc_building_tower_omni" and itemName == "item_meat_raw" and itemName == "item_meat_cooked" and itemName == "item_potion_healingi" and itemName == "item_potion_healingiii" and itemName == "item_potion_healingiv" then
+                    SendErrorMessage(issuer, "#error_traps_cant_pickup_that")
+                    return false
+                end
+                
                 local pickedUp = PickupItem(unit, drop)
                 if not pickedUp then
-                    SendErrorMessage(issuer, "#error_inventory_full")
+                 --   SendErrorMessage(issuer, "#error_inventory_full")
                 end
             else
                 SendErrorMessage(issuer, "#error_item_out_of_range")

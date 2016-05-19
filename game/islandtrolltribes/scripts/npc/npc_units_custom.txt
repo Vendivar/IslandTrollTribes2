@@ -911,7 +911,7 @@
 		"ProjectileSpeed"	"600"
 	
 		"Ability1"	"ability_building_enemytargetting"
-		"Ability10"	"ability_building"
+		"Ability10"	"ability_tower"
 		"Ability11"	"ability_cancel_building"
 		
 		"ArmorPhysical"	"5"
