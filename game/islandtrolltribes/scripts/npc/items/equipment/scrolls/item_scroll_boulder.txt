@@ -8,7 +8,7 @@
     "Effect" "particles/custom/floating_stones.vpcf"
 	"AbilityCastRange"	"950"
 	"AbilityCastPoint"	"0.5"
-	"AbilityChannelTime" "5.0"
+	"AbilityChannelTime" "2.5"
 	"AbilityCooldown"	"60.0"
 	"ItemCost"	"10"
 	"ItemShopTags"	"consumable"
@@ -36,8 +36,8 @@
             }
 		"FireSound"
 		{
+			"EffectName"	"scroll.bouldercast"
 			"Target"	"TARGET"
-			"FireSound"	"scroll.boulder"
 		}
 	}
     
@@ -45,7 +45,7 @@
     {
             "RunScript"
         {
-            "ScriptFile"    "items/magic_seed.lua"
+            "ScriptFile"    "items/scroll_boulder.lua"
             "Function"      "MakeBoulder"
             "Target"        "POINT"
         }
@@ -59,8 +59,8 @@
             
         "FireSound"
 		{
+			"EffectName"	"scroll.boulder"
 			"Target"	"CASTER"
-			"FireSound"	"scroll.boulder"
 		}
     }
 

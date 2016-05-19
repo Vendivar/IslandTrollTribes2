@@ -29,16 +29,7 @@ function TsunamiProjectiles(keys)
 		projectile = ProjectileManager:CreateLinearProjectile(info)
 	end
 
-    -- Can't use SpendCharge before the projectile hits otherwise we lose the ability effects
-    local origin = caster:GetAbsOrigin()
-    origin.z = -128
 
-    caster:DropItemAtPositionImmediate(item, origin)
-    item:GetContainer():SetAbsOrigin(Vector(-8000,-8000,0))
-
-    Timers:CreateTimer(1, function()
-        UTIL_Remove(item:GetContainer())
-    end)
 end
 
 function TsunamiDestroyFire(keys)
@@ -46,6 +37,10 @@ function TsunamiDestroyFire(keys)
 	local targetName = target:GetUnitName()
 
 	if (string.match(targetName,"_fire")) then
+		target:ForceKill(true)
+	end
+    
+	if (string.match(targetName,"_trap")) then
 		target:ForceKill(true)
 	end
 end

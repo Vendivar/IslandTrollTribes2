@@ -19,25 +19,30 @@ end
 function MakeBoulder( event )
     local caster = event.caster
     local point = event.target_points[1]
-    local rand_vector = RandomVector(RandomFloat(0,aoe))
-    local rand_point = caster:GetOrigin() + rand_vector
 
 	local particleName = "particles/custom/boulder_scroll_drop.vpcf"
 	caster.boulderParticle = ParticleManager:CreateParticle(particleName, PATTACH_WORLDORIGIN, caster)
 	ParticleManager:SetParticleControl(caster.boulderParticle, 1, point)	
 
     
-    Timers:CreateTimer(1.5,
+    Timers:CreateTimer(1.0,
 		function() 
 			--print(ability.trees_cut)
 
 			-- Spawn as many treants as possible
-				local boulder = CreateUnitByName(unit_name, point, true, caster, caster, caster:GetTeamNumber())
-				treant:SetControllableByPlayer(pID, true)
-				treant:AddNewModifier(caster, ability, "modifier_kill", {duration = duration})
-				FindClearSpaceForUnit(treant, point, true)
-			end
-		end
-	)
+				local boulder = CreateUnitByName("npc_scroll_boulder", point, true, caster, caster, caster:GetTeamNumber())
+				boulder:SetControllableByPlayer(pID, true)
+				boulder:AddNewModifier(caster, nil, "modifier_kill", {duration = 5})
+				FindClearSpaceForUnit(boulder, point, true)
+		end)
     
+    
+    
+
+end
+
+function EndBoulderParticle( event )
+    local caster = event.caster
+    --target:EmitSound("Hero_Abaddon.AphoticShield.Destroy")
+    ParticleManager:DestroyParticle(caster.boulderParticle,false)
 end

@@ -1,20 +1,20 @@
-"npc_building_fire_mage"
+"npc_scroll_boulder"
 {
 	"BaseClass"	"npc_dota_creature"
-	"Model"	"models/mage_fire.vmdl"
+	"Model"	"models/props_rock/riveredge_rock004a.vmdl"
 	"SoundSet"	"Creep_Good_Melee"
+	"HasInventory"	"0"
 	"MinimapIconSize"	"250"
-	"HealthBarOffset"	"400"
+	"HealthBarOffset"	"400"		
+	"ModelScale"	"0.50"
 	"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 	"RingRadius"	"100"
+	"precache"
+	{
+	}
 
-	"Ability1"	"ability_building_cookmeat"
-	"Ability2"	"ability_pack_up_magefire"
-	"Ability3"	"ability_building_restoreheat_magic"
-	"Ability4"	"ability_burn_building_Magic"
-	"Ability10"	"ability_building"
-	"Ability11"	"ability_cancel_building"
-
+	"Ability1"	"ability_explode"
+	
 	"ArmorPhysical"	"5"
 	"MagicalResistance"	"0"
 	"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
@@ -24,18 +24,19 @@
 	"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 	"MovementSpeed"	"0"
 	"MovementTurnRate"	"0"
-	"StatusHealth"	"50"
+	"StatusHealth"	"450"
 	"StatusHealthRegen"	"0"
 	"StatusMana"	"1"
 	"StatusManaRegen"	"0"
 	"TeamName"	"DOTA_TEAM_GOODGUYS"
-	"CombatClassDefend"	"DOTA_COMBAT_CLASS_DEFEND_WEAK"
+	"CombatClassDefend"	"DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
 	"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
-	"VisionDaytimeRange"	"1200"
-	"VisionNighttimeRange"	"800"
+	"VisionDaytimeRange"	"400"
+	"VisionNighttimeRange"	"350"
 
 	// Building Size
 	//----------------------------------------------------------------
-	"ConstructionSize"			"2"
+	"ConstructionSize"			"1"
 	"BlockPathingSize"			"0"
+    "SharedWithTeammates" "1"
 }
