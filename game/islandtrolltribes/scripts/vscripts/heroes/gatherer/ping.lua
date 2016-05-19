@@ -28,7 +28,7 @@ function PingItemInRange(event)
         if not item then print("ERROR: Drop doesnt contain an item") return end
 
         local itemName = item:GetAbilityName()
-        if itemName ~= "item_meat_raw" and not itemName:match("_bush") and (not itemList or itemList[itemName]) then
+        if itemName ~= "item_meat_raw" and (not itemList or itemList[itemName]) then
 
             -- Get item color from table, else default white
             local itemColor = itemColorTable[itemName] or "white"
