@@ -60,7 +60,7 @@
 		"FireSound"
 		{
 			"Target"	"TARGET"
-			"FireSound"	"DOTA_Item.Mjollnir.Activate"
+			"FireSound"	"lightning.shield"
 		}
 
 		"SpendCharge"
