@@ -1,0 +1,93 @@
+"ability_smokebomb"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
+	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
+	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_ALL"
+	"AbilityUnitTargetFlag"	"DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
+	"AbilityUnitTargetExcludeFlag"	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	"Precache"
+	{
+		"particle"	"particles/units/heroes/hero_riki/riki_smokebomb.vpcf"
+	}
+
+	"MaxLevel"	"1"
+	"Modifiers"
+	{
+		"modifier_smokeeffect"
+		{
+			"Passive"	"1"
+			"OnCreated"
+			{
+				"AttachEffect"
+				{
+					"Target"	"CASTER"
+					"EffectName"	"particles/units/heroes/hero_riki/riki_smokebomb.vpcf"
+					"EffectAttachType"	"follow_origin"
+					"EffectRadius"	"450"
+				}
+
+			}
+
+			"States"
+			{
+				"MODIFIER_STATE_INVULNERABLE"	"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_NO_HEALTH_BAR"	"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_UNSELECTABLE"	"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
+			}
+
+		}
+
+		"modifier_smokebombslow"
+		{
+			"Passive"	"1"
+			"IsHidden"	"1"
+			"Aura"	"aura_smokebombslow"
+			"Aura_Radius"	"400"
+			"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+			"Aura_Types"	"DOTA_UNIT_TARGET_ALL"
+			"Aura_Flags"	"DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
+			"Aura_ExcludeFlag"	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		}
+
+		"aura_smokebombslow"
+		{
+			"IsHidden"	"0"
+            "IsDebuff"         "0"
+            "IsPurgable"       "0"
+			"Properties"
+			{
+            "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "-45" 
+			}
+
+		}
+        
+		"modifier_smokebombcombatprevention"
+		{
+			"Passive"	"1"
+			"IsHidden"	"1"
+			"Aura"	"aura_smokebombcp"
+			"Aura_Radius"	"400"
+			"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_BOTH"
+			"Aura_Types"	"DOTA_UNIT_TARGET_ALL"
+			"Aura_Flags"	"DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
+			"Aura_ExcludeFlag"	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		}
+
+		"aura_smokebombcp"
+		{
+			"IsHidden"	"0"
+            "IsDebuff"         "0"
+            "IsPurgable"       "0"
+            "States"
+			{
+				"MODIFIER_STATE_DISARMED"	"MODIFIER_STATE_VALUE_ENABLED"
+			}
+
+		}        
+			
+
+	}
+
+}

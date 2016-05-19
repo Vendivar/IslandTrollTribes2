@@ -575,9 +575,10 @@
 
 
 "DOTA_Tooltip_Ability_ability_gatherer_telegather"		"Telegather"
-"DOTA_Tooltip_Ability_ability_gatherer_telegather_chance"		"CHANCE:"
-"DOTA_Tooltip_Ability_ability_gatherer_telegather_Description"		"The Telegatherer targets a friendly fire.\n\nFor the duration of the spell the Telegatherer has a chance to teleport any items picked up back to the fire."
+"DOTA_Tooltip_Ability_ability_gatherer_telegather_Description"		"The Telegatherer targets a friendly fire.\n\nFor the duration of the spell the Telegatherer has a chance to teleport any items picked up back to the fire.\n\n<font color='#777777'>Hold ALT to view more information.</font>"
+"DOTA_Tooltip_Ability_ability_gatherer_telegather_Note0" "Radar and Remote Telegatherers can teleport all naturally spawning items.\nHerbmaster Telegatherers can teleport all river and herb bush items."
 "DOTA_Tooltip_Ability_ability_gatherer_telegather_duration"		"DURATION:"
+"DOTA_Tooltip_Ability_ability_gatherer_telegather_percent_chance"		"PERCENT CHANCE:"
 "DOTA_Tooltip_modifier_telegather"		"Telegather"
 "DOTA_Tooltip_modifier_telegather_Description"		""
 
@@ -2037,7 +2038,12 @@
 "DOTA_Tooltip_ability_item_bomb_smoke_Description"		"ACTIVE: Throw - Use to create a cloud of smoke, through which no trolls can attack and enemy trolls are slowed for a brief time.\n\nA concoction of specific chemicals with a catalyst that begins when the container breaks, it is the best known method for creating a smoke bomb."
 "DOTA_Tooltip_ability_item_bomb_smoke_Lore"		"You didn't SEE anything..."
 "DOTA_Tooltip_ability_item_bomb_smoke_max_stacks"		"MAX STACKS:"
-"DOTA_Tooltip_ability_item_bomb_smoke_Note0"		"CD 45s\nPrevents all units from attacking any other units in a 460aoe.\nSlows enemy movement by 40%.\nLasts 5 seconds."
+"DOTA_Tooltip_ability_item_bomb_smoke_Note0"		"Prevents all units from attacking any other units in a 460aoe.\nSlows enemy movement by 40%.\nLasts 5 seconds."
+"DOTA_Tooltip_ability_item_bomb_smoke_duration"                                   "DURATION:"
+"DOTA_Tooltip_ability_item_bomb_smoke_radius"                                     "RADIUS:"
+"DOTA_Tooltip_ability_item_bomb_smoke_slow"                                        "%-$SLOW:"
+		
+
 "DOTA_Tooltip_ability_item_bone"		"Bone"
 "DOTA_Tooltip_ability_item_bone_bonus_damage"		"+$damage"
 "DOTA_Tooltip_ability_item_bone_Description"		"The bone of a slain animal. While brittle, it can still be fashioned into equipment or weapons."
@@ -2354,10 +2360,14 @@
 "DOTA_Tooltip_ability_item_flint"		"Flint"
 "DOTA_Tooltip_ability_item_flint_Description"		"Brittle rock widely used for it's capacity to create sparks when struck. Useful for anything involving fire or melting."
 "DOTA_Tooltip_ability_item_flint_Lore"		"It's a mineral, not a rock."
+
 "DOTA_Tooltip_ability_item_gem_of_knowledge"		"Gem of Knowledge"
 "DOTA_Tooltip_ability_item_gem_of_knowledge_all_stats"		"+$all"
 "DOTA_Tooltip_ability_item_gem_of_knowledge_Description"		"A rare item that Increases XP gain of Gatherers, Priests, Scouts and Mages by 1.75%. Also boosts stats regardless of class."
 "DOTA_Tooltip_ability_item_gem_of_knowledge_Lore"		"Often abused during finals-week."
+"DOTA_Tooltip_ability_item_gem_of_knowledge_exp_bonus"                            "EXP BONUS:"
+
+		
 "DOTA_Tooltip_ability_item_gloves_all_stats"		"+$all"
 "DOTA_Tooltip_ability_item_gloves_battle"		"Battle Gloves"
 "DOTA_Tooltip_ability_item_gloves_battle_all_stats"		"+$all"
@@ -2536,7 +2546,15 @@
 "DOTA_Tooltip_ability_item_medallion_thief"		"Thief Medallion"
 "DOTA_Tooltip_ability_item_medallion_thief_Description"		"A strange medallion that, when worn by a thief, will cause random effects when hit. Any class can use it for a one-time 'Blink' ability. Consumed after use."
 "DOTA_Tooltip_ability_item_medallion_thief_Lore"		"It feels like some force is pulling the medallion away from you."
-"DOTA_Tooltip_ability_item_medallion_thief_Note0"		"All classes can use this item as a one shot blink item, after which the medallion perishes. Upon being hit (if the bearer is a thief), a random effect has a chance of\nbeing triggered (%?). The effects are listed below:\n\nInvisibility\nSmoke Bomb\nStomp"
+"DOTA_Tooltip_ability_item_medallion_thief_Note0"		"All classes can use this item as a one shot blink item, after which the medallion perishes. Upon being hit (if the bearer is a thief), a random effect has a chance of\nbeing triggered (33%). The effects are listed below:\n\nInvisibility\nSmoke Bomb\nStomp"
+"DOTA_Tooltip_modifier_medallion_thief"					"Thief Medallion"			
+"DOTA_Tooltip_modifier_medallion_thief_description"		"You are a master thief. The medallion's power will help you avoid harm."
+"DOTA_Tooltip_modifier_medallion_thief_false"			"Thief Medallion"
+"DOTA_Tooltip_modifier_medallion_thief_false_description"	"The medallion doesn't seem to do anything."
+"DOTA_Tooltip_ability_item_medallion_thief_range"                                 "RANGE:"
+"DOTA_Tooltip_ability_item_medallion_thief_percent_chance"                        "PERCENT CHANCE:"
+
+	
 "DOTA_Tooltip_ability_item_mushroom"		"Mushroom"
 "DOTA_Tooltip_ability_item_mushroom_Description"		"A toxic mushroom with many nefarious uses."
 "DOTA_Tooltip_ability_item_mushroom_Lore"		"Freshly squeezed malignance!"
@@ -2698,13 +2716,11 @@
 
 
 "DOTA_Tooltip_ability_item_potion_poison"		"Poison"
-"DOTA_Tooltip_ability_item_potion_poison_Description"		"ACTIVE: Use to coat a spear in poison turning it into a poison spear.\n\nGround together mushrooms that can be deadly if they enter the bloodstream."
+"DOTA_Tooltip_ability_item_potion_poison_Description"		"Use to coat a spear in poison turning it into a poison spear in a witch doctor hut.\n\nGround together mushrooms that can be deadly if they enter the bloodstream."
 "DOTA_Tooltip_ability_item_potion_poison_Lore"		"That'll do, mushroom. That'll do."
-"DOTA_Tooltip_ability_item_potion_poison_Note0"		"Apply to basic spear to make Refined Poisoned Spear."
 "DOTA_Tooltip_ability_item_potion_poison_ultra"		"Ultra Poison"
-"DOTA_Tooltip_ability_item_potion_poison_ultra_Description"		"ACTIVE: Use to coat a spear in poison turning it into a poison spear.\n\nConcentrated poison. Can be applied to throwing spears."
+"DOTA_Tooltip_ability_item_potion_poison_ultra_Description"		"Use to coat a spear in poison turning it into a ultra poison spear in a witch doctor hut.\n\nConcentrated poison. Can be applied to throwing spears."
 "DOTA_Tooltip_ability_item_potion_poison_ultra_Lore"		"With a name like that, it's gotta be good, right?"
-"DOTA_Tooltip_ability_item_potion_poison_ultra_Note0"		"Apply to basic spear to make Ultra Poisoned Spear."
 "DOTA_Tooltip_ability_item_potion_twin_island"		"Twin Island Potion"
 "DOTA_Tooltip_ability_item_potion_twin_island_Description"		"ACTIVE: Use potion to reveal useful locations to the user on the map.\n<font color='#777777'>Hold ALT to view more information.</font>\n\nSaid to be the blood of an ancient demigod. Upon use, the user becomes aware of any nearby enemy trolls, bosses or spirit wards."
 "DOTA_Tooltip_ability_item_potion_twin_island_Lore"		"They were right under your nose this whole time."

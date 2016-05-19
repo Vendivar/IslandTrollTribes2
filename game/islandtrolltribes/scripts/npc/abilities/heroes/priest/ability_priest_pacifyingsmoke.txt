@@ -17,7 +17,7 @@
 		"SpawnUnit"
 		{
 			"Target"	"CASTER"
-			"UnitName"	"dummy_caster_pacifyingsmoke"
+			"UnitName"	"dummy_caster_smokebomb"
 			"UnitCount"	"1"
 			"UnitLimit"	"64"
 			"SpawnRadius"	"0"
