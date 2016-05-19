@@ -214,7 +214,7 @@ function ITT:InitGameMode()
     -- predefined: Uses the predefined nodes on the map
     -- random: Select the location randomly
     -- mix: Use the both of the above.
-    GameRules.SpawnLocationType = "random"
+    GameRules.SpawnLocationType = "predefined"
     GameRules.SpawnRegion = "Island"
     GameRules.BushSpawnLocationType = "predefined"
     GameRules.BushSpawnRegion = "Island"
