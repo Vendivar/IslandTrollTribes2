@@ -19,12 +19,22 @@
 	}
 	"OnToggleOn"
 	{
+    
+		"FireSound"
+		{
+			"EffectName"	"elk.form"
+			"Target"	    "CASTER"
+		}
+        "RunScript"
+        {
+            "ScriptFile" "heroes/beastmaster/shapeshift.lua"
+            "Function"   "ElkForm"
+        }
 		"ApplyModifier"
 		{
 			"Target"	"CASTER"
 			"ModifierName"	"modifier_elkform"
 		}
-
 		"FireSound"
 		{
 			"EffectName"			"Hero_LoneDruid.TrueForm.Cast"
@@ -63,6 +73,17 @@
 			"Target"	"CASTER"
 			"ModifierName"	"modifier_elkform"
 		}
+        "RunScript"
+        {
+            "ScriptFile" "heroes/beastmaster/shapeshift.lua"
+            "Function"   "TrueForm"
+        }
+        "FireEffect"
+		{
+			"EffectName"			"particles/custom/transformation.vpcf"
+			"EffectAttachType"  	"follow_origin"
+            "Target"	            "CASTER"
+		}
     }
 	"Modifiers"
 	{
@@ -81,7 +102,7 @@
 			}
             "OnCreated"
             {
-            "AddAbility"
+                "AddAbility"
                 {
                     "Target"        "CASTER"
                     "AbilityName"   "ability_beastmaster_magicimmunity"
@@ -92,6 +113,18 @@
                     "Target"        "CASTER"
                     "AbilityName"   "ability_beastmaster_magicimmunity"
                 }
+                
+                "AddAbility"
+                {
+                    "Target"        "CASTER"
+                    "AbilityName"   "ability_beastmaster_ram"
+                }
+
+                "LevelUpAbility"
+                {
+                    "Target"        "CASTER"
+                    "AbilityName"   "ability_beastmaster_ram"
+                }
             }
             "OnDestroy"
             {
@@ -99,6 +132,16 @@
                 {
                     "Target"        "CASTER"
                     "AbilityName"   "ability_beastmaster_magicimmunity"
+                }
+            "RemoveAbility"
+                {
+                    "Target"        "CASTER"
+                    "AbilityName"   "ability_beastmaster_ram"
+                }
+            "RemoveModifier"
+                {
+                    "Target"	"CASTER"
+                    "ModifierName"	"modifier_elkform"
                 }
             }
 

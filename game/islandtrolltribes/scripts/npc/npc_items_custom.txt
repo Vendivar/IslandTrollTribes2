@@ -5342,6 +5342,11 @@
 		
 		"OnSpellStart"
 		{
+	            "FireSound"
+	        {
+	            "Target"	"CASTER"
+	            "EffectName"	"potion.antimagic"
+	        }
 			"SpendCharge"
 			{}
 			"ApplyModifier"

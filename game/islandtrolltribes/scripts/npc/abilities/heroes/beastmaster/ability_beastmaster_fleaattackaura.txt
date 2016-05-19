@@ -10,6 +10,7 @@
     "precache"
     {
         "soundfile" "soundevents/game_sounds_heroes/game_sounds_shadow_demon.vsndevts"
+        "soundfile" "soundevents/game_sounds_heroes/game_sounds_undying.vsndevts"
         "particle"  "particles/custom/flea_aura_debuff.vpcf"
     }
 
@@ -52,6 +53,11 @@
         "FireSound"
         {
             "EffectName"    "Hero_ShadowDemon.projectileImpact"
+            "Target"        "TARGET"
+        }
+        "FireSound"
+        {
+            "EffectName"    "Hero_Undying.Decay.Transfer"
             "Target"        "TARGET"
         }
         "FireSound"
@@ -123,6 +129,11 @@
                 {
                     "EffectName"    "particles/custom/flea_aura_debuff.vpcf"
                     "EffectAttachType"      "follow_origin"
+                    "Target"        "TARGET"
+                }
+                "FireSound"
+                {
+                    "EffectName"    "Hero_Undying.Decay.Transfer"
                     "Target"        "TARGET"
                 }
             }

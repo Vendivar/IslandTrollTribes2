@@ -5,6 +5,9 @@
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	"AbilityCastAnimation"	"1"
 	"AbilityCastPoint"	"0.5"
+	"AbilityCooldown"	"15"
+	"AbilityCastRange"	"0"
+	"AbilityManaCost"	"25"
 	"MaxLevel"	"1"
 	"Precache"
 	{
@@ -14,6 +17,11 @@
 
 	"OnSpellStart"
 	{
+			"FireSound"
+			{
+				"EffectName"	"bear.slam"
+				"Target"		"CASTER"
+			}
 		"ActOnTargets"
 		{
 			"Target"
@@ -41,11 +49,6 @@
 				}
 
 			}
-			"FireSound"
-			{
-				"EffectName"	"Hero_EarthShaker.Totem"
-				"Target"		"TARGET"
-			}
 
 		}
 
@@ -55,12 +58,6 @@
 			"EffectName"	"particles/econ/generic/generic_aoe_explosion_sphere_1/generic_aoe_explosion_sphere_1.vpcf"
 			"EffectAttachType"	"follow_origin"
 			"EffectRadius"	"%slam_radius"
-				"FireSound"
-			{
-				"EffectName"	"Hero_EarthShaker.Totem"
-				"Target"		"POINT"
-			}
-
 		}
 
 	}

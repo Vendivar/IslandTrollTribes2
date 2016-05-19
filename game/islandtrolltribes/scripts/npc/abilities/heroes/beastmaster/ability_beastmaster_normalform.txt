@@ -17,8 +17,26 @@
             "particle"          "particles/econ/items/puck/puck_merry_wanderer/puck_illusory_orb_sphere_sparks_merry_wanderer.vpcf"
             "particle"          "particles/items2_fx/medallion_of_courage_friend_sparks.vpcf"
 	}
+    "OnToggleOn"
+    {
+		"RemoveModifier"
+		{
+			"Target"	"CASTER"
+			"ModifierName"	"modifier_wolfform"
+		}
+        "RunScript"
+        {
+            "ScriptFile" "heroes/beastmaster/shapeshift.lua"
+            "Function"   "TrueForm"
+        }
+    }
 	"OnSpellStart"
 	{
+        "FireSound"
+        {
+            "EffectName"	"true.form"
+            "Target"		"CASTER"
+        }
 		"RunScript"
 		{
 			"ScriptFile" "heroes/beastmaster/shapeshift.lua"
@@ -60,13 +78,14 @@
 			"ModifierName"	"modifier_normalform"
 		}
 	}
+    
     "Modifiers"
 	{
 		"modifier_normalform"
 		{
 			"Properties"
 			{
-                "MODIFIER_PROPERTY_ABILITY_LAYOUT" "4"
+                "MODIFIER_PROPERTY_ABILITY_LAYOUT" "6"
 			}
         }
     }

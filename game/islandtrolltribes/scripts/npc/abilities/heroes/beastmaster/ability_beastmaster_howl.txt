@@ -1,7 +1,7 @@
 "ability_beastmaster_howl"
 {
 	"BaseClass"	"ability_datadriven"
-	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	"AbilityTextureName"	"ability_beastmaster_howl"
 	"AbilityCastPoint"	"0.0"
 	"AbilityCooldown"	"7"
@@ -39,8 +39,8 @@
 
 		"FireSound"
 		{
-			"EffectName"	"Hero_Lycan.Howl.Team"
-			"Target"	"TARGET"
+			"EffectName"	"wolf.howl"
+			"Target"	"CASTER"
 		}
 
 	}

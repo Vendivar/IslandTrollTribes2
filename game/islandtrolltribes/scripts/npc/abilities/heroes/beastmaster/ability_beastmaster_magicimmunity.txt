@@ -20,7 +20,11 @@
 			"ModifierName"	"elk_immunity"
 			"Target"	"CASTER"
 		}
-
+        "FireSound"
+        {
+            "Target"	"CASTER"
+            "EffectName"	"elk.shield"
+        }
 		"FireEffect"
 		{
 			"EffectName"	"particles/items2_fx/smoke_of_deceit.vpcf"

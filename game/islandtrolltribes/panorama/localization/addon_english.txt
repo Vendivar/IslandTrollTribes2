@@ -197,7 +197,7 @@
         //  <h1>text</h1> header1, <h2>text</h2> header2  
         //  <i> italic/underlined.
         //  Styles can be changed in custom_loading_screen.css
-        "loading_screen_change_text" "<h1>LATEST CHANGES</h1><i>Beta Version</i><br><h2>General</h2>• Added <b>changelog</b>. <i>Wow!</i><br>"
+        "loading_screen_change_text" "<h1>LATEST CHANGES</h1><i>Beta Version</i><br><h2>General</h2>• Added <b>changelog</b>. <i>Fixed omni tower.</i> <i>Added Smoke Bomb</i><br>"
         
         "loading_screen_tip_0"  "Help report bugs and issues at bit.do/ITT2."
         "loading_screen_tip_1"  "Help report bugs and issues at bit.do/ITT2."

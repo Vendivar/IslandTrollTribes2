@@ -2432,16 +2432,28 @@
 	        "precache"
 		{
 			
-			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_lycan.vsndevts"
+	            "soundfile"			"soundevents/game_sounds_heroes/game_sounds_lycan.vsndevts"
 	            "soundfile"			"soundevents/game_sounds_heroes/game_sounds_lone_druid.vsndevts"
 	            "particle"          "particles/units/heroes/hero_dragon_knight/dragon_knight_transform_red_spotlight.vpcf"
 	            "particle"          "particles/units/heroes/hero_dragon_knight/dragon_knight_transform_blue_smoke04.vpcf"
 	            "particle"          "particles/econ/events/ti5/blink_dagger_end_sparkles_end_lvl2_ti5.vpcf"
 	            "particle"          "particles/econ/items/puck/puck_merry_wanderer/puck_illusory_orb_sphere_sparks_merry_wanderer.vpcf"
 	            "particle"          "particles/items2_fx/medallion_of_courage_friend_sparks.vpcf"
+	            "particle"          "particles/custom/transformation.vpcf"
 		}
 		"OnToggleOn"
 		{
+	        "RunScript"
+	        {
+	            "ScriptFile" "heroes/beastmaster/shapeshift.lua"
+	            "Function"   "BearForm"
+	        }
+	        
+			"FireSound"
+			{
+				"EffectName"	"bear.form"
+				"Target"	    "CASTER"
+			}
 			"ApplyModifier"
 			{
 				"ModifierName"	"modifier_bearform"
@@ -2454,7 +2466,7 @@
 			}
 	            "FireSound"
 			{
-				"EffectName"			"LoneDruid_SpiritBear_IdleRoar"
+				"EffectName"			"Hero_LoneDruid.RabidBear"
 				"Target"			    "CASTER"
 			}
 	            "FireEffect"
@@ -2475,11 +2487,11 @@
 				"EffectAttachType"  	"follow_origin"
 	                "Target"	            "CASTER"
 			}
-	                       "FireEffect"
+	        "FireEffect"
 			{
 				"EffectName"			"particles/econ/items/puck/puck_merry_wanderer/puck_illusory_orb_sphere_sparks_merry_wanderer.vpcf"
 				"EffectAttachType"  	"follow_origin"
-	                "Target"	            "CASTER"
+	            "Target"	            "CASTER"
 			}
 		}
 	
@@ -2489,6 +2501,18 @@
 			{
 				"Target"	"CASTER"
 				"ModifierName"	"modifier_bearform"
+			}
+	        
+	        "RunScript"
+	        {
+	            "ScriptFile" "heroes/beastmaster/shapeshift.lua"
+	            "Function"   "TrueForm"
+	        }
+	        "FireEffect"
+			{
+				"EffectName"			"particles/custom/transformation.vpcf"
+				"EffectAttachType"  	"follow_origin"
+	            "Target"	            "CASTER"
 			}
 	    }
 	    
@@ -2509,7 +2533,7 @@
 				}
 	            "OnCreated"
 	            {
-	            "AddAbility"
+	                "AddAbility"
 	                {
 	                    "Target"        "CASTER"
 	                    "AbilityName"   "ability_beastmaster_bash"
@@ -2520,6 +2544,18 @@
 	                    "Target"        "CASTER"
 	                    "AbilityName"   "ability_beastmaster_bash"
 	                }
+	                
+	                "AddAbility"
+	                {
+	                    "Target"        "CASTER"
+	                    "AbilityName"   "ability_beastmaster_slam"
+	                }
+	
+	                "LevelUpAbility"
+	                {
+	                    "Target"        "CASTER"
+	                    "AbilityName"   "ability_beastmaster_slam"
+	                }
 	            }
 	            "OnDestroy"
 	            {
@@ -2527,6 +2563,16 @@
 	                {
 	                    "Target"        "CASTER"
 	                    "AbilityName"   "ability_beastmaster_bash"
+	                }
+	            "RemoveAbility"
+	                {
+	                    "Target"        "CASTER"
+	                    "AbilityName"   "ability_beastmaster_slam"
+	                }
+	            "RemoveModifier"
+	                {
+	                    "Target"	"CASTER"
+	                    "ModifierName"	"modifier_bearform"
 	                }
 	            }
 			}
@@ -2723,12 +2769,22 @@
 		}
 		"OnToggleOn"
 		{
+	    
+			"FireSound"
+			{
+				"EffectName"	"elk.form"
+				"Target"	    "CASTER"
+			}
+	        "RunScript"
+	        {
+	            "ScriptFile" "heroes/beastmaster/shapeshift.lua"
+	            "Function"   "ElkForm"
+	        }
 			"ApplyModifier"
 			{
 				"Target"	"CASTER"
 				"ModifierName"	"modifier_elkform"
 			}
-	
 			"FireSound"
 			{
 				"EffectName"			"Hero_LoneDruid.TrueForm.Cast"
@@ -2767,6 +2823,17 @@
 				"Target"	"CASTER"
 				"ModifierName"	"modifier_elkform"
 			}
+	        "RunScript"
+	        {
+	            "ScriptFile" "heroes/beastmaster/shapeshift.lua"
+	            "Function"   "TrueForm"
+	        }
+	        "FireEffect"
+			{
+				"EffectName"			"particles/custom/transformation.vpcf"
+				"EffectAttachType"  	"follow_origin"
+	            "Target"	            "CASTER"
+			}
 	    }
 		"Modifiers"
 		{
@@ -2785,7 +2852,7 @@
 				}
 	            "OnCreated"
 	            {
-	            "AddAbility"
+	                "AddAbility"
 	                {
 	                    "Target"        "CASTER"
 	                    "AbilityName"   "ability_beastmaster_magicimmunity"
@@ -2796,6 +2863,18 @@
 	                    "Target"        "CASTER"
 	                    "AbilityName"   "ability_beastmaster_magicimmunity"
 	                }
+	                
+	                "AddAbility"
+	                {
+	                    "Target"        "CASTER"
+	                    "AbilityName"   "ability_beastmaster_ram"
+	                }
+	
+	                "LevelUpAbility"
+	                {
+	                    "Target"        "CASTER"
+	                    "AbilityName"   "ability_beastmaster_ram"
+	                }
 	            }
 	            "OnDestroy"
 	            {
@@ -2803,6 +2882,16 @@
 	                {
 	                    "Target"        "CASTER"
 	                    "AbilityName"   "ability_beastmaster_magicimmunity"
+	                }
+	            "RemoveAbility"
+	                {
+	                    "Target"        "CASTER"
+	                    "AbilityName"   "ability_beastmaster_ram"
+	                }
+	            "RemoveModifier"
+	                {
+	                    "Target"	"CASTER"
+	                    "ModifierName"	"modifier_elkform"
 	                }
 	            }
 	
@@ -2892,6 +2981,7 @@
 	    "precache"
 	    {
 	        "soundfile" "soundevents/game_sounds_heroes/game_sounds_shadow_demon.vsndevts"
+	        "soundfile" "soundevents/game_sounds_heroes/game_sounds_undying.vsndevts"
 	        "particle"  "particles/custom/flea_aura_debuff.vpcf"
 	    }
 	
@@ -2934,6 +3024,11 @@
 	        "FireSound"
 	        {
 	            "EffectName"    "Hero_ShadowDemon.projectileImpact"
+	            "Target"        "TARGET"
+	        }
+	        "FireSound"
+	        {
+	            "EffectName"    "Hero_Undying.Decay.Transfer"
 	            "Target"        "TARGET"
 	        }
 	        "FireSound"
@@ -3005,6 +3100,11 @@
 	                {
 	                    "EffectName"    "particles/custom/flea_aura_debuff.vpcf"
 	                    "EffectAttachType"      "follow_origin"
+	                    "Target"        "TARGET"
+	                }
+	                "FireSound"
+	                {
+	                    "EffectName"    "Hero_Undying.Decay.Transfer"
 	                    "Target"        "TARGET"
 	                }
 	            }
@@ -3133,7 +3233,7 @@
 	"ability_beastmaster_howl"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityTextureName"	"ability_beastmaster_howl"
 		"AbilityCastPoint"	"0.0"
 		"AbilityCooldown"	"7"
@@ -3171,8 +3271,8 @@
 	
 			"FireSound"
 			{
-				"EffectName"	"Hero_Lycan.Howl.Team"
-				"Target"	"TARGET"
+				"EffectName"	"wolf.howl"
+				"Target"	"CASTER"
 			}
 	
 		}
@@ -3237,7 +3337,11 @@
 				"ModifierName"	"elk_immunity"
 				"Target"	"CASTER"
 			}
-	
+	        "FireSound"
+	        {
+	            "Target"	"CASTER"
+	            "EffectName"	"elk.shield"
+	        }
 			"FireEffect"
 			{
 				"EffectName"	"particles/items2_fx/smoke_of_deceit.vpcf"
@@ -3294,8 +3398,26 @@
 	            "particle"          "particles/econ/items/puck/puck_merry_wanderer/puck_illusory_orb_sphere_sparks_merry_wanderer.vpcf"
 	            "particle"          "particles/items2_fx/medallion_of_courage_friend_sparks.vpcf"
 		}
+	    "OnToggleOn"
+	    {
+			"RemoveModifier"
+			{
+				"Target"	"CASTER"
+				"ModifierName"	"modifier_wolfform"
+			}
+	        "RunScript"
+	        {
+	            "ScriptFile" "heroes/beastmaster/shapeshift.lua"
+	            "Function"   "TrueForm"
+	        }
+	    }
 		"OnSpellStart"
 		{
+	        "FireSound"
+	        {
+	            "EffectName"	"true.form"
+	            "Target"		"CASTER"
+	        }
 			"RunScript"
 			{
 				"ScriptFile" "heroes/beastmaster/shapeshift.lua"
@@ -3337,13 +3459,14 @@
 				"ModifierName"	"modifier_normalform"
 			}
 		}
+	    
 	    "Modifiers"
 		{
 			"modifier_normalform"
 			{
 				"Properties"
 				{
-	                "MODIFIER_PROPERTY_ABILITY_LAYOUT" "4"
+	                "MODIFIER_PROPERTY_ABILITY_LAYOUT" "6"
 				}
 	        }
 	    }
@@ -3414,9 +3537,10 @@
 				"ModifierName"	"modifier_charged"
 				"Duration"	"2"
 			}
+	        
 			"FireSound"
 			{
-				"EffectName"	"Hero_Centaur.Stampede.Cast"
+				"EffectName"	"elk.chargestart"
 				"Target"		"TARGET"
 			}
 	
@@ -3429,6 +3553,12 @@
 				"Target"	"TARGET"
 				"ModifierName"	"modifier_charged"
 			}
+	        
+	        "FireSound"
+	        {
+	            "Target"	"CASTER"
+	            "EffectName"	"elk.charge"
+	        }
 	
 		}
 	
@@ -3551,6 +3681,9 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityCastAnimation"	"1"
 		"AbilityCastPoint"	"0.5"
+		"AbilityCooldown"	"15"
+		"AbilityCastRange"	"0"
+		"AbilityManaCost"	"25"
 		"MaxLevel"	"1"
 		"Precache"
 		{
@@ -3560,6 +3693,12 @@
 	
 		"OnSpellStart"
 		{
+	    
+				"FireSound"
+				{
+					"EffectName"	"bear.slam"
+					"Target"		"CASTER"
+				}
 			"ActOnTargets"
 			{
 				"Target"
@@ -3587,11 +3726,6 @@
 					}
 	
 				}
-				"FireSound"
-				{
-					"EffectName"	"Hero_EarthShaker.Totem"
-					"Target"		"TARGET"
-				}
 	
 			}
 	
@@ -3601,12 +3735,6 @@
 				"EffectName"	"particles/econ/generic/generic_aoe_explosion_sphere_1/generic_aoe_explosion_sphere_1.vpcf"
 				"EffectAttachType"	"follow_origin"
 				"EffectRadius"	"%slam_radius"
-					"FireSound"
-				{
-					"EffectName"	"Hero_EarthShaker.Totem"
-					"Target"		"POINT"
-				}
-	
 			}
 	
 		}
@@ -3942,6 +4070,17 @@
 				"Target"	"CASTER"
 				"ModifierName"	"modifier_wolfform"
 			}
+	        "RunScript"
+	        {
+	            "ScriptFile" "heroes/beastmaster/shapeshift.lua"
+	            "Function"   "TrueForm"
+	        }
+	        "FireEffect"
+			{
+				"EffectName"			"particles/custom/transformation.vpcf"
+				"EffectAttachType"  	"follow_origin"
+	            "Target"	            "CASTER"
+			}
 	    }
 	    
 		"Modifiers"
@@ -3960,7 +4099,7 @@
 				}
 	            "OnCreated"
 	            {
-	            "AddAbility"
+	                "AddAbility"
 	                {
 	                    "Target"        "CASTER"
 	                    "AbilityName"   "ability_beastmaster_criticalstrike"
@@ -3971,6 +4110,18 @@
 	                    "Target"        "CASTER"
 	                    "AbilityName"   "ability_beastmaster_criticalstrike"
 	                }
+	                
+	                 "AddAbility"
+	                {
+	                    "Target"        "CASTER"
+	                    "AbilityName"   "ability_beastmaster_howl"
+	                }
+	
+	                "LevelUpAbility"
+	                {
+	                    "Target"        "CASTER"
+	                    "AbilityName"   "ability_beastmaster_howl"
+	                }
 	            }
 	            "OnDestroy"
 	            {
@@ -3978,6 +4129,16 @@
 	                {
 	                    "Target"        "CASTER"
 	                    "AbilityName"   "ability_beastmaster_criticalstrike"
+	                }            
+	            "RemoveAbility"
+	                {
+	                    "Target"        "CASTER"
+	                    "AbilityName"   "ability_beastmaster_howl"
+	                }
+	            "RemoveModifier"
+	                {
+	                    "Target"	"CASTER"
+	                    "ModifierName"	"modifier_wolfform"
 	                }
 	            }
 	         }
@@ -4640,7 +4801,7 @@
 	        {
 	            "ScriptFile"    "heroes/gatherer/ping.lua"
 	            "Function"      "PingItemInRange"
-	            "Items"         "npc_bush_river"
+	            "Items"         "item_bush_river"
 	        }
 	        
 	        "FireSound"

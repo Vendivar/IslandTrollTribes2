@@ -7,7 +7,7 @@
 	"AbilityTextureName"	"ability_beastmaster_ram"
 	"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
 	"AbilityCastPoint"	"0.3"
-	"AbilityCastRange"	"400"
+	"AbilityCastRange"	"1400"
 	"AbilityChannelTime"	"2.0"
 	"AbilityCooldown"	"20"
 	"AbilityManaCost"	"30"
@@ -24,9 +24,10 @@
 			"ModifierName"	"modifier_charged"
 			"Duration"	"2"
 		}
+        
 		"FireSound"
 		{
-			"EffectName"	"Hero_Centaur.Stampede.Cast"
+			"EffectName"	"elk.chargestart"
 			"Target"		"TARGET"
 		}
 
@@ -39,6 +40,12 @@
 			"Target"	"TARGET"
 			"ModifierName"	"modifier_charged"
 		}
+        
+        "FireSound"
+        {
+            "Target"	"CASTER"
+            "EffectName"	"elk.charge"
+        }
 
 	}
 
@@ -76,6 +83,12 @@
 			"var_type"	"FIELD_INTEGER"
 			"stun_duration"	"2"
 		}
+		"03"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"range"	"1400"
+		}
+
 
 	}
 }
