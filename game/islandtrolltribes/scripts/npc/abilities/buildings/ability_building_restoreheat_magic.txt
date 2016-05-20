@@ -42,6 +42,13 @@
 					"ModifierName"	"modifier_mage_fire_heat"
 					"Target" 		"TARGET"
 				}
+                "AttachEffect"
+				{
+					"Target"	"CASTER"
+					"EffectName"	"particles/custom/mage_fire.vpcf"
+					"EffectAttachType"	"follow_origin"
+				}
+
 			}
 
 			"OnDestroy"

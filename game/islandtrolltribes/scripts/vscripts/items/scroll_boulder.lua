@@ -19,6 +19,7 @@ end
 function MakeBoulder( event )
     local caster = event.caster
     local point = event.target_points[1]
+    local dur = 5.0 --default duration for anything besides heross
 
 	local particleName = "particles/custom/boulder_scroll_drop.vpcf"
 	caster.boulderParticle = ParticleManager:CreateParticle(particleName, PATTACH_WORLDORIGIN, caster)
@@ -32,7 +33,7 @@ function MakeBoulder( event )
 			-- Spawn as many treants as possible
 				local boulder = CreateUnitByName("npc_scroll_boulder", point, true, caster, caster, caster:GetTeamNumber())
 				boulder:SetControllableByPlayer(pID, true)
-				boulder:AddNewModifier(caster, nil, "modifier_kill", {duration = 5})
+				target:AddNewModifier(caster, nil, "modifier_kill", {duration = dur})
 				FindClearSpaceForUnit(boulder, point, true)
 		end)
     
