@@ -7,7 +7,7 @@
 	"HasInventory"	"1"
 	"ModelScale"	"0.65"
 	"MinimapIconSize"	"250"
-	"HealthBarOffset"	"250"
+	"HealthBarOffset"	"300"
 	"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 	"RingRadius"	"100"
 	"ModelScale"	"0.5"
