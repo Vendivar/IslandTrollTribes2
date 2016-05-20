@@ -5,7 +5,7 @@
 	"SoundSet"	"Creep_Good_Melee"
 	"HasInventory"	"1"
 	"MinimapIconSize"	"250"
-	"HealthBarOffset"	"400"
+	"HealthBarOffset"	"200"
 	"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 	"RingRadius"	"100"
 	"ModelScale"	"0.6"
