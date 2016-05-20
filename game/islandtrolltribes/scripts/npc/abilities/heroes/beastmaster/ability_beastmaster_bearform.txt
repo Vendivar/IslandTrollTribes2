@@ -82,6 +82,12 @@
 			"Target"	"CASTER"
 			"ModifierName"	"modifier_bearform"
 		}
+
+		"RemoveModifier"
+		{
+			"Target"	"CASTER"
+			"ModifierName"	"modifier_bear_bash_passive"
+		}
         
         "RunScript"
         {

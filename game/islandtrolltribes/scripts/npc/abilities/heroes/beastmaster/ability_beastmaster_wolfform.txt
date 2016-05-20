@@ -74,6 +74,11 @@
 			"Target"	"CASTER"
 			"ModifierName"	"modifier_wolfform"
 		}
+		"RemoveModifier"
+		{
+			"Target"	"CASTER"
+			"ModifierName"	"modifier_wolf_crit"
+		}
         "RunScript"
         {
             "ScriptFile" "heroes/beastmaster/shapeshift.lua"

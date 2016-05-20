@@ -2512,6 +2512,12 @@
 				"Target"	"CASTER"
 				"ModifierName"	"modifier_bearform"
 			}
+	
+			"RemoveModifier"
+			{
+				"Target"	"CASTER"
+				"ModifierName"	"modifier_bear_bash_passive"
+			}
 	        
 	        "RunScript"
 	        {
@@ -4084,6 +4090,11 @@
 			{
 				"Target"	"CASTER"
 				"ModifierName"	"modifier_wolfform"
+			}
+			"RemoveModifier"
+			{
+				"Target"	"CASTER"
+				"ModifierName"	"modifier_wolf_crit"
 			}
 	        "RunScript"
 	        {
