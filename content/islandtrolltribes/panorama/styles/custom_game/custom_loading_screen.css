@@ -130,7 +130,7 @@ i
     flow-children: right;
     width: 1000px;
 
-    animation-name: title_anim2;
+    animation-name: title_anim;
     animation-delay: 0s;
     animation-duration: 30s;
     animation-timing-function: linear;
@@ -138,7 +138,7 @@ i
     animation-direction: alternate;
 }
 
-@keyframes 'title_anim2'
+@keyframes 'title_anim'
 {
   0%
   {

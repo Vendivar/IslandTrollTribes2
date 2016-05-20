@@ -259,7 +259,7 @@ function ITT:FilterExecuteOrder( filterTable )
                     return false
                 end
                 
-                if unit:GetUnitName() == "npc_building_tower_omni" and itemName == "item_meat_raw" and itemName == "item_meat_cooked" and itemName == "item_potion_healingi" and itemName == "item_potion_healingiii" and itemName == "item_potion_healingiv" then
+                if unit:GetUnitName() == "npc_building_tower_omni" and (itemName:match("meat") or itemName:match("potion")) then
                     SendErrorMessage(issuer, "#error_traps_cant_pickup_that")
                     return false
                 end
