@@ -2458,6 +2458,13 @@
 	            "ScriptFile" "heroes/beastmaster/shapeshift.lua"
 	            "Function"   "BearForm"
 	        }
+	
+	        "RunScript"
+	        {
+	            "ScriptFile"	"mechanics\spellbook.lua"
+				"Function"	    "SwapSpellBook"
+				"ActiveBook"    "book4"
+	        }
 	        
 			"FireSound"
 			{
@@ -2521,8 +2528,9 @@
 	        
 	        "RunScript"
 	        {
-	            "ScriptFile" "heroes/beastmaster/shapeshift.lua"
-	            "Function"   "TrueForm"
+	            "ScriptFile"	"mechanics\spellbook.lua"
+				"Function"	    "SwapSpellBook"
+				"ActiveBook"    "book1"
 	        }
 	        "FireEffect"
 			{
@@ -2796,6 +2804,12 @@
 	            "ScriptFile" "heroes/beastmaster/shapeshift.lua"
 	            "Function"   "ElkForm"
 	        }
+	        "RunScript"
+	        {
+	            "ScriptFile"	"mechanics\spellbook.lua"
+				"Function"	    "SwapSpellBook"
+				"ActiveBook"    "book2"
+	        }
 			"ApplyModifier"
 			{
 				"Target"	"CASTER"
@@ -2841,8 +2855,9 @@
 			}
 	        "RunScript"
 	        {
-	            "ScriptFile" "heroes/beastmaster/shapeshift.lua"
-	            "Function"   "TrueForm"
+	            "ScriptFile"	"mechanics\spellbook.lua"
+				"Function"	    "SwapSpellBook"
+				"ActiveBook"    "book1"
 	        }
 	        "FireEffect"
 			{
@@ -4042,6 +4057,14 @@
 	            "ScriptFile" "heroes/beastmaster/shapeshift.lua"
 	            "Function"   "WolfForm"
 	        }
+	
+	        "RunScript"
+	        {
+	            "ScriptFile"	"mechanics\spellbook.lua"
+				"Function"	    "SwapSpellBook"
+				"ActiveBook"    "book3"
+	        }
+	
 			"ApplyModifier"
 			{
 				"Target"	"CASTER"
@@ -4098,8 +4121,9 @@
 			}
 	        "RunScript"
 	        {
-	            "ScriptFile" "heroes/beastmaster/shapeshift.lua"
-	            "Function"   "TrueForm"
+	            "ScriptFile"	"mechanics\spellbook.lua"
+				"Function"	    "SwapSpellBook"
+				"ActiveBook"    "book1"
 	        }
 	        "FireEffect"
 			{

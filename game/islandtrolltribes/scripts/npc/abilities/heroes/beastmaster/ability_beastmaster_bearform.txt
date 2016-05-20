@@ -28,6 +28,13 @@
             "ScriptFile" "heroes/beastmaster/shapeshift.lua"
             "Function"   "BearForm"
         }
+
+        "RunScript"
+        {
+            "ScriptFile"	"mechanics\spellbook.lua"
+			"Function"	    "SwapSpellBook"
+			"ActiveBook"    "book4"
+        }
         
 		"FireSound"
 		{
@@ -91,8 +98,9 @@
         
         "RunScript"
         {
-            "ScriptFile" "heroes/beastmaster/shapeshift.lua"
-            "Function"   "TrueForm"
+            "ScriptFile"	"mechanics\spellbook.lua"
+			"Function"	    "SwapSpellBook"
+			"ActiveBook"    "book1"
         }
         "FireEffect"
 		{
