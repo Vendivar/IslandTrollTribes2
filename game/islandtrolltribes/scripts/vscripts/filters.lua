@@ -126,6 +126,19 @@ function ITT:FilterExecuteOrder( filterTable )
 
             -- For heroes to buildings, move them towards the building while cancelling the action timer if they execute another order
             elseif IsCustomBuilding(target) then
+                local itemName = item:GetAbilityName()
+
+                -- Traps can't pickup certain items
+                if target:GetUnitName() == "npc_building_ensnare_trap" and itemName ~= "item_meat_raw" then
+                    SendErrorMessage(issuer, "#error_traps_cant_pickup_that")
+                    return false
+                end
+            
+                if target:GetUnitName() == "npc_building_tower_omni" and (itemName:match("meat") or itemName:match("potion")) then
+                    SendErrorMessage(issuer, "#error_traps_cant_pickup_that")
+                    return false
+                end
+
                 local transfer_position = target_origin + (origin - target_origin):Normalized() * ITEM_TRANSFER_RANGE
 
                 unit.skip = true
@@ -274,7 +287,6 @@ function ITT:FilterExecuteOrder( filterTable )
 
         -- Units
         else
-
             -- Move towards the drop position and pickup the item
             unit.skip = true
             ExecuteOrderFromTable({ UnitIndex = unitIndex, OrderType = DOTA_UNIT_ORDER_MOVE_TO_POSITION, Position = position, Queue = queue})
