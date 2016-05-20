@@ -5742,21 +5742,32 @@
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Hero_Alchemist.Foley"
+		"precache"
+		{
+			"particle"  "particles/units/heroes/hero_brewmaster/brewmaster_drunken_haze_debuff.vpcf"
+			"particle" 	"particles/status_fx/status_effect_brewmaster_drunken_haze.vpcf"
+			"particle"	"particles/units/heroes/hero_brewmaster/brewmaster_drunken_haze.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_brewmaster.vsndevts"
+		}
+	
 		"OnSpellStart"
 		{
 			"TrackingProjectile"
 			{
-				"Target"	"TARGET"
-				"EffectName"	"particles/units/heroes/hero_brewmaster/brewmaster_drunken_haze.vpcf"
-				"MoveSpeed"	"1500"
-			}
+			    "Target"           "TARGET"
+			    "EffectName"       "particles/units/heroes/hero_brewmaster/brewmaster_drunken_haze.vpcf"
+			    "Dodgeable"        "0"
+			    "ProvidesVision"   "0"
+			    "MoveSpeed"        "950"
+			    "SourceAttachment" "DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
+			}		
 	
 			"FireSound"
 			{
 				"EffectName"	"Hero_Brewmaster.DrunkenHaze.Cast"
-				"Target"	"TARGET"
+				"Target"		"CASTER"
 			}
-	
+	        
 			"SpendCharge"
 			{
 			}
@@ -5797,14 +5808,6 @@
 				"EffectName"	"Hero_Brewmaster.DrunkenHaze.Target"
 			}
 	
-			"SpendCharge"
-			{
-			}
-	
-		}
-	
-		"OnProjectileFinish"
-		{
 			"SpendCharge"
 			{
 			}
@@ -6945,7 +6948,7 @@
 			"FireSound"
 			{
 				"EffectName"	"scroll.bouldercast"
-				"Target"	"TARGET"
+				"Target"	"CASTER"
 			}
 		}
 	    

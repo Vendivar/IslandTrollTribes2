@@ -1039,7 +1039,7 @@
 		"HasInventory"	"0"
 		"MinimapIconSize"	"250"
 		"HealthBarOffset"	"400"		
-		"ModelScale"	"0.50"
+		"ModelScale"	"1.00"
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
 		"precache"

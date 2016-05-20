@@ -19,6 +19,15 @@
 			"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY | DOTA_UNIT_TARGET_TEAM_ENEMY"
 			"Aura_Types"	"DOTA_UNIT_TARGET_HERO"
 			"Aura_ApplyToCaster"	"0"
+            "OnCreated"
+			{
+                "AttachEffect"
+				{
+					"Target"	"CASTER"
+					"EffectName"	"particles/custom/mage_fire.vpcf"
+					"EffectAttachType"	"follow_overhead"
+				}
+            }
 		}
 
 		"modifier_restore_heat_effect"
@@ -41,12 +50,6 @@
 				{
 					"ModifierName"	"modifier_mage_fire_heat"
 					"Target" 		"TARGET"
-				}
-                "AttachEffect"
-				{
-					"Target"	"CASTER"
-					"EffectName"	"particles/custom/mage_fire.vpcf"
-					"EffectAttachType"	"follow_origin"
 				}
 
 			}
