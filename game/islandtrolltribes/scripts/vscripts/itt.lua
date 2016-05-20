@@ -479,7 +479,16 @@ function ITT:UnlearnAbilities(hero, class_skills, level)
                 local unlearn_ability_names = split(unlearn_skills_level, ",")
                 for _,abilityName in pairs(unlearn_ability_names) do
                     local ability = hero:FindAbilityByName(abilityName)
+                    
                     if ability then
+                        local kv = ability:GetAbilityKeyValues()
+                        --print("unlearning " .. abilityName)
+                        if kv["Modifiers"] then
+                            for i,v in pairs(kv["Modifiers"]) do
+                                --print("removing modifier ".. i)
+                                hero:RemoveModifierByName(i)
+                            end
+                        end
                         hero:RemoveAbility(abilityName)
                     end
                 end
