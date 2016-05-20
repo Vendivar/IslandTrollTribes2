@@ -75,16 +75,15 @@ function ToggleOffSet(hero, ability)
         ToggleOff(normal)
     end
 
-    removeModifiers(hero)    
+    removeModifiers(hero, ability)    
 end
 
 --clear any modifiers left over by passives
-function removeModifiers(hero)
-    local modifierTable = {"modifier_wolf_crit", "modifier_bear_bash_passive"}
-
-    for _,modifierName in pairs(modifierTable) do
-        if hero:HasModifier(modifierName) then
-            hero:RemoveModifierByName(modifierName)
+function removeModifiers(hero, ability)
+    local kv = ability:GetAbilityKeyValues()
+    if kv["Modifiers"] then
+        for i,v in pairs(kv["Modifiers"]) do
+            hero:RemoveModifierByName(i)
         end
     end
 end
