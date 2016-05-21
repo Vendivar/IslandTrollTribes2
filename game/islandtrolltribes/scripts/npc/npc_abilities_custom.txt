@@ -1335,12 +1335,6 @@
 	                    "ScriptFile"    "mechanics/autocast.lua"
 	                    "Function"      "AutocastOn"
 	                }
-	
-	                "RunScript"
-	                {
-	                    "ScriptFile"    "buildings/get_corpse.lua"
-	                    "Function"      "FillSlots"
-	                }
 	            }
 	
 	            "ThinkInterval"  "1.0"
@@ -16555,7 +16549,7 @@
 	
 			"RunScript"
 			{
-				"ScriptFile"	"items/tsunami.lua"
+				"ScriptFile"	"items/scroll_tsunami.lua"
 				"Function"	"TsunamiProjectiles"
 			}
 	
