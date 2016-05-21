@@ -10,7 +10,15 @@
 		{
 			"Passive"			"1"
 			"IsHidden"			"0"
-			
+            "ThinkInterval"	"1.00"
+			"OnIntervalThink"
+			{
+            "ApplyModifier"
+				{
+					"ModifierName"	"modifier_invisible"
+					"Target" 		"CASTER"
+				}
+            }
 			"OnCreated"
 			{
 				"ApplyModifier"

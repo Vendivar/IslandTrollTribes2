@@ -11,7 +11,6 @@
 	"MaxLevel"	"1"
 	"precache"
 	{
-		"soundfile" 		"soundevents/game_sounds_heroes/game_sounds_crystalmaiden.vsndevts"
 		"particle" 			"particles/units/heroes/hero_crystalmaiden/maiden_crystal_nova.vpcf"
 		"particle" 			"particles/econ/items/crystal_maiden/crystal_maiden_cowl_of_ice/maiden_crystal_nova_f_cowlofice.vpcf"
 		"particle" 			"particles/econ/items/crystal_maiden/crystal_maiden_cowl_of_ice/maiden_crystal_nova_e_cowlofice.vpcf"
@@ -22,7 +21,7 @@
 	{
 		"FireSound"
 		{
-		"EffectName" "Hero_Crystal.CrystalNova"
+		"EffectName" "freezing.blast"
 		"Target" "CASTER"
 		}
 		"FireEffect"
@@ -66,7 +65,7 @@
 		}
 		"FireSound"
 		{
-			"EffectName"	"Hero_Crystal.CrystalNova"
+			"EffectName"	"freezing.blast"
 			"Target"		"TARGET"
 		}
 

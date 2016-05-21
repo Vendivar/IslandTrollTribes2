@@ -171,6 +171,7 @@
 		},
 		{
 			m_ChildRef = resource:"particles/units/heroes/hero_doom_bringer/doom_bringer_lvl_death.vpcf"
+			m_bDisableChild = true
 		},
 	]
 }

@@ -8378,7 +8378,6 @@
 		"MaxLevel"	"1"
 		"precache"
 		{
-			"soundfile" 		"soundevents/game_sounds_heroes/game_sounds_crystalmaiden.vsndevts"
 			"particle" 			"particles/units/heroes/hero_crystalmaiden/maiden_crystal_nova.vpcf"
 			"particle" 			"particles/econ/items/crystal_maiden/crystal_maiden_cowl_of_ice/maiden_crystal_nova_f_cowlofice.vpcf"
 			"particle" 			"particles/econ/items/crystal_maiden/crystal_maiden_cowl_of_ice/maiden_crystal_nova_e_cowlofice.vpcf"
@@ -8389,7 +8388,7 @@
 		{
 			"FireSound"
 			{
-			"EffectName" "Hero_Crystal.CrystalNova"
+			"EffectName" "freezing.blast"
 			"Target" "CASTER"
 			}
 			"FireEffect"
@@ -8433,7 +8432,7 @@
 			}
 			"FireSound"
 			{
-				"EffectName"	"Hero_Crystal.CrystalNova"
+				"EffectName"	"freezing.blast"
 				"Target"		"TARGET"
 			}
 	
@@ -10397,6 +10396,19 @@
 						"EffectAttachType"  "follow_origin"
 						"Target"            "TARGET"
 					}
+	                
+	                "FireEffect"
+	                {
+	                     "EffectName" "particles/custom/maddening_discharge.vpcf"
+	                     "EffectAttachType" "follow_origin"
+	                     "Target" "TARGET"
+	                     "ControlPointEntities"
+	                    {
+	                        "TARGET" "follow_origin"
+	                        "TARGET" "follow_origin"
+	                        "TARGET" "follow_overhead"
+	                    }
+	                }
 				}
 	
 				"ThinkInterval"  "%think_interval"
@@ -11714,7 +11726,7 @@
 	                
 	                "FireSound"
 	                {
-	                    "EffectName"	"Hero_Axe.BerserkersCall.Item.Shoutmask"
+	                    "EffectName"	"increase.metabolism"
 	                    "Target"	"TARGET"
 	                }
 	                
@@ -12054,7 +12066,7 @@
 	
 			"FireSound"
 			{
-				"EffectName"	"Hero_Sven.GodsStrength"
+				"EffectName"	"maximum.fervor"
 				"Target"	"CASTER"
 			}
 	
@@ -13387,7 +13399,15 @@
 			{
 				"Passive"			"1"
 				"IsHidden"			"0"
-				
+	            "ThinkInterval"	"1.00"
+				"OnIntervalThink"
+				{
+	            "ApplyModifier"
+					{
+						"ModifierName"	"modifier_invisible"
+						"Target" 		"CASTER"
+					}
+	            }
 				"OnCreated"
 				{
 					"ApplyModifier"
