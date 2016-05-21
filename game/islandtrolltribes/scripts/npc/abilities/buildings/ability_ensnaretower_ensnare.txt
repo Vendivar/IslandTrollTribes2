@@ -75,6 +75,12 @@
             "MoveSpeed"         "%projectile_speed"
             "SourceAttachment"  "DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
         }
+
+        "RunScript"
+        {
+            "ScriptFile"    "buildings/ensnare.lua"
+            "Function"      "AnimateTrollDummy"
+        }
     }
 
     "OnProjectileHitUnit"
@@ -122,6 +128,21 @@
                 {
                     "ScriptFile"    "mechanics/autocast.lua"
                     "Function"      "AutocastOn"
+                }
+
+                "RunScript"
+                {
+                    "ScriptFile"    "buildings/ensnare.lua"
+                    "Function"      "CreateTrollDummy"
+                }
+            }
+
+            "OnDestroy"
+            {
+                "RunScript"
+                {
+                    "ScriptFile"    "buildings/ensnare.lua"
+                    "Function"      "RemoveTrollDummy"
                 }
             }
 

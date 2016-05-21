@@ -168,7 +168,6 @@ function Build( event )
 		-- Let the building cast abilities
 		unit:RemoveModifierByName("modifier_construction")
 		unit:RemoveModifierByName("modifier_building_under_construction")
-
 	end)
 
 	-- These callbacks will only fire when the state between below half health/above half health changes.

@@ -856,7 +856,6 @@
 		"ProjectileModel"	"particles/units/heroes/hero_windrunner/windrunner_base_attack.vpcf"
 		"ProjectileSpeed"	"1000"
 	
-	
 		"Ability1"	"ability_ensnaretower_ensnare"
 		"Ability2"	"ability_get_corpse"
 		"Ability3"	"ability_building_droprawmeat"
@@ -887,6 +886,21 @@
 		"ConstructionSize"			"2"
 		"BlockPathingSize"			"2"
 	    "SharedWithTeammates" "1"
+	}
+	
+	"tower_ensnare_troll_ghost"
+	{
+		"BaseClass"	 "npc_dota_creature"
+		"Model"		 "models/tower_ensnare_test.vmdl"
+		"ModelScale" "0.5"
+	}
+	
+	"tower_ensnare_dummy"
+	{
+		"BaseClass"	 "npc_dota_creature"
+		"Model"		 "models/creeps/neutral_creeps/n_creep_forest_trolls/n_creep_forest_troll_high_priest.vmdl"
+		"ModelScale" "0.5"
+		"Ability1"	 "dummy_passive"
 	}
 	"npc_building_tower_omni"
 	{

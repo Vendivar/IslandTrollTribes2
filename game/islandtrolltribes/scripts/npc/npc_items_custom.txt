@@ -1826,33 +1826,33 @@
 	}
 	"item_building_kit_tower_ensnare"
 	{
-		"ID"	"1150"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"building_kit_tower_omni"
-		"Model"	"models/props_debris/creep_camp001j.vmdl"
-		"Effect"	"particles/custom/dropped_item_normal.vpcf"
-		"ItemCost"	"18"
-		"ItemShopTags"	"consumable"
-		"ItemQuality"	"consumable"
-		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
-		"ItemStackable"	"0"
-		"ItemPermanent"	"0"
-		"ItemDroppable"	"1"
-		"ItemAliases"	"quicktype"
-		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
-		"ItemKillable"	"1"
-		"ItemSellable"	"1"
+	    "ID"    "1150"
+	    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	    "BaseClass" "item_datadriven"
+	    "AbilityTextureName"    "building_kit_tower_omni"
+	    "Model" "models/props_debris/creep_camp001j.vmdl"
+	    "Effect"    "particles/custom/dropped_item_normal.vpcf"
+	    "ItemCost"  "18"
+	    "ItemShopTags"  "consumable"
+	    "ItemQuality"   "consumable"
+	    "ItemShareability"  "ITEM_FULLY_SHAREABLE"
+	    "ItemStackable" "0"
+	    "ItemPermanent" "0"
+	    "ItemDroppable" "1"
+	    "ItemAliases"   "quicktype"
+	    "ItemDisassembleRule"   "DOTA_ITEM_DISASSEMBLE_NEVER"
+	    "ItemKillable"  "1"
+	    "ItemSellable"  "1"
 	
-		"UIPickupSound"	"Item.PickUpGemShop"
-		"UIDropSound"	"Item.DropGemShop"
-		"WorldDropSound"	"Item.DropGemWorld"
-			    "Custom"
+	    "UIPickupSound" "Item.PickUpGemShop"
+	    "UIDropSound"   "Item.DropGemShop"
+	    "WorldDropSound"    "Item.DropGemWorld"
+	    "Custom"
 	    {
 	        "ModelScale"    "0.55"
 	    }
 	
-		// BuildingHelper info
+	    // BuildingHelper info
 	    "Building"                      "1" //bool
 	    "BuildTime"                     "10.0"
 	    "AbilityCastRange"              "300"
@@ -1861,6 +1861,7 @@
 	    "PlayerCanControl"              "1" //bool
 	
 	    "UnitName"                      "npc_building_tower_ensnare"
+	    "OverrideBuildingGhost"         "tower_ensnare_troll_ghost"
 	    "AbilityCooldown"               "0"
 	    "AbilityGoldCost"               "0"
 	    "ItemInitialCharges"            "1"
@@ -1875,7 +1876,7 @@
 	        }
 	    }
 	
-		"OnSpellStart"
+	    "OnSpellStart"
 	    {
 	        "RunScript"
 	        {
