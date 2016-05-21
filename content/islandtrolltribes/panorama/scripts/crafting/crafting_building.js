@@ -15,6 +15,7 @@ Buildings['npc_building_hut_witch_doctor'] = 1;
 Buildings['npc_building_mixing_pot'] = 1;
 Buildings['npc_building_tannery'] = 1;
 Buildings['npc_building_workshop'] = 1;
+Buildings['npc_building_craftmaster'] = 1;
 Units['npc_dota_hero_shadow_shaman'] = 1;
 
 function Crafting_OnUpdateSelectedUnits() {

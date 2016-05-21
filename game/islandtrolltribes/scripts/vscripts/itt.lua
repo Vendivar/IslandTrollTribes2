@@ -5,6 +5,11 @@ TEAM_COLORS[DOTA_TEAM_GOODGUYS] = { 52, 85, 255 }  -- Blue
 TEAM_COLORS[DOTA_TEAM_BADGUYS]  = { 255, 52, 85 }  -- Red
 TEAM_COLORS[DOTA_TEAM_CUSTOM_1] = { 101, 212, 19 } -- Green
 TEAM_COLORS[DOTA_TEAM_CUSTOM_2] = { 243, 201, 9 }  -- Yellow
+TEAM_NAMES = {[DOTA_TEAM_GOODGUYS]="Blue Tribe",
+              [DOTA_TEAM_BADGUYS]="Red Tribe", 
+              [DOTA_TEAM_CUSTOM_1]="Green Tribe",
+              [DOTA_TEAM_CUSTOM_2]="Blue Tribe",
+              [DOTA_TEAM_NEUTRALS]="Neutral"}
 
 playerList = {}
 maxPlayerID = 0
@@ -1083,6 +1088,8 @@ function ITT:OnGameRulesStateChange()
         ITT:SpawnBushes()
 
         ITT:ShareUnits()
+
+        CraftMaster:Spawn()
 
     elseif nNewState == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
 
