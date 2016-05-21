@@ -694,7 +694,7 @@
 					{
 						"Target"	"CASTER"
 						"EffectName"	"particles/custom/mage_fire.vpcf"
-						"EffectAttachType"	"follow_overhead"
+						"EffectAttachType"	"follow_origin"
 					}
 	            }
 			}
