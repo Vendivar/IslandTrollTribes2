@@ -5,8 +5,7 @@ function Metronome(keys)
     local dieroll = RandomInt(0, 99)
     --start tick noise
     target:EmitSound("Tick")
-    target.metronomeParticle = ParticleManager:CreateParticle("particles/metronome.vpcf", PATTACH_ABSORIGIN_FOLLOW, target)
-
+    
     local dummy = CreateUnitByName("dummy_caster_metronome", targetPosition, false, caster, caster, caster:GetTeam())
     local abilityList = {
         {name = "ability_metronome_frostnova",possibilityFactor = 9}, -- {name="ability name", possibilityFactor = 9,  abilityObj = ability_object}
@@ -59,8 +58,7 @@ function MetronomeSpell(dummy)
 
     if (GameRules:GetGameTime() - dummy.startTime) >= duration then
         --should stop playing when metronome script finishes
-        --firstTarget:StopSound("tick")
-        ParticleManager:DestroyParticle(target.metronomeParticle,false)
+        firstTarget:StopSound("tick")
         return nil
     end
     return 0.7

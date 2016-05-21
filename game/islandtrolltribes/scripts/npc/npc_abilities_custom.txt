@@ -1335,12 +1335,6 @@
 	                    "ScriptFile"    "mechanics/autocast.lua"
 	                    "Function"      "AutocastOn"
 	                }
-	
-	                "RunScript"
-	                {
-	                    "ScriptFile"    "buildings/get_corpse.lua"
-	                    "Function"      "FillSlots"
-	                }
 	            }
 	
 	            "ThinkInterval"  "1.0"
@@ -9385,7 +9379,7 @@
 			"modifier_metronome"
 			{
 				"IsDebuff"	"1"
-				"IsHidden"  "1"
+				"IsHidden"  "0"
 				"OnCreated"
 				{
 					"AttachEffect"
@@ -16555,7 +16549,7 @@
 	
 			"RunScript"
 			{
-				"ScriptFile"	"items/tsunami.lua"
+				"ScriptFile"	"items/scroll_tsunami.lua"
 				"Function"	"TsunamiProjectiles"
 			}
 	

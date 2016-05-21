@@ -29,7 +29,7 @@
 
 		"RunScript"
 		{
-			"ScriptFile"	"items/tsunami.lua"
+			"ScriptFile"	"items/scroll_tsunami.lua"
 			"Function"	"TsunamiProjectiles"
 		}
 
