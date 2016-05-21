@@ -38,13 +38,6 @@ function GetCorpseAutocast( event )
     end
 end
 
-function FillSlots( event )
-    local unit = event.caster
-
-    local lockN = GameRules.UnitKV[unit:GetUnitName()]["FillSlots"] or 5
-    ITT:CreateLockedSlotsForUnits(unit, lockN)
-end
-
 function GetMeatRawStackCount( unit )
     return unit:GetModifierStackCount("modifier_meat_passive", nil)
 end

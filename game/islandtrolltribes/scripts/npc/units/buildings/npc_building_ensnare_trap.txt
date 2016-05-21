@@ -6,6 +6,7 @@
 	"MinimapIconSize"	"250"
 	"HealthBarOffset"	"150"
 	"HasInventory"	"1"
+	"FillSlots"		"5"
 	"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 	"RingRadius"	"100"
 	"ModelScale"	"0.5"

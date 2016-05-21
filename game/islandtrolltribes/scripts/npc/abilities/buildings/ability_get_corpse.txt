@@ -37,12 +37,6 @@
                     "ScriptFile"    "mechanics/autocast.lua"
                     "Function"      "AutocastOn"
                 }
-
-                "RunScript"
-                {
-                    "ScriptFile"    "buildings/get_corpse.lua"
-                    "Function"      "FillSlots"
-                }
             }
 
             "ThinkInterval"  "1.0"
