@@ -138,13 +138,13 @@
 	m_Children =
 	[
 		{
-			m_ChildRef = resource:"particles/units/heroes/hero_oracle/oracle_purifyingflames_halo_ring.vpcf"
+			m_ChildRef = resource:"particles/custom/increase_metabolism_component_1.vpcf"
 		},
 		{
 			m_ChildRef = resource:"particles/units/heroes/hero_oracle/oracle_fortune_aoe_hit_ring.vpcf"
 		},
 		{
-			m_ChildRef = resource:"particles/units/heroes/hero_oracle/oracle_purifyingflames_flash.vpcf"
+			m_ChildRef = resource:"particles/custom/increase_metabolism_component_2.vpcf"
 		},
 	]
 }

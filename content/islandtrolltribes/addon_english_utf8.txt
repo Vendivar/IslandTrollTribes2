@@ -239,7 +239,7 @@
 "DOTA_Tooltip_Ability_ability_beastmaster_attack_Description"		"The pet follows the Beastmaster around, attacking any nearby enemies"
 
 
-"DOTA_Tooltip_Ability_ability_beastmaster_bash"		"(Bear) Bash"
+"DOTA_Tooltip_Ability_ability_beastmaster_bash"		"Bear Bash"
 "DOTA_Tooltip_ability_ability_beastmaster_bash_bash_chance"		"BASH CHANCE:"
 "DOTA_Tooltip_Ability_ability_beastmaster_bash_Description"		"A fearsome bear with an enormous size, it grants a 20% chance to bash its target for 1 second."
 
@@ -250,7 +250,7 @@
 "DOTA_Tooltip_ability_ability_beastmaster_bearform_attack_damage"		"DAMAGE BONUS:"
 "DOTA_Tooltip_ability_ability_beastmaster_bearform_health_bonus"		"HEALTH BONUS:"
 "DOTA_Tooltip_ability_ability_beastmaster_bearform_move_speed"		    "MOVE SPEED:"
-"DOTA_Tooltip_ability_ability_beastmaster_bearform_energy_drain"	    "ENERGY DRAIN RATE MULTIPLIER:"
+"DOTA_Tooltip_ability_ability_beastmaster_bearform_energy_drain"	    "%ENERGY DEGEN RATE:"
 "DOTA_Tooltip_Ability_ability_beastmaster_bearform_Description"		"Shapeshifts into a Bear. Drains energy at a faster rate. Gains additional abilities."
 "DOTA_Tooltip_Ability_ability_beastmaster_bearform_Note0"		    "The bonus HP is +50 HP ontop of your max HP. By shapeshifting back if you have less then 50 HP you will die upon being shapeshifted."
 
@@ -266,10 +266,10 @@
 "DOTA_Tooltip_ability_item_calltobattle_modifier_applier_Description"		"You are called to battle!"
 
 
-"DOTA_Tooltip_Ability_ability_beastmaster_criticalstrike"		            "(Wolf) Critical strike"
+"DOTA_Tooltip_Ability_ability_beastmaster_criticalstrike"		            "Wolf Critical strike"
 "DOTA_Tooltip_ability_ability_beastmaster_criticalstrike_crit_bonus"		"%CRIT BONUS:"
 "DOTA_Tooltip_ability_ability_beastmaster_criticalstrike_crit_chance"		"%CRIT CHANCE:"
-"DOTA_Tooltip_Ability_ability_beastmaster_criticalstrike_Description"		"Gives a chance to deal critical damage"
+"DOTA_Tooltip_Ability_ability_beastmaster_criticalstrike_Description"		"Sharp teeth gives a chance to deal critical damage"
 "DOTA_Tooltip_modifier_wolf_crit"		"Wolf Crit"
 "DOTA_Tooltip_modifier_wolf_crit_Description"		""
 "DOTA_Tooltip_modifier_wolf_lifesteal"		"Lifesteal"
@@ -278,10 +278,10 @@
 
 
 "DOTA_Tooltip_Ability_ability_beastmaster_elkform"		            "Shapeshift to Elk form"
-"DOTA_Tooltip_ability_ability_beastmaster_elkform_attack_damage"	"+ATTACK DAMAGE:"
-"DOTA_Tooltip_ability_ability_beastmaster_elkform_attack_speed"		"%+ATTACK SPEED:"
+"DOTA_Tooltip_ability_ability_beastmaster_elkform_attack_damage"	"$+ATTACK DAMAGE:"
+"DOTA_Tooltip_ability_ability_beastmaster_elkform_attack_speed"		"$%+ATTACK SPEED:"
 "DOTA_Tooltip_ability_ability_beastmaster_elkform_magic_resist"		"%+MAGIC RESIST:"
-"DOTA_Tooltip_ability_ability_beastmaster_elkform_degen_rate"		"%DEGEN RATE:"
+"DOTA_Tooltip_ability_ability_beastmaster_elkform_degen_rate"		"%ENERGY DEGEN RATE:"
 "DOTA_Tooltip_Ability_ability_beastmaster_elkform_Description"		"Shapeshifts into an Elk altering the shape shifter's stats. Drains energy at a 2x rate."
 "DOTA_Tooltip_ability_ability_beastmaster_elkform_move_speed"		"MOVE SPEED:"
 "DOTA_Tooltip_modifier_elkform"		"Elkform"
@@ -333,9 +333,9 @@
 "DOTA_Tooltip_modifier_fowlplay_Description"		"Being affected by fowl play and are unable to attack or cast!"
 
 
-"DOTA_Tooltip_Ability_ability_beastmaster_howl"		"(Wolf) Howl"
+"DOTA_Tooltip_Ability_ability_beastmaster_howl"		"Wolf Howl"
 "DOTA_Tooltip_ability_ability_beastmaster_howl_armor_reduction"		"ARMOR REDUCTION:"
-"DOTA_Tooltip_ability_ability_beastmaster_howl_attack_speed"		"%+$attack"
+"DOTA_Tooltip_ability_ability_beastmaster_howl_attack_speed"		"%ATTACK SPEED REDUCTION:"
 "DOTA_Tooltip_Ability_ability_beastmaster_howl_Description"		"Reduces the armor and attack speed of enemies within range."
 "DOTA_Tooltip_ability_ability_beastmaster_howl_radius"		"RADIUS:"
 "DOTA_Tooltip_modifier_howl"		"Howl"
@@ -343,7 +343,7 @@
 "DOTA_Tooltip_modifier_hunter_challenge_caster"		"Hunter Challenge Caster"
 
 
-"DOTA_Tooltip_Ability_ability_beastmaster_magicimmunity"		"(Elk) Magic Immunity"
+"DOTA_Tooltip_Ability_ability_beastmaster_magicimmunity"		"Elk Magic Immunity"
 "DOTA_Tooltip_Ability_ability_beastmaster_magicimmunity_Description"		"Become completely magic immune for a duration."
 "DOTA_Tooltip_ability_ability_beastmaster_magicimmunity_duration"		"DURATION:"
 
@@ -399,10 +399,11 @@
 "DOTA_Tooltip_ability_ability_beastmaster_pet_stay"		"Pet Stay"
 "DOTA_Tooltip_ability_ability_beastmaster_pet_stay_Description"		"Commands the pet to stay put, doing nothing else but waiting for the master's next command.\nThe pet will return if the master gets too far."
 
-"DOTA_Tooltip_Ability_ability_beastmaster_ram"		"(Elk) Ram"
-"DOTA_Tooltip_Ability_ability_beastmaster_ram_Description"		"Charges at enemy unit dealing damage and stunning temporarily."
+"DOTA_Tooltip_Ability_ability_beastmaster_ram"		"Elk Ram"
+"DOTA_Tooltip_Ability_ability_beastmaster_ram_Description"		"Charges at an enemy from great distance dealing damage and stunning them temporarily."
 "DOTA_Tooltip_Ability_ability_beastmaster_ram_stun_duration"		"STUN DURATION:"
 "DOTA_Tooltip_Ability_ability_beastmaster_ram_stun_damage"		"STUN DAMAGE:"
+"DOTA_Tooltip_Ability_ability_beastmaster_ram_range"		"RANGE:"
 
 "DOTA_Tooltip_Ability_ability_beastmaster_releasepet"		">Release Pet"
 "DOTA_Tooltip_Ability_ability_beastmaster_releasepet_Description"		"You release the pet into the wild, losing control of it. The pet immediately becomes hostile and attacks anything around it"
@@ -411,7 +412,7 @@
 "DOTA_Tooltip_ability_ability_beastmaster_shortness_chance"		"CHANCE:"
 "DOTA_Tooltip_Ability_ability_beastmaster_shortness_Description"		"Being agile and small, this grants the chicken a passive 18% chance to evade a physical attack."
 
-"DOTA_Tooltip_Ability_ability_beastmaster_slam"		"(Bear) Slam"
+"DOTA_Tooltip_Ability_ability_beastmaster_slam"		"Bear Slam"
 "DOTA_Tooltip_ability_ability_beastmaster_slam_damage"		"DAMAGE:"
 "DOTA_Tooltip_Ability_ability_beastmaster_slam_Description"		"Slams down on the ground slowing and damaging enemies in the area."
 "DOTA_Tooltip_ability_ability_beastmaster_slam_slam_radius"		"SLAM RADIUS:"
@@ -450,13 +451,13 @@
 "DOTA_Tooltip_Ability_ability_beastmaster_tamepet"		"Tame Pet"
 "DOTA_Tooltip_Ability_ability_beastmaster_tamepet_Description"		"Tames a baby animal, placing it under your control, allowing it to grow and aid the beastmaster in combat or use it's special abilities. It will slowly age into upgraded forms (eg. fawn>elk>adult elk). If you have a pet this ability will become unusable until the pet is released/killed.\nCan only control 1 pet at a time."
 "DOTA_Tooltip_ability_ability_beastmaster_tamepet2"		"Tame Pet (Enhanced)"
-"DOTA_Tooltip_ability_ability_beastmaster_tamepet2_Description"		"Tames a baby animal, placing it under your control, allowing it to grow and aid the beastmaster in combat or use it's special abilities. It will slowly age into upgraded forms (eg. fawn>elk>adult elk). If you have a pet this ability will become unusable until the pet is released/killed.\nAs a pack leader you can now control 2 pets at a time."
+"DOTA_Tooltip_ability_ability_beastmaster_tamepet2_Description"		"Tames an additional baby animal, placing it under your control, allowing it to grow and aid the beastmaster in combat or use it's special abilities. It will slowly age into upgraded forms (eg. fawn>elk>adult elk). If you have a pet this ability will become unusable until the pet is released/killed.\nAs a pack leader you can now control 2 pets at a time."
 
 
 "DOTA_Tooltip_Ability_ability_beastmaster_wolfform"		"Shapeshift to Wolf Form"
 "DOTA_Tooltip_ability_ability_beastmaster_wolfform_attack_damage"		"ATTACK DAMAGE:"
 "DOTA_Tooltip_ability_ability_beastmaster_wolfform_attack_speed"		"%ATTACK SPEED:"
-"DOTA_Tooltip_ability_ability_beastmaster_wolfform_degen_rate"		"ENERGY DEGEN RATE:"
+"DOTA_Tooltip_ability_ability_beastmaster_wolfform_degen_rate"		"%ENERGY DEGEN RATE:"
 "DOTA_Tooltip_ability_ability_beastmaster_wolfform_move_speed"		"MOVE SPEED:"
 "DOTA_Tooltip_Ability_ability_beastmaster_wolfform_Description"		"Shapeshifts into a Wolf. Drains energy at a faster rate. Gains additional abilities."
 "DOTA_Tooltip_modifier_wolfform"		                            "Wolf Form"
@@ -476,8 +477,7 @@
 "DOTA_Tooltip_Ability_ability_modifier_elkform_Description"		"In Elk Form. Gained 35% move speed, -4 bonus damage, +10% attack speed, and +50 bonus HP, and 25% magic resistance."
 "DOTA_Tooltip_Ability_ability_modifier_empathicrage"		"Empathic Rage"
 "DOTA_Tooltip_Ability_ability_modifier_empathicrage_Description"		"Attack speed and movement speed increased."
-"DOTA_Tooltip_Ability_ability_modifier_fowlplay"		"Fowled!"
-"DOTA_Tooltip_Ability_ability_modifier_fowlplay_Description"		"Fowled!"
+
 "DOTA_Tooltip_Ability_ability_modifier_howl"		"Howl"
 "DOTA_Tooltip_Ability_ability_modifier_howl_Description"		"Reduced armor and attack speed."
 
@@ -505,7 +505,8 @@
 "DOTA_Tooltip_modifier_beastmaster_shortness_evasion"		"Shortness Evasion"
 "DOTA_Tooltip_modifier_beastmaster_shortness_evasion_Description"		"Reduced size granting 18% chance to evade a physical attack."
 
-
+"DOTA_Tooltip_Ability_ability_modifier_fowlplay"		"Fowled!"
+"DOTA_Tooltip_Ability_ability_modifier_fowlplay_Description"		"Fowled!"
 
 // GATHERER
 
@@ -2042,6 +2043,12 @@
 "DOTA_Tooltip_ability_item_bomb_smoke_duration"                                   "DURATION:"
 "DOTA_Tooltip_ability_item_bomb_smoke_radius"                                     "RADIUS:"
 "DOTA_Tooltip_ability_item_bomb_smoke_slow"                                        "%-$SLOW:"
+"DOTA_Tooltip_aura_smokebombslow"                                                 "Smoke Bomb Slow"
+"DOTA_Tooltip_aura_smokebombslow_Description"                                     "Can't see throw the smoke and you are slowed."
+"DOTA_Tooltip_aura_smokebombcp"                                                   "Smoke Bomb Combat Prevention"
+"DOTA_Tooltip_aura_smokebombcp_Description"                                       "Can't attack! The smoke is too thick."
+
+
 		
 
 "DOTA_Tooltip_ability_item_bone"		"Bone"

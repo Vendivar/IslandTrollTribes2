@@ -6,7 +6,8 @@
 	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_CREEP"
 	"AbilityTextureName"	"ability_gatherer_telegather"
 	"MaxLevel"	"3"
-	"AbilityCastPoint"	"0"
+	"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_4"
+	"AbilityCastPoint"	"0.5"
 	"AbilityCastRange"	"300"
 	"AbilityCooldown"	"120 120 120"
 	"AbilityManaCost"	"20 25 30"
@@ -14,12 +15,23 @@
 	{
 	"soundfile"				"soundevents/game_sounds_heroes/game_sounds_shadowshaman.vsndevts"
 	}
-	"OnSpellStart"
+    
+	"OnAbilityPhaseStart"
 	{
 		"RunScript"
 		{
 			"ScriptFile" "heroes/gatherer/radar.lua"
 			"Function"   "RadarTelegatherInit"
+			"Target"     "TARGET"
+		}
+	}
+    
+    "OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile" "heroes/gatherer/radar.lua"
+			"Function"   "RadarTelegather"
 			"Target"     "TARGET"
 		}
 	}
@@ -55,7 +67,7 @@
 		"02"
 		{
 			"var_type"	"FIELD_FLOAT"
-			"percent_chance"	"40.0 40.0 40.0"
+			"percent_chance"	"25.0 35.0 45.0"
 		}
 
 	}

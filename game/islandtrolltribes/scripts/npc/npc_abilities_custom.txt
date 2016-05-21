@@ -5327,7 +5327,8 @@
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_CREEP"
 		"AbilityTextureName"	"ability_gatherer_telegather"
 		"MaxLevel"	"3"
-		"AbilityCastPoint"	"0"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_4"
+		"AbilityCastPoint"	"0.5"
 		"AbilityCastRange"	"300"
 		"AbilityCooldown"	"120 120 120"
 		"AbilityManaCost"	"20 25 30"
@@ -5335,12 +5336,23 @@
 		{
 		"soundfile"				"soundevents/game_sounds_heroes/game_sounds_shadowshaman.vsndevts"
 		}
-		"OnSpellStart"
+	    
+		"OnAbilityPhaseStart"
 		{
 			"RunScript"
 			{
 				"ScriptFile" "heroes/gatherer/radar.lua"
 				"Function"   "RadarTelegatherInit"
+				"Target"     "TARGET"
+			}
+		}
+	    
+	    "OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile" "heroes/gatherer/radar.lua"
+				"Function"   "RadarTelegather"
 				"Target"     "TARGET"
 			}
 		}
@@ -5376,7 +5388,7 @@
 			"02"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"percent_chance"	"40.0 40.0 40.0"
+				"percent_chance"	"25.0 35.0 45.0"
 			}
 	
 		}
@@ -5680,7 +5692,7 @@
 	    "BaseClass"                 "ability_datadriven"
 	    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 	    "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	    "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	    "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO"
 	    "AbilityTextureName"        "ability_hunter_dysenterytrack"
 	    "AbilityCastAnimation"      "ACT_DOTA_ATTACK"
 	    "AbilityCastPoint"          "0.0"
@@ -6477,7 +6489,17 @@
 			"particle"	"particles/econ/courier/courier_trail_fungal/courier_trail_fungal_e.vpcf"
 			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_bounty_hunter.vsndevts"
 		}
-	
+	    
+		"OnAbilityPhaseStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile" "heroes/hunter/sniff.lua"
+				"Function"   "SniffInit"
+				"Target"     "TARGET"
+			}
+		}
+	    
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -17069,6 +17091,8 @@
 		    "precache"
 		    {
 		        "soundfile" "soundevents/trollgeneral.vsndevts"
+	            "particles" "particles/econ/items/axe/axe_helm_shoutmask/axe_beserkers_call_owner_h_shoutmask.vpcf"
+	            "particles" "particles/econ/items/axe/axe_cinder/axe_cinder_battle_hunger_cast_c.vpcf"
 		    }
 	    "OnSpellStart"
 	    {
@@ -17084,6 +17108,18 @@
 	            "EffectName"    "Panic"
 	            "Target"        "CASTER"
 	        }
+	        "FireEffect"
+	        {
+	            "EffectName"	"particles/econ/items/axe/axe_helm_shoutmask/axe_beserkers_call_owner_h_shoutmask.vpcf"
+	            "EffectAttachType"	"attach_origin"
+	            "Target"	"CASTER"
+	        }
+	        "FireEffect"
+	        {
+	            "EffectName"	"particles/econ/items/axe/axe_cinder/axe_cinder_battle_hunger_cast_c.vpcf"
+	            "EffectAttachType"	"attach_origin"
+	            "Target"	"CASTER"
+	        }
 	    }
 	
 	    "Modifiers"
@@ -17093,6 +17129,16 @@
 				"EffectName"			"particles/status_fx/status_effect_beserkers_call.vpcf"
 				"EffectAttachType"		"follow_origin"
 	            "TextureName"           "huskar_berserkers_blood"
+	            "OnCreated"
+	            {
+	                "AttachEffect"
+	                {
+	                    "Target"    "TARGET"
+	                    "EffectName"    "particles/units/heroes/hero_axe/axe_beserkers_call.vpcf"
+	                    "EffectAttachType"    "follow_overhead"
+	                    "EffectLifeDurationScale"    "1"
+	                }
+	            }
 	            "Properties"
 	            {
 	                "MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE"    "%incoming_damage"

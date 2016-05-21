@@ -14,6 +14,8 @@
 	    "precache"
 	    {
 	        "soundfile" "soundevents/trollgeneral.vsndevts"
+            "particles" "particles/econ/items/axe/axe_helm_shoutmask/axe_beserkers_call_owner_h_shoutmask.vpcf"
+            "particles" "particles/econ/items/axe/axe_cinder/axe_cinder_battle_hunger_cast_c.vpcf"
 	    }
     "OnSpellStart"
     {
@@ -29,6 +31,18 @@
             "EffectName"    "Panic"
             "Target"        "CASTER"
         }
+        "FireEffect"
+        {
+            "EffectName"	"particles/econ/items/axe/axe_helm_shoutmask/axe_beserkers_call_owner_h_shoutmask.vpcf"
+            "EffectAttachType"	"attach_origin"
+            "Target"	"CASTER"
+        }
+        "FireEffect"
+        {
+            "EffectName"	"particles/econ/items/axe/axe_cinder/axe_cinder_battle_hunger_cast_c.vpcf"
+            "EffectAttachType"	"attach_origin"
+            "Target"	"CASTER"
+        }
     }
 
     "Modifiers"
@@ -38,6 +52,16 @@
 			"EffectName"			"particles/status_fx/status_effect_beserkers_call.vpcf"
 			"EffectAttachType"		"follow_origin"
             "TextureName"           "huskar_berserkers_blood"
+            "OnCreated"
+            {
+                "AttachEffect"
+                {
+                    "Target"    "TARGET"
+                    "EffectName"    "particles/units/heroes/hero_axe/axe_beserkers_call.vpcf"
+                    "EffectAttachType"    "follow_overhead"
+                    "EffectLifeDurationScale"    "1"
+                }
+            }
             "Properties"
             {
                 "MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE"    "%incoming_damage"

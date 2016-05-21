@@ -1,3 +1,14 @@
+function SniffInit(keys)
+    local caster = keys.caster
+    local target = keys.target
+    local ability = keys.ability
+    if string.find(target:GetUnitName(), "corpse") then
+    else
+        SendErrorMessage(caster:GetPlayerOwnerID(),"#invalid_telegatherer_target")
+        caster:Interrupt()
+    end
+end
+
 function Sniff( event )
     local ability = event.ability
 
@@ -15,9 +26,6 @@ function Sniff( event )
             SniffThink( event )
             return
         end)
-    else
-        caster:GiveMana(event.mana_cost)
-        ability:EndCooldown()
     end
 end
 

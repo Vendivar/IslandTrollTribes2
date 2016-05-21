@@ -18,7 +18,17 @@
 		"particle"	"particles/econ/courier/courier_trail_fungal/courier_trail_fungal_e.vpcf"
 		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_bounty_hunter.vsndevts"
 	}
-
+    
+	"OnAbilityPhaseStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile" "heroes/hunter/sniff.lua"
+			"Function"   "SniffInit"
+			"Target"     "TARGET"
+		}
+	}
+    
 	"OnSpellStart"
 	{
 		"RunScript"

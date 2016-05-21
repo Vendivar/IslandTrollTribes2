@@ -60,7 +60,7 @@ function MetronomeSpell(dummy)
     if (GameRules:GetGameTime() - dummy.startTime) >= duration then
         --should stop playing when metronome script finishes
         --firstTarget:StopSound("tick")
-        ParticleManager:DestroyParticle(firstTarget.metronomeParticle,false)
+        ParticleManager:DestroyParticle(target.metronomeParticle,false)
         return nil
     end
     return 0.7
