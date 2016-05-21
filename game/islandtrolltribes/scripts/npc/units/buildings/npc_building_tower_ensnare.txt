@@ -1,10 +1,10 @@
 "npc_building_tower_ensnare"
 {
 	"BaseClass"	"npc_dota_creature"
-	"Model"	"models/tower_ensnare_test.vmdl"
-	"vscripts"	"buildings/omni_tower.lua"
+	"Model"		"models/tower_ensnare.vmdl"
 	"SoundSet"	"Creep_Good_Melee"
 	"HasInventory"	"1"
+	"FillSlots"		"5"
 	"ModelScale"	"0.65"
 	"MinimapIconSize"	"250"
 	"HealthBarOffset"	"300"

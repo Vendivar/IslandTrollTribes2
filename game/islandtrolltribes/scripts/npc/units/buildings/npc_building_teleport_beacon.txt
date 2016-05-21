@@ -5,6 +5,7 @@
 	"vscripts"	"buildings/teleport_beacon.lua"
 	"SoundSet"	"Creep_Good_Melee"
 	"HasInventory"	"1"
+	"FillSlots"		"5"
 	"MinimapIconSize"	"25"
 	"HealthBarOffset"	"150"
 	"BoundsHullName"	"DOTA_HULL_SIZE_HERO"

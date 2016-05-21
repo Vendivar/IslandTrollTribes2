@@ -350,6 +350,12 @@ function ITT:OnNPCSpawned( keys )
             ITT:OnHeroRespawn(spawnedUnit)
         end
     end
+
+    local fillSlots = GameRules.UnitKV[spawnedUnit:GetUnitName()]["FillSlots"]
+    if fillSlots then
+        ITT:CreateLockedSlotsForUnits(spawnedUnit, fillSlots)
+    end
+
 end
 
 function ITT:OnHeroInGame( hero )
