@@ -847,7 +847,6 @@
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
 		"ModelScale"	"0.5"
-		"AutoAttacksByDefault"         "0"
 		"AttackDamageMin"	"3"
 		"AttackDamageMax"	"7"    // Damage range max.
 		"AttackRate"	"0.55"     // Speed of attack.
@@ -917,7 +916,6 @@
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
 		"ModelScale"	"0.5"
-		"AutoAttacksByDefault"         "0"
 		"AttackDamageMin"	"3"
 		"AttackDamageMax"	"7"    // Damage range max.
 		"AttackRate"	"0.55"     // Speed of attack.

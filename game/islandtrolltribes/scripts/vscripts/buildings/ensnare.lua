@@ -19,6 +19,13 @@ function CreateTrollDummy(event)
     end)
 end
 
+function TrollDummyAttack(event)
+    local caster = event.caster
+    if IsValidEntity(caster.troll_dummy) then
+        caster.troll_dummy:StartGesture(ACT_DOTA_ATTACK)
+    end
+end
+
 function AnimateTrollDummy(event)
     local caster = event.caster
     local target = event.target

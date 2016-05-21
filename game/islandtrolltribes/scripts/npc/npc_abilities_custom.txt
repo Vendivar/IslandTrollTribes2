@@ -1087,6 +1087,15 @@
 	                }
 	            }
 	
+	            "OnAttack"
+	            {
+	                "RunScript"
+	                {
+	                    "ScriptFile"    "buildings/ensnare.lua"
+	                    "Function"      "TrollDummyAttack"
+	                }
+	            }
+	
 	            "OnDestroy"
 	            {
 	                "RunScript"
