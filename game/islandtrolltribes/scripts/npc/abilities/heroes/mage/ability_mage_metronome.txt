@@ -48,7 +48,7 @@
 		"modifier_metronome"
 		{
 			"IsDebuff"	"1"
-			"IsHidden"  "1"
+			"IsHidden"  "0"
 			"OnCreated"
 			{
 				"AttachEffect"
