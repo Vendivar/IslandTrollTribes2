@@ -50,6 +50,16 @@
 		}
 	}
 
+        
+	"OnAbilityPhaseStart"
+	{
+		"RunScript"
+		{
+            "ScriptFile"	"heroes/priest/enhancing_herbalism.lua"
+			"Function"      "HerbalInit"
+			"Target"         "TARGET"
+		}
+	}
     
     
 "OnSpellStart"

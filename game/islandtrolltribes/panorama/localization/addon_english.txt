@@ -134,6 +134,8 @@
         "error_already_rested"                  "You are already rested. Please wait a moment before resting again."
         "error_must_target_baby_animal"         "Must target a baby animal."
         "invalid_telegatherer_target"           "Must target a camp fire."
+        "invalid_sniff_target"                  "Must target a corpse."
+        "invalid_priest_target"           "Can't use on self or priests."
 
         "item_bush_thistle"                                          "Thistle Shrub"
         "item_bush_mushroom"                                         "Mushroom Colony" 

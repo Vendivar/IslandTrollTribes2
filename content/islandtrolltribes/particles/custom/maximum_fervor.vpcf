@@ -194,5 +194,8 @@
 		{
 			m_ChildRef = resource:"particles/units/heroes/hero_oracle/oracle_fortune_aoe_dust_hit.vpcf"
 		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_oracle/oracle_fortune_aoe_ember.vpcf"
+		},
 	]
 }

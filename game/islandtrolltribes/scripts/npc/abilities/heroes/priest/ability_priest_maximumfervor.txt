@@ -14,11 +14,6 @@
     {
         "soundfile" "soundevents/spells.vsndevts"
         "soundfile" "soundevents/game_sounds_heroes/game_sounds_sven.vsndevts"
-        "particle" "particles/units/heroes/hero_batrider/batrider_firefly_pulse.vpcf"
-        "particle" "particles/units/heroes/hero_batrider/batrider_firefly_startflash.vpcf"
-        "particle" "particles/units/heroes/hero_batrider/batrider_flaming_lasso_loop.vpcf"
-        "particle" "particles/units/heroes/hero_oracle/oracle_fortune_aoe_dust_hit.vpcf"
-        "particle" "particles/units/heroes/hero_oracle/oracle_fortune_aoe_ember.vpcf"
     }
     
 	"OnSpellStart"
@@ -56,12 +51,6 @@
 				{
 					"Target"	"TARGET"
 					"EffectName"	"particles/custom/maximum_fervor.vpcf"
-					"EffectAttachType"	"PATTACH_ABSORIGIN_FOLLOW"
-				}
-				"FireEffect"
-				{
-					"Target"	"TARGET"
-					"EffectName"	"particles/units/heroes/hero_oracle/oracle_fortune_aoe_ember.vpcf"
 					"EffectAttachType"	"PATTACH_ABSORIGIN_FOLLOW"
 				}
 			}

@@ -146,5 +146,9 @@
 		{
 			m_ChildRef = resource:"particles/custom/increase_metabolism_component_2.vpcf"
 		},
+		{
+			m_ChildRef = resource:"particles/custom/increase_metabolism_component_3x.vpcf"
+			m_bDisableChild = true
+		},
 	]
 }

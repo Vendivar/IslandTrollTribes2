@@ -22,7 +22,7 @@ function CreateCraftingList()
     CreateByName(values, "Recipes", false)
     CreateByName(values, "npc_building_armory", true)
     CreateByName(values, "npc_building_hut_witch_doctor", true)
-    CreateByName(values, "npc_building_mixing_pot", true)
+    //CreateByName(values, "npc_building_mixing_pot", true)
     CreateByName(values, "npc_building_tannery", true)
     CreateByName(values, "npc_building_workshop", true) 
 }

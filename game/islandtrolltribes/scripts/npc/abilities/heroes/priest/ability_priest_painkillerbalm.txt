@@ -42,6 +42,16 @@
 			"remove_interval"	"2.0"
 		}
 	}
+        
+	"OnAbilityPhaseStart"
+	{
+		"RunScript"
+		{
+            "ScriptFile"	"heroes/priest/pain_killer.lua"
+			"Function"      "PainKillerInit"
+			"Target"         "TARGET"
+		}
+	}
     
 "OnSpellStart"
 	{

@@ -49,7 +49,7 @@
 		"FireSound"
 		{
 			"EffectName"	"Hero_Axe.Berserkers_Call"
-			"Target"	"CASTER"
+			"Target"	    "CASTER"
 		}
         
         "FireEffect"
