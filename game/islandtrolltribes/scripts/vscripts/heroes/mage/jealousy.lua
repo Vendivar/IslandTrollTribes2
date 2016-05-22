@@ -10,6 +10,7 @@ function Jealousy( event )
     local target = event.target
 
     target:SetForceAttackTarget(nil)
+    target_of_ability:SetForceAttackTarget(nil)
 
     if target_of_ability:IsAlive() and target_of_ability ~= target then
         local order = 
@@ -29,5 +30,8 @@ end
 
 function JealousyEnd( event )
     local target = event.target
+    local ability = event.ability
+    local target_of_ability = ability.target_of_ability
     target:SetForceAttackTarget(nil)
+    target_of_ability:SetForceAttackTarget(nil)
 end

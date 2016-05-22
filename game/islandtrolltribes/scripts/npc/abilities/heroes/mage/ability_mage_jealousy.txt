@@ -87,8 +87,8 @@
 	{
 		"modifier_mage_jealousy_target"
 		{
-			"IsHidden"			"1"
-			"IsBuff"			"1"
+			"IsHidden"			"0"
+			"IsDebuff"			"1"
 
 			"EffectName"		"particles/econ/courier/courier_faceless_rex/cour_rex_ground_a.vpcf"
 			"EffectAttachType"	"follow_origin"
