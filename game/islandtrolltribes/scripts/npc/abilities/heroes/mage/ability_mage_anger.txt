@@ -28,7 +28,7 @@
 
 	"FireSound"
 	{
-		"EffectName"	"Hero_Axe.Battle_Hunger"
+		"EffectName"	"mage.anger"
 		"Target"	"TARGET"
 	}
 

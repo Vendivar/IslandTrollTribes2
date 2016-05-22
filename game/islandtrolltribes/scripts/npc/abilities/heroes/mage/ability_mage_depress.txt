@@ -6,7 +6,7 @@
 	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 	"AbilityTextureName"	"ability_mage_depress"
 	"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
-	"AbilityCastPoint"		"0.0"
+	"AbilityCastPoint"		"1.0"
 	"AbilityCooldown"		"20"
 	"AbilityCastRange"		"700"
 	"AbilityManaCost"		"10"
@@ -45,7 +45,7 @@
 		}
 		"FireSound"
 		{
-			"EffectName"	"Hero_Visage.GraveChill.Target"
+			"EffectName"	"mage.depress"
 			"Target"	"TARGET"
 		}
 	}

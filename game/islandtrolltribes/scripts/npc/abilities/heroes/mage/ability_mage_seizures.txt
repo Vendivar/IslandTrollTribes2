@@ -8,6 +8,9 @@
 	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 	"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
+    
+    "AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_1"
+    "AbilityCastPoint"	"0.5"
 
 	"AbilityCooldown"				"30"
 	"AbilityManaCost"				"20"
@@ -48,6 +51,11 @@
 
 	"OnSpellStart"
 	{
+    		"FireSound"
+		{
+			"EffectName"	"mage.seizures"
+			"Target" 		"TARGET"
+		}
 		"RemoveModifier"
 		{
 			"ModifierName"	"modifier_mage_seizures"
@@ -82,6 +90,18 @@
 					"EffectAttachType"  "follow_origin"
 					"Target"            "TARGET"
 				}
+                "FireEffect"
+                {
+                     "EffectName" "particles/custom/maddening_discharge.vpcf"
+                     "EffectAttachType" "follow_origin"
+                     "Target" "TARGET"
+                     "ControlPointEntities"
+                    {
+                        "TARGET" "follow_origin"
+                        "TARGET" "follow_origin"
+                        "TARGET" "follow_overhead"
+                    }
+                }
 			}
 
 			"ThinkInterval"  "%think_interval"

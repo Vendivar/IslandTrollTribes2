@@ -11,12 +11,15 @@
 	"SpellImmunityType" 			"SPELL_IMMUNITY_ENEMIES_YES"
 	"AbilityCastRange"				"500"
 
+    "AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_3"
+    "AbilityCastPoint"	"0.5"
 	"AbilityCooldown"				"30"
 	"AbilityManaCost"				"0"
 	"MaxLevel" 						"1"
 	"precache"
 	{
 	    "particle"      "particles/econ/wards/bane/bane_ward/bane_ward_droplets.vpcf"
+	    "particle"      "particles/units/heroes/hero_lich/lich_dark_ritual.vpcf"
 	}
 
 	"AbilitySpecial"
@@ -42,10 +45,21 @@
 	{
 		"FireSound"
 		{
-			"EffectName"	"Hero_Bane.Enfeeble.Cast"
+			"EffectName"	"mage.sap"
 			"Target" 		"TARGET"
 		}
-
+        
+		"FireEffect"
+		{
+			"EffectName"		"particles/units/heroes/hero_lich/lich_dark_ritual.vpcf"
+			"EffectAttachType" 	"follow_origin"
+			"Target" 			"TARGET"
+			"ControlPointEntities"
+			{
+				"TARGET"	"attach_hitloc"
+				"CASTER"	"attach_hitloc"
+			}
+		}
 		"RunScript"
 		{
 			"ScriptFile"	"heroes/mage/dream_eater.lua"

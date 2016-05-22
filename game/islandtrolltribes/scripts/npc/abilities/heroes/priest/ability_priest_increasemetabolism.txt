@@ -114,7 +114,7 @@
                 
                 "FireSound"
                 {
-                    "EffectName"	"Hero_Axe.BerserkersCall.Item.Shoutmask"
+                    "EffectName"	"increase.metabolism"
                     "Target"	"TARGET"
                 }
                 
