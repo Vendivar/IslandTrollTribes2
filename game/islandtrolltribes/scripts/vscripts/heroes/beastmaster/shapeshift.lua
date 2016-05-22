@@ -59,6 +59,7 @@ function removeModifiers(hero, ability)
     if kv["Modifiers"] then
         for i,v in pairs(kv["Modifiers"]) do
             hero:RemoveModifierByName(i)
+            hero:RemoveModifierByName("elk_immunity")
         end
     end
 end

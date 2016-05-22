@@ -23,9 +23,15 @@
 
 		"FireSound"
 		{
-			"EffectName"	"Hero_BountyHunter.Track"
+			"EffectName"	"priest.mapmagic"
 			"Target"	"CASTER"
 		}
+        "FireEffect"
+        {
+        "EffectName" "particles/custom/map_magic_2.vpcf"
+        "EffectAttachType"	"follow_origin"
+        "TARGET"        "TARGET"
+        }
 	}
 
 	"Modifiers"

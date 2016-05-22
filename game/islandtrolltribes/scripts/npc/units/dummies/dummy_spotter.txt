@@ -24,7 +24,7 @@
 	"StatusManaRegen"	"0"
 	"TeamName"	"DOTA_TEAM_NEUTRALS"
 	"CombatClassAttack"	"DOTA_COMBAT_CLASS_ATTACK_BASIC"
-	"CombatClassDefend"	"DOTA_COMBAT_CLASS_DEFEND_SOFT"
+	"CombatClassDefend"	"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 	"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 	"VisionDaytimeRange"	"800"
 	"VisionNighttimeRange"	"800"

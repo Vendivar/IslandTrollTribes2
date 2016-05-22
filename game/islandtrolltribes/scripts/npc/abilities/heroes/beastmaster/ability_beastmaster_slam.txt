@@ -22,6 +22,15 @@
 				"EffectName"	"bear.slam"
 				"Target"		"CASTER"
 			}
+            
+            		"FireEffect"
+		{
+            "Target"	            "CASTER"
+			"EffectName"	"particles/custom/bear_slam.vpcf"
+			"EffectAttachType"	"follow_origin"
+			"EffectRadius"	"%slam_radius"
+		}
+        
 		"ActOnTargets"
 		{
 			"Target"
@@ -51,15 +60,6 @@
 			}
 
 		}
-
-		"FireEffect"
-		{
-			"TargetPoint"	"POINT"
-			"EffectName"	"particles/econ/generic/generic_aoe_explosion_sphere_1/generic_aoe_explosion_sphere_1.vpcf"
-			"EffectAttachType"	"follow_origin"
-			"EffectRadius"	"%slam_radius"
-		}
-
 	}
 
 	"Modifiers"

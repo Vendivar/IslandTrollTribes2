@@ -2017,16 +2017,13 @@
 	    "BaseClass"         "ability_datadriven"
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 	    "MaxLevel"          "1"
-		    "precache"
-		    {
-	            "particle"  "particles/econ/items/effigies/status_fx_effigies/status_effect_effigy_jade_stone_dire.vpcf"
-		    }
+	
 	    "Modifiers"
 	    {
 	        "modifier_greentint"
 	        {
-	            "StatusEffectName" "particles/econ/items/effigies/status_fx_effigies/status_effect_effigy_jade_stone_dire.vpcf"
-	            "StatusEffectPriority" "15"
+	            "StatusEffectName" "particles/custom/green_tint.vpcf"
+	            "StatusEffectPriority" "35"
 	            "Passive"   "1"
 	            "IsHidden"         "1"
 	        }
@@ -2959,7 +2956,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"attack_damage"	"4"
+				"attack_damage"	"-4"
 			}
 	
 			"02"
@@ -3323,6 +3320,12 @@
 				}
 	
 			}
+	        "FireEffect"
+				{
+					"EffectName" 		"particles/custom/howl_cast.vpcf"
+					"Target"            "CASTER"
+					"EffectAttachType"      "follow_origin"
+				}
 	
 			"FireSound"
 			{
@@ -3336,7 +3339,8 @@
 		{
 			"modifier_howl"
 			{
-				"EffectName"	"shadowshaman_voodoo"
+				"EffectName"	"particles/custom/howl.vpcf"
+				"EffectAttachType"	"follow_origin"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed"
@@ -3759,6 +3763,15 @@
 					"EffectName"	"bear.slam"
 					"Target"		"CASTER"
 				}
+	            
+	            		"FireEffect"
+			{
+	            "Target"	            "CASTER"
+				"EffectName"	"particles/custom/bear_slam.vpcf"
+				"EffectAttachType"	"follow_origin"
+				"EffectRadius"	"%slam_radius"
+			}
+	        
 			"ActOnTargets"
 			{
 				"Target"
@@ -3788,15 +3801,6 @@
 				}
 	
 			}
-	
-			"FireEffect"
-			{
-				"TargetPoint"	"POINT"
-				"EffectName"	"particles/econ/generic/generic_aoe_explosion_sphere_1/generic_aoe_explosion_sphere_1.vpcf"
-				"EffectAttachType"	"follow_origin"
-				"EffectRadius"	"%slam_radius"
-			}
-	
 		}
 	
 		"Modifiers"
@@ -7463,6 +7467,14 @@
 					"TARGET" "attach_hitloc" //CP2
 				}
 			}
+	        
+	        "FireEffect"
+				{
+					"EffectName" 		"particles/custom/depress2.vpcf"
+					"Target" "TARGET"
+					"EffectAttachType"      "follow_origin"
+				}
+	            
 			"ApplyModifier"
 			{
 				"ModifierName"	"modifier_depress"
@@ -7731,7 +7743,7 @@
 			"01"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"radius_small"		"100" //the true radius will be this value + 50
+				"radius_small"		"50" //the true radius will be this value + 50
 			}
 			"02"
 			{
@@ -7775,7 +7787,7 @@
 	    		"FireSound"
 			{
 				"EffectName"	"mage.depressorb"
-				"Target" 		"TARGET"
+				"Target" 		"CASTER"
 			}
 			"LinearProjectile"
 			{
@@ -7892,12 +7904,12 @@
 			"FireSound"
 			{
 				"EffectName"	"mage.sap"
-				"Target" 		"TARGET"
+				"Target" 		"CASTER"
 			}
 	        
 			"FireEffect"
 			{
-				"EffectName"		"particles/units/heroes/hero_lich/lich_dark_ritual.vpcf"
+				"EffectName"		"particles/custom/dream_eater.vpcf"
 				"EffectAttachType" 	"follow_origin"
 				"Target" 			"TARGET"
 				"ControlPointEntities"
@@ -12064,9 +12076,15 @@
 	
 			"FireSound"
 			{
-				"EffectName"	"Hero_BountyHunter.Track"
+				"EffectName"	"priest.mapmagic"
 				"Target"	"CASTER"
 			}
+	        "FireEffect"
+	        {
+	        "EffectName" "particles/custom/map_magic_2.vpcf"
+	        "EffectAttachType"	"follow_origin"
+	        "TARGET"        "TARGET"
+	        }
 		}
 	
 		"Modifiers"
@@ -12496,8 +12514,8 @@
 		"AbilityTextureName"	"ability_priest_omnicure"
 		"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
 		"AbilityCastPoint"	"0.2"
-		"AbilityCooldown"	"1"
-		"AbilityManaCost"	"1"
+		"AbilityCooldown"	"15"
+		"AbilityManaCost"	"50"
 		"AbilityCastRange"  "400"
 		"precache" 
 	    {
@@ -12506,6 +12524,11 @@
 		"MaxLevel"	"1"
 		"OnSpellStart"
 		{
+	        "FireSound"
+	         {
+	             "EffectName"	"Cure.All"
+	             "Target" 		"CASTER"
+	         }
 			"RunScript"
 			{
 				"ScriptFile" "heroes/priest/omnicure.lua"
@@ -13241,6 +13264,20 @@
 				}
 			}
 		}
+	      
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"heat"			"50"
+			}
+	        "02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"all_stats"			"50"
+			}
+	    }        
 	}
 	"ability_priest_smokecombatprevention"
 	{

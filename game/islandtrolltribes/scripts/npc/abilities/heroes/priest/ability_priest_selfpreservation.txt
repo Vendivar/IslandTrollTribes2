@@ -75,4 +75,18 @@
 			}
 		}
 	}
+      
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"heat"			"50"
+		}
+        "02"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"all_stats"			"50"
+		}
+    }        
 }

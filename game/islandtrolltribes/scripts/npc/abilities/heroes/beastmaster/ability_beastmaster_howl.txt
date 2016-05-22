@@ -36,6 +36,12 @@
 			}
 
 		}
+        "FireEffect"
+			{
+				"EffectName" 		"particles/custom/howl_cast.vpcf"
+				"Target"            "CASTER"
+				"EffectAttachType"      "follow_origin"
+			}
 
 		"FireSound"
 		{
@@ -49,7 +55,8 @@
 	{
 		"modifier_howl"
 		{
-			"EffectName"	"shadowshaman_voodoo"
+			"EffectName"	"particles/custom/howl.vpcf"
+			"EffectAttachType"	"follow_origin"
 			"Properties"
 			{
 				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed"

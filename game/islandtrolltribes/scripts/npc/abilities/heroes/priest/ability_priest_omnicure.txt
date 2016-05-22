@@ -10,8 +10,8 @@
 	"AbilityTextureName"	"ability_priest_omnicure"
 	"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
 	"AbilityCastPoint"	"0.2"
-	"AbilityCooldown"	"1"
-	"AbilityManaCost"	"1"
+	"AbilityCooldown"	"15"
+	"AbilityManaCost"	"50"
 	"AbilityCastRange"  "400"
 	"precache" 
     {
@@ -20,6 +20,11 @@
 	"MaxLevel"	"1"
 	"OnSpellStart"
 	{
+        "FireSound"
+         {
+             "EffectName"	"Cure.All"
+             "Target" 		"CASTER"
+         }
 		"RunScript"
 		{
 			"ScriptFile" "heroes/priest/omnicure.lua"

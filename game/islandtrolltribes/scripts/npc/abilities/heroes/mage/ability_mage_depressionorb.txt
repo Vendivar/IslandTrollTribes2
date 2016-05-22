@@ -21,7 +21,7 @@
 		"01"
 		{
 			"var_type"			"FIELD_INTEGER"
-			"radius_small"		"100" //the true radius will be this value + 50
+			"radius_small"		"50" //the true radius will be this value + 50
 		}
 		"02"
 		{
@@ -65,7 +65,7 @@
     		"FireSound"
 		{
 			"EffectName"	"mage.depressorb"
-			"Target" 		"TARGET"
+			"Target" 		"CASTER"
 		}
 		"LinearProjectile"
 		{

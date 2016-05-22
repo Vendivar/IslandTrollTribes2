@@ -46,12 +46,12 @@
 		"FireSound"
 		{
 			"EffectName"	"mage.sap"
-			"Target" 		"TARGET"
+			"Target" 		"CASTER"
 		}
         
 		"FireEffect"
 		{
-			"EffectName"		"particles/units/heroes/hero_lich/lich_dark_ritual.vpcf"
+			"EffectName"		"particles/custom/dream_eater.vpcf"
 			"EffectAttachType" 	"follow_origin"
 			"Target" 			"TARGET"
 			"ControlPointEntities"

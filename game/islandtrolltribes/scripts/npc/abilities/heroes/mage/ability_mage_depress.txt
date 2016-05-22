@@ -32,6 +32,14 @@
 				"TARGET" "attach_hitloc" //CP2
 			}
 		}
+        
+        "FireEffect"
+			{
+				"EffectName" 		"particles/custom/depress2.vpcf"
+				"Target" "TARGET"
+				"EffectAttachType"      "follow_origin"
+			}
+            
 		"ApplyModifier"
 		{
 			"ModifierName"	"modifier_depress"

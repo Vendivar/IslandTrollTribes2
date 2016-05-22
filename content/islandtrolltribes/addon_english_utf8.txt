@@ -300,10 +300,10 @@
 
 
 "DOTA_Tooltip_Ability_ability_beastmaster_empathicrage"		"Empathic Rage"
-"DOTA_Tooltip_Ability_ability_beastmaster_empathicrage_attackspeed"		"%+ATTACK SPEED:"
+"DOTA_Tooltip_Ability_ability_beastmaster_empathicrage_attackspeed"		"%+ATTACK SPEED PER CHARGE"
 "DOTA_Tooltip_Ability_ability_beastmaster_empathicrage_charges"		"CHARGES:"
 "DOTA_Tooltip_Ability_ability_beastmaster_empathicrage_Description"		"When one of your pets dies near you you receive a temporary buff to move speed and attack speed. Stacks for each pet that was killed. Lasts 10 seconds."
-"DOTA_Tooltip_Ability_ability_beastmaster_empathicrage_movespeed"		"%+MOVE SPEED:"
+"DOTA_Tooltip_Ability_ability_beastmaster_empathicrage_movespeed"		"%+MOVE SPEED PER CHARGE"
 "DOTA_Tooltip_modifier_empathicrage"		"Empathic Rage"
 "DOTA_Tooltip_modifier_empathicrage_Description"		""
 "DOTA_Tooltip_modifier_pet_empathicrage"                                          "Pet Empathicrage"
@@ -756,6 +756,8 @@
 "DOTA_Tooltip_ability_ability_mage_jealousy_radius"		"RADIUS:"
 "DOTA_Tooltip_modifier_mage_jealousy_enemy"		"Jealousy"
 "DOTA_Tooltip_modifier_mage_jealousy_enemy_Description"		"Affected by Jealousy. Can not stop attacking current target!"
+"DOTA_Tooltip_modifier_mage_jealousy_target"	"Jealousy"
+"DOTA_Tooltip_modifier_mage_jealousy_target_Description"	"Your allies are jealous and can't stop attacking you!"
 
 
 
@@ -2238,8 +2240,10 @@
 "DOTA_Tooltip_ability_item_building_kit_trap_ensnare_Note0"		"Ensnare: (auto cast)\n    ò Immobilizes trolls for 3.25s, animals for 8s.\n    ò 10s cooldown.\nGet Corpse: (autocast)\n    ò Picks up nearby corpse. Max 8."
 
 
-"DOTA_Tooltip_ability_ability_ensnaretower_ensnare"                               "Traps the target with a net, rendering it incapable of moving.\n\nImmobilizes enemy trolls for 3.25 seconds and 8 seconds on animals"
-"DOTA_Tooltip_ability_ability_ensnaretower_ensnare_Description"                   ""
+"DOTA_Tooltip_ability_ability_ensnaretower_ensnare"                               "Ensnare"
+"DOTA_Tooltip_ability_ability_ensnaretower_ensnare_Description"                   "Traps the target with a net, rendering it incapable of moving.\n\nImmobilizes enemy trolls for 3.25 seconds and 8 seconds on animals"
+"DOTA_Tooltip_ability_item_building_kit_tower_ensnare"                            "Ensnare Tower Kit"
+"DOTA_Tooltip_ability_item_building_kit_tower_ensnare_Description"                "Construct a tower which shoots enemies and ensnares them!"
 		
 
 "DOTA_Tooltip_ability_item_building_kit_workshop"		"Workshop Kit"
