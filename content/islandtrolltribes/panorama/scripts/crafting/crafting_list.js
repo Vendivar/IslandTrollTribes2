@@ -4,6 +4,8 @@ var hero = Players.GetPlayerHeroEntityIndex( Game.GetLocalPlayerID() )
 // Global lazy toggle
 GameUI.CustomUIConfig().ToggleCraftingList = function() {
     Root.ToggleClass( "Hidden" )
+
+    GameUI.AcceptWheeling = Root.BHasClass("Hidden")
 }
 
 GameUI.CustomUIConfig().HideCraftingList = function() {
