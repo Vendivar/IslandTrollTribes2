@@ -5,9 +5,11 @@
 
 GameUI.AcceptWheeling = 1 // Accept scrolling by default
 GameUI.DenyWheel = function() {
+    $.Msg("Denying World Scrolling")
     GameUI.AcceptWheeling = 0;
 }
 
 GameUI.AcceptWheel = function() {
+    $.Msg("Accepting World Scrolling")
     GameUI.AcceptWheeling = 1;
 }

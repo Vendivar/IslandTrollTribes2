@@ -159,12 +159,13 @@ function ManageBuildHelperMouseEvents(eventName, arg) {
 
     }
 
-    if (eventName === "wheeled" && GameUI.AcceptWheeling)
-    {
-        var value = arg == 1 ? -10 : 10;
-        ZoomEvent({zoom_distance: cameraDistance+value})
-        return CONSUME_EVENT;  
-    }
+    if (eventName === "wheeled")
+        if (GameUI.AcceptWheeling) {
+            var value = arg == 1 ? -10 : 10;
+            ZoomEvent({zoom_distance: cameraDistance+value})
+            $.Msg("Wheeling accepted. Current camera distance: "+cameraDistance)
+            return CONSUME_EVENT;  
+        } else $.Msg("Wheeling denied.")
 
     return CONTINUE_PROCESSING_EVENT;
 }

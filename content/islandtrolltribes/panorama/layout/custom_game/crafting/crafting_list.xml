@@ -7,7 +7,7 @@
         <include src="file://{resources}/scripts/crafting/crafting.js" />
         <include src="file://{resources}/scripts/crafting/crafting_list.js" />
     </scripts>
-    <Panel class="CraftingRoot">
+    <Panel class="CraftingRoot" onmouseover="GameUI.DenyWheel()" onmouseout="GameUI.AcceptWheel()">
         <Panel id="CraftingTitlePanel">
             <Label id="CraftingListTitle" text="#itt_craft_menu" />
             <Image id="CloseIcon" onactivate="CloseList()"/>

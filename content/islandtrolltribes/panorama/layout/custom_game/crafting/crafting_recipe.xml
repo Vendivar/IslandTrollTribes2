@@ -5,7 +5,7 @@
     <scripts>
         <include src="file://{resources}/scripts/crafting/crafting_recipe.js" />
     </scripts>
-    <Panel class="CraftingRecipe" onmouseover="GameUI.DenyWheel()" onmouseout="GameUI.AcceptWheel()">
+    <Panel class="CraftingRecipe">
         
     </Panel>
 </root>
