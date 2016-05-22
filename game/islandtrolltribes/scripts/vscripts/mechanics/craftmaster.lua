@@ -3,9 +3,11 @@ if not CraftMaster then
 end
 
 function CraftMaster:Spawn()
-    local position = Vector(0,0,388) --TODO: use an info_target entity on the maps instead
+    local ent = Entities:FindByName(nil, "craftmaster")
+    local position = ent and ent:GetAbsOrigin() or Vector(0,0,388)
+    print("Spawning CraftMaster at "..VectorString(position))
 
-    self.unit = CreateUnitByName("npc_building_craftmaster", position, true, nil, nil, DOTA_TEAM_NEUTRALS)
+    self.unit = BuildingHelper:PlaceBuilding(-1, "npc_building_craftmaster", position)
     self.unit:AddNewModifier(self.unit, nil, "modifier_invulnerable", {})
     self.currentOwner = DOTA_TEAM_NEUTRALS
     self.radius = 600
