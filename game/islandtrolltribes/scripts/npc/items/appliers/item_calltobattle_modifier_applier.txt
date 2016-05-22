@@ -12,7 +12,7 @@
 		"modifier_calltobattle"
 		{
 			"Passive"	"1"
-			"IsHidden"	"1"
+			"IsHidden"	"0"
 			"IsDebuff"	"0"
 			"Properties"
 			{

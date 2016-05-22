@@ -5927,7 +5927,7 @@
 			//How close should I pull?
 			{
 				"var_type"		"FIELD_FLOAT"
-				"pull_scale"	"1.0"
+				"pull_scale"	"3.0"
 			}
 	    }
 	
@@ -6784,30 +6784,28 @@
 	
 		"AbilitySpecial"
 		{
-			"01"
+	        "01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"minus_armor"	"-1 -2 -3"
+			}
+			"02"
 			{
 				"var_type"	"FIELD_FLOAT"
 				"duration"	"15.0 20.0 25.0"
 			}
 	
-			"02"
+			"03"
 			{
 				"var_type"	"FIELD_FLOAT"
 				"duration_creep"	"30.0"
 			}
 	
-			"03"
+			"04"
 			{
 				"var_type"	"FIELD_FLOAT"
 				"cooldown"	"45.0 40.0 35.0"
 			}
-	
-			"04"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"minus_armor"	"-1 -2 -3"
-			}
-	
 			"05"
 			{
 				"var_type"	"FIELD_INTEGER"
@@ -7896,6 +7894,7 @@
 				"EffectName"	"mage.sap"
 				"Target" 		"TARGET"
 			}
+	        
 			"FireEffect"
 			{
 				"EffectName"		"particles/units/heroes/hero_lich/lich_dark_ritual.vpcf"

@@ -43,7 +43,7 @@
 		//How close should I pull?
 		{
 			"var_type"		"FIELD_FLOAT"
-			"pull_scale"	"1.0"
+			"pull_scale"	"3.0"
 		}
     }
 

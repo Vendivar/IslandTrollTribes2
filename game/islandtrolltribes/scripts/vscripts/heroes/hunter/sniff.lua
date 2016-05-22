@@ -6,6 +6,7 @@ function SniffInit(keys)
     else
         SendErrorMessage(caster:GetPlayerOwnerID(),"#invalid_telegatherer_target")
         caster:Interrupt()
+        ability:StartCooldown(1.0)
     end
 end
 

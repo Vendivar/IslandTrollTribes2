@@ -257,7 +257,7 @@
 
 
 "DOTA_Tooltip_Ability_ability_beastmaster_calltobattle"		"Call to Battle"
-"DOTA_Tooltip_Ability_ability_beastmaster_calltobattle_armor"		"+ARMOR:"
+"DOTA_Tooltip_Ability_ability_beastmaster_calltobattle_armor"		"ARMOR:"
 "DOTA_Tooltip_Ability_ability_beastmaster_calltobattle_damage"		"%DAMAGE:"
 "DOTA_Tooltip_Ability_ability_beastmaster_calltobattle_Description"		"A howl which temporarily increases the move speed, armor, and damage of all pets under your control for 6 seconds."
 "DOTA_Tooltip_Ability_ability_beastmaster_calltobattle_movespeed"		"%MOVESPEED:"
@@ -736,15 +736,15 @@
 "DOTA_Tooltip_ability_ability_mage_freezingblast_heatloss"		"HEATLOSS:"
 "DOTA_Tooltip_Ability_ability_mage_freezingblast_Description"		"Deals damage to all trolls in a 300 AoE. Units hit are slowed and lose extra heat over time over 25 seconds. Standing next to a fire removes the cold buff negating the heat loss."
 "DOTA_Tooltip_ability_ability_mage_freezingblast_Moveslow"		"%MOVE SLOW:"
-"DOTA_Tooltip_Ability_ability_mage_giganegativeblast"		"Giga Negative Blast"
-"DOTA_Tooltip_Ability_ability_mage_giganegativeblast_Description"		"Enhanced version of a mage classic. Deals damage and slows the target.\n\nDeals 45 damage to the main target and 15 damage to all enemies in a 250 AoE\nSlows movement speed by 15%\nSlow lasts 3 seconds on Trolls and 5 seconds on Animals"
-"DOTA_Tooltip_ability_ability_mage_giganegativeblast_giga_negative_blast_duration_creep"		"GIGA NEGATIVE BLAST DURATION CREEP:"
-"DOTA_Tooltip_ability_ability_mage_giganegativeblast_giga_negative_blast_duration_troll"		"GIGA NEGATIVE BLAST DURATION TROLL:"
+
+
+
+
 "DOTA_Tooltip_Ability_ability_mage_hypnosis"		"Hypnosis"
 "DOTA_Tooltip_ability_ability_mage_hypnosis_damage"		"DAMAGE:"
 "DOTA_Tooltip_Ability_ability_mage_hypnosis_Description"		"Puts an enemy in a special form of sleep that can be used with Dream Eater.\n<font color='#777777'>Hold ALT to view more information.</font>"
 "DOTA_Tooltip_ability_ability_mage_hypnosis_duration"		"DURATION:"
-"DOTA_Tooltip_ability_ability_mage_hypnosis_duration_creep"		"DURATION CREEP:"
+"DOTA_Tooltip_ability_ability_mage_hypnosis_duration_creep"		"CREEP DURATION:"
 "DOTA_Tooltip_ability_ability_mage_hypnosis_heat_removed"		"HEAT REMOVED:"
 "DOTA_Tooltip_ability_ability_mage_hypnosis_mana_restored"		"+MANA RESTORED:"
 "DOTA_Tooltip_Ability_ability_mage_hypnosis_Note0"		"Puts enemy to sleep for 5 seconds, making him invulnerable. As with other sleep spells, attacking him will wake him up.\nDeals pure damage to the target and restores 75 mana to the enemy.\nRemoves 8 heat from the enemy.\nPlaces a buff called 'Hypnotized' on the enemy for the duration, that allows you to cast Dream Eater\nCan be used on animals."
@@ -776,9 +776,8 @@
 
 "DOTA_Tooltip_Ability_ability_mage_maddeningdischarge"		"Maddening Discharge"
 "DOTA_Tooltip_ability_ability_mage_maddeningdischarge_damage"		"DAMAGE:"
-"DOTA_Tooltip_Ability_ability_mage_maddeningdischarge_Description"		"Deals damage and ministuns for the duration in short bursts of 0.5 seconds.\n\nDAMAGE: <font color='#777777'>15</font>\nMINI-STUN DURATION: <font color='#777777'>0.1</font>"
+"DOTA_Tooltip_Ability_ability_mage_maddeningdischarge_Description"		"Deals damage and ministuns for the duration in short bursts of 0.5 seconds."
 "DOTA_Tooltip_ability_ability_mage_maddeningdischarge_duration"		"DURATION:"
-"DOTA_Tooltip_ability_ability_mage_maddeningdischarge_modifier_dischargestun"		"MODIFIER DISCHARGESTUN:"
 "DOTA_Tooltip_ability_ability_mage_maddeningdischarge_seizure_ministun"		"SEIZURE MINISTUN:"
 
 
@@ -840,21 +839,6 @@
 "DOTA_Tooltip_modifier_pumpup_Description"		"Stronger.. faster.. bigger.. and now with more red glow."
 
 
-
-"DOTA_Tooltip_ability_ability_mage_quantum_nulldamage"		"Quantum Nulldamage"
-"DOTA_Tooltip_ability_ability_mage_quantum_nulldamage_Description"		""
-"DOTA_Tooltip_ability_ability_mage_quantum_nulldamage_quantum_null_duration_creep"		"QUANTUM NULL DURATION CREEP:"
-"DOTA_Tooltip_ability_ability_mage_quantum_nulldamage_quantum_null_duration_troll"		"QUANTUM NULL DURATION TROLL:"
-"DOTA_Tooltip_Ability_ability_mage_quantumnulldamage"		"Quantum Null Damage"
-"DOTA_Tooltip_Ability_ability_mage_quantumnulldamage_Description"		"Enhanced version of a mage classic.\nSlows movement speed and attack speeds and reduces the target's damage output."
-"DOTA_Tooltip_modifier_quantum_nulldamage_creep"		"Quantum Nulldamage (Creep)"
-"DOTA_Tooltip_modifier_quantum_nulldamage_creep_Description"		"Movement speed slowed by 10%% and attack speed slowed by 25%% also dealing 55%% less damage!"
-"DOTA_Tooltip_modifier_quantum_nulldamage_troll"		"Quantum Null Damage (Troll)"
-"DOTA_Tooltip_modifier_quantum_nulldamage_troll_Description"		"Movement speed slowed by 10%% and attack speed slowed by 25%% also dealing 55%% less damage!"
-"DOTA_Tooltip_ability_ability_mage_quantum_nulldamage_damage"                     "DAMAGE:"
-"DOTA_Tooltip_ability_ability_mage_quantum_nulldamage_attackspeed"                "ATTACKSPEED:"
-"DOTA_Tooltip_ability_ability_mage_quantum_nulldamage_movespeed"                  "MOVESPEED:"
-	
 
 
 
@@ -937,6 +921,32 @@
 "DOTA_Tooltip_modifier_giga_negativeblast_Description"		""
 
 
+"DOTA_Tooltip_Ability_ability_mage_giganegativeblast"		"Giga Negative Blast"
+"DOTA_Tooltip_Ability_ability_mage_giganegativeblast_Description"		"Enhanced version of a mage classic. Deals damage and slows the target in a 250 AOE.\n\nDeals 45 damage to the main target and 15 damage to all enemies in a 250 AoE. The debuff lasts longer on animals."
+"DOTA_Tooltip_ability_ability_mage_giganegativeblast_giga_negative_blast_duration_creep"		"CREEP DURATION:"
+"DOTA_Tooltip_ability_ability_mage_giganegativeblast_giga_negative_blast_duration_troll"		"TROLL DURATION:"
+
+"DOTA_Tooltip_ability_ability_mage_giganegativeblast_moveslow"		    "%MOVE SLOW:"
+"DOTA_Tooltip_ability_ability_mage_giganegativeblast_secondarydamage"   "AOE SECONDARY DAMAGE:"
+"DOTA_Tooltip_ability_ability_mage_giganegativeblast_primarydamage"		"PRIMARY TARGET DAMAGE:"
+"DOTA_Tooltip_ability_ability_mage_giganegativeblast_radius"            "RADIUS:"
+
+
+"DOTA_Tooltip_ability_ability_mage_quantum_nulldamage"		"Quantum Null Damage"
+"DOTA_Tooltip_ability_ability_mage_quantum_nulldamage_Description"		"Enchanced version of the null damage spell. Slows movement speed and reduces the target output greatly."
+"DOTA_Tooltip_ability_ability_mage_quantum_nulldamage_quantum_null_duration_creep"		"CREEP DURATION:"
+"DOTA_Tooltip_ability_ability_mage_quantum_nulldamage_quantum_null_duration_troll"		"TROLL DURATION:"
+"DOTA_Tooltip_Ability_ability_mage_quantumnulldamage"		"Quantum Null Damage"
+"DOTA_Tooltip_Ability_ability_mage_quantumnulldamage_Description"		"Enhanced version of a mage classic.\nSlows movement speed and attack speeds and reduces the target's damage output."
+"DOTA_Tooltip_modifier_quantum_nulldamage_creep"		"Quantum Nulldamage (Creep)"
+"DOTA_Tooltip_modifier_quantum_nulldamage_creep_Description"		"Movement speed slowed by 10%% and attack speed slowed by 25%% also dealing 55%% less damage!"
+"DOTA_Tooltip_modifier_quantum_nulldamage_troll"		"Quantum Null Damage (Troll)"
+"DOTA_Tooltip_modifier_quantum_nulldamage_troll_Description"		"Movement speed slowed by 10%% and attack speed slowed by 25%% also dealing 55%% less damage!"
+"DOTA_Tooltip_ability_ability_mage_quantum_nulldamage_damage"                     "%DAMAGE REDUCTION:"
+"DOTA_Tooltip_ability_ability_mage_quantum_nulldamage_attackspeed"                "%ATTACK SPEED:"
+"DOTA_Tooltip_ability_ability_mage_quantum_nulldamage_movespeed"                  "%MOVE SPEED:"
+	
+
 "DOTA_Tooltip_Ability_modifier_jealousy"		"Jealous"
 "DOTA_Tooltip_Ability_modifier_jealousy"		"Forcefully attacking in a jealous rage!"
 
@@ -983,7 +993,7 @@
 "DOTA_Tooltip_Ability_ability_hunter_demoralizingwarcry_Description"		"Disarms opponents for 2 seconds. Also reduces opponent's damage seconds afterwards."
 "DOTA_Tooltip_ability_ability_hunter_demoralizingwarcry_disarm_duration"		"DISARM DURATION:"
 "DOTA_Tooltip_ability_ability_hunter_demoralizingwarcry_minus_armor"		"ARMOR REDUCTION:"
-"DOTA_Tooltip_ability_ability_hunter_demoralizingwarcry_minus_damage"		"DAMAGE REDUCTION:"
+"DOTA_Tooltip_ability_ability_hunter_demoralizingwarcry_minus_damage"		"-DAMAGE REDUCTION:"
 
 "DOTA_Tooltip_modifier_demoralizing_warcry1"		"Demoralizing Warcry1"
 "DOTA_Tooltip_modifier_demoralizing_warcry1_Description"		""
@@ -1030,10 +1040,9 @@
 "DOTA_Tooltip_Ability_ability_hunter_placetrackingbeacon"		"Place Tracking Beacon"
 "DOTA_Tooltip_Ability_ability_hunter_placetrackingbeacon_Description"		"Permanently places a tracking beacon on an enemy. The beacon cannot be removed with a Cure All."
 "DOTA_Tooltip_ability_ability_hunter_placetrackingbeacon_duration"                "DURATION:"
-"DOTA_Tooltip_ability_ability_hunter_placetrackingbeacon_duration_creep"          "DURATION CREEP:"
+"DOTA_Tooltip_ability_ability_hunter_placetrackingbeacon_duration_creep"          "CREEP DURATION:"
 "DOTA_Tooltip_ability_ability_hunter_placetrackingbeacon_cooldown"                "COOLDOWN:"
-"DOTA_Tooltip_ability_ability_hunter_placetrackingbeacon_minus_armor"             "MINUS ARMOR:"
-"DOTA_Tooltip_ability_ability_hunter_placetrackingbeacon_required_level"          "REQUIRED LEVEL:"
+"DOTA_Tooltip_ability_ability_hunter_placetrackingbeacon_minus_armor"             "ARMOR REDUCTION:"
 
 
 "DOTA_Tooltip_Ability_ability_hunter_querybeacon"		"Query Beacon"
@@ -1831,6 +1840,9 @@
 "DOTA_Tooltip_ability_item_boat_building_kit_trap_ensnare_Description"		"A clever trap placed to aid the trapping of wild animals, or even an enemy troll if you ask nicely."
 "DOTA_Tooltip_ability_item_boat_building_kit_trap_ensnare_Lore"		"Despised by animal-rights activists."
 "DOTA_Tooltip_ability_item_boat_building_kit_trap_ensnare_Note0"		"Ensnare: (auto cast)\n    ò Immobilizes trolls for 3.25s, animals for 8s.\n    ò 10s cooldown.\nGet Corpse: (autocast)\n    ò Picks up nearby corpse. Max 8."
+"DOTA_Tooltip_ability_ability_ensnaretrap_ensnare_range"                          "RANGE:"
+"DOTA_Tooltip_ability_ability_ensnaretrap_ensnare_duration_creep"                 "CREEP DURATION:"
+"DOTA_Tooltip_ability_ability_ensnaretrap_ensnare_damage_per_second"              "DAMAGE PER SECOND:"
 
 "DOTA_Tooltip_ability_item_boat_building_kit_workshop"		"Workshop Kit"
 "DOTA_Tooltip_ability_item_boat_building_kit_workshop_Description"		"An advanced building with all sorts of tools to make advanced equipment and weapons."
@@ -1930,8 +1942,8 @@
 "DOTA_Tooltip_ability_item_boat_rock_dark_Note0"		"\n\n-Hatchery Transmutable-"
 "DOTA_Tooltip_ability_item_boat_scroll_cyclone"		"Scroll of Cyclone"
 "DOTA_Tooltip_ability_item_boat_scroll_cyclone_Description"		"ACTIVE: Cyclone - Flings an enemy into the air, caught in a cyclone. keeping them out of combat for a short time.\n<font color='#777777'>Hold ALT to view more information.</font>\n\nThis scroll makes the air around it kick up with force even when inactive. The scroll speaks of being capable of directing the force of wind to an area"
-"DOTA_Tooltip_ability_item_boat_scroll_cyclone_duration_creep"		"DURATION CREEP:"
-"DOTA_Tooltip_ability_item_boat_scroll_cyclone_duration_hero"		"DURATION HERO:"
+"DOTA_Tooltip_ability_item_boat_scroll_cyclone_duration_creep"		"CREEP DURATION:"
+"DOTA_Tooltip_ability_item_boat_scroll_cyclone_duration_hero"		"HERO DURATION:"
 "DOTA_Tooltip_ability_item_boat_scroll_cyclone_Lore"		"Contains a bitterant to discourage abuse."
 "DOTA_Tooltip_ability_item_boat_scroll_cyclone_Note0"		"CD 30s\nRange 500\nTosses an enemy hero up into the air, keeping them out of combat for 6 seconds. Affects other units for 10 seconds."
 "DOTA_Tooltip_ability_item_boat_scroll_cyclone_range"		"RANGE:"
@@ -1940,8 +1952,8 @@
 "DOTA_Tooltip_ability_item_boat_scroll_entangling"		"Scroll of Entangling Roots"
 "DOTA_Tooltip_ability_item_boat_scroll_entangling_damage_per_second"		"DAMAGE PER SECOND:"
 "DOTA_Tooltip_ability_item_boat_scroll_entangling_Description"		"ACTIVE: Entangle - Immobilizes a target, dealing damage.\n<font color='#777777'>Hold ALT to view more information.</font>\n\nAn old piece of parchment that speaks on the properties of controlling roots and vines."
-"DOTA_Tooltip_ability_item_boat_scroll_entangling_duration_creep"		"DURATION CREEP:"
-"DOTA_Tooltip_ability_item_boat_scroll_entangling_duration_hero"		"DURATION HERO:"
+"DOTA_Tooltip_ability_item_boat_scroll_entangling_duration_creep"		"CREEP DURATION:"
+"DOTA_Tooltip_ability_item_boat_scroll_entangling_duration_hero"		"HERO DURATION:"
 "DOTA_Tooltip_ability_item_boat_scroll_entangling_Lore"		"The parchment seemingly calls to it's rooted brethren."
 "DOTA_Tooltip_ability_item_boat_scroll_entangling_Note0"		"CD 60s\nRange 450\nImmobilizes target dealing 5 damage per second for 4 seconds on heroes and 8 seconds on normal enemies."
 "DOTA_Tooltip_ability_item_boat_scroll_entangling_range"		"RANGE:"
@@ -2401,18 +2413,20 @@
 
 		
 "DOTA_Tooltip_ability_item_gloves_battle"		"Battle Gloves"
-"DOTA_Tooltip_ability_item_gloves_battle_armor"                                   "ARMOR:"
-"DOTA_Tooltip_ability_item_gloves_battle_attack_speed"                            "ATTACK SPEED:"
-"DOTA_Tooltip_ability_item_gloves_battle_all_stats"                               "ALL STATS:"
-"DOTA_Tooltip_ability_item_gloves_battle_crit_chance"                             "CRIT CHANCE:"
-"DOTA_Tooltip_ability_item_gloves_battle_crit_bonus"                              "CRIT BONUS:"
-"DOTA_Tooltip_ability_item_potion_twin_island_duration"                           "DURATION:"
-
-		
+"DOTA_Tooltip_ability_item_gloves_battle_armor"                                   "+ARMOR:"
+"DOTA_Tooltip_ability_item_gloves_battle_attack_speed"                            "%ATTACK SPEED:"
+"DOTA_Tooltip_ability_item_gloves_battle_all_stats"                               "+ALL STATS:"
+"DOTA_Tooltip_ability_item_gloves_battle_crit_chance"                             "%CRIT CHANCE:"
+"DOTA_Tooltip_ability_item_gloves_battle_crit_bonus"                              "%CRIT BONUS:"
 "DOTA_Tooltip_ability_item_gloves_battle_Description"		"PASSIVE: Gives a bonus to armor and attack speed, as well as heat every 35 seconds.\n\nMade for battle, these heavily armored gloves enable the user to perform more advanced combat maneuvers, sometimes causing massive damage on attack."
 "DOTA_Tooltip_ability_item_gloves_battle_heat"		"HEAT PER TICK:"
 "DOTA_Tooltip_ability_item_gloves_battle_Lore"		"Not ''gloves'' so much as hand-held murder tools."
 "DOTA_Tooltip_ability_item_gloves_battle_tick_rate"		"TICK RATE:"
+
+
+"DOTA_Tooltip_ability_item_potion_twin_island_duration"                           "DURATION:"
+
+		
 
 
 
@@ -2605,7 +2619,7 @@
 "DOTA_Tooltip_ability_item_net_basic_max_stacks"		                          "MAX STACKS:"
 "DOTA_Tooltip_ability_item_net_basic_Note0"		                                  "CD 15s\nImmobilizes trolls for 5 seconds, or animals for 10 seconds."
 "DOTA_Tooltip_ability_item_net_max_stacks"		                                  "MAX STACKS:"
-"DOTA_Tooltip_ability_item_net_basic_duration_hero"                               "DURATION HERO:"
+"DOTA_Tooltip_ability_item_net_basic_duration_hero"                               "HERO DURATION:"
 "DOTA_Tooltip_ability_item_net_basic_duration_animal"                             "DURATION ANIMAL:"
 "DOTA_Tooltip_ability_item_net_basic_damage"                                      "DAMAGE:"
 
@@ -2677,7 +2691,7 @@
 "DOTA_Tooltip_ability_item_potion_drunk_Description"		"ACTIVE: Use potion to intoxicate your target making them silenced, as well as slowing them and cause their attacks to miss.\n<font color='#777777'>Hold ALT to view more information.</font>\n\nUltra potent alcohol, that on contact with the skin, causes inebriation. Reduces movement speed and causes attacks to miss. "
 "DOTA_Tooltip_ability_item_potion_drunk_drunk_charges"		"CHARGES:"
 "DOTA_Tooltip_ability_item_potion_drunk_drunk_duration_creep"		"DRUNK DURATION CREEP:"
-"DOTA_Tooltip_ability_item_potion_drunk_drunk_duration_hero"		"DRUNK DURATION HERO:"
+"DOTA_Tooltip_ability_item_potion_drunk_drunk_duration_hero"		"DRUNK HERO DURATION:"
 "DOTA_Tooltip_ability_item_potion_drunk_drunk_miss"		"%MISS CHANCE:"
 "DOTA_Tooltip_ability_item_potion_drunk_drunk_speed"		"%SPEED REDUCTION:"
 "DOTA_Tooltip_ability_item_potion_drunk_Lore"		"A toast to the trolls that we fight best. We fight them best in a big gore fest. We'll kill 'em sitting, standing or even lying; hell, if they had wings we'd kill 'em flying."
@@ -2778,16 +2792,16 @@
 "DOTA_Tooltip_ability_item_scales_hydra_total_health"		"TOTAL HEALTH:"
 "DOTA_Tooltip_ability_item_scroll_cyclone"		"Scroll of Cyclone"
 "DOTA_Tooltip_ability_item_scroll_cyclone_Description"		"ACTIVE: Cyclone - Flings an enemy into the air, caught in a cyclone. keeping them out of combat for a short time.\n<font color='#777777'>Hold ALT to view more information.</font>\n\nThis scroll makes the air around it kick up with force even when inactive. The scroll speaks of being capable of directing the force of wind to an area"
-"DOTA_Tooltip_ability_item_scroll_cyclone_duration_creep"		"DURATION CREEP:"
-"DOTA_Tooltip_ability_item_scroll_cyclone_duration_hero"		"DURATION HERO:"
+"DOTA_Tooltip_ability_item_scroll_cyclone_duration_creep"		"CREEP DURATION:"
+"DOTA_Tooltip_ability_item_scroll_cyclone_duration_hero"		"HERO DURATION:"
 "DOTA_Tooltip_ability_item_scroll_cyclone_Lore"		"Contains a bitterant to discourage abuse."
 "DOTA_Tooltip_ability_item_scroll_cyclone_Note0"		"CD 30s\nRange 500\nTosses an enemy hero up into the air, keeping them out of combat for 6 seconds. Affects other units for 10 seconds."
 "DOTA_Tooltip_ability_item_scroll_cyclone_range"		"RANGE:"
 "DOTA_Tooltip_ability_item_scroll_entangling"		"Scroll of Entangling Roots"
 "DOTA_Tooltip_ability_item_scroll_entangling_damage_per_second"		"DAMAGE PER SECOND:"
 "DOTA_Tooltip_ability_item_scroll_entangling_Description"		"ACTIVE: Entangle - Immobilizes a target, dealing damage.\n<font color='#777777'>Hold ALT to view more information.</font>\n\nAn old piece of parchment that speaks on the properties of controlling roots and vines."
-"DOTA_Tooltip_ability_item_scroll_entangling_duration_creep"		"DURATION CREEP:"
-"DOTA_Tooltip_ability_item_scroll_entangling_duration_hero"		"DURATION HERO:"
+"DOTA_Tooltip_ability_item_scroll_entangling_duration_creep"		"CREEP DURATION:"
+"DOTA_Tooltip_ability_item_scroll_entangling_duration_hero"		"HERO DURATION:"
 "DOTA_Tooltip_ability_item_scroll_entangling_Lore"		"The parchment seemingly calls to it's rooted brethren."
 "DOTA_Tooltip_ability_item_scroll_entangling_Note0"		"CD 60s\nRange 450\nImmobilizes target dealing 5 damage per second for 4 seconds on heroes and 8 seconds on normal enemies."
 "DOTA_Tooltip_ability_item_scroll_entangling_range"		"RANGE:"
@@ -3157,7 +3171,7 @@
 "DOTA_Tooltip_ability_ability_ensnaretrap_ensnare"		"Ensnare"
 "DOTA_Tooltip_ability_ability_ensnaretrap_ensnare_Description"		""
 "DOTA_Tooltip_ability_ability_ensnaretrap_ensnare_duration_animal"		"DURATION ANIMAL:"
-"DOTA_Tooltip_ability_ability_ensnaretrap_ensnare_duration_hero"		"DURATION HERO:"
+"DOTA_Tooltip_ability_ability_ensnaretrap_ensnare_duration_hero"		"HERO DURATION:"
 "DOTA_Tooltip_Ability_ability_get_corpse"		"Get Corpse"
 "DOTA_Tooltip_Ability_ability_get_corpse_Description"		"Picks up a nearby corpse. Can be auto-cast which will continuously pick up meat around the building until at full capacity (8 corpses) or until no more corpses remain."
 
@@ -3260,6 +3274,9 @@
 "DOTA_Tooltip_ability_hawk_passive"                                           "Hawk Passive"
 "DOTA_Tooltip_ability_ability_beastmaster_fleaattackaura_cooldown"            "COOLDOWN:"
 
+"DOTA_Tooltip_modifier_hunting_ensnare"                                           "Hunting Ensnare"
+"DOTA_Tooltip_modifier_hunting_ensnare_Description"                               ""
+
 	
     
 "DOTA_Tooltip_modifier_regen_passive"		"Regen Normalizer"
@@ -3291,6 +3308,8 @@
 
 "DOTA_Tooltip_modifier_meat_passive"		"Raw Meat"
 "DOTA_Tooltip_modifier_meat_passive_Description"		"Current amount of raw meat you're carrying. Can carry up to 8."
+
+
 
 // HUD stuff
 "DOTA_Tooltip_ability_empty1"		"Empty"
