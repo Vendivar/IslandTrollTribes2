@@ -169,13 +169,13 @@
 		"05"
 		{
 			"var_type"	"FIELD_FLOAT"
-			"negative_blast_duration_troll"	"3"
+			"giga_negative_blast_duration_troll"	"3"
 		}
 
 		"06"
 		{
 			"var_type"	"FIELD_FLOAT"
-			"negative_blast_duration_creep"	"5"
+			"giga_negative_blast_duration_creep"	"5"
 		}
 
 	}

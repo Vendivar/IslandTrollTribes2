@@ -247,11 +247,10 @@
 
 
 "DOTA_Tooltip_Ability_ability_beastmaster_bearform"		"Shapeshift to Bear Form"
-"DOTA_Tooltip_ability_ability_beastmaster_bearform_attack_damage"		"ATTACK DAMAGE:"
-"DOTA_Tooltip_ability_ability_beastmaster_bearform_attack_speed"		"ATTACK SPEED:"
-"DOTA_Tooltip_ability_ability_beastmaster_bearform_attack_damage"		"DAMAGE BONUS:"
+"DOTA_Tooltip_ability_ability_beastmaster_bearform_attack_speed"		"%ATTACK SPEED:"
+"DOTA_Tooltip_ability_ability_beastmaster_bearform_attack_damage"		"+DAMAGE BONUS:"
 "DOTA_Tooltip_ability_ability_beastmaster_bearform_health_bonus"		"HEALTH BONUS:"
-"DOTA_Tooltip_ability_ability_beastmaster_bearform_move_speed"		    "MOVE SPEED:"
+"DOTA_Tooltip_ability_ability_beastmaster_bearform_move_speed"		    "%MOVE SPEED:"
 "DOTA_Tooltip_ability_ability_beastmaster_bearform_energy_drain"	    "%ENERGY DEGEN RATE:"
 "DOTA_Tooltip_Ability_ability_beastmaster_bearform_Description"		"Shapeshifts into a Bear. Drains energy at a faster rate. Gains additional abilities."
 "DOTA_Tooltip_Ability_ability_beastmaster_bearform_Note0"		    "The bonus HP is +50 HP ontop of your max HP. By shapeshifting back if you have less then 50 HP you will die upon being shapeshifted."
@@ -280,15 +279,24 @@
 
 
 "DOTA_Tooltip_Ability_ability_beastmaster_elkform"		            "Shapeshift to Elk form"
-"DOTA_Tooltip_ability_ability_beastmaster_elkform_attack_damage"	"$+ATTACK DAMAGE:"
-"DOTA_Tooltip_ability_ability_beastmaster_elkform_attack_speed"		"$%+ATTACK SPEED:"
-"DOTA_Tooltip_ability_ability_beastmaster_elkform_magic_resist"		"%+MAGIC RESIST:"
+"DOTA_Tooltip_ability_ability_beastmaster_elkform_attack_damage"	"+ATTACK DAMAGE:"
+"DOTA_Tooltip_ability_ability_beastmaster_elkform_attack_speed"		"%ATTACK SPEED:"
+"DOTA_Tooltip_ability_ability_beastmaster_elkform_magic_resist"		"%MAGIC RESIST:"
 "DOTA_Tooltip_ability_ability_beastmaster_elkform_degen_rate"		"%ENERGY DEGEN RATE:"
 "DOTA_Tooltip_Ability_ability_beastmaster_elkform_Description"		"Shapeshifts into an Elk altering the shape shifter's stats. Drains energy at a 2x rate."
 "DOTA_Tooltip_ability_ability_beastmaster_elkform_move_speed"		"MOVE SPEED:"
 "DOTA_Tooltip_modifier_elkform"		"Elkform"
 "DOTA_Tooltip_modifier_elkform_Description"		"Gaining +35 move speed, -4 damage, +10% attack speed, and +25% magic resistance while losing energy at 2x rate"
 
+
+"DOTA_Tooltip_Ability_ability_beastmaster_wolfform"		"Shapeshift to Wolf Form"
+"DOTA_Tooltip_ability_ability_beastmaster_wolfform_attack_damage"		"+ATTACK DAMAGE:"
+"DOTA_Tooltip_ability_ability_beastmaster_wolfform_attack_speed"		"%ATTACK SPEED:"
+"DOTA_Tooltip_ability_ability_beastmaster_wolfform_degen_rate"		"%ENERGY DEGEN RATE:"
+"DOTA_Tooltip_ability_ability_beastmaster_wolfform_move_speed"		"%MOVE SPEED:"
+"DOTA_Tooltip_Ability_ability_beastmaster_wolfform_Description"		"Shapeshifts into a Wolf. Drains energy at a faster rate. Gains additional abilities."
+"DOTA_Tooltip_modifier_wolfform"		                            "Wolf Form"
+"DOTA_Tooltip_modifier_wolfform_Description"		                "Gaining +10 move speed, +2 damage, +5% attack speed, while losing energy at an rate of -2x"
 
 
 "DOTA_Tooltip_Ability_ability_beastmaster_empathicrage"		"Empathic Rage"
@@ -455,15 +463,6 @@
 "DOTA_Tooltip_ability_ability_beastmaster_tamepet2"		"Tame Pet (Enhanced)"
 "DOTA_Tooltip_ability_ability_beastmaster_tamepet2_Description"		"Tames an additional baby animal, placing it under your control, allowing it to grow and aid the beastmaster in combat or use it's special abilities. It will slowly age into upgraded forms (eg. fawn>elk>adult elk). If you have a pet this ability will become unusable until the pet is released/killed.\nAs a pack leader you can now control 2 pets at a time."
 
-
-"DOTA_Tooltip_Ability_ability_beastmaster_wolfform"		"Shapeshift to Wolf Form"
-"DOTA_Tooltip_ability_ability_beastmaster_wolfform_attack_damage"		"ATTACK DAMAGE:"
-"DOTA_Tooltip_ability_ability_beastmaster_wolfform_attack_speed"		"%ATTACK SPEED:"
-"DOTA_Tooltip_ability_ability_beastmaster_wolfform_degen_rate"		"%ENERGY DEGEN RATE:"
-"DOTA_Tooltip_ability_ability_beastmaster_wolfform_move_speed"		"MOVE SPEED:"
-"DOTA_Tooltip_Ability_ability_beastmaster_wolfform_Description"		"Shapeshifts into a Wolf. Drains energy at a faster rate. Gains additional abilities."
-"DOTA_Tooltip_modifier_wolfform"		                            "Wolf Form"
-"DOTA_Tooltip_modifier_wolfform_Description"		                "Gaining +10 move speed, +2 damage, +5% attack speed, while losing energy at an rate of -2x"
 
 
 
@@ -2402,6 +2401,14 @@
 
 		
 "DOTA_Tooltip_ability_item_gloves_battle"		"Battle Gloves"
+"DOTA_Tooltip_ability_item_gloves_battle_armor"                                   "ARMOR:"
+"DOTA_Tooltip_ability_item_gloves_battle_attack_speed"                            "ATTACK SPEED:"
+"DOTA_Tooltip_ability_item_gloves_battle_all_stats"                               "ALL STATS:"
+"DOTA_Tooltip_ability_item_gloves_battle_crit_chance"                             "CRIT CHANCE:"
+"DOTA_Tooltip_ability_item_gloves_battle_crit_bonus"                              "CRIT BONUS:"
+"DOTA_Tooltip_ability_item_potion_twin_island_duration"                           "DURATION:"
+
+		
 "DOTA_Tooltip_ability_item_gloves_battle_Description"		"PASSIVE: Gives a bonus to armor and attack speed, as well as heat every 35 seconds.\n\nMade for battle, these heavily armored gloves enable the user to perform more advanced combat maneuvers, sometimes causing massive damage on attack."
 "DOTA_Tooltip_ability_item_gloves_battle_heat"		"HEAT PER TICK:"
 "DOTA_Tooltip_ability_item_gloves_battle_Lore"		"Not ''gloves'' so much as hand-held murder tools."
@@ -2792,6 +2799,9 @@
 "DOTA_Tooltip_ability_item_scroll_fireball_Note0"		"CD 32s\nRange: 800\nFireball spell does 40 damage and 1.5s stun."
 "DOTA_Tooltip_ability_item_scroll_fireball_range"		"RANGE:"
 "DOTA_Tooltip_ability_item_scroll_fireball_stun_duration"		"STUN DURATION:"
+"DOTA_Tooltip_ability_item_scroll_boulder"                                        "Boulder Scroll"
+"DOTA_Tooltip_ability_item_scroll_boulder_Description"                            "Channel for 1.5 seconds to summon a boulder building at the point location. Upon landing it will knock back and deal damage in a small area stunning for 0.25 seconds. The building has 150 hp and 1 armor lasting for 25 seconds and  Recommended for emergency base defense! Once destroyed it is gone for good and has a 10% chance to drop 1 stone."
+		
 "DOTA_Tooltip_ability_item_scroll_living_dead"		"Scroll of Living Dead"
 "DOTA_Tooltip_ability_item_scroll_living_dead_Description"		"ACTIVE: Summon Skeletons - Summons the spirits of two fallen heroes to attack enemies near the user.\n<font color='#777777'>Hold ALT to view more information.</font>\n\nAn ancient dusty scroll with chaotic writing speaks of raising the once living as foot-soldiers from the dead."
 "DOTA_Tooltip_ability_item_scroll_living_dead_Lore"		"What's the difference between a crazy old troll living naked in a cave covered in bat poop and a wizard?... A piece of parchment."

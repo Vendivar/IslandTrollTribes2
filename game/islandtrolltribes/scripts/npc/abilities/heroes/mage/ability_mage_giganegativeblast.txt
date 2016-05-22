@@ -143,16 +143,36 @@
 		}
 
 	}
-
-	"AbilitySpecial"
+    
+"AbilitySpecial"
 	{
-		"01"
+        "01"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"primarydamage"	"45"
+		}
+		"02"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"secondarydamage"	"15"
+		}
+		"03"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"moveslow"	"-15"
+		}
+		"04"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"radius"	"250"
+		}
+		"05"
 		{
 			"var_type"	"FIELD_FLOAT"
 			"giga_negative_blast_duration_troll"	"3"
 		}
 
-		"02"
+		"06"
 		{
 			"var_type"	"FIELD_FLOAT"
 			"giga_negative_blast_duration_creep"	"5"
