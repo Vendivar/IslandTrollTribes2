@@ -162,7 +162,9 @@
 		"npc_building_craftmaster"		"Craft Master"
 		"npc_building_emp"				"EMP"
 		"npc_building_ensnare_trap"		"Ensnare Trap"
-		
+		"npc_building_tower_ensnare"    "Ensnare Tower"
+		"npc_scroll_boulder"            "Boulder Scroll"
+	
 		"npc_building_fire_basic"		"Basic Fire"
 		"npc_building_fire_mage"		"Mage Fire"
 		"npc_building_hatchery"			"Hatchery"
@@ -586,8 +588,10 @@
 "DOTA_Tooltip_ability_ability_gatherer_findherb"                                  "Find Herb"
 "DOTA_Tooltip_ability_ability_gatherer_findherb_Description"                      "Pings all Herb locations in an area. TOOL TIP IN WORK"
 "DOTA_Tooltip_ability_ability_gatherer_radarextender"                             "Radar extender passive"
-"DOTA_Tooltip_ability_ability_gatherer_radarextender_Description"                 "Tooltip in work"
+"DOTA_Tooltip_ability_ability_gatherer_radarextender_Description"                 "Radar ranged increased by "
 
+"DOTA_Tooltip_modifier_radar_extender"                                            "Radar Extender"
+"DOTA_Tooltip_modifier_radar_extender_Description"                                ""
 		
 		
 
@@ -1026,6 +1030,13 @@
 "DOTA_Tooltip_ability_ability_hunter_greatertrack_minus_armor"		"ARMOR REDUCTION:"
 "DOTA_Tooltip_Ability_ability_hunter_placetrackingbeacon"		"Place Tracking Beacon"
 "DOTA_Tooltip_Ability_ability_hunter_placetrackingbeacon_Description"		"Permanently places a tracking beacon on an enemy. The beacon cannot be removed with a Cure All."
+"DOTA_Tooltip_ability_ability_hunter_placetrackingbeacon_duration"                "DURATION:"
+"DOTA_Tooltip_ability_ability_hunter_placetrackingbeacon_duration_creep"          "DURATION CREEP:"
+"DOTA_Tooltip_ability_ability_hunter_placetrackingbeacon_cooldown"                "COOLDOWN:"
+"DOTA_Tooltip_ability_ability_hunter_placetrackingbeacon_minus_armor"             "MINUS ARMOR:"
+"DOTA_Tooltip_ability_ability_hunter_placetrackingbeacon_required_level"          "REQUIRED LEVEL:"
+
+
 "DOTA_Tooltip_Ability_ability_hunter_querybeacon"		"Query Beacon"
 "DOTA_Tooltip_Ability_ability_hunter_querybeacon_Description"		"Pings the location of the tracking beacon."
 "DOTA_Tooltip_Ability_ability_hunter_sniff"		"Sniff"
@@ -1269,6 +1280,11 @@
 "DOTA_Tooltip_ability_ability_priest_spiritpassive"		"Ability Priest Spiritpassive"
 "DOTA_Tooltip_ability_ability_priest_spiritpassive_Description"		""
 
+"DOTA_Tooltip_modifier_spiritlink"                                                "Spiritlink"
+"DOTA_Tooltip_modifier_spiritlink_Description"                                    ""
+
+
+	
 
 "DOTA_Tooltip_modifier_priest_spiritpassive"		"Priest Sage Spirit"
 "DOTA_Tooltip_modifier_priest_spiritpassive_Description"		"This is the disembodied spirit of the sage!"
@@ -1816,6 +1832,7 @@
 "DOTA_Tooltip_ability_item_boat_building_kit_trap_ensnare_Description"		"A clever trap placed to aid the trapping of wild animals, or even an enemy troll if you ask nicely."
 "DOTA_Tooltip_ability_item_boat_building_kit_trap_ensnare_Lore"		"Despised by animal-rights activists."
 "DOTA_Tooltip_ability_item_boat_building_kit_trap_ensnare_Note0"		"Ensnare: (auto cast)\n    ò Immobilizes trolls for 3.25s, animals for 8s.\n    ò 10s cooldown.\nGet Corpse: (autocast)\n    ò Picks up nearby corpse. Max 8."
+
 "DOTA_Tooltip_ability_item_boat_building_kit_workshop"		"Workshop Kit"
 "DOTA_Tooltip_ability_item_boat_building_kit_workshop_Description"		"An advanced building with all sorts of tools to make advanced equipment and weapons."
 "DOTA_Tooltip_ability_item_boat_building_kit_workshop_Lore"		"Does not come with instructions."
@@ -2047,7 +2064,10 @@
 "DOTA_Tooltip_aura_smokebombslow_Description"                                     "Can't see throw the smoke and you are slowed."
 "DOTA_Tooltip_aura_smokebombcp"                                                   "Smoke Bomb Combat Prevention"
 "DOTA_Tooltip_aura_smokebombcp_Description"                                       "Can't attack! The smoke is too thick."
+"DOTA_Tooltip_ability_ability_smokebomb"                                          "Smokebomb"
+"DOTA_Tooltip_ability_ability_smokebomb_Description"                              "ACTIVE: Throw - Use to create a cloud of smoke, through which no trolls can attack and enemy trolls are slowed for a brief time.\n\nA concoction of specific chemicals with a catalyst that begins when the container breaks, it is the best known method for creating a smoke bomb"
 
+		
 
 		
 
@@ -2205,6 +2225,12 @@
 "DOTA_Tooltip_ability_item_building_kit_trap_ensnare_Description"		"A clever trap placed to aid the trapping of wild animals, or even an enemy troll if you ask nicely."
 "DOTA_Tooltip_ability_item_building_kit_trap_ensnare_Lore"		"Despised by animal-rights activists."
 "DOTA_Tooltip_ability_item_building_kit_trap_ensnare_Note0"		"Ensnare: (auto cast)\n    ò Immobilizes trolls for 3.25s, animals for 8s.\n    ò 10s cooldown.\nGet Corpse: (autocast)\n    ò Picks up nearby corpse. Max 8."
+
+
+"DOTA_Tooltip_ability_ability_ensnaretower_ensnare"                               "Traps the target with a net, rendering it incapable of moving.\n\nImmobilizes enemy trolls for 3.25 seconds and 8 seconds on animals"
+"DOTA_Tooltip_ability_ability_ensnaretower_ensnare_Description"                   ""
+		
+
 "DOTA_Tooltip_ability_item_building_kit_workshop"		"Workshop Kit"
 "DOTA_Tooltip_ability_item_building_kit_workshop_build_duration"		"BUILD DURATION:"
 "DOTA_Tooltip_ability_item_building_kit_workshop_build_time"		"BUILD TIME:"
@@ -2375,17 +2401,15 @@
 "DOTA_Tooltip_ability_item_gem_of_knowledge_exp_bonus"                            "EXP BONUS:"
 
 		
-"DOTA_Tooltip_ability_item_gloves_all_stats"		"+$all"
 "DOTA_Tooltip_ability_item_gloves_battle"		"Battle Gloves"
-"DOTA_Tooltip_ability_item_gloves_battle_all_stats"		"+$all"
-"DOTA_Tooltip_ability_item_gloves_battle_armor"		"+$armor"
-"DOTA_Tooltip_ability_item_gloves_battle_attack_speed"		"%+$attack"
-"DOTA_Tooltip_ability_item_gloves_battle_crit_bonus"		"%+$CRIT BONUS:"
-"DOTA_Tooltip_ability_item_gloves_battle_crit_chance"		"%+$CRIT CHANCE:"
 "DOTA_Tooltip_ability_item_gloves_battle_Description"		"PASSIVE: Gives a bonus to armor and attack speed, as well as heat every 35 seconds.\n\nMade for battle, these heavily armored gloves enable the user to perform more advanced combat maneuvers, sometimes causing massive damage on attack."
 "DOTA_Tooltip_ability_item_gloves_battle_heat"		"HEAT PER TICK:"
 "DOTA_Tooltip_ability_item_gloves_battle_Lore"		"Not ''gloves'' so much as hand-held murder tools."
 "DOTA_Tooltip_ability_item_gloves_battle_tick_rate"		"TICK RATE:"
+
+
+
+
 "DOTA_Tooltip_ability_item_gloves_bear"		"Bear Skin Gloves"
 "DOTA_Tooltip_ability_item_gloves_bear_armor"		"+$armor"
 "DOTA_Tooltip_ability_item_gloves_bear_attack_speed"		"%+$attack"
@@ -2633,12 +2657,12 @@
 "DOTA_Tooltip_ability_item_potion_disease_Lore"		"Almost ironically sterile."
 "DOTA_Tooltip_ability_item_potion_disease_max_stacks"		"MAXIMUM STACKS:"
 "DOTA_Tooltip_ability_item_potion_disease_Note0"		"33% to cast each one of the following:\nò Disease 1: Skin Disease A horrible disease. Deals 3 damage per second with moderate duration. Length: 100\nò Disease 2: Horrible Headache This unit has a horrible headache caused by a bacterial infection. It is transferable and deals 1 damage per second with long duration. Length: 300\nò Disease 3: Fever This unit has been inflicted with fever. A transferable disease that deals 1 damage per second with moderate duration. Length: 150"
-"DOTA_Tooltip_modifier_disease1"		"Disease1"
-"DOTA_Tooltip_modifier_disease1_Description"		""
-"DOTA_Tooltip_modifier_disease2"		"Disease2"
-"DOTA_Tooltip_modifier_disease2_Description"		""
-"DOTA_Tooltip_modifier_disease3"		"Disease3"
-"DOTA_Tooltip_modifier_disease3_Description"		""
+"DOTA_Tooltip_modifier_disease1"		"Disease 1 - Skin Disease"
+"DOTA_Tooltip_modifier_disease1_Description"		"A horrible disease. Deals 3 damage per second with for 100 seconds."
+"DOTA_Tooltip_modifier_disease2"		"Disease 2 - Horrible Headache"
+"DOTA_Tooltip_modifier_disease2_Description"		"This unit has a horrible headache caused by a bacterial infection. It is transferable and deals 1 damage per second for 300 seconds."
+"DOTA_Tooltip_modifier_disease3"		"Disease 3 - Fever"
+"DOTA_Tooltip_modifier_disease3_Description"		"This unit has been inflicted with fever. A transferable disease that deals 1 damage per second for 150 seconds."
 
 
 
@@ -2977,6 +3001,10 @@
 "DOTA_Tooltip_ability_item_weapon_emp_Description"		"ACTIVE: Detonate - The EMP goes off disabling all mechanical defence units in a large area around the caster.\n\nThrough all of your technical expertise you manage to fashion together an EMP that is quite devastating."
 "DOTA_Tooltip_ability_item_weapon_emp_Lore"		"Something feels distinctly ominous about it."
 "DOTA_Tooltip_ability_item_weapon_emp_Note0"		"Disables all mechanical structures in a 1000 AoE around caster.\nLasts 60 seconds"
+"DOTA_Tooltip_ability_item_weapon_emp_duration"                                   "DURATION:"
+"DOTA_Tooltip_ability_item_weapon_emp_max_stacks"                                 "MAX STACKS:"
+"DOTA_Tooltip_ability_item_weapon_emp_radius"                                     "RADIUS:"
+
 
 
 
