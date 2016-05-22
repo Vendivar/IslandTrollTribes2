@@ -142,7 +142,7 @@ function ITT:OnBushThink()
         local rand = RandomInt(-4,4) --randomize between -4 and +4, since the min is 0 with the best rng on the minimum number you will still not get a spawn
         local numItems = #(bush.container:GetAllItems())
         --print("Bush name: "..bush:GetUnitName())
-        if rand + bush.RngWeight >= 5 and numItems <= 6 then
+        if rand + bush.RngWeight >= 5 and numItems < 6 then
             bush.RngWeight = bush.RngWeight - 1 --if spawn succeeds reduce the odds of the next spawn
 
             local bush_name = bush.name
