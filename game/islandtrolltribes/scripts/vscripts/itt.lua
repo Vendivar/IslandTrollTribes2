@@ -347,6 +347,8 @@ function ITT:OnNPCSpawned( keys )
     local spawnedUnit = EntIndexToHScript( keys.entindex )
     --print("spawned unit: ", spawnedUnit:GetUnitName(), spawnedUnit:GetClassname(), spawnedUnit:GetName(), spawnedUnit:GetEntityIndex())
 
+    if spawnedUnit:GetClassname() == "npc_dota_thinker" then return end
+
     if spawnedUnit:IsRealHero() then
         if not spawnedUnit.bFirstSpawned then
             spawnedUnit.bFirstSpawned = true
