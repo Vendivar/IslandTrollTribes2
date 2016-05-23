@@ -11,7 +11,7 @@ function CreateGoldBag(hero)
 
     local pos = hero:GetAbsOrigin()
     local goldBag = CreateItem("item_gold_bag", nil, nil)
-    local pos_launch = pos + RandomVector(RandomInt(50,100))
+    local pos_launch = pos + Vector(64,0,0)
     local goldBagLaunch = CreateItemOnPositionSync(pos, goldBag)
     goldBag:LaunchLoot(false, 300, 1, pos_launch)
 

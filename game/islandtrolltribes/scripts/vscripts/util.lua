@@ -291,3 +291,13 @@ function DebugPrint(...)
         print(...)
     end
 end
+
+function GenerateNumPointsAround(num, center, distance)
+    local points = {}
+    local angle = 360/num
+    for i=0,num-1 do
+        local rotate_pos = center + Vector(1,0,0) * distance
+        table.insert(points, RotatePosition(center, QAngle(0, angle*i, 0), rotate_pos) )
+    end
+    return points
+end

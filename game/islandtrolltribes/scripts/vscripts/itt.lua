@@ -549,45 +549,6 @@ function EnableSpellBookAbilities(hero)
     end
 end
 
---[[
-Utility functions for creating meat with decay time. Arguably would be best to place in another file
-]]
--- Get meat decay time, for now use constant, but later could be affected by buffs/class type
-function GetMeatDecayTime(unitKilled, unitKiller)
-    return 45
-end
-
--- Function to contain logic that modifies food drop rate
-function GetMeatStacksToDrop(baseDrop, unitKilled, unitKiller)
-    return baseDrop
-end
-
--- Creates some raw meat at the specified position and creates timers to make the meat decay.
--- position: location where to spawn the meat (vector)
--- stacks: number of meats to make
--- decayTimeInSec: # of seconds before meat dissapears
--- meatCreateTimestamp: Gametime timestamp of when the meat is created. This is used for create copies of meat with correct decay timers (picking up a meat with full meat means we need to copy)
-function CreateRawMeatAtLoc(position, stacks, decayTimeInSec, meatCreateTimestamp)
-    for i= 1, stacks, 1 do
-        local newItem = CreateItem("item_meat_raw", nil, nil)
-        local physicalItem =  CreateItemOnPositionSync(position + RandomVector(RandomInt(20,100)), newItem)
-        local decayTime = decayTimeInSec
-        physicalItem.spawn_time = meatCreateTimestamp
-        
-        if (decayTime > 0) then
-            Timers(decayTime, function()
-                --TODO: add particle effect to dissapearing meat
-                if (IsValidEntity(physicalItem)) then
-                    UTIL_Remove(physicalItem:GetContainedItem())
-                    UTIL_Remove(physicalItem)
-                    --RemoveUnit(physicalItem)
-                end
-            end)
-        end
-    end
-end
-
-
 function ITT:OnEntityKilled(keys)
     local dropTable = {
         --{"unit_name", {"item_1", drop_chance}, {"mutually_exclusive_item_1", "mutually_exclusive_item_2", drop_chance}},
@@ -671,20 +632,22 @@ function ITT:OnEntityKilled(keys)
         local meatStacks = GetMeatStacksToDrop(meatStacksBase, killedUnit, killer)
         local decayTime = GetMeatDecayTime(killedUnit, killer)
         CreateRawMeatAtLoc(killedUnit:GetOrigin(), meatStacks, decayTime, GameRules:GetGameTime())
-        
-        local newItem = CreateItem("item_bone", nil, nil)
-        CreateItemOnPositionSync(pos + RandomVector(RandomInt(20,100)), newItem)
 
         -- Launch all carried items excluding the fillers
+        local points = GenerateNumPointsAround(killedUnit:GetNumItemsInInventory()+1, pos, 64)
+        local numDrop = 1
         for i=0,5 do
             local item = killedUnit:GetItemInSlot(i)
             if item and item:GetAbilityName() ~= "item_slot_locked" then
                 local clonedItem = CreateItem(item:GetName(), nil, nil)
-                CreateItemOnPositionSync(pos,clonedItem)
-                clonedItem:LaunchLoot(false, 200, 0.75, pos)
+                CreateItemOnPositionSync(points[numDrop],clonedItem)
+                clonedItem:LaunchLoot(false, 200, 0.75, points[numDrop])
                 item:RemoveSelf()
+                numDrop = numDrop + 1
             end
         end
+
+        CreateItemOnPositionSync(points[numDrop], CreateItem("item_bone", nil, nil))
 
         -- Create a grave if respawn is disabled
         local time = math.floor(GameRules:GetGameTime())
