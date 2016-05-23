@@ -26,6 +26,12 @@
 			"EffectName"	"Hero_Clinkz.WindWalk"
 			"Target"		"CASTER"		
 		}
+        "FireSound"
+        {
+        "EffectName"	"Hero_Pugna.Decrepify"
+        "Target"	"TARGET"
+        }
+
 
 	}
 

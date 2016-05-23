@@ -5724,7 +5724,7 @@
 		"Effect"	"particles/econ/items/luna/luna_lucent_rider/luna_mount_lucent_rider_eye_glow_a.vpcf"
 		"AbilityCastRange"	"800"
 		"AbilityCastPoint"	"0.5"
-		"AbilityCooldown"	"1.0"
+		"AbilityCooldown"	"8.0"
 		"ItemCost"	"4"
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
@@ -5768,11 +5768,6 @@
 				"EffectName"	"Hero_Brewmaster.DrunkenHaze.Cast"
 				"Target"		"CASTER"
 			}
-	        
-			"SpendCharge"
-			{
-			}
-	
 		}
 	
 		"OnProjectileHitUnit"
@@ -5808,10 +5803,12 @@
 				"Target"	"TARGET"
 				"EffectName"	"Hero_Brewmaster.DrunkenHaze.Target"
 			}
-	
+	        
+	        
 			"SpendCharge"
 			{
 			}
+	
 	
 		}
 	
