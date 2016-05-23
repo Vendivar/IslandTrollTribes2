@@ -11596,7 +11596,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"ability_priest_healingwave"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT_TARGET"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
 		"AbilityCastPoint"	"0.2"
@@ -11640,6 +11640,7 @@
 				"Bounces"	"7"
 				"BounceRadius"	"3000"
 				"BounceHealingFactor"	"0.9"
+				"Target"	"POINT"
 			}
 	        
 	        "FireSound"
