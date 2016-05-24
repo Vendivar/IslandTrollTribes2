@@ -10,7 +10,7 @@
 			"Passive"	"1"
 			"IsHidden"	"1"
 
-			"EffectName"		"particles/custom/dropped_item_white.vpcf"
+			"EffectName"		"particles/units/heroes/hero_dark_seer/dark_seer_surge_h.vpcf"
 			"EffectAttachType"	"follow_origin"
 
 			"States"
