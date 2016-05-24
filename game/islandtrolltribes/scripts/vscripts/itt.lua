@@ -1062,6 +1062,8 @@ function ITT:OnGameRulesStateChange()
         RandomUnpickedPlayers()
         UnblockMammoth()
         ITT:WinConditionThink()
+        EmitGlobalSound("event")	
+        ShowCustomHeaderMessage("#NoobTimeOver", -1, -1, 5)
     end
 end
 

@@ -3,7 +3,7 @@
 	"ID"	"1587"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
 	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"scroll_stoneskin"
+	"AbilityTextureName"	"scroll_boulder"
 	"Model"	"models/props_gameplay/recipe.vmdl"
     "Effect" "particles/custom/floating_stones.vpcf"
 	"AbilityCastRange"	"950"

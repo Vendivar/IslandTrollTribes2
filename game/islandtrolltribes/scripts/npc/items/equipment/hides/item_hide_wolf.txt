@@ -6,7 +6,7 @@
 	"AbilityTextureName"	"hide_wolf"
 	"Model"	"models/heroes/lone_druid/lone_druid_claw_fx.vmdl"
 	"Effect"	"particles/custom/dropped_item_normal.vpcf"
-	"ItemCost"	"18"
+	"ItemCost"	"39"
 	"ItemShopTags"	"consumable"
 	"ItemQuality"	"consumable"
 	"ItemShareability"	"ITEM_FULLY_SHAREABLE"

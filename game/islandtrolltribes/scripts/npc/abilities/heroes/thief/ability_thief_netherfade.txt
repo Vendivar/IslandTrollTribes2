@@ -29,7 +29,7 @@
         "FireSound"
         {
         "EffectName"	"Hero_Pugna.Decrepify"
-        "Target"	"TARGET"
+        "Target"	"CASTER"
         }
 
 
