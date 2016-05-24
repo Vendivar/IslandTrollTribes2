@@ -12,7 +12,7 @@
 	"ItemQuality"	"consumable"
 	"ItemShareability"	"ITEM_FULLY_SHAREABLE"
 	
-	"MaxStacks" "3"
+	"MaxStacks" "15"
 
 	"ItemPermanent"	"0"
 	"ItemDroppable"	"1"
@@ -45,7 +45,7 @@
 		"01"
 		{
 			"var_type"	"FIELD_INTEGER"
-			"max_stacks"	"3"
+			"max_stacks"	"15"
 		}
 
 	}

@@ -2401,6 +2401,160 @@ function Containers:CreateContainer(cont)
     return false
   end
 
+  function c:AddItemBush(item, slot, column, bypassFilter)
+    item = GetItem(item)
+    if slot and type(slot) == "number" and column and type(column) == "number" then
+      local rowStarts = PlayerTables:GetTableValue(self.ptID, "rowStarts")
+      if not rowStarts[slot] then
+        print("[containers.lua]  Request to add item in row " .. slot .. " -- row not found. ")
+        return false
+      end
+
+      local nextRowStart = rowStarts[slot+1] or self:GetSize() + 1
+      local newslot = rowStarts[slot] + column - 1
+
+      if newslot >= nextRowStart then
+        print("[containers.lua]  Request to add item in row " .. slot .. ", column " .. column .. " -- column exceeds row length. ")
+        return false
+      end
+
+      slot = newslot
+    end
+
+    local findStack = slot == nil
+    slot = slot or 1
+
+    local size = self:GetSize()
+    if slot > size then
+      print("[containers.lua]  Request to add item in slot " .. slot .. " -- exceeding container size " .. size)
+      return false
+    end
+
+    local func = c.AddItemFilter
+    if not bypassFilter and c.AddItemFilter then
+      local status, result = pcall(c.AddItemFilter, c, item, findstack and -1 or slot)
+      if not status then
+        print("[containers.lua] AddItemFilter callback error: " .. result)
+        return false
+      end
+
+      if not result then
+        return false
+      end
+    end
+
+    local itemid = item:GetEntityIndex()
+    local itemname = item:GetAbilityName()
+    local maxStacks = GameRules.ItemKV[itemname]["MaxStacks"]
+
+    if findStack and maxStacks then
+      print("adding to container stackable")
+      local nameTable = self.itemNames[itemname]
+      if nameTable then
+        local lowestSlot = size+1
+        local lowestItem = nil
+        for itemid, nameslot in pairs(nameTable) do
+          if nameslot < lowestSlot then
+            local item = self:GetItemInSlot(nameslot)
+            if item then
+              lowestSlot = nameslot
+              lowestItem = item
+            else
+              nameTable[itemid] = nil
+            end
+          end
+        end
+
+        if lowestItem and GameRules.ItemKV[lowestItem:GetAbilityName()]["MaxStacks"] then
+          local chargesToAdd = item:GetCurrentCharges()
+          if chargesToAdd + lowestItem:GetCurrentCharges() > maxStacks then
+            chargesToAdd = maxStacks - lowestItem:GetCurrentCharges()
+          end
+          lowestItem:SetCurrentCharges(lowestItem:GetCurrentCharges() + chargesToAdd)
+          if item:GetCurrentCharges() - chargesToAdd <= 0 then
+            --print("only adding charges " .. lowestItem:GetCurrentCharges())
+            item:RemoveSelf()
+          else
+            item:SetCurrentCharges(item:GetCurrentCharges() - chargesToAdd)
+            for i=slot,size do
+              --print("looping to find open slot " .. slot .. " size " .. size)
+              local slotitem = self:GetItemInSlot(i)
+              if not slotitem then
+
+                self.items[itemid] = i
+                self.itemNames[itemname] = self.itemNames[itemname] or {}
+                self.itemNames[itemname][itemid] = i
+
+                if self.forceOwner then 
+                  item:SetOwner(self.forceOwner) 
+                elseif self.forceOwner == false then
+                  item:SetOwner(nil)
+                end
+                if self.forcePurchaser then
+                  item:SetPurchaser(self.forcePurchaser) 
+                elseif self.forceOwner == false then
+                  item:SetPurchaser(nil)
+                end
+
+                if self:IsEquipment() then
+                  ApplyPassives(self, item)
+                end
+
+                PlayerTables:SetTableValue(self.ptID, "slot" .. i, itemid)
+                print("added item and charges")
+                return true
+              end
+            end
+            print("all slots full in container")
+            return false
+          end
+          return true
+        end
+      end
+    end
+
+    -- check if the slot specified is stackable
+    if not findStack and item:IsStackable() then
+      local slotitem = self:GetItemInSlot(slot)
+
+      if slotitem and itemname == slotitem:GetAbilityName() and slotitem:IsStackable() then
+        slotitem:SetCurrentCharges(slotitem:GetCurrentCharges() + item:GetCurrentCharges())
+        item:RemoveSelf()
+        return true
+      end
+    end
+
+    for i=slot,size do
+      local slotitem = self:GetItemInSlot(i)
+      if not slotitem then
+
+        self.items[itemid] = i
+        self.itemNames[itemname] = self.itemNames[itemname] or {}
+        self.itemNames[itemname][itemid] = i
+
+        if self.forceOwner then 
+          item:SetOwner(self.forceOwner) 
+        elseif self.forceOwner == false then
+          item:SetOwner(nil)
+        end
+        if self.forcePurchaser then
+          item:SetPurchaser(self.forcePurchaser) 
+        elseif self.forceOwner == false then
+          item:SetPurchaser(nil)
+        end
+
+        if self:IsEquipment() then
+          ApplyPassives(self, item)
+        end
+
+        PlayerTables:SetTableValue(self.ptID, "slot" .. i, itemid)
+        return true
+      end
+    end
+
+    return false
+  end
+
   function c:RemoveItem(item)
     item = GetItem(item)
     local slot = self.items[item:GetEntityIndex()]

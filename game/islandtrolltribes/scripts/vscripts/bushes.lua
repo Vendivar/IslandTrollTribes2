@@ -153,7 +153,7 @@ function ITT:OnBushThink()
 
             --GiveItemStack(bush, bush_random_item)
             local item = CreateItem(bush_random_item, nil, nil)
-            bush.container:AddItem(item) --Missing stack handling
+            bush.container:AddItemBush(item) --AddItem with stack handling
             print("Added " .. bush_random_item .. " to ".. bush_name .. " " .. bush:GetEntityIndex())
 
             -- Particle glow
