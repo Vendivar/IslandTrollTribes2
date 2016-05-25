@@ -59,19 +59,22 @@
             "IsHidden"          "1"
             "Duration"          "%duration"
 
-            "Aura"              "modifier_scout_reveal_vision"
-            "Aura_Radius"       "%radius"
-            "Aura_Teams"        "DOTA_UNIT_TARGET_TEAM_ENEMY"
-            "Aura_Types"        "DOTA_UNIT_TARGET_ALL"
-            "Aura_Flags"        "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-        }
-
-        "modifier_scout_reveal_vision"
-        {
-            "Priority"                     "MODIFIER_PRIORITY_ULTRA"
-            "States"
+            "ThinkInterval"     "0.25"
+            "OnIntervalThink"
             {
-                "MODIFIER_STATE_INVISIBLE"      "MODIFIER_STATE_VALUE_DISABLED"
+                "ApplyModifier"
+                {
+                    "Target"
+                    {
+                        "Center"    "CASTER"
+                        "Radius"    "%radius"
+                        "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+                        "Types"     "DOTA_UNIT_TARGET_ALL"
+                        "Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES | DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+                    }
+                    "ModifierName"   "modifier_truesight"
+                    "Duration"      "0.50"
+                }
             }
         }
     }
