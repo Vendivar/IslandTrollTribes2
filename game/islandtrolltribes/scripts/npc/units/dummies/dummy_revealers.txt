@@ -1,51 +1,9 @@
-"dummy_reveal1"
+"dummy_reveal"
 {
 	"BaseClass"	"npc_dota_creature"
 	"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
 	"VisionDaytimeRange"	"1000"
 	"VisionNighttimeRange"	"1000"
-	"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
-	"Ability1"	"dummy_passive"
-	"Ability2"	""
-	"Ability3"	""
-	"Ability4"	""
-	"Ability5"	""
-}
-
-"dummy_reveal2"
-{
-	"BaseClass"	"npc_dota_creature"
-	"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
-	"VisionDaytimeRange"	"1600"
-	"VisionNighttimeRange"	"1600"
-	"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
-	"Ability1"	"dummy_passive"
-	"Ability2"	""
-	"Ability3"	""
-	"Ability4"	""
-	"Ability5"	""
-}
-
-"dummy_reveal3"
-{
-	"BaseClass"	"npc_dota_creature"
-	"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
-	"VisionDaytimeRange"	"2400"
-	"VisionNighttimeRange"	"2400"
-	"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
-	"Ability1"	"dummy_passive"
-	"Ability2"	""
-	"Ability3"	""
-	"Ability4"	""
-	"Ability5"	""
-}
-
-"dummy_reveal4"
-{
-	"BaseClass"	"npc_dota_creature"
-	"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
-	"VisionDaytimeRange"	"2700"
-	"VisionNighttimeRange"	"2700"
 	"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
 	"Ability1"	"dummy_passive"
 	"Ability2"	""
