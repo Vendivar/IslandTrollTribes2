@@ -272,4 +272,80 @@
 	"item_recipe_hurricane_pike"      "REMOVE"
 	"item_hurricane_pike"      "REMOVE"
 	"item_banana"      "REMOVE"
+//Reused DOTA spells
+
+    "spirit_breaker_charge_of_darkness"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"5353"														// unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_ALERT_TARGET | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+        "AbilityTextureName"	"ability_beastmaster_ram"
+        "MaxLevel"	"1"
+		
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.47 0.47 0.47 0.47"
+		"AbilityCastRange"				"1200"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"12"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"50"
+
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityModifierSupportValue"	".30" // applies multiple modifiers
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"OnSpellStart"
+        {
+            "FireSound"
+            {
+                "EffectName"	"elk.chargestart"
+                "Target"		"CASTER"
+            }    
+        }
+        "AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"movement_speed"		"600"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"stun_duration"			"2.0"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bash_radius"			"1"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"vision_radius"			"100"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"vision_duration"		"0.94"
+			}
+            "6"
+            {
+				"var_type"				"FIELD_INTEGER"
+				"range"			        "1200"            
+            }
+		}
+	}
+
 }

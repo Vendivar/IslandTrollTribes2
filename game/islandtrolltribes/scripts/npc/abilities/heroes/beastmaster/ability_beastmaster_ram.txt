@@ -54,18 +54,7 @@
 		"modifier_charged"
 		{
 			"IsHidden"	"1"
-			"ThinkInterval"	"0.05"
-			"OnIntervalThink"
-			{
-				"RunScript"
-				{
-					"ScriptFile"   "heroes/beastmaster/ram.lua"
-					"Function"     "RamTarget"
-					"Damage"       "20"
-					"StunDuration" "2"
-				}
 
-			}
 
 		}
 
@@ -86,7 +75,7 @@
 		"03"
 		{
 			"var_type"	"FIELD_INTEGER"
-			"range"	"1400"
+			"range"	"1200"
 		}
 
 

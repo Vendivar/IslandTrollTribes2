@@ -2654,6 +2654,12 @@
 				"var_type"	"FIELD_FLOAT"
 				"energy_drain"	"-1"
 			}
+	        "6"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"degen_rate"	"-200"
+			}
+	        
 		}
 	
 	}
@@ -2919,13 +2925,13 @@
 	                "AddAbility"
 	                {
 	                    "Target"        "CASTER"
-	                    "AbilityName"   "ability_beastmaster_ram"
+	                    "AbilityName"   "spirit_breaker_charge_of_darkness"
 	                }
 	
 	                "LevelUpAbility"
 	                {
 	                    "Target"        "CASTER"
-	                    "AbilityName"   "ability_beastmaster_ram"
+	                    "AbilityName"   "spirit_breaker_charge_of_darkness"
 	                }
 	            }
 	            "OnDestroy"
@@ -2938,7 +2944,7 @@
 	            "RemoveAbility"
 	                {
 	                    "Target"        "CASTER"
-	                    "AbilityName"   "ability_beastmaster_ram"
+	                    "AbilityName"   "spirit_breaker_charge_of_darkness"
 	                }
 	            "RemoveModifier"
 	                {
@@ -3626,18 +3632,7 @@
 			"modifier_charged"
 			{
 				"IsHidden"	"1"
-				"ThinkInterval"	"0.05"
-				"OnIntervalThink"
-				{
-					"RunScript"
-					{
-						"ScriptFile"   "heroes/beastmaster/ram.lua"
-						"Function"     "RamTarget"
-						"Damage"       "20"
-						"StunDuration" "2"
-					}
 	
-				}
 	
 			}
 	
@@ -3658,7 +3653,7 @@
 			"03"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"range"	"1400"
+				"range"	"1200"
 			}
 	
 	
@@ -4246,6 +4241,11 @@
 			{
 				"var_type"	"FIELD_FLOAT"
 				"degen_rate"	"2"
+			}
+	        "5"
+	        {
+				"var_type"	"FIELD_FLOAT"
+				"degen_rate2"	"-200"
 			}
 		}
 	

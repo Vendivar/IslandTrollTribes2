@@ -203,6 +203,12 @@
 			"var_type"	"FIELD_FLOAT"
 			"energy_drain"	"-1"
 		}
+        "6"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"degen_rate"	"-200"
+		}
+        
 	}
 
 }
