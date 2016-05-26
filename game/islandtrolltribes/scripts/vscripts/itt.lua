@@ -109,6 +109,7 @@ function ITT:InitGameMode()
     ListenToGameEvent( "game_rules_state_change", Dynamic_Wrap( ITT, 'OnGameRulesStateChange' ), self )
 
     -- Panorama Listeners
+    CustomGameEventManager:RegisterListener( "game_mode_selected", Dynamic_Wrap( ITT, "OnGameModeSelected" ) )
     CustomGameEventManager:RegisterListener( "player_selected_class", Dynamic_Wrap( ITT, "OnClassSelected" ) )
     CustomGameEventManager:RegisterListener( "player_selected_subclass", Dynamic_Wrap( ITT, "OnSubclassChange" ) )
 
@@ -202,6 +203,7 @@ function ITT:InitGameMode()
 
     -- KV Tables
     GameRules.ClassInfo = LoadKeyValues("scripts/kv/class_info.kv")
+    GameRules.GameModeSettings = LoadKeyValues("scripts/kv/game_mode_settings.kv")
     GameRules.SpellBookInfo = LoadKeyValues("scripts/kv/spellbook_info.kv")
     GameRules.BushInfo = LoadKeyValues("scripts/kv/bush_info.kv")
     GameRules.ItemInfo = LoadKeyValues("scripts/kv/item_info.kv")

@@ -8,12 +8,18 @@ end
 
 -- Initial Heat
 function Heat:Start(hero)
-    Heat.MAX = 100
+    Heat:loadSettings()
     hero.HeatLoss = -1/3 --Per second
     ApplyModifier(hero, "modifier_heat_passive")
     Heat:Set(hero, Heat.MAX)
     Heat:Think(hero)
 end
+
+function Heat:loadSettings()
+    Heat.MAX = GameRules.GameModeSettings["HEAT"]["MAX_HEAT"]
+    Heat.TICK_RATE = GameRules.GameModeSettings["HEAT"]["TICK_RATE"]
+end
+
 
 -- Modifies the hero current heat by amount
 function Heat:Modify( hero, amount )
@@ -77,7 +83,7 @@ function Heat:Think( hero )
             hero:ForceKill(true)
         end
 
-        return 1
+        return Heat.TICK_RATE
     end)
 end
 
