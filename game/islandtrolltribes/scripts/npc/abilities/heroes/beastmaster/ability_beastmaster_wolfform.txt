@@ -187,6 +187,11 @@
 			"var_type"	"FIELD_FLOAT"
 			"degen_rate"	"2"
 		}
+        "5"
+        {
+			"var_type"	"FIELD_FLOAT"
+			"degen_rate2"	"-200"
+		}
 	}
 
 }
