@@ -36,7 +36,7 @@
 
 	// Building Size
 	//----------------------------------------------------------------
-	"ConstructionSize"			"1"
+	"ConstructionSize"			"0"
 	"BlockPathingSize"			"0"
     "SharedWithTeammates" "1"
 }
