@@ -33,7 +33,6 @@ function MakeBoulder( event )
 			-- Spawn as many treants as possible
 				local boulder = CreateUnitByName("npc_scroll_boulder", point, false, caster, caster, caster:GetTeamNumber())
 				boulder:AddNewModifier(caster, nil, "modifier_kill", {duration = dur})
-				FindClearSpaceForUnit(boulder, point, true)
                 ParticleManager:DestroyParticle(caster.boulderParticle,false)
 		end)
     

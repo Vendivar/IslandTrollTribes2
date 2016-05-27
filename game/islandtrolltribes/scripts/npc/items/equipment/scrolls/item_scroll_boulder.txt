@@ -22,7 +22,8 @@
 	"ItemKillable"	"1"
 	"ItemSellable"	"1"
 	"AbilitySharedCooldown" "scroll"
-
+    "AbilityCastAnimation" "ACT_DOTA_ATTACK"
+    
 	"UIPickupSound"	"Item.PickUpGemShop"
 	"UIDropSound"	"Item.DropGemShop"
 	"WorldDropSound"	"Item.DropRecipeWorld"
@@ -62,8 +63,61 @@
 			"EffectName"	"scroll.boulder"
 			"Target"	"CASTER"
 		}
-    }
+        
+        "ActOnTargets"
+		{
+			"Target"
+			{
+				"Center"	"POINT"
+				"Radius"	"800"
+				"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+                
+			}
 
+			"Action"
+			{
+                "Knockback"
+                {
+                    "Target"			"TARGET"
+                    "Center"			"POINT"
+                    "Duration"			"%stun_duration"
+                    "Distance"			"100"
+                    "Height"			"20"
+                    "IsFixedDistance"	"1"
+                    "ShouldStun"		"1"
+                }
+
+			}
+            "ApplyModifier"
+            {
+                "Target"			"TARGET"
+                "ModifierName"		"modifier_boulder_scroll_slow"
+            }
+            "Damage"
+            {
+                "Target"			"TARGET"
+                "Damage"			"%damage"
+                "Type"				"DAMAGE_TYPE_MAGICAL"
+            }
+            
+		}
+        
+    }
+"Modifiers"
+	{
+        "modifier_boulder_scroll_slow"
+		{
+			"IsDebuff"					"1"
+			"Duration"					"%slow_debuff_duration"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"		"move_speed_slow"
+			}
+		}
+	}
+    
+    
 	"AbilitySpecial"
 	{
 		"01"
@@ -81,13 +135,23 @@
 		"03"
 		{
 			"var_type"	"FIELD_INTEGER"
-			"attack_speed_slow"	"-10"
+			"move_speed_slow"	"-10"
 		}
 
 		"04"
 		{
 			"var_type"	"FIELD_FLOAT"
 			"slow_debuff_duration"	"2.0"
+		}		
+        "05"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"stun_duration"	"0.5"
+		}        
+        "06"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"damage"	"25"
 		}
 
 	}
