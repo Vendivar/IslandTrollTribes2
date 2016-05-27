@@ -27,7 +27,7 @@
 			m_ModelList =
 			[
 				{
-					m_model = resource:"models/props_rock/riveredge_rock004a.vmdl"
+					m_model = resource:"models/scroll_boulder.vmdl"
 				},
 			]
 			m_bAnimated = true
@@ -181,8 +181,8 @@
 	[
 		{
 			_class = "C_OP_ConstrainDistanceToPath"
-			m_flTravelTime = 0.400000
-			m_flMaxDistance0 = 800.000000
+			m_flTravelTime = 0.500000
+			m_flMaxDistance0 = 700.000000
 			m_flMaxDistanceMid = 0.000000
 			m_flMaxDistance1 = 0.000000
 			m_PathParameters =

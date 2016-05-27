@@ -1,13 +1,13 @@
 "npc_scroll_boulder"
 {
 	"BaseClass"	"npc_dota_creature"
-	"Model"	"models/props_rock/riveredge_rock004a.vmdl"
+	"Model"	"models/scroll_boulder.vmdl"
 	"SoundSet"	"Creep_Good_Melee"
 	"HasInventory"	"0"
 	"MinimapIconSize"	"250"
 	"HealthBarOffset"	"200"		
-	"ModelScale"	"1.00"
-	"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
+	"ModelScale"	"0.98"
+	"BoundsHullName"	"DOTA_HULL_SIZE_BARRACKS"
 	"RingRadius"	"100"
 	"precache"
 	{

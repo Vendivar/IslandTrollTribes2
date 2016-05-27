@@ -19,15 +19,13 @@ end
 function MakeBoulder( event )
     local caster = event.caster
     local point = event.target_points[1]
-    local rand_vector = RandomVector(RandomFloat(0,aoe))
-    local rand_point = caster:GetOrigin() + rand_vector
 
 	local particleName = "particles/custom/boulder_scroll_drop.vpcf"
 	caster.boulderParticle = ParticleManager:CreateParticle(particleName, PATTACH_WORLDORIGIN, caster)
 	ParticleManager:SetParticleControl(caster.boulderParticle, 1, point)	
 
     
-    Timers:CreateTimer(1.5,
+    Timers:CreateTimer(1.0,
 		function() 
 			--print(ability.trees_cut)
 
@@ -35,7 +33,6 @@ function MakeBoulder( event )
 				local boulder = CreateUnitByName(unit_name, point, true, caster, caster, caster:GetTeamNumber())
 				treant:SetControllableByPlayer(pID, true)
 				treant:AddNewModifier(caster, ability, "modifier_kill", {duration = duration})
-				FindClearSpaceForUnit(treant, point, true)
 			end
 		end
 	)
