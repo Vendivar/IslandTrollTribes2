@@ -56,7 +56,7 @@
             "EffectName"	"particles/custom/boulder_scroll_drop.vpcf"
             "EffectAttachType"	"PATTACH_WORLDORIGIN"
             "Target"	"POINT"
-            }
+        }
             
         "FireSound"
 		{
