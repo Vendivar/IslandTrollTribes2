@@ -43,7 +43,7 @@
 		//How close should I pull?
 		{
 			"var_type"		"FIELD_FLOAT"
-			"pull_scale"	"3.0"
+			"pull_scale"	"15.0"
 		}
     }
 
@@ -120,6 +120,10 @@
             "States"
             {
                 "MODIFIER_STATE_ROOTED"    "MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_FLYING_FOR_PATHING_PURPOSES_ONLY"	"MODIFIER_STATE_VALUE_ENABLED"
+                
+ 
             }
 
             "OnCreated"

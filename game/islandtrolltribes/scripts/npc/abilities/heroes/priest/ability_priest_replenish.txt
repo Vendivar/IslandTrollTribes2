@@ -80,7 +80,7 @@
 
 			}
 
-			"OnTakeDamage"
+			"OnAttacked"
 			{
 				"RemoveModifier"
 				{
