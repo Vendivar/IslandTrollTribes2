@@ -5,11 +5,11 @@
     "BaseClass"                 "item_datadriven"
     "AbilityTextureName"        "potion_molotov"
     "Model"                     "models/props_debris/shop_set_cage001.vmdl"
-    "Effect"	                "particles/custom/dropped_item_normal.vpcf"
+    "Effect"                    "particles/custom/dropped_item_normal.vpcf"
     "AoERadius" "950"
     "AbilityCastRange"          "1200"
-	"AbilityChannelTime"        "2.5"
-    "AbilityCastPoint"          "1.0"
+    "AbilityChannelTime"        "2.5"
+    "AbilityCastPoint"          "0"
     "AbilityCastAnimation"      "ACT_DOTA_ATTACK"
     "AbilityCooldown"           "25"
     "ItemCost"                  "5"
@@ -72,131 +72,119 @@
 "OnSpellStart"
 {
         "FireSound"
-		{
-			"EffectName"			"molotov.pre"
-			"Target"				"CASTER"
-		}
+        {
+            "EffectName"            "molotov.pre"
+            "Target"                "CASTER"
+        }
 
 }
-	"OnChannelSucceeded"
-	{
-		"FireSound"
-		{
-			"EffectName"			"molotov.toss"
-			"Target"				"CASTER"
-		}
+    "OnChannelSucceeded"
+    {
+        "FireSound"
+        {
+            "EffectName"            "molotov.toss"
+            "Target"                "CASTER"
+        }
 
-		"LinearProjectile"
-		{
-			"Target"      	"POINT"
-		    "EffectName"  	"particles/custom/molotov_toss.vpcf"
-		    "MoveSpeed"   	"700"
-		    "StartPosition" "attach_attack1"
-		    "TargetTeams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
-		    "HasFrontalCone"    "0"
-		    "ProvidesVision"	"0"
-		}
+        "LinearProjectile"
+        {
+            "Target"        "POINT"
+            "EffectName"    "particles/custom/molotov_toss.vpcf"
+            "MoveSpeed"     "700"
+            "StartPosition" "attach_attack1"
+            "TargetTeams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
+            "HasFrontalCone"    "0"
+            "ProvidesVision"    "0"
+        }
  
-	}
-
-    "OnProjectileHitUnit"
-	{
-		"DeleteOnHit"		"0"
-	}
+    }
     
-	"OnProjectileFinish"
-	    {
-	        "FireSound"
-	        {
-	            "EffectName"    "molotov.hit"
-	            "Target"        "POINT"
-	        }
+    "OnProjectileFinish"
+        {
+            "FireSound"
+            {
+                "EffectName"    "molotov.hit"
+                "Target"        "POINT"
+            }
             "FireEffect"
             {
-                "EffectName"	"particles/custom/molotov_explode.vpcf"
-                "EffectAttachType"	"PATTACH_WORLDORIGIN"
-                "Target"	"POINT"
+                "EffectName"    "particles/custom/molotov_explode.vpcf"
+                "EffectAttachType"  "PATTACH_WORLDORIGIN"
+                "Target"    "POINT"
             }
             
-	        "ActOnTargets"
+            "ApplyModifier"
             {
                 "Target"
                 {
-                    "Center"	"POINT"
-                    "Radius"	"%radius"
-                    "Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY" 
-                    "Types"		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BUILDING | DOTA_UNIT_TARGET_CREEP"
+                    "Center"    "POINT"
+                    "Radius"    "%radius"
+                    "Teams" "DOTA_UNIT_TARGET_TEAM_ENEMY"
+                    "Types" "DOTA_UNIT_TARGET_HERO"
                 }
-                
-                "Action"
-                {
-                    "ApplyModifier"
-                    {
-                        "ModifierName"	"modifier_molotov_burn"
-                        "Duration"	"%duration_hero"
-                        "Target"
-                        {
-                            "Target" "TARGET"
-                            "Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-                            "Types"	"DOTA_UNIT_TARGET_HERO"
-                        }
-
-                    }
-
-                    "ApplyModifier"
-                    {
-                        "ModifierName"	"modifier_molotov_burn"
-                        "Duration"	"%duration_creep"
-                        "Target"
-                        {
-                            "Target" "TARGET"
-                            "Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-                            "Types"	"DOTA_UNIT_TARGET_CREEP"
-                        }
-                    }
-                    "ApplyModifier"
-                    {
-                        "ModifierName"	"modifier_molotov_burn"
-                        "Duration"	"%duration_building"
-                        "Target"
-                        {
-                            "Target" "TARGET"
-                            "Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-                            "Types"	"DOTA_UNIT_TARGET_BUILDING"
-                        }
-
-                    }
-                }
+                "ModifierName"  "modifier_molotov_burn"
+                "Duration"  "%duration_hero"
             }
+
+            "ApplyModifier"
+            {
+                "Target"
+                {
+                    "Center"    "POINT"
+                    "Radius"    "%radius"
+                    "Teams" "DOTA_UNIT_TARGET_TEAM_ENEMY"
+                    "Types" "DOTA_UNIT_TARGET_CREEP"
+                }
+                "ModifierName"  "modifier_molotov_burn"
+                "Duration"  "%duration_creep"
+            }
+
+            //THIS DOESN'T WORK
+            //Buildings are creatures in the kv, need to apply in lua by matching unit name. Use string.find(unitName, "building") Don't forget to flag magic immunity
+            "ApplyModifier"
+            {
+                "Target"
+                {
+                    "Center"    "POINT"
+                    "Radius"    "%radius"
+                    "Teams" "DOTA_UNIT_TARGET_TEAM_ENEMY"
+                    "Types" "DOTA_UNIT_TARGET_BUILDING"
+                }
+                "ModifierName"  "modifier_molotov_burn"
+                "Duration"  "%duration_building"
+            }
+                
+            
             "SpendCharge"
             {
             }
         }
-	
-	    "Modifiers"
-	{
-		"modifier_molotov_burn"
-		{
-			"IsDebuff"	"1"
-			"EffectName"		"particles/units/heroes/hero_phoenix/phoenix_fire_spirit_burn.vpcf"
-			"EffectAttachType"	"follow_origin"
+    
+        "Modifiers"
+    {
+        "modifier_molotov_burn"
+        {
+            "IsDebuff"  "1"
+            "IsHidden"  "0"
+            "EffectName"        "particles/units/heroes/hero_phoenix/phoenix_fire_spirit_burn.vpcf"
+            "EffectAttachType"  "follow_origin"
 
-			"ThinkInterval"		"1.0"
+            "ThinkInterval"     "1.0"
 
-			"OnIntervalThink"
-			{
-				"Damage"
-				{
-					"Target"	"TARGET"
-					"Type"		"DAMAGE_TYPE_MAGICAL"
-					"Damage"	"%burn_dps"
-				}
-			}
+            "OnIntervalThink"
+            {
+                "Damage"
+                {
+                    "Target"    "TARGET"
+                    "Type"      "DAMAGE_TYPE_MAGICAL"
+                    "Damage"    "%burn_dps"
+                }
+            }
 
-			"Properties"
-			{
-				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"-10"
-			}
-		}
-	}
+            "Properties"
+            {
+                "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "-10"
+            }
+        }
+    }
 }
