@@ -9,9 +9,6 @@ and
 https://github.com/island-troll-tribes/wc3-client/blob/1562854dd098180752f0f4a99df0c4968697b38b/src/init/objects/Globals.j
 ]]--
 
--- How often a spawn wave occurs in seconds
-GAME_ITEM_TICK_TIME         = 50
-
 -- Spawnrates of items, seeded with initial rates from ITT1 globals file
 TINDER_RATE                 = 5.00
 FLINT_RATE                  = 3.00

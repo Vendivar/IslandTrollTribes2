@@ -16,8 +16,8 @@ function Heat:Start(hero)
 end
 
 function Heat:loadSettings()
-    Heat.MAX = GameRules.GameModeSettings["HEAT"]["MAX_HEAT"]
-    Heat.TICK_RATE = GameRules.GameModeSettings["HEAT"]["TICK_RATE"]
+    Heat.MAX = GameRules.GameModeSettings["HEAT_MAX_HEAT"]
+    Heat.TICK_RATE = GameRules.GameModeSettings["HEAT_TICK_RATE"]
 end
 
 

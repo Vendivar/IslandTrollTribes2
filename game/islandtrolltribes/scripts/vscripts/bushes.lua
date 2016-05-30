@@ -16,7 +16,7 @@ function ITT:SpawnBushes()
         end
     end
     GameRules.PredefinedBushLocations = GetPredefinedBushLocations(bushSpawnerTable)
-    local locationType =  GameRules.BushSpawnLocationType
+    local locationType =  GameRules.GameModeSettings["BUSH_SPAWNING_LOCATION"]
     local regionType = GameRules.BushSpawnRegion
     for bushItem,_ in pairs(bushSpawnerTable) do
         SpawnBushes(bushItem, regionType, locationType)

@@ -74,7 +74,6 @@ function ITT:InitGameMode()
 
     -- Game logic timers
     Timers(function() ITT:OnBuildingThink() return GAME_TROLL_TICK_TIME end)
-    Timers(function() ITT:OnItemThink() return GAME_ITEM_TICK_TIME end) --item_spawning.lua
     Timers(function() ITT:FixDropModels() return DROPMODEL_TICK_TIME end)
 
     -- Disable buybacks to stop instant respawning.
@@ -1057,7 +1056,7 @@ function ITT:OnGameRulesStateChange()
 
         -- Initialize the roaming trading ships
         ITT:SetupShops()
-
+        Timers(function() ITT:OnItemThink() return GameRules.GameModeSettings["GAME_ITEM_TICK_TIME"] end) --item_spawning.lua
     elseif nNewState == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
 
         GameRules:SetHeroRespawnEnabled( false )

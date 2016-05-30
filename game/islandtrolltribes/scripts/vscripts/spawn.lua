@@ -1,4 +1,3 @@
-GAME_CREATURE_TICK_TIME     = 40   -- Time for each creature spawn
 MAXIMUM_PASSIVE_NEUTRALS    = 100
 MAXIMUM_AGGRESSIVE_NEUTRALS = 20
 
@@ -40,7 +39,7 @@ function Spawns:Init()
 
     Timers:CreateTimer(function()
         Spawns:Think()
-        return GAME_CREATURE_TICK_TIME
+        return GameRules.GameModeSettings["GAME_CREATURE_TICK_TIME"]
     end)
 
     -- Spawn the mammoth at start
@@ -69,7 +68,7 @@ function GetSpawnInstructions()
         spawnTable = GameRules.SpawnInfo['Early']
     elseif time > GAME_PERIOD_GRACE then
         spawnTable = GameRules.SpawnInfo['Grace']
-    elseif time > GAME_CREATURE_TICK_TIME then
+    elseif time > GameRules.GameModeSettings["GAME_CREATURE_TICK_TIME"] then
         spawnTable = GameRules.SpawnInfo['Start']
     end
     return spawnTable

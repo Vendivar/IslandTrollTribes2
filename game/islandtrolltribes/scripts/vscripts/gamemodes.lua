@@ -15,13 +15,21 @@ function ITT:OnGameModeSelected(event)
 end
 
 function SetFastModeSettings()
-    GameRules.GameModeSettings["HEAT"]["TICK_RATE"] = 0.1
+    GameRules.GameModeSettings["HEAT_TICK_RATE"] = 0.1
+    GameRules.GameModeSettings["GAME_ITEM_TICK_TIME"] = 20
+    GameRules.GameModeSettings["GAME_CREATURE_TICK_TIME"] = 20
 end
 
 function SetSlowModeSettings()
+    GameRules.GameModeSettings["HEAT_TICK_RATE"] = 1.5
+    GameRules.GameModeSettings["GAME_ITEM_TICK_TIME"] = 70
+    GameRules.GameModeSettings["GAME_CREATURE_TICK_TIME"] = 60
 end
 
 function SetNormalModeSettings()
+    GameRules.GameModeSettings["HEAT_TICK_RATE"] = 1.0
+    GameRules.GameModeSettings["GAME_ITEM_TICK_TIME"] = 50
+    GameRules.GameModeSettings["GAME_ITEM_TICK_TIME"] = 40
 end
 
 function SetNoobModeSettings()
