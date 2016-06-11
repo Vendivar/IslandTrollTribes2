@@ -5,14 +5,15 @@
     </styles>
     <scripts>
         <include src="file://{resources}/scripts/crafting/crafting.js" />
-        <include src="file://{resources}/scripts/crafting/crafting_list.js" />
-        <include src="file://{resources}/scripts/crafting/crafting_recipe.js" />
         <include src="file://{resources}/scripts/crafting/crafting_item.js" />
+        <include src="file://{resources}/scripts/crafting/crafting_recipe.js" />
+        <include src="file://{resources}/scripts/crafting/crafting_section.js" />
+        <include src="file://{resources}/scripts/crafting/crafting_list.js" />
     </scripts>
     <snippets>
         <snippet name="Crafting_Section">
             <Panel class="CraftingSection">
-                <Panel id="Toggle" onactivate="FoldSection()">
+                <Panel id="Toggle">
                     <Label id="CraftingSectionTitle"/>
                     <Image id="FoldIcon"/>
                 </Panel>

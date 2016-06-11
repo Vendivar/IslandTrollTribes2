@@ -1,47 +1,49 @@
-var Root = $.GetContextPanel()
-var entity = Root.entity
-var ingredients = Root.ingredients
-var table = Root.table
-var section_name = Root.section_name
-var itemResult = Root.itemname
-var aliasTable = CustomNetTables.GetTableValue( "crafting", "Alias" )
+function InstantiateCraftingRecipe(panel) {
+    var entity = panel.entity
+    var ingredients = panel.ingredients
+    var table = panel.table
+    var section_name = panel.section_name
+    var itemResult = panel.itemname
+    var aliasTable = CustomNetTables.GetTableValue( "crafting", "Alias" )
 
-for (var i = 0; i < ingredients.length; i++) {
-    MakeItemPanel(ingredients[i], ingredients.length, i)
-};
+    for (var i = 0; i < ingredients.length; i++) {
+        MakeItemPanel(panel, ingredients[i], ingredients.length)
+    };
 
-var equal = $.CreatePanel("Label", Root, "EqualSign")
-equal.text = "="
+    var equal = $.CreatePanel("Label", panel, "EqualSign")
+    equal.text = "="
 
-// Resulting from craft
-var resultPanel = MakeItemPanel(itemResult, 0)
+    // Resulting from craft
+    var resultPanel = MakeItemPanel(panel, itemResult, 0)
+    panel.entity = entity
 
-CheckInventory()
+    // Think glows and craft state
+    //CheckInventory(panel, resultPanel)
 
-function MakeItemPanel(name, elements, num) {
-    var itemPanel = $.CreatePanel("Panel", Root, name)
+    $.Msg("Instantiated Crafting Recipe: "+itemResult)
+}
+
+function MakeItemPanel(parent, name, elements) {
+    var itemPanel = $.CreatePanel("Panel", parent, name)
     itemPanel.itemname = name
     itemPanel.elements = elements
 
     //itemPanel.BLoadLayout("file://{resources}/layout/custom_game/crafting/crafting_item.xml", false, false);
     itemPanel.BLoadLayoutSnippet("Crafting_Item")
-    
-    return itemPanel
 
-    /*if (elements>0)
-    {
-        var spacing = 70/elements
-        itemPanel.style["width"] = spacing+"%"
-    }*/
+    //Instantiate Item
+    $.Msg("Instantiated Crafting Item: "+name)
+
+    return itemPanel
 }
 
-function CheckInventory()
+function CheckInventory(panel)
 {
     // Build an array of items in inventory 
     var itemsOnInventory = []
 
     for (var i = 0; i < 6; i++) {
-        var item = Entities.GetItemInSlot( entity, i )
+        var item = Entities.GetItemInSlot(panel.entity, i)
         if (item)
         {
             var item_name = Abilities.GetAbilityName(item)
@@ -60,12 +62,12 @@ function CheckInventory()
         }
     };
 
-    if (Root.visible)
+    if (panel.visible)
     {
         var meetsAllRequirements = true
-        var childNum = Root.GetChildCount()
+        var childNum = panel.GetChildCount()
         for (var i = 0; i < childNum; i++) {
-            var child = Root.GetChild(i)
+            var child = panel.GetChild(i)
             if (child.itemname !== undefined && child.itemname != itemResult)
             {
                 var itemIndex = FindItemInArray(child.itemname, itemsOnInventory)

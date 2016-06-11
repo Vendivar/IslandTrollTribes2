@@ -1,16 +1,18 @@
-var Root = $.GetContextPanel()
 var LocalPlayerID = Game.GetLocalPlayerID()
-var itemName = Root.itemname
 
-if (itemName.indexOf("item_") > -1)
-    itemName = itemName.slice(5)
+function InstatiateCraftingItem(Root){
+    var label = $.CreatePanel("Label", Root, "CraftLabel")
+    label.text = "CRAFT"
+    label.visible = false
+    label.hittest = false
 
-$('#Item').SetImage( "s2r://panorama/images/items/"+itemName+".png" )
+    var itemName = Root.itemname
 
-var label = $.CreatePanel("Label", Root, "CraftLabel")
-label.text = "CRAFT"
-label.visible = false
-label.hittest = false
+    if (itemName.indexOf("item_") > -1)
+        itemName = itemName.slice(5)
+
+    $('#Item').SetImage( "s2r://panorama/images/items/"+itemName+".png" )
+}
 
 function ShowToolTip(){ 
     var abilityButton = $( "#Item" );
