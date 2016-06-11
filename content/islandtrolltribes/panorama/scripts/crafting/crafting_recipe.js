@@ -20,21 +20,14 @@ function InstantiateCraftingRecipe(panel) {
     resultPanel.itemname = itemResult
 
     CheckInventory(panel, resultPanel)
-
-    $.Msg("Instantiated Crafting Recipe: "+itemResult)
 }
 
 function MakeItemPanel(parent, name, elements) {
     var itemPanel = $.CreatePanel("Panel", parent, name)
     itemPanel.itemname = name
     itemPanel.elements = elements
-
-    //itemPanel.BLoadLayout("file://{resources}/layout/custom_game/crafting/crafting_item.xml", false, false);
     itemPanel.BLoadLayoutSnippet("Crafting_Item")
-
-    //Instantiate Item
     InstatiateCraftingItem(itemPanel)
-    $.Msg("Instantiated Crafting Item: "+name)
 
     return itemPanel
 }
@@ -136,7 +129,6 @@ function RemoveGlow(panel) {
 
 function GlowCraft(panel) {
     panel.SetPanelEvent('onactivate', function SendCraft() {
-        $.Msg(panel.itemname, panel.section_name, panel.entity)
         GameEvents.SendCustomGameEventToServer( "craft_item", {itemname: panel.itemname, section: panel.section_name, entity: panel.entity} );
     })
 

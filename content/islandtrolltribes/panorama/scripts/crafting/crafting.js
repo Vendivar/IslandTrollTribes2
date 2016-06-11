@@ -1,12 +1,9 @@
 // Create a section to hold a list of crafting items
 function CreateCraftingSection (name, table, panel, bFold, entity) {
-    $.Msg("\nCreateCraftingSection ",name)
     var section = $.CreatePanel("Panel", panel, name)
     section.name = name
     section.bFold = bFold //Whether the panel starts initially folded
-    //section.BLoadLayout("file://{resources}/layout/custom_game/crafting/crafting_section.xml", false, false);
     section.BLoadLayoutSnippet("Crafting_Section");
-
     InstantiateCraftingSection(section)
 
     // Create the recipes in order
@@ -50,9 +47,7 @@ function CreateCraftingRecipe (section, result, ingredients, table, name, entity
     crafting_item.ingredients = ingredients
     crafting_item.table = table
     crafting_item.entity = entity
-    //crafting_item.BLoadLayout("file://{resources}/layout/custom_game/crafting/crafting_recipe.xml", false, false);
     crafting_item.BLoadLayoutSnippet("Crafting_Recipe")
-
     InstantiateCraftingRecipe(crafting_item)
 }
 
