@@ -29,7 +29,7 @@
 
         <snippet name="Crafting_Item">
             <Panel class="CraftingItem">
-                <Image id="Item" onmouseover="ShowToolTip()" onmouseout="HideToolTip()"></Image>
+                <Image id="Item"></Image>
             </Panel>
         </snippet>
     </snippets>

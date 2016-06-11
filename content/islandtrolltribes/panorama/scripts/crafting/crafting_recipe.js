@@ -32,6 +32,7 @@ function MakeItemPanel(parent, name, elements) {
     itemPanel.BLoadLayoutSnippet("Crafting_Item")
 
     //Instantiate Item
+    InstatiateCraftingItem(itemPanel)
     $.Msg("Instantiated Crafting Item: "+name)
 
     return itemPanel

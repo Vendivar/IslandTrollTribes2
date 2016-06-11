@@ -1,34 +1,35 @@
-var LocalPlayerID = Game.GetLocalPlayerID()
-
-function InstatiateCraftingItem(Root){
-    var label = $.CreatePanel("Label", Root, "CraftLabel")
+function InstatiateCraftingItem(parent){
+    var label = $.CreatePanel("Label", parent, "CraftLabel")
     label.text = "CRAFT"
     label.visible = false
     label.hittest = false
 
-    var itemName = Root.itemname
+    var itemName = parent.itemname
 
     if (itemName.indexOf("item_") > -1)
         itemName = itemName.slice(5)
 
-    $('#Item').SetImage( "s2r://panorama/images/items/"+itemName+".png" )
-}
-
-function ShowToolTip(){ 
-    var abilityButton = $( "#Item" );
-    $.Msg("Show tooltip ",itemName)
-    $.DispatchEvent( "DOTAShowAbilityTooltip", abilityButton, "item_"+itemName );
-
-    if (Root.BHasClass("GlowGreen"))
+    var itemPanel = parent.FindChildTraverse("Item")
+    itemPanel.SetImage( "s2r://panorama/images/items/"+itemName+".png" )
+    itemPanel.SetPanelEvent('onmouseover', function ShowToolTip()
     {
-        Root.AddClass("GlowBright")
-        label.visible = true
-    }
+        $.Msg("Show tooltip ",itemName)
+        $.DispatchEvent( "DOTAShowAbilityTooltip", itemPanel, "item_"+itemName );
+
+        if (parent.BHasClass("GlowGreen"))
+        {
+            parent.AddClass("GlowBright")
+            label.visible = true
+        }
+    })
+
+    itemPanel.SetPanelEvent('onmouseout', function HideToolTip()
+    {
+        $.DispatchEvent( "DOTAHideAbilityTooltip", itemPanel );
+        parent.RemoveClass("GlowBright")
+        label.visible = false
+    })
 }
 
-function HideToolTip(){
-    var abilityButton = $( "#Item" );
-    $.DispatchEvent( "DOTAHideAbilityTooltip", abilityButton );
-    Root.RemoveClass("GlowBright")
-    label.visible = false
-}
+
+
