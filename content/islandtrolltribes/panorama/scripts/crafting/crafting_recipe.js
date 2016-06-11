@@ -23,7 +23,8 @@ function MakeItemPanel(name, elements, num) {
     itemPanel.itemname = name
     itemPanel.elements = elements
 
-    itemPanel.BLoadLayout("file://{resources}/layout/custom_game/crafting/crafting_item.xml", false, false);
+    //itemPanel.BLoadLayout("file://{resources}/layout/custom_game/crafting/crafting_item.xml", false, false);
+    itemPanel.BLoadLayoutSnippet("Crafting_Item")
     
     return itemPanel
 

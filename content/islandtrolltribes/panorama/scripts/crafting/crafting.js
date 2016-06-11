@@ -4,7 +4,8 @@ function CreateCraftingSection (name, table, panel, bFold, entity) {
     var section = $.CreatePanel("Panel", panel, name)
     section.name = name
     section.bFold = bFold //Whether the panel starts initially folded
-    section.BLoadLayout("file://{resources}/layout/custom_game/crafting/crafting_section.xml", false, false);
+    //section.BLoadLayout("file://{resources}/layout/custom_game/crafting/crafting_section.xml", false, false);
+    section.BLoadLayoutSnippet("Crafting_Section");
 
     // Create the recipes in order
     for (var i in table)
@@ -47,7 +48,8 @@ function CreateCraftingRecipe (section, result, ingredients, table, name, entity
     crafting_item.ingredients = ingredients
     crafting_item.table = table
     crafting_item.entity = entity
-    crafting_item.BLoadLayout("file://{resources}/layout/custom_game/crafting/crafting_recipe.xml", false, false);
+    //crafting_item.BLoadLayout("file://{resources}/layout/custom_game/crafting/crafting_recipe.xml", false, false);
+    crafting_item.BLoadLayoutSnippet("Crafting_Recipe")
 }
 
 var crafting_currentSelected
