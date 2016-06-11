@@ -15,9 +15,9 @@ function InstantiateCraftingSection(panel) {
 
         // Update the fold icon
         if (visible)
-            $('#FoldIcon').SetImage("s2r://panorama/images/crafting/minus.png"); 
+            panel.FindChildTraverse("FoldIcon").SetImage("s2r://panorama/images/crafting/minus.png"); 
         else
-            $('#FoldIcon').SetImage("s2r://panorama/images/crafting/plus.png");
+            panel.FindChildTraverse("FoldIcon").SetImage("s2r://panorama/images/crafting/plus.png");
     })
 
     panel.FindChildTraverse("CraftingSectionTitle").text = $.Localize(panel.name)
