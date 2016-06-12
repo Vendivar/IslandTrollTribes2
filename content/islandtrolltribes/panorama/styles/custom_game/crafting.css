@@ -1,6 +1,6 @@
 .CraftingRoot
 {
-    width: 30%;
+    width: 27%;
     height: 68.5%;
     overflow: clip scroll;
     flow-children: down;
@@ -11,7 +11,7 @@
 
     background-color: gradient( linear, 0% 0%, 0% 100%, from( #191e1e ), to( #292e2e ) );
     border: 2px solid #5e686966;
-    padding: 10px;
+    padding: 3px;
 }
 
 .Hidden
@@ -51,9 +51,9 @@
 .CraftingRecipe
 {
     flow-children: right;
-    height: 50px; 
+    height: 48px; 
     width: 510px;
-    margin-bottom: 2px;
+    margin-bottom: 1px;
 }
 
 .CraftingItem
@@ -63,8 +63,8 @@
 
 #Item
 {
-    width: 64px;
-    height: 50px;
+    width: 55px;
+    height: 45px;
     margin-right: 2px;
 }
 
@@ -108,12 +108,12 @@
 #EqualSign
 {
     color: gradient( linear, 0% 0%, 0% 100%, from( #E0E0E0 ), to( #686868 ) );
-    font-size: 60px;
+    font-size: 40px;
     font-family: Goudy Trajan Medium;
     font-weight: bold;
     text-align: center;
     text-shadow: 0px 0px 3px 3.0 #000000;
-    margin-bottom: 5px;
+    margin-bottom: 0px;
 }
 
 #Toggle

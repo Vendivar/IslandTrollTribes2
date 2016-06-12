@@ -2,9 +2,11 @@
 {
     "ID"                        "1519"
     "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_AOE"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
+	"SpellImmunityType" 			"SPELL_IMMUNITY_ENEMIES_YES"
     "BaseClass"                 "item_datadriven"
     "AbilityTextureName"        "potion_molotov"
-    "Model"                     "models/props_debris/shop_set_cage001.vmdl"
+    "Model"                     "models/heroes/batrider/batrider_molotov.vmdl"
     "Effect"                    "particles/custom/dropped_item_normal.vpcf"
     "AoERadius" "950"
     "AbilityCastRange"          "1200"
@@ -34,6 +36,7 @@
     "precache"
     {
         "particle"  "particles/custom/crate_trapped_main.vpcf"
+        "particle"  "particles/custom/crate_trap.vpcf"
     }
     
     "AbilitySpecial"
@@ -133,22 +136,12 @@
                 "ModifierName"  "modifier_molotov_burn"
                 "Duration"  "%duration_creep"
             }
-
-            //THIS DOESN'T WORK
-            //Buildings are creatures in the kv, need to apply in lua by matching unit name. Use string.find(unitName, "building") Don't forget to flag magic immunity
-            "ApplyModifier"
-            {
-                "Target"
-                {
-                    "Center"    "POINT"
-                    "Radius"    "%radius"
-                    "Teams" "DOTA_UNIT_TARGET_TEAM_ENEMY"
-                    "Types" "DOTA_UNIT_TARGET_BUILDING"
-                }
-                "ModifierName"  "modifier_molotov_burn"
-                "Duration"  "%duration_building"
-            }
-                
+            
+            "RunScript"
+			{
+				"ScriptFile" "items/potion_molotov.lua"
+				"Function"   "molotov"
+			}
             
             "SpendCharge"
             {
