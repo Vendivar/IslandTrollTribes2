@@ -6670,14 +6670,16 @@
 	{
 	    "ID"                        "1519"
 	    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
+		"SpellImmunityType" 			"SPELL_IMMUNITY_ENEMIES_YES"
 	    "BaseClass"                 "item_datadriven"
 	    "AbilityTextureName"        "potion_molotov"
-	    "Model"                     "models/props_debris/shop_set_cage001.vmdl"
-	    "Effect"	                "particles/custom/dropped_item_normal.vpcf"
+	    "Model"                     "models/heroes/batrider/batrider_molotov.vmdl"
+	    "Effect"                    "particles/custom/dropped_item_normal.vpcf"
 	    "AoERadius" "950"
 	    "AbilityCastRange"          "1200"
-		"AbilityChannelTime"        "2.5"
-	    "AbilityCastPoint"          "1.0"
+	    "AbilityChannelTime"        "2.5"
+	    "AbilityCastPoint"          "0"
 	    "AbilityCastAnimation"      "ACT_DOTA_ATTACK"
 	    "AbilityCooldown"           "25"
 	    "ItemCost"                  "5"
@@ -6703,10 +6705,6 @@
 	    {
 	        "particle"  "particles/custom/crate_trapped_main.vpcf"
 	        "particle"  "particles/custom/crate_trap.vpcf"
-	        "particle"  "particles/custom/crate_trap_projectile_fx.vpcf"
-	        "particle"  "particles/custom/crate_trap_projectile_fx2.vpcf"
-	        "particle"  "particles/custom/crate_trap_projectile_fx3.vpcf"
-	        "soundfile" "soundevents/game_sounds_heroes/game_sounds_meepo.vsndevts"
 	    }
 	    
 	    "AbilitySpecial"
@@ -6740,133 +6738,111 @@
 	"OnSpellStart"
 	{
 	        "FireSound"
-			{
-				"EffectName"			"molotov.pre"
-				"Target"				"CASTER"
-			}
+	        {
+	            "EffectName"            "molotov.pre"
+	            "Target"                "CASTER"
+	        }
 	
 	}
-		"OnChannelSucceeded"
-		{
-			"FireSound"
-			{
-				"EffectName"			"molotov.toss"
-				"Target"				"CASTER"
-			}
+	    "OnChannelSucceeded"
+	    {
+	        "FireSound"
+	        {
+	            "EffectName"            "molotov.toss"
+	            "Target"                "CASTER"
+	        }
 	
-			"LinearProjectile"
-			{
-				"Target"      	"POINT"
-			    "EffectName"  	"particles/custom/molotov_toss.vpcf"
-			    "MoveSpeed"   	"700"
-			    "StartPosition" "attach_attack1"
-			    "TargetTeams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
-			    "HasFrontalCone"    "0"
-			    "ProvidesVision"	"0"
-			}
+	        "LinearProjectile"
+	        {
+	            "Target"        "POINT"
+	            "EffectName"    "particles/custom/molotov_toss.vpcf"
+	            "MoveSpeed"     "700"
+	            "StartPosition" "attach_attack1"
+	            "TargetTeams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	            "HasFrontalCone"    "0"
+	            "ProvidesVision"    "0"
+	        }
 	 
-		}
-	
-	    "OnProjectileHitUnit"
-		{
-			"DeleteOnHit"		"0"
-		}
+	    }
 	    
-		"OnProjectileFinish"
-		    {
-		        "FireSound"
-		        {
-		            "EffectName"    "molotov.hit"
-		            "Target"        "POINT"
-		        }
+	    "OnProjectileFinish"
+	        {
+	            "FireSound"
+	            {
+	                "EffectName"    "molotov.hit"
+	                "Target"        "POINT"
+	            }
 	            "FireEffect"
 	            {
-	                "EffectName"	"particles/custom/molotov_explode.vpcf"
-	                "EffectAttachType"	"PATTACH_WORLDORIGIN"
-	                "Target"	"POINT"
+	                "EffectName"    "particles/custom/molotov_explode.vpcf"
+	                "EffectAttachType"  "PATTACH_WORLDORIGIN"
+	                "Target"    "POINT"
 	            }
 	            
-		        "ActOnTargets"
+	            "ApplyModifier"
 	            {
 	                "Target"
 	                {
-	                    "Center"	"POINT"
-	                    "Radius"	"%radius"
-	                    "Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY" 
-	                    "Types"		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BUILDING | DOTA_UNIT_TARGET_CREEP"
+	                    "Center"    "POINT"
+	                    "Radius"    "%radius"
+	                    "Teams" "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	                    "Types" "DOTA_UNIT_TARGET_HERO"
 	                }
-	                
-	                "Action"
-	                {
-	                    "ApplyModifier"
-	                    {
-	                        "ModifierName"	"modifier_molotov_burn"
-	                        "Duration"	"%duration_hero"
-	                        "Target"
-	                        {
-	                            "Target" "TARGET"
-	                            "Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-	                            "Types"	"DOTA_UNIT_TARGET_HERO"
-	                        }
-	
-	                    }
-	
-	                    "ApplyModifier"
-	                    {
-	                        "ModifierName"	"modifier_molotov_burn"
-	                        "Duration"	"%duration_creep"
-	                        "Target"
-	                        {
-	                            "Target" "TARGET"
-	                            "Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-	                            "Types"	"DOTA_UNIT_TARGET_CREEP"
-	                        }
-	                    }
-	                    "ApplyModifier"
-	                    {
-	                        "ModifierName"	"modifier_molotov_burn"
-	                        "Duration"	"%duration_building"
-	                        "Target"
-	                        {
-	                            "Target" "TARGET"
-	                            "Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-	                            "Types"	"DOTA_UNIT_TARGET_BUILDING"
-	                        }
-	
-	                    }
-	                }
+	                "ModifierName"  "modifier_molotov_burn"
+	                "Duration"  "%duration_hero"
 	            }
+	
+	            "ApplyModifier"
+	            {
+	                "Target"
+	                {
+	                    "Center"    "POINT"
+	                    "Radius"    "%radius"
+	                    "Teams" "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	                    "Types" "DOTA_UNIT_TARGET_CREEP"
+	                }
+	                "ModifierName"  "modifier_molotov_burn"
+	                "Duration"  "%duration_creep"
+	            }
+	            
+	            "RunScript"
+				{
+					"ScriptFile" "items/potion_molotov.lua"
+					"Function"   "molotov"
+				}
+	            
 	            "SpendCharge"
 	            {
 	            }
 	        }
-		
-		    "Modifiers"
-		{
-			"modifier_molotov_burn"
-			{
-				"IsDebuff"	"1"
-				"EffectName"		"particles/units/heroes/hero_phoenix/phoenix_fire_spirit_burn.vpcf"
-				"EffectAttachType"	"follow_origin"
+	    
+	        "Modifiers"
+	    {
+	        "modifier_molotov_burn"
+	        {
+	            "IsDebuff"  "1"
+	            "IsHidden"  "0"
+	            "EffectName"        "particles/units/heroes/hero_phoenix/phoenix_fire_spirit_burn.vpcf"
+	            "EffectAttachType"  "follow_origin"
 	
-				"ThinkInterval"		"1.0"
+	            "ThinkInterval"     "1.0"
 	
-				"OnIntervalThink"
-				{
-					"Damage"
-					{
-						"Target"	"TARGET"
-						"Type"		"DAMAGE_TYPE_MAGICAL"
-						"Damage"	"%burn_dps"
-					}
-				}
+	            "OnIntervalThink"
+	            {
+	                "Damage"
+	                {
+	                    "Target"    "TARGET"
+	                    "Type"      "DAMAGE_TYPE_MAGICAL"
+	                    "Damage"    "%burn_dps"
+	                }
+	            }
 	
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"-10"
-				}
-			}
-		}
+	            "Properties"
+	            {
+	                "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "-10"
+	            }
+	        }
+	    }
 	}
 	"item_potion_nether"
 	{
@@ -7193,8 +7169,8 @@
 	                    "Target"			"TARGET"
 	                    "Center"			"POINT"
 	                    "Duration"			"%stun_duration"
-	                    "Distance"			"100"
-	                    "Height"			"20"
+	                    "Distance"			"200"
+	                    "Height"			"25"
 	                    "IsFixedDistance"	"1"
 	                    "ShouldStun"		"1"
 	                }

@@ -208,6 +208,7 @@
         
 //Game Strings
 		"DiscoDuckSpawnMessage"					"AN ANCIENT EVIL HAS AWOKEN"
+		"NoobTimeOver"					"Noob time is over!\nNow you will not be automatically revived when you die!\nYou can still be revived if your team builds a Spirit Ward"
 
 // Creature Ability Names
 		"DOTA_Tooltip_Ability_creature_aura_health_regen"					"Healing Aura"
@@ -251,7 +252,7 @@
 "DOTA_Tooltip_ability_ability_beastmaster_bearform_attack_damage"		"+DAMAGE BONUS:"
 "DOTA_Tooltip_ability_ability_beastmaster_bearform_health_bonus"		"HEALTH BONUS:"
 "DOTA_Tooltip_ability_ability_beastmaster_bearform_move_speed"		    "%MOVE SPEED:"
-"DOTA_Tooltip_ability_ability_beastmaster_bearform_energy_drain"	    "%ENERGY DEGEN RATE:"
+"DOTA_Tooltip_ability_ability_beastmaster_bearform_degen_rate"	    "%ENERGY DEGEN RATE:"
 "DOTA_Tooltip_Ability_ability_beastmaster_bearform_Description"		"Shapeshifts into a Bear. Drains energy at a faster rate. Gains additional abilities."
 "DOTA_Tooltip_Ability_ability_beastmaster_bearform_Note0"		    "The bonus HP is +50 HP ontop of your max HP. By shapeshifting back if you have less then 50 HP you will die upon being shapeshifted."
 
@@ -279,12 +280,12 @@
 
 
 "DOTA_Tooltip_Ability_ability_beastmaster_elkform"		            "Shapeshift to Elk form"
-"DOTA_Tooltip_ability_ability_beastmaster_elkform_attack_damage"	"+ATTACK DAMAGE:"
+"DOTA_Tooltip_ability_ability_beastmaster_elkform_attack_damage"	"ATTACK DAMAGE:"
 "DOTA_Tooltip_ability_ability_beastmaster_elkform_attack_speed"		"%ATTACK SPEED:"
 "DOTA_Tooltip_ability_ability_beastmaster_elkform_magic_resist"		"%MAGIC RESIST:"
 "DOTA_Tooltip_ability_ability_beastmaster_elkform_degen_rate"		"%ENERGY DEGEN RATE:"
 "DOTA_Tooltip_Ability_ability_beastmaster_elkform_Description"		"Shapeshifts into an Elk altering the shape shifter's stats. Drains energy at a 2x rate."
-"DOTA_Tooltip_ability_ability_beastmaster_elkform_move_speed"		"MOVE SPEED:"
+"DOTA_Tooltip_ability_ability_beastmaster_elkform_move_speed"		"%MOVE SPEED:"
 "DOTA_Tooltip_modifier_elkform"		"Elkform"
 "DOTA_Tooltip_modifier_elkform_Description"		"Gaining +35 move speed, -4 damage, +10% attack speed, and +25% magic resistance while losing energy at 2x rate"
 
@@ -292,7 +293,7 @@
 "DOTA_Tooltip_Ability_ability_beastmaster_wolfform"		"Shapeshift to Wolf Form"
 "DOTA_Tooltip_ability_ability_beastmaster_wolfform_attack_damage"		"+ATTACK DAMAGE:"
 "DOTA_Tooltip_ability_ability_beastmaster_wolfform_attack_speed"		"%ATTACK SPEED:"
-"DOTA_Tooltip_ability_ability_beastmaster_wolfform_degen_rate"		"%ENERGY DEGEN RATE:"
+"DOTA_Tooltip_ability_ability_beastmaster_wolfform_degen_rate2"		"%ENERGY DEGEN RATE:"
 "DOTA_Tooltip_ability_ability_beastmaster_wolfform_move_speed"		"%MOVE SPEED:"
 "DOTA_Tooltip_Ability_ability_beastmaster_wolfform_Description"		"Shapeshifts into a Wolf. Drains energy at a faster rate. Gains additional abilities."
 "DOTA_Tooltip_modifier_wolfform"		                            "Wolf Form"
@@ -414,6 +415,21 @@
 "DOTA_Tooltip_Ability_ability_beastmaster_ram_stun_duration"		"STUN DURATION:"
 "DOTA_Tooltip_Ability_ability_beastmaster_ram_stun_damage"		"STUN DAMAGE:"
 "DOTA_Tooltip_Ability_ability_beastmaster_ram_range"		"RANGE:"
+
+"DOTA_Tooltip_ability_spirit_breaker_charge_of_darkness"					"Ram"
+"DOTA_Tooltip_ability_spirit_breaker_charge_of_darkness_Lore"				"The elk will charge with unwieldy force to protect its kind."
+"DOTA_Tooltip_ability_spirit_breaker_charge_of_darkness_Description"		"Charges at an enemy from great distance dealing damage and stunning them temporarily."
+"DOTA_Tooltip_ability_spirit_breaker_charge_of_darkness_Note0"				"The Elk passes through trees, cliffs, and units."
+"DOTA_Tooltip_ability_spirit_breaker_charge_of_darkness_Note1"				"The charge indicator is visible only to allies."
+"DOTA_Tooltip_ability_spirit_breaker_charge_of_darkness_movement_speed"		"CHARGE SPEED:"
+"DOTA_Tooltip_ability_spirit_breaker_charge_of_darkness_stun_duration"		"STUN DURATION:"
+"DOTA_Tooltip_ability_spirit_breaker_charge_of_darkness_range"		        "RANGE:"
+
+"DOTA_Tooltip_modifier_spirit_breaker_charge_of_darkness_Description"			"Charging!"
+"DOTA_Tooltip_modifier_spirit_breaker_charge_of_darkness"			            "Ram"
+"DOTA_Tooltip_modifier_spirit_breaker_charge_of_darkness_debuff"				"Ram"
+"DOTA_Tooltip_modifier_spirit_breaker_charge_of_darkness_debuff_Description"	"Incoming charge!"
+
 
 "DOTA_Tooltip_Ability_ability_beastmaster_releasepet"		">Release Pet"
 "DOTA_Tooltip_Ability_ability_beastmaster_releasepet_Description"		"You release the pet into the wild, losing control of it. The pet immediately becomes hostile and attacks anything around it"
@@ -1270,6 +1286,8 @@
 "DOTA_Tooltip_Ability_ability_priest_selfpreservation_Lore"		"''nice skill gg''"
 "DOTA_Tooltip_ability_ability_priest_smokecombatprevention"		"Combat Smoke"
 "DOTA_Tooltip_ability_ability_priest_smokecombatprevention_Description"		""
+"DOTA_Tooltip_ability_ability_priest_selfpreservation_all_stats"                  "ALL STATS:"
+
 
 
 "DOTA_Tooltip_ability_ability_priest_spiritbreak"		"Spirit Break"
@@ -1287,10 +1305,10 @@
 
 "DOTA_Tooltip_Ability_ability_priest_spiritlink"		"Spirit Link"
 "DOTA_Tooltip_Ability_ability_priest_spiritlink_Description"		"Links the health of up to 4 units in a 4000 AOE.\n\n<font color='#777777'>Hold ALT to view more information."
-"DOTA_Tooltip_ability_ability_priest_spiritpassive"		"Ability Priest Spiritpassive"
-"DOTA_Tooltip_ability_ability_priest_spiritpassive_Description"		""
+"DOTA_Tooltip_ability_ability_priest_spiritpassive"		"Spirit Link Buff"
+"DOTA_Tooltip_ability_ability_priest_spiritpassive_Description"		"Your health is linked up with 1-3 more units near you!"
 
-"DOTA_Tooltip_modifier_spiritlink"                                                "Spiritlink"
+"DOTA_Tooltip_modifier_spiritlink"                                                "Spirit Link"
 "DOTA_Tooltip_modifier_spiritlink_Description"                                    ""
 
 
@@ -1413,7 +1431,7 @@
 
 
 "DOTA_Tooltip_Ability_ability_thief_blur"		"Blur"
-"DOTA_Tooltip_ability_ability_thief_blur_collision"		"Ability Thief Blur Collision"
+"DOTA_Tooltip_ability_ability_thief_blur_collision"		"Blur Collision"
 "DOTA_Tooltip_ability_ability_thief_blur_collision_Description"		""
 "DOTA_Tooltip_ability_ability_thief_blur_collision_miss_chance"		"MISS CHANCE:"
 "DOTA_Tooltip_ability_ability_thief_blur_collision_miss_duration"		"MISS DURATION:"
@@ -1454,7 +1472,7 @@
 "DOTA_Tooltip_Ability_ability_thief_cloak_sub2_movespeed"		"MOVE SPEED INCREASE:"
 
 
-"DOTA_Tooltip_ability_ability_thief_cloakadvanced"		"Ability Thief Cloakadvanced"
+"DOTA_Tooltip_ability_ability_thief_cloakadvanced"		"Advanced Cloak"
 "DOTA_Tooltip_ability_ability_thief_cloakadvanced_Description"		""
 "DOTA_Tooltip_ability_ability_thief_cloakadvanced_duration"		"DURATION:"
 "DOTA_Tooltip_ability_ability_thief_cloakadvanced_fade_time"		"FADE TIME:"
@@ -1483,8 +1501,8 @@
 
 
 
-"DOTA_Tooltip_ability_ability_thief_smokecombatprevention"		"Ability Thief Smokecombatprevention"
-"DOTA_Tooltip_ability_ability_thief_smokecombatprevention_Description"		""
+"DOTA_Tooltip_ability_ability_thief_smokecombatprevention"		"Smoke Combat Prevention"
+"DOTA_Tooltip_ability_ability_thief_smokecombatprevention_Description"		"You can not attack while under this smoke."
 "DOTA_Tooltip_Ability_ability_thief_smokestream"		"Smoke Stream"
 "DOTA_Tooltip_Ability_ability_thief_smokestream_Description"		"Smoke trail of under caster, preventing those buildings from attacking. Must be moving for effect to work."
 "DOTA_Tooltip_Ability_ability_thief_smokestream_Duration"		"DURATION:"
@@ -1492,14 +1510,13 @@
 
 "DOTA_Tooltip_Ability_ability_thief_teleport"		"Teleport"
 "DOTA_Tooltip_Ability_ability_thief_teleport_Description"		"Short range blink with up to 600 distance. 200 minimum distance"
-"DOTA_Tooltip_ability_ability_thief_telethief"		"Ability Thief Telethief"
+"DOTA_Tooltip_ability_ability_thief_telethief"		"Tele-Theif"
 "DOTA_Tooltip_Ability_ability_thief_tele-thief"		"Tele-Theif"
-"DOTA_Tooltip_ability_ability_thief_telethief_Description"		""
-"DOTA_Tooltip_Ability_ability_thief_tele-thief_Description"		"Cast on a friendly fire. Items you pick up warp to the fire. However, with Telethief, the items only warp to the fire if you are near an enemy building. If this condition is met, it is 100% warp rate. Must be near enemy building for items to warp. 100% chance to warp to fire.\n\nDURATION: <font color='#777777'>140</font>"
+"DOTA_Tooltip_ability_ability_thief_telethief_Description"		"Cast on a friendly fire. Items you pick up warp to the fire. However, with Telethief, the items only warp to the fire if you are near an enemy building. If this condition is met, it is 100% warp rate. Must be near enemy building for items to warp."
 "DOTA_Tooltip_ability_ability_thief_telethief_duration"		"DURATION:"
 "DOTA_Tooltip_ability_ability_thief_telethief_radius"		"RADIUS:"
-"DOTA_Tooltip_modifier_thief_telethief"		"Thief Telethief"
-"DOTA_Tooltip_modifier_thief_telethief_Description"		""
+"DOTA_Tooltip_modifier_thief_telethief"		"Telethief"
+"DOTA_Tooltip_modifier_thief_telethief_Description"		"Items you pick up near enemy buildings warp to the fire you targeted."
 
 
 
@@ -1535,7 +1552,7 @@
 "DOTA_Tooltip_Ability_ability_lizard_poisonattack"		"Poison Attack"
 "DOTA_Tooltip_Ability_ability_lizard_poisonattack_Description"		"Slows movement speed by 35% and attack speed by 7% for (less than 300) seconds. Does not deal any damage over time."
 
-"DOTA_Tooltip_ability_ability_mammoth_passive_hardened_skin"		"Ability Mammoth Passive Hardened Skin"
+"DOTA_Tooltip_ability_ability_mammoth_passive_hardened_skin"		"Mammoth Hardened Skin"
 "DOTA_Tooltip_ability_ability_mammoth_passive_hardened_skin_chance"		"CHANCE:"
 "DOTA_Tooltip_ability_ability_mammoth_passive_hardened_skin_Description"		""
 "DOTA_Tooltip_ability_ability_mammoth_passive_invul"		"Invul"
@@ -1586,7 +1603,7 @@
 "DOTA_Tooltip_ability_ability_the_one_criticalstike_Description"		""
 "DOTA_Tooltip_the_one_critical"		"The One Critical"
 "DOTA_Tooltip_the_one_critical_Description"		""
-"DOTA_Tooltip_the_one_criticalstrike_passive"		"The One Criticalstrike Passive"
+"DOTA_Tooltip_the_one_criticalstrike_passive"		"The One Critical Strike"
 "DOTA_Tooltip_the_one_criticalstrike_passive_Description"		""
 
 
@@ -1617,7 +1634,7 @@
 "DOTA_Tooltip_the_one_truesight_passive_Description"		""
 
 
-"DOTA_Tooltip_ability_ability_wolf_lifesteal"		"Ability Wolf Lifesteal"
+"DOTA_Tooltip_ability_ability_wolf_lifesteal"		"Wolf Lifesteal"
 "DOTA_Tooltip_ability_ability_wolf_lifesteal_Description"		""
 "DOTA_Tooltip_ability_ability_wolf_lifesteal_lifesteal"		"LIFESTEAL:"
 
@@ -2701,8 +2718,8 @@
 "DOTA_Tooltip_ability_item_potion_drunk_Lore"		"A toast to the trolls that we fight best. We fight them best in a big gore fest. We'll kill 'em sitting, standing or even lying; hell, if they had wings we'd kill 'em flying."
 "DOTA_Tooltip_ability_item_potion_drunk_max_stacks"		"MAX STACKS:"
 "DOTA_Tooltip_ability_item_potion_drunk_Note0"		"Effects:\n-10% reduced move speed on target\n-50% reduced chance to hit on target.\n\nòSilences target\n9 seconds on trolls, 13 seconds on animals."
-"DOTA_Tooltip_modifier_potion_drunk"		"Potion Drunk"
-"DOTA_Tooltip_modifier_potion_drunk_Description"		""
+"DOTA_Tooltip_modifier_potion_drunk"		"Drunk!"
+"DOTA_Tooltip_modifier_potion_drunk_Description"		"You are drunk! You move 10% slower and a 50% reduced change to hit a target!"
 
 
 "DOTA_Tooltip_ability_item_potion_elemental"		"Elemental Potion"
@@ -3040,7 +3057,7 @@
 "DOTA_Tooltip_ability_ability_item_eat_meat_raw_Description"		"Delicious"
 
 
-"DOTA_Tooltip_ability_ability_magic_raw_meteor"		                "Ability Magic Raw Meteor"
+"DOTA_Tooltip_ability_ability_magic_raw_meteor"		                "Raw Magic Meteor"
 "DOTA_Tooltip_ability_ability_magic_raw_meteor_area_of_effect"		"AREA OF EFFECT:"
 "DOTA_Tooltip_ability_ability_magic_raw_meteor_burn_dps"		    "BURN DPS:"
 "DOTA_Tooltip_ability_ability_magic_raw_meteor_burn_duration"		"BURN DURATION:"
@@ -3376,5 +3393,22 @@
         
 		"DOTA_Tooltip_ability_item_Gravestone"								"Resurrect Teammate"
 		"DOTA_Chat_Gravestone_Pinged"										"[ALLIES] Fallen teammate here."		
+        
+		"DOTA_Chat_Item_Spotted" "[ALLIES] <font color='%s1'>%s2</font> dropped here."
+		"DOTA_Chat_Item_Alert" "[ALLIES] Gather for <font color='%s1'>%s2</font> here."
+        
+		"DOTA_Modifier_Alert"		"[ALLIES] %s1: Affected by: <font color='%s2'>%s3%s4</font>"
+		"DOTA_Modifier_Alert_Enemy"	"[ALLIES] %s1: Enemy <font color='%s5'>%s6</font> affected by: <font color='%s2'>%s3%s4</font>"
+		"DOTA_EnemyAbility_Ping"				"[ALLIES] %s1: Beware <font color='%s2'>%s3</font> %s4%s5"
+        "DOTA_Ability_Ping_Unlearned"			"[ALLIES] %s1: %s2 %s3Not Learned"
+		"DOTA_Ability_Ping_Ready"				"[ALLIES] %s1: %s2 %s3Ready ( Level %s4 )"
+		"DOTA_Ability_Ping_ReadyPassive"		"[ALLIES] %s1: %s2 %s3Passive ( Level %s4 )"
+		"DOTA_Ability_Ping_Mana"				"[ALLIES] %s1: %s2 %s3Not Enough Mana ( Need %s4 more )"
+		"DOTA_Ability_Ping_Cooldown"			"[ALLIES] %s1: %s2 %s3On Cooldown ( %s4 seconds remain )"		
+		"DOTA_Ability_Ping_Cooldown_No_Time"	"[ALLIES] %s1: %s2 %s3On Cooldown"	
+		"DOTA_Item_Ping_Ready"					"[ALLIES] %s1: <font color='%s2'>%s3</font> %s4Ready"
+		"DOTA_Item_Ping_ReadyPassive"			"[ALLIES] %s1: <font color='%s2'>%s3</font> %s4Ready"
+		"DOTA_Item_Ping_Mana"					"[ALLIES] %s1: <font color='%s2'>%s3</font> %s4Not Enough Mana ( Need %s5 more )"
+		"DOTA_Item_Ping_Cooldown"				"[ALLIES] %s1: <font color='%s2'>%s3</font> %s4On Cooldown ( %s5 seconds remain )"
 	}
 }
