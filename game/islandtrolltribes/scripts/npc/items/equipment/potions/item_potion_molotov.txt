@@ -34,11 +34,6 @@
     "precache"
     {
         "particle"  "particles/custom/crate_trapped_main.vpcf"
-        "particle"  "particles/custom/crate_trap.vpcf"
-        "particle"  "particles/custom/crate_trap_projectile_fx.vpcf"
-        "particle"  "particles/custom/crate_trap_projectile_fx2.vpcf"
-        "particle"  "particles/custom/crate_trap_projectile_fx3.vpcf"
-        "soundfile" "soundevents/game_sounds_heroes/game_sounds_meepo.vsndevts"
     }
     
     "AbilitySpecial"
