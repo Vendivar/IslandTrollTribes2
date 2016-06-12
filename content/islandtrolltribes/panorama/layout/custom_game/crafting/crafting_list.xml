@@ -5,8 +5,35 @@
     </styles>
     <scripts>
         <include src="file://{resources}/scripts/crafting/crafting.js" />
+        <include src="file://{resources}/scripts/crafting/crafting_item.js" />
+        <include src="file://{resources}/scripts/crafting/crafting_recipe.js" />
+        <include src="file://{resources}/scripts/crafting/crafting_section.js" />
         <include src="file://{resources}/scripts/crafting/crafting_list.js" />
     </scripts>
+    <snippets>
+        <snippet name="Crafting_Section">
+            <Panel class="CraftingSection">
+                <Panel id="Toggle">
+                    <Label id="CraftingSectionTitle"/>
+                    <Image id="FoldIcon"/>
+                </Panel>
+                <!-- Crafting_Recipes -->
+            </Panel>
+        </snippet>
+
+        <snippet name="Crafting_Recipe">
+            <Panel class="CraftingRecipe">
+                <!-- Crafting_Items -->
+            </Panel>
+        </snippet>
+
+        <snippet name="Crafting_Item">
+            <Panel class="CraftingItem">
+                <Image id="Item"></Image>
+            </Panel>
+        </snippet>
+    </snippets>
+
     <Panel class="CraftingRoot">
         <Panel id="CraftingTitlePanel">
             <Label id="CraftingListTitle" text="#itt_craft_menu" />

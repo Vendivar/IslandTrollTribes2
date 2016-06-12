@@ -1,22 +1,25 @@
-var Root = $.GetContextPanel()
-var visible = !Root.bFold
+function InstantiateCraftingSection(panel) {
+    var visible = !panel.bFold
 
-$('#CraftingSectionTitle').text = $.Localize(Root.name)
+    var toggleButton = panel.FindChildTraverse("Toggle")
+    toggleButton.SetPanelEvent('onactivate', function FoldSection()
+    {
+        visible = !visible
+        $.Msg("Visible ",visible)
+        var childNum = panel.GetChildCount()
+        for (var i = 0; i < childNum; i++) {
+            var child = panel.GetChild( i )
+            if (child.id != "Toggle")
+                child.visible = visible
+        };
 
-function FoldSection()
-{
-    visible = !visible
-    $.Msg("Visible ",visible)
-    var childNum = Root.GetChildCount()
-    for (var i = 0; i < childNum; i++) {
-        var child = Root.GetChild( i )
-        if (child.id !="Toggle")
-            child.visible = visible
-    };
+        // Update the fold icon
+        if (visible)
+            panel.FindChildTraverse("FoldIcon").SetImage("s2r://panorama/images/crafting/minus.png"); 
+        else
+            panel.FindChildTraverse("FoldIcon").SetImage("s2r://panorama/images/crafting/plus.png");
+    })
 
-    // Update the fold icon
-    if (visible)
-        $('#FoldIcon').SetImage("s2r://panorama/images/crafting/minus.png"); 
-    else
-        $('#FoldIcon').SetImage("s2r://panorama/images/crafting/plus.png");
+    panel.FindChildTraverse("CraftingSectionTitle").text = $.Localize(panel.name)
+    $.Msg("Instantiated Crafting Section")
 }
