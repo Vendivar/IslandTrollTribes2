@@ -1,9 +1,9 @@
-MAXIMUM_PASSIVE_NEUTRALS    = 100
+MAXIMUM_PASSIVE_NEUTRALS    = 70
 MAXIMUM_AGGRESSIVE_NEUTRALS = 20
 
 -- Game periods determine what is allowed to spawn, from start (0) to X seconds in
-GAME_PERIOD_GRACE           = 420
-GAME_PERIOD_EARLY           = 900
+GAME_PERIOD_GRACE             = 420
+GAME_PERIOD_MIDGAME           = 900
 
 if not Spawns then
     _G.Spawns = class({})
@@ -64,10 +64,10 @@ function GetSpawnInstructions()
     -- Determine which spawn table to use depending on the game time
     local time = math.floor(GameRules:GetGameTime())
     local spawnTable = GameRules.SpawnInfo['Initial']
-    if time > GAME_PERIOD_EARLY then
-        spawnTable = GameRules.SpawnInfo['Early']
+    if time > GAME_PERIOD_MIDGAME then
+        spawnTable = GameRules.SpawnInfo['MidGame']
     elseif time > GAME_PERIOD_GRACE then
-        spawnTable = GameRules.SpawnInfo['Grace']
+        spawnTable = GameRules.SpawnInfo['EarlyGame']
     elseif time > GameRules.GameModeSettings["GAME_CREATURE_TICK_TIME"] then
         spawnTable = GameRules.SpawnInfo['Start']
     end
