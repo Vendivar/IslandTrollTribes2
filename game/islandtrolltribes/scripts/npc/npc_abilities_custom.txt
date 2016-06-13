@@ -12852,14 +12852,14 @@
 	            "Aura_Types"        "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
 	            "Aura_Flags"        "DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
 	
-	            "OnCreated"
-	            {
-	                "RunScript"
-	                {
-	                    "ScriptFile"    "heroes/priest/pumpup.lua"
-	                    "Function"      "ToggleOnAutocast"
-	                }
-	            }
+	            //"OnCreated"
+	            //{
+	                //"RunScript"
+	                //{
+	                //    "ScriptFile"    "heroes/priest/pumpup.lua"
+	                //    "Function"      "ToggleOnAutocast"
+	                //}
+	            //}
 	        }
 	
 	        "modifier_pumpup_autocast_attackstart"
