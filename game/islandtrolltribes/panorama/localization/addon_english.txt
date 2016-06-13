@@ -157,6 +157,7 @@
         "npc_ship_merchant_5"                                              "Orc Frigate"
         "npc_ship_merchant_6"                                              "Human Frigate"
         "npc_ship_merchant_7"                                              "Undead Transport Ship"
+        "compass_used" "used the sonar compass - now pinging merchant ships"
 
 
         // Toolkit Abilities

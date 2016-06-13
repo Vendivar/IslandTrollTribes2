@@ -1,64 +1,67 @@
 "item_compass_sonar"
 {
-	"ID"	"1103"
-	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"compass_sonar"
-	"Model"	"models/items/rattletrap/cog_tesla/cog_tesla.vmdl"
-	"Effect"	"particles/custom/dropped_item_normal.vpcf"
-	"AbilityCooldown"	"35"
-	"AbilityCastPoint"	"0.5"
-	"ItemCost"	"18"
-	"ItemShopTags"	"consumable"
-	"ItemQuality"	"consumable"
-	"ItemShareability"	"ITEM_FULLY_SHAREABLE"
-	"ItemStackable"	"0"
-	"ItemPermanent"	"1"
-	"ItemDroppable"	"1"
-	"ItemAliases"	"quicktype"
-	"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
-	"ItemKillable"	"1"
-	"ItemSellable"	"1"
-	"UIPickupSound"	"Item.PickUpGemShop"
-	"UIDropSound"	"Item.DropGemShop"
-	"WorldDropSound"	"Item.DropGemWorld"
-	"OnSpellStart"
-	{
-        
+    "ID"    "1103"
+    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "BaseClass" "item_datadriven"
+    "AbilityTextureName"    "compass_sonar"
+    "Model" "models/items/rattletrap/cog_tesla/cog_tesla.vmdl"
+    "Effect"    "particles/custom/dropped_item_normal.vpcf"
+    "AbilityCooldown"   "35"
+    "AbilityCastPoint"  "0.5"
+    "ItemCost"  "18"
+    "ItemShopTags"  "consumable"
+    "ItemQuality"   "consumable"
+    "ItemShareability"  "ITEM_FULLY_SHAREABLE"
+    "ItemStackable" "0"
+    "ItemPermanent" "1"
+    "ItemDroppable" "1"
+    "ItemAliases"   "quicktype"
+    "ItemDisassembleRule"   "DOTA_ITEM_DISASSEMBLE_NEVER"
+    "ItemKillable"  "1"
+    "ItemSellable"  "1"
+    "UIPickupSound" "Item.PickUpGemShop"
+    "UIDropSound"   "Item.DropGemShop"
+    "WorldDropSound"    "Item.DropGemWorld"
+    "OnSpellStart"
+    {
         "RunScript"
         {
             "ScriptFile"    "heroes/gatherer/ping.lua"
             "Function"      "PingUnitsInRange"
-            "Units"        "npc_ship_merchant_1,npc_ship_merchant_2,npc_ship_merchant_3,npc_ship_merchant_4,npc_ship_merchant_5,npc_ship_merchant_6,npc_ship_merchant_7,npc_ship_transport,npc_building_spirit_ward"
+            "Units"         "npc_ship_merchant_1,npc_ship_merchant_2,npc_ship_merchant_3,npc_ship_merchant_4,npc_ship_merchant_5,npc_ship_merchant_6,npc_ship_merchant_7,npc_ship_transport,npc_building_spirit_ward"
             "Duration"      "1.0"
         }
+        "RunScript"
+        {
+            "ScriptFile"    "items/sonar.lua"
+            "Function"      "CompassUse"
+        }
         "ApplyModifier"
-			{
-				"Target"	"CASTER"
-				"ModifierName"	"modifier_sonar_compasing"
-				"Duration"	"5.0"
-			}
-
-	}
+        {
+            "Target"        "CASTER"
+            "ModifierName"  "modifier_sonar_compasing"
+            "Duration"      "5.0"
+        }
+    }
     
-"Modifiers"
-	{
-		"modifier_sonar_compasing"
-		{
-			"Passive"	"0"
-			"IsHidden"	"1"
+    "Modifiers"
+    {
+        "modifier_sonar_compasing"
+        {
+            "Passive"   "0"
+            "IsHidden"  "1"
             "Duration"  "5"
-			"ThinkInterval"  "1.0"
-			"OnIntervalThink"
-			{
+            "ThinkInterval"  "1.0"
+            "OnIntervalThink"
+            {
                 "RunScript"
                 {
                     "ScriptFile"    "heroes/gatherer/ping.lua"
                     "Function"      "PingUnitsInRange"
-                    "Units"        "npc_ship_merchant_1,npc_ship_merchant_2,npc_ship_merchant_3,npc_ship_merchant_4,npc_ship_merchant_5,npc_ship_merchant_6,npc_ship_merchant_7,npc_ship_transport"
+                    "Units"         "npc_ship_merchant_1,npc_ship_merchant_2,npc_ship_merchant_3,npc_ship_merchant_4,npc_ship_merchant_5,npc_ship_merchant_6,npc_ship_merchant_7,npc_ship_transport"
                     "Duration"      "1.0"
                 }
-			}
-		}
-	}
+            }
+        }
+    }
 }
