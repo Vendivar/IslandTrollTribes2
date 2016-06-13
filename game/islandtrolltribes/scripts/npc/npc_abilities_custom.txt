@@ -3074,9 +3074,9 @@
 	        "DeleteOnHit"   "1"
 	        "RunScript"
 	        {
-	            "ScriptFile" "heroes/beastmaster/flea.lua"
-	            "Function"   "FleaAttackHit"
-	            "Target"     "TARGET"
+	            "ScriptFile"    "heroes/beastmaster/flea.lua"
+	            "Function"      "FleaAttackHit"
+	            "Target"        "TARGET"
 	        }
 	        
 	        "FireSound"
@@ -3091,8 +3091,8 @@
 	        }
 	        "FireSound"
 	        {
-	        "EffectName"        "ChickenAttack"
-	        "Target"            "CASTER"
+	            "EffectName"    "ChickenAttack"
+	            "Target"        "CASTER"
 	        }
 	    }
 	
@@ -3679,9 +3679,8 @@
 				"Passive"	"1"
 				"States"
 				{
-					"MODIFIER_PROPERTY_AVOID_CONSTANT"	"%chance"
+					"MODIFIER_PROPERTY_EVASION_CONSTANT"	"%chance"
 				}
-	
 			}
             "modifier_chickensound"
 			{

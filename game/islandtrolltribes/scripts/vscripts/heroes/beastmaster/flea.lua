@@ -8,23 +8,20 @@ function FleaAttack(keys)
 
     local cooldown = ability:GetLevelSpecialValueFor("cooldown", level-1)
 
-    if ability:IsCooldownReady() then
+    if ability:IsCooldownReady() and not caster:HasModifier("modifier_brewmaster_storm_cyclone") then
 
         -- check for valid targets
         local units = FindUnitsInRadius(teamnumber, casterPosition, nil, ability:GetCastRange(), DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, 0, 0, false)
-        
-        if #units > 0 then
-            for k,v in pairs(units) do
-                -- if not IsFlyingUnit(v) then
-            
-                    -- select random target
-                    local target = units[RandomInt(1,#units)]
 
+        if #units > 0 then
+            units = ShuffledList(units) --randomize
+            for k,v in pairs(units) do
+                if not IsFlyingUnit(v) then
                     -- fire flea attack projectile
                     local info =
                     {
                         Ability = ability,
-                        Target = target,
+                        Target = v,
                         Source = caster,
                         EffectName = particleName,
                         vSpawnOrigin = casterPosition,
@@ -37,8 +34,8 @@ function FleaAttack(keys)
 
                     -- apply cooldown
                     ability:StartCooldown(cooldown)
-
                     break
+                end
             end
         end
     end

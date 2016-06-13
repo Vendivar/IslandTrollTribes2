@@ -45,9 +45,9 @@
         "DeleteOnHit"   "1"
         "RunScript"
         {
-            "ScriptFile" "heroes/beastmaster/flea.lua"
-            "Function"   "FleaAttackHit"
-            "Target"     "TARGET"
+            "ScriptFile"    "heroes/beastmaster/flea.lua"
+            "Function"      "FleaAttackHit"
+            "Target"        "TARGET"
         }
         
         "FireSound"
@@ -62,8 +62,8 @@
         }
         "FireSound"
         {
-        "EffectName"        "ChickenAttack"
-        "Target"            "CASTER"
+            "EffectName"    "ChickenAttack"
+            "Target"        "CASTER"
         }
     }
 
