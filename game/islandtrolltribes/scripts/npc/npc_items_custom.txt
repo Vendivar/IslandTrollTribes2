@@ -5296,7 +5296,9 @@
 	"item_potion_anti_magic"
 	{
 		"ID"	"1050"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	    "AbilityUnitTargetTeam"  "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	    "AbilityUnitTargetType"  "DOTA_UNIT_TARGET_HERO"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"potion_anti_magic"
 		"Model"	"models/potion_acid.vmdl"
@@ -5345,14 +5347,14 @@
 		{
 	            "FireSound"
 	        {
-	            "Target"	"CASTER"
+	            "Target"	"TARGET"
 	            "EffectName"	"potion.antimagic"
 	        }
 			"SpendCharge"
 			{}
 			"ApplyModifier"
 			{
-				"Target"	"CASTER"
+				"Target"	"TARGET"
 				"ModifierName"	"modifier_rage_ability"
 				"Duration"	"%anti_magic_duration"
 			}
@@ -5380,12 +5382,12 @@
 	                {
 	                    "EffectName"        "particles/units/heroes/hero_life_stealer/life_stealer_rage.vpcf"
 	                    "EffectAttachType"  "attach_hitloc"
-	                    "Target"            "CASTER"
+	                    "Target"            "TARGET"
 	                    "ControlPointEntities"
 	                    {
-	                        "CASTER"    "attach_hitloc"
-	                        "CASTER"    "attach_hitloc"
-	                        "CASTER"    "attach_hitloc"
+	                        "TARGET"    "attach_hitloc"
+	                        "TARGET"    "attach_hitloc"
+	                        "TARGET"    "attach_hitloc"
 	                    }
 	                }
 	            }
