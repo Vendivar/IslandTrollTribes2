@@ -36,4 +36,19 @@
 
 	}
 
+"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"initial_damage"	"45"
+		}
+        
+		"02"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"bounce_range"	"1500"
+		}
+
+	}
 }

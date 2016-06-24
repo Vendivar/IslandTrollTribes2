@@ -11,57 +11,77 @@
 		"AbilityCastRange"	"1000"
 		"AbilityManaCost"	"0"
 		"MaxLevel"	"1"
-		"precache"
-		{
-			"particle_folder"	"particles/units/heroes/hero_ogre_magi"
-			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_ogre_magi.vsndevts"
-		}
-	
-		"OnSpellStart"
-		{
-				"RunScript"
-				{
-					"ScriptFile"    "heroes/mage/grow.lua"
-					"Function"      "Grow"
-					"GrowAmmt"      "1.10"
-				}
-				"FireSound"
-				{
-					"EffectName"	 "Hero_OgreMagi.Bloodlust.Cast"
-					"Target"	"CASTER"
-				}	
+        
+    "precache"
+    {
+        "particle" "particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_cast.vpcf"
+        "particle" "particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff.vpcf"
+        "soundfile" "soundevents/game_sounds_heroes/game_sounds_ogre_magi.vsndevts"
+        "soundfile" "sounds/weapons/hero/ogre_magi/bloodlust_target.vsnd"
+    }
+
+    "AbilitySpecial"
+    {
+        "01"
+        {
+            "var_type"  "FIELD_FLOAT"
+            "duration"  "20"
+        }
+
+        "02"
+        {
+            "var_type"  "FIELD_INTEGER"
+            "move_speed_bonus"  "10"
+        }
+
+        "03"
+        {
+            "var_type"  "FIELD_INTEGER"
+            "attack_speed_bonus"    "30"
+        }
+    }
+
+    "OnSpellStart"
+    {
+        "RunScript"
+        {
+            "ScriptFile"    "heroes/priest/pumpup.lua"
+            "Function"      "Bloodlust"
+        }
+        
+        "FireEffect"
+        {
+            "EffectName"       "particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_cast.vpcf"
+            "EffectAttachType" "follow_customorigin"
+            "Target"           "CASTER"
+            "ControlPointEntities"
+            {
+                "CASTER" "attach_attack1" //Start
+                "CASTER" "attach_hitloc"  //Velocity noise, not used
+                "CASTER" "attach_staff" //Hands
+                "TARGET" "attach_hitloc"  //Hit
+            }
+        }
+    }
+
+    "Modifiers"
+    {
+        "modifier_pumpup"
+        {
+            "IsBuff"            "1"
+            "IsPurgable"        "1"
+            "Duration"          "%duration"
+            "TextureName"       "ability_mage_pumpup"
+            "EffectName"        "particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff.vpcf"
+            "EffectAttachType"  "follow_origin"
 				
-			"ApplyModifier"
-			{
-				"ModifierName"	"modifier_pumpup"
-				"Target"
-				{
-					"Center"	"TARGET"
-					"Teams"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-					"Types"	"DOTA_UNIT_TARGET_HERO"
-				}
-	
-				"Duration"	"%duration"
-				"FireSound"
-				{
-					"EffectName"	"Hero_OgreMagi.Bloodlust.Target"
-					"Target"	"TARGET"
-				}
-			}
-	
-		}
-	
-		"Modifiers"
-		{
-			"modifier_pumpup"
-			{
-				"ThinkInterval"	"19"
+                "ThinkInterval"	"19"
 				"OnIntervalThink"
 				{
 					"RunScript"
 				{
 					"ScriptFile"    "heroes/mage/grow.lua"
-					"Function"      "Shrink"
+					"Function"      "BloodlustDelete"
 				}
                 "FireEffect"
 				{
@@ -87,52 +107,54 @@
 					"EffectAttachType" "follow_origin"
 				}
 				}
-				"IsDebuff"	"0"
-				"IsPurgable"	"1"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%move_speed_bonus"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed_bonus"
-				}
-	
-				"OnCreated"
-				{
-					"AttachEffect"
-					{
-						"EffectName"	"particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff_head.vpcf"
-						"Target"	"TARGET"
-						"EffectAttachType"	"follow_overhead"
-					}
-                    "AttachEffect"
-                    {
-                        "EffectName" "particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff.vpcf"
-                        "Target" "TARGET"
-                        "EffectAttachType" "follow_origin"
-                    }
-				}
-			}
-		}
-	
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_FLOAT"
-				"duration"	"20"
-			}
-	
-			"02"
-			{
-				"var_type"	"FIELD_FLOAT"
-				"move_speed_bonus"	"10"
-			}
-	
-			"03"
-			{
-				"var_type"	"FIELD_FLOAT"
-				"attack_speed_bonus"	"30"
-			}
-	
-		}
-	
-	}
+            "Properties"
+            {
+                "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%attack_speed_bonus"
+                "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%move_speed_bonus"
+            }
+        }
+
+        "modifier_pumpup_autocast_aura"
+        {
+            "Passive"   "1"
+            "IsHidden"  "1"
+
+            "Aura"              "modifier_pumpup_autocast_attackstart"
+            "Aura_Radius"       "600"
+            "Aura_Teams"        "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+            "Aura_Types"        "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+            "Aura_Flags"        "DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
+
+            //"OnCreated"
+            //{
+                //"RunScript"
+                //{
+                //    "ScriptFile"    "heroes/priest/pumpup.lua"
+                //    "Function"      "ToggleOnAutocast"
+                //}
+            //}
+        }
+
+        "modifier_pumpup_autocast_attackstart"
+        {
+            "IsHidden"  "1"
+            "OnAttack"
+            {
+                "RunScript"
+                {
+                    "ScriptFile"    "heroes/priest/pumpup.lua"
+                    "Function"      "BloodlustAutocast_Attack"
+                }
+            }
+
+            "OnAttacked"
+            {
+                "RunScript"
+                {
+                    "ScriptFile"    "heroes/priest/pumpup.lua"
+                    "Function"      "BloodlustAutocast_Attacked"
+                }
+            }      
+        }
+    }
+}

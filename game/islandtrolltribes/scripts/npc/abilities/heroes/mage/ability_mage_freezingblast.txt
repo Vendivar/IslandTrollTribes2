@@ -75,6 +75,7 @@
 	{
 		"modifier_cold"
 		{
+        "Attributes"       "MODIFIER_ATTRIBUTE_MULTIPLE"
 		"EffectName" "particles/generic_gameplay/generic_slowed_cold.vpcf"
 		"StatusEffectName" "particles/status_fx/status_effect_frost_lich.vpcf"
 			"IsDebuff"	"1"
@@ -84,15 +85,13 @@
 				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"-10"
 				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"-10"
 			}
-
-			"ThinkInterval"	"1.25"
-			"OnIntervalThink"
+			"OnCreated"
 			{
 				"RunScript"
 				{
 					"ScriptFile"   "mechanics/heat.lua"
 					"Function"     "AddHeat"
-					"Heat"         "-20" //TODO: Ability Special
+					"Heat"         "%HeatLoss" //TODO: Ability Special
 				}
 
 			}
@@ -117,7 +116,7 @@
 		"03"
 		{
 			"var_type"	"FIELD_FLOAT"
-			"Heatloss"	"-20"
+			"HeatLoss"	"-20"
 		}
 
 	}

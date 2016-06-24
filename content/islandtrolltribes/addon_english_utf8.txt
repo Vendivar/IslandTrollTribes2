@@ -2651,6 +2651,24 @@
 "DOTA_Tooltip_ability_item_net_hunting_radius"                                    "RADIUS:"
 
 
+
+
+"DOTA_Tooltip_ability_item_potion_molotov"                                        "Molotov Cocktale"
+"DOTA_Tooltip_ability_item_potion_molotov_Description"                            "Throw this at an enemy camp to set it ablaze!!!"
+"DOTA_Tooltip_ability_item_potion_molotov_burn_dps"                               "BURN DPS:"
+"DOTA_Tooltip_ability_item_potion_molotov_duration_hero"                          "HERO DURATION:"
+"DOTA_Tooltip_ability_item_potion_molotov_duration_creep"                         "CREEP DURATION:"
+"DOTA_Tooltip_ability_item_potion_molotov_duration_building"                      "BUILDING DURATION:"
+"DOTA_Tooltip_ability_item_potion_molotov_radius"                                 "RADIUS:"
+
+	
+"DOTA_Tooltip_modifier_molotov_burn"                                              "Molotov Burn"
+"DOTA_Tooltip_modifier_molotov_burn_Description"                                  "You are on fire!!! A bit of water would be nice to put this flame out..."
+
+	
+
+
+
 "DOTA_Tooltip_ability_item_pinion_fire"		"Fire Pinion"
 "DOTA_Tooltip_ability_item_pinion_fire_buff_duration"		"BUFF DURATION:"
 "DOTA_Tooltip_ability_item_pinion_fire_Description"		""
@@ -2688,6 +2706,9 @@
 "DOTA_Tooltip_ability_item_potion_anti_magic_duration"		"DURATION:"
 "DOTA_Tooltip_ability_item_potion_anti_magic_Lore"		"Creates a ''No Fun Zone'' around the body of the user."
 "DOTA_Tooltip_ability_item_potion_anti_magic_max_stacks"		"MAX STACKS:"
+
+"DOTA_Tooltip_ability_modifier_rage_ability"    "This troll is protected from magic!"
+
 "DOTA_Tooltip_ability_item_potion_cure_all"		"Cure All Potion"
 "DOTA_Tooltip_ability_item_potion_cure_all_Description"		"ACTIVE: Use potion to remove all negative effects from the user.\n\nA essential brew that cures the user of any ailments."
 "DOTA_Tooltip_ability_item_potion_cure_all_max_stacks"		"MAX STACKS:"
