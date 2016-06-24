@@ -26,6 +26,7 @@
 	"Ability3"	"ability_building_droprawmeat"
 	"Ability10"	"ability_building"
 	"Ability11"	"ability_cancel_building"
+	"Ability12"	"ability_phased"
 	
 	"ArmorPhysical"	"5"
 	"MagicalResistance"	"0"
@@ -49,7 +50,7 @@
 	// Building Size
 	//----------------------------------------------------------------
 	"ConstructionSize"			"2"
-	"BlockPathingSize"			"2"
+	"BlockPathingSize"			"0"
     "SharedWithTeammates" "1"
 }
 

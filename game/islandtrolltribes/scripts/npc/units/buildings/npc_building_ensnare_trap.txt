@@ -16,6 +16,7 @@
 	"Ability3"	"ability_building_droprawmeat"
 	"Ability10"	"ability_building"
 	"Ability11"	"ability_cancel_building"
+	"Ability12"	"ability_phased"
 	
 	"ArmorPhysical"	"3"
 	"MagicalResistance"	"0"
