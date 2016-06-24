@@ -43,4 +43,7 @@ function TsunamiDestroyFire(keys)
 	if (string.match(targetName,"_trap")) then
 		target:ForceKill(true)
 	end
+    if (string.match(targetName,"ensnare")) then
+		target:ForceKill(true)
+	end
 end
