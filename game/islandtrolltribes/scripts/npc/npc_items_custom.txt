@@ -13160,7 +13160,7 @@
 	    "ItemShareability"          "ITEM_FULLY_SHAREABLE"
 	    
 	    "MaxStacks"                 "8"
-	    "ItemInitialCharges"        "1"
+	    "ItemInitialCharges"        "3"
 	
 	    "ItemPermanent"             "0"
 	    "ItemDroppable"             "1"
@@ -13407,7 +13407,7 @@
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
-		"ItemSellable"	"1"
+		"ItemSellable"	"0"
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"

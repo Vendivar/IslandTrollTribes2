@@ -45,6 +45,7 @@ function Precache( context )
         end
     end    
     
+	PrecacheResource("particle", "particles/status_fx/status_effect_frost_lich.vpcf", context) 
 	ITT:PrecacheSubclassModels(context)
 end
 

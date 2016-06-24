@@ -1,7 +1,7 @@
 XP_RANGE = 1200
 XP_MULTIPLIER = 3.5
 XP_BOUNTY_TABLE = {
-    25, --1
+    1.5, --1
     40, --2 +15
     60, --3 +20
     85, --4 +25

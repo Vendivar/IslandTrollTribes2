@@ -9,7 +9,7 @@
         "modifier_greentint"
         {
             "StatusEffectName" "particles/custom/green_tint.vpcf"
-            "StatusEffectPriority" "35"
+            "StatusEffectPriority" "10"
             "Passive"   "1"
             "IsHidden"         "1"
         }

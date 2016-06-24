@@ -163,6 +163,7 @@
         <Image style="opacity:0;" src="file://{images}/items/potion_healingi.png" />
         <Image style="opacity:0;" src="file://{images}/items/potion_healingiii.png" />
         <Image style="opacity:0;" src="file://{images}/items/potion_healingiv.png" />
+        <Image style="opacity:0;" src="file://{images}/items/potion_molotov.png" />
         <Image style="opacity:0;" src="file://{images}/items/heat_modifier_applier.png" />
         <Image style="opacity:0;" src="file://{images}/items/herb_blue.png" />
         <Image style="opacity:0;" src="file://{images}/items/herb_butsu.png" />
