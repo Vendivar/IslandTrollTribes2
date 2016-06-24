@@ -867,7 +867,7 @@
 		"Ability11"	"ability_cancel_building"
 		"Ability12"	"ability_phased"
 		
-		"ArmorPhysical"	"5"
+		"ArmorPhysical"	"2"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_RANGED_ATTACK"
 		"BountyXP"	"0"
@@ -876,7 +876,7 @@
 		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 		"MovementSpeed"	"0"
 		"MovementTurnRate"	"0"
-		"StatusHealth"	"220"
+		"StatusHealth"	"200"
 		"StatusHealthRegen"	"0"
 		"StatusMana"	"1"
 		"StatusManaRegen"	"0"
