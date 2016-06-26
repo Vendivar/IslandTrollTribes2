@@ -122,6 +122,7 @@
                 "MODIFIER_STATE_ROOTED"    "MODIFIER_STATE_VALUE_ENABLED"
 				"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
 				"MODIFIER_STATE_FLYING_FOR_PATHING_PURPOSES_ONLY"	"MODIFIER_STATE_VALUE_ENABLED"
+                "MODIFIER_STATE_SNARED"	"MODIFIER_STATE_VALUE_ENABLED"
                 
  
             }
@@ -175,6 +176,7 @@
 			"IsPurgable"	"0"
 			"ThinkInterval"	"%pull_interval"
 			"OnIntervalThink"
+			"Duration"	"2"
 			{
 				"RunScript"
 				{

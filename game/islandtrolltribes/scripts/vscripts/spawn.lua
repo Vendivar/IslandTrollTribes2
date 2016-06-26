@@ -159,7 +159,7 @@ end
 function GetEmptyLocation( locations )
     local possibleLocations = ShuffledList(locations)
     for _,possibleLocation in pairs(possibleLocations) do
-        local nearbyUnits = FindUnitsInRadius(DOTA_TEAM_NEUTRALS, possibleLocation, nil, 500, DOTA_UNIT_TARGET_TEAM_BOTH, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, 0, 0, false)
+        local nearbyUnits = FindUnitsInRadius(DOTA_TEAM_NEUTRALS, possibleLocation, nil, 1000, DOTA_UNIT_TARGET_TEAM_BOTH, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, 0, 0, false)
         if #nearbyUnits == 0 and not IsNearABuilding(possibleLocation) then
             return possibleLocation
         end
@@ -169,7 +169,7 @@ end
 
 function IsNearABuilding(location)
     local isNearABuilding = false
-    local nearbyUnits = FindUnitsInRadius(DOTA_TEAM_NEUTRALS, location, nil, 400, DOTA_UNIT_TARGET_TEAM_BOTH, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_CREEP, 0, 0, false )
+    local nearbyUnits = FindUnitsInRadius(DOTA_TEAM_NEUTRALS, location, nil, 1000, DOTA_UNIT_TARGET_TEAM_BOTH, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_CREEP, 0, 0, false )
     for _,unit in pairs(nearbyUnits) do
         if IsCustomBuilding(unit) then
             return true

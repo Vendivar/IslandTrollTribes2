@@ -26,6 +26,11 @@
             "Function"          "Teleport"
             "Target"            "TARGET"
         }
+        "FireSound"
+        {
+            "EffectName"    "teleport.beacon.use"
+            "Target"        "TARGET"
+        }
     }
 
 }
