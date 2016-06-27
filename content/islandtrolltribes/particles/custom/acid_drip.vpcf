@@ -61,6 +61,7 @@
 			m_flOpTimeOffsetMax = 1.0
 			m_flEndTime = 0.2
 			m_flStartScale = 5.0
+			m_flEndScale = 3.0
 		},
 		{
 			_class = "C_OP_FadeIn"
@@ -133,8 +134,8 @@
 		},
 		{
 			_class = "C_INIT_PositionOffset"
-			m_OffsetMin = [ 0.0, 0.0, 80.0 ]
-			m_OffsetMax = [ 0.0, 0.0, 80.0 ]
+			m_OffsetMin = [ 0.0, 0.0, 120.0 ]
+			m_OffsetMax = [ 0.0, 0.0, 120.0 ]
 		},
 	]
 	m_Emitters = 

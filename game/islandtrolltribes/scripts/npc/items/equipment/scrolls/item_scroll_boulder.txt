@@ -82,7 +82,7 @@
                     "Target"			"TARGET"
                     "Center"			"POINT"
                     "Duration"			"%stun_duration"
-                    "Distance"			"200"
+                    "Distance"			"350"
                     "Height"			"25"
                     "IsFixedDistance"	"1"
                     "ShouldStun"		"1"
@@ -101,6 +101,32 @@
                 "Type"				"DAMAGE_TYPE_MAGICAL"
             }
             
+		}
+         "ActOnTargets"
+		{
+			"Target"
+			{
+				"Center"	"POINT"
+				"Radius"	"800"
+				"Teams"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+                
+			}
+
+			"Action"
+			{
+                "Knockback"
+                {
+                    "Target"			"TARGET"
+                    "Center"			"POINT"
+                    "Duration"			"%stun_duration"
+                    "Distance"			"350"
+                    "Height"			"25"
+                    "IsFixedDistance"	"1"
+                    "ShouldStun"		"1"
+                }
+
+			}
 		}
         
     }
