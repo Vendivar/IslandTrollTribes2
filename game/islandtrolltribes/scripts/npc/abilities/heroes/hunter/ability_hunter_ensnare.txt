@@ -139,13 +139,6 @@
 					"Target"	    "TARGET"
 					"ModifierName"	"modifier_pulled"
 				}
-				"RunScript"
-				{
-					"ScriptFile"	"mechanics/ensnare.lua"
-					"Function"		"HunterEnsnareStart"
-					"Target"		"TARGET"
-					"pfx"			"particles/ensnare_rope.vpcf"
-				}
             }
             
             "OnDestroy"
