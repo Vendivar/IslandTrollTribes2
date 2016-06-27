@@ -6635,6 +6635,12 @@
 						"Target" "CASTER"
 						"EffectAttachType" "follow_origin"
 					}
+	                "FireEffect"
+					{
+						"EffectName" "particles/custom/staying_power.vpcf"
+						"Target" "CASTER"
+						"EffectAttachType" "follow_origin"
+					}
 			        "RemoveModifier"
 			        {
 			            "Target" "CASTER"
