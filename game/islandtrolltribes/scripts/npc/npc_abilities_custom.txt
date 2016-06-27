@@ -1837,6 +1837,11 @@
 	            "Function"          "Teleport"
 	            "Target"            "TARGET"
 	        }
+	        "FireSound"
+	        {
+	            "EffectName"    "teleport.beacon.use"
+	            "Target"        "TARGET"
+	        }
 	    }
 	
 	}
@@ -6009,6 +6014,7 @@
 	                "MODIFIER_STATE_ROOTED"    "MODIFIER_STATE_VALUE_ENABLED"
 					"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
 					"MODIFIER_STATE_FLYING_FOR_PATHING_PURPOSES_ONLY"	"MODIFIER_STATE_VALUE_ENABLED"
+	                "MODIFIER_STATE_SNARED"	"MODIFIER_STATE_VALUE_ENABLED"
 	                
 	 
 	            }
@@ -6062,6 +6068,7 @@
 				"IsPurgable"	"0"
 				"ThinkInterval"	"%pull_interval"
 				"OnIntervalThink"
+				"Duration"	"2"
 				{
 					"RunScript"
 					{
@@ -8867,7 +8874,7 @@
 			"01"
 			{
 				"var_type"		"FIELD_INTEGER"
-				"radius"		"250"
+				"radius"		"350"
 			}
 		}
 	
@@ -8878,7 +8885,11 @@
 				"EffectName"	"mage.jealousy"
 				"Target" 		"TARGET"
 			}
-			
+	        "FireSound"
+			{
+				"EffectName"	"mage.jealousy"
+				"Target" 		"CASTER"
+			}
 			"RemoveModifier"
 			{
 				"ModifierName"	"modifier_mage_jealousy_target"
@@ -8897,7 +8908,12 @@
 				"ScriptFile" "heroes/mage/jealousy.lua"
 				"Function"   "JealousyStart"
 			}
-	
+	        "FireEffect"
+	        {
+	            "EffectName"        "particles/custom/jealousy_main.vpcf"
+	            "EffectAttachType"  "follow_origin"
+	            "Target"            "TARGET"
+	        }
 			"ActOnTargets"
 			{
 				"Target"

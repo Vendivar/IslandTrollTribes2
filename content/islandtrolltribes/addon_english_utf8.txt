@@ -633,7 +633,11 @@
 
 
 "DOTA_Tooltip_Ability_ability_mage_chainlightning"		"Chain Lightning"
-"DOTA_Tooltip_Ability_ability_mage_chainlightning_Description"		"Deals damage to the first target, then bounces to the next target, dealing 10% less damage each time it bounces.\nCan bounce up to 3 times.\nBounce acquisition has a huge range.\n\nINITIAL DAMAGE: <font color='#777777'>45</font>\nBOUNCE ACQUISITION RANGE<font color='#777777'>1500</font>"
+"DOTA_Tooltip_Ability_ability_mage_chainlightning_Description"		"Deals damage to the first target, then bounces to the next target, dealing 10% less damage each time it bounces.\nCan bounce up to 3 times.\nBounce acquisition has a huge range."
+"DOTA_Tooltip_ability_ability_mage_chainlightning_initial_damage"                 "INITIAL DAMAGE:"
+"DOTA_Tooltip_ability_ability_mage_chainlightning_bounce_range"                   "BOUNCE RANGE:"
+
+
 "DOTA_Tooltip_Ability_ability_mage_darkgate"		"Dark Gate"
 "DOTA_Tooltip_ability_ability_mage_darkgate_cooldown"		"COOLDOWN:"
 "DOTA_Tooltip_ability_ability_mage_darkgate_damage_threshold"		"DAMAGE THRESHOLD:"
@@ -2520,7 +2524,7 @@
 
 
 "DOTA_Tooltip_ability_item_gun_blow_bones"		"Blow Gun (Bones)"
-"DOTA_Tooltip_ability_item_gun_blow_bones_Description"		"Bones have been loaded into this blowgun. Deals damage and stuns enemies.\nCan hold up to 3 charges."
+"DOTA_Tooltip_ability_item_gun_blow_bones_Description"		"ACTIVE: Shoot a loaded bone at your enemy.\n<font color='#777777'>Hold ALT to view more information.</font>\n\nBones have been loaded into this blowgun. Deals damage and stuns enemies.\nCan hold up to 3 charges."
 "DOTA_Tooltip_ability_item_gun_blow_bones_Lore"		"I came here to blow bones and blow bubblegum. And I'm all out of bubblegum."
 "DOTA_Tooltip_ability_item_gun_blow_bones_max_stacks"		"MAX STACKS:"
 "DOTA_Tooltip_ability_item_gun_blow_bones_Note0"		"Animals: 30 strike damage, 3 second stun\nTrolls: 30 strike damage, 0.75 second stun, 6 second cooldown\n650 range.\n\nStores up to 3 charges.\nWhen at zero charges reverts to an empty blowgun"
@@ -2531,16 +2535,18 @@
 "DOTA_Tooltip_ability_item_gun_blow_empty_Note0"		"Click on a bone, thistle, or dark thistle in your inventory to load.\nWhen loaded turns into the matching blow gun."
 "DOTA_Tooltip_ability_item_gun_blow_thistles"		"Blow Gun (Thistles)"
 "DOTA_Tooltip_ability_item_gun_blow_thistles_dark"		"Blow Gun (Dark Thistles)"
-"DOTA_Tooltip_ability_item_gun_blow_thistles_dark_Description"		"Dark thistles have been loaded into this blowgun. Deals damage, slows enemies and drains their mana.\nCan hold up to 3 charges."
+"DOTA_Tooltip_ability_item_gun_blow_thistles_dark_Description"		"ACTIVE: Shoot a loaded dark thistle at your enemy.\n<font color='#777777'>Hold ALT to view more information.</font>\n\nDark thistles have been loaded into this blowgun. Deals damage, slows enemies and drains their mana.\nCan hold up to 3 charges."
 "DOTA_Tooltip_ability_item_gun_blow_thistles_dark_Lore"		"I came here to blow thistles and blow bubblegum. And I'm all out of bubblegum."
 "DOTA_Tooltip_ability_item_gun_blow_thistles_dark_max_stacks"		"MAX STACKS:"
-"DOTA_Tooltip_ability_item_gun_blow_thistles_dark_Note0"		"650 range\nAnimals: 30 strike damage, 1 damage every 3 seconds. -20% attack speed, -20% move speed. Lasts 15s\nTrolls: 20 strike damage, 1 damage every 3 seconds for 10 seconds. Causes unit to become depressed, draining 10 mana per second for 10 seconds. -20% attack speed, -20% move speed for 10s\n6 second cooldown.\nStores up to 3 charges.\nWhen at zero charges reverts to an empty blowgun"
+"DOTA_Tooltip_ability_item_gun_blow_thistles_dark_Note0"		"650 range\nAnimals: 30 strike damage, 1 damage every 3 seconds. -20% attack speed, -20% move speed. Lasts 15 seconds.\nTrolls: 20 strike damage, 1 damage every 3 seconds for 10 seconds. Causes unit to become depressed, draining 10 mana per second for 10 seconds. -20% attack speed, -20% move speed for 10s\n6 second cooldown.\nStores up to 3 charges.\nWhen at zero charges reverts to an empty blowgun"
 "DOTA_Tooltip_ability_item_gun_blow_thistles_dark_projectile_speed"		"PROJECTILE SPEED:"
-"DOTA_Tooltip_ability_item_gun_blow_thistles_Description"		"Thistles have been loaded into this blowgun. Deals damage and slows enemies.\nCan hold up to 3 charges."
+"DOTA_Tooltip_ability_item_gun_blow_thistles_Description"		"ACTIVE: Shoot a loaded thistle at your enemy.\n<font color='#777777'>Hold ALT to view more information.</font>\n\nThistles have been loaded into this blowgun. Deals damage and slows enemies.\nCan hold up to 3 charges."
 "DOTA_Tooltip_ability_item_gun_blow_thistles_Lore"		"I came here to blow thistles and blow bubblegum. And I'm all out of bubblegum."
 "DOTA_Tooltip_ability_item_gun_blow_thistles_max_stacks"		"MAX STACKS:"
-"DOTA_Tooltip_ability_item_gun_blow_thistles_Note0"		"650 range.\nAnimals: 10 strike damage, 1 damage every 3 seconds. -30% attack speed, -40% move speed. Lasts 12s\n\nTrolls: 10 strike damage, 1 damage every 3 seconds. -30% attack speed, -40% move speed. Lasts 7.5s\n6 second cooldown\n.Stores up to 3 charges.\nWhen at zero charges reverts to an empty blowgun"
+"DOTA_Tooltip_ability_item_gun_blow_thistles_Note0"		"650 range.\nAnimals: 10 strike damage, 1 damage every 3 seconds. -30% attack speed, -40% move speed. Lasts 12 seconds.\n\nTrolls: 10 strike damage, 1 damage every 3 seconds. -30% attack speed, -40% move speed. Lasts 7.5s\n6 second cooldown\n.Stores up to 3 charges.\nWhen at zero charges reverts to an empty blowgun"
 "DOTA_Tooltip_ability_item_gun_blow_thistles_projectile_speed"		"PROJECTILE SPEED:"
+
+
 "DOTA_Tooltip_ability_item_heat_modifier_applier"		"Heat Applier"
 "DOTA_Tooltip_ability_item_heat_modifier_applier_Description"		"Dummy item to apply the heat modifier, you shouldn't ever see this."
 "DOTA_Tooltip_ability_item_herb_blue"		"Blue Herb"

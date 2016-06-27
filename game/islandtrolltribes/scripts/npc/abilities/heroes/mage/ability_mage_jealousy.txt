@@ -30,7 +30,7 @@
 		"01"
 		{
 			"var_type"		"FIELD_INTEGER"
-			"radius"		"250"
+			"radius"		"350"
 		}
 	}
 
@@ -41,7 +41,11 @@
 			"EffectName"	"mage.jealousy"
 			"Target" 		"TARGET"
 		}
-		
+        "FireSound"
+		{
+			"EffectName"	"mage.jealousy"
+			"Target" 		"CASTER"
+		}
 		"RemoveModifier"
 		{
 			"ModifierName"	"modifier_mage_jealousy_target"
@@ -60,7 +64,12 @@
 			"ScriptFile" "heroes/mage/jealousy.lua"
 			"Function"   "JealousyStart"
 		}
-
+        "FireEffect"
+        {
+            "EffectName"        "particles/custom/jealousy_main.vpcf"
+            "EffectAttachType"  "follow_origin"
+            "Target"            "TARGET"
+        }
 		"ActOnTargets"
 		{
 			"Target"

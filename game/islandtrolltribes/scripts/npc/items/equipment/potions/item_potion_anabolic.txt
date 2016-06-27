@@ -64,7 +64,13 @@
 		"SpendCharge"
 		{
 		}
-
+        
+        "FireEffect"
+        {
+            "EffectName"        "particles/custom/anabolic_shock_main.vpcf"
+            "EffectAttachType"  "follow_origin"
+            "Target"            "CASTER"
+        }
 	}
 
 	"Modifiers"

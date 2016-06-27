@@ -60,7 +60,7 @@
 		"FireSound"
 		{
 			"Target"	"TARGET"
-			"FireSound"	"lightning.shield"
+			"EffectName"	"lightning.shield"
 		}
 
 		"SpendCharge"

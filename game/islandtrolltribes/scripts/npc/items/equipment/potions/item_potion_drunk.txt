@@ -98,6 +98,13 @@
 
 	}
 
+	"OnProjectileFinish"
+	{
+		"SpendCharge"
+		{
+		}
+
+	}
 	"Modifiers"
 	{
 		"modifier_potion_drunk"

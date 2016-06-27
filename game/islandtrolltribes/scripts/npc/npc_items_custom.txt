@@ -5116,7 +5116,7 @@
 	
 			"FireSound"
 			{
-				"EffectName"	"Hero_Alchemist.AcidSpray.Damage"
+				"EffectName"	"potion.acid.use"
 				"Target"	"TARGET"
 			}
 	
@@ -5138,12 +5138,24 @@
 		{
 			"modifier_potion_acid_debuff"
 			{
+	            
+	            "StatusEffectName" "particles/custom/status_effect_poison.vpcf"
+	            "StatusEffectPriority" "10"
+	            
 				"IsDebuff"	"1"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%acid_reduction"
 				}
-	
+	            "OnCreated"
+		        {
+			        "AttachEffect"
+	    	        {
+	    			    "EffectName"			"particles/custom/acid_drip.vpcf"
+	    			    "Target"            	"TARGET"
+	                    "EffectAttachType"	"follow_origin"
+	    	        }
+	            }
 				"ThinkInterval"	"%acid_think_time"
 				"OnIntervalThink"
 				{
@@ -5259,7 +5271,13 @@
 			"SpendCharge"
 			{
 			}
-	
+	        
+	        "FireEffect"
+	        {
+	            "EffectName"        "particles/custom/anabolic_shock_main.vpcf"
+	            "EffectAttachType"  "follow_origin"
+	            "Target"            "CASTER"
+	        }
 		}
 	
 		"Modifiers"
@@ -5814,6 +5832,13 @@
 	
 		}
 	
+		"OnProjectileFinish"
+		{
+			"SpendCharge"
+			{
+			}
+	
+		}
 		"Modifiers"
 		{
 			"modifier_potion_drunk"
@@ -5938,7 +5963,7 @@
 			"FireSound"
 			{
 				"Target"	"TARGET"
-				"FireSound"	"lightning.shield"
+				"EffectName"	"lightning.shield"
 			}
 	
 			"SpendCharge"

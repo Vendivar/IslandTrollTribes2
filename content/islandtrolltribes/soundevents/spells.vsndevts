@@ -1906,7 +1906,7 @@
                     {
                         "value"
                         {
-                            "value0"        "sounds/weapons/hero/silencer/last_word_target.vsnd"
+                            "value0"        "sounds/weapons/hero/bane/fiends_grip_cast.vsnd"
                         }
                     }
                     "volume"            {   "value"     "10.00000"  }
@@ -2103,6 +2103,40 @@
                         "value"
                         {
                             "value0"        "sounds/weapons/hero/vengeful_spirit/nether_swap.vsnd"
+                        }
+                    }
+                    "volume"            {   "value"     "10.00000"  }
+                    "pitch_rand_min"    {   "value"     "-0.05000"  }
+                    "pitch_rand_max"    {   "value"     "0.050000"  }
+                    "pitch"             {   "value"     "1.000000"  }
+                    "soundlevel"        {   "value"     "70.00000" }
+                    "distance_max"      {   "value"     "1600.000"  }
+                    "event_type"        {   "value"     "1.000000"  }
+                }
+            }
+        }
+    }
+}
+
+
+
+"potion.acid.use"
+{
+    "operator_stacks"
+    {
+        "update_stack"
+        {
+            "reference_operator"
+            {
+                "operator"              "sos_reference_stack"
+                "reference_stack"       "dota_src1_3d"
+                "operator_variables"
+                {
+                    "vsnd_files"
+                    {
+                        "value"
+                        {
+                            "value0"        "sounds/weapons/hero/alchemist/acid_spray.vsnd"
                         }
                     }
                     "volume"            {   "value"     "10.00000"  }
