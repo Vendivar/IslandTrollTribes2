@@ -10,11 +10,13 @@
         {
             "Passive"   "1"
             "IsHidden"         "1"
-            	"States"
-                    {
-                    "MODIFIER_STATE_NO_UNIT_COLLISION" "MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_FLYING_FOR_PATHING_PURPOSES_ONLY" "MODIFIER_STATE_VALUE_ENABLED"
-                    }
+            "States"
+            {
+                "MODIFIER_STATE_NO_UNIT_COLLISION" "MODIFIER_STATE_VALUE_ENABLED"
+
+                // This will mark the unit as flying on :HasFlyMovementCapability()
+                //"MODIFIER_STATE_FLYING_FOR_PATHING_PURPOSES_ONLY" "MODIFIER_STATE_VALUE_ENABLED"
+            }
         }
     }
 }
