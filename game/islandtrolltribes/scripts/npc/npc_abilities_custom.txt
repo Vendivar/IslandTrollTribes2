@@ -6626,7 +6626,7 @@
 			    {
 					"FireSound"
 					{
-						"EffectName"		"Hero_Lion.ProjectileImpact"
+						"EffectName"		"hunter.stayingpower"
 						"Target"			"TARGET"
 					}
 					"FireEffect"
