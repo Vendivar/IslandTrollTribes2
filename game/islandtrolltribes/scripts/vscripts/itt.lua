@@ -781,6 +781,7 @@ end
 
 -- This function checks if you won the game or not
 function ITT:CheckWinCondition()
+    if not GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then return end
     local winnerTeamID = nil
 
     -- Don't end single team lobbies
