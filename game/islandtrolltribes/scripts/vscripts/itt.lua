@@ -17,7 +17,6 @@ maxPlayerID = 0
 GAME_TICK_TIME              = 0.1   -- The game should update every tenth second
 GAME_TROLL_TICK_TIME        = 0.5   -- Its really like its wc3!
 FLASH_ACK_THINK             = 2
-WIN_GAME_THINK              = 0.5 -- checks if you've won every x seconds
 
 BUILDING_TICK_TIME          = 0.03
 DROPMODEL_TICK_TIME         = 0.03
@@ -627,6 +626,8 @@ function ITT:OnEntityKilled(keys)
 
     -- Heroes
     if killedUnit.IsHero and killedUnit:IsHero() then
+        ITT:CheckWinCondition()
+
         local pos = killedUnit:GetAbsOrigin()
 
         --if it's a hero, drop all carried raw meat, plus 3, and a bone
@@ -779,37 +780,32 @@ function ITT:OnBuildingThink()
 end
 
 -- This function checks if you won the game or not
-function ITT:WinConditionThink()
-    Timers(function()
-        local winnerTeamID = nil
+function ITT:CheckWinCondition()
+    local winnerTeamID = nil
 
-        -- Don't end single team lobbies
-        if ITT:GetTeamCount() == 1 then
-            return -- Game never ends
-        end
+    -- Don't end single team lobbies
+    if ITT:GetTeamCount() == 1 then
+        return
+    end
 
-        -- Check if all the heroes still in game belong to the same team
-        local AllHeroes = HeroList:GetAllHeroes()
-        for k,hero in pairs(AllHeroes) do
-            if hero:IsAlive() then
-                local teamNumber = hero:GetTeamNumber()
-                if not winnerTeamID then
-                    winnerTeamID = teamNumber
-                elseif winnerTeamID ~= teamNumber then
-                    return WIN_GAME_THINK -- Game continues
-                end
+    -- Check if all the heroes still in game belong to the same team
+    local AllHeroes = HeroList:GetAllHeroes()
+    for k,hero in pairs(AllHeroes) do
+        if hero:IsAlive() then
+            local teamNumber = hero:GetTeamNumber()
+            if not winnerTeamID then
+                winnerTeamID = teamNumber
+            elseif winnerTeamID ~= teamNumber then
+                return
             end
-        end    
-
-        if winnerTeamID and not GameRules.Winner then
-            GameRules.Winner = winnerTeamID
-            ITT:PrintWinMessageForTeam(winnerTeamID)
-            GameRules:SetGameWinner(winnerTeamID)
-            return -- Game ends
         end
+    end    
 
-        return WIN_GAME_THINK
-    end)
+    if winnerTeamID and not GameRules.Winner then
+        GameRules.Winner = winnerTeamID
+        ITT:PrintWinMessageForTeam(winnerTeamID)
+        GameRules:SetGameWinner(winnerTeamID)
+    end
 end
 
 function ITT:PrintWinMessageForTeam( teamID )
@@ -1063,7 +1059,6 @@ function ITT:OnGameRulesStateChange()
         GameRules:SetHeroRespawnEnabled( false )
         RandomUnpickedPlayers()
         UnblockMammoth()
-        ITT:WinConditionThink()
         EmitGlobalSound("get_ready")	
         ShowCustomHeaderMessage("#NoobTimeOver", -1, -1, 5)
        -- Notifications:TopToAll({text="#NoobTimeOver", image="file://{images}/materials/particle/alert.psd", duration=5.0}) 
