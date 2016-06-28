@@ -785,7 +785,7 @@ function ITT:WinConditionThink()
 
         -- Don't end single team lobbies
         if ITT:GetTeamCount() == 1 then
-            return
+            return -- Game never ends
         end
 
         -- Check if all the heroes still in game belong to the same team
@@ -796,7 +796,7 @@ function ITT:WinConditionThink()
                 if not winnerTeamID then
                     winnerTeamID = teamNumber
                 elseif winnerTeamID ~= teamNumber then
-                    return
+                    return WIN_GAME_THINK -- Game continues
                 end
             end
         end    
@@ -805,7 +805,7 @@ function ITT:WinConditionThink()
             GameRules.Winner = winnerTeamID
             ITT:PrintWinMessageForTeam(winnerTeamID)
             GameRules:SetGameWinner(winnerTeamID)
-            return
+            return -- Game ends
         end
 
         return WIN_GAME_THINK
