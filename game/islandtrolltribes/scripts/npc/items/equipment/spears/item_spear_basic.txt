@@ -7,7 +7,7 @@
     "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
     "BaseClass"    "item_datadriven"
     "AbilityTextureName"    "spear_basic"
-    "Model"    "models/particle/legion_arrow.vmdl"
+    "Model"    "models/creeps/neutral_creeps/n_creep_gnoll/n_creep_gnoll_spear.vmdl"
     "Effect"	"particles/custom/dropped_item_normal.vpcf"
     "ItemCost"    "10"
     "ItemShopTags"    "consumable"
@@ -83,8 +83,6 @@
             "Target"            "TARGET"
             "EffectName"        "particles/units/heroes/hero_huskar/huskar_base_attack.vpcf"
             "MoveSpeed"         "%projectile_speed"
-            "ProvidesVision"    "0"
-            "SourceAttachment"  "DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
         }
     }
 

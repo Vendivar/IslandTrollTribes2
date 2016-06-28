@@ -23,34 +23,11 @@
             "var_type"      "FIELD_FLOAT"
             "creep_duration" "8.0"
         }
-		"03"
-		{
-			"var_type"		"FIELD_INTEGER"
-			"min_range"		"150"
-		}
-		"04"
-		{
-			"var_type"		"FIELD_INTEGER"
-			"max_range"		"700"
-		}
-		"05"
-		//How often should I pull?
-		{
-			"var_type"		"FIELD_FLOAT"
-			"pull_interval"	"0.01"
-		}
-		"06"
-		//How close should I pull?
-		{
-			"var_type"		"FIELD_FLOAT"
-			"pull_scale"	"15.0"
-		}
     }
 
     "precache"
     {
         "particle_folder"    "particles/units/heroes/hero_meepo/meepo_earthbind_projectile_fx.vpcf"
-        "particle_folder"    "particles/items2_fx/mjollnir_shield_ambient_beam.vpcf"
         "soundfile"          "soundevents/game_sounds_heroes/game_sounds_meepo.vsndevts"
     }
 
@@ -117,14 +94,13 @@
         {
             "IsDebuff"          "1"
             "IsPurgable"        "1"
+    
+            "EffectName"        "particles/units/heroes/hero_meepo/meepo_earthbind.vpcf"
+            "EffectAttachType"  "follow_origin"
+    
             "States"
             {
                 "MODIFIER_STATE_ROOTED"    "MODIFIER_STATE_VALUE_ENABLED"
-				"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
-				"MODIFIER_STATE_FLYING_FOR_PATHING_PURPOSES_ONLY"	"MODIFIER_STATE_VALUE_ENABLED"
-                "MODIFIER_STATE_SNARED"	"MODIFIER_STATE_VALUE_ENABLED"
-                
- 
             }
 
             "OnCreated"
@@ -134,11 +110,6 @@
                     "ScriptFile"    "mechanics/ensnare.lua"
                     "Function"      "LoseMovement"
                 }
-				"ApplyModifier"
-				{
-					"Target"	    "TARGET"
-					"ModifierName"	"modifier_pulled"
-				}
             }
             
             "OnDestroy"
@@ -148,44 +119,7 @@
                     "ScriptFile"    "mechanics/ensnare.lua"
                     "Function"      "RegainMovement"
                 }
-				"RemoveModifier"
-				{
-					"ModifierName"	"modifier_pulled"
-					"Target"		"TARGET"
-				}
-				"RunScript"
-				{
-					"ScriptFile"	"mechanics/ensnare.lua"
-					"Function"		"HunterEnsnareEnd"
-					"Target"		"TARGET"
-
-				}
             }
         }
-
-        "modifier_pulled"
-		{
-			"IsHidden"	"1"
-			"IsPurgable"	"0"
-			"ThinkInterval"	"%pull_interval"
-			"OnIntervalThink"
-			"Duration"	"2"
-			{
-				"RunScript"
-				{
-					"ScriptFile"	"mechanics/ensnare.lua"
-					"Function"		"HunterEnsnareThink"
-					"Target"        "TARGET"
-					"min_range"		"%min_range"
-					"pull_scale" 	"%pull_scale"
-				}
-
-			}
-			"States"
-			{
-				"MODIFIER_STATE_SNARED"	"MODIFIER_STATE_VALUE_ENABLED"
-			}
-
-		}
     }
 }

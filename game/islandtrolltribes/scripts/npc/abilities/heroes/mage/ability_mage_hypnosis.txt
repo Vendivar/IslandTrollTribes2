@@ -48,6 +48,18 @@
 		}
 	}
 
+    
+            
+	"OnAbilityPhaseStart"
+	{
+		"RunScript"
+		{
+            "ScriptFile"	"heroes/mage/hypnosis.lua"
+			"Function"      "HypnosisInit"
+			"Target"         "TARGET"
+		}
+	}
+    
 	"OnSpellStart"
 	{
 

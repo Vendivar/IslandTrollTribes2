@@ -41,6 +41,17 @@
 		}
 	}
 
+                
+	"OnAbilityPhaseStart"
+	{
+		"RunScript"
+		{
+            "ScriptFile"	"heroes/mage/dream_eater.lua"
+			"Function"      "DreamInit"
+			"Target"         "TARGET"
+		}
+	}
+    
 	"OnSpellStart"
 	{
 		"FireSound"
@@ -60,6 +71,7 @@
 				"CASTER"	"attach_hitloc"
 			}
 		}
+        
 		"RunScript"
 		{
 			"ScriptFile"	"heroes/mage/dream_eater.lua"

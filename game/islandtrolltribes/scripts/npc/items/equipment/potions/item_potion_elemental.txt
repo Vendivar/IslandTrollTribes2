@@ -59,8 +59,8 @@
 
 		"FireSound"
 		{
+			"EffectName"	"potion.elemental"
 			"Target"	"TARGET"
-			"EffectName"	"lightning.shield"
 		}
 
 		"SpendCharge"

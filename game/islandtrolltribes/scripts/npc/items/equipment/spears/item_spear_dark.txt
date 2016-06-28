@@ -6,7 +6,7 @@
     "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
     "BaseClass"    "item_datadriven"
     "AbilityTextureName"    "spear_dark"
-    "Model"    "models/items/huskar/obsidian_blade_spear/obsidian_blade_spear.vmdl"
+    "Model"    "models/spear_dark.vmdl"
     "Effect"	"particles/custom/dropped_item_normal.vpcf"
     "ItemCost"    "26"
     "ItemShopTags"    "consumable"
@@ -93,8 +93,6 @@
             "Target"            "TARGET"
             "EffectName"        "particles/units/heroes/hero_huskar/huskar_base_attack.vpcf"
             "MoveSpeed"         "%projectile_speed"
-            "ProvidesVision"    "0"
-            "SourceAttachment"  "DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
         }
 
         "FireSound"

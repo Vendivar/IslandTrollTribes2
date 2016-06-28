@@ -6,7 +6,7 @@
     "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
     "BaseClass"    "item_datadriven"
     "AbilityTextureName"    "item_heavens_halberd"
-    "Model"    "models/items/huskar/sacred_bones_spear/sacred_bones_spear.vmdl"
+    "Model"    "models/spear_basic.vmdl"
     "Effect"	"particles/custom/dropped_item_normal.vpcf"
     "ItemCost"    "28"
     "ItemShopTags"    "consumable"
@@ -73,8 +73,6 @@
             "Target"            "TARGET"
             "EffectName"        "particles/units/heroes/hero_huskar/huskar_base_attack.vpcf"
             "MoveSpeed"         "%projectile_speed"
-            "ProvidesVision"    "0"
-            "SourceAttachment"  "DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
         }
 
         "FireSound"

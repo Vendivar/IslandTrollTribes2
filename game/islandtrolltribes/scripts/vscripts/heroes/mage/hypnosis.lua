@@ -1,3 +1,6 @@
+
+
+
 function Hypnosis(keys)
     local hypnosisAbility = keys.ability
     local caster  = keys.caster

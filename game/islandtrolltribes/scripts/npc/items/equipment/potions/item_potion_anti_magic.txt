@@ -50,13 +50,14 @@
 	
 	"OnSpellStart"
 	{
-            "FireSound"
+        "FireSound"
         {
-            "Target"	"TARGET"
             "EffectName"	"potion.antimagic"
+            "Target"	    "TARGET"
         }
 		"SpendCharge"
-		{}
+		{
+        }
 		"ApplyModifier"
 		{
 			"Target"	"TARGET"

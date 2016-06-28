@@ -135,7 +135,8 @@
         "error_must_target_baby_animal"         "Must target a baby animal."
         "invalid_telegatherer_target"           "Must target a camp fire."
         "invalid_sniff_target"                  "Must target a corpse."
-        "invalid_priest_target"           "Can't use on self or priests."
+        "invalid_priest_target"                 "Can't use on self or priests."
+        "invalid_hypnosis"                       "Can't use on units that are not hypnotized."
 
         "item_bush_thistle"                                          "Thistle Shrub"
         "item_bush_mushroom"                                         "Mushroom Colony" 
