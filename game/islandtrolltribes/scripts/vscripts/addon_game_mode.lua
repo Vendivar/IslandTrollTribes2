@@ -11,6 +11,7 @@ require('libraries/notifications')
 require('libraries/animations')
 require('libraries/playertables')
 require('libraries/containers')
+require('libraries/physics')
 require('mechanics/require')
 require('itt')
 require('spawn')
@@ -24,6 +25,7 @@ require('subclass_system')
 require("crafting")
 require('util')
 require('libraries/buildinghelper')
+
 
 -- This should be a KV Table
 require('recipe_list')

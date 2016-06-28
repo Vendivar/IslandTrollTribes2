@@ -99,6 +99,17 @@
         			"EffectAttachType"  "follow_origin"
         			"Target"            "TARGET"
         		}
+        "FireEffect"
+		{
+			"EffectName"		"particles/custom/dream_eater.vpcf"
+			"EffectAttachType" 	"follow_origin"
+			"Target" 			"TARGET"
+			"ControlPointEntities"
+			{
+				"TARGET"	"attach_hitloc"
+				"CASTER"	"attach_hitloc"
+			}
+		}
 	        }
 	    }
 	}

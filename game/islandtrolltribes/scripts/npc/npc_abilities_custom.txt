@@ -7889,6 +7889,7 @@
 					"CASTER"	"attach_hitloc"
 				}
 			}
+	        
 			"RunScript"
 			{
 				"ScriptFile"	"heroes/mage/dream_eater.lua"
@@ -7916,6 +7917,17 @@
 	        			"EffectAttachType"  "follow_origin"
 	        			"Target"            "TARGET"
 	        		}
+	        "FireEffect"
+			{
+				"EffectName"		"particles/custom/dream_eater.vpcf"
+				"EffectAttachType" 	"follow_origin"
+				"Target" 			"TARGET"
+				"ControlPointEntities"
+				{
+					"TARGET"	"attach_hitloc"
+					"CASTER"	"attach_hitloc"
+				}
+			}
 		        }
 		    }
 		}
@@ -15439,7 +15451,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"ability_thief_jump"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
+        "AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityCastRange"	"600"
 		"AbilityCastPoint"	"0.4"
 		"AbilityCooldown"	"30.0"
@@ -15466,7 +15478,7 @@
 			{
 				"ScriptFile" "heroes/thief/jump.lua"
 				"Function"   "Jump"
-				"Target"     "POINT"
+                "modifier_leap_immunity"	"modifier_jump_evasion"
 			}
             "FireEffect"
 			{
@@ -15487,13 +15499,46 @@
 			}
 	
 		}
+        "Modifiers"
+        {
+            "modifier_jump_evasion"
+            {
+                "Passive" 			"0"
+                "IsHidden"			"0"
+
+                "Properties"
+                {
+                    "MODIFIER_PROPERTY_EVASION_CONSTANT"	"%damage_reduction"
+                }
+            }			
+        }
 			"AbilitySpecial"
 		{
 			"01"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"range"		"600"
+				"damage_reduction"		"70"
 			}
+            "02"
+            {
+                "var_type"				"FIELD_INTEGER"
+                "leap_distance"			"900"
+            }
+            "03"
+            {
+                "var_type"				"FIELD_FLOAT"
+                "leap_duration"			"1.1" // 0.7
+            }
+            "04"
+            {
+                "var_type"				"FIELD_INTEGER"
+                "leap_vertical_speed"	"900" // "1500"
+            }
+            "05"
+            {
+                "var_type"				"FIELD_FLOAT"
+                "damage_reduction"		"-100"
+            }
         }
 	}
 	"ability_thief_netherfade"
