@@ -1,11 +1,11 @@
 "item_building_kit_trap_ensnare"
 {
 	"ID"	"1130"
-	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT_TARGET"
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"building_kit_trap_ensnare"
 	"Model"	"models/props_debris/creep_camp001j.vmdl"
-	"Effect"	"particles/units/heroes/hero_templar_assassin/templar_assassin_trap_core_arc.vpcf"
+	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"ItemCost"	"10"
 	"ItemShopTags"	"consumable"
 	"ItemQuality"	"consumable"
@@ -31,36 +31,33 @@
         "ModelScale"    "0.55"
     }
 
-	// BuildingHelper info
-    "Building"                      "1" //bool
-    "BuildTime"                     "10.0"
-    "AbilityCastRange"              "300"
-    "UpdateHealth"                  "1" //bool
-    "Scale"                         "0" //bool
-    "PlayerCanControl"              "1" //bool
-    "FindClearSpace"                "1"
-
-    "UnitName"                      "npc_building_ensnare_trap"
-    "AbilityCooldown"               "0"
-    "AbilityGoldCost"               "0"
-    "ItemInitialCharges"            "1"
-    // End of BuildingHelper info
 
     "AbilitySpecial"
     {
         "01"
         {
-            "var_type"              "FIELD_FLOAT"
-            "build_time"            "10.0"
+            "var_type"    "FIELD_INTEGER"
+            "max_stacks"    "6"
         }
     }
 
-	"OnSpellStart"
+
+    "OnSpellStart"
     {
+
         "RunScript"
         {
-            "ScriptFile"    "buildings/build.lua"
-            "Function"      "Build"
+            "ScriptFile"    "items/trap_ensnare.lua"
+            "Function"      "MakeTrap"
+            "Target"        "POINT"
         }
-    }
+
+        "FireSound"
+        {
+            "EffectName"    "Hero_Treant.Overgrowth.Cast"
+            "Target"        "CASTER"
+        }
+        
+        "SpendCharge" {}
+    }    
 }

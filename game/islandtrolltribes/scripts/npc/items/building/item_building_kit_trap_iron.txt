@@ -1,0 +1,66 @@
+"item_building_kit_trap_iron"
+{
+	"ID"	"1143"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	"BaseClass"	"item_datadriven"
+	"AbilityTextureName"	"building_kit_trap_ensnare"
+	"Model"	"models/props_debris/creep_camp001j.vmdl"
+	"Effect"	"particles/custom/dropped_item_normal.vpcf"
+	"ItemCost"	"10"
+	"ItemShopTags"	"consumable"
+	"ItemQuality"	"consumable"
+	"ItemShareability"	"ITEM_FULLY_SHAREABLE"
+	
+	"MaxStacks" "3"
+	
+	"ItemStackable"	"1"
+	"ItemPermanent"	"0"
+	"ItemDroppable"	"1"
+	"ItemAliases"	"quicktype"
+	"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
+	"ItemKillable"	"1"
+	"ItemSellable"	"1"
+	
+
+	"UIPickupSound"	"Item.PickUpGemShop"
+	"UIDropSound"	"Item.DropGemShop"
+	"WorldDropSound"	"Item.DropGemWorld"
+	
+    "Custom"
+    {
+        "ModelScale"    "0.55"
+    }
+
+	// BuildingHelper info
+    "Building"                      "1" //bool
+    "BuildTime"                     "5.0"
+    "AbilityCastRange"              "300"
+    "UpdateHealth"                  "1" //bool
+    "Scale"                         "0" //bool
+    "PlayerCanControl"              "1" //bool
+    "FindClearSpace"                "1"
+
+    "UnitName"                      "npc_building_trap_iron"
+    "AbilityCooldown"               "2"
+    "AbilityGoldCost"               "0"
+    "ItemInitialCharges"            "1"
+    // End of BuildingHelper info
+
+    "AbilitySpecial"
+    {
+        "01"
+        {
+            "var_type"              "FIELD_FLOAT"
+            "build_time"            "5.0"
+        }
+    }
+
+	"OnSpellStart"
+    {
+        "RunScript"
+        {
+            "ScriptFile"    "buildings/build.lua"
+            "Function"      "Build"
+        }
+    }
+}

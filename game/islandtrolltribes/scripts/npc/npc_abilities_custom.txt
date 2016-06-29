@@ -560,7 +560,7 @@
 	"ability_building_droprawmeat"
 	{
 		"BaseClass"	            "ability_datadriven"
-		"AbilityBehavior"	    "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityBehavior"	    "DOTA_ABILITY_BEHAVIOR_POINT_TARGET"
 		"AbilityTextureName"    "ability_building_droprawmeat"
 		"MaxLevel"	            "1"
 		"AbilityCastPoint"	    "0"
@@ -571,6 +571,7 @@
 	         {
 	            "ScriptFile"    "buildings\drop_raw_meat.lua"
 	            "Function"      "DropMeatStack"
+	            "Target"     "POINT"
 	         }
 	    }
 	
@@ -1167,129 +1168,89 @@
 	        }
 	    }
 	}
-	// Immobilizes animals for 8 seconds, trolls for 3.25, with a 10 second cooldown.
-	// It can be set to auto-cast for when hostile units are nearby. Autocast is automatically on.
 	"ability_ensnaretrap_ensnare"
 	{
-	    "BaseClass"                     "ability_datadriven"
-	    "AbilityTextureName"            "ability_ensnaretrap_ensnare"
-	    "MaxLevel"                      "1"
-	
-	    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
-	    "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	    "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	
-	    "AbilityCooldown"               "10"
-	    "AbilityManaCost"               "0"
-	    "AbilityCastRange"              "300"
-	
-	    "precache"
-	    {
-	        "particle"  "particles/units/heroes/hero_meepo/meepo_earthbind.vpcf"
-	        "particle"  "particles/units/heroes/hero_meepo/meepo_earthbind_flash.vpcf"
-	        "particle"  "particles/units/heroes/hero_meepo/meepo_earthbind_projectile_fx.vpcf"
-	        "soundfile" "soundevents/game_sounds_heroes/game_sounds_meepo.vsndevts"
-	    }
-	
-	    "AbilitySpecial"
-	    {
-	        "01"
-	        {
-	            "var_type"              "FIELD_FLOAT"
-	            "duration_hero"         "3.25"
-	        }
-	        "02"
-	        {
-	            "var_type"              "FIELD_FLOAT"
-	            "duration_animal"       "8.0"
-	        }
-	        "03"
-	        {
-	            "var_type"              "FIELD_INTEGER"
-	            "projectile_speed"      "750"
-	        }
-	        "04"
-	        {
-	            "var_type"              "FIELD_INTEGER"
-	            "autocast_radius"       "500"
-	        }
-	        "05"
-	        {
-	            "var_type"              "FIELD_INTEGER"
-	            "damage"       "2"
-	        }
-	    }
-	    
-	    "OnAbilityPhaseStart"
-	    {
-	        "RunScript"
-	        {
-	            "ScriptFile"    "items/living_clay.lua"
-	            "Function"      "CheckPosition"
-	            "Target"        "POINT"
-	        }
-	    }
-	
-	    "OnSpellStart"
-	    {
-	        "RunScript"
-	        {
-	            "ScriptFile"    "items/living_clay.lua"
-	            "Function"      "MakeClayExplosion"
-	            "Target"        "POINT"
-	        }
-	
-	        "FireSound"
-	        {
-	            "EffectName"    "Hero_Treant.Overgrowth.Cast"
-	            "Target"        "CASTER"
-	        }
-	        
-	        "SpendCharge" 
-	        {
-	        }
-	    }
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"trap_ensnare"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AURA | DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"Modifiers"
 		{
-			"modifier_scroll_entanglingroots"
+			"aura_trap_esnnare"
 			{
-				"States"
+				"IsHidden"	"1"
+				"Passive"	"1"
+				"Aura"	"modifier_trap_ensnare"
+				"Aura_Radius"	"35"
+	            "Aura_Teams"  "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	            "Aura_Types"  "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	            //"Aura_Flags"  "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+				"Aura_ApplyToCaster"	"0"
+	            "States"
 				{
-					"MODIFIER_STATE_ROOTED"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_INVISIBLE"		"MODIFIER_STATE_VALUE_ENABLED"
 				}
-	
-				"ThinkInterval"	"%tick_duration"
-				"OnIntervalThink"
-				{
-					"Damage"
-					{
-						"Damage"	"%damage_per_second"
-						"Type"	"DAMAGE_TYPE_MAGICAL"
-						"Target"	"TARGET"
-					}
-	
-					"FireSound"
-					{
-						"EffectName"	"Hero_Treant.Overgrowth.Target"
-						"Target"	"TARGET"
-					}
-	
-				}
-	
-				"EffectName"	"particles/units/heroes/hero_treant/treant_overgrowth_vines.vpcf"
-				"EffectAttachType"	"follow_origin"
-				"OnCreated"
-				{
-					"FireSound"
-					{
-						"EffectName"	"Hero_Treant.Overgrowth.Cast"
-						"Target"	"TARGET"
-					}
-	
-				}
-	
 			}
 	
+			"modifier_trap_ensnare"
+			{
+				"IsPurgable"	"0"
+				"IsDebuff"	"1"
+				"IsHidden"	"0"
+	            "Duration" "3"
+				"States"
+				{
+					"MODIFIER_STATE_ROOTED"		"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_DISABLED"
+				}
+	            "ThinkInterval" "0.5"
+	            "OnIntervalThink"
+	            {
+	                "Damage"
+	                {
+	                    "Type"   "DAMAGE_TYPE_PHYSICAL"
+	                    "Damage" "5"
+	                    "Target" "TARGET"
+	                }
+	            }
+	            "OnCreated" 
+	            {
+	                "FireEffect"
+	                {
+	                   "Target" "TARGET"
+	                   "EffectName" "particles/units/heroes/hero_treant/treant_overgrowth_vines.vpcf"
+	                   "EffectAttachType" "follow_origin"
+	                   "EffectRadius"   "35"
+	                }
+	                "ApplyModifier"
+	                {
+	                    "ModifierName"  "modifier_kill"
+						"Target"	"CASTER"
+	                    "Duration"      "1"
+	                }
+	                
+	                "ApplyModifier"
+	                {
+	                    "ModifierName"  "modifier_trap_reveal"
+						"Target"	"CASTER"
+	                }
+	                
+	                "RunScript"
+	                {
+	                    "ScriptFile"    "items/trap_ensnare.lua"
+	                    "Function"      "KillTrap"
+	                }
+	            }
+			}
+	        "modifier_trap_ensnare"
+			{
+				"IsPurgable"	"0"
+				"IsDebuff"	"1"
+				"IsHidden"	"1"
+				"States"
+				{
+					"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_DISABLED"
+				}
+	        }
 		}
 	
 		"AbilitySpecial"
@@ -1297,34 +1258,17 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"range"	"450"
+				"burn_radius"	"360"
 			}
 	
 			"02"
 			{
-				"var_type"	"FIELD_FLOAT"
-				"duration_hero"	"4"
-			}
-	
-			"03"
-			{
-				"var_type"	"FIELD_FLOAT"
-				"duration_creep"	"8"
-			}
-	
-			"04"
-			{
 				"var_type"	"FIELD_INTEGER"
-				"damage_per_second"	"5"
-			}
-	
-			"05"
-			{
-				"var_type"	"FIELD_FLOAT"
-				"tick_duration"	"1.0"
+				"ensnare_duration"	"10"
 			}
 	
 		}
+	
 	}
 	// Picks up a nearby corpse.
 	// Can be autocast which will continuously pick up meat around the building until at full capacity or until no more corpses remain.
@@ -16821,6 +16765,27 @@
 	    }
 	}
 	
+	"ability_boat_passive"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"AbilityTextureName"	"razor_plasma_field"
+		"Modifiers"
+		{
+			"ability_boat_passive"
+			{
+				"Passive"	"1"
+				"Hidden"	"1"
+				"States"
+				{
+					"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+	
+			}
+	
+		}
+	
+	}
 	"ability_magic_raw_meteor"
 	{
 		"BaseClass"	"ability_datadriven"
