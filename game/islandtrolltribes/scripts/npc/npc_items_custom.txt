@@ -2014,7 +2014,12 @@
 	"item_building_kit_trap_ensnare"
 	{
 		"ID"	"1130"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT_TARGET"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+	    "AbilityCastAnimation" "ACT_DOTA_TELEPORT"
+		"AbilityCastRange"	"950"
+		"AbilityCastPoint"	"0.5"
+		"AbilityChannelTime" "2.5"
+		"AbilityCooldown"	"5.0"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"building_kit_trap_ensnare"
 		"Model"	"models/props_debris/creep_camp001j.vmdl"
@@ -2026,6 +2031,7 @@
 		
 		"MaxStacks" "3"
 		
+	    "ItemInitialCharges"        "1"
 		"ItemStackable"	"1"
 		"ItemPermanent"	"0"
 		"ItemDroppable"	"1"
@@ -2055,7 +2061,7 @@
 	    }
 	
 	
-	    "OnSpellStart"
+	    "OnChannelSucceeded"
 	    {
 	
 	        "RunScript"
@@ -2071,7 +2077,9 @@
 	            "Target"        "CASTER"
 	        }
 	        
-	        "SpendCharge" {}
+	        "SpendCharge" 
+	        {
+	        }
 	    }    
 	}
 	"item_building_kit_trap_iron"
@@ -7244,6 +7252,7 @@
 	{
 		"ID"	"1587"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+	    "AbilityCastAnimation" "ACT_DOTA_TELEPORT"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"scroll_boulder"
 		"Model"	"models/props_gameplay/recipe.vmdl"
@@ -7264,7 +7273,6 @@
 		"ItemKillable"	"1"
 		"ItemSellable"	"1"
 		"AbilitySharedCooldown" "scroll"
-	    "AbilityCastAnimation" "ACT_DOTA_ATTACK"
 	    
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -10676,7 +10684,7 @@
 	    "AbilityBehavior"    	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	    "BaseClass"    			"item_datadriven"
 	    "AbilityTextureName"    "meat_raw"
-	    "Model"    				"models/items/lifestealer/transmuted_armaments_back/transmuted_armaments_back.vmdl"
+	    "Model"    				"models/raw_meat.vmdl"
 	    "Effect"	"particles/custom/dropped_item_normal.vpcf"
 	    "ItemCost"    			"1"
 	    "ItemShopTags"    		"consumable"
@@ -10693,25 +10701,6 @@
 	
 	    "MaxStacks"             "10"
 	
-	    "Custom"
-	    {
-	        "ModelOffsets"
-	        {
-	            "Origin"
-	            {
-	                "x"    "0"
-	                "y"    "0"
-	                "z"    "97"
-	            }
-	
-	            "Angles"
-	            {
-	                "x"    "0"
-	                "y"    "0"
-	                "z"    "0"
-	            }
-	        }
-	    }
 	}
 	
 	"item_meat_smoked"
@@ -12424,74 +12413,6 @@
 		"UIPickupSound"	"ui.inv_pickup_robes"
 		"UIDropSound"	"ui.inv_drop_robes"
 		"WorldDropSound"	"ui.inv_equip_robes"
-	}
-	"trap_ensnare"
-	{
-	    "ID"                    "1423"
-	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT"
-	    "BaseClass"             "item_datadriven"
-	    "AbilityTextureName"    "seed_magic"
-	    "Model"                 "models/props_gameplay/rune_regeneration01.vmdl"
-	    "Effect"	"particles/custom/dropped_item_normal.vpcf"
-	
-	    "AbilityCastRange"      "500"
-	    "AbilityCastPoint"      "0.5"
-	
-	    "ItemCost"              "4"
-	    "ItemShopTags"          "consumable"
-	    "ItemQuality"           "consumable"
-	    "ItemShareability"      "ITEM_FULLY_SHAREABLE"
-	    
-	    "MaxStacks"             "6"
-	
-	    "ItemPermanent"         "0"
-	    "ItemDroppable"         "1"
-	    "ItemInitialCharges"    "1"
-	    "ItemAliases"           "quicktype"
-	    "ItemDisassembleRule"   "DOTA_ITEM_DISASSEMBLE_NEVER"
-	    "ItemKillable"          "1"
-	    "ItemSellable"          "1"
-	
-	    "UIPickupSound"         "Item.PickUpGemShop"
-	    "UIDropSound"           "Item.DropGemShop"
-	    "WorldDropSound"        "Item.DropGemWorld"
-	
-	    "AbilitySpecial"
-	    {
-	        "01"
-	        {
-	            "var_type"    "FIELD_INTEGER"
-	            "max_stacks"    "6"
-	        }
-	    }
-	
-	    "OnAbilityPhaseStart"
-	    {
-	        "RunScript"
-	        {
-	            "ScriptFile"    "items/trap_ensnare.lua"
-	            "Function"      "CheckPosition"
-	            "Target"        "POINT"
-	        }
-	    }
-	
-	    "OnSpellStart"
-	    {
-	        "SpendCharge" {}
-	
-	        "RunScript"
-	        {
-	            "ScriptFile"    "items/trap_ensnare.lua"
-	            "Function"      "MakeTrap"
-	            "Target"        "POINT"
-	        }
-	
-	        "FireSound"
-	        {
-	            "EffectName"    "Hero_Treant.Overgrowth.Cast"
-	            "Target"        "CASTER"
-	        }
-	    }    
 	}
 	"npc_ship_merchant_1"
 	{

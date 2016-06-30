@@ -2691,7 +2691,7 @@
 "DOTA_Tooltip_ability_item_potion_acid_acid_damage"		"DAMAGE:"
 "DOTA_Tooltip_ability_item_potion_acid_acid_duration"		"DURATION:"
 "DOTA_Tooltip_ability_item_potion_acid_acid_reduction"		"REDUCTION:"
-"DOTA_Tooltip_ability_item_potion_acid_acid_think_time"		"ACID THINK TIME:"
+"DOTA_Tooltip_ability_item_potion_acid_acid_think_time"		"ACID TICK TIME:"
 "DOTA_Tooltip_ability_item_potion_acid_Description"		"ACTIVE: Use potion to inflict acid upon the target.\n\nA terribly potent acid that on contact, causes spontaneous rust of equipment as well as massive tissue damage."
 "DOTA_Tooltip_ability_item_potion_acid_Lore"		"Not for recreational use."
 "DOTA_Tooltip_modifier_potion_acid_debuff"		"Acid Potion Debuff"
@@ -2757,7 +2757,7 @@
 "DOTA_Tooltip_ability_item_potion_elemental_elemental_damage"		"AoE DPS:"
 "DOTA_Tooltip_ability_item_potion_elemental_elemental_duration"		"DURATION:"
 "DOTA_Tooltip_ability_item_potion_elemental_elemental_radius"		"RADIUS:"
-"DOTA_Tooltip_ability_item_potion_elemental_elemental_think_time"		"ELEMENTAL THINK TIME:"
+"DOTA_Tooltip_ability_item_potion_elemental_elemental_think_time"		"ELEMENTAL TICK TIME:"
 "DOTA_Tooltip_ability_item_potion_elemental_Lore"		"With our powers combined!"
 "DOTA_Tooltip_ability_item_potion_elemental_max_stacks"		"MAX STACKS:"
 "DOTA_Tooltip_modifier_elemental_shield_damage_aura"		"Elemental Shield"
@@ -2773,6 +2773,14 @@
 "DOTA_Tooltip_ability_item_potion_fervor_Note0"		"When used it will cast Pump Up to the caster which gives:\n+10% move speed, +30% attack speed for 20 seconds\nòStone Skin:\n+15 armor for 45 seconds\nIt will also cast Stone Throw on nearby enemies which:\nò Deals 25 damage and stuns for 1 second.\n\n50% chance to cast one of the following:\nò Blowgun's Thistle Poison:\nInflcits on nearby enemies dealing 10 damage, 1 damage every 3 seconds, slows attack speed by 30% and movement speed by 40%. Lasts for 7.5 seconds.\nò Entangling Roots:\nDeals 5 damage per second and entangles the enemy, preventing them from moving or attacking. Lasts 4 seconds."
 "DOTA_Tooltip_modifier_potion_fervor_stun"		"Potion Fervor Stun"
 "DOTA_Tooltip_modifier_potion_fervor_stun_Description"		""
+
+"DOTA_Tooltip_modifier_rage_ability"                                              "Anti-Magic Potion"
+		"DOTA_Tooltip_modifier_rage_ability_Description"                          "Immune from magic!"
+
+"DOTA_Tooltip_modifier_boulder_scroll_slow"                                       "Boulder Scroll Slow"
+"DOTA_Tooltip_modifier_boulder_scroll_slow_Description"                           "Slowed!"
+
+	
 
 
 "DOTA_Tooltip_ability_item_potion_healingi"		"Healing Potion I"

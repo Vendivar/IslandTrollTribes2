@@ -164,7 +164,7 @@
         // Toolkit Abilities
         "sleep_outside"                                          "Sleep Outside"
         "DOTA_Tooltip_Ability_sleep_outside"                     "Sleep Outside"
-        "DOTA_Tooltip_Ability_sleep_outside_Description"         "Sleep outside and gain 20 energy but lose 20 heat!\nShould only be used as a worse case scenario to gain energy!"
+        "DOTA_Tooltip_Ability_sleep_outside_Description"         "Sleep outside and gain 20 energy but lose 20 heat and hp!\nShould only be used as a worse case scenario to gain energy!"
         "DOTA_Tooltip_Ability_sleep_outside_rest_duration"       "REST DURATION:"
         "DOTA_Tooltip_Ability_sleep_outside_mana_restored"       "MANA RESTORED:"
         

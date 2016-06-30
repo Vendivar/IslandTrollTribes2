@@ -1,7 +1,12 @@
 "item_building_kit_trap_ensnare"
 {
 	"ID"	"1130"
-	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT_TARGET"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+    "AbilityCastAnimation" "ACT_DOTA_TELEPORT"
+	"AbilityCastRange"	"950"
+	"AbilityCastPoint"	"0.5"
+	"AbilityChannelTime" "2.5"
+	"AbilityCooldown"	"5.0"
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"building_kit_trap_ensnare"
 	"Model"	"models/props_debris/creep_camp001j.vmdl"
@@ -13,6 +18,7 @@
 	
 	"MaxStacks" "3"
 	
+    "ItemInitialCharges"        "1"
 	"ItemStackable"	"1"
 	"ItemPermanent"	"0"
 	"ItemDroppable"	"1"
@@ -42,7 +48,7 @@
     }
 
 
-    "OnSpellStart"
+    "OnChannelSucceeded"
     {
 
         "RunScript"
@@ -58,6 +64,8 @@
             "Target"        "CASTER"
         }
         
-        "SpendCharge" {}
+        "SpendCharge" 
+        {
+        }
     }    
 }

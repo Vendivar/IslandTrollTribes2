@@ -99,9 +99,10 @@ function SpawnUnitOnEachIsland(unitName, locationType)
     for i,region in pairs(REGIONS)  do
         if (Spawns.neutralCount[regionType][i][unitName] < neutralMaxTable[unitName]) then
             local location = GetSpawnLocation(unitName, region, locationType)
+            --local unit = CreateUnitByName(unitName, location + RandomVector(RandomInt(500,500)), true, nil, nil, DOTA_TEAM_NEUTRALS)
             local unit = CreateUnitByName(unitName, location, true, nil, nil, DOTA_TEAM_NEUTRALS)
             unit.locationDetails = {regionType = regionType, regionId = i}
---            Timers:CreateTimer(function() FindClearSpaceForUnit(unit, location, false) end)
+            Timers:CreateTimer(function() FindClearSpaceForUnit(unit, location, false) end)
             Spawns.neutralCount[regionType][i][unitName] = Spawns.neutralCount[regionType][i][unitName] + 1
         end
     end

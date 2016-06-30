@@ -4,7 +4,7 @@
     "AbilityBehavior"    	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "BaseClass"    			"item_datadriven"
     "AbilityTextureName"    "meat_raw"
-    "Model"    				"models/items/lifestealer/transmuted_armaments_back/transmuted_armaments_back.vmdl"
+    "Model"    				"models/raw_meat.vmdl"
     "Effect"	"particles/custom/dropped_item_normal.vpcf"
     "ItemCost"    			"1"
     "ItemShopTags"    		"consumable"
@@ -21,23 +21,4 @@
 
     "MaxStacks"             "10"
 
-    "Custom"
-    {
-        "ModelOffsets"
-        {
-            "Origin"
-            {
-                "x"    "0"
-                "y"    "0"
-                "z"    "97"
-            }
-
-            "Angles"
-            {
-                "x"    "0"
-                "y"    "0"
-                "z"    "0"
-            }
-        }
-    }
 }

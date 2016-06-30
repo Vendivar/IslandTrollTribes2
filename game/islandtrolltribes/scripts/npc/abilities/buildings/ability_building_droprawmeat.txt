@@ -1,10 +1,11 @@
 "ability_building_droprawmeat"
 {
 	"BaseClass"	            "ability_datadriven"
-	"AbilityBehavior"	    "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityBehavior"	    "DOTA_ABILITY_BEHAVIOR_POINT_TARGET"
 	"AbilityTextureName"    "ability_building_droprawmeat"
 	"MaxLevel"	            "1"
 	"AbilityCastPoint"	    "0"
+	"AbilityCastRange"	    "950"
 
     "OnSpellStart"
     {
@@ -12,6 +13,7 @@
          {
             "ScriptFile"    "buildings\drop_raw_meat.lua"
             "Function"      "DropMeatStack"
+            "Target"     "POINT"
          }
     }
 

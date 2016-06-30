@@ -564,6 +564,7 @@
 		"AbilityTextureName"    "ability_building_droprawmeat"
 		"MaxLevel"	            "1"
 		"AbilityCastPoint"	    "0"
+		"AbilityCastRange"	    "950"
 	
 	    "OnSpellStart"
 	    {
@@ -1182,7 +1183,7 @@
 				"Aura"	"modifier_trap_ensnare"
 				"Aura_Radius"	"35"
 	            "Aura_Teams"  "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	            "Aura_Types"  "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	            "Aura_Types"  "DOTA_UNIT_TARGET_HERO"
 	            //"Aura_Flags"  "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 				"Aura_ApplyToCaster"	"0"
 	            "States"
@@ -16765,27 +16766,6 @@
 	    }
 	}
 	
-	"ability_boat_passive"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-		"AbilityTextureName"	"razor_plasma_field"
-		"Modifiers"
-		{
-			"ability_boat_passive"
-			{
-				"Passive"	"1"
-				"Hidden"	"1"
-				"States"
-				{
-					"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_ENABLED"
-				}
-	
-			}
-	
-		}
-	
-	}
 	"ability_magic_raw_meteor"
 	{
 		"BaseClass"	"ability_datadriven"
