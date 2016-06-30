@@ -2085,7 +2085,12 @@
 	"item_building_kit_trap_iron"
 	{
 		"ID"	"1143"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+	    "AbilityCastAnimation" "ACT_DOTA_TELEPORT"
+		"AbilityCastRange"	"950"
+		"AbilityCastPoint"	"0.5"
+		"AbilityChannelTime" "2.5"
+		"AbilityCooldown"	"5.0"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"building_kit_trap_ensnare"
 		"Model"	"models/props_debris/creep_camp001j.vmdl"
@@ -2097,6 +2102,7 @@
 		
 		"MaxStacks" "3"
 		
+	    "ItemInitialCharges"        "1"
 		"ItemStackable"	"1"
 		"ItemPermanent"	"0"
 		"ItemDroppable"	"1"
@@ -2115,38 +2121,37 @@
 	        "ModelScale"    "0.55"
 	    }
 	
-		// BuildingHelper info
-	    "Building"                      "1" //bool
-	    "BuildTime"                     "5.0"
-	    "AbilityCastRange"              "300"
-	    "UpdateHealth"                  "1" //bool
-	    "Scale"                         "0" //bool
-	    "PlayerCanControl"              "1" //bool
-	    "FindClearSpace"                "1"
-	
-	    "UnitName"                      "npc_building_trap_iron"
-	    "AbilityCooldown"               "2"
-	    "AbilityGoldCost"               "0"
-	    "ItemInitialCharges"            "1"
-	    // End of BuildingHelper info
 	
 	    "AbilitySpecial"
 	    {
 	        "01"
 	        {
-	            "var_type"              "FIELD_FLOAT"
-	            "build_time"            "5.0"
+	            "var_type"    "FIELD_INTEGER"
+	            "max_stacks"    "6"
 	        }
 	    }
 	
-		"OnSpellStart"
+	
+	    "OnChannelSucceeded"
 	    {
+	
 	        "RunScript"
 	        {
-	            "ScriptFile"    "buildings/build.lua"
-	            "Function"      "Build"
+	            "ScriptFile"    "items/trap_iron.lua"
+	            "Function"      "MakeTrap"
+	            "Target"        "POINT"
 	        }
-	    }
+	
+	        "FireSound"
+	        {
+	            "EffectName"    "Hero_Treant.Overgrowth.Cast"
+	            "Target"        "CASTER"
+	        }
+	        
+	        "SpendCharge" 
+	        {
+	        }
+	    }    
 	}
 	"item_building_kit_workshop"
 	{

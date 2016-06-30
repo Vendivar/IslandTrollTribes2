@@ -71,7 +71,7 @@
                 }
             }
 		}
-        "modifier_trap_ensnare"
+        "modifier_trap_reveal"
 		{
 			"IsPurgable"	"0"
 			"IsDebuff"	"1"

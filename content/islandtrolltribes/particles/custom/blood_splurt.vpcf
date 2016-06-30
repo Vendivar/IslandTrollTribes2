@@ -68,14 +68,13 @@
 	[
 		{
 			_class = "C_INIT_RandomLifeTime"
-			m_fLifetimeMin = 0.45
+			m_fLifetimeMin = 1.0
 			m_fLifetimeMax = 0.7
 			m_flOpTimeOffsetMax = 1.0
 			m_flOpStrengthMinScale = 0.0
 		},
 		{
 			_class = "C_INIT_CreateOnModel"
-			m_nControlPointNumber = 1
 			m_HitboxSetName = "hands"
 		},
 		{
@@ -116,12 +115,15 @@
 			m_flNoiseScaleLoc = 25.0
 			m_flNoiseScale = 7.0
 		},
+		{
+			_class = "C_INIT_PositionOffset"
+			m_OffsetMin = [ 0.0, 0.0, 50.0 ]
+		},
 	]
 	m_Emitters = 
 	[
 		{
 			_class = "C_OP_ContinuousEmitter"
-			m_flEmitRate = 274.4
 			m_flEmissionDuration = 0.5
 		},
 	]

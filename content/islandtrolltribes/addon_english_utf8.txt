@@ -164,6 +164,9 @@
 		"npc_building_ensnare_trap"		"Ensnare Trap"
 		"npc_building_tower_ensnare"    "Ensnare Tower"
 		"npc_scroll_boulder"            "Boulder Scroll"
+        "npc_building_trap_ensnare"     "Ensnare Trap"
+		"npc_building_trap_iron"        "Iron Trap"
+	
 	
 		"npc_building_fire_basic"		"Basic Fire"
 		"npc_building_fire_mage"		"Mage Fire"
@@ -560,6 +563,9 @@
 "DOTA_Tooltip_Ability_ability_gatherer_itemwarp"		"Item Warp"
 "DOTA_Tooltip_Ability_ability_gatherer_itemwarp_Description"		"Teleports all items in target area to directly below the Remote Gatherer.\n\n<font color='#777777'>Hold ALT to view more information.</font>"
 "DOTA_Tooltip_Ability_ability_gatherer_itemwarp_Note0"		"Teleports all items in a 500 AOE radius up to 700 range away from the Remote Telegatherer to his feet.\nDoesn't work if the items are within 400 range of a structure.\nTeleports all naturally occuring items except herbs."
+"DOTA_Tooltip_ability_ability_gatherer_itemwarp_range"                            "RANGE:"
+	
+    
 "DOTA_Tooltip_Ability_ability_gatherer_mixherbs"		"Mix Herbs"
 "DOTA_Tooltip_Ability_ability_gatherer_mixherbs_Description"		"Mixes all items in the inventory that are tagged as herbs into a potion."
 "DOTA_Tooltip_Ability_ability_gatherer_radarmanipulations"		"Radar Manipulations"
@@ -947,6 +953,9 @@
 "DOTA_Tooltip_Ability_ability_mage_giganegativeblast_Description"		"Enhanced version of a mage classic. Deals damage and slows the target in a 250 AOE.\n\nDeals 45 damage to the main target and 15 damage to all enemies in a 250 AoE. The debuff lasts longer on animals."
 "DOTA_Tooltip_ability_ability_mage_giganegativeblast_giga_negative_blast_duration_creep"		"CREEP DURATION:"
 "DOTA_Tooltip_ability_ability_mage_giganegativeblast_giga_negative_blast_duration_troll"		"TROLL DURATION:"
+"DOTA_Tooltip_ability_ability_mage_negativeblast_giga_negative_blast_duration_troll"		"GIGA NEGATIVE BLAST DURATION TROLL:"
+"DOTA_Tooltip_ability_ability_mage_negativeblast_giga_negative_blast_duration_creep"		"GIGA NEGATIVE BLAST DURATION CREEP:"
+
 
 "DOTA_Tooltip_ability_ability_mage_giganegativeblast_moveslow"		    "%MOVE SLOW:"
 "DOTA_Tooltip_ability_ability_mage_giganegativeblast_secondarydamage"   "AOE SECONDARY DAMAGE:"
@@ -1044,6 +1053,10 @@
 "DOTA_Tooltip_modifier_meepo_earthbind_Description"		"Movement is disabled."
 "DOTA_Tooltip_modifier_ensnare"                                                   "Ensnared!"
 "DOTA_Tooltip_modifier_ensnare_Description"                                       ""
+"DOTA_Tooltip_ability_ability_hunter_ensnare_hero_duration"                       "HERO DURATION:"
+"DOTA_Tooltip_ability_ability_hunter_ensnare_creep_duration"                      "CREEP DURATION:"
+
+	
 
 "DOTA_Tooltip_Ability_ability_hunter_giantswing"		"Giant Swing"
 "DOTA_Tooltip_Ability_ability_hunter_giantswing_chance"		"%CHANCE:"
@@ -1437,7 +1450,10 @@
 "DOTA_Tooltip_Ability_ability_thief_blur"		"Blur"
 "DOTA_Tooltip_ability_ability_thief_blur_collision"		"Blur Collision"
 "DOTA_Tooltip_ability_ability_thief_blur_collision_Description"		""
-"DOTA_Tooltip_ability_ability_thief_blur_collision_miss_chance"		"MISS CHANCE:"
+"DOTA_Tooltip_ability_ability_thief_blur_collision_miss_chance"		"MISS CHANCE:"	
+"DOTA_Tooltip_ability_ability_thief_blur_miss_chance"                             "MISS CHANCE:"
+
+	
 "DOTA_Tooltip_ability_ability_thief_blur_collision_miss_duration"		"MISS DURATION:"
 "DOTA_Tooltip_Ability_ability_thief_blur_Description"		"Temporarily gives move speed, causing the Escape Artist to reach max move speed. As he moves, blur images are created behind him. If an enemy unit collides with one of the images, it gets dazzled, giving it a chance to miss an attack for a time."
 "DOTA_Tooltip_ability_ability_thief_blur_chance"		"CHANCE:"
@@ -1485,7 +1501,14 @@
 "DOTA_Tooltip_Ability_ability_thief_jump"		"Jump"
 "DOTA_Tooltip_Ability_ability_thief_jump_Description"		"A physical form of Teleport. Does not require vision of the targeted area."
 "DOTA_Tooltip_Ability_ability_thief_jump_range"		"RANGE:"
+"DOTA_Tooltip_Ability_ability_thief_jump_evasion"		"JUMP EVASION:"
+"DOTA_Tooltip_modifier_jump_evasion"                                              "Jump Evasion"
+"DOTA_Tooltip_modifier_jump_evasion_Description"                                  ""
+"DOTA_Tooltip_ability_ability_thief_jump_leap_distance"                           "JUMP DISTANCE:"
+"DOTA_Tooltip_ability_ability_thief_jump_leap_duration"                           "JUMP DURATION:"
+	
 
+	
 
 "DOTA_Tooltip_Ability_ability_thief_netherfade"		"Nether Fade"
 "DOTA_Tooltip_Ability_ability_thief_netherfade_Description"		"Causes the Contortionist to be banished rendering him immune to physical damage. While nether faded the Contortionist takes 55% increased damage from spells."
@@ -1863,6 +1886,8 @@
 "DOTA_Tooltip_ability_item_boat_building_kit_trap_ensnare_Description"		"A clever trap placed to aid the trapping of wild animals, or even an enemy troll if you ask nicely."
 "DOTA_Tooltip_ability_item_boat_building_kit_trap_ensnare_Lore"		"Despised by animal-rights activists."
 "DOTA_Tooltip_ability_item_boat_building_kit_trap_ensnare_Note0"		"Ensnare: (auto cast)\n    ò Immobilizes trolls for 3.25s, animals for 8s.\n    ò 10s cooldown.\nGet Corpse: (autocast)\n    ò Picks up nearby corpse. Max 8."
+"DOTA_Tooltip_modifier_trap_ensnare"                                              "Ensnared!"
+"DOTA_Tooltip_modifier_trap_ensnare_Description"                                  "Entangled in vines for 2 seconds and taking damage over time!"
 "DOTA_Tooltip_ability_ability_ensnaretrap_ensnare_range"                          "RANGE:"
 "DOTA_Tooltip_ability_ability_ensnaretrap_ensnare_duration_creep"                 "CREEP DURATION:"
 "DOTA_Tooltip_ability_ability_ensnaretrap_ensnare_damage_per_second"              "DAMAGE PER SECOND:"
@@ -2265,7 +2290,9 @@
 "DOTA_Tooltip_ability_ability_ensnaretower_ensnare_Description"                   "Traps the target with a net, rendering it incapable of moving.\n\nImmobilizes enemy trolls for 3.25 seconds and 8 seconds on animals"
 "DOTA_Tooltip_ability_item_building_kit_tower_ensnare"                            "Ensnare Tower Kit"
 "DOTA_Tooltip_ability_item_building_kit_tower_ensnare_Description"                "Construct a tower which shoots enemies and ensnares them!"
-		
+"DOTA_Tooltip_ability_ability_ensnaretower_ensnare_duration_hero"                 "DURATION HERO:"
+"DOTA_Tooltip_ability_ability_ensnaretower_ensnare_duration_animal"               "DURATION ANIMAL:"
+	
 
 "DOTA_Tooltip_ability_item_building_kit_workshop"		"Workshop Kit"
 "DOTA_Tooltip_ability_item_building_kit_workshop_build_duration"		"BUILD DURATION:"
@@ -2284,7 +2311,9 @@
 "DOTA_Tooltip_modifier_living_clay"                                               "Living Clay"
 "DOTA_Tooltip_modifier_living_clay_Description"                                   ""
 
-		
+"DOTA_Tooltip_ability_ability_rest_small_rested_duration"                         "RESTED DURATION:"
+
+	
 
 
 "DOTA_Tooltip_ability_item_cloak_camouflage"		"Camouflage Coat"
@@ -2779,7 +2808,12 @@
 
 "DOTA_Tooltip_modifier_boulder_scroll_slow"                                       "Boulder Scroll Slow"
 "DOTA_Tooltip_modifier_boulder_scroll_slow_Description"                           "Slowed!"
+"DOTA_Tooltip_ability_item_scroll_boulder_move_speed_slow"                        "MOVE SPEED SLOW:"
+"DOTA_Tooltip_ability_item_scroll_boulder_slow_debuff_duration"                   "SLOW DEBUFF DURATION:"
+"DOTA_Tooltip_ability_item_scroll_boulder_stun_duration"                          "STUN DURATION:"
+"DOTA_Tooltip_ability_item_scroll_boulder_damage"                                 "DAMAGE:"
 
+	
 	
 
 

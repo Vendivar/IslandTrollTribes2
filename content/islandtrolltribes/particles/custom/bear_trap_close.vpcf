@@ -3,7 +3,7 @@
 	_class = "CParticleSystemDefinition"
 	m_bShouldHitboxesFallbackToRenderBounds = false
 	m_nMaxParticles = 2
-	m_flConstantLifespan = 0.5
+	m_flConstantLifespan = 8.0
 	m_ConstantColor = [ 192, 180, 175, 255 ]
 	m_nConstantSequenceNumber1 = 1
 	m_Renderers = 
@@ -13,9 +13,8 @@
 			m_nManualFrameField = 18
 			m_nSubModelField = 19
 			m_bManualAnimFrame = true
-			m_flAnimationRate = 5.0
+			m_flAnimationRate = 25.0
 			m_bOrientZ = true
-			m_bSuppressTint = true
 			m_ModelList = 
 			[
 				{
@@ -29,18 +28,10 @@
 	m_Operators = 
 	[
 		{
-			_class = "C_OP_BasicMovement"
-			m_nOpEndCapState = 1
-			m_Gravity = [ 0.0, 0.0, -500.0 ]
-		},
-		{
-			_class = "C_OP_EndCapTimedDecay"
-			m_flDecayTime = 0.5
-		},
-		{
 			_class = "C_OP_LerpEndCapScalar"
 			m_flOutput = 0.0
-			m_flLerpTime = 0.25
+			m_flLerpTime = 5.0
+			m_nFieldOutput = 1
 		},
 		{
 			_class = "C_OP_OscillateVector"
@@ -56,6 +47,7 @@
 			_class = "C_OP_LerpEndCapVector"
 			m_flLerpTime = 0.25
 			m_nFieldOutput = 6
+			m_bDisableOperator = true
 		},
 		{
 			_class = "C_OP_PositionLock"
@@ -64,19 +56,31 @@
 			_class = "C_OP_LerpScalar"
 			m_flOutput = 18.0
 			m_nFieldOutput = 18
+			m_flEndTime = 0.1
+		},
+		{
+			_class = "C_OP_FadeAndKill"
+			m_flEndFadeInTime = 0.65
+			m_flStartFadeOutTime = 0.0
+			m_flEndFadeOutTime = 0.8
+		},
+		{
+			_class = "C_OP_EndCapTimedDecay"
+			m_flDecayTime = 5.0
 		},
 	]
 	m_Initializers = 
 	[
 		{
 			_class = "C_INIT_RandomRadius"
-			m_flRadiusMax = 0.5
-			m_flRadiusMin = 0.3
+			m_flRadiusMax = 0.45
+			m_flRadiusMin = 0.45
 		},
 		{
 			_class = "C_INIT_PositionOffset"
 			m_OffsetMax = [ 18.0, 0.0, 512.0 ]
 			m_OffsetMin = [ 18.0, 0.0, 512.0 ]
+			m_bDisableOperator = true
 		},
 		{
 			_class = "C_INIT_PositionPlaceOnGround"
@@ -97,8 +101,13 @@
 		{
 			_class = "C_OP_InstantaneousEmitter"
 			m_nParticlesToEmit = 1
-			m_flStartTime = 0.1
-			m_flStartTimeMax = 0.2
+		},
+	]
+	m_Children = 
+	[
+		{
+			m_ChildRef = resource:"particles/custom/blood_splurt.vpcf"
+			m_flDelay = 0.5
 		},
 	]
 }

@@ -1242,7 +1242,7 @@
 	                }
 	            }
 			}
-	        "modifier_trap_ensnare"
+	        "modifier_trap_reveal"
 			{
 				"IsPurgable"	"0"
 				"IsDebuff"	"1"
@@ -1343,6 +1343,120 @@
 				"Function"	"HatchEgg"
 			}
 		}
+	}
+	"ability_irontrap_ensnare"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"trap_ensnare"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AURA | DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"Modifiers"
+		{
+			"aura_trap_esnnare"
+			{
+				"IsHidden"	"1"
+				"Passive"	"1"
+				"Aura"	"modifier_irontrap_ensnare"
+				"Aura_Radius"	"35"
+	            "Aura_Teams"  "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	            "Aura_Types"  "DOTA_UNIT_TARGET_HERO"
+	            //"Aura_Flags"  "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+				"Aura_ApplyToCaster"	"0"
+	            "States"
+				{
+					"MODIFIER_STATE_INVISIBLE"		"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+	
+			"modifier_irontrap_ensnare"
+			{
+				"IsPurgable"	"0"
+				"IsDebuff"	"1"
+				"IsHidden"	"0"
+	            "Duration" "3"
+				"States"
+				{
+					"MODIFIER_STATE_ROOTED"		"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_DISABLED"
+				}
+	            "OnCreated" 
+	            {
+	                "FireEffect"
+	                {
+	                   "Target" "TARGET"
+	                   "EffectName" "particles/custom/bear_trap_close.vpcf"
+	                   "EffectAttachType" "follow_origin"
+	                }
+	                "ApplyModifier"
+	                {
+	                    "ModifierName"  "modifier_kill"
+						"Target"	"CASTER"
+	                    "Duration"      "0.2"
+	                }
+	                
+	                "ApplyModifier"
+	                {
+	                    "ModifierName"  "modifier_trap_reveal"
+						"Target"	"CASTER"
+	                }
+	                "ApplyModifier"
+	                {
+	                    "ModifierName"  "modifier_trap_stun"
+						"Target"	"TARGET"
+	                }
+	                "RunScript"
+	                {
+	                    "ScriptFile"    "items/trap_ensnare.lua"
+	                    "Function"      "KillTrap"
+	                }
+	                "Damage"
+	                {
+	                    "Type"   "DAMAGE_TYPE_PHYSICAL"
+	                    "Damage" "55"
+	                    "Target" "TARGET"
+	                }
+	            }
+			}
+	        "modifier_trap_reveal"
+			{
+				"IsPurgable"	"0"
+				"IsDebuff"	"1"
+				"IsHidden"	"1"
+				"States"
+				{
+					"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_DISABLED"
+				}
+	        }
+	        "modifier_trap_stun"
+			{
+				"Duration"	"1.5"
+				"EffectName"	"particles/generic_gameplay/generic_stunned.vpcf"
+				"EffectAttachType"	"follow_overhead"
+				"Duration"	"0.1"
+				"IsDebuff"	"1"
+				"OverrideAnimation"	"ACT_DOTA_DISABLED"
+				"States"
+				{
+					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+	
+			}
+		}
+	
+		"AbilitySpecial"
+		{		
+	        "01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"10"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"stun_duration"	"1.5"
+			}
+	
+		}
+	
 	}
 	"ability_pack_up"
 	{
