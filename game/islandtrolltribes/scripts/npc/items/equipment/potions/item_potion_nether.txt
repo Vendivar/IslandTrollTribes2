@@ -1,7 +1,7 @@
 "item_potion_nether"
 {
 	"ID"	"1047"
-	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"item_smoke_of_deceit"
 	"Model"	"models/props_gameplay/smoke.vmdl"
@@ -36,7 +36,7 @@
 
 		"ApplyModifier"
 		{
-			"Target"	"CASTER"
+			"Target"	"TARGET"
 			"Duration"	"%nether_duration"
 			"ModifierName"	"modifier_potion_nether"
 		}

@@ -46,4 +46,8 @@ function TsunamiDestroyFire(keys)
     if (string.match(targetName,"ensnare")) then
 		target:ForceKill(true)
 	end
+    if target:HasModifier("modifier_molotov_burn_building") then
+    target:RemoveModifierByName("modifier_molotov_burn_building")
+    target:StopSound("molotov.burn")
+    end
 end

@@ -15,9 +15,9 @@ function molotov(event)
         enemy:EmitSound("molotov.hit")
         --print("found enemy: " .. enemy:GetUnitName())
          if string.find(enemy:GetUnitName(), "npc_building_")  then
-            print("disabling " .. enemy:GetUnitName())
-            item:ApplyDataDrivenModifier(caster, enemy, "modifier_molotov_burn", {duration=duration})
-            ApplyDamage({victim = target, attacker = caster, damage = 100, damage_type = DAMAGE_TYPE_MAGICAL, damage_flags = DOTA_DAMAGE_FLAG_HPLOSS})
+            item:ApplyDataDrivenModifier(caster, enemy, "modifier_molotov_burn_building", {duration=25})
+            enemy:EmitSound("molotov.burn")
+             Timers:CreateTimer(25, function() enemy:StopSound("molotov.burn") end)
         end
     end
 

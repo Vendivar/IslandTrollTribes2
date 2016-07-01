@@ -11,12 +11,13 @@ function FleaAttack(keys)
     if ability:IsCooldownReady() and not caster:HasModifier("modifier_brewmaster_storm_cyclone") then
 
         -- check for valid targets
-        local units = FindUnitsInRadius(teamnumber, casterPosition, nil, ability:GetCastRange(), DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, 0, 0, false)
+        local units = FindUnitsInRadius(teamnumber, casterPosition, nil, ability:GetCastRange(), DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, 0, false)
+        
 
         if #units > 0 then
             units = ShuffledList(units) --randomize
             for k,v in pairs(units) do
-                if not IsFlyingUnit(v) then
+              --  if not IsFlyingUnit(v) then
                     -- fire flea attack projectile
                     local info =
                     {
@@ -35,7 +36,7 @@ function FleaAttack(keys)
                     -- apply cooldown
                     ability:StartCooldown(cooldown)
                     break
-                end
+                -- end
             end
         end
     end
@@ -51,14 +52,23 @@ function FleaAttackHit(keys)
     local dpsDur = 1.65
     
     -- apply damage
-    local damageTable = {
+    local damageTable1 = {
         victim = target,
         attacker = caster,
         damage = dmg,
-        damage_type = DAMAGE_TYPE_MAGICAL
+        damage_type = DAMAGE_TYPE_MAGICAL,
     }
-    ApplyDamage(damageTable)
-
+    ApplyDamage(damageTable1)
+else
+    local damageTable2 = {
+        victim = target,
+        attacker = caster,
+        damage = dmg,
+        damage_type = DAMAGE_TYPE_PHYSICAL,
+    }
+    ApplyDamage(damageTable2)
+    end
     -- apply DPS
     ability:ApplyDataDrivenModifier(caster, target, "modifier_flea_debuff", {duration = dpsDur})
+end
 end

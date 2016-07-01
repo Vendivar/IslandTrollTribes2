@@ -68,6 +68,11 @@
                     "Damage" "55"
                     "Target" "TARGET"
                 }
+                "FireSound"
+                {
+                    "EffectName"	"trap.iron"
+                    "Target"	"TARGET"
+                }
             }
 		}
         "modifier_trap_reveal"

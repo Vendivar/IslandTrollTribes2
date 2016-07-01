@@ -2144,7 +2144,7 @@
 	
 	        "FireSound"
 	        {
-	            "EffectName"    "Hero_Treant.Overgrowth.Cast"
+	            "EffectName"    "trap.iron.arm"
 	            "Target"        "CASTER"
 	        }
 	        
@@ -6897,12 +6897,12 @@
 	        "04"
 	        {
 	            "var_type"              "FIELD_FLOAT"
-	            "duration_building"     "15"
+	            "duration_building"     "25"
 	        }
 	        "05"
 	        {
 	            "var_type"              "FIELD_FLOAT"
-	            "radius"     "950"
+	            "radius"     "650"
 	        }
 	    }
 	"OnSpellStart"
@@ -7002,8 +7002,43 @@
 	                "Damage"
 	                {
 	                    "Target"    "TARGET"
+	                    "Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 	                    "Type"      "DAMAGE_TYPE_MAGICAL"
 	                    "Damage"    "%burn_dps"
+	                }
+	            }
+	
+	            "Properties"
+	            {
+	                "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "-10"
+	            }
+	        }
+	        
+	        "modifier_molotov_burn_building"
+	        {
+	            "IsDebuff"  "1"
+	            "IsHidden"  "0"
+	            "EffectName"        "particles/units/heroes/hero_phoenix/phoenix_fire_spirit_burn.vpcf"
+	            "EffectAttachType"  "follow_origin"
+	
+	            "ThinkInterval"     "1.0"
+	
+	            "OnIntervalThink"
+	            {
+	                "RunScript"
+	                {
+	                
+	                            "ScriptFile"    "buildings/damage.lua"
+	                            "Function"      "DoBuildingDamage"
+	                            "Target"
+	                            {
+	                                "Center"    "POINT"
+	                                "Radius"    "%radius"
+	                                "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	                                "Types"     "DOTA_UNIT_TARGET_ALL"
+	                                "Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	                            }
+	                            "Damage"        "15"
 	                }
 	            }
 	
@@ -7017,7 +7052,7 @@
 	"item_potion_nether"
 	{
 		"ID"	"1047"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"item_smoke_of_deceit"
 		"Model"	"models/props_gameplay/smoke.vmdl"
@@ -7052,7 +7087,7 @@
 	
 			"ApplyModifier"
 			{
-				"Target"	"CASTER"
+				"Target"	"TARGET"
 				"Duration"	"%nether_duration"
 				"ModifierName"	"modifier_potion_nether"
 			}

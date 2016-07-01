@@ -60,7 +60,7 @@
 
         "FireSound"
         {
-            "EffectName"    "Hero_Treant.Overgrowth.Cast"
+            "EffectName"    "trap.iron.arm"
             "Target"        "CASTER"
         }
         

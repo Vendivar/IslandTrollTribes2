@@ -19,7 +19,7 @@
         "01"
         {
             "var_type"    "FIELD_INTEGER"
-            "damage"      "4 8 10 12 16 24 26"
+            "damage"      "3 5 8 12 16 24 26"
         }
 
         "02"
@@ -142,6 +142,7 @@
                 "Damage"
                 {
                     "Target"        "TARGET"
+                    "Flags"		    "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
                     "Type"          "DAMAGE_TYPE_MAGICAL"
                     "Damage"        "%dps / 2"
                 }

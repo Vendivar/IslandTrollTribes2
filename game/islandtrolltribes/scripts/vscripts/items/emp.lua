@@ -7,7 +7,7 @@ function EMP(event)
 
     local teamNumber = caster:GetTeamNumber()
     local casterOrigin = caster:GetOrigin()
-    local units = FindUnitsInRadius(teamNumber, casterOrigin, nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL, 0, 0, false)
+    local units = FindUnitsInRadius(teamNumber, casterOrigin, nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL,  DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, 0, false)
     
     --print("testing EMP, x: " .. casterOrigin.x .. " y: " .. casterOrigin.y .. " dur: " .. duration .. " radius " .. radius)
 
