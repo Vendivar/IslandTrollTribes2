@@ -14,10 +14,8 @@
 	"ItemCost"	"4"
 	"ItemShopTags"	"consumable"
 	"ItemQuality"	"consumable"
-	"ItemShareability"	"ITEM_FULLY_SHAREABLE_STACKING"
-	
+	"ItemShareability"	"ITEM_FULLY_SHAREABLE_STACKING"	
 	"MaxStacks" "3"
-
 	"ItemPermanent"	"0"
 	"ItemDroppable"	"1"
 	"ItemInitialCharges"	"1"
@@ -162,6 +160,11 @@
 		{
 			"var_type"	"FIELD_INTEGER"
 			"drunk_duration_creep"	"13"
+		}
+        "07"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"max_stacks"	"3"
 		}
 
 	}

@@ -22,8 +22,7 @@
 	"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 	"ItemKillable"	"1"
 	"ItemSellable"	"1"
-	"AbilitySharedCooldown" "scroll"
-
+	"AbilitySharedCooldown" "spear"
 	"UIPickupSound"	"Item.PickUpGemShop"
 	"UIDropSound"	"Item.DropGemShop"
 	"WorldDropSound"	"Item.DropRecipeWorld"
