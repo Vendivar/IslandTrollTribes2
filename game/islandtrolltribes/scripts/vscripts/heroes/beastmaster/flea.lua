@@ -17,7 +17,7 @@ function FleaAttack(keys)
         if #units > 0 then
             units = ShuffledList(units) --randomize
             for k,v in pairs(units) do
-              --  if not IsFlyingUnit(v) then
+                if not v:GetUnitName():match("npc_creep_corpse") and (not v:IsMagicImmune() or v:GetUnitName():match("building")) then
                     -- fire flea attack projectile
                     local info =
                     {
@@ -36,7 +36,7 @@ function FleaAttack(keys)
                     -- apply cooldown
                     ability:StartCooldown(cooldown)
                     break
-                -- end
+                end
             end
         end
     end
@@ -50,27 +50,23 @@ function FleaAttackHit(keys)
 
     local dmg = ability:GetLevelSpecialValueFor("damage", level-1)
     local dpsDur = 1.65
-    
-    if not string.find(target:GetUnitName(), "building") and not IsMagicImmune and not string.find(target:GetUnitName(), "npc_creep_corpse") then 
-    -- apply damage
-    local damageTable1 = {
-        victim = target,
-        attacker = caster,
-        damage = dmg,
-        damage_type = DAMAGE_TYPE_MAGICAL,
-    }
-    ApplyDamage(damageTable1)
-else
-if string.find(target:GetUnitName(), "building") and not string.find(target:GetUnitName(), "npc_creep_corpse") then
-    local damageTable2 = {
-        victim = target,
-        attacker = caster,
-        damage = dmg,
-        damage_type = DAMAGE_TYPE_PHYSICAL,
-    }
-    ApplyDamage(damageTable2)
+    local name = target:GetUnitName()
+
+    if target:IsMagicImmune() then
+        -- Do Building Damage
+        local currentHP = target:GetHealth()
+        local newHP = currentHP - dmg
+
+        -- If the HP would hit 0 with this damage, kill the unit
+        if newHP <= 0 then
+            target:Kill(ability, caster)
+        else
+            target:SetHealth(newHP)
+        end
+    else
+        ApplyDamage({victim = target, attacker = caster, damage = dmg, damage_type = DAMAGE_TYPE_MAGICAL, })
     end
+
     -- apply DPS
     ability:ApplyDataDrivenModifier(caster, target, "modifier_flea_debuff", {duration = dpsDur})
-end
 end
