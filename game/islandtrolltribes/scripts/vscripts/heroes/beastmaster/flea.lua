@@ -51,6 +51,7 @@ function FleaAttackHit(keys)
     local dmg = ability:GetLevelSpecialValueFor("damage", level-1)
     local dpsDur = 1.65
     
+    if not string.find(target:GetUnitName(), "building") and not IsMagicImmune and not string.find(target:GetUnitName(), "npc_creep_corpse") then 
     -- apply damage
     local damageTable1 = {
         victim = target,
@@ -60,6 +61,7 @@ function FleaAttackHit(keys)
     }
     ApplyDamage(damageTable1)
 else
+if string.find(target:GetUnitName(), "building") and not string.find(target:GetUnitName(), "npc_creep_corpse") then
     local damageTable2 = {
         victim = target,
         attacker = caster,
