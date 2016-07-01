@@ -34,8 +34,8 @@ function Build( event )
 	local build_time = ability:GetSpecialValueFor("build_time")
 	local gold_cost = ability:GetSpecialValueFor("gold_cost")
 
-	local hero = caster:GetPlayerOwner():GetAssignedHero()
-	local playerID = hero:GetPlayerID()
+	local playerID = caster:GetPlayerOwnerID()
+	local hero = PlayerResource:GetSelectedHeroEntity(playerID)
 	local player = PlayerResource:GetPlayer(playerID)	
 
 	-- If the ability has an AbilityGoldCost, it's impossible to not have enough gold the first time it's cast
@@ -49,14 +49,16 @@ function Build( event )
 	event:OnPreConstruction(function(vPos)
        	-- If not enough resources to queue, stop
 		if not PlayerHasEnoughGold( player, gold_cost ) then
-       		SendErrorMessage(caster:GetPlayerOwnerID(), "#error_not_enough_gold")
+       		SendErrorMessage(playerID, "#error_not_enough_gold")
 			return false
 		end
 
-        
- if not GridNav:CanFindPath(caster:GetAbsOrigin(), vPos) and GridNav:CanFindPath(vStart,vEnd) then 
- return false 
- end
+		-- Prevent placing on unreachable highground
+		local origin = caster:GetAbsOrigin()
+ 		if vPos.z > origin.z + 64 and not GridNav:CanFindPath(origin, vPos) then
+ 			SendErrorMessage(playerID, "#error_invalid_build_position")
+ 			return false 
+		end
         
 		-- if its an item with charges, check that we aren't at 0 charges
 		if not IsValidEntity(ability) then
@@ -64,14 +66,14 @@ function Build( event )
 		end
 
 		if not ability:IsCooldownReady() then
-			SendErrorMessage(caster:GetPlayerOwnerID(), "#error_cant_queue")
+			SendErrorMessage(playerID, "#error_cant_queue")
 			return false
 		end
 
 		if ability:IsItem() then
 			local charges = ability:GetCurrentCharges()
 			if charges and charges == 0 then
-				SendErrorMessage(caster:GetPlayerOwnerID(), "#error_cant_queue")
+				SendErrorMessage(playerID, "#error_cant_queue")
 				return false
 			end
 		end
