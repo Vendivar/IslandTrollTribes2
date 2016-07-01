@@ -92,9 +92,9 @@ function TransferItem( unit, target, item )
     if CanTakeItem(target, item) then
         unit:DropItemAtPositionImmediate(item, unit:GetAbsOrigin())
 
-        item:LaunchLoot(false, 200, 0.75, target:GetAbsOrigin())
+        item:LaunchLoot(false, 200, 0.50, target:GetAbsOrigin())
 
-        Timers:CreateTimer(0.75, function()
+        Timers:CreateTimer(0.5, function()
             local pickedUp = PickupItem( target, item:GetContainer() )
         end)
     else
@@ -276,7 +276,7 @@ function DropLaunch(unit, item, duration, point)
         -- Get points from tree towards the hero
         for i=64,320,64 do
             local testPosition = point + (origin - point):Normalized() * i
-            trees = GridNav:GetAllTreesAroundPoint(testPosition, 100, false)
+            trees = GridNav:GetAllTreesAroundPoint(testPosition, 250, false)
             if #trees == 0 then
                 point = testPosition
                 break

@@ -53,6 +53,11 @@ function Build( event )
 			return false
 		end
 
+        
+ if not GridNav:CanFindPath(caster:GetAbsOrigin(), vPos) and GridNav:CanFindPath(vStart,vEnd) then 
+ return false 
+ end
+        
 		-- if its an item with charges, check that we aren't at 0 charges
 		if not IsValidEntity(ability) then
 			return false

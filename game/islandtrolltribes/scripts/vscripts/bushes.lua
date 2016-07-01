@@ -111,7 +111,7 @@ function GetPredefinedBushLocationsOnRegion(region, bushItem)
 end
 
 function IsNearABush(location, bushItem)
-    local nearbyBushes = Entities:FindAllByClassnameWithin("npc_dota_creature", location, 800)
+    local nearbyBushes = Entities:FindAllByClassnameWithin("npc_dota_creature", location, 1500)
     for _,bushName in pairs(nearbyBushes) do
         if bushName:GetUnitName() == bushItem then
             return true
