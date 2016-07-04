@@ -35,10 +35,16 @@ function ITT:CraftItem(event)
     local craftingItems = CanCombine(unit, section, itemName)
     if craftingItems then
         -- Clear the inventory items returned by the CanCombine aux
-        ClearItems(craftingItems)   
+        ClearItems(craftingItems)
 
         -- Create the resulting item
         unit:AddItem(CreateItem(itemName, nil, nil))
+
+        -- Fixes issue #238
+        if itemName == "item_building_kit_fire_basic" then
+            print("Giving flint back for creating a fire")
+            unit:AddItem(CreateItem("item_flint", nil, nil))
+        end
 
         FireCombineParticle(unit)
 
@@ -66,7 +72,7 @@ function CanCombine( unit, section, recipeName )
     return result
 end
 
--- Counts stack charges and returns the items involved in 
+-- Counts stack charges and returns the items involved in
 -- If a charge goes over the max required items, the item removal will have to only remove the precise amount of charges instead of the full item
 function HasEnoughInInventory( unit, itemName, num )
     local bEnough = false
