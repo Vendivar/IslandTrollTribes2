@@ -5896,7 +5896,7 @@
 		"MaxStacks" "3"
 		"ItemPermanent"	"0"
 		"ItemDroppable"	"1"
-		"ItemInitialCharges"	"1"
+		"ItemInitialCharges"	"3"
 		"ItemAliases"	"quicktype"
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
@@ -5921,7 +5921,7 @@
 			    "EffectName"       "particles/units/heroes/hero_brewmaster/brewmaster_drunken_haze.vpcf"
 			    "Dodgeable"        "0"
 			    "ProvidesVision"   "0"
-			    "MoveSpeed"        "950"
+			    "MoveSpeed"        "1200"
 			    "SourceAttachment" "DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
 			}		
 	
@@ -5985,7 +5985,11 @@
 		{
 			"modifier_potion_drunk"
 			{
-				"IsDebuff"	"1"
+				"IsDebuff"	"1"			
+				"States"
+				{
+					"MODIFIER_STATE_SILENCED"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"-10"
@@ -13527,6 +13531,7 @@
 	            "States"
 	            {
 	                "MODIFIER_STATE_ROOTED"    "MODIFIER_STATE_VALUE_ENABLED"
+	                "MODIFIER_STATE_INVISIBLE"    "MODIFIER_STATE_VALUE_DISABLED"
 	            }
 	
 	            "OnCreated"
