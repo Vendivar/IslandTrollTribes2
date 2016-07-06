@@ -27,7 +27,10 @@ function ability_beastmaster_tamepet2:OnSpellStart()
             pet1:RemoveAbility("ability_pet_sleep")
             pet1:EmitSound("Hero_Beastmaster.Call.Boar")
             pet1:EmitSound("Hero_Beastmaster.Call.Hawk")
-            pet1:SetControllableByPlayer(caster:GetPlayerID(), false)
+            -- pet1:SetControllableByPlayer(caster:GetPlayerID(), false)
+            -- The boolean here doesn't affect the actual setting.
+            pet1:SetOwner(nil)
+            pet1:SetControllableByPlayer(-1, false)
 
             -- Go back to being a not-attackable animal
             if ability_beastmaster_tamepet2:IsValidPetName( pet1 ) then
@@ -43,7 +46,7 @@ function ability_beastmaster_tamepet2:OnSpellStart()
     -- Grow
     local grow_duration = ability:GetSpecialValueFor("grow_young")
     newPet:AddNewModifier(caster, ability, "modifier_pet_grow", {duration=grow_duration})
-    
+
     -- Change ownership
     newPet:SetControllableByPlayer(caster:GetPlayerID(), true)
     newPet:SetOwner(caster)
@@ -80,7 +83,7 @@ function ability_beastmaster_tamepet2:OnSpellStart()
 end
 
 --------------------------------------------------------------------------------
- 
+
 function ability_beastmaster_tamepet2:CastFilterResultTarget( target )
     local ability = self
     local caster = ability:GetCaster()
@@ -95,7 +98,7 @@ function ability_beastmaster_tamepet2:CastFilterResultTarget( target )
 
     return UF_SUCCESS
 end
-  
+
 function ability_beastmaster_tamepet2:GetCustomCastErrorTarget( target )
     local ability = self
     local caster = ability:GetCaster()
@@ -107,7 +110,7 @@ function ability_beastmaster_tamepet2:GetCustomCastErrorTarget( target )
     if not ability_beastmaster_tamepet2:IsValidPetName( target ) or allied then
         return "#error_must_target_baby_animal"
     end
- 
+
     return ""
 end
 

@@ -9,7 +9,7 @@ function ability_beastmaster_tamepet:OnSpellStart()
     local caster = ability:GetCaster()
     local newPet = ability:GetCursorTarget()
     newPet.leashRange = ability:GetSpecialValueFor("leash_range")
-    
+
     if not caster.pets then
         caster.pets = {}
     else
@@ -27,7 +27,10 @@ function ability_beastmaster_tamepet:OnSpellStart()
             pet:RemoveAbility("ability_pet_sleep")
             pet:EmitSound("Hero_Beastmaster.Call.Boar")
             pet:EmitSound("Hero_Beastmaster.Call.Hawk")
-            pet:SetControllableByPlayer(caster:GetPlayerID(), false)
+            -- pet:SetControllableByPlayer(caster:GetPlayerID(), false)
+            -- The boolean here doesn't affect the actual setting.
+            pet:SetOwner(nil)
+            pet:SetControllableByPlayer(-1, false)
 
             -- Go back to being a not-attackable animal
             if ability_beastmaster_tamepet:IsValidPetName( pet ) then
@@ -45,7 +48,7 @@ function ability_beastmaster_tamepet:OnSpellStart()
     -- Grow
     local grow_duration = ability:GetSpecialValueFor("grow_young")
     newPet:AddNewModifier(caster, ability, "modifier_pet_grow", {duration=grow_duration})
-    
+
     -- Change ownership
     newPet:SetControllableByPlayer(caster:GetPlayerID(), true)
     newPet:SetOwner(caster)
@@ -81,7 +84,7 @@ function ability_beastmaster_tamepet:OnSpellStart()
 end
 
 --------------------------------------------------------------------------------
- 
+
 function ability_beastmaster_tamepet:CastFilterResultTarget( target )
     local ability = self
     local caster = ability:GetCaster()
@@ -96,7 +99,7 @@ function ability_beastmaster_tamepet:CastFilterResultTarget( target )
 
     return UF_SUCCESS
 end
-  
+
 function ability_beastmaster_tamepet:GetCustomCastErrorTarget( target )
     local ability = self
     local caster = ability:GetCaster()
@@ -108,7 +111,7 @@ function ability_beastmaster_tamepet:GetCustomCastErrorTarget( target )
     if not ability_beastmaster_tamepet:IsValidPetName( target ) or allied then
         return "#error_must_target_baby_animal"
     end
- 
+
     return ""
 end
 
