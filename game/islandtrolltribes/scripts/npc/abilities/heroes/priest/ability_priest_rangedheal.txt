@@ -18,7 +18,15 @@
         "particle" "particles/units/heroes/hero_oracle/oracle_fatesedict_arc_thin.vpcf"
         "soundfile" "soundevents/game_sounds_heroes/game_sounds_oracle.vsndevts"
 	}
-    
+	"OnAbilityPhaseStart"
+	{
+		"RunScript"
+		{
+            "ScriptFile"	"heroes/priest/range_heal.lua"
+			"Function"      "RangeHealInit"
+			"Target"         "TARGET"
+		}
+	}
 	"OnSpellStart"
 	{
         "ApplyModifier"

@@ -6060,6 +6060,7 @@
 	            "States"
 	            {
 	                "MODIFIER_STATE_ROOTED"    "MODIFIER_STATE_VALUE_ENABLED"
+	                "MODIFIER_STATE_INVISIBLE"    "MODIFIER_STATE_VALUE_DISABLED"
 	            }
 	
 	            "OnCreated"
@@ -12992,7 +12993,15 @@
 	        "particle" "particles/units/heroes/hero_oracle/oracle_fatesedict_arc_thin.vpcf"
 	        "soundfile" "soundevents/game_sounds_heroes/game_sounds_oracle.vsndevts"
 		}
-	    
+		"OnAbilityPhaseStart"
+		{
+			"RunScript"
+			{
+	            "ScriptFile"	"heroes/priest/range_heal.lua"
+				"Function"      "RangeHealInit"
+				"Target"         "TARGET"
+			}
+		}
 		"OnSpellStart"
 		{
 	        "ApplyModifier"

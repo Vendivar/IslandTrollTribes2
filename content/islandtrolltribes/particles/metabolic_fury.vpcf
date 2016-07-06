@@ -3,39 +3,28 @@
 	_class = "CParticleSystemDefinition"
 	m_bShouldHitboxesFallbackToRenderBounds = false
 	m_nMaxParticles = 48
-	m_flConstantRadius = 72.000000
-	m_ConstantColor =
-	[
-		255,
-		96,
-		96,
-		255,
-	]
-	m_Renderers =
+	m_flConstantRadius = 72.0
+	m_ConstantColor = [ 255, 96, 96, 255 ]
+	m_Renderers = 
 	[
 		{
 			_class = "C_OP_RenderTrails"
 			m_nSequenceCombineMode = "SEQUENCE_COMBINE_MODE_USE_SEQUENCE_0"
-			m_flOverbrightFactor = 6.000000
-			m_flAddSelfAmount = 2.000000
+			m_flOverbrightFactor = 6.0
+			m_flAddSelfAmount = 2.0
 			m_bSaturateColorPreAlphaBlend = false
 			m_hTexture = resource:"materials/particle/sparks/sparks.vtex"
-			m_flRadiusScale = 0.500000
-			m_flFinalTextureScaleV = -1.000000
-			m_flFinalTextureOffsetV = 1.000000
+			m_flRadiusScale = 0.5
+			m_flFinalTextureScaleV = -1.0
+			m_flFinalTextureOffsetV = 1.0
 		},
 	]
-	m_Operators =
+	m_Operators = 
 	[
 		{
 			_class = "C_OP_BasicMovement"
-			m_fDrag = -0.028000
-			m_Gravity =
-			[
-				0.000000,
-				0.000000,
-				50.000000,
-			]
+			m_fDrag = -0.028
+			m_Gravity = [ 0.0, 0.0, 50.0 ]
 		},
 		{
 			_class = "C_OP_Decay"
@@ -45,48 +34,32 @@
 		},
 		{
 			_class = "C_OP_InterpolateRadius"
-			m_flEndScale = 0.100000
-			m_flBias = 0.200000
+			m_flEndScale = 0.1
+			m_flBias = 0.2
 		},
 		{
 			_class = "C_OP_ColorInterpolate"
-			m_ColorFade =
-			[
-				125,
-				0,
-				29,
-				255,
-			]
-			m_flFadeStartTime = 0.500000
+			m_ColorFade = [ 125, 0, 29, 255 ]
+			m_flFadeStartTime = 0.5
 		},
 		{
 			_class = "C_OP_VectorNoise"
-			m_fl4NoiseScale = 0.250000
+			m_fl4NoiseScale = 0.25
 			m_bAdditive = true
-			m_vecOutputMax =
-			[
-				15.000000,
-				15.000000,
-				15.000000,
-			]
-			m_vecOutputMin =
-			[
-				-15.000000,
-				-15.000000,
-				-15.000000,
-			]
+			m_vecOutputMax = [ 15.0, 15.0, 15.0 ]
+			m_vecOutputMin = [ -15.0, -15.0, -15.0 ]
 			m_nFieldOutput = 0
 		},
 		{
 			_class = "C_OP_FadeInSimple"
 		},
 	]
-	m_Initializers =
+	m_Initializers = 
 	[
 		{
 			_class = "C_INIT_RandomLifeTime"
-			m_fLifetimeMin = 0.750000
-			m_fLifetimeMax = 4.680000
+			m_fLifetimeMin = 0.75
+			m_fLifetimeMax = 4.68
 		},
 		{
 			_class = "C_INIT_RandomRotation"
@@ -96,85 +69,52 @@
 		},
 		{
 			_class = "C_INIT_RandomRadius"
-			m_flRadiusMin = 5.000000
-			m_flRadiusMax = 10.000000
+			m_flRadiusMin = 5.0
+			m_flRadiusMax = 10.0
 		},
 		{
 			_class = "C_INIT_RandomColor"
-			m_ColorMax =
-			[
-				191,
-				16,
-				45,
-				255,
-			]
-			m_ColorMin =
-			[
-				238,
-				94,
-				94,
-				255,
-			]
+			m_ColorMax = [ 191, 16, 45, 255 ]
+			m_ColorMin = [ 238, 94, 94, 255 ]
 		},
 		{
 			_class = "C_INIT_InitialVelocityNoise"
-			m_vecOutputMax =
-			[
-				150.000000,
-				150.000000,
-				250.000000,
-			]
-			m_vecOutputMin =
-			[
-				-150.000000,
-				-150.000000,
-				-150.000000,
-			]
-			m_flNoiseScaleLoc = 0.750000
+			m_vecOutputMax = [ 150.0, 150.0, 250.0 ]
+			m_vecOutputMin = [ -150.0, -150.0, -150.0 ]
+			m_flNoiseScaleLoc = 0.75
 		},
 		{
 			_class = "C_INIT_RandomTrailLength"
-			m_flMinLength = 0.050000
+			m_flMinLength = 0.05
 		},
 		{
 			_class = "C_INIT_RingWave"
-			m_flInitialRadius = 20.000000
-			m_flThickness = 20.000000
-			m_flInitialSpeedMin = 300.000000
-			m_flInitialSpeedMax = 400.000000
+			m_flInitialRadius = 20.0
+			m_flThickness = 20.0
+			m_flInitialSpeedMin = 300.0
+			m_flInitialSpeedMax = 400.0
 		},
 		{
 			_class = "C_INIT_PositionOffset"
-			m_OffsetMax =
-			[
-				0.000000,
-				0.000000,
-				100.000000,
-			]
-			m_OffsetMin =
-			[
-				0.000000,
-				0.000000,
-				100.000000,
-			]
+			m_OffsetMax = [ 0.0, 0.0, 150.0 ]
+			m_OffsetMin = [ 0.0, 0.0, 150.0 ]
 		},
 	]
-	m_Emitters =
+	m_Emitters = 
 	[
 		{
 			_class = "C_OP_InstantaneousEmitter"
 			m_nParticlesToEmit = 48
 		},
 	]
-	m_ForceGenerators =
+	m_ForceGenerators = 
 	[
 		{
 			_class = "C_OP_AttractToControlPoint"
-			m_flOpStartFadeInTime = 0.500000
-			m_flOpEndFadeInTime = 0.500000
-			m_fForceAmount = 4000.000000
-			m_fFalloffPower = 0.000000
-			m_nControlPointNumber = 1
+			m_flOpStartFadeInTime = 0.5
+			m_flOpEndFadeInTime = 0.5
+			m_fForceAmount = 4000.0
+			m_fFalloffPower = 0.0
 		},
 	]
 }
