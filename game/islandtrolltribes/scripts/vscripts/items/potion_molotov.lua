@@ -1,24 +1,39 @@
-function molotov(event)
+function MolotovHit(event)
     local caster = event.caster
     local item = event.ability
     local radius = item:GetLevelSpecialValueFor("radius", 1)
-    local duration= item:GetLevelSpecialValueFor("duration_building", 1)
-    --local aoeParticle = "particles/units/heroes/hero_meepo/meepo_earthbind_projectile_fx.vpcf"
+    local duration_building = item:GetLevelSpecialValueFor("duration_building", 1)
+    local duration_creep = item:GetLevelSpecialValueFor("duration_creep", 1)
+    local duration_hero = item:GetLevelSpecialValueFor("duration_hero", 1)
 
     local teamNumber = caster:GetTeamNumber()
     local casterOrigin = caster:GetOrigin()
     local units = FindUnitsInRadius(teamNumber, casterOrigin, nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, 0, false)
-    
-    --print("testing EMP, x: " .. casterOrigin.x .. " y: " .. casterOrigin.y .. " dur: " .. duration .. " radius " .. radius)
 
     for _,enemy in pairs(units) do
         enemy:EmitSound("molotov.hit")
-        --print("found enemy: " .. enemy:GetUnitName())
-         if string.find(enemy:GetUnitName(), "npc_building_")  then
-            item:ApplyDataDrivenModifier(caster, enemy, "modifier_molotov_burn_building", {duration=25})
+        if string.find(enemy:GetUnitName(), "npc_building_")  then
+            item:ApplyDataDrivenModifier(caster, enemy, "modifier_molotov_burn", {duration=duration_building})
             enemy:EmitSound("molotov.burn")
-             Timers:CreateTimer(25, function() enemy:StopSound("molotov.burn") end)
+        elseif enemy:IsHero() then
+            item:ApplyDataDrivenModifier(caster, enemy, "modifier_molotov_burn", {duration=duration_hero})
+            enemy:EmitSound("molotov.burn")
+        elseif not enemy:IsMagicImmune() then
+            item:ApplyDataDrivenModifier(caster, enemy, "modifier_molotov_burn", {duration=duration_creep})
+            enemy:EmitSound("molotov.burn")
         end
     end
+end
 
+function MolotovDamage(event)
+    local damage = 5 --can't use ability handle because the item is removed
+    local caster = event.caster
+    local target = event.target
+    target:EmitSound("molotov.burn")
+
+    if string.find(target:GetUnitName(), "npc_building_") then
+        DamageBuilding(target, damage, nil, caster)
+    else
+        ApplyDamage({victim = target, attacker = caster, damage = damage, damage_type = DAMAGE_TYPE_MAGICAL, })
+    end
 end
