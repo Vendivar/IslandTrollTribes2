@@ -26,7 +26,7 @@ function MolotovHit(event)
 end
 
 function MolotovDamage(event)
-    local damage = 5 --can't use ability handle because the item is removed
+    local damage = 2 --can't use ability handle because the item is removed
     local caster = event.caster
     local target = event.target
     target:EmitSound("molotov.burn")

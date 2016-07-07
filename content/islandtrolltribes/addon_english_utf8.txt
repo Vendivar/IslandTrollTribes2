@@ -2286,6 +2286,14 @@
 "DOTA_Tooltip_ability_item_building_kit_trap_ensnare_Note0"		"Ensnare: (auto cast)\n    ò Immobilizes trolls for 3.25s, animals for 8s.\n    ò 10s cooldown.\nGet Corpse: (autocast)\n    ò Picks up nearby corpse. Max 8."
 
 
+"DOTA_Tooltip_ability_item_building_kit_trap_iron"                                "Iron Trap Kit"
+"DOTA_Tooltip_ability_item_building_kit_trap_iron_Description"                    ""
+"DOTA_Tooltip_ability_item_building_kit_trap_iron_max_stacks"                     "MAX STACKS:"
+"DOTA_Tooltip_modifier_irontrap_ensnare"                                          "Irontrap Ensnared"
+"DOTA_Tooltip_modifier_irontrap_ensnare_Description"                              "You've been caught by the iron trap and are hurt for 55 damage and stunned for 1.5 seconds!"
+
+
+
 "DOTA_Tooltip_ability_ability_ensnaretower_ensnare"                               "Ensnare"
 "DOTA_Tooltip_ability_ability_ensnaretower_ensnare_Description"                   "Traps the target with a net, rendering it incapable of moving.\n\nImmobilizes enemy trolls for 3.25 seconds and 8 seconds on animals"
 "DOTA_Tooltip_ability_item_building_kit_tower_ensnare"                            "Ensnare Tower Kit"
