@@ -12,5 +12,6 @@ end
 
 function KillTrap ( keys )
     local caster = keys.caster
+	caster:EmitSound("sounds/weapons/hero/treant/overgrowth_cast.vsnd")
     caster:ForceKill(true)
 end

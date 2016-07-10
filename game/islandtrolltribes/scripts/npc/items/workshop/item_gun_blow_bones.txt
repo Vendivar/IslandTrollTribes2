@@ -101,20 +101,32 @@
 
 	}
 
+
+
 	"AbilitySpecial"
 	{
 		"01"
 		{
 			"var_type"	"FIELD_INTEGER"
 			"projectile_speed"	"1000"
-		}
-
+		}			
 		"02"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"damage"	"30"
+		}		
+		"03"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"stun_dur"	"1"
+		}		
+		"04"
 		{
 			"var_type"	"FIELD_INTEGER"
 			"max_stacks"	"3"
 		}
 
 	}
+
 
 }

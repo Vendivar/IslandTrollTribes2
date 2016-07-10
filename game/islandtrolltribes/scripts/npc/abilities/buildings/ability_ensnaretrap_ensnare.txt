@@ -68,7 +68,12 @@
                 {
                     "ScriptFile"    "items/trap_ensnare.lua"
                     "Function"      "KillTrap"
-                }
+                }        
+				"FireSound"
+				{
+					"EffectName"    "Hero_Treant.Overgrowth.Cast"
+					"Target"        "CASTER"
+				}
             }
 		}
         "modifier_trap_reveal"

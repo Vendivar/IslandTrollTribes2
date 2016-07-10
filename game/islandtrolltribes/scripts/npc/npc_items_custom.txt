@@ -6848,13 +6848,13 @@
 	{
 	    "ID"                        "1519"
 	    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_AOE"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
-		"SpellImmunityType" 			"SPELL_IMMUNITY_ENEMIES_YES"
+	    "AbilityUnitDamageType"     "DAMAGE_TYPE_PURE"
+	    "SpellImmunityType"         "SPELL_IMMUNITY_ENEMIES_YES"
 	    "BaseClass"                 "item_datadriven"
 	    "AbilityTextureName"        "potion_molotov"
 	    "Model"                     "models/heroes/batrider/batrider_molotov.vmdl"
 	    "Effect"                    "particles/custom/dropped_item_normal.vpcf"
-	    "AoERadius" "950"
+	    "AoERadius"                 "650"
 	    "AbilityCastRange"          "1200"
 	    "AbilityChannelTime"        "2.5"
 	    "AbilityCastPoint"          "0"
@@ -6890,7 +6890,7 @@
 	        "01"
 	        {
 	            "var_type"              "FIELD_INTEGER"
-	            "burn_dps"                   "5"
+	            "burn_dps"              "5"
 	        }
 	        "02"
 	        {
@@ -6910,18 +6910,18 @@
 	        "05"
 	        {
 	            "var_type"              "FIELD_FLOAT"
-	            "radius"     "650"
+	            "radius"                "650"
 	        }
 	    }
-	"OnSpellStart"
-	{
+	    "OnSpellStart"
+	    {
 	        "FireSound"
 	        {
 	            "EffectName"            "molotov.pre"
 	            "Target"                "CASTER"
 	        }
+	    }
 	
-	}
 	    "OnChannelSucceeded"
 	    {
 	        "FireSound"
@@ -6940,94 +6940,39 @@
 	            "HasFrontalCone"    "0"
 	            "ProvidesVision"    "0"
 	        }
-	 
 	    }
 	    
 	    "OnProjectileFinish"
+	    {
+	        "FireSound"
 	        {
-	            "FireSound"
-	            {
-	                "EffectName"    "molotov.hit"
-	                "Target"        "POINT"
-	            }
-	            "FireEffect"
-	            {
-	                "EffectName"    "particles/custom/molotov_explode.vpcf"
-	                "EffectAttachType"  "PATTACH_WORLDORIGIN"
-	                "Target"    "POINT"
-	            }
-	            
-	            "ApplyModifier"
-	            {
-	                "Target"
-	                {
-	                    "Center"    "POINT"
-	                    "Radius"    "%radius"
-	                    "Teams" "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	                    "Types" "DOTA_UNIT_TARGET_HERO"
-	                }
-	                "ModifierName"  "modifier_molotov_burn"
-	                "Duration"  "%duration_hero"
-	            }
-	
-	            "ApplyModifier"
-	            {
-	                "Target"
-	                {
-	                    "Center"    "POINT"
-	                    "Radius"    "%radius"
-	                    "Teams" "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	                    "Types" "DOTA_UNIT_TARGET_CREEP"
-	                }
-	                "ModifierName"  "modifier_molotov_burn"
-	                "Duration"  "%duration_creep"
-	            }
-	            
-	            "RunScript"
-				{
-					"ScriptFile" "items/potion_molotov.lua"
-					"Function"   "molotov"
-				}
-	            
-	            "SpendCharge"
-	            {
-	            }
+	            "EffectName"    "molotov.hit"
+	            "Target"        "POINT"
 	        }
+	        "FireEffect"
+	        {
+	            "EffectName"    "particles/custom/molotov_explode.vpcf"
+	            "EffectAttachType"  "PATTACH_WORLDORIGIN"
+	            "Target"    "POINT"
+	        }
+	        
+	        "RunScript"
+	        {
+	            "ScriptFile" "items/potion_molotov.lua"
+	            "Function"   "MolotovHit"
+	        }
+	        
+	        "SpendCharge" {}
+	    }
 	    
-	        "Modifiers"
+	    "Modifiers"
 	    {
 	        "modifier_molotov_burn"
 	        {
-	            "IsDebuff"  "1"
-	            "IsHidden"  "0"
+	            "IsDebuff"          "1"
 	            "EffectName"        "particles/units/heroes/hero_phoenix/phoenix_fire_spirit_burn.vpcf"
 	            "EffectAttachType"  "follow_origin"
-	
-	            "ThinkInterval"     "1.0"
-	
-	            "OnIntervalThink"
-	            {
-	                "Damage"
-	                {
-	                    "Target"    "TARGET"
-	                    "Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-	                    "Type"      "DAMAGE_TYPE_MAGICAL"
-	                    "Damage"    "%burn_dps"
-	                }
-	            }
-	
-	            "Properties"
-	            {
-	                "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "-10"
-	            }
-	        }
-	        
-	        "modifier_molotov_burn_building"
-	        {
-	            "IsDebuff"  "1"
-	            "IsHidden"  "0"
-	            "EffectName"        "particles/units/heroes/hero_phoenix/phoenix_fire_spirit_burn.vpcf"
-	            "EffectAttachType"  "follow_origin"
+	            "TextureName"       "potion_molotov"
 	
 	            "ThinkInterval"     "1.0"
 	
@@ -7035,18 +6980,8 @@
 	            {
 	                "RunScript"
 	                {
-	                
-	                            "ScriptFile"    "buildings/damage.lua"
-	                            "Function"      "DoBuildingDamage"
-	                            "Target"
-	                            {
-	                                "Center"    "POINT"
-	                                "Radius"    "%radius"
-	                                "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	                                "Types"     "DOTA_UNIT_TARGET_ALL"
-	                                "Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-	                            }
-	                            "Damage"        "15"
+	                    "ScriptFile"    "items/potion_molotov.lua"
+	                    "Function"      "MolotovDamage"
 	                }
 	            }
 	
@@ -12948,21 +12883,33 @@
 	
 		}
 	
+	
+	
 		"AbilitySpecial"
 		{
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
 				"projectile_speed"	"1000"
-			}
-	
+			}			
 			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"30"
+			}		
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"stun_dur"	"1"
+			}		
+			"04"
 			{
 				"var_type"	"FIELD_INTEGER"
 				"max_stacks"	"3"
 			}
 	
 		}
+	
 	
 	}
 	"item_gun_blow_empty"
@@ -13133,13 +13080,14 @@
 	
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"-40"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"-30"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"-20"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"-20"
 				}
 	
 			}
 	
 		}
+	
 	
 		"AbilitySpecial"
 		{
@@ -13147,15 +13095,40 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"projectile_speed"	"1000"
-			}
-	
+			}			
 			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"initial_damage"	"10"
+			}		
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"dot_damage"	"1"
+			}		
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"slow"	"-20"
+			}			
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration_hero"	"7.5"
+			}	
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration_creep"	"12"
+			}
+			"07"
 			{
 				"var_type"	"FIELD_INTEGER"
 				"max_stacks"	"3"
 			}
 	
 		}
+	
 	
 	}
 	"item_gun_blow_thistles_dark"
@@ -13234,7 +13207,7 @@
 	
 			"Damage"
 			{
-				"Damage"	"20"
+				"Damage"	"30"
 				"Type"	"DAMAGE_TYPE_PHYSICAL"
 				"Target"
 				{
@@ -13317,8 +13290,8 @@
 	
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"-20"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"-20"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"-30"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"-30"
 				}
 	
 			}
@@ -13331,9 +13304,33 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"projectile_speed"	"1000"
-			}
-	
+			}			
 			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"initial_damage"	"30"
+			}		
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"dot_damage"	"1"
+			}		
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"slow"	"-30"
+			}			
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration_hero"	"10"
+			}	
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration_creep"	"15"
+			}
+			"07"
 			{
 				"var_type"	"FIELD_INTEGER"
 				"max_stacks"	"3"
