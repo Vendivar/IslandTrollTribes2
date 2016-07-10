@@ -17,7 +17,7 @@ function PetRelease( event )
     pet:EmitSound("Hero_Beastmaster.Call.Boar")
     pet:EmitSound("Hero_Beastmaster.Call.Hawk")
     pet:SetControllableByPlayer(hero:GetPlayerID(), false)
-    pet:ForceKill(true) 
+    pet:ForceKill(true)
 
     -- Go back to being a not-attackable animal
     if IsValidPetName( pet ) then
@@ -29,7 +29,7 @@ function PetRelease( event )
     -- Disable abilities on BM only if it doesnt have another pet active
     RemovePetFromTable(hero, pet)
     CheckBeastmasterPetCount(hero)
-  
+
 end
 
 ------------------------------------------------------------
@@ -108,10 +108,11 @@ function PetThink( event )
     local hero = pet:GetOwner()
 
     local pID = hero:GetPlayerID()
-    
+
     -- Never go outside the leashRange of the player, defined when the tame ability is cast
-    if pet:GetRangeToUnit(hero) > pet.leashRange and hero:IsAlive() then
-     
+    -- Now checks if the pet is sleeping, in which case the pet still stays. Issue #241
+    if pet:GetRangeToUnit(hero) > pet.leashRange and hero:IsAlive() and not pet:FindModifierByName("modifier_sleep") then
+
         ExecuteOrderFromTable({ UnitIndex = pet:GetEntityIndex(), OrderType = DOTA_UNIT_ORDER_MOVE_TO_TARGET, TargetIndex = hero:GetEntityIndex(), Queue = false})
        -- EmitSoundOn( "General.Ping", pet )
         local particle = ParticleManager:CreateParticle("particles/custom/alert.vpcf", PATTACH_ABSORIGIN_FOLLOW, pet)

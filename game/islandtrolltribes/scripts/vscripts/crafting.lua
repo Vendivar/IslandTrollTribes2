@@ -14,16 +14,22 @@ function ITT:CraftItem(event)
     local section = event.section
     local entity = event.entity
     local unit
+
     print("Attempting to craft ",itemName," at ",section)
     if section == "Recipes" then
         unit = PlayerResource:GetSelectedHeroEntity(playerID)
     else
         unit = EntIndexToHScript(entity)
-        if unit:GetUnitName() ~= section then
-            local item_string = GetEnglishTranslation(itemName, "ability") or itemName
-            local building_string = GetEnglishTranslation(section) or section
-            SendErrorMessage(playerID, "Put items on "..building_string.." to craft "..item_string)
-            return
+        if unit:GetUnitName() ~= section then -- Issue #227 fixed here.
+            if not (PlayerResource:GetSelectedHeroEntity(playerID).subclass == "herbal_master_telegatherer" and section == "npc_building_mixing_pot") then
+              local item_string = GetEnglishTranslation(itemName, "ability") or itemName
+              local building_string = GetEnglishTranslation(section) or section
+              SendErrorMessage(playerID, "Put items on "..building_string.." to craft "..item_string)
+              return
+            else
+              unit = PlayerResource:GetSelectedHeroEntity(playerID)
+              print("Allowing herbmaster to craft mixing pot items")
+            end
         end
 
         -- Disallow crafting on buildings under construction
@@ -58,10 +64,12 @@ function CanCombine( unit, section, recipeName )
     local requirements = GetRecipeForItem(section, recipeName)
 
     local result = {}
+    local usedInts = {}
     for itemName,num in pairs(requirements) do
-        local items = HasEnoughInInventory(unit, itemName, num)
+        local items = HasEnoughInInventory(unit, itemName, num, usedInts)
+        local usedInts = items[2]
         if items then
-            table.insert(result, items)
+            table.insert(result, items[1])
         else
             return false
         end
@@ -72,39 +80,53 @@ function CanCombine( unit, section, recipeName )
     return result
 end
 
+-- HasEnoughInInventory no longer checks the same items that have already been used for the recipe.
+-- This fixes a couple of issues, issue #239 among them.
+
 -- Counts stack charges and returns the items involved in
 -- If a charge goes over the max required items, the item removal will have to only remove the precise amount of charges instead of the full item
-function HasEnoughInInventory( unit, itemName, num )
-    local bEnough = false
+function HasEnoughInInventory( unit, itemName, num, usedInts)
+    --local bEnough = false
 
     local items = {}
     local currentNum = 0
     for i=0,5 do
-        if currentNum >= num then
-            break
+        local found = false
+        for _,v in pairs(usedInts) do
+            if v == i then
+                found = true
+                break
+            end
         end
-        local item = unit:GetItemInSlot(i)
-        if item then
-            local thisItemName = item:GetAbilityName()
-            if thisItemName ~= "item_slot_locked" then
-                if thisItemName == itemName then
-                    if item:GetCurrentCharges() == 0 then
-                        currentNum = currentNum + 1
-                    else
-                        currentNum = currentNum + item:GetCurrentCharges()
-                    end
-                    table.insert(items, item)
 
-                elseif MatchesAlias(itemName, thisItemName) then
-                    currentNum = currentNum + 1
-                    table.insert(items, item)
+        if not found then
+            if currentNum >= num then
+                break
+            end
+            local item = unit:GetItemInSlot(i)
+            if item then
+                local thisItemName = item:GetAbilityName()
+                if thisItemName ~= "item_slot_locked" then
+                    if thisItemName == itemName then
+                        if item:GetCurrentCharges() == 0 then
+                            currentNum = currentNum + 1
+                        else
+                            currentNum = currentNum + item:GetCurrentCharges()
+                        end
+                        table.insert(items, item)
+                        table.insert(usedInts, i)
+                    elseif MatchesAlias(itemName, thisItemName) then
+                        currentNum = currentNum + 1
+                        table.insert(items, item)
+                        table.insert(usedInts, i)
+                    end
                 end
             end
         end
     end
 
     if currentNum >= num then
-        return items
+        return {items,usedInts}
     else
         return false
     end
@@ -137,11 +159,20 @@ function GetAlias( itemName )
     return ""
 end
 
--- TODO: Handle stacks, never delete a full item if we pick more than the required count
+-- Crafting no longer removes full stacks when only 1 was used.
+-- If there are recipes that use more than 1 stackable item though,
+-- this proposes a problem for that and needs to be fixed.
+-- Still, it's in the right direction.
+-- Fixes the Darkthistles issue #229
+
 function ClearItems( itemList )
     for k,v in pairs(itemList) do
         for kk,vv in pairs(v) do
-            UTIL_Remove(vv)
+            if not vv:IsNull() and vv:GetCurrentCharges() > 1 then
+                vv:SetCurrentCharges(vv:GetCurrentCharges() - 1)
+            else
+                UTIL_Remove(vv)
+            end
         end
     end
 end

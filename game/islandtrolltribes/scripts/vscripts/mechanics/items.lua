@@ -65,7 +65,7 @@ function PickupItem( unit, drop )
             if inventoryItemCharges+currentItemCharges <= maxStacks then
 
                 itemToStack:SetCurrentCharges(inventoryItemCharges+currentItemCharges)
-                Timers:CreateTimer(function() 
+                Timers:CreateTimer(function()
                     if drop.pingStaticParticle then
                         ParticleManager:DestroyParticle(drop.pingStaticParticle, true)
                         drop.pingStaticParticle = nil
@@ -107,13 +107,14 @@ function ContainerTransferItem(container, bush, target, item)
     if CanTakeItem(target, item) then
         local physicalItem = CreateItemOnPositionSync(bush:GetAbsOrigin(), nil)
         physicalItem:SetContainedItem(item)
-    
+
         local speed = RandomInt(200,300)
         item:LaunchLoot(false, speed, speed/400, target:GetAbsOrigin())
 
+        container:RemoveItem(item) -- Removing the item here rids off an exploit when you spam right-click. Issue #253
+
         Timers:CreateTimer(speed/400, function()
             local pickedUp = PickupItem( target, physicalItem )
-            container:RemoveItem(item)
         end)
         return true
     else
@@ -215,7 +216,7 @@ function CanTakeMoreStacksOfItem( unit, item )
     if maxStacks then
         local currentCharges = item:GetCurrentCharges()
         --print(itemName.." can be stacked up to "..maxStacks.." times, currently at "..currentCharges.." charges")
-        
+
         -- Check if there's another item to stack with
         for itemSlot = 0,5 do
             local itemInSlot = unit:GetItemInSlot( itemSlot )
@@ -239,7 +240,7 @@ function ResolveInventoryMerge( unit, item )
 
     if itemToStack then
         --print(" Got an item to stack with")
-        local itemName = item:GetAbilityName() 
+        local itemName = item:GetAbilityName()
         local maxStacks = GameRules.ItemKV[itemName]["MaxStacks"]
 
         -- Reduce the stacks of the new item and increase the item to stack
@@ -344,7 +345,7 @@ function SetAbilityLayout( unit, layout_size )
     unit:RemoveModifierByName("modifier_ability_layout4")
     unit:RemoveModifierByName("modifier_ability_layout5")
     unit:RemoveModifierByName("modifier_ability_layout6")
-    
+
     ApplyModifier(unit, "modifier_ability_layout"..layout_size)
 end
 
