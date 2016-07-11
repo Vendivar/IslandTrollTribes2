@@ -2896,7 +2896,11 @@
 		}
 		"OnToggleOn"
 		{
-	    
+			"RunScript"
+			{
+					"ScriptFile" "heroes/beastmaster/elkram_crashdeny.lua"
+					"Function"   "CrashDeny"
+			}
 			"FireSound"
 			{
 				"EffectName"	"elk.form"
@@ -2956,6 +2960,11 @@
 				"Target"	"CASTER"
 				"ModifierName"	"modifier_elkform"
 			}
+					"RunScript"
+					{
+							"ScriptFile" "heroes/beastmaster/elkram_crashdeny.lua"
+							"Function"   "CrashDenyRemove"
+					}
 	        "RunScript"
 	        {
 	            "ScriptFile"	"mechanics\spellbook.lua"
@@ -2971,6 +2980,13 @@
 	    }
 		"Modifiers"
 		{
+			"modifier_silence"
+			{
+				"States"
+				{
+					"MODIFIER_STATE_SILENCED" "MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
 			"modifier_elkform"
 			{
 				"EffectName"	"particles/items2_fx/medallion_of_courage_friend_sparks.vpcf"
@@ -2997,7 +3013,7 @@
 	                    "Target"        "CASTER"
 	                    "AbilityName"   "ability_beastmaster_magicimmunity"
 	                }
-	                
+	
 	                "AddAbility"
 	                {
 	                    "Target"        "CASTER"
@@ -3028,6 +3044,11 @@
 	                    "ModifierName"	"modifier_elkform"
 	                }
 	            }
+							"RemoveModifier"
+									{
+											"Target"	"CASTER"
+											"ModifierName"	"modifier_silence"
+									}
 	
 			}
 	
@@ -3679,7 +3700,7 @@
 				"ModifierName"	"modifier_charged"
 				"Duration"	"2"
 			}
-	        
+	
 			"FireSound"
 			{
 				"EffectName"	"elk.chargestart"
@@ -3695,7 +3716,7 @@
 				"Target"	"TARGET"
 				"ModifierName"	"modifier_charged"
 			}
-	        
+	
 	        "FireSound"
 	        {
 	            "Target"	"CASTER"
