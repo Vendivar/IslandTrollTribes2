@@ -76,10 +76,12 @@ function ITT:FilterExecuteOrder( filterTable )
     ------------------------------------------------
     --            Attacks vs Flying Units         --
     ------------------------------------------------
-    if targetIndex and order_type == DOTA_UNIT_ORDER_ATTACK_TARGET then
+    if targetIndex and (order_type == DOTA_UNIT_ORDER_ATTACK_TARGET or order_type == DOTA_UNIT_ORDER_ATTACK_MOVE) then
         local target = EntIndexToHScript(targetIndex)
-        if target.HasFlyMovementCapability and IsFlyingUnit(target) then
-            SendErrorMessage(issuer, "#error_cant_attack_air")
+        if target and target.HasFlyMovementCapability and IsFlyingUnit(target) then
+            if order_type == DOTA_UNIT_ORDER_ATTACK_TARGET then
+                SendErrorMessage(issuer, "#error_cant_attack_air")
+            end
             return CONSUME_EVENT
         end
     end
@@ -133,7 +135,7 @@ function ITT:FilterExecuteOrder( filterTable )
                     SendErrorMessage(issuer, "#error_traps_cant_pickup_that")
                     return false
                 end
-            
+
                 if target:GetUnitName() == "npc_building_tower_omni" and (itemName:match("meat") or itemName:match("potion")) then
                     SendErrorMessage(issuer, "#error_traps_cant_pickup_that")
                     return false
@@ -271,12 +273,12 @@ function ITT:FilterExecuteOrder( filterTable )
                     SendErrorMessage(issuer, "#error_traps_cant_pickup_that")
                     return false
                 end
-                
+
                 if unit:GetUnitName() == "npc_building_tower_omni" and (itemName:match("meat") or itemName:match("potion")) then
                     SendErrorMessage(issuer, "#error_traps_cant_pickup_that")
                     return false
                 end
-                
+
                 local pickedUp = PickupItem(unit, drop)
                 if not pickedUp then
                  --   SendErrorMessage(issuer, "#error_inventory_full")
@@ -359,7 +361,7 @@ function ITT:FilterExecuteOrder( filterTable )
 end
 
 function IsTargetOrder( ... )
-    return 
+    return
 end
 
 function IsPositionOrder(order_type)
@@ -438,7 +440,7 @@ function ITT:FilterDamage( filterTable )
     if damagetype == DAMAGE_TYPE_PHYSICAL then
         if not inflictor then
             -- Physical autoattack filtering here
-            
+
         end
     end
 
@@ -530,12 +532,12 @@ XP_REASONS = {
     [0] = "DOTA_ModifyXP_Unspecified",
     [1] = "DOTA_ModifyXP_HeroKill",
     [2] = "DOTA_ModifyXP_CreepKill",
-    [3] = "DOTA_ModifyXP_RoshanKill", 
+    [3] = "DOTA_ModifyXP_RoshanKill",
 }
 
 GOLD_REASONS = {
-    [0] = "DOTA_ModifyGold_Unspecified",  
-    [1] = "DOTA_ModifyGold_Death",  
+    [0] = "DOTA_ModifyGold_Unspecified",
+    [1] = "DOTA_ModifyGold_Death",
     [2] = "DOTA_ModifyGold_Buyback",
     [3] = "DOTA_ModifyGold_PurchaseConsumable",
     [4] = "DOTA_ModifyGold_PurchaseItem",
