@@ -254,16 +254,29 @@ function CreateBushContainer(name, bush)
 
                 local got_atleast_one = false
                 local atleast_one_left = false
+                local stack_full = false
+                local stack
+                local max_stack
                 local inventory_space = GetNumItemsInInventory(unit)
 
                 for _,item in ipairs(items) do
                     local cantake = CanTakeItem(unit, item)
                     if cantake then -- Truthy
-                        if (cantake == true and inventory_space < 6) or cantake ~= true then
+                        if (cantake == true and inventory_space < 6) or (cantake ~= true and not stack_full) then
                             if cantake == true then -- Inventory has space
                                 inventory_space = inventory_space + 1
                             else  -- Item in question can stack
-                                -- TODO: Fix Grab all with stacks (when inventory is full)
+                                if not stack then
+                                    stack = cantake:GetCurrentCharges()
+                                    max_stack = GameRules.ItemKV[cantake:GetAbilityName()]["MaxStacks"]
+                                end
+
+                                local grab_stack = item:GetCurrentCharges()
+                                if stack + grab_stack >= max_stack then
+                                    stack_full = true
+                                else
+                                    stack = stack + grab_stack
+                                end
                             end
 
                             got_atleast_one = true
