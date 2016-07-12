@@ -27,6 +27,9 @@ function ITT:SpawnBushes()
 
     Timers:CreateTimer(function()
         ITT:OnBushThink()
+        if GameRules.DevMode then
+          return 10
+        end
         return GAME_BUSH_TICK_TIME
     end)
 end
@@ -131,7 +134,7 @@ end
 
 function ITT:OnBushThink()
     print("OnBushThink Creating Items on Bushes")
-    
+
     local bushes = GameRules.Bushes
 
     for k,bush in pairs(bushes) do
@@ -247,23 +250,44 @@ function CreateBushContainer(name, bush)
         OnButtonPressed = function(playerID, container, unit, button, buttonName)
             if button == 1 then
                 local items = container:GetAllItems()
-                local errorMsg
                 unit:StartGesture(ACT_DOTA_ATTACK)
+
+                local got_atleast_one = false
+                local atleast_one_left = false
+                local inventory_space = GetNumItemsInInventory(unit)
+
                 for _,item in ipairs(items) do
-                    if CanTakeItem(unit) then
-                        ContainerTransferItem(container, bush, unit, item)
-                        local hasTelegather = unit:HasModifier("modifier_telegather")
-                        if hasTelegather then
-                            local didTeleport = TeleportItem(unit,item)
+                    local cantake = CanTakeItem(unit, item)
+                    if cantake then -- Truthy
+                        if (cantake == true and inventory_space < 6) or cantake ~= true then
+                            if cantake == true then -- Inventory has space
+                                inventory_space = inventory_space + 1
+                            else  -- Item in question can stack
+                                -- TODO: Fix Grab all with stacks (when inventory is full)
+                            end
+
+                            got_atleast_one = true
+
+                            ContainerTransferItem(container, bush, unit, item)
+                            local hasTelegather = unit:HasModifier("modifier_telegather")
+                            if hasTelegather then
+                                local didTeleport = TeleportItem(unit,item)
+                            end
                         end
-                    elseif not errorMsg then
-                        errorMsg = true
-                        SendErrorMessage(playerID, "#error_inventory_full")
+                    else
+                        atleast_one_left = true
                     end
                 end
 
+                if not got_atleast_one then
+                    SendErrorMessage(playerID, "#error_inventory_full")
+                end
+
                 container:Close(playerID)
-                RemoveBushGlow(bush)
+
+                if atleast_one_left then
+                    RemoveBushGlow(bush)
+                end
             end
         end,
 
@@ -277,7 +301,7 @@ function CreateBushContainer(name, bush)
                 SendErrorMessage(playerID, "#error_thief_only_bush")
                 return --exits if bush is used by anything other than a thief
             end]]
-            
+
             print("ORDER ACTION loot box: ", playerID)
             container:Open(playerID)
             unit:Stop()
