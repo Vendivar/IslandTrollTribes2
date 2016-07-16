@@ -6,6 +6,7 @@ function RestoreHeat(spellInfo)
     local caster = spellInfo.caster
     local ability = spellInfo.ability
     local radius = spellInfo.Radius
+    local heat = spellInfo.Heat
 
     if not IsValidEntity(caster) or not caster:IsAlive() then
         return
@@ -22,10 +23,15 @@ function RestoreHeat(spellInfo)
         DOTA_UNIT_TARGET_FLAG_NONE,
         FIND_ANY_ORDER,
         false)
-    
+
+    local modifier = "modifier_fire_heat"
+    if heat == 16 then
+        modifier = "modifier_mage_fire_heat"
+    end
+
     for _,unit in pairs(units) do
         if ability:IsActivated() then
-            ability:ApplyDataDrivenModifier( caster, unit, "modifier_fire_heat", {duration=1.0})
+            ability:ApplyDataDrivenModifier( caster, unit, modifier, {duration=1.0})
         end
     end
     return 1.0

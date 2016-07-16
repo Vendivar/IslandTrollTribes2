@@ -612,12 +612,12 @@
 		"AbilityTextureName"	"ability_building_restoreheat"
 	
 		"AbilityCastRange"	"290" //To show the range when hovering over the ability
-		
+	
 		"Precache"
 		{
 		    "particle"  "particles/custom/screen_indicator_fire.vpcf"
 		}
-		
+	
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -625,6 +625,7 @@
 				"ScriptFile"	"buildings/restore_heat.lua"
 				"Function"      "RestoreHeat"
 				"Radius"         "%radius"
+				"Heat"					"%heat"
 			}
 				"FireSound"
 			{
@@ -632,31 +633,33 @@
 				"Target"		"CASTER"
 			}
 		}
-		
 	
-	    "Modifiers"
+	
+	  "Modifiers"
+	  {
+	  	"modifier_restoreheat"
 	    {
-	    "modifier_restoreheat"
+	        "IsHidden"      "1"
+	        "Passive"       "1"
+	        "OnCreated"
 	        {
-	            "IsHidden"      "1"
-	            "Passive"       "1"
-	            "OnCreated"
-	            {				
-	                "RunScript"
-	                {
-	                    "ScriptFile"    "buildings/restore_heat.lua"
-	                    "Function"      "RestoreHeatThink"
-	                    "Radius"        "%radius"
-	                }
+	            "RunScript"
+	            {
+	                "ScriptFile"    "buildings/restore_heat.lua"
+	                "Function"      "RestoreHeatThink"
+	                "Radius"        "%radius"
+									"Heat"					"%heat"
 	            }
 	        }
-	 	    "modifier_fire_heat"
-	 	    {
-	 	    	"Passive"    "1"
-	 	    	"IsHidden"   "0"
-	 	    	"IsPurgable" "0"
-	 	    }
 	    }
+			// Internal Heat mechanic
+	    "modifier_fire_heat"
+	    {
+	    	"Passive"    "1"
+	    	"IsHidden"   "0"
+	    	"IsPurgable" "0"
+	    }
+	  }
 	
 		"AbilitySpecial"
 		{
@@ -665,6 +668,11 @@
 				"var_type"	"FIELD_INTEGER"
 				"radius"	"290"
 			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"heat"	"8"
+			}
 	
 		}
 	
@@ -672,94 +680,72 @@
 	"ability_building_restoreheat_magic"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
 		"AbilityTextureName"	"ability_building_restoreheat"
 	
-		"AbilityCastRange"	"290" //This should be a %radius Ability Special
+		"AbilityCastRange"	"290" //To show the range when hovering over the ability
+	
 		"Precache"
 		{
 		    "particle"  "particles/custom/screen_indicator_fire.vpcf"
 		}
-		"Modifiers"
+	
+		"OnSpellStart"
 		{
-			"modifier_restore_heat_aura"
+			"RunScript"
 			{
-				"Passive"	"1"
-				"Aura"	"modifier_restore_heat_effect"
-				"Aura_Radius"	"290"
-				"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY | DOTA_UNIT_TARGET_TEAM_ENEMY"
-				"Aura_Types"	"DOTA_UNIT_TARGET_HERO"
-				"Aura_ApplyToCaster"	"0"
-	            "OnCreated"
-				{
-	                "AttachEffect"
-					{
-						"Target"	"CASTER"
-						"EffectName"	"particles/custom/mage_fire.vpcf"
-						"EffectAttachType"	"follow_origin"
-					}
-	            }
+				"ScriptFile"	"buildings/restore_heat.lua"
+				"Function"      "RestoreHeat"
+				"Radius"         "%radius"
+				"Heat"					"%heat"
 			}
-	
-			"modifier_restore_heat_effect"
+				"FireSound"
 			{
-				"IsHidden"	"0"
-				"IsPurgable"	"0"
-				"ThinkInterval"	"%tick_rate"
-				"OnIntervalThink"
-				{
-					"RemoveModifier"
-					{
-						"Target"	"TARGET"
-						"ModifierName"	"modifier_cold"
-					}
-				}
-	
-				"OnCreated"
-				{
-					"ApplyModifier"
-					{
-						"ModifierName"	"modifier_mage_fire_heat"
-						"Target" 		"TARGET"
-					}
-	
-				}
-	
-				"OnDestroy"
-				{
-					"RemoveModifier"
-					{
-						"ModifierName"	"modifier_mage_fire_heat"
-						"Target" 		"TARGET"
-					}
-				}
+				"EffectName"	"Hero_Lina.attack"
+				"Target"		"CASTER"
 			}
+		}
 	
+	
+	  "Modifiers"
+	  {
+	    "modifier_restoreheat"
+	      {
+	          "IsHidden"      "1"
+	          "Passive"       "1"
+	          "OnCreated"
+	          {
+	              "RunScript"
+	              {
+	                  "ScriptFile"    "buildings/restore_heat.lua"
+	                  "Function"      "RestoreHeatThink"
+	                  "Radius"        "%radius"
+										"Heat"					"%heat"
+	              }
+	          }
+	      }
 			// Internal Heat mechanic
 			"modifier_mage_fire_heat"
 			{
 				"Passive"    "1"
-				"IsHidden"   "1"
+				"IsHidden"   "0"
 				"IsPurgable" "0"
 			}
-		}
+	  }
 	
 		"AbilitySpecial"
 		{
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"heat"	"16"
+				"radius"	"290"
 			}
-	
 			"02"
 			{
-				"var_type"	"FIELD_FLOAT"
-				"tick_rate"	"3"
+				"var_type"	"FIELD_INTEGER"
+				"heat"	"16"
 			}
-	
 		}
-	
 	}
 	"ability_burn_building"
 	{
