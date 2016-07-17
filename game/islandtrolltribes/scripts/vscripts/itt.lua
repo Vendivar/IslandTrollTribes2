@@ -6,7 +6,7 @@ TEAM_COLORS[DOTA_TEAM_BADGUYS]  = { 255, 52, 85 }  -- Red
 TEAM_COLORS[DOTA_TEAM_CUSTOM_1] = { 101, 212, 19 } -- Green
 TEAM_COLORS[DOTA_TEAM_CUSTOM_2] = { 243, 201, 9 }  -- Yellow
 TEAM_NAMES = {[DOTA_TEAM_GOODGUYS]="Blue Tribe",
-              [DOTA_TEAM_BADGUYS]="Red Tribe", 
+              [DOTA_TEAM_BADGUYS]="Red Tribe",
               [DOTA_TEAM_CUSTOM_1]="Green Tribe",
               [DOTA_TEAM_CUSTOM_2]="Blue Tribe",
               [DOTA_TEAM_NEUTRALS]="Neutral"}
@@ -41,7 +41,7 @@ XP_PER_LEVEL_TABLE = {
     7400, -- 12 +1000
     8400, -- 13 +1000
     9400, -- 14 +1000
-    10400, -- 15 +1000  
+    10400, -- 15 +1000
     11400, -- 16 +1000
     12400, -- 16 +1000
     13400, -- 17 +1000
@@ -56,13 +56,13 @@ XP_PER_LEVEL_TABLE = {
  }
 
 -- If this is enabled the game is in testing mode, and as a result nobody can win
-GAME_TESTING_CHECK          = true 
+GAME_TESTING_CHECK          = true
 
 -- This function initializes the game mode and is called before anyone loads into the game
 -- It can be used to pre-initialize any values/tables that will be needed later
 function ITT:InitGameMode()
     GameMode = GameRules:GetGameModeEntity()
-    
+
     GameMode:SetCustomXPRequiredToReachNextLevel(XP_PER_LEVEL_TABLE)
     GameRules:SetUseCustomHeroXPValues(true)
     GameMode:SetUseCustomHeroLevels(true)
@@ -117,7 +117,7 @@ function ITT:InitGameMode()
     CustomGameEventManager:RegisterListener( "player_drop_all_meat", Dynamic_Wrap( ITT, "DropAllMeat" ) )
     CustomGameEventManager:RegisterListener( "player_panic", Dynamic_Wrap( ITT, "Panic" ) )
     CustomGameEventManager:RegisterListener( "player_rest_building", Dynamic_Wrap( ITT, "RestBuilding" ) )
-    
+
     -- Filters
     GameMode:SetExecuteOrderFilter( Dynamic_Wrap( ITT, "FilterExecuteOrder" ), self )
     GameMode:SetDamageFilter( Dynamic_Wrap( ITT, "FilterDamage" ), self )
@@ -272,7 +272,7 @@ function UnblockMammoth()
     end
 end
 
-local classes = { 
+local classes = {
     [1] = "hunter",
     [2] = "gatherer",
     [3] = "scout",
@@ -419,11 +419,11 @@ end
 -- This handles locking a number of inventory slots for some classes
 -- This means that players do not need to manually reshuffle them to craft
 function ITT:CreateLockedSlots(hero)
-    
+
     local lockedSlotsTable = GameRules.ClassInfo['LockedSlots']
     local className = hero:GetHeroClass()
     local lockedSlotNumber = lockedSlotsTable[className]
-    
+
     local lockN = 5
     for n=0,lockedSlotNumber-1 do
         hero:AddItem(CreateItem("item_slot_locked", hero, spawnedUnit))
@@ -490,7 +490,7 @@ function ITT:UnlearnAbilities(hero, class_skills, level)
                 local unlearn_ability_names = split(unlearn_skills_level, ",")
                 for _,abilityName in pairs(unlearn_ability_names) do
                     local ability = hero:FindAbilityByName(abilityName)
-                    
+
                     if ability then
                         local kv = ability:GetAbilityKeyValues()
                         --print("unlearning " .. abilityName)
@@ -508,7 +508,7 @@ function ITT:UnlearnAbilities(hero, class_skills, level)
     end)
 end
 
--- Learn/Upgrade all abilities for this level    
+-- Learn/Upgrade all abilities for this level
 function ITT:LearnAbilities(hero, class_skills, level)
     local level_skills = class_skills[tostring(level)]
     local class = hero:GetHeroClass().." ("..hero:GetSubClass()..")"
@@ -573,11 +573,11 @@ function ITT:OnEntityKilled(keys)
         {"npc_creep_lizard", 1},
         {"npc_creep_fish", 1},
         {"npc_creep_fish_green", 3},
-        
+
         {"npc_creep_hawk", 2},
         {"npc_creep_mammoth", 15}
     }
-    
+
     local spawnTable = {
                         {"npc_creep_elk_wild","npc_creep_fawn"},
                         {"npc_creep_wolf_jungle","npc_creep_wolf_pup"},
@@ -605,7 +605,7 @@ function ITT:OnEntityKilled(keys)
 
         -- Set the corpse invisible until the dota corpse disappears
         corpse:AddNoDraw()
-            
+
         -- Keep a reference to its name and expire time
         corpse.corpse_expiration = GameRules:GetGameTime() + 90
         corpse.unit_name = killedUnit:GetUnitName()
@@ -672,13 +672,13 @@ function ITT:OnEntityKilled(keys)
 
                     if RandomInt(0, 100) <= itemChance then
                         local newItem = CreateItem(itemName, nil, nil)
-                        CreateItemOnPositionSync(killedUnit:GetOrigin() + RandomVector(RandomInt(20,100)), newItem)
+                        CreateItemOnPositionSync(killedUnit:GetOrigin() + RandomVector(RandomInt(30,100)), newItem)
                     end
                 end
             end
         end
         -- Meat
-     
+
         for _,v in pairs(meatTable) do
             if unitName == v[1] then
                 local meatStacksBase = v[2]
@@ -800,7 +800,7 @@ function ITT:CheckWinCondition()
                 return
             end
         end
-    end    
+    end
 
     if winnerTeamID and not GameRules.Winner then
         GameRules.Winner = winnerTeamID
@@ -914,13 +914,13 @@ function ITT:OnItemPickedUp(event)
 
     -- Related to TeleThiefInit
     if hasTelethief then
-        
+
         local newItem = CreateItem(originalItem:GetName(), nil, nil)
         local fireLocation = hero.fire_location
 
         local radius = hero.radius
         local buildings = FindUnitsInRadius(teamNumber, unit:GetAbsOrigin(), nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BUILDING, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
-        
+
         if buildings ~= null then
             print("Teleporting Item", originalItem:GetName())
             hero:RemoveItem(originalItem)
@@ -974,7 +974,7 @@ function ITT:OnPlayerGainedLevel(event)
     local level = event.level
 
     print("[ITT] OnPlayerLevelUp - Player "..playerID.." ("..class..") has reached level "..level)
-    
+
     -- If the hero reached level 6 and hasn't unlocked a subclass, make the button clickable
     if level >= 6 and not hero:HasSubClass() then
         CustomGameEventManager:Send_ServerToPlayer(player, "player_unlock_subclass", {})
@@ -987,7 +987,7 @@ function ITT:OnPlayerGainedLevel(event)
             EmitSoundOnClient("Hero_Chen.HandOfGodHealHero", PlayerResource:GetPlayer(playerID))
         end
     end
-    
+
     -- Update skills
     ITT:AdjustSkills( hero )
 end
@@ -1060,9 +1060,9 @@ function ITT:OnGameRulesStateChange()
         GameRules:SetHeroRespawnEnabled( false )
         RandomUnpickedPlayers()
         UnblockMammoth()
-        EmitGlobalSound("get_ready")	
+        EmitGlobalSound("get_ready")
         ShowCustomHeaderMessage("#NoobTimeOver", -1, -1, 5)
-       -- Notifications:TopToAll({text="#NoobTimeOver", image="file://{images}/materials/particle/alert.psd", duration=5.0}) 
+       -- Notifications:TopToAll({text="#NoobTimeOver", image="file://{images}/materials/particle/alert.psd", duration=5.0})
     end
 end
 
