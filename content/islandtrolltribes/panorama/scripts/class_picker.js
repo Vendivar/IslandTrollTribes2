@@ -1,5 +1,5 @@
 "use strict";
-//GameUI.SetCameraDistance( 1150 ); 
+//GameUI.SetCameraDistance( 1150 );
 GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_FLYOUT_SCOREBOARD, false );      //Lefthand flyout scoreboard.
 GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_INVENTORY_SHOP, false );     //Shop portion of the Inventory.
 GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_INVENTORY_QUICKBUY, false );     //Quickbuy.
@@ -29,6 +29,17 @@ function Select (argument) {
     // Dont let "full" buttons be clicked
     if ($("#btn_"+argument).picked) return
 
+    if (currentlySelected === argument) { // If it's already picked, de-select it.
+      $("#vid_" + currentlySelected).visible = false;
+      //$("#btn_" + currentlySelected).SetImage("s2r://panorama/images/class_picker/pick.png")
+
+      hideAbilities();
+      currentlySelected = ""
+
+      $("#SelectText").text = $.Localize("SelectText")
+      return
+    }
+
     if (currentlySelected != "")
     {
         // If the currently selected was picked by someone else, don't update it
@@ -43,6 +54,7 @@ function Select (argument) {
     currentlySelected = argument
     $("#vid_"+currentlySelected).visible = true;
     $("#btn_"+currentlySelected).SetImage( "s2r://panorama/images/class_picker/"+currentlySelected+"_hover.png" )
+    showAbilities(currentlySelected);
 
     $("#SelectText").text = $.Localize("Select_"+argument)
 }
@@ -54,6 +66,7 @@ function MouseOver(argument) {
         $("#btn_"+argument).SetImage( "s2r://panorama/images/class_picker/"+argument+"_hover.png" )
         $("#ClassText").text = $.Localize("Description_"+argument);
         $("#vid_"+argument).visible = true;
+        showAbilities(argument);
         if (currentlySelected != "")
             $("#vid_"+currentlySelected).visible = false;
     }
@@ -69,10 +82,12 @@ function MouseOut(argument) {
         {
             $("#ClassText").text = $.Localize("Description_"+currentlySelected);
             $("#vid_"+currentlySelected).visible = true;
+            showAbilities(currentlySelected);
         }
         else
         {
             $("#ClassText").text = "";
+            hideAbilities();
         }
     }
 }
@@ -88,6 +103,33 @@ function MouseOutPick() {
     if (currentlySelected == "")
         $("#SelectText").text = $.Localize("SelectText");
     $("#SelectButtonImg").SetImage( "s2r://panorama/images/class_picker/pick.png" )
+}
+
+function AbilityTooltipShow(ability) {
+  $("#" + ability).AddClass("ability_hover");
+  $.DispatchEvent( "DOTAShowAbilityTooltip", $("#" + ability), ability);
+}
+
+function AbilityTooltipHide(ability) {
+  $("#" + ability).RemoveClass("ability_hover");
+  $.DispatchEvent( "DOTAHideAbilityTooltip", $("#" + ability));
+}
+
+function showAbilities(hero) {
+  hideAbilities();
+  $("#AbilityImageContainer").visible = true;
+  $("#abilities_" + hero).visible = true;
+}
+
+function hideAbilities() {
+  $("#AbilityImageContainer").visible = false;
+  $("#abilities_beastmaster").visible = false;
+  $("#abilities_gatherer").visible = false;
+  $("#abilities_priest").visible = false;
+  $("#abilities_mage").visible = false;
+  $("#abilities_hunter").visible = false;
+  $("#abilities_thief").visible = false;
+  $("#abilities_scout").visible = false;
 }
 
 function ChooseClass() {
@@ -116,7 +158,7 @@ function TeamUpdate(keys) {
 
     // Limit for gatherer is 2 instead of 1 like the rest of the classes
     if (class_name == "gatherer")
-        gatherers++      
+        gatherers++
 
     if (class_name != "gatherer" || (class_name == "gatherer" && gatherers == 2))
     {

@@ -43,12 +43,12 @@
                     <Label id="priest_players" class="PlayerText" text=""/>
                 </Panel>
 
-                <Panel id='scout'> 
+                <Panel id='scout'>
                     <Image onactivate="Select('scout')" onmouseover="MouseOver('scout')" onmouseout="MouseOut('scout')" id='btn_scout' src="file://{images}/class_picker/scout.png" />
                     <Label id="scout_players" class="PlayerText" text=""/>
                 </Panel>
 
-                <Panel id='thief'>    
+                <Panel id='thief'>
                     <Image onactivate="Select('thief')" onmouseover="MouseOver('thief')" onmouseout="MouseOut('thief')" id='btn_thief' src="file://{images}/class_picker/thief.png" />
                     <Label id="thief_players" class="PlayerText" text=""/>
                 </Panel>
@@ -57,7 +57,7 @@
             <Panel id="ClassImageContainer">
 
                 <DOTAScenePanel class='HeroModel' unit="npc_dota_hero_lycan"/>
-                
+
                 <Movie id='vid_beastmaster' class='portrait' src="file://{resources}/videos/heroes/npc_dota_hero_lycan.webm" controls="full" repeat="true" autoplay="onload" />
                 <Movie id='vid_gatherer' class='portrait' src="file://{resources}/videos/heroes/npc_dota_hero_shadow_shaman.webm" controls="full" repeat="true" autoplay="onload" visible='false'/>
                 <Movie id='vid_hunter' class='portrait' src="file://{resources}/videos/heroes/npc_dota_hero_huskar.webm" controls="full" repeat="true" autoplay="onload" visible='false'/>
@@ -67,11 +67,51 @@
                 <Movie id='vid_thief' class='portrait' src="file://{resources}/videos/heroes/npc_dota_hero_riki.webm" controls="full" repeat="true" autoplay="onload" visible='false'/>
             </Panel>
 
+            <Panel id="AbilityImageContainer">
+                <Label id="AbilityTitle" text="Abilities:" />
+                <Panel class="ability_bar" id="abilities_beastmaster">
+                  <Image class="ability_icon" id="ability_beastmaster_tamepet" onmouseover="AbilityTooltipShow('ability_beastmaster_tamepet')" onmouseout="AbilityTooltipHide('ability_beastmaster_tamepet')" src="file://{images}/spellicons/ability_beastmaster_tamepet.png" />
+                  <Image class="ability_icon" id="ability_beastmaster_spiritofthebeast" onmouseover="AbilityTooltipShow('ability_beastmaster_spiritofthebeast')" onmouseout="AbilityTooltipHide('ability_beastmaster_spiritofthebeast')" src="file://{images}/spellicons/ability_beastmaster_spiritofthebeast.png" />
+                </Panel>
+                <Panel class="ability_bar" id="abilities_gatherer">
+                  <Image class="ability_icon" id="ability_gatherer_itemradar" onmouseover="AbilityTooltipShow('ability_gatherer_itemradar')" onmouseout="AbilityTooltipHide('ability_gatherer_itemradar')" src="file://{images}/spellicons/ability_gatherer_itemradar.png" />
+                </Panel>
+                <Panel class="ability_bar" id="abilities_hunter">
+                  <Image class="ability_icon" id="ability_hunter_ensnare" onmouseover="AbilityTooltipShow('ability_hunter_ensnare')" onmouseout="AbilityTooltipHide('ability_hunter_ensnare')" src="file://{images}/spellicons/ability_hunter_ensnare.png" />
+                  <Image class="ability_icon" id="ability_hunter_track" onmouseover="AbilityTooltipShow('ability_hunter_track')" onmouseout="AbilityTooltipHide('ability_hunter_track')" src="file://{images}/spellicons/ability_hunter_track.png" />
+                </Panel>
+                <Panel class="ability_bar" id="abilities_mage">
+                  <Image class="ability_icon" id="ability_mage_nulldamage" onmouseover="AbilityTooltipShow('ability_mage_nulldamage')" onmouseout="AbilityTooltipHide('ability_mage_nulldamage')" src="file://{images}/spellicons/ability_mage_nulldamage.png" />
+                  <Image class="ability_icon" id="ability_mage_negativeblast" onmouseover="AbilityTooltipShow('ability_mage_negativeblast')" onmouseout="AbilityTooltipHide('ability_mage_negativeblast')" src="file://{images}/spellicons/ability_mage_negativeblast.png" />
+                  <Image class="ability_icon" id="ability_mage_pumpup" onmouseover="AbilityTooltipShow('ability_mage_pumpup')" onmouseout="AbilityTooltipHide('ability_mage_pumpup')" src="file://{images}/spellicons/ability_mage_pumpup.png" />
+                  <Image class="ability_icon" id="ability_mage_flamespray" onmouseover="AbilityTooltipShow('ability_mage_flamespray')" onmouseout="AbilityTooltipHide('ability_mage_flamespray')" src="file://{images}/spellicons/ability_mage_flamespray.png" />
+                  <Image class="ability_icon" id="ability_mage_reducefood" onmouseover="AbilityTooltipShow('ability_mage_reducefood')" onmouseout="AbilityTooltipHide('ability_mage_reducefood')" src="file://{images}/spellicons/ability_mage_reducefood.png" />
+                  <Image class="ability_icon" id="ability_mage_magefire" onmouseover="AbilityTooltipShow('ability_mage_magefire')" onmouseout="AbilityTooltipHide('ability_mage_magefire')" src="file://{images}/spellicons/ability_mage_magefire.png" />
+                </Panel>
+                <Panel class="ability_bar" id="abilities_priest">
+                  <Image class="ability_icon" id="ability_priest_theglow" onmouseover="AbilityTooltipShow('ability_priest_theglow')" onmouseout="AbilityTooltipHide('ability_priest_theglow')" src="file://{images}/spellicons/ability_priest_theglow.png" />
+                  <Image class="ability_icon" id="ability_priest_resistall" onmouseover="AbilityTooltipShow('ability_priest_resistall')" onmouseout="AbilityTooltipHide('ability_priest_resistall')" src="file://{images}/spellicons/ability_priest_resistall.png" />
+                  <Image class="ability_icon" id="ability_priest_pumpup" onmouseover="AbilityTooltipShow('ability_priest_pumpup')" onmouseout="AbilityTooltipHide('ability_priest_pumpup')" src="file://{images}/spellicons/ability_mage_pumpup.png" />
+                  <Image class="ability_icon" id="ability_priest_cureall" onmouseover="AbilityTooltipShow('ability_priest_cureall')" onmouseout="AbilityTooltipHide('ability_priest_cureall')" src="file://{images}/spellicons/ability_priest_cureall.png" />
+                  <Image class="ability_icon" id="ability_priest_sprayhealing" onmouseover="AbilityTooltipShow('ability_priest_sprayhealing')" onmouseout="AbilityTooltipHide('ability_priest_sprayhealing')" src="file://{images}/spellicons/ability_priest_sprayhealing.png" />
+                  <Image class="ability_icon" id="ability_priest_pacifyingsmoke" onmouseover="AbilityTooltipShow('ability_priest_pacifyingsmoke')" onmouseout="AbilityTooltipHide('ability_priest_pacifyingsmoke')" src="file://{images}/spellicons/ability_priest_magicmist.png" />
+                  <Image class="ability_icon" id="ability_priest_mixenergy" onmouseover="AbilityTooltipShow('ability_priest_mixenergy')" onmouseout="AbilityTooltipHide('ability_priest_mixenergy')" src="file://{images}/spellicons/ability_priest_mixenergy.png" />
+                </Panel>
+                <Panel class="ability_bar" id="abilities_scout">
+                  <Image class="ability_icon" id="ability_scout_enemyradar" onmouseover="AbilityTooltipShow('ability_scout_enemyradar')" onmouseout="AbilityTooltipHide('ability_scout_enemyradar')" src="file://{images}/spellicons/ability_scout_enemyradar.png" />
+                  <Image class="ability_icon" id="ability_scout_reveal" onmouseover="AbilityTooltipShow('ability_scout_reveal')" onmouseout="AbilityTooltipHide('ability_scout_reveal')" src="file://{images}/spellicons/ability_scout_reveal.png" />
+                </Panel>
+                <Panel class="ability_bar" id="abilities_thief">
+                  <Image class="ability_icon" id="ability_thief_teleport" onmouseover="AbilityTooltipShow('ability_thief_teleport')" onmouseout="AbilityTooltipHide('ability_thief_teleport')" src="file://{images}/spellicons/ability_thief_teleport.png" />
+                  <Image class="ability_icon" id="ability_thief_cloak" onmouseover="AbilityTooltipShow('ability_thief_cloak')" onmouseout="AbilityTooltipHide('ability_thief_cloak')" src="file://{images}/spellicons/ability_thief_cloak.png" />
+                </Panel>
+            </Panel>
+
             <Panel id="ClassDescription">
                 <Label id="ClassText" text=""/>
             </Panel>
 
-            <Panel id="SelectButton" onactivate="ChooseClass()" onmouseover="MouseOverPick()" onmouseout="MouseOutPick()"> 
+            <Panel id="SelectButton" onactivate="ChooseClass()" onmouseover="MouseOverPick()" onmouseout="MouseOutPick()">
                 <Image id="SelectButtonImg" src="file://{images}/class_picker/pick.png" />
                 <Label onactivate="ChooseClass()" id="SelectText" text="#SelectText"/>
             </Panel>

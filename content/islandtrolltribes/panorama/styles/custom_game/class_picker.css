@@ -43,6 +43,65 @@
 #btn_mage           { background-image: url('file://{images}/class_picker/mage.png'); }
 #btn_beastmaster    { background-image: url('file://{images}/class_picker/beastmaster.png'); }
 
+#AbilityTitle {
+  font-size: 40px;
+  color: #fff;
+  font-family: Radiance;
+}
+
+#AbilityImageContainer {
+  margin-top: 575px;
+  margin-left: 500px;
+  visibility: collapse;
+}
+
+.ability_bar {
+  margin-top: 50px;
+  flow-children: right;
+  visibility: collapse;
+}
+
+#abilities_beastmaster > .ability_icon {
+  border-color: #533f0c;
+}
+
+#abilities_hunter > .ability_icon {
+  border-color: #9e1717;
+}
+
+#abilities_mage > .ability_icon {
+  border-color: #1b3fbd;
+}
+
+#abilities_priest > .ability_icon {
+  border-color: #9d27a3;
+}
+
+#abilities_scout > .ability_icon {
+  border-color: #68cc4a;
+}
+
+#abilities_thief > .ability_icon {
+  border-color: #1dbf7b;
+}
+
+#abilities_gatherer > .ability_icon {
+  border-color: #1bbe0d;
+}
+
+.ability_hover {
+  brightness: 2;
+}
+
+.ability_icon {
+  width: 50px;
+  height: 50px;
+  margin-right: 5px;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 50%;
+}
+
 #ClassDescription
 {
     width: 400px;
