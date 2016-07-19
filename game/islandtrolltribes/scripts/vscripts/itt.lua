@@ -93,7 +93,6 @@ function ITT:InitGameMode()
     GameRules:SetRuneMinimapIconScale( 0.7 )
     GameRules:SetGoldTickTime( 60.0 )
     GameRules:SetGoldPerTick( 0 )
-    GameRules:SetGoldPerTick( 0 )
 
     -- Listeners
     ListenToGameEvent('player_connect_full', Dynamic_Wrap(ITT, 'OnPlayerConnectFull'), self)
@@ -102,11 +101,13 @@ function ITT:InitGameMode()
     ListenToGameEvent('dota_player_gained_level', Dynamic_Wrap(ITT, 'OnPlayerGainedLevel'), self)
     ListenToGameEvent("entity_killed", Dynamic_Wrap( ITT, "OnEntityKilled" ), self )
     ListenToGameEvent("entity_hurt", Dynamic_Wrap(ITT, 'On_entity_hurt'), self)
-    ListenToGameEvent('player_chat', Dynamic_Wrap(ITT, 'OnPlayerChat'), self)
+    --ListenToGameEvent('player_chat', Dynamic_Wrap(ITT, 'OnPlayerChat'), self)
     ListenToGameEvent("player_reconnected", Dynamic_Wrap(ITT, 'OnPlayerReconnected'), self)
     ListenToGameEvent( "game_rules_state_change", Dynamic_Wrap( ITT, 'OnGameRulesStateChange' ), self )
 
     -- Panorama Listeners
+    CustomGameEventManager:RegisterListener('custom_chat_say', Dynamic_Wrap( ITT, "OnPlayerChat"))
+
     CustomGameEventManager:RegisterListener( "game_mode_selected", Dynamic_Wrap( ITT, "OnGameModeSelected" ) )
     CustomGameEventManager:RegisterListener( "player_selected_class", Dynamic_Wrap( ITT, "OnClassSelected" ) )
     CustomGameEventManager:RegisterListener( "player_selected_subclass", Dynamic_Wrap( ITT, "OnSubclassChange" ) )
@@ -225,6 +226,9 @@ function ITT:InitGameMode()
     GameRules.BushSpawnRegion = "Island"
 
     LoadCraftingTable()
+
+    -- Load Chat
+    self.Chat = Chat(playerList,TEAM_COLORS)
 
     -- Check Syntax
     if (not GameRules.AbilityKV) or (not GameRules.ItemKV) or (not GameRules.UnitKV) or (not GameRules.HeroKV) then

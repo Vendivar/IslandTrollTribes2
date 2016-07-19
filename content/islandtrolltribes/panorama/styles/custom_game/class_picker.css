@@ -102,6 +102,13 @@
   border-radius: 50%;
 }
 
+#HeroSelectionChat {
+    align: center bottom;
+    width: 25%;
+    height: 15%;
+}
+
+
 #ClassDescription
 {
     width: 400px;

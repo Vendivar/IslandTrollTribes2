@@ -1,0 +1,15 @@
+<root>
+  <styles>
+    <include src="file://{resources}/styles/custom_game/chat.css" />
+  </styles>
+  <scripts>
+    <include src="file://{resources}/scripts/custom_game/util.js" />
+    <include src="file://{resources}/scripts/custom_game/chat.js" />
+  </scripts>
+  <Panel class="MainPanel" hittest="false">
+    <Panel id="GameChat" hittestchildren="false" hittest="false">
+        <Panel id="GameChatContent" class="ChatHidden" hittest="false"/>
+        <Panel id="GameChatEntryContainer"/>
+    </Panel>
+  </Panel>
+</root>

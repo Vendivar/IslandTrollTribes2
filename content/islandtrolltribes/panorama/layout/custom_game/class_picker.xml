@@ -3,6 +3,7 @@
         <include src="file://{resources}/styles/custom_game/class_picker.css" />
     </styles>
     <scripts>
+        <include src="file://{resources}/scripts/custom_game/util.js" />
         <include src="file://{resources}/scripts/class_picker.js" />
     </scripts>
     <script>
@@ -115,6 +116,7 @@
                 <Image id="SelectButtonImg" src="file://{images}/class_picker/pick.png" />
                 <Label onactivate="ChooseClass()" id="SelectText" text="#SelectText"/>
             </Panel>
+            <Panel id="HeroSelectionChat" />
         </Panel>
     </Panel>
 </root>

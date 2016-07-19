@@ -14,6 +14,7 @@ require('libraries/containers')
 require('libraries/physics')
 require('mechanics/require')
 require('itt')
+require('chat')
 require('spawn')
 require('gamemodes')
 require('filters')
@@ -45,9 +46,9 @@ function Precache( context )
                 PrecacheResource(key, entry, context)
             end
         end
-    end    
-    
-	PrecacheResource("particle", "particles/status_fx/status_effect_frost_lich.vpcf", context) 
+    end
+
+	PrecacheResource("particle", "particles/status_fx/status_effect_frost_lich.vpcf", context)
 	ITT:PrecacheSubclassModels(context)
 end
 

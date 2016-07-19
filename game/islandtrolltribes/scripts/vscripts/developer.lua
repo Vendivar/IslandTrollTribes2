@@ -24,14 +24,16 @@ CHEAT_CODES = {
 PLAYER_COMMANDS = {
     ["help"] = function( ... ) ITT:Help(...) end,
     ["zoom"] = function( ... ) ITT:Zoom(...) end,
+    ["!nick"] = function( ... ) ITT:SetNickname(...) end
 }
 
 -- A player has typed something into the chat
 function ITT:OnPlayerChat(keys)
-    local text = keys.text
-    local userID = keys.userid
-    local playerID = self.vUserIds[userID] and self.vUserIds[userID]:GetPlayerID()
-    if not playerID then return end
+    local text = keys.message
+    --local userID = keys.userid
+    --local playerID = self.vUserIds[userID] and self.vUserIds[userID]:GetPlayerID()
+    --if not playerID then return end
+    local playerID = keys.PlayerID
 
     -- Handle '-command'
     if StringStartsWith(text, "-") then
@@ -39,14 +41,30 @@ function ITT:OnPlayerChat(keys)
     end
 
     local input = split(text)
-    local command = input[1]
+    local command = table.remove(input, 1)
     if CHEAT_CODES[command] --[[and Convars:GetBool('developer')]] then
         --print('Command:',command, "Player:",playerID, "Parameters",input[2], input[3], input[4])
-        CHEAT_CODES[command](playerID, input[2], input[3], input[4])
-    
+        CHEAT_CODES[command](playerID, unpack(input))
+
     elseif PLAYER_COMMANDS[command] then
-        PLAYER_COMMANDS[command](playerID, input[2])
+        PLAYER_COMMANDS[command](playerID, unpack(input))
     end
+end
+
+function ITT:SetNickname( playerID, ...)
+    if not ITT.player_nicknames then
+        ITT.player_nicknames = {}
+    end
+
+    local array = {...}
+    local name = ""
+    for k,v in pairs(array) do
+        name = name..v
+        if k < #array then name = name.." " end
+    end
+
+    ITT.player_nicknames[playerID] = name
+    print("Player #"..playerID.." changed their nickname to "..name)
 end
 
 function ITT:Zoom( playerID, value )
@@ -54,7 +72,7 @@ function ITT:Zoom( playerID, value )
     print("Player "..playerID.." zooming to "..value)
 
     -- Build an event call (same as the panorama event)
-    CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(playerID), "zoom", {zoom_distance = value});     
+    CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(playerID), "zoom", {zoom_distance = value});
 end
 
 function ITT:ChangeSubclass( playerID, subclassID )
@@ -79,7 +97,7 @@ function ITT:TestWorkshop( playerID )
     workshop:SetOwner(hero)
     workshop:SetForwardVector(-hero:GetForwardVector())
 
-    local testItems = { 
+    local testItems = {
         ["item_ingot_iron"] = 3,
         ["item_flint"] = 6,
         ["item_ingot_steel"] = 10,
@@ -94,7 +112,7 @@ function ITT:TestWorkshop( playerID )
             local drop = CreateItemOnPositionSync( position, item )
             local pos_launch = pos+RandomVector(100)
             item:LaunchLoot(false, 200, 0.75, pos_launch)
-        end     
+        end
     end
 end
 
@@ -111,7 +129,7 @@ function ITT:Dev( playerID )
     GameRules.DevMode = not GameRules.DevMode
 
     local hero = PlayerResource:GetSelectedHeroEntity(playerID)
-    if GameRules.DevMode then        
+    if GameRules.DevMode then
         Heat:Stop(hero)
         hero:RemoveModifierByName("modifier_hunger")
         GameRules:GetGameModeEntity():SetFogOfWarDisabled(true)
@@ -150,7 +168,7 @@ function ITT:Camp( playerID )
     fire:RemoveModifierByName("modifier_invulnerable")
     fire:SetAbsOrigin(position)
 
-    local testItems = { 
+    local testItems = {
         ["item_meat_raw"] = 30,
         ["item_meat_cooked"] = 20,
         ["item_meat_smoked"] = 20,
@@ -166,7 +184,7 @@ function ITT:Camp( playerID )
                 local pos_launch = position+RandomVector(RandomInt(100,200))
                 item:LaunchLoot(false, 200, 0.75, pos_launch)
             end
-        end     
+        end
     end
 
     local buildingItems = {
@@ -193,7 +211,7 @@ function ITT:Camp( playerID )
         local item = CreateItem(itemKit, nil, nil)
         local drop = CreateItemOnPositionSync( origin, item )
         local pos_launch = origin+RandomVector(RandomInt(100,200))
-        item:LaunchLoot(false, 200, 0.75, pos_launch)   
+        item:LaunchLoot(false, 200, 0.75, pos_launch)
     end
 
 end
@@ -279,7 +297,7 @@ function ITT:CreateIngredients( playerID, buildingName )
     local itemRecipes = GameRules.Crafting[buildingName]
     local hero = PlayerResource:GetSelectedHeroEntity(playerID)
     local origin = hero:GetAbsOrigin()
-    
+
     for k,v in pairs(itemRecipes) do
         for itemName,n in pairs (v) do
             for i=1,n*3 do
@@ -291,7 +309,7 @@ function ITT:CreateIngredients( playerID, buildingName )
                 else
                     item = CreateItem(itemName, nil, nil)
                 end
-                
+
                 if item then
                     local drop = CreateItemOnPositionSync( origin, item )
                     item:LaunchLoot(false, 200, 0.75, pos_launch)
@@ -299,7 +317,7 @@ function ITT:CreateIngredients( playerID, buildingName )
                     print("Fail, couldn't create item: "..itemName)
                 end
             end
-        end  
+        end
     end
 end
 
@@ -332,7 +350,7 @@ function ITT:TestAxe( playerID )
     local position = origin + fv * 200
 
 
-    local testItems = { 
+    local testItems = {
         ["item_axe_battle "] = 1,
         ["item_axe_flint"] = 1,
         ["item_axe_iron"] = 1,
@@ -340,7 +358,7 @@ function ITT:TestAxe( playerID )
         ["item_axe_steel"] = 1,
         ["item_axe_stone"] = 1,
                         }
-    
+
     for itemName,num in pairs(testItems) do
         for i=1,num do
             local item = CreateItem(itemName, nil, nil)
@@ -351,7 +369,7 @@ function ITT:TestAxe( playerID )
                 local pos_launch = position+RandomVector(RandomInt(100,200))
                 item:LaunchLoot(false, 200, 0.75, pos_launch)
             end
-        end     
+        end
     end
 
 end
@@ -367,7 +385,7 @@ function ITT:TestCoat( playerID )
     local position = origin + fv * 200
 
 
-    local testItems = { 
+    local testItems = {
         ["item_cloak_fire"] = 1,
         ["item_cloak_frost"] = 1,
         ["item_cloak_protection "] = 1,
@@ -380,7 +398,7 @@ function ITT:TestCoat( playerID )
         ["item_coat_wolf"] = 1,
         ["item_coat_wolf"] = 1,
                         }
-    
+
     for itemName,num in pairs(testItems) do
         for i=1,num do
             local item = CreateItem(itemName, nil, nil)
@@ -391,7 +409,7 @@ function ITT:TestCoat( playerID )
                 local pos_launch = position+RandomVector(RandomInt(100,200))
                 item:LaunchLoot(false, 200, 0.75, pos_launch)
             end
-        end     
+        end
     end
 
 end
@@ -405,7 +423,7 @@ function ITT:TestScroll( playerID )
     local position = origin + fv * 200
 
 
-    local testItems = { 
+    local testItems = {
         ["item_scroll_cyclone"] = 1,
         ["item_scroll_entangling"] = 1,
         ["item_scroll_fireball"] = 1,
@@ -413,7 +431,7 @@ function ITT:TestScroll( playerID )
         ["item_scroll_stoneskin"] = 1,
         ["item_scroll_tsunami"] = 1,
                         }
-    
+
     for itemName,num in pairs(testItems) do
         for i=1,num do
             local item = CreateItem(itemName, nil, nil)
@@ -424,7 +442,7 @@ function ITT:TestScroll( playerID )
                 local pos_launch = position+RandomVector(RandomInt(100,200))
                 item:LaunchLoot(false, 200, 0.75, pos_launch)
             end
-        end     
+        end
     end
 
 end
@@ -438,7 +456,7 @@ function ITT:TestPotions( playerID )
     local position = origin + fv * 200
 
 
-    local testItems = { 
+    local testItems = {
         ["item_potion_acid"] = 1,
         ["item_potion_anabolic"] = 1,
         ["item_potion_anti_magic"] = 1,
@@ -469,7 +487,7 @@ function ITT:TestPotions( playerID )
                 local pos_launch = position+RandomVector(RandomInt(100,200))
                 item:LaunchLoot(false, 200, 0.75, pos_launch)
             end
-        end     
+        end
     end
 end
 

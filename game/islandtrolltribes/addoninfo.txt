@@ -20,5 +20,11 @@
             "Command"   "+ToggleCraft"
             "Name"      "Show/Hide the crafting UI"
         }
+				"02"
+				{
+						"Key"				"Enter"
+						"Command"		"+EnterPressed"
+						"Name"			"For Custom chat"
+				}
     }
 }

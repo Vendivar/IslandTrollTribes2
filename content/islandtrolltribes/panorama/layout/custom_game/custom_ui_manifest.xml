@@ -14,10 +14,10 @@
     <Panel>
         <CustomUIElement type="GameInfo"            layoutfile="file://{resources}/layout/custom_game/islandtrolltribes_game_info.xml" />
         <CustomUIElement type="HeroSelection"       layoutfile="file://{resources}/layout/custom_game/class_picker.xml" />
-        <CustomUIElement type="HudTopBar"			layoutfile="file://{resources}/layout/custom_game/multiteam_top_scoreboard.xml" />
-        <CustomUIElement type="GameSetup"			layoutfile="file://{resources}/layout/custom_game/team_select.xml" />
-        <CustomUIElement type="FlyoutScoreboard"	layoutfile="file://{resources}/layout/custom_game/multiteam_flyout_scoreboard.xml" />
-        <CustomUIElement type="EndScreen" 			layoutfile="file://{resources}/layout/custom_game/multiteam_end_screen.xml" />
+        <CustomUIElement type="HudTopBar"			      layoutfile="file://{resources}/layout/custom_game/multiteam_top_scoreboard.xml" />
+        <CustomUIElement type="GameSetup"			      layoutfile="file://{resources}/layout/custom_game/team_select.xml" />
+        <CustomUIElement type="FlyoutScoreboard"	  layoutfile="file://{resources}/layout/custom_game/multiteam_flyout_scoreboard.xml" />
+        <CustomUIElement type="EndScreen" 			    layoutfile="file://{resources}/layout/custom_game/multiteam_end_screen.xml" />
 
         <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/subclass_picker.xml" />
         <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/toolkit.xml" />
@@ -27,8 +27,11 @@
         <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/crafting/crafting_list.xml" />
         <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/crafting/crafting_building.xml" />
 
-        <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/barebones_notifications.xml" /> 
-        <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/barebones_attachments.xml" /> 
+        <CustomUIElement type="HeroSelection"       layoutfile="file://{resources}/layout/custom_game/keybind_register.xml" />
+        <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/chat_content.xml" />
+
+        <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/barebones_notifications.xml" />
+        <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/barebones_attachments.xml" />
         <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/barebones_worldpanels.xml" />
         <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/containers/container_base.xml" />
         <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/modmaker/modmaker.xml" />
