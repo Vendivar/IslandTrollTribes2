@@ -21,6 +21,7 @@
 				<Label class="LegendPanel ScoreCol_Deaths" text="#custom_end_screen_legend_deaths" />
 				<Label class="LegendPanel ScoreCol_Assists" text="#custom_end_screen_legend_assists" />
 				<Label class="LegendPanel ScoreCol_Heat" text="Heat" />
+        <Label class="LegendPanel ScoreCol_Health" text="Health" />
 				<Label class="LegendPanel ScoreCol_Energy" text="Energy" />
 			</Panel>
 			<Panel hittest="false" id="_dynamic_team_2" class="FlyoutTeam">
@@ -44,6 +45,7 @@
 				<Label class="LegendPanel ScoreCol_Deaths" text="#custom_end_screen_legend_deaths" />
 				<Label class="LegendPanel ScoreCol_Assists" text="#custom_end_screen_legend_assists" />
 				<Label class="LegendPanel ScoreCol_Heat" text="Heat" />
+        <Label class="LegendPanel ScoreCol_Health" text="Health" />
 				<Label class="LegendPanel ScoreCol_Energy" text="Energy" />
 			</Panel>
 			<Panel hittest="false" id="_dynamic_team_3" class="FlyoutTeam">
@@ -67,6 +69,7 @@
 				<Label class="LegendPanel ScoreCol_Deaths" text="#custom_end_screen_legend_deaths" />
 				<Label class="LegendPanel ScoreCol_Assists" text="#custom_end_screen_legend_assists" />
 				<Label class="LegendPanel ScoreCol_Heat" text="Heat" />
+        <Label class="LegendPanel ScoreCol_Health" text="Health" />
 				<Label class="LegendPanel ScoreCol_Energy" text="Energy" />
 			</Panel>
 			<Panel hittest="false" id="_dynamic_team_6" class="FlyoutTeam">
@@ -90,6 +93,7 @@
 				<Label class="LegendPanel ScoreCol_Deaths" text="#custom_end_screen_legend_deaths" />
 				<Label class="LegendPanel ScoreCol_Assists" text="#custom_end_screen_legend_assists" />
 				<Label class="LegendPanel ScoreCol_Heat" text="Heat" />
+        <Label class="LegendPanel ScoreCol_Health" text="Health" />
 				<Label class="LegendPanel ScoreCol_Energy" text="Energy" />
 			</Panel>
 			<Panel hittest="false" id="_dynamic_team_7" class="FlyoutTeam">
@@ -107,5 +111,3 @@
 		</Panel>
   </Panel>
 </root>
-
-

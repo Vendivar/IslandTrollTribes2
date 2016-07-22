@@ -46,15 +46,16 @@
 				<Label id="Assists" text="999" />
 			</Panel>
 			<Panel id="HeatContainer" class="ScoreCol_Heat ScoreboardPanel">
-				<Label id="Heat" text="999" />
+				<Label id="Heat" text="" />
 			</Panel>
+      <Panel id="HealthContainer" class="ScoreCol_Health ScoreboardPanel">
+        <Label id="Health" text="" />
+      </Panel>
 			<Panel id="EnergyContainer" class="ScoreCol_Energy ScoreboardPanel">
-				<Label id="Energy" text="999" />
+				<Label id="Energy" text="" />
 			</Panel>
 		</Panel>
 		<Panel id="UltimateIndicatorBG" class="UltimateIndicatorShared" />
 		<Panel id="UltimateIndicator" class="UltimateIndicatorShared" />
 	</Panel>
 </root>
-
-

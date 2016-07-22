@@ -8,7 +8,7 @@ function _ScoreboardUpdater_SetTextSafe( panel, childName, textValue )
 	var childPanel = panel.FindChildInLayoutFile( childName )
 	if ( childPanel === null )
 		return;
-	
+
 	childPanel.text = textValue;
 }
 
@@ -29,7 +29,7 @@ function _ScoreboardUpdater_UpdatePlayerPanel( scoreboardConfig, playersContaine
 	}
 
 	playerPanel.SetHasClass( "is_local_player", ( playerId == Game.GetLocalPlayerID() ) );
-	
+
 	var ultStateOrTime = PlayerUltimateStateOrTime_t.PLAYER_ULTIMATE_STATE_HIDDEN; // values > 0 mean on cooldown for that many seconds
 	var goldValue = -1;
 	var isTeammate = false;
@@ -43,19 +43,24 @@ function _ScoreboardUpdater_UpdatePlayerPanel( scoreboardConfig, playersContaine
 			ultStateOrTime = Game.GetPlayerUltimateStateOrTime( playerId );
 		}
 		goldValue = playerInfo.player_gold;
-		
+
 		playerPanel.SetHasClass( "player_dead", ( playerInfo.player_respawn_seconds >= 0 ) );
 		playerPanel.SetHasClass( "local_player_teammate", isTeammate && ( playerId != Game.GetLocalPlayerID() ) );
 
-		_ScoreboardUpdater_SetTextSafe( playerPanel, "RespawnTimer", ( playerInfo.player_respawn_seconds + 1 ) ); // value is rounded down so just add one for rounded-up
+		if (playerInfo.player_team_id === localPlayerTeamId) {
+			_ScoreboardUpdater_SetTextSafe( playerPanel, "RespawnTimer", ( playerInfo.player_respawn_seconds + 1 ) ); // value is rounded down so just add one for rounded-up
+			_ScoreboardUpdater_SetTextSafe( playerPanel, "Level", playerInfo.player_level );
+
+			_ScoreboardUpdater_SetTextSafe( playerPanel, "Heat", "");	// TODO: Implement Heat here!
+			_ScoreboardUpdater_SetTextSafe( playerPanel, "Health", Entities.GetHealthPercent(playerEntityId).toFixed(0)+"%");
+			_ScoreboardUpdater_SetTextSafe( playerPanel, "Energy", (100*Entities.GetMana( playerEntityId )/Entities.GetMaxMana( playerEntityId )).toFixed(0) +"%");
+		}
+
 		_ScoreboardUpdater_SetTextSafe( playerPanel, "PlayerName", playerInfo.player_name );
-		_ScoreboardUpdater_SetTextSafe( playerPanel, "Level", playerInfo.player_level );
 		_ScoreboardUpdater_SetTextSafe( playerPanel, "Kills", playerInfo.player_kills );
 		_ScoreboardUpdater_SetTextSafe( playerPanel, "Deaths", playerInfo.player_deaths );
 		_ScoreboardUpdater_SetTextSafe( playerPanel, "Assists", playerInfo.player_assists );
-		
-		_ScoreboardUpdater_SetTextSafe( playerPanel, "Heat", Entities.GetHealthPercent(playerEntityId).toFixed(0)+"%");
-		_ScoreboardUpdater_SetTextSafe( playerPanel, "Energy", (100*Entities.GetMana( playerEntityId )/Entities.GetMaxMana( playerEntityId )).toFixed(0) +"%");
+
 
 		var playerPortrait = playerPanel.FindChildInLayoutFile( "HeroIcon" );
 		if ( playerPortrait )
@@ -69,7 +74,7 @@ function _ScoreboardUpdater_UpdatePlayerPanel( scoreboardConfig, playersContaine
 				playerPortrait.SetImage( "file://{images}/custom_game/unassigned.png" );
 			}
 		}
-		
+
 		if ( playerInfo.player_selected_hero_id == -1 )
 		{
 			_ScoreboardUpdater_SetTextSafe( playerPanel, "HeroName", $.Localize( "#DOTA_Scoreboard_Picking_Hero" ) )
@@ -78,7 +83,7 @@ function _ScoreboardUpdater_UpdatePlayerPanel( scoreboardConfig, playersContaine
 		{
 			_ScoreboardUpdater_SetTextSafe( playerPanel, "HeroName", $.Localize( "#"+playerInfo.player_selected_hero ) )
 		}
-		
+
 		var heroNameAndDescription = playerPanel.FindChildInLayoutFile( "HeroNameAndDescription" );
 		if ( heroNameAndDescription )
 		{
@@ -91,7 +96,7 @@ function _ScoreboardUpdater_UpdatePlayerPanel( scoreboardConfig, playersContaine
 				heroNameAndDescription.SetDialogVariable( "hero_name", $.Localize( "#"+playerInfo.player_selected_hero ) );
 			}
 			heroNameAndDescription.SetDialogVariableInt( "hero_level",  playerInfo.player_level );
-		}		
+		}
 
 		playerPanel.SetHasClass( "player_connection_abandoned", playerInfo.player_connection_state == DOTAConnectionState_t.DOTA_CONNECTION_STATE_ABANDONED );
 		playerPanel.SetHasClass( "player_connection_failed", playerInfo.player_connection_state == DOTAConnectionState_t.DOTA_CONNECTION_STATE_FAILED );
@@ -101,7 +106,7 @@ function _ScoreboardUpdater_UpdatePlayerPanel( scoreboardConfig, playersContaine
 		if ( playerAvatar )
 		{
 			playerAvatar.steamid = playerInfo.player_steamid;
-		}		
+		}
 
 		var playerColorBar = playerPanel.FindChildInLayoutFile( "PlayerColorBar" );
 		if ( playerColorBar !== null )
@@ -121,7 +126,7 @@ function _ScoreboardUpdater_UpdatePlayerPanel( scoreboardConfig, playersContaine
 			}
 		}
 	}
-	
+
 	var playerItemsContainer = playerPanel.FindChildInLayoutFile( "PlayerItemsContainer" );
 	if ( playerItemsContainer )
 	{
@@ -203,7 +208,7 @@ function _ScoreboardUpdater_UpdateTeamPanel( scoreboardConfig, containerPanel, t
 			}
 		}
 	}
-	
+
 	var localPlayerTeamId = -1;
 	var localPlayer = Game.GetLocalPlayerInfo();
 	if ( localPlayer )
@@ -223,11 +228,11 @@ function _ScoreboardUpdater_UpdateTeamPanel( scoreboardConfig, containerPanel, t
 			_ScoreboardUpdater_UpdatePlayerPanel( scoreboardConfig, playersContainer, playerId, localPlayerTeamId )
 		}
 	}
-	
+
 	teamPanel.SetHasClass( "no_players", (teamPlayers.length == 0) )
 	teamPanel.SetHasClass( "one_player", (teamPlayers.length == 1) )
 	teamPanel.SetHasClass( "many_players", (teamPlayers.length > 5) )
-	
+
 	if ( teamsInfo.max_team_players < teamPlayers.length )
 	{
 		teamsInfo.max_team_players = teamPlayers.length;
@@ -235,19 +240,19 @@ function _ScoreboardUpdater_UpdateTeamPanel( scoreboardConfig, containerPanel, t
 
 	_ScoreboardUpdater_SetTextSafe( teamPanel, "TeamScore", teamDetails.team_score )
 	_ScoreboardUpdater_SetTextSafe( teamPanel, "TeamName", $.Localize( teamDetails.team_name ) )
-	
+
 	if ( GameUI.CustomUIConfig().team_colors )
 	{
 		var teamColor = GameUI.CustomUIConfig().team_colors[ teamId ];
 		var teamColorPanel = teamPanel.FindChildInLayoutFile( "TeamColor" );
-		
+
 		teamColor = teamColor.replace( ";", "" );
 
 		if ( teamColorPanel )
 		{
 			teamNamePanel.style.backgroundColor = teamColor + ";";
 		}
-		
+
 		var teamColor_GradentFromTransparentLeft = teamPanel.FindChildInLayoutFile( "TeamColor_GradentFromTransparentLeft" );
 		if ( teamColor_GradentFromTransparentLeft )
 		{
@@ -256,7 +261,7 @@ function _ScoreboardUpdater_UpdateTeamPanel( scoreboardConfig, containerPanel, t
 			teamColor_GradentFromTransparentLeft.style.backgroundColor = gradientText;
 		}
 	}
-	
+
 	return teamPanel;
 }
 
@@ -307,7 +312,7 @@ function ScoreboardUpdater_SetScoreboardActive( scoreboardHandle, isActive )
 	{
 		return;
 	}
-	
+
 	if ( isActive )
 	{
 		_ScoreboardUpdater_UpdateAllTeamsAndPlayers( scoreboardHandle.scoreboardConfig, scoreboardHandle.scoreboardPanel );
@@ -322,7 +327,7 @@ function ScoreboardUpdater_GetTeamPanel( scoreboardHandle, teamId )
 	{
 		return;
 	}
-	
+
 	var teamPanelName = "_dynamic_team_" + teamId;
 	return scoreboardHandle.scoreboardPanel.FindChild( teamPanelName );
 }
@@ -339,4 +344,3 @@ function ScoreboardUpdater_GetSortedTeamInfoList( scoreboardHandle )
 
 	return teamsList;
 }
-
