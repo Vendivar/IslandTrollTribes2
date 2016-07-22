@@ -4,6 +4,13 @@ var g_ScoreboardHandle = null;
 var nextPressActivatesScoreboard = true;
 var holding_down = false;
 
+function UpdateScoreboardTimer() {
+	if (!nextPressActivatesScoreboard) {
+		ScoreboardUpdater_SetScoreboardActive( g_ScoreboardHandle, true );
+	}
+	$.Schedule(2,UpdateScoreboardTimer);
+}
+
 function SetFlyoutScoreboardVisible(bVisible)
 {
 	// Gotta skip the release button event
@@ -42,4 +49,5 @@ function SetFlyoutScoreboardVisible(bVisible)
 	SetFlyoutScoreboardVisible( false );
 
 	$.RegisterEventHandler( "DOTACustomUI_SetFlyoutScoreboardVisible", $.GetContextPanel(), SetFlyoutScoreboardVisible );
+	UpdateScoreboardTimer();
 })();
