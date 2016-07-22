@@ -193,7 +193,6 @@ function TeamUpdate(keys) {
 
     $("#HeroSelectionChat").BLoadLayout("file://{resources}/layout/custom_game/simple_chat.xml", false, false);
     $("#HeroSelectionChat").RegisterListener("HeroSelectionEnter");
-    $("#ChatEntry").SetFocus();
 
     $("#vid_beastmaster").visible = false;
     $("#vid_gatherer").visible = false;
