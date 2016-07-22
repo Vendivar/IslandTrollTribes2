@@ -193,18 +193,28 @@ function _ScoreboardUpdater_UpdateTeamPanel( scoreboardConfig, containerPanel, t
 	if ( teamPanel === null )
 	{
 //		$.Msg( "UpdateTeamPanel.Create: ", teamPanelName, " = ", scoreboardConfig.teamXmlName );
-		teamPanel = $.CreatePanel( "Panel", containerPanel, teamPanelName );
-		teamPanel.SetAttributeInt( "team_id", teamId );
-		teamPanel.BLoadLayout( scoreboardConfig.teamXmlName, false, false );
+		if (containerPanel.FindChild("LeftSideTeams")) {
+				teamPanel = containerPanel.FindChild("LeftSideTeams").FindChild(teamPanelName);
+				if (teamPanel === null) {
+					teamPanel = containerPanel.FindChild("RightSideTeams").FindChild(teamPanelName);
+				}
+		}
 
-		var logo_xml = GameUI.CustomUIConfig().team_logo_xml;
-		if ( logo_xml )
-		{
-			var teamLogoPanel = teamPanel.FindChildInLayoutFile( "TeamLogo" );
-			if ( teamLogoPanel )
+
+		if (teamPanel === null) {
+			teamPanel = $.CreatePanel( "Panel", containerPanel, teamPanelName );
+			teamPanel.SetAttributeInt( "team_id", teamId );
+			teamPanel.BLoadLayout( scoreboardConfig.teamXmlName, false, false );
+
+			var logo_xml = GameUI.CustomUIConfig().team_logo_xml;
+			if ( logo_xml )
 			{
-				teamLogoPanel.SetAttributeInt( "team_id", teamId );
-				teamLogoPanel.BLoadLayout( logo_xml, false, false );
+				var teamLogoPanel = teamPanel.FindChildInLayoutFile( "TeamLogo" );
+				if ( teamLogoPanel )
+				{
+					teamLogoPanel.SetAttributeInt( "team_id", teamId );
+					teamLogoPanel.BLoadLayout( logo_xml, false, false );
+				}
 			}
 		}
 	}

@@ -21,48 +21,52 @@
 		<Panel hittest="false" id="TopBarScoreboard">
 			<Panel hittest="false" id="ScoreboardContainer">
 				<Panel hittest="false" id="MultiteamScoreboard">
-					<Panel hittest="false" class="ScoreboardTeamWrapper" id="_dynamic_team_2">
-						<Panel hittest="false" id="ScoreboardTeam">
-							<Panel hittest="false" id="LogoAndScore">
-								<Panel hittest="false" id="TeamLogo" />
-								<Label hittest="false" text="N"/>
-								<Label hittest="false" id="TeamScore" text="999"/>
+					<Panel hittest="false" id="LeftSideTeams">
+						<Panel hittest="false" class="ScoreboardTeamWrapper" id="_dynamic_team_2">
+							<Panel hittest="false" id="ScoreboardTeam">
+								<Panel hittest="false" id="LogoAndScore">
+									<Panel hittest="false" id="TeamLogo" />
+									<Label hittest="false" text="N"/>
+									<Label hittest="false" id="TeamScore" text="999"/>
+								</Panel>
+								<Panel hittest="false" id="PlayersContainer"/>
+								<Panel hittest="false" id="TeamPadding"/>
 							</Panel>
-							<Panel hittest="false" id="PlayersContainer"/>
-							<Panel hittest="false" id="TeamPadding"/>
+						</Panel>
+						<Panel hittest="false" class="ScoreboardTeamWrapper" id="_dynamic_team_3">
+							<Panel hittest="false" id="ScoreboardTeam">
+								<Panel hittest="false" id="LogoAndScore">
+									<Panel hittest="false" id="TeamLogo" />
+									<Label hittest="false" text="E"/>
+									<Label hittest="false" id="TeamScore" text="999"/>
+								</Panel>
+								<Panel hittest="false" id="PlayersContainer"/>
+								<Panel hittest="false" id="TeamPadding"/>
+							</Panel>
 						</Panel>
 					</Panel>
-					<Panel hittest="false" class="ScoreboardTeamWrapper" id="_dynamic_team_3">
-						<Panel hittest="false" id="ScoreboardTeam">
-							<Panel hittest="false" id="LogoAndScore">
-								<Panel hittest="false" id="TeamLogo" />
-								<Label hittest="false" text="E"/>
-								<Label hittest="false" id="TeamScore" text="999"/>
+					<Panel hittest="false" id="RightSideTeams">
+						<Panel hittest="false" class="ScoreboardTeamWrapper" id="_dynamic_team_6">
+							<Panel hittest="false" id="ScoreboardTeam">
+								<Panel hittest="false" id="LogoAndScore">
+									<Panel hittest="false" id="TeamLogo" />
+									<Label hittest="false" text="S"/>
+									<Label hittest="false" id="TeamScore" text="999"/>
+								</Panel>
+								<Panel hittest="false" id="PlayersContainer"/>
+								<Panel hittest="false" id="TeamPadding"/>
 							</Panel>
-							<Panel hittest="false" id="PlayersContainer"/>
-							<Panel hittest="false" id="TeamPadding"/>
 						</Panel>
-					</Panel>
-					<Panel hittest="false" class="ScoreboardTeamWrapper" id="_dynamic_team_6">
-						<Panel hittest="false" id="ScoreboardTeam">
-							<Panel hittest="false" id="LogoAndScore">
-								<Panel hittest="false" id="TeamLogo" />
-								<Label hittest="false" text="S"/>
-								<Label hittest="false" id="TeamScore" text="999"/>
+						<Panel hittest="false" class="ScoreboardTeamWrapper" id="_dynamic_team_7">
+							<Panel hittest="false" id="ScoreboardTeam">
+								<Panel hittest="false" id="LogoAndScore">
+									<Panel hittest="false" id="TeamLogo" />
+									<Label hittest="false" text="W"/>
+									<Label hittest="false" id="TeamScore" text="999"/>
+								</Panel>
+								<Panel hittest="false" id="PlayersContainer"/>
+								<Panel hittest="false" id="TeamPadding"/>
 							</Panel>
-							<Panel hittest="false" id="PlayersContainer"/>
-							<Panel hittest="false" id="TeamPadding"/>
-						</Panel>
-					</Panel>
-					<Panel hittest="false" class="ScoreboardTeamWrapper" id="_dynamic_team_7">
-						<Panel hittest="false" id="ScoreboardTeam">
-							<Panel hittest="false" id="LogoAndScore">
-								<Panel hittest="false" id="TeamLogo" />
-								<Label hittest="false" text="W"/>
-								<Label hittest="false" id="TeamScore" text="999"/>
-							</Panel>
-							<Panel hittest="false" id="PlayersContainer"/>
-							<Panel hittest="false" id="TeamPadding"/>
 						</Panel>
 					</Panel>
 				</Panel>
@@ -70,4 +74,3 @@
 		</Panel>
 	</Panel>
 </root>
-
