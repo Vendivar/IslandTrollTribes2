@@ -63,7 +63,7 @@ function Crafting_OnUpdateSelectedUnits() {
     {
         if (currentSelected == mainSelected) //Selected the same unit again
             HideCurrent()
-        
+
         else //Selected a non crafting unit
             currentSelected = mainSelected
     }
@@ -140,10 +140,13 @@ function HideCurrent() {
 function Hide(panel) {
     if (panel !== undefined)
         panel.visible = false
+    GameUI.AcceptWheel();
 }
 
 function MakeVisible(panel) {
     panel.visible = true
+    panel.SetFocus();
+    GameUI.DenyWheel();
 }
 
 (function () {

@@ -11,11 +11,11 @@ function CreateCraftingList()
     CreateSectionByName(values, "npc_building_hut_witch_doctor", true)
     CreateSectionByName(values, "npc_building_mixing_pot", true)
     CreateSectionByName(values, "npc_building_tannery", true)
-    CreateSectionByName(values, "npc_building_workshop", true) 
+    CreateSectionByName(values, "npc_building_workshop", true)
 }
 
 function CreateSectionByName(values, name, bFold) {
-    
+
     for (var i in values)
     {
         var crafting_table = values[i]
@@ -37,7 +37,13 @@ function CreateSectionByName(values, name, bFold) {
 // Global lazy toggle
 GameUI.CustomUIConfig().ToggleCraftingList = function() {
     Root.ToggleClass( "Hidden" )
-    GameUI.AcceptWheeling = Root.BHasClass("Hidden")
+    Root.SetFocus();
+    if (Root.BHasClass("Hidden")) {
+        GameUI.AcceptWheel();
+    }
+    else {
+        GameUI.DenyWheel();
+    }
 }
 
 GameUI.CustomUIConfig().HideCraftingList = function() {
