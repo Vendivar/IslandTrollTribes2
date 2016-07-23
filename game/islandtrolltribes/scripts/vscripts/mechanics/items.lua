@@ -272,7 +272,6 @@ function DropLaunch(unit, item, duration, point)
     local trees = GridNav:GetAllTreesAroundPoint(point, 100, false)
     if #trees > 0 then
         local origin = unit:GetAbsOrigin()
-        local fv = unit:GetForwardVector()
 
         -- Get points from tree towards the hero
         for i=64,320,64 do
@@ -283,8 +282,14 @@ function DropLaunch(unit, item, duration, point)
                 break
             end
         end
-    end
 
+        while #trees > 0 do -- Still not found a point? Randomize it around the hero.
+            local randVec = RandomVector(200)
+            local testPosition = origin + randVec
+            trees = GridNav:GetAllTreesAroundPoint(testPosition, 100, false)
+            point = testPosition
+        end
+    end
     item:LaunchLoot(false, 200, duration, point)
 end
 
