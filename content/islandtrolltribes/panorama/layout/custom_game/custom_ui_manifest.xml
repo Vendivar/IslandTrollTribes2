@@ -23,6 +23,7 @@
         <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/toolkit.xml" />
         <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/building_helper.xml" />
         <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/help_toggle_button.xml" />
+        <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/help_menu.xml" />
         <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/crafting/crafting_button.xml" />
         <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/crafting/crafting_list.xml" />
         <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/crafting/crafting_building.xml" />

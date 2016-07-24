@@ -1,0 +1,48 @@
+<root>
+    <styles>
+        <include src="file://{resources}/styles/custom_game/help_menu.css" />
+        <include src="s2r://panorama/styles/dotastyles.vcss_c" />
+    </styles>
+    <scripts>
+        <include src="file://{resources}/scripts/custom_game/help_menu.js" />
+    </scripts>
+    <Panel class="Help_Root" hittest="false">
+        <Panel id="Help_Arrows" hittest="false">
+          <Panel class="Arrow_Crafting" hittest="false">
+
+          </Panel>
+
+        </Panel>
+        <Panel class="Help_Wrapper" hittest="false">
+            <Panel class="Help_Header" hittest="false">
+                <Label class="Help_Title" text="Welcome to the Help Menu!" hittest="false" />
+                <Button id="Close_btn" onactivate="HideHelp()" onmouseover="OnCloseHover()" onmouseout="OnCloseHoverOut()"/>
+            </Panel>
+            <Panel id="Help_Tabs" hittest="false">
+                <Panel class="Help_Tab active" onactivate="SelectTab(0)" onmouseover="OnTabHover(0)" onmouseout="OnTabHoverOut(0)">
+                    <Label class="Help_Tab_Header" text="Introduction" />
+                </Panel>
+                <Panel class="Help_Tab" onactivate="SelectTab(1)" onmouseover="OnTabHover(1)" onmouseout="OnTabHoverOut(1)">
+                    <Label class="Help_Tab_Header" text="Buildings" />
+                </Panel>
+            </Panel>
+            <Panel id="Help_Content">
+                <Panel class="Help_Tab_Content">
+                    <Label class="Help_Content_Header" text="This will have lots of text in it!" />
+                    <Label class="Help_Content_Text" text="Lorem ipsum a lot here! Lorem ipsum a lot here! Lorem ipsum a lot here!  Lorem ipsum a lot here!  Lorem ipsum a lot here! Lorem ipsum a lot here! Lorem ipsum a lot here! Lorem ipsum a lot here!  Lorem ipsum a lot here!  Lorem ipsum a lot here!Lorem ipsum a lot here! Lorem ipsum a lot here! Lorem ipsum a lot here!  Lorem ipsum a lot here!  Lorem ipsum a lot here!" />
+                    <Label class="Help_Content_Text" text="This is the third paragraph." />
+                    <Label class="Help_Content_Header" text="This will have lots of text in it!" />
+                    <Label class="Help_Content_Text" text="Lorem ipsum a lot here! Lorem ipsum a lot here! Lorem ipsum a lot here!  Lorem ipsum a lot here!  Lorem ipsum a lot here! Lorem ipsum a lot here! Lorem ipsum a lot here! Lorem ipsum a lot here!  Lorem ipsum a lot here!  Lorem ipsum a lot here!Lorem ipsum a lot here! Lorem ipsum a lot here! Lorem ipsum a lot here!  Lorem ipsum a lot here!  Lorem ipsum a lot here!" />
+                    <Label class="Help_Content_Text" text="This is the sixth paragraph." />
+                    <Label class="Help_Content_Header" text="This will have lots of text in it!" />
+                    <Label class="Help_Content_Text" text="Lorem ipsum a lot here! Lorem ipsum a lot here! Lorem ipsum a lot here!  Lorem ipsum a lot here!  Lorem ipsum a lot here! Lorem ipsum a lot here! Lorem ipsum a lot here! Lorem ipsum a lot here!  Lorem ipsum a lot here!  Lorem ipsum a lot here!Lorem ipsum a lot here! Lorem ipsum a lot here! Lorem ipsum a lot here!  Lorem ipsum a lot here!  Lorem ipsum a lot here!" />
+                    <Label class="Help_Content_Text" text="This is the ninth paragraph." />
+                </Panel>
+                <Panel class="Help_Tab_Content hidden">
+                    <Label class="Help_Content_Header" text="This is where you learn about buildings" />
+                    <Label class="Help_Content_Text" text="Lots of important building info!" />
+                </Panel>
+            </Panel>
+        </Panel>
+    </Panel>
+</root>

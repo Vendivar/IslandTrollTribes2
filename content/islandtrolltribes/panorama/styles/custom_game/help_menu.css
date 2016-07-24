@@ -1,0 +1,117 @@
+.Help_Root {
+  width: 60%;
+  height: 50%;
+  align: center center;
+  border: 2px solid #fff;
+  background-color: #292e2e;
+}
+
+.Help_Wrapper {
+  width: 100%;
+  height: 100%;
+  flow-children: down;
+}
+
+.Help_Header {
+  width: 100%;
+  height: 10%;
+  background-color: #191e1e;
+}
+
+.Help_Title {
+  font-size: 40px;
+  font-family: Radiance;
+  padding-left: 20px;
+  text-align: left;
+  color: #fff;
+}
+
+#Help_Tabs {
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: -2px;
+  flow-children: right;
+}
+
+.Help_Tab {
+  text-align: center;
+  vertical-align: center;
+  font-size: 20px;
+  padding: 0px 10px;
+  font-family: Radiance;
+  color: #fff;
+  margin-left: 10px;
+  background-color: #292e2e;
+  border: 2px solid #191e1e;
+  border-top-left-radius: 40%;
+  border-top-right-radius: 40%;
+}
+.Help_Tab.hover {
+  background-color: #696e6e;
+  border-color: #494e4e;
+}
+.Help_Tab.active {
+  background-color: #999e9e;
+  border-color: #696e6e;
+}
+
+.Help_Tab > Label {
+  color: #fff;
+}
+
+#Help_Content {
+  width: 100%;
+  height: 80%;
+  margin-right: 10px;
+}
+
+.Help_Tab_Content {
+  width: 100%;
+  height: 100%;
+  flow-children: down;
+  margin-left: 10px;
+  padding: 10px;
+  border: 2px solid #696e6e;
+  overflow: clip scroll;
+}
+
+.Help_Content_Header {
+  text-decoration: underline;
+  font-size: 26px;
+  margin-bottom: 10px;
+  font-family: Radiance;
+  color: #fff;
+}
+
+.Help_Content_Text {
+  font-size: 18px;
+  font-family: Radiance;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+#Close_btn {
+  align: right top;
+  margin: 10px;
+
+  width: 35px;
+  height: 35px;
+
+  background-image: url("s2r://panorama/images/crafting/close.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+#Close_btn.hover {
+  brightness: 2;
+}
+
+.hidden {
+  opacity: 0;
+  visibility: collapse;
+}
+
+.hide_menu {
+  opacity: 0;
+  visibility: collapse;
+  transform: translateY(-200px);
+}
