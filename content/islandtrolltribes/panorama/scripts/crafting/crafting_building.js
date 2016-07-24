@@ -140,7 +140,7 @@ function HideCurrent() {
 function Hide(panel) {
     if (panel !== undefined)
         panel.visible = false
-    GameUI.AcceptWheel();
+        GameUI.AcceptWheel();
 }
 
 function MakeVisible(panel) {
