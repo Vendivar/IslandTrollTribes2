@@ -18,12 +18,12 @@ end
 function GetInventoryDetails(hatchery)
 
     local itemTypes = {
-        {type="hide", decides = "bird_type", selects = "npc_creep_hawk",  count=0 },
-        {type="clay", decides = "bird_type",  selects = "npc_creep_drake_bone", count=0},
-        {type="spirit", decides = "bird_type", selects = "npc_creep_hawk", count=0},
-        {type="thistle", decides = "bird_type", selects = "npc_creep_hawk", count=0},
-        {type="mushroom", decides = "bird_type", selects = "npc_creep_hawk", count=0},
-        {type="rock_dark", decides = "bird_type",  selects = "npc_creep_hawk", count=0},
+        {type="hide", decides = "bird_type", selects = "npc_creep_harpy_red",  count=0 },
+        {type="clay", decides = "bird_type",  selects = "npc_creep_harpy_red", count=0},
+        {type="spirit", decides = "bird_type", selects = "npc_creep_drake_blue", count=0},
+        {type="mushroom", decides = "bird_type", selects = "npc_creep_drake_blue", count=0},
+        {type="rock_dark", decides = "bird_type",  selects = "npc_creep_drake_nether", count=0},
+        {type="thistle", decides = "bird_type", selects = "npc_creep_drake_nether", count=0},
         
         {type="clay", decides = "ability", incleases = "health", by = "5%", count=0}, --Red Dragon
         {type="hide",decides = "ability", incleases = "health", by = "50", count=0},  --Red Dragon

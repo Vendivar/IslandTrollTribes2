@@ -11,12 +11,12 @@ function AddChatLine(hero, playerName, color, message) {
     if (last != null) {
         $("#GameChatContent").MoveChildBefore(line, last);
     }
-/*
+
     var img = $.CreatePanel("DOTAHeroImage", line, "");
     img.AddClass("GameChatImage");
     img.heroimagestyle = "icon";
     img.heroname = hero;
-*/
+
     var label = $.CreatePanel("Label", line, "");
     label.SetDialogVariable("name", playerName);
     label.SetDialogVariable("color", color);

@@ -7,7 +7,7 @@
 #TopBarScoreboard
 {
     margin-top: 1px;
-    margin-left: 200px;
+    margin-left: 210px;
     horizontal-align: center;
     vertical-align: top;
     width: 1495px;
@@ -31,7 +31,7 @@
 
 #LeftSideTeams
 {
-    padding-right: 80px;
+    padding-right: 0px;
     width: 50%;
     height: 100%;
     flow-children: right;
@@ -47,7 +47,7 @@
 #RightSideTeams
 {
     horizontal-align: right;
-    padding-left: 20px;
+    padding-left: 0px;
     width: 50%;
     height: 100%;
     flow-children: right;
@@ -55,7 +55,7 @@
 
 .ScoreboardTeamWrapper
 {
-    width: 265px;
+    width: 285px;
     height: 50%;
     vertical-align: top;
     horizontal-align: left;
@@ -63,8 +63,8 @@
 
 #ScoreboardTeam
 {
-    padding-left: 2px;
-    padding-right: 2px;
+    padding-left: -5px;
+    padding-right: 25px;
     flow-children: right;
     width: 100%;
     height: 100%;
@@ -77,7 +77,7 @@
 #LogoAndScore
 {
     height: 100%;
-    width: 64px;
+    width: 60px;
 }
 
 #TeamScore
@@ -147,7 +147,7 @@
 
 .ScoreboardPlayerWrapper
 {
-    width: 50px;
+    width: 60px;
     height: 100%;
 }
 
@@ -187,7 +187,7 @@
 {
 /*    margin-top: -36px;
     margin-left: 36px; */
-    width: 50px;
+    width: 60px;
     height: 36px;
     background-color: black;
 }
@@ -212,7 +212,7 @@
 DOTAAvatarImage
 {
     margin-top: -16px;
-    width: 50px;
+    width: 60px;
     height: 36px;
     background-color: black;
 }
