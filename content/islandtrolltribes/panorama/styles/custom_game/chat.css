@@ -32,6 +32,10 @@
     height: 32px;
 }
 
+.GameChatEntryWrapper {
+    flow-children: right;
+}
+
 #GameChatEntry
 {
     width: 100%;
@@ -44,6 +48,15 @@
     font-family: Radiance,FZLanTingHei-R-GBK,TH Sarabun New,YDYGO 540,Gulim,MingLiU;
     text-overflow: clip;
     border-radius: 3px;
+}
+
+#GameChatEntryType {
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: Radiance,FZLanTingHei-R-GBK,TH Sarabun New,YDYGO 540,Gulim,MingLiU;
+    margin-left: 2px;
+    vertical-align: center;
 }
 
 .GameChatLine

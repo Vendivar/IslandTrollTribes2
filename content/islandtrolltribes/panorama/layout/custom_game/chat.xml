@@ -9,6 +9,7 @@
             }
 
             $("#GameChatEntry").DeleteAsync(0);
+            $("#GameChatEntryType").DeleteAsync(0);
             GameUI.ChatActivated = false;
         }
 
@@ -24,13 +25,14 @@
                 return;
             }
 
-            GameEvents.SendCustomGameEventToServer("custom_chat_say", { message: entry.text });
+            GameEvents.SendCustomGameEventToServer("custom_chat_say", { message: entry.text, isTeamChat: GameUI.teamChat });
 
             entry.text = "";
             HideGameChat();
         }
     </script>
-    <Panel hittest="false">
+    <Panel hittest="false" class="GameChatEntryWrapper">
+        <Label hittest="false" id="GameChatEntryType" text="(Team)" />
         <TextEntry
             hittest="false"
             id="GameChatEntry"

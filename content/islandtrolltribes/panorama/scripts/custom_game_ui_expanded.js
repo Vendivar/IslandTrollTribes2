@@ -1,4 +1,4 @@
-/* 
+/*
     This contains scripts to reutilize through various interface files
     The file doesn't need to be included, as the functions are accessible in global GameUI scope
 */
@@ -10,6 +10,5 @@ GameUI.DenyWheel = function() {
 }
 
 GameUI.AcceptWheel = function() {
-    $.Msg("Accepting World Scrolling")
     GameUI.AcceptWheeling = 1;
 }

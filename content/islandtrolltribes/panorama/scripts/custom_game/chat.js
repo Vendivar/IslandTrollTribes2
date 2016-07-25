@@ -2,7 +2,7 @@
 GameUI.GameChat = $("#GameChat");
 GameUI.ChatActivated = false;
 
-function AddChatLine(hero, playerName, color, message) {
+function AddChatLine(hero, playerName, color, message, isTeamChat) {
     var line = $.CreatePanel("Panel", $("#GameChatContent"), "");
     var last = $("#GameChatContent").GetChild(0);
     line.AddClass("GameChatLine");
@@ -21,6 +21,12 @@ function AddChatLine(hero, playerName, color, message) {
     label.SetDialogVariable("name", playerName);
     label.SetDialogVariable("color", color);
     label.SetDialogVariable("message", message);
+    if (isTeamChat) {
+        label.SetDialogVariable("type","(TEAM)");
+    }
+    else {
+        label.SetDialogVariable("type","");
+    }
     label.html = true;
     label.text = $.Localize("#ChatLine", label);
 
@@ -40,7 +46,7 @@ function OnCustomChatSay(args) {
         name = args.name;
     }
 
-    AddChatLine(args.hero, name, color, args.message);
+    AddChatLine(args.hero, name, color, args.message, args.isTeam);
 }
 
 (function() {
@@ -52,5 +58,13 @@ function OnCustomChatSay(args) {
     $("#GameChatEntryContainer").BLoadLayout("file://{resources}/layout/custom_game/chat.xml", true, true);
     $("#GameChatEntry").SetFocus();
     $("#GameChat").RemoveClass("ChatHidden");
+    if (GameUI.IsShiftDown()) {
+      GameUI.teamChat = false;
+      $("#GameChatEntryType").text = "(ALL)";
+    }
+    else {
+      GameUI.teamChat = true;
+      $("#GameChatEntryType").text = "(TEAM)";
+    }
   });
 })();
