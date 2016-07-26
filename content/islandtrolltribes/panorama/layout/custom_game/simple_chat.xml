@@ -18,7 +18,7 @@
         }
 
         function SubmitChat() {
-            GameEvents.SendCustomGameEventToServer("custom_chat_say", { message: $("#ChatEntry").text });
+            GameEvents.SendCustomGameEventToServer("custom_chat_say", { message: $("#ChatEntry").text, isTeamChat: true });
 
             $("#ChatEntry").text = "";
         }
@@ -60,6 +60,7 @@
     <Panel class="Chat" hittest="false">
         <Panel id="ChatContent" hittest="false">
         </Panel>
+        <Label hittest="false" id="ChatEntryType" text="(Team)" />
         <TextEntry
               id="ChatEntry"
               multiline="false"

@@ -25,15 +25,15 @@
         "itt_game_info_tip10"                       "<li>If it seems you have collected all the items or hunted all the wildlife in one area, move to another. Sometimes fertile land is just an island away.<br>"
         "itt_game_info_tip11"                       "<li>Use quick-make skills and unload items to quickly manage the inventories of buildings.<br>"
         "itt_game_info_tip12"                       "<li>Speed, strategy, and meat are crucial to winning wars.<br>"
-		
-		
-		"DOTA_GoodGuys"   							"North Tribe"	
+
+
+		"DOTA_GoodGuys"   							"North Tribe"
 		"DOTA_BadGuys"    							"East Tribe"
-		"DOTA_Custom1"    							"West Tribe"	
+		"DOTA_Custom1"    							"West Tribe"
 		"DOTA_Custom2"    							"South Tribe"
-		
+
 		"itt_craft_menu" 							"Crafting List"
-		
+
 	// Building Names
 
 		"npc_building_armory"			"Armory"
@@ -45,9 +45,9 @@
         "npc_building_trap_ensnare"     "Ensnare Trap"
 		"npc_building_trap_iron"        "Iron Trap"
 		"npc_building_trap_metal"		"Metal Trap"
-		
-	
-	
+
+
+
 		"npc_building_fire_basic"		"Basic Fire"
 		"npc_building_fire_mage"		"Mage Fire"
 		"npc_building_hatchery"			"Hatchery"
@@ -63,9 +63,9 @@
 		"npc_building_teleport_beacon"	"Teleport Beacon"
 		"npc_building_tent"				"Tent"
 		"npc_building_workshop"			"Workshop"
-		
-		
-				
+
+
+
 		"npc_bush_herb"							"Heisetsu Bush"
 		"npc_bush_herb_blue"					"Blue Herb Bush"
 		"npc_bush_herb_orange"					"Orange Herb Bush"
@@ -77,8 +77,8 @@
 		"npc_bush_stash"						"Hidden Stash"
 		"npc_bush_thief"						"Theif Bush"
 		"npc_bush_thistle"						"Thistle Bush"
-		
-		
+
+
         "SelectText"        "Choose a Class"
 
         "Description_hunter"    "A troll specialized in physical combat.\n\nHis strength is unrivalled by any other troll.\n\nHis abilities allow him to track and ensnare enemies to prevent their escape for easy meat and xp.\n\nSlots: 3\nDifficulty: Easy\n\nPros:\nEasiest to hunt with\nHighest physical damage output\nSome offensive spells\n\nCons:\nVery few slots\nLimited skill library"
@@ -213,8 +213,8 @@
         "npc_ship_merchant_6"                                              "Human Frigate"
         "npc_ship_merchant_7"                                              "Undead Transport Ship"
         "compass_used" "used the sonar compass - now pinging merchant ships"
-		
-		
+
+
         // Toolkit Abilities
         "sleep_outside"                                          "Sleep Outside"
         "DOTA_Tooltip_Ability_sleep_outside"                     "Sleep Outside"
@@ -241,7 +241,7 @@
 
         "panic"         "\nPanic!"
 
-        "ChatLine" "<b><font color='{s:color}'>{s:name}</font></b>: {s:message}"
+        "ChatLine" "{s:type}<b><font color='{s:color}'>{s:name}</font></b>: {s:message}"
         "ChatPlaceholder" "Type here..."
 
         "DOTA_Tooltip_Ability_Panic" "Panic"
