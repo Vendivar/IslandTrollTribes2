@@ -45,6 +45,7 @@
 				        <Panel class="Help_Tab_Content hidden">
                     <Label class="Help_Content_Header" text="#Creeps_Intro"  html="true" />
                     <Label class="Help_Content_Text" text="#Creeps_Core"   html="true"/>
+					<Image id="ItemsImage" src="file://{images}/custom_game/game_info/itemx.psd" />
                 </Panel>
             </Panel>
         </Panel>

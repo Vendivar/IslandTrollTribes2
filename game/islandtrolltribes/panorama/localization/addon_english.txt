@@ -315,8 +315,8 @@ Use: Locating items, large inventory, creating special buildings. <br><br>
 <h2>Remote Gatherer:</h2>  <br>"
 
 				
-		"Creeps_Intro" "Creep Information"
-		"Creeps_Core" "Lots of creeps here in this world<br><br>
+		"Creeps_Intro" "Animal Information"
+		"Creeps_Core" "Lots of animals here in this world<br><br>
 		
 <h1>Pet Animals:</h1>
 Fawn: Can mature into Elk (Pet) and Adult Elk 
