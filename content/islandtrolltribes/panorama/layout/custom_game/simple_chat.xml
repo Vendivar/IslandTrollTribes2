@@ -50,7 +50,8 @@
             AddChatLine("#ChatLine", {
                 name: name,
                 color:  LuaColor(args.color),
-                message: args.message
+                message: args.message,
+                type: "(Team)"
             });
         }
 
