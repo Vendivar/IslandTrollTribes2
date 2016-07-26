@@ -61,6 +61,7 @@ GameUI.CustomUIConfig().ToggleHelp = function() {
     }
     else {
         GameUI.DenyWheel();
+        $("#Help_Arrows").AddClass("hidden");
     }
 }
 
