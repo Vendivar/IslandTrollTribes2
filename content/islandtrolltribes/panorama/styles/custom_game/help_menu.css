@@ -7,6 +7,7 @@
   width: 60%;
   height: 50%;
   padding: 5%;
+  margin-top: -100px;
   align: center center;
   flow-children: down;
 
@@ -62,6 +63,7 @@
 #Help_Content {
   width: 100%;
   height: 80%;
+  margin-top: 10px;
   margin-right: 10px;
 }
 
@@ -105,6 +107,30 @@
   brightness: 2;
 }
 
+#Arrow_btn {
+  align: right top;
+  margin: 10px;
+  margin-right: 50px;
+
+  width: 32px;
+  height: 32px;
+
+  background-color: #393939;
+  border: 2px solid #121212;
+}
+#Arrow_btn.hover {
+  brightness: 2;
+}
+#Arrow_btn > Label {
+  width: 100%;
+  height: 100%;
+  font-size: 28px;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  margin-top: -4px;
+}
+
 .hidden {
   opacity: 0;
   visibility: collapse;
@@ -116,8 +142,121 @@
   transform: translateY(-200px);
 }
 
-.arrow {
+
+/*  ########### HELP ARROWS BELOW! ######### */
+
+#Help_Arrows {
   width: 100%;
-  height: 20%;
-  background-color: #3e3e3e;
+  height: 100%;
+}
+
+.Arrow_Crafting {
+  x: 40px;
+  y: 170px;
+  flow-children: right;
+}
+
+.Arrowtext_Crafting {
+  x: 200px;
+  y: 145px;
+  color: #fff;
+}
+
+.Arrow_Heat {
+  x: 34.7%;
+  y: 38%;
+  flow-children: down;
+}
+.Arrowtext_Heat {
+  x: 29.5%;
+  y: 48%;
+  text-align: right;
+  color: #fff;
+}
+
+.Arrow_Meat {
+  x: 37%;
+  y: 38%;
+  flow-children: down;
+}
+.Arrowtext_Meat {
+  x: 38.5%;
+  y: 52%;
+  text-align: left;
+  color: #fff;
+}
+
+.Arrow_Toolkit {
+  x: 97%;
+  y: 43%;
+  flow-children: down;
+}
+.Arrowtext_Toolkit {
+  x: 91%;
+  y: 45%;
+  text-align: right;
+  color: #fff;
+}
+
+.Arrow_Subclass {
+  width: 100%;
+  height: 100%;
+}
+.Arrowtext_Subclass {
+  x: 80%;
+  y: 64%;
+  color: #fff;
+}
+
+
+.arrow_left {
+  width: 400px;
+  height: 20px;
+  background-color: #9e9e9e;
+  margin-left: 45px;
+}
+
+.arrow_down {
+  width: 20px;
+  height: 400px;
+  background-color: #9e9e9e;
+  margin-bottom: 45px;
+}
+
+.arrow_downright {
+  width: 400px;
+  height: 20px;
+  x: 77%;
+  y: 78.6%;
+  background-color: #9e9e9e;
+  transform: rotateZ(45deg);
+}
+
+.arrowhead_left {
+  width: 1px;
+  height: 1px;
+  border-style: solid;
+  border-width: 25px 0 25px 50px;
+  border-color: transparent transparent transparent #9e9e9e;
+  margin-top: 10px;
+}
+
+.arrowhead_down {
+  width: 1px;
+  height: 1px;
+  border-style: solid;
+  border-width: 0 25px 50px 25px;
+  border-color: transparent transparent #9e9e9e transparent;
+  margin-left: 10px;
+}
+
+.arrowhead_downright {
+  width: 1px;
+  height: 1px;
+  x: 96%;
+  y: 89%;
+  border-style: solid;
+  border-width: 50px 50px 0 0;
+  border-color: #9e9e9e transparent transparent transparent;
+  margin-top: 10px;
 }

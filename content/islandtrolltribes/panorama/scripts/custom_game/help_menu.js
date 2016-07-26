@@ -23,6 +23,18 @@ function OnCloseHoverOut() {
     $("#Close_btn").RemoveClass("hover");
 }
 
+function OnArrowHover() {
+    $("#Arrow_btn").AddClass("hover");
+}
+
+function OnArrowHoverOut() {
+    $("#Arrow_btn").RemoveClass("hover");
+}
+
+function ToggleArrows() {
+    $("#Help_Arrows").ToggleClass("hidden");
+}
+
 function OnTabHover(num) {
     if (num !== activeTab) {
         tabs[num].AddClass("hover");
