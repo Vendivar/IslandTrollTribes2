@@ -25,22 +25,30 @@
                 <Panel class="Help_Tab" onactivate="SelectTab(1)" onmouseover="OnTabHover(1)" onmouseout="OnTabHoverOut(1)">
                     <Label class="Help_Tab_Header" text="Buildings" />
                 </Panel>
+				<Panel class="Help_Tab" onactivate="SelectTab(2)" onmouseover="OnTabHover(2)" onmouseout="OnTabHoverOut(2)">
+                    <Label class="Help_Tab_Header" text="Classes" />
+                </Panel>				
+				<Panel class="Help_Tab" onactivate="SelectTab(3)" onmouseover="OnTabHover(3)" onmouseout="OnTabHoverOut(3)">
+                    <Label class="Help_Tab_Header" text="Creeps" />
+                </Panel>
             </Panel>
             <Panel id="Help_Content">
                 <Panel class="Help_Tab_Content">
-                    <Label class="Help_Content_Header" text="This will have lots of text in it!" />
-                    <Label class="Help_Content_Text" text="Lorem ipsum a lot here! Lorem ipsum a lot here! Lorem ipsum a lot here!  Lorem ipsum a lot here!  Lorem ipsum a lot here! Lorem ipsum a lot here! Lorem ipsum a lot here! Lorem ipsum a lot here!  Lorem ipsum a lot here!  Lorem ipsum a lot here!Lorem ipsum a lot here! Lorem ipsum a lot here! Lorem ipsum a lot here!  Lorem ipsum a lot here!  Lorem ipsum a lot here!" />
-                    <Label class="Help_Content_Text" text="This is the third paragraph." />
-                    <Label class="Help_Content_Header" text="This will have lots of text in it!" />
-                    <Label class="Help_Content_Text" text="Lorem ipsum a lot here! Lorem ipsum a lot here! Lorem ipsum a lot here!  Lorem ipsum a lot here!  Lorem ipsum a lot here! Lorem ipsum a lot here! Lorem ipsum a lot here! Lorem ipsum a lot here!  Lorem ipsum a lot here!  Lorem ipsum a lot here!Lorem ipsum a lot here! Lorem ipsum a lot here! Lorem ipsum a lot here!  Lorem ipsum a lot here!  Lorem ipsum a lot here!" />
-                    <Label class="Help_Content_Text" text="This is the sixth paragraph." />
-                    <Label class="Help_Content_Header" text="This will have lots of text in it!" />
-                    <Label class="Help_Content_Text" text="Lorem ipsum a lot here! Lorem ipsum a lot here! Lorem ipsum a lot here!  Lorem ipsum a lot here!  Lorem ipsum a lot here! Lorem ipsum a lot here! Lorem ipsum a lot here! Lorem ipsum a lot here!  Lorem ipsum a lot here!  Lorem ipsum a lot here!Lorem ipsum a lot here! Lorem ipsum a lot here! Lorem ipsum a lot here!  Lorem ipsum a lot here!  Lorem ipsum a lot here!" />
-                    <Label class="Help_Content_Text" text="This is the ninth paragraph." />
+                    <Label class="Help_Content_Header" text="#Intro_Intro" />
+                    <Label class="Help_Content_Text" text="Intro_Core" html="true" />
+
                 </Panel>
                 <Panel class="Help_Tab_Content hidden">
-                    <Label class="Help_Content_Header" text="This is where you learn about buildings" />
-                    <Label class="Help_Content_Text" text="Lots of important building info!" />
+                    <Label class="Help_Content_Header" text="#Buildings_Intro"  html="true" />
+                    <Label class="Help_Content_Text" text="#Buildings_Core" html="true" />
+                </Panel>
+				<Panel class="Help_Tab_Content hidden">
+                    <Label class="Help_Content_Header" text="#Classes_Intro"  html="true" />
+                    <Label class="Help_Content_Text" text="#Classes_Core"  html="true" />
+                </Panel>
+				<Panel class="Help_Tab_Content hidden">
+                    <Label class="Help_Content_Header" text="#Creeps_Intro"  html="true" />
+                    <Label class="Help_Content_Text" text="#Creeps_Core"   html="true"/>
                 </Panel>
             </Panel>
         </Panel>

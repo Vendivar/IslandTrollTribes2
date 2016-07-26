@@ -264,5 +264,76 @@
         "loading_screen_tip_1"  "Help report bugs and issues at bit.do/ITT2."
         "loading_screen_tip_2"  "Help report bugs and issues at bit.do/ITT2."
         "loading_screen_tip_3"  "Help report bugs and issues at bit.do/ITT2."
+		
+				//Help Menu
+		
+		"Intro_Intro" "General Information"
+		"Intro_Core" "<h1>Basics:</h1>
+• Surviving your first night<br>
+• Crafting<br>
+• Combat<br>"
+		
+		
+		"Buildings_Intro" "Building Information"
+		"Buildings_Core" "Island Troll Tribes extensively uses buildings for creating items and managing player stats. Most buildings are created in the inventory of a troll from the merging of items in the right order. Once a building is created in the inventory of a troll, it will be in the form of a construction kit which the troll can then place at a buildable location. <br><br>
+<h1>Stat Management:</h1>
+• Fire - Heat restoration, meat cooking, view of area and blocking paths. <br>
+• Mage Fire - Advanced heat restoration and meat cooking. <br>
+• Tent - Portable energy restoration. <br>
+• Troll Hut - Stationary energy restoration and item storage. <br>
+• Mud Hut - Stationary energy restoration and item storage. <br><br>
+<h1>Storage:</h1>
+• Storage Hut - Private item storage. <br>
+• Smoke House - Public item storage and corpse storage. <br><br>
+<h1>Crafting:</h1>
+• Armory - Creating weapons, armor, and tools for other items. <br>
+• Tannery - Creating boots, gloves and armor. <br>
+• Workshop - Creating special and high tier items. <br>
+• Witch Doctor's Hut - Creating magic spells, magic items and special buildings. <br>
+• Mixing Pot - Creates potions from herbs. <br><br>
+<h1>Defensive:</h1>
+• Omnitower - Full sized powerful and customizable defense. Holds up to 3 "Offensive" items (e.g. Nets, Spears) 
+• Ensnare Trap - Tiny light defense with nets. 
+<h1>Special:</h1>
+• Spirit Ward - Revives fallen players. 
+• Teleport Beacon - Teleport players over terrain. 
+• Hatchery - Turns hawk eggs and other items into flying pets. 
+• Craftmaster - Crafting inventory items if low on inventory space."
+
+"Classes_Intro" "Classes Information"
+"Classes_Core" "The 'base class' is just the theoretical foundation that all classes are based on. All classes(including subclasses) have the same base armor and health/energy but different attributes per tier causing the health/energy and armor to be different. The math behind this is every class starts with 192 health/energy but it is increased by 8 per skill point in strength/intelligence respectively. Armor is increased by 1 per 10 agility and movement speed is 5 per agility but the base varies between classes and subclasses. Each class shares the same subclass system and several base skills.<br><br>
+
+<h1>Subclasses:</h1><br>
+Every unsubbed class can chose to become one of three subclasses at level 6.<br><br>
+
+<h1>Class rundown:</h1><br> 
+<h2>Gatherer</h2>
+Use: Locating items, large inventory, creating special buildings. <br><br>
+<h2>Subclasses:</h2> <br>
+<h2>Herb Master Telegatherer:</h2>  <br>
+<h2>Radar Telegatherer:</h2>  <br>
+<h2>Remote Gatherer:</h2>  <br>"
+
+				
+		"Creeps_Intro" "Creep Information"
+		"Creeps_Core" "Lots of creeps here in this world<br><br>
+		
+<h1>Pet Animals:</h1>
+Fawn: Can mature into Elk (Pet) and Adult Elk 
+Wolf Pup: Can mature into Jungle Wolf and Adult Jungle Wolf 
+Bear Cub: Can mature into Jungle Bear and Adult Jungle Bear <br><br>
+<h1>Passive Animals:</h1>
+Fish 
+Green Fish 
+Elk 
+Hawk  <br><br>
+<h1>Hostile Animals:</h1>
+Jungle Wolf 
+Jungle Bear 
+Snake 
+Panther  <br><br>
+<h1>Bosses:</h1>
+Mammoth
+"
     }
 }
