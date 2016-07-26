@@ -267,6 +267,15 @@
 		
 				//Help Menu
 		
+		
+"Arrow_Crafting"  	"Crafting Menu"
+"Arrow_Heat" 		"Heat Indicator"
+"Arrow_Meat" 		"Meat Stack Indicator"
+"Arrow_Toolkit" 	"Troll Toolkit"
+"Arrow_Subclass" 	"Subclass Selection"
+		
+		
+		
 		"Intro_Intro" "General Information"
 		"Intro_Core" "<h1>Basics:</h1>
 • Surviving your first night<br>

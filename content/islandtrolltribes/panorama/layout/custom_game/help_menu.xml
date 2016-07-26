@@ -54,27 +54,27 @@
             <Panel class="arrowhead_left" hittest="false" />
             <Panel class="arrow_left" hittest="false" />
           </Panel>
-          <Label class="Arrowtext_Crafting" hittest="false" text="Arrow_Crafting" />
+          <Label class="Arrowtext_Crafting" hittest="false" text="#Arrow_Crafting" />
           <Panel class="Arrow_Heat" hittest="false">
             <Panel class="arrow_down" hittest="false" />
             <Panel class="arrowhead_down" hittest="false" />
           </Panel>
-          <Label class="Arrowtext_Heat" hittest="false" text="Arrow_Heat" />
+          <Label class="Arrowtext_Heat" hittest="false" text="#Arrow_Heat" />
           <Panel class="Arrow_Meat" hittest="false">
             <Panel class="arrow_down" hittest="false" />
             <Panel class="arrowhead_down" hittest="false" />
           </Panel>
-          <Label class="Arrowtext_Meat" hittest="false" text="Arrow_Meat"/>
+          <Label class="Arrowtext_Meat" hittest="false" text="#Arrow_Meat"/>
           <Panel class="Arrow_Toolkit" hittest="false">
             <Panel class="arrow_down" hittest="false" />
             <Panel class="arrowhead_down" hittest="false" />
           </Panel>
-          <Label class="Arrowtext_Toolkit" hittest="false" text="Arrow_Toolkit"/>
+          <Label class="Arrowtext_Toolkit" hittest="false" text="#Arrow_Toolkit"/>
           <Panel class="Arrow_Subclass" hittest="false">
             <Panel class="arrow_downright" hittest="false" />
             <Panel class="arrowhead_downright" hittest="false" />
           </Panel>
-          <Label class="Arrowtext_Subclass" hittest="false" text="Arrow_Subclass"/>
+          <Label class="Arrowtext_Subclass" hittest="false" text="#Arrow_Subclass"/>
         </Panel>
     </Panel>
 </root>
