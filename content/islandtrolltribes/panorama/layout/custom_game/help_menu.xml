@@ -9,7 +9,7 @@
     <Panel class="Help_Root" hittest="false">
         <Panel id="Help_Arrows" hittest="false">
           <Panel class="Arrow_Crafting" hittest="false">
-
+            <Panel class="arrow arrow_crafting" />
           </Panel>
 
         </Panel>

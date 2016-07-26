@@ -1,7 +1,7 @@
 <root>
     <script>
         $.Msg( "Images compiled" );
-    </script>     
+    </script>
     <Panel hittest="false" class="PicksRoot">
         <!-- Here goes all the images that are not defined in the main xml files and changed dynamically -->
         <Image style="opacity:0;" src="file://{images}/class_picker/beastmaster_full.png" />
@@ -135,8 +135,8 @@
         <Image style="opacity:0;" src="file://{images}/items/coat_elk.png" />
         <Image style="opacity:0;" src="file://{images}/items/coat_bear.png" />
         <Image style="opacity:0;" src="file://{images}/items/coat_wolf.png" />
-        <Image style="opacity:0;" src="file://{images}/items/coat_camouflage.png" />        
-        <Image style="opacity:0;" src="file://{images}/items/cloak_frost.png" />     
+        <Image style="opacity:0;" src="file://{images}/items/coat_camouflage.png" />
+        <Image style="opacity:0;" src="file://{images}/items/cloak_frost.png" />
         <Image style="opacity:0;" src="file://{images}/items/coat_steel.png" />
         <Image style="opacity:0;" src="file://{images}/items/claw_attack.png" />
         <Image style="opacity:0;" src="file://{images}/items/compass_sonar.png" />
@@ -276,6 +276,8 @@
         <Image style="opacity:0;" src="file://{images}/crafting/close.png" />
         <Image style="opacity:0;" src="file://{images}/crafting/minus.png" />
         <Image style="opacity:0;" src="file://{images}/crafting/plus.png" />
+
+        <Image style="opacity:0;" src="file://{images}/help_menu/background.png" />
 
 <Image style="opacity:0;" src="file://{images}/spellicons/ability_beastmaster_attack.png" />
 <Image style="opacity:0;" src="file://{images}/spellicons/ability_beastmaster_bash.png" />
