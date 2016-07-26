@@ -1,21 +1,23 @@
 .Help_Root {
-  width: 60%;
-  height: 50%;
-  align: center center;
-  border: 2px solid #fff;
-  background-color: #292e2e;
+  width: 100%;
+  height: 100%;
 }
 
 .Help_Wrapper {
-  width: 100%;
-  height: 100%;
+  width: 60%;
+  height: 50%;
+  padding: 5%;
+  align: center center;
   flow-children: down;
+
+  background-image: url("s2r://panorama/images/help_menu/background.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }
 
 .Help_Header {
   width: 100%;
   height: 10%;
-  background-color: #191e1e;
 }
 
 .Help_Title {
@@ -37,22 +39,20 @@
   text-align: center;
   vertical-align: center;
   font-size: 20px;
-  padding: 0px 10px;
+  padding: 10px;
   font-family: Radiance;
   color: #fff;
   margin-left: 10px;
-  background-color: #292e2e;
-  border: 2px solid #191e1e;
-  border-top-left-radius: 40%;
-  border-top-right-radius: 40%;
+
+  background-image: url("s2r://panorama/images/class_picker/pick.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }
 .Help_Tab.hover {
-  background-color: #696e6e;
-  border-color: #494e4e;
+  brightness: 2;
 }
 .Help_Tab.active {
-  background-color: #999e9e;
-  border-color: #696e6e;
+  background-image: url("s2r://panorama/images/class_picker/pick_hover.png");
 }
 
 .Help_Tab > Label {
@@ -70,8 +70,8 @@
   height: 100%;
   flow-children: down;
   margin-left: 10px;
+  margin-bottom: 10px;
   padding: 10px;
-  border: 2px solid #696e6e;
   overflow: clip scroll;
 }
 
@@ -94,8 +94,8 @@
   align: right top;
   margin: 10px;
 
-  width: 35px;
-  height: 35px;
+  width: 32px;
+  height: 32px;
 
   background-image: url("s2r://panorama/images/crafting/close.png");
   background-size: 100% 100%;
@@ -114,4 +114,10 @@
   opacity: 0;
   visibility: collapse;
   transform: translateY(-200px);
+}
+
+.arrow {
+  width: 100%;
+  height: 20%;
+  background-color: #3e3e3e;
 }
