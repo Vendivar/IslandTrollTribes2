@@ -26,26 +26,54 @@ end
 function ITT:SetDefaultCosmetics(hero)
     local defaultWearables = GameRules.ClassInfo['SubClasses'][hero:GetHeroClass()]['defaults']
     local hideSlots = GameRules.ClassInfo['SubClasses'][hero:GetHeroClass()]['hide']
-    ITT:SetDefaultWearables(hero)
-     -- Handle Hunter hidden wearables
-    Timers:CreateTimer(function()
-        if hideSlots then
-            local hats = hero:GetChildren()
-            for k,wearable in pairs(hats) do
-                if wearable:GetClassname() == "dota_item_wearable" then
-                    local wearableName = wearable:GetModelName()
-                    if wearableName ~= "" then
-                        local slot = modelmap[wearableName] or "weapon"
-                        if hideSlots[slot] then
-                            --print("Hiding",wearableName,wearable)
-                            wearable:AddEffects(EF_NODRAW)
-                            wearable.hidden = true
+    
+    if IsDedicatedServer() then
+        RemoveAllWearables(hero) --Could be replaced by adding "DisableWearables" "1" on every hero
+        hero.wearables = {}
+        for _,modelName in pairs(defaultWearables) do
+            hero:AttachWearable(modelName)
+        end
+    else
+        ITT:SetDefaultWearables(hero)
+
+        -- Handle Hunter hidden wearables
+        Timers:CreateTimer(function()
+            if hideSlots then
+                local hats = hero:GetChildren()
+                for k,wearable in pairs(hats) do
+                    if wearable:GetClassname() == "dota_item_wearable" then
+                        local wearableName = wearable:GetModelName()
+                        if wearableName ~= "" then
+                            local slot = modelmap[wearableName] or "weapon"
+                            if hideSlots[slot] then
+                                --print("Hiding",wearableName,wearable)
+                                wearable:AddEffects(EF_NODRAW)
+                                wearable.hidden = true
+                            end
                         end
                     end
                 end
             end
-        end
-    end)
+        end)
+    end
+end
+
+-- Create a wearable model unit to follow the hero entity
+function CDOTA_BaseNPC_Hero:AttachWearable(modelPath)
+    local wearable = CreateUnitByName("wearable_model", Vector(0, 0, 0), false, nil, nil, DOTA_TEAM_NOTEAM)
+
+    local oldSet = wearable.SetModel
+    wearable.SetModel = function(self, model)
+        oldSet(self, model)
+        self:SetOriginalModel(model)
+    end
+
+    wearable:SetModel(modelPath)
+    wearable:FollowEntity(self, true)
+    wearable:AddNewModifier(wearable, nil, "modifier_wearable_visuals", {})
+    table.insert(self.wearables, wearable)
+
+    return wearable
 end
 
 --Reset default wearables and doesn't hide wearables
@@ -289,6 +317,21 @@ function ShowWearables( hero )
         v:RemoveEffects(EF_NODRAW)
         if v.originalModel then
             v:SetModel(originalModel)
+        end
+    end
+end
+
+function RemoveAllWearables( hero )
+    local wearables = hero:GetChildren()
+    for _,v in pairs(wearables) do
+        if v:GetClassname() == "dota_item_wearable" then
+            if v:GetMoveParent() == hero then
+                if v:GetModelName() == "models/pets/armadillo/armadillo.vmdl" then
+                    v:AddEffects(EF_NODRAW)
+                else
+                    UTIL_Remove(v)
+                end
+            end
         end
     end
 end

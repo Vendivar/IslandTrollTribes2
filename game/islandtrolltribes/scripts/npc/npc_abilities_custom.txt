@@ -3686,7 +3686,7 @@
 				"ModifierName"	"modifier_charged"
 				"Duration"	"2"
 			}
-	
+	        
 			"FireSound"
 			{
 				"EffectName"	"elk.chargestart"
@@ -3702,7 +3702,7 @@
 				"Target"	"TARGET"
 				"ModifierName"	"modifier_charged"
 			}
-	
+	        
 	        "FireSound"
 	        {
 	            "Target"	"CASTER"
