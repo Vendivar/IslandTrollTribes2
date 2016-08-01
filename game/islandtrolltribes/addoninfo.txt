@@ -32,5 +32,11 @@
             "Command"   "+ToggleHelp"
             "Name"      "Show/Hide the help UI"
         }
+		"04"
+        {
+            "Key"       "P"
+            "Command"   "+TogglePanic"
+            "Name"      "Show/Hide the help UI"
+        }
     }
 }

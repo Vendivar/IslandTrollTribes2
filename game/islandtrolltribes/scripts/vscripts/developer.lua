@@ -19,6 +19,7 @@ CHEAT_CODES = {
     ["debug_shops"] = function(...) ITT:DebugShops() end,
     ["spawnstats"] = function( ... ) ITT:SpawnStats(...) end,
     ["gg_end"] = function( ... ) GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS) end,
+    ["lvlup"] = function(...) ITT:LvlUp(...) end,
 }
 
 PLAYER_COMMANDS = {
@@ -48,6 +49,13 @@ function ITT:OnPlayerChat(keys)
 
     elseif PLAYER_COMMANDS[command] then
         PLAYER_COMMANDS[command](playerID, unpack(input))
+    end
+end
+
+function ITT:LvlUp(playerID, level)
+    local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+    for i=1,tonumber(level) do
+        hero:HeroLevelUp(false)
     end
 end
 

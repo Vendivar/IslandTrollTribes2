@@ -1,0 +1,4 @@
+"wearable_model"
+{
+    "BaseClass"     "npc_dota_creature"
+}
