@@ -76,7 +76,6 @@ end
 
 function Spawns:Think()
     -- Roll chance and restrict creature spawns up to the max allowed
-    FindTesting()
     local spawnTable = GetSpawnInstructions()
     local locationTypeTable = GameRules.SpawnInfo['LocationTypes'][GameRules.SpawnLocationType]
     for unitName,creepTable in pairs(spawnTable) do
