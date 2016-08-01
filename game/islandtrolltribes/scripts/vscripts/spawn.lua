@@ -11,7 +11,7 @@ end
 
 -- Stores the possible spawners for each creature name and start
 function Spawns:Init()
-    
+
     print("Spawns Init")
     GameRules.SpawnInfo = LoadKeyValues("scripts/kv/spawn_info.kv")
 
@@ -172,7 +172,7 @@ function IsNearABuilding(location)
     local isNearABuilding = false
     local nearbyUnits = FindUnitsInRadius(DOTA_TEAM_NEUTRALS, location, nil, 1000, DOTA_UNIT_TARGET_TEAM_BOTH, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_CREEP, 0, 0, false )
     for _,unit in pairs(nearbyUnits) do
-        if IsCustomBuilding(unit) then
+        if IsCustomBuilding(unit) or unit:IsPlayer() then
             return true
         end
     end
