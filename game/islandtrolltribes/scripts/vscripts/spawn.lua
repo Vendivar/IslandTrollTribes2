@@ -76,6 +76,7 @@ end
 
 function Spawns:Think()
     -- Roll chance and restrict creature spawns up to the max allowed
+    FindTesting()
     local spawnTable = GetSpawnInstructions()
     local locationTypeTable = GameRules.SpawnInfo['LocationTypes'][GameRules.SpawnLocationType]
     for unitName,creepTable in pairs(spawnTable) do
@@ -150,7 +151,7 @@ end
 -- Creates a nutral on a random location
 function Spawns:GetRandomLocation(region)
     local location = GetRandomVectorGivenBounds(region[1], region[2], region[3], region[4])
-    while IsNearABuilding(location) do
+    while IsNearABuilding(location) or IsNearAHero(location) do
         location = GetRandomVectorGivenBounds(region[1], region[2], region[3], region[4])
     end
     return location
@@ -168,13 +169,17 @@ function GetEmptyLocation( locations )
     return locations[RandomInt(1, #locations)]
 end
 
+function IsNearAHero(location)
+    local nearbyUnits = FindUnitsInRadius(DOTA_TEAM_NEUTRALS, location, nil, 1000, DOTA_UNIT_TARGET_TEAM_BOTH, DOTA_UNIT_TARGET_HERO, 0, 0, false)
+    return #nearbyUnits > 0
+end
+
 function IsNearABuilding(location)
-    local isNearABuilding = false
-    local nearbyUnits = FindUnitsInRadius(DOTA_TEAM_NEUTRALS, location, nil, 1000, DOTA_UNIT_TARGET_TEAM_BOTH, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_CREEP, 0, 0, false )
+    local nearbyUnits = FindUnitsInRadius(DOTA_TEAM_NEUTRALS, location, nil, 1000, DOTA_UNIT_TARGET_TEAM_BOTH, DOTA_UNIT_TARGET_ALL, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, 0, false )
     for _,unit in pairs(nearbyUnits) do
-        if IsCustomBuilding(unit) or unit:IsPlayer() then
+        if IsCustomBuilding(unit) then
             return true
         end
     end
-    return isNearABuilding
+    return false
 end
