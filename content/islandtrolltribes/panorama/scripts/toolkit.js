@@ -26,4 +26,5 @@ function MouseOut(argument) {
 
 (function () {
     $.Msg("Toolkit Load")
+	Game.AddCommand("+TogglePanic", function() {Cast("panic")}, "", 0);
 })();
