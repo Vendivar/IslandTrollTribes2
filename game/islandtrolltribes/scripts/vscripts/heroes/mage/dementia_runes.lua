@@ -1,21 +1,39 @@
-function RunesTelegatherInit(keys)
-    local caster = keys.caster
-    local target = keys.target
-    keys.caster.targetFire = target
-end
+DEMENTIA_RUNES = {"ka_rune","lez_rune","nel_rune"}
+LEVEL_TO_STACKS = {1,3,6}
 
--- ItemRunes, RunesManip
--- ToggleOn RunesManip:         ItemRunes, RunesManip, Ability1, 2, 3, 4.
+-- Shows the new abilities
 function ToggleOnRunes( event )
     local caster = event.caster
-    local runesAbilityList = {
-        "ability_mage_dementia_runes",
-        "ability_mage_karune",
-        "ability_mage_lezrune",
-        "ability_mage_nelrune"
-    }
+    local ability = event.ability
     HideAllAbilities(caster)
-    ShowTheSpellBook(caster, runesAbilityList)
+    
+    ability:SetHidden(false)
+    PrintAbilities(caster)
+
+    if not caster:HasAbility("ability_mage_dementia_runes_start") then
+        local start = caster:AddAbility("ability_mage_dementia_runes_start")
+        local stop = caster:AddAbility("ability_mage_dementia_runes_stop")
+        local invoked = caster:AddAbility("ability_mage_dementia_runes_invoked")
+
+        start:SetLevel(1)
+        stop:SetLevel(1)
+        invoked:SetLevel(1)
+
+        stop:SetActivated(false)
+        invoked:SetActivated(false)
+    else
+        local start = caster:FindAbilityByName("ability_mage_dementia_runes_start")
+        local stop = caster:FindAbilityByName("ability_mage_dementia_runes_stop")
+        local invoked = caster:FindAbilityByName("ability_mage_dementia_runes_invoked")
+
+        start:SetHidden(false)
+        stop:SetHidden(false)
+        invoked:SetHidden(false)
+
+        if not ability.runes or #ability.runes == 0 then
+            stop:SetActivated(false)
+        end
+    end
 end
 
 -- Turns the layout back to normal
@@ -25,6 +43,117 @@ function ToggleOffRunes( event )
     HideAllAbilities(caster)
     ShowTheSpellBook(caster, spellBook)
 end
+
+function Start(event)
+    local ability = event.ability
+    local caster = event.caster
+    ability.particle = ParticleManager:CreateParticle("particles/custom/incant_ring_new.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster)
+
+    caster:FindAbilityByName("ability_mage_dementia_runes_stop"):SetActivated(true)
+    caster:FindAbilityByName("ability_mage_dementia_runes_invoked"):SetActivated(false)
+    ResetRunes(caster)
+end
+
+function Stop(event)
+    local ability = event.ability
+    local caster = event.caster
+    local acquired = DEMENTIA_RUNES[RandomInt(1,3)]
+    
+    local dementia_runes = caster:FindAbilityByName("ability_mage_dementia_runes")
+    table.insert(dementia_runes.runes, acquired)
+    dementia_runes[acquired] = dementia_runes[acquired] and dementia_runes[acquired] + 1 --1/2/3
+
+    ability:ApplyDataDrivenModifier(caster,caster,"modifier_"..acquired,{})
+    caster:SetModifierStackCount("modifier_"..acquired,caster,LEVEL_TO_STACKS[dementia_runes[acquired]]) --1/3/6
+
+    if #dementia_runes.runes == 3 then
+        ability:SetActivated(false)
+        local start_ability = caster:FindAbilityByName("ability_mage_dementia_runes_start")
+        start_ability:SetActivated(true)
+        ParticleManager:DestroyParticle(start_ability.particle,false)
+        caster:FindAbilityByName("ability_mage_dementia_runes_invoked"):SetActivated(true)
+        dementia_runes.resetTimer = Timers:CreateTimer(45, function() -- The runes last 45 seconds
+            ResetRunes(caster)
+        end)
+    end
+end
+
+function Cast(event)
+    local caster = event.caster
+    local target = event.target
+    local ability = event.ability
+
+    local info =
+    {
+        Ability = ability,
+        Target = target,
+        Source = caster,
+        EffectName = "particles/units/heroes/hero_visage/visage_soul_assumption_bolt6.vpcf", -- This should be different combinations
+        vSpawnOrigin = caster:GetAttachmentOrigin(caster:ScriptLookupAttachment("attach_attack1")),
+        bProvidesVision = false,
+        bDeleteOnHit = true,
+        bDodgeable = false,
+        iMoveSpeed = 1000
+    }
+    projectile = ProjectileManager:CreateTrackingProjectile(info)
+
+    caster:FindAbilityByName("ability_mage_dementia_runes_invoked"):SetActivated(false)
+    caster:FindAbilityByName("ability_mage_dementia_runes"):ToggleAbility()
+end
+
+function Hit(event)
+    local caster = event.caster
+    local target = event.target
+    local ability = event.ability
+
+    local ka_level = caster:GetModifierStackCount("modifier_ka_rune",caster)
+    local lez_level = caster:GetModifierStackCount("modifier_lez_rune",caster)
+    local nel_level = caster:GetModifierStackCount("modifier_nel_rune",caster)
+
+    if ka_level > 0 then -- Damage
+        ApplyDamage({victim = target, attacker = caster, damage = ability:GetSpecialValueFor("damage_per_ka_lvl") * ka_level, damage_type = DAMAGE_TYPE_PURE})
+    end
+
+    if lez_level > 0 then
+        ability:ApplyDataDrivenModifier(caster,target,"modifier_lez_slow",{duration=5})
+        caster:SetModifierStackCount("modifier_lez_slow",caster,lez_level)
+        for i=1,lez_level do
+            ability:ApplyDataDrivenModifier(caster,target,"modifier_lez_dot",{duration=5})
+        end
+    end
+
+    if nel_level > 0 then -- Stun
+        ability:ApplyDataDrivenModifier(caster,target,"modifier_nel_stun",{duration=nel_level})
+    end
+
+    print("Dementia Runes Effect:")
+    print("\tDamage:  ",ability:GetSpecialValueFor("damage_per_ka_lvl") * ka_level)
+    print("\tSlot/DoT:",ability:GetSpecialValueFor("slowdot_per_lez_level") * lez_level)
+    print("\tStun:    ",nel_level)
+
+    ResetRunes(caster)
+end
+
+function ResetRunes(hero)
+    local ability = hero:FindAbilityByName("ability_mage_dementia_runes")
+    ability.runes = {}
+    ability.ka_rune = 0
+    ability.lez_rune = 0
+    ability.nel_rune = 0
+    hero:RemoveModifierByName("modifier_ka_rune")
+    hero:RemoveModifierByName("modifier_lez_rune")
+    hero:RemoveModifierByName("modifier_nel_rune")
+    hero:FindAbilityByName("ability_mage_dementia_runes_invoked"):SetActivated(false)
+    if ability.resetTimer then
+        Timers:RemoveTimer(ability.resetTimer)
+    end
+end
+
+
+
+----------------------------------------------------
+-- Deprecated
+----------------------------------------------------
 
 function NelRune(keys)
     local caster = keys.caster
