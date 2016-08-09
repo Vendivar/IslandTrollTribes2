@@ -7,7 +7,7 @@ function StartDespawnTimer(keys)
 end
 
 function Despawn(unit)
-    if unit:IsAlive() and unit:HasModifier("modifier_baby_animal") then
+    if not unit:IsNull() and unit:IsAlive() and unit:HasModifier("modifier_baby_animal") then
         unit:ForceKill(false)
     end
 end

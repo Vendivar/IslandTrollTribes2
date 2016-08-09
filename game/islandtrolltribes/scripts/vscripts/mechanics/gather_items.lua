@@ -53,6 +53,7 @@ function ToggleOffGathering(keys)
     caster:Stop()
     caster:RemoveModifierByName("modifier_itemgather_mode")
     caster:RemoveModifierByName("modifier_itemstore_mode")
+    caster:MoveToNPC(caster:GetOwner())
 end
 
 function StoreItemThink(keys)
@@ -92,7 +93,7 @@ function TransferItems(keys)
     local ability = keys.ability
     for i=0,5 do
         local item = caster:GetItemInSlot(i)
-        if item then
+        if item and item:GetName() ~= "item_slot_locked" then
             local clonedItem = CreateItem(item:GetName(), nil, nil)
             CreateItemOnPositionSync(hatchery:GetAbsOrigin() + RandomVector(RandomFloat(100,150)),clonedItem)
             item:RemoveSelf()

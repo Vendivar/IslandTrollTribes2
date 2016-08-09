@@ -1,19 +1,96 @@
 function HatchEgg(keys)
     local hatchery = keys.caster
     local hero = hatchery:GetOwner()
+
+    if hero.bird then
+        SendErrorMessage(hero:GetPlayerOwnerID(), "You already have a bird pet" )
+        return
+    end
+
     local inventoryDetails = ValidateInventory( GetInventoryDetails( hatchery ) )
     if inventoryDetails.isValid then
         local spawnedBird = SpawnBird(SelectBird(inventoryDetails, hero), hatchery)
         ImproveAbility(spawnedBird, inventoryDetails)
         RemoveInventoryItems( inventoryDetails, hatchery )
-        
-    local lockedSlotCount = 5
-    ITT:CreateLockedSlotsForUnits(spawnedBird, lockedSlotCount)
+
+        local lockedSlotCount = 5
+        ITT:CreateLockedSlotsForUnits(spawnedBird, lockedSlotCount)
+
+        TameBird(spawnedBird,hero)
     else
         SendErrorMessage(hero:GetPlayerOwnerID(), inventoryDetails.errorMessage)
     end
 end
 
+function TameBird(newpet,hero)
+    if not hero.pets then
+        hero.pets = {}
+    else
+        -- Release old pet if it exists, this ability can't hold more than one pet
+        -- We do the entire lua code in case the other pet is stunned or can't cast the release spell for any reason
+        local pet = hero.pets[1]
+        local canKeep = false
+        if hero:GetSubClass() == "pack_leader" and #hero.pets < 2 then
+            canKeep = true
+        elseif hero:GetSubClass() ~= "pack_leader" and #hero.pets < 1 then
+            canKeep = true
+        end
+
+        if not canKeep and pet and IsValidAlive(pet) then
+            pet:SetTeam(DOTA_TEAM_NEUTRALS)
+            pet:RemoveAbility("ability_pet")
+            pet:RemoveModifierByName("modifier_pet")
+            pet:RemoveModifierByName("modifier_grow")
+            pet:RemoveAbility("ability_pet_release")
+            pet:RemoveAbility("ability_pet_empathicrage")
+            pet:RemoveAbility("ability_pet_sleep")
+            pet:EmitSound("Hero_Beastmaster.Call.Boar")
+            pet:EmitSound("Hero_Beastmaster.Call.Hawk")
+            pet:SetOwner(nil)
+            pet:SetControllableByPlayer(-1, false)
+
+            -- Go back to being a not-attackable animal
+            if ability_beastmaster_tamepet:IsValidPetName( pet ) then
+                TeachAbility(pet, "ability_baby_animal")
+            end
+
+            AdjustAbilityLayout(pet)
+            AdjustAbilityLayout(hero)
+            hero.pets = {}
+        end
+    end
+
+    newPet:EmitSound("Hero_Enchantress.EnchantCreep")
+
+    -- Change ownership
+    newPet:SetControllableByPlayer(hero:GetPlayerID(), true)
+    newPet:SetOwner(hero)
+    newPet:SetTeam(hero:GetTeamNumber())
+
+    -- Abilities on the Pet: Release, Sleep
+    TeachAbility(newPet, "ability_pet")
+    TeachAbility(newPet, "ability_pet_sleep")
+    TeachAbility(newPet, "ability_pet_release")
+    TeachAbility(newPet, "ability_pet_empathicrage")
+
+    -- Abilities on BM: Follow, Stay
+    TeachAbility(hero, "ability_beastmaster_pet_follow")
+    TeachAbility(hero, "ability_beastmaster_pet_stay")
+    SetAbilityVisibility(hero,"ability_beastmaster_pet_follow",false)
+    SetAbilityVisibility(hero,"ability_beastmaster_pet_stay",false)
+
+    local petControllAbility = hero:FindAbilityByName("ability_beastmaster_petcontroll")
+    if petControllAbility:GetToggleState() == false then
+        ToggleOn(petControllAbility)
+    end
+
+    AdjustAbilityLayout(hero)
+    AdjustAbilityLayout(newPet)
+
+    -- Add to the list of pets
+    table.insert(hero.pets, newPet)
+    hero.bird = newPet
+end
 
 function GetInventoryDetails(hatchery)
 
@@ -24,7 +101,7 @@ function GetInventoryDetails(hatchery)
         {type="mushroom", decides = "bird_type", selects = "npc_creep_drake_blue", count=0},
         {type="rock_dark", decides = "bird_type",  selects = "npc_creep_drake_nether", count=0},
         {type="thistle", decides = "bird_type", selects = "npc_creep_drake_nether", count=0},
-        
+
         {type="clay", decides = "ability", incleases = "health", by = "5%", count=0}, --Red Dragon
         {type="hide",decides = "ability", incleases = "health", by = "50", count=0},  --Red Dragon
         {type="butsu",decides = "ability", incleases = "movement_speed", by = "5%", count=0}, --Blue Dragon
@@ -95,10 +172,10 @@ end
 
 function SelectBird(inventoryDetails, hero)
     inventoryDetails.selectedBird = "npc_creep_hawk"
-    if hero:GetName() == "npc_dota_hero_lycan" then 
-        inventoryDetails.selectedBird = "npc_creep_hawk"
-        return  inventoryDetails.selectedBird
-    end
+    --if hero:GetName() == "npc_dota_hero_lycan" then
+    --    inventoryDetails.selectedBird = "npc_creep_hawk"
+    --    return  inventoryDetails.selectedBird
+    --end
     for  i,itemType in pairs(inventoryDetails.itemTypes) do
         if ( itemType.decides == "bird_type" and itemType.count >= 3  ) then
             inventoryDetails.selectedBird = itemType.selects
