@@ -244,7 +244,7 @@
         "ChatLine" "{s:type}<b><font color='{s:color}'>{s:name}</font></b>: {s:message}"
         "ChatPlaceholder" "Type here..."
 
-        "DOTA_Tooltip_Ability_Panic" "Panic"
+        "DOTA_Tooltip_Ability_Panic" "<font color='#00CC00'>P</font>anic"
         "DOTA_Tooltip_Ability_Panic_Description"         "Use this ability to send your troll into a panic to gain attack damage and move speed! Be warned, during your state of frenzy you take increased damage."
         "DOTA_Tooltip_Ability_Panic_attack_speed"       "ATTACK SPEED:"
         "DOTA_Tooltip_Ability_Panic_move_speed"         "MOVE SPEED:"
@@ -280,7 +280,12 @@
 		"Intro_Core" "<h1>Basics:</h1>
 • Surviving your first night<br>
 • Crafting<br>
-• Combat<br>"
+• Combat<br><br><br>
+<h2>Surviving your first night:</h2><br>
+It is important to help your team to gather the components required to build a fire. Alongside that it is important to set up your teams base! You can have any number of bases you choose but it is good to start with one solid one.<br><br>
+<h2>Crafting:</h2><br>
+The resources you find in world can be crafted into a number of helpful things that will propel your team into victory. You can take a look at the master crafting menu by pressing C or by clicking on the tab on the left side of the screen.<br><br>
+<h2>Combat:</h2>"
 		
 		
 		"Buildings_Intro" "Building Information"
@@ -301,13 +306,15 @@
 • Witch Doctor's Hut - Creating magic spells, magic items and special buildings. <br>
 • Mixing Pot - Creates potions from herbs. <br><br>
 <h1>Defensive:</h1>
-• Omnitower - Full sized powerful and customizable defense. Holds up to 3 "Offensive" items (e.g. Nets, Spears) 
-• Ensnare Trap - Tiny light defense with nets. 
+• Omnitower - Full sized powerful and customizable defense. Holds up to 3 'Offensive' items (e.g. Nets, Spears) <br>
+• Ensnare Tower - Tiny light defense with nets. 
+• Iron Trap - A metal trap that can be placed on the ground. When stepped on it stuns the enemy and deals high damage. <br>
+• <u>Ensnare Trap</u> - A twine based trap that prevents the user from moving while dealing a small amount of damage. <br><br>
 <h1>Special:</h1>
-• Spirit Ward - Revives fallen players. 
-• Teleport Beacon - Teleport players over terrain. 
-• Hatchery - Turns hawk eggs and other items into flying pets. 
-• Craftmaster - Crafting inventory items if low on inventory space."
+• Spirit Ward - Revives fallen players. <br>
+• Teleport Beacon - Teleport players over terrain. <br>
+• Hatchery - Turns hawk eggs and other items into flying pets. <br>
+• Craftmaster - Crafting inventory items if low on inventory space.<br>"
 
 "Classes_Intro" "Classes Information"
 "Classes_Core" "The 'base class' is just the theoretical foundation that all classes are based on. All classes(including subclasses) have the same base armor and health/energy but different attributes per tier causing the health/energy and armor to be different. The math behind this is every class starts with 192 health/energy but it is increased by 8 per skill point in strength/intelligence respectively. Armor is increased by 1 per 10 agility and movement speed is 5 per agility but the base varies between classes and subclasses. Each class shares the same subclass system and several base skills.<br><br>
@@ -328,21 +335,22 @@ Use: Locating items, large inventory, creating special buildings. <br><br>
 		"Creeps_Core" "Lots of animals here in this world<br><br>
 		
 <h1>Pet Animals:</h1>
-Fawn: Can mature into Elk (Pet) and Adult Elk 
-Wolf Pup: Can mature into Jungle Wolf and Adult Jungle Wolf 
-Bear Cub: Can mature into Jungle Bear and Adult Jungle Bear <br><br>
+Fawn: Can mature into Elk (Pet) -> and Adult Elk <br>
+Wolf Pup: Can mature into Jungle Wolf -> and into Adult Jungle Wolf <br>
+Bear Cub: Can mature into Jungle Bear -> and into Adult Jungle Bear <br><br>
 <h1>Passive Animals:</h1>
-Fish 
-Green Fish 
-Elk 
+Fish <br>
+Green Fish <br>
+Elk <br>
 Hawk  <br><br>
 <h1>Hostile Animals:</h1>
-Jungle Wolf 
-Jungle Bear 
-Snake 
+Jungle Wolf <br>
+Jungle Bear <br>
+Snake <br>
 Panther  <br><br>
 <h1>Bosses:</h1>
-Mammoth
+Mammoth<br>
+<s>Dis??</s>??? 
 "
     }
 }

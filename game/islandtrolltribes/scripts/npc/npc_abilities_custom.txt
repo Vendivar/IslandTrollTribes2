@@ -6842,26 +6842,6 @@
 		}
 	
 	}
-	"ability_mage_activate_runes"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
-		"AbilityTextureName"	"ability_mage_dementiarunes"
-		"MaxLevel"	"1"
-		"AbilityCastPoint"	"0"
-	
-		"OnSpellStart"
-		{
-		    "RunScript"
-		    {
-		        "ScriptFile"    "heroes/mage/dementia_runes.lua"
-		        "Function"      "ActivateRunes"
-		        "Target"        "TARGET"
-		    }
-		}
-	}
 	"ability_mage_anger"
 	{
 	"BaseClass"	"ability_datadriven"
@@ -7428,17 +7408,33 @@
 			}
 		}
 	}
+	// New Dementia Runes Ability Flow:
+	//  1. Use the main ability
+	//  2. Spells visible: Start, deactivated Stop and deactivated rune single target spell.
+	    // You keep the rune spell for 45 seconds, dementia runes has 60 second cooling off after its used.
+	//  3. Use Start ability
+	//  4. 5 Runes are randomly created (at least one of each of the 3 types) and rotate around the caster
+	//  5. Use Stop, a rune will be chosen based on the position of the spinning particle/runes
+	//  6. Back to 4. until you have used Stop 3 times. The runes spin faster every time.
+	//  7. After the 3 runes are defined, the rune spell is activable
+	//  8. Spell will have an effect based on the runes acquired (seen as modifiers in the buff bar)
+	
+	// Toggling Dementia Runes off/on can be done at any point (no cooldown)
+	// The Start button has 60 second coooldown
+	// The Stop button is only activable after Start
+	// The Spell is consumed after usage (goes back to deactivated form)
+	
 	"ability_mage_dementia_runes"
 	{
-	    "BaseClass"    			"ability_datadriven"
-	    "AbilityBehavior"    	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE"
+	    "BaseClass"             "ability_datadriven"
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	    "AbilityTextureName"    "ability_mage_activerunes"
-	    "MaxLevel"    			"1"
-	    "AbilityCastPoint"    	"0"
+	    "MaxLevel"              "1"
+	    "AbilityCastPoint"      "0"
 	
 	    "OnToggleOn"
 	    {
-	    	"RunScript"
+	        "RunScript"
 	        {
 	            "ScriptFile" "heroes/mage/dementia_runes.lua"
 	            "Function"   "ToggleOnRunes"
@@ -7447,18 +7443,170 @@
 	
 	    "OnToggleOff"
 	    {
-	    	"RunScript"
+	        "RunScript"
 	        {
 	            "ScriptFile" "heroes/mage/dementia_runes.lua"
 	            "Function"   "ToggleOffRunes"
 	        }
 	    }
+	}
+	
+	"ability_mage_dementia_runes_start"
+	{
+	    "BaseClass"             "ability_datadriven"
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	
+	    "AbilityTextureName"    "skywrath_mage_mystic_flare"
+	    "MaxLevel"              "1"
+	
+	    "AbilityCooldown"       "60"
+	    "AbilityManaCost"       "100"
+	
+	    "OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"    "heroes/mage/dementia_runes.lua"
+	            "Function"      "Start"
+	        }
+	    }
+	}
+	
+	"ability_mage_dementia_runes_stop"
+	{
+	    "BaseClass"             "ability_datadriven"
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	
+	    "AbilityTextureName"    "techies_focused_detonate"
+	    "MaxLevel"              "1"
+	
+	    "OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"    "heroes/mage/dementia_runes.lua"
+	            "Function"      "Stop"
+	        }
+	    }
 	
 	    "Modifiers"
 	    {
-	        "dementia_runes"
+	        "modifier_ka_rune"
 	        {
+	            "TextureName" "invoker_exort"
+	        }
 	
+	        "modifier_lez_rune"
+	        {
+	            "TextureName" "venomancer_venomous_gale"
+	        }
+	
+	        "modifier_nel_rune"
+	        {
+	            "TextureName" "invoker_quas"
+	        }
+	    }
+	}
+	
+	"ability_mage_dementia_runes_invoked"
+	{
+	    "BaseClass"                 "ability_datadriven"
+	    "AbilityTextureName"        "ability_mage_dementiarunes"
+	    "MaxLevel"                  "1"
+	
+	    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	    "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	    "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	    "AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL"
+	
+	    //  KA (Fire) Damage: 25, 75, 150
+	    //  LEZ (Poison) Slow/Dot: 15, 45, 90
+	    //  NEL (Ice) Stun: 1, 3, 6
+	
+	    "AbilityCastRange"          "1000"
+	
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"                  "FIELD_INTEGER"
+	            "damage_per_ka_lvl"         "25"
+	        }
+	        "02"
+	        {
+	            "var_type"                 "FIELD_FLOAT"
+	            "slowdot_per_lez_level"    "15"
+	        }
+	        "03"
+	        {
+	            "var_type"                 "FIELD_FLOAT"
+	            "stun_per_nel_level"        "1"
+	        }
+	    }
+	
+	    "OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"    "heroes/mage/dementia_runes.lua"
+	            "Function"      "Cast"
+	        }
+	    }
+	
+	    "OnProjectileHitUnit"
+	    {
+	        "DeleteOnHit"    "1"
+	        "RunScript"
+	        {
+	            "ScriptFile"    "heroes/mage/dementia_runes.lua"
+	            "Function"      "Hit"
+	        }
+	    }
+	
+	    "Modifiers"
+	    {
+	        "modifier_lez_slow"
+	        {
+	            "EffectName"        "particles/units/heroes/hero_venomancer/venomancer_poison_debuff_nova.vpcf"
+	            "EffectAttachType"  "follow_origin"
+	    
+	            "Properties"
+	            {
+	                "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "-15" 
+	            }
+	        }
+	
+	        "modifier_lez_dot"
+	        {
+	            "IsHidden"          "1"
+	            "IsPurgable"        "0"
+	            "Attributes"        "MODIFIER_ATTRIBUTE_MULTIPLE"
+	            "ThinkInterval"     "1.0"
+	            "OnIntervalThink"
+	            {
+	                "Damage"
+	                {
+	                    "Target"    "TARGET"
+	                    "Type"      "DAMAGE_TYPE_MAGICAL"
+	                    "Damage"    "slowdot_per_lez_level"
+	                }
+	            }
+	        }
+	
+	        "modifier_nel_stun"
+	        {
+	            "EffectName"            "particles/units/heroes/hero_crystalmaiden/maiden_frostbite_buff.vpcf"
+	            "EffectAttachType"      "follow_origin"
+	
+	            "StatusEffectName"      "particles/status_fx/status_effect_frost_lich.vpcf"        
+	            "StatusEffectPriority"  "10"
+	
+	            "IsDebuff"              "1"
+	            "OverrideAnimation"     "ACT_DOTA_DISABLED"
+	            "States"
+	            {
+	                "MODIFIER_STATE_STUNNED"    "MODIFIER_STATE_VALUE_ENABLED"
+	            }
 	        }
 	    }
 	}
@@ -9051,217 +9199,6 @@
 			}
 		}
 	}
-	"ability_mage_karune"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		"AbilityTextureName"	"ability_mage_karune"
-		"AbilityCastAnimation"	""
-		"AbilityCastPoint"	"0.0"
-		"AbilityCooldown"	"1"
-		"AbilityChannelTime"	"0"
-		"AbilityManaCost"	"0"
-		"MaxLevel"	"1"
-		"RequiredLevel"	"4"
-		"OnSpellStart"
-		{
-			"ApplyModifier"
-			{
-				"ModifierName"	"modifier_karune"
-				"Duration"	"0"
-				"Target"
-				{
-					"Target"	"CASTER"
-				}
-	
-			}
-	
-			"FireSound"
-			{
-				"EffectName"	"Hero_ElderTitan.AncestralSpirit.Damage"
-				"Target"	"CASTER"
-			}
-	
-			"RunScript"
-			{
-				"ScriptFile"	"heroes/mage/dementia_runes.lua"
-				"Function"	"KaRune"
-			}
-	
-		}
-	
-		"Modifiers"
-		{
-			"modifier_karune"
-			{
-				"Duration"	"0"
-				"Passive"	"1"
-				"IsHidden"	"0"
-				"IsBuff"	"1"
-			}
-	
-		}
-	
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"ka_damage"	"25"
-			}
-	
-		}
-	
-	}
-	"ability_mage_karune_spell"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
-		"AbilityTextureName"	"ability_mage_karune"
-		"AbilityCastPoint"	"0.0"
-		"AbilityCooldown"	"1"
-		"AbilityManaCost"	"0"
-		"MaxLevel"	"1"
-		"OnSpellStart"
-		{
-		    "Damage"
-		    {
-		        "Damage"	"25"
-		        "Target"	"TARGET"
-		        "Type"	"DAMAGE_TYPE_MAGICAL"
-		    }
-	
-			"FireSound"
-			{
-				"EffectName"	"Hero_ElderTitan.AncestralSpirit.Damage"
-				"Target"	"TARGET"
-			}
-		}
-	
-		"Modifiers"
-		{
-			"modifier_karune"
-			{
-			}
-		}
-	}
-	"ability_mage_lezrune"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		"AbilityTextureName"	"ability_mage_lezrune"
-		"AbilityCastAnimation"	""
-		"AbilityCastPoint"	"0.0"
-		"AbilityCooldown"	"1"
-		"AbilityChannelTime"	"0"
-		"AbilityManaCost"	"0"
-		"MaxLevel"	"1"
-		"RequiredLevel"	"4"
-		"OnSpellStart"
-		{
-			"ApplyModifier"
-			{
-				"ModifierName"	"modifier_lezrune"
-				"Duration"	"0"
-				"Target"
-				{
-					"Target"	"CASTER"
-				}
-	
-			}
-	
-			"FireSound"
-			{
-				"EffectName"	"Hero_ElderTitan.AncestralSpirit.Damage"
-				"Target"	"CASTER"
-			}
-	
-			"RunScript"
-			{
-				"ScriptFile"	"heroes/mage/dementia_runes.lua"
-				"Function"	"LezRune"
-			}
-	
-		}
-	
-		"Modifiers"
-		{
-			"modifier_lezrune"
-			{
-				"Duration"	"0"
-				"Passive"	"1"
-				"IsHidden"	"0"
-				"IsBuff"	"1"
-			}
-	
-		}
-	
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"lez_damage"	"35"
-			}
-	
-			"02"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"lez_seconds"	"7"
-			}
-	
-		}
-	
-	}
-	"ability_mage_lezrune_spell"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
-		"AbilityTextureName"	"ability_mage_lezrune"
-		"AbilityCastPoint"	"0.0"
-		"AbilityCooldown"	"1"
-		"AbilityManaCost"	"0"
-		"MaxLevel"	"1"
-		"OnSpellStart"
-		{
-			"ApplyModifier"
-			{
-				"ModifierName"	"modifier_lezrune"
-				"Duration"	"7.0"
-				"Target"	"TARGET"
-	
-			}
-	
-			"FireSound"
-			{
-				"EffectName"	"Hero_ElderTitan.AncestralSpirit.Damage"
-				"Target"	"TARGET"
-			}
-		}
-	
-		"Modifiers"
-		{
-			"modifier_lezrune"
-			{
-	            "IsDebuff"    "1"
-	            "ThinkInterval"    "1.0"
-	            "OnIntervalThink"
-	            {
-					"Damage"
-					{
-						"Damage"	"5"
-						"Target"	"TARGET"
-						"Type"	"DAMAGE_TYPE_MAGICAL"
-					}
-	            }
-			}
-	
-		}
-	}
 	"ability_mage_maddeningdischarge"
 	{
 		"BaseClass"	"ability_datadriven"
@@ -9739,115 +9676,6 @@
 			{
 				"var_type"	"FIELD_FLOAT"
 				"giga_negative_blast_duration_creep"	"5"
-			}
-	
-		}
-	
-	}
-	"ability_mage_nelrune"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		"AbilityTextureName"	"ability_mage_nelrune"
-		"AbilityCastAnimation"	""
-		"AbilityCastPoint"	"0.0"
-		"AbilityCooldown"	"1"
-		"AbilityChannelTime"	"0"
-		"AbilityManaCost"	"0"
-		"MaxLevel"	"1"
-		"RequiredLevel"	"4"
-		"OnSpellStart"
-		{
-			"ApplyModifier"
-			{
-				"ModifierName"	"modifier_nelrune"
-				"Duration"	"0"
-				"Target"
-				{
-					"Target"	"CASTER"
-				}
-	
-			}
-	
-			"FireSound"
-			{
-				"EffectName"	"Hero_ElderTitan.AncestralSpirit.Damage"
-				"Target"	"CASTER"
-			}
-	
-			"RunScript"
-			{
-				"ScriptFile"    "heroes/mage/dementia_runes.lua"
-				"Function"      "NelRune"
-			}
-	
-		}
-	
-		"Modifiers"
-		{
-			"modifier_nelrune"
-			{
-				"Duration"	"0"
-				"Passive"	"1"
-				"IsHidden"	"0"
-				"IsBuff"	"1"
-			}
-	
-		}
-	
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"nel_slow"	"+15"
-			}
-	
-			"02"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"nel_seconds"	"5"
-			}
-	
-		}
-	
-	}
-	"ability_mage_nelrune_spell"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
-		"AbilityTextureName"	"ability_mage_nelrune"
-		"AbilityCastPoint"	"0.0"
-		"AbilityCooldown"	"1"
-		"AbilityManaCost"	"0"
-		"MaxLevel"	"1"
-		"OnSpellStart"
-		{
-			"ApplyModifier"
-			{
-				"ModifierName"	"modifier_nelrune"
-				"Duration"	"5.0"
-		        "Target"	"TARGET"
-			}
-	
-			"FireSound"
-			{
-				"EffectName"	"Hero_ElderTitan.AncestralSpirit.Damage"
-				"Target"	"TARGET"
-			}
-		}
-	
-		"Modifiers"
-		{
-			"modifier_nelrune"
-			{
-				"IsDebuff"	"1"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"-15"
-				}
 			}
 	
 		}

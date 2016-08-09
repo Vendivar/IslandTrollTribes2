@@ -26,7 +26,7 @@
                     <Label class="Help_Tab_Header" text="Classes" />
                 </Panel>
 				        <Panel class="Help_Tab" onactivate="SelectTab(3)" onmouseover="OnTabHover(3)" onmouseout="OnTabHoverOut(3)">
-                    <Label class="Help_Tab_Header" text="Creeps" />
+                    <Label class="Help_Tab_Header" text="Animals" />
                 </Panel>
             </Panel>
             <Panel id="Help_Content">

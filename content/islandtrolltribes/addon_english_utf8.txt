@@ -91,17 +91,17 @@
 		"npc_creature_scroll_skeleton"			"Skeleton"
 		"npc_creep_mammoth"						"Mammoth"		
 		
-		"npc_bush_herb"							"Herb Bush"
-		"npc_bush_herb_blue"					"Herb Bush"
-		"npc_bush_herb_orange"					"Herb Bush"
-		"npc_bush_herb_purple"					"Herb Bush"
-		"npc_bush_herb_yellow"					"BushHerbYellow"
+		"npc_bush_herb"							"Butsu Herb Bush"
+		"npc_bush_herb_blue"					"Blue Herb Bush"
+		"npc_bush_herb_orange"					"Orange Herb Bush"
+		"npc_bush_herb_purple"					"Purple Herb Bush"
+		"npc_bush_herb_yellow"					"Yellow Herb Bush"
 		"npc_bush_mushroom"						"Mushroom"
 		"npc_bush_river"						"Bush"
 		"npc_bush_scout"						"Scout Bush"
 		"npc_bush_stash"						"Stash"
 		"npc_bush_thief"						"Theif Bush"
-		"npc_bush_thistle"						"BushThistle"
+		"npc_bush_thistle"						"Thistle Bush"
         
         "DOTA_Tooltip_ability_item_bush_mushroom"                                         "Mushroom Colony"
         "DOTA_Tooltip_ability_item_bush_mushroom_Description"                             ""
@@ -166,6 +166,8 @@
 		"npc_scroll_boulder"            "Boulder Scroll"
         "npc_building_trap_ensnare"     "Ensnare Trap"
 		"npc_building_trap_iron"        "Iron Trap"
+		"npc_building_trap_metal"		"Metal Trap"
+		
 	
 	
 		"npc_building_fire_basic"		"Basic Fire"
@@ -255,6 +257,7 @@
 "DOTA_Tooltip_ability_ability_beastmaster_bearform_attack_damage"		"+DAMAGE BONUS:"
 "DOTA_Tooltip_ability_ability_beastmaster_bearform_health_bonus"		"HEALTH BONUS:"
 "DOTA_Tooltip_ability_ability_beastmaster_bearform_move_speed"		    "%MOVE SPEED:"
+"DOTA_Tooltip_ability_ability_beastmaster_bearform_energy_drain"		"ENERGY DRAIN:"
 "DOTA_Tooltip_ability_ability_beastmaster_bearform_degen_rate"	    "%ENERGY DEGEN RATE:"
 "DOTA_Tooltip_Ability_ability_beastmaster_bearform_Description"		"Shapeshifts into a Bear. Drains energy at a faster rate. Gains additional abilities."
 "DOTA_Tooltip_Ability_ability_beastmaster_bearform_Note0"		    "The bonus HP is +50 HP ontop of your max HP. By shapeshifting back if you have less then 50 HP you will die upon being shapeshifted."
@@ -691,7 +694,9 @@
 "DOTA_Tooltip_ability_ability_mage_depress_manadrain"                             "MANA DRAIN INITIAL:"
 "DOTA_Tooltip_ability_ability_mage_depress_manadrain2"                            "MANA DRAIN PER 3 SECONDS:"
 "DOTA_Tooltip_ability_ability_mage_depress_secondarydrain"                        "SECONDARY MANA DRAIN:"
-"DOTA_Tooltip_ability_ability_mage_depress_durationx"                              "DURATION:"
+"DOTA_Tooltip_ability_ability_mage_depress_duration"                              "DURATION:"
+
+		
 
 	
 "DOTA_Tooltip_modifier_depress"		"Depress"
@@ -1397,7 +1402,27 @@
 "DOTA_Tooltip_Ability_ability_scout_motionsensorradar_range"		"RANGE:"
 "DOTA_Tooltip_Ability_ability_scout_placeward"		"Place Ward"
 "DOTA_Tooltip_Ability_ability_scout_placeward_Description"		"Places a ward up to 400 range away. Wards explode when stepped on and have timed life.\n\nSTEP DAMAGE: <font color='#777777'>10</font>"
+"DOTA_Tooltip_ability_ability_scout_placeward_max_stacks"                         "MAX STACKS:"
+"DOTA_Tooltip_ability_ability_scout_placeward_damage"                             "DAMAGE:"
+"DOTA_Tooltip_ability_ability_scout_placeward_radius"                             "RADIUS:"
+"DOTA_Tooltip_ability_ability_scout_placeward_activation_time"                    "ACTIVATION TIME:"
+"DOTA_Tooltip_ability_ability_scout_placeward_max_clay"                           "MAX CLAY:"
+"DOTA_Tooltip_ability_ability_scout_placeward_explode_delay"                      "EXPLODE DELAY:"
+"DOTA_Tooltip_ability_ability_scout_placeward_fade_time"                          "FADE TIME:"
+"DOTA_Tooltip_ability_ability_scout_placeward_vision_radius"                      "VISION RADIUS:"
+"DOTA_Tooltip_ability_ability_scout_placeward_vision_duration"                    "VISION DURATION:"
 
+"DOTA_Tooltip_ability_ability_scout_wardthearea_aoe"                              "AOE:"
+"DOTA_Tooltip_ability_ability_scout_wardthearea_radius"                           "RADIUS:"
+"DOTA_Tooltip_ability_ability_scout_wardthearea_explode_delay"                    "EXPLODE DELAY:"
+"DOTA_Tooltip_ability_ability_scout_wardthearea_fade_time"                        "FADE TIME:"
+"DOTA_Tooltip_ability_ability_scout_wardthearea_vision_radius"                    "VISION RADIUS:"
+	
+
+	
+	
+	
+	
 "DOTA_Tooltip_modifier_thief_reveal_vision"                                       "Thief Reveal Vision"
 "DOTA_Tooltip_modifier_thief_reveal_vision_Description"                           ""
 "DOTA_Tooltip_Ability_ability_scout_reveal"		"Reveal"
@@ -1553,7 +1578,6 @@
 "DOTA_Tooltip_ability_ability_thief_throwingknife_damage"		"DAMAGE:"
 "DOTA_Tooltip_Ability_ability_thief_throwingknife_Description"		"Instantly throws a knife in target direction. If it hits a troll they take damage and their movement is slowed by 50%% for 3 seconds."
 "DOTA_Tooltip_ability_ability_thief_throwingknife_projectile_distance"		"PROJECTILE DISTANCE:"
-"DOTA_Tooltip_ability_ability_thief_throwingknife_projectile_speed"		"PROJECTILE SPEED:"
 "DOTA_Tooltip_ability_ability_thief_throwingknife_slow_duration"		"SLOW DURATION:"
 "DOTA_Tooltip_ability_ability_thief_throwingknife_slow_percent"		"SLOW PERCENT:"
 "DOTA_Tooltip_modifier_knife_slow"		"Knife Slow"
@@ -1749,6 +1773,7 @@
 
 "DOTA_Tooltip_modifier_shield_battle_debuff"                                      "Battle Shield Debuff"
 "DOTA_Tooltip_modifier_shield_battle_debuff_Description"                          ""
+"DOTA_Tooltip_ability_item_shield_battle_bash_damage"                             "BASH DAMAGE:"
 
 		
 
@@ -1891,6 +1916,18 @@
 "DOTA_Tooltip_ability_ability_ensnaretrap_ensnare_range"                          "RANGE:"
 "DOTA_Tooltip_ability_ability_ensnaretrap_ensnare_duration_creep"                 "CREEP DURATION:"
 "DOTA_Tooltip_ability_ability_ensnaretrap_ensnare_damage_per_second"              "DAMAGE PER SECOND:"
+"DOTA_Tooltip_ability_ability_ensnaretrap_ensnare_burn_radius"                    "BURN RADIUS:"
+"DOTA_Tooltip_ability_ability_ensnaretrap_ensnare_ensnare_duration"               "ENSNARE DURATION:"
+
+"DOTA_Tooltip_ability_ability_irontrap_ensnare"                                   "Ability Irontrap Ensnare"
+"DOTA_Tooltip_ability_ability_irontrap_ensnare_Description"                       ""
+"DOTA_Tooltip_ability_ability_irontrap_ensnare_damage"                            "DAMAGE:"
+"DOTA_Tooltip_ability_ability_irontrap_ensnare_stun_duration"                     "STUN DURATION:"
+
+
+	
+
+
 
 "DOTA_Tooltip_ability_item_boat_building_kit_workshop"		"Workshop Kit"
 "DOTA_Tooltip_ability_item_boat_building_kit_workshop_Description"		"An advanced building with all sorts of tools to make advanced equipment and weapons."
@@ -2069,13 +2106,11 @@
 "DOTA_Tooltip_ability_item_boat_spear_basic_hurl_damage"		"THROW DAMAGE:"
 "DOTA_Tooltip_ability_item_boat_spear_basic_Lore"		"More akin to a giant arrow than a spear."
 "DOTA_Tooltip_ability_item_boat_spear_basic_max_stacks"		"MAXIMUM STACKS:"
-"DOTA_Tooltip_ability_item_boat_spear_basic_projectile_speed"		"PROJECTILE SPEED:"
 "DOTA_Tooltip_ability_item_boat_spear_iron"		"Iron Spear"
 "DOTA_Tooltip_ability_item_boat_spear_iron_Description"		"ACTIVE: Throw - Hurl the spear at the enemy target causing them to take damage and be stunned. The stun lasts for 0.75 seconds on trolls and two seconds on animals.\n<font color='#777777'>There is a 60%% chance to recover the spear when thrown.</font>\n\nA sharp spear that can be thrown at enemies."
 "DOTA_Tooltip_ability_item_boat_spear_iron_hurl_damage"		"THROW DAMAGE:"
 "DOTA_Tooltip_ability_item_boat_spear_iron_Lore"		"Pointy end points AWAY from you."
 "DOTA_Tooltip_ability_item_boat_spear_iron_max_stacks"		"MAXIMUM STACKS:"
-"DOTA_Tooltip_ability_item_boat_spear_iron_projectile_speed"		"PROJECTILE SPEED:"
 "DOTA_Tooltip_ability_item_boat_spear_poison"		"Poison Spear"
 "DOTA_Tooltip_ability_item_boat_spear_poison_attack_speed_slow"		"%$ATTACK SPEED SLOW:"
 "DOTA_Tooltip_ability_item_boat_spear_poison_Description"		"ACTIVE: Throw - Hurl the spear at the enemy target causing them to take damage and become poisoned over time ticking every 3 seconds.\n<font color='#777777'>There is a 60%% chance to recover the spear when thrown.</font>\n\nA regular throwing spear dipped in a small amount of poison."
@@ -2086,7 +2121,6 @@
 "DOTA_Tooltip_ability_item_boat_spear_poison_poison_damage"		"POISON DAMAGE:"
 "DOTA_Tooltip_ability_item_boat_spear_poison_poison_duration"		"POISON DURATION:"
 "DOTA_Tooltip_ability_item_boat_spear_poison_poison_tick_time"		"POISON TICK TIME:"
-"DOTA_Tooltip_ability_item_boat_spear_poison_projectile_speed"		"PROJECTILE SPEED:"
 "DOTA_Tooltip_ability_item_boat_spear_poison_recover_chance"		"%RECOVER CHANCE:"
 "DOTA_Tooltip_ability_item_boat_spear_poison_slow_duration"		"SLOW DURATION:"
 "DOTA_Tooltip_ability_item_boat_spear_poison_slow_tick_time"		"SLOW TICK TIME:"
@@ -2104,7 +2138,6 @@
 "DOTA_Tooltip_ability_item_boat_stone"		"Stone"
 "DOTA_Tooltip_ability_item_boat_stone_Description"		"ACTIVE: Throw - Throws the item at the targeted Troll or Creep.\n\nTrollkind's first actual tool. Can be used as building blocks in various constructions, or even as a weapon."
 "DOTA_Tooltip_ability_item_boat_stone_Lore"		"Not to be confused with a stone lobster."
-"DOTA_Tooltip_ability_item_boat_stone_projectile_speed"		"PROJECTILE SPEED:"
 "DOTA_Tooltip_ability_item_boat_stone_stone_damage"		"DAMAGE:"
 "DOTA_Tooltip_ability_item_boat_stone_stun_creep"		"CREEP STUN:"
 "DOTA_Tooltip_ability_item_boat_stone_stun_troll"		"TROLL STUN:"
@@ -2286,12 +2319,17 @@
 "DOTA_Tooltip_ability_item_building_kit_trap_ensnare_Note0"		"Ensnare: (auto cast)\n    ò Immobilizes trolls for 3.25s, animals for 8s.\n    ò 10s cooldown.\nGet Corpse: (autocast)\n    ò Picks up nearby corpse. Max 8."
 
 
+"DOTA_Tooltip_modifier_enemytargeting_Description"                                "Item's loaded into this will automatically target an enemy and be used on them!"
+
+
 "DOTA_Tooltip_ability_item_building_kit_trap_iron"                                "Iron Trap Kit"
-"DOTA_Tooltip_ability_item_building_kit_trap_iron_Description"                    ""
+"DOTA_Tooltip_ability_item_building_kit_trap_iron_Description"                    "Build a trap made of iron. When stepped on it will do good damage to the enemy and stun them for some time. There is also a chance that they will bleed out for some time."
 "DOTA_Tooltip_ability_item_building_kit_trap_iron_max_stacks"                     "MAX STACKS:"
 "DOTA_Tooltip_modifier_irontrap_ensnare"                                          "Irontrap Ensnared"
 "DOTA_Tooltip_modifier_irontrap_ensnare_Description"                              "You've been caught by the iron trap and are hurt for 55 damage and stunned for 1.5 seconds!"
 
+"DOTA_Tooltip_modifier_trap_stun"										"Trap Stun"
+"DOTA_Tooltip_modifier_trap_stun_Description"    						"Stunned for 1.5 seconds!"
 
 
 "DOTA_Tooltip_ability_ability_ensnaretower_ensnare"                               "Ensnare"
@@ -2537,27 +2575,23 @@
 "DOTA_Tooltip_ability_item_gloves_wolf_Lore"		"Moist and smelly inside."
 "DOTA_Tooltip_ability_item_gloves_wolf_tick_rate"		"TICK RATE:"
 
-"DOTA_Tooltip_modifier_gloves_battle"		"Gloves Battle"
+"DOTA_Tooltip_modifier_gloves_battle"		"Battle Gloves"
 "DOTA_Tooltip_modifier_gloves_battle_Description"		""
-"DOTA_Tooltip_modifier_gloves_bear"		"Gloves Bear"
+"DOTA_Tooltip_modifier_gloves_bear"		"Bear Gloves"
 "DOTA_Tooltip_modifier_gloves_bear_Description"		""
-"DOTA_Tooltip_modifier_gloves_bone"		"Gloves Bone"
+"DOTA_Tooltip_modifier_gloves_bone"		"Bone Gloves"
 "DOTA_Tooltip_modifier_gloves_bone_Description"		""
-"DOTA_Tooltip_modifier_gloves_elk"		"Gloves Elk"
+"DOTA_Tooltip_modifier_gloves_elk"		"Elk Gloves"
 "DOTA_Tooltip_modifier_gloves_elk_Description"		""
-"DOTA_Tooltip_modifier_gloves_iron"		"Gloves Iron"
+"DOTA_Tooltip_modifier_gloves_iron"		"Iron Gloves"
 "DOTA_Tooltip_modifier_gloves_iron_Description"		""
-"DOTA_Tooltip_modifier_gloves_steel"		"Gloves Steel"
+"DOTA_Tooltip_modifier_gloves_steel"		"Steel Gloves"
 "DOTA_Tooltip_modifier_gloves_steel_Description"		""
-"DOTA_Tooltip_modifier_gloves_wolf"		"Gloves Wolf"
+"DOTA_Tooltip_modifier_gloves_wolf"		"Wolf Gloves"
 "DOTA_Tooltip_modifier_gloves_wolf_Description"		""
 
 
 
-"DOTA_Tooltip_modifier_gun_blow_thistles"		"Gun Blow Thistles"
-"DOTA_Tooltip_modifier_gun_blow_thistles_dark"		"Gun Blow Thistles Dark"
-"DOTA_Tooltip_modifier_gun_blow_thistles_dark_Description"		""
-"DOTA_Tooltip_modifier_gun_blow_thistles_Description"		""
 
 
 "DOTA_Tooltip_ability_item_gun_blow_bones"		"Blow Gun (Bones)"
@@ -2565,7 +2599,7 @@
 "DOTA_Tooltip_ability_item_gun_blow_bones_Lore"		"I came here to blow bones and blow bubblegum. And I'm all out of bubblegum."
 "DOTA_Tooltip_ability_item_gun_blow_bones_max_stacks"		"MAX STACKS:"
 "DOTA_Tooltip_ability_item_gun_blow_bones_Note0"		"Animals: 30 strike damage, 3 second stun\nTrolls: 30 strike damage, 0.75 second stun, 6 second cooldown\n650 range.\n\nStores up to 3 charges.\nWhen at zero charges reverts to an empty blowgun"
-"DOTA_Tooltip_ability_item_gun_blow_bones_projectile_speed"		"PROJECTILE SPEED:"
+
 "DOTA_Tooltip_ability_item_gun_blow_empty"		"Blow Gun (Empty)"
 "DOTA_Tooltip_ability_item_gun_blow_empty_Description"		"Poisoned tipped thistles, regular thistles, and bones can be loaded into this blowgun."
 "DOTA_Tooltip_ability_item_gun_blow_empty_Lore"		"I came here to blow nothing and blow bubblegum. And I'm all out of bubblegum."
@@ -2576,12 +2610,32 @@
 "DOTA_Tooltip_ability_item_gun_blow_thistles_dark_Lore"		"I came here to blow thistles and blow bubblegum. And I'm all out of bubblegum."
 "DOTA_Tooltip_ability_item_gun_blow_thistles_dark_max_stacks"		"MAX STACKS:"
 "DOTA_Tooltip_ability_item_gun_blow_thistles_dark_Note0"		"650 range\nAnimals: 30 strike damage, 1 damage every 3 seconds. -20% attack speed, -20% move speed. Lasts 15 seconds.\nTrolls: 20 strike damage, 1 damage every 3 seconds for 10 seconds. Causes unit to become depressed, draining 10 mana per second for 10 seconds. -20% attack speed, -20% move speed for 10s\n6 second cooldown.\nStores up to 3 charges.\nWhen at zero charges reverts to an empty blowgun"
-"DOTA_Tooltip_ability_item_gun_blow_thistles_dark_projectile_speed"		"PROJECTILE SPEED:"
+
 "DOTA_Tooltip_ability_item_gun_blow_thistles_Description"		"ACTIVE: Shoot a loaded thistle at your enemy.\n<font color='#777777'>Hold ALT to view more information.</font>\n\nThistles have been loaded into this blowgun. Deals damage and slows enemies.\nCan hold up to 3 charges."
 "DOTA_Tooltip_ability_item_gun_blow_thistles_Lore"		"I came here to blow thistles and blow bubblegum. And I'm all out of bubblegum."
 "DOTA_Tooltip_ability_item_gun_blow_thistles_max_stacks"		"MAX STACKS:"
 "DOTA_Tooltip_ability_item_gun_blow_thistles_Note0"		"650 range.\nAnimals: 10 strike damage, 1 damage every 3 seconds. -30% attack speed, -40% move speed. Lasts 12 seconds.\n\nTrolls: 10 strike damage, 1 damage every 3 seconds. -30% attack speed, -40% move speed. Lasts 7.5s\n6 second cooldown\n.Stores up to 3 charges.\nWhen at zero charges reverts to an empty blowgun"
-"DOTA_Tooltip_ability_item_gun_blow_thistles_projectile_speed"		"PROJECTILE SPEED:"
+
+
+
+"DOTA_Tooltip_ability_item_gun_blow_bones_damage"                                 "DAMAGE:"
+"DOTA_Tooltip_ability_item_gun_blow_bones_stun_dur"                               "STUN DURATION:"
+
+"DOTA_Tooltip_ability_item_gun_blow_thistles_initial_damage"                      "INITIAL DAMAGE:"
+"DOTA_Tooltip_ability_item_gun_blow_thistles_dot_damage"                          "DOT DAMAGE:"
+"DOTA_Tooltip_ability_item_gun_blow_thistles_slow"                                "SLOW:"
+"DOTA_Tooltip_ability_item_gun_blow_thistles_duration_hero"                       "DURATION HERO:"
+"DOTA_Tooltip_ability_item_gun_blow_thistles_duration_creep"                      "DURATION CREEP:"
+
+"DOTA_Tooltip_ability_item_gun_blow_thistles_dark_initial_damage"                 "INITIAL DAMAGE:"
+"DOTA_Tooltip_ability_item_gun_blow_thistles_dark_dot_damage"                     "DOT DAMAGE:"
+"DOTA_Tooltip_ability_item_gun_blow_thistles_dark_slow"                           "SLOW:"
+"DOTA_Tooltip_ability_item_gun_blow_thistles_dark_duration_hero"                  "DURATION HERO:"
+"DOTA_Tooltip_ability_item_gun_blow_thistles_dark_duration_creep"                 "DURATION CREEP:"
+
+
+
+
 
 
 "DOTA_Tooltip_ability_item_heat_modifier_applier"		"Heat Applier"
@@ -3008,7 +3062,6 @@
 "DOTA_Tooltip_ability_item_spear_basic_hurl_damage"		"THROW DAMAGE:"
 "DOTA_Tooltip_ability_item_spear_basic_Lore"		"More akin to a giant arrow than a spear."
 "DOTA_Tooltip_ability_item_spear_basic_max_stacks"		"MAXIMUM STACKS:"
-"DOTA_Tooltip_ability_item_spear_basic_projectile_speed"		"PROJECTILE SPEED:"
 "DOTA_Tooltip_ability_item_spear_basic_recover_chance"		"%RECOVER CHANCE:"
 "DOTA_Tooltip_ability_item_spear_dark"		"Dark Spear"
 "DOTA_Tooltip_ability_item_spear_dark_creep_duration"		"CREEP DURATION:"
@@ -3019,7 +3072,6 @@
 "DOTA_Tooltip_ability_item_spear_dark_mana_zap_max"		"MANA DRAIN MAXIMUM:"
 "DOTA_Tooltip_ability_item_spear_dark_mana_zap_min"		"MANA DRAIN MINIMUM:"
 "DOTA_Tooltip_ability_item_spear_dark_max_stacks"		"MAX STACKS:"
-"DOTA_Tooltip_ability_item_spear_dark_projectile_speed"		"PROJECTILE SPEED:"
 "DOTA_Tooltip_ability_item_spear_dark_recover_chance"		"%RECOVER CHANCE:"
 "DOTA_Tooltip_ability_item_spear_iron"		"Iron Spear"
 "DOTA_Tooltip_ability_item_spear_iron_creep_duration"		"CREEP DURATION:"
@@ -3028,7 +3080,6 @@
 "DOTA_Tooltip_ability_item_spear_iron_hurl_damage"		"THROW DAMAGE:"
 "DOTA_Tooltip_ability_item_spear_iron_Lore"		"Pointy end points AWAY from you."
 "DOTA_Tooltip_ability_item_spear_iron_max_stacks"		"MAXIMUM STACKS:"
-"DOTA_Tooltip_ability_item_spear_iron_projectile_speed"		"PROJECTILE SPEED:"
 "DOTA_Tooltip_ability_item_spear_poison"		"Poison Spear"
 "DOTA_Tooltip_ability_item_spear_poison_attack_speed_slow"		"%ATTACK SPEED SLOW:"
 "DOTA_Tooltip_ability_item_spear_poison_Description"		"ACTIVE: Throw - Hurl the spear at the enemy target causing them to take damage and become poisoned over time ticking every 3 seconds.\n<font color='#777777'>There is a 60%% chance to recover the spear when thrown.</font>\n\nA regular throwing spear dipped in a small amount of poison."
@@ -3039,7 +3090,6 @@
 "DOTA_Tooltip_ability_item_spear_poison_poison_damage"		"POISON DAMAGE:"
 "DOTA_Tooltip_ability_item_spear_poison_poison_duration"		"POISON DURATION:"
 "DOTA_Tooltip_ability_item_spear_poison_poison_tick_time"		"POISON TICK TIME:"
-"DOTA_Tooltip_ability_item_spear_poison_projectile_speed"		"PROJECTILE SPEED:"
 "DOTA_Tooltip_ability_item_spear_poison_recover_chance"		"%RECOVER CHANCE:"
 "DOTA_Tooltip_ability_item_spear_poison_refined"		"Refined Poison Spear"
 "DOTA_Tooltip_ability_item_spear_poison_refined_attack_speed_slow"		"%ATTACK SPEED SLOW:"
@@ -3051,7 +3101,6 @@
 "DOTA_Tooltip_ability_item_spear_poison_refined_poison_damage"		"POISON DAMAGE:"
 "DOTA_Tooltip_ability_item_spear_poison_refined_poison_duration"		"POISON DURATION:"
 "DOTA_Tooltip_ability_item_spear_poison_refined_poison_tick_time"		"POISON TICK TIME:"
-"DOTA_Tooltip_ability_item_spear_poison_refined_projectile_speed"		"PROJECTILE SPEED:"
 "DOTA_Tooltip_ability_item_spear_poison_refined_recover_chance"		"%RECOVER CHANCE:"
 "DOTA_Tooltip_ability_item_spear_poison_refined_slow_duration"		"SLOW DURATION:"
 "DOTA_Tooltip_ability_item_spear_poison_refined_slow_tick_time"		"SLOW TICK TIME:"
@@ -3068,7 +3117,6 @@
 "DOTA_Tooltip_ability_item_spear_poison_ultra_poison_damage"		"POISON DAMAGE:"
 "DOTA_Tooltip_ability_item_spear_poison_ultra_poison_duration"		"POISON DURATION:"
 "DOTA_Tooltip_ability_item_spear_poison_ultra_poison_tick_time"		"POISON TICK TIME:"
-"DOTA_Tooltip_ability_item_spear_poison_ultra_projectile_speed"		"PROJECTILE SPEED:"
 "DOTA_Tooltip_ability_item_spear_poison_ultra_recover_chance"		"%RECOVER CHANCE:"
 "DOTA_Tooltip_ability_item_spear_poison_ultra_slow_duration"		"SLOW DURATION:"
 "DOTA_Tooltip_ability_item_spear_poison_ultra_slow_tick_time"		"SLOW TICK TIME:"
@@ -3079,7 +3127,6 @@
 "DOTA_Tooltip_ability_item_spear_steel_hurl_damage"		"THROW DAMAGE:"
 "DOTA_Tooltip_ability_item_spear_steel_Lore"		"The convenience of having a stabby-thing, without the hassle of becoming one!"
 "DOTA_Tooltip_ability_item_spear_steel_max_stacks"		"MAXIMUM STACKS:"
-"DOTA_Tooltip_ability_item_spear_steel_projectile_speed"		"PROJECTILE SPEED:"
 
 "DOTA_Tooltip_modifier_poison_spear_dot_debuff"		"Poison Spear Dot Debuff"
 "DOTA_Tooltip_modifier_poison_spear_dot_debuff_Description"		""
@@ -3271,7 +3318,7 @@
 "DOTA_Tooltip_Ability_ability_enemy_target_Description"		"Allows the autocasted use of certain items placed in the Omnitower's inventory. All items used this way have a range of 575. Items stacked in a tower and consumed this way retain their cooldown."
 "DOTA_Tooltip_ability_ability_ensnare"		"Traps the target with a net, rendering it incapable of moving."
 "DOTA_Tooltip_ability_ability_ensnaretrap_ensnare"		"Ensnare"
-"DOTA_Tooltip_ability_ability_ensnaretrap_ensnare_Description"		""
+"DOTA_Tooltip_ability_ability_ensnaretrap_ensnare_Description"		"Encase the enemy in vines! Doing small damage over time and rooting them in place!
 "DOTA_Tooltip_ability_ability_ensnaretrap_ensnare_duration_animal"		"DURATION ANIMAL:"
 "DOTA_Tooltip_ability_ability_ensnaretrap_ensnare_duration_hero"		"HERO DURATION:"
 "DOTA_Tooltip_Ability_ability_get_corpse"		"Get Corpse"
@@ -3466,7 +3513,7 @@
         
         "panic"         "Panic!"
         
-        "DOTA_Tooltip_Ability_Panic" "Panic"
+        "DOTA_Tooltip_Ability_Panic" "<font color='#00CC00'>P</font>anic"
         "DOTA_Tooltip_Ability_Panic_Description"         "Use this ability to send your troll into a panic to gain attack damage and move speed! Be warned, during your state of frenzy you take increased damage." 
         "DOTA_Tooltip_Ability_Panic_attack_speed"       "%+$attack"
         "DOTA_Tooltip_Ability_Panic_move_speed"         "MOVE SPEED:"
