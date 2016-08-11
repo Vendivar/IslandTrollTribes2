@@ -460,6 +460,10 @@ function ITT:FilterExperience( filterTable )
     local playerID = filterTable["player_id_const"]
     local reason = filterTable["reason_const"]
 
+    if reason == DOTA_ModifyXP_HeroKill then
+        return false
+    end
+
     return true
 end
 

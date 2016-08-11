@@ -630,8 +630,10 @@ function ITT:OnEntityKilled(keys)
     end
 
     -- Heroes
-    if killedUnit.IsHero and killedUnit:IsHero() then
+    if killedUnit.IsRealHero and killedUnit:IsRealHero() then
         ITT:CheckWinCondition()
+
+        killedUnit:SplitExperienceBounty(killer:GetTeamNumber())
 
         local pos = killedUnit:GetAbsOrigin()
 
