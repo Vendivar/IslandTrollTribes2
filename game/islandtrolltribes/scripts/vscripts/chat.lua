@@ -11,6 +11,7 @@ end
 function Chat:OnSay(args)
     local id = args.PlayerID
     local message = args.message
+    local isTeam = args.isTeamChat
 
     print("Player #"..id.." just said '"..message.."'")
 
@@ -26,11 +27,23 @@ function Chat:OnSay(args)
         nickname = ITT.player_nicknames[id]
     end
 
-    CustomGameEventManager:Send_ServerToAllClients("custom_chat_say", {
-        hero = PlayerResource:GetSelectedHeroName(id),
-        color = self.teamColors[PlayerResource:GetTeam(id)],
-        player = id,
-        name = nickname,
-        message = args.message
-    })
+    if isTeam == 1 then
+        CustomGameEventManager:Send_ServerToTeam(PlayerResource:GetTeam(id), "custom_chat_say", {
+            hero = PlayerResource:GetSelectedHeroName(id),
+            color = self.teamColors[PlayerResource:GetTeam(id)],
+            player = id,
+            name = nickname,
+            message = args.message,
+            isTeam = true
+        })
+    else
+        CustomGameEventManager:Send_ServerToAllClients("custom_chat_say", {
+            hero = PlayerResource:GetSelectedHeroName(id),
+            color = self.teamColors[PlayerResource:GetTeam(id)],
+            player = id,
+            name = nickname,
+            message = args.message,
+            isTeam = false
+        })
+    end
 end
