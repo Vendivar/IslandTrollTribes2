@@ -16,13 +16,17 @@
 			m_bSaturateColorPreAlphaBlend = false
 			m_hTexture = resource:"materials/particle/glyphs/glyph4_2.vtex"
 			m_flAnimationRate = 1.0
-			m_flOpTimeOffsetMax = 1.0
+			m_flOpTimeOffsetMax = -1.0
 			m_flOpStrengthMinScale = 0.0
 			m_flAnimationRate2 = 0.5
 		},
 	]
 	m_Operators = 
 	[
+		{
+			_class = "C_OP_EndCapDecay"
+			m_bDisableOperator = true
+		},
 		{
 			_class = "C_OP_BasicMovement"
 			m_flOpTimeOffsetMax = 1.0
@@ -93,7 +97,8 @@
 			m_flFadeEndTime = 0.8
 		},
 		{
-			_class = "C_OP_EndCapDecay"
+			_class = "C_OP_Decay"
+			m_nOpEndCapState = 1
 		},
 	]
 	m_Initializers = 
@@ -111,6 +116,7 @@
 			m_fLifetimeMax = 1.5
 			m_flOpTimeOffsetMax = 1.0
 			m_flOpStrengthMinScale = 0.0
+			m_bDisableOperator = true
 		},
 		{
 			_class = "C_INIT_RandomRotation"
@@ -155,13 +161,6 @@
 	]
 	m_Emitters = 
 	[
-		{
-			_class = "C_OP_ContinuousEmitter"
-			m_flOpStartFadeOutTime = -1.0
-			m_flOpEndFadeOutTime = -1.0
-			m_flEmitRate = 40.0
-			m_bDisableOperator = true
-		},
 		{
 			_class = "C_OP_InstantaneousEmitter"
 			m_nParticlesToEmit = 30

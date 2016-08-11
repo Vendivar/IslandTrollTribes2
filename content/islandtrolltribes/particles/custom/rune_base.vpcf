@@ -123,9 +123,11 @@
 		},
 		{
 			m_ChildRef = resource:"particles/custom/incant_particle_effect_10b2.vpcf"
+			m_flDelay = -1.0
 		},
 		{
 			m_ChildRef = resource:"particles/custom/incant_particle_effect_10a2.vpcf"
+			m_flDelay = -1.0
 		},
 		{
 			m_ChildRef = resource:"particles/custom/incant_particle_effect_5.vpcf"

@@ -46,18 +46,17 @@
 		},
 		{
 			_class = "C_OP_FadeInSimple"
-			m_flFadeInTime = 0.5
+			m_flFadeInTime = -1.0
+			m_bDisableOperator = true
 		},
 		{
 			_class = "C_OP_FadeOutSimple"
-			m_flFadeOutTime = 1.5
-			m_bDisableOperator = true
+			m_flFadeOutTime = 0.2
 		},
 		{
 			_class = "C_OP_MoveToHitbox"
 			m_flLifeTimeLerpStart = 0.5
 			m_flLifeTimeLerpEnd = 1.5
-			m_bDisableOperator = true
 		},
 		{
 			_class = "C_OP_PositionLock"
@@ -72,7 +71,6 @@
 			_class = "C_OP_SetControlPointPositions"
 			m_vecCP2Pos = [ 0.0, 0.0, 100.0 ]
 			m_vecCP1Pos = [ 0.0, 0.0, 200.0 ]
-			m_bDisableOperator = true
 		},
 		{
 			_class = "C_OP_RemapDirectionToCPToVector"
@@ -81,7 +79,6 @@
 			m_flOpFadeOscillatePeriod = 1.5
 			m_nFieldOutput = 21
 			m_bNormalize = true
-			m_bDisableOperator = true
 		},
 		{
 			_class = "C_OP_MovementRotateParticleAroundAxis"
@@ -93,15 +90,7 @@
 			m_flFadeEndTime = 0.8
 		},
 		{
-			_class = "C_OP_OscillateScalarSimple"
-			m_Rate = 1.0
-			m_nField = 4
-			m_flOscMult = 1.0
-			m_bDisableOperator = true
-		},
-		{
-			_class = "C_OP_Decay"
-			m_nOpEndCapState = 1
+			_class = "C_OP_EndCapDecay"
 		},
 	]
 	m_Initializers = 
@@ -119,7 +108,6 @@
 			m_fLifetimeMax = 1.5
 			m_flOpTimeOffsetMax = 1.0
 			m_flOpStrengthMinScale = 0.0
-			m_bDisableOperator = true
 		},
 		{
 			_class = "C_INIT_RandomRotation"
@@ -134,6 +122,7 @@
 			m_flOpStrengthMinScale = 0.0
 			m_nAlphaMin = 115
 			m_nAlphaMax = 155
+			m_bDisableOperator = true
 		},
 		{
 			_class = "C_INIT_RandomYawFlip"
@@ -148,7 +137,6 @@
 			_class = "C_INIT_SetHitboxToModel"
 			m_flHitBoxScale = 1.2
 			m_vecDirectionBias = [ 0.0, 0.0, 0.25 ]
-			m_bDisableOperator = true
 		},
 		{
 			_class = "C_INIT_RingWave"
@@ -184,6 +172,17 @@
 		},
 		{
 			m_bDisableChild = true
+		},
+		{
+			m_ChildRef = resource:"particles/custom/incant_particle_effect_activate2.vpcf"
+		},
+	]
+	m_ForceGenerators = 
+	[
+		{
+			_class = "C_OP_AttractToControlPoint"
+			m_fForceAmount = 1000.0
+			m_bDisableOperator = true
 		},
 	]
 }
