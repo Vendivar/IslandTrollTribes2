@@ -58,7 +58,12 @@
         {
             "ScriptFile"    "heroes/mage/dementia_runes.lua"
             "Function"      "Start"
-        }
+        }		
+		"FireSound"
+		{
+			"EffectName"	"rune.created"
+			"Target"		"CASTER"
+		}
     }
 }
 
@@ -77,6 +82,11 @@
             "ScriptFile"    "heroes/mage/dementia_runes.lua"
             "Function"      "Stop"
         }
+		"FireSound"
+		{
+			"EffectName"	"rune.stop"
+			"Target"		"CASTER"
+		}
     }
 
     "Modifiers"
@@ -125,7 +135,7 @@
         "02"
         {
             "var_type"                 "FIELD_FLOAT"
-            "slowdot_per_lez_level"    "15"
+            "slowdot_per_lez_level"    "25"
         }
         "03"
         {
@@ -141,6 +151,11 @@
             "ScriptFile"    "heroes/mage/dementia_runes.lua"
             "Function"      "Cast"
         }
+		"FireSound"
+		{
+			"EffectName"	"rune.launch"
+			"Target"		"CASTER"
+		}
     }
 
     "OnProjectileHitUnit"
@@ -151,6 +166,7 @@
             "ScriptFile"    "heroes/mage/dementia_runes.lua"
             "Function"      "Hit"
         }
+		
     }
 
     "Modifiers"

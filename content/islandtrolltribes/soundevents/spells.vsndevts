@@ -820,7 +820,7 @@
                     "pitch_rand_min"    {   "value"     "1.000000"  }
                     "pitch_rand_max"    {   "value"     "1.000000"  }
                     "pitch"             {   "value"     "1.000000"  }
-                    "soundlevel"        {   "value"     "55.00000" }
+                    "soundlevel"        {   "value"     "40.00000" }
                     "distance_max"      {   "value"     "5000.000"  }
                     "event_type"        {   "value"     "1.000000"  }
                 }
@@ -884,7 +884,7 @@
                     "pitch_rand_min"    {   "value"     "-0.05000"  }
                     "pitch_rand_max"    {   "value"     "0.050000"  }
                     "pitch"             {   "value"     "1.000000"  }
-                    "soundlevel"        {   "value"     "80.00000" }
+                    "soundlevel"        {   "value"     "60.00000" }
                     "distance_max"      {   "value"     "1000.000"  }
                     "event_type"        {   "value"     "1.000000"  }
                 }
@@ -1235,14 +1235,14 @@
                     {
                         "value"
                         {
-                              "value0"        "sounds/weapons/hero/arc_warden/spark_wraith_cast.vsnd"
+                              "value0"        "sounds/weapons/hero/arc_warden/magnetic_field.vsnd"
                         }
                     }
                     "volume"            {   "value"     "10.00000"  }
                     "pitch_rand_min"    {   "value"     "-0.05000"  }
                     "pitch_rand_max"    {   "value"     "0.050000"  }
                     "pitch"             {   "value"     "1.000000"  }
-                    "soundlevel"        {   "value"     "100.00000" }
+                    "soundlevel"        {   "value"     "50.00000" }
                     "distance_max"      {   "value"     "1600.000"  }
                     "event_type"        {   "value"     "1.000000"  }
                 }
@@ -1275,7 +1275,7 @@
                     "pitch_rand_min"    {   "value"     "-0.05000"  }
                     "pitch_rand_max"    {   "value"     "0.050000"  }
                     "pitch"             {   "value"     "1.000000"  }
-                    "soundlevel"        {   "value"     "100.00000" }
+                    "soundlevel"        {   "value"     "50.00000" }
                     "distance_max"      {   "value"     "1600.000"  }
                     "event_type"        {   "value"     "1.000000"  }
                 }
@@ -1285,7 +1285,7 @@
 }
 
 
-"rune.collision"
+"rune.stop"
 {
     "operator_stacks"
     {
@@ -1308,7 +1308,7 @@
                     "pitch_rand_min"    {   "value"     "-0.05000"  }
                     "pitch_rand_max"    {   "value"     "0.050000"  }
                     "pitch"             {   "value"     "1.000000"  }
-                    "soundlevel"        {   "value"     "100.00000" }
+                    "soundlevel"        {   "value"     "50.00000" }
                     "distance_max"      {   "value"     "1600.000"  }
                     "event_type"        {   "value"     "1.000000"  }
                 }

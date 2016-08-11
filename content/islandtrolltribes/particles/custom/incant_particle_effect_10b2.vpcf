@@ -57,6 +57,7 @@
 			_class = "C_OP_MoveToHitbox"
 			m_flLifeTimeLerpStart = 0.5
 			m_flLifeTimeLerpEnd = 1.5
+			m_bDisableOperator = true
 		},
 		{
 			_class = "C_OP_PositionLock"
@@ -65,11 +66,13 @@
 			m_flEndTime_min = 0.5
 			m_flEndTime_max = 0.5
 			m_bLockRot = true
+			m_flJumpThreshold = 1.0
 		},
 		{
 			_class = "C_OP_SetControlPointPositions"
 			m_vecCP2Pos = [ 0.0, 0.0, 100.0 ]
 			m_vecCP1Pos = [ 0.0, 0.0, 200.0 ]
+			m_bDisableOperator = true
 		},
 		{
 			_class = "C_OP_RemapDirectionToCPToVector"
@@ -78,6 +81,7 @@
 			m_flOpFadeOscillatePeriod = 1.5
 			m_nFieldOutput = 21
 			m_bNormalize = true
+			m_bDisableOperator = true
 		},
 		{
 			_class = "C_OP_MovementRotateParticleAroundAxis"
@@ -142,6 +146,7 @@
 			_class = "C_INIT_SetHitboxToModel"
 			m_flHitBoxScale = 1.2
 			m_vecDirectionBias = [ 0.0, 0.0, 0.25 ]
+			m_bDisableOperator = true
 		},
 		{
 			_class = "C_INIT_RingWave"

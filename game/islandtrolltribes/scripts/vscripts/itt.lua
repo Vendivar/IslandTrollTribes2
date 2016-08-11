@@ -1068,8 +1068,8 @@ function ITT:OnGameRulesStateChange()
         RandomUnpickedPlayers()
         UnblockMammoth()
         EmitGlobalSound("get_ready")
-        ShowCustomHeaderMessage("#NoobTimeOver", -1, -1, 5)
-       -- Notifications:TopToAll({text="#NoobTimeOver", image="file://{images}/materials/particle/alert.psd", duration=5.0})
+       -- ShowCustomHeaderMessage("#NoobTimeOver", -1, -1, 5)
+		Notifications:TopToAll({text="#NoobTimeOver", image="file://{images}/materials/particle/alert.psd", duration=5.0})
     end
 end
 
