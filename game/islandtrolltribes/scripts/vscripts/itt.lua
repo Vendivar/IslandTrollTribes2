@@ -666,6 +666,13 @@ function ITT:OnEntityKilled(keys)
 
         CreateGoldBag(killedUnit)
 
+        -- Notify self and allies when someone dies.
+        local id = killedUnit:GetPlayerID()
+        CustomGameEventManager:Send_ServerToTeam(killedUnit:GetTeam(), "team_member_down", {
+            hero = PlayerResource:GetSelectedHeroName(id),
+            player = id
+        })
+
     elseif not killedUnit.deleted then --use the deleted flag to make the killing not roll the item drops
         --drop system
         -- Items

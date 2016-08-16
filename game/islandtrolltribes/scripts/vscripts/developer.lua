@@ -20,6 +20,7 @@ CHEAT_CODES = {
     ["spawnstats"] = function( ... ) ITT:SpawnStats(...) end,
     ["gg_end"] = function( ... ) GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS) end,
     ["lvlup"] = function(...) ITT:LvlUp(...) end,
+    ["death"] = function(...) ITT:SimulateDeath(...) end -- Testing death notifications.
 }
 
 PLAYER_COMMANDS = {
@@ -50,6 +51,14 @@ function ITT:OnPlayerChat(keys)
     elseif PLAYER_COMMANDS[command] then
         PLAYER_COMMANDS[command](playerID, unpack(input))
     end
+end
+
+function ITT:SimulateDeath(playerID)
+    print("Simulating death!")
+    CustomGameEventManager:Send_ServerToAllClients("team_member_down", {
+        hero = PlayerResource:GetSelectedHeroName(playerID),
+        player = playerID
+    })
 end
 
 function ITT:LvlUp(playerID, level)

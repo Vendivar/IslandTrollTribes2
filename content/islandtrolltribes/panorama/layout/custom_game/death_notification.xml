@@ -1,0 +1,11 @@
+<root>
+  <styles>
+    <include src="file://{resources}/styles/custom_game/death_notification.css" />
+  </styles>
+  <scripts>
+    <include src="file://{resources}/scripts/custom_game/death_notification.js" />
+  </scripts>
+  <Panel class="DeathMain" hittest="false">
+    <Panel id="DeathPanel" />
+  </Panel>
+</root>
