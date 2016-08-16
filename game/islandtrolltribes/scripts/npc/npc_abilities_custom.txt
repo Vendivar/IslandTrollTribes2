@@ -7468,7 +7468,12 @@
 	        {
 	            "ScriptFile"    "heroes/mage/dementia_runes.lua"
 	            "Function"      "Start"
-	        }
+	        }		
+			"FireSound"
+			{
+				"EffectName"	"rune.created"
+				"Target"		"CASTER"
+			}
 	    }
 	}
 	
@@ -7487,6 +7492,23 @@
 	            "ScriptFile"    "heroes/mage/dementia_runes.lua"
 	            "Function"      "Stop"
 	        }
+			"FireSound"
+			{
+				"EffectName"	"rune.stop"
+				"Target"		"CASTER"
+			}
+			"FireEffect"
+					{
+						"EffectName" "particles/custom/incant_particle_effect_activate1.vpcf"
+						"Target" "CASTER"
+						"EffectAttachType" "follow_origin"
+					}
+					{
+						"EffectName" "particles/items2_fx/shadow_amulet_activate_end_flash.vpcf"
+						"Target" "CASTER"
+						"EffectAttachType" "follow_origin"
+					}
+					
 	    }
 	
 	    "Modifiers"
@@ -7535,7 +7557,7 @@
 	        "02"
 	        {
 	            "var_type"                 "FIELD_FLOAT"
-	            "slowdot_per_lez_level"    "15"
+	            "slowdot_per_lez_level"    "25"
 	        }
 	        "03"
 	        {
@@ -7551,6 +7573,11 @@
 	            "ScriptFile"    "heroes/mage/dementia_runes.lua"
 	            "Function"      "Cast"
 	        }
+			"FireSound"
+			{
+				"EffectName"	"rune.launch"
+				"Target"		"CASTER"
+			}
 	    }
 	
 	    "OnProjectileHitUnit"
@@ -7561,6 +7588,7 @@
 	            "ScriptFile"    "heroes/mage/dementia_runes.lua"
 	            "Function"      "Hit"
 	        }
+			
 	    }
 	
 	    "Modifiers"

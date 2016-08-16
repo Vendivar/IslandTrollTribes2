@@ -5,7 +5,7 @@
 	m_nMaxParticles = 40
 	m_nInitialParticles = 1
 	m_flConstantRadius = 3.0
-	m_ConstantColor = [ 255, 255, 255, 155 ]
+	m_ConstantColor = [ 170, 0, 0, 155 ]
 	m_nGroupID = 3
 	m_flMaxDrawDistance = 2000.0
 	m_bShouldSort = false
@@ -83,6 +83,7 @@
 			_class = "C_INIT_RandomColor"
 			m_ColorMin = [ 221, 163, 61, 255 ]
 			m_ColorMax = [ 221, 163, 61, 255 ]
+			m_bDisableOperator = true
 		},
 		{
 			_class = "C_INIT_RandomSequence"
@@ -95,7 +96,7 @@
 		},
 		{
 			_class = "C_INIT_RingWave"
-			m_flInitialRadius = 250.0
+			m_flInitialRadius = 130.0
 			m_bEvenDistribution = true
 			m_flParticlesPerOrbit = 50.0
 		},

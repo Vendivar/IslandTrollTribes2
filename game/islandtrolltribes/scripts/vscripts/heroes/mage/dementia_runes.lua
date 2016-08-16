@@ -47,7 +47,7 @@ end
 function Start(event)
     local ability = event.ability
     local caster = event.caster
-    ability.particle = ParticleManager:CreateParticle("particles/custom/incant_ring_new.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster)
+    ability.particle = ParticleManager:CreateParticle("particles/custom/rune_base.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster)
 
     caster:FindAbilityByName("ability_mage_dementia_runes_stop"):SetActivated(true)
     caster:FindAbilityByName("ability_mage_dementia_runes_invoked"):SetActivated(false)
