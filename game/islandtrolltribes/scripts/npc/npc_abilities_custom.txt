@@ -7468,7 +7468,7 @@
 	        {
 	            "ScriptFile"    "heroes/mage/dementia_runes.lua"
 	            "Function"      "Start"
-	        }		
+	        }
 			"FireSound"
 			{
 				"EffectName"	"rune.created"
@@ -7503,12 +7503,13 @@
 						"Target" "CASTER"
 						"EffectAttachType" "follow_origin"
 					}
+	    "FireEffect"
 					{
 						"EffectName" "particles/items2_fx/shadow_amulet_activate_end_flash.vpcf"
 						"Target" "CASTER"
 						"EffectAttachType" "follow_origin"
 					}
-					
+	
 	    }
 	
 	    "Modifiers"
@@ -7588,7 +7589,7 @@
 	            "ScriptFile"    "heroes/mage/dementia_runes.lua"
 	            "Function"      "Hit"
 	        }
-			
+	
 	    }
 	
 	    "Modifiers"
@@ -7597,10 +7598,10 @@
 	        {
 	            "EffectName"        "particles/units/heroes/hero_venomancer/venomancer_poison_debuff_nova.vpcf"
 	            "EffectAttachType"  "follow_origin"
-	    
+	
 	            "Properties"
 	            {
-	                "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "-15" 
+	                "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "-15"
 	            }
 	        }
 	
@@ -7626,7 +7627,7 @@
 	            "EffectName"            "particles/units/heroes/hero_crystalmaiden/maiden_frostbite_buff.vpcf"
 	            "EffectAttachType"      "follow_origin"
 	
-	            "StatusEffectName"      "particles/status_fx/status_effect_frost_lich.vpcf"        
+	            "StatusEffectName"      "particles/status_fx/status_effect_frost_lich.vpcf"
 	            "StatusEffectPriority"  "10"
 	
 	            "IsDebuff"              "1"
