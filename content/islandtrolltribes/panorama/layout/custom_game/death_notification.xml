@@ -6,6 +6,6 @@
     <include src="file://{resources}/scripts/custom_game/death_notification.js" />
   </scripts>
   <Panel class="DeathMain" hittest="false">
-    <Panel id="DeathPanel" hittest="false" />
+    <Panel id="DeathPanel" hittest="false" hittestchildren="false" />
   </Panel>
 </root>

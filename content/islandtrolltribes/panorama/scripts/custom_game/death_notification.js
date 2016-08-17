@@ -5,12 +5,7 @@ function teamMemberDown(args) {
 
   // Taken from chat.js
   var line = $.CreatePanel("Panel", $("#DeathPanel"), "");
-  var last = $("#DeathPanel").GetChild(0);
   line.AddClass("DeathNotification");
-
-  if (last != null) {
-      $("#DeathPanel").MoveChildBefore(line, last);
-  }
 
   var playerName = "You have"
   if (player != Players.GetLocalPlayer()) {
