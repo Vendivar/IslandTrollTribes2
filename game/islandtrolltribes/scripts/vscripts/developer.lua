@@ -20,8 +20,6 @@ CHEAT_CODES = {
     ["spawnstats"] = function( ... ) ITT:SpawnStats(...) end,
     ["gg_end"] = function( ... ) GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS) end,
     ["lvlup"] = function(...) ITT:LvlUp(...) end,
-    ["death"] = function(...) ITT:SimulateDeath(...) end, -- Testing death notifications.
-    ["createhero"] = function(...) ITT:CreateHero(...) end
 }
 
 PLAYER_COMMANDS = {
@@ -52,44 +50,6 @@ function ITT:OnPlayerChat(keys)
     elseif PLAYER_COMMANDS[command] then
         PLAYER_COMMANDS[command](playerID, unpack(input))
     end
-end
-
-function ITT:SimulateDeath(playerID)
-    print("Simulating death!")
-    CustomGameEventManager:Send_ServerToAllClients("team_member_down", {
-        hero = PlayerResource:GetSelectedHeroName(playerID),
-        player = playerID
-    })
-
-function ITT:CreateHero(playerID, heroName, bEnemy)
-    local selected = PlayerResource:GetMainSelectedEntity(playerID)
-    if not selected then return end
-    selected = EntIndexToHScript(selected)
-    heroName = heroName or "hunter"
-
-    local pos = selected:GetAbsOrigin()
-    local unitName = MatchingHeroName(heroName)
-    local team = bEnemy and DOTA_TEAM_BADGUYS or PlayerResource:GetTeam(playerID)
-    if not unitName then
-        Say(nil,"No match for '"..heroName.."'", false)
-    end
-
-    PrecacheUnitByNameAsync(unitName, function()
-        local hero = CreateUnitByName(unitName, pos, true, nil, nil, team)
-        hero:SetControllableByPlayer(playerID, true)
-        if not bEnemy then
-            hero:SetOwner(PlayerResource:GetPlayer(playerID))
-            hero:SetPlayerID(playerID)
-        end
-        PlayerResource:NewSelection(playerID, hero)
-
-        --for i=1,9 do
-         --   hero:HeroLevelUp(false)
-        --end
-        FindClearSpaceForUnit(hero, pos, true)
-        hero:Hold()
-
-    end, playerID)
 end
 
 function ITT:LvlUp(playerID, level)
