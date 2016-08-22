@@ -14,5 +14,18 @@ function SwapSpellBook(keys)
 
     print(caster:GetClassname().." , "..caster.activeBook)
     HideAllAbilities(caster)
-    ShowTheSpellBook(caster, spellBooks[caster:GetClassname()][subclass][caster.activeBook])
+    local book = spellBooks[caster:GetClassname()][subclass][caster.activeBook]
+    ShowTheSpellBook(caster, book)
+
+    -- Reorder
+    for i,ability_name in pairs(book) do
+        local ability_in_slot = GetAbilityOnVisibleSlot(caster, tonumber(i))
+        if ability_in_slot then
+            local name = ability_in_slot:GetAbilityName()
+            if name ~= ability_name then
+                caster:SwapAbilities(name, ability_name, true, true)
+            end
+        end
+    end
+    PrintAbilities(caster)
 end

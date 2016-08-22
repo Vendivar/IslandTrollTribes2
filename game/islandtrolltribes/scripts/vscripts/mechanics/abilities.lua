@@ -65,13 +65,28 @@ function HideAllAbilities(unit)
 end
 
 function ShowTheSpellBook(caster, spellbook)
-    for _,spell in pairs(spellbook) do
-        if caster:HasAbility(spell) then
-            print(caster:FindAbilityByName(spell):GetAbilityName())
-            SetAbilityVisibility (caster, spell,true)
+    for i,spell in pairs(spellbook) do
+        local ability = caster:FindAbilityByName(spell)
+        if ability then
+            if ability:IsHidden() then
+                ability:SetHidden(false)
+            end
         end
     end
     AdjustAbilityLayout(caster)
+end
+
+function GetAbilityOnVisibleSlot( unit, slot )
+    local visible_slot = 0
+    for i=0,15 do
+        local ability = unit:GetAbilityByIndex(i)
+        if ability and not ability:IsHidden() then
+            visible_slot = visible_slot + 1
+            if visible_slot == slot then
+                return ability
+            end
+        end
+    end
 end
 
 function ClearAbilities( unit )
