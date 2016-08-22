@@ -47,11 +47,13 @@ end
 function Start(event)
     local ability = event.ability
     local caster = event.caster
+    ResetRunes(caster)
+
     ability.particle = ParticleManager:CreateParticle("particles/custom/rune_base.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster)
 
     caster:FindAbilityByName("ability_mage_dementia_runes_stop"):SetActivated(true)
     caster:FindAbilityByName("ability_mage_dementia_runes_invoked"):SetActivated(false)
-    ResetRunes(caster)
+    StartRotatingRunes(caster, 1)
 end
 
 function Stop(event)
@@ -66,6 +68,8 @@ function Stop(event)
     ability:ApplyDataDrivenModifier(caster,caster,"modifier_"..acquired,{})
     caster:SetModifierStackCount("modifier_"..acquired,caster,LEVEL_TO_STACKS[dementia_runes[acquired]]) --1/3/6
 
+    StopRunes(caster)
+
     if #dementia_runes.runes == 3 then
         ability:SetActivated(false)
         local start_ability = caster:FindAbilityByName("ability_mage_dementia_runes_start")
@@ -75,6 +79,8 @@ function Stop(event)
         dementia_runes.resetTimer = Timers:CreateTimer(45, function() -- The runes last 45 seconds
             ResetRunes(caster)
         end)
+    else
+        StartRotatingRunes(caster, #dementia_runes.runes+1)
     end
 end
 
@@ -147,8 +153,65 @@ function ResetRunes(hero)
     if ability.resetTimer then
         Timers:RemoveTimer(ability.resetTimer)
     end
+    if hero.rune_particles then
+        for k,v in pairs(hero.rune_particles) do
+            ParticleManager:DestroyParticle(v, true)
+        end
+    end
+    local start_ability = hero:FindAbilityByName("ability_mage_dementia_runes_start")
+    if start_ability and start_ability.particle then
+        ParticleManager:DestroyParticle(start_ability.particle,false)
+    end
 end
 
+function StopRunes(hero)
+    if hero.rotatingTimer then
+        Timers:RemoveTimer(hero.rotatingTimer)
+    end
+    if hero.rune_particles then
+        for k,v in pairs(hero.rune_particles) do
+            ParticleManager:DestroyParticle(v, true)
+        end
+    end
+end
+
+function StartRotatingRunes(hero, level)
+    local runes = {"ka_rune","lez_rune","nel_rune"}
+    for i=1,3 do
+        table.insert(runes, runes[RandomInt(1,#runes)])
+    end
+    runes = ShuffledList(runes)
+
+    hero.rune_particles = {}
+    local points = GenerateNumPointsAround(6, hero:GetAbsOrigin(), 200, 0)
+    for k,rune_name in pairs(runes) do
+        hero.rune_particles[k] = ParticleManager:CreateParticle("particles/custom/"..rune_name..".vpcf", PATTACH_CUSTOMORIGIN, nil)
+        ParticleManager:SetParticleControl(hero.rune_particles[k],0,points[k])
+    end
+
+    local offset = 0
+    hero.rotatingTimer = Timers:CreateTimer(0.03, function()
+        local origin = hero:GetAbsOrigin()
+        origin.z = origin.z + 32
+        points = GenerateNumPointsAround(6, origin, 200, offset)
+        for k,particle in pairs(hero.rune_particles) do
+            ParticleManager:SetParticleControl(particle,0,points[k])
+        end
+        offset = offset + level * level
+        return 0.03
+    end)
+end
+
+
+function GenerateNumPointsAround(num, center, distance, offset)
+    local points = {}
+    local angle = 360/num
+    for i=0,num-1 do
+        local rotate_pos = center + Vector(1,0,0) * distance
+        table.insert(points, RotatePosition(center, QAngle(0, angle*i + offset, 0), rotate_pos) )
+    end
+    return points
+end
 
 
 ----------------------------------------------------
