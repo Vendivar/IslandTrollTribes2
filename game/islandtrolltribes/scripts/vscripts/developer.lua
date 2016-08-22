@@ -131,6 +131,12 @@ function ITT:Refresh( playerID )
     Heat:Set( hero, 100 )
     hero:SetHealth(hero:GetMaxHealth())
     hero:SetMana(hero:GetMaxMana())
+    for i=0,15 do
+        local ability = hero:GetAbilityByIndex(i)
+        if ability and not ability:IsCooldownReady() then
+            ability:EndCooldown()
+        end
+    end
 end
 
 function ITT:Dev( playerID )
