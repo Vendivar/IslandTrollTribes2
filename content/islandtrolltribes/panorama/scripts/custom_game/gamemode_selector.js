@@ -173,5 +173,8 @@ function OnVoteConfirmed(vote) {
   $.GetContextPanel().SetFocus();
   GameUI.DenyWheel();
 
+  $("#GamemodeSelectionChat").BLoadLayout("file://{resources}/layout/custom_game/simple_chat.xml", false, false);
+  $("#GamemodeSelectionChat").RegisterListener("GamemodeSelectionEnter");
+
   $.Msg("Gamemode selection loaded!");
 })()

@@ -147,8 +147,7 @@ function ChooseClass() {
     $("#vid_thief").DeleteAsync( 0 )
 
     GameEvents.SendCustomGameEventToServer( "player_selected_class", { selected_class : currentlySelected } );
-
-    RemoveEnterListener("HeroSelectionEnter");  // For simple_chat
+    RemoveEnterListener("GamemodeSelectionEnter");  // For simple_chat
 }
 
 // Someone on the team has selected a class, check the class-per-team restriction and mark the button full
@@ -204,9 +203,6 @@ function CheckVotes(vote) {
     GameEvents.Subscribe( "vote_confirmed", CheckVotes );
     GameEvents.Subscribe( "team_update_class", TeamUpdate );
     GameEvents.Subscribe( "player_force_pick", ChooseClass );
-
-    $("#HeroSelectionChat").BLoadLayout("file://{resources}/layout/custom_game/simple_chat.xml", false, false);
-    $("#HeroSelectionChat").RegisterListener("HeroSelectionEnter");
 
 
     $("#vid_beastmaster").visible = false;

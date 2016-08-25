@@ -267,6 +267,29 @@
         "loading_screen_tip_2"  "Help report bugs and issues at bit.do/ITT2."
         "loading_screen_tip_3"  "Help report bugs and issues at bit.do/ITT2."
 
+                //Gamemodes
+
+                "Gamemode_header" "Game mode Voting"
+                "Gamemode_fast" "Fast"
+                "Gamemode_normal" "Normal"
+                "Gamemode_slow" "Slow"
+                "Gamemode_customheader" "Custom options"
+                "Gamemode_noobmode" "Noob Mode"
+                "Gamemode_fixedbush" "Fixed bush spawning"
+                "Gamemode_norevive" "No revive"
+                "Gamemode_notrees" "No Trees"
+                "Gamemode_noislandbosses" "No Mini-bosses"
+                "Gamemode_confirm" "Confirm vote"
+                "Gamemode_confirmed" "Voted!"
+                "Gamemode_notvoted_header" "Players that have not voted:"
+                "Gamemode_voted_header" "Players that have voted:"
+                "Gamemode_player_line" "{s:player}<br />
+                {s:speed} {s:pick} {s:custom}"
+                "Gamemode_allpick" "All pick"
+                "Gamemode_allrandom" "All random"
+                "Gamemode_samehero" "Same Hero"
+
+
 				//Help Menu
 
 

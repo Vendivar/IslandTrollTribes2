@@ -116,7 +116,6 @@
                 <Image id="SelectButtonImg" src="file://{images}/class_picker/pick.png" />
                 <Label onactivate="ChooseClass()" id="SelectText" text="#SelectText"/>
             </Panel>
-            <Panel id="HeroSelectionChat" />
         </Panel>
     </Panel>
 </root>
