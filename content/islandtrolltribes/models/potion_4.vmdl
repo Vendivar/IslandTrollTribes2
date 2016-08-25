@@ -6,8 +6,8 @@
 		m_meshList = 
 		[
 			{
-				m_meshName = "potion_elemental"
-				m_meshFile = "models/potion_elemental.dmx"
+				m_meshName = "potion_4"
+				m_meshFile = "models/potion_4.dmx"
 				m_materialSearchPath = ""
 				m_bSkinParentedObjects = true
 				m_bLegacySkinParentedTransforms = false
