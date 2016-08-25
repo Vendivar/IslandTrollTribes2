@@ -1,0 +1,87 @@
+<root>
+  <styles>
+    <include src="s2r://panorama/styles/dotastyles.vcss_c" />
+    <include src="file://{resources}/styles/custom_game/gamemode_selector.css" />
+  </styles>
+  <scripts>
+    <include src="file://{resources}/scripts/custom_game/gamemode_selector.js" />
+  </scripts>
+  <snippets>
+    <snippet name="tooltip">
+      <Panel class="tooltip">
+        <Label class="tooltip_text" text="" />
+      </Panel>
+    </snippet>
+  </snippets>
+  <Panel class="Gamemode_MainPanel">
+    <Panel id="Gamemode_container">
+      <Panel id="Gamemode_selection">
+        <Panel id="Gamemode_header">
+          <Label text="#Gamemode_header" />
+        </Panel>
+        <Panel id="Gamemode_mainselections">
+          <Panel id="speed_1" class="Gamemode_speedselect" onactivate="setSpeed(1)">
+            <Label text="#Gamemode_fast" />
+          </Panel>
+          <Panel id="speed_2" class="Gamemode_speedselect active_speed" onactivate="setSpeed(2)">
+            <Label text="#Gamemode_normal" />
+          </Panel>
+          <Panel id="speed_3" class="Gamemode_speedselect" onactivate="setSpeed(3)">
+            <Label text="#Gamemode_slow" />
+          </Panel>
+        </Panel>
+        <Panel id="Gamemode_custom">
+          <Panel id="custom_options" class="Gamemode_customcheck" onactivate="toggleCustom()" />
+          <Label text="#Gamemode_customheader" id="Gamemode_customheader" />
+          <Panel id="Gamemode_customwrapper" class="hidden">
+            <Panel class="Gamemode_custombutton">
+              <Panel id="custom_noob" class="Gamemode_customcheck" onactivate="setCustomToggle('custom_noob')" />
+              <Label text="#Gamemode_noobmode" />
+            </Panel>
+            <Panel class="Gamemode_custombutton">
+              <Panel id="custom_fixedbush" class="Gamemode_customcheck" onactivate="setCustomToggle('custom_fixedbush')" />
+              <Label text="#Gamemode_fixedbush" />
+            </Panel>
+            <Panel class="Gamemode_custombutton">
+              <Panel id="custom_norevive" class="Gamemode_customcheck" onactivate="setCustomToggle('custom_norevive')" />
+              <Label text="#Gamemode_norevive" />
+            </Panel>
+            <Panel class="Gamemode_custombutton">
+              <Panel id="custom_noislandbosses" class="Gamemode_customcheck" onactivate="setCustomToggle('custom_noislandbosses')" />
+              <Label text="#Gamemode_noislandbosses" />
+            </Panel>
+          </Panel>
+        </Panel>
+        <Panel id="Gamemode_picks">
+          <Panel class="Gamemode_pickbutton">
+            <Panel id="pick_1" class="Gamemode_pickcheck active_pick" onactivate="setPick(1)">
+            </Panel>
+            <Label text="#Gamemode_allpick" />
+          </Panel>
+          <Panel class="Gamemode_pickbutton">
+            <Panel id="pick_2" class="Gamemode_pickcheck" onactivate="setPick(2)">
+            </Panel>
+            <Label text="#Gamemode_allrandom" />
+          </Panel>
+          <Panel class="Gamemode_pickbutton">
+            <Panel id="pick_3" class="Gamemode_pickcheck" onactivate="setPick(3)">
+            </Panel>
+            <Label text="#Gamemode_samehero" />
+          </Panel>
+        </Panel>
+        <Label id="Gamemode_confirmed" class="hidden" text="#Gamemode_confirmed" />
+        <Panel id="Gamemode_confirm" onactivate="sendVote()">
+          <Label text="#Gamemode_confirm" />
+        </Panel>
+      </Panel>
+      <Panel id="Gamemode_playerlist" hittest="false">
+        <Panel id="Gamemode_notvoted" hittest="false">
+          <Label id="Gamemode_notvoted_header" text="#Gamemode_notvoted_header" />
+        </Panel>
+        <Panel id="Gamemode_voted" hittest="false">
+          <Label id="Gamemode_voted_header" text="#Gamemode_voted_header" />
+        </Panel>
+      </Panel>
+    </Panel>
+  </Panel>
+</root>

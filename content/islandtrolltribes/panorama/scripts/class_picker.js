@@ -185,14 +185,29 @@ function TeamUpdate(keys) {
 
 }
 
-(function () {
-    $.Msg("Class Picker Load")
+function CheckVotes(vote) {
+    if (vote.voting_ended) {
+        if (vote.voted_settings.pick_mode == "ALL_PICK") {
+            $("#PicksContainer").RemoveClass("hidden");
+        }
+        else {
+            ChooseClass();
+        }
+    }
+}
 
+(function () {
+    $.Msg("Class Picker Load");
+
+    $("#PicksContainer").AddClass("hidden");
+
+    GameEvents.Subscribe( "vote_confirmed", CheckVotes );
     GameEvents.Subscribe( "team_update_class", TeamUpdate );
     GameEvents.Subscribe( "player_force_pick", ChooseClass );
 
     $("#HeroSelectionChat").BLoadLayout("file://{resources}/layout/custom_game/simple_chat.xml", false, false);
     $("#HeroSelectionChat").RegisterListener("HeroSelectionEnter");
+
 
     $("#vid_beastmaster").visible = false;
     $("#vid_gatherer").visible = false;

@@ -191,3 +191,7 @@
     text-align: center;
     text-shadow: 0px 0px 3px 3.0 #000000;
 }
+
+.hidden {
+  visibility: collapse;
+}

@@ -18,6 +18,7 @@ end
 function Heat:loadSettings()
     Heat.MAX = GameRules.GameModeSettings["HEAT_MAX_HEAT"]
     Heat.TICK_RATE = GameRules.GameModeSettings["HEAT_TICK_RATE"]
+    Heat.IMMUNITY = GameRules.GameModeSettings["HEAT_IMMUNITY"]
 end
 
 
@@ -61,7 +62,7 @@ end
 
 function Heat:Think( hero )
     hero.HeatThink = Timers:CreateTimer(1, function()
-        
+
         -- Stop after dying, gets reapplied when respawning
         if not hero:IsAlive() then
             return
@@ -69,15 +70,15 @@ function Heat:Think( hero )
 
         Heat:UpdateLoss(hero)
         Heat:Modify(hero, hero.HeatLoss)
-     
+
         if Heat:Get( hero ) <= 20 then
-		AddFreezingIndicator(hero)			
+		AddFreezingIndicator(hero)
         EmitSoundOn( "Hero_Ancient_Apparition.IceBlastRelease.Tick", hero )
         else
             RemoveFreezingIndicator(hero)
         end
-    
-        if Heat:Get( hero ) <= 0 then
+
+        if Heat:Get( hero ) <= 0 and not Heat.IMMUNITY then
             RemoveHeatingIndicator(hero)
             RemoveFreezingIndicator(hero)
             hero:ForceKill(true)

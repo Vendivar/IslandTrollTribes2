@@ -1,0 +1,232 @@
+.Gamemode_MainPanel {
+  width: 100%;
+  height: 100%;
+  color: #ffffff;
+}
+
+#Gamemode_container {
+  width: 80%;
+  height: 80%;
+  align: center center;
+
+  background-image: url("s2r://panorama/images/gamemode_selector/voting_gui_overlay3.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+
+  padding: 80px;
+
+  font-family: Radiance;
+  font-size: 20px;
+
+  flow-children: right;
+}
+
+#Gamemode_header {
+  align: center top;
+  font-size: 30px;
+
+  width: 100%;
+  padding-top: -20px;
+}
+
+#Gamemode_header Label {
+  text-align: center;
+  width: 100%;
+  font-size: 40px;
+  color: #ffffff;
+}
+
+#Gamemode_selection {
+  width: 70%;
+  height: 100%;
+  padding-right: 20px;
+
+  flow-children: down;
+}
+/* TODO: Add the descriptions */
+.Gamemode_speedselect {
+  width: 30%;
+  height: 100%;
+  margin: 20px;
+
+  background-image: url("s2r://panorama/images/class_picker/pick.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+.Gamemode_speedselect:hover {
+  brightness: 2;
+}
+
+.active_speed,.active_speed:hover {
+  background-image: url("s2r://panorama/images/class_picker/pick_hover.png");
+}
+
+.Gamemode_speedselect Label {
+  align: center center;
+  font-size: 30px;
+  color: #ffffff;
+}
+
+#Gamemode_playerlist {
+  width: 30%;
+  height: 100%;
+  padding: 24px;
+  padding-top: 60px;
+}
+
+#Gamemode_mainselections {
+  margin-top: 15px;
+  height: 30%;
+  width: 90%;
+  flow-children: right;
+
+  align: center center;
+}
+
+#Gamemode_custom {
+  margin-top: 20px;
+  width: 100%;
+  height: 30%;
+
+  flow-children: down;
+}
+
+#Gamemode_customheader {
+  font-size: 24px;
+  align: center top;
+
+  margin-bottom: -20px;
+  z-index: 200;
+
+  color: #ffffff;
+}
+
+#custom_options {
+  align: center top;
+  z-index: 200;
+
+  margin-bottom: -25px;
+  margin-left: -100px;
+}
+
+.Gamemode_customcheck {
+  width: 20px;
+  height: 20px;
+
+  border: 2px solid white;
+}
+.Gamemode_customcheck:hover {
+  background-color: #5c5c5c;
+}
+.active_custom,.active_custom:hover {
+  background-color: #9c9c9c;
+}
+
+.Gamemode_custombutton {
+  margin: 10px;
+  width: 100%;
+}
+.Gamemode_custombutton Label {
+  margin-left: 40px;
+}
+
+#Gamemode_customwrapper {
+  flow-children: down;
+  width: 100%;
+  height: 100%;
+  margin-top: 20px;
+  margin-left: 40px;
+}
+
+#Gamemode_picks {
+  margin-top: 70px;
+  flow-children: right;
+  width: 90%;
+  height: 10%;
+  align: center center;
+}
+
+.Gamemode_pickbutton {
+  width: 30%;
+  height: 100%;
+
+  margin-left: 40px;
+}
+
+.Gamemode_pickcheck {
+  width: 40px;
+  height: 60px;
+
+  background-image: url("s2r://panorama/images/class_picker/pick.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+
+  align: left center;
+  margin-left: 20px;
+}
+.Gamemode_pickcheck:hover {
+  brightness: 2;
+}
+.active_pick,.active_pick:hover {
+  background-image: url("s2r://panorama/images/class_picker/pick_hover.png");
+}
+
+.Gamemode_pickbutton Label {
+  align: left center;
+  margin-left: 70px;
+
+  color: #ffffff;
+}
+.Gamemode_pickbutton Label:hover .Gamemode_pickcheck {
+  background-color: #5c5c5c;
+}
+
+#Gamemode_confirmed {
+  align: center center;
+  font-size: 30px;
+
+  color: #ffffff;
+}
+
+#Gamemode_confirm {
+  align: center center;
+  padding: 20px;
+
+  background-image: url("s2r://panorama/images/class_picker/pick.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+#Gamemode_confirm Label {
+  color: #ffffff;
+}
+
+#Gamemode_confirm:hover {
+  brightness: 2;
+}
+
+#Gamemode_playerlist, #Gamemode_notvoted, #Gamemode_voted {
+  flow-children: down;
+}
+
+#Gamemode_notvoted, #Gamemode_voted {
+  width: 100%;
+  height: 50%;
+  overflow: clip scroll;
+}
+
+#Gamemode_voted {
+  margin-top: 30px;
+}
+
+#Gamemode_notvoted_header, #Gamemode_voted_header {
+  font-size: 24px;
+}
+
+#Gamemode_notvoted Label, #Gamemode_voted Label {
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.hidden {
+  visibility: collapse;
+}

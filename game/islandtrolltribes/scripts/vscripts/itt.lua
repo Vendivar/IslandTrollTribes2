@@ -287,12 +287,24 @@ local classes = {
     [7] = "beastmaster",
 }
 
+local team_classes = {}
+
 --Handler for class selection at the beginning of the game
 function ITT:OnClassSelected(event)
     local playerID = event.PlayerID
     local class_name = event.selected_class
     local player = PlayerResource:GetPlayer(playerID)
     local team = PlayerResource:GetTeam(playerID)
+
+    -- Pick mode handling
+    if GameRules.GameModeSettings["pick_mode"] == "ALL_RANDOM" then
+        class_name = "random"
+    elseif GameRules.GameModeSettings["pick_mode"] == "SAME_HERO" then
+        if not team_classes[team] then
+            team_classes[team] = classes[RandomInt(1,7)]
+        end
+        class_name = team_classes[team]
+    end
 
     -- Handle random selection
     if class_name == "random" then
@@ -661,7 +673,7 @@ function ITT:OnEntityKilled(keys)
 
         -- Create a grave if respawn is disabled
         local time = math.floor(GameRules:GetGameTime())
-        if time > GAME_PERIOD_GRACE then
+        if time > GAME_PERIOD_GRACE or GameRules.GameModeSettings["custom"]["norevive"] then
             killedUnit.grave = CreateUnitByName("gravestone", killedUnit:GetAbsOrigin(), false, killedUnit, killedUnit, killedUnit:GetTeamNumber())
             killedUnit.grave.hero = killedUnit
         end
