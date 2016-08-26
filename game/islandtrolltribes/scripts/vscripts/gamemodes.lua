@@ -117,8 +117,8 @@ function SetGamemodeSettings(gamemode)
 end
 
 function SetFastModeSettings()
-    GameRules.GameModeSettings["HEAT_MAX_HEAT"] = 50
-    GameRules.GameModeSettings["HEAT_TICK_RATE"] = 0.1
+    GameRules.GameModeSettings["HEAT_MAX_HEAT"] = 75
+    GameRules.GameModeSettings["HEAT_TICK_RATE"] = 0.5
     GameRules.GameModeSettings["GAME_ITEM_TICK_TIME"] = 20
     GameRules.GameModeSettings["GAME_CREATURE_TICK_TIME"] = 20
 end

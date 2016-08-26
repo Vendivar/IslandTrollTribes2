@@ -252,6 +252,22 @@
         "DOTA_Tooltip_Ability_Panic_move_speed"         "MOVE SPEED:"
         "DOTA_Tooltip_Ability_Panic_incoming_damage"    "INCOMING DAMAGE:"
 
+		
+		
+//Boss Lines
+
+"es_test" "test test test test <font color='#00CC00'>TEST</font>"
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
         // Usage
         //  <br> for break lines
         //  • for bullets

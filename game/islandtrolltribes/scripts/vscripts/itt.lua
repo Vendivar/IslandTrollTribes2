@@ -756,6 +756,14 @@ function ITT:On_entity_hurt(data)
 
 end
 
+
+function ITT:CreateSpeechBubble(unit, time, dialogueMessage)
+    unit:DestroyAllSpeechBubbles()
+    local speechSlot = 1
+    unit:AddSpeechBubble(speechSlot, dialogueMessage, time, 0, 0)
+end
+
+
 function ITT:FixDropModels(dt)
     for _,v in pairs(Entities:FindAllByClassname("dota_item_drop")) do
         if not v.ModelFixInit then

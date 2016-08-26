@@ -34,7 +34,7 @@
         }
 		"04"
         {
-            "Key"       "P"
+            "Key"       "N"
             "Command"   "+TogglePanic"
             "Name"      "Show/Hide the help UI"
         }
