@@ -10,7 +10,7 @@
 	"ModelScale"	"0.40"
 
 	"Ability1"	"ability_irontrap_ensnare"
-	"Ability2"	"ability_invisible"
+	"Ability2"	"ability_bush_scout_passive"
 	"Ability10"	"ability_phased"
 	
 	"ArmorPhysical"	"1"

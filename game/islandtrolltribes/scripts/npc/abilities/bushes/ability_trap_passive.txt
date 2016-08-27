@@ -1,0 +1,23 @@
+"ability_trap_passive"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	"AbilityTextureName"	"razor_plasma_field"
+	"Modifiers"
+	{
+		"modifier_bush_passive"
+		{
+			"Passive"	"1"
+			"IsHidden"	"1"
+
+			"EffectName"		"particles/custom/dropped_item_white.vpcf"
+			"EffectAttachType"	"follow_origin"
+
+			"States"
+			{
+				"MODIFIER_STATE_NO_HEALTH_BAR"	"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_NOT_ON_MINIMAP"	"MODIFIER_STATE_VALUE_ENABLED"
+			}
+		}
+	}
+}

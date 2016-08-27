@@ -10,7 +10,7 @@
 	"ModelScale"	"1.0"
 
 	"Ability1"	"ability_ensnaretrap_ensnare"
-	"Ability2"	"ability_invisible"
+	"Ability2"	"ability_trap_passive"
 	"Ability10"	"ability_phased"
 	
 	"ArmorPhysical"	"1"

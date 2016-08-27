@@ -113,7 +113,7 @@
         "TrackingProjectile"
         {
             "Target"            "TARGET"
-            "EffectName"        "particles/units/heroes/hero_huskar/huskar_base_attack.vpcf"
+            "EffectName"        "particles/custom/spear_throw.vpcf"
             "MoveSpeed"         "%projectile_speed"
         }
 

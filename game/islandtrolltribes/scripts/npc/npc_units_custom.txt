@@ -980,7 +980,7 @@
 		"ModelScale"	"1.0"
 	
 		"Ability1"	"ability_ensnaretrap_ensnare"
-		"Ability2"	"ability_invisible"
+		"Ability2"	"ability_trap_passive"
 		"Ability10"	"ability_phased"
 		
 		"ArmorPhysical"	"1"
@@ -1019,7 +1019,7 @@
 		"ModelScale"	"0.40"
 	
 		"Ability1"	"ability_irontrap_ensnare"
-		"Ability2"	"ability_invisible"
+		"Ability2"	"ability_bush_scout_passive"
 		"Ability10"	"ability_phased"
 		
 		"ArmorPhysical"	"1"
@@ -1060,7 +1060,7 @@
 		"ModelScale"	"0.5"
 	
 		"Ability1"	"ability_ensnaretrap_ensnare"
-		"Ability2"	""
+		"Ability2"	"ability_bush_scout_passive"
 		"Ability3"	"ability_building_droprawmeat"
 		"Ability10"	"ability_building"
 		"Ability11"	"ability_cancel_building"

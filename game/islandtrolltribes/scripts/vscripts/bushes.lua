@@ -193,7 +193,7 @@ function AddBushGlow(entity)
 
         local particleName = "particles/custom/dropped_item_white.vpcf"
         entity.whiteGlowParticle = ParticleManager:CreateParticle(particleName, PATTACH_CUSTOMORIGIN, entity)
-        ParticleManager:SetParticleControlEnt(entity.whiteGlowParticle, 0, entity, PATTACH_POINT_FOLLOW, "attach_hitloc", entity:GetAbsOrigin(), true)
+        ParticleManager:SetParticleControlEnt(entity.whiteGlowParticle, 0, entity, PATTACH_POINT_FOLLOW, "PATTACH_ABSORIGIN_FOLLOW", entity:GetAbsOrigin(), true)
     end
 end
 

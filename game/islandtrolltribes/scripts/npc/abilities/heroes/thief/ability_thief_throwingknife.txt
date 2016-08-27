@@ -11,7 +11,7 @@
 	"Precache"
 	{
 		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_phantom_assassin.vsndevts"
-		"particle"	"particles\econ\items\mirana\mirana_crescent_arrow\mirana_spell_crescent_arrow.vpcf"
+		"particle"	"particles/custom/throwing_dagger.vpcf"
 	}
 
 	"MaxLevel"	"1"
@@ -19,7 +19,7 @@
 	{
 		"LinearProjectile"
 		{
-			"EffectName"	"particles\econ\items\mirana\mirana_crescent_arrow\mirana_spell_crescent_arrow.vpcf"
+			"EffectName"	"particles/custom/throwing_dagger.vpcf"
 			"Target"	"POINT"
 			"StartRadius"	"50"
 			"EndRadius"	"50"
