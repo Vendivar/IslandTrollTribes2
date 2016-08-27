@@ -227,6 +227,13 @@
   margin-bottom: 10px;
 }
 
+#GamemodeSelectionChat {
+  margin-bottom: 2%;
+  align: center bottom;
+  width: 25%;
+  height: 15%;
+}
+
 .hidden {
   visibility: collapse;
 }

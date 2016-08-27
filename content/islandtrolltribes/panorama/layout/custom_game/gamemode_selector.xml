@@ -83,5 +83,7 @@
         </Panel>
       </Panel>
     </Panel>
+
+    <Panel id="GamemodeSelectionChat" />
   </Panel>
 </root>
