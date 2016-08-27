@@ -180,18 +180,18 @@ function TeamUpdate(keys) {
         $("#SelectText").text = $.Localize("SelectText");
         currentlySelected = ""
     }
-
-
 }
 
 function CheckVotes(vote) {
     if (vote.voting_ended) {
-        if (vote.voted_settings.pick_mode == "ALL_PICK") {
-            $("#PicksContainer").RemoveClass("hidden");
-        }
-        else {
-            ChooseClass();
-        }
+        $.Schedule(5,function() {
+            if (vote.voted_settings.pick_mode == "ALL_PICK") {
+                $("#PicksContainer").RemoveClass("hidden");
+            }
+            else {
+                ChooseClass();
+            }
+        });
     }
 }
 

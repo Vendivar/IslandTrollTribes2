@@ -4,6 +4,17 @@
   color: #ffffff;
 }
 
+#tooltip {
+  width: 300px;
+  height: 300px;
+  background-color: red;
+  border: 2px solid #ffffff;
+  position: absolute;
+  x: 0;
+  y: 0;
+  z-index: 2000;
+}
+
 #Gamemode_container {
   width: 80%;
   height: 80%;
@@ -214,17 +225,48 @@
   overflow: clip scroll;
 }
 
+.Gamemode_icon {
+  margin-top: 48px;
+  margin-right: 20px;
+  width: 24px;
+  height: 24px;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.Gamemode_icon_custom_noob {
+  background-image: url("s2r://panorama/images/icons/diaper-icon2.png");
+}
+
+.Gamemode_icon_custom_fixedbush {
+  background-image: url("s2r://panorama/images/icons/fixed bushes4.png");
+}
+
+.Gamemode_icon_custom_norevive {
+  background-image: url("s2r://panorama/images/icons/HARDCORE.png");
+}
+
+.Gamemode_icon_custom_noislandbosses {
+  background-image: url("s2r://panorama/images/icons/no minibosses.png");
+}
+
 #Gamemode_voted {
   margin-top: 30px;
 }
 
 #Gamemode_notvoted_header, #Gamemode_voted_header {
   font-size: 24px;
+  margin-bottom: 10px;
 }
 
 #Gamemode_notvoted Label, #Gamemode_voted Label {
   color: #ffffff;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.player_line {
+  width: 100%;
+  flow-children: right;
 }
 
 #GamemodeSelectionChat {

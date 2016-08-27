@@ -6,65 +6,58 @@
   <scripts>
     <include src="file://{resources}/scripts/custom_game/gamemode_selector.js" />
   </scripts>
-  <snippets>
-    <snippet name="tooltip">
-      <Panel class="tooltip">
-        <Label class="tooltip_text" text="" />
-      </Panel>
-    </snippet>
-  </snippets>
-  <Panel class="Gamemode_MainPanel">
+  <Panel class="Gamemode_MainPanel" hittest="false">
     <Panel id="Gamemode_container">
       <Panel id="Gamemode_selection">
         <Panel id="Gamemode_header">
           <Label text="#Gamemode_header" />
         </Panel>
         <Panel id="Gamemode_mainselections">
-          <Panel id="speed_1" class="Gamemode_speedselect" onactivate="setSpeed(1)">
+          <Panel id="speed_1" class="Gamemode_speedselect" onactivate="setSpeed(1)" onmouseover="onHover('speed_1')" onmouseout="offHover('speed_1')">
             <Label text="#Gamemode_fast" />
           </Panel>
-          <Panel id="speed_2" class="Gamemode_speedselect active_speed" onactivate="setSpeed(2)">
+          <Panel id="speed_2" class="Gamemode_speedselect active_speed" onactivate="setSpeed(2)" onmouseover="onHover('speed_2')" onmouseout="offHover('speed_2')">
             <Label text="#Gamemode_normal" />
           </Panel>
-          <Panel id="speed_3" class="Gamemode_speedselect" onactivate="setSpeed(3)">
+          <Panel id="speed_3" class="Gamemode_speedselect" onactivate="setSpeed(3)" onmouseover="onHover('speed_3')" onmouseout="offHover('speed_3')">
             <Label text="#Gamemode_slow" />
           </Panel>
         </Panel>
         <Panel id="Gamemode_custom">
-          <Panel id="custom_options" class="Gamemode_customcheck" onactivate="toggleCustom()" />
+          <Panel id="custom_options" class="Gamemode_customcheck" onactivate="toggleCustom()" onmouseover="onHover('custom_options')" onmouseout="offHover('custom_options')" />
           <Label text="#Gamemode_customheader" id="Gamemode_customheader" />
           <Panel id="Gamemode_customwrapper" class="hidden">
             <Panel class="Gamemode_custombutton">
-              <Panel id="custom_noob" class="Gamemode_customcheck" onactivate="setCustomToggle('custom_noob')" />
+              <Panel id="custom_noob" class="Gamemode_customcheck" onactivate="setCustomToggle('custom_noob')"  onmouseover="onHover('custom_noob')" onmouseout="offHover('custom_noob')"/>
               <Label text="#Gamemode_noobmode" />
             </Panel>
             <Panel class="Gamemode_custombutton">
-              <Panel id="custom_fixedbush" class="Gamemode_customcheck" onactivate="setCustomToggle('custom_fixedbush')" />
+              <Panel id="custom_fixedbush" class="Gamemode_customcheck" onactivate="setCustomToggle('custom_fixedbush')" onmouseover="onHover('custom_fixedbush')" onmouseout="offHover('custom_fixedbush')" />
               <Label text="#Gamemode_fixedbush" />
             </Panel>
             <Panel class="Gamemode_custombutton">
-              <Panel id="custom_norevive" class="Gamemode_customcheck" onactivate="setCustomToggle('custom_norevive')" />
+              <Panel id="custom_norevive" class="Gamemode_customcheck" onactivate="setCustomToggle('custom_norevive')" onmouseover="onHover('custom_norevive')" onmouseout="offHover('custom_norevive')" />
               <Label text="#Gamemode_norevive" />
             </Panel>
             <Panel class="Gamemode_custombutton">
-              <Panel id="custom_noislandbosses" class="Gamemode_customcheck" onactivate="setCustomToggle('custom_noislandbosses')" />
+              <Panel id="custom_noislandbosses" class="Gamemode_customcheck" onactivate="setCustomToggle('custom_noislandbosses')" onmouseover="onHover('custom_noislandbosses')" onmouseout="offHover('custom_noislandbosses')" />
               <Label text="#Gamemode_noislandbosses" />
             </Panel>
           </Panel>
         </Panel>
         <Panel id="Gamemode_picks">
           <Panel class="Gamemode_pickbutton">
-            <Panel id="pick_1" class="Gamemode_pickcheck active_pick" onactivate="setPick(1)">
+            <Panel id="pick_1" class="Gamemode_pickcheck active_pick" onactivate="setPick(1)" onmouseover="onHover('pick_1')" onmouseout="offHover('pick_1')">
             </Panel>
             <Label text="#Gamemode_allpick" />
           </Panel>
           <Panel class="Gamemode_pickbutton">
-            <Panel id="pick_2" class="Gamemode_pickcheck" onactivate="setPick(2)">
+            <Panel id="pick_2" class="Gamemode_pickcheck" onactivate="setPick(2)" onmouseover="onHover('pick_2')" onmouseout="offHover('pick_2')">
             </Panel>
             <Label text="#Gamemode_allrandom" />
           </Panel>
           <Panel class="Gamemode_pickbutton">
-            <Panel id="pick_3" class="Gamemode_pickcheck" onactivate="setPick(3)">
+            <Panel id="pick_3" class="Gamemode_pickcheck" onactivate="setPick(3)" onmouseover="onHover('pick_3')" onmouseout="offHover('pick_3')">
             </Panel>
             <Label text="#Gamemode_samehero" />
           </Panel>

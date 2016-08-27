@@ -252,22 +252,22 @@
         "DOTA_Tooltip_Ability_Panic_move_speed"         "MOVE SPEED:"
         "DOTA_Tooltip_Ability_Panic_incoming_damage"    "INCOMING DAMAGE:"
 
-		
-		
+
+
 //Boss Lines
 
 "es_test" "test test test test <font color='#00CC00'>TEST</font>"
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
+
+
+
+
+
+
+
+
+
+
         // Usage
         //  <br> for break lines
         //  • for bullets
@@ -297,13 +297,30 @@
                 "Gamemode_noislandbosses" "No Mini-bosses"
                 "Gamemode_confirm" "Confirm vote"
                 "Gamemode_confirmed" "Voted!"
+                "Gamemode_votingend" "Voting has ended. Game starts in {s:time}..."
                 "Gamemode_notvoted_header" "Players that have not voted:"
                 "Gamemode_voted_header" "Players that have voted:"
                 "Gamemode_player_line" "{s:player}<br />
-                {s:speed} {s:pick} {s:custom}"
+                {s:speed} {s:pick}"
                 "Gamemode_allpick" "All pick"
                 "Gamemode_allrandom" "All random"
                 "Gamemode_samehero" "Same Hero"
+
+                "Gamemode_tooltip_speed_1" ""
+                "Gamemode_tooltip_speed_2" ""
+                "Gamemode_tooltip_speed_3" ""
+                "Gamemode_tooltip_pick_1" ""
+                "Gamemode_tooltip_pick_2" ""
+                "Gamemode_tooltip_pick_3" ""
+                "Gamemode_tooltip_custom_options" ""
+                "Gamemode_tooltip_custom_noob" ""
+                "Gamemode_tooltip_custom_fixedbush" ""
+                "Gamemode_tooltip_custom_norevive" ""
+                "Gamemode_tooltip_custom_noislandbosses" ""
+                "Gamemode_tooltip_icon_custom_noob" ""
+                "Gamemode_tooltip_icon_custom_fixedbush" ""
+                "Gamemode_tooltip_icon_custom_norevive" ""
+                "Gamemode_tooltip_icon_custom_noislandbosses" ""
 
 
 				//Help Menu

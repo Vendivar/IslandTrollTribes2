@@ -280,6 +280,11 @@
         <Image style="opacity:0;" src="file://{images}/help_menu/background.png" />
         <Image style="opacity:0;" src="file://{images}/gamemode_selector/voting_gui_overlay3.png" />
 
+        <Image style="opacity:0;" src="file://{images}/icons/diaper-icon2.png" />
+        <Image style="opacity:0;" src="file://{images}/icons/fixed bushes4.png" />
+        <Image style="opacity:0;" src="file://{images}/icons/HARDCORE.png" />
+        <Image style="opacity:0;" src="file://{images}/icons/no minibosses.png" />
+
 <Image style="opacity:0;" src="file://{images}/spellicons/ability_beastmaster_attack.png" />
 <Image style="opacity:0;" src="file://{images}/spellicons/ability_beastmaster_bash.png" />
 <Image style="opacity:0;" src="file://{images}/spellicons/ability_beastmaster_bearform.png" />

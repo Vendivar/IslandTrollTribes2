@@ -15,30 +15,49 @@ var voted_players = {};
 
 var custom_active = false;
 
-function setSpeed(speed) {
+function onHover(cls) {
+  var panel = $("#" + cls);
+
+  $.DispatchEvent("DOTAShowTextTooltip", panel, "#Gamemode_tooltip_" + cls);
+}
+
+function offHover(cls) {
+  var panel = $("#" + cls);
+
+  $.DispatchEvent("DOTAHideTextTooltip", panel);
+}
+
+function setSpeed(speed, force) {
+  if (voted && !force) return;
   $("#speed_" + settings["speed"]).RemoveClass("active_speed");
 
   settings["speed"] = speed;
   $("#speed_" + speed).AddClass("active_speed");
 }
 
-function setPick(pick) {
+function setPick(pick, force) {
+  if (voted && !force) return;
   $("#pick_" + settings["pick"]).RemoveClass("active_pick")
 
   settings["pick"] = pick;
   $("#pick_" + pick).AddClass("active_pick")
 }
 
-function toggleCustom() {
+function toggleCustom(force) {
+  if (voted && !force) return;
   custom_active = !custom_active
 
   if (custom_active) {
     $("#Gamemode_customwrapper").RemoveClass("hidden");
+    $("#Gamemode_picks").RemoveClass("hidden");
     $("#custom_options").AddClass("active_custom");
   }
   else {
     $("#Gamemode_customwrapper").AddClass("hidden");
+    $("#Gamemode_picks").AddClass("hidden");
     $("#custom_options").RemoveClass("active_custom");
+
+    setPick(1);
 
     for (var i in settings) {
       if (i.slice(0,6) === "custom" && settings[i]) {
@@ -48,7 +67,8 @@ function toggleCustom() {
   }
 }
 
-function setCustomToggle(key) {
+function setCustomToggle(key, force) {
+  if (voted && !force) return;
   settings[key] = !settings[key];
 
   if (settings[key]) {
@@ -90,6 +110,9 @@ function setNotVoted() {
   }
 }
 
+var PICKS = ["","ALL_PICK","ALL_RANDOM","SAME_HERO"];
+var SPEEDS = ["","FAST","NORMAL","SLOW"];
+
 function setVoted() {
   var labels = $("#Gamemode_voted").Children();
   for (i in labels) {
@@ -102,6 +125,7 @@ function setVoted() {
   var player;
   var settings;
   var label;
+  $.Msg(voted_players);
   for (i in voted_players) {
     player = voted_players[i].player;
     settings = voted_players[i].settings;
@@ -109,22 +133,34 @@ function setVoted() {
     label = $.CreatePanel("Label", $("#Gamemode_voted"), "");
     label.AddClass("player_line");
     label.SetDialogVariable("player", player);
-    label.SetDialogVariable("speed", settings.game_mode);
-    label.SetDialogVariable("pick", settings.pick_mode);
+    label.SetDialogVariable("speed", SPEEDS[settings.speed]);
+    label.SetDialogVariable("pick", PICKS[settings.pick]);
     label.html = true
+    label.text = $.Localize("#Gamemode_player_line", label);
 
     var c = 0;
     var setting;
     var img;
-    var custom = "";
-    for (c in settings.custom_settings) {
-      setting = settings.custom_settings[c];
-      if (setting) {
-        custom += c + " ";  // TODO: Replace this with the custom icons.
+    for (c in settings) {
+      if (c.slice(0,6) === "custom") {
+        setting = settings[c];
+        if (setting) {
+          img = $.CreatePanel("Panel", label, "");
+          img.AddClass("Gamemode_icon");
+          img.AddClass("Gamemode_icon_" + c);
+
+          (function(nam, imag) {
+            imag.SetPanelEvent("onmouseover", function() {
+              $.DispatchEvent("DOTAShowTextTooltip", imag, "#Gamemode_tooltip_icon_" + nam);
+            });
+
+            imag.SetPanelEvent("onmouseout", function() {
+              $.DispatchEvent("DOTAHideTextTooltip", imag);
+            });
+          })(c,img);
+        }
       }
     }
-    label.SetDialogVariable("custom", custom);
-    label.text = $.Localize("#Gamemode_player_line", label);
   }
 }
 
@@ -142,6 +178,22 @@ function setPlayerList() {
   setNotVoted();
 }
 
+var timeLeft = 5
+function VoteEnd() {
+  if (timeLeft == 0) {
+    return;
+  }
+
+  var label = $("#Gamemode_confirmed");
+  label.SetDialogVariable("time", timeLeft);
+  label.text = $.Localize("#Gamemode_votingend", label);
+
+  $.Schedule(1, function() {
+    timeLeft -= 1;
+    VoteEnd();
+  })
+}
+
 function OnVoteConfirmed(vote) {
   var player_confirmed = Players.GetPlayerName(vote.player);
   voted_players[vote.player] = {
@@ -157,10 +209,59 @@ function OnVoteConfirmed(vote) {
   if (vote.voting_ended) {
     $.Msg("Voting has ended!");
     // Voting has ended!
-    // TODO: Implement voting ending.
-    // TODO: Remove gamemode selection screen and show hero selection, if needed.
-    // vote.voted_settings
-    $("#Gamemode_container").AddClass("hidden");
+
+    VoteEnd();
+
+    // Show settings.
+    var settings = vote.voted_settings;
+    var custom_settings = settings.custom_settings;
+
+    if (settings.pick_mode == "ALL_PICK") {
+      setPick(1, true);
+    }
+    else if (settings.pick_mode == "ALL_RANDOM") {
+      setPick(2, true);
+    }
+    else if (settings.pick_mode == "SAME_HERO") {
+      setPick(3, true);
+    }
+
+    if (settings.game_mode == "FAST") {
+      setSpeed(1, true);
+    }
+    else if (settings.game_mode == "NORMAL") {
+      setSpeed(2, true);
+    }
+    else if (settings.game_mode == "SLOW") {
+      setSpeed(3, true);
+    }
+
+    // If there's a single custom option set, make sure that they're shown.
+    if (custom_settings.noob_mode ||
+        custom_settings.fixed_bush_spawning ||
+        custom_settings.norevive ||
+        custom_settings.noislandbosses) {
+        custom_active = false;
+        toggleCustom(true);
+    }
+
+    // Only change what you have to.
+    var i = "";
+    var str = "";
+    for (var i in settings) {
+      str = i.slice(7);
+      if (i.slice(0,6) === "custom" && !settings[i] && custom_settings[str]) {
+        setCustomToggle(i);
+      }
+    }
+
+    $.Schedule(5, function() {
+      // We only have to hide the gamemodes when we need the hero selection.
+      // This is also useful for testing.
+      if (settings.pick_mode == "ALL_PICK") {
+        $("#Gamemode_container").AddClass("hidden");
+      }
+    });
 
     // class_picker.js is handling the pick mode.
   }
