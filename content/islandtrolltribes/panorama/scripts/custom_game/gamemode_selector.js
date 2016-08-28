@@ -90,6 +90,22 @@ function sendVote() {
   $("#Gamemode_confirmed").RemoveClass("hidden");
 }
 
+var votingLeft = 60;
+function setInitialTimer() {
+  if (votingLeft == 0) {
+    return;
+  }
+
+  var label = $("#Gamemode_timer");
+  label.SetDialogVariable("time", votingLeft);
+  label.text = $.Localize("#Gamemode_timer", label);
+
+  $.Schedule(1, function() {
+    votingLeft -= 1;
+    setInitialTimer();
+  })
+}
+
 function setNotVoted() {
   var labels = $("#Gamemode_notvoted").Children();
   for (i in labels) {
@@ -195,70 +211,73 @@ function VoteEnd() {
 }
 
 function OnVoteConfirmed(vote) {
-  var player_confirmed = Players.GetPlayerName(vote.player);
-  voted_players[vote.player] = {
-    player: player_confirmed,
-    settings: vote.settings
-  };
+  if (!vote.timer_up) {
+    var player_confirmed = Players.GetPlayerName(vote.player);
+    voted_players[vote.player] = {
+      player: player_confirmed,
+      settings: vote.settings
+    };
 
-  delete notvoted_players[vote.player];
+    delete notvoted_players[vote.player];
 
-  setNotVoted();
-  setVoted();
+    setNotVoted();
+    setVoted();
+  }
+  else {
+    voted = true
+
+    $("#Gamemode_confirm").AddClass("hidden");
+    $("#Gamemode_confirmed").RemoveClass("hidden");
+  }
 
   if (vote.voting_ended) {
+    $("#Gamemode_timer").AddClass("hidden");
     $.Msg("Voting has ended!");
     // Voting has ended!
 
     VoteEnd();
 
     // Show settings.
-    var settings = vote.voted_settings;
-    var custom_settings = settings.custom_settings;
+    var voted_settings = vote.voted_settings;
+    var custom_settings = voted_settings.custom_settings;
 
-    if (settings.pick_mode == "ALL_PICK") {
-      setPick(1, true);
-    }
-    else if (settings.pick_mode == "ALL_RANDOM") {
-      setPick(2, true);
-    }
-    else if (settings.pick_mode == "SAME_HERO") {
-      setPick(3, true);
-    }
-
-    if (settings.game_mode == "FAST") {
-      setSpeed(1, true);
-    }
-    else if (settings.game_mode == "NORMAL") {
-      setSpeed(2, true);
-    }
-    else if (settings.game_mode == "SLOW") {
-      setSpeed(3, true);
+    // Map server's settings to local settings.
+    var map = {
+      "ALL_PICK": 1,
+      "ALL_RANDOM": 2,
+      "SAME_HERO": 3,
+      "FAST": 1,
+      "NORMAL": 2,
+      "SLOW": 3,
+      "noob_mode": "custom_noob",
+      "fixed_bush_spawning": "custom_fixedbush",
+      "norevive": "custom_norevive",
+      "noislandbosses": "custom_noislandbosses"
     }
 
-    // If there's a single custom option set, make sure that they're shown.
-    if (custom_settings.noob_mode ||
-        custom_settings.fixed_bush_spawning ||
-        custom_settings.norevive ||
-        custom_settings.noislandbosses) {
-        custom_active = false;
-        toggleCustom(true);
-    }
+    setPick(map[voted_settings.pick_mode], true);
+    setSpeed(map[voted_settings.game_mode], true);
+
+    // Show custom options, regardless if they are actually set.
+    custom_active = false;
+    toggleCustom(true);
 
     // Only change what you have to.
     var i = "";
     var str = "";
-    for (var i in settings) {
-      str = i.slice(7);
-      if (i.slice(0,6) === "custom" && !settings[i] && custom_settings[str]) {
-        setCustomToggle(i);
+    for (var i in custom_settings) {
+      str = map[i];
+      $.Msg(settings[str]);
+      $.Msg(custom_settings[i]);
+      if (settings[str] != custom_settings[i]) {
+        setCustomToggle(str, true);
       }
     }
 
     $.Schedule(5, function() {
       // We only have to hide the gamemodes when we need the hero selection.
       // This is also useful for testing.
-      if (settings.pick_mode == "ALL_PICK") {
+      if (voted_settings.pick_mode == "ALL_PICK") {
         $("#Gamemode_container").AddClass("hidden");
       }
     });
@@ -271,6 +290,7 @@ function OnVoteConfirmed(vote) {
   GameEvents.Subscribe("vote_confirmed", OnVoteConfirmed);
 
   setPlayerList();
+  setInitialTimer();
   $.GetContextPanel().SetFocus();
   GameUI.DenyWheel();
 

@@ -305,6 +305,7 @@
                 "Gamemode_allpick" "All pick"
                 "Gamemode_allrandom" "All random"
                 "Gamemode_samehero" "Same Hero"
+                "Gamemode_timer" "Voting will end in {s:time}..."
 
                 "Gamemode_tooltip_speed_1" "Fast Mode: Good for quick games.<p>[2x Faster Heat] Regen<p>[2x Faster] Creep Spawning<p>[2x Faster] Heat/Health/Energy degeneration"
                 "Gamemode_tooltip_speed_2" "Normal Mode (Default Setting): Good for a regular match.<p>Normal Heat Regen<p>Normal Creep Spawning<p>Normal Heat/Health/Energy degeneration"

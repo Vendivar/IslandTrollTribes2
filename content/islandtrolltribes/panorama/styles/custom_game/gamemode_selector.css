@@ -40,10 +40,17 @@
   padding-top: -20px;
 }
 
-#Gamemode_header Label {
+.Gamemode_header_label {
   text-align: center;
   width: 100%;
   font-size: 40px;
+  color: #ffffff;
+}
+
+#Gamemode_timer {
+  width: 100%;
+  text-align: right;
+  font-size: 20px;
   color: #ffffff;
 }
 

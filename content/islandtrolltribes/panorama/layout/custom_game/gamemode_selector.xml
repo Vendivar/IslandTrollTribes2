@@ -10,7 +10,8 @@
     <Panel id="Gamemode_container">
       <Panel id="Gamemode_selection">
         <Panel id="Gamemode_header">
-          <Label text="#Gamemode_header" />
+          <Label text="#Gamemode_header" class="Gamemode_header_label" />
+          <Label id="Gamemode_timer" />
         </Panel>
         <Panel id="Gamemode_mainselections">
           <Panel id="speed_1" class="Gamemode_speedselect1" onactivate="setSpeed(1)" onmouseover="onHover('speed_1')" onmouseout="offHover('speed_1')">
