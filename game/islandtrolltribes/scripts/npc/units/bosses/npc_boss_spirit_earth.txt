@@ -1,0 +1,75 @@
+"npc_spirit_earth"
+{
+	"BaseClass"	"npc_dota_creature"
+	"ConsideredHero"	"1"
+	"ModelScale"	"1.5"
+	"Model"	"models/heroes/sand_king/sand_king.vmdl"
+	"Ability1"	"ability_burrow"
+	"Ability2"	"ability_sandstorm"
+	"Ability3"	"ability_poisonsting"
+	"Ability4"	""
+	"Ability5"	""
+	"Ability6"	"ability_boss_tint_desert"
+	"AbilityLayout"	"4"
+	"ArmorPhysical"	"0"
+	"AttackCapabilities"	"DOTA_UNIT_CAP_MELEE_ATTACK"
+	"AttackDamageMin"	"5"
+	"AttackDamageMax"	"10"
+	"AttackRate"	"2.5"
+	"AttackAnimationPoint"	"0.840"
+	"AttackAcquisitionRange"	"0"
+	"AttackRange"	"200"
+	"ProjectileModel"	""
+	"ProjectileSpeed"	"0"
+	"AttributePrimary"	"DOTA_ATTRIBUTE_AGILITY"
+	"AttributeBaseStrength"	"1"
+	"AttributeStrengthGain"	"1"
+	"AttributeBaseIntelligence"	"1"
+	"AttributeIntelligenceGain"	"1"
+	"AttributeBaseAgility"	"1"
+	"AttributeAgilityGain"	"1"
+	"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
+	"MovementSpeed"	"322"
+	"MovementTurnRate"	"0.5"
+	"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
+	"HealthBarOffset"	"140"
+	"StatusHealth"	"1500"
+	"StatusHealthRegen"	"0.5"
+	"StatusMana"	"500"
+	"StatusManaRegen"	"0.0"
+	"VisionDaytimeRange"	"1200"
+	"VisionNighttimeRange"	"1000"
+	
+			"Creature"
+		{
+			"AttachWearables"
+			{
+				"Wearable1"
+				{
+					"ItemDef"	"7302"
+				}
+	
+				"Wearable2"
+				{
+					"ItemDef"	"7303"
+				}
+	
+				"Wearable3"
+				{
+					"ItemDef"	"7304"
+				}
+	
+				"Wearable4"
+				{
+					"ItemDef"	"7305"
+				}
+	
+				"Wearable5"
+				{
+					"ItemDef"	"7306"
+				}
+	
+			}
+	
+		}
+}

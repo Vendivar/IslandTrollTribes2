@@ -1,0 +1,49 @@
+"ability_boss_tint_desert"
+{
+    "BaseClass"         "ability_datadriven"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+    "MaxLevel"          "1"
+
+    "Modifiers"
+    {
+
+		"modifier_bosstint3"
+        {
+            "StatusEffectName" "particles/custom/status_effect_blur.vpcf"
+            "StatusEffectPriority" "15"
+            "Passive"   "1"
+            "IsHidden"         "1"
+			
+			
+		"OnCreated"
+			{
+				"AttachEffect"
+				{
+					"EffectName"	"particles/custom/status_boss_decrep_effect.vpcf"
+					"EffectAttachType"	"follow_origin"
+					"Target"	"CASTER"
+				}
+				"AttachEffect"
+				{
+					"EffectName"	"particles/custom/status_boss_borrow_effect.vpcf"
+					"EffectAttachType"	"follow_origin"
+					"Target"	"TARGET"
+				}
+				"AttachEffect"
+				{
+					"EffectName"	"particles/custom/blur_1.vpcf"
+					"EffectAttachType"	"follow_origin"
+					"Target"	"TARGET"
+				}
+			}
+			
+        }
+		"modifier_bosstint1"
+        {
+            "StatusEffectName" "particles/custom/status_effect_ancestral_spirit.vpcf"
+            "StatusEffectPriority" "15"
+            "Passive"   "1"
+            "IsHidden"         "1"
+		}
+    }
+}

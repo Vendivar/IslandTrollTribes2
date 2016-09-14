@@ -1,0 +1,161 @@
+// Rewrite of Alchemist Acid drip
+// Author: Noya
+// Date: October 13, 2015
+// Version: 6.85
+// Type: Datadriven
+//
+// ----- FILE REQUIREMENTS -----
+// Script files:
+// scripts/vscripts/heroes/hero_alchemist/acid_drip.lua
+"ability_poisonsting"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AOE"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+	"AbilityTextureName"			"alchemist_acid_drip"
+	"AOERadius"						"125"
+
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastPoint"				"0.0"
+
+	// Time		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"5.0"
+	
+	// Cost
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityManaCost"				"0"
+	
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"50"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"duration"				"10.0"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage"				"5"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"armor_reduction"		"-2"
+		}
+		"05"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"tick_rate"				"1.5"
+		}
+	}
+
+	"precache"
+	{
+		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_alchemist.vsndevts"
+		"particle"  "particles/units/heroes/hero_alchemist/alchemist_acid_spray.vpcf"
+	}
+	"Modifiers"
+	{
+	"modifier_poisonsting"
+		{
+			"Passive"	"1"
+			"IsHidden"	"1"
+			
+	"OnAttackLanded"
+			{
+				"Random"
+				{
+					"Chance"		"3"	
+					"PseudoRandom" "DOTA_PSEUDO_RANDOM_ITEM_MKB"
+					"OnSuccess"
+					{
+						"CreateThinker"
+						{
+							"ModifierName"	"modifier_acid_drip_thinker"
+							"Target" 		"TARGET"
+						}
+							"RunScript"
+							{
+								"ScriptFile" "bosses/desert/poison_sting.lua"
+								"Function"   "SpeechPoison"
+							}
+						"FireSound"
+						{
+							"EffectName"	"sk.poison1"
+							"Target"	"CASTER"
+						}
+					}
+				}
+			}
+		}
+		"modifier_acid_drip_thinker"
+		{
+			"Aura"					"modifier_acid_drip"
+			"Aura_Radius"			"%radius"
+			"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+			"Aura_Types"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL"
+			"Aura_Flags"			"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+			"Duration"				"%duration"
+
+			"OnCreated"
+			{
+				"RunScript"
+				{
+					"ScriptFile" "bosses/desert/poison_sting.lua"
+					"Function"		"AciddripSound"
+				}
+
+				"AttachEffect"
+				{
+					"EffectName"		"particles/units/heroes/hero_alchemist/alchemist_acid_spray.vpcf"
+					"EffectAttachType"	"follow_origin"
+					"Target"			"TARGET"
+					"ControlPoints"
+					{
+						"00" "0 0 0"
+						"01" "%radius 1 1"
+						"15" "25 150 25"
+						"16" "0 0 0"
+					}
+				}
+			}
+		}
+
+		"modifier_acid_drip"
+		{
+			"IsDebuff"		"1"
+			"ThinkInterval"	"%tick_rate"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor_reduction"
+			}
+			"OnIntervalThink"
+			{
+				"FireSound"
+				{
+					"EffectName" 	"Hero_Alchemist.Acidspray.Damage"
+					"Target"		"TARGET"
+				}
+				"Damage"
+				{
+					"Target"		 "TARGET"
+					"Type"			 "DAMAGE_TYPE_MAGICAL"
+					"Damage"		 "%damage"
+				}
+			}
+		}
+	}
+}
+

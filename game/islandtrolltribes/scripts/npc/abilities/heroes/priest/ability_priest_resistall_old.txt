@@ -1,0 +1,71 @@
+"ability_priest_resistall_old"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+	"AbilityTextureName"	"ability_priest_resistall"
+	"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
+	"AbilityCastPoint"	"0.3"
+	"AbilityCooldown"	"40"
+	"AbilityManaCost"	"40"
+	"MaxLevel"	"1"
+	"precache"
+	{
+		"particle"	"particles/units/heroes/hero_oracle/oracle_false_promise_cast_enemy.vpcf"
+        "soundfile" "soundevents/spells.vsndevts"
+	}
+
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_priest_resistall"
+			"Target"
+			{
+				"Center"	"TARGET"
+			}
+
+		}
+
+		"FireSound"
+		{
+			"EffectName"	"Resist.All"
+			"Target"	"TARGET"
+		}
+		"FireEffect"
+		{
+			"EffectName"	"particles/units/heroes/hero_oracle/oracle_false_promise_cast_enemy.vpcf"
+			"EffectAttachType"	"follow_origin"
+			"Target"	"TARGET"
+		}
+
+	}
+
+	"Modifiers"
+	{
+		"modifier_priest_resistall"
+		{
+			"Duration"	"%duration"
+			"EffectName"	"particles/items_fx/black_king_bar_avatar.vpcf"
+			"EffectAttachType"	"follow_origin"
+			"States"
+			{
+				"MODIFIER_STATE_MAGIC_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
+			}
+
+		}
+
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"duration"	"20.0"
+		}
+
+	}
+
+}

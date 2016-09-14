@@ -2,14 +2,14 @@
 function SpeechBurrow( event )
 	local caster = event.caster
 
-	caster:AddSpeechBubble(1,"#sk_burrow1",5.0,0,0)
+	caster:AddSpeechBubble(1,"#sk_burrow1",3.0,0,0)
 
 end 
 
 function SpeechTaunt( event )
 	local caster = event.caster
 
-	caster:AddSpeechBubble(1,"#sk_taunt",5.0,0,0)
+	caster:AddSpeechBubble(1,"#sk_taunt",2.0,0,0)
 
 end 
 

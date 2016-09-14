@@ -1,0 +1,40 @@
+"ability_spirit_rockfall"
+{
+    "BaseClass"             "ability_datadriven"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+    "AbilityTextureName"    "ability_spirit_rockfall"
+    "AbilityCastPoint"      "0.2"
+    "AbilityCooldown"       "20"
+    "AbilityManaCost"       "0"
+    "AbilityCastRange"      "2500"
+    "MaxLevel"              "1"
+
+	"OnSpellStart"
+	{			
+	
+		"FireEffect"
+		{
+			"EffectName"				"particles/custom/aoe_indicator_large.vpcf"
+			"EffectAttachType"			"start_at_customorigin"
+			"Target"					"CASTER"
+			"ControlPoints"
+			{
+				"01"					"POINT"
+			}
+		}
+		"RunScript"
+		{
+			"ScriptFile" "bosses/desert/rockfall.lua"
+			"Function"   "RockFall"
+			"Target"	 "CASTER"
+		}
+	}
+    "AbilitySpecial"
+    {
+        "01"
+        {
+            "var_type"  "FIELD_FLOAT"
+            "duration"   "3"
+        }
+    }
+}

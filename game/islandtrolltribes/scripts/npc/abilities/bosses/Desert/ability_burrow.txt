@@ -21,13 +21,13 @@
 	
 	// Time		
 	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCooldown"				"11.0 11.0 11.0 11.0"
+	"AbilityCooldown"				"11.0"
 
 	// Cost
 	//-------------------------------------------------------------------------------------------------------------
-	"AbilityManaCost"				"110 120 130 140"
+	"AbilityManaCost"				"0"
 	
-	"AbilityDamage"					"100 160 220 280"
+	"AbilityDamage"					"25"
 	
 	// Special
 	//-------------------------------------------------------------------------------------------------------------
@@ -82,7 +82,7 @@
 	{
 		"FireEffect"
 		{
-			"EffectName"				"particles/custom/mini_line_attack_indicator_6.vpcf"
+			"EffectName"				"particles/custom/mini_line_attack1_b.vpcf"
 			"EffectAttachType"			"start_at_customorigin"
 			"Target"					"CASTER"
 			"ControlPoints"

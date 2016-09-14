@@ -1,0 +1,1 @@
+--TO DO USE LinkLuaModifier("modifier_transparency", "libraries/modifiers/modifier_transparency.lua", LUA_MODIFIER_MOTION_NONE) ON BOSSES

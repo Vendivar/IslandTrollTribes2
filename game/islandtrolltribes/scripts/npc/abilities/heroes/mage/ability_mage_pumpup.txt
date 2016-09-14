@@ -45,7 +45,7 @@
     {
         "RunScript"
         {
-            "ScriptFile"    "heroes/priest/pumpup.lua"
+            "ScriptFile"    "heroes/mage/pumpup.lua"
             "Function"      "Bloodlust"
         }
         
@@ -129,7 +129,7 @@
             //{
                 //"RunScript"
                 //{
-                //    "ScriptFile"    "heroes/priest/pumpup.lua"
+                //    "ScriptFile"    "heroes/mage/pumpup.lua"
                 //    "Function"      "ToggleOnAutocast"
                 //}
             //}
@@ -142,7 +142,7 @@
             {
                 "RunScript"
                 {
-                    "ScriptFile"    "heroes/priest/pumpup.lua"
+                    "ScriptFile"    "heroes/mage/pumpup.lua"
                     "Function"      "BloodlustAutocast_Attack"
                 }
             }
@@ -151,7 +151,7 @@
             {
                 "RunScript"
                 {
-                    "ScriptFile"    "heroes/priest/pumpup.lua"
+                    "ScriptFile"    "heroes/mage/pumpup.lua"
                     "Function"      "BloodlustAutocast_Attacked"
                 }
             }      

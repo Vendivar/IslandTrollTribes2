@@ -8,67 +8,59 @@
 	m_ConstantColor = [ 0, 0, 0, 255 ]
 	m_nConstantSequenceNumber = 1
 	m_flMaxRecreationTime = -1.0
+	m_Renderers = 
+	[
+		{
+			_class = "C_OP_RenderStatusEffect"
+			m_pTextureEnvMap = resource:""
+			m_pTextureSpecularWarp = resource:""
+			m_pTextureFresnelWarp = resource:""
+			m_pTextureFresnelColorWarp = resource:""
+			m_pTextureDiffuseWarp = resource:""
+			m_pTextureDetail2 = resource:""
+			m_pTextureColorWarp = resource:"materials/models/heroes/statuseffects/colorwarp_wraithking_ghosts.vtex"
+		},
+	]
 	m_Operators = 
 	[
 		{
-			_class = "C_OP_OscillateVectorSimple"
-			m_flOpStartFadeOutTime = 0.2
-			m_flOpEndFadeOutTime = 0.2
-			m_nOpEndCapState = 1
-			m_nField = 15
-			m_Rate = [ 0.0, -5.0, 0.0 ]
-			m_Frequency = [ 0.0, 0.25, 0.0 ]
-			m_flOscAdd = 0.75
+			_class = "C_OP_LerpEndCapVector"
+			m_flLerpTime = 0.5
 		},
 		{
-			_class = "C_OP_RampScalarLinearSimple"
-			m_nOpEndCapState = 1
-			m_nField = 7
-			m_Rate = -1.0
+			_class = "C_OP_LerpEndCapVector"
+			m_flLerpTime = 0.5
+			m_nFieldOutput = 2
 		},
 		{
-			_class = "C_OP_RampScalarLinearSimple"
-			m_flEndTime = 99999.0
-			m_Rate = -2.0
+			_class = "C_OP_LerpEndCapScalar"
+			m_nFieldOutput = 16
+			m_flOutput = 0.0
+		},
+		{
+			_class = "C_OP_AlphaDecay"
+			m_nOpEndCapState = 1
+			m_flMinAlpha = 0.05
+		},
+		{
+			_class = "C_OP_OscillateVector"
 			m_nOpEndCapState = 0
-			m_flOpEndFadeOutTime = 0.5
-			m_flOpStartFadeOutTime = 0.25
+			m_nField = 2
+			m_RateMin = [ 55.0, 0.0, 0.0 ]
+			m_RateMax = [ 65.0, 0.0, 0.0 ]
+			m_FrequencyMin = [ 2.0, 1.0, 1.0 ]
+			m_FrequencyMax = [ 3.0, 1.0, 1.0 ]
+			m_bProportional = false
+			m_flEndTime_min = 999999.0
+			m_flEndTime_max = 999999.0
+			m_bProportionalOp = false
+			m_bDisableOperator = true
 		},
 		{
 			_class = "C_OP_ClampVector"
-			m_nFieldOutput = 15
-			m_vecOutputMax = [ 1.0, 0.125, 1.0 ]
-		},
-		{
-			_class = "C_OP_RampScalarSplineSimple"
-			m_nField = 4
-			m_Rate = 4.0
-			m_flEndTime = 0.25
-			m_bEaseOut = true
-		},
-		{
-			_class = "C_OP_ColorInterpolate"
-			m_nFieldOutput = 22
-			m_ColorFade = [ 99, 161, 76, 0 ]
-		},
-		{
-			_class = "C_OP_ColorInterpolate"
-			m_ColorFade = [ 91, 163, 70, 255 ]
-		},
-		{
-			_class = "C_OP_RampScalarLinearSimple"
-			m_flEndTime = 999999.0
-			m_Rate = -2.0
-			m_nField = 4
-			m_nOpEndCapState = 1
-		},
-		{
-			_class = "C_OP_ClampScalar"
-			m_nFieldOutput = 4
-		},
-		{
-			_class = "C_OP_Decay"
-			m_nOpEndCapState = 1
+			m_nFieldOutput = 2
+			m_vecOutputMax = [ 1000.0, 1.0, 1.0 ]
+			m_bDisableOperator = true
 		},
 	]
 	m_Initializers = 
@@ -104,16 +96,16 @@
 		},
 		{
 			_class = "C_INIT_RandomVectorComponent"
-			m_flMin = 14.0
-			m_flMax = 14.0
+			m_flMin = -1.0
+			m_flMax = -1.0
 			m_nComponent = 2
 			m_nFieldOutput = 17
 		},
 		{
 			_class = "C_INIT_RandomScalar"
 			m_nFieldOutput = 4
-			m_flMax = 0.5
-			m_flMin = 0.5
+			m_flMax = 1.0
+			m_flMin = 1.0
 		},
 		{
 			_class = "C_INIT_RandomScalar"
@@ -124,20 +116,20 @@
 		{
 			_class = "C_INIT_RandomScalar"
 			m_nFieldOutput = 12
-			m_flMax = 8.0
-			m_flMin = 8.0
+			m_flMax = 2.0
+			m_flMin = 2.0
 		},
 		{
 			_class = "C_INIT_RandomColor"
 			m_nFieldOutput = 22
-			m_ColorMax = [ 102, 157, 71, 255 ]
-			m_ColorMin = [ 102, 157, 71, 255 ]
+			m_ColorMax = [ 77, 255, 136, 0 ]
+			m_ColorMin = [ 77, 255, 136, 0 ]
 		},
 		{
 			_class = "C_INIT_RandomScalar"
 			m_nFieldOutput = 13
-			m_flMax = 140.0
-			m_flMin = 140.0
+			m_flMax = 6.0
+			m_flMin = 6.0
 		},
 		{
 			_class = "C_INIT_RandomScalar"
@@ -160,14 +152,14 @@
 		},
 		{
 			_class = "C_INIT_RandomVectorComponent"
-			m_flMin = 100.0
-			m_flMax = 100.0
+			m_flMin = 1.0
+			m_flMax = 1.0
 		},
 		{
 			_class = "C_INIT_RandomVectorComponent"
 			m_nFieldOutput = 2
-			m_flMax = 0.15
-			m_flMin = 0.15
+			m_flMax = 4.0
+			m_flMin = 4.0
 		},
 		{
 			_class = "C_INIT_RandomVectorComponent"
@@ -185,8 +177,8 @@
 		},
 		{
 			_class = "C_INIT_RandomColor"
-			m_ColorMax = [ 102, 157, 71, 255 ]
-			m_ColorMin = [ 102, 157, 71, 255 ]
+			m_ColorMax = [ 106, 225, 251, 0 ]
+			m_ColorMin = [ 106, 225, 251, 0 ]
 		},
 		{
 			_class = "C_INIT_RandomVectorComponent"

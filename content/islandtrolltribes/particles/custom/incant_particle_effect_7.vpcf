@@ -101,6 +101,7 @@
 		},
 		{
 			_class = "C_INIT_CreateFromParentParticles"
+			m_flIncrement = 10.0
 		},
 	]
 	m_Emitters = 
