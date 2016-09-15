@@ -10,18 +10,7 @@
     "MaxLevel"              "1"
 
 	"OnSpellStart"
-	{			
-	
-		"FireEffect"
-		{
-			"EffectName"				"particles/custom/aoe_indicator_large.vpcf"
-			"EffectAttachType"			"start_at_customorigin"
-			"Target"					"CASTER"
-			"ControlPoints"
-			{
-				"01"					"POINT"
-			}
-		}
+	{
 		"RunScript"
 		{
 			"ScriptFile" "bosses/desert/rockfall.lua"
