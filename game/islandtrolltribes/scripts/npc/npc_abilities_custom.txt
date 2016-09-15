@@ -546,37 +546,37 @@
 				{
 	            "EffectName"	"particles/custom/mini_aoe_indicator.vpcf"
 	            "EffectAttachType"	"PATTACH_ABSORIGIN"
-	            "Target"	"CASTER"
+	            "Target"	"POINT"
 	            }
 			"FireSound"
 			{
 				"EffectName"	"scroll.bouldercast"
-				"Target"	"CASTER"
+				"Target"	"POINT"
 			}
 		"RunScript"
 	        {
 	            "ScriptFile"    "items/scroll_boulder.lua"
 	            "Function"      "MakeBoulder"
-	            "Target"        "CASTER"
+	            "Target"        "POINT"
 	        }
 	        "FireEffect"
 	        {
 	            "EffectName"	"particles/custom/boulder_scroll_drop.vpcf"
 	            "EffectAttachType"	"PATTACH_WORLDORIGIN"
-	            "Target"	"CASTER"
+	            "Target"	"POINT"
 	        }
 	            
 	        "FireSound"
 			{
 				"EffectName"	"scroll.boulder"
-				"Target"	"CASTER"
+				"Target"	"POINT"
 			}
 	        
 	        "ActOnTargets"
 			{
 				"Target"
 				{
-					"Center"	"CASTER"
+					"Center"	"POINT"
 					"Radius"	"800"
 					"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 					"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
@@ -588,7 +588,7 @@
 	                "Knockback"
 	                {
 	                    "Target"			"TARGET"
-	                    "Center"			"CASTER"
+	                    "Center"			"POINT"
 	                    "Duration"			"%stun_duration"
 	                    "Distance"			"350"
 	                    "Height"			"25"
@@ -614,7 +614,7 @@
 			{
 				"Target"
 				{
-					"Center"	"CASTER"
+					"Center"	"POINT"
 					"Radius"	"800"
 					"Teams"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 					"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
@@ -975,7 +975,7 @@
 			{
 				"ScriptFile" "bosses/desert/rockfall.lua"
 				"Function"   "RockFall"
-				"Target"         "CASTER"
+				"Target"	 "CASTER"
 			}
 		}
 	    "AbilitySpecial"
