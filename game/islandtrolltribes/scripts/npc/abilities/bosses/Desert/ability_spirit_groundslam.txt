@@ -1,0 +1,201 @@
+"ability_spirit_groundslam"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
+	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_ALL"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+	"AbilityCastPoint"	"0.0"
+	"AbilityChannelTime" "5.5"
+	"AbilityCooldown"	"0"
+	"AbilityManaCost"	"0"
+	
+	"OnSpellStart"
+	{
+        "FireEffect"
+			{
+            "EffectName"	"particles/custom/aoe_indicator_large.vpcf"
+            "EffectAttachType"	"PATTACH_ABSORIGIN"
+            "Target"	"CASTER"
+            }
+		"FireEffect"
+			{
+            "EffectName"	"particles/custom/dust_kickup.vpcf"
+            "EffectAttachType"	"PATTACH_ABSORIGIN"
+            "Target"	"CASTER"
+            }
+			"FireSound"
+			{
+				"EffectName"	"es.slamstart1"
+				"Target"	"CASTER"
+			}
+		"RunScript"
+			{
+				"ScriptFile" "bosses/desert/slam.lua"
+				"Function"   "SpeechSlamStart"
+			}
+	}
+	
+	"OnChannelSucceeded"
+{
+        "ActOnTargets"
+		{
+			"Target"
+			{
+				"Center"	"CASTER"
+				"Radius"	"800"
+				"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+                
+			}
+
+			"Action"
+			{
+                "Knockback"
+                {
+                    "Target"			"TARGET"
+                    "Center"			"CASTER"
+                    "Duration"			"%stun_duration"
+                    "Distance"			"450"
+                    "Height"			"45"
+                    "IsFixedDistance"	"1"
+                    "ShouldStun"		"1"
+                }
+
+			}
+            "ApplyModifier"
+            {
+                "Target"			"TARGET"
+                "ModifierName"		"modifier_slam_slow"
+            }
+            "Damage"
+            {
+                "Target"			"TARGET"
+                "Damage"			"%damage"
+                "Type"				"DAMAGE_TYPE_MAGICAL"
+            }
+            
+		}
+         "ActOnTargets"
+		{
+			"Target"
+			{
+				"Center"	"CASTER"
+				"Radius"	"800"
+				"Teams"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+                
+			}
+
+			"Action"
+			{
+                "Knockback"
+                {
+                    "Target"			"TARGET"
+                    "Center"			"CASTER"
+                    "Duration"			"%stun_duration"
+                    "Distance"			"450"
+                    "Height"			"45"
+                    "IsFixedDistance"	"1"
+                    "ShouldStun"		"1"
+                }
+
+			}
+			"ApplyModifier"
+            {
+                "Target"			"TARGET"
+                "ModifierName"		"modifier_slam_slow"
+            }
+			"Damage"
+            {
+                "Target"			"TARGET"
+                "Damage"			"%damage"
+                "Type"				"DAMAGE_TYPE_MAGICAL"
+            }
+		}
+
+			"RunScript"
+			{
+				"ScriptFile" "bosses/desert/slam.lua"
+				"Function"   "SpeechTaunt"
+			}
+			"FireSound"
+			{
+				"EffectName"	"es.taunt"
+				"Target"	"CASTER"
+			}
+						"FireSound"
+			{
+				"EffectName"	"es.slamspell"
+				"Target"	"CASTER"
+			}
+	}
+	
+	"OnChannelInterrupted"
+	{
+			"RunScript"
+			{
+				"ScriptFile" "bosses/desert/slam.lua"
+				"Function"   "SpeechSlamFail"
+			}
+			"FireSound"
+			{
+				"EffectName"	"es.slamfail1"
+				"Target"	"CASTER"
+			}
+	}
+"Modifiers"
+	{
+        "modifier_slam_slow"
+		{
+			"IsDebuff"					"1"
+			"Duration"					"%slow_debuff_duration"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"		"move_speed_slow"
+			}
+		}
+	}
+    
+    
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"range"	"450"
+		}
+
+		"02"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"duration"	"45.0"
+		}
+
+		"03"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"move_speed_slow"	"-10"
+		}
+
+		"04"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"slow_debuff_duration"	"2.0"
+		}		
+        "05"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"stun_duration"	"0.5"
+		}        
+        "06"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"damage"	"25"
+		}
+
+	}
+
+}
