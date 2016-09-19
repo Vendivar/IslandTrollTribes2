@@ -1704,6 +1704,159 @@
 	        }
 	    }
 	}
+	"ability_spirit_enchant"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"ability_spirit_enchant"
+		"MaxLevel" 						"1"
+	
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	
+		"AbilityCooldown"	"120"
+		"AbilityManaCost"	"30"
+	
+	    "AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_1"
+	    "AbilityCastPoint"	"0.5"
+		"AOERadius"			"%radius"
+		"AbilityCastRange"	"100"
+		"AbilityDuration"	"10"
+	
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_silencer.vsndevts"
+			"particle"  "particles/units/heroes/hero_axe/axe_beserkers_call_owner.vpcf"
+			"particle"  "particles/status_fx/status_effect_beserkers_call.vpcf"
+			"particle"	"particles/econ/courier/courier_faceless_rex/cour_rex_ground_a.vpcf"
+		}
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"radius"		"450"
+			}
+		}
+	
+		
+		
+		"Modifiers"
+		{
+		"modifier_enchnattouch"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				
+			"OnAttackLanded"
+				{
+					"Random"
+					{
+						"Chance"		"60"	
+						"PseudoRandom" "DOTA_PSEUDO_RANDOM_ITEM_MKB"
+						"OnSuccess"
+						{
+							"ApplyModifier"
+							{
+								"ModifierName"	"modifier_enchantproc"
+								"Target"		"CASTER"
+							}
+	
+						}
+					}
+				}
+			}
+			"modifier_enchantproc"
+			{
+			"IsHidden"	"1"
+				"OnAttackLanded"
+				{
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_spirit_enchant_target"
+						"Target" 		"TARGET"
+						"Duration"		"%AbilityDuration"
+					}
+	
+					"RemoveModifier"
+					{
+						"ModifierName"	"modifier_enchantproc"
+						"Target"		"CASTER"
+					}
+					
+					"RunScript"
+					{
+						"ScriptFile" "bosses/radiant/enchant.lua"
+						"Function"   "EnchantStart"
+					}
+					"FireEffect"
+					{
+						"EffectName"        "particles/custom/enchant.vpcf"
+						"EffectAttachType"  "follow_origin"
+						"Target"            "TARGET"
+					}
+				}
+			}
+			"modifier_spirit_enchant_target"
+			{
+				"IsHidden"			"0"
+				"IsDebuff"			"1"
+	
+				"EffectName"		"particles/custom/enchanted2.vpcf"
+				"EffectAttachType"	"follow_origin"
+	
+				"OnCreated"
+				{
+					
+				}
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"		 "25"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" 		 "-25" 
+					"MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE" 	 "50"
+				}
+				"States"
+				{
+					"MODIFIER_STATE_SPECIALLY_DENIABLE"		"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_COMMAND_RESTRICTED"		"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+	
+			"modifier_spirit_enchant_enemy"
+			{
+				"IsHidden"			"0"
+				"IsDebuff"			"1"
+	
+				"EffectName"		"particles/econ/courier/courier_faceless_rex/cour_rex_ground_a.vpcf"
+				"EffectAttachType"	"follow_origin"
+				
+				"StatusEffectName" 		"particles/status_fx/status_effect_beserkers_call.vpcf" 	   
+				"StatusEffectPriority"  "10"
+	
+				"ThinkInterval"  "0.5"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"   "bosses/radiant/enchant.lua"
+						"Function"     "Enchant"
+	
+						"modifier"		"modifier_spirit_enchant_enemy"
+					}
+				}
+	
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"   "bosses/radiant/enchant.lua"
+						"Function"     "enchantEnd"
+					}
+				}
+			}
+		}
+	}
 	"ability_the_one_criticalstike"
 	{
 		"BaseClass"	"ability_datadriven"
@@ -14738,19 +14891,6 @@
 		}
 	
 	}
-	// Rewrite of the Ember Spirit Fire Remnant ability
-	// Author: kritth
-	// Date: February 13, 2016
-	// Version: 6.86
-	// Type: Datadriven
-	// NOTE: Particles for remnant is wrong
-	//
-	// ----- FILE REQUIREMENTS -----
-	// Script files:
-	// scripts/vscripts/heroes/hero_ember_spirit/resist_all.lua
-	//
-	// KV files:
-	// scripts/npc/abilities/ember_spirit/activate_resist_all_datadriven.txt
 	"ability_priest_resistall"
 	{
 		// General
@@ -14808,40 +14948,58 @@
 			}
 		}
 	
-		
-		
-		"OnAbilityPhaseStart"
+		"OnSpellStart"
 		{
-			"RunScript"
+			"ApplyModifier"
 			{
-				"ScriptFile"			"heroes/priest/resist_all.lua"
-				"Function"				"resist_all_add"
+				"ModifierName"	"modifier_priest_resistall"
+				"Target"
+				{
+					"Center"	"TARGET"
+				}
+	
 			}
-			
-				"FireEffect"
+	
+			"FireSound"
 			{
-				"EffectName"	"particles/custom/sprite_aura.vpcf"
+				"EffectName"	"Resist.All"
+				"Target"	"TARGET"
+			}
+			"FireEffect"
+			{
+				"EffectName"	"particles/units/heroes/hero_oracle/oracle_false_promise_cast_enemy.vpcf"
 				"EffectAttachType"	"follow_origin"
 				"Target"	"TARGET"
 			}
-			
+	
 		}
-		
+	
 		"Modifiers"
 		{
-			"modifier_resist_all_counter_datadriven"
+			"modifier_priest_resistall"
 			{
-				"Purgable"				"0"
+				"Duration"	"%duration"
+				"EffectName"	"particles/magic_shield_mystic.vpcf"
+				"EffectAttachType"	"follow_origin"
+				"States"
+				{
+					"MODIFIER_STATE_MAGIC_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+	
 			}
-			
-			"modifier_resist_all_counter_cooldown_datadriven"
-			{
-				"Purgable"				"0"
-				"Duration"				"%duration"
-				"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
-			}
-		
+	
 		}
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"duration"	"20.0"
+			}
+	
+		}
+	
 	}
 	"ability_priest_resistall_old"
 	{

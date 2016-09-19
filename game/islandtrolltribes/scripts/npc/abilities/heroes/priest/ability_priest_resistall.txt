@@ -1,16 +1,3 @@
-// Rewrite of the Ember Spirit Fire Remnant ability
-// Author: kritth
-// Date: February 13, 2016
-// Version: 6.86
-// Type: Datadriven
-// NOTE: Particles for remnant is wrong
-//
-// ----- FILE REQUIREMENTS -----
-// Script files:
-// scripts/vscripts/heroes/hero_ember_spirit/resist_all.lua
-//
-// KV files:
-// scripts/npc/abilities/ember_spirit/activate_resist_all_datadriven.txt
 "ability_priest_resistall"
 {
 	// General
@@ -68,38 +55,56 @@
 		}
 	}
 
-	
-	
-	"OnAbilityPhaseStart"
+	"OnSpellStart"
 	{
-		"RunScript"
+		"ApplyModifier"
 		{
-			"ScriptFile"			"heroes/priest/resist_all.lua"
-			"Function"				"resist_all_add"
+			"ModifierName"	"modifier_priest_resistall"
+			"Target"
+			{
+				"Center"	"TARGET"
+			}
+
 		}
-		
-			"FireEffect"
+
+		"FireSound"
 		{
-			"EffectName"	"particles/custom/sprite_aura.vpcf"
+			"EffectName"	"Resist.All"
+			"Target"	"TARGET"
+		}
+		"FireEffect"
+		{
+			"EffectName"	"particles/units/heroes/hero_oracle/oracle_false_promise_cast_enemy.vpcf"
 			"EffectAttachType"	"follow_origin"
 			"Target"	"TARGET"
 		}
-		
+
 	}
-	
+
 	"Modifiers"
 	{
-		"modifier_resist_all_counter_datadriven"
+		"modifier_priest_resistall"
 		{
-			"Purgable"				"0"
+			"Duration"	"%duration"
+			"EffectName"	"particles/magic_shield_mystic.vpcf"
+			"EffectAttachType"	"follow_origin"
+			"States"
+			{
+				"MODIFIER_STATE_MAGIC_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
+			}
+
 		}
-		
-		"modifier_resist_all_counter_cooldown_datadriven"
-		{
-			"Purgable"				"0"
-			"Duration"				"%duration"
-			"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
-		}
-	
+
 	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"duration"	"20.0"
+		}
+
+	}
+
 }

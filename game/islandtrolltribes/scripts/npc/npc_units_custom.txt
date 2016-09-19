@@ -3472,7 +3472,7 @@
 		"ConsideredHero"	"1"
 		"ModelScale"	"1"
 		"Model"	"models/creeps/neutral_creeps/n_creep_ghost_b/n_creep_ghost_frost.vmdl"
-		"Ability1"	"ability_spirit_rockfall"
+		"Ability1"	"ability_spirit_enchant"
 		"Ability2"	"ability_spirit_groundslam"
 		"Ability3"	""
 		"Ability4"	"ability_scout_scry"

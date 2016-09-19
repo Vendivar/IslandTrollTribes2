@@ -1,0 +1,159 @@
+"ability_spirit_enchant"
+{
+	"BaseClass"             		"ability_datadriven"
+	"AbilityTextureName"			"ability_spirit_enchant"
+	"MaxLevel" 						"1"
+
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AOE"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+
+	"AbilityCooldown"	"120"
+	"AbilityManaCost"	"30"
+
+    "AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_1"
+    "AbilityCastPoint"	"0.5"
+	"AOERadius"			"%radius"
+	"AbilityCastRange"	"100"
+	"AbilityDuration"	"10"
+
+	"precache"
+	{
+		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_silencer.vsndevts"
+		"particle"  "particles/units/heroes/hero_axe/axe_beserkers_call_owner.vpcf"
+		"particle"  "particles/status_fx/status_effect_beserkers_call.vpcf"
+		"particle"	"particles/econ/courier/courier_faceless_rex/cour_rex_ground_a.vpcf"
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"		"FIELD_INTEGER"
+			"radius"		"450"
+		}
+	}
+
+	
+	
+	"Modifiers"
+	{
+	"modifier_enchnattouch"
+		{
+			"Passive"	"1"
+			"IsHidden"	"1"
+			
+		"OnAttackLanded"
+			{
+				"Random"
+				{
+					"Chance"		"60"	
+					"PseudoRandom" "DOTA_PSEUDO_RANDOM_ITEM_MKB"
+					"OnSuccess"
+					{
+						"ApplyModifier"
+						{
+							"ModifierName"	"modifier_enchantproc"
+							"Target"		"CASTER"
+						}
+
+					}
+				}
+			}
+		}
+		"modifier_enchantproc"
+		{
+		"IsHidden"	"1"
+			"OnAttackLanded"
+			{
+				"ApplyModifier"
+				{
+					"ModifierName"	"modifier_spirit_enchant_target"
+					"Target" 		"TARGET"
+					"Duration"		"%AbilityDuration"
+				}
+
+				"RemoveModifier"
+				{
+					"ModifierName"	"modifier_enchantproc"
+					"Target"		"CASTER"
+				}
+				
+				"RunScript"
+				{
+					"ScriptFile" "bosses/radiant/enchant.lua"
+					"Function"   "EnchantStart"
+				}
+				"FireEffect"
+				{
+					"EffectName"        "particles/custom/enchant.vpcf"
+					"EffectAttachType"  "follow_origin"
+					"Target"            "TARGET"
+				}
+				"RunScript"
+				{
+					"ScriptFile" "bosses/radiant/enchant.lua"
+					"Function"   "SpeechTaunt"
+				}
+			}
+		}
+		"modifier_spirit_enchant_target"
+		{
+			"IsHidden"			"0"
+			"IsDebuff"			"1"
+
+			"EffectName"		"particles/custom/enchanted2.vpcf"
+			"EffectAttachType"	"follow_origin"
+
+			"OnCreated"
+			{
+				
+			}
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"		 "25"
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" 		 "-25" 
+				"MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE" 	 "50"
+			}
+			"States"
+			{
+				"MODIFIER_STATE_SPECIALLY_DENIABLE"		"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_COMMAND_RESTRICTED"		"MODIFIER_STATE_VALUE_ENABLED"
+			}
+		}
+		//needs to be forced to attack a random teammate at first
+
+		"modifier_spirit_enchant_enemy"
+		{
+			"IsHidden"			"0"
+			"IsDebuff"			"1"
+
+			"EffectName"		"particles/econ/courier/courier_faceless_rex/cour_rex_ground_a.vpcf"
+			"EffectAttachType"	"follow_origin"
+			
+			"StatusEffectName" 		"particles/status_fx/status_effect_beserkers_call.vpcf" 	   
+			"StatusEffectPriority"  "10"
+
+			"ThinkInterval"  "0.5"
+			"OnIntervalThink"
+			{
+				"RunScript"
+				{
+					"ScriptFile"   "bosses/radiant/enchant.lua"
+					"Function"     "Enchant"
+
+					"modifier"		"modifier_spirit_enchant_enemy"
+				}
+			}
+
+			"OnDestroy"
+			{
+				"RunScript"
+				{
+					"ScriptFile"   "bosses/radiant/enchant.lua"
+					"Function"     "enchantEnd"
+				}
+			}
+		}
+	}
+}
