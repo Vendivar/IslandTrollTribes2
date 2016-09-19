@@ -38,7 +38,7 @@
 			"Target"
 			{
 				"Center"	"POINT"
-				"Radius"	"800"
+				"Radius"	"300"
 				"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 				"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
                 
@@ -53,7 +53,7 @@
                     "Duration"			"%stun_duration"
                     "Distance"			"550"
                     "Height"			"25"
-                    "IsFixedDistance"	"1"
+                    "IsFixedDistance"	"0"
                     "ShouldStun"		"1"
                 }
 
@@ -76,7 +76,7 @@
 			"Target"
 			{
 				"Center"	"POINT"
-				"Radius"	"800"
+				"Radius"	"300"
 				"Teams"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 				"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
                 
@@ -91,7 +91,7 @@
                     "Duration"			"%stun_duration"
                     "Distance"			"550"
                     "Height"			"25"
-                    "IsFixedDistance"	"1"
+                    "IsFixedDistance"	"0"
                     "ShouldStun"		"1"
                 }
 
