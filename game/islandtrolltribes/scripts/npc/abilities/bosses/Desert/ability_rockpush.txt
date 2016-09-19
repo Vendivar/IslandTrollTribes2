@@ -1,0 +1,74 @@
+"ability_rockpush"
+{
+    "BaseClass"             "ability_datadriven"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityTextureName"    "ability_spirit_rockfall"
+    "MaxLevel"              "1"
+	
+	"Modifiers"
+	{	
+	"modifier_rockpush"
+		{
+			"OnCreated"
+			{
+			"DelayedAction"
+            	{
+				"Delay"		"1.0"
+					"Action"
+					{
+						"ActOnTargets"
+						{
+							"Target"
+							{
+								"Center"	"CASTER"
+								"Radius"	"800"
+								"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+								"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+								
+							}
+
+							"Action"
+							{
+								"Knockback"
+								{
+									"Target"			"TARGET"
+									"Center"			"CASTER"
+									"Duration"			"1"
+									"Distance"			"450"
+									"Height"			"45"
+									"IsFixedDistance"	"1"
+									"ShouldStun"		"1"
+								}
+
+							}
+							"ApplyModifier"
+							{
+								"Target"			"TARGET"
+								"ModifierName"		"modifier_stunned"
+							}
+							"Damage"
+							{
+								"Target"			"TARGET"
+								"Damage"			"25"
+								"Type"				"DAMAGE_TYPE_MAGICAL"
+							}
+							
+						}
+					}
+				}
+			}
+		}
+		"modifier_stunned"
+		{
+		"Duration" "1"
+		"IsDebuff"	"1"
+		"EffectName"		"particles/generic_gameplay/generic_stunned.vpcf"
+		"EffectAttachType"	"follow_overhead"
+		
+			"States"
+			{
+				"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
+			}
+		}
+	}
+}

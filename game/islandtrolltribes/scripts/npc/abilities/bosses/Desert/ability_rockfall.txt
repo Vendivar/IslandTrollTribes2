@@ -19,14 +19,10 @@
             "EffectAttachType"	"PATTACH_ABSORIGIN"
             "Target"	"POINT"
             }
-		"FireSound"
-		{
-			"EffectName"	"scroll.bouldercast"
-			"Target"	"POINT"
-		}
+
 	"RunScript"
         {
-            "ScriptFile"    "items/scroll_boulder.lua"
+            "ScriptFile"    "bosses/desert/boulder.lua"
             "Function"      "MakeBoulder"
             "Target"        "POINT"
         }
@@ -36,12 +32,6 @@
             "EffectAttachType"	"PATTACH_WORLDORIGIN"
             "Target"	"POINT"
         }
-            
-        "FireSound"
-		{
-			"EffectName"	"scroll.boulder"
-			"Target"	"POINT"
-		}
         
         "ActOnTargets"
 		{
@@ -61,7 +51,7 @@
                     "Target"			"TARGET"
                     "Center"			"POINT"
                     "Duration"			"%stun_duration"
-                    "Distance"			"350"
+                    "Distance"			"550"
                     "Height"			"25"
                     "IsFixedDistance"	"1"
                     "ShouldStun"		"1"
@@ -99,7 +89,7 @@
                     "Target"			"TARGET"
                     "Center"			"CASTER"
                     "Duration"			"%stun_duration"
-                    "Distance"			"350"
+                    "Distance"			"550"
                     "Height"			"25"
                     "IsFixedDistance"	"1"
                     "ShouldStun"		"1"

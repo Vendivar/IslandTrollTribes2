@@ -78,6 +78,13 @@
 			"Function"				"resist_all_add"
 		}
 		
+			"FireEffect"
+		{
+			"EffectName"	"particles/custom/sprite_aura.vpcf"
+			"EffectAttachType"	"follow_origin"
+			"Target"	"TARGET"
+		}
+		
 	}
 	
 	"Modifiers"

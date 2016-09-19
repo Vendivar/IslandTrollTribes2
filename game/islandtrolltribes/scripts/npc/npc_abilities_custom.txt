@@ -366,169 +366,6 @@
 			}
 		}
 	}
-	"ability_spirit_groundslam"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"				"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
-		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
-		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_ALL"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
-		"AbilityCastPoint"	"0.0"
-		"AbilityCooldown"	"0"
-		"AbilityManaCost"	"0"
-		
-		"OnSpellStart"
-		{
-	        "FireEffect"
-				{
-	            "EffectName"	"particles/custom/mini_aoe_indicator.vpcf"
-	            "EffectAttachType"	"PATTACH_ABSORIGIN"
-	            "Target"	"CASTER"
-	            }
-			"FireSound"
-			{
-				"EffectName"	"scroll.bouldercast"
-				"Target"	"CASTER"
-			}
-		"RunScript"
-	        {
-	            "ScriptFile"    "items/scroll_boulder.lua"
-	            "Function"      "MakeBoulder"
-	            "Target"        "CASTER"
-	        }
-	        "FireEffect"
-	        {
-	            "EffectName"	"particles/custom/boulder_scroll_drop.vpcf"
-	            "EffectAttachType"	"PATTACH_WORLDORIGIN"
-	            "Target"	"CASTER"
-	        }
-	            
-	        "FireSound"
-			{
-				"EffectName"	"scroll.boulder"
-				"Target"	"CASTER"
-			}
-	        
-	        "ActOnTargets"
-			{
-				"Target"
-				{
-					"Center"	"CASTER"
-					"Radius"	"800"
-					"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
-	                
-				}
-	
-				"Action"
-				{
-	                "Knockback"
-	                {
-	                    "Target"			"TARGET"
-	                    "Center"			"CASTER"
-	                    "Duration"			"%stun_duration"
-	                    "Distance"			"350"
-	                    "Height"			"25"
-	                    "IsFixedDistance"	"1"
-	                    "ShouldStun"		"1"
-	                }
-	
-				}
-	            "ApplyModifier"
-	            {
-	                "Target"			"TARGET"
-	                "ModifierName"		"modifier_boulder_scroll_slow"
-	            }
-	            "Damage"
-	            {
-	                "Target"			"TARGET"
-	                "Damage"			"%damage"
-	                "Type"				"DAMAGE_TYPE_MAGICAL"
-	            }
-	            
-			}
-	         "ActOnTargets"
-			{
-				"Target"
-				{
-					"Center"	"CASTER"
-					"Radius"	"800"
-					"Teams"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-					"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
-	                
-				}
-	
-				"Action"
-				{
-	                "Knockback"
-	                {
-	                    "Target"			"TARGET"
-	                    "Center"			"CASTER"
-	                    "Duration"			"%stun_duration"
-	                    "Distance"			"350"
-	                    "Height"			"25"
-	                    "IsFixedDistance"	"1"
-	                    "ShouldStun"		"1"
-	                }
-	
-				}
-			}
-		}
-	"Modifiers"
-		{
-	        "modifier_boulder_scroll_slow"
-			{
-				"IsDebuff"					"1"
-				"Duration"					"%slow_debuff_duration"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"		"move_speed_slow"
-				}
-			}
-		}
-	    
-	    
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"range"	"450"
-			}
-	
-			"02"
-			{
-				"var_type"	"FIELD_FLOAT"
-				"duration"	"45.0"
-			}
-	
-			"03"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"move_speed_slow"	"-10"
-			}
-	
-			"04"
-			{
-				"var_type"	"FIELD_FLOAT"
-				"slow_debuff_duration"	"2.0"
-			}		
-	        "05"
-			{
-				"var_type"	"FIELD_FLOAT"
-				"stun_duration"	"0.5"
-			}        
-	        "06"
-			{
-				"var_type"	"FIELD_FLOAT"
-				"damage"	"25"
-			}
-	
-		}
-	
-	}
 	// Rewrite of Alchemist Acid drip
 	// Author: Noya
 	// Date: October 13, 2015
@@ -711,14 +548,10 @@
 	            "EffectAttachType"	"PATTACH_ABSORIGIN"
 	            "Target"	"POINT"
 	            }
-			"FireSound"
-			{
-				"EffectName"	"scroll.bouldercast"
-				"Target"	"POINT"
-			}
+	
 		"RunScript"
 	        {
-	            "ScriptFile"    "items/scroll_boulder.lua"
+	            "ScriptFile"    "bosses/desert/boulder.lua"
 	            "Function"      "MakeBoulder"
 	            "Target"        "POINT"
 	        }
@@ -728,12 +561,6 @@
 	            "EffectAttachType"	"PATTACH_WORLDORIGIN"
 	            "Target"	"POINT"
 	        }
-	            
-	        "FireSound"
-			{
-				"EffectName"	"scroll.boulder"
-				"Target"	"POINT"
-			}
 	        
 	        "ActOnTargets"
 			{
@@ -753,7 +580,7 @@
 	                    "Target"			"TARGET"
 	                    "Center"			"POINT"
 	                    "Duration"			"%stun_duration"
-	                    "Distance"			"350"
+	                    "Distance"			"550"
 	                    "Height"			"25"
 	                    "IsFixedDistance"	"1"
 	                    "ShouldStun"		"1"
@@ -791,7 +618,7 @@
 	                    "Target"			"TARGET"
 	                    "Center"			"CASTER"
 	                    "Duration"			"%stun_duration"
-	                    "Distance"			"350"
+	                    "Distance"			"550"
 	                    "Height"			"25"
 	                    "IsFixedDistance"	"1"
 	                    "ShouldStun"		"1"
@@ -852,6 +679,80 @@
 	
 		}
 	
+	}
+	"ability_rockpush"
+	{
+	    "BaseClass"             "ability_datadriven"
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	    "AbilityTextureName"    "ability_spirit_rockfall"
+	    "MaxLevel"              "1"
+		
+		"Modifiers"
+		{	
+		"modifier_rockpush"
+			{
+				"OnCreated"
+				{
+				"DelayedAction"
+	            	{
+					"Delay"		"1.0"
+						"Action"
+						{
+							"ActOnTargets"
+							{
+								"Target"
+								{
+									"Center"	"CASTER"
+									"Radius"	"800"
+									"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+									"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+									
+								}
+	
+								"Action"
+								{
+									"Knockback"
+									{
+										"Target"			"TARGET"
+										"Center"			"CASTER"
+										"Duration"			"1"
+										"Distance"			"450"
+										"Height"			"45"
+										"IsFixedDistance"	"1"
+										"ShouldStun"		"1"
+									}
+	
+								}
+								"ApplyModifier"
+								{
+									"Target"			"TARGET"
+									"ModifierName"		"modifier_stunned"
+								}
+								"Damage"
+								{
+									"Target"			"TARGET"
+									"Damage"			"25"
+									"Type"				"DAMAGE_TYPE_MAGICAL"
+								}
+								
+							}
+						}
+					}
+				}
+			}
+			"modifier_stunned"
+			{
+			"Duration" "1"
+			"IsDebuff"	"1"
+			"EffectName"		"particles/generic_gameplay/generic_stunned.vpcf"
+			"EffectAttachType"	"follow_overhead"
+			
+				"States"
+				{
+					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+		}
 	}
 	// TODO:
 	// NOTE1: OnUpgrade: While channeling, only damage is increased, the channeling time remains the same
@@ -1110,19 +1011,234 @@
 			}
 		}
 	}
-	"ability_spirit_groundslam"
+	"ability_spirit_earthentouch"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"BaseClass"				"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
-		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_ALL"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityTextureName"			"alchemist_acid_drip"
+		"AOERadius"						"125"
+	
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.0"
+	
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"5.0"
+		
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
+		
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"50"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"10.0"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage"				"5"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"armor_reduction"		"-2"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"tick_rate"				"1.5"
+			}
+		}
+	
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_alchemist.vsndevts"
+			"particle"  "particles/units/heroes/hero_alchemist/alchemist_acid_spray.vpcf"
+		}
+		"Modifiers"
+		{
+		"modifier_earthentouch"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				
+			"OnAttackLanded"
+				{
+					"Random"
+					{
+						"Chance"		"3"	
+						"PseudoRandom" "DOTA_PSEUDO_RANDOM_ITEM_MKB"
+						"OnSuccess"
+						{
+							"ApplyModifier"
+							{
+								"ModifierName"	"modifier_earthentouchproc"
+								"Target"		"CASTER"
+							}
+	
+						}
+					}
+				}
+			}
+			"modifier_earthentouchproc"
+			{
+			"IsHidden"	"1"
+				"OnAttackLanded"
+				{
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_stoned"
+						"Target"		"TARGET"
+					}
+					"RemoveModifier"
+					{
+						"ModifierName"	"modifier_earthentouchproc"
+						"Target"		"CASTER"
+					}
+					"RunScript"
+					{
+						"ScriptFile" "bosses/desert/rockfall.lua"
+						"Function"   "SpeechTaunt"
+					}
+					"Knockback"
+					{
+						"Target"			"TARGET"
+						"Center"			"CASTER"
+						"Distance"			"850"
+						"Duration"			"1.5"
+						"Height"			"100"
+						"IsFixedDistance"	"1"
+					}
+					"FireSound"
+					{
+						"EffectName"	"Hero_EarthShaker.Totem.Attack"
+						"Target"		"CASTER"
+					}
+					"RunScript"
+					{
+						"ScriptFile" "bosses/desert/rockfall.lua"
+						"Function"   "SpeechTaunt"
+					}
+					"FireSound"
+					{
+						"EffectName"	"es.taunt"
+						"Target"	"CASTER"
+					}
+				}
+			}
+			
+			"modifier_stoned"
+			{
+				"EffectName"	"particles/generic_gameplay/generic_stunned.vpcf"
+				"EffectAttachType"	"follow_overhead"
+				"Duration"	"3.1"
+				"OverrideAnimation"	"ACT_DOTA_DISABLED"
+				"StatusEffectName"		"particles/status_fx/status_effect_statue.vpcf"
+				"StatusEffectPriority"	"10"
+				"States"
+				{
+					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+				"OnCreated"
+				{
+				"DelayedAction"
+	            	{
+	            		"Delay"		"3"
+						"Action"
+						{
+						"ActOnTargets"
+								{
+									"Target"
+									{
+										"Center"		"CASTER"
+										"Radius"		"350"
+										"Teams"			"DOTA_UNIT_TARGET_TEAM_BOTH" 
+										"Type"			"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+									}
+									
+									"Action"
+									{
+										"Damage"
+										{
+											"Target"	"TARGET"
+											"Damage"	"50"
+											"Type"		"DAMAGE_TYPE_MAGICAL"
+										}
+									}
+								}
+								
+							"FireSound"
+							{
+								"EffectName"	"es.stoneburst"
+								"Target"		"CASTER"
+							}
+							"FireEffect"
+							{
+								"EffectName"	"particles/custom/stoned_burst.vpcf"
+								"EffectAttachType"	"follow_origin"
+								"Target"	"CASTER"
+							}
+						}
+					}
+					"FireSound"
+					{
+						"EffectName"	"es.stoned"
+						"Target"		"CASTER"
+					}
+					"FireEffect"
+					{
+						"EffectName"	"particles/custom/scroll_stoneskin_burst.vpcf"
+						"EffectAttachType"	"follow_origin"
+						"Target"	"CASTER"
+					}
+				}
+			}
+		}
+	}
+	
+	"ability_spirit_groundslam"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
-		"AbilityCastPoint"	"0.0"
-		"AbilityChannelTime" "5.5"
-		"AbilityCooldown"	"0"
-		"AbilityManaCost"	"0"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityTextureName"			"sandking_burrowstrike"
+		"AbilityCastAnimation" 			"ACT_DOTA_CAST_ABILITY_2"
+	
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"1000 450 550 650"
+		"AbilityCastPoint"				"0.0 0.0 0.0 0.0"
+		"AbilityChannelTime" "3.5"
+		
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"11.0"
+	
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
+		
+		"AbilityDamage"					"25"
 		
 		"OnSpellStart"
 		{
@@ -1138,11 +1254,6 @@
 	            "EffectAttachType"	"PATTACH_ABSORIGIN"
 	            "Target"	"CASTER"
 	            }
-				"FireSound"
-				{
-					"EffectName"	"es.slamstart1"
-					"Target"	"CASTER"
-				}
 			"RunScript"
 				{
 					"ScriptFile" "bosses/desert/slam.lua"
@@ -1157,7 +1268,7 @@
 				"Target"
 				{
 					"Center"	"CASTER"
-					"Radius"	"800"
+					"Radius"	"1200"
 					"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 					"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
 	                
@@ -1190,43 +1301,6 @@
 	            }
 	            
 			}
-	         "ActOnTargets"
-			{
-				"Target"
-				{
-					"Center"	"CASTER"
-					"Radius"	"800"
-					"Teams"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-					"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
-	                
-				}
-	
-				"Action"
-				{
-	                "Knockback"
-	                {
-	                    "Target"			"TARGET"
-	                    "Center"			"CASTER"
-	                    "Duration"			"%stun_duration"
-	                    "Distance"			"450"
-	                    "Height"			"45"
-	                    "IsFixedDistance"	"1"
-	                    "ShouldStun"		"1"
-	                }
-	
-				}
-				"ApplyModifier"
-	            {
-	                "Target"			"TARGET"
-	                "ModifierName"		"modifier_slam_slow"
-	            }
-				"Damage"
-	            {
-	                "Target"			"TARGET"
-	                "Damage"			"%damage"
-	                "Type"				"DAMAGE_TYPE_MAGICAL"
-	            }
-			}
 	
 				"RunScript"
 				{
@@ -1238,11 +1312,17 @@
 					"EffectName"	"es.taunt"
 					"Target"	"CASTER"
 				}
-							"FireSound"
+				"FireSound"
 				{
 					"EffectName"	"es.slamspell"
 					"Target"	"CASTER"
 				}
+				        "FireEffect"
+				{
+	            "EffectName"	"particles/custom/ground_slam.vpcf"
+	            "EffectAttachType"	"PATTACH_ABSORIGIN"
+	            "Target"	"CASTER"
+	            }
 		}
 		
 		"OnChannelInterrupted"
@@ -1251,11 +1331,6 @@
 				{
 					"ScriptFile" "bosses/desert/slam.lua"
 					"Function"   "SpeechSlamFail"
-				}
-				"FireSound"
-				{
-					"EffectName"	"es.slamfail1"
-					"Target"	"CASTER"
 				}
 		}
 	"Modifiers"
@@ -1329,6 +1404,16 @@
 				"ScriptFile" "bosses/desert/rockfall.lua"
 				"Function"   "RockFall"
 				"Target"	 "CASTER"
+			}
+			"FireSound"
+			{
+				"EffectName"	"scroll.bouldercast"
+				"Target"	"CASTER"
+			}
+			"RunScript"
+			{
+			"ScriptFile" "bosses/desert/rockfall.lua"
+			"Function"   "SpeechRockfallStart"
 			}
 		}
 	    "AbilitySpecial"
@@ -1592,6 +1677,32 @@
 				}
 			}
 		}
+	}
+	"ability_spiritspriteparticle"
+	{
+	    "BaseClass"         "ability_datadriven"
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	    "MaxLevel"          "1"
+	
+	    "Modifiers"
+	    {
+	
+			"modifier_spriteparticle"
+	        {
+			"Passive"		"1"
+			"IsHidden"		"1"
+			"OnCreated"
+				{
+					"AttachEffect"
+					{
+						"EffectName"	"particles/custom/sprite_aura.vpcf"
+						"EffectAttachType"	"follow_origin"
+						"Target"	"CASTER"
+					}
+				}
+				
+	        }
+	    }
 	}
 	"ability_the_one_criticalstike"
 	{
@@ -1885,6 +1996,38 @@
 					//"MODIFIER_STATE_SPECIALLY_DENIABLE" "MODIFIER_STATE_VALUE_ENABLED" // Allows attacking own buildings
 					"MODIFIER_STATE_LOW_ATTACK_PRIORITY" "MODIFIER_STATE_VALUE_ENABLED" // Makes it a secondary target when A-clicking ground
 					"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED" // GridNav is blocked
+				}
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_ABSOLUTE"	"0.1"
+	                "MODIFIER_PROPERTY_BONUS_DAY_VISION" "250"
+	                "MODIFIER_PROPERTY_BONUS_NIGHT_VISION" "250"
+				}
+			}
+		}		
+	}
+	
+	"ability_buildingcollision"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"MaxLevel" 						"1"
+	
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	
+		"Modifiers"
+		{
+			"modifier_building"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes"		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE | MODIFIER_ATTRIBUTE_PERMANENT"	
+				"States"
+				{
+					"MODIFIER_STATE_MAGIC_IMMUNE" "MODIFIER_STATE_VALUE_ENABLED" // Makes most abilities don't affect this. Use custom damage
+					"MODIFIER_STATE_ROOTED"		"MODIFIER_STATE_VALUE_ENABLED" // Prevents moving
+					"MODIFIER_STATE_MUTED"		"MODIFIER_STATE_VALUE_ENABLED" // Prevents moving
+					//"MODIFIER_STATE_SPECIALLY_DENIABLE" "MODIFIER_STATE_VALUE_ENABLED" // Allows attacking own buildings
+					"MODIFIER_STATE_LOW_ATTACK_PRIORITY" "MODIFIER_STATE_VALUE_ENABLED" // Makes it a secondary target when A-clicking ground
 				}
 				"Properties"
 				{
@@ -14673,6 +14816,13 @@
 			{
 				"ScriptFile"			"heroes/priest/resist_all.lua"
 				"Function"				"resist_all_add"
+			}
+			
+				"FireEffect"
+			{
+				"EffectName"	"particles/custom/sprite_aura.vpcf"
+				"EffectAttachType"	"follow_origin"
+				"Target"	"TARGET"
 			}
 			
 		}

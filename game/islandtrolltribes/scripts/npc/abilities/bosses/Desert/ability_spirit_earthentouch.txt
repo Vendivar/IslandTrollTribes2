@@ -1,0 +1,200 @@
+"ability_spirit_earthentouch"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AOE"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+	"AbilityTextureName"			"alchemist_acid_drip"
+	"AOERadius"						"125"
+
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastPoint"				"0.0"
+
+	// Time		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"5.0"
+	
+	// Cost
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityManaCost"				"0"
+	
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"50"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"duration"				"10.0"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage"				"5"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"armor_reduction"		"-2"
+		}
+		"05"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"tick_rate"				"1.5"
+		}
+	}
+
+	"precache"
+	{
+		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_alchemist.vsndevts"
+		"particle"  "particles/units/heroes/hero_alchemist/alchemist_acid_spray.vpcf"
+	}
+	"Modifiers"
+	{
+	"modifier_earthentouch"
+		{
+			"Passive"	"1"
+			"IsHidden"	"1"
+			
+		"OnAttackLanded"
+			{
+				"Random"
+				{
+					"Chance"		"3"	
+					"PseudoRandom" "DOTA_PSEUDO_RANDOM_ITEM_MKB"
+					"OnSuccess"
+					{
+						"ApplyModifier"
+						{
+							"ModifierName"	"modifier_earthentouchproc"
+							"Target"		"CASTER"
+						}
+
+					}
+				}
+			}
+		}
+		"modifier_earthentouchproc"
+		{
+		"IsHidden"	"1"
+			"OnAttackLanded"
+			{
+				"ApplyModifier"
+				{
+					"ModifierName"	"modifier_stoned"
+					"Target"		"TARGET"
+				}
+				"RemoveModifier"
+				{
+					"ModifierName"	"modifier_earthentouchproc"
+					"Target"		"CASTER"
+				}
+				"RunScript"
+				{
+					"ScriptFile" "bosses/desert/rockfall.lua"
+					"Function"   "SpeechTaunt"
+				}
+				"Knockback"
+				{
+					"Target"			"TARGET"
+					"Center"			"CASTER"
+					"Distance"			"850"
+					"Duration"			"1.5"
+					"Height"			"100"
+					"IsFixedDistance"	"1"
+				}
+				"FireSound"
+				{
+					"EffectName"	"Hero_EarthShaker.Totem.Attack"
+					"Target"		"CASTER"
+				}
+				"RunScript"
+				{
+					"ScriptFile" "bosses/desert/rockfall.lua"
+					"Function"   "SpeechTaunt"
+				}
+				"FireSound"
+				{
+					"EffectName"	"es.taunt"
+					"Target"	"CASTER"
+				}
+			}
+		}
+		
+		"modifier_stoned"
+		{
+			"EffectName"	"particles/generic_gameplay/generic_stunned.vpcf"
+			"EffectAttachType"	"follow_overhead"
+			"Duration"	"3.1"
+			"OverrideAnimation"	"ACT_DOTA_DISABLED"
+			"StatusEffectName"		"particles/status_fx/status_effect_statue.vpcf"
+			"StatusEffectPriority"	"10"
+			"States"
+			{
+				"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
+			}
+			"OnCreated"
+			{
+			"DelayedAction"
+            	{
+            		"Delay"		"3"
+					"Action"
+					{
+					"ActOnTargets"
+							{
+								"Target"
+								{
+									"Center"		"CASTER"
+									"Radius"		"350"
+									"Teams"			"DOTA_UNIT_TARGET_TEAM_BOTH" 
+									"Type"			"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+								}
+								
+								"Action"
+								{
+									"Damage"
+									{
+										"Target"	"TARGET"
+										"Damage"	"50"
+										"Type"		"DAMAGE_TYPE_MAGICAL"
+									}
+								}
+							}
+							
+						"FireSound"
+						{
+							"EffectName"	"es.stoneburst"
+							"Target"		"CASTER"
+						}
+						"FireEffect"
+						{
+							"EffectName"	"particles/custom/stoned_burst.vpcf"
+							"EffectAttachType"	"follow_origin"
+							"Target"	"CASTER"
+						}
+					}
+				}
+				"FireSound"
+				{
+					"EffectName"	"es.stoned"
+					"Target"		"CASTER"
+				}
+				"FireEffect"
+				{
+					"EffectName"	"particles/custom/scroll_stoneskin_burst.vpcf"
+					"EffectAttachType"	"follow_origin"
+					"Target"	"CASTER"
+				}
+			}
+		}
+	}
+}
+

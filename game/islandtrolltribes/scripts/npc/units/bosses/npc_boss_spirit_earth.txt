@@ -3,10 +3,10 @@
 	"BaseClass"	"npc_dota_creature"
 	"ConsideredHero"	"1"
 	"ModelScale"	"1.5"
-	"Model"	"models/heroes/sand_king/sand_king.vmdl"
-	"Ability1"	"ability_burrow"
-	"Ability2"	"ability_sandstorm"
-	"Ability3"	"ability_poisonsting"
+	"Model"	"models/heroes/earthshaker/earthshaker.vmdl"
+	"Ability1"	"ability_spirit_rockfall"
+	"Ability2"	"ability_spirit_groundslam"
+	"Ability3"	"ability_spirit_earthentouch"
 	"Ability4"	""
 	"Ability5"	""
 	"Ability6"	"ability_boss_tint_desert"
@@ -15,13 +15,13 @@
 	"AttackCapabilities"	"DOTA_UNIT_CAP_MELEE_ATTACK"
 	"AttackDamageMin"	"5"
 	"AttackDamageMax"	"10"
-	"AttackRate"	"2.5"
+	"AttackRate"	"3.5"
 	"AttackAnimationPoint"	"0.840"
 	"AttackAcquisitionRange"	"0"
 	"AttackRange"	"200"
 	"ProjectileModel"	""
 	"ProjectileSpeed"	"0"
-	"AttributePrimary"	"DOTA_ATTRIBUTE_AGILITY"
+	"AttributePrimary"	"DOTA_ATTRIBUTE_STRENGTH"
 	"AttributeBaseStrength"	"1"
 	"AttributeStrengthGain"	"1"
 	"AttributeBaseIntelligence"	"1"
@@ -33,7 +33,7 @@
 	"MovementTurnRate"	"0.5"
 	"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 	"HealthBarOffset"	"140"
-	"StatusHealth"	"1500"
+	"StatusHealth"	"2200"
 	"StatusHealthRegen"	"0.5"
 	"StatusMana"	"500"
 	"StatusManaRegen"	"0.0"
@@ -46,27 +46,22 @@
 			{
 				"Wearable1"
 				{
-					"ItemDef"	"7302"
+					"ItemDef"	"6308"
 				}
 	
 				"Wearable2"
 				{
-					"ItemDef"	"7303"
+					"ItemDef"	"6313"
 				}
 	
 				"Wearable3"
 				{
-					"ItemDef"	"7304"
+					"ItemDef"	"6314"
 				}
 	
 				"Wearable4"
 				{
-					"ItemDef"	"7305"
-				}
-	
-				"Wearable5"
-				{
-					"ItemDef"	"7306"
+					"ItemDef"	"6315"
 				}
 	
 			}

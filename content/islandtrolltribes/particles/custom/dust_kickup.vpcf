@@ -2,7 +2,7 @@
 {
 	_class = "CParticleSystemDefinition"
 	m_bShouldHitboxesFallbackToRenderBounds = false
-	m_nMaxParticles = 32
+	m_nMaxParticles = 200
 	m_flConstantRadius = 0.9
 	m_Renderers = 
 	[
@@ -45,7 +45,7 @@
 			_class = "C_OP_ColorInterpolate"
 			m_flFadeEndTime = 0.0
 			m_flFadeStartTime = 1.0
-			m_ColorFade = [ 18, 17, 17, 255 ]
+			m_ColorFade = [ 98, 93, 93, 255 ]
 		},
 		{
 			_class = "C_OP_VectorNoise"
@@ -54,6 +54,10 @@
 			m_vecOutputMin = [ -3.0, -3.0, -3.0 ]
 			m_vecOutputMax = [ 3.0, 3.0, 3.0 ]
 			m_bAdditive = true
+		},
+		{
+			_class = "C_OP_BasicMovement"
+			m_fDrag = -0.2
 		},
 	]
 	m_Initializers = 
@@ -87,15 +91,14 @@
 		},
 		{
 			_class = "C_INIT_RandomColor"
-			m_ColorMin = [ 77, 75, 72, 255 ]
-			m_ColorMax = [ 76, 68, 64, 255 ]
+			m_ColorMin = [ 166, 162, 156, 255 ]
+			m_ColorMax = [ 202, 181, 170, 255 ]
 		},
 		{
 			_class = "C_INIT_RingWave"
 			m_flInitialSpeedMax = 150.0
 			m_flInitialSpeedMin = 50.0
 			m_flInitialRadius = 35.0
-			m_nControlPointNumber = 1
 		},
 		{
 			_class = "C_INIT_PositionOffset"
@@ -111,11 +114,11 @@
 	[
 		{
 			_class = "C_OP_InstantaneousEmitter"
-			m_nParticlesToEmit = 16
+			m_nParticlesToEmit = 25
 		},
 		{
 			_class = "C_OP_ContinuousEmitter"
-			m_flEmitRate = 10.0
+			m_flEmitRate = 25.0
 			m_flEmissionDuration = 2.0
 		},
 	]

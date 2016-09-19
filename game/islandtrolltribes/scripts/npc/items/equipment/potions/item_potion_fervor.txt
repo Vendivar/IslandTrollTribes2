@@ -80,6 +80,8 @@
 			"EffectName"	"particles/generic_gameplay/generic_stunned.vpcf"
 			"EffectAttachType"	"follow_overhead"
 			"OverrideAnimation"	"ACT_DOTA_DISABLED"
+			"StatusEffectName"		"particles/status_fx/status_effect_statue.vpcf"
+			"StatusEffectPriority"	"10"
 			"States"
 			{
 				"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"

@@ -17,6 +17,16 @@
 			"Function"   "RockFall"
 			"Target"	 "CASTER"
 		}
+		"FireSound"
+		{
+			"EffectName"	"scroll.bouldercast"
+			"Target"	"CASTER"
+		}
+		"RunScript"
+		{
+		"ScriptFile" "bosses/desert/rockfall.lua"
+		"Function"   "SpeechRockfallStart"
+		}
 	}
     "AbilitySpecial"
     {

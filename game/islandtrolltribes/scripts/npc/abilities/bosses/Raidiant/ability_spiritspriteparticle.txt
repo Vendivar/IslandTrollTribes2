@@ -1,0 +1,26 @@
+"ability_spiritspriteparticle"
+{
+    "BaseClass"         "ability_datadriven"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+    "MaxLevel"          "1"
+
+    "Modifiers"
+    {
+
+		"modifier_spriteparticle"
+        {
+		"Passive"		"1"
+		"IsHidden"		"1"
+		"OnCreated"
+			{
+				"AttachEffect"
+				{
+					"EffectName"	"particles/custom/sprite_aura.vpcf"
+					"EffectAttachType"	"follow_origin"
+					"Target"	"CASTER"
+				}
+			}
+			
+        }
+    }
+}

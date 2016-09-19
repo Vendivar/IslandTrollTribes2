@@ -9,7 +9,7 @@
 	"Ability3"	"ability_poisonsting"
 	"Ability4"	""
 	"Ability5"	""
-	"Ability6"	"ability_boss_tint"
+	"Ability6"	"ability_boss_tint_desert"
 	"AbilityLayout"	"4"
 	"ArmorPhysical"	"0"
 	"AttackCapabilities"	"DOTA_UNIT_CAP_MELEE_ATTACK"

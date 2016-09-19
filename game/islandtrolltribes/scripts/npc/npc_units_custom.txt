@@ -109,7 +109,7 @@
 		"Ability3"	"ability_poisonsting"
 		"Ability4"	""
 		"Ability5"	""
-		"Ability6"	"ability_boss_tint"
+		"Ability6"	"ability_boss_tint_desert"
 		"AbilityLayout"	"4"
 		"ArmorPhysical"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_MELEE_ATTACK"
@@ -178,10 +178,10 @@
 		"BaseClass"	"npc_dota_creature"
 		"ConsideredHero"	"1"
 		"ModelScale"	"1.5"
-		"Model"	"models/heroes/sand_king/sand_king.vmdl"
-		"Ability1"	"ability_burrow"
-		"Ability2"	"ability_sandstorm"
-		"Ability3"	"ability_poisonsting"
+		"Model"	"models/heroes/earthshaker/earthshaker.vmdl"
+		"Ability1"	"ability_spirit_rockfall"
+		"Ability2"	"ability_spirit_groundslam"
+		"Ability3"	"ability_spirit_earthentouch"
 		"Ability4"	""
 		"Ability5"	""
 		"Ability6"	"ability_boss_tint_desert"
@@ -190,13 +190,13 @@
 		"AttackCapabilities"	"DOTA_UNIT_CAP_MELEE_ATTACK"
 		"AttackDamageMin"	"5"
 		"AttackDamageMax"	"10"
-		"AttackRate"	"2.5"
+		"AttackRate"	"3.5"
 		"AttackAnimationPoint"	"0.840"
 		"AttackAcquisitionRange"	"0"
 		"AttackRange"	"200"
 		"ProjectileModel"	""
 		"ProjectileSpeed"	"0"
-		"AttributePrimary"	"DOTA_ATTRIBUTE_AGILITY"
+		"AttributePrimary"	"DOTA_ATTRIBUTE_STRENGTH"
 		"AttributeBaseStrength"	"1"
 		"AttributeStrengthGain"	"1"
 		"AttributeBaseIntelligence"	"1"
@@ -208,7 +208,7 @@
 		"MovementTurnRate"	"0.5"
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"HealthBarOffset"	"140"
-		"StatusHealth"	"1500"
+		"StatusHealth"	"2200"
 		"StatusHealthRegen"	"0.5"
 		"StatusMana"	"500"
 		"StatusManaRegen"	"0.0"
@@ -221,27 +221,22 @@
 				{
 					"Wearable1"
 					{
-						"ItemDef"	"7302"
+						"ItemDef"	"6308"
 					}
 		
 					"Wearable2"
 					{
-						"ItemDef"	"7303"
+						"ItemDef"	"6313"
 					}
 		
 					"Wearable3"
 					{
-						"ItemDef"	"7304"
+						"ItemDef"	"6314"
 					}
 		
 					"Wearable4"
 					{
-						"ItemDef"	"7305"
-					}
-		
-					"Wearable5"
-					{
-						"ItemDef"	"7306"
+						"ItemDef"	"6315"
 					}
 		
 				}
@@ -314,6 +309,101 @@
 	
 		}
 	
+	}
+	"npc_spirit_boulder"
+	{
+		"BaseClass"	"npc_dota_creature"
+		"Model"	"models/props_rock/riveredge_rock006a.vmdl"
+		"SoundSet"	"Creep_Good_Melee"
+		"HasInventory"	"0"
+		"MinimapIconSize"	"250"
+		"HealthBarOffset"	"200"		
+		"ModelScale"	"0.98"
+		"BoundsHullName"	"DOTA_HULL_SIZE_BARRACKS"
+		"RingRadius"	"100"
+		"precache"
+		{
+		}
+	
+		"Ability1"	"ability_buildingcollision"
+		"Ability2"	"ability_rockpush"
+		
+		"ArmorPhysical"	"0"
+		"MagicalResistance"	"0"
+		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
+		"BountyXP"	"0"
+		"BountyGoldMin"	"0"
+		"BountyGoldMax"	"0"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"	"0"
+		"MovementTurnRate"	"0"
+		"StatusHealth"	"50"
+		"StatusHealthRegen"	"0"
+		"StatusMana"	"1"
+		"StatusManaRegen"	"0"
+		"TeamName"	"DOTA_TEAM_GOODGUYS"
+		"CombatClassDefend"	"DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
+		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+		"VisionDaytimeRange"	"400"
+		"VisionNighttimeRange"	"350"
+	
+		// Building Size
+		//----------------------------------------------------------------
+		"ConstructionSize"			"0"
+		"BlockPathingSize"			"0"
+	}
+	"npc_spirit_sprite"
+	{
+		"BaseClass"	"npc_dota_creature"
+		"ConsideredHero"	"0"
+		"ModelScale"	"0.60"
+		"Model"	"models/heroes/wisp/wisp.vmdl"
+		"Level"	"0"
+		"vscripts"	"units/ai/sprite_ai.lua"
+		"Ability1"	"ability_spiritspriteparticle"
+		"Ability2"	""
+		"Ability3"	""
+		"Ability4"	""
+		"Ability5"	""
+		"Ability6"	""
+		"Ability7"	""
+		"Ability8"	""
+		"Ability9"	""
+		"Ability10"	""
+		"Ability11"	""
+		"Ability12"	""
+		"Ability13"	""
+		"Ability14"	""
+		"Ability15"	""
+		"Ability16"	""
+		"ArmorPhysical"	"0"
+		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
+		"AttackDamageMin"	"0"
+		"AttackDamageMax"	"0"
+		"AttackRate"	"0"
+		"AttackAnimationPoint"	"0"
+		"AttackAcquisitionRange"	"0"
+		"AttackRange"	"0"
+		"ProjectileModel"	""
+		"ProjectileSpeed"	"0"
+		"AttributePrimary"	"DOTA_ATTRIBUTE_STRENGTH"
+		"AttributeBaseStrength"	"0"
+		"AttributeStrengthGain"	"0"
+		"AttributeBaseIntelligence"	"0"
+		"AttributeIntelligenceGain"	"0"
+		"AttributeBaseAgility"	"0"
+		"AttributeAgilityGain"	"0"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"	"100"
+		"MovementTurnRate"	"0.5"
+		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
+		"HealthBarOffset"	"140"
+		"StatusHealth"	"15"
+		"StatusHealthRegen"	"0.0"
+		"StatusMana"	"0"
+		"StatusManaRegen"	"0.0"
+		"VisionDaytimeRange"	"1800"
+		"VisionNighttimeRange"	"1800"
 	}
 	"npc_building_armory"
 	{

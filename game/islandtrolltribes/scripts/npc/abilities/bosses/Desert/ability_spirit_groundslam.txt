@@ -2,15 +2,30 @@
 {
 	// General
 	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"				"ability_datadriven"
-	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
-	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_ALL"
+	"BaseClass"						"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
-	"AbilityCastPoint"	"0.0"
-	"AbilityChannelTime" "5.5"
-	"AbilityCooldown"	"0"
-	"AbilityManaCost"	"0"
+	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+	"AbilityTextureName"			"sandking_burrowstrike"
+	"AbilityCastAnimation" 			"ACT_DOTA_CAST_ABILITY_2"
+
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"1000 450 550 650"
+	"AbilityCastPoint"				"0.0 0.0 0.0 0.0"
+	"AbilityChannelTime" "3.5"
+	
+	// Time		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"11.0"
+
+	// Cost
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityManaCost"				"0"
+	
+	"AbilityDamage"					"25"
 	
 	"OnSpellStart"
 	{
@@ -26,11 +41,6 @@
             "EffectAttachType"	"PATTACH_ABSORIGIN"
             "Target"	"CASTER"
             }
-			"FireSound"
-			{
-				"EffectName"	"es.slamstart1"
-				"Target"	"CASTER"
-			}
 		"RunScript"
 			{
 				"ScriptFile" "bosses/desert/slam.lua"
@@ -45,7 +55,7 @@
 			"Target"
 			{
 				"Center"	"CASTER"
-				"Radius"	"800"
+				"Radius"	"1200"
 				"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 				"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
                 
@@ -78,43 +88,6 @@
             }
             
 		}
-         "ActOnTargets"
-		{
-			"Target"
-			{
-				"Center"	"CASTER"
-				"Radius"	"800"
-				"Teams"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-				"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
-                
-			}
-
-			"Action"
-			{
-                "Knockback"
-                {
-                    "Target"			"TARGET"
-                    "Center"			"CASTER"
-                    "Duration"			"%stun_duration"
-                    "Distance"			"450"
-                    "Height"			"45"
-                    "IsFixedDistance"	"1"
-                    "ShouldStun"		"1"
-                }
-
-			}
-			"ApplyModifier"
-            {
-                "Target"			"TARGET"
-                "ModifierName"		"modifier_slam_slow"
-            }
-			"Damage"
-            {
-                "Target"			"TARGET"
-                "Damage"			"%damage"
-                "Type"				"DAMAGE_TYPE_MAGICAL"
-            }
-		}
 
 			"RunScript"
 			{
@@ -126,11 +99,17 @@
 				"EffectName"	"es.taunt"
 				"Target"	"CASTER"
 			}
-						"FireSound"
+			"FireSound"
 			{
 				"EffectName"	"es.slamspell"
 				"Target"	"CASTER"
 			}
+			        "FireEffect"
+			{
+            "EffectName"	"particles/custom/ground_slam.vpcf"
+            "EffectAttachType"	"PATTACH_ABSORIGIN"
+            "Target"	"CASTER"
+            }
 	}
 	
 	"OnChannelInterrupted"
@@ -139,11 +118,6 @@
 			{
 				"ScriptFile" "bosses/desert/slam.lua"
 				"Function"   "SpeechSlamFail"
-			}
-			"FireSound"
-			{
-				"EffectName"	"es.slamfail1"
-				"Target"	"CASTER"
 			}
 	}
 "Modifiers"

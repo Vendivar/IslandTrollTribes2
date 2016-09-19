@@ -18,7 +18,6 @@
 			]
 			m_bAnimated = true
 			m_nLOD = 1
-			m_nModelCP = 0
 		},
 	]
 	m_Operators = 
@@ -112,6 +111,7 @@
 	[
 		{
 			m_ChildRef = resource:"particles/units/heroes/hero_huskar/huskar_base_attack_trail.vpcf"
+			m_bDisableChild = true
 		},
 		{
 			m_bEndCap = true
@@ -120,6 +120,7 @@
 		{
 			m_bEndCap = true
 			m_ChildRef = resource:"particles/units/heroes/hero_huskar/huskar_base_attack_speardisappear.vpcf"
+			m_bDisableChild = true
 		},
 	]
 }
