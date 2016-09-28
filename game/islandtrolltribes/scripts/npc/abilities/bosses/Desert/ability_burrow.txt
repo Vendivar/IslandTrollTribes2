@@ -12,6 +12,7 @@
 	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
 	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 	"AbilityTextureName"			"sandking_burrowstrike"
+	"AbilityCastAnimation" 			"ACT_DOTA_CAST_ABILITY_1"
 
 	// Casting
 	//-------------------------------------------------------------------------------------------------------------

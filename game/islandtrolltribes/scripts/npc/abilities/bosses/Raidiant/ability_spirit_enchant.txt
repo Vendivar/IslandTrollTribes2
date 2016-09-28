@@ -1,102 +1,189 @@
 "ability_spirit_enchant"
 {
-	"BaseClass"             		"ability_datadriven"
-	"AbilityTextureName"			"ability_spirit_enchant"
-	"MaxLevel" 						"1"
-
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AOE"
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"						"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
 	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+	"AbilityTextureName"			"sandking_enchantstrike"
+	"AbilityCastAnimation" 			"ACT_DOTA_CAST_ABILITY_1"
 
-	"AbilityCooldown"	"120"
-	"AbilityManaCost"	"30"
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"1000 450 550 650"
+	"AbilityCastPoint"				"0.0 0.0 0.0 0.0"
+	"AbilityChannelTime" "2.5"
+	
+	// Time		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"11.0"
 
-    "AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_1"
-    "AbilityCastPoint"	"0.5"
-	"AOERadius"			"%radius"
-	"AbilityCastRange"	"100"
-	"AbilityDuration"	"10"
-
-	"precache"
-	{
-		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_silencer.vsndevts"
-		"particle"  "particles/units/heroes/hero_axe/axe_beserkers_call_owner.vpcf"
-		"particle"  "particles/status_fx/status_effect_beserkers_call.vpcf"
-		"particle"	"particles/econ/courier/courier_faceless_rex/cour_rex_ground_a.vpcf"
-	}
-
+	// Cost
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityManaCost"				"0"
+	
+	"AbilityDamage"					"25"
+	
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
 	"AbilitySpecial"
 	{
 		"01"
 		{
-			"var_type"		"FIELD_INTEGER"
-			"radius"		"450"
+			"var_type"			"FIELD_INTEGER"
+			"enchant_width"		"250"
 		}
+		"02"
+		{
+			"var_type"			"FIELD_FLOAT"
+			"enchant_duration"	"2.17"
+		}
+		"03"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"enchant_speed"		"2000"
+		}
+		"04"
+		{
+			"var_type"			"FIELD_FLOAT"
+			"enchant_anim_time"	"0.52"
+		}
+	}
+	
+	// Data driven
+	//-------------------------------------------------------------------------------------------------------------
+	
+	"OnSpellStart"
+	{
+		"FireEffect"
+		{
+			"EffectName"				"particles/custom/mini_line_attack1_c_l.vpcf"
+			"EffectAttachType"			"start_at_customorigin"
+			"Target"					"CASTER"
+			"ControlPoints"
+			{
+				"01"					"POINT"
+			}
+		}
+		"FireSound"
+		{
+			"EffectName"	"sk.mini.enchant1"
+			"Target"	"CASTER"
+		}
+		"RunScript"
+			{
+				"ScriptFile" "bosses/radiant/enchant.lua"
+				"Function"   "SpeechenchantStart"
+			}
 	}
 
 	
+	"OnChannelSucceeded"
+	{
+		"LinearProjectile"
+		{
+			"MoveSpeed"					"%enchant_speed"
+			"StartRadius"				"%enchant_width"
+			"EndRadius"					"%enchant_width"
+			"TargetTeams"				"DOTA_UNIT_TARGET_TEAM_ENEMY"
+			"TargetTypes"				"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+			"HasFrontalCone"			"0"
+		}
+		
+		"ApplyModifier"
+		{
+			"ModifierName"				"modifier_enchantstrike_caster_datadriven"
+			"Target"					"CASTER"
+		}
+		
+		"FireEffect"
+		{
+			"EffectName"				"particles/units/heroes/hero_sandking/sandking_enchantstrike.vpcf"
+			"EffectAttachType"			"start_at_customorigin"
+			"Target"					"CASTER"
+			"ControlPoints"
+			{
+				"01"					"POINT"
+			}
+		}
+		
+		"FireSound"
+		{
+			"EffectName"				"Ability.SandKing_enchantStrike"
+			"Target"					"CASTER"
+		}
+	}
+	
+	"OnProjectileHitUnit"
+	{
+		"DeleteOnHit"					"true"
+
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_spirit_enchant_target"
+			"Target" 		"TARGET"
+			"Duration"		"3"
+		}
+		
+		"Knockback"
+		{
+			"Target"			"TARGET"
+			"Duration"			"%enchant_anim_time"
+			"Distance"			"20"
+			"Height"			"10"
+		}
+		
+		"DelayedAction"
+		{
+			"Delay"						"%enchant_anim_time"
+			"Action"
+			{
+				"Damage"
+				{
+					"Type"				"DAMAGE_TYPE_MAGICAL"
+					"Damage"			"%AbilityDamage"
+					"Target"			"TARGET"
+				}
+			}
+		}
+	}
+	
+	"OnProjectileFinish"
+	{
+			"FireSound"
+			{
+				"EffectName"	"sk.mini.taunt"
+				"Target"	"CASTER"
+			}
+				"RunScript"
+			{
+				"ScriptFile" "bosses/desert/enchant.lua"
+				"Function"   "SpeechTaunt"
+			}
+	}
 	
 	"Modifiers"
 	{
-	"modifier_enchnattouch"
+
+	
+		"modifier_enchantstrike_stun_datadriven"
 		{
-			"Passive"	"1"
-			"IsHidden"	"1"
+			"IsDebuff"					"1"
+			"Duration"					"%enchant_duration"
+			"OverrideAnimation"			"ACT_DOTA_DISABLED"
 			
-		"OnAttackLanded"
+			"EffectName"				"particles/generic_gameplay/generic_stunned.vpcf"
+			"EffectAttachType"			"follow_overhead"
+			
+			"States"
 			{
-				"Random"
-				{
-					"Chance"		"60"	
-					"PseudoRandom" "DOTA_PSEUDO_RANDOM_ITEM_MKB"
-					"OnSuccess"
-					{
-						"ApplyModifier"
-						{
-							"ModifierName"	"modifier_enchantproc"
-							"Target"		"CASTER"
-						}
-
-					}
-				}
+				"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
 			}
 		}
-		"modifier_enchantproc"
-		{
-		"IsHidden"	"1"
-			"OnAttackLanded"
-			{
-				"ApplyModifier"
-				{
-					"ModifierName"	"modifier_spirit_enchant_target"
-					"Target" 		"TARGET"
-					"Duration"		"%AbilityDuration"
-				}
-
-				"RemoveModifier"
-				{
-					"ModifierName"	"modifier_enchantproc"
-					"Target"		"CASTER"
-				}
-				
-				"RunScript"
-				{
-					"ScriptFile" "bosses/radiant/enchant.lua"
-					"Function"   "EnchantStart"
-				}
-				"FireEffect"
-				{
-					"EffectName"        "particles/custom/enchant.vpcf"
-					"EffectAttachType"  "follow_origin"
-					"Target"            "TARGET"
-				}
-				"RunScript"
-				{
-					"ScriptFile" "bosses/radiant/enchant.lua"
-					"Function"   "SpeechTaunt"
-				}
-			}
-		}
+		
 		"modifier_spirit_enchant_target"
 		{
 			"IsHidden"			"0"
@@ -105,15 +192,35 @@
 			"EffectName"		"particles/custom/enchanted2.vpcf"
 			"EffectAttachType"	"follow_origin"
 
+			"ThinkInterval"  "0.5"
+			"OnIntervalThink"
+			{
+				"RunScript"
+				{
+					"ScriptFile"   "bosses/radiant/enchant.lua"
+					"Function"     "Enchant"
+
+					"modifier"		"modifier_spirit_enchant_enemy"
+				}
+			}
+//needs to be forced to attack a random teammate here first
+			"OnDestroy"
+			{
+				"RunScript"
+				{
+					"ScriptFile"   "bosses/radiant/enchant.lua"
+					"Function"     "enchantEnd"
+				}
+			}
 			"OnCreated"
 			{
-				
+				//fire and attach effect here
 			}
 			"Properties"
 			{
 				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"		 "25"
 				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" 		 "-25" 
-				"MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE" 	 "50"
+				"MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE" 	 "-50"
 			}
 			"States"
 			{
@@ -121,7 +228,7 @@
 				"MODIFIER_STATE_COMMAND_RESTRICTED"		"MODIFIER_STATE_VALUE_ENABLED"
 			}
 		}
-		//needs to be forced to attack a random teammate at first
+		
 
 		"modifier_spirit_enchant_enemy"
 		{

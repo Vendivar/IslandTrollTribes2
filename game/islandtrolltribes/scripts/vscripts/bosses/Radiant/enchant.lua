@@ -42,16 +42,16 @@ end
 function SpeechEnchant( event )
 	local caster = event.caster
 
-  local dieRoll = RandomInt(0, 2)
+  local dieRoll = RandomInt(0, 3)
 
     print("Test your luck! " .. dieRoll)
     if dieRoll == 0 then 
         caster:AddSpeechBubble(1,"#en_enchant1",2.0,0,0)
-		 caster:EmitSound("en.enchant3")
+		 caster:EmitSound("en.enchant1")
 		 print("1")
     elseif dieRoll == 1 then
         caster:AddSpeechBubble(1,"#en_enchant2",2.0,0,0)
-		 caster:EmitSound("en.enchant3")
+		 caster:EmitSound("en.enchant2")
 		print("2")
 	elseif dieRoll == 2 then
            caster:AddSpeechBubble(1,"#en_enchant3",2.0,0,0)
