@@ -28,7 +28,7 @@
 		}        
 		"03"
         {
-            "Key"       "H"
+            "Key"       "L"
             "Command"   "+ToggleHelp"
             "Name"      "Show/Hide the help UI"
         }
