@@ -40,10 +40,17 @@
   padding-top: -20px;
 }
 
-#Gamemode_header Label {
+.Gamemode_header_label {
   text-align: center;
   width: 100%;
   font-size: 40px;
+  color: #ffffff;
+}
+
+#Gamemode_timer {
+  width: 100%;
+  text-align: right;
+  font-size: 20px;
   color: #ffffff;
 }
 
@@ -54,22 +61,36 @@
 
   flow-children: down;
 }
-/* TODO: Add the descriptions */
+
 .Gamemode_speedselect {
   width: 30%;
   height: 100%;
   margin: 20px;
 
-  background-image: url("s2r://panorama/images/class_picker/pick.png");
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
-.Gamemode_speedselect:hover {
-  brightness: 2;
+#speed_1 {
+  background-image: url("s2r://panorama/images/gamemode_selector/voting_fast_icon.png");
+}
+#speed_1.active_speed {
+  background-image: url("s2r://panorama/images/gamemode_selector/voting_fast_icon_selected.png");
+}
+#speed_2 {
+  background-image: url("s2r://panorama/images/gamemode_selector/voting_normal_icon.png");
+}
+#speed_2.active_speed {
+  background-image: url("s2r://panorama/images/gamemode_selector/voting_normal_icon_selected.png");
+}
+#speed_3 {
+  background-image: url("s2r://panorama/images/gamemode_selector/voting_slow_icon.png");
+}
+#speed_3.active_speed {
+  background-image: url("s2r://panorama/images/gamemode_selector/voting_slow_icon_selected.png");
 }
 
-.active_speed,.active_speed:hover {
-  background-image: url("s2r://panorama/images/class_picker/pick_hover.png");
+.Gamemode_speedselect:hover {
+  brightness: 2;
 }
 
 .Gamemode_speedselect Label {

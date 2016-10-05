@@ -36,7 +36,7 @@ function Build( event )
 
 	local playerID = caster:GetPlayerOwnerID()
 	local hero = PlayerResource:GetSelectedHeroEntity(playerID)
-	local player = PlayerResource:GetPlayer(playerID)	
+	local player = PlayerResource:GetPlayer(playerID)
 
 	-- If the ability has an AbilityGoldCost, it's impossible to not have enough gold the first time it's cast
 	-- Always refund the gold here, as the building hasn't been placed yet
@@ -57,9 +57,9 @@ function Build( event )
 		local origin = caster:GetAbsOrigin()
  		if vPos.z > origin.z + 64 and not GridNav:CanFindPath(origin, vPos) then
  			SendErrorMessage(playerID, "#error_invalid_build_position")
- 			return false 
+ 			return false
 		end
-        
+
 		-- if its an item with charges, check that we aren't at 0 charges
 		if not IsValidEntity(ability) then
 			return false
@@ -76,6 +76,12 @@ function Build( event )
 				SendErrorMessage(playerID, "#error_cant_queue")
 				return false
 			end
+		end
+
+		-- Only beastmaster can build the hatchery.
+		if hero:GetClassname() ~= "npc_dota_hero_lycan" and building_name == "npc_building_hatchery" then
+			SendErrorMessage(playerID, "#error_only_beastmaster")
+			return false
 		end
 
 		return true
@@ -109,7 +115,7 @@ function Build( event )
 	event:OnConstructionFailed(function()
 		local playerTable = BuildingHelper:GetPlayerTable(playerID)
         local name = playerTable.activeBuilding
-        
+
 		BuildingHelper:print("Failed placement of " .. name)
 		SendErrorMessage(caster:GetPlayerOwnerID(), "#error_invalid_build_position")
 	end)
@@ -133,7 +139,7 @@ function Build( event )
 		BuildingHelper:print("Started construction of " .. unit:GetUnitName() .. " " .. unit:GetEntityIndex())
 		-- Play construction sound
 
-		-- Store the Build Time, Gold Cost and secondary resource the building 
+		-- Store the Build Time, Gold Cost and secondary resource the building
 	    -- This is necessary for repair to know what was the cost of the building and use resources periodically
 	    unit.GoldCost = gold_cost
 	    unit.BuildTime = build_time
@@ -157,7 +163,7 @@ function Build( event )
     		ability:RemoveSelf()
     	end
 
-    	-- Handle magefire 
+    	-- Handle magefire
 		if ability_name == "ability_mage_magefire" then
 			unit.skip_kit_creation = true
 		end
@@ -166,7 +172,7 @@ function Build( event )
 	-- A building finished construction
 	event:OnConstructionCompleted(function(unit)
 		BuildingHelper:print("Completed construction of " .. unit:GetUnitName() .. " " .. unit:GetEntityIndex())
-		
+
 		-- Play construction complete sound
 
 		-- Give the unit their original attack capability
@@ -181,7 +187,7 @@ function Build( event )
 	-- i.e. it won't fire multiple times unnecessarily.
 	event:OnBelowHalfHealth(function(unit)
 		BuildingHelper:print(unit:GetUnitName() .. " is below half health.")
-				
+
 
 	end)
 
@@ -189,7 +195,7 @@ function Build( event )
 		BuildingHelper:print(unit:GetUnitName().. " is above half health.")
 
 		unit:RemoveModifierByName("modifier_onfire")
-		
+
 	end)
 end
 
@@ -229,7 +235,7 @@ function RepairStart( event )
 			caster.repair_target = target
 
 			local target_pos = target:GetAbsOrigin()
-			
+
 			ability.cancelled = false
 			caster.state = "moving_to_repair"
 
@@ -259,7 +265,7 @@ function RepairStart( event )
 				if not ability.cancelled and caster.state == "moving_to_repair" then
 					if caster.repair_target and IsValidEntity(caster.repair_target) then
 						local distance = (target_pos - caster:GetAbsOrigin()):Length()
-						
+
 						if distance > collision_size then
 							caster:MoveToNPC(target)
 							return 0.1 --THINK_INTERVAL
@@ -309,7 +315,7 @@ function CancelRepair( event )
 
 	ability.cancelled = true
 	caster.state = "idle"
-	
+
 	ToggleOff(ability)
 end
 
@@ -354,7 +360,7 @@ function Repair( event )
 			building.GoldAdjustment = 0
 			building.time_started = GameRules:GetGameTime()
 		end
-		
+
 		local stack_count = building:GetModifierStackCount( "modifier_repairing_building", ability )
 
 		-- HP
@@ -381,7 +387,7 @@ function Repair( event )
 		else
 			print("Cost is "..gold_float.." gold and "..lumber_per_second.." lumber per second")
 		end]]
-			
+
 		local healthGain = 0
 		if PlayerHasEnoughGold( player, math.ceil(gold_per_second+gold_float) ) and PlayerHasEnoughLumber( player, lumber_per_second ) then
 			-- Health
@@ -394,7 +400,7 @@ function Repair( event )
 				healthGain = health_per_second
 				building:SetHealth(building:GetHealth() + health_per_second)
 			end
-			
+
 			-- Consume Resources
 			building.GoldAdjustment = building.GoldAdjustment + gold_float
 			if building.GoldAdjustment > 1 then
@@ -405,7 +411,7 @@ function Repair( event )
 				hero:ModifyGold( -gold_per_second, false, 0)
 				building.gold_used = building.gold_used + gold_per_second
 			end
-			
+
 			ModifyLumber( player, -lumber_per_second )
 			building.lumber_used = building.lumber_used + lumber_per_second
 		else
@@ -471,7 +477,7 @@ function BuilderRepairing( event )
 	local target = caster.repair_target
 
     print("Builder Repairing ",target:GetUnitName())
-	
+
 	caster.state = "repairing"
 
 	-- Apply a modifier stack to the building, to show how many peasants are working on it (and scale the Powerbuild costs)
@@ -504,7 +510,7 @@ function BuilderStopRepairing( event )
 			return
 		end
 	end
-	
+
 	caster:RemoveModifierByName("modifier_on_order_cancel_repair")
 	caster:RemoveModifierByName("modifier_builder_repairing")
 	caster:RemoveGesture(ACT_DOTA_ATTACK)
@@ -577,5 +583,3 @@ function RemoveCancelBuildButton(target)
 		cancelAbility:SetHidden(true)
 	end
 end
-
-

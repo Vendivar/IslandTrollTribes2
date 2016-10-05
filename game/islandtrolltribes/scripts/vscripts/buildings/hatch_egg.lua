@@ -22,7 +22,7 @@ function HatchEgg(keys)
     end
 end
 
-function TameBird(newpet,hero)
+function TameBird(newPet,hero)
     if not hero.pets then
         hero.pets = {}
     else
@@ -56,7 +56,7 @@ function TameBird(newpet,hero)
 
             AdjustAbilityLayout(pet)
             AdjustAbilityLayout(hero)
-            hero.pets = {}
+            table.remove(hero.pets, 1)
         end
     end
 

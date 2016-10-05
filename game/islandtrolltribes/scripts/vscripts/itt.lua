@@ -1078,6 +1078,9 @@ function ITT:OnGameRulesStateChange()
 
         Spawns:Init()
 
+        -- Start the 1min timer for gamemode voting.
+        ITT:StartVoting()
+
         -- Initial bush spawns, starts the timer to add items to the bushes periodially
         -- Place entities starting with spawner_ plus the appropriate name to spawn to corresponding bush on game start
         ITT:SpawnBushes()

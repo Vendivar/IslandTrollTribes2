@@ -3,6 +3,7 @@ var iPlayerID = Players.GetLocalPlayer();
 var hero = Players.GetPlayerHeroEntityIndex( iPlayerID )
 var currentBuilding = 0
 var currentUnit = 0
+var currentPos = 0
 var currentSelected
 var fold = false
 
@@ -10,12 +11,12 @@ var Buildings = {}
 var Units = {}
 var UnFinishedBuildings = []
 var KilledBuildings = []
-Buildings['npc_building_armory'] = 1;
-Buildings['npc_building_hut_witch_doctor'] = 1;
-Buildings['npc_building_mixing_pot'] = 1;
-Buildings['npc_building_tannery'] = 1;
-Buildings['npc_building_workshop'] = 1;
-Buildings['npc_building_craftmaster'] = 1;
+Buildings['npc_building_armory'] = {};
+Buildings['npc_building_hut_witch_doctor'] = {};
+Buildings['npc_building_mixing_pot'] = {};
+Buildings['npc_building_tannery'] = {};
+Buildings['npc_building_workshop'] = {};
+Buildings['npc_building_craftmaster'] = {};
 Units['npc_dota_hero_shadow_shaman'] = 1;
 
 function Crafting_OnUpdateSelectedUnits() {
@@ -34,14 +35,16 @@ function Crafting_OnUpdateSelectedUnits() {
 
     //$.Msg("Unit is owned by your team, continue showing the crafting UI")
     var name = Entities.GetUnitName(mainSelected)
-    $.Msg("Crafting_OnUpdateSelectedUnits "+name)
+    var pos = Entities.GetAbsOrigin(mainSelected)
+    $.Msg("Crafting_OnUpdateSelectedUnits " + name + " " + pos)
 
     if (Buildings[name])
     {
         HideCurrent()
         currentBuilding = name
         currentSelected = mainSelected
-        if (Buildings[name]==1)
+        currentPos = pos
+        if (!Buildings[name][pos])
         {
             var values = CustomNetTables.GetAllTableValues("crafting")
             for (var i in values)
@@ -50,13 +53,13 @@ function Crafting_OnUpdateSelectedUnits() {
                 if (crafting_table.key==name)
                 {
                     var panel = CreateCraftingSection(name, crafting_table.value, Root, false, mainSelected)
-                    Buildings[name] = panel
+                    Buildings[name][pos] = panel
                 }
             }
         }
         else
         {
-            MakeVisible(Buildings[name])
+            MakeVisible(Buildings[name][pos])
         }
     }
     else
@@ -133,7 +136,8 @@ function ShowUnitCraftingMenu(event) {
 }
 
 function HideCurrent() {
-    Hide(Buildings[currentBuilding])
+    if (currentBuilding !== 0)
+        Hide(Buildings[currentBuilding][currentPos])
     Hide(Units[currentUnit])
 }
 
