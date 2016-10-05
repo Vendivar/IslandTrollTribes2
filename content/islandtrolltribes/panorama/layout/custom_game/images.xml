@@ -281,6 +281,13 @@
         <Image style="opacity:0;" src="file://{images}/help_menu/background.png" />
         <Image style="opacity:0;" src="file://{images}/gamemode_selector/voting_gui_overlay3.png" />
 
+        <Image style="opacity:0;" src="file://{images}/gamemode_selector/voting_fast_icon.png" />
+        <Image style="opacity:0;" src="file://{images}/gamemode_selector/voting_fast_icon_selected.png" />
+        <Image style="opacity:0;" src="file://{images}/gamemode_selector/voting_normal_icon.png" />
+        <Image style="opacity:0;" src="file://{images}/gamemode_selector/voting_normal_icon_selected.png" />
+        <Image style="opacity:0;" src="file://{images}/gamemode_selector/voting_slow_icon.png" />
+        <Image style="opacity:0;" src="file://{images}/gamemode_selector/voting_slow_icon_selected.png" />
+
         <Image style="opacity:0;" src="file://{images}/icons/diaper-icon2.png" />
         <Image style="opacity:0;" src="file://{images}/icons/fixed bushes4.png" />
         <Image style="opacity:0;" src="file://{images}/icons/HARDCORE.png" />

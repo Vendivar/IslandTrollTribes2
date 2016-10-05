@@ -14,13 +14,13 @@
           <Label id="Gamemode_timer" />
         </Panel>
         <Panel id="Gamemode_mainselections">
-          <Panel id="speed_1" class="Gamemode_speedselect1" onactivate="setSpeed(1)" onmouseover="onHover('speed_1')" onmouseout="offHover('speed_1')">
+          <Panel id="speed_1" class="Gamemode_speedselect" onactivate="setSpeed(1)" onmouseover="onHover('speed_1')" onmouseout="offHover('speed_1')">
             <Label text="#Gamemode_fast" />
           </Panel>
-          <Panel id="speed_2" class="Gamemode_speedselect2 active_speed" onactivate="setSpeed(2)" onmouseover="onHover('speed_2')" onmouseout="offHover('speed_2')">
+          <Panel id="speed_2" class="Gamemode_speedselect active_speed" onactivate="setSpeed(2)" onmouseover="onHover('speed_2')" onmouseout="offHover('speed_2')">
             <Label text="#Gamemode_normal" />
           </Panel>
-          <Panel id="speed_3" class="Gamemode_speedselect3" onactivate="setSpeed(3)" onmouseover="onHover('speed_3')" onmouseout="offHover('speed_3')">
+          <Panel id="speed_3" class="Gamemode_speedselect" onactivate="setSpeed(3)" onmouseover="onHover('speed_3')" onmouseout="offHover('speed_3')">
             <Label text="#Gamemode_slow" />
           </Panel>
         </Panel>
