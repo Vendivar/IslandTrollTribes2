@@ -6795,7 +6795,7 @@
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	    "AbilityTextureName"    "ability_beastmaster_sleep"
 	    "AbilityCastPoint"      "0"
-	    "AbilityCooldown"       "0"
+	    "AbilityCooldown"       "30"
 	    "AbilityManaCost"       "0"
 	    "MaxLevel"              "1"
 	
