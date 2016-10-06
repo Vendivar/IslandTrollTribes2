@@ -196,7 +196,7 @@ function PostSubclassSelectActions(hero)
             local item = hero:GetItemInSlot(i)
             if item then
                 local itemSlotRestriction = GameRules.ItemInfo['ItemSlots'][item:GetAbilityName()]
-                if itemSlotRestriction == "AxesShields" or itemSlotRestriction == "Gloves" then
+                if itemSlotRestriction == "Axes" or itemSlotRestriction == "Gloves" then
                     hero:DropItemAtPositionImmediate(item, hero:GetAbsOrigin())
                 end
             end

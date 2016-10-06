@@ -4727,7 +4727,7 @@
 		"AbilityCastPoint"	"0.5"
 		"AbilityCooldown"	"5"
 		"AbilityCastRange"	"0"
-		"AbilityManaCost"	"30"
+		"AbilityManaCost"	"5"
 		"MaxLevel"	"1"
 	    
 	        "precache"
@@ -5077,7 +5077,7 @@
 		"AbilityCastPoint"	"0.5"
 		"AbilityCooldown"	"5"
 		"AbilityCastRange"	"0"
-		"AbilityManaCost"	"30"
+		"AbilityManaCost"	"5"
 		"MaxLevel"	"1"
 			"precache"
 		{
@@ -6352,7 +6352,7 @@
 		"AbilityCastPoint"	"0.5"
 		"AbilityCooldown"	"5"
 		"AbilityCastRange"	"0"
-		"AbilityManaCost"	"30"
+		"AbilityManaCost"	"5"
 		"MaxLevel"	"1"
 	        "precache"
 		{			
