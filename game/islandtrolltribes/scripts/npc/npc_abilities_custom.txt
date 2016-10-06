@@ -13797,6 +13797,17 @@
 	            "Target" 		"CASTER"
 	        }
 	    }
+		
+		
+		"OnAbilityPhaseStart"
+		{
+			"RunScript"
+			{
+	            "ScriptFile"	"heroes/priest/mix.lua"
+				"Function"      "MixInit"
+				"Target"         "TARGET"
+			}
+		}
 	
 		"OnSpellStart"
 		{
@@ -14517,6 +14528,16 @@
 	"particle" "particles/units/heroes/hero_dazzle/dazzle_shadow_wave_impact_damage.vpcf"
 	"particle" "particles/mix_mana.vpcf"
 	}
+	
+		"OnAbilityPhaseStart"
+		{
+			"RunScript"
+			{
+	            "ScriptFile"	"heroes/priest/mix.lua"
+				"Function"      "MixInit"
+				"Target"         "TARGET"
+			}
+		}
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -14576,6 +14597,18 @@
 	            "particle" "particles/units/heroes/hero_dazzle/dazzle_shadow_wave_impact_damage.vpcf"
 	            "particle" "particles/mix_health.vpcf"
 	        }
+			
+			
+		"OnAbilityPhaseStart"
+		{
+			"RunScript"
+			{
+	            "ScriptFile"	"heroes/priest/mix.lua"
+				"Function"      "MixInit"
+				"Target"         "TARGET"
+			}
+		}
+		
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -14631,6 +14664,18 @@
 	"particle" "particles/units/heroes/hero_dazzle/dazzle_shadow_wave_impact_damage.vpcf"
 	"particle" "particles/mix_heat.vpcf"
 	}
+	
+	
+		"OnAbilityPhaseStart"
+		{
+			"RunScript"
+			{
+	            "ScriptFile"	"heroes/priest/mix.lua"
+				"Function"      "MixInit"
+				"Target"         "TARGET"
+			}
+		}
+		
 		"OnSpellStart"
 		{
 			"RunScript"

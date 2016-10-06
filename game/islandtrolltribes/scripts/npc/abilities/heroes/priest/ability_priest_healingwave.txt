@@ -35,6 +35,17 @@
             "Target" 		"CASTER"
         }
     }
+	
+	
+	"OnAbilityPhaseStart"
+	{
+		"RunScript"
+		{
+            "ScriptFile"	"heroes/priest/mix.lua"
+			"Function"      "MixInit"
+			"Target"         "TARGET"
+		}
+	}
 
 	"OnSpellStart"
 	{
