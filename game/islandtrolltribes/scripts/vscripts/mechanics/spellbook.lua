@@ -18,14 +18,19 @@ function SwapSpellBook(keys)
     ShowTheSpellBook(caster, book)
 
     -- Reorder
-    for i,ability_name in pairs(book) do
-        local ability_in_slot = GetAbilityOnVisibleSlot(caster, tonumber(i))
-        if ability_in_slot then
-            local name = ability_in_slot:GetAbilityName()
-            if name ~= ability_name then
-                caster:SwapAbilities(name, ability_name, true, true)
+    Timers:CreateTimer({    -- Needs to happen on the next frame.
+        callback = function()
+            for i,ability_name in pairs(book) do
+                local ability_in_slot = GetAbilityOnVisibleSlot(caster, tonumber(i))
+                if ability_in_slot then
+                    local name = ability_in_slot:GetAbilityName()
+                    if name ~= ability_name then
+                        caster:SwapAbilities(name, ability_name, true, true)
+                    end
+                end
             end
         end
-    end
+    })
+
     PrintAbilities(caster)
 end
