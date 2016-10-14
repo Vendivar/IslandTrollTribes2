@@ -16,7 +16,7 @@ function PetRelease( event )
     pet:RemoveAbility("ability_pet_attack")
     pet:EmitSound("Hero_Beastmaster.Call.Boar")
     pet:EmitSound("Hero_Beastmaster.Call.Hawk")
-    pet:SetControllableByPlayer(hero:GetPlayerID(), false)
+    pet:SetControllableByPlayer(-1, false)
     pet:ForceKill(true)
 
     -- Go back to being a not-attackable animal
@@ -42,6 +42,7 @@ function PetFollow(event)
     ToggleOffSet(hero, ability)
 
     for _,pet in pairs(pets) do
+        pet:RemoveModifierByName("modifier_stay")
         ExecuteOrderFromTable({ UnitIndex = pet:GetEntityIndex(), OrderType = DOTA_UNIT_ORDER_MOVE_TO_TARGET, TargetIndex = hero:GetEntityIndex(), Queue = false})
     end
 end
@@ -52,9 +53,11 @@ function PetStop(event)
     local pets = GetPets(hero)
 
     for _,pet in pairs(pets) do
+        pet:RemoveModifierByName("modifier_stay")
         ExecuteOrderFromTable({ UnitIndex = pet:GetEntityIndex(), OrderType = DOTA_UNIT_ORDER_STOP, Queue = false})
     end
 end
+
 function PetStay(event)
     local hero = event.caster
     local ability = event.ability
@@ -64,6 +67,9 @@ function PetStay(event)
 
     for _,pet in pairs(pets) do
         ExecuteOrderFromTable({ UnitIndex = pet:GetEntityIndex(), OrderType = DOTA_UNIT_ORDER_HOLD_POSITION, Queue = false})
+
+        ability:ApplyDataDrivenModifier(hero, pet, "modifier_command_restrict", {})
+        ability:ApplyDataDrivenModifier(hero, pet, "modifier_stay", {})
     end
 end
 
@@ -77,6 +83,7 @@ function PetAttack(event)
 
     for _,pet in pairs(pets) do
         if pet:HasAttackCapability() then
+            pet:RemoveModifierByName("modifier_stay")
             ExecuteOrderFromTable({ UnitIndex = pet:GetEntityIndex(), OrderType = DOTA_UNIT_ORDER_ATTACK_MOVE, Position = hero:GetAbsOrigin() + RandomVector(100), Queue = false})
         end
     end
@@ -101,22 +108,58 @@ function ToggleOffSet(hero, ability)
     end
 end
 
+function PetRunToOwner(event)
+    local pet = event.caster
+    local hero = pet:GetOwner()
+    ExecuteOrderFromTable({ UnitIndex = pet:GetEntityIndex(), OrderType = DOTA_UNIT_ORDER_MOVE_TO_TARGET, TargetIndex = hero:GetEntityIndex(), Queue = false})
+end
+
+function PetCommandRestrict(event)
+    local pet = event.caster
+    pet:SetControllableByPlayer(-1, false)
+    print("Restricting control")
+    print(pet:GetClassname())
+end
+
+function PetCommandUnRestrict(event)
+    local pet = event.caster
+    pet:SetControllableByPlayer(pet:GetOwner():GetPlayerID(), false)
+    print("Releasing control")
+end
+
 ------------------------------------------------------------
 
 function PetThink( event )
     local pet = event.caster
     local hero = pet:GetOwner()
 
-    local pID = hero:GetPlayerID()
+    -- local pID = hero:GetPlayerID()
+
+    if pet:FindModifierByName("modifier_stay") or pet:FindModifierByName("modifier_sleep") then
+        return
+    end
+
+    if pet:FindModifierByName("modifier_command_restrict") then
+        if pet:GetRangeToUnit(hero) < pet.leashRange then
+            pet:RemoveModifierByName("modifier_command_restrict")
+        else
+            ExecuteOrderFromTable({ UnitIndex = pet:GetEntityIndex(), OrderType = DOTA_UNIT_ORDER_MOVE_TO_TARGET, TargetIndex = hero:GetEntityIndex(), Queue = false})
+            return
+        end
+    end
 
     -- Never go outside the leashRange of the player, defined when the tame ability is cast
     -- Now checks if the pet is sleeping, in which case the pet still stays. Issue #241
-    if pet:GetRangeToUnit(hero) > pet.leashRange and hero:IsAlive() and not pet:FindModifierByName("modifier_sleep") then
+    if pet:GetRangeToUnit(hero) > pet.leashRange and hero:IsAlive() then
 
         ExecuteOrderFromTable({ UnitIndex = pet:GetEntityIndex(), OrderType = DOTA_UNIT_ORDER_MOVE_TO_TARGET, TargetIndex = hero:GetEntityIndex(), Queue = false})
-       -- EmitSoundOn( "General.Ping", pet )
+
+        local ability = pet:FindAbilityByName("ability_pet")
+        ability:ApplyDataDrivenModifier(pet, pet, "modifier_command_restrict", {})
+
+        -- EmitSoundOn( "General.Ping", pet )
         local particle = ParticleManager:CreateParticle("particles/custom/alert.vpcf", PATTACH_ABSORIGIN_FOLLOW, pet)
-      --  SendErrorMessage(pID, "#error_pet_leash_range")
+        --  SendErrorMessage(pID, "#error_pet_leash_range")
         return
     end
 
@@ -134,7 +177,7 @@ end
 function HealPet(keys)
     local caster = keys.caster
     local maxHealth = caster:GetMaxHealth()
-    local healAmount = maxHealth * 0.025
+    local healAmount = maxHealth * 0.05
 
     caster:Heal(healAmount,nil)
 end

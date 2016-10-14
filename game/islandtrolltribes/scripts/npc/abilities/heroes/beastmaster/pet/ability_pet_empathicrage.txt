@@ -26,7 +26,7 @@
             }
         }
 
-        "modifer_empathicrage_buff"
+        "modifier_empathicrage_buff"
         {   "IsHidden"    "0"
             "IsBuff"      "1"
             "Properties"

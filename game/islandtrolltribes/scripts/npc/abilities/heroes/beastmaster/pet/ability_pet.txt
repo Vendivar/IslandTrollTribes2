@@ -4,7 +4,7 @@
 	"BaseClass"			"ability_datadriven"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 	"MaxLevel"			"1"
-	
+
 	"Modifiers"
 	{
 		"modifier_pet"
@@ -27,6 +27,31 @@
 				{
 					"ScriptFile"   "heroes/beastmaster/pets.lua"
 					"Function"     "PetThink"
+				}
+			}
+		}
+		"modifier_command_restrict"
+		{
+			"IsDebuff"	"0"
+			"IsPurgable"	"0"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"50"
+			}
+			"OnCreated"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/beastmaster/pets.lua"
+					"Function"		"PetCommandRestrict"
+				}
+			}
+			"OnDestroy"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/beastmaster/pets.lua"
+					"Function"		"PetCommandUnRestrict"
 				}
 			}
 		}

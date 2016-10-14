@@ -27,16 +27,16 @@ function DeathCheck(empathicRageInfo)
         for _,hero in pairs(heroes) do
             if hero:GetEntityIndex() == pet:GetOwner():GetEntityIndex() and hero:HasModifier("modifier_empathicrage") then
                 -- print("pet death check Owner ID :"..hero:GetEntityIndex())
-                -- ability:ApplyDataDrivenModifier(pet,hero,"modifer_empathicrage_buff",{duration = duration})
+                -- ability:ApplyDataDrivenModifier(pet,hero,"modifier_empathicrage_buff",{duration = duration})
                 --check number of stacks
-                local curStacks = hero:GetModifierStackCount("modifer_empathicrage_buff", nil)
-                if hero:HasModifier("modifer_empathicrage_buff") then
+                local curStacks = hero:GetModifierStackCount("modifier_empathicrage_buff", nil)
+                if hero:HasModifier("modifier_empathicrage_buff") then
                     print("adding stack")
-                    hero:SetModifierStackCount("modifer_empathicrage_buff", nil, curStacks + 1)                    
+                    hero:SetModifierStackCount("modifier_empathicrage_buff", nil, curStacks + 1)
                 else
                     print("applying empathic rage")
-                    ability:ApplyDataDrivenModifier(pet, hero, "modifer_empathicrage_buff", {duration = duration})
-                    hero:SetModifierStackCount("modifer_empathicrage_buff", nil, curStacks + 1)
+                    ability:ApplyDataDrivenModifier(pet, hero, "modifier_empathicrage_buff", {duration = duration})
+                    hero:SetModifierStackCount("modifier_empathicrage_buff", nil, curStacks + 1)
                 end
             end
         end

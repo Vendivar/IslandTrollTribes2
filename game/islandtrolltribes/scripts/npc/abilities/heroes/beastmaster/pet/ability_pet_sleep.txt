@@ -30,6 +30,12 @@
 			"Target"	"CASTER"
 		}
 
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_command_restrict"
+			"Target"	"CASTER"
+		}
+
 	}
 
 	"Modifiers"
@@ -90,7 +96,7 @@
 		"01"
 		{
 			"var_type"	"FIELD_FLOAT"
-			"rest_duration"	"10"
+			"rest_duration"	"5"
 		}
 
 		"02"
