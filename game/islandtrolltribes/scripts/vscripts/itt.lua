@@ -118,6 +118,7 @@ function ITT:InitGameMode()
     CustomGameEventManager:RegisterListener( "player_drop_all_meat", Dynamic_Wrap( ITT, "DropAllMeat" ) )
     CustomGameEventManager:RegisterListener( "player_panic", Dynamic_Wrap( ITT, "Panic" ) )
     CustomGameEventManager:RegisterListener( "player_rest_building", Dynamic_Wrap( ITT, "RestBuilding" ) )
+    CustomGameEventManager:RegisterListener( "player_dropallitems", Dynamic_Wrap( ITT, "DropAllItems" ) )
 
     -- Filters
     GameMode:SetExecuteOrderFilter( Dynamic_Wrap( ITT, "FilterExecuteOrder" ), self )
@@ -393,6 +394,9 @@ function ITT:OnHeroInGame( hero )
 
     -- Initial Heat
     Heat:Start(hero)
+
+    -- Initial skills
+    TeachAbility(hero, "ability_drop_items")
 
     -- Init Meat, Health and Energy Loss
     ApplyModifier(hero, "modifier_meat_passive")
@@ -919,14 +923,14 @@ function ITT:OnItemPickedUp(event)
 
     local itemSlotRestriction = GameRules.ItemInfo['ItemSlots'][itemName]
     if itemSlotRestriction then
+        -- Drop gloves and axes on chicken...or not
+        --if hero:GetSubClass() == "chicken_form" and (itemSlotRestriction == "Axes" or itemSlotRestriction == "Gloves") then
+        --    hero:DropItemAtPositionImmediate(originalItem, hero:GetAbsOrigin())
+        --    SendErrorMessage(hero:GetPlayerOwnerID(), "#error_chicken_cant_carry_"..itemSlotRestriction) --Concatenated error message
+        --end
+
         local maxCarried = GameRules.ItemInfo['MaxCarried'][itemSlotRestriction]
         local count = GetNumItemsOfSlot(hero, itemSlotRestriction)
-
-        -- Drop gloves and axes on chicken
-        if hero:GetSubClass() == "chicken_form" and (itemSlotRestriction == "Axes" or itemSlotRestriction == "Gloves") then
-            hero:DropItemAtPositionImmediate(originalItem, hero:GetAbsOrigin())
-            SendErrorMessage(hero:GetPlayerOwnerID(), "#error_chicken_cant_carry_"..itemSlotRestriction) --Concatenated error message
-        end
 
         -- Drop the item if the hero exceeds the possible max carried amount
         if count > maxCarried then

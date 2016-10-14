@@ -1,0 +1,23 @@
+"ability_drop_items"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	"AbilityTextureName"    "huskar_berserkers_blood"
+	"AbilityCastRange"	"200"
+	"AbilityCastPoint"	"0.0"
+	"AbilityCooldown"		"0"
+	"AbilityManaCost"   "0"
+	"MaxLevel"          "1"
+
+	"IsCastableWhileHidden" "1"
+
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"heroes/shared.lua"
+			"Function"	"DropAllItems"
+			"Target"		"POINT"
+		}
+	}
+}

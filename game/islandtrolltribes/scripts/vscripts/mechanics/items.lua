@@ -269,7 +269,7 @@ end
 
 -- Launches an item towards a point, adjusted to never land on top of a tree
 function DropLaunch(unit, item, duration, point)
-    local trees = GridNav:GetAllTreesAroundPoint(point, 100, false)
+    local trees = GridNav:GetAllTreesAroundPoint(point, 150, false)
     if #trees > 0 then
         local origin = unit:GetAbsOrigin()
 
@@ -283,13 +283,24 @@ function DropLaunch(unit, item, duration, point)
             end
         end
 
+        local ind = 0
         while #trees > 0 do -- Still not found a point? Randomize it around the hero.
+            ind = ind + 1
+            if ind > 100 then   -- To prevent infinite looping.
+                local player = unit:GetPlayerID()
+                if player then
+                    SendErrorMessage(player, "#error_cant_drop")
+                end
+                return
+            end
+
             local randVec = RandomVector(200)
             local testPosition = origin + randVec
-            trees = GridNav:GetAllTreesAroundPoint(testPosition, 100, false)
+            trees = GridNav:GetAllTreesAroundPoint(testPosition, 200, false)
             point = testPosition
         end
     end
+
     item:LaunchLoot(false, 200, duration, point)
 end
 

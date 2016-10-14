@@ -267,8 +267,6 @@ function OnVoteConfirmed(vote) {
     var str = "";
     for (var i in custom_settings) {
       str = map[i];
-      $.Msg(settings[str]);
-      $.Msg(custom_settings[i]);
       if (settings[str] != custom_settings[i]) {
         setCustomToggle(str, true);
       }

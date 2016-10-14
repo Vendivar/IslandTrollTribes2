@@ -117,14 +117,11 @@ end
 function PetCommandRestrict(event)
     local pet = event.caster
     pet:SetControllableByPlayer(-1, false)
-    print("Restricting control")
-    print(pet:GetClassname())
 end
 
 function PetCommandUnRestrict(event)
     local pet = event.caster
     pet:SetControllableByPlayer(pet:GetOwner():GetPlayerID(), false)
-    print("Releasing control")
 end
 
 ------------------------------------------------------------

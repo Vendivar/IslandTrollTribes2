@@ -22,10 +22,10 @@
         }
 		"02"
 		{
-		"Key"				"Enter"
-		"Command"		"+EnterPressed"
-		"Name"			"For Custom chat"
-		}        
+    		"Key"		"Enter"
+    		"Command"	"+EnterPressed"
+    		"Name"		"For Custom chat"
+		}
 		"03"
         {
             "Key"       "L"
@@ -36,7 +36,13 @@
         {
             "Key"       "N"
             "Command"   "+TogglePanic"
-            "Name"      "Show/Hide the help UI"
+            "Name"      "Toggle your Panic"
+        }
+        "05"
+        {
+            "Key"       "B"
+            "Command"   "+DropAllItems"
+            "Name"      "Drop all items on the target point"
         }
     }
 }

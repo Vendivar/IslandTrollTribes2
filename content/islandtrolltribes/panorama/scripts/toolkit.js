@@ -23,8 +23,17 @@ function MouseOut(argument) {
     $.DispatchEvent( "DOTAHideAbilityTooltip", $("#"+argument) );
 }
 
+function DropAllItems() {
+    var localPlayer = Players.GetLocalPlayer();
+    var entIndex = Players.GetPlayerHeroEntityIndex(localPlayer);
+
+    var Ability = Entities.GetAbilityByName(entIndex, "ability_drop_items");
+    Abilities.ExecuteAbility(Ability, entIndex, false);
+}
 
 (function () {
-    $.Msg("Toolkit Load")
+    $.Msg("Toolkit Load");
 	Game.AddCommand("+TogglePanic", function() {Cast("panic")}, "", 0);
+    //Game.AddCommand("+DropAllItems", DropAllItems, "", 0);
+    Game.AddCommand("+DropAllItems", function() {Cast("dropallitems")}, "", 0);
 })();

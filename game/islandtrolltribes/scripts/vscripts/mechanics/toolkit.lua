@@ -98,3 +98,18 @@ function ITT:Panic(event)
         end
     end
 end
+
+function ITT:DropAllItems(event)
+    local playerID = event.PlayerID
+    local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+
+    if hero then
+        local abilityName = "ability_drop_items"
+        local ability = hero:FindAbilityByName(abilityName)
+        if not ability then
+            ability = TeachAbility(hero, abilityName)
+        end
+
+        hero:CastAbilityImmediately(ability, playerID)
+    end
+end

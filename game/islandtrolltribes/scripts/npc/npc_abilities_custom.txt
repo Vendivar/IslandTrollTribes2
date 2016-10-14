@@ -16,7 +16,7 @@
 	            "Passive"   "1"
 	            "IsHidden"         "1"
 
-
+				
 			"OnCreated"
 				{
 					"AttachEffect"
@@ -4727,7 +4727,7 @@
 		"AbilityCastPoint"	"0.5"
 		"AbilityCooldown"	"5"
 		"AbilityCastRange"	"0"
-		"AbilityManaCost"	"5"
+		"AbilityManaCost"	"30"
 		"MaxLevel"	"1"
 
 	        "precache"
@@ -5077,7 +5077,7 @@
 		"AbilityCastPoint"	"0.5"
 		"AbilityCooldown"	"5"
 		"AbilityCastRange"	"0"
-		"AbilityManaCost"	"5"
+		"AbilityManaCost"	"30"
 		"MaxLevel"	"1"
 			"precache"
 		{
@@ -6352,7 +6352,7 @@
 		"AbilityCastPoint"	"0.5"
 		"AbilityCooldown"	"5"
 		"AbilityCastRange"	"0"
-		"AbilityManaCost"	"5"
+		"AbilityManaCost"	"30"
 		"MaxLevel"	"1"
 	        "precache"
 		{
@@ -6846,7 +6846,7 @@
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	    "AbilityTextureName"    "ability_beastmaster_sleep"
 	    "AbilityCastPoint"      "0"
-	    "AbilityCooldown"       "30"
+	    "AbilityCooldown"       "0"
 	    "AbilityManaCost"       "0"
 	    "MaxLevel"              "1"
 
@@ -13854,22 +13854,7 @@
 	            "Target" 		"CASTER"
 	        }
 	    }
-<<<<<<< c595a355b1616ca2630225279eb87e5c3981b274
-		
-		
-		"OnAbilityPhaseStart"
-		{
-			"RunScript"
-			{
-	            "ScriptFile"	"heroes/priest/mix.lua"
-				"Function"      "MixInit"
-				"Target"         "TARGET"
-			}
-		}
-	
-=======
 
->>>>>>> Added new pet controls.
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -14589,16 +14574,6 @@
 	"particle" "particles/units/heroes/hero_dazzle/dazzle_shadow_wave_impact_damage.vpcf"
 	"particle" "particles/mix_mana.vpcf"
 	}
-	
-		"OnAbilityPhaseStart"
-		{
-			"RunScript"
-			{
-	            "ScriptFile"	"heroes/priest/mix.lua"
-				"Function"      "MixInit"
-				"Target"         "TARGET"
-			}
-		}
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -14658,18 +14633,6 @@
 	            "particle" "particles/units/heroes/hero_dazzle/dazzle_shadow_wave_impact_damage.vpcf"
 	            "particle" "particles/mix_health.vpcf"
 	        }
-			
-			
-		"OnAbilityPhaseStart"
-		{
-			"RunScript"
-			{
-	            "ScriptFile"	"heroes/priest/mix.lua"
-				"Function"      "MixInit"
-				"Target"         "TARGET"
-			}
-		}
-		
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -14725,18 +14688,6 @@
 	"particle" "particles/units/heroes/hero_dazzle/dazzle_shadow_wave_impact_damage.vpcf"
 	"particle" "particles/mix_heat.vpcf"
 	}
-	
-	
-		"OnAbilityPhaseStart"
-		{
-			"RunScript"
-			{
-	            "ScriptFile"	"heroes/priest/mix.lua"
-				"Function"      "MixInit"
-				"Target"         "TARGET"
-			}
-		}
-		
 		"OnSpellStart"
 		{
 			"RunScript"

@@ -89,14 +89,13 @@ end
 
 function TransferItems(keys)
     local caster = keys.caster
-    local hatchery= caster.hatchery
+    local hatchery = caster.hatchery
     local ability = keys.ability
     for i=0,5 do
         local item = caster:GetItemInSlot(i)
         if item and item:GetName() ~= "item_slot_locked" then
-            local clonedItem = CreateItem(item:GetName(), nil, nil)
-            CreateItemOnPositionSync(hatchery:GetAbsOrigin() + RandomVector(RandomFloat(100,150)),clonedItem)
-            item:RemoveSelf()
+            caster:DropItemAtPositionImmediate(item, caster:GetAbsOrigin())
+            DropLaunch(caster, item, 0.5, hatchery:GetAbsOrigin() + RandomVector(RandomFloat(100,150)))
         end
     end
 end
