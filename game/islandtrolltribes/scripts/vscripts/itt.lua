@@ -498,6 +498,15 @@ function ITT:AdjustSkills( hero )
     AdjustAbilityLayout(hero)
     EnableSpellBookAbilities(hero)
     PrintAbilities(hero)
+
+    -- Reorder here as well, so we don't get mixed orders when spawning.
+    local info = GameRules.SpellBookInfo[hero:GetClassname()]
+    if info then
+        if not hero.activeBook then hero.activeBook = "book1" end
+        local book = info[hero:GetSubClass()][hero.activeBook]
+        ReorderAbilities(hero, book)
+    end
+
     PlayerResource:RefreshSelection()
 end
 

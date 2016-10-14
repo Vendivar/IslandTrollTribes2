@@ -64,6 +64,22 @@ function HideAllAbilities(unit)
     end
 end
 
+function ReorderAbilities(caster, spellbook)
+    Timers:CreateTimer({    -- Needs to happen on the next frame.
+        callback = function()
+            for i,ability_name in pairs(spellbook) do
+                local ability_in_slot = GetAbilityOnVisibleSlot(caster, tonumber(i))
+                if ability_in_slot then
+                    local name = ability_in_slot:GetAbilityName()
+                    if name ~= ability_name then
+                        caster:SwapAbilities(name, ability_name, true, true)
+                    end
+                end
+            end
+        end
+    })
+end
+
 function ShowTheSpellBook(caster, spellbook)
     for i,spell in pairs(spellbook) do
         local ability = caster:FindAbilityByName(spell)
@@ -74,6 +90,7 @@ function ShowTheSpellBook(caster, spellbook)
         end
     end
     AdjustAbilityLayout(caster)
+    ReorderAbilities(caster, spellbook)
 end
 
 function GetAbilityOnVisibleSlot( unit, slot )
