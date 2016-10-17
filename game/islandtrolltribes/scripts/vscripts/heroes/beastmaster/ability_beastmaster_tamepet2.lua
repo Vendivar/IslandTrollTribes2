@@ -38,7 +38,7 @@ function ability_beastmaster_tamepet2:OnSpellStart()
             end
 
             AdjustAbilityLayout(pet1)
-            table.remove(hero.pets, 1)
+            table.remove(caster.pets, 1)
         end
     end
 

@@ -1,15 +1,15 @@
 function Spawn(entityKeyValues)
-	
+
 	thisEntity.state = "wander"		--possible states = wander, attack, sleep, flee
 	thisEntity.WanderDistance = 300
 	thisEntity.FleeDistance = 300
 	--print("starting aggressive neutral ai for "..thisEntity:GetUnitName()..thisEntity:GetEntityIndex())
 
 	thisEntity.spawnTime = GameRules:GetGameTime()
-	thisEntity.wander_wait_time = GameRules:GetGameTime() + 0	
-    thisEntity.fight_wait_time = GameRules:GetGameTime() + 0	
+	thisEntity.wander_wait_time = GameRules:GetGameTime() + 0
+    thisEntity.fight_wait_time = GameRules:GetGameTime() + 0
 	thisEntity.FleeDistance = 1000
-	thisEntity.MinWaitTime = 15 
+	thisEntity.MinWaitTime = 15
 	thisEntity.MaxWaitTime = 30
     thisEntity.MinFightWaitTime = 10
     thisEntity.MaxFightWaitTime = 20
@@ -34,10 +34,13 @@ function AggressiveNeutralThink(thisEntity)
 
 		if #targets > 0 then
 			--print(targets[1]:GetUnitName())
-			thisEntity:MoveToTargetToAttack(targets[1])
-            thisEntity.fight_wait_time = GameRules:GetGameTime() + RandomFloat(thisEntity.MinFightWaitTime, thisEntity.MaxFightWaitTime)
-			thisEntity.state = "attack"
-			--print("wander -> attack")
+			local target = targets[1]
+			if not (target.HasFlyMovementCapability and IsFlyingUnit(target)) then
+				thisEntity:MoveToTargetToAttack(targets[1])
+	      thisEntity.fight_wait_time = GameRules:GetGameTime() + RandomFloat(thisEntity.MinFightWaitTime, thisEntity.MaxFightWaitTime)
+				thisEntity.state = "attack"
+				--print("wander -> attack")
+			end
 		end
 
 		if GameRules:GetGameTime() >= thisEntity.wander_wait_time then
@@ -79,14 +82,14 @@ function AggressiveNeutralThink(thisEntity)
 		if #targets == 0 then
             --print("breaking for distance")
             thisEntity.state = "wander"
-        
+
         -- Also only chase for a limited duration
         elseif (GameRules:GetGameTime() > thisEntity.fight_wait_time) then
             --print("breaking for time")
             thisEntity.state = "wander"
         end
-        
-        
+
+
 	elseif (thisEntity.state == "sleep") then
 		--sleeping
 		if GameRules:IsDaytime() then
@@ -108,11 +111,14 @@ function AggressiveNeutralThink(thisEntity)
 
 		if #targets > 0 then
 			--print(targets[1]:GetUnitName())
-			thisEntity:RemoveModifierByName("modifier_sleep")
-			thisEntity:MoveToTargetToAttack(targets[1])
-            thisEntity.fight_wait_time = GameRules:GetGameTime() + RandomFloat(thisEntity.MinFightWaitTime, thisEntity.MaxFightWaitTime)
-			thisEntity.state = "attack"
-			print("wander -> attack")
+			local target = targets[1]
+			if not (target.HasFlyMovementCapability and IsFlyingUnit(target)) then
+				thisEntity:RemoveModifierByName("modifier_sleep")
+				thisEntity:MoveToTargetToAttack(targets[1])
+	      thisEntity.fight_wait_time = GameRules:GetGameTime() + RandomFloat(thisEntity.MinFightWaitTime, thisEntity.MaxFightWaitTime)
+				thisEntity.state = "attack"
+				print("wander -> attack")
+			end
 		end
 
         elseif (thisEntity.state == "flee") then
@@ -122,6 +128,6 @@ function AggressiveNeutralThink(thisEntity)
             thisEntity.wander_wait_time = GameRules:GetGameTime() + RandomFloat(thisEntity.MinWaitTime, thisEntity.MaxWaitTime)
             thisEntity.state = "wander"
         end
-    
+
 	return 0.5
 end

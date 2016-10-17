@@ -5,7 +5,7 @@
 	"ModelScale"	"0.91"
 	"Model"	"models/items/courier/d2l_steambear/d2l_steambear.vmdl"
 	"Level"	"1"
-
+	"vscripts"	"units/ai/passive_neutral_ai.lua"
 	"Ability1"	"ability_baby_animal"
 
 	"ArmorPhysical"	"0"

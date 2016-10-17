@@ -5,7 +5,7 @@
 	"ModelScale"	"0.75"
 	"Model"	"models/items/lycan/wolves/alpha_summon_01/alpha_summon_01.vmdl"
 	"Level"	"1"
-	
+	"vscripts"	"units/ai/passive_neutral_ai.lua"
 	"Ability1"	"ability_baby_animal"
 
 	"ArmorPhysical"	"0"
