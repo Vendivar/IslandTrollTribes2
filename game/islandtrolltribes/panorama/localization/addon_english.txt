@@ -163,6 +163,7 @@
         "thief_sub3_name" "Assassin"
         "thief_sub3_desc" "The Assassin has one simple task: to end the lives of enemy trolls. Focused on combat, the Assassin can make an enemy's simple mistake their downfall.\n\n\n\n\nFunction: Harassment, Combat\nInitial Abilities: Teleport, Cloak\nLearnable Ability: Throwing Knife, Planning Phase, Assassinate\nBase Damage: 18-18\nAttack Cooldown: 1.85\nMovement Speed: 310"
 
+        "pet_grow"                           "Your pet has grown!"
 
         "error_inventory_full"               "Inventory is full."
         "error_cant_teleport_without_vision" "Can not teleport to a location without vision. Do you want to end up inside a wall?"

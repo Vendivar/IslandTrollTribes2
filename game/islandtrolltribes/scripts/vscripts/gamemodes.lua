@@ -197,10 +197,6 @@ function SetCustomSettings(settings)
         GAME_PERIOD_GRACE = 10800
     end
 
-    if settings.fixed_bush_spawning then
-        -- TODO: Fixed bush spawning.
-    end
-
     if settings.norevive then
         GameRules:SetHeroRespawnEnabled(false)
     end
@@ -215,4 +211,8 @@ end
 function ITT:LoadGameModeSettings()
     GameRules:SetPreGameTime(GAME_PERIOD_GRACE)
     Heat:loadSettings()
+
+    -- Initial bush spawns, starts the timer to add items to the bushes periodially
+    -- Place entities starting with spawner_ plus the appropriate name to spawn to corresponding bush on game start
+    ITT:SpawnBushes()
 end

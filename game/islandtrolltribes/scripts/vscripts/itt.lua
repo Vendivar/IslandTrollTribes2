@@ -501,7 +501,7 @@ function ITT:AdjustSkills( hero )
 
     -- Reorder here as well, so we don't get mixed orders when spawning.
     local info = GameRules.SpellBookInfo[hero:GetClassname()]
-    if info then
+    if info and info[hero:GetSubClass()] then
         if not hero.activeBook then hero.activeBook = "book1" end
         local book = info[hero:GetSubClass()][hero.activeBook]
         ReorderAbilities(hero, book)
@@ -1097,10 +1097,6 @@ function ITT:OnGameRulesStateChange()
 
         -- Start the 1min timer for gamemode voting.
         ITT:StartVoting()
-
-        -- Initial bush spawns, starts the timer to add items to the bushes periodially
-        -- Place entities starting with spawner_ plus the appropriate name to spawn to corresponding bush on game start
-        ITT:SpawnBushes()
 
         ITT:ShareUnits()
 

@@ -98,7 +98,12 @@ function GetPredefinedBushLocation(region, bushItem)
     if not locations then
         print("ERROR: no spawner locations stored for "..bushItem)
     end
-    local location = GetEmptyLocation(locations)
+    local location
+    if GameRules.GameModeSettings.custom.fixed_bush_spawning then
+        location = locations[1]
+    else
+        location = GetEmptyLocation(locations)
+    end
     return location
 end
 
