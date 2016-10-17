@@ -7,7 +7,7 @@ PATH_LIST = {PATH1, PATH2, PATH3, PATH4}
 SHOP_UNIT_NAME_LIST = {"npc_ship_merchant_1", "npc_ship_merchant_2", "npc_ship_merchant_3", "npc_ship_merchant_4", "npc_ship_merchant_5", "npc_ship_merchant_6", "npc_ship_merchant_7"}
 MAX_SHOPS_ON_MAP = 1
 
--- At any given time there are two boats on map, sailing at 120 move speed. They take a random path around the islands to an exit point. 
+-- At any given time there are two boats on map, sailing at 120 move speed. They take a random path around the islands to an exit point.
 -- Sometimes the ships will stop in shallow water for a few seconds. There are 8 Trading Ships in total.
 function ITT:SetupShops()
 
@@ -42,15 +42,22 @@ function SpawnBoat(pathNum)
 
     print("Spawned "..unitName.." at path "..pathNum)
 
-    TieShopToUnit(shopUnit)    
+    TieShopToUnit(shopUnit)
 end
 
 function TieShopToUnit( unit )
     unit:AddNewModifier(unit, nil, "modifier_shopkeeper", {})
-    
+
     local unitName = unit:GetUnitName()
     local itemTable = GameRules.ShopKV[unitName]
     local sItems,prices,stocks = CreateShopItems(itemTable)
+
+    -- This somehow makes stuff other than trade ships into trade ships.
+    -- Putting some prints here to see why.
+    print("---- Tradeship shop creation debug: ")
+    print("---- Unitname: ", unitName)
+    print(debug.traceback())
+
 
     -- Build the rows in a square
     local shopRows = math.ceil(math.sqrt(#sItems))
@@ -75,6 +82,9 @@ function TieShopToUnit( unit )
 
         OnSelect = function(playerID, container, selected)
             print("Selected", selected:GetUnitName())
+            print("---- Tradeship shop selection debug: ")
+            print("---- Unitname: ", selected:GetUnitName())
+            print(debug.traceback())
             container:Open(playerID)
         end,
 
@@ -147,7 +157,7 @@ function CreateShopItems(ii)
     sItems[#sItems+1] = item
     if i.price then prices[index] = i.price end
     if i.stock then stocks[index] = i.stock end
-    
+
     item:SetCurrentCharges(item:GetInitialCharges())
 
   end
