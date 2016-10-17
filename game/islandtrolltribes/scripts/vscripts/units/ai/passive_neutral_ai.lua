@@ -11,6 +11,13 @@ function Spawn(entityKeyValues)
 		thisEntity.FleeDistance = 3000
 		thisEntity.MinWaitTime = 3
 		thisEntity.MaxWaitTime = 7.5
+	elseif string.find(thisEntity:GetUnitName(), "fawn") or
+				 string.find(thisEntity:GetUnitName(), "cub") or
+				 string.find(thisEntity:GetUnitName(), "pup") then
+		thisEntity.WanderDistance = 0
+		thisEntity.FleeDistance = 500
+		thisEntity.MinWaitTime = 200
+		thisEntity.MaxWaitTime = 200
 	else
 		thisEntity.WanderDistance = 1000
 		thisEntity.FleeDistance = 2000
@@ -30,18 +37,18 @@ function PassiveNeutralThink(thisEntity)
 		return nil
 	end
 
-	if thisEntity.hp < thisEntity:GetHealth() then	-- WE ARE UNDER ATTACK
+	if thisEntity.hp > thisEntity:GetHealth() then	-- WE ARE UNDER ATTACK
 		thisEntity.state = "flee"
+		thisEntity.hp = thisEntity:GetHealth()
 	end
-	thisEntity.hp = thisEntity:GetHealth()
 
-	if (thisEntity.state == "wander") then
+	if thisEntity.state == "wander" then
 		if GameRules:GetGameTime() >= thisEntity.wander_wait_time then
 			local newPosition = thisEntity:GetAbsOrigin() + RandomVector(thisEntity.WanderDistance)
       thisEntity:MoveToPosition(newPosition)
 			thisEntity.wander_wait_time = GameRules:GetGameTime() + RandomFloat(thisEntity.MinWaitTime, thisEntity.MaxWaitTime)
 		end
-	elseif (thisEntity.state == "flee") then
+	elseif thisEntity.state == "flee" then
 		local newPosition = thisEntity:GetAbsOrigin() + RandomVector(thisEntity.FleeDistance)
 		thisEntity:MoveToPosition(newPosition)
 		thisEntity.wander_wait_time = GameRules:GetGameTime() + RandomFloat(thisEntity.MinWaitTime, thisEntity.MaxWaitTime)

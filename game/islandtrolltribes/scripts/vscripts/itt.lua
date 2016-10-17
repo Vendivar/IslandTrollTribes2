@@ -593,6 +593,7 @@ function ITT:OnEntityKilled(keys)
         {"npc_creep_mammoth", {"item_bone", 100},{"item_bone", 100},{"item_bone", 100},{"item_bone", 100}, {"item_horn_mammoth", 100}, {"item_horn_mammoth", 50}},
         {"npc_building_fire_basic", {"item_building_kit_fire_basic", 100}, {"item_flint", 10}}
     }
+
     local meatTable = {
         {"npc_creep_elk_wild", 6},
         {"npc_creep_wolf_jungle", 4},
@@ -603,6 +604,9 @@ function ITT:OnEntityKilled(keys)
         {"npc_creep_lizard", 1},
         {"npc_creep_fish", 1},
         {"npc_creep_fish_green", 3},
+        {"npc_creep_fawn", 1},
+        {"npc_creep_bear_cub", 1},
+        {"npc_creep_wolf_pup", 1},
 
         {"npc_creep_hawk", 2},
         {"npc_creep_mammoth", 15}
