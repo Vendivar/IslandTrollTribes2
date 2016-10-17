@@ -54,6 +54,7 @@ function modifier_pet_grow:OnDestroy()
 
             -- Kill and remove old pet from the table
             pet.no_corpse = true
+            pet.deleted = true
             pet:SetAbsOrigin(position)
             pet:ForceKill(true)
 
@@ -71,6 +72,10 @@ function modifier_pet_grow:OnDestroy()
 
                 newPet:AddNewModifier(hero, ability, "modifier_pet_grow", {duration=grow_duration})
             end
+
+            Notifications:Bottom(hero:GetPlayerID(), {text="#pet_grow", duration=5, style={color="#66ff33"}})
+            --EmitSoundOnClient("Hero_Ancient_Apparition.IceBlastRelease.Tick", PlayerResource:GetPlayer(hero:GetPlayerID()))
+            -- TODO: Change sound here
         end
     end
 end

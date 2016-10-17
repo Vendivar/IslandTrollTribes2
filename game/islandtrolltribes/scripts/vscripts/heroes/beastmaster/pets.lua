@@ -17,7 +17,7 @@ function PetRelease( event )
     pet:EmitSound("Hero_Beastmaster.Call.Boar")
     pet:EmitSound("Hero_Beastmaster.Call.Hawk")
     pet:SetControllableByPlayer(-1, false)
-    pet:ForceKill(true)
+    -- pet:ForceKill(true) ...What?
 
     -- Go back to being a not-attackable animal
     if IsValidPetName( pet ) then
