@@ -10,11 +10,20 @@ XP_BOUNTY_TABLE = {
     190,--7 +40
     235,--8 +45
     285,--9 +50
-    340--10 +55
+    340,--10 +55
+    400,--11 +60
+    465,--12 +65
+    535,--13 +70
+    610,--14 +75
+    690,--15 +80
+    775,--16 +85
+    865,--17 +90
+    960,--18 +95
+    1060,--19 +100
+    1165,--20 +105
 }
 XP_BOUNTY_TABLE[0] = 1
 
- 
 function CDOTA_BaseNPC_Creature:SplitExperienceBounty(teamID)
     local killed = self
     local level = killed:GetLevel()
