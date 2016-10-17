@@ -1613,9 +1613,8 @@ end
 
 
 
-
 function Containers:GetEntityContainers(entity)
-  if entity and type(entity) ~= "number" and entity.GetEntityIndex then
+  if entity and type(entity) ~= "number" and entity.GetEntityIndex and not entity:IsNull() then
     entity = entity:GetEntityIndex()
   end
 
