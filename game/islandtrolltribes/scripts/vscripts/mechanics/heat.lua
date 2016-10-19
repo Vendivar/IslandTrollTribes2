@@ -13,12 +13,17 @@ function Heat:Start(hero)
     ApplyModifier(hero, "modifier_heat_passive")
     Heat:Set(hero, Heat.MAX)
     Heat:Think(hero)
+    Heat:SendPlayerHeat()
 end
 
 function Heat:loadSettings()
     Heat.MAX = GameRules.GameModeSettings["HEAT_MAX_HEAT"]
     Heat.TICK_RATE = GameRules.GameModeSettings["HEAT_TICK_RATE"]
     Heat.IMMUNITY = GameRules.GameModeSettings["HEAT_IMMUNITY"]
+
+    if not Heat.PLAYERS then
+        Heat.PLAYERS = {}
+    end
 end
 
 
@@ -84,8 +89,28 @@ function Heat:Think( hero )
             hero:ForceKill(true)
         end
 
+        if not Heat.PLAYERS[hero:GetTeamNumber()] then
+            Heat.PLAYERS[hero:GetTeamNumber()] = {}
+        end
+        Heat.PLAYERS[hero:GetTeamNumber()][hero:GetPlayerID()] = Heat:Get(hero)
+
         return Heat.TICK_RATE
     end)
+end
+
+-- Sends Heat data to player scoreboards.
+function Heat:SendPlayerHeat()
+    if not Heat.PLAYERTIMER then    -- Only start it once.
+        Heat.PLAYERTIMER = true
+        Timers:CreateTimer(1, function()
+            for teamNumber,players in pairs(Heat.PLAYERS) do
+                CustomGameEventManager:Send_ServerToTeam(teamNumber, "scoreboard_heat_update", {
+                    players = players
+                })
+            end
+            return 1
+        end)
+    end
 end
 
 -- Checks if the HeatLoss value needs updating

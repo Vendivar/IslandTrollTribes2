@@ -8,7 +8,7 @@ function UpdateScoreboardTimer() {
 	if (!nextPressActivatesScoreboard) {
 		ScoreboardUpdater_SetScoreboardActive( g_ScoreboardHandle, true );
 	}
-	$.Schedule(2,UpdateScoreboardTimer);
+	$.Schedule(1,UpdateScoreboardTimer);
 }
 
 function SetFlyoutScoreboardVisible(bVisible)
@@ -35,6 +35,11 @@ function SetFlyoutScoreboardVisible(bVisible)
 	holding_down = true;
 }
 
+
+function HeatUpdate(args) {
+	g_ScoreboardHandle.scoreboardConfig.heatInfo = args.players;
+}
+
 (function()
 {
 	if ( ScoreboardUpdater_InitializeScoreboard === null ) { $.Msg( "WARNING: This file requires shared_scoreboard_updater.js to be included." ); }
@@ -48,6 +53,7 @@ function SetFlyoutScoreboardVisible(bVisible)
 
 	SetFlyoutScoreboardVisible( false );
 
+	GameEvents.Subscribe("scoreboard_heat_update", HeatUpdate);
 	$.RegisterEventHandler( "DOTACustomUI_SetFlyoutScoreboardVisible", $.GetContextPanel(), SetFlyoutScoreboardVisible );
 	UpdateScoreboardTimer();
 })();

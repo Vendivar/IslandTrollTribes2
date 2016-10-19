@@ -14,13 +14,16 @@
 		<Panel hittest="false" id="RespawnIndicator">
 			<Label hittest="false" id="RespawnTimer" />
 		</Panel>
-		<Panel hittest="false" id="HealthIndicatorContainer">
-			<Panel hittest="false" id="HealthIndicatorHealth"/>
-		</Panel>
 		<Panel hittest="false" class="ScoreboardPlayer">
 			<Button class="PlayerPortraitWrapper" onmouseactivate="PortraitClicked();">
 				<Panel hittest="false" id="PlayerColorBar" />
-				<Image hittest="false" id="HeroIcon" />
+				<DOTAAvatarImage hittest="false" id="AvatarImage" />
+				<Panel hittest="false" id="HealthBarContainer">
+					<Panel hittest="false" id="HealthBar"/>
+				</Panel>
+				<Panel hittest="false" id="EnergyBarContainer">
+					<Panel hittest="false" id="EnergyBar"/>
+				</Panel>
 			</Button>
 			<Image hittest="false" id="DisconnectionIndicator" src="s2r://panorama/images/custom_game/icon_disconnect_png.vtex" />
 		</Panel>

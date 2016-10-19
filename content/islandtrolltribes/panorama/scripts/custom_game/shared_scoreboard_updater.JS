@@ -48,18 +48,50 @@ function _ScoreboardUpdater_UpdatePlayerPanel( scoreboardConfig, playersContaine
 		playerPanel.SetHasClass( "local_player_teammate", isTeammate && ( playerId != Game.GetLocalPlayerID() ) );
 
 		if (playerInfo.player_team_id === localPlayerTeamId) {
+			var healthPercent = Entities.GetHealthPercent(playerEntityId).toFixed(0)+"%";
+			var energyPercent = (100*Entities.GetMana( playerEntityId )/Entities.GetMaxMana( playerEntityId )).toFixed(0) +"%";
+
 			_ScoreboardUpdater_SetTextSafe( playerPanel, "RespawnTimer", ( playerInfo.player_respawn_seconds + 1 ) ); // value is rounded down so just add one for rounded-up
 			_ScoreboardUpdater_SetTextSafe( playerPanel, "Level", playerInfo.player_level );
+			if (scoreboardConfig.heatInfo) {
+				_ScoreboardUpdater_SetTextSafe( playerPanel, "Heat", Math.floor(scoreboardConfig.heatInfo[playerId]));
+			}
+			_ScoreboardUpdater_SetTextSafe( playerPanel, "Health", healthPercent);
+			_ScoreboardUpdater_SetTextSafe( playerPanel, "Energy", energyPercent);
 
-			_ScoreboardUpdater_SetTextSafe( playerPanel, "Heat", "");	// TODO: Implement Heat here!
-			_ScoreboardUpdater_SetTextSafe( playerPanel, "Health", Entities.GetHealthPercent(playerEntityId).toFixed(0)+"%");
-			_ScoreboardUpdater_SetTextSafe( playerPanel, "Energy", (100*Entities.GetMana( playerEntityId )/Entities.GetMaxMana( playerEntityId )).toFixed(0) +"%");
+			var healthBar = playerPanel.FindChildInLayoutFile( "HealthBar" );
+			if ( healthBar )
+			{
+				healthBar.style.visibility = "visible";
+				healthBar.style.width = healthPercent;
+			}
+
+			var energyBar = playerPanel.FindChildInLayoutFile( "EnergyBar" );
+			if ( energyBar )
+			{
+				energyBar.style.visibility = "visible";
+				energyBar.style.width = energyPercent;
+			}
+		}
+		else {
+			var healthBar = playerPanel.FindChildInLayoutFile( "HealthBarContainer" );
+			if ( healthBar )
+			{
+				healthBar.style.visibility = "collapse";
+			}
+
+			var energyBar = playerPanel.FindChildInLayoutFile( "EnergyBarContainer" );
+			if ( energyBar )
+			{
+				energyBar.style.visibility = "collapse";
+			}
 		}
 
 		_ScoreboardUpdater_SetTextSafe( playerPanel, "PlayerName", playerInfo.player_name );
 		_ScoreboardUpdater_SetTextSafe( playerPanel, "Kills", playerInfo.player_kills );
 		_ScoreboardUpdater_SetTextSafe( playerPanel, "Deaths", playerInfo.player_deaths );
 		_ScoreboardUpdater_SetTextSafe( playerPanel, "Assists", playerInfo.player_assists );
+
 
 
 		var playerPortrait = playerPanel.FindChildInLayoutFile( "HeroIcon" );

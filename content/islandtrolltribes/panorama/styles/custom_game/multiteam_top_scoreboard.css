@@ -24,7 +24,7 @@
 {
     horizontal-align: left;
     vertical-align: top;
-    height: 80px;
+    height: 50px;
     width: 100%;
     flow-children: right;
 }
@@ -56,7 +56,7 @@
 .ScoreboardTeamWrapper
 {
     width: 285px;
-    height: 50%;
+    height: 100%;
     vertical-align: top;
     horizontal-align: left;
 }
@@ -128,7 +128,7 @@
 #LocalTeamOverlay
 {
     width: 100%;
-    height: 43px;
+    height: 48px;
 }
 
 .ScoreboardTeamWrapper.local_player_team #LocalTeamOverlay
@@ -147,7 +147,7 @@
 
 .ScoreboardPlayerWrapper
 {
-    width: 60px;
+    width: 36px;
     height: 100%;
 }
 
@@ -178,17 +178,15 @@
 
 #PlayerBG
 {
-    width: 64px;
+    width: 36px;
     height: 36px;
     background-color: black;
 }
 
 #HeroIcon
 {
-/*    margin-top: -36px;
-    margin-left: 36px; */
-    width: 0px;
-    height: 0px;
+    width: 60px;
+    height: 36px;
     background-color: black;
 }
 
@@ -211,10 +209,10 @@
 
 DOTAAvatarImage
 {
-    margin-top: -16px;
-    width: 0px;
-    height: 0px;
+    width: 36px;
+    height: 36px;
     background-color: black;
+    border: 2px solid black;
 }
 
 #PlayerWave
@@ -249,9 +247,9 @@ DOTAAvatarImage
 
 #RespawnIndicator
 {
-    margin-top: 26px;
-    width: 42px;
-    height: 49px;
+    margin-top: 30px;
+    width: 40px;
+    height: 50px;
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: 50% 50%;
@@ -259,21 +257,41 @@ DOTAAvatarImage
     horizontal-align: center;
     transform: translateY(-30px);
     opacity: 0;
+    z-index: 5;
     transition-property: transform;
     transition-duration: 0.3s;
     transition-timing-function: ease-out;
 }
 
-#HealthIndicatorContainer
+#HealthBarContainer
 {
-//  margin-top: 54px;
-    margin-top: 40px;
+    width: 40px;
+    background-color: black;
+    border: 1px solid black;
+    height: 5px;
+    horizontal-align: center;
+}
+#HealthBar
+{
+    background-color: red;
+    width: 100%;
+    height: 100%;
+    visibility: collapse;
+}
+
+#EnergyBarContainer
+{
     width: 100%;
     background-color: black;
-    height: 11px;
+    border: 1px solid black;
+    height: 5px;
     horizontal-align: center;
-    border-radius: 2px;
-    box-shadow: -1px -1px 2px 2px black;
+}
+#EnergyBar
+{
+    background-color: blue;
+    width: 50%;
+    height: 100%;
     visibility: collapse;
 }
 
