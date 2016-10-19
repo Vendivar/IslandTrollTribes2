@@ -24,6 +24,9 @@
 				<Panel hittest="false" id="EnergyBarContainer">
 					<Panel hittest="false" id="EnergyBar"/>
 				</Panel>
+				<Panel hittest="false" id="HeatBarContainer">
+					<Panel hittest="false" id="HeatBar"/>
+				</Panel>
 			</Button>
 			<Image hittest="false" id="DisconnectionIndicator" src="s2r://panorama/images/custom_game/icon_disconnect_png.vtex" />
 		</Panel>

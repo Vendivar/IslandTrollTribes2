@@ -9,6 +9,10 @@ function UpdateScoreboard()
 	$.Schedule( 0.2, UpdateScoreboard );
 }
 
+function HeatUpdate(args) {
+	g_ScoreboardHandle.scoreboardConfig.heatInfo = args.players;
+}
+
 (function()
 {
 	var shouldSort = true;
@@ -30,7 +34,7 @@ function UpdateScoreboard()
 			shouldSort = cfg.shouldSort;
 		}
 	}
-	
+
 	if ( ScoreboardUpdater_InitializeScoreboard === null ) { $.Msg( "WARNING: This file requires shared_scoreboard_updater.js to be included." ); }
 
 	var scoreboardConfig =
@@ -41,6 +45,6 @@ function UpdateScoreboard()
 	};
 	g_ScoreboardHandle = ScoreboardUpdater_InitializeScoreboard( scoreboardConfig, $( "#MultiteamScoreboard" ) );
 
+	GameEvents.Subscribe("scoreboard_heat_update", HeatUpdate);
 	UpdateScoreboard();
 })();
-

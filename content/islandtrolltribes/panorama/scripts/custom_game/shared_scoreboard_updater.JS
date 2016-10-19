@@ -72,6 +72,13 @@ function _ScoreboardUpdater_UpdatePlayerPanel( scoreboardConfig, playersContaine
 				energyBar.style.visibility = "visible";
 				energyBar.style.width = energyPercent;
 			}
+
+			var heatBar = playerPanel.FindChildInLayoutFile( "HeatBar" );
+			if ( heatBar && scoreboardConfig.heatInfo )
+			{
+				heatBar.style.visibility = "visible";
+				heatBar.style.width = Math.floor((Math.floor(scoreboardConfig.heatInfo[playerId]) / 100) * 100) + "%";
+			}
 		}
 		else {
 			var healthBar = playerPanel.FindChildInLayoutFile( "HealthBarContainer" );
@@ -84,6 +91,12 @@ function _ScoreboardUpdater_UpdatePlayerPanel( scoreboardConfig, playersContaine
 			if ( energyBar )
 			{
 				energyBar.style.visibility = "collapse";
+			}
+
+			var heatBar = playerPanel.FindChildInLayoutFile( "heatBarContainer" );
+			if ( heatBar )
+			{
+				heatBar.style.visibility = "collapse";
 			}
 		}
 
