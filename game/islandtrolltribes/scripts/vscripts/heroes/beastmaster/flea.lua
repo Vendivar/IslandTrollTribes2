@@ -49,7 +49,7 @@ function FleaAttackHit(keys)
     local level = caster:GetLevel()
 
     local dmg = ability:GetLevelSpecialValueFor("damage", level-1)
-    local dpsDur = 1.0
+    local dpsDur = 0.8
     local name = target:GetUnitName()
 
     if target:IsMagicImmune() then
