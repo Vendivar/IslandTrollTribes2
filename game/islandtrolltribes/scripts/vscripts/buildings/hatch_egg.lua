@@ -61,6 +61,7 @@ function TameBird(newPet,hero)
     end
 
     newPet:EmitSound("Hero_Enchantress.EnchantCreep")
+    newPet.leashRange = 1200  -- Taken from tamepet's ability.
 
     -- Change ownership
     newPet:SetControllableByPlayer(hero:GetPlayerID(), true)
