@@ -2,7 +2,7 @@
 {
 	"BaseClass"	"npc_dota_creature"
 	"ConsideredHero"	"0"
-	"ModelScale"	"1.10"
+	"ModelScale"	"0.70"
 	"Model"	"models/creeps/neutral_creeps/n_creep_black_dragon/n_creep_black_dragon.vmdl"
 	"Level"	"5"
 	"Ability1"	"ability_pet_gather_items"
@@ -39,7 +39,7 @@
 	"AttributeBaseAgility"	"0"
 	"AttributeAgilityGain"	"0"
 	"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
-	"MovementSpeed"	"522"
+	"MovementSpeed"	"335"
 	"MovementTurnRate"	"0.5"
 	"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 	"HealthBarOffset"	"140"

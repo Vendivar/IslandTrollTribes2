@@ -45,4 +45,23 @@
 			"Function"   "PetRelease"
 		}
 	}
+	
+	    "AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"charges"	"2"
+		}
+            "02"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"movespeed"	"10"
+		}            
+            "03"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"attackspeed"	"10"
+		}
+    }
 }

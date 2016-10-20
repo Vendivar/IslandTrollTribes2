@@ -139,7 +139,7 @@
 		"StatusManaRegen"	"0.0"
 		"VisionDaytimeRange"	"1200"
 		"VisionNighttimeRange"	"1000"
-
+		
 				"Creature"
 			{
 				"AttachWearables"
@@ -148,29 +148,29 @@
 					{
 						"ItemDef"	"7302"
 					}
-
+		
 					"Wearable2"
 					{
 						"ItemDef"	"7303"
 					}
-
+		
 					"Wearable3"
 					{
 						"ItemDef"	"7304"
 					}
-
+		
 					"Wearable4"
 					{
 						"ItemDef"	"7305"
 					}
-
+		
 					"Wearable5"
 					{
 						"ItemDef"	"7306"
 					}
-
+		
 				}
-
+		
 			}
 	}
 	"npc_spirit_earth"
@@ -214,7 +214,7 @@
 		"StatusManaRegen"	"0.0"
 		"VisionDaytimeRange"	"1200"
 		"VisionNighttimeRange"	"1000"
-
+		
 				"Creature"
 			{
 				"AttachWearables"
@@ -223,24 +223,24 @@
 					{
 						"ItemDef"	"6308"
 					}
-
+		
 					"Wearable2"
 					{
 						"ItemDef"	"6313"
 					}
-
+		
 					"Wearable3"
 					{
 						"ItemDef"	"6314"
 					}
-
+		
 					"Wearable4"
 					{
 						"ItemDef"	"6315"
 					}
-
+		
 				}
-
+		
 			}
 	}
 	"npc_boss_the_one"
@@ -289,26 +289,26 @@
 				{
 					"ItemDef"	"6056"
 				}
-
+	
 				"Wearable2"
 				{
 					"ItemDef"	"62"
 				}
-
+	
 				"Wearable3"
 				{
 					"ItemDef"	"6072"
 				}
-
+	
 				"Wearable4"
 				{
 					"ItemDef"	"5440"
 				}
-
+	
 			}
-
+	
 		}
-
+	
 	}
 	"npc_spirit_boulder"
 	{
@@ -317,17 +317,17 @@
 		"SoundSet"	"Creep_Good_Melee"
 		"HasInventory"	"0"
 		"MinimapIconSize"	"250"
-		"HealthBarOffset"	"200"
+		"HealthBarOffset"	"200"		
 		"ModelScale"	"0.98"
 		"BoundsHullName"	"DOTA_HULL_SIZE_BARRACKS"
 		"RingRadius"	"100"
 		"precache"
 		{
 		}
-
+	
 		"Ability1"	"ability_buildingcollision"
 		"Ability2"	"ability_rockpush"
-
+		
 		"ArmorPhysical"	"0"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
@@ -346,7 +346,7 @@
 		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 		"VisionDaytimeRange"	"400"
 		"VisionNighttimeRange"	"350"
-
+	
 		// Building Size
 		//----------------------------------------------------------------
 		"ConstructionSize"			"0"
@@ -412,16 +412,16 @@
 		"SoundSet"	"Creep_Good_Melee"
 		"HasInventory"	"1"
 		"MinimapIconSize"	"250"
-		"HealthBarOffset"	"200"
+		"HealthBarOffset"	"200"		
 		"ModelScale"	"0.50"
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
-
+	
 		"Ability1"	"ability_quick_build_armory"
 		"Ability2"	"ability_quick_drop"
 		"Ability10"	"ability_building"
 		"Ability11"	"ability_cancel_building"
-
+	
 		"ArmorPhysical"	"5"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
@@ -440,7 +440,7 @@
 		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 		"VisionDaytimeRange"	"0"
 		"VisionNighttimeRange"	"0"
-
+	
 		// Building Size
 		//----------------------------------------------------------------
 		"ConstructionSize"			"2"
@@ -458,13 +458,13 @@
 	    "HealthBarOffset"   "200"
 	    "BoundsHullName"    "DOTA_HULL_SIZE_HERO"
 	    "RingRadius"    "100"
-
+	
 	    "Ability1"  "ability_duel"
 	    "Ability2"  "ability_quick_drop"
 	    "Ability9"  "ability_craftmaster"
 	    "Ability10" "ability_building"
 	    "Ability11" "ability_cancel_building"
-
+	    
 	    "ArmorPhysical" "0"
 	    "MagicalResistance" "0"
 	    "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"
@@ -483,7 +483,7 @@
 	    "UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 	    "VisionDaytimeRange"    "0"
 	    "VisionNighttimeRange"  "0"
-
+	
 	    // Building Size
 	    //----------------------------------------------------------------
 	    "ConstructionSize"          "2"
@@ -501,11 +501,11 @@
 		"HealthBarOffset"	"100"
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
-
+	
 		"Ability1"	""
 		"Ability10"	"ability_building"
 		"Ability11"	"ability_cancel_building"
-
+		
 		"ArmorPhysical"	"0"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
@@ -524,7 +524,7 @@
 		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 		"VisionDaytimeRange"	"0"
 		"VisionNighttimeRange"	"0"
-
+	
 		// Building Size
 		//----------------------------------------------------------------
 		"ConstructionSize"			"2"
@@ -539,14 +539,14 @@
 		"HealthBarOffset"	"100"
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
-
+	
 		"Ability1"	"ability_building_cookmeat"
 		"Ability2"	"ability_pack_up"
 		"Ability3"	"ability_building_restoreheat"
 		"Ability4"	"ability_burn_building"
 		"Ability10"	"ability_building"
 		"Ability11"	"ability_cancel_building"
-
+		
 		"ArmorPhysical"	"0"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
@@ -565,7 +565,7 @@
 		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 		"VisionDaytimeRange"	"1200"
 		"VisionNighttimeRange"	"800"
-
+	
 		// Building Size
 		//----------------------------------------------------------------
 		"ConstructionSize"			"2"
@@ -580,14 +580,14 @@
 		"HealthBarOffset"	"100"
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
-
+	
 		"Ability1"	"ability_building_cookmeat"
 		"Ability2"	"ability_pack_up_magefire"
 		"Ability3"	"ability_building_restoreheat_magic"
 		"Ability4"	"ability_burn_building_Magic"
 		"Ability10"	"ability_building"
 		"Ability11"	"ability_cancel_building"
-
+	
 		"ArmorPhysical"	"0"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
@@ -606,7 +606,7 @@
 		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 		"VisionDaytimeRange"	"1200"
 		"VisionNighttimeRange"	"800"
-
+	
 		// Building Size
 		//----------------------------------------------------------------
 		"ConstructionSize"			"2"
@@ -623,12 +623,12 @@
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
 		"ModelScale"	"1.0"
-
+	
 		"Ability1"	"ability_hatch_egg"
 		"Ability2"	"ability_hawks_evolution"
 		"Ability10"	"ability_building"
 		"Ability11"	"ability_cancel_building"
-
+		
 		"ArmorPhysical"	"2"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
@@ -647,7 +647,7 @@
 		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 		"VisionDaytimeRange"	"0"
 		"VisionNighttimeRange"	"0"
-
+	
 		// Building Size
 		//----------------------------------------------------------------
 		"ConstructionSize"			"2"
@@ -664,11 +664,11 @@
 		"HealthBarOffset"	"150"
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
-
+	
 		"Ability1"	"ability_rest_big"
 		"Ability10"	"ability_building"
 		"Ability11"	"ability_cancel_building"
-
+		
 		"ArmorPhysical"	"5"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
@@ -687,7 +687,7 @@
 		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 		"VisionDaytimeRange"	"0"
 		"VisionNighttimeRange"	"0"
-
+	
 		// Building Size
 		//----------------------------------------------------------------
 		"ConstructionSize"			"2"
@@ -705,11 +705,11 @@
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
 		"ModelScale"	"0.65"
-
+		
 		"Ability1"	"ability_rest_big"
 		"Ability10"	"ability_building"
 		"Ability11"	"ability_cancel_building"
-
+		
 		"ArmorPhysical"	"5"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
@@ -728,7 +728,7 @@
 		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 		"VisionDaytimeRange"	"0"
 		"VisionNighttimeRange"	"0"
-
+	
 		// Building Size
 		//----------------------------------------------------------------
 		"ConstructionSize"			"2"
@@ -746,12 +746,12 @@
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
 		"ModelScale"	"0.5"
-
+	
 		"Ability1"	"ability_quick_build_wd_hut"
 		"Ability2"	"ability_quick_drop"
 		"Ability10"	"ability_building"
 		"Ability11"	"ability_cancel_building"
-
+		
 		"ArmorPhysical"	"5"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
@@ -770,7 +770,7 @@
 		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 		"VisionDaytimeRange"	"0"
 		"VisionNighttimeRange"	"0"
-
+	
 		// Building Size
 		//----------------------------------------------------------------
 		"ConstructionSize"			"2"
@@ -788,12 +788,12 @@
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
 		"ModelScale"	"0.9"
-
+		
 		"Ability1"	"ability_mix"
 		"Ability2"	"ability_quick_drop"
 		"Ability10"	"ability_building"
 		"Ability11"	"ability_cancel_building"
-
+		
 		"ArmorPhysical"	"2"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
@@ -812,7 +812,7 @@
 		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 		"VisionDaytimeRange"	"0"
 		"VisionNighttimeRange"	"0"
-
+	
 		// Building Size
 		//----------------------------------------------------------------
 		"ConstructionSize"			"2"
@@ -830,15 +830,15 @@
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
 		"ModelScale"	"1.0"
-
+	
 		"Ability1"	"ability_get_corpse"
 		"Ability2"	"ability_smoke_meat"
 		"Ability3"	"ability_building_droprawmeat"
 		"Ability10"	"ability_building"
 		"Ability11"	"ability_cancel_building"
-
+	
 		"FillSlots"	"3"
-
+		
 		"ArmorPhysical"	"5"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
@@ -857,7 +857,7 @@
 		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 		"VisionDaytimeRange"	"0"
 		"VisionNighttimeRange"	"0"
-
+	
 		// Building Size
 		//----------------------------------------------------------------
 		"ConstructionSize"			"2"
@@ -874,11 +874,11 @@
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
 		"ModelScale"	"0.60"
-
+	
 		"Ability1"	"ability_revive"
 		"Ability10"	"ability_building"
 		"Ability11"	"ability_cancel_building"
-
+		
 		"ArmorPhysical"	"5"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
@@ -897,7 +897,7 @@
 		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 		"VisionDaytimeRange"	"0"
 		"VisionNighttimeRange"	"0"
-
+	
 		// Building Size
 		//----------------------------------------------------------------
 		"ConstructionSize"			"2"
@@ -915,10 +915,10 @@
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
 		"ModelScale"	"0.6"
-
+	
 		"Ability10"	"ability_building"
 		"Ability11"	"ability_cancel_building"
-
+	
 		"ArmorPhysical"	"5"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
@@ -937,7 +937,7 @@
 		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 		"VisionDaytimeRange"	"0"
 		"VisionNighttimeRange"	"0"
-
+	
 		// Building Size
 		//----------------------------------------------------------------
 		"ConstructionSize"			"2"
@@ -954,14 +954,14 @@
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
 		"ModelScale"	"0.6"
-
+	
 		"Ability1"	"ability_make_gloves"
 		"Ability2"	"ability_make_boots"
 		"Ability3"	"ability_make_coat"
 		"Ability4"	"ability_quick_drop"
 		"Ability10"	"ability_building"
 		"Ability11"	"ability_cancel_building"
-
+		
 		"ArmorPhysical"	"5"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
@@ -980,7 +980,7 @@
 		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 		"VisionDaytimeRange"	"0"
 		"VisionNighttimeRange"	"0"
-
+	
 		// Building Size
 		//----------------------------------------------------------------
 		"ConstructionSize"			"2"
@@ -1006,11 +1006,11 @@
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts"
 			"particle"	"particles/units/heroes/hero_dragon_knight/dragon_knight_transform_blue.vpcf"
 		}
-
+	
 		"Ability1"	"ability_teleport"
 		"Ability10"	"ability_building"
 		"Ability11"	"ability_cancel_building"
-
+		
 		"ArmorPhysical"	"5"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
@@ -1029,14 +1029,14 @@
 		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 		"VisionDaytimeRange"	"0"
 		"VisionNighttimeRange"	"0"
-
-
+		
+	
 		// Building Size
 		//----------------------------------------------------------------
 		"ConstructionSize"			"2"
 		"BlockPathingSize"			"2"
 	    "SharedWithTeammates" "1"
-
+	
 	}
 	"npc_building_tent"
 	{
@@ -1054,12 +1054,12 @@
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts"
 			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
 		}
-
+	
 		"Ability1"	"ability_rest_small"
 		"Ability2"	"ability_pack_up"
 		"Ability10"	"ability_building"
 		"Ability11"	"ability_cancel_building"
-
+		
 		"ArmorPhysical"	"0"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
@@ -1078,13 +1078,13 @@
 		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 		"VisionDaytimeRange"	"0"
 		"VisionNighttimeRange"	"0"
-
+	
 		// Building Size
 		//----------------------------------------------------------------
 		"ConstructionSize"			"2"
 		"BlockPathingSize"			"2"
 	    "SharedWithTeammates" "1"
-
+	
 	}
 	"npc_building_tower_ensnare"
 	{
@@ -1108,14 +1108,14 @@
 		"AttackRangeBuffer"          "250"     // Extra range the target can move without canceling the attack
 		"ProjectileModel"	"particles/units/heroes/hero_windrunner/windrunner_base_attack.vpcf"
 		"ProjectileSpeed"	"1000"
-
+	
 		"Ability1"	"ability_ensnaretower_ensnare"
 		"Ability2"	"ability_get_corpse"
 		"Ability3"	"ability_building_droprawmeat"
 		"Ability10"	"ability_building"
 		"Ability11"	"ability_cancel_building"
 		"Ability12"	"ability_phased"
-
+		
 		"ArmorPhysical"	"2"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_RANGED_ATTACK"
@@ -1134,21 +1134,21 @@
 		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 		"VisionDaytimeRange"	"0"
 		"VisionNighttimeRange"	"0"
-
+	
 		// Building Size
 		//----------------------------------------------------------------
 		"ConstructionSize"			"2"
 		"BlockPathingSize"			"0"
 	    "SharedWithTeammates" "1"
 	}
-
+	
 	"tower_ensnare_troll_ghost"
 	{
 		"BaseClass"	 "npc_dota_creature"
 		"Model"		 "models/tower_ensnare_test.vmdl"
 		"ModelScale" "0.5"
 	}
-
+	
 	"tower_ensnare_dummy"
 	{
 		"BaseClass"	 "npc_dota_creature"
@@ -1178,11 +1178,11 @@
 		"AttackRangeBuffer"          "250"     // Extra range the target can move without canceling the attack
 		"ProjectileModel"	"particles/units/heroes/hero_windrunner/windrunner_base_attack.vpcf"
 		"ProjectileSpeed"	"600"
-
+	
 		"Ability1"	"ability_building_enemytargetting"
 		"Ability10"	"ability_tower"
 		"Ability11"	"ability_cancel_building"
-
+		
 		"ArmorPhysical"	"5"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_RANGED_ATTACK"
@@ -1201,7 +1201,7 @@
 		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 		"VisionDaytimeRange"	"0"
 		"VisionNighttimeRange"	"0"
-
+	
 		// Building Size
 		//----------------------------------------------------------------
 		"ConstructionSize"			"2"
@@ -1218,11 +1218,11 @@
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
 		"ModelScale"	"1.0"
-
+	
 		"Ability1"	"ability_ensnaretrap_ensnare"
 		"Ability2"	"ability_trap_passive"
 		"Ability10"	"ability_phased"
-
+		
 		"ArmorPhysical"	"1"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
@@ -1241,7 +1241,7 @@
 		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 		"VisionDaytimeRange"	"0"
 		"VisionNighttimeRange"	"0"
-
+	
 		// Building Size
 		//----------------------------------------------------------------
 		"ConstructionSize"			"2"
@@ -1257,11 +1257,11 @@
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
 		"ModelScale"	"0.40"
-
+	
 		"Ability1"	"ability_irontrap_ensnare"
 		"Ability2"	"ability_bush_scout_passive"
 		"Ability10"	"ability_phased"
-
+		
 		"ArmorPhysical"	"1"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
@@ -1280,7 +1280,7 @@
 		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 		"VisionDaytimeRange"	"0"
 		"VisionNighttimeRange"	"0"
-
+	
 		// Building Size
 		//----------------------------------------------------------------
 		"ConstructionSize"			"2"
@@ -1298,14 +1298,14 @@
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
 		"ModelScale"	"0.5"
-
+	
 		"Ability1"	"ability_ensnaretrap_ensnare"
 		"Ability2"	"ability_bush_scout_passive"
 		"Ability3"	"ability_building_droprawmeat"
 		"Ability10"	"ability_building"
 		"Ability11"	"ability_cancel_building"
 		"Ability12"	"ability_phased"
-
+		
 		"ArmorPhysical"	"3"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
@@ -1324,7 +1324,7 @@
 		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 		"VisionDaytimeRange"	"0"
 		"VisionNighttimeRange"	"0"
-
+	
 		// Building Size
 		//----------------------------------------------------------------
 		"ConstructionSize"			"2"
@@ -1348,12 +1348,12 @@
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts"
 			"particle_folder"	"particles/dire_fx/fire_barracks_glow_b.vpcf"
 		}
-
+	
 		"Ability1"	"ability_quick_build_workshop"
 		"Ability2"	"ability_quick_drop"
 		"Ability10"	"ability_building"
 		"Ability11"	"ability_cancel_building"
-
+	
 		"ArmorPhysical"	"2"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
@@ -1372,13 +1372,13 @@
 		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 		"VisionDaytimeRange"	"0"
 		"VisionNighttimeRange"	"0"
-
+	
 		// Building Size
 		//----------------------------------------------------------------
 		"ConstructionSize"			"2"
 		"BlockPathingSize"			"2"
 	    "SharedWithTeammates" "1"
-
+	
 	}
 	"npc_clay_living"
 	{
@@ -1387,16 +1387,16 @@
 		"SoundSet"	"Creep_Good_Melee"
 		"HasInventory"	"1"
 		"MinimapIconSize"	"250"
-		"HealthBarOffset"	"100"
+		"HealthBarOffset"	"100"		
 		"ModelScale"	"0.50"
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"RingRadius"	"100"
 		"precache"
 		{
 		}
-
+	
 		"Ability1"	"ability_explode"
-
+		
 		"ArmorPhysical"	"5"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
@@ -1415,7 +1415,7 @@
 		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 		"VisionDaytimeRange"	"400"
 		"VisionNighttimeRange"	"350"
-
+	
 		// Building Size
 		//----------------------------------------------------------------
 		"ConstructionSize"			"1"
@@ -1429,16 +1429,16 @@
 		"SoundSet"	"Creep_Good_Melee"
 		"HasInventory"	"0"
 		"MinimapIconSize"	"250"
-		"HealthBarOffset"	"200"
+		"HealthBarOffset"	"200"		
 		"ModelScale"	"0.98"
 		"BoundsHullName"	"DOTA_HULL_SIZE_BARRACKS"
 		"RingRadius"	"100"
 		"precache"
 		{
 		}
-
+	
 		"Ability1"	"ability_explode"
-
+		
 		"ArmorPhysical"	"5"
 		"MagicalResistance"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
@@ -1457,7 +1457,7 @@
 		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 		"VisionDaytimeRange"	"400"
 		"VisionNighttimeRange"	"350"
-
+	
 		// Building Size
 		//----------------------------------------------------------------
 		"ConstructionSize"			"0"
@@ -1824,14 +1824,14 @@
 	    "StatusHealthRegen" "0"
 	    "VisionDaytimeRange"    "0"
 	    "VisionNighttimeRange"  "0"
-
+		
 		"Modifiers"
 		{
 			"modifier_tower"
 			{
 				"Passive"			"1"
 				"IsHidden"			"1"
-				"Attributes"		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE | MODIFIER_ATTRIBUTE_PERMANENT"
+				"Attributes"		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE | MODIFIER_ATTRIBUTE_PERMANENT"	
 				"States"
 				{
 					"MODIFIER_STATE_MAGIC_IMMUNE" "MODIFIER_STATE_VALUE_ENABLED" // Makes most abilities don't affect this. Use custom damage
@@ -1845,7 +1845,7 @@
 					"MODIFIER_PROPERTY_MOVESPEED_ABSOLUTE"	"0.1"
 				}
 			}
-		}
+		}		
 	}
 	"npc_creature_scroll_skeleton"
 	{
@@ -1888,7 +1888,7 @@
 	{
 		"BaseClass"	"npc_dota_creature"
 		"ConsideredHero"	"0"
-		"ModelScale"	"1.10"
+		"ModelScale"	"0.70"
 		"Model"	"models/creeps/neutral_creeps/n_creep_gargoyle/n_creep_gargoyle.vmdl"
 		"Level"	"5"
 		"Ability1"	"ability_pet_gather_items"
@@ -1925,7 +1925,7 @@
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
 		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
-		"MovementSpeed"	"400"
+		"MovementSpeed"	"335"
 		"MovementTurnRate"	"0.5"
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"HealthBarOffset"	"140"
@@ -1945,7 +1945,7 @@
 		"Level"	"1"
 		"vscripts"	"units/ai/passive_neutral_ai.lua"
 		"Ability1"	"ability_baby_animal"
-
+	
 		"ArmorPhysical"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"	"0"
@@ -2084,7 +2084,7 @@
 	{
 		"BaseClass"	"npc_dota_creature"
 		"ConsideredHero"	"0"
-		"ModelScale"	"1.10"
+		"ModelScale"	"0.70"
 		"Model"	"models/creeps/neutral_creeps/n_creep_harpy_b/n_creep_harpy_b.vmdl"
 		"Level"	"5"
 		"Ability1"	"hawk_passive"
@@ -2121,7 +2121,7 @@
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
 		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
-		"MovementSpeed"	"400"
+		"MovementSpeed"	"335"
 		"MovementTurnRate"	"0.5"
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"HealthBarOffset"	"140"
@@ -2136,7 +2136,7 @@
 	{
 		"BaseClass"	"npc_dota_creature"
 		"ConsideredHero"	"0"
-		"ModelScale"	"1.10"
+		"ModelScale"	"0.70"
 		"Model"	"models/creeps/neutral_creeps/n_creep_jungle_stalker/n_creep_gargoyle_jungle_stalker.vmdl"
 		"Level"	"5"
 		"Ability1"	"ability_pet_gather_items"
@@ -2173,7 +2173,7 @@
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
 		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
-		"MovementSpeed"	"400"
+		"MovementSpeed"	"335"
 		"MovementTurnRate"	"0.5"
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"HealthBarOffset"	"140"
@@ -2188,7 +2188,7 @@
 	{
 		"BaseClass"	"npc_dota_creature"
 		"ConsideredHero"	"0"
-		"ModelScale"	"1.10"
+		"ModelScale"	"0.70"
 		"Model"	"models/creeps/neutral_creeps/n_creep_black_dragon/n_creep_black_dragon.vmdl"
 		"Level"	"5"
 		"Ability1"	"ability_pet_gather_items"
@@ -2225,7 +2225,7 @@
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
 		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
-		"MovementSpeed"	"522"
+		"MovementSpeed"	"335"
 		"MovementTurnRate"	"0.5"
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"HealthBarOffset"	"140"
@@ -2259,7 +2259,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
-
+	
 		"ArmorPhysical"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_MELEE_ATTACK"
 		"AttackDamageMin"	"13"
@@ -2296,9 +2296,9 @@
 		"ModelScale"	"0.91"
 		"Model"	"models/creeps/neutral_creeps/n_creep_centaur_med/n_creep_centaur_med.vmdl"
 		"Level"	"7"
-
+	
 		"Ability1"	""
-
+		
 		"ArmorPhysical"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_MELEE_ATTACK"
 		"AttackDamageMin"	"9"
@@ -2390,7 +2390,7 @@
 		"Level"	"1"
 		"vscripts"	"units/ai/passive_neutral_ai.lua"
 		"Ability1"	"ability_baby_animal"
-
+	
 		"ArmorPhysical"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"	"0"
@@ -2530,7 +2530,7 @@
 	{
 		"BaseClass"	"npc_dota_creature"
 		"ConsideredHero"	"0"
-		"ModelScale"	"1.10"
+		"ModelScale"	"0.70"
 		"Model"	"models/creeps/neutral_creeps/n_creep_harpy_a/n_creep_harpy_a.vmdl"
 		"Level"	"5"
 		"Ability1"	""
@@ -2549,7 +2549,7 @@
 		"Ability14"	""
 		"Ability15"	""
 		"Ability16"	""
-		"ArmorPhysical"	"0"
+		"ArmorPhysical"	"0"	
 		"AttackCapabilities"	"DOTA_UNIT_CAP_MELEE_ATTACK"
 		"AttackDamageMin"	"13"
 		"AttackDamageMax"	"15"
@@ -2570,7 +2570,7 @@
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
 		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
-		"MovementSpeed"	"400"
+		"MovementSpeed"	"335"
 		"MovementTurnRate"	"0.5"
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"HealthBarOffset"	"140"
@@ -2589,10 +2589,10 @@
 		"Model"	"models/heroes/beastmaster/beastmaster_bird.vmdl"
 		"Level"	"5"
 		"vscripts"	"units/ai/passive_neutral_ai.lua"
-
+	
 		"Ability1"	"hawk_passive"
 		"Ability2"	"ability_pet_gather_items"
-
+	
 		"ArmorPhysical"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"	"0"
@@ -2629,10 +2629,10 @@
 		"ModelScale"	"1.10"
 		"Model"	"models/heroes/beastmaster/beastmaster_bird.vmdl"
 		"Level"	"1"
-
+	
 		"Ability1"	"hawk_passive"
 		"Ability2"	"ability_pet_gather_items"
-
+	
 		"ArmorPhysical"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"	"0"
@@ -3093,7 +3093,7 @@
 		"Level"	"1"
 		"vscripts"	"units/ai/passive_neutral_ai.lua"
 		"Ability1"	"ability_baby_animal"
-
+	
 		"ArmorPhysical"	"0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"	"0"
@@ -3321,146 +3321,146 @@
 	    "MinimapIcon"               "minimap_icon_red"
 	    "MinimapIconSize"           "300"
 	    "MinimapDisableTint"        "1"
-
+	
 	    "BaseClass"                 "npc_dota_creature"
-	    "Model"                     "models/development/invisiblebox.vmdl"
+	    "Model"                     "models/development/invisiblebox.vmdl"  
 	    "AttackCapabilities"        "DOTA_UNIT_CAP_NO_ATTACK"
-	    "VisionDaytimeRange"        "0"
+	    "VisionDaytimeRange"        "0" 
 	    "VisionNighttimeRange"      "0"
 	    "UnitRelationshipClass"     "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-	    "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_NONE"
+	    "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_NONE"	
 	}
-
+	
 	"minimap_icon_grey"
 	{
 	    "MinimapIcon"               "minimap_icon_grey"
 	    "MinimapIconSize"           "300"
 	    "MinimapDisableTint"        "1"
-
+	
 	    "BaseClass"                 "npc_dota_creature"
-	    "Model"                     "models/development/invisiblebox.vmdl"
+	    "Model"                     "models/development/invisiblebox.vmdl"  
 	    "AttackCapabilities"        "DOTA_UNIT_CAP_NO_ATTACK"
-	    "VisionDaytimeRange"        "0"
+	    "VisionDaytimeRange"        "0" 
 	    "VisionNighttimeRange"      "0"
 	    "UnitRelationshipClass"     "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 	    "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_NONE"
 	}
-
+	
 	"minimap_icon_dark_green"
 	{
 	    "MinimapIcon"               "minimap_icon_dark_green"
 	    "MinimapIconSize"           "300"
 	    "MinimapDisableTint"        "1"
-
+	
 	    "BaseClass"                 "npc_dota_creature"
-	    "Model"                     "models/development/invisiblebox.vmdl"
+	    "Model"                     "models/development/invisiblebox.vmdl"  
 	    "AttackCapabilities"        "DOTA_UNIT_CAP_NO_ATTACK"
-	    "VisionDaytimeRange"        "0"
+	    "VisionDaytimeRange"        "0" 
 	    "VisionNighttimeRange"      "0"
 	    "UnitRelationshipClass"     "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 	    "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_NONE"
 	}
-
+	
 	"minimap_icon_green"
 	{
 	    "MinimapIcon"               "minimap_icon_green"
 	    "MinimapIconSize"           "300"
 	    "MinimapDisableTint"        "1"
-
+	
 	    "BaseClass"                 "npc_dota_creature"
-	    "Model"                     "models/development/invisiblebox.vmdl"
+	    "Model"                     "models/development/invisiblebox.vmdl"  
 	    "AttackCapabilities"        "DOTA_UNIT_CAP_NO_ATTACK"
-	    "VisionDaytimeRange"        "0"
+	    "VisionDaytimeRange"        "0" 
 	    "VisionNighttimeRange"      "0"
 	    "UnitRelationshipClass"     "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 	    "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_NONE"
 	}
-
+	
 	"minimap_icon_light_blue"
 	{
 	    "MinimapIcon"               "minimap_icon_light_blue"
 	    "MinimapIconSize"           "300"
 	    "MinimapDisableTint"        "1"
-
+	
 	    "BaseClass"                 "npc_dota_creature"
-	    "Model"                     "models/development/invisiblebox.vmdl"
+	    "Model"                     "models/development/invisiblebox.vmdl"  
 	    "AttackCapabilities"        "DOTA_UNIT_CAP_NO_ATTACK"
-	    "VisionDaytimeRange"        "0"
+	    "VisionDaytimeRange"        "0" 
 	    "VisionNighttimeRange"      "0"
 	    "UnitRelationshipClass"     "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 	    "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_NONE"
 	}
-
+	
 	"minimap_icon_blue"
 	{
 	    "MinimapIcon"               "minimap_icon_blue"
 	    "MinimapIconSize"           "300"
 	    "MinimapDisableTint"        "1"
-
+	
 	    "BaseClass"                 "npc_dota_creature"
-	    "Model"                     "models/development/invisiblebox.vmdl"
+	    "Model"                     "models/development/invisiblebox.vmdl"  
 	    "AttackCapabilities"        "DOTA_UNIT_CAP_NO_ATTACK"
-	    "VisionDaytimeRange"        "0"
+	    "VisionDaytimeRange"        "0" 
 	    "VisionNighttimeRange"      "0"
 	    "UnitRelationshipClass"     "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 	    "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_NONE"
 	}
-
+	
 	"minimap_icon_dark_red"
 	{
 	    "MinimapIcon"               "minimap_icon_dark_red"
 	    "MinimapIconSize"           "300"
 	    "MinimapDisableTint"        "1"
-
+	
 	    "BaseClass"                 "npc_dota_creature"
-	    "Model"                     "models/development/invisiblebox.vmdl"
+	    "Model"                     "models/development/invisiblebox.vmdl"  
 	    "AttackCapabilities"        "DOTA_UNIT_CAP_NO_ATTACK"
-	    "VisionDaytimeRange"        "0"
+	    "VisionDaytimeRange"        "0" 
 	    "VisionNighttimeRange"      "0"
 	    "UnitRelationshipClass"     "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 	    "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_NONE"
 	}
-
+	
 	"minimap_icon_white"
 	{
 	    "MinimapIcon"               "minimap_icon_white"
 	    "MinimapIconSize"           "300"
 	    "MinimapDisableTint"        "1"
-
+	
 	    "BaseClass"                 "npc_dota_creature"
-	    "Model"                     "models/development/invisiblebox.vmdl"
+	    "Model"                     "models/development/invisiblebox.vmdl"  
 	    "AttackCapabilities"        "DOTA_UNIT_CAP_NO_ATTACK"
-	    "VisionDaytimeRange"        "0"
+	    "VisionDaytimeRange"        "0" 
 	    "VisionNighttimeRange"      "0"
 	    "UnitRelationshipClass"     "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 	    "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_NONE"
 	}
-
+	
 	"minimap_icon_pink"
 	{
 	    "MinimapIcon"               "minimap_icon_pink"
 	    "MinimapIconSize"           "300"
 	    "MinimapDisableTint"        "1"
-
+	
 	    "BaseClass"                 "npc_dota_creature"
-	    "Model"                     "models/development/invisiblebox.vmdl"
+	    "Model"                     "models/development/invisiblebox.vmdl"  
 	    "AttackCapabilities"        "DOTA_UNIT_CAP_NO_ATTACK"
-	    "VisionDaytimeRange"        "0"
+	    "VisionDaytimeRange"        "0" 
 	    "VisionNighttimeRange"      "0"
 	    "UnitRelationshipClass"     "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 	    "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_NONE"
 	}
-
+	
 	"minimap_icon_purple"
 	{
 	    "MinimapIcon"               "minimap_icon_purple"
 	    "MinimapIconSize"           "300"
 	    "MinimapDisableTint"        "1"
-
+	
 	    "BaseClass"                 "npc_dota_creature"
-	    "Model"                     "models/development/invisiblebox.vmdl"
+	    "Model"                     "models/development/invisiblebox.vmdl"  
 	    "AttackCapabilities"        "DOTA_UNIT_CAP_NO_ATTACK"
-	    "VisionDaytimeRange"        "0"
+	    "VisionDaytimeRange"        "0" 
 	    "VisionNighttimeRange"      "0"
 	    "UnitRelationshipClass"     "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 	    "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_NONE"
@@ -3557,29 +3557,29 @@
 					{
 						"ItemDef"	"4707"
 					}
-
+		
 					"Wearable2"
 					{
 						"ItemDef"	"4708"
 					}
-
+		
 					"Wearable3"
 					{
 						"ItemDef"	"4709"
 					}
-
+		
 					"Wearable4"
 					{
 						"ItemDef"	"4710"
 					}
-
+		
 					"Wearable5"
 					{
 						"ItemDef"	"4711"
 					}
-
+		
 				}
-
+		
 			}
 		}
 	"scout_ward"
@@ -3628,7 +3628,7 @@
 		"VisionDaytimeRange"	"800"
 		"VisionNighttimeRange"	"800"
 		"HasInventory"	"0"
-
+		
 		"MinimapIcon"				"minimap_boat"
 		"MinimapIconSize"			"1000"
 		"MinimapDisableTint"		"1"
@@ -3665,7 +3665,7 @@
 		"VisionDaytimeRange"	"800"
 		"VisionNighttimeRange"	"800"
 		"HasInventory"	"0"
-
+		
 		"MinimapIcon"				"minimap_boat"
 		"MinimapIconSize"			"1000"
 		"MinimapDisableTint"		"1"
@@ -3702,7 +3702,7 @@
 		"VisionDaytimeRange"	"800"
 		"VisionNighttimeRange"	"800"
 		"HasInventory"	"0"
-
+		
 		"MinimapIcon"				"minimap_boat"
 		"MinimapIconSize"			"1000"
 		"MinimapDisableTint"		"1"
@@ -3739,7 +3739,7 @@
 		"VisionDaytimeRange"	"800"
 		"VisionNighttimeRange"	"800"
 		"HasInventory"	"0"
-
+		
 		"MinimapIcon"				"minimap_boat"
 		"MinimapIconSize"			"1000"
 		"MinimapDisableTint"		"1"
@@ -3776,7 +3776,7 @@
 		"VisionDaytimeRange"	"800"
 		"VisionNighttimeRange"	"800"
 		"HasInventory"	"0"
-
+		
 		"MinimapIcon"				"minimap_boat"
 		"MinimapIconSize"			"1000"
 		"MinimapDisableTint"		"1"
@@ -3813,7 +3813,7 @@
 		"VisionDaytimeRange"	"800"
 		"VisionNighttimeRange"	"800"
 		"HasInventory"	"0"
-
+		
 		"MinimapIcon"				"minimap_boat"
 		"MinimapIconSize"			"1000"
 		"MinimapDisableTint"		"1"
@@ -3850,7 +3850,7 @@
 		"VisionDaytimeRange"	"800"
 		"VisionNighttimeRange"	"800"
 		"HasInventory"	"0"
-
+		
 		"MinimapIcon"				"minimap_boat"
 		"MinimapIconSize"			"1000"
 		"MinimapDisableTint"		"1"
