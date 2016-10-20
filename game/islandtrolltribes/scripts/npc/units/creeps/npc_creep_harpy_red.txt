@@ -41,7 +41,7 @@
 	"AttributeIntelligenceGain"	"0"
 	"AttributeBaseAgility"	"0"
 	"AttributeAgilityGain"	"0"
-	"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
+	"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 	"MovementSpeed"	"335"
 	"MovementTurnRate"	"0.5"
 	"BoundsHullName"	"DOTA_HULL_SIZE_HERO"

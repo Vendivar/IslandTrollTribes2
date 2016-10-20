@@ -13,6 +13,6 @@ function teleport_beacon:OnRightClick(event)
 	-- Check if the clicker is out of range
 	if ((playerHero:GetOrigin() - building:GetOrigin()):Length2D() <= spell:GetCastRange()) then 
 		building:CastAbilityOnTarget(playerHero, spell, event.PlayerID)
-		EmitSound("teleport.beacon.use")
+	--	EmitSound("teleport.beacon.use")
 	end
 end
