@@ -118,7 +118,7 @@
 			"ModelName"	"models/heroes/lone_druid/spirit_bear.vmdl" //DOES THIS WORK?
 			"Properties"
 			{
-				"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"-1"
+				"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"-1.5"
 				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed"
 				"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"%move_speed"
 				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%attack_damage"
@@ -198,15 +198,10 @@
 			"var_type"	"FIELD_FLOAT"
 			"health_bonus"	"50"
 		}
-		"05"
+        "5"
 		{
 			"var_type"	"FIELD_FLOAT"
-			"energy_drain"	"-1"
-		}
-        "6"
-		{
-			"var_type"	"FIELD_FLOAT"
-			"degen_rate"	"-200"
+			"degen_rate"	"-150"
 		}
         
 	}

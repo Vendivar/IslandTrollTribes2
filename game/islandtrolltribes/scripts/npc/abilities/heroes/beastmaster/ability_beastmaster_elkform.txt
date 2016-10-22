@@ -116,7 +116,7 @@
 			"ModelName"	"models/heroes/leshrac/leshrac.vmdl"
 			"Properties"
 			{
-				"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"-1"
+				"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"-1.2"
 				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed"
 				"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"%move_speed"
 				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%attack_damage"
@@ -200,7 +200,7 @@
 		"04"
 		{
 			"var_type"	"FIELD_FLOAT"
-			"degen_rate"	"-200"
+			"degen_rate"	"-120"
 		}
 		"05"
 		{

@@ -9,7 +9,7 @@ function RamTarget(keys)
     local teamnumber = caster:GetTeamNumber()
     local hitUnits = {}
 
-    if visible then
+    if visible and target and not target.HasFlyMovementCapability and not IsFlyingUnit(target) then
         local direction = targetPosition - casterPosition
         local vec = direction:Normalized() * 30
         caster:SetAbsOrigin(casterPosition + vec)

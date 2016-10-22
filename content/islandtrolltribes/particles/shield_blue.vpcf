@@ -49,8 +49,8 @@
 		},
 		{
 			_class = "C_INIT_RandomRadius"
-			m_flRadiusMin = 164.0
-			m_flRadiusMax = 164.0
+			m_flRadiusMin = 120.0
+			m_flRadiusMax = 120.0
 		},
 		{
 			_class = "C_INIT_RandomLifeTime"
@@ -83,6 +83,7 @@
 	[
 		{
 			m_ChildRef = resource:"particles/units/heroes/hero_oracle/oracle_fatesedict_repel.vpcf"
+			m_bDisableChild = true
 		},
 	]
 }

@@ -27,7 +27,7 @@
         }
 		"FireEffect"
 		{
-			"EffectName"	"particles/items2_fx/smoke_of_deceit.vpcf"
+			"EffectName"	"particles/custom/blue_shimmer_out_minor_withrings.vpcf"
 			"EffectAttachType"	"follow_origin"
 			"Target"	"CASTER"
 			"EffectRadius"	"%radius"
@@ -40,7 +40,7 @@
 		"elk_immunity"
 		{
 			"Duration"	"%duration"
-			"EffectName"	"particles/items_fx/black_king_bar_avatar.vpcf"
+			"EffectName"	"particles/shield_blue.vpcf"
 			"EffectAttachType"	"follow_origin"
 			"States"
 			{

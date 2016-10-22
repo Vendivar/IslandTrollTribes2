@@ -22,7 +22,7 @@
 	{
 		"RunScript"
 		{
-            "ScriptFile"	"heroes/priest/range_heal.lua"
+            "ScriptFile"	"heroes/priest/ranged_heal.lua"
 			"Function"      "RangeHealInit"
 			"Target"         "TARGET"
 		}

@@ -288,7 +288,6 @@
 "DOTA_Tooltip_ability_ability_beastmaster_bearform_attack_damage"		"+DAMAGE BONUS:"
 "DOTA_Tooltip_ability_ability_beastmaster_bearform_health_bonus"		"HEALTH BONUS:"
 "DOTA_Tooltip_ability_ability_beastmaster_bearform_move_speed"		    "%MOVE SPEED:"
-"DOTA_Tooltip_ability_ability_beastmaster_bearform_energy_drain"		"ENERGY DRAIN:"
 "DOTA_Tooltip_ability_ability_beastmaster_bearform_degen_rate"	    "%ENERGY DEGEN RATE:"
 "DOTA_Tooltip_Ability_ability_beastmaster_bearform_Description"		"Shapeshifts into a Bear. Drains energy at a faster rate. Gains additional abilities."
 "DOTA_Tooltip_Ability_ability_beastmaster_bearform_Note0"		    "The bonus HP is +50 HP ontop of your max HP. By shapeshifting back if you have less then 50 HP you will die upon being shapeshifted."
@@ -527,8 +526,6 @@
 		"DOTA_Tooltip_ability_ability_beastmaster_tamepet2_leash_range"                   "LEASH RANGE:"
 		"DOTA_Tooltip_ability_ability_beastmaster_tamepet2_grow_young"                    "GROW YOUNG:"
 		"DOTA_Tooltip_ability_ability_beastmaster_tamepet2_grow_adult"                    "GROW ADULT:"
-
-		"DOTA_Tooltip_ability_ability_beastmaster_wolfform_degen_rate"                    "DEGEN RATE:"
 
 		"DOTA_Tooltip_ability_ability_pet_empathicrage"                                   "Empathic Rage"
 		"DOTA_Tooltip_ability_ability_pet_empathicrage_Description"                       "When one of your pets dies near you you receive a temporary buff to move speed and attack speed. Stacks for each pet that was killed."
@@ -3472,8 +3469,8 @@
 "DOTA_Tooltip_ability_ability_hawk_flight"		"Ability Hawk Flight"
 "DOTA_Tooltip_ability_ability_hawk_flight_chance"		"CHANCE:"
 "DOTA_Tooltip_ability_ability_hawk_flight_Description"		""
-"DOTA_Tooltip_Ability_ability_hawks_evolution"		"Hawk Evolution"
-"DOTA_Tooltip_Ability_ability_hawks_evolution_Description"		"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+"DOTA_Tooltip_Ability_ability_hawks_evolution"		"Hawk Hatching Info"
+"DOTA_Tooltip_Ability_ability_hawks_evolution_Description"		"To spawn a hawk first drop in the hawk egg. Next you can throw in any 5 item combinations of hatchery transmutable items to help the hawk evolve traits that you desire.\n\nHealth: Clay, Hide\nAttack: Stick, Rock\nMovement Speed: Spirit of Wind, Butsu:\nAll Bonuses(Health, Speed, etc): Dark Rock"
 
 "DOTA_Tooltip_ability_ability_make_boots"		"Make Boots"
 "DOTA_Tooltip_ability_ability_make_boots_Description"		"Takes two identical hides from the Tannery's inventory to make a corresponding set of boots."
