@@ -11362,7 +11362,7 @@
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
-		"ItemStackable"	"1"
+		"ItemStackable"	"0"
 		"ItemPermanent"	"1"
 		"ItemDroppable"	"1"
 		"ItemAliases"	"quicktype"

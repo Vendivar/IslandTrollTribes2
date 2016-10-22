@@ -110,7 +110,7 @@
         "06"
         {
             "var_type"    "FIELD_FLOAT"
-            "rested_duration"    "15"
+            "rested_duration"    "8"
         }
      }
 }
