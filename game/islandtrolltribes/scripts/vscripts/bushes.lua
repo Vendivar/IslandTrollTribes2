@@ -15,11 +15,23 @@ function ITT:SpawnBushes()
             Spawns.bushCount["Island"][i][bushItem] = 0
         end
     end
-    GameRules.PredefinedBushLocations = GetPredefinedBushLocations(bushSpawnerTable)
-    local locationType =  GameRules.GameModeSettings["BUSH_SPAWNING_LOCATION"]
-    local regionType = GameRules.BushSpawnRegion
-    for bushItem,_ in pairs(bushSpawnerTable) do
-        SpawnBushes(bushItem, regionType, locationType)
+
+    if GameRules.GameModeSettings.custom.fixed_bush_spawning then
+        spawners = GetFixedBushLocations(bushSpawnerTable)
+        for bushName, bushSpawners in pairs(spawners) do
+            for _,spawner in pairs(bushSpawners) do
+                local pos = spawner:GetAbsOrigin()
+                CreateBush(bushName, pos)
+                CreateBushContainer(bushName, pos)
+            end
+        end
+    else
+        GameRules.PredefinedBushLocations = GetPredefinedBushLocations(bushSpawnerTable)
+        local locationType =  GameRules.GameModeSettings["BUSH_SPAWNING_LOCATION"]
+        local regionType = GameRules.BushSpawnRegion
+        for bushItem,_ in pairs(bushSpawnerTable) do
+          SpawnBushes(bushItem, regionType, locationType)
+        end
     end
 
     local bushCount = #GameRules.Bushes
@@ -57,6 +69,24 @@ function SpawnBushesCommon(bushItem, locationType, regionType, regions)
     end
 end
 
+function GetFixedBushLocations(spawnerTable)
+    local allSpawners = Entities:FindAllByClassname("npc_dota_spawner")
+    local bushSpawners = {}
+    for bushItem,_ in pairs(spawnerTable) do
+        bushSpawners[name] = {}
+    end
+    for _,spawner in pairs(allSpawners) do
+        local name = spawner:GetName()
+        if string.find(name, "_fixedbush_") then
+          local cutoff = string.find(name,"s")
+          local bushName = "npc_".. string.gsub(string.sub(name, cutoff), "spawner_npc_", "")
+          bushName = bushName:gsub("_fixedbush_", "_bush_")
+          table.insert(bushSpawners[bushName], spawner)
+        end
+    end
+    return bushSpawners
+end
+
 function GetPredefinedBushLocations(bushSpawnerTable)
     local allSpawners = Entities:FindAllByClassname("npc_dota_spawner")
     local bushSpawners = {}
@@ -68,7 +98,7 @@ function GetPredefinedBushLocations(bushSpawnerTable)
         if string.find(spawnerName, "_bush_") then
             local cutoff = string.find(spawnerName,"s")
             local bushName = "npc_".. string.gsub(string.sub(spawnerName, cutoff), "spawner_npc_", "")
-            local itemName = "item_"..bushName
+--            local itemName = "item_"..bushName
 --            print("bushname " .. bushName)
             table.insert(bushSpawners[bushName],spawner)
         end
@@ -98,13 +128,7 @@ function GetPredefinedBushLocation(region, bushItem)
     if not locations then
         print("ERROR: no spawner locations stored for "..bushItem)
     end
-    local location
-    if GameRules.GameModeSettings.custom.fixed_bush_spawning then
-        location = locations[1]
-    else
-        location = GetEmptyLocation(locations)
-    end
-    return location
+    return GetEmptyLocation(locations)
 end
 
 function GetPredefinedBushLocationsOnRegion(region, bushItem)
