@@ -10,6 +10,8 @@
     </scripts>
 
 	<Panel hittest="false" class="EndScreenRoot">
+    <Panel hittest="false" class="BlackFade">
+    </Panel>
 		<Panel hittest="false" class="EndScreenWindow">
 			<Panel id="VictoryRow">
 				<Panel id="WinningTeamLogo" />

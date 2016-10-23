@@ -12,7 +12,7 @@
 
 	var endScoreboardHandle = ScoreboardUpdater_InitializeScoreboard( scoreboardConfig, $( "#TeamsContainer" ) );
 	$.GetContextPanel().SetHasClass( "endgame", 1 );
-	
+
 	var teamInfoList = ScoreboardUpdater_GetSortedTeamInfoList( endScoreboardHandle );
 	var delay = 0.2;
 	var delay_per_panel = 1 / teamInfoList.length;
@@ -27,7 +27,7 @@
 		$.Schedule( delay, callback )
 		delay += delay_per_panel;
 	}
-	
+
 	var winningTeamId = Game.GetGameWinner();
 	var winningTeamDetails = Game.GetTeamDetails( winningTeamId );
 	var endScreenVictory = $( "#EndScreenVictory" );
@@ -53,4 +53,11 @@
 			winningTeamLogo.BLoadLayout( logo_xml, false, false );
 		}
 	}
+
+	$.Schedule(1.5, function() {
+		GameUI.SetCameraPitchMin(370);
+		GameUI.SetCameraPitchMax(370);
+		GameUI.SetCameraLookAtPositionHeightOffset(230);
+	  GameUI.SetCameraTarget(1);
+	});
 })();

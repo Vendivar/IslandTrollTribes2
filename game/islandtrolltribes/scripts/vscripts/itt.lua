@@ -855,8 +855,31 @@ function ITT:CheckWinCondition()
 
     if winnerTeamID and not GameRules.Winner then
         GameRules.Winner = winnerTeamID
+        ITT:SetHerosIntoEndScreen(winnerTeamID)
         ITT:PrintWinMessageForTeam(winnerTeamID)
         GameRules:SetGameWinner(winnerTeamID)
+    end
+end
+
+function ITT:SetHerosIntoEndScreen( teamID )
+    GameRules:GetGameModeEntity():SetFogOfWarDisabled(true)
+    local count = PlayerResource:GetPlayerCountForTeam(teamID)
+    local vec_start = Vector(220,-484,384)
+    local vec_end = Vector(-220,-484,384)
+    local vec_step = (vec_end - vec_start) / (count + 1)
+    local ind = 1
+    for playerID = 0, DOTA_MAX_TEAM_PLAYERS do
+        if PlayerResource:IsValidPlayerID(playerID) then
+            local team = PlayerResource:GetTeam(playerID)
+            if team == teamID then
+                local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+                if hero:IsAlive() then
+                    hero:SetAbsOrigin(vec_start + vec_step * ind)
+                    hero:SetAngles(0,-90,0)
+                    ind = ind + 1
+                end
+            end
+        end
     end
 end
 

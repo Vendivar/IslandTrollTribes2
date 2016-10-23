@@ -1,10 +1,34 @@
 @define BACKGROUND_COLOR: #000000;
 
+@keyframes 'blackfade' {
+  0% {
+		opacity: 0;
+  }
+  50% {
+		opacity: 1;
+  }
+  100% {
+		opacity: 0;
+  }
+}
+
 .EndScreenRoot
 {
 	width: 100%;
-    height: 100%;
-    background-color: gradient( linear, 0% 0%, 0% 100%, from( #000000FF ), color-stop( 0.12, #000000ff ), color-stop( 0.5, #00000022 ), to( #00000000 ) );
+  height: 100%;
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #000000FF ), color-stop( 0.12, #000000ff ), color-stop( 0.5, #00000022 ), to( #00000000 ) );
+}
+
+.BlackFade
+{
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	animation-name: blackfade;
+	animation-duration: 3s;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in-out;
+	background-color: #000000;
 }
 
 #VictoryRow
@@ -44,10 +68,10 @@
 
 .EndScreenWindow
 {
-    margin-top: 100px;
-    margin-right: 200px;
-    flow-children: down;
-    horizontal-align: right;
+  margin-top: 100px;
+  margin-right: 200px;
+  flow-children: down;
+  horizontal-align: right;
 	flow-children: down;
 }
 
@@ -109,7 +133,7 @@
     transition-duration: 0.5s;
 	opacity: 0;
 	transform: translatey(-50px);
-	
+
 	margin-right: 8px;
 }
 
@@ -146,7 +170,7 @@
 }
 
 .FlyoutPlayer
-{ 
+{
     flow-children: right;
 }
 
