@@ -73,7 +73,7 @@ function GetFixedBushLocations(spawnerTable)
     local allSpawners = Entities:FindAllByClassname("npc_dota_spawner")
     local bushSpawners = {}
     for bushItem,_ in pairs(spawnerTable) do
-        bushSpawners[name] = {}
+        bushSpawners[bushItem] = {}
     end
     for _,spawner in pairs(allSpawners) do
         local name = spawner:GetName()
