@@ -50,12 +50,12 @@ function toggleCustom(force) {
   if (custom_active) {
     $("#Gamemode_customwrapper").RemoveClass("hidden");
     $("#Gamemode_picks").RemoveClass("hidden");
-    $("#custom_options").AddClass("active_custom");
+    $("#Gamemode_customheader").text = $.Localize("#Gamemode_customheader_disable")
   }
   else {
     $("#Gamemode_customwrapper").AddClass("hidden");
     $("#Gamemode_picks").AddClass("hidden");
-    $("#custom_options").RemoveClass("active_custom");
+    $("#Gamemode_customheader").text = $.Localize("#Gamemode_customheader_enable")
 
     setPick(1);
 
@@ -72,10 +72,10 @@ function setCustomToggle(key, force) {
   settings[key] = !settings[key];
 
   if (settings[key]) {
-    $("#" + key).AddClass("active_custom");
+    $("#" + key + "_label").AddClass("active_custom");
   }
   else {
-    $("#" + key).RemoveClass("active_custom");
+    $("#" + key + "_label").RemoveClass("active_custom");
   }
 }
 
@@ -126,7 +126,7 @@ function setNotVoted() {
   }
 }
 
-var PICKS = ["","ALL_PICK","ALL_RANDOM","SAME_HERO"];
+var PICKS = ["","ALL PICK","ALL RANDOM","SAME HERO"];
 var SPEEDS = ["","FAST","NORMAL","SLOW"];
 
 function setVoted() {

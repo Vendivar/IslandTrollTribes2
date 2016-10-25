@@ -25,24 +25,24 @@
           </Panel>
         </Panel>
         <Panel id="Gamemode_custom">
-          <Panel id="custom_options" class="Gamemode_customcheck" onactivate="toggleCustom()" onmouseover="onHover('custom_options')" onmouseout="offHover('custom_options')" />
-          <Label text="#Gamemode_customheader" id="Gamemode_customheader" />
+          <Panel id="custom_options" class="Gamemode_customcheck" onactivate="toggleCustom()" />
+          <Label text="#Gamemode_customheader_enable" id="Gamemode_customheader" hittest="false" />
           <Panel id="Gamemode_customwrapper" class="hidden">
             <Panel class="Gamemode_custombutton">
-              <Panel id="custom_noob" class="Gamemode_customcheck" onactivate="setCustomToggle('custom_noob')"  onmouseover="onHover('custom_noob')" onmouseout="offHover('custom_noob')"/>
-              <Label text="#Gamemode_noobmode" />
+              <Panel id="custom_noob" class="Gamemode_voting_icon Gamemode_icon_custom_noob" onactivate="setCustomToggle('custom_noob')"  onmouseover="onHover('custom_noob')" onmouseout="offHover('custom_noob')"/>
+              <Label text="#Gamemode_noobmode" id="custom_noob_label" class="custom_label" />
             </Panel>
             <Panel class="Gamemode_custombutton">
-              <Panel id="custom_fixedbush" class="Gamemode_customcheck" onactivate="setCustomToggle('custom_fixedbush')" onmouseover="onHover('custom_fixedbush')" onmouseout="offHover('custom_fixedbush')" />
-              <Label text="#Gamemode_fixedbush" />
+              <Panel id="custom_fixedbush" class="Gamemode_voting_icon Gamemode_icon_custom_fixedbush" onactivate="setCustomToggle('custom_fixedbush')" onmouseover="onHover('custom_fixedbush')" onmouseout="offHover('custom_fixedbush')" />
+              <Label text="#Gamemode_fixedbush" id="custom_fixedbush_label" class="custom_label" />
             </Panel>
             <Panel class="Gamemode_custombutton">
-              <Panel id="custom_norevive" class="Gamemode_customcheck" onactivate="setCustomToggle('custom_norevive')" onmouseover="onHover('custom_norevive')" onmouseout="offHover('custom_norevive')" />
-              <Label text="#Gamemode_norevive" />
+              <Panel id="custom_norevive" class="Gamemode_voting_icon Gamemode_icon_custom_norevive" onactivate="setCustomToggle('custom_norevive')" onmouseover="onHover('custom_norevive')" onmouseout="offHover('custom_norevive')" />
+              <Label text="#Gamemode_norevive" id="custom_norevive_label" class="custom_label" />
             </Panel>
             <Panel class="Gamemode_custombutton">
-              <Panel id="custom_noislandbosses" class="Gamemode_customcheck" onactivate="setCustomToggle('custom_noislandbosses')" onmouseover="onHover('custom_noislandbosses')" onmouseout="offHover('custom_noislandbosses')" />
-              <Label text="#Gamemode_noislandbosses" />
+              <Panel id="custom_noislandbosses" class="Gamemode_voting_icon Gamemode_icon_custom_noislandbosses" onactivate="setCustomToggle('custom_noislandbosses')" onmouseover="onHover('custom_noislandbosses')" onmouseout="offHover('custom_noislandbosses')" />
+              <Label text="#Gamemode_noislandbosses" id="custom_noislandbosses_label" class="custom_label" />
             </Panel>
           </Panel>
         </Panel>
