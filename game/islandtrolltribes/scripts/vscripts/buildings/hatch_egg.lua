@@ -105,13 +105,13 @@ function GetInventoryDetails(hatchery)
         {type="stick", decides = "bird_type", selects = "npc_creep_drake_nether", count=0},
         {type="rock", decides = "bird_type", selects = "npc_creep_drake_nether", count=0},
 
-        {type="clay", decides = "ability", incleases = "health", by = "5%", count=0}, --Red Dragon
-        {type="hide",decides = "ability", incleases = "health", by = "50", count=0},  --Red Dragon
-        {type="butsu",decides = "ability", incleases = "movement_speed", by = "5%", count=0}, --Blue Dragon
-        {type="spirit_wind",decides = "ability", incleases = "movement_speed", by = "5%", count=0},  --Blue Dragon
-        {type="rock_dark",decides = "ability", incleases = "all_bonus", by = "1", count=0}, --Black Dragon
-        {type="stick",decides = "ability", incleases = "attack", by = "5", count=0}, --Black Dragon
-        {type="rock",decides = "ability", incleases = "attack", by = "5", count=0}, --Black Dragon
+        {type="clay", decides = "ability", increases = "health", by = "5%", count=0}, --Red Dragon
+        {type="hide",decides = "ability", increases = "health", by = "50", count=0},  --Red Dragon
+        {type="butsu",decides = "ability", increases = "movement_speed", by = "5%", count=0}, --Blue Dragon
+        {type="spirit_wind",decides = "ability", increases = "movement_speed", by = "5%", count=0},  --Blue Dragon
+        {type="rock_dark",decides = "ability", increases = "all_bonus", by = "1", count=0}, --Black Dragon
+        {type="stick",decides = "ability", increases = "attack", by = "5", count=0}, --Black Dragon
+        {type="rock",decides = "ability", increases = "attack", by = "5", count=0}, --Black Dragon
     }
     local inventoryDetails = { isValid = false, totalItemCount = 0, itemTypes = itemTypes,  errorMessage="", firstItem ="" }
     for i=0,5 do
@@ -214,10 +214,20 @@ function ImproveAbility(selectedBird, inventoryDetails)
     end
 
     local functionList = {}
-    functionList["health"] = function (creep, by, itemcount)
+    functionList["health"] = function(creep, by, itemcount)
         local newHealthValue = creep:GetHealth() + getIncrement(creep:GetHealth(),by,itemcount)
         creep:SetMaxHealth(newHealthValue)
         creep:SetHealth(newHealthValue)
+        return creep
+    end
+
+    functionList["attack"] = function(creep, by, itemcount)
+        local minDmg = creep:GetBaseDamageMin()
+        local maxDmg = creep:GetBaseDamageMax()
+        minDmg = minDmg + getIncrement(minDmg, by, itemcount)
+        maxDmg = maxDmg + getIncrement(maxDmg, by, itemcount)
+        creep:SetBaseDamageMin(minDmg)
+        creep:SetBaseDamageMax(maxDmg)
         return creep
     end
 
@@ -229,13 +239,14 @@ function ImproveAbility(selectedBird, inventoryDetails)
 
     functionList["all_bonus"] = function(creep, by, itemcount)
         creep = functionList["health"](creep, by, itemcount )
+        creep = functionList["attack"](creep, by, itemcount )
         creep = functionList["movement_speed"](creep, by, itemcount )
         return creep
     end
 
     for i,itemType in pairs(inventoryDetails.itemTypes) do
         if itemType.decides == "ability" and itemType.count > 0 then
-            local f = functionList[itemType.incleases]
+            local f = functionList[itemType.increases]
             selectedBird = f( selectedBird, itemType.by , itemType.count )
         end
     end
