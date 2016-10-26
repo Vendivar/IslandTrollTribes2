@@ -51,6 +51,10 @@ function ITT:DropMeat(event)
         if meatStacks > 0 and hero ~= nil then
             local newItem = CreateItem("item_meat_raw", nil, nil)
             CreateItemOnPositionSync(hero:GetOrigin() + RandomVector(RandomInt(50,100)), newItem)
+            newItem.dropped = true
+            Timers:CreateTimer(2, function()
+                newItem.dropped = nil
+            end)
 
             hero:SetModifierStackCount("modifier_meat_passive", nil, meatStacks - 1)
         else
@@ -70,6 +74,10 @@ function ITT:DropAllMeat(event)
             for i = 1,meatStacks do
                 local newItem = CreateItem("item_meat_raw", nil, nil)
                 CreateItemOnPositionSync(hero:GetOrigin() + RandomVector(RandomInt(50,100)), newItem)
+                newItem.dropped = true
+                Timers:CreateTimer(2, function()
+                    newItem.dropped = nil
+                end)
 
                 hero:SetModifierStackCount("modifier_meat_passive", nil, 0)
             end

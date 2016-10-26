@@ -12,16 +12,13 @@ function DropMeatStack(keys)
 end
 
 function CreateRawMeat(position, point)
-    local droppedStateDuration = 20.0
     local dropPosition = position
     local launchPosition = point + RandomVector(RandomFloat(50,50))
     local rawMeat = CreateItem("item_meat_raw", nil, nil)
     CreateItemOnPositionSync(dropPosition, rawMeat)
-    DropLaunch(caster, rawMeat, 0.75, launchPosition)    
+    DropLaunch(caster, rawMeat, 0.75, launchPosition)
     rawMeat.dropped = true
-    Timers:CreateTimer(droppedStateDuration, function()
+    Timers:CreateTimer(2, function()
         rawMeat.dropped = nil
     end)
 end
-
-

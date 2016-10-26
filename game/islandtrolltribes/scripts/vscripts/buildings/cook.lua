@@ -4,7 +4,7 @@ function CookFood(keys)
 
     for _,item in pairs( Entities:FindAllByClassnameWithin("dota_item_drop", building:GetAbsOrigin(), range)) do
         local containedItem = item:GetContainedItem()
-        if containedItem:GetAbilityName() == "item_meat_raw" then
+        if containedItem:GetAbilityName() == "item_meat_raw" and not containedItem.dropped then
             building:EmitSound("Hero_Lina.attack")
             local newItem = CreateItem("item_meat_cooked", nil, nil)
             CreateItemOnPositionSync(item:GetAbsOrigin(), newItem)
@@ -43,7 +43,7 @@ function SmokeMeat( keys )
         -- First remove the cooked meat, makes space for the smoked
         local charges = cooked_meat:GetCurrentCharges()
         if charges <= 1 then
-            cooked_meat:RemoveSelf()        
+            cooked_meat:RemoveSelf()
         else
             cooked_meat:SetCurrentCharges(charges - 1)
         end
