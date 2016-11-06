@@ -65,6 +65,9 @@ function ITT:FilterExecuteOrder( filterTable )
         Timers:RemoveTimer(unit.orderTimer)
         unit.orderTimer = nil
     end
+	
+	--Scan Disable
+	if order_type == DOTA_UNIT_ORDER_RADAR or order_type == DOTA_UNIT_ORDER_GLYPH then SendErrorMessage(issuer, "#error_nicetry") return end
 
     ------------------------------------------------
     --          Hide Building Crafting UI         --
@@ -493,6 +496,20 @@ end
 
 
 ------------------------------------------------------------------
+-- Scan Filter
+------------------------------------------------------------------
+
+function ITT:FilterScan(event)
+    --Check if the order is the glyph type
+    if event.order_type == DOTA_UNIT_ORDER_RADAR then
+        return false
+    end
+
+    --Return true by default to keep all other orders the same
+    return true
+end
+
+------------------------------------------------------------------
 
 ORDERS = {
     [0] = "DOTA_UNIT_ORDER_NONE",
@@ -524,6 +541,7 @@ ORDERS = {
     [26] = "DOTA_UNIT_ORDER_CAST_RUNE",
     [27] = "DOTA_UNIT_ORDER_PING_ABILITY",
     [28] = "DOTA_UNIT_ORDER_MOVE_TO_DIRECTION",
+    [29] = "DOTA_UNIT_ORDER_RADAR",
 }
 
 DAMAGE_TYPES = {

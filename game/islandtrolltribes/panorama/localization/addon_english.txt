@@ -143,7 +143,7 @@
         "priest_sub2_desc" "The Master Healer excels at keeping his allies alive and healthy, while also managing their well-being so that they are ready for battle at any moment.\n\nFunction: Survival, Combat Support\nInitial Abilities: The Glow, Resist All, Omnicure, Cure All\nLearnable Abilities: Healing Spray, Healing Wave, Self\nPreservation, Mix Health, Ranged Heal, Replenish\nBase Damage: 14-14\nAttack Cooldown: 1.75\nMovement Speed: 300"
 
         "priest_sub3_name" "Shaman"
-        "priest_sub3_desc" "The Shaman utilizes spiritual magic and herbalism to support his allies. He can also leave his body for short periods of time to scout around.\n\nFunction: Combat Support, Healing\nInitial Abilities: The Glow, Resist All, Cure All, Spirit Link, Healing Wave, Mix Health/Energy/Heat, Self Preservation, Map Magic, Battle Call\nLearnable Abilities: Increase Metabolism, Maximum Fervor, Light Gate\nBase Damage: 14-14 / Cooldown: 1.75\nMovement Speed: 300"
+        "priest_sub3_desc" "The Shaman utilizes spiritual magic and herbalism to support his allies. He can also leave his body for short periods of time to scout around.\n\nFunction: Combat Support, Healing\nInitial Abilities: The Glow, Resist All, Cure All, Pacifing Smoke.\nLearnable Abilities: Increase Metabolism, Maximum Fervor, Pain Killer Balm, Enhancing Herbalism, Spirit Walk\nBase Damage: 14-14 / Cooldown: 1.75\nMovement Speed: 300"
 
         "scout_sub1_name" "Observer"
         "scout_sub1_desc" "The Observer can place wards in a large area around himself, giving vision to his allies of large sections of the map for long periods of time without much setup time, in addition to having a massive reveal.\n\n\n\nFunction: Reconnaissance\nInitial Ability: Greater Reveal\nLearnable Ability: Ward the Area\nBase Damage: 16-16\nAttack Cooldown: 1.70\nMovement Speed: 325"
@@ -165,6 +165,7 @@
 
         "pet_grow"                           "Your pet has grown!"
 
+        "error_nicetry"                      "Nice try."
         "error_inventory_full"               "Inventory is full."
         "error_cant_teleport_without_vision" "Can not teleport to a location without vision. Do you want to end up inside a wall?"
         "error_cant_attack_air"              "Can not attack air units. Try using ensnare to bring down the hawks."
@@ -310,7 +311,8 @@
                 "Gamemode_notvoted_header" "Players that have not voted:"
                 "Gamemode_voted_header" "Players that have voted:"
                 "Gamemode_player_line" "{s:player}<br />
-                {s:speed} {s:pick}"
+                  {s:speed}"
+               // {s:speed} {s:pick}"
                 "Gamemode_allpick" "All pick"
                 "Gamemode_allrandom" "All random"
                 "Gamemode_samehero" "Same Hero"
@@ -331,6 +333,10 @@
                 "Gamemode_tooltip_icon_custom_fixedbush" "Fixed Bushes"
                 "Gamemode_tooltip_icon_custom_norevive" "No Revive"
                 "Gamemode_tooltip_icon_custom_noislandbosses" "No Island Mini-Bosses"
+				
+				"Gamemode_tooltip_normal_allpick" "NORMAL"
+				"Gamemode_fast_allpick" "FAST"
+				"Gamemode_slow_allpick" "SLOW"
 
 
 				//Help Menu
@@ -353,7 +359,8 @@
 It is important to help your team to gather the components required to build a fire. Alongside that it is important to set up your teams base! You can have any number of bases you choose but it is good to start with one solid one.<br><br>
 <h2>Crafting:</h2><br>
 The resources you find in world can be crafted into a number of helpful things that will propel your team into victory. You can take a look at the master crafting menu by pressing C or by clicking on the tab on the left side of the screen.<br><br>
-<h2>Combat:</h2>"
+<h2>Combat:</h2><br>
+Combat can be carried out in a wide variety of ways. Outsmarting your oppenent through use of traps or towers, or using items or spells that can slow, stun, or drain your oppenents energy."
 
 
 		"Buildings_Intro" "Building Information"
@@ -366,7 +373,9 @@ The resources you find in world can be crafted into a number of helpful things t
 • Mud Hut - Stationary energy restoration and item storage. <br><br>
 <h1>Storage:</h1>
 • Storage Hut - Private item storage. <br>
-• Smoke House - Public item storage and corpse storage. <br><br>
+• Smoke House - Public item storage and corpse storage. <br>
+• Troll Hut - Stationary energy restoration and item storage. <br>
+• Mud Hut - Stationary energy restoration and item storage. <br><br>
 <h1>Crafting:</h1>
 • Armory - Creating weapons, armor, and tools for other items. <br>
 • Tannery - Creating boots, gloves and armor. <br>
@@ -375,14 +384,14 @@ The resources you find in world can be crafted into a number of helpful things t
 • Mixing Pot - Creates potions from herbs. <br><br>
 <h1>Defensive:</h1>
 • Omnitower - Full sized powerful and customizable defense. Holds up to 3 'Offensive' items (e.g. Nets, Spears) <br>
-• Ensnare Tower - Tiny light defense with nets.
+• Ensnare Tower - Tiny light defense with nets.<br>
 • Iron Trap - A metal trap that can be placed on the ground. When stepped on it stuns the enemy and deals high damage. <br>
 • <u>Ensnare Trap</u> - A twine based trap that prevents the user from moving while dealing a small amount of damage. <br><br>
 <h1>Special:</h1>
 • Spirit Ward - Revives fallen players. <br>
 • Teleport Beacon - Teleport players over terrain. <br>
-• Hatchery - Turns hawk eggs and other items into flying pets. <br>
-• Craftmaster - Crafting inventory items if low on inventory space.<br>"
+• Hatchery - Turns hawk eggs and other items into flying pets that a beastmaster can tame. <br>
+• Craftmaster - Crafting inventory items if low on inventory space. The NPC Craftmaster is found at the center of the map just below the boss area.<br>"
 
 "Classes_Intro" "Classes Information"
 "Classes_Core" "The 'base class' is just the theoretical foundation that all classes are based on. All classes(including subclasses) have the same base armor and health/energy but different attributes per tier causing the health/energy and armor to be different. The math behind this is every class starts with 192 health/energy but it is increased by 8 per skill point in strength/intelligence respectively. Armor is increased by 1 per 10 agility and movement speed is 5 per agility but the base varies between classes and subclasses. Each class shares the same subclass system and several base skills.<br><br>
@@ -394,13 +403,56 @@ Every unsubbed class can chose to become one of three subclasses at level 6.<br>
 <h2>Gatherer</h2>
 Use: Locating items, large inventory, creating special buildings. <br><br>
 <h2>Subclasses:</h2> <br>
-<h2>Herb Master Telegatherer:</h2>  <br>
-<h2>Radar Telegatherer:</h2>  <br>
-<h2>Remote Gatherer:</h2>  <br>"
+<b>Herb Master Telegatherer:</b>  The Herbmaster Telegatherer can mix potions on-the-go and send resources straight to a friendly campfire from anywhere on the map. <br><br>
+<b>Radar Telegatherer:</b> The Radar Telegatherer can discern different resources on the minimap and send them straight to a friendly campfire from anywhere on the map.  <br><br>
+<b>Remote Gatherer:</b> What the Remote Telegatherer lacks in precision, he makes up for in raw gathering power. He can teleport nearby resources to his feet, and then send them all to a friendly campfire.  <br><br><br><br>
+
+<h2>Hunter</h2>
+Use: A troll specialized in physical combat. His strength is unrivaled by any other troll. His abilities allow him to track and ensnare enemies to prevent their escape for easy meat and xp. <br><br>
+<h2>Subclasses:</h2> <br>
+<b>Tracker:</b> The Tracker is an expert at locating, following, and locking down unsuspecting prey. He can use his several tracking skills to locate and keep tabs on unseen enemies.</h2>  <br><br>
+<b>Warrior:</b> The Warrior's axes thirst for blood. He excels at beating his foes to a bloody pulp. He is the epitome of offensive combat and is always willing to prove it.  <br><br>
+<b>Juggernaut:</b> The Juggernaut specializes in taking hits and defensive tactics, while still maintaining the ability to pack a punch. His policy on battle is that the best offense is a good defense.</h2>  <br><br><br><br>
+
+<h2>Mage</h2>
+Use: A troll specialized in offensive magic. Weak and slow but this is easily substituted by huge magical damage output. His abilities allow him to debuff and damage enemies. <br><br>
+<h2>Subclasses:</h2> <br>
+<b>Elementalist:</b> The Elementalist is a pure offensive powerhouse that focuses on calling on the destructive forces of nature itself to burn, shock and freeze foes.  <br><br>
+<b>Hypnotist:</b> The Hypnotist uses dark magic to attack the minds of his enemies and disable foes into submission while depleting their energy and will to fight. <br><br>
+<b>Dementia Master:</b> The Dementia Master does not get many new spells, instead he focuses on increasing the power of his existing spells and creating new spells from raw magical runes. <br><br><br><br>
+
+<h2>Scout</h2>
+Use: A troll specialized in finding enemies and animals. Weak but makes up for it with his ability to level fairly fast by finding things to kill. His abilities allow him to ping animals/enemies and reveal large areas. <br><br>
+<h2>Subclasses:</h2>
+<b>Observer:</b> The Observer can place wards in a large area around himself, giving vision to his allies of large sections of the map for long periods of time without much setup time, in addition to having a massive reveal.  <br><br>
+<b>Radar Scout:</b> The Radar Scout is the master of detection, able to automatically spot moving creatures that trigger his radar, as well as see otherwise invisible units.  <br><br>
+<b>Spy:</b> The Spy excels at foreseeing assaults by enemy trolls. His vision can bounce from wards to enemies, and can potentially reveal an entire island with careful ward placement.<  <br><br><br><br>
+
+<h2>Thief</h2>
+Use: A troll specialized in stealing and escaping. Weak but is very hard to kill. His abilities allow him to blink to an area he can see and go invisible, allowing him to steal items from enemy bases early-on with little risk.<br><br>
+<h2>Subclasses:</h2> <br>
+<b>Escape Artist:</b> The Escape Artist is an expert at getting in and out of anywhere, and fast. His mobility-themed skills make him very hard to catch, and very hard to get away from.  <br><br>
+<b>Contortionist:</b> The Contortionist is skilled in the art of infiltration. He can sabotage and steal from enemy bases and disappear before they even know what hit them.  <br><br>
+<b>Assassin:</b> The Assassin has one simple task: to end the lives of enemy trolls. Focused on combat, the Assassin can make an enemy's simple mistake their downfall.  <br><br><br><br>
+
+<h2>Beastmaster</h2>
+Use: A troll specialized in animal fury. Physically strong and fast. His abilities are limited but he can tame creatures to fight for him, and has a passive which slows nearby animals and deals minor damage to them. <br><br>
+<h2>Subclasses:</h2> <br>
+<b>Pack Leader:</b> The Pack Leader is a form of true dedication to one's fellow animal, able to control more than one pet while focusing on enhancing them rather than himself.  <br><br>
+<b>Chicken Form:</b> The Chicken Form Beastmaster abandons his fragile companion, instead focusing on harrowing the enemy. The Chicken does not directly attack, however several useful abilities make him very potent in combat.  <br><br>
+<b>Shapeshifter:</b> The Shapeshifter forgoes his bond with the beast and instead chooses to become one. Can shift into several forms, each with it's own set of skills to accomodate any situation.  <br><br><br><br>
+
+<h2>Priest</h2>
+Use: A troll specialized in beneficial magic. Weak and slow but this can easily be changed by buffing himself. His abilities allow him to buff, cure, and protect his allies or himself making him much stronger than his stats imply.<br><br>
+<h2>Subclasses:</h2> <br>
+<b>Booster:</b> The Booster focuses on enhancing his allies with powerful magic so they can charge into battle wieilding strength never before thought possible.  <br><br>
+<b>Master Healer:</b> The Master Healer excels at keeping his allies alive and healthy, while also managing their well-being so that they are ready for battle at any moment.  <br><br>
+<b>Shaman:</b> The Shaman utilizes spiritual magic and herbalism to support his allies. He can also leave his body for short periods of time to scout around in the spiritual realm. <br><br><br><br>"
+
 
 
 		"Creeps_Intro" "Animal Information"
-		"Creeps_Core" "Lots of animals here in this world<br><br>
+		"Creeps_Core" "There are various animals to be found, some are dangerous and some are not.<br><br>
 
 <h1>Pet Animals:</h1>
 Fawn: Can mature into Elk (Pet) -> and Adult Elk <br>
@@ -412,13 +464,12 @@ Green Fish <br>
 Elk <br>
 Hawk  <br><br>
 <h1>Hostile Animals:</h1>
-Jungle Wolf <br>
-Jungle Bear <br>
-Snake <br>
-Panther  <br><br>
+Jungle Wolfs <br>
+Jungle Bears <br>
+Lizard <br>
+Panthers  <br><br>
 <h1>Bosses:</h1>
 Mammoth<br>
-<s>Dis??</s>???
 "
     }
 }

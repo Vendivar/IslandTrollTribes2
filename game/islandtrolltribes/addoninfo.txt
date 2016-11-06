@@ -43,6 +43,12 @@
             "Key"       "B"
             "Command"   "+DropAllItems"
             "Name"      "Drop all items on the target point"
-        }
+        }        
+		"06"
+		{
+    		"Key"		"kp_enter"
+    		"Command"	"+EnterPressed"
+    		"Name"		"For Custom chat"
+		}
     }
 }
