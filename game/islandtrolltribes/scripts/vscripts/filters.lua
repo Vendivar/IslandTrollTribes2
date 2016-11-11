@@ -495,22 +495,6 @@ function ITT:FilterGold( filterTable )
 end
 
 
-------------------------------------------------------------------
--- Scan Filter
-------------------------------------------------------------------
-
-function ITT:FilterScan(event)
-    --Check if the order is the glyph type
-    if event.order_type == DOTA_UNIT_ORDER_RADAR then
-        return false
-    end
-
-    --Return true by default to keep all other orders the same
-    return true
-end
-
-------------------------------------------------------------------
-
 ORDERS = {
     [0] = "DOTA_UNIT_ORDER_NONE",
     [1] = "DOTA_UNIT_ORDER_MOVE_TO_POSITION",
