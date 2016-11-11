@@ -43,7 +43,7 @@ function ITT:OnPlayerChat(keys)
 
     local input = split(text)
     local command = table.remove(input, 1)
-    if CHEAT_CODES[command] --[[and Convars:GetBool('developer')]] then
+    if CHEAT_CODES[command] and IsInToolsMode() then
         --print('Command:',command, "Player:",playerID, "Parameters",input[2], input[3], input[4])
         CHEAT_CODES[command](playerID, unpack(input))
 
