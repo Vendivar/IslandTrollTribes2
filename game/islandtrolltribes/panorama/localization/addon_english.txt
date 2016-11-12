@@ -13,7 +13,7 @@
         "itt_game_info_resources"                   "Begin building up your tribe with <span class='gold'>buildings</span> and <span class='xp'>resources</span>.<br><br>Check the in-game <span class='gold'>recipe list</span> to see what you need to craft!<br><br>Be careful! An enemy can raid your base and steal your <span class='gold'>resources</span>!"
         "itt_game_info_items"                       "Craft <span class='gold'>weapons</span> and <span class='gold'>potions</span> to give your tribe the edge in battle!<br> Your troll can only hold so much so choose wisely!"
         "itt_game_info_tips_header"                 "Tips:"
-        "itt_game_info_tip01"                       "<li>Don't forget to use the in game crafting guide!<br><li>Hitting the 'B' button is the quick way to drop all your items on the ground.<br>"
+        "itt_game_info_tip01"                       "<li>Don't forget to use the in game crafting guide!<br>"
         "itt_game_info_tip02"                       "<li>If any of your stats hit 0, you die instantly so keep them up at all times.<br>"
         "itt_game_info_tip03"                       "<li>The Master Crafter in the center of the map can help your team build if you do not have enough inventory slots.<br>"
         "itt_game_info_tip04"                       "<li>Boats frequently travel up and down the streams. The fur trade is especially lucrative.<br>"
@@ -309,7 +309,8 @@
                 "Gamemode_confirmed" "Voted!"
                 "Gamemode_votingend" "Voting has ended. Game starts in {s:time}..."
                 "Gamemode_notvoted_header" "Players that have not voted:"
-                "Gamemode_voted_header" "Players that have voted:"
+                "Gamemode_voted_header" "Votes:"
+                "Gamemode_final_votes_header" "Final votes"
                 "Gamemode_player_line" "{s:player}<br />
                   {s:speed}"
                // {s:speed} {s:pick}"
@@ -333,7 +334,7 @@
                 "Gamemode_tooltip_icon_custom_fixedbush" "Fixed Bushes"
                 "Gamemode_tooltip_icon_custom_norevive" "No Revive"
                 "Gamemode_tooltip_icon_custom_noislandbosses" "No Island Mini-Bosses"
-				
+
 				"Gamemode_tooltip_normal_allpick" "NORMAL"
 				"Gamemode_fast_allpick" "FAST"
 				"Gamemode_slow_allpick" "SLOW"

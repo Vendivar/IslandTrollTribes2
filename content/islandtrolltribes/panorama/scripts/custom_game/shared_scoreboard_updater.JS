@@ -38,16 +38,14 @@ function _ScoreboardUpdater_UpdatePlayerPanel( scoreboardConfig, playersContaine
 	if ( playerInfo )
 	{
 		isTeammate = ( playerInfo.player_team_id == localPlayerTeamId );
-		if ( isTeammate )
-		{
-			ultStateOrTime = Game.GetPlayerUltimateStateOrTime( playerId );
-		}
 		goldValue = playerInfo.player_gold;
 
-		playerPanel.SetHasClass( "player_dead", ( playerInfo.player_respawn_seconds >= 0 ) );
+		//playerPanel.SetHasClass( "player_dead", ( playerInfo.player_respawn_seconds >= 0 ) );
 		playerPanel.SetHasClass( "local_player_teammate", isTeammate && ( playerId != Game.GetLocalPlayerID() ) );
 
-		if (playerInfo.player_team_id === localPlayerTeamId) {
+		if (isTeammate) {
+			ultStateOrTime = Game.GetPlayerUltimateStateOrTime( playerId );
+
 			var healthPercent = Entities.GetHealthPercent(playerEntityId).toFixed(0)+"%";
 			var energyPercent = (100*Entities.GetMana( playerEntityId )/Entities.GetMaxMana( playerEntityId )).toFixed(0) +"%";
 
@@ -74,7 +72,7 @@ function _ScoreboardUpdater_UpdatePlayerPanel( scoreboardConfig, playersContaine
 			}
 
 			var heatBar = playerPanel.FindChildInLayoutFile( "HeatBar" );
-			if ( heatBar && scoreboardConfig.heatInfo )
+			if ( heatBar && scoreboardConfig.heatInfo && scoreboardConfig.heatInfo[playerId] )
 			{
 				heatBar.style.visibility = "visible";
 				heatBar.style.width = Math.floor((Math.floor(scoreboardConfig.heatInfo[playerId]) / 100) * 100) + "%";
