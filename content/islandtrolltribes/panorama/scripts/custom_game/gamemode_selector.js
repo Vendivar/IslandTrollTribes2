@@ -13,33 +13,6 @@ var voted = false;
 var notvoted_players = {};
 var voted_players = {};
 
-var mock_votes = [
-  {
-    pick: 1,
-    speed: 1,
-    custom_noob: 0,
-    custom_norevive: 1,
-    custom_noislandbosses: 0,
-    custom_fixedbushes: 1
-  },
-  {
-    pick: 2,
-    speed: 3,
-    custom_noob: 1,
-    custom_norevive: 1,
-    custom_noislandbosses: 0,
-    custom_fixedbushes: 1
-  },
-  {
-    pick: 1,
-    speed: 1,
-    custom_noob: 0,
-    custom_norevive: 1,
-    custom_noislandbosses: 0,
-    custom_fixedbushes: 0
-  }
-];
-
 var custom_active = false;
 
 function onHover(cls) {
@@ -156,114 +129,6 @@ function setNotVoted() {
 var PICKS = ["","ALL PICK","ALL RANDOM","SAME HERO"];
 var SPEEDS = ["","FAST","NORMAL","SLOW"];
 
-function countVotes() {
-  var votes = {};
-  var settings;
-  for (i in voted_players) {
-    settings = voted_players[i].settings;
-    if (votes[PICKS[settings.pick]]) {
-      votes[PICKS[settings.pick]] = votes[PICKS[settings.pick]] + 1
-    }
-    else {
-      votes[PICKS[settings.pick]] = 1
-    }
-
-    if (votes[SPEEDS[settings.speed]]) {
-      votes[SPEEDS[settings.speed]] = votes[SPEEDS[settings.speed]] + 1
-    }
-    else {
-      votes[SPEEDS[settings.speed]] = 1
-    }
-
-    if (settings.custom_noob === 1) {
-      votes["custom_noob"] = votes["custom_noob"] ? votes["custom_noob"] + settings.custom_noob : 1;
-    }
-
-    if (settings.custom_norevive === 1) {
-      votes["custom_norevive"] = votes["custom_norevive"] ? votes["custom_norevive"] + settings.custom_norevive : 1;
-    }
-
-    if (settings.custom_noislandbosses === 1) {
-      votes["custom_noislandbosses"] = votes["custom_noislandbosses"] ? votes["custom_noislandbosses"] + settings.custom_noislandbosses : 1;
-    }
-
-    if (settings.custom_fixedbush === 1) {
-      votes["custom_fixedbush"] = votes["custom_fixedbush"] ? votes["custom_fixedbush"] + settings.custom_fixedbush : 1;
-    }
-  }
-
-  return votes;
-}
-
-function addVotedLine(setting, vote_count, final_votes) {
-  var panel = $.CreatePanel("Panel", $("#Gamemode_voted"), "");
-  panel.AddClass("player_line");
-
-  var header = $.CreatePanel("Panel", panel, "");
-  header.AddClass("player_line_header");
-  if (setting.slice(0,6) === "custom") {
-    var icon = $.CreatePanel("Panel", header, "");
-    icon.AddClass("Gamemode_icon");
-    icon.AddClass("Gamemode_icon_" + setting);
-
-    (function(nam, imag) {
-      imag.SetPanelEvent("onmouseover", function() {
-        $.DispatchEvent("DOTAShowTextTooltip", imag, "#Gamemode_tooltip_icon_" + nam);
-      });
-
-      imag.SetPanelEvent("onmouseout", function() {
-        $.DispatchEvent("DOTAHideTextTooltip", imag);
-      });
-    })(setting, icon);
-  }
-  else {
-    var label = $.CreatePanel("Label", header, "");
-    label.text = setting;
-  }
-
-  var bar = $.CreatePanel("Panel", panel, "");
-  bar.AddClass("vote_bar");
-  bar.style.width = ((vote_count / 16) * 100) + "%";
-
-  if (final_votes && final_votes[setting]) {
-    bar.AddClass("vote_bar_final");
-  }
-}
-
-function setVoted(final_votes) {
-  var panels = $("#Gamemode_voted").Children();
-  for (i in panels) {
-    if (i > 0) {
-      panels[i].DeleteAsync(0);
-    }
-  }
-
-  var setting;
-  var vote_count;
-  var votes = countVotes();
-  $.Msg(votes);
-  for (setting in votes) {
-    if (setting === "ALL PICK" || setting === "ALL RANDOM" || setting === "SAME HERO") {
-      vote_count = votes[setting];
-      addVotedLine(setting, vote_count, final_votes);
-    }
-  }
-
-  for (setting in votes) {
-    if (setting === "FAST" || setting === "NORMAL" || setting === "SLOW") {
-      vote_count = votes[setting];
-      addVotedLine(setting, vote_count, final_votes);
-    }
-  }
-
-  for (setting in votes) {
-    if (setting.slice(0,6) === "custom") {
-      vote_count = votes[setting];
-      addVotedLine(setting, vote_count, final_votes);
-    }
-  }
-}
-/*
 function setVoted() {
   var labels = $("#Gamemode_voted").Children();
   for (i in labels) {
@@ -314,7 +179,7 @@ function setVoted() {
     }
   }
 }
-*/
+
 function setPlayerList() {
   // Sets the initial playerlist.
   var i = 0;
@@ -327,16 +192,6 @@ function setPlayerList() {
   }
 
   setNotVoted();
-
-  /*
-  for (i in mock_votes) {
-    var mock = mock_votes[i];
-    voted_players[i] = {
-      settings: mock
-    }
-  }
-  setVoted();
-  */
 }
 
 var timeLeft = 5
@@ -381,7 +236,6 @@ function OnVoteConfirmed(vote) {
     // Voting has ended!
 
     VoteEnd();
-    $("#Gamemode_voted_header").text = $.Localize("#Gamemode_final_votes_header");
 
     // Show settings.
     var voted_settings = vote.voted_settings;
@@ -401,26 +255,14 @@ function OnVoteConfirmed(vote) {
       "noislandbosses": "custom_noislandbosses"
     }
 
-    var mapped_settings = {};
-    mapped_settings[PICKS[map[voted_settings.pick_mode]]] = 1;
-    mapped_settings[SPEEDS[map[voted_settings.game_mode]]] = 1;
-
-    for (i in custom_settings) {
-      if (custom_settings[i] === 1) {
-        mapped_settings[map[i]] = 1;
-      }
-    }
-
-    setVoted(mapped_settings);
-    //setPick(map[voted_settings.pick_mode], true);
-    //setSpeed(map[voted_settings.game_mode], true);
+    setPick(map[voted_settings.pick_mode], true);
+    setSpeed(map[voted_settings.game_mode], true);
 
     // Show custom options, regardless if they are actually set.
-    //custom_active = false;
-    //toggleCustom(true);
+    custom_active = false;
+    toggleCustom(true);
 
     // Only change what you have to.
-    /*
     var i = "";
     var str = "";
     for (var i in custom_settings) {
@@ -429,7 +271,7 @@ function OnVoteConfirmed(vote) {
         setCustomToggle(str, true);
       }
     }
-    */
+
     $.Schedule(5, function() {
       // We only have to hide the gamemodes when we need the hero selection.
       // This is also useful for testing.
