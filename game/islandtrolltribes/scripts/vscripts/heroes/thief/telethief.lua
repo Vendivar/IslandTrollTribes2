@@ -7,7 +7,7 @@ function TeleThiefStart( event )
     local manaCost = event.mana_cost
     local dur = event.duration
 
-    if string.find(target:GetUnitName(), "building_fire") then
+    if string.find(target:GetUnitName(), "fire") then
         caster.fire_location = target:GetAbsOrigin()
         caster.radius = event.radius
         caster:RemoveModifierByName(modifier)

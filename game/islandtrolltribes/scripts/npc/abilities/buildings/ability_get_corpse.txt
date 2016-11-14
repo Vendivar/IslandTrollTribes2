@@ -6,7 +6,7 @@
     "AbilityTextureName"    "ability_building_getcorpse"
     "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
     "MaxLevel"              "1"
-    "AbilityCooldown"       "1.5"
+    "AbilityCooldown"       "10.5"
     "AbilityCastRange"      "300"
 
     "precache"
@@ -39,7 +39,7 @@
                 }
             }
 
-            "ThinkInterval"  "1.0"
+            "ThinkInterval"  "8.0"
             "OnIntervalThink"
             {
                 "RunScript"

@@ -17,7 +17,7 @@ function RadarTelegather(keys)
     local target = keys.target
     local ability = keys.ability
     local duration  = ability:GetSpecialValueFor("duration")
-    if target:GetUnitName() == "npc_building_fire_basic" then
+    if target:GetUnitName() == "npc_building_fire_basic" or target:GetUnitName() == "npc_building_fire_mage" then
         keys.caster.targetFire = target
         ability:ApplyDataDrivenModifier(caster, caster, "modifier_telegather", {duration = duration})
         caster:EmitSound("Hero_ShadowShaman.Shackles.Cast")
