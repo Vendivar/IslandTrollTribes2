@@ -21,11 +21,14 @@ function InstantiateCraftingRecipe(panel) {
 
     CheckInventory(panel, resultPanel);
 
-    if (panel.entity == Players.GetPlayerHeroEntityIndex( Game.GetLocalPlayerID() )) {
-        GameUI.pushEvent("update_recipes", function() {
-            CheckInventory(panel, resultPanel);
-        });
-    }
+    GameUI.pushEvent("update_recipes_" + panel.entity, function(context) {
+        CheckInventory(context.panel, context.resultPanel);
+    }, {panel: panel, resultPanel: resultPanel});
+
+    GameUI.build_cb("update_recipes_" + panel.entity, {
+        entity: panel.entity,
+        inventory: {}
+    })();
 }
 
 function MakeItemPanel(parent, name, elements) {
@@ -91,11 +94,11 @@ function CheckInventory(panel, resultPanel)
     else
         RemoveGlowCraft(resultPanel);
 
-    if (panel.entity != Players.GetPlayerHeroEntityIndex( Game.GetLocalPlayerID() )) {
+    /*if (panel.entity != Players.GetPlayerHeroEntityIndex( Game.GetLocalPlayerID() )) {
         $.Schedule(1, function() {
             CheckInventory(panel, resultPanel)
         });
-    }
+    }*/
 }
 
 // Search for an item by name taking alias into account

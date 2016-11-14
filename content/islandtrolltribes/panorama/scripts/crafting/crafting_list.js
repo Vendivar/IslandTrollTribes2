@@ -23,7 +23,7 @@ function CreateSectionByName(values, name, bFold) {
             CreateCraftingSection(name, crafting_table.value, Root, bFold, hero)
     }
 }
-
+/*
 var inventory = {};
 function checkInventoryUnique() {
   var item, item_name, i
@@ -54,22 +54,17 @@ function checkInventoryUnique() {
 
   $.Schedule(0.2, function(){ checkInventoryUnique() });
 }
-
+*/
 (function () {
-    try {
-      CreateCraftingList() //Entry point
-    }
-    catch (e) {
-      GameUI.crafting_error = e;
-      $.Msg(e);
-      return;
-    }
+    CreateCraftingList() //Entry point
+
 
     Hide() //Initially hidden
     GameEvents.Subscribe( "dota_player_update_hero_selection", Hide);
     GameEvents.Subscribe( "dota_player_update_query_unit", Hide);
 
-    checkInventoryUnique();
+    //checkInventoryUnique();
+
     $.Msg("Done creating crafting list")
 })();
 

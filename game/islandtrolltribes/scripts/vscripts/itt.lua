@@ -363,6 +363,7 @@ function ITT:OnNPCSpawned( keys )
     local spawnedUnit = EntIndexToHScript( keys.entindex )
     --print("spawned unit: ", spawnedUnit:GetUnitName(), spawnedUnit:GetClassname(), spawnedUnit:GetName(), spawnedUnit:GetEntityIndex())
 
+    if not spawnedUnit or spawnedUnit:IsNull() or not spawnedUnit:GetUnitName() then return end
     if spawnedUnit:GetClassname() == "npc_dota_thinker" then return end
 
     if spawnedUnit:IsRealHero() then
@@ -1126,6 +1127,14 @@ end
 
 Convars:RegisterCommand("print_fix_diffs", function(cmdname) print_fix_diffs(cmdname) end, "Give any item", 0)
 Convars:RegisterCommand("print_dropped_vecs", function(cmdname) print_dropped_vecs(cmdname) end, "Give any item", 0)
+
+function call_harmful(name, cb)
+    status, err = pcall(cb);
+    if err then
+
+    end
+    return status
+end
 
 ---------------------------------------------------------------------------
 -- Game state change handler
