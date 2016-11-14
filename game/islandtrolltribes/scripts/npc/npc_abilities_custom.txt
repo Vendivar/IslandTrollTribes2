@@ -6209,7 +6209,7 @@
 			{
 				"Passive"	"1"
 				"Aura"	"modifier_animal_slow"
-				"Aura_Radius"	"400"
+				"Aura_Radius"	"900"
 				"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 				"Aura_Types"	"DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_BASIC"
 				"Aura_ApplyToCaster"	"0"

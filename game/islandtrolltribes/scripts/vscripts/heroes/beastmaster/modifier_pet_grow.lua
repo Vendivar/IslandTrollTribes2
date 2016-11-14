@@ -77,9 +77,7 @@ function modifier_pet_grow:OnDestroy()
 			
 			local playerID = hero:GetPlayerOwnerID()
 			local player = PlayerResource:GetPlayer(playerID)
-			EmitSoundOnClient("DOTA_Item.ObserverWard.Activate", player)
-            EmitSoundOnClient("Hero_Beastmaster.Call.Boar", PlayerResource:GetPlayer(hero:GetPlayerID()))
-            EmitSoundOnClient("Hero_Beastmaster.Call.Hawk", PlayerResource:GetPlayer(hero:GetPlayerID()))
+			EmitSoundOnClient("Hero_Beastmaster.Call.Hawk", player)
         end
     end
 end

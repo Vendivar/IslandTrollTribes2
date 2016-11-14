@@ -32,4 +32,5 @@ function AttractAnimal(keys)
     local position = caster:GetAbsOrigin() + RandomVector(RandomInt(0,100))
 
     target:MoveToPositionAggressive(position)
+	target:RemoveModifierByName("modifier_creeppanic")
 end
