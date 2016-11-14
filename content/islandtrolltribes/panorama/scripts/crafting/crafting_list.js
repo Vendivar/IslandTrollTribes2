@@ -56,7 +56,15 @@ function checkInventoryUnique() {
 }
 
 (function () {
-    CreateCraftingList() //Entry point
+    try {
+      CreateCraftingList() //Entry point
+    }
+    catch (e) {
+      GameUI.crafting_error = e;
+      $.Msg(e);
+      return;
+    }
+
     Hide() //Initially hidden
     GameEvents.Subscribe( "dota_player_update_hero_selection", Hide);
     GameEvents.Subscribe( "dota_player_update_query_unit", Hide);
