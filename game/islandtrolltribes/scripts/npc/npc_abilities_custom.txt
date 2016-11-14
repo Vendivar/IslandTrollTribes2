@@ -4275,6 +4275,82 @@
 	        }
 	    }
 	}
+	"ability_creep_panic"
+	{
+	    "BaseClass"             "ability_datadriven"
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	    "AbilityTextureName"    "huskar_berserkers_blood"
+	    "AbilityCastPoint"      "0.0"
+	    "AbilityCooldown"       "15"
+	    "AbilityCastRange"      "0"
+	    "AbilityManaCost"       "20"
+	    "MaxLevel"              "1"
+	
+	    "IsCastableWhileHidden"    "1"
+	
+		    "precache"
+		    {
+		        "soundfile" "soundevents/trollgeneral.vsndevts"
+	            "particles" "particles/econ/items/axe/axe_helm_shoutmask/axe_beserkers_call_owner_h_shoutmask.vpcf"
+	            "particles" "particles/econ/items/axe/axe_cinder/axe_cinder_battle_hunger_cast_c.vpcf"
+		    }
+	    "Modifiers"
+	    {
+	        "modifier_creeppanic"
+	        {
+				"EffectName"			"particles/status_fx/status_effect_beserkers_call.vpcf"
+				"EffectAttachType"		"follow_origin"
+	            "TextureName"           "huskar_berserkers_blood"
+	            "OnCreated"
+	            {
+	                "AttachEffect"
+	                {
+	                    "Target"    "TARGET"
+	                    "EffectName"    "particles/units/heroes/hero_axe/axe_beserkers_call.vpcf"
+	                    "EffectAttachType"    "follow_overhead"
+	                    "EffectLifeDurationScale"    "1"
+	                }
+					"FireSound"
+					{
+						"EffectName"    "Panic"
+						"Target"        "CASTER"
+					}
+					"FireEffect"
+					{
+						"EffectName"	"particles/econ/items/axe/axe_helm_shoutmask/axe_beserkers_call_owner_h_shoutmask.vpcf"
+						"EffectAttachType"	"attach_origin"
+						"Target"	"CASTER"
+					}
+					"FireEffect"
+					{
+						"EffectName"	"particles/econ/items/axe/axe_cinder/axe_cinder_battle_hunger_cast_c.vpcf"
+						"EffectAttachType"	"attach_origin"
+						"Target"	"CASTER"
+					}
+				}
+	            "Properties"
+	            {
+	                "MODIFIER_PROPERTY_MOVESPEED_BASE_OVERRIDE"    "%move_speed"
+	                "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"    "%attack_speed"
+	            }
+	        }
+	    }
+	
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"    "FIELD_INTEGER"
+	            "attack_speed"    "20"
+	        }
+	
+	        "02"
+	        {
+	            "var_type"    "FIELD_FLOAT"
+	            "move_speed"    "550"
+	        }
+	    }
+	}
 	"ability_ensnare"
 	{
 		"BaseClass"	"ability_datadriven"

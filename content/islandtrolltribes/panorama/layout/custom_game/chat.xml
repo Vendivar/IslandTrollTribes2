@@ -36,7 +36,7 @@
         <TextEntry
             hittest="false"
             id="GameChatEntry"
-            multiline="false"
+            multiline="true"
             textmode="normal"
             oninputsubmit="SubmitGameChat()"
             maxchars="256"

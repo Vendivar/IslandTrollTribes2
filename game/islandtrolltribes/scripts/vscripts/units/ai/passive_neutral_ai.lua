@@ -15,7 +15,7 @@ function Spawn(entityKeyValues)
 				 string.find(thisEntity:GetUnitName(), "cub") or
 				 string.find(thisEntity:GetUnitName(), "pup") then
 		thisEntity.WanderDistance = 0
-		thisEntity.FleeDistance = 500
+		thisEntity.FleeDistance = 1200
 		thisEntity.MinWaitTime = 10
 		thisEntity.MaxWaitTime = 30
 	else
@@ -44,6 +44,7 @@ function PassiveNeutralThink(thisEntity)
 	end
 
 	if thisEntity.state == "wander" then
+			thisEntity:RemoveModifierByName("modifier_creeppanic")
 		if GameRules:GetGameTime() >= thisEntity.wander_wait_time then
 			local newPosition = thisEntity:GetAbsOrigin() + RandomVector(thisEntity.WanderDistance)
       thisEntity:MoveToPosition(newPosition)
@@ -52,6 +53,10 @@ function PassiveNeutralThink(thisEntity)
 	elseif thisEntity.state == "flee" then
 			local newPosition = thisEntity:GetAbsOrigin() + RandomVector(thisEntity.FleeDistance)
 			thisEntity:MoveToPosition(newPosition)
+			
+            local item = CreateItem("item_apply_modifiers", thisEntity, thisEntity)
+            item:ApplyDataDrivenModifier(thisEntity, thisEntity, "modifier_creeppanic", {duration = 5})
+		-- I tried to make them go faster (660 speed with this modifier it is suppose to override the default movecap of 552 but it didnt work for some reason)	target:AddNewModifier(thisEntity, thisEntity, "modifier_bloodseeker_thirst_speed", { duration = 5 })
 
 		if GameRules:GetGameTime() >= thisEntity.wander_wait_time then
 			thisEntity.state = "wander"

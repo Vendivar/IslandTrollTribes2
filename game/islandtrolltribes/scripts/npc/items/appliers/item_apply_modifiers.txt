@@ -57,6 +57,45 @@
                 }                   
             }
         }
+		
+		"modifier_creeppanic"
+        {
+			"EffectName"			"particles/status_fx/status_effect_beserkers_call.vpcf"
+			"EffectAttachType"		"follow_origin"
+            "TextureName"           "huskar_berserkers_blood"
+            "OnCreated"
+            {
+                "AttachEffect"
+                {
+                    "Target"    "TARGET"
+                    "EffectName"    "particles/units/heroes/hero_axe/axe_beserkers_call.vpcf"
+                    "EffectAttachType"    "follow_overhead"
+                    "EffectLifeDurationScale"    "1"
+                }
+				"FireSound"
+				{
+					"EffectName"    "creep_panic"
+					"Target"        "CASTER"
+				}
+				"FireEffect"
+				{
+					"EffectName"	"particles/econ/items/axe/axe_helm_shoutmask/axe_beserkers_call_owner_h_shoutmask.vpcf"
+					"EffectAttachType"	"attach_origin"
+					"Target"	"CASTER"
+				}
+				"FireEffect"
+				{
+					"EffectName"	"particles/econ/items/axe/axe_cinder/axe_cinder_battle_hunger_cast_c.vpcf"
+					"EffectAttachType"	"attach_origin"
+					"Target"	"CASTER"
+				}
+			}
+            "Properties"
+            {
+                "MODIFIER_PROPERTY_MOVESPEED_BASE_OVERRIDE"    "650"
+                "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"    "30"
+            }
+        }
 
         ////////////////////////////////////////////////////////
         //                  Subclass Stats                    //
