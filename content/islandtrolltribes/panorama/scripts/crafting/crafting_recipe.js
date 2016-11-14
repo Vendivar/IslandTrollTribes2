@@ -64,7 +64,7 @@ function CheckInventory(panel, resultPanel)
         }
     };
 
-    if (panel.visible) {
+    if (panel & panel.visible) {
         var meetsAllRequirements = true;
         var childNum = panel.GetChildCount();
         for (var i = 0; i < childNum; i++) {
