@@ -5155,7 +5155,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"1"
-		"MaxStacks"		"3"
 
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -5190,7 +5189,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"1"
-		"MaxStacks"		"3"
 
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -5225,7 +5223,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"1"
-		"MaxStacks"		"3"
 
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -11403,7 +11400,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"1"
-
+	
 		"UIPickupSound"	"inv_pickup_bone"
 		"UIDropSound"	"inv_pickup_bone"
 		"WorldDropSound"	"inv_pickup_bone"

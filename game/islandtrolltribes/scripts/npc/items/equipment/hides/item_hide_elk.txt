@@ -18,12 +18,11 @@
 	"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 	"ItemKillable"	"1"
 	"ItemSellable"	"1"
-	"MaxStacks"		"3"
 
 	"UIPickupSound"	"Item.PickUpGemShop"
 	"UIDropSound"	"Item.DropGemShop"
 	"WorldDropSound"	"ui.inv_pickup_robes"
-	
+
 		"AbilitySpecial"
 	{
 		"01"
