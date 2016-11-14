@@ -56,7 +56,7 @@ function TieShopToUnit( unit )
     -- Putting some prints here to see why.
     print("---- Tradeship shop creation debug: ")
     print("---- Unitname: ", unitName)
-    print(debug.traceback())
+    --print(debug.traceback())
 
 
     -- Build the rows in a square
@@ -84,7 +84,7 @@ function TieShopToUnit( unit )
             print("Selected", selected:GetUnitName())
             print("---- Tradeship shop selection debug: ")
             print("---- Unitname: ", selected:GetUnitName())
-            print(debug.traceback())
+            --print(debug.traceback())
             container:Open(playerID)
         end,
 

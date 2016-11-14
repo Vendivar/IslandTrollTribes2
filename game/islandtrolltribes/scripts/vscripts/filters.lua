@@ -65,7 +65,7 @@ function ITT:FilterExecuteOrder( filterTable )
         Timers:RemoveTimer(unit.orderTimer)
         unit.orderTimer = nil
     end
-	
+
 	--Scan Disable
 	if order_type == DOTA_UNIT_ORDER_RADAR or order_type == DOTA_UNIT_ORDER_GLYPH then SendErrorMessage(issuer, "#error_nicetry") return end
 
@@ -80,11 +80,9 @@ function ITT:FilterExecuteOrder( filterTable )
     --            Attacks vs Flying Units         --
     ------------------------------------------------
     if targetIndex and (order_type == DOTA_UNIT_ORDER_ATTACK_TARGET or
-                        order_type == DOTA_UNIT_ORDER_ATTACK_MOVE or
-                        order_type == DOTA_UNIT_ORDER_CAST_TARGET) then
+                        order_type == DOTA_UNIT_ORDER_ATTACK_MOVE) then
         local target = EntIndexToHScript(targetIndex)
         if target and target.HasFlyMovementCapability and IsFlyingUnit(target) then
-          --  if order_type == DOTA_UNIT_ORDER_ATTACK_TARGET or order_type == DOTA_UNIT_ORDER_CAST_TARGET then
 			if order_type == DOTA_UNIT_ORDER_ATTACK_TARGET then
                 SendErrorMessage(issuer, "#error_cant_attack_air")
             end

@@ -9,7 +9,7 @@ function CreateCraftingSection (name, table, panel, bFold, entity) {
     // Create the recipes in order
     for (var i in table)
     {
-        var subtable = table[i]  
+        var subtable = table[i]
         for (var item_result in subtable)
         {
             var ingredients = []
@@ -57,7 +57,7 @@ function Crafting_OnUpdateSelectedUnits() {
     var selectedEntities = Players.GetSelectedEntities( iPlayerID );
     var mainSelected = selectedEntities[0]
     if (crafting_currentSelected == mainSelected)
-        GameUI.CustomUIConfig().HideCraftingList()
+        GameUI.CustomUIConfig().HideCraftingList();
     else
         crafting_currentSelected = mainSelected
 }

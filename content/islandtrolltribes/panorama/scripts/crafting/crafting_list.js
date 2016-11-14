@@ -24,11 +24,44 @@ function CreateSectionByName(values, name, bFold) {
     }
 }
 
+var inventory = {};
+function checkInventoryUnique() {
+  var item, item_name, i
+  var change = false;
+  for (i = 0; i < 6; i++) {
+    item = Entities.GetItemInSlot(hero, i);
+    if (item) {
+      item_name = Abilities.GetAbilityName(item);
+      if (item_name !== undefined) {
+        if (inventory[i] !== item_name) {
+          inventory[i] = item_name;
+          change = true;
+        }
+      }
+      else {
+        inventory[i] = undefined;
+      }
+    }
+    else {
+      inventory[i] = undefined;
+    }
+  }
+
+  if (change) {
+    $.Msg("Inventory changed, updating crafting.");
+    GameUI.popEvent("update_recipes");
+  }
+
+  $.Schedule(0.2, function(){ checkInventoryUnique() });
+}
+
 (function () {
     CreateCraftingList() //Entry point
     Hide() //Initially hidden
     GameEvents.Subscribe( "dota_player_update_hero_selection", Hide);
     GameEvents.Subscribe( "dota_player_update_query_unit", Hide);
+
+    checkInventoryUnique();
     $.Msg("Done creating crafting list")
 })();
 

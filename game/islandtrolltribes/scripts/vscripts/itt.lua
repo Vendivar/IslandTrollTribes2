@@ -500,12 +500,32 @@ function ITT:AdjustSkills( hero )
     PrintAbilities(hero)
 
     -- Reorder here as well, so we don't get mixed orders when spawning.
-    local info = GameRules.SpellBookInfo[hero:GetClassname()]
-    if info and info[hero:GetSubClass()] then
-        if not hero.activeBook then hero.activeBook = "book1" end
-        local book = info[hero:GetSubClass()][hero.activeBook]
-        ReorderAbilities(hero, book)
-    end
+    -- This doesn't work that well though, better to switch spellbooks manually to get the right order.
+    Timers:CreateTimer({
+        callback = function()
+            local info = GameRules.SpellBookInfo[hero:GetClassname()]
+            if info and info[hero:GetSubClass()] then
+                if not hero.activeBook then hero.activeBook = "book1" end
+
+                -- Swap into a book, and come back to where we were.
+                local swapBook = "book1"
+                if hero.activeBook == "book1" then
+                    swapBook = "book2"
+                end
+
+                local book = info[hero:GetSubClass()][swapBook]
+                ReorderAbilities(hero, book)
+
+                Timers:CreateTimer({    -- Needs to happen on the next frame.
+                    callback = function()
+                        book = info[hero:GetSubClass()][hero.activeBook]
+                        ReorderAbilities(hero, book)
+                    end
+                })
+            end
+        end
+    })
+
 
     PlayerResource:RefreshSelection()
 end
@@ -1115,11 +1135,11 @@ function ITT:OnGameRulesStateChange()
 --  print( "OnGameRulesStateChange: " .. nNewState )
 
     if nNewState == DOTA_GAMERULES_STATE_HERO_SELECTION then
+        SendToConsole("dota_camera_disable_zoom 1")
+        CustomGameEventManager:Send_ServerToAllClients("zoom", {zoom_distance = 2000});
 
         Spawns:Init()
-
-        -- Start the 1min timer for gamemode voting.
-        ITT:StartVoting()
+        Timers(function() ITT:OnItemThink() return GameRules.GameModeSettings["GAME_ITEM_TICK_TIME"] end) --item_spawning.lua
 
         ITT:ShareUnits()
 
@@ -1127,7 +1147,9 @@ function ITT:OnGameRulesStateChange()
 
         -- Initialize the roaming trading ships
         ITT:SetupShops()
-        Timers(function() ITT:OnItemThink() return GameRules.GameModeSettings["GAME_ITEM_TICK_TIME"] end) --item_spawning.lua
+
+        -- Start the 1min timer for gamemode voting.
+        ITT:StartVoting()
     elseif nNewState == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
 
         GameRules:SetHeroRespawnEnabled( false )

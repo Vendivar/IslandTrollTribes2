@@ -12,3 +12,22 @@ GameUI.DenyWheel = function() {
 GameUI.AcceptWheel = function() {
     GameUI.AcceptWheeling = 1;
 }
+
+GameUI.pushEvent = function(eventName, callback) {
+  if (!GameUI.events) {
+    GameUI.events = {};
+  }
+
+  if (!GameUI.events[eventName]) {
+    GameUI.events[eventName] = [];
+  }
+  GameUI.events[eventName].push(callback);
+}
+
+GameUI.popEvent = function(eventName) {
+  if (GameUI.events[eventName]) {
+    for (var i in GameUI.events[eventName]) {
+        GameUI.events[eventName][i]();
+    }
+  }
+}

@@ -131,7 +131,7 @@ function ShowUnitCraftingMenu(event) {
             }
         }
     } else {
-         MakeVisible(Units[unitName])
+         MakeVisible(Units[unitName]);
     }
 }
 

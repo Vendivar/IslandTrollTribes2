@@ -16,8 +16,8 @@ function Spawn(entityKeyValues)
 				 string.find(thisEntity:GetUnitName(), "pup") then
 		thisEntity.WanderDistance = 0
 		thisEntity.FleeDistance = 500
-		thisEntity.MinWaitTime = 200
-		thisEntity.MaxWaitTime = 200
+		thisEntity.MinWaitTime = 10
+		thisEntity.MaxWaitTime = 30
 	else
 		thisEntity.WanderDistance = 1000
 		thisEntity.FleeDistance = 2000
@@ -29,6 +29,7 @@ function Spawn(entityKeyValues)
 	thisEntity.hp = thisEntity:GetHealth()
 	thisEntity.spawnTime = GameRules:GetGameTime()
 	thisEntity.wander_wait_time = GameRules:GetGameTime() + 0
+	thisEntity.flee_wait_time = GameRules:GetGameTime() + 0
 	Timers:CreateTimer(PassiveNeutralThink, thisEntity)
 end
 
@@ -49,10 +50,12 @@ function PassiveNeutralThink(thisEntity)
 			thisEntity.wander_wait_time = GameRules:GetGameTime() + RandomFloat(thisEntity.MinWaitTime, thisEntity.MaxWaitTime)
 		end
 	elseif thisEntity.state == "flee" then
-		local newPosition = thisEntity:GetAbsOrigin() + RandomVector(thisEntity.FleeDistance)
-		thisEntity:MoveToPosition(newPosition)
-		thisEntity.wander_wait_time = GameRules:GetGameTime() + RandomFloat(thisEntity.MinWaitTime, thisEntity.MaxWaitTime)
-		thisEntity.state = "wander"
+			local newPosition = thisEntity:GetAbsOrigin() + RandomVector(thisEntity.FleeDistance)
+			thisEntity:MoveToPosition(newPosition)
+
+		if GameRules:GetGameTime() >= thisEntity.wander_wait_time then
+			thisEntity.state = "wander"
+		end
 	end
 
 	return 0.5

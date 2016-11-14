@@ -6,13 +6,13 @@ function OnRightButtonPressed()
     //$.Msg("OnRightButtonPressed")
 
     var iPlayerID = Players.GetLocalPlayer();
-    var mainSelected = Players.GetLocalPlayerPortraitUnit(); 
+    var mainSelected = Players.GetLocalPlayerPortraitUnit();
     var hero = Players.GetPlayerHeroEntityIndex( iPlayerID );
     var mainSelectedName = Entities.GetUnitName( mainSelected );
     var cursor = GameUI.GetCursorPosition();
     var mouseEntities = GameUI.FindScreenEntities( cursor );
     //mouseEntities = mouseEntities.filter( function(e) { return e.entityIndex != mainSelected; } )
-    
+
     var pressedShift = GameUI.IsShiftDown();
 
     // Builder Right Click
@@ -35,7 +35,7 @@ function OnRightButtonPressed()
                 ShowEffects : false
             };
 
-            Game.PrepareUnitOrders( order );                
+            Game.PrepareUnitOrders( order );
 
             return true
         }
@@ -48,7 +48,7 @@ function OnRightButtonPressed()
         else if (IsTeleportBeacon(entityIndex) && IsTeamControlled(entityIndex))
         {
             $.Msg("I think we lcicked on a tele beacon");
-            // If we rightlicked a teleport beacon... 
+            // If we rightlicked a teleport beacon...
             GameEvents.SendCustomGameEventToServer("player_teleport_beacon", { entityIndex: entityIndex });
             return true;
         }
@@ -92,10 +92,11 @@ function IsTeleportBeacon(entIndex)
     return (Entities.GetUnitName(entIndex) == "npc_building_teleport_beacon")
 }
 
+var CONSUME_EVENT = true;
+var CONTINUE_PROCESSING_EVENT = false;
+
 function ManageCraftListMouseEvents(eventName, arg){
     if ( arg === 1 && (eventName === "pressed" || eventName === "doublepressed")){
-        var CONSUME_EVENT = true;
-        var CONTINUE_PROCESSING_EVENT = false;
         var mPos = GameUI.GetCursorPosition();
         var GamePos = Game.ScreenXYToWorld(mPos[0], mPos[1]);
         if (GamePos != null && eventName === "pressed") { //User has clicked on the game area
@@ -118,15 +119,13 @@ function ZoomEvent( data )
     cameraDistance = zoom_distance
     GameUI.SetCameraDistance( zoom_distance )
 }
-   
+
 (function()
 {
     GameEvents.Subscribe ("zoom", ZoomEvent); //When the "zoom" event is detected, resolve ZoomEvent
 })();
 
 function ManageBuildHelperMouseEvents(eventName, arg) {
-    var CONSUME_EVENT = true;
-    var CONTINUE_PROCESSING_EVENT = false;
     var LEFT_CLICK = (arg === 0)
     var RIGHT_CLICK = (arg === 1)
     if ( GameUI.GetClickBehaviors() !== CLICK_BEHAVIORS.DOTA_CLICK_BEHAVIOR_NONE )
@@ -164,7 +163,7 @@ function ManageBuildHelperMouseEvents(eventName, arg) {
  //           var value = arg == 1 ? -10 : 10;
  //           ZoomEvent({zoom_distance: cameraDistance+value})
  //           $.Msg("Wheeling accepted. Current camera distance: "+cameraDistance)
-//            return CONSUME_EVENT;  
+//            return CONSUME_EVENT;
  //       } else $.Msg("Wheeling denied.")
 
     return CONTINUE_PROCESSING_EVENT;
@@ -172,7 +171,7 @@ function ManageBuildHelperMouseEvents(eventName, arg) {
 
 // Main mouse event callback
 GameUI.SetMouseCallback( function( eventName, arg ) {
-    ManageCraftListMouseEvents(eventName, arg) //CraftListener doesn't want to consume events
+    //ManageCraftListMouseEvents(eventName, arg) //CraftListener doesn't want to consume events
     return ManageBuildHelperMouseEvents( eventName, arg ) // It's up to Build helper to decide to consume the event or not.
 
 } );

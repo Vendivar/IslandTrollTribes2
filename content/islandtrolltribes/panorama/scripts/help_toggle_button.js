@@ -1,7 +1,7 @@
 var HelpButton = $.GetContextPanel()
 function ToggleHelp() {
-    $.Msg("ToggleHelp")
-    GameUI.CustomUIConfig().ToggleHelp()
+    $.Msg("ToggleHelp");
+    GameUI.CustomUIConfig().ToggleHelp();
 }
 
 (function () {

@@ -59,5 +59,6 @@
 		GameUI.SetCameraPitchMax(370);
 		GameUI.SetCameraLookAtPositionHeightOffset(230);
 	  GameUI.SetCameraTarget(1);
+		GameUI.SetCameraDistance(1134);
 	});
 })();

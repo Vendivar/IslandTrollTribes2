@@ -13,6 +13,7 @@ end
 
 -- This attempts to pick up items from any range and resolves custom stacking
 function PickupItem( unit, drop )
+    if drop:IsNull() then return end
     local item = drop:GetContainedItem()
     if not item then
         print("INVALID ITEM PICKUP, ABORT")
