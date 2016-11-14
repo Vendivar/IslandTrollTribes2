@@ -309,7 +309,8 @@
                 "Gamemode_confirmed" "Voted!"
                 "Gamemode_votingend" "Voting has ended. Game starts in {s:time}..."
                 "Gamemode_notvoted_header" "Players that have not voted:"
-                "Gamemode_voted_header" "Players that have voted:"
+                "Gamemode_voted_header" "Votes:"
+                "Gamemode_final_votes_header" "Final votes"
                 "Gamemode_player_line" "{s:player}<br />
                   {s:speed}"
                // {s:speed} {s:pick}"
@@ -333,7 +334,7 @@
                 "Gamemode_tooltip_icon_custom_fixedbush" "Fixed Bushes"
                 "Gamemode_tooltip_icon_custom_norevive" "No Revive"
                 "Gamemode_tooltip_icon_custom_noislandbosses" "No Island Mini-Bosses"
-				
+
 				"Gamemode_tooltip_normal_allpick" "NORMAL"
 				"Gamemode_fast_allpick" "FAST"
 				"Gamemode_slow_allpick" "SLOW"
