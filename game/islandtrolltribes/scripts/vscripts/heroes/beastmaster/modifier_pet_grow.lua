@@ -73,8 +73,9 @@ function modifier_pet_grow:OnDestroy()
                 newPet:AddNewModifier(hero, ability, "modifier_pet_grow", {duration=grow_duration})
             end
 
-            Notifications:Bottom(hero:GetPlayerID(), {text="#pet_grow", duration=5, style={color="#66ff33"}})
-            --EmitSoundOnClient("Hero_Ancient_Apparition.IceBlastRelease.Tick", PlayerResource:GetPlayer(hero:GetPlayerID()))
+            Notifications:Bottom(hero:GetPlayerID(), {text="#pet_grow", duration=5, style={color="#66ff33"}}
+            EmitSoundOnClient("Hero_Beastmaster.Call.Boar", PlayerResource:GetPlayer(hero:GetPlayerID())))
+            EmitSoundOnClient("Hero_Beastmaster.Call.Hawk", PlayerResource:GetPlayer(hero:GetPlayerID()))
             -- TODO: Change sound here
         end
     end
