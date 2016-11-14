@@ -122,6 +122,7 @@
         <Image style="opacity:0;" src="file://{images}/items/building_kit_tower_omni.png" />
         <Image style="opacity:0;" src="file://{images}/items/building_kit_tower_ensnare.png" />
         <Image style="opacity:0;" src="file://{images}/items/building_kit_trap_ensnare.png" />
+        <Image style="opacity:0;" src="file://{images}/items/building_kit_trap_iron.png" />
         <Image style="opacity:0;" src="file://{images}/items/building_kit_witch_doctor_hut.png" />
         <Image style="opacity:0;" src="file://{images}/items/building_kit_workshop.png" />
         <Image style="opacity:0;" src="file://{images}/items/chest_storage.png" />

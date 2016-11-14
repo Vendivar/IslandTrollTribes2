@@ -8,7 +8,7 @@
 	"AbilityChannelTime" "2.5"
 	"AbilityCooldown"	"5.0"
 	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"building_kit_trap_ensnare"
+	"AbilityTextureName"	"building_kit_trap_iron"
 	"Model"	"models/props_debris/creep_camp001j.vmdl"
 	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"ItemCost"	"10"

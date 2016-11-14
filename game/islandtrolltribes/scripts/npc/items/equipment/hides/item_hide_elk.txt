@@ -9,7 +9,8 @@
 	"ItemCost"	"18"
 	"ItemShopTags"	"consumable"
 	"ItemQuality"	"consumable"
-	"ItemShareability"	"ITEM_FULLY_SHAREABLE"
+	"ItemShareability"	"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemInitialCharges"	"1"
 	"ItemStackable"	"0"
 	"ItemPermanent"	"0"
 	"ItemDroppable"	"1"
@@ -17,8 +18,18 @@
 	"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 	"ItemKillable"	"1"
 	"ItemSellable"	"1"
+	"MaxStacks"		"3"
 
 	"UIPickupSound"	"Item.PickUpGemShop"
 	"UIDropSound"	"Item.DropGemShop"
 	"WorldDropSound"	"ui.inv_pickup_robes"
+	
+		"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"max_stacks"	"3"
+		}
+	}
 }

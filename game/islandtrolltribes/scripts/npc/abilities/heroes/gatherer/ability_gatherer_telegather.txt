@@ -67,7 +67,7 @@
 		"02"
 		{
 			"var_type"	"FIELD_FLOAT"
-			"percent_chance"	"25.0 35.0 45.0"
+			"percent_chance"	"85.0 90.0 95.0"
 		}
 
 	}
