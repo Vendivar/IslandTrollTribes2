@@ -285,7 +285,7 @@
         //  <h1>text</h1> header1, <h2>text</h2> header2
         //  <i> italic/underlined.
         //  Styles can be changed in custom_loading_screen.css
-        "loading_screen_change_text" "<h1>LATEST CHANGES</h1><i>Version 1.1</i><br>• Bug fixes.<br>• Craft menu now stays open while moving<br>• Bones now stack!<br>"
+        "loading_screen_change_text" "<h1>LATEST CHANGES</h1><i>Version 1.03</i><br>• Backend improvements for crafting <br>• Boat spawn fixes<br>• Hatchery fixes"
 
         "loading_screen_tip_0"  "Press B to drop all held items."
         "loading_screen_tip_1"  "Don't forget to check your heat, if you freeze to death you will die!"
