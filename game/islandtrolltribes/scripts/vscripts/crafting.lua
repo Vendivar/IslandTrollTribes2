@@ -69,7 +69,7 @@ function CanCombine( unit, section, recipeName )
         local items = HasEnoughInInventory(unit, itemName, num, usedInts)
         local usedInts = items[2]
         if items then
-            table.insert(result, items[1])
+            table.insert(result, {items[1], num})
         else
             return false
         end
@@ -107,16 +107,12 @@ function HasEnoughInInventory( unit, itemName, num, usedInts)
             if item then
                 local thisItemName = item:GetAbilityName()
                 if thisItemName ~= "item_slot_locked" then
-                    if thisItemName == itemName then
+                    if thisItemName == itemName or MatchesAlias(itemName, thisItemName) then
                         if item:GetCurrentCharges() == 0 then
                             currentNum = currentNum + 1
                         else
                             currentNum = currentNum + item:GetCurrentCharges()
                         end
-                        table.insert(items, item)
-                        table.insert(usedInts, i)
-                    elseif MatchesAlias(itemName, thisItemName) then
-                        currentNum = currentNum + 1
                         table.insert(items, item)
                         table.insert(usedInts, i)
                     end
@@ -126,7 +122,7 @@ function HasEnoughInInventory( unit, itemName, num, usedInts)
     end
 
     if currentNum >= num then
-        return {items,usedInts}
+        return {items, usedInts}
     else
         return false
     end
@@ -160,18 +156,25 @@ function GetAlias( itemName )
 end
 
 -- Crafting no longer removes full stacks when only 1 was used.
--- If there are recipes that use more than 1 stackable item though,
--- this proposes a problem for that and needs to be fixed.
--- Still, it's in the right direction.
+-- Also removes only the charges needed for the recipe.
 -- Fixes the Darkthistles issue #229
 
 function ClearItems( itemList )
     for k,v in pairs(itemList) do
-        for kk,vv in pairs(v) do
-            if not vv:IsNull() and vv:GetCurrentCharges() > 1 then
-                vv:SetCurrentCharges(vv:GetCurrentCharges() - 1)
+        local items = v[1]
+        local num = v[2]
+        for _,item in pairs(items) do
+            if not item:IsNull() and item:GetCurrentCharges() > 1 then
+                for i = 1, num do
+                    item:SetCurrentCharges(item:GetCurrentCharges() - 1)
+                    num = num - 1
+                    if item:GetCurrentCharges() == 0 then
+                        UTIL_Remove(item)
+                        break
+                    end
+                end
             else
-                UTIL_Remove(vv)
+                UTIL_Remove(item)
             end
         end
     end

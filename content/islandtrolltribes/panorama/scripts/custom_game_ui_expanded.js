@@ -68,9 +68,22 @@ GameUI.build_cb = function(name, context) {
       if (item) {
         item_name = Abilities.GetAbilityName(item);
         if (item_name !== undefined) {
-          if (ctx.inventory[i] !== item_name) {
-            ctx.inventory[i] = item_name;
+          if (!ctx.inventory[i]) {
+            ctx.inventory[i] = {
+              item: item_name,
+              charges: charges
+            };
             change = true;
+          }
+          else {
+            var charges = Items.GetCurrentCharges(item);
+            if (ctx.inventory[i].item !== item_name || ctx.inventory[i].charges !== charges) {
+              ctx.inventory[i] = {
+                item: item_name,
+                charges: charges
+              };
+              change = true;
+            }
           }
         }
         else {
