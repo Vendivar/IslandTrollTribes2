@@ -30,7 +30,8 @@ function AttractAnimal(keys)
     local caster = keys.caster
     local target = keys.target
     local position = caster:GetAbsOrigin() + RandomVector(RandomInt(0,100))
-
+if not string.find(target:GetUnitName(), "npc_creep_fish") and not string.find(target:GetUnitName(), "npc_creep_hawk") then
     target:MoveToPositionAggressive(position)
+	end	
 	target:RemoveModifierByName("modifier_creeppanic")
 end
