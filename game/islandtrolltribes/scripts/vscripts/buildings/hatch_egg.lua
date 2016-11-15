@@ -22,6 +22,7 @@ function HatchEgg(keys)
     end
 end
 
+local validUnitNames = { ["npc_creep_fawn"] = true, ["npc_creep_wolf_pup"] = true, ["npc_creep_bear_cub"] = true }
 function TameBird(newPet,hero)
     if not hero.pets then
         hero.pets = {}
@@ -50,7 +51,7 @@ function TameBird(newPet,hero)
             pet:SetControllableByPlayer(-1, false)
 
             -- Go back to being a not-attackable animal
-            if ability_beastmaster_tamepet:IsValidPetName( pet ) then
+            if validUnitNames[pet:GetUnitName()] then
                 TeachAbility(pet, "ability_baby_animal")
             end
 

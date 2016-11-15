@@ -1145,7 +1145,6 @@ function ITT:OnGameRulesStateChange()
 
     if nNewState == DOTA_GAMERULES_STATE_HERO_SELECTION then
         SendToConsole("dota_camera_disable_zoom 1")
-        CustomGameEventManager:Send_ServerToAllClients("zoom", {zoom_distance = 2000});
 
         Spawns:Init()
         Timers(function() ITT:OnItemThink() return GameRules.GameModeSettings["GAME_ITEM_TICK_TIME"] end) --item_spawning.lua
@@ -1224,8 +1223,8 @@ end
 ---------------------------------------------------------------------------
 function ITT:GetPlayersOnTeam( teamNumber )
     local players = {}
-    for playerID=0,DOTA_MAX_TEAM_PLAYERS do
-        if PlayerResource:GetTeam(playerID) == teamNumber then
+    for playerID = 0, DOTA_MAX_TEAM_PLAYERS do
+        if PlayerResource:IsValidPlayerID(playerID) and PlayerResource:GetTeam(playerID) == teamNumber then
             table.insert(players, playerID)
         end
     end

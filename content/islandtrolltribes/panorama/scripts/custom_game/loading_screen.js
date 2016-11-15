@@ -8,10 +8,13 @@ function ShowTips(){
     var random_number = Math.floor(Math.random() * count);
 
     // Random again if the number is the same
-    if (random_number == currentTip)
-    {
-        ShowTips()
-        return
+    var i = 0;
+    while (random_number == currentTip) {
+      random_number = Math.floor(Math.random() * count);
+      i++;
+      if (i > 50) {
+          break;
+      }
     }
 
     // accepted random localized string;
@@ -21,7 +24,7 @@ function ShowTips(){
     tip.text = str;
     tip.RemoveClass("Hide")
     tip.AddClass("Show")
-    
+
     $.Schedule(time_per_tip, function(){
         tip.RemoveClass("Show")
         tip.AddClass("Hide")
