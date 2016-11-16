@@ -164,7 +164,9 @@ function TeamUpdate(keys) {
     if (currentlySelected == class_name)
     {
         $.Msg("someone took another players selected troll")
-        $("#vid_"+currentlySelected).visible = false;
+        if ($("#vid_" + currentlySelected)) {
+            $("#vid_" + currentlySelected).visible = false;
+        }
         $("#ClassText").text = "";
         $("#SelectText").text = $.Localize("SelectText");
         currentlySelected = ""

@@ -375,9 +375,11 @@ function ITT:OnNPCSpawned( keys )
         end
     end
 
-    local fillSlots = GameRules.UnitKV[spawnedUnit:GetUnitName()]["FillSlots"]
-    if fillSlots then
-        ITT:CreateLockedSlotsForUnits(spawnedUnit, fillSlots)
+    if GameRules.UnitKV[spawnedUnit:GetUnitName()] then
+        local fillSlots = GameRules.UnitKV[spawnedUnit:GetUnitName()]["FillSlots"]
+        if fillSlots then
+            ITT:CreateLockedSlotsForUnits(spawnedUnit, fillSlots)
+        end
     end
 
 end
@@ -1206,6 +1208,17 @@ function ITT:ShareUnits()
     playersOnTeams[DOTA_TEAM_CUSTOM_2] = ITT:GetPlayersOnTeam(DOTA_TEAM_CUSTOM_2)
 
     -- Share for each player to teammates
+    for team, players in pairs(playersOnTeams) do
+        for _, player in pairs(players) do
+            for _, otherplayer in pairs(players) do
+                if player ~= otherplayer then
+                    PlayerResource:SetUnitShareMaskForPlayer(player, otherplayer, 2, true)
+                end
+            end
+        end
+    end
+
+    --[==[
     for i=0,DOTA_MAX_TEAM_PLAYERS do
         if PlayerResource:IsValidPlayerID(i) then
             local teamNumber = PlayerResource:GetTeam(i)
@@ -1216,6 +1229,7 @@ function ITT:ShareUnits()
             end
         end
     end
+    --]==]
 end
 
 ---------------------------------------------------------------------------

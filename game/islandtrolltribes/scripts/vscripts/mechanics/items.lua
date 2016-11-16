@@ -110,11 +110,12 @@ function ContainerTransferItem(container, bush, target, item)
         physicalItem:SetContainedItem(item)
 
         local speed = RandomInt(200,300)
-        item:LaunchLoot(false, speed, speed/400, target:GetAbsOrigin())
+        local floor = math.floor((speed / 400) * 100) / 100
+        item:LaunchLoot(false, speed, floor, target:GetAbsOrigin())
 
         container:RemoveItem(item) -- Removing the item here rids off an exploit when you spam right-click. Issue #253
 
-        Timers:CreateTimer(speed/400, function()
+        Timers:CreateTimer(floor, function()
             local pickedUp = PickupItem( target, physicalItem )
         end)
         return true
