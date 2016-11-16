@@ -24,9 +24,11 @@ function ITT:FilterExecuteOrder( filterTable )
 
     -- Drop orders for units that we don't want to be shared
     if unit and unit:GetClassname() ~= "player" then
-        if not IsInToolsMode() then --Don't prevent inside tools
-            local playerID = unit:GetPlayerOwnerID()
-            if issuer ~= -1 and playerID ~= -1 and issuer ~= playerID and not unit:IsSharedWithTeammates() then
+        local playerID = unit:GetPlayerOwnerID()
+        if issuer ~= -1 and playerID ~= -1 and issuer ~= playerID then
+            if IsCustomBuilding(unit) and PlayerResource:GetTeam(issuer) == PlayerResource:GetTeam(playerID) then
+                print("Allowing order to happen.")
+            elseif not unit:IsSharedWithTeammates() then
                 print("Denied order because issuer is "..issuer.." owner is "..playerID.." and the unit is not shared with teammates")
                 return CONSUME_EVENT
             end

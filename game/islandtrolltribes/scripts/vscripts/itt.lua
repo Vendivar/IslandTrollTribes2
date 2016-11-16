@@ -72,7 +72,7 @@ function ITT:InitGameMode()
     --Convars:RegisterConvar('debug_spew', tostring(DEBUG_SPEW), 'Set to 1 to start spewing debug info. Set to 0 to disable.', 0)
 
     -- Game logic timers
-    Timers(function() ITT:OnBuildingThink() return GAME_TROLL_TICK_TIME end)
+    --Timers(function() ITT:OnBuildingThink() return GAME_TROLL_TICK_TIME end)
     Timers(function() ITT:FixDropModels() return DROPMODEL_TICK_TIME end)
 
     -- Disable buybacks to stop instant respawning.
@@ -829,6 +829,10 @@ function ITT:FixDropModels(dt)
     end
 end
 
+--[=[
+
+What the hell is this for?????
+Those functions are not even declared anywhere.
 function ITT:OnBuildingThink()
 
     -- Find all buildings
@@ -852,7 +856,7 @@ function ITT:OnBuildingThink()
         end
     end
 end
-
+--]=]
 -- This function checks if you won the game or not
 function ITT:CheckWinCondition()
     if GameRules:State_Get() ~= DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then return end
