@@ -1155,12 +1155,12 @@ function ITT:OnGameRulesStateChange()
         Spawns:Init()
         Timers(function() ITT:OnItemThink() return GameRules.GameModeSettings["GAME_ITEM_TICK_TIME"] end) --item_spawning.lua
 
-        ITT:ShareUnits()
-
-        CraftMaster:Spawn()
-
         -- Initialize the roaming trading ships
         ITT:SetupShops()
+
+        -- ITT:ShareUnits()
+
+        CraftMaster:Spawn()
 
         -- Start the 1min timer for gamemode voting.
         ITT:StartVoting()
