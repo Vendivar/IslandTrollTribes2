@@ -1170,7 +1170,7 @@ function ITT:OnGameRulesStateChange()
         -- Initialize the roaming trading ships
         ITT:SetupShops()
 
-        -- ITT:ShareUnits()
+        ITT:ShareUnits()
 
         CraftMaster:Spawn()
 
