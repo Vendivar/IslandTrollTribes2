@@ -5,6 +5,7 @@
   <scripts>
     <include src="file://{resources}/scripts/custom_game/util.js" />
     <include src="file://{resources}/scripts/custom_game/chat.js" />
+    <include src="file://{resources}/scripts/custom_game/keybind_register.js" />
   </scripts>
   <Panel class="MainPanel" hittest="false">
     <Panel id="GameChat" hittestchildren="false" hittest="false">

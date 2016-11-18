@@ -56,6 +56,9 @@ function checkInventoryUnique() {
 }
 */
 (function () {
+    GameUI.events = {};
+    GameUI.event_callBacks = {};
+
     CreateCraftingList() //Entry point
 
 
