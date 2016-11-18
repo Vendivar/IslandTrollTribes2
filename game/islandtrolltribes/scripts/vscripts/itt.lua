@@ -956,10 +956,22 @@ function ITT:OnPlayerConnectFull(keys)
                 EmitSoundOnClient("SubSelectReady", PlayerResource:GetPlayer(playerID))
             end
         end
+
+        -- Reload Chat and Crafting
+        CustomUI.DynamicHud_Create(playerID, "reconnected_chat", "file://{resources}/layout/custom_game/chat_content.xml", {})
+        CustomUI.DynamicHud_Create(playerID, "reconnected_crafting_button", "file://{resources}/layout/custom_game/crafting/crafting_button.xml", {})
+        CustomUI.DynamicHud_Create(playerID, "reconnected_crafting_list", "file://{resources}/layout/custom_game/crafting/crafting_list.xml", {})
+        CustomUI.DynamicHud_Create(playerID, "reconnected_crafting_building", "file://{resources}/layout/custom_game/crafting/crafting_building.xml", {})
     end
 
     if GameRules:GetGameTime() > GAME_PERIOD_GRACE and not ply:GetAssignedHero() then
         CustomGameEventManager:Send_ServerToPlayer(ply, "player_force_pick", {})
+
+        -- Reload Chat and Crafting
+        CustomUI.DynamicHud_Create(playerID, "reconnected_chat", "file://{resources}/layout/custom_game/chat_content.xml", {})
+        CustomUI.DynamicHud_Create(playerID, "reconnected_crafting_button", "file://{resources}/layout/custom_game/crafting/crafting_button.xml", {})
+        CustomUI.DynamicHud_Create(playerID, "reconnected_crafting_list", "file://{resources}/layout/custom_game/crafting/crafting_list.xml", {})
+        CustomUI.DynamicHud_Create(playerID, "reconnected_crafting_building", "file://{resources}/layout/custom_game/crafting/crafting_building.xml", {})
     end
 end
 
