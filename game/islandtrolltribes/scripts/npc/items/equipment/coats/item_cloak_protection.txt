@@ -25,104 +25,81 @@
 	"WorldDropSound"	"ui.inv_pickup_leather"
 	"Modifiers"
 	{
-		"modifier_cloakprotect_passive"
+		"shield_modifier"
 		{
-			"Passive"	"1"
-			"IsHidden"	"0"
-			"OnAttacked"
+			"Passive" "1"
+			"IsHidden" "1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS" "%magic_resistance"
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
+                "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"      "%bonus_damage"
+			}
+			"OnCreated"
 			{
 				"Random"
 				{
-					"Chance"	"%chance"
+					"Chance" "%block_chance"
 					"OnSuccess"
 					{
 						"ApplyModifier"
 						{
-							"ModifierName"	"modifier_cloakprotect"
-							"Target"	"CASTER"
-							"Duration"	"%protect_duration"
+							"Target" "CASTER"
+							"ModifierName" "block_modifier"
 						}
-
-						"FireSound"
-						{
-							"EffectName"	"Roshan.Slam"
-							"Target"	"CASTER"
-						}
-
 					}
-
+				}
+			}
+			"OnAttacked"
+			{
+				"Random"
+				{
+					"Chance" "%block_chance"
+					"OnSuccess"
+					{
+						"ApplyModifier"
+						{
+							"Target" "CASTER"
+							"ModifierName" "block_modifier"
+						}
+						
+					}
 					"OnFailure"
 					{
 						"RemoveModifier"
 						{
-							"Target"	"CASTER"
-							"ModifierName"	"modifier_item_vanguard"
+							"Target" "CASTER"
+							"ModifierName" "block_modifier"
 						}
-
-						"RunScript"
-						{
-							"ScriptFile"	"items/protection.lua"
-							"Function"	"CloakProtectFail"
-							"Attacker"	"ATTACKER"
-						}
-
-						"ApplyModifier"
-						{
-							"Target"	"CASTER"
-							"ModifierName"	"modifier_item_vanguard"
-						}
-
 					}
-
 				}
-
 			}
+		}
 
-			"OnCreated"
+		"block_modifier"
+		{
+			"IsBuff" "1"
+			"IsHidden" "1"
+			"Properties"
 			{
-				"ApplyModifier"
-				{
-					"Target"	"CASTER"
-					"ModifierName"	"modifier_item_vanguard"
-				}
-
+				"MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK" "%damage_blocked"
 			}
-
-			"OnDestroy"
+			"OnAttacked"
 			{
 				"RemoveModifier"
 				{
-					"Target"	"CASTER"
-					"ModifierName"	"modifier_item_vanguard"
+					"Target" "CASTER"
+					"ModifierName" "block_modifier"
 				}
-
-			}
-
-		}
-
-		"modifier_cloakprotect"
-		{
-			"IsDebuff"	"0"
-			"TextureName"	"cloak_protection"
-			"OnCreated"
-			{
-				"AttachEffect"
+				
+				"FireSound"
 				{
+					"EffectName"	"Roshan.Slam"
 					"Target"	"CASTER"
-					"EffectName"	"particles/units/heroes/hero_omniknight/omniknight_guardian_angel_ally.vpcf"
-					"EffectAttachType"	"follow_origin"
 				}
-
 			}
-
-			"Properties"
-			{
-				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
-				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%bonus_damage"
-			}
-
 		}
-
+	
 	}
 
 	"AbilitySpecial"
@@ -148,25 +125,25 @@
 		"04"
 		{
 			"var_type"	"FIELD_INTEGER"
-			"protect_duration"	"4"
+			"protect_duration"	"1"
 		}
 
 		"05"
 		{
 			"var_type"	"FIELD_INTEGER"
-			"block_chance"	"100"
+			"block_chance"	"20"
 		}
 
 		"06"
 		{
 			"var_type"	"FIELD_INTEGER"
-			"block_damage_melee"	"10000"
+			"damage_blocked"	"100"
 		}
 
 		"07"
 		{
 			"var_type"	"FIELD_INTEGER"
-			"block_damage_ranged"	"10000"
+			"magic_resistance"	"10"
 		}
 
 	}

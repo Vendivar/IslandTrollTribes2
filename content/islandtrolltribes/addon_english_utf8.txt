@@ -501,7 +501,7 @@
 "DOTA_Tooltip_Ability_ability_beastmaster_spiritofthebeast"		"Spirit of the Beast"
 "DOTA_Tooltip_Ability_ability_beastmaster_spiritofthebeast_bonus"		"%BONUS PER LEVEL:"
 "DOTA_Tooltip_Ability_ability_beastmaster_spiritofthebeast_chance"		"%CHANCE:"
-"DOTA_Tooltip_Ability_ability_beastmaster_spiritofthebeast_Description"		"PASSIVE - Deals 2 damage each time an enemy attacks the Beastmaster slowing their movement speed by 40% and attack speed by 5% (only affects animals)\nAlso gives an EXTRA chance per level to find baby animals. Also animals are attracted to the Beastmaster. Effect increases per level."
+"DOTA_Tooltip_Ability_ability_beastmaster_spiritofthebeast_Description"		"PASSIVE - Deals 2 damage each time an enemy attacks the Beastmaster slowing their movement speed by 40% and attack speed by 5% (only affects animals)\nAlso gives an EXTRA chance per level to find baby animals. Also elk are attracted to the Beastmaster. Effect increases per level."
 "DOTA_Tooltip_modifier_spawn_chance"		"Spawn Chance"
 "DOTA_Tooltip_modifier_spawn_chance_Description"		""
 
@@ -2315,6 +2315,8 @@
 
 "DOTA_Tooltip_ability_item_bone"		"Bone"
 "DOTA_Tooltip_ability_item_bone_bonus_damage"		"+$damage"
+"DOTA_Tooltip_ability_item_bone_max_stacks"                                       "MAX STACKS:"
+		
 "DOTA_Tooltip_ability_item_bone_Description"		"The bone of a slain animal. While brittle, it can still be fashioned into equipment or weapons."
 "DOTA_Tooltip_ability_item_bone_Lore"		"Before you know it, you'll be worshipping ancient monoliths."
 "DOTA_Tooltip_ability_item_bone_Note0"		"-Blowgun Ammunition-"
@@ -2538,8 +2540,6 @@
 "DOTA_Tooltip_ability_item_cloak_protection"		"Cloak of Protection"
 "DOTA_Tooltip_ability_item_cloak_protection_armor"		"+$armor"
 "DOTA_Tooltip_ability_item_cloak_protection_block_chance"		"BLOCK CHANCE:"
-"DOTA_Tooltip_ability_item_cloak_protection_block_damage_melee"		"BLOCK DAMAGE MELEE:"
-"DOTA_Tooltip_ability_item_cloak_protection_block_damage_ranged"		"BLOCK DAMAGE RANGED:"
 "DOTA_Tooltip_ability_item_cloak_protection_bonus_damage"		"+$damage"
 "DOTA_Tooltip_ability_item_cloak_protection_chance"		"CHANCE:"
 "DOTA_Tooltip_ability_item_cloak_protection_Description"		"PASSIVE: On being hit there is a chance that the wearer will block the damage and receive bonus damage and armor for 4 seconds.\n\nHidden magics within the cloak sometimes absorb all damage of a strike."
@@ -2549,7 +2549,8 @@
 "DOTA_Tooltip_modifier_cloakprotect_Description"		""
 "DOTA_Tooltip_modifier_cloakprotect_passive"		"Cloak of Protection Passive"
 "DOTA_Tooltip_modifier_cloakprotect_passive_Description"		""
-
+"DOTA_Tooltip_ability_item_cloak_protection_damage_blocked"                       "DAMAGE BLOCKED:"
+"DOTA_Tooltip_ability_item_cloak_protection_magic_resistance"                     "MAGIC RESISTANCE:"
 
 
 "DOTA_Tooltip_cloak_fire_aura_aura"		"Cloak of Fire Aura"
@@ -3479,7 +3480,7 @@
 "DOTA_Tooltip_Ability_ability_enemy_target_Description"		"Allows the autocasted use of certain items placed in the Omnitower's inventory. All items used this way have a range of 575. Items stacked in a tower and consumed this way retain their cooldown."
 "DOTA_Tooltip_ability_ability_ensnare"		"Traps the target with a net, rendering it incapable of moving."
 "DOTA_Tooltip_ability_ability_ensnaretrap_ensnare"		"Ensnare"
-"DOTA_Tooltip_ability_ability_ensnaretrap_ensnare_Description"		"Encase the enemy in vines! Doing small damage over time and rooting them in place!
+"DOTA_Tooltip_ability_ability_ensnaretrap_ensnare_Description"		"Encase the enemy in vines! Doing small damage over time and rooting them in place!"
 "DOTA_Tooltip_ability_ability_ensnaretrap_ensnare_duration_animal"		"DURATION ANIMAL:"
 "DOTA_Tooltip_ability_ability_ensnaretrap_ensnare_duration_hero"		"HERO DURATION:"
 "DOTA_Tooltip_Ability_ability_get_corpse"		"Get Corpse"
