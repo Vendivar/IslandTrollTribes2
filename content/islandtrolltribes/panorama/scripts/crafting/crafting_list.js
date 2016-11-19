@@ -56,6 +56,7 @@ function checkInventoryUnique() {
 }
 */
 (function () {
+    // Used to reset the checks.
     GameUI.events = {};
     GameUI.event_callBacks = {};
 

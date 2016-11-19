@@ -9,7 +9,7 @@ function ITT:PrecacheSubclassModels(context)
         if subTable['defaults'] then
             for k,v in pairs(subTable['defaults']) do
                 PrecacheModel(v, context)
-            end 
+            end
         end
 
         if subTable['Wearables'] then
@@ -26,7 +26,7 @@ end
 function ITT:SetDefaultCosmetics(hero)
     local defaultWearables = GameRules.ClassInfo['SubClasses'][hero:GetHeroClass()]['defaults']
     local hideSlots = GameRules.ClassInfo['SubClasses'][hero:GetHeroClass()]['hide']
-    
+
     if IsDedicatedServer() then
         RemoveAllWearables(hero) --Could be replaced by adding "DisableWearables" "1" on every hero
         hero.wearables = {}
@@ -102,7 +102,7 @@ function ITT:OnSubclassChange(event)
     print("Current class:",class)
 
     -- Reset subclass (just for testing purposes)
-    if hero:HasSubClass() then
+    if hero:HasSubClass() and IsInToolsMode() then
         ITT:ResetSubclass(playerID)
     end
 
@@ -237,7 +237,7 @@ function ITT:ResetSubclass(playerID)
         hero.subclassModifierName = nil
     end
 
-    if not defaultWearables or not currentWearables then 
+    if not defaultWearables or not currentWearables then
         return
     end
 

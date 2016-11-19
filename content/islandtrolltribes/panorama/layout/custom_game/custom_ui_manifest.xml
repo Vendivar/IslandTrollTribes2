@@ -31,7 +31,6 @@
         <CustomUIElement type="EndScreen" 			layoutfile="file://{resources}/layout/custom_game/multiteam_end_screen.xml" />
 
         <CustomUIElement type="HeroSelection"       layoutfile="file://{resources}/layout/custom_game/gamemode_selector.xml" />
-        <CustomUIElement type="HeroSelection"       layoutfile="file://{resources}/layout/custom_game/keybind_register.xml" />
 
         <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/death_notification.xml" />
         <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/subclass_picker.xml" />

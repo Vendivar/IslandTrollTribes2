@@ -9,7 +9,6 @@
         <include src="file://{resources}/scripts/crafting/crafting_recipe.js" />
         <include src="file://{resources}/scripts/crafting/crafting_section.js" />
         <include src="file://{resources}/scripts/crafting/crafting_list.js" />
-        <include src="file://{resources}/scripts/custom_game_ui_expanded.js" />
     </scripts>
     <snippets>
         <snippet name="Crafting_Section">
