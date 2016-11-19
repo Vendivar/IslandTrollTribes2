@@ -8,7 +8,7 @@ function CheckPosition( event )
 	local caster = event.caster
 	local point = event.target_points[1]
 	local distance = (point - caster:GetAbsOrigin()):Length2D()
-    if not BuildingHelper:ValidPosition(2, point, event) and distance > 500 then
+    if not BuildingHelper:ValidPosition(2, point, event) or distance > 500 then
         caster:Interrupt()
         SendErrorMessage(caster:GetPlayerOwnerID(), "#error_invalid_build_position")
     end
@@ -23,8 +23,8 @@ function MakeClayExplosion(keys)
         local item = CreateItem("item_clay_living", nil, nil)
         local drop = CreateItemOnPositionSync( origin, item )
         item:LaunchLoot(false, 200, 0.75, pos_launch)
-        print(dieRoll)
     end
+		print("Die roll for clay explosion: "..dieRoll)
 end
 
 function PlaceClay( keys )
@@ -34,7 +34,7 @@ function PlaceClay( keys )
 	local ability_level = ability:GetLevel() - 1
 
 	local placeDistance = (target_point - caster:GetAbsOrigin()):Length2D()
-	if placeDistance > ability:GetCastRange() then
+	if CheckPosition(keys) then
 		caster:Interrupt()
 		SendErrorMessage(caster:GetPlayerOwnerID(), "#error_invalid_build_position")
 		return
@@ -62,7 +62,14 @@ function PlaceClay( keys )
 	table.insert(caster.living_clay_table, living_clay)
 	-- If we exceeded the maximum number of mines then kill the oldest one
 	if caster.living_clay_count > max_mines then
-		caster.living_clay_table[1]:ForceKill(true)
+		for K,V in pairs(caster.living_clay_table) do
+			if V:IsNull() then
+				table.remove(caster.living_clay_table, K)
+			else
+				KillLivingClay({caster = caster, living_clay = V})
+				break
+			end
+		end
 	end
 	-- Increase caster stack count of the caster modifier and add it to the caster if it doesnt exist
 	if not caster:HasModifier(modifier_caster) then
@@ -165,7 +172,7 @@ function LivingClayTracker( trackingInfo )
 	end
 
 	--check if the mine has an expiration time
-	if trackingInfo.expiration_time then	
+	if trackingInfo.expiration_time then
 		if GameRules:GetGameTime() >= trackingInfo.expiration_time then
 			KillLivingClay(trackingInfo)
 			return nil
