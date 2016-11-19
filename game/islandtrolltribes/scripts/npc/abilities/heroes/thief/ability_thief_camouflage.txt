@@ -6,7 +6,7 @@
     "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
     "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_TREE | DOTA_UNIT_TARGET_BASIC"
     "MaxLevel"  "1"
-    "AbilityCooldown"           "0"
+    "AbilityCooldown"           "5.5"
     "AbilityCastPoint"          "0.1"
     "AbilityManaCost"           "20"
     "AbilityCastRange"          "150"
@@ -89,6 +89,16 @@
                     "Damage"       "2"
                 }
             }
+			
+			 "OnAttack"
+            {
+                "RemoveModifier"
+				{
+					"Target"	"CASTER"
+					"ModifierName"	"modifier_thief_camouflage"
+				}
+            }
+
 
             "States"
             {

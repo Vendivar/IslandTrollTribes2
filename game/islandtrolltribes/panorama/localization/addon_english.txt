@@ -197,7 +197,7 @@
         "invalid_sniff_target"                  "Must target a corpse."
         "invalid_priest_target"                 "Can't use on self or priests."
         "invalid_hypnosis"                       "Can't use on units that are not hypnotized."
-		"NoobTimeOver" 							"Noob time is now over! There is no longer auto respawning. You most revive via a spirit ward!"
+		"NoobTimeOver" 							"Noob time is now over! Respawning is now disabled! You must revive with a spirit ward!"
         "item_bush_thistle"                                          "Thistle Shrub"
         "item_bush_mushroom"                                         "Mushroom Colony"
         "item_bush_herb"                                             "Haisetsu Bush"
