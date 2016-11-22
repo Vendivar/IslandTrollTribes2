@@ -3,18 +3,12 @@
 	_class = "CParticleSystemDefinition"
 	m_bShouldHitboxesFallbackToRenderBounds = false
 	m_nMaxParticles = 640
-	m_flCullRadius = -1.000000
-	m_flConstantRadius = 7.000000
-	m_ConstantColor =
-	[
-		0,
-		170,
-		255,
-		255,
-	]
+	m_flCullRadius = -1.0
+	m_flConstantRadius = 7.0
+	m_ConstantColor = [ 0, 170, 255, 255 ]
 	m_bShouldSort = false
 	m_bScreenSpaceEffect = true
-	m_Renderers =
+	m_Renderers = 
 	[
 		{
 			_class = "C_OP_RenderSprites"
@@ -22,23 +16,23 @@
 			m_hTexture = resource:"materials/effects/fog_tutorial_m2.vtex"
 		},
 	]
-	m_Operators =
+	m_Operators = 
 	[
 		{
 			_class = "C_OP_Decay"
 		},
 		{
 			_class = "C_OP_RemapCPtoScalar"
-			m_flOutputMax = 0.700000
+			m_flOutputMax = 0.7
 			m_nFieldOutput = 16
 			m_nCPInput = 1
-			m_flInputMax = 0.000000
+			m_flInputMax = 0.0
 		},
 		{
 			_class = "C_OP_RemapCPtoScalar"
 			m_bScaleInitialRange = true
-			m_flOutputMax = 1.250000
-			m_flOutputMin = 0.850000
+			m_flOutputMax = 1.25
+			m_flOutputMin = 0.85
 			m_nCPInput = 1
 		},
 		{
@@ -49,20 +43,20 @@
 		},
 		{
 			_class = "C_OP_InterpolateRadius"
-			m_flEndScale = 4.000000
-			m_flBias = 0.150000
+			m_flEndScale = 4.0
+			m_flBias = 0.15
 		},
 	]
-	m_Initializers =
+	m_Initializers = 
 	[
 		{
 			_class = "C_INIT_RandomAlpha"
 		},
 		{
 			_class = "C_INIT_CreateAlongPath"
-			m_fMaxDistance = 16.000000
+			m_fMaxDistance = 16.0
 			m_bUseRandomCPs = true
-			m_PathParams =
+			m_PathParams = 
 			{
 				m_nStartControlPointNumber = 2
 				m_nEndControlPointNumber = 7
@@ -76,20 +70,20 @@
 		},
 		{
 			_class = "C_INIT_RandomRadius"
-			m_flRadiusMin = 2.000000
-			m_flRadiusMax = 6.000000
-			m_flRadiusRandExponent = 1.250000
+			m_flRadiusMin = 2.0
+			m_flRadiusMax = 8.0
+			m_flRadiusRandExponent = 1.25
 		},
 		{
 			_class = "C_INIT_RandomLifeTime"
-			m_fLifetimeMin = 1.000000
-			m_fLifetimeMax = 2.000000
+			m_fLifetimeMin = 1.0
+			m_fLifetimeMax = 2.0
 		},
 		{
 			_class = "C_INIT_RandomRotation"
 		},
 	]
-	m_Emitters =
+	m_Emitters = 
 	[
 		{
 			_class = "C_OP_MaintainEmitter"

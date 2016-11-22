@@ -18,7 +18,7 @@
 
 	"FillSlots"	"3"
 	
-	"ArmorPhysical"	"5"
+	"ArmorPhysical"	"1"
 	"MagicalResistance"	"0"
 	"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
 	"BountyXP"	"0"
@@ -27,7 +27,7 @@
 	"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 	"MovementSpeed"	"0"
 	"MovementTurnRate"	"0"
-	"StatusHealth"	"275"
+	"StatusHealth"	"220"
 	"StatusHealthRegen"	"0"
 	"StatusMana"	"1"
 	"StatusManaRegen"	"0"

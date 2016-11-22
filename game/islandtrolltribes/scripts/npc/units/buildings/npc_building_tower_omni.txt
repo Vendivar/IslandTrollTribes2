@@ -25,7 +25,7 @@
 	"Ability10"	"ability_tower"
 	"Ability11"	"ability_cancel_building"
 	
-	"ArmorPhysical"	"5"
+	"ArmorPhysical"	"2.5"
 	"MagicalResistance"	"0"
 	"AttackCapabilities"	"DOTA_UNIT_CAP_RANGED_ATTACK"
 	"BountyXP"	"0"

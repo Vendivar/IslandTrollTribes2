@@ -5,7 +5,7 @@
     {
         "addon_game_name"   "Island Troll Tribes"
         "addonname"         "Island Troll Tribes"
-        "addonname"                                 "Welcome to: Island Troll Tribes Reborn!"
+        "addonname"                                 "Welcome to: Island Troll Tribes 2!"
         "itt_game_info_header_objective"            "Objective:"
         "itt_brief_description"                     "Survive, build, and slay your enemies! Be the first team to out survive any other team by any means necessary!"
         "itt_game_info_header_how_to_play"          "How To Play:"
@@ -285,7 +285,17 @@
         //  <h1>text</h1> header1, <h2>text</h2> header2
         //  <i> italic/underlined.
         //  Styles can be changed in custom_loading_screen.css
-        "loading_screen_change_text" "<h1>LATEST CHANGES</h1><i>Version 1.03</i><br>• Backend improvements for crafting <br>• Boat spawn fixes<br>• Hatchery fixes"
+        "loading_screen_change_text" "<h1>LATEST CHANGES</h1><i>Version 1.04</i><br>
+Backend:<br>
+-Possible fix for loss of shared unit control<br><br>
+UI: <br>
+-Possible fix for chat and crafting after reconnection<br>
+-Tooltip Fixes<br><br>
+Abilities:<br>
+-Fix for camo abuse<br><br>
+Items: <br>
+-Fix for cloak of protection being too strong<br>
+-Scroll of Skeleton recipie fixed<br>"
 
         "loading_screen_tip_0"  "Press B to drop all held items."
         "loading_screen_tip_1"  "Don't forget to check your heat, if you freeze to death you will die!"

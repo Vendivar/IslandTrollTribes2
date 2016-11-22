@@ -148,12 +148,12 @@
         "02"
         {
             "var_type"                 "FIELD_FLOAT"
-            "slowdot_per_lez_level"    "25"
+            "slowdot_per_lez_level"    "30"
         }
         "03"
         {
             "var_type"                 "FIELD_FLOAT"
-            "stun_per_nel_level"        "1"
+            "stun_per_nel_level"        "1.5"
         }
     }
 

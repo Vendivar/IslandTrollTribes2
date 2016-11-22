@@ -103,6 +103,12 @@
                     "Damage"    "3"
                     "Type"  "DAMAGE_TYPE_MAGICAL"
                 }
+				
+				"RunScript"
+				{
+					"ScriptFile"    "items/potion_disease.lua"
+					"Function"      "DiseaseFoodThinker"
+				}
             }
         }
 
@@ -122,6 +128,12 @@
                     "Damage"    "1"
                     "Target"    "TARGET"
                 }
+				
+				"RunScript"
+				{
+					"ScriptFile"    "items/potion_disease.lua"
+					"Function"      "DiseaseFoodThinker"
+				}
             }
 
             "OnCreated"
@@ -188,6 +200,12 @@
                     "Damage"    "1"
                     "Target"    "TARGET"
                 }
+				
+				"RunScript"
+				{
+					"ScriptFile"    "items/potion_disease.lua"
+					"Function"      "DiseaseFoodThinker"
+				}
             }
 
             "OnCreated"

@@ -92,7 +92,7 @@
 			}
             "Properties"
             {
-                "MODIFIER_PROPERTY_MOVESPEED_BASE_OVERRIDE"    "650"
+                "MODIFIER_PROPERTY_MOVESPEED_BASE_OVERRIDE"    "522"
                 "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"    "30"
             }
         }

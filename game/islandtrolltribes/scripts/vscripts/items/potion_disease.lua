@@ -21,7 +21,7 @@ function PotionDiseaseUse(keys)
 		local item = target:GetItemInSlot(i)
 		if item then
 			local itemName = item:GetAbilityName()
-			if itemName == "item_meat_cooked" or itemName == "item_meat_smoked" then
+			if itemName == "item_meat_cooked" then
 				local charges = item:GetCurrentCharges()
 				UTIL_Remove(item)
 				local newItem = target:AddItem(CreateItem("item_meat_diseased", target, target))
@@ -53,4 +53,22 @@ function Remove( event )
     if charges == 0 then
     	item:GetContainer():RemoveSelf()
     end
-end
+end]
+
+
+function DiseaseFoodThinker ( event )
+	-- Change meat to diseased
+		for i=0,5 do
+			local item = target:GetItemInSlot(i)
+			if item then
+				local itemName = item:GetAbilityName()
+				if itemName == "item_meat_cooked" then
+					local charges = item:GetCurrentCharges()
+					UTIL_Remove(item)
+					local newItem = target:AddItem(CreateItem("item_meat_diseased", target, target))
+					newItem:SetCurrentCharges(charges)
+				end
+			end
+		end
+	end
+	

@@ -126,6 +126,68 @@
 
 	}
 
+	"OnChannelInterrupted"
+	{
+		"ActOnTargets"
+		{
+			"Target"
+			{
+				"Center"	"CASTER"
+				"Radius"	"%max_range"
+				"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_CREEP"
+			}
+			"Action"
+			{
+				"RemoveModifier"
+				{
+					"ModifierName"	"modifier_pulled"
+					"Target"		"TARGET"
+				}
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/mage/electro_magnet.lua"
+					"Function"		"ElectroMagnetEnd"
+					"Target"		"TARGET"
+
+				}
+			}
+		}
+
+	}
+	
+	"OnChannelFinish"
+	{
+		"ActOnTargets"
+		{
+			"Target"
+			{
+				"Center"	"CASTER"
+				"Radius"	"%max_range"
+				"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_CREEP"
+			}
+			"Action"
+			{
+				"RemoveModifier"
+				{
+					"ModifierName"	"modifier_pulled"
+					"Target"		"TARGET"
+				}
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/mage/electro_magnet.lua"
+					"Function"		"ElectroMagnetEnd"
+					"Target"		"TARGET"
+
+				}
+			}
+		}
+
+	}
+	
+	
+	
 	"Modifiers"
 	{
 		"modifier_pulled"

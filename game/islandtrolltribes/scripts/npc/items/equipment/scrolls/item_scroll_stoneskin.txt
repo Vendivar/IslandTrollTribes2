@@ -130,7 +130,7 @@
 		"02"
 		{
 			"var_type"	"FIELD_INTEGER"
-			"armor_bonus"	"15"
+			"armor_bonus"	"9"
 		}
 
 		"03"
@@ -142,7 +142,7 @@
 		"04"
 		{
 			"var_type"	"FIELD_FLOAT"
-			"slow_debuff_duration"	"2.0"
+			"slow_debuff_duration"	"1.0"
 		}
 
 	}

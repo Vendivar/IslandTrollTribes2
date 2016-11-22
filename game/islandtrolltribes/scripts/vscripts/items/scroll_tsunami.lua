@@ -35,7 +35,12 @@ end
 function TsunamiDestroyFire(keys)
 	local target = keys.target
 	local targetName = target:GetUnitName()
-
+	local caster = keys.caster
+	
+    if string.find(target:GetUnitName(), "npc_building_") then
+        DamageBuilding(target, 25, nil, caster)
+    end
+	
 	if (string.match(targetName,"_fire")) then
 		target:ForceKill(true)
 	end

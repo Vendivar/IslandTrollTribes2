@@ -94,7 +94,7 @@
 				}
 	            "Properties"
 	            {
-	                "MODIFIER_PROPERTY_MOVESPEED_BASE_OVERRIDE"    "650"
+	                "MODIFIER_PROPERTY_MOVESPEED_BASE_OVERRIDE"    "522"
 	                "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"    "30"
 	            }
 	        }
@@ -5768,6 +5768,12 @@
 	                    "Damage"    "3"
 	                    "Type"  "DAMAGE_TYPE_MAGICAL"
 	                }
+					
+					"RunScript"
+					{
+						"ScriptFile"    "items/potion_disease.lua"
+						"Function"      "DiseaseFoodThinker"
+					}
 	            }
 	        }
 	
@@ -5787,6 +5793,12 @@
 	                    "Damage"    "1"
 	                    "Target"    "TARGET"
 	                }
+					
+					"RunScript"
+					{
+						"ScriptFile"    "items/potion_disease.lua"
+						"Function"      "DiseaseFoodThinker"
+					}
 	            }
 	
 	            "OnCreated"
@@ -5853,6 +5865,12 @@
 	                    "Damage"    "1"
 	                    "Target"    "TARGET"
 	                }
+					
+					"RunScript"
+					{
+						"ScriptFile"    "items/potion_disease.lua"
+						"Function"      "DiseaseFoodThinker"
+					}
 	            }
 	
 	            "OnCreated"
@@ -7975,7 +7993,7 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"armor_bonus"	"15"
+				"armor_bonus"	"9"
 			}
 	
 			"03"
@@ -7987,7 +8005,7 @@
 			"04"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"slow_debuff_duration"	"2.0"
+				"slow_debuff_duration"	"1.0"
 			}
 	
 		}

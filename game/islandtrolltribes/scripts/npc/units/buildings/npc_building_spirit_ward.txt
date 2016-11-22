@@ -13,7 +13,7 @@
 	"Ability10"	"ability_building"
 	"Ability11"	"ability_cancel_building"
 	
-	"ArmorPhysical"	"5"
+	"ArmorPhysical"	"3"
 	"MagicalResistance"	"0"
 	"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
 	"BountyXP"	"0"
