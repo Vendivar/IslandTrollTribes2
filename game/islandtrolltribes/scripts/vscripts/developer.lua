@@ -74,7 +74,7 @@ function ITT:SetNickname( playerID, ...)
     ITT.player_nicknames[playerID] = name
     print("Player #"..playerID.." changed their nickname to "..name)
 
-    playername = PlayerResource:GetPlayerName(playerID)
+    local playername = PlayerResource:GetPlayerName(playerID)
     self.Chat:SystemMsg(playername.." has just changed their nickname to "..name)
 end
 
