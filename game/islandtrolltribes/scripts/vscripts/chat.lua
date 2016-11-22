@@ -29,7 +29,6 @@ function Chat:OnSay(args)
 
     if isTeam == 1 then
         CustomGameEventManager:Send_ServerToTeam(PlayerResource:GetTeam(id), "custom_chat_say", {
-            hero = PlayerResource:GetSelectedHeroName(id),
             color = self.teamColors[PlayerResource:GetTeam(id)],
             player = id,
             name = nickname,
@@ -38,7 +37,6 @@ function Chat:OnSay(args)
         })
     else
         CustomGameEventManager:Send_ServerToAllClients("custom_chat_say", {
-            hero = PlayerResource:GetSelectedHeroName(id),
             color = self.teamColors[PlayerResource:GetTeam(id)],
             player = id,
             name = nickname,
@@ -46,4 +44,12 @@ function Chat:OnSay(args)
             isTeam = false
         })
     end
+end
+
+function Chat:SystemMsg(msg)
+    CustomGameEventManager:Send_ServerToAllClients("custom_chat_say", {
+        color = {255, 120, 0},
+        message = msg,
+        isTeam = false
+    })
 end

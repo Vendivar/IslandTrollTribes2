@@ -6,6 +6,7 @@
         function HideGameChat() {
             if (GameUI.GameChat) {
                 GameUI.GameChat.AddClass("ChatHidden");
+                GameUI.GameChat.ScrollToBottom();
             }
 
             $("#GameChatEntry").DeleteAsync(0);
@@ -32,7 +33,7 @@
         }
     </script>
     <Panel hittest="false" class="GameChatEntryWrapper">
-        <Label hittest="false" id="GameChatEntryType" text="(Team)" />
+        <Label hittest="false" id="GameChatEntryType" text="(Team) " />
         <TextEntry
             hittest="false"
             id="GameChatEntry"

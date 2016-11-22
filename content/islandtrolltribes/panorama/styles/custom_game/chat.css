@@ -8,21 +8,25 @@
 
 #GameChat
 {
-    margin-top: 250px;
+    margin-bottom: 50px;
     align: center center;
     width: 25%;
-    height: 12%;
+    height: 40%;
     flow-children: down;
 }
 
 #GameChatContent
 {
     width: 100%;
-    height: fill-parent-flow(1.0);
-    flow-children: down;
+    height: 90%;
+    flow-children: up;
     padding: 2px;
-    overflow: squish clip;
-    transform: scaleY(-1.0);
+    padding-bottom: 45px;
+    overflow: clip scroll;
+}
+
+.ChatHidden {
+    overflow: clip clip;
 }
 
 #GameChatEntryContainer
@@ -68,12 +72,12 @@
     flow-children: right;
     transition-property: opacity, transform, position;
     transition-duration: 0.2s;
-    transform: translateX(-100%) scaleY(-1.0);
+    transform: translateX(-100%);
 }
 
 .GameChatLineAppear
 {
-    transform: translateX(0px) scaleY(-1.0);
+    transform: translateX(0px);
 }
 
 .GameChatLineHidden

@@ -8,9 +8,9 @@
     <include src="file://{resources}/scripts/custom_game/keybind_register.js" />
   </scripts>
   <Panel class="MainPanel" hittest="false">
-    <Panel id="GameChat" hittestchildren="false" hittest="false">
+    <Panel id="GameChat" hittestChildren="false" hittest="false">
         <Panel id="GameChatContent" class="ChatHidden" hittest="false"/>
-        <Panel id="GameChatEntryContainer"/>
+        <Panel id="GameChatEntryContainer" hittest="false"/>
     </Panel>
   </Panel>
 </root>

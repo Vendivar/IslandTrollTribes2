@@ -1,8 +1,8 @@
 
-GameUI.GameChat = $("#GameChat");
+GameUI.GameChat = $("#GameChatContent");
 GameUI.ChatActivated = false;
 
-function AddChatLine(hero, playerName, color, message, isTeamChat) {
+function AddChatLine(playerName, steamid, color, message, isTeamChat) {
     var line = $.CreatePanel("Panel", $("#GameChatContent"), "");
     var last = $("#GameChatContent").GetChild(0);
     line.AddClass("GameChatLine");
@@ -12,17 +12,18 @@ function AddChatLine(hero, playerName, color, message, isTeamChat) {
         $("#GameChatContent").MoveChildBefore(line, last);
     }
 
-    var img = $.CreatePanel("DOTAHeroImage", line, "");
-    img.AddClass("GameChatImage");
-    img.heroimagestyle = "icon";
-    img.heroname = hero;
+    if (steamid !== "") {
+      var img = $.CreatePanel("DOTAAvatarImage", line, "");
+      img.AddClass("GameChatImage");
+      img.steamid = steamid
+    }
 
     var label = $.CreatePanel("Label", line, "");
     label.SetDialogVariable("name", playerName);
     label.SetDialogVariable("color", color);
     label.SetDialogVariable("message", message);
     if (isTeamChat) {
-        label.SetDialogVariable("type","(TEAM)");
+        label.SetDialogVariable("type","(TEAM) ");
     }
     else {
         label.SetDialogVariable("type","");
@@ -30,7 +31,9 @@ function AddChatLine(hero, playerName, color, message, isTeamChat) {
     label.html = true;
     label.text = $.Localize("#ChatLine", label);
 
-    $("#GameChatContent").ScrollToBottom();
+    $.Schedule(0.1, function() {
+      $("#GameChatContent").ScrollToBottom();
+    });
 
     $.Schedule(5, function(){
         line.AddClass("GameChatLineHidden");
@@ -41,12 +44,22 @@ function OnCustomChatSay(args) {
     var color = LuaColor(args.color);
     $.Msg("Message arrived!");
 
-    var name = Players.GetPlayerName(args.player);
-    if (args.name.length > 0) {
-        name = args.name;
+    var name;
+    var steamid;
+    if (args.player !== undefined) {
+      name = Players.GetPlayerName(args.player);
+      if (args.name.length > 0) {
+          name = args.name;
+      }
+
+      steamid = Game.GetPlayerInfo(args.player).player_steamid;
+    }
+    else {
+      name = "(SYSTEM)"
+      steamid = ""
     }
 
-    AddChatLine(args.hero, name, color, args.message, args.isTeam);
+    AddChatLine(name, steamid, color, args.message, args.isTeam);
 }
 
 (function() {
@@ -57,14 +70,15 @@ function OnCustomChatSay(args) {
     GameUI.ChatActivated = false;
     $("#GameChatEntryContainer").BLoadLayout("file://{resources}/layout/custom_game/chat.xml", true, true);
     $("#GameChatEntry").SetFocus();
-    $("#GameChat").RemoveClass("ChatHidden");
+    $("#GameChatContent").RemoveClass("ChatHidden");
+    $("#GameChatContent").ScrollToBottom();
     if (GameUI.IsShiftDown()) {
       GameUI.teamChat = false;
-      $("#GameChatEntryType").text = "(ALL)";
+      $("#GameChatEntryType").text = "(ALL) ";
     }
     else {
       GameUI.teamChat = true;
-      $("#GameChatEntryType").text = "(TEAM)";
+      $("#GameChatEntryType").text = "(TEAM) ";
     }
   });
 })();
