@@ -1974,6 +1974,7 @@
 		"StatusManaRegen"	"0.0"
 		"VisionDaytimeRange"	"1800"
 		"VisionNighttimeRange"	"1800"
+		"BountyXP"	"50"
 	}
 	"npc_creep_bear_jungle"
 	{
@@ -2419,6 +2420,7 @@
 		"StatusManaRegen"	"0.0"
 		"VisionDaytimeRange"	"1800"
 		"VisionNighttimeRange"	"1800"
+		"BountyXP"	"50"
 	}
 	"npc_creep_fish"
 	{
@@ -3122,6 +3124,7 @@
 		"StatusManaRegen"	"0.0"
 		"VisionDaytimeRange"	"1800"
 		"VisionNighttimeRange"	"1800"
+		"BountyXP"	"50"
 	}
 	"dummy_caster"
 	{

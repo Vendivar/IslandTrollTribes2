@@ -36,4 +36,5 @@
 	"StatusManaRegen"	"0.0"
 	"VisionDaytimeRange"	"1800"
 	"VisionNighttimeRange"	"1800"
+	"BountyXP"	"50"
 }

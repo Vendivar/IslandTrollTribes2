@@ -37,3 +37,10 @@ function MolotovDamage(event)
         ApplyDamage({victim = target, attacker = caster, damage = damage, damage_type = DAMAGE_TYPE_MAGICAL, })
     end
 end
+
+
+function MolotovSoundStop( event )
+	local caster = event.caster
+	
+	target:StopSound("Hero_Juggernaut.HealingWard.Loop")
+end
