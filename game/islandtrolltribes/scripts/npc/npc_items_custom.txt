@@ -7053,7 +7053,7 @@
 	                "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "-10"
 	            }
 				
-				"OnDestroyed"
+				"OnDestroy"
 				{
 					"RunScript"
 	                {
