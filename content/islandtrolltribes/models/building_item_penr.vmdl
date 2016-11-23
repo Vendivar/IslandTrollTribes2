@@ -61,8 +61,8 @@
 								m_sSurfaceProperty = "porcelain"
 								m_nGroupId = 0
 								m_sBoneName = "Cube"
-								m_vMinBounds = [ -142.581604, -136.576492, 4.328228 ]
-								m_vMaxBounds = [ 138.080032, 142.581604, 216.411331 ]
+								m_vMinBounds = [ -12.586, -170.0, 1.53739 ]
+								m_vMaxBounds = [ 134.546005, -100.0, 76.869003 ]
 								m_bTranslationOnly = false
 								m_cRenderColor = [ 0, 0, 0, 0 ]
 							},
