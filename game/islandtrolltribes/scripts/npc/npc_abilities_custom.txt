@@ -3639,6 +3639,39 @@
 		}
 	
 	}
+	"ability_magefire_smoke"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"	"ability_priest_theglow"
+		"MaxLevel"	"1"
+	    "precache"
+	    {
+	    	"particle" "particles/custom/mage_fire.vpcf"
+	    }
+		
+		"Modifiers"
+		{
+	
+	
+			"modifier_magefiresmoke"
+			{
+				"IsHidden"	"1"
+				"TextureName"	"ability_priest_theglow"
+				"IsPurgable"	"0"
+				"OnCreated"
+				{
+	                "AttachEffect"
+	                {
+	                    "EffectName"    "particles/custom/mage_fire.vpcf"
+	                    "Target"        "TARGET"
+	                    "EffectAttachType"      "attach_origin"
+	                }
+	            }
+			}
+	
+		}
+	}
 	"ability_pack_up"
 	{
 	    "BaseClass"             "ability_datadriven"
@@ -4200,6 +4233,8 @@
 	    "AbilityTextureName"    "ability_building_makeboots"
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	    "MaxLevel"              "1"
+		"AbilitySharedWithTeammates" "1"
+	
 	
 	    "OnSpellStart"
 	    {
@@ -4217,6 +4252,7 @@
 	    "AbilityTextureName"    "ability_building_makecloak"
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	    "MaxLevel"              "1"
+	    "AbilitySharedWithTeammates" "1"
 	
 	    "OnSpellStart"
 	    {
@@ -4234,6 +4270,7 @@
 	    "AbilityTextureName"    "ability_building_makegloves"
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	    "MaxLevel"              "1"
+	    "AbilitySharedWithTeammates" "1"
 	
 	    "OnSpellStart"
 	    {
@@ -18783,6 +18820,111 @@
 				"slow_percent"	"-50"
 			}
 	
+		}
+	
+	}
+	"ability_beehivelesser"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_ALL"
+		"AbilityUnitTargetFlag"	"DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
+		"AbilityUnitTargetExcludeFlag"	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		"MaxLevel"	"1"
+		"Modifiers"
+		{
+			"modifier_lesserbeehivebeesaura"
+			{
+				"Passive"	"1"
+				"IsHidden"	"0"
+				"Aura"	"modifier_lesserbeehivebeesaura2"
+				"Aura_Radius"	"400"
+				"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Aura_Types"	"DOTA_UNIT_TARGET_ALL"
+				"Aura_Flags"	"DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
+				"Aura_ExcludeFlag"	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+				
+				"States"
+				{
+					"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+				"OnCreated"
+				{
+					"AttachEffect"
+	    	        {
+	    			    "EffectName"			"particles/custom/bee_swarm_debuff_lesser.vpcf"
+	    			    "Target"            	"CASTER"
+	    			    "EffectAttachType"      "follow_origin"
+	    	        }
+				}
+			}
+			
+			"modifier_lesserbeehivebeesaura2"
+		    {
+		        "IsDebuff"  "1"
+				"IsHidden"	"1"
+	            "IsPurgable"       "1"
+			    "Duration"	"10.0"
+				"Attributes" "MODIFIER_ATTRIBUTE_MULTIPLE"
+				
+				
+				"OnCreated"
+				{
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_lesserbeehivebees"
+						"Target"		"TARGET"
+						"Duration"		"10"
+					}
+				}
+			}
+						
+			"modifier_lesserbeehivebees"
+		    {
+		        "IsDebuff"  "1"
+				"IsHidden"	"0"
+	            "IsPurgable"       "1"
+			    "Duration"	"10.0"
+				"Attributes" "MODIFIER_ATTRIBUTE_MULTIPLE"
+				
+		        "OnCreated"
+		        {
+			        "AttachEffect"
+	    	        {
+	    			    "EffectName"			"particles/custom/bee_swarm_debuff.vpcf"
+	    			    "Target"            	"TARGET"
+	    			    "EffectAttachType"      "follow_origin"
+	    	        }
+				"FireEffect"
+				{
+					"EffectName" "particles/custom/bee_swarm_throw_pull_child.vpcf"
+					"EffectAttachType" "follow_origin"
+					"Target" "CASTER"
+					"ControlPointEntities"
+					{
+						"CASTER" "follow_origin"
+						"TARGET" "follow_origin"
+					}
+				}
+	    	        "FireSound"
+	    		    {
+	    			    "EffectName"	"item.beeswarm"
+	    			    "Target"	"TARGET"
+	    		    }
+		        }
+		        "ThinkInterval" "1.0"
+	            "OnIntervalThink"
+	            {
+	                "Damage"
+	                {
+	                    "Target"    "TARGET"
+	                    "Damage"    "5"
+	                    "Type"  "DAMAGE_TYPE_MAGICAL"
+	                }
+	            }
+	
+		    }
 		}
 	
 	}

@@ -2,8 +2,8 @@
 -- Order Filter
 ------------------------------------------------------------------
 
-ITEM_TRANSFER_RANGE = 300
-DEFAULT_TRANSFER_RANGE = 200
+ITEM_TRANSFER_RANGE = 350
+DEFAULT_TRANSFER_RANGE = 250
 
 function ITT:FilterExecuteOrder( filterTable )
     local units = filterTable["units"]
@@ -202,7 +202,7 @@ function ITT:FilterExecuteOrder( filterTable )
         local distance = (origin - point):Length2D()
         if distance <= ITEM_TRANSFER_RANGE then
             unit:DropItemAtPositionImmediate(item, origin)
-            DropLaunch(unit, item, 0.5, point)
+            DropLaunch(unit, item, 0.35, point)
             unit:Stop()
         else
             -- For buildings, Best Effort drop
@@ -227,7 +227,7 @@ function ITT:FilterExecuteOrder( filterTable )
                 unit.orderTimer = Timers:CreateTimer(function()
                     if IsValidAlive(unit) and (unit:GetAbsOrigin() - point):Length2D() <= ITEM_TRANSFER_RANGE+25 then
                         unit:DropItemAtPositionImmediate(item, unit:GetAbsOrigin())
-                        DropLaunch(unit, item, 0.5, point)
+                        DropLaunch(unit, item, 0.35, point)
                         print("unit:DropItemAtPositionImmediate(item, point)")
                         return false
                     end

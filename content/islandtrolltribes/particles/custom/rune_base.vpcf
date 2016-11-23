@@ -2,7 +2,7 @@
 {
 	_class = "CParticleSystemDefinition"
 	m_bShouldHitboxesFallbackToRenderBounds = false
-	m_nMaxParticles = 16
+	m_nMaxParticles = 300
 	m_flConstantRadius = 50.0
 	m_flConstantLifespan = -1.0
 	m_ConstantColor = [ 242, 98, 255, 255 ]
@@ -14,13 +14,23 @@
 			_class = "C_OP_RenderTrails"
 			m_nSequenceCombineMode = "SEQUENCE_COMBINE_MODE_USE_SEQUENCE_0"
 			m_bAdditive = true
-			m_flOverbrightFactor = 5.0
 			m_hTexture = resource:"materials/particle/barb.vtex"
 			m_flMaxLength = 260.0
 			m_flRadiusScale = 0.5
 			m_flFinalTextureScaleV = 2.0
-			m_bIgnoreDT = true
+			m_flRadiusTaper = 0.8
+			m_bPerVertexLighting = true
+			m_flSelfIllumAmount = 1.0
+			m_bGammaCorrectVertexColors = false
+			m_bSaturateColorPreAlphaBlend = false
+			m_flSequence0RGBWeight = 0.0
+			m_flSequence0AlphaWeight = 0.0
+			m_flSequence1RGBWeight = 0.0
+			m_flSequence1AlphaWeight = 0.0
 			m_flAddSelfAmount = 1.0
+			m_flRefractAmount = 2.0
+			m_bBlendFramesSeq0 = false
+			m_flSourceAlphaValueToMapToOne = 0.0
 		},
 	]
 	m_Operators = 
@@ -50,6 +60,18 @@
 			m_nOpEndCapState = 1
 			m_flEndTime = 99999999999.0
 			m_bDisableOperator = true
+		},
+		{
+			_class = "C_OP_MovementPlaceOnGround"
+			m_flOffset = 15.0
+			m_flMaxTraceLength = 768.0
+			m_flTolerance = 240.0
+			m_flTraceOffset = 384.0
+			m_CollisionGroupName = "DEBRIS"
+			m_nRefCP1 = 0
+			m_nRefCP2 = 1
+			m_bIncludeWater = true
+			m_bSetNormal = true
 		},
 		{
 			_class = "C_OP_PositionLock"
@@ -84,13 +106,14 @@
 		},
 		{
 			_class = "C_INIT_RandomRadius"
-			m_flRadiusMin = 60.0
-			m_flRadiusMax = 60.0
+			m_flRadiusMin = 50.0
+			m_flRadiusMax = 50.0
 		},
 		{
 			_class = "C_INIT_PositionOffset"
-			m_OffsetMin = [ 0.0, 0.0, 15.0 ]
-			m_OffsetMax = [ 0.0, 0.0, 15.0 ]
+			m_OffsetMin = [ 0.0, 0.0, 45.0 ]
+			m_OffsetMax = [ 0.0, 0.0, 45.0 ]
+			m_bDisableOperator = true
 		},
 		{
 			_class = "C_INIT_RandomAlpha"
@@ -106,7 +129,10 @@
 		{
 			_class = "C_INIT_RandomColor"
 			m_ColorMin = [ 85, 0, 0, 255 ]
-			m_ColorMax = [ 170, 0, 0, 255 ]
+			m_ColorMax = [ 128, 0, 0, 255 ]
+			m_flUpdateThreshold = 0.0
+			m_nTintBlendMode = "PARTICLEBLEND_DEFAULT"
+			m_flLightAmplification = 1000.0
 		},
 	]
 	m_Emitters = 

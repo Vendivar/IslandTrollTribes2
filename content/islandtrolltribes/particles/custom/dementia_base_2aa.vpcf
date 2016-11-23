@@ -11,7 +11,6 @@
 		{
 			_class = "C_OP_RenderRopes"
 			m_nSequenceCombineMode = "SEQUENCE_COMBINE_MODE_USE_SEQUENCE_0"
-			m_bAdditive = true
 			m_nOrientationType = 3
 			m_hTexture = resource:"materials/particle/beam_edge_04.vtex"
 			m_flRadiusScale = 0.5
@@ -19,6 +18,12 @@
 			m_flTextureVScrollRate = -9.999996
 			m_nMaxTesselation = 3
 			m_nMinTesselation = 3
+			m_bPerVertexLighting = true
+			m_flSelfIllumAmount = 20.0
+			m_flSourceAlphaValueToMapToOne = 0.0
+			m_bGammaCorrectVertexColors = false
+			m_bSaturateColorPreAlphaBlend = false
+			m_bLightenMode = true
 		},
 	]
 	m_Operators = 
@@ -37,7 +42,7 @@
 		{
 			_class = "C_OP_MovementPlaceOnGround"
 			m_nRefCP1 = 0
-			m_flOffset = 18.0
+			m_flOffset = 20.0
 			m_bIncludeWater = true
 			m_flMaxTraceLength = 768.0
 			m_flTraceOffset = 384.0
@@ -75,6 +80,7 @@
 			m_bIncludeWater = true
 			m_flMaxTraceLength = 768.0
 			m_CollisionGroupName = "DEBRIS"
+			m_bDisableOperator = true
 		},
 		{
 			_class = "C_INIT_RemapParticleCountToScalar"
@@ -92,6 +98,14 @@
 			m_flOutputMax = 0.0
 			m_bActiveRange = true
 			m_bScaleInitialRange = true
+		},
+		{
+			_class = "C_INIT_RandomColor"
+			m_ColorMin = [ 139, 0, 0, 255 ]
+			m_ColorMax = [ 139, 0, 0, 255 ]
+			m_flUpdateThreshold = 0.0
+			m_nFieldOutput = 22
+			m_flLightAmplification = 500.0
 		},
 	]
 	m_Emitters = 

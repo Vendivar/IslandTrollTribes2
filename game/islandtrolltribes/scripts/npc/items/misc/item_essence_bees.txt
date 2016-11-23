@@ -1,7 +1,7 @@
 "item_essence_bees"
 {
 	"ID"	"1097"
-	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"essence_bees"
 	"Model"	"models/heroes/oracle/weapon.vmdl"
@@ -23,21 +23,37 @@
 	"UIPickupSound"	"Item.PickUpGemShop"
 	"UIDropSound"	"Item.DropGemShop"
 	"WorldDropSound"	"Item.DropGemWorld"
-	"OnSpellStart"
-	{
-		"SpendCharge"
-		{
-		}
+	
+	"OnAbilityPhaseStart"	
+    {
+        "RunScript"
+        {
+            "ScriptFile"    "items/essence_bees.lua"
+            "Function"      "CheckPosition"
+            "Target"        "POINT"
+        }
+    }
 
-		"SpawnUnit"
-		{
-			"Target"	"POINT"
-			"UnitName"	"npc_beehive_lesser"
-			"UnitCount"	"1"
-		}
+    "OnSpellStart"
+    {
+        "RunScript"
+        {
+            "ScriptFile"    "items/essence_bees.lua"
+            "Function"      "MakeLesserBeehives"
+            "Target"        "POINT"
+        }
+		
 
-	}
-
+        "FireSound"
+        {
+            "EffectName"    "item.gobees"
+            "Target"        "CASTER"
+        }
+        
+        "SpendCharge" 
+        {
+        }
+    }
 	"AbilitySpecial"
 	{
 		"01"

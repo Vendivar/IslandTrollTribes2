@@ -1,0 +1,33 @@
+"ability_magefire_smoke"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"	"ability_priest_theglow"
+	"MaxLevel"	"1"
+    "precache"
+    {
+    	"particle" "particles/custom/mage_fire.vpcf"
+    }
+	
+	"Modifiers"
+	{
+
+
+		"modifier_magefiresmoke"
+		{
+			"IsHidden"	"1"
+			"TextureName"	"ability_priest_theglow"
+			"IsPurgable"	"0"
+			"OnCreated"
+			{
+                "AttachEffect"
+                {
+                    "EffectName"    "particles/custom/mage_fire.vpcf"
+                    "Target"        "TARGET"
+                    "EffectAttachType"      "attach_origin"
+                }
+            }
+		}
+
+	}
+}

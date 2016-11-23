@@ -4,7 +4,7 @@
 	m_bShouldHitboxesFallbackToRenderBounds = false
 	m_nMaxParticles = 1
 	m_bShouldSort = false
-	m_Renderers =
+	m_Renderers = 
 	[
 		{
 			_class = "C_OP_RenderSprites"
@@ -12,14 +12,14 @@
 			m_hTexture = resource:"materials/particle/particle_glow_04.vtex"
 		},
 	]
-	m_Operators =
+	m_Operators = 
 	[
 		{
 			_class = "C_OP_BasicMovement"
 		},
 		{
 			_class = "C_OP_MaxVelocity"
-			m_flMaxVelocity = 600.000000
+			m_flMaxVelocity = 600.0
 			m_nOverrideCP = 2
 		},
 		{
@@ -28,64 +28,57 @@
 		},
 		{
 			_class = "C_OP_SetChildControlPoints"
-			m_nFirstControlPoint = 3
-			m_bSetOrientation = true
+			m_nNumControlPoints = 5
 		},
 	]
-	m_Initializers =
+	m_Initializers = 
 	[
 		{
 			_class = "C_INIT_CreateWithinSphere"
 		},
 		{
 			_class = "C_INIT_RandomLifeTime"
+			m_fLifetimeMin = 3.0
+			m_fLifetimeMax = 3.0
 		},
 		{
 			_class = "C_INIT_RandomRadius"
-			m_flRadiusMax = 100.000000
-			m_flRadiusMin = 100.000000
+			m_flRadiusMax = 100.0
+			m_flRadiusMin = 100.0
 		},
 		{
 			_class = "C_INIT_RandomColor"
-			m_ColorMin =
-			[
-				68,
-				143,
-				45,
-				255,
-			]
-			m_ColorMax =
-			[
-				11,
-				152,
-				0,
-				255,
-			]
+			m_ColorMin = [ 68, 143, 45, 255 ]
+			m_ColorMax = [ 11, 152, 0, 255 ]
+		},
+		{
+			_class = "C_INIT_LifespanFromVelocity"
 		},
 	]
-	m_Emitters =
+	m_Emitters = 
 	[
 		{
 			_class = "C_OP_InstantaneousEmitter"
 			m_nParticlesToEmit = 1
 		},
 	]
-	m_ForceGenerators =
+	m_ForceGenerators = 
 	[
 		{
 			_class = "C_OP_AttractToControlPoint"
 			m_nControlPointNumber = 1
-			m_fFalloffPower = 0.000000
-			m_fForceAmount = 1000000.000000
+			m_fFalloffPower = 0.0
+			m_fForceAmount = 1000000.0
 		},
 	]
-	m_Children =
+	m_Children = 
 	[
 		{
 			m_ChildRef = resource:"particles/custom/bee_swarm_throw_child.vpcf"
+			m_bDisableChild = true
 		},
 		{
-			m_ChildRef = resource:"particles/units/heroes/hero_bristleback/bristleback_viscous_nasal_goo_drips.vpcf"
+			m_ChildRef = resource:"particles/custom/bee_goo.vpcf"
 		},
 	]
 }

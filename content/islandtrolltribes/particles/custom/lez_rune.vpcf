@@ -2,22 +2,23 @@
 {
 	_class = "CParticleSystemDefinition"
 	m_bShouldHitboxesFallbackToRenderBounds = false
-	m_nMaxParticles = 1
+	m_nMaxParticles = 200
 	m_BoundingBoxMin = [ -20.0, -20.0, -20.0 ]
 	m_BoundingBoxMax = [ 20.0, 20.0, 20.0 ]
 	m_flCullRadius = 40.0
-	m_ConstantColor = [ 255, 255, 255, 164 ]
+	m_ConstantColor = [ 34, 139, 34, 255 ]
 	m_Renderers = 
 	[
 		{
 			_class = "C_OP_RenderSprites"
 			m_nSequenceCombineMode = "SEQUENCE_COMBINE_MODE_USE_SEQUENCE_0"
-			m_bAdditive = true
 			m_bDisableZBuffering = true
 			m_flOverbrightFactor = 2.0
 			m_hTexture = resource:"materials/particle/glyph_2.vtex"
 			m_nOrientationControlPoint = 0
 			m_nOrientationType = 2
+			m_flSelfIllumAmount = 1.0
+			m_bBlendFramesSeq0 = false
 		},
 	]
 	m_Operators = 
@@ -48,6 +49,15 @@
 		{
 			_class = "C_OP_InstantaneousEmitter"
 			m_nParticlesToEmit = 1
+		},
+	]
+	m_Children = 
+	[
+		{
+			m_ChildRef = resource:"particles/custom/rune_lez_effect_1.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/custom/rune_lez_effect_2.vpcf"
 		},
 	]
 }

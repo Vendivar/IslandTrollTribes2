@@ -56,7 +56,10 @@ function Remove( event )
 end]
 
 
-function DiseaseFoodThinker ( event )
+function DiseaseFoodThinker (keys)
+
+	local target = keys.target
+	
 	-- Change meat to diseased
 		for i=0,5 do
 			local item = target:GetItemInSlot(i)
@@ -71,4 +74,6 @@ function DiseaseFoodThinker ( event )
 			end
 		end
 	end
+	
+	
 	

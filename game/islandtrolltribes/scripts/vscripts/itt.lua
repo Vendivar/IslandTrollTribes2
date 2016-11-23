@@ -696,7 +696,7 @@ function ITT:OnEntityKilled(keys)
         CreateRawMeatAtLoc(killedUnit:GetOrigin(), meatStacks, decayTime, GameRules:GetGameTime())
 
         -- Launch all carried items excluding the fillers
-        local points = GenerateNumPointsAround(killedUnit:GetNumItemsInInventory()+1, pos, 64)
+        local points = GenerateNumPointsAround(killedUnit:GetNumItemsInInventory()+1, pos, 120)
         local numDrop = 1
         for i=0,5 do
             local item = killedUnit:GetItemInSlot(i)

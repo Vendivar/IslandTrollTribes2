@@ -6,7 +6,7 @@
 	m_BoundingBoxMin = [ -20.0, -20.0, -20.0 ]
 	m_BoundingBoxMax = [ 20.0, 20.0, 20.0 ]
 	m_flCullRadius = 40.0
-	m_ConstantColor = [ 255, 255, 255, 164 ]
+	m_ConstantColor = [ 184, 107, 19, 255 ]
 	m_Renderers = 
 	[
 		{
@@ -14,7 +14,7 @@
 			m_nSequenceCombineMode = "SEQUENCE_COMBINE_MODE_USE_SEQUENCE_0"
 			m_bAdditive = true
 			m_bDisableZBuffering = true
-			m_flOverbrightFactor = 2.0
+			m_flOverbrightFactor = 3.0
 			m_hTexture = resource:"materials/particle/glyph_4.vtex"
 			m_nOrientationControlPoint = 0
 			m_nOrientationType = 2
@@ -28,6 +28,7 @@
 		},
 		{
 			_class = "C_OP_PositionLock"
+			m_bLockRot = true
 		},
 	]
 	m_Initializers = 
@@ -48,6 +49,15 @@
 		{
 			_class = "C_OP_InstantaneousEmitter"
 			m_nParticlesToEmit = 1
+		},
+	]
+	m_Children = 
+	[
+		{
+			m_ChildRef = resource:"particles/custom/rune_ka_effect_2.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/custom/rune_ka_effect_3.vpcf"
 		},
 	]
 }

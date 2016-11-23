@@ -302,6 +302,8 @@
 "DOTA_Tooltip_modifier_troll_battle_call_Description"		""
 "DOTA_Tooltip_ability_item_calltobattle_modifier_applier"		"Call to Battle"
 "DOTA_Tooltip_ability_item_calltobattle_modifier_applier_Description"		"You are called to battle!"
+"DOTA_Tooltip_modifier_calltobattle"                                              "Call to battle"
+"DOTA_Tooltip_modifier_calltobattle_Description"                                  "You are called to battle!"
 
 
 "DOTA_Tooltip_Ability_ability_beastmaster_criticalstrike"		            "Wolf Critical strike"
@@ -1975,19 +1977,28 @@
 "DOTA_Tooltip_ability_item_axe_steel_Description"		"A super-sturdy axe that can cleave through trees and enemies with ease."
 "DOTA_Tooltip_ability_item_axe_steel_Lore"		"Can cut through armor, and still cut a tomato!"
 "DOTA_Tooltip_ability_item_axe_steel_Note0"		"Can cut down trees."
+
+
 "DOTA_Tooltip_ability_item_axe_stone"		"Stone Axe"
 "DOTA_Tooltip_ability_item_axe_stone_bonus_damage"		"+$damage"
 "DOTA_Tooltip_ability_item_axe_stone_Description"		"A brittle axe that can cut down trees."
 "DOTA_Tooltip_ability_item_axe_stone_Lore"		"It's not the axe you need, it's the axe you deserve."
 "DOTA_Tooltip_ability_item_axe_stone_Note0"		"Can cut down trees."
+
+
 "DOTA_Tooltip_ability_item_ball_clay"		"Clay Ball"
 "DOTA_Tooltip_ability_item_ball_clay_Description"		"A ball of wet, pliable material. Used to create many useful items."
 "DOTA_Tooltip_ability_item_ball_clay_Lore"		"It's compelling to make inappropriate things out of this clay ball."
 "DOTA_Tooltip_ability_item_ball_clay_Note0"		"\n\n-Hatchery Transmutable-"
+
+
 "DOTA_Tooltip_ability_item_beehive"		"Bee Hive"
 "DOTA_Tooltip_ability_item_beehive_Description"		"ACTIVE: Throw Beehive - Use to throw swarm of angry bees.\n\nIf you are brave enough you can carry this beehive "
 "DOTA_Tooltip_ability_item_beehive_Lore"		"Just like you suspected, it's swarming with bees."
 "DOTA_Tooltip_ability_item_beehive_Note0"		"WHAT"
+"DOTA_Tooltip_modifier_beehive_attack"                                            "Beehive Attack"
+"DOTA_Tooltip_modifier_beehive_attack_Description"                                ""
+
 "DOTA_Tooltip_ability_item_boat_axe_iron"		"Iron Axe"
 "DOTA_Tooltip_ability_item_boat_axe_iron_bonus_damage"		"+$damage"
 "DOTA_Tooltip_ability_item_boat_axe_iron_Description"		"An impressive piece of craftsmanship that can dice trees and foes."
@@ -2662,7 +2673,12 @@
 "DOTA_Tooltip_ability_item_gem_of_knowledge_all_stats"		"+$all"
 "DOTA_Tooltip_ability_item_gem_of_knowledge_Description"		"A rare item that Increases XP gain of Gatherers, Priests, Scouts and Mages by 1.75%. Also boosts stats regardless of class."
 "DOTA_Tooltip_ability_item_gem_of_knowledge_Lore"		"Often abused during finals-week."
-"DOTA_Tooltip_ability_item_gem_of_knowledge_exp_bonus"                            "EXP BONUS:"
+"DOTA_Tooltip_ability_item_gem_of_knowledge_exp_bonus"                            "%EXP BONUS:"
+"DOTA_Tooltip_modifier_gem_knolwedge_stats"                                       "Gem of Knowledge"
+"DOTA_Tooltip_modifier_gem_knolwedge_stats_Description"                           "Gaining 20% more experience!"
+
+
+
 
 		
 "DOTA_Tooltip_ability_item_gloves_battle"		"Battle Gloves"
@@ -3341,7 +3357,8 @@
 "DOTA_Tooltip_ability_item_weapon_emp_duration"                                   "DURATION:"
 "DOTA_Tooltip_ability_item_weapon_emp_max_stacks"                                 "MAX STACKS:"
 "DOTA_Tooltip_ability_item_weapon_emp_radius"                                     "RADIUS:"
-
+"DOTA_Tooltip_modifier_emp"                                                       "Emp Disabled"
+"DOTA_Tooltip_modifier_emp_Description"                                           ""
 
 
 
@@ -3619,6 +3636,10 @@
 
 "DOTA_Tooltip_modifier_meat_passive"		"Raw Meat"
 "DOTA_Tooltip_modifier_meat_passive_Description"		"Current amount of raw meat you're carrying. Can carry up to 8."
+
+
+"DOTA_Tooltip_modifier_creeppanic"                                                "Panicked!"
+"DOTA_Tooltip_modifier_creeppanic_Description"                                    ""
 
 
 

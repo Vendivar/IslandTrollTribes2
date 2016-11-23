@@ -13,6 +13,8 @@
 			m_bAdditive = true
 			m_hTexture = resource:"materials/particle/auras/aura_vlads.vtex"
 			m_nOrientationType = 2
+			m_bLightenMode = true
+			m_flOverbrightFactor = 1.5
 		},
 	]
 	m_Operators = 
@@ -53,6 +55,13 @@
 	[
 		{
 			_class = "C_INIT_CreateWithinSphere"
+			m_bDisableOperator = true
+		},
+		{
+			_class = "C_INIT_RandomColor"
+			m_ColorMin = [ 255, 0, 0, 255 ]
+			m_ColorMax = [ 255, 0, 0, 255 ]
+			m_flLightAmplification = 1000.0
 		},
 	]
 	m_Emitters = 

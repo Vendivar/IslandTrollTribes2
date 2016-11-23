@@ -11,7 +11,7 @@
 	"Ability1"	"ability_building_cookmeat"
 	"Ability2"	"ability_pack_up"
 	"Ability3"	"ability_building_restoreheat"
-	"Ability4"	"ability_burn_building"
+	"Ability4"	""
 	"Ability10"	"ability_building"
 	"Ability11"	"ability_cancel_building"
 	

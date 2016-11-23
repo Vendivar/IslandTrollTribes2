@@ -1,0 +1,34 @@
+"npc_beehive_lesser"
+{
+	"BaseClass"	"npc_dota_creature"
+	"Model"	"models/props_nature/mushroom_morel.vmdl"
+	"SoundSet"	"0"
+	"Level"	"1"
+	"ModelScale"	"0.55"
+	"Ability1"	"ability_beehivelesser"
+	"ArmorPhysical"	"0"
+	"MagicalResistance"	"75"
+	"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
+	"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
+	"HealthBarOffset"	"-1"
+	"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_NONE"
+	"MovementSpeed"	"0"
+	"StatusHealth"	"150"
+	"StatusHealthRegen"	"0"
+	"StatusMana"	"0"
+	"StatusManaRegen"	"0"
+	"TeamName"	"DOTA_TEAM_GOODGUYS"
+	"CombatClassAttack"	"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+	"CombatClassDefend"	"DOTA_COMBAT_CLASS_DEFEND_BASIC"
+	"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	"VisionDaytimeRange"	"0"
+	"VisionNighttimeRange"	"0"
+	"HasInventory"	"0"
+
+
+	// Building Size
+	//----------------------------------------------------------------
+	"ConstructionSize"			"0"
+	"BlockPathingSize"			"0"
+    "SharedWithTeammates" "1"
+}

@@ -3,13 +3,13 @@
 	"ID"	"1107"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
 	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
+	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"item_aegis"
 	"Model"	"models/props_winter/nest_01.vmdl"
 	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"AbilityCastRange"	"800"
-	"AbilityCastPoint"	"0.5"
+	"AbilityCastPoint"	"0.8"
 	"ItemCost"	"14"
 	"ItemShopTags"	"consumable"
 	"ItemQuality"	"consumable"
@@ -40,14 +40,31 @@
 		{
 			"Target"	"TARGET"
 			"EffectName"	"particles/custom/bee_swarm_throw.vpcf"
-			"MoveSpeed"	"500"
+			"MoveSpeed"	"400"
 		}
+		
+			"FireEffect"
+        {
+            "EffectName" "particles/custom/bee_swarm_throw_pull_child.vpcf"
+            "EffectAttachType" "attach_hitloc"
+            "Target" "CASTER"
+            "ControlPointEntities"
+            {
+                "CASTER" "follow_origin"
+                "TARGET" "follow_origin"
+            }
+        }
 
 		"FireSound"
     	{
     		"EffectName"	"item.throw"
-    		"Target"	"TARGET"
+    		"Target"	"CASTER"
     	}
+		"FireSound"
+		{
+			"EffectName"	"item.gobees"
+			"Target"	"TARGET"
+		}
 
 		"SpendCharge"
 		{
@@ -57,17 +74,17 @@
 
 	"OnProjectileHitUnit"
 	{
+		"DeleteOnHit" "1"
 		"ApplyModifier"
 		{
 		    "ModifierName"	"modifier_beehive_attack"
 		    "Target"	"TARGET"
-		    "Duration"	"10.0"
 		}
 		"FireSound"
 		{
 			"EffectName"	"item.softhit"
 			"Target"	"TARGET"
-		}
+		}	
 	}
 
 	"Custom"
@@ -80,17 +97,14 @@
 	    "modifier_beehive_attack"
 	    {
 	        "IsDebuff"  "1"
+			"Duration" "10"
 	        "OnCreated"
 	        {
 		        "AttachEffect"
     	        {
-    			    "EffectName"			"particles/custom/bee_swarm_2.vpcf"
+    			    "EffectName"			"particles/custom/bee_swarm_debuff.vpcf"
     			    "Target"            	"TARGET"
-    			    "EffectAttachType"      "follow_customorigin"
-    			    "ControlPointEntities"
-    			    {
-    			        "TARGET" "attach_hiloc"
-    			    }
+    			    "EffectAttachType"      "follow_origin"
     	        }
 
     	        "FireSound"
@@ -110,7 +124,7 @@
                 {
                     "Target"    "TARGET"
                     "Damage"    "5"
-                    "Type"  "DAMAGE_TYPE_PHYSICAL"
+                    "Type"  "DAMAGE_TYPE_MAGICAL"
                 }
             }
 
