@@ -73,7 +73,7 @@
     	        }
 			"FireEffect"
 			{
-				"EffectName" "particles/custom/bee_swarm_throw_pull_child.vpcf"
+				"EffectName" "particles/custom/bee_swarm_throw_pull_child_lesser.vpcf"
 				"EffectAttachType" "follow_origin"
 				"Target" "CASTER"
 				"ControlPointEntities"

@@ -111,16 +111,70 @@
 				}
             }
         }
-
+		
         "modifier_disease2"
         {
             "IsDebuff"  "1"
-            "Aura"  "disease2_aura"
+            "Aura"  "modifier_disease2_auraapplier"
             "Aura_Radius"   "250"
             "Aura_Teams"    "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
             "Aura_Types"    "DOTA_UNIT_TARGET_HERO"
+			"Duration"  "300"
+            "IsHidden"    "1"
+            "OnCreated"
+            {
+                "AttachEffect"
+                {
+                    "Target"    "TARGET"
+                    "EffectName"    "particles/econ/wards/bane/bane_ward/bane_ward_droplets.vpcf"
+                    "EffectAttachType"  "follow_overhead"
+                }
+				"ApplyModifier"
+				{
+					"Target"	"TARGET"
+					"ModifierName"	"modifier_disease2_auraapplier"
+					"Duration"	"300"
+				}
+				
+            }
+
+            "OnDestroy"
+            {
+                "RemoveModifier"
+                {
+                    "Target"    "TARGET"
+                    "ModifierName"  "modifier_disease2_auraapplier"
+                }
+            }
+        }
+		
+		 "modifier_disease2_auraapplier"
+        {
+            "IsDebuff"  "1"
+            "IsHidden"    "1"
+            "IsPurgable"    "1"
+            "EffectName"    "particles/units/heroes/hero_alchemist/alchemist_acid_spray_debuff.vpcf"
+			"Duration"  "300"
+			 "OnCreated"
+            {
+				"ApplyModifier"
+				{
+					"Target"	"TARGET"
+					"ModifierName"	"modifier_disease2_auraapplied"
+					"Duration"	"300"
+				}
+			}
+		}
+		
+		
+        "modifier_disease2_auraapplied"
+        {
+            "IsDebuff"  "1"
+            "IsPurgable"    "1"
+            "EffectName"    "particles/units/heroes/hero_alchemist/alchemist_acid_spray_debuff.vpcf"
+			"Duration"  "300"
             "ThinkInterval" "1"
-            "OnIntervalThink"
+			"OnIntervalThink"
             {
                 "Damage"
                 {
@@ -134,8 +188,14 @@
 					"ScriptFile"    "items/potion_disease.lua"
 					"Function"      "DiseaseFoodThinker"
 				}
-            }
+				"RunScript"
+				{
+					"ScriptFile"    "items/potion_disease.lua"
+					"Function"      "Spreaddisease2"
+					"Target"	"TARGET"
+				}
 
+            }
             "OnCreated"
             {
                 "AttachEffect"
@@ -143,43 +203,6 @@
                     "Target"    "TARGET"
                     "EffectName"    "particles/econ/wards/bane/bane_ward/bane_ward_droplets.vpcf"
                     "EffectAttachType"  "follow_overhead"
-                }
-            }
-
-            "OnDestroy"
-            {
-                "RemoveModifier"
-                {
-                    "Target"    "TARGET"
-                    "ModifierName"  "disease2_aura"
-                }
-            }
-        }
-
-        "disease2_aura"
-        {
-            "IsDebuff"  "1"
-            "IsPurgable"    "1"
-            "EffectName"    "particles/units/heroes/hero_alchemist/alchemist_acid_spray_debuff.vpcf"
-            "OnCreated"
-            {
-                "AttachEffect"
-                {
-                    "Target"    "TARGET"
-                    "EffectName"    "particles/econ/wards/bane/bane_ward/bane_ward_droplets.vpcf"
-                    "EffectAttachType"  "follow_overhead"
-                }
-
-                "ApplyModifier"
-                {
-                    "ModifierName"  "modifier_disease2"
-                    "Duration"  "300"
-                    "Target"
-                    {
-                        "Center"    "SELF"
-                        "Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-                        "Types" "DOTA_UNIT_TARGET_HERO"
-                    }
                 }
             }
         }
@@ -187,12 +210,67 @@
         "modifier_disease3"
         {
             "IsDebuff"  "1"
-            "Aura"  "disease3_aura"
+            "Aura"  "modifier_disease3_auraapplier"
             "Aura_Radius"   "250"
             "Aura_Teams"    "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
             "Aura_Types"    "DOTA_UNIT_TARGET_HERO"
+			"Duration"  "150"
+            "IsHidden"    "1"
+            "OnCreated"
+            {
+                "AttachEffect"
+                {
+                    "Target"    "TARGET"
+                    "EffectName"    "particles/econ/wards/bane/bane_ward/bane_ward_droplets.vpcf"
+                    "EffectAttachType"  "follow_overhead"
+                }
+				"ApplyModifier"
+				{
+					"Target"	"TARGET"
+					"ModifierName"	"modifier_disease3_auraapplier"
+					"Duration"	"150"
+				}
+				
+            }
+
+            "OnDestroy"
+            {
+                "RemoveModifier"
+                {
+                    "Target"    "TARGET"
+                    "ModifierName"  "modifier_disease3_auraapplier"
+                }
+            }
+        }
+		
+		 "modifier_disease3_auraapplier"
+        {
+            "IsDebuff"  "1"
+            "IsHidden"    "0"
+            "IsPurgable"    "1"
+            "EffectName"    "particles/units/heroes/hero_alchemist/alchemist_acid_spray_debuff.vpcf"
+            "IsHidden"    "1"
+			"Duration"  "150"
+			 "OnCreated"
+            {
+				"ApplyModifier"
+				{
+					"Target"	"TARGET"
+					"ModifierName"	"modifier_disease3_auraapplied"
+					"Duration"	"150"
+				}
+			}
+		}
+		
+		
+        "modifier_disease3_auraapplied"
+        {
+            "IsDebuff"  "1"
+            "IsPurgable"    "1"
+            "EffectName"    "particles/units/heroes/hero_alchemist/alchemist_acid_spray_debuff.vpcf"
+			"Duration"  "150"
             "ThinkInterval" "1"
-            "OnIntervalThink"
+			"OnIntervalThink"
             {
                 "Damage"
                 {
@@ -206,8 +284,14 @@
 					"ScriptFile"    "items/potion_disease.lua"
 					"Function"      "DiseaseFoodThinker"
 				}
-            }
+				"RunScript"
+				{
+					"ScriptFile"    "items/potion_disease.lua"
+					"Function"      "SpreadDisease3"
+					"Target"	"TARGET"
+				}
 
+            }
             "OnCreated"
             {
                 "AttachEffect"
@@ -217,46 +301,8 @@
                     "EffectAttachType"  "follow_overhead"
                 }
             }
-
-            "OnDestroy"
-            {
-                "RemoveModifier"
-                {
-                    "Target"    "TARGET"
-                    "ModifierName"  "disease3_aura"
-                }
-            }
         }
-
-        "disease3_aura"
-        {
-            "IsDebuff"  "1"
-            "IsPurgable"    "1"
-            "EffectName"    "particles/units/heroes/hero_alchemist/alchemist_acid_spray_debuff.vpcf"
-            "OnCreated"
-            {
-                "AttachEffect"
-                {
-                    "Target"    "TARGET"
-                    "EffectName"    "particles/econ/wards/bane/bane_ward/bane_ward_droplets.vpcf"
-                    "EffectAttachType"  "follow_overhead"
-                }
-
-                "ApplyModifier"
-                {
-                    "ModifierName"  "modifier_disease3"
-                    "Duration"  "150"
-                    "Target"
-                    {
-                        "Center"    "SELF"
-                        "Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-                        "Types" "DOTA_UNIT_TARGET_HERO"
-                    }
-                }
-            }
-        }
-    }
-
+    }	
     "AbilitySpecial"
     {
         "01"

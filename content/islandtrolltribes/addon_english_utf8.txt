@@ -1998,6 +1998,11 @@
 "DOTA_Tooltip_ability_item_beehive_Note0"		"WHAT"
 "DOTA_Tooltip_modifier_beehive_attack"                                            "Beehive Attack"
 "DOTA_Tooltip_modifier_beehive_attack_Description"                                ""
+"DOTA_Tooltip_modifier_lesserbeehivebeesaura"                                     "Lesser Beehive"
+"DOTA_Tooltip_modifier_lesserbeehivebeesaura_Description"                         "Probably shouldn't get near this."
+
+"DOTA_Tooltip_modifier_lesserbeehivebees"                                         "Lesser Beehive Bees"
+"DOTA_Tooltip_modifier_lesserbeehivebees_Description"      						  "NOT THE BEES"
 
 "DOTA_Tooltip_ability_item_boat_axe_iron"		"Iron Axe"
 "DOTA_Tooltip_ability_item_boat_axe_iron_bonus_damage"		"+$damage"

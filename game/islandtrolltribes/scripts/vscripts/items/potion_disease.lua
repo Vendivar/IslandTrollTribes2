@@ -53,7 +53,7 @@ function Remove( event )
     if charges == 0 then
     	item:GetContainer():RemoveSelf()
     end
-end]
+end
 
 
 function DiseaseFoodThinker (keys)
@@ -75,5 +75,29 @@ function DiseaseFoodThinker (keys)
 		end
 	end
 	
+function SpreadDisease2(keys)
+    local radius = 250
+    local duration = 300
+	local caster = keys.caster
+	local ability = keys.ability
+	local target = keys.target
+    local teamNumber = target:GetTeamNumber()
+    local targetOrigin = target:GetOrigin()
+    local units = FindUnitsInRadius(teamNumber, targetOrigin, nil, radius,  DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, 0, false)
+
+end
 	
+function SpreadDisease3(keys)
+    local radius = 250
+    local duration = 150
+	local caster = keys.caster
+	local ability = keys.ability
+	local target = keys.target
+    local teamNumber = target:GetTeamNumber()
+    local targetOrigin = target:GetOrigin()
+    local units = FindUnitsInRadius(teamNumber, targetOrigin, nil, radius,  DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, 0, false)
+
+
+end
+
 	
