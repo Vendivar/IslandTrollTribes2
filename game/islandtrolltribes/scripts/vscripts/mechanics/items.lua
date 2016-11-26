@@ -93,11 +93,14 @@ function TransferItem( unit, target, item )
     if CanTakeItem(target, item) then
         unit:DropItemAtPositionImmediate(item, unit:GetAbsOrigin())
 
-        item:LaunchLoot(false, 200, 0.50, target:GetAbsOrigin())
-
-        Timers:CreateTimer(0.5, function()
+        if unit:IsPositionInRange(target:GetAbsOrigin(), 215) then
             local pickedUp = PickupItem( target, item:GetContainer() )
-        end)
+        else
+            item:LaunchLoot(false, 200, 0.50, target:GetAbsOrigin())
+            Timers:CreateTimer(0.5, function()
+                local pickedUp = PickupItem( target, item:GetContainer() )
+            end)
+        end
     else
         return false
     end
