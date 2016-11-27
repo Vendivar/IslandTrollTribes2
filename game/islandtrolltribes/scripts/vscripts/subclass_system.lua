@@ -170,6 +170,14 @@ function ITT:OnSubclassChange(event)
     -- Update skills
     ITT:AdjustSkills( hero )
 
+    -- Lets adjust the layout just in case, with a delay.
+    Timers:CreateTimer({
+      endTime = 0.1,
+      callback = function()
+        AdjustAbilityLayout(hero)
+      end
+    })
+
     -- Change the default wearables by new ones for that class
     local defaultWearables = subclassTable['defaults']
     local newWearables = subclassInfo[new_name]['Wearables']

@@ -20,7 +20,7 @@ function Spawn(entityKeyValues)
 		thisEntity.MaxWaitTime = 30
 	else
 		thisEntity.WanderDistance = 1000
-		thisEntity.FleeDistance = 2000
+		thisEntity.FleeDistance = 3000
 		thisEntity.MinWaitTime = 5
 		thisEntity.MaxWaitTime = 20
 	end
@@ -30,6 +30,7 @@ function Spawn(entityKeyValues)
 	thisEntity.spawnTime = GameRules:GetGameTime()
 	thisEntity.wander_wait_time = GameRules:GetGameTime() + 0
 	thisEntity.flee_wait_time = GameRules:GetGameTime() + 0
+	thisEntity.flee_times = 0
 	Timers:CreateTimer(PassiveNeutralThink, thisEntity)
 end
 
@@ -44,22 +45,28 @@ function PassiveNeutralThink(thisEntity)
 	end
 
 	if thisEntity.state == "wander" then
-			thisEntity:RemoveModifierByName("modifier_creeppanic")
 		if GameRules:GetGameTime() >= thisEntity.wander_wait_time then
 			local newPosition = thisEntity:GetAbsOrigin() + RandomVector(thisEntity.WanderDistance)
       thisEntity:MoveToPosition(newPosition)
 			thisEntity.wander_wait_time = GameRules:GetGameTime() + RandomFloat(thisEntity.MinWaitTime, thisEntity.MaxWaitTime)
 		end
 	elseif thisEntity.state == "flee" then
+		if GameRules:GetGameTime() >= thisEntity.flee_wait_time then
+			local fleeTime = RandomFloat(thisEntity.MinWaitTime, thisEntity.MaxWaitTime)
+			local item = CreateItem("item_apply_modifiers", thisEntity, thisEntity)
+	    item:ApplyDataDrivenModifier(thisEntity, thisEntity, "modifier_creeppanic", {duration = fleeTime})
+			--thisEntity:AddNewModifier(thisEntity, thisEntity, "modifier_bloodseeker_thirst_speed", { duration = thisEntity.flee_wait_time })
+
+			thisEntity.flee_wait_time = GameRules:GetGameTime() + fleeTime
+
 			local newPosition = thisEntity:GetAbsOrigin() + RandomVector(thisEntity.FleeDistance)
 			thisEntity:MoveToPosition(newPosition)
-			
-            local item = CreateItem("item_apply_modifiers", thisEntity, thisEntity)
-            item:ApplyDataDrivenModifier(thisEntity, thisEntity, "modifier_creeppanic", {duration = 5})
-		-- I tried to make them go faster (660 speed with this modifier it is suppose to override the default movecap of 552 but it didnt work for some reason)	target:AddNewModifier(thisEntity, thisEntity, "modifier_bloodseeker_thirst_speed", { duration = 5 })
 
-		if GameRules:GetGameTime() >= thisEntity.wander_wait_time then
-			thisEntity.state = "wander"
+			thisEntity.flee_times = thisEntity.flee_times + 1
+			if thisEntity.flee_times > 3 then
+				thisEntity.flee_times = 0
+				thisEntity.state = "wander"
+			end
 		end
 	end
 

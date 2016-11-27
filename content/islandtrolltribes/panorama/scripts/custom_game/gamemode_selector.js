@@ -339,7 +339,7 @@ function setPlayerList() {
   */
 }
 
-var timeLeft = 5
+var timeLeft = 3
 function VoteEnd() {
   if (timeLeft == 0) {
     return;
@@ -430,7 +430,7 @@ function OnVoteConfirmed(vote) {
       }
     }
     */
-    $.Schedule(5, function() {
+    $.Schedule(3, function() {
       // We only have to hide the gamemodes when we need the hero selection.
       // This is also useful for testing.
       if (voted_settings.pick_mode == "ALL_PICK") {

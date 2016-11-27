@@ -175,7 +175,7 @@ function TeamUpdate(keys) {
 
 function CheckVotes(vote) {
     if (vote.voting_ended) {
-        $.Schedule(5,function() {
+        $.Schedule(3,function() {
             if (vote.voted_settings.pick_mode == "ALL_PICK") {
                 $("#PicksContainer").RemoveClass("hidden");
             }

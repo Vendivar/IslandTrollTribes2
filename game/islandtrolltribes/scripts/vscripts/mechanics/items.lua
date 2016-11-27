@@ -371,15 +371,19 @@ function SetAbilityLayout( unit, layout_size )
 end
 
 function AdjustAbilityLayout( unit )
-    local required_layout_size = GetVisibleAbilityCount(unit)
+    Timers:CreateTimer({
+      callback = function()
+        local required_layout_size = GetVisibleAbilityCount(unit)
 
-    if required_layout_size > 6 then
-        required_layout_size = 6
-    elseif required_layout_size < 4 then
-        required_layout_size = 4
-    end
+        if required_layout_size > 6 then
+            required_layout_size = 6
+        elseif required_layout_size < 4 then
+            required_layout_size = 4
+        end
 
-    SetAbilityLayout(unit, required_layout_size)
+        SetAbilityLayout(unit, required_layout_size)
+      end
+    })
 end
 
 function GetVisibleAbilityCount( unit )

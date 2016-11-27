@@ -1,0 +1,24 @@
+"ability_itempen"
+{
+    "BaseClass"             "ability_datadriven"
+    "AbilityBehavior"	    "DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
+	"AbilityTextureName"    "ability_building_packup"
+    "AbilityManaCost"       "0"
+
+    "Modifiers"
+    {
+        "modifier_itempen"
+        {
+            "IsHidden" "1"
+            "Passive" "1"
+            "OnCreated"
+            {
+                "RunScript"
+                {
+                    "ScriptFile"    "buildings/itempen.lua"
+                    "Function"      "StartGather"
+                }
+            }
+        }
+    }
+}
