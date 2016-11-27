@@ -86,7 +86,7 @@ function Quests:Start(hero, type, id)
     -- A delayed quest!
     if quest.context.delay_start and quest.context.delay_start > 0 then
         Timers:CreateTimer({
-            endTime = GameRules:GetGameTime() - quest.context.delay_start
+            endTime = GameRules:GetGameTime() - quest.context.delay_start,
             callback = function()
                 self:StartQuest(hero, type, quest, id)
             end
