@@ -97,10 +97,8 @@ function Heat:Think( hero )
         end
 		
         if Heat:Get( hero ) <= 0 and not Heat.IMMUNITY then
-		
-			local isFrozen = hero:HasModifier("modifier_frozen")
-			if not isFrozen then
             local item = CreateItem("item_apply_modifiers", hero, hero)
+			if not hero:HasModifier("modifier_frozen") then
 			item:ApplyDataDrivenModifier(hero, hero, "modifier_frozen", {duration=60})
             RemoveHeatingIndicator(hero)
             RemoveFreezingIndicator(hero)

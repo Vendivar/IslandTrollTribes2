@@ -70,6 +70,43 @@ function ITT:FilterExecuteOrder( filterTable )
 
 	--Scan Disable
 	if order_type == DOTA_UNIT_ORDER_RADAR or order_type == DOTA_UNIT_ORDER_GLYPH then SendErrorMessage(issuer, "#error_nicetry") return end
+	
+	
+	
+    ------------------------------------------------
+    --    		      Rez Uncancel		  	      --
+    ------------------------------------------------
+	if  order_type == DOTA_UNIT_ORDER_ATTACK_TARGET or order_type == DOTA_UNIT_ORDER_ATTACK_MOVE or order_type == DOTA_UNIT_ORDER_MOVE_TO_TARGET or order_type == DOTA_UNIT_ORDER_MOVE_TO_POSITION or order_type == DOTA_UNIT_ORDER_HOLD_POSITION or order_type == DOTA_UNIT_ORDER_STOP then
+		if unit:GetUnitName() == "npc_building_spirit_ward" then
+		SendErrorMessage(issuer, "#error_cant_cancel")
+		return CONSUME_EVENT
+		end
+    end
+
+    ------------------------------------------------
+    --          Warm up teammate       --
+    ------------------------------------------------
+	
+	    if targetIndex and (order_type == DOTA_UNIT_ORDER_ATTACK_TARGET or order_type == DOTA_UNIT_ORDER_MOVE_TO_TARGET or
+                        order_type == DOTA_UNIT_ORDER_ATTACK_MOVE) then
+        local target = EntIndexToHScript(targetIndex)
+        if target and target:HasModifier("modifier_frozen") then
+			if order_type == DOTA_UNIT_ORDER_ATTACK_TARGET then
+				local hero = PlayerResource:GetSelectedHeroEntity(issuer)				
+				local abilityName = "ability_warm_up"
+				local ability = hero:FindAbilityByName(abilityName)
+				if not ability then
+					ability = TeachAbility(hero, abilityName, 1)
+				end
+				if ability:IsFullyCastable() then
+					hero:CastAbilityNoTarget(ability, -1)
+				end
+
+                SendErrorMessage(issuer, "#error_cant_attack_air")
+            end
+            return CONSUME_EVENT
+        end
+    end
 
     ------------------------------------------------
     --          Hide Building Crafting UI         --

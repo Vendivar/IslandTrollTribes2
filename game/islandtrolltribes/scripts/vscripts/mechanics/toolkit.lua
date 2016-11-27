@@ -121,3 +121,20 @@ function ITT:DropAllItems(event)
         hero:CastAbilityImmediately(ability, playerID)
     end
 end
+
+
+function WarmUp(event)
+    local playerID = event.PlayerID
+    local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+
+    if hero then
+        local abilityName = "ability_warm_up"
+        local ability = hero:FindAbilityByName(abilityName)
+        if not ability then
+            ability = TeachAbility(hero, abilityName, 1)
+        end
+        if ability:IsFullyCastable() then
+			hero:CastAbilityNoTarget(ability, -1)
+        end
+    end
+end

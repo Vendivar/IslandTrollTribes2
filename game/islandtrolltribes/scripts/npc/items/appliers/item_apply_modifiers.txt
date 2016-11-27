@@ -99,6 +99,8 @@
 		
 		"modifier_frozen"
         {
+			"StatusEffectName" "particles/custom/status_frozen.vpcf"
+            "StatusEffectPriority" "10"
             "TextureName"           "frozen"
             "OnCreated"
             {

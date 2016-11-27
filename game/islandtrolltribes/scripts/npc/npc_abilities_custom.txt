@@ -19877,6 +19877,116 @@
 		"AbilityTextureName"	"ability_building_teleport"
 	    "MaxLevel" "1"
 	}
+	"ability_warm_up"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_CHANNELED | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"AbilityCastAnimation" "ACT_DOTA_ATTACK"
+		"AbilityTextureName"    "huskar_berserkers_blood"
+		"AbilityCastRange"	"200"
+		"AbilityCastPoint"	"0.0"
+		"AbilityChannelTime"	"5.0"
+		"AbilityCooldown"		"0"
+		"AbilityManaCost"   "0"
+		"MaxLevel"          "1"
+	
+		"IsCastableWhileHidden" "1"
+	
+		"OnSpellStart"
+		{		
+		
+			"ApplyModifier"
+			{
+				"Target"			"CASTER"
+				"ModifierName"		"modifier_warmup_thinker"
+			}
+	        "FireSound"
+			{
+				"EffectName"    "Hero_Tidehunter.Idle_bite"
+				"Target"        "CASTER"
+			}
+			
+		}
+		
+		"OnChannelSucceeded"
+		{
+			"RemoveModifier"
+			{
+				"Target"			"CASTER"
+				"ModifierName"		"modifier_warmup_thinker"
+			}
+	
+			"RemoveAbility"
+			{
+				"Target"			"CASTER"
+				"AbilityName"		"ability_warm_up"
+			}
+		}
+		
+		"OnChannelFinish"
+		{
+			"RemoveModifier"
+			{
+				"Target"			"CASTER"
+				"ModifierName"		"modifier_warmup_thinker"
+			}
+	
+			"RemoveAbility"
+			{
+				"Target"			"CASTER"
+				"AbilityName"		"ability_warm_up"
+			}
+		}
+		
+		"OnChannelInterrupted"
+		{
+			"RemoveModifier"
+			{
+				"Target"			"CASTER"
+				"ModifierName"		"modifier_warmup_thinker"
+			}
+	
+			"RemoveAbility"
+			{
+				"Target"			"CASTER"
+				"AbilityName"		"ability_warm_up"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_warmup_thinker"
+			{
+				"ThinkInterval"	"0.1"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					  {
+						  "ScriptFile"    "buildings/restore_heat.lua"
+						  "Function"      "RestoreHeatThink"
+						  "Radius"        "400"
+						  "Heat"		  "3"
+					  }
+				}
+			}
+		}
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"290"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"heat"	"1"
+			}
+	
+		}
+	
+	}
 	// For Tooltip purposes
 	"drop_all_meat"
 	{
