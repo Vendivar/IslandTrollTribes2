@@ -261,24 +261,33 @@ function ITT:InitGameMode()
     LinkLuaModifier("modifier_model_scale", "libraries/modifiers/modifier_model_scale", LUA_MODIFIER_MOTION_NONE)
     LinkLuaModifier("modifier_minimap", "libraries/modifiers/modifier_minimap", LUA_MODIFIER_MOTION_NONE)
     LinkLuaModifier("modifier_wearable_visuals", "libraries/modifiers/modifier_wearable_visuals", LUA_MODIFIER_MOTION_NONE)
+	LinkLuaModifier("modifier_charges", "libraries/modifiers/modifier_charges", LUA_MODIFIER_MOTION_NONE)
 
     print('[ITT] Done loading gamemode!')
 end
 
  --disables rosh pit
 function UnblockMammoth()
-    print("Trying to delete ent_blockers")
-    local ent = Entities:FindAllByName("ent_blocker")
-    if table.getn(ent) > 0 then
-        type(ent)
-        for i,v in pairs(ent) do
-            print("deleting ent"..i)
-            v:SetEnabled(false,false)
-            v:RemoveSelf()
-        end
-    else
-        print("name entblocker doesn't exist")
-    end
+    print("Trying to delete any old bosses")
+   
+	if (duckBoss ~= nil)  then
+	duckBoss:AddNoDraw()
+	duckBoss:ForceKill(true)
+	end
+	
+    mammothBoss = CreateUnitByName("npc_boss_mammoth", Vector(0,0,10), true, nil, nil, DOTA_TEAM_NEUTRALS)
+end
+
+function ITT:KillMammoth()
+    print("Trying to move and delete mammoth")
+	if (mammothBoss ~= nil)  then
+		mammothBoss:SetOrigin(Vector(5000,0,0 - 5))
+		mammothBoss:ForceKill(true)
+	end
+	if (duckBoss ~= nil)  then
+		duckBoss:SetOrigin(Vector(5000,0,0 - 5))
+		duckBoss:ForceKill(true)
+	end
 end
 
 
@@ -319,7 +328,8 @@ function ITT:OnEntityKilled(keys)
         {"npc_creep_panther", {"item_bone", 100}, {"item_bone", 100}},
         {"npc_creep_panther_elder", {"item_bone", 100}, {"item_bone", 100}},
         {"npc_creep_hawk", {"item_bone", 100}, {"item_egg_hawk", 10}},
-        {"npc_creep_mammoth", {"item_bone", 100},{"item_bone", 100},{"item_bone", 100},{"item_bone", 100}, {"item_horn_mammoth", 100}, {"item_horn_mammoth", 50}},
+        {"npc_boss_mammoth", {"item_bone", 100},{"item_bone", 100},{"item_bone", 100},{"item_bone", 100}, {"item_horn_mammoth", 100}, {"item_horn_mammoth", 50}, {"item_spear_dark", 5}, {"item_spear_iron", 5}, {"item_axe_iron", 15}},
+        {"npc_boss_disco_duck", {"item_bone", 100},{"item_bone", 100},{"item_bone", 100},{"item_bone", 100}, {"item_potion_anabolic", 5}, {"item_crystal_mana", 20}, {"item_crystal_mana", 20}, {"item_spear_dark", 5}},
         {"npc_building_fire_basic", {"item_building_kit_fire_basic", 100}, {"item_flint", 10}}
     }
 
@@ -338,7 +348,8 @@ function ITT:OnEntityKilled(keys)
         {"npc_creep_wolf_pup", 1},
 
         {"npc_creep_hawk", 2},
-        {"npc_creep_mammoth", 15}
+        {"npc_boss_disco_duck", 10},
+        {"npc_boss_mammoth", 15}
     }
 
     local spawnTable = {
@@ -588,11 +599,14 @@ function ITT:CheckWinCondition()
 
     if winnerTeamID and not GameRules.Winner then
         GameRules.Winner = winnerTeamID
+		ITT:KillMammoth()
         ITT:SetHerosIntoEndScreen(winnerTeamID)
         ITT:PrintWinMessageForTeam(winnerTeamID)
         GameRules:SetGameWinner(winnerTeamID)
     end
 end
+
+
 
 function ITT:SetHerosIntoEndScreen( teamID )
     GameRules:GetGameModeEntity():SetFogOfWarDisabled(true)

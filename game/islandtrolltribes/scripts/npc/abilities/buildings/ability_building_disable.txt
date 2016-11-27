@@ -20,9 +20,7 @@
 			"Function"	"DisablePassives"
 			"Target"	"TARGET"
 		}
-
 	}
-
 	"Modifiers"
 	{
 		"modifier_building_disabled"
@@ -35,6 +33,15 @@
 				"MODIFIER_STATE_PASSIVES_DISABLED"	"MODIFIER_STATE_VALUE_ENABLED"
 				"MODIFIER_STATE_DISARMED"	"MODIFIER_STATE_VALUE_ENABLED"
 				"MODIFIER_STATE_SILENCED"	"MODIFIER_STATE_VALUE_ENABLED"
+			}
+			
+			"OnCreated"
+			{
+				"FireSound"
+					{
+						"EffectName"		"construction.start"
+						"Target"			"TARGET"
+					}
 			}
 
 		}

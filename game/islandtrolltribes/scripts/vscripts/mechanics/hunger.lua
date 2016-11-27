@@ -20,9 +20,9 @@ function HungerCheck( event )
             SendErrorMessage(playerID, "#error_mana_low")
         end
     end
-    
-    elseif mana < 1 then
-        hero:ForceKill(true)
-    end 
+  end
+  ---  elseif mana < 1 then
+  ---      hero:ForceKill(true)
+  ---  end 
 
 end

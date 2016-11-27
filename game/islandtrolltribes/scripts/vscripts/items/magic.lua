@@ -40,7 +40,7 @@ function RawMagicUse(keys)
         CreateItemOnPositionSync(caster:GetOrigin() + RandomVector(RandomInt(20,100)), item2)
         print("Lucky! Crystals!")
     else -- 20% disco duck
-        if (duckBoss == nil) then
+        if (duckBoss == nil) and (mammothBoss == nil) then
             duckBoss = CreateUnitByName("npc_boss_disco_duck", Vector(0,0,0), true, nil, nil, DOTA_TEAM_NEUTRALS)
             EmitGlobalSound("ancient.evil")
             print(duckBoss:GetClassname())
@@ -79,4 +79,39 @@ function RemoveParticles(context)
     ParticleManager:DestroyParticle(context.particle, true)
     ParticleManager:ReleaseParticleIndex(context.particle)
     return
+end
+
+
+function MeteorDamageInital (event)
+    local damage = 50 --can't use ability handle because the item is removed
+    local caster = event.caster
+    local target = event.target
+
+    if string.find(target:GetUnitName(), "npc_building_") then
+        DamageBuilding(target, damage, nil, caster)
+		target:EmitSound("molotov.burn")
+		Timers:CreateTimer(5, function() target:StopSound("molotov.burn") end)
+    else
+        ApplyDamage({victim = target, attacker = caster, damage = damage, damage_type = DAMAGE_TYPE_MAGICAL, })
+    end
+end
+
+function MeteorDamageTick(event)
+    local damage = 5 --can't use ability handle because the item is removed
+    local caster = event.caster
+    local target = event.target
+
+    if string.find(target:GetUnitName(), "npc_building_") then
+        DamageBuilding(target, damage, nil, caster)
+    else
+        ApplyDamage({victim = target, attacker = caster, damage = damage, damage_type = DAMAGE_TYPE_MAGICAL, })
+    end
+end
+
+
+function MeteorSoundStop( event )
+	local caster = event.caster
+    local target = event.target
+	
+	target:StopSound("molotov.burn")
 end

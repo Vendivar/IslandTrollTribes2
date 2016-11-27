@@ -1,0 +1,54 @@
+.ReviveMain {
+  width: 100%;
+  height: 100%;
+}
+
+#RevivePanel {
+  width: 100%;
+  height: 100%;
+  align: left top;
+  font-size: 32px;
+  font-family: Radiance;
+  color: gradient( linear, 0% 0%, 0% 100%, from( #00cdcd ), to( #b9ffff ) );
+}
+
+.ReviveNotification {
+  align: center top;
+  width: 100%;
+  height: 100%;
+  animation-name: revive_msg;
+  animation-duration: 4s;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+}
+
+.ReviveNotification_icon {
+  align: center top;
+  margin-top: 60px;
+  width: 50px;
+  height: 50px;
+}
+
+.ReviveNotification Label {
+  align: center top;
+  color: gradient( linear, 0% 0%, 0% 100%, from( #00cdcd ), to( #b9ffff ) );
+}
+
+@keyframes 'revive_msg' {
+  0% {
+    y: 500px;
+    opacity: 0.0;
+  }
+  20% {
+    y: 200px;
+    opacity: 1.0;
+  }
+  95% {
+    y: 120px;
+    opacity: 1.0;
+  }
+  100% {
+    y: 0;
+    opacity: 0.0;
+  }
+}

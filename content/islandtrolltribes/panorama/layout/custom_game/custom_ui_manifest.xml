@@ -33,6 +33,7 @@
         <CustomUIElement type="HeroSelection"       layoutfile="file://{resources}/layout/custom_game/gamemode_selector.xml" />
 
         <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/death_notification.xml" />
+        <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/revive_notification.xml" />
         <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/subclass_picker.xml" />
         <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/toolkit.xml" />
         <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/building_helper.xml" />

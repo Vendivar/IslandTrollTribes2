@@ -74,6 +74,11 @@
 					"EffectName"    "Hero_Treant.Overgrowth.Cast"
 					"Target"        "CASTER"
 				}
+				"FireSound"
+				{
+					"EffectName"    "Hero_Treant.Overgrowth.Cast"
+					"Target"        "TARGET"
+				}
             }
 		}
         "modifier_trap_reveal"

@@ -78,10 +78,15 @@
 			{
 				"Damage"
 				{
-					"Type"	"DAMAGE_TYPE_PHYSICAL"
+					"Type"	"DAMAGE_TYPE_MAGICAL"
 					"Damage"	"5"
 					"Target"	"TARGET"
 				}
+				"RunScript"
+                {
+                    "ScriptFile"    "items/magic.lua"
+                    "Function"      "MeteorDamageTick"
+                }
 
 			}
 			
@@ -93,8 +98,31 @@
 					"Damage"	"50"
 					"Target"	"TARGET"
 				}
+				
+                "RunScript"
+                {
+                    "ScriptFile"    "items/magic.lua"
+                    "Function"      "MeteorDamageInital"
+                }
 			}
-
+			
+			"OnDestroy"
+			{
+				"RunScript"
+                {
+                    "ScriptFile"    "items/magic.lua"
+                    "Function"      "MeteorSoundStop"
+                }
+			}
+		"OnDeath"
+		{
+			"RunScript"
+                {
+                    "ScriptFile"    "items/magic.lua"
+                    "Function"      "MeteorSoundStop"
+                }
+		
+		}
 			"EffectName"	"particles/units/heroes/hero_invoker/invoker_chaos_meteor_burn_debuff.vpcf"
 			"EffectAttachType"	"follow_origin"
 		}

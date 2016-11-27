@@ -27,6 +27,47 @@
                 "MODIFIER_PROPERTY_BONUS_DAY_VISION" "250"
                 "MODIFIER_PROPERTY_BONUS_NIGHT_VISION" "250"
 			}
+			"OnDestroy"
+			{
+				"FireSound"
+				{
+					"EffectName"		"building.die"
+					"Target"			"CASTER"
+				}
+				"FireEffect"
+				{
+					"EffectName"		"particles/custom/building_collapse_light_d.vpcf"
+					"EffectAttachType"	"attach_origin"
+					"Target"			"CASTER"
+				}
+				"RunScript"
+				{
+					"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+					"Function"	"BuildingDestroyed"
+					"Target"	"CASTER"
+				}
+			}
+			
+			"OnDeath"
+			{
+				"FireSound"
+				{
+					"EffectName"		"building.die"
+					"Target"			"CASTER"
+				}
+				"FireEffect"
+				{
+					"EffectName"		"particles/custom/building_collapse_light_d.vpcf"
+					"EffectAttachType"	"attach_origin"
+					"Target"			"CASTER"
+				}
+				"RunScript"
+				{
+					"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+					"Function"	"BuildingDestroyed"
+					"Target"	"CASTER"
+				}
+			}		
 		}
 	}		
 }

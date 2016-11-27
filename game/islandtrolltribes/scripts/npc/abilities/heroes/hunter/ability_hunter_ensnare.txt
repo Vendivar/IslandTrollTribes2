@@ -16,7 +16,7 @@
         "01"
         {
             "var_type"      "FIELD_FLOAT"
-            "hero_duration" "3.5"
+            "hero_duration" "3"
         }
         "02"
         {
@@ -46,7 +46,7 @@
             "EffectName"        "particles/units/heroes/hero_meepo/meepo_earthbind_projectile_fx.vpcf"
             "Dodgeable"         "false"
             "ProvidesVision"    "false"
-            "MoveSpeed"         "750"
+            "MoveSpeed"         "900"
         }
 
         "FireSound"

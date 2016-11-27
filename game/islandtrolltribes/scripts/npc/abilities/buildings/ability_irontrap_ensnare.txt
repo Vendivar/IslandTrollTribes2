@@ -71,7 +71,7 @@
                 "FireSound"
                 {
                     "EffectName"	"trap.iron"
-                    "Target"	"CASTER"
+                    "Target"		"TARGET"
                 }
             }
 		}

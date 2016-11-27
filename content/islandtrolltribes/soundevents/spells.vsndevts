@@ -364,7 +364,7 @@
                     "pitch_rand_min"    {   "value"     "-0.05000"  }
                     "pitch_rand_max"    {   "value"     "0.050000"  }
                     "pitch"             {   "value"     "1.000000"  }
-                    "soundlevel"        {   "value"     "100.00000" }
+                    "soundlevel"        {   "value"     "75.00000" }
                     "distance_max"      {   "value"     "1600.000"  }
                     "event_type"        {   "value"     "1.000000"  }
                 }
@@ -820,7 +820,7 @@
                     "pitch_rand_min"    {   "value"     "1.000000"  }
                     "pitch_rand_max"    {   "value"     "1.000000"  }
                     "pitch"             {   "value"     "1.000000"  }
-                    "soundlevel"        {   "value"     "40.00000" }
+                    "soundlevel"        {   "value"     "30.00000" }
                     "distance_max"      {   "value"     "5000.000"  }
                     "event_type"        {   "value"     "1.000000"  }
                 }
@@ -2349,6 +2349,38 @@
     }
 }
 
+"trap.ensnare.arm"
+{
+    "operator_stacks"
+    {
+        "update_stack"
+        {
+            "reference_operator"
+            {
+                "operator"              "sos_reference_stack"
+                "reference_stack"       "dota_src1_3d"
+                "operator_variables"
+                {
+                    "vsnd_files"
+                    {
+                        "value"
+                        {
+							"value0"        "sounds/spells/entangle_place.vsnd"
+                        }
+                    }
+                    "volume"            {   "value"     "10.00000"  }
+                    "pitch_rand_min"    {   "value"     "-0.05000"  }
+                    "pitch_rand_max"    {   "value"     "0.050000"  }
+                    "pitch"             {   "value"     "1.000000"  }
+                    "soundlevel"        {   "value"     "70.00000" }
+                    "distance_max"      {   "value"     "1000.000"  }
+                    "event_type"        {   "value"     "1.000000"  }
+                }
+            }
+        }
+    }
+}
+
 "molotov.burn"
 {
     "operator_stacks"
@@ -2374,6 +2406,71 @@
                     "pitch"             {   "value"     "1.000000"  }
                     "soundlevel"        {   "value"     "60.00000" }
                     "distance_max"      {   "value"     "1000.000"  }
+                    "event_type"        {   "value"     "1.000000"  }
+                }
+            }
+        }
+    }
+}
+
+"item.horn.blow"
+{
+    "operator_stacks"
+    {
+        "update_stack"
+        {
+            "reference_operator"
+            {
+                "operator"              "sos_reference_stack"
+                "reference_stack"       "dota_src1_3d"
+                "operator_variables"
+                {
+                    "vsnd_files"
+                    {
+                        "value"
+                        {
+                              "value0"        "sounds/spells/mammoth_horn.vsnd"
+                        }
+                    }
+                    "volume"            {   "value"     "2.00000"  }
+                    "pitch_rand_min"    {   "value"     "-0.05000"  }
+                    "pitch_rand_max"    {   "value"     "0.050000"  }
+                    "pitch"             {   "value"     "1.000000"  }
+                    "soundlevel"        {   "value"     "95.00000" }
+                    "distance_max"      {   "value"     "2500.000"  }
+                    "event_type"        {   "value"     "1.000000"  }
+                }
+            }
+        }
+    }
+}
+
+
+"thief.planningphase"
+{
+    "operator_stacks"
+    {
+        "update_stack"
+        {
+            "reference_operator"
+            {
+                "operator"              "sos_reference_stack"
+                "reference_stack"       "dota_src1_3d"
+                "operator_variables"
+                {
+                    "vsnd_files"
+                    {
+                        "value"
+                        {
+                              "value0"        "sounds/weapons/hero/phantom_lancer/immortal_spear.vsnd"
+                        }
+                    }
+                    "volume"            {   "value"     "2.00000"  }
+                    "pitch_rand_min"    {   "value"     "-0.05000"  }
+                    "pitch_rand_max"    {   "value"     "0.050000"  }
+                    "pitch"             {   "value"     "1.000000"  }
+                    "soundlevel"        {   "value"     "55.00000" }
+                    "distance_max"      {   "value"     "2500.000"  }
                     "event_type"        {   "value"     "1.000000"  }
                 }
             }

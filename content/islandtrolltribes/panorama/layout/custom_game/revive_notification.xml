@@ -1,0 +1,11 @@
+<root>
+  <styles>
+    <include src="file://{resources}/styles/custom_game/revive_notification.css" />
+  </styles>
+  <scripts>
+    <include src="file://{resources}/scripts/custom_game/revive_notification.js" />
+  </scripts>
+  <Panel class="ReviveMain" hittest="false">
+    <Panel id="RevivePanel" hittest="false" hittestchildren="false" />
+  </Panel>
+</root>

@@ -44,6 +44,7 @@ function SplitGoldBag(hero, item)
     for _,v in pairs(validHeroes) do
         v:ModifyGold(gold_per_hero, false, 0)
         PopupGoldGain(v, gold_per_hero, teamNumber)
+		hero:EmitSound("gold_pickup")
     end
 
     UTIL_Remove(item)

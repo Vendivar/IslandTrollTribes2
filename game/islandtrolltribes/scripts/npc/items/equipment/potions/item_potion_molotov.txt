@@ -152,6 +152,14 @@
                     "Function"      "MolotovSoundStop"
                 }
 			}
+				"OnDeath"
+			{
+				"RunScript"
+                {
+                    "ScriptFile"    "items/potion_molotov.lua"
+                    "Function"      "MolotovSoundStop"
+                }
+			}
         }
     }
 }

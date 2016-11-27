@@ -1,0 +1,129 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_nMaxParticles = 50
+	m_flConstantRadius = 550.0
+	m_ConstantColor = [ 255, 255, 255, 55 ]
+	m_bShouldSort = false
+	m_Renderers = 
+	[
+		{
+			_class = "C_OP_RenderRopes"
+			m_nSequenceCombineMode = "SEQUENCE_COMBINE_MODE_USE_SEQUENCE_0"
+			m_bAdditive = true
+			m_nOrientationType = 3
+			m_flOverbrightFactor = 2.0
+			m_hTexture = resource:"materials/particle/beam_siren.vtex"
+			m_nScaleCP1 = 0
+			m_nScaleCP2 = 1
+			m_flRadiusScale = 0.5
+			m_flTextureVWorldSize = 100000000.0
+			m_nMaxTesselation = 7
+			m_nMinTesselation = 7
+		},
+	]
+	m_Operators = 
+	[
+		{
+			_class = "C_OP_Decay"
+		},
+		{
+			_class = "C_OP_PositionLock"
+		},
+		{
+			_class = "C_OP_BasicMovement"
+			m_Gravity = [ 0.0, 0.0, -200.0 ]
+			m_fDrag = 0.1
+		},
+		{
+			_class = "C_OP_VectorNoise"
+			m_fl4NoiseScale = 0.01
+			m_nFieldOutput = 0
+			m_vecOutputMin = [ -1.0, -1.0, -12.0 ]
+			m_vecOutputMax = [ 1.0, 1.0, 12.0 ]
+			m_bAdditive = true
+		},
+		{
+			_class = "C_OP_InterpolateRadius"
+			m_flBias = 0.75
+			m_flEndScale = 0.0
+		},
+		{
+			_class = "C_OP_OscillateVector"
+			m_flOpStartFadeOutTime = 0.5
+			m_flOpEndFadeOutTime = 1.0
+			m_RateMin = [ 0.0, 0.0, 180.0 ]
+			m_RateMax = [ 0.0, 0.0, 248.0 ]
+			m_FrequencyMin = [ 0.0, 0.0, 0.5 ]
+			m_FrequencyMax = [ 0.0, 0.0, 3.0 ]
+			m_bOffset = true
+		},
+		{
+			_class = "C_OP_MaxVelocity"
+			m_flMaxVelocity = 1860.0
+		},
+		{
+			_class = "C_OP_ColorInterpolate"
+			m_bEaseInOut = false
+			m_ColorFade = [ 139, 69, 19, 255 ]
+		},
+		{
+			_class = "C_OP_FadeOutSimple"
+			m_flFadeOutTime = 1.0
+		},
+	]
+	m_Initializers = 
+	[
+		{
+			_class = "C_INIT_RandomLifeTime"
+			m_fLifetimeMin = 1.0
+			m_fLifetimeMax = 1.0
+		},
+		{
+			_class = "C_INIT_RandomColor"
+			m_ColorMin = [ 139, 69, 19, 255 ]
+			m_ColorMax = [ 255, 127, 80, 255 ]
+		},
+		{
+			_class = "C_INIT_RingWave"
+			m_flInitialRadius = 400.0
+			m_bEvenDistribution = true
+			m_flParticlesPerOrbit = 23.0
+			m_flInitialSpeedMin = -1550.0
+			m_flInitialSpeedMax = -1550.0
+		},
+		{
+			_class = "C_INIT_RemapParticleCountToScalar"
+			m_bScaleInitialRange = true
+			m_nInputMax = 1
+			m_nFieldOutput = 7
+			m_bActiveRange = true
+		},
+		{
+			_class = "C_INIT_RemapParticleCountToScalar"
+			m_bScaleInitialRange = true
+			m_nInputMin = 23
+			m_nInputMax = 24
+			m_nFieldOutput = 7
+			m_flOutputMin = 1.0
+			m_flOutputMax = 0.0
+			m_bActiveRange = true
+		},
+	]
+	m_Emitters = 
+	[
+		{
+			_class = "C_OP_InstantaneousEmitter"
+			m_nParticlesToEmit = 25
+		},
+	]
+	m_Constraints = 
+	[
+		{
+			_class = "C_OP_PlanarConstraint"
+			m_PointOnPlane = [ 0.0, 0.0, -1480.0 ]
+			m_bGlobalNormal = true
+		},
+	]
+}

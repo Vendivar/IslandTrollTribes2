@@ -29,10 +29,11 @@ function MolotovDamage(event)
     local damage = 2 --can't use ability handle because the item is removed
     local caster = event.caster
     local target = event.target
-    target:EmitSound("molotov.burn")
 
     if string.find(target:GetUnitName(), "npc_building_") then
         DamageBuilding(target, damage, nil, caster)
+		target:EmitSound("molotov.burn")
+		Timers:CreateTimer(4, function() target:StopSound("molotov.burn") end)
     else
         ApplyDamage({victim = target, attacker = caster, damage = damage, damage_type = DAMAGE_TYPE_MAGICAL, })
     end
@@ -41,6 +42,7 @@ end
 
 function MolotovSoundStop( event )
 	local caster = event.caster
+    local target = event.target
 	
-	target:StopSound("Hero_Juggernaut.HealingWard.Loop")
+	target:StopSound("molotov.burn")
 end

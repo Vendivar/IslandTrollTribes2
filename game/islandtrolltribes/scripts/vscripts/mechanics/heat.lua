@@ -85,17 +85,26 @@ function Heat:Think( hero )
         Heat:UpdateLoss(hero)
         Heat:Modify(hero, hero.HeatLoss)
 
-        if Heat:Get( hero ) <= 20 then
+        if Heat:Get( hero ) <= 25 then
 		AddFreezingIndicator(hero)
-        EmitSoundOn( "Hero_Ancient_Apparition.IceBlastRelease.Tick", hero )
+        EmitSoundOn( "freezing", hero )
         else
             RemoveFreezingIndicator(hero)
         end
-
+		if Heat:Get( hero ) <= 15 then
+        EmitSoundOn( "freezing", hero )
+		hero:RemoveModifierByName("modifier_frozen")
+        end
+		
         if Heat:Get( hero ) <= 0 and not Heat.IMMUNITY then
+		
+			local isFrozen = hero:HasModifier("modifier_frozen")
+			if not isFrozen then
+            local item = CreateItem("item_apply_modifiers", hero, hero)
+			item:ApplyDataDrivenModifier(hero, hero, "modifier_frozen", {duration=60})
             RemoveHeatingIndicator(hero)
             RemoveFreezingIndicator(hero)
-            hero:ForceKill(true)
+			end
         end
 
         if not Heat.PLAYERS[hero:GetTeamNumber()] then
@@ -188,7 +197,7 @@ end
 
 function AddFreezingIndicator(hero)
     if not hero.freezing_indicator then
-        EmitSoundOn( "Hero_Ancient_Apparition.IceBlastRelease.Tick", hero )
+        EmitSoundOn( "freezing", hero )
         local player = PlayerResource:GetPlayer(hero:GetPlayerID())
         if player then
             hero.freezing_indicator = ParticleManager:CreateParticleForPlayer("particles/custom/screen_freeze_indicator.vpcf", PATTACH_EYES_FOLLOW, player, player)

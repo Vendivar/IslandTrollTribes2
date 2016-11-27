@@ -25,5 +25,13 @@ end
 
 function ElectroMagnetEnd(keys)
     local target = keys.target
-    ParticleManager:DestroyParticle(target.pull_pfx, false)
+    local caster = keys.caster
+	
+    ParticleManager:DestroyParticle(target.pull_pfx, false)		
+    ParticleManager:DestroyParticle(caster.pull_pfx, false)		
+	
+	target:StopSound("Hero_Disruptor.StaticStorm")
+	target:StopSound("Hero_StormSpirit.ElectricVortex")
+	caster:StopSound("Hero_Disruptor.StaticStorm")
+	caster:StopSound("Hero_StormSpirit.ElectricVortex")
 end

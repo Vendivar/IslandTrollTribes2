@@ -16,4 +16,5 @@ function KillTrap ( keys )
     local caster = keys.caster
 	caster:EmitSound("trap.iron")
     caster:ForceKill(true)
+	caster:AddEffects(EF_NODRAW) --Hide it, so that it's still accessible after this script
 end

@@ -28,7 +28,7 @@ function HealingWave(keys)
                                     false)
 
         for _,unit in pairs(units) do
-            if unit:IsAlive() then
+            if unit:IsAlive() and not caster then
                 --print("unit found")
                 local alreadyHealed = 0
 

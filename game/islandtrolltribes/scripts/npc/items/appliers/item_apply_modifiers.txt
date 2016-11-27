@@ -96,6 +96,57 @@
                 "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"    "30"
             }
         }
+		
+		"modifier_frozen"
+        {
+            "TextureName"           "frozen"
+            "OnCreated"
+            {
+                "AttachEffect"
+                {
+                    "Target"    "CASTER"
+                    "EffectName"    "particles/custom/frozen.vpcf"
+                    "EffectAttachType"    "follow_origin"
+                }
+				"AttachEffect"
+                {
+                    "Target"    "CASTER"
+                    "EffectName"    "particles/custom/frozen_debuff.vpcf"
+                    "EffectAttachType"    "follow_origin"
+                }
+				"FireSound"
+				{
+					"EffectName"    "frozen"
+					"Target"        "CASTER"
+				}
+				
+				"DelayedAction"
+            	{
+				"Delay"		"25.0"
+					"Action"
+					{
+						"Damage"
+						{
+							"Type"	"DAMAGE_TYPE_PURE"
+							"Damage"	"10000"
+							"Target"	"TARGET"
+						}
+					}
+				}
+			}           
+			"Properties"
+            {
+                "MODIFIER_PROPERTY_FIXED_DAY_VISION"    "300"
+                "MODIFIER_PROPERTY_FIXED_NIGHT_VISION"    "300"
+            }
+            "States"
+            {
+                "MODIFIER_STATE_ROOTED" 			"MODIFIER_STATE_VALUE_ENABLED"
+                "MODIFIER_STATE_DISARMED" 			"MODIFIER_STATE_VALUE_ENABLED"
+                "MODIFIER_STATE_SILENCED" 			"MODIFIER_STATE_VALUE_ENABLED"
+                "MODIFIER_STATE_COMMAND_RESTRICTED" "MODIFIER_STATE_VALUE_ENABLED"
+            }
+        }
 
         ////////////////////////////////////////////////////////
         //                  Subclass Stats                    //
@@ -445,6 +496,11 @@
 				{
 					"ScriptFile"	"buildings/build.lua"
 					"Function"		"ApplyUnderConstructionBehavior"
+				}
+				"FireSound"
+				{
+				"EffectName"		"construction.start"
+				"Target"			"TARGET"
 				}
 			}
 			"OnDestroy"

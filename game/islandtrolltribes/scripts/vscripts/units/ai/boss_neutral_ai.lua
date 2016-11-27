@@ -36,6 +36,7 @@ function BossNeutralThink( thisEntity )
     end
 
 	if (thisEntity.state == "wander") then
+	
 		local targets = FindUnitsInRadius(
                             thisEntity:GetTeam(),
                             thisEntity:GetOrigin(),
@@ -56,6 +57,7 @@ function BossNeutralThink( thisEntity )
 		
 		if distance(thisEntity.Home,thisEntity:GetAbsOrigin()) > 1100 then
 			thisEntity:MoveToPosition(thisEntity.Home)
+			thisEntity:Heal(thisEntity:GetMaxHealth(), nil)
 			thisEntity.state = "wander"
 		end
 
@@ -90,12 +92,12 @@ function BossNeutralThink( thisEntity )
                             false)
 
 		if #targets == 0 then
-            --print("breaking for distance")
+            print("breaking for distance")
             thisEntity.state = "wander"
         
         -- Also only chase for a limited duration
         elseif (GameRules:GetGameTime() > thisEntity.fight_wait_time) then
-            --print("breaking for time")
+            print("breaking for time")
             thisEntity.state = "wander"
         end
         

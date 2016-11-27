@@ -2,7 +2,7 @@
 {
 	_class = "CParticleSystemDefinition"
 	m_bShouldHitboxesFallbackToRenderBounds = false
-	m_nMaxParticles = 150
+	m_nMaxParticles = 300
 	m_ConstantColor = [ 44, 64, 1, 255 ]
 	m_Renderers = 
 	[
@@ -114,7 +114,7 @@
 	[
 		{
 			_class = "C_OP_ContinuousEmitter"
-			m_flEmitRate = 60.0
+			m_flEmitRate = 120.0
 		},
 	]
 	m_nInitialParticles = 15

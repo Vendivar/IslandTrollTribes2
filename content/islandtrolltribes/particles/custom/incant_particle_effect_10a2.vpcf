@@ -129,8 +129,8 @@
 			_class = "C_INIT_RandomAlpha"
 			m_flOpTimeOffsetMax = 1.0
 			m_flOpStrengthMinScale = 0.0
-			m_nAlphaMin = 200
-			m_nAlphaMax = 200
+			m_nAlphaMin = 220
+			m_nAlphaMax = 220
 		},
 		{
 			_class = "C_INIT_RandomYawFlip"

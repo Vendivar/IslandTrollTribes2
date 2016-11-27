@@ -50,6 +50,7 @@
             "Target"            "TARGET"
             "EffectName"        "particles/custom/spear_throw.vpcf"
             "MoveSpeed"         "%projectile_speed"
+			"ProvidesVision" "0"
         }
 
         "FireSound"

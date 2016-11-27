@@ -1626,7 +1626,7 @@
 "DOTA_Tooltip_modifier_jump_evasion_Description"                                  ""
 "DOTA_Tooltip_ability_ability_thief_jump_leap_distance"                           "JUMP DISTANCE:"
 "DOTA_Tooltip_ability_ability_thief_jump_leap_duration"                           "JUMP DURATION:"
-	
+"DOTA_Tooltip_ability_ability_thief_jump_damage_reduction"                        "DAMAGE REDUCTION:"
 
 	
 
@@ -2996,18 +2996,28 @@
 "DOTA_Tooltip_ability_item_potion_cure_all_max_stacks"		"MAX STACKS:"
 
 
+
+
 "DOTA_Tooltip_ability_item_potion_disease"		"Disease Potion"
 "DOTA_Tooltip_ability_item_potion_disease_chance"		"CHANCE:"
 "DOTA_Tooltip_ability_item_potion_disease_Description"		"ACTIVE: Use potion to inflict disease upon casted unit.\n<font color='#777777'>Hold ALT to view more information.</font>\n\nA vile concoction causes a host of terrible ailments to infect the target. Multiple doses intensify the malady."
 "DOTA_Tooltip_ability_item_potion_disease_Lore"		"Almost ironically sterile."
 "DOTA_Tooltip_ability_item_potion_disease_max_stacks"		"MAXIMUM STACKS:"
 "DOTA_Tooltip_ability_item_potion_disease_Note0"		"33% to cast each one of the following:\n- Disease 1: Skin Disease A horrible disease. Deals 3 damage per second with moderate duration. Length: 100\n- Disease 2: Horrible Headache This unit has a horrible headache caused by a bacterial infection. It is transferable and deals 1 damage per second with long duration. Length: 300\n- Disease 3: Fever This unit has been inflicted with fever. A transferable disease that deals 1 damage per second with moderate duration. Length: 150"
+
 "DOTA_Tooltip_modifier_disease1"		"Disease 1 - Skin Disease"
 "DOTA_Tooltip_modifier_disease1_Description"		"A horrible disease. Deals 3 damage per second with for 100 seconds."
+
 "DOTA_Tooltip_modifier_disease2"		"Disease 2 - Horrible Headache"
 "DOTA_Tooltip_modifier_disease2_Description"		"This unit has a horrible headache caused by a bacterial infection. It is transferable and deals 1 damage per second for 300 seconds."
+"DOTA_Tooltip_modifier_disease2_auraapplied"                                      "Disease 2 - Horrible Headache"
+"DOTA_Tooltip_modifier_disease2_auraapplied_Description"                          "This unit has a horrible headache caused by a bacterial infection. It is transferable and deals 1 damage per second for 300 seconds."
+
 "DOTA_Tooltip_modifier_disease3"		"Disease 3 - Fever"
 "DOTA_Tooltip_modifier_disease3_Description"		"This unit has been inflicted with fever. A transferable disease that deals 1 damage per second for 150 seconds."
+"DOTA_Tooltip_modifier_disease3_auraapplied"                                      "Disease 3 - Fever"
+"DOTA_Tooltip_modifier_disease3_auraapplied_Description"                          "This unit has been inflicted with fever. A transferable disease that deals 1 damage per second for 150 seconds."
+
 
 
 
@@ -3646,6 +3656,17 @@
 "DOTA_Tooltip_modifier_creeppanic"                                                "Panicked!"
 "DOTA_Tooltip_modifier_creeppanic_Description"                                    ""
 
+
+
+
+
+
+
+
+
+// Tutorial Stuff
+
+"QuestKill" "Kill Elk. (%quest_current_value%/%quest_target_value%)"
 
 
 // HUD stuff

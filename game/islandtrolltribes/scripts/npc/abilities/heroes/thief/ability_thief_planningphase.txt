@@ -121,26 +121,16 @@
             {
                 "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"    "5"
             }
-
-            "OnDestroy"
-            {
-                "RemoveModifier"
-                {
-                    "target"        "CASTER"
-                    "ModifierName"  "modifier_planningphase_attack"
-                }
-            }
+			"OnCreated"
+			{	
+				"FireSound"
+				{
+					"EffectName"		"thief.planningphase"
+					"Target"			"CASTER"
+				}
+			}
 
             "OnAttackLanded"
-            {
-                "RemoveModifier"
-                {
-                    "Target"        "CASTER"
-                    "ModifierName"  "modifier_planning_damage"
-                }
-            }
-
-            "OnTakeDamage"
             {
                 "RemoveModifier"
                 {

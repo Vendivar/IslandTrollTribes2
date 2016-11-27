@@ -35,7 +35,12 @@ function ability_revive:OnChannelFinish( bInterrupted )
                 ITT:SetSubclassCosmetics(hero)
             end
             FindClearSpaceForUnit(hero, caster:GetAbsOrigin(), true)
-            --caster:EmitSound("Hero_SkeletonKing.Reincarnation") --Gotta precache, not sure how to, in KV or here?
+            caster:EmitSound("revive") 
+            caster:EmitSound("revive.layered") 
+			
+			 local id = hero:GetPlayerID()
+			CustomGameEventManager:Send_ServerToTeam(hero:GetTeam(), "team_member_up", {hero = PlayerResource:GetSelectedHeroName(id),player = id})
+		
         end
     end
 end

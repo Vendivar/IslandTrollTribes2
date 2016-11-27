@@ -19,8 +19,10 @@ function ITT:SetupShops()
 
     local pathA = RollPercentage(50) and 1 or 3
     local pathB = RollPercentage(50) and 2 or 4
-    SpawnBoat(pathA)
-    SpawnBoat(pathB)
+    local pathC = RollPercentage(50) and 1 or 2 or 3 or 4
+   -- SpawnBoat(pathA)
+    --SpawnBoat(pathB)
+    SpawnBoat(pathC)
 end
 
 function SpawnBoat(pathNum)
@@ -78,7 +80,7 @@ function TieShopToUnit( unit )
         prices =      prices,
         stocks =      stocks,
         closeOnOrder= true,
-        range =       350,
+        range =       550,
 
         OnSelect = function(playerID, container, selected)
             print("Selected", selected:GetUnitName())

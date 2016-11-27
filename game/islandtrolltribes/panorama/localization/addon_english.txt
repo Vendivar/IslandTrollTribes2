@@ -169,6 +169,7 @@
         "error_inventory_full"               "Inventory is full."
         "error_cant_teleport_without_vision" "Can not teleport to a location without vision. Do you want to end up inside a wall?"
         "error_cant_attack_air"              "Can not attack air units. Try using ensnare to bring down the hawks."
+        "error_cant_cancel"            		 "Can't cancel ressurection in progress!"
         "error_cant_carry_more_raw_meat"     "Can not carry any more raw meat"
         "error_cant_carry_more_boots"        "Can not carry any more boots."
         "error_cant_carry_more_gloves"       "Can not carry any more gloves."
@@ -190,6 +191,7 @@
         "error_must_target_allied_gravestone" "Must target an allied gravestone!"
         "error_heat_low"                     "Your heat is too low! Get to a fire to warm up or you will die!"
         "error_mana_low"                    "You've run out of mana and fell asleep outside!"
+        "error_frozen"                    "You have frozen! You must have a teammate come to you and warm you up or you will die!"
         "eat_raw_meat_channeling_is_in_progress" "Raw Meat Channeling is progress already."
         "error_already_rested"                  "You are already rested. Please wait a moment before resting again."
         "error_must_target_baby_animal"         "Must target a baby animal."
@@ -251,6 +253,7 @@
         "ChatPlaceholder" "Type here..."
 
         "DeathMessage" "{s:name} died..."
+        "ReviveMessage" "{s:name} has been revived!"
 
         "DOTA_Tooltip_Ability_Panic" "<font color='#00CC00'>P</font>anic"
         "DOTA_Tooltip_Ability_Panic_Description"         "Use this ability to send your troll into a panic to gain attack damage and move speed! Be warned, during your state of frenzy you take increased damage."

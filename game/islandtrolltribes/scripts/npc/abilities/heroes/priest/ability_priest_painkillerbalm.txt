@@ -86,7 +86,7 @@
 		{
 			"IsHidden"			"0"
 			"IsBuff"			"1"
-			
+			"Attributes"       "MODIFIER_ATTRIBUTE_MULTIPLE" 
             "ThinkInterval" "2"
 			"OnCreated"
 			{
@@ -128,7 +128,7 @@
             
 			"Properties"
 			{
-				"MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE" "20"
+				"MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE" "-1"
 			}
             
             "OnIntervalThink"
