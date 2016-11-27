@@ -98,6 +98,57 @@
 	                "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"    "30"
 	            }
 	        }
+			
+			"modifier_frozen"
+	        {
+	            "TextureName"           "frozen"
+	            "OnCreated"
+	            {
+	                "AttachEffect"
+	                {
+	                    "Target"    "CASTER"
+	                    "EffectName"    "particles/custom/frozen.vpcf"
+	                    "EffectAttachType"    "follow_origin"
+	                }
+					"AttachEffect"
+	                {
+	                    "Target"    "CASTER"
+	                    "EffectName"    "particles/custom/frozen_debuff.vpcf"
+	                    "EffectAttachType"    "follow_origin"
+	                }
+					"FireSound"
+					{
+						"EffectName"    "frozen"
+						"Target"        "CASTER"
+					}
+					
+					"DelayedAction"
+	            	{
+					"Delay"		"25.0"
+						"Action"
+						{
+							"Damage"
+							{
+								"Type"	"DAMAGE_TYPE_PURE"
+								"Damage"	"10000"
+								"Target"	"TARGET"
+							}
+						}
+					}
+				}           
+				"Properties"
+	            {
+	                "MODIFIER_PROPERTY_FIXED_DAY_VISION"    "300"
+	                "MODIFIER_PROPERTY_FIXED_NIGHT_VISION"    "300"
+	            }
+	            "States"
+	            {
+	                "MODIFIER_STATE_ROOTED" 			"MODIFIER_STATE_VALUE_ENABLED"
+	                "MODIFIER_STATE_DISARMED" 			"MODIFIER_STATE_VALUE_ENABLED"
+	                "MODIFIER_STATE_SILENCED" 			"MODIFIER_STATE_VALUE_ENABLED"
+	                "MODIFIER_STATE_COMMAND_RESTRICTED" "MODIFIER_STATE_VALUE_ENABLED"
+	            }
+	        }
 	
 	        ////////////////////////////////////////////////////////
 	        //                  Subclass Stats                    //
@@ -447,6 +498,11 @@
 					{
 						"ScriptFile"	"buildings/build.lua"
 						"Function"		"ApplyUnderConstructionBehavior"
+					}
+					"FireSound"
+					{
+					"EffectName"		"construction.start"
+					"Target"			"TARGET"
 					}
 				}
 				"OnDestroy"
@@ -2174,7 +2230,7 @@
 	
 	        "FireSound"
 	        {
-	            "EffectName"    "Hero_Treant.Overgrowth.Cast"
+	            "EffectName"    "trap.ensnare.arm"
 	            "Target"        "CASTER"
 	        }
 	        
@@ -7168,6 +7224,14 @@
 	                    "Function"      "MolotovSoundStop"
 	                }
 				}
+					"OnDeath"
+				{
+					"RunScript"
+	                {
+	                    "ScriptFile"    "items/potion_molotov.lua"
+	                    "Function"      "MolotovSoundStop"
+	                }
+				}
 	        }
 	    }
 	}
@@ -9340,6 +9404,7 @@
 	            "Target"            "TARGET"
 	            "EffectName"        "particles/custom/spear_throw.vpcf"
 	            "MoveSpeed"         "%projectile_speed"
+				"ProvidesVision" "0"
 	        }
 	    }
 	
@@ -9537,6 +9602,7 @@
 	            "Target"            "TARGET"
 	            "EffectName"        "particles/custom/spear_throw.vpcf"
 	            "MoveSpeed"         "%projectile_speed"
+				"ProvidesVision" "0"
 	        }
 	
 	        "FireSound"
@@ -9771,6 +9837,7 @@
 	            "Target"            "TARGET"
 	            "EffectName"        "particles/custom/spear_throw.vpcf"
 	            "MoveSpeed"         "%projectile_speed"
+				"ProvidesVision" "0"
 	        }
 	
 	        "FireSound"
@@ -9941,6 +10008,7 @@
 	            "Target"            "TARGET"
 	            "EffectName"        "particles/custom/spear_throw.vpcf"
 	            "MoveSpeed"         "%projectile_speed"
+				"ProvidesVision" "0"
 	        }
 	
 	        "FireSound"
@@ -10204,6 +10272,7 @@
 	            "Target"            "TARGET"
 	            "EffectName"        "particles/custom/spear_throw.vpcf"
 	            "MoveSpeed"         "%projectile_speed"
+				"ProvidesVision" "0"
 	        }
 	
 	        "FireSound"
@@ -11899,7 +11968,7 @@
 	"item_horn_mammoth"
 	{
 		"ID"	"1152"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"horn_mammoth"
 		"Model"	"models/props_gameplay/status_shield.vmdl"
@@ -11908,7 +11977,8 @@
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
-		"ItemStackable"	"1"
+		"ItemStackable"	"0"
+		"ItemInitialCharges"	"1"
 		"ItemPermanent"	"0"
 		"ItemDroppable"	"1"
 		"ItemAliases"	"quicktype"
@@ -11919,16 +11989,168 @@
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
+		
 		"OnSpellStart"
-		{
-			"RunScript"
+		{		
+	        "ActOnTargets"
 			{
-				"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
-				"Function"	"item_horn_use"
-			}
+				"Target"
+				{
+					"Center"  		"CASTER"
+					"Radius"		"900"
+					"Teams" 		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+					"Types" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				}
 	
+				"Action"
+				{
+					"ApplyModifier"
+					{
+						"Target" 		"TARGET"
+						"ModifierName"	"modifier_horn_buff"
+					}
+				}
+			}
+			
+			"ActOnTargets"
+			{
+				"Target"
+				{
+					"Center"  		"CASTER"
+					"Radius"		"900"
+					"Teams" 		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				}
+	
+				"Action"
+				{
+					"ApplyModifier"
+					{
+						"Target" 		"TARGET"
+						"ModifierName"	"modifier_horn_debuff"
+					}
+				}
+			}
+			
+	        "FireSound"
+	         {
+	             "EffectName"	"item.horn.blow"
+	             "Target" 		"CASTER"
+	         }
+			
+			"FireEffect"
+				{
+				"EffectName"    "particles/custom/horn_mammoth_blow.vpcf"
+				"Target"        "CASTER"
+				"EffectAttachType"      "attach_origin"
+				
+				}
 			"SpendCharge"
 			{
+			}
+		}
+		
+		
+		"Modifiers"
+		{
+			"modifier_horn_buff"
+			{
+				"Duration"	"%duration"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"%armor_bonus"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%speed_bonus"
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%all_stats_buff"
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"			"%all_stats_buff"
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"		"%all_stats_buff"
+				}
+				"OnCreated"
+				{
+	                "AttachEffect"
+	                {
+	                    "EffectName"    "particles/custom/horn_mammoth_blow_buff.vpcf"
+	                    "Target"        "TARGET"
+	                    "EffectAttachType"      "follow_origin"
+	                }                
+	            }
+			}
+			
+			"modifier_horn_debuff"
+			{
+				"IsDebuff"         "1"
+				"Duration"	"%duration"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"				"%armor_bonus"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"			"%speed_unbonus"
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"				"%all_stats_debuff"
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"					"%all_stats_debuff"
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"				"%all_stats_debuff"
+				}
+				"OnCreated"
+				{
+	                "AttachEffect"
+	                {
+	                    "EffectName"    "particles/custom/mammoth_debuff.vpcf"
+	                    "Target"        "TARGET"
+	                    "EffectAttachType"      "follow_origin"
+	                }                
+	            }
+			}
+	
+		}
+		
+		"Custom"
+		{
+			"ModelScale"	"1.5"
+		}
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"whatever"	"0"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"armor_bonus"	"3"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"armor_unbonus"	"-3"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"speed_bonus"	"10"
+			}		
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"speed_unbonus"	"-10"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"all_stats_buff"	"5"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"all_stats_debuff"	"-5"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"duration"	"7"
+			}		
+			"09"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"900"
 			}
 	
 		}
