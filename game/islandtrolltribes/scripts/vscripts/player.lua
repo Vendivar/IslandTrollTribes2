@@ -44,8 +44,10 @@ function ITT:OnClassSelected(event)
         class_name = classes[RandomInt(1,7)]
 
         -- Random should respect team class limits.
-        while team_classes[team][class_name] == class_limits[class_name] do
-            class_name = classes[RandomInt(1,7)]
+        if team_classes[team] then
+            while team_classes[team][class_name] == class_limits[class_name] do
+                class_name = classes[RandomInt(1,7)]
+            end
         end
     end
 
