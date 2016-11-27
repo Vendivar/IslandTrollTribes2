@@ -358,6 +358,19 @@ function ReorderItems( caster )
     end
 end
 
+function HasAnItem(unit, itemName)
+    for i=0,5 do
+        local item = unit:GetItemInSlot(i)
+        if item then
+            local name = item:GetAbilityName()
+            if name == itemName then
+                return true
+            end
+        end
+    end
+    return false
+end
+
 ------------------------------------------------
 --               Layout manipulation          --
 ------------------------------------------------
