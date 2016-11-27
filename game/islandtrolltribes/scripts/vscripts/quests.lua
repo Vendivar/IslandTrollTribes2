@@ -67,6 +67,11 @@ quests_table = {
 -- If an id is given, start the quest with that id.
 -- Without an id, only start the first quest in that type of questline.
 function Quests:Start(hero, type, id)
+    if not hero.current_quests then
+        hero.current_quests = {}
+        hero.quests = {}
+    end
+
     if not id then
         if type == "all" then
             id = self.first_all_id
