@@ -23,7 +23,7 @@ quests_table = {
     all = {
         [1] = { -- Global quests start from 1
             name = "Tutorial for everyone!",
-            title = "Get a stick, a tinder and a flint.",
+            title = "Survive! Get a stick, a tinder and a flint.",
             context = {
                 type = "Time",
                 track = function(hero, quest, obj)
@@ -39,7 +39,7 @@ quests_table = {
         },
         [2] = {
             name = "Home Sweet Home",
-            title = "Home Sweet Home: Make a campfire.",
+            title = "Home Sweet Home: Craft a campfire. (Press C)",
             context = {
                 type = "Time",
                 track = function(hero, quest, obj)
@@ -50,23 +50,125 @@ quests_table = {
             }
         },
         [3] = {
-            name = "Tutorial for everyone!",
-            title = "This one is top kek.",
+            name = "Home Sweet Home Pt 2.",
+            title = "Home Sweet Home Pt. 2: Place your newly crafted camp fire",
             context = {
                 type = "Time",
                 from = 0,
-                delay_start = 100,
+                to = 60
+            }
+        },
+        [5] = {
+            name = "Fire placement",
+            title = "Agree upon a base location.",
+            context = {
+                type = "Time",
+                from = 0,
+                delay_start = 5,
+                to = 45
+            }
+        },
+		[7] = {
+            name = "Experience makes us wise!",
+            title = "Pick up 5 items",
+            context = {
+                type = "Time",
+				 track = function(hero, quest, obj)
+                    local count = 0
+                    if OnItemPickedUp then count = count + 1 end
+                    Quests.UpdateQuest(obj, hero, count, quest.id)
+                end,
+                delay_start = 40,
+                from = 0,
                 to = 5
             }
         },
         [10] = {
-            name = "Tuttasdfeveryone!",
-            title = "This is a delayed quest!",
+            name = "Experience makes us wise!",
+            title = "Reach level 2 before 5 minutes.",
             context = {
                 type = "Time",
-                delay_start = 60,
+				 track = function(hero, quest, obj)
+                    local count = 0
+                    if hero:OnInventoryContentsChanged() then count = count + 1 end
+                    Quests.UpdateQuest(obj, hero, count, quest.id)
+                end,
+                delay_start = 50,
                 from = 0,
-                to = 20
+                to = 1
+            }
+        },
+		[11] = {
+            name = "Experience makes us wise!",
+            title = "Reach level 3 before 7 minutes.",
+            context = {
+                type = "Time",
+				 track = function(hero, quest, obj)
+                    local count = 0
+                    if  hero:GetLevel() == 3 then count = count + 1 end
+                    Quests.UpdateQuest(obj, hero, count, quest.id)
+                end,
+                delay_start = 0,
+                from = 0,
+                to = 1
+            }
+        },
+		[12] = {
+            name = "Experience makes us wise!",
+            title = "Reach level 4 before 8 minutes.",
+            context = {
+                type = "Time",
+				 track = function(hero, quest, obj)
+                    local count = 0
+                    if  hero:GetLevel() == 4 then count = count + 1 end
+                    Quests.UpdateQuest(obj, hero, count, quest.id)
+                end,
+                delay_start = 0,
+                from = 0,
+                to = 1
+            }
+        },
+		[13] = {
+            name = "Experience makes us wise!",
+            title = "Reach level 5 before 10 minutes.",
+            context = {
+                type = "Time",
+				 track = function(hero, quest, obj)
+                    local count = 0
+                    if  hero:GetLevel() == 5 then count = count + 1 end
+                    Quests.UpdateQuest(obj, hero, count, quest.id)
+                end,
+                delay_start = 0,
+                from = 0,
+                to = 1
+            }
+        },
+		[14] = {
+            name = "Experience makes us wise!",
+            title = "Reach level 6 before 11 minutes.",
+            context = {
+                type = "Time",
+				 track = function(hero, quest, obj)
+                    local count = 0
+                    if  hero:GetLevel() == 6 then count = count + 1 end
+                    Quests.UpdateQuest(obj, hero, count, quest.id)
+                end,
+                delay_start = 0,
+                from = 0,
+                to = 1
+            }
+        },
+		[15] = {
+            name = "Experience makes us wise!",
+            title = "Choose your subclass!",
+            context = {
+                type = "Time",
+				 track = function(hero, quest, obj)
+                    local count = 0
+                    if hero:HasSubClass()  == true  then
+                        Quests.End(obj, hero, quest.id)
+                    end
+                end
             }
         }
     },

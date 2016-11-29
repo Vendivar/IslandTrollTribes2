@@ -10,7 +10,7 @@
         "itt_brief_description"                     "Survive, build, and slay your enemies! Be the first team to out survive any other team by any means necessary!"
         "itt_game_info_header_how_to_play"          "How To Play:"
         "itt_game_info_fire"                        "Start by building a <span class='red'>fire</span> to keep <span class='red'>warm</span>.<br><br>If you do not keep <span class='red'>warm</span> enough and your <span class='red'>heat</span> meter reaches <span class='red'>0</span> you will <span class='blue'>freeze</span> to death!"
-        "itt_game_info_resources"                   "Begin building up your tribe with <span class='gold'>buildings</span> and <span class='xp'>resources</span>.<br><br>Check the in-game <span class='gold'>recipe list</span> to see what you need to craft!<br><br>Be careful! An enemy can raid your base and steal your <span class='gold'>resources</span>!"
+        "itt_game_info_resources"                   "Begin building up your tribe with<br> <span class='gold'>buildings</span> and <span class='xp'>resources</span>.<br><br>Check the in-game <span class='gold'>recipe list</span> to see<br> what you need to craft!<br><br>Be careful! An enemy can raid your base and steal your <span class='gold'>resources</span>!"
         "itt_game_info_items"                       "Craft <span class='gold'>weapons</span> and <span class='gold'>potions</span> to give your tribe the edge in battle!<br> Your troll can only hold so much so choose wisely!"
         "itt_game_info_tips_header"                 "Tips:"
         "itt_game_info_tip01"                       "<li>Hitting the 'B' button is the quick way to drop all your items on the ground.<br>"
