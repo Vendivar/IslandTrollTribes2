@@ -68,16 +68,48 @@ function CanCombine( unit, section, recipeName )
     for itemName,num in pairs(requirements) do
         local items = HasEnoughInInventory(unit, itemName, num, usedInts)
         local usedInts = items[2]
-        if items then
+        if items[1] then
             table.insert(result, {items[1], num})
         else
-            return false
+            if unit.itempens then
+                -- We have a chance!
+                local res = CheckItempens(unit, num - #items[3], itemName)
+                if res then
+                    table.insert(result, {items[3], num, res})
+                else
+                    return false
+                end
+            else
+                return false
+            end
         end
     end
 
     -- All the requirements passed, return the result to combine
     print("Can Combine "..recipeName)
     return result
+end
+
+function CheckItempens(unit, num, itemName)
+    local current = 0
+    local itempens = {}
+    for i, itempen in pairs(unit.itempens) do
+        if itempen:IsNull() or not IsValidEntity(itempen) then -- Was it destroyed?
+            table.remove(itempen, i)
+        else
+            -- Need to check if it's an alias.
+            local name = GetAliasForPen(itemName, itempen.items)
+            if itempen.items[name] and itempen.items[name].count > 0 then
+                current = current + itempen.items[name].count
+                table.insert(itempens, itempen)
+                if current >= num then
+                    return {itempens, name}
+                end
+            end
+        end
+    end
+
+    return false
 end
 
 -- HasEnoughInInventory no longer checks the same items that have already been used for the recipe.
@@ -124,7 +156,25 @@ function HasEnoughInInventory( unit, itemName, num, usedInts)
     if currentNum >= num then
         return {items, usedInts}
     else
-        return false
+        return {false, usedInts, items}
+    end
+end
+
+-- Returns an appropriate name for itempen usage.
+function GetAliasForPen(itemName, itempen)
+    if string.match(itemName, "any_") then
+        local aliasTable = GameRules.Crafting['Alias'][itemName]
+
+        for k,v in pairs(aliasTable) do
+            if itempen[k] and itempen[k].count > 0 then
+                return k
+            end
+        end
+
+        -- No match, return the alias for automatic failure.
+        return itemName
+    else
+        return itemName
     end
 end
 
@@ -163,9 +213,10 @@ function ClearItems( itemList )
     for k,v in pairs(itemList) do
         local items = v[1]
         local num = v[2]
-        for _,item in pairs(items) do
+        for _,item in pairs(items) do -- Remove the items in inventory
             if not item:IsNull() and item:GetCurrentCharges() > 1 then
-                for i = 1, num do
+                local len = num
+                for i = 1, len do
                     item:SetCurrentCharges(item:GetCurrentCharges() - 1)
                     num = num - 1
                     if item:GetCurrentCharges() == 0 then
@@ -177,7 +228,31 @@ function ClearItems( itemList )
                 UTIL_Remove(item)
             end
         end
+
+        -- Still missing? Check itempens
+        if num > 0 and v[3] then
+            ClearItemsFromPen(v[3][1], v[3][2], num)
+        end
     end
+end
+
+function ClearItemsFromPen(pens, itemName, num)
+  for k,pen in pairs(pens) do
+      local len = num
+      local pen_items = pen.items[itemName].items
+      local count = pen.items[itemName].count
+      for i = 1, len do
+          if i <= count then
+              if not pen_items[i]:IsNull() then
+                  UTIL_RemoveImmediate(pen_items[i]:GetContainedItem())
+                  UTIL_RemoveImmediate(pen_items[i])
+                  num = num - 1
+              end
+          else
+              break
+          end
+      end
+  end
 end
 
 function GetRandomAliasFor(aliasName)

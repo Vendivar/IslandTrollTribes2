@@ -93,11 +93,12 @@ function IsKilledBuilding(building) {
 }
 
 function UpdateKilledBuildingList(event) {
-    var name = Entities.GetUnitName(event.building)
-    if (Buildings[name]) {
+    var name = Entities.GetUnitName(event.building);
+    var pos = Entities.GetAbsOrigin(event.building);
+    if (Buildings[name] && Buildings[name][pos]) {
         KilledBuildings.push(event.building)
-        if (event.building == currentBuilding) {
-             Hide(Buildings[currentBuilding])
+        if (event.building == currentBuilding && pos == currentPos) {
+             Hide(Buildings[currentBuilding][currentPos])
         }
     }
 
@@ -108,7 +109,8 @@ function UpdateKilledBuildingList(event) {
 
 function UpdateUnfinishedBuildingList(event) {
     var name = Entities.GetUnitName(event.building)
-    if (Buildings[name]) {
+    var pos = Entities.GetAbsOrigin(event.building)
+    if (Buildings[name] && Buildings[name][pos]) {
          if (event.status == "started") {
              UnFinishedBuildings.push(event.building)
          }else if (event.status == "completed") {

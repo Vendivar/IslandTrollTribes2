@@ -25,9 +25,9 @@
           </Panel>
         </Panel>
         <Panel id="Gamemode_custom">
-          <Panel id="custom_options" class="Gamemode_customcheck" onactivate="toggleCustom()" />
-          <Label text="#Gamemode_customheader_enable" id="Gamemode_customheader" hittest="false" />
-          <Panel id="Gamemode_customwrapper" class="hidden">
+          <Panel id="custom_options" class="Gamemode_customcheck hidden" onactivate="toggleCustom()" />
+          <!--<Label text="#Gamemode_customheader_enable" id="Gamemode_customheader" hittest="false" />-->
+          <Panel id="Gamemode_customwrapper">
             <Panel class="Gamemode_custombutton">
               <Panel id="custom_noob" class="Gamemode_voting_icon Gamemode_icon_custom_noob" onactivate="setCustomToggle('custom_noob')"  onmouseover="onHover('custom_noob')" onmouseout="offHover('custom_noob')"/>
               <Label text="#Gamemode_noobmode" id="custom_noob_label" class="custom_label" />
@@ -46,7 +46,7 @@
             </Panel>
           </Panel>
         </Panel>
-        <Panel id="Gamemode_picks" class="hidden">
+        <Panel id="Gamemode_picks">
           <Panel class="Gamemode_pickbutton">
             <Panel id="pick_1" class="Gamemode_pickcheck active_pick" onactivate="setPick(1)" onmouseover="onHover('pick_1')" onmouseout="offHover('pick_1')">
             </Panel>

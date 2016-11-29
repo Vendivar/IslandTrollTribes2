@@ -21,8 +21,8 @@ function InstantiateCraftingRecipe(panel) {
 
     CheckInventory(panel, resultPanel);
 
-    GameUI.pushEvent("update_recipes_" + panel.entity, function(context) {
-        CheckInventory(context.panel, context.resultPanel);
+    GameUI.pushEvent("update_recipes_" + panel.entity, function(context, inventory) {
+        CheckInventory(context.panel, context.resultPanel, inventory);
     }, {panel: panel, resultPanel: resultPanel});
 
     GameUI.build_cb("update_recipes_" + panel.entity, {
@@ -41,31 +41,39 @@ function MakeItemPanel(parent, name, elements) {
     return itemPanel;
 }
 
-function CheckInventory(panel, resultPanel)
+function CheckInventory(panel, resultPanel, inventory)
 {
     // Think glows and craft state
-    // Build an array of items in inventory
-    var itemsOnInventory = [];
-
-    for (var i = 0; i < 6; i++) {
-        var item = Entities.GetItemInSlot(panel.entity, i);
-        if (item)
-        {
-            var item_name = Abilities.GetAbilityName(item);
-            if (item_name !== undefined && item_name != "item_slot_locked")
+    var itemsInInventory = {};
+    if (!inventory) {
+        // Build an array of items in inventory
+        for (var i = 0; i < 6; i++) {
+            var item = Entities.GetItemInSlot(panel.entity, i);
+            if (item)
             {
-                var charges = Items.GetCurrentCharges(item);
-                if (charges > 1)
+                var item_name = Abilities.GetAbilityName(item);
+                if (item_name !== undefined && item_name != "item_slot_locked")
                 {
-                    for (var x = 0; x < charges; x++) {
-                        itemsOnInventory.push(item_name);
-                    };
+                    var charges = Items.GetCurrentCharges(item);
+                    if (!itemsInInventory[item_name]) {
+                        itemsInInventory[item_name] = 0;
+                    }
+
+                    if (charges > 1) {
+                        itemsInInventory[item_name] += charges;
+                    }
+                    else {
+                        itemsInInventory[item_name] += 1;
+                    }
                 }
-                else
-                    itemsOnInventory.push(item_name);
             }
         }
-    };
+    }
+    else {
+        // Deep cloning an object.
+        // More at http://stackoverflow.com/questions/122102/what-is-the-most-efficient-way-to-deep-clone-an-object-in-javascript
+        itemsInInventory = JSON.parse(JSON.stringify(inventory));
+    }
 
     if (panel && panel.visible) {
         var meetsAllRequirements = true;
@@ -74,17 +82,28 @@ function CheckInventory(panel, resultPanel)
             var child = panel.GetChild(i);
             if (child.itemname !== undefined && child.itemname != resultPanel.itemname)
             {
-                var itemIndex = FindItemInArray(child.itemname, itemsOnInventory);
+                var name = IsAnAlias(child.itemname, itemsInInventory);
+                if (itemsInInventory[name] && itemsInInventory[name] > 0) {
+                    itemsInInventory[name] -= 1;
+                    AddGlow(child);
+                }
+                else {
+                    meetsAllRequirements = false;
+                    RemoveGlow(child);
+                }
+                /*
+                var itemIndex = FindItemInArray(child.itemname, inventory);
                 if (itemIndex > -1)
                 {
                     itemsOnInventory.splice(itemIndex, 1);
-                    AddGlow(child);
+
                 }
                 else
                 {
                     meetsAllRequirements = false;
-                    RemoveGlow(child);
+
                 }
+                */
             }
         }
     }
@@ -99,6 +118,20 @@ function CheckInventory(panel, resultPanel)
             CheckInventory(panel, resultPanel)
         });
     }*/
+}
+
+function IsAnAlias(name, inventory) {
+    if (name.indexOf("any_") > -1) {
+        for (var itemName in aliasTable[name]) {
+            if (inventory[itemName]) {
+                return itemName;
+            }
+        }
+        return name; // Not found in inventory, just return the original.
+    }
+    else {
+        return name;
+    }
 }
 
 // Search for an item by name taking alias into account
