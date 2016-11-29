@@ -2,7 +2,7 @@
 {
 	_class = "CParticleSystemDefinition"
 	m_bShouldHitboxesFallbackToRenderBounds = false
-	m_nMaxParticles = 32
+	m_nMaxParticles = 320
 	m_flConstantRadius = 15.0
 	m_ConstantColor = [ 255, 255, 255, 80 ]
 	m_flMaxRecreationTime = -1.0
@@ -127,6 +127,7 @@
 			_class = "C_OP_ContinuousEmitter"
 			m_flEmissionDuration = 0.35
 			m_flStartTime = 0.1
+			m_flEmitRate = 200.0
 		},
 	]
 }

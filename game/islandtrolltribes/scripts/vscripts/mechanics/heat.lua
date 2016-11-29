@@ -87,22 +87,25 @@ function Heat:Think( hero )
 
         if Heat:Get( hero ) <= 25 then
 		AddFreezingIndicator(hero)
-        EmitSoundOn( "freezing", hero )
-        else
-            RemoveFreezingIndicator(hero)
+		RemoveFrozenIndicator(hero)
+		else
+		RemoveFreezingIndicator(hero)
         end
-		if Heat:Get( hero ) <= 15 then
-        EmitSoundOn( "freezing", hero )
+		
+		
+		if Heat:Get( hero ) >= 15 then
 		hero:RemoveModifierByName("modifier_frozen")
+        RemoveFrozenIndicator(hero)	
         end
 		
         if Heat:Get( hero ) <= 0 and not Heat.IMMUNITY then
             local item = CreateItem("item_apply_modifiers", hero, hero)
-			if not hero:HasModifier("modifier_frozen") then
 			item:ApplyDataDrivenModifier(hero, hero, "modifier_frozen", {duration=60})
             RemoveHeatingIndicator(hero)
-            RemoveFreezingIndicator(hero)
-			end
+            RemoveFreezingIndicator(hero)	
+			AddFrozenIndicator(hero)
+			Heat:Set(hero,1)
+			TeammmateFrozenMessage(hero)	
         end
 
         if not Heat.PLAYERS[hero:GetTeamNumber()] then
@@ -159,9 +162,18 @@ function Heat:CalculateLoss(hero)
     if hero:HasModifier("modifier_glow_heat") then
         heatLoss = heatLoss + 1/9
     end
+	
+	-- The Glow aura is +1 every 9 seconds
+    if hero:HasModifier("modifier_warm_up") then
+        heatLoss = heatLoss + 1/0.25
+    end
 
-    --print("Heat Per Second: "..heatLoss)
 
+  -- Stop heat loss when frozen
+   if hero:HasModifier("modifier_frozen") and not hero:HasModifier("modifier_mage_fire_heat") and not hero:HasModifier("modifier_fire_heat") then
+        heatLoss = 0
+   end
+   
     return heatLoss
 end
 
@@ -193,18 +205,6 @@ function AddHeatingIndicator(hero)
     end
 end
 
-function AddFreezingIndicator(hero)
-    if not hero.freezing_indicator then
-        EmitSoundOn( "freezing", hero )
-        local player = PlayerResource:GetPlayer(hero:GetPlayerID())
-        if player then
-            hero.freezing_indicator = ParticleManager:CreateParticleForPlayer("particles/custom/screen_freeze_indicator.vpcf", PATTACH_EYES_FOLLOW, player, player)
-            ParticleManager:SetParticleControl(hero.freezing_indicator, 1, Vector(1,0,0))
-            SendFreezeMessage(hero:GetPlayerID(), "#error_heat_low")
-        end
-    end
-end
-
 function RemoveHeatingIndicator(hero)
     if hero.heating_indicator then
         ParticleManager:DestroyParticle(hero.heating_indicator, false)
@@ -212,9 +212,79 @@ function RemoveHeatingIndicator(hero)
     end
 end
 
+function AddFreezingIndicator(hero)
+EmitSoundOn( "freezing", hero )
+    if not hero.freezing_indicator then
+        EmitSoundOn( "freezing", hero )
+        local player = PlayerResource:GetPlayer(hero:GetPlayerID())
+        if player then
+            hero.freezing_indicator = ParticleManager:CreateParticleForPlayer("particles/custom/screen_freeze_indicator.vpcf", PATTACH_EYES_FOLLOW, player, player)
+            ParticleManager:SetParticleControl(hero.freezing_indicator, 1, Vector(1,0,0))
+            SendFreezeMessage(hero:GetPlayerID(), "#error_heat_low")
+			print("Freezing Indicator Internal")
+--		Timers:CreateTimer(0.5, function()
+--		EmitSoundOn( "freezing", hero )
+--		SendFreezeMessage(hero:GetPlayerID(), "#error_heat_low")
+--      return 3.5
+--    end
+--  )
+  
+        end
+    end
+	    			print("Freezing Indicator external")
+
+end
+
 function RemoveFreezingIndicator(hero)
     if hero.freezing_indicator then
         ParticleManager:DestroyParticle(hero.freezing_indicator, false)
         hero.freezing_indicator = nil
     end
+end
+
+
+
+function AddFrozenIndicator(hero)
+EmitSoundOn( "freezing", hero )
+    if not hero.frozen_indicator then
+        EmitSoundOn( "freezing", hero )
+        local player = PlayerResource:GetPlayer(hero:GetPlayerID())
+        if player then
+            hero.frozen_indicator = ParticleManager:CreateParticleForPlayer("particles/custom/screen_freeze_indicator.vpcf", PATTACH_EYES_FOLLOW, player, player)
+            ParticleManager:SetParticleControl(hero.frozen_indicator, 1, Vector(1,0,0))
+            SendFrozenMessage(hero:GetPlayerID(), "#error_frozen")
+			EmitSoundOnClient("Hero_Beastmaster.Call.Hawk", player)
+			print("Frozen Indicator Internal")
+
+--	  Timers:CreateTimer(0.5, function()
+--	  EmitSoundOn( "freezing", hero )
+--	  SendFrozenMessage(hero:GetPlayerID(), "#error_frozen")
+--      return 3.5
+--    end
+--  )
+        end
+    end	
+	
+			print("Frozen Indicator External")
+
+	
+end
+
+
+function RemoveFrozenIndicator(hero)
+    if hero.frozen_indicator then
+        ParticleManager:DestroyParticle(hero.frozen_indicator, false)
+		Notifications:RemoveBottom(hero:GetPlayerID())
+        hero.frozen_indicator = nil
+    end
+end
+
+function TeammmateFrozenMessage(hero)
+    local team = hero:GetTeamNumber()
+    local playerID = hero:GetPlayerOwnerID()
+    local playerName = PlayerResource:GetPlayerName(playerID)
+    if playerName == "" then playerName = "Player "..playerID end
+		Notifications:TopToTeam(team, {ability="winter_wyvern_cold_embrace", duration=10})
+		Notifications:TopToTeam(team, {text=playerName, duration=10, style={color="red", ["margin-right"]="7px;"}, continue=true, class="NotificationMessage"})
+		Notifications:TopToTeam(team, {text="#teammate_frozen", duration=10, style={color="red"}, continue=true, class="NotificationMessage"})
 end

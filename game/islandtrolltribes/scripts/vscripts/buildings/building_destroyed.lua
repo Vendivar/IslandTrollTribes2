@@ -1,7 +1,7 @@
 function BuildingDestroyed(keys)
 caster = keys.caster
-
-	local particleName = "particles/units/heroes/hero_keeper_of_the_light/keeper_of_the_light_spirit_form_ambient.vpcf"
-	caster.buildingDestroyedParticle = ParticleManager:CreateParticle(particleName, PATTACH_ABSORIGIN_FOLLOW, caster, caster())
-	Timers:CreateTimer(2, function() caster:AddNoDraw() end)
+	
+    local destroyEffect = ParticleManager:CreateParticle("particles/custom/building_collapse_light_d.vpcf", PATTACH_CUSTOMORIGIN, hatchery)
+    ParticleManager:SetParticleControl(destroyEffect,0,caster:GetAbsOrigin())
+	EmitSoundOn( "building.die", caster )
 end

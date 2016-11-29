@@ -152,8 +152,8 @@
 		
 		"scout_ward"                            "Scout Ward"
         
-        "npc_boss_disco_duck"                                                             "Boss Disco Duck"
-		"npc_boss_the_one"                                                                "Boss The One"
+        "npc_boss_disco_duck"                                                             "Disco Duck"
+		"npc_boss_the_one"                                                                "The One"
 		
 		
 // Building Names
@@ -185,6 +185,7 @@
 		"npc_building_teleport_beacon"	"Teleport Beacon"
 		"npc_building_tent"				"Tent"
 		"npc_building_workshop"			"Workshop"
+		"npc_building_itempen" 			"Item Storage"
 		
 // Ships        
 
@@ -2378,10 +2379,26 @@
 "DOTA_Tooltip_ability_item_boots_wolf_Description"		"PASSIVE: Increases the movement speed of the wearer as well as providing bonus armor.\n\nA basic pair of boots that increase movement speed. Can be upgraded in the armory."
 "DOTA_Tooltip_ability_item_boots_wolf_Lore"		"A wolf once lived in those.."
 "DOTA_Tooltip_ability_item_boots_wolf_move_speed"		"+$move_speed"
+
+
+
+
+
 "DOTA_Tooltip_ability_item_bow_blood"		"Blood Bow"
 "DOTA_Tooltip_ability_item_bow_blood_buff_duration"		"BUFF DURATION:"
 "DOTA_Tooltip_ability_item_bow_blood_Description"		""
 "DOTA_Tooltip_ability_item_bow_blood_total_health"		"TOTAL HEALTH:"
+
+
+
+"DOTA_Tooltip_ability_item_building_kit_itempen"                                  "Item Storage Pen Kit"
+"DOTA_Tooltip_ability_item_building_kit_itempen_Description"                      "This is a building that will allow you to store your items in the open and let your buildings have acess to all items stored within for crafting purposes."
+	
+
+
+
+
+
 "DOTA_Tooltip_ability_item_building_kit_armory"		"Armory Kit"
 "DOTA_Tooltip_ability_item_building_kit_armory_build_duration"		"BUILD DURATION:"
 "DOTA_Tooltip_ability_item_building_kit_armory_build_time"		"BUILD TIME:"
@@ -2748,6 +2765,10 @@
 "DOTA_Tooltip_ability_item_gloves_wolf_heat"		"HEAT PER TICK:"
 "DOTA_Tooltip_ability_item_gloves_wolf_Lore"		"Moist and smelly inside."
 "DOTA_Tooltip_ability_item_gloves_wolf_tick_rate"		"TICK RATE:"
+"DOTA_Tooltip_item_gloves_wolf"                                                   "Wolf Skin Gloves"
+"DOTA_Tooltip_item_gloves_wolf_Description"                                       "Gaining a bonus to armor and attack speed, as well as heat every 35 seconds."
+
+	
 
 "DOTA_Tooltip_modifier_gloves_battle"		"Battle Gloves"
 "DOTA_Tooltip_modifier_gloves_battle_Description"		""
@@ -2853,10 +2874,34 @@
 "DOTA_Tooltip_ability_item_hide_wolf_Description"		"The hide of a slain wolf. Can be used in a variety of recipes."
 "DOTA_Tooltip_ability_item_hide_wolf_Lore"		"It will cry no more."
 "DOTA_Tooltip_ability_item_hide_wolf_Note0"		"\n\n-Hatchery Transmutable-"
+
+
+
 "DOTA_Tooltip_ability_item_horn_mammoth"		"Horn of the Mammoth"
-"DOTA_Tooltip_ability_item_horn_mammoth_Description"		"ACTIVE: Blow Hown - A tool of immense power, this Mammoth horn can be used to instantly replenish Health, Power or Heat, while also debuffing enemies around the user. Using one ability puts all three on cooldown.\n<font color='#777777'>Hold ALT to view more information.</font>\n\nThis horn has been taken from the mighty mammoth and its mystical properties can be used to enhance the user."
+"DOTA_Tooltip_ability_item_horn_mammoth_Description"		"ACTIVE: Blow Hown - A tool of immense power, this Mammoth horn can be used to instantly give a mighty bonus to all nearby trolls, increasing their move speed, armor, and all stats while reducing the same to enemies!\n\nThis horn has been taken from the mighty mammoth and its mystical properties can be used to enhance the user."
 "DOTA_Tooltip_ability_item_horn_mammoth_Lore"		"Used exclusively for tooting."
-"DOTA_Tooltip_ability_item_horn_mammoth_Note0"		"When clicked in the inventory, it brings up a small screen which overrides the user's normal unit action screen for the troll. This screen contains the three abilities, where one can be used at a time, forcing all three abilities into a cooldown. Each ability corresponds to a particular stat (Heat, Health or Energy) and will instantly replenish that stat to full, as well as inflicting a debuff upon nearby enemies."
+"DOTA_Tooltip_ability_item_horn_mammothx_Note0"		"When clicked in the inventory, it brings up a small screen which overrides the user's normal unit action screen for the troll. This screen contains the three abilities, where one can be used at a time, forcing all three abilities into a cooldown. Each ability corresponds to a particular stat (Heat, Health or Energy) and will instantly replenish that stat to full, as well as inflicting a debuff upon nearby enemies."
+
+"DOTA_Tooltip_ability_item_horn_mammoth_armor_bonus"                              "ARMOR BONUS:"
+"DOTA_Tooltip_ability_item_horn_mammoth_armor_unbonus"                            "ARMOR REDUCTION:"
+"DOTA_Tooltip_ability_item_horn_mammoth_speed_bonus"                              "%SPEED BONUS:"
+"DOTA_Tooltip_ability_item_horn_mammoth_speed_unbonus"                            "%SPEED REDUCTION:"
+"DOTA_Tooltip_ability_item_horn_mammoth_all_stats_buff"                           "ALL STATS BUFF:"
+"DOTA_Tooltip_ability_item_horn_mammoth_all_stats_debuff"                         "ALL STATS REDUCTION:"
+"DOTA_Tooltip_ability_item_horn_mammoth_duration"                                 "DURATION:"
+"DOTA_Tooltip_ability_item_horn_mammoth_radius"                                   "RADIUS:"
+		
+
+"DOTA_Tooltip_modifier_horn_buff"                                                 "Horn of the Mammoth Buff"
+"DOTA_Tooltip_modifier_horn_buff_Description"                                     "Gaining 10%% movespeed, 3 armor! and 5 to all stats!"
+
+"DOTA_Tooltip_modifier_horn_debuff"                                               "Horn of the Mammoth Debuff"
+"DOTA_Tooltip_modifier_horn_debuff_Description"                                   "Losing 10%% movespeed, 3 armor and 5 to all stats!"
+
+		
+
+
+
 "DOTA_Tooltip_ability_item_ingot_iron"		"Iron Ingot"
 "DOTA_Tooltip_ability_item_ingot_iron_Description"		"Melted and folded to create a block of tough material, yet pliable when heated. Used to create equipment."
 "DOTA_Tooltip_ability_item_ingot_iron_Lore"		"The very definition of ironic."
@@ -2933,7 +2978,7 @@
 
 
 
-"DOTA_Tooltip_ability_item_potion_molotov"                                        "Molotov Cocktale"
+"DOTA_Tooltip_ability_item_potion_molotov"                                        "Molotov Cocktail"
 "DOTA_Tooltip_ability_item_potion_molotov_Description"                            "Throw this at an enemy camp to set it ablaze!!!"
 "DOTA_Tooltip_ability_item_potion_molotov_burn_dps"                               "BURN DPS:"
 "DOTA_Tooltip_ability_item_potion_molotov_duration_hero"                          "HERO DURATION:"
@@ -3213,7 +3258,8 @@
 "DOTA_Tooltip_ability_item_shield_battle_silence_duration"		"SILENCE DURATION:"
 "DOTA_Tooltip_ability_item_shield_battle_spell_block"		"SPELL BLOCK:"
 "DOTA_Tooltip_ability_item_shield_battle_spellblock_cd"		"SPELLBLOCK CD:"
-"DOTA_Tooltip_modifier_shield_battle_spell_block"           "Battle Shield Spell Block: The next spell will be blocked!"
+"DOTA_Tooltip_modifier_shield_battle_spell_block"           "Battle Shield Spell Block"
+"DOTA_Tooltip_modifier_shield_battle_spell_block_Description"           "The next spell will be blocked!"
 
 "DOTA_Tooltip_ability_item_shield_bone"		"Bone Shield"
 "DOTA_Tooltip_ability_item_shield_bone_armor"		"+$armor"
@@ -3387,7 +3433,7 @@
 "DOTA_Tooltip_ability_ability_magic_raw_meteor_burn_duration"		"BURN DURATION:"
 "DOTA_Tooltip_ability_ability_magic_raw_meteor_Description"		    ""
 "DOTA_Tooltip_ability_ability_magic_raw_meteor_main_damage"	        "MAIN DAMAGE:"
-"DOTA_Tooltip_modifier_magic_raw_meteor_debuff"		                "Raw Magic Meteor Debuff"
+"DOTA_Tooltip_modifier_magic_raw_meteor_debuff"		                "Magic Meteor Debuff"
 "DOTA_Tooltip_modifier_magic_raw_meteor_debuff_Description"	        "Taking 200 damage over 5 seconds"
 
 
@@ -3636,7 +3682,13 @@
 "DOTA_Tooltip_modifier_bash_passive_Description"		""
 
 "DOTA_Tooltip_modifier_cold"		"Cold"
-"DOTA_Tooltip_modifier_cold_Description"		""
+"DOTA_Tooltip_modifier_cold_Description"		"You are cold and slow!"
+
+
+"DOTA_Tooltip_modifier_cold2"		"Cold"
+"DOTA_Tooltip_modifier_cold2_Description"		"You have just been warmed up from being freezing but you are still slow from the cold."
+
+
 "DOTA_Tooltip_modifier_collision_check"		"Collision Check"
 "DOTA_Tooltip_modifier_collision_check_Description"		""
 
@@ -3678,6 +3730,11 @@
 "DOTA_Tooltip_ability_empty6"		"Empty"
 "DOTA_Tooltip_ability_empty7"		"Empty"
 
+"DOTA_Tooltip_modifier_warmup"                                                    "Warm Up"
+"DOTA_Tooltip_modifier_warmup_Description"                                        "You are being warmed up from a teammate!"
+
+
+	
 		
 "DOTA_Tooltip_ability_ability_panic"		"Panic"
 "DOTA_Tooltip_ability_ability_panic_attack_speed"		"%+$attack"

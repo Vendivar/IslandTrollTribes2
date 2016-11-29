@@ -196,7 +196,11 @@ end
 -- Associates a particle to each building
 function FireCombineParticle( unit )
     local combineParticles = {
-        ["npc_building_mix_pot"] = "particles/units/heroes/hero_keeper_of_the_light/keeper_chakra_magic.vpcf",
+        ["npc_building_mixing_pot"] = "particles/units/heroes/hero_keeper_of_the_light/keeper_chakra_magic.vpcf",
+        ["npc_building_armory"] = "particles/units/heroes/hero_keeper_of_the_light/keeper_chakra_magic.vpcf",
+        ["npc_building_tannery"] = "particles/units/heroes/hero_keeper_of_the_light/keeper_chakra_magic.vpcf",
+        ["npc_building_workshop"] = "particles/units/heroes/hero_keeper_of_the_light/keeper_chakra_magic.vpcf",
+        ["npc_building_hut_witch_doctor"] = "particles/units/heroes/hero_keeper_of_the_light/keeper_chakra_magic.vpcf",
     }
 
     local unitName = unit:GetUnitName()
@@ -205,6 +209,23 @@ function FireCombineParticle( unit )
         local combineFX = ParticleManager:CreateParticle(particleName, PATTACH_ABSORIGIN_FOLLOW, unit)
         ParticleManager:SetParticleControl(combineFX, 0, unit:GetAbsOrigin())
         ParticleManager:SetParticleControl(combineFX, 1, unit:GetAbsOrigin())
+    end
+end
+
+-- Associates a combination sound to each building
+function FireCombineParticle( unit )
+    local combineSounds = {
+        ["npc_building_mixing_pot"] = "craft.mixingpot",
+        ["npc_building_armory"] = "craft.armory",
+        ["npc_building_tannery"] = "craft.tannery",
+        ["npc_building_workshop"] = "craft.workshop",
+        ["npc_building_hut_witch_doctor"] = "craft.wdhut",
+    }
+
+    local unitName = unit:GetUnitName()
+    local soundName = combineSounds[unitName]
+    if soundName then
+		EmitSoundOn( "freezing", unit )
     end
 end
 

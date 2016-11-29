@@ -1,14 +1,16 @@
 "ability_warm_up"
 {
 	"BaseClass"	"ability_datadriven"
-	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_CHANNELED | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_CHANNELED | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
 	"AbilityCastAnimation" "ACT_DOTA_ATTACK"
 	"AbilityTextureName"    "huskar_berserkers_blood"
-	"AbilityCastRange"	"200"
+	"AbilityCastRange"	"150"
 	"AbilityCastPoint"	"0.0"
-	"AbilityChannelTime"	"5.0"
+	"AbilityChannelTime"	"10.0"
 	"AbilityCooldown"		"0"
-	"AbilityManaCost"   "0"
+	"AbilityManaCost"   "10"
 	"MaxLevel"          "1"
 
 	"IsCastableWhileHidden" "1"
@@ -18,14 +20,21 @@
 	
 		"ApplyModifier"
 		{
-			"Target"			"CASTER"
-			"ModifierName"		"modifier_warmup_thinker"
+			"Target"			"TARGET"
+			"ModifierName"		"modifier_warmup"
 		}
+		
         "FireSound"
 		{
-			"EffectName"    "Hero_Tidehunter.Idle_bite"
-			"Target"        "CASTER"
+			"EffectName"    	"Hero_Tidehunter.Idle_bite"
+			"Target"        	"CASTER"
 		}
+		
+		"RemoveModifier"
+		{
+			"Target"			"CASTER"
+			"ModifierName"		"modifier_warmup"
+		}	
 		
 	}
 	
@@ -33,29 +42,17 @@
 	{
 		"RemoveModifier"
 		{
-			"Target"			"CASTER"
-			"ModifierName"		"modifier_warmup_thinker"
-		}
-
-		"RemoveAbility"
-		{
-			"Target"			"CASTER"
-			"AbilityName"		"ability_warm_up"
-		}
+			"Target"			"TARGET"
+			"ModifierName"		"modifier_warmup"
+		}		
 	}
 	
 	"OnChannelFinish"
 	{
 		"RemoveModifier"
 		{
-			"Target"			"CASTER"
-			"ModifierName"		"modifier_warmup_thinker"
-		}
-
-		"RemoveAbility"
-		{
-			"Target"			"CASTER"
-			"AbilityName"		"ability_warm_up"
+			"Target"			"TARGET"
+			"ModifierName"		"modifier_warmup"
 		}
 	}
 	
@@ -63,33 +60,32 @@
 	{
 		"RemoveModifier"
 		{
-			"Target"			"CASTER"
-			"ModifierName"		"modifier_warmup_thinker"
+			"Target"			"TARGET"
+			"ModifierName"		"modifier_warmup"
 		}
 
-		"RemoveAbility"
-		{
-			"Target"			"CASTER"
-			"AbilityName"		"ability_warm_up"
-		}
 	}
 	
 	"Modifiers"
 	{
-		"modifier_warmup_thinker"
+		"modifier_warmup"
 		{
-			"ThinkInterval"	"0.1"
+			"Passive"    "1"
+			"IsHidden"   "0"
+			"IsPurgable" "0"
+			
+			"ThinkInterval"	"1.0"
 			"OnIntervalThink"
 			{
 				"RunScript"
-				  {
-					  "ScriptFile"    "buildings/restore_heat.lua"
-					  "Function"      "RestoreHeatThink"
-					  "Radius"        "400"
-					  "Heat"		  "3"
-				  }
-			}
+				{
+					"ScriptFile"   "mechanics/heat.lua"
+					"Function"     "AddHeat"
+					"Heat"         "2"
+				}
+			}                
 		}
+		
 	}
 	
 	"AbilitySpecial"

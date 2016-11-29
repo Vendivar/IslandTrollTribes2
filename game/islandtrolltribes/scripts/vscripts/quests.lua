@@ -38,8 +38,8 @@ quests_table = {
             }
         },
         [2] = {
-            name = "Tutorial 2everyone!",
-            title = "Make a campfire.",
+            name = "Home Sweet Home",
+            title = "Home Sweet Home: Make a campfire.",
             context = {
                 type = "Time",
                 track = function(hero, quest, obj)

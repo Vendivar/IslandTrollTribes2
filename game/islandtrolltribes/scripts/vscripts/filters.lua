@@ -87,10 +87,9 @@ function ITT:FilterExecuteOrder( filterTable )
     --          Warm up teammate       --
     ------------------------------------------------
 	
-	    if targetIndex and (order_type == DOTA_UNIT_ORDER_ATTACK_TARGET or order_type == DOTA_UNIT_ORDER_MOVE_TO_TARGET or
-                        order_type == DOTA_UNIT_ORDER_ATTACK_MOVE) then
+	    if targetIndex and (order_type == DOTA_UNIT_ORDER_ATTACK_TARGET or order_type == DOTA_UNIT_ORDER_MOVE_TO_TARGET) then
         local target = EntIndexToHScript(targetIndex)
-        if target and target:HasModifier("modifier_frozen") then
+		if target and IsHero == true and target:HasModifier("modifier_frozen") then
 			if order_type == DOTA_UNIT_ORDER_ATTACK_TARGET then
 				local hero = PlayerResource:GetSelectedHeroEntity(issuer)				
 				local abilityName = "ability_warm_up"
@@ -99,10 +98,10 @@ function ITT:FilterExecuteOrder( filterTable )
 					ability = TeachAbility(hero, abilityName, 1)
 				end
 				if ability:IsFullyCastable() then
-					hero:CastAbilityNoTarget(ability, -1)
+					hero:SetCursorCastTarget(target)
+					hero:CastAbilityOnTarget(target, ability, hero:GetPlayerOwnerID())
+					 print(hero:GetName().."casting spell, "..ability:GetName()..", on "..target:GetName())
 				end
-
-                SendErrorMessage(issuer, "#error_cant_attack_air")
             end
             return CONSUME_EVENT
         end

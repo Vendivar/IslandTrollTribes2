@@ -28,6 +28,7 @@
 		{
 			"Passive"	"1"
 			"IsHidden"	"0"
+			"TextureName"           "item_crimson_guard"
 			"Properties"
 			{
 				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"

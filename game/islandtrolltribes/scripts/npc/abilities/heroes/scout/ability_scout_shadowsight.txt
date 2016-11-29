@@ -2,7 +2,8 @@
 {
 	"BaseClass"	"ability_datadriven"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityTextureName"	"ability_scout_shadowsight"
+	"AbilityTextureName"	"ability_scout_shadowsight"    
+	"AoERadius"               "%shadowsight_radius"
 	"MaxLevel"	"1"
 
 	"Modifiers"
@@ -37,7 +38,7 @@
 		"01"
 		{
 			"var_type"	"FIELD_FLOAT"
-			"shadowsight_radius"	"200"
+			"shadowsight_radius"	"350"
 		}
 
 	}

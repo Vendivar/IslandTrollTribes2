@@ -46,6 +46,7 @@
 	"Modifiers"
 	{
 		"modifier_gloves_wolf"
+		"TextureName"           "item_gloves_wolf"
 		{
 			"Passive"	"1"
 			"IsHidden"	"0"

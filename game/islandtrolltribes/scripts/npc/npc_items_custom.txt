@@ -104,6 +104,8 @@
 				"StatusEffectName" "particles/custom/status_frozen.vpcf"
 	            "StatusEffectPriority" "10"
 	            "TextureName"           "frozen"
+	            "IsDebuff"  "1"
+				"IsPurgable"       "0"
 	            "OnCreated"
 	            {
 	                "AttachEffect"
@@ -126,7 +128,7 @@
 					
 					"DelayedAction"
 	            	{
-					"Delay"		"25.0"
+					"Delay"		"60.0"
 						"Action"
 						{
 							"Damage"
@@ -137,11 +139,19 @@
 							}
 						}
 					}
-				}           
+				}
+				"OnDestroy"			
+				{
+					"ApplyModifier"
+					{
+						"Target"			"CASTER"
+						"ModifierName"		"modifier_cold2"
+					}
+				}
 				"Properties"
 	            {
-	                "MODIFIER_PROPERTY_FIXED_DAY_VISION"    "300"
-	                "MODIFIER_PROPERTY_FIXED_NIGHT_VISION"    "300"
+	                "MODIFIER_PROPERTY_FIXED_DAY_VISION"    "425"
+	                "MODIFIER_PROPERTY_FIXED_NIGHT_VISION"    "425"
 	            }
 	            "States"
 	            {
@@ -151,7 +161,20 @@
 	                "MODIFIER_STATE_COMMAND_RESTRICTED" "MODIFIER_STATE_VALUE_ENABLED"
 	            }
 	        }
+			"modifier_cold2"
+			{
+	        "Attributes"       "MODIFIER_ATTRIBUTE_MULTIPLE"
+			"EffectName" "particles/generic_gameplay/generic_slowed_cold.vpcf"
+			"StatusEffectName" "particles/status_fx/status_effect_frost_lich.vpcf"
+				"IsDebuff"	"1"
+				"IsPurgable"	"0"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"-25"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"-25"
+				}
 	
+			}
 	        ////////////////////////////////////////////////////////
 	        //                  Subclass Stats                    //
 	        ////////////////////////////////////////////////////////
@@ -3638,6 +3661,7 @@
 			{
 				"Passive"	"1"
 				"IsHidden"	"0"
+				"TextureName"           "item_crimson_guard"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
@@ -5222,6 +5246,7 @@
 		"Modifiers"
 		{
 			"modifier_gloves_wolf"
+			"TextureName"           "item_gloves_wolf"
 			{
 				"Passive"	"1"
 				"IsHidden"	"0"
@@ -6340,7 +6365,7 @@
 			"FireSound"
 			{
 				"EffectName"	"potion.elemental"
-				"Target"	"TARGET"
+				"Target"	"CASTER"
 			}
 	
 			"SpendCharge"
@@ -7240,7 +7265,7 @@
 	"item_potion_nether"
 	{
 		"ID"	"1047"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
 		"BaseClass"	"item_datadriven"
@@ -8554,6 +8579,7 @@
 	    {
 	        "modifier_shield_battle_spell_block"
 	        {
+				"TextureName"		"item_sphere"
 	            "Passive"           "1"
 	            "EffectName"        "particles/items_fx/black_king_bar_overhead.vpcf"
 	            "EffectAttachType"  "follow_overhead"

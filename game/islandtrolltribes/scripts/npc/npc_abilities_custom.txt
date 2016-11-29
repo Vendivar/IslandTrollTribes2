@@ -2557,7 +2557,7 @@
 					}
 					"RunScript"
 					{
-						"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+						"ScriptFile"	"scripts/vscripts/buildings/building_destroyed.lua"
 						"Function"	"BuildingDestroyed"
 						"Target"	"CASTER"
 					}
@@ -2578,7 +2578,7 @@
 					}
 					"RunScript"
 					{
-						"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+						"ScriptFile"	"scripts/vscripts/buildings/building_destroyed.lua"
 						"Function"	"BuildingDestroyed"
 						"Target"	"CASTER"
 					}
@@ -10027,6 +10027,11 @@
 	        {
 	            "var_type"                 "FIELD_FLOAT"
 	            "stun_per_nel_level"        "1.5"
+	        }       
+			"04"
+	        {
+	            "var_type"                 "FIELD_FLOAT"
+	            "slow_per_lez_level"        "-3"
 	        }
 	    }
 	
@@ -10059,19 +10064,20 @@
 	    {
 	        "modifier_lez_slow"
 	        {
+	            "Attributes"        "MODIFIER_ATTRIBUTE_MULTIPLE"
 	            "EffectName"        "particles/units/heroes/hero_venomancer/venomancer_poison_debuff_nova.vpcf"
 	            "EffectAttachType"  "follow_origin"
 	
 	            "Properties"
 	            {
-	                "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "-15"
+	                "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "-5"
 	            }
 	        }
 	
 	        "modifier_lez_dot"
 	        {
 	            "IsHidden"          "1"
-	            "IsPurgable"        "0"
+	            "IsPurgable"        "1"
 	            "Attributes"        "MODIFIER_ATTRIBUTE_MULTIPLE"
 	            "ThinkInterval"     "1.0"
 	            "OnIntervalThink"
@@ -10082,6 +10088,10 @@
 	                    "Type"      "DAMAGE_TYPE_MAGICAL"
 	                    "Damage"    "slowdot_per_lez_level"
 	                }
+	            }
+				"Properties"
+	            {
+	                "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%slow_per_lez_level"
 	            }
 	        }
 	
@@ -17235,7 +17245,8 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityTextureName"	"ability_scout_shadowsight"
+		"AbilityTextureName"	"ability_scout_shadowsight"    
+		"AoERadius"               "%shadowsight_radius"
 		"MaxLevel"	"1"
 	
 		"Modifiers"
@@ -17270,7 +17281,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"shadowsight_radius"	"200"
+				"shadowsight_radius"	"350"
 			}
 	
 		}
@@ -19880,14 +19891,16 @@
 	"ability_warm_up"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_CHANNELED | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_CHANNELED | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
 		"AbilityCastAnimation" "ACT_DOTA_ATTACK"
 		"AbilityTextureName"    "huskar_berserkers_blood"
-		"AbilityCastRange"	"200"
+		"AbilityCastRange"	"150"
 		"AbilityCastPoint"	"0.0"
-		"AbilityChannelTime"	"5.0"
+		"AbilityChannelTime"	"10.0"
 		"AbilityCooldown"		"0"
-		"AbilityManaCost"   "0"
+		"AbilityManaCost"   "10"
 		"MaxLevel"          "1"
 	
 		"IsCastableWhileHidden" "1"
@@ -19897,14 +19910,21 @@
 		
 			"ApplyModifier"
 			{
-				"Target"			"CASTER"
-				"ModifierName"		"modifier_warmup_thinker"
+				"Target"			"TARGET"
+				"ModifierName"		"modifier_warmup"
 			}
+			
 	        "FireSound"
 			{
-				"EffectName"    "Hero_Tidehunter.Idle_bite"
-				"Target"        "CASTER"
+				"EffectName"    	"Hero_Tidehunter.Idle_bite"
+				"Target"        	"CASTER"
 			}
+			
+			"RemoveModifier"
+			{
+				"Target"			"CASTER"
+				"ModifierName"		"modifier_warmup"
+			}	
 			
 		}
 		
@@ -19912,29 +19932,17 @@
 		{
 			"RemoveModifier"
 			{
-				"Target"			"CASTER"
-				"ModifierName"		"modifier_warmup_thinker"
-			}
-	
-			"RemoveAbility"
-			{
-				"Target"			"CASTER"
-				"AbilityName"		"ability_warm_up"
-			}
+				"Target"			"TARGET"
+				"ModifierName"		"modifier_warmup"
+			}		
 		}
 		
 		"OnChannelFinish"
 		{
 			"RemoveModifier"
 			{
-				"Target"			"CASTER"
-				"ModifierName"		"modifier_warmup_thinker"
-			}
-	
-			"RemoveAbility"
-			{
-				"Target"			"CASTER"
-				"AbilityName"		"ability_warm_up"
+				"Target"			"TARGET"
+				"ModifierName"		"modifier_warmup"
 			}
 		}
 		
@@ -19942,33 +19950,32 @@
 		{
 			"RemoveModifier"
 			{
-				"Target"			"CASTER"
-				"ModifierName"		"modifier_warmup_thinker"
+				"Target"			"TARGET"
+				"ModifierName"		"modifier_warmup"
 			}
 	
-			"RemoveAbility"
-			{
-				"Target"			"CASTER"
-				"AbilityName"		"ability_warm_up"
-			}
 		}
 		
 		"Modifiers"
 		{
-			"modifier_warmup_thinker"
+			"modifier_warmup"
 			{
-				"ThinkInterval"	"0.1"
+				"Passive"    "1"
+				"IsHidden"   "0"
+				"IsPurgable" "0"
+				
+				"ThinkInterval"	"1.0"
 				"OnIntervalThink"
 				{
 					"RunScript"
-					  {
-						  "ScriptFile"    "buildings/restore_heat.lua"
-						  "Function"      "RestoreHeatThink"
-						  "Radius"        "400"
-						  "Heat"		  "3"
-					  }
-				}
+					{
+						"ScriptFile"   "mechanics/heat.lua"
+						"Function"     "AddHeat"
+						"Heat"         "2"
+					}
+				}                
 			}
+			
 		}
 		
 		"AbilitySpecial"
@@ -20310,7 +20317,7 @@
 			{
 				"IsDebuff"	"0"
 				"IsPurgable"	"0"
-				"OverrideAnimation"     "ACT_DOTA_DISABLED"
+				"OverrideAnimation"     "ACT_DOTA_DIE"
 				"States"
 				{
 					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"

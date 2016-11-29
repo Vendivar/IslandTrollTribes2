@@ -1,7 +1,7 @@
 "item_potion_nether"
 {
 	"ID"	"1047"
-	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
 	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
 	"BaseClass"	"item_datadriven"

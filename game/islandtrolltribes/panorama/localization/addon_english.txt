@@ -200,6 +200,11 @@
         "invalid_priest_target"                 "Can't use on self or priests."
         "invalid_hypnosis"                       "Can't use on units that are not hypnotized."
 		"NoobTimeOver" 							"Noob time is now over! Respawning is now disabled! You must revive with a spirit ward!"
+		
+        "teammate_frozen"                    "has frozen! You must have go to them and warm them up or they will die!"
+		
+		
+		
         "item_bush_thistle"                                          "Thistle Shrub"
         "item_bush_mushroom"                                         "Mushroom Colony"
         "item_bush_herb"                                             "Haisetsu Bush"
@@ -225,7 +230,7 @@
 
         // Toolkit Abilities
         "sleep_outside"                                          "Sleep Outside"
-        "DOTA_Tooltip_Ability_sleep_outside"                     "Sleep Outside"
+        "DOTA_Tooltip_Ability_sleep_outside"                     "Sleep <font color='#00CC00'>O</font>utside"
         "DOTA_Tooltip_Ability_sleep_outside_Description"         "Sleep outside and gain 20 energy but lose 20 heat and hp!\nShould only be used as a worse case scenario to gain energy!"
         "DOTA_Tooltip_Ability_sleep_outside_rest_duration"       "REST DURATION:"
         "DOTA_Tooltip_Ability_sleep_outside_mana_restored"       "MANA RESTORED:"

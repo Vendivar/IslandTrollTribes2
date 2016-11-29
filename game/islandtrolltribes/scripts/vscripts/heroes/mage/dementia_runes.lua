@@ -122,7 +122,7 @@ function Hit(event)
 
     if lez_level > 0 then
         ability:ApplyDataDrivenModifier(caster,target,"modifier_lez_slow",{duration=5})
-        caster:SetModifierStackCount("modifier_lez_slow",caster,lez_level)
+       -- caster:SetModifierStackCount("modifier_lez_slow",caster,lez_level)
         for i=1,lez_level do
             ability:ApplyDataDrivenModifier(caster,target,"modifier_lez_dot",{duration=5})
         end

@@ -5,7 +5,7 @@ function ability_revive:OnSpellStart()
     local caster = ability:GetCaster()
     local target = ability:GetCursorTarget()
     self.reviving = target.hero --Hero reference stored on the grave
-    local revivingTime = target.hero:GetLevel() * self:GetSpecialValueFor("revive_duration")
+    local revivingTime = target.hero:GetLevel() * self:GetSpecialValueFor("revive_duration") / 1.5
     self.revivingTime = revivingTime
     self:StartCooldown(revivingTime)
     CustomNetTables:SetTableValue("ability_revive", tostring(caster:GetEntityIndex()), { revivingTime = revivingTime })

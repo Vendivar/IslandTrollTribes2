@@ -49,6 +49,12 @@
     		"Key"		"kp_enter"
     		"Command"	"+EnterPressed"
     		"Name"		"For Custom chat"
+		}		
+		"07"
+		{
+    		"Key"		"O"
+    		"Command"	"SleepOutside"
+    		"Name"		"For Sleep Outside"
 		}
     }
 }

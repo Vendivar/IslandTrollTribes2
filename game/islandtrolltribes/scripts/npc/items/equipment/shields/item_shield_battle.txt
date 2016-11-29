@@ -195,6 +195,7 @@
     {
         "modifier_shield_battle_spell_block"
         {
+			"TextureName"		"item_sphere"
             "Passive"           "1"
             "EffectName"        "particles/items_fx/black_king_bar_overhead.vpcf"
             "EffectAttachType"  "follow_overhead"

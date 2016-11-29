@@ -3,7 +3,7 @@ function ITT:Sleep(event)
     local playerID = event.PlayerID
     local hero = PlayerResource:GetSelectedHeroEntity(playerID)
 
-    if hero then
+    if hero and not hero:HasModifier("modifier_frozen") and not hero:IsStunned() then
         local abilityName = "sleep_outside"
         local ability = hero:FindAbilityByName(abilityName)
         if not ability then
@@ -11,6 +11,7 @@ function ITT:Sleep(event)
         end
         if ability:IsFullyCastable() then
             hero:CastAbilityNoTarget(ability, -1)
+			StartAnimation(hero, {duration=3, activity=ACT_DOTA_DIE, rate=0.20})
         end
     end
 end
@@ -20,7 +21,7 @@ function ITT:EatMeat(event)
     local playerID = event.PlayerID
     local hero = PlayerResource:GetSelectedHeroEntity(playerID)
 
-    if hero then
+    if hero and not hero:HasModifier("modifier_frozen") and not hero:IsStunned() then
         local meatStacks = hero:GetModifierStackCount("modifier_meat_passive", nil)
         if meatStacks > 0 then
             local abilityName = "eat_meat"
@@ -46,7 +47,7 @@ function ITT:DropMeat(event)
     local playerID = event.PlayerID
     local hero = PlayerResource:GetSelectedHeroEntity(playerID)
 
-    if hero then
+    if hero and not hero:HasModifier("modifier_frozen") and not hero:IsStunned() then
         local meatStacks = hero:GetModifierStackCount("modifier_meat_passive", nil)
         if meatStacks > 0 and hero ~= nil then
             local newItem = CreateItem("item_meat_raw", nil, nil)
@@ -68,7 +69,7 @@ function ITT:DropAllMeat(event)
     local playerID = event.PlayerID
     local hero = PlayerResource:GetSelectedHeroEntity(playerID)
 
-    if hero then
+    if hero and not hero:HasModifier("modifier_frozen") and not hero:IsStunned() then
         local meatStacks = hero:GetModifierStackCount("modifier_meat_passive", nil)
         if meatStacks > 0 and hero ~= nil then
             for i = 1,meatStacks do
@@ -92,7 +93,7 @@ function ITT:Panic(event)
     local playerID = event.PlayerID
     local hero = PlayerResource:GetSelectedHeroEntity(playerID)
 
-    if hero then
+    if hero and not hero:HasModifier("modifier_frozen") and not hero:IsStunned() then
         local abilityName = "panic"
         local ability = hero:FindAbilityByName(abilityName)
         if not ability then
@@ -111,7 +112,7 @@ function ITT:DropAllItems(event)
     local playerID = event.PlayerID
     local hero = PlayerResource:GetSelectedHeroEntity(playerID)
 
-    if hero then
+    if hero and not hero:HasModifier("modifier_frozen") and not hero:IsStunned() then
         local abilityName = "ability_drop_items"
         local ability = hero:FindAbilityByName(abilityName)
         if not ability then
@@ -119,22 +120,5 @@ function ITT:DropAllItems(event)
         end
 
         hero:CastAbilityImmediately(ability, playerID)
-    end
-end
-
-
-function WarmUp(event)
-    local playerID = event.PlayerID
-    local hero = PlayerResource:GetSelectedHeroEntity(playerID)
-
-    if hero then
-        local abilityName = "ability_warm_up"
-        local ability = hero:FindAbilityByName(abilityName)
-        if not ability then
-            ability = TeachAbility(hero, abilityName, 1)
-        end
-        if ability:IsFullyCastable() then
-			hero:CastAbilityNoTarget(ability, -1)
-        end
     end
 end

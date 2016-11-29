@@ -32,7 +32,6 @@ function RestAndRestoreMana(keys)
     if not target:HasModifier("modifier_rested") then
         ability:ApplyDataDrivenModifier(caster,target,"modifier_sleep",{duration = rest_duration})
         ability:ApplyDataDrivenModifier(caster,target,"modifier_rested",{duration = rested_duration})
-        ability:ApplyDataDrivenModifier(caster,target,"modifier_invuln",{duration = invulnerable_duration})
         RestoreMana(keys)
     else
         local playerID = target:GetPlayerID()

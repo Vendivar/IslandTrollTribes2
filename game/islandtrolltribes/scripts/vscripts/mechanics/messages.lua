@@ -15,11 +15,11 @@ end
 function SendFreezeMessage( pID, string )
     Notifications:ClearBottom(pID)
     Notifications:Bottom(pID, {text=string, style={color='#E62020'}, duration=15})
-    EmitSoundOnClient("freezing", PlayerResource:GetPlayer(pID))
+
 end
 
 function SendFrozenMessage( pID, string )
-    Notifications:ClearBottom(pID)
-    Notifications:Bottom(pID, {text=string, style={color='#E62020'}, duration=15})
-    EmitSoundOnClient("freezing", PlayerResource:GetPlayer(pID))
+	Notifications:ClearBottom(pID)
+    Notifications:Bottom(pID, {text="#error_frozen", style={color='#E62020'}, duration=35})
+
 end

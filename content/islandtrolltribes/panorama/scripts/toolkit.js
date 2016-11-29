@@ -36,4 +36,5 @@ function DropAllItems() {
 	Game.AddCommand("+TogglePanic", function() {Cast("panic")}, "", 0);
     //Game.AddCommand("+DropAllItems", DropAllItems, "", 0);
     Game.AddCommand("+DropAllItems", function() {Cast("dropallitems")}, "", 0);
+	Game.AddCommand("SleepOutside", function() {Cast("sleep_outside")}, "", 0);
 })();

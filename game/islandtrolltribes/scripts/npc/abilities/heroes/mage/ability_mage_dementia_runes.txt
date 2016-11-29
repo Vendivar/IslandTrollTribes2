@@ -154,6 +154,11 @@
         {
             "var_type"                 "FIELD_FLOAT"
             "stun_per_nel_level"        "1.5"
+        }       
+		"04"
+        {
+            "var_type"                 "FIELD_FLOAT"
+            "slow_per_lez_level"        "-3"
         }
     }
 
@@ -186,19 +191,20 @@
     {
         "modifier_lez_slow"
         {
+            "Attributes"        "MODIFIER_ATTRIBUTE_MULTIPLE"
             "EffectName"        "particles/units/heroes/hero_venomancer/venomancer_poison_debuff_nova.vpcf"
             "EffectAttachType"  "follow_origin"
 
             "Properties"
             {
-                "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "-15"
+                "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "-5"
             }
         }
 
         "modifier_lez_dot"
         {
             "IsHidden"          "1"
-            "IsPurgable"        "0"
+            "IsPurgable"        "1"
             "Attributes"        "MODIFIER_ATTRIBUTE_MULTIPLE"
             "ThinkInterval"     "1.0"
             "OnIntervalThink"
@@ -209,6 +215,10 @@
                     "Type"      "DAMAGE_TYPE_MAGICAL"
                     "Damage"    "slowdot_per_lez_level"
                 }
+            }
+			"Properties"
+            {
+                "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%slow_per_lez_level"
             }
         }
 

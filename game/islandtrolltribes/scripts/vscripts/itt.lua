@@ -623,6 +623,7 @@ function ITT:SetHerosIntoEndScreen( teamID )
                 if hero:IsAlive() then
                     hero:SetAbsOrigin(vec_start + vec_step * ind)
                     hero:SetAngles(0,-90,0)
+					hero:EndAnimation(hero)
                     ind = ind + 1
                 end
             end

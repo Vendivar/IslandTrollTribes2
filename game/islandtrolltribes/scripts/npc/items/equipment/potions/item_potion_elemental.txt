@@ -60,7 +60,7 @@
 		"FireSound"
 		{
 			"EffectName"	"potion.elemental"
-			"Target"	"TARGET"
+			"Target"	"CASTER"
 		}
 
 		"SpendCharge"

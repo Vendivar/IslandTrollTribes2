@@ -42,7 +42,7 @@
 				}
 				"RunScript"
 				{
-					"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+					"ScriptFile"	"scripts/vscripts/buildings/building_destroyed.lua"
 					"Function"	"BuildingDestroyed"
 					"Target"	"CASTER"
 				}
@@ -63,7 +63,7 @@
 				}
 				"RunScript"
 				{
-					"ScriptFile"	"scripts/vscripts/custom_functions_item.lua"
+					"ScriptFile"	"scripts/vscripts/buildings/building_destroyed.lua"
 					"Function"	"BuildingDestroyed"
 					"Target"	"CASTER"
 				}
