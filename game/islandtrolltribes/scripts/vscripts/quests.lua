@@ -1,208 +1,6 @@
 Quests = Quests or class({})
 
--- quests_table
--- Holds all the quests, could also be made as a KV table.
--- global quests (for all classes) start from index 1.
--- class quests (hero-specific) start from index 100.
-
--- When you are doing a chain of quests, use sequential numbers.
--- For random/timed quests, use non-sequential numbers.
-
--- For an example, hunter has 3 quests with IDs 100, 101 and 110
--- Quests 100 and 101 are sequential, meaning 101 starts automatically after 100 is finished.
--- Quest 110 has a delayed start, and it's not in sequence.
--- This means that it starts automatically after the time has elapsed.
-
--- If you want a progress bar, have both "from" and "to" in your quest.
--- These are the start and end points for your progress bar.
--- It can go either way, depending how the numbers are.
-
--- For no progress bar, just don't have "from" and "to" in there.
-
-quests_table = {
-    all = {
-        [1] = { -- Global quests start from 1
-            name = "Tutorial for everyone!",
-            title = "Survive! Get a stick, a tinder and a flint.",
-            context = {
-                type = "Time",
-                track = function(hero, quest, obj)
-                    local count = 0
-                    if HasAnItem(hero, "item_stick") then count = count + 1 end
-                    if HasAnItem(hero, "item_tinder") then count = count + 1 end
-                    if HasAnItem(hero, "item_flint") then count = count + 1 end
-                    Quests.UpdateQuest(obj, hero, count, quest.id)
-                end,
-                from = 0,
-                to = 3
-            }
-        },
-        [2] = {
-            name = "Home Sweet Home",
-            title = "Home Sweet Home: Craft a campfire. (Press C)",
-            context = {
-                type = "Time",
-                track = function(hero, quest, obj)
-                    if HasAnItem(hero, "item_building_kit_fire_basic") then
-                        Quests.End(obj, hero, quest.id)
-                    end
-                end
-            }
-        },
-        [3] = {
-            name = "Home Sweet Home Pt 2.",
-            title = "Home Sweet Home Pt. 2: Place your newly crafted camp fire",
-            context = {
-                type = "Time",
-                from = 0,
-                to = 60
-            }
-        },
-        [5] = {
-            name = "Fire placement",
-            title = "Agree upon a base location.",
-            context = {
-                type = "Time",
-                from = 0,
-                delay_start = 5,
-                to = 45
-            }
-        },
-		[7] = {
-            name = "Experience makes us wise!",
-            title = "Pick up 5 items",
-            context = {
-                type = "Time",
-				 track = function(hero, quest, obj)
-                    local count = 0
-                    if OnItemPickedUp then count = count + 1 end
-                    Quests.UpdateQuest(obj, hero, count, quest.id)
-                end,
-                delay_start = 40,
-                from = 0,
-                to = 5
-            }
-        },
-        [10] = {
-            name = "Experience makes us wise!",
-            title = "Reach level 2 before 5 minutes.",
-            context = {
-                type = "Time",
-				 track = function(hero, quest, obj)
-                    local count = 0
-                    if hero:OnInventoryContentsChanged() then count = count + 1 end
-                    Quests.UpdateQuest(obj, hero, count, quest.id)
-                end,
-                delay_start = 50,
-                from = 0,
-                to = 1
-            }
-        },
-		[11] = {
-            name = "Experience makes us wise!",
-            title = "Reach level 3 before 7 minutes.",
-            context = {
-                type = "Time",
-				 track = function(hero, quest, obj)
-                    local count = 0
-                    if  hero:GetLevel() == 3 then count = count + 1 end
-                    Quests.UpdateQuest(obj, hero, count, quest.id)
-                end,
-                delay_start = 0,
-                from = 0,
-                to = 1
-            }
-        },
-		[12] = {
-            name = "Experience makes us wise!",
-            title = "Reach level 4 before 8 minutes.",
-            context = {
-                type = "Time",
-				 track = function(hero, quest, obj)
-                    local count = 0
-                    if  hero:GetLevel() == 4 then count = count + 1 end
-                    Quests.UpdateQuest(obj, hero, count, quest.id)
-                end,
-                delay_start = 0,
-                from = 0,
-                to = 1
-            }
-        },
-		[13] = {
-            name = "Experience makes us wise!",
-            title = "Reach level 5 before 10 minutes.",
-            context = {
-                type = "Time",
-				 track = function(hero, quest, obj)
-                    local count = 0
-                    if  hero:GetLevel() == 5 then count = count + 1 end
-                    Quests.UpdateQuest(obj, hero, count, quest.id)
-                end,
-                delay_start = 0,
-                from = 0,
-                to = 1
-            }
-        },
-		[14] = {
-            name = "Experience makes us wise!",
-            title = "Reach level 6 before 11 minutes.",
-            context = {
-                type = "Time",
-				 track = function(hero, quest, obj)
-                    local count = 0
-                    if  hero:GetLevel() == 6 then count = count + 1 end
-                    Quests.UpdateQuest(obj, hero, count, quest.id)
-                end,
-                delay_start = 0,
-                from = 0,
-                to = 1
-            }
-        },
-		[15] = {
-            name = "Experience makes us wise!",
-            title = "Choose your subclass!",
-            context = {
-                type = "Time",
-				 track = function(hero, quest, obj)
-                    local count = 0
-                    if hero:HasSubClass()  == true  then
-                        Quests.End(obj, hero, quest.id)
-                    end
-                end
-            }
-        }
-    },
-    beastmaster = { -- Class quests start from 100
-        [100] = {
-            name = "Test_Name",
-            title = "Test_Title",
-            context = {
-                type = "Time",
-                delay_start = 0, -- If set, set this to actual gametime seconds.
-                from = 0,
-                to = 10
-            }
-        }
-    },
-    gatherer = {
-
-    },
-    mage = {
-
-    },
-    priest = {
-
-    },
-    scout = {
-
-    },
-    thief = {
-
-    },
-    hunter = {
-
-    }
-}
+require("quests_table")
 
 -- Quests:Start(hero, type, id)
 -- hero is a hero entity. This is used for storing the quest for the hero.
@@ -286,6 +84,14 @@ function Quests:End(hero, id)
     quest.quest.finished = true
     print("Quest #"..id.." has ended.")
 
+    if quest.quest.context.type == "Hook" then
+        if quest.quest.context.event_type == "Custom" then
+            CustomGameEventManager:UnregisterListener(quest.quest.context.event_hook_id)
+        else
+            StopListeningToGameEvent(quest.quest.context.event_hook_id)
+        end
+    end
+
     if in_questline then
         -- If it's in our questline, start the next one.
         hero.current_quests[type] = id + 1
@@ -304,33 +110,54 @@ end
 --- ############### DO NOT USE THESE DIRECTLY
 
 function Quests:constructor()
-    self.quests = quests_table
+    self.quests = GameRules.quests_table
     self.first_all_id = 1
     self.first_class_id = 100
 end
 
-function Quests:CheckForTimed(hero, quest)
+function Quests:StartTracking(hero, quest)
     if quest.context.type == "Time" then
-        Timers:CreateTimer(DoUniqueString("quest_timer"), {
-            endTime = 1.0,
-            callback = function()
-                if not self:IsFinished(hero, quest.id) then
-                    if quest.context.track then
-                        quest.context.track(hero, quest, self)
-                    else
-                        local val
-                        if quest.context.from < quest.context.to then
-                            val = quest.context.current + 1
-                        else
-                            val = quest.context.current - 1
-                        end
-                        self:UpdateQuest(hero, val, quest.id)
-                    end
-                    return 1
-                end
-            end
-        })
+        self:StartTimer(hero, quest)
+    elseif quest.context.type == "Hook" then
+        self:StartHook(hero, quest)
     end
+end
+
+function Quests:StartHook(hero, quest)
+    -- These use a different function
+    if quest.context.event_type == "Custom" then
+        quest.context.event_hook_id = CustomGameEventManager:RegisterListener(quest.context.event_name, function(args)
+            PrintTable(args)
+            --quest.context.event_func
+        end)
+    else
+        quest.context.event_hook_id = ListenToGameEvent(quest.context.event_name, function(args)
+            PrintTable(args)
+            --quest.context.event_func
+        end, self)
+    end
+end
+
+function Quests:StartTimer(hero, quest)
+    Timers:CreateTimer(DoUniqueString("quest_timer"), {
+        endTime = 1.0,
+        callback = function()
+            if not self:IsFinished(hero, quest.id) then
+                if quest.context.track then
+                    quest.context.track(hero, quest, self)
+                else
+                    local val
+                    if quest.context.from < quest.context.to then
+                        val = quest.context.current + 1
+                    else
+                        val = quest.context.current - 1
+                    end
+                    self:UpdateQuest(hero, val, quest.id)
+                end
+                return 1
+            end
+        end
+    })
 end
 
 function Quests:StartDelayed(hero, type)
@@ -421,5 +248,5 @@ function Quests:StartQuest(hero, type, quest, id) -- Abstracting here.
     }
 
 
-    self:CheckForTimed(hero, actual_quest)
+    self:StartTracking(hero, actual_quest)
 end
