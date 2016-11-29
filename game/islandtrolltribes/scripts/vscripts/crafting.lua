@@ -53,7 +53,7 @@ function ITT:CraftItem(event)
         end
 
         FireCombineParticle(unit)
-
+		print("firing particle",unit)
         unit:EmitSound("General.Combine")
     else
         print("Error, couldn't combine ",itemName)
@@ -199,8 +199,8 @@ function FireCombineParticle( unit )
         ["npc_building_mixing_pot"] = "particles/units/heroes/hero_keeper_of_the_light/keeper_chakra_magic.vpcf",
         ["npc_building_armory"] = "particles/units/heroes/hero_keeper_of_the_light/keeper_chakra_magic.vpcf",
         ["npc_building_tannery"] = "particles/units/heroes/hero_keeper_of_the_light/keeper_chakra_magic.vpcf",
-        ["npc_building_workshop"] = "particles/units/heroes/hero_keeper_of_the_light/keeper_chakra_magic.vpcf",
-        ["npc_building_hut_witch_doctor"] = "particles/units/heroes/hero_keeper_of_the_light/keeper_chakra_magic.vpcf",
+        ["npc_building_workshop"] = "particles/custom/craft_workshop.vpcf",
+        ["npc_building_hut_witch_doctor"] = "particles/units/heroes/hero_keeper_of_the_light/keeper_chakra_magic.vpcf"
     }
 
     local unitName = unit:GetUnitName()
@@ -213,13 +213,13 @@ function FireCombineParticle( unit )
 end
 
 -- Associates a combination sound to each building
-function FireCombineParticle( unit )
+function FireCombineSound( unit )
     local combineSounds = {
         ["npc_building_mixing_pot"] = "craft.mixingpot",
         ["npc_building_armory"] = "craft.armory",
         ["npc_building_tannery"] = "craft.tannery",
         ["npc_building_workshop"] = "craft.workshop",
-        ["npc_building_hut_witch_doctor"] = "craft.wdhut",
+        ["npc_building_hut_witch_doctor"] = "craft.wdhut"
     }
 
     local unitName = unit:GetUnitName()

@@ -23,7 +23,7 @@
 	[
 		{
 			_class = "C_OP_BasicMovement"
-			m_Gravity = [ 0.0, 0.0, -50.0 ]
+			m_Gravity = [ 0.0, 0.0, -100.0 ]
 		},
 		{
 			_class = "C_OP_ColorInterpolate"
@@ -58,20 +58,20 @@
 		},
 		{
 			_class = "C_OP_Spin"
-			m_nSpinRateDegrees = 5
+			m_nSpinRateDegrees = 10
 		},
 	]
 	m_Initializers = 
 	[
 		{
 			_class = "C_INIT_RandomLifeTime"
-			m_fLifetimeMax = 1.0
-			m_fLifetimeMin = 1.0
+			m_fLifetimeMax = 0.6
+			m_fLifetimeMin = 0.6
 		},
 		{
 			_class = "C_INIT_RandomRadius"
-			m_flRadiusMax = 128.0
-			m_flRadiusMin = 128.0
+			m_flRadiusMax = 80.0
+			m_flRadiusMin = 80.0
 		},
 		{
 			_class = "C_INIT_CreateWithinSphere"
