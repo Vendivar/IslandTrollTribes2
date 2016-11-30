@@ -334,7 +334,14 @@ function ITT:FilterExecuteOrder( filterTable )
         else
             -- Move towards the drop position and pickup the item
             unit.skip = true
-            ExecuteOrderFromTable({ UnitIndex = unitIndex, OrderType = DOTA_UNIT_ORDER_MOVE_TO_POSITION, Position = position, Queue = queue})
+
+            local order = { UnitIndex = unitIndex, OrderType = DOTA_UNIT_ORDER_MOVE_TO_POSITION, Position = position, Queue = queue}
+            if queue then
+                print("Queued Item Collect")
+                OrderQueue:Put(unit, order)
+            end
+
+            ExecuteOrderFromTable(order)
 
             -- Check for drop distance
             unit.orderTimer = Timers:CreateTimer(function()

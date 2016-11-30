@@ -28,6 +28,7 @@ require('subclass_system')
 require("crafting")
 require('util')
 require('libraries/buildinghelper')
+require("order_queue")
 
 
 -- This should be a KV Table
