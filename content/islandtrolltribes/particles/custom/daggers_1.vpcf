@@ -1,0 +1,109 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_flConstantRadius = 1.0
+	m_Operators = 
+	[
+		{
+			_class = "C_OP_BasicMovement"
+			m_fDrag = 0.015
+		},
+		{
+			_class = "C_OP_Decay"
+		},
+		{
+			_class = "C_OP_InterpolateRadius"
+			m_flEndScale = 0.0
+			m_flBias = 0.1
+			m_bDisableOperator = true
+		},
+		{
+			_class = "C_OP_FadeOutSimple"
+			m_flFadeOutTime = 0.5
+		},
+		{
+			_class = "C_OP_OscillateScalar"
+		},
+		{
+			_class = "C_OP_PositionLock"
+		},
+		{
+			_class = "C_OP_RemapVelocityToVector"
+			m_nFieldOutput = 21
+			m_bNormalize = true
+			m_bDisableOperator = true
+		},
+		{
+			_class = "C_OP_Spin"
+			m_nSpinRateDegrees = -35
+		},
+		{
+			_class = "C_OP_MovementRotateParticleAroundAxis"
+			m_flRotRate = 120.0
+		},
+		{
+			_class = "C_OP_SpinYaw"
+		},
+	]
+	m_Renderers = 
+	[
+		{
+			_class = "C_OP_RenderModels"
+			m_ModelList = 
+			[
+				{
+					m_model = resource:"models/items/queenofpain/twilight_shade_weapon/twilight_shade_weapon.vmdl"
+				},
+			]
+			m_bOrientZ = true
+			m_nAnimationScaleField = 19
+		},
+	]
+	m_Initializers = 
+	[
+		{
+			_class = "C_INIT_RingWave"
+			m_nOverrideCP = 1
+			m_flParticlesPerOrbit = 3.0
+			m_flInitialRadius = 0.11
+			m_flInitialSpeedMin = 0.6
+			m_flInitialSpeedMax = 0.6
+			m_bEvenDistribution = true
+			m_bDisableOperator = true
+		},
+		{
+			_class = "C_INIT_RandomLifeTime"
+			m_fLifetimeMin = 0.65
+			m_fLifetimeMax = 0.65
+		},
+		{
+			_class = "C_INIT_Orient2DRelToCP"
+			m_nFieldOutput = 12
+			m_flRotOffset = 30.0
+		},
+		{
+			_class = "C_INIT_PositionOffset"
+			m_OffsetMin = [ 0.0, 0.0, 64.0 ]
+			m_OffsetMax = [ 0.0, 0.0, 64.0 ]
+		},
+		{
+			_class = "C_INIT_RandomAlpha"
+		},
+		{
+			_class = "C_INIT_RandomRotation"
+			m_flDegreesMax = 75.0
+			m_nFieldOutput = 20
+			m_flDegreesMin = 75.0
+		},
+		{
+			_class = "C_INIT_RandomRotation"
+		},
+	]
+	m_Emitters = 
+	[
+		{
+			_class = "C_OP_InstantaneousEmitter"
+			m_nParticlesToEmit = 5
+		},
+	]
+}

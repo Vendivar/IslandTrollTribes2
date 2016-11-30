@@ -271,11 +271,11 @@ end
 -- Associates a particle to each building
 function FireCombineParticle( unit )
     local combineParticles = {
-        ["npc_building_mixing_pot"] = "particles/units/heroes/hero_keeper_of_the_light/keeper_chakra_magic.vpcf",
-        ["npc_building_armory"] = "particles/units/heroes/hero_keeper_of_the_light/keeper_chakra_magic.vpcf",
-        ["npc_building_tannery"] = "particles/units/heroes/hero_keeper_of_the_light/keeper_chakra_magic.vpcf",
+        ["npc_building_mixing_pot"] = "particles/custom/craft_mixing_pot.vpcf",
+        ["npc_building_armory"] = "particles/custom/craft_armory.vpcf",
+        ["npc_building_tannery"] = "particles/custom/craft_tannery.vpcf",
         ["npc_building_workshop"] = "particles/custom/craft_workshop.vpcf",
-        ["npc_building_hut_witch_doctor"] = "particles/units/heroes/hero_keeper_of_the_light/keeper_chakra_magic.vpcf"
+        ["npc_building_hut_witch_doctor"] = "particles/custom/craft_wdhut.vpcf"
     }
 
     local unitName = unit:GetUnitName()

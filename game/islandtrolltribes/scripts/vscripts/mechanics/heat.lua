@@ -42,9 +42,9 @@ function Heat:Modify( hero, amount )
     local newStacks = currentHeat + amount
 
     if newStacks > currentHeat then
-        AddHeatingIndicator(hero)
+     --   AddHeatingIndicator(hero)
     else
-        RemoveHeatingIndicator(hero)
+     --   RemoveHeatingIndicator(hero)
     end
 
     -- Cap the max
@@ -84,10 +84,14 @@ function Heat:Think( hero )
 
         Heat:UpdateLoss(hero)
         Heat:Modify(hero, hero.HeatLoss)
-
-        if Heat:Get( hero ) <= 25 then
+		
+		
+        if Heat:Get( hero ) == Heat.MAX and hero:HasModifier("modifier_frozen") then
+		hero:RemoveModifierByName("modifier_cold2")
+		end
+        
+		if Heat:Get( hero ) <= 25 and not hero:HasModifier("modifier_frozen") then
 		AddFreezingIndicator(hero)
-		RemoveFrozenIndicator(hero)
 		else
 		RemoveFreezingIndicator(hero)
         end
@@ -95,13 +99,13 @@ function Heat:Think( hero )
 		
 		if Heat:Get( hero ) >= 15 then
 		hero:RemoveModifierByName("modifier_frozen")
+		hero:RemoveModifierByName("modifier_warm_up")
         RemoveFrozenIndicator(hero)	
         end
 		
         if Heat:Get( hero ) <= 0 and not Heat.IMMUNITY then
             local item = CreateItem("item_apply_modifiers", hero, hero)
 			item:ApplyDataDrivenModifier(hero, hero, "modifier_frozen", {duration=60})
-            RemoveHeatingIndicator(hero)
             RemoveFreezingIndicator(hero)	
 			AddFrozenIndicator(hero)
 			Heat:Set(hero,1)
@@ -195,22 +199,22 @@ function AddHeat(keys)
     Heat:Modify(target, heatToAdd)
 end
 
-function AddHeatingIndicator(hero)
-    if not hero.heating_indicator then
-        local player = PlayerResource:GetPlayer(hero:GetPlayerID())
-        if player then
+---function AddHeatingIndicator(hero)
+---    if not hero.heating_indicator then
+---        local player = PlayerResource:GetPlayer(hero:GetPlayerID())
+---        if player then
          --   hero.heating_indicator = ParticleManager:CreateParticleForPlayer("particles/custom/screen_indicator_fire.vpcf", PATTACH_EYES_FOLLOW, player, player)
          --  ParticleManager:SetParticleControl(hero.heating_indicator, 1, Vector(1,0,0))
-        end
-    end
-end
+---        end
+---    end
+---end
 
-function RemoveHeatingIndicator(hero)
-    if hero.heating_indicator then
-        ParticleManager:DestroyParticle(hero.heating_indicator, false)
-        hero.heating_indicator = nil
-    end
-end
+---function RemoveHeatingIndicator(hero)
+---    if hero.heating_indicator then
+---        ParticleManager:DestroyParticle(hero.heating_indicator, false)
+---        hero.heating_indicator = nil
+---    end
+---end
 
 function AddFreezingIndicator(hero)
 EmitSoundOn( "freezing", hero )
@@ -250,7 +254,7 @@ EmitSoundOn( "freezing", hero )
         EmitSoundOn( "freezing", hero )
         local player = PlayerResource:GetPlayer(hero:GetPlayerID())
         if player then
-            hero.frozen_indicator = ParticleManager:CreateParticleForPlayer("particles/custom/screen_freeze_indicator.vpcf", PATTACH_EYES_FOLLOW, player, player)
+            hero.frozen_indicator = ParticleManager:CreateParticleForPlayer("particles/custom/screen_frozen_indicator.vpcf", PATTACH_EYES_FOLLOW, player, player)
             ParticleManager:SetParticleControl(hero.frozen_indicator, 1, Vector(1,0,0))
             SendFrozenMessage(hero:GetPlayerID(), "#error_frozen")
 			EmitSoundOnClient("Hero_Beastmaster.Call.Hawk", player)

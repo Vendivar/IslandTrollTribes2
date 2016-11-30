@@ -99,31 +99,32 @@
 	m_Children = 
 	[
 		{
-			m_ChildRef = resource:"particles/units/heroes/hero_tinker/laser_cutter_sparks_b.vpcf"
+			m_ChildRef = resource:"particles/custom/laser_cutter_sparks_b.vpcf"
 		},
 		{
-			m_ChildRef = resource:"particles/units/heroes/hero_tinker/laser_cutter_sparks_c.vpcf"
+			m_ChildRef = resource:"particles/custom/laser_cutter_sparks_c.vpcf"
 		},
 		{
-			m_ChildRef = resource:"particles/units/heroes/hero_tinker/laser_cutter_sparks_d.vpcf"
+			m_ChildRef = resource:"particles/custom/laser_cutter_sparks_d.vpcf"
 		},
 		{
-			m_ChildRef = resource:"particles/units/heroes/hero_tinker/laser_cutter_sparks_e.vpcf"
+			m_ChildRef = resource:"particles/custom/laser_cutter_sparks_e.vpcf"
 		},
 		{
-			m_ChildRef = resource:"particles/units/heroes/hero_tinker/laser_cutter_sparks_f.vpcf"
+			m_ChildRef = resource:"particles/custom/laser_cutter_sparks_f.vpcf"
 		},
 		{
 			m_ChildRef = resource:"particles/units/heroes/hero_tinker/laser_cutter_sparks_g.vpcf"
 		},
 		{
 			m_ChildRef = resource:"particles/units/heroes/hero_tinker/laser_cutter_sparks_h.vpcf"
+			m_bDisableChild = true
 		},
 		{
-			m_ChildRef = resource:"particles/units/heroes/hero_tinker/laser_cutter_sparks_i.vpcf"
+			m_ChildRef = resource:"particles/custom/laser_cutter_sparks_i.vpcf"
 		},
 		{
-			m_ChildRef = resource:"particles/units/heroes/hero_tinker/laser_cutter_sparks_k.vpcf"
+			m_ChildRef = resource:"particles/custom/laser_cutter_sparks_k.vpcf"
 		},
 	]
 }

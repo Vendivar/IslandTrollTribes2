@@ -18,7 +18,6 @@
 			]
 			m_bAnimated = true
 			m_bForceDrawInterlevedWithSiblings = true
-			m_nLOD = 1
 		},
 	]
 	m_Operators = 

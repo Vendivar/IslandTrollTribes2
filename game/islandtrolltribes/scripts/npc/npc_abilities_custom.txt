@@ -4288,13 +4288,10 @@
 		"AbilityTextureName"	"razor_plasma_field"
 		"Modifiers"
 		{
-			"modifier_bush_passive"
+			"modifier_trap_passive"
 			{
 				"Passive"	"1"
 				"IsHidden"	"1"
-	
-				"EffectName"		"particles/custom/dropped_item_white.vpcf"
-				"EffectAttachType"	"follow_origin"
 	
 				"States"
 				{
@@ -12526,15 +12523,6 @@
             "TextureName"       "ability_mage_pumpup"
             "EffectName"        "particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff.vpcf"
             "EffectAttachType"  "follow_origin"
-				
-                "ThinkInterval"	"19"
-				"OnIntervalThink"
-				{
-					"RunScript"
-				{
-					"ScriptFile"    "heroes/mage/grow.lua"
-					"Function"      "BloodlustDelete"
-				}
                 "FireEffect"
 				{
 					"EffectName" "particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff_k.vpcf"
@@ -12557,7 +12545,6 @@
 					"EffectName" "particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_cast_smoke.vpcf"
 					"Target" "TARGET"
 					"EffectAttachType" "follow_origin"
-				}
 				}
             "Properties"
             {
@@ -20317,7 +20304,7 @@
 			{
 				"IsDebuff"	"0"
 				"IsPurgable"	"0"
-				"OverrideAnimation"     "ACT_DOTA_DIE"
+				"OverrideAnimation"     "ACT_DOTA_DISABLED"
 				"States"
 				{
 					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"

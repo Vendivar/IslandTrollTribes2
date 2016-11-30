@@ -10,9 +10,9 @@
 	"AbilityChannelTime"	"1.0"
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"axe_steel"
-	"Model"	"models/items/axe/greek_weapon.vmdl"
+	"Model"	"models/axe_steel.vmdl"
 	"Effect"	"particles/custom/dropped_item_normal.vpcf"
-	"ItemCost"	"62"
+	"ItemCost"	"10"
 	"ItemShopTags"	"consumable"
 	"ItemQuality"	"consumable"
 	"ItemShareability"	"ITEM_FULLY_SHAREABLE"
@@ -23,29 +23,6 @@
 	"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 	"ItemKillable"	"1"
 	"ItemSellable"	"1"
-	"Custom"
-	{
-		"ModelScale"	"0.6"
-		"ModelOffsets"
-		{
-			"Origin"
-			{
-				"x"	"0"
-				"y"	"0"
-				"z"	"0"
-			}
-
-			"Angles"
-			{
-				"x"	"90"
-				"y"	"90"
-				"z"	"0"
-			}
-
-		}
-
-	}
-
 
 	"UIPickupSound"	"Item.PickUpGemShop"
 	"UIDropSound"	"Item.DropGemShop"

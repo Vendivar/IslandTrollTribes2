@@ -191,7 +191,7 @@
         "error_must_target_allied_gravestone" "Must target an allied gravestone!"
         "error_heat_low"                     "Your heat is too low! Get to a fire to warm up or you will die!"
         "error_mana_low"                    "You've run out of mana and fell asleep outside!"
-        "error_frozen"                    "You have frozen! You must have a teammate come to you and warm you up or you will die!"
+        "error_frozen"                    "You have frozen! \nYou must have a teammate come to you and warm you up or you will die!"
         "eat_raw_meat_channeling_is_in_progress" "Raw Meat Channeling is progress already."
         "error_already_rested"                  "You are already rested. Please wait a moment before resting again."
         "error_must_target_baby_animal"         "Must target a baby animal."
@@ -258,7 +258,7 @@
         "ChatPlaceholder" "Type here..."
 
         "DeathMessage" "{s:name} died..."
-        "ReviveMessage" "{s:name} has been revived!"
+        "ReviveMessage" "{s:name} been revived!"
 
         "DOTA_Tooltip_Ability_Panic" "<font color='#00CC00'>P</font>anic"
         "DOTA_Tooltip_Ability_Panic_Description"         "Use this ability to send your troll into a panic to gain attack damage and move speed! Be warned, during your state of frenzy you take increased damage."
@@ -455,6 +455,7 @@ Use: A troll specialized in stealing and escaping. Weak but is very hard to kill
 
 <h2>Beastmaster</h2>
 Use: A troll specialized in animal fury. Physically strong and fast. His abilities are limited but he can tame creatures to fight for him, and has a passive which slows nearby animals and deals minor damage to them. <br><br>
+<h2>Tips:</h2><br>-Dont be selfish with exp, sharing is caring.<br>-As a beastmaster your main concerns are supplying your team with a steady flow of meat and gold.<br>-Be very careful in managing your pets as it can be a massive experience boost for the enemy team.<br><br>
 <h2>Subclasses:</h2> <br>
 <b>Pack Leader:</b> The Pack Leader is a form of true dedication to one's fellow animal, able to control more than one pet while focusing on enhancing them rather than himself.  <br><br>
 <b>Chicken Form:</b> The Chicken Form Beastmaster abandons his fragile companion, instead focusing on harrowing the enemy. The Chicken does not directly attack, however several useful abilities make him very potent in combat.  <br><br>

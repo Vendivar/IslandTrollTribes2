@@ -74,15 +74,6 @@
             "TextureName"       "ability_mage_pumpup"
             "EffectName"        "particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff.vpcf"
             "EffectAttachType"  "follow_origin"
-				
-                "ThinkInterval"	"19"
-				"OnIntervalThink"
-				{
-					"RunScript"
-				{
-					"ScriptFile"    "heroes/mage/grow.lua"
-					"Function"      "BloodlustDelete"
-				}
                 "FireEffect"
 				{
 					"EffectName" "particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff_k.vpcf"
@@ -105,7 +96,6 @@
 					"EffectName" "particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_cast_smoke.vpcf"
 					"Target" "TARGET"
 					"EffectAttachType" "follow_origin"
-				}
 				}
             "Properties"
             {

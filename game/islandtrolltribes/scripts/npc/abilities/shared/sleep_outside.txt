@@ -61,7 +61,7 @@
 		{
 			"IsDebuff"	"0"
 			"IsPurgable"	"0"
-			"OverrideAnimation"     "ACT_DOTA_DIE"
+			"OverrideAnimation"     "ACT_DOTA_DISABLED"
 			"States"
 			{
 				"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"

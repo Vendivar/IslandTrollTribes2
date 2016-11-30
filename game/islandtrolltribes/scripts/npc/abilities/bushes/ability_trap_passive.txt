@@ -5,13 +5,10 @@
 	"AbilityTextureName"	"razor_plasma_field"
 	"Modifiers"
 	{
-		"modifier_bush_passive"
+		"modifier_trap_passive"
 		{
 			"Passive"	"1"
 			"IsHidden"	"1"
-
-			"EffectName"		"particles/custom/dropped_item_white.vpcf"
-			"EffectAttachType"	"follow_origin"
 
 			"States"
 			{

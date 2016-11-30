@@ -11,7 +11,7 @@
 	"AbilityChannelTime"	"2.0"
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"axe_stone"
-	"Model"	"models/items/axe/axe_executioner.vmdl"
+	"Model"	"models/axe_stone.vmdl"
 	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"ItemCost"	"14"
 	"ItemShopTags"	"consumable"
@@ -24,28 +24,6 @@
 	"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 	"ItemKillable"	"1"
 	"ItemSellable"	"1"
-	"Custom"
-	{
-		"ModelScale"	"0.6"
-		"ModelOffsets"
-		{
-			"Origin"
-			{
-				"x"	"0"
-				"y"	"0"
-				"z"	"5"
-			}
-
-			"Angles"
-			{
-				"x"	"83"
-				"y"	"0"
-				"z"	"40"
-			}
-
-		}
-
-	}
 
 
 	"UIPickupSound"	"Item.PickUpGemShop"

@@ -139,6 +139,20 @@
 							}
 						}
 					}
+					
+					"DelayedAction"
+	            	{
+					"Delay"		"1.0"
+						"Action"
+						{
+							"Damage"
+							{
+								"Type"	"DAMAGE_TYPE_PURE"
+								"Damage"	"10000"
+								"Target"	"TARGET"
+							}
+						}
+					}
 				}
 				"OnDestroy"			
 				{
@@ -150,8 +164,8 @@
 				}
 				"Properties"
 	            {
-	                "MODIFIER_PROPERTY_FIXED_DAY_VISION"    "425"
-	                "MODIFIER_PROPERTY_FIXED_NIGHT_VISION"    "425"
+	                "MODIFIER_PROPERTY_FIXED_DAY_VISION"    "650"
+	                "MODIFIER_PROPERTY_FIXED_NIGHT_VISION"    "650"
 	            }
 	            "States"
 	            {
@@ -2762,7 +2776,7 @@
 		"AbilityChannelTime"	"1.5"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"axe_iron"
-		"Model"	"models/items/axe/blacksmith_weapon.vmdl"
+		"Model"	"models/items/axe/axe_executioner.vmdl"
 		"Effect"	"particles/custom/dropped_item_normal.vpcf"
 		"ItemCost"	"32"
 		"ItemShopTags"	"consumable"
@@ -3023,9 +3037,9 @@
 		"AbilityChannelTime"	"1.0"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"axe_steel"
-		"Model"	"models/items/axe/greek_weapon.vmdl"
+		"Model"	"models/axe_steel.vmdl"
 		"Effect"	"particles/custom/dropped_item_normal.vpcf"
-		"ItemCost"	"62"
+		"ItemCost"	"10"
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
@@ -3036,29 +3050,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"1"
-		"Custom"
-		{
-			"ModelScale"	"0.6"
-			"ModelOffsets"
-			{
-				"Origin"
-				{
-					"x"	"0"
-					"y"	"0"
-					"z"	"0"
-				}
-	
-				"Angles"
-				{
-					"x"	"90"
-					"y"	"90"
-					"z"	"0"
-				}
-	
-			}
-	
-		}
-	
 	
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
@@ -3112,7 +3103,7 @@
 		"AbilityChannelTime"	"2.0"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"axe_stone"
-		"Model"	"models/items/axe/axe_executioner.vmdl"
+		"Model"	"models/axe_stone.vmdl"
 		"Effect"	"particles/custom/dropped_item_normal.vpcf"
 		"ItemCost"	"14"
 		"ItemShopTags"	"consumable"
@@ -3125,28 +3116,6 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"1"
-		"Custom"
-		{
-			"ModelScale"	"0.6"
-			"ModelOffsets"
-			{
-				"Origin"
-				{
-					"x"	"0"
-					"y"	"0"
-					"z"	"5"
-				}
-	
-				"Angles"
-				{
-					"x"	"83"
-					"y"	"0"
-					"z"	"40"
-				}
-	
-			}
-	
-		}
 	
 	
 		"UIPickupSound"	"Item.PickUpGemShop"

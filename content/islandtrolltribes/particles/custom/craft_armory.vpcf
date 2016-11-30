@@ -2,7 +2,7 @@
 {
 	_class = "CParticleSystemDefinition"
 	m_bShouldHitboxesFallbackToRenderBounds = false
-	m_nMaxParticles = 32
+	m_nMaxParticles = 320
 	m_flConstantRadius = 50.0
 	m_ConstantColor = [ 252, 179, 84, 55 ]
 	m_nGroupID = 1
@@ -91,6 +91,7 @@
 		{
 			_class = "C_OP_InstantaneousEmitter"
 			m_nParticlesToEmit = 24
+			m_bDisableOperator = true
 		},
 	]
 	m_ForceGenerators = 
@@ -106,7 +107,7 @@
 	m_Children = 
 	[
 		{
-			m_ChildRef = resource:"particles/units/heroes/hero_omniknight/omniknight_purification_g.vpcf"
+			m_ChildRef = resource:"particles/custom/craft_armory_flare_tiny.vpcf"
 		},
 		{
 			m_ChildRef = resource:"particles/units/heroes/hero_omniknight/omniknight_purification_light.vpcf"
@@ -116,8 +117,22 @@
 			m_flDelay = 0.15
 		},
 		{
-			m_ChildRef = resource:"particles/econ/items/omniknight/hammer_ti6_immortal/omniknight_pu_ti6_heal_hammers.vpcf"
-			m_flDelay = 0.2
+			m_ChildRef = resource:"particles/custom/pulse_slicely.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/custom/hammers_cross_f4.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/econ/items/legion/legion_weapon_voth_domosh/legion_commander_duel_dmg_flare.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/custom/craft_armory_ring.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/custom/red_flare.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/custom/craft_armory_flare_wide.vpcf"
 		},
 	]
 }

@@ -26,6 +26,7 @@ function ITT:FilterExecuteOrder( filterTable )
     if unit and unit:GetClassname() ~= "player" then
         local playerID = unit:GetPlayerOwnerID()
         if issuer ~= -1 and playerID ~= -1 and issuer ~= playerID then
+		--if issuer ~= -1 and playerID ~= -1 and issuer ~= playerID and (GetConnectionState(playerID) ~= DOTA_CONNECTION_STATE_DISCONNECTED or GetConnectionState(playerID) ~= DOTA_CONNECTION_STATE_ABANDONED) then
             if IsCustomBuilding(unit) and PlayerResource:GetTeam(issuer) == PlayerResource:GetTeam(playerID) then
                 print("Allowing order to happen.")
             elseif not unit:IsSharedWithTeammates() then
@@ -77,7 +78,7 @@ function ITT:FilterExecuteOrder( filterTable )
     --    		      Rez Uncancel		  	      --
     ------------------------------------------------
 	if  order_type == DOTA_UNIT_ORDER_ATTACK_TARGET or order_type == DOTA_UNIT_ORDER_ATTACK_MOVE or order_type == DOTA_UNIT_ORDER_MOVE_TO_TARGET or order_type == DOTA_UNIT_ORDER_MOVE_TO_POSITION or order_type == DOTA_UNIT_ORDER_HOLD_POSITION or order_type == DOTA_UNIT_ORDER_STOP then
-		if unit:GetUnitName() == "npc_building_spirit_ward" then
+		if unit:GetUnitName() == "npc_building_spirit_ward" and unit:IsChanneling() then
 		SendErrorMessage(issuer, "#error_cant_cancel")
 		return CONSUME_EVENT
 		end

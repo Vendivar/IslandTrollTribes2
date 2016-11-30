@@ -127,5 +127,8 @@
 		{
 			m_ChildRef = resource:"particles/custom/rings_blue_delayed_pulse.vpcf"
 		},
+		{
+			m_ChildRef = resource:"particles/custom/blue_ploof_out.vpcf"
+		},
 	]
 }

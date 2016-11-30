@@ -11,7 +11,13 @@ function ITT:Sleep(event)
         end
         if ability:IsFullyCastable() then
             hero:CastAbilityNoTarget(ability, -1)
-			StartAnimation(hero, {duration=3, activity=ACT_DOTA_DIE, rate=0.20})
+--			    AddAnimationTranslate(hero, "ACT_DOTA_DEFEAT")
+			     --Timers:CreateTimer({
+    --endTime = 6, -- when this timer should first execute, you can omit this if you want it to run first on the next frame
+    --callback = function()
+--	RemoveAnimationTranslate(hero)
+--    end
+--  })
         end
     end
 end

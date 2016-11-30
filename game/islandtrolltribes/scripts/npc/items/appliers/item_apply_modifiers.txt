@@ -137,6 +137,20 @@
 						}
 					}
 				}
+				
+				"DelayedAction"
+            	{
+				"Delay"		"1.0"
+					"Action"
+					{
+						"Damage"
+						{
+							"Type"	"DAMAGE_TYPE_PURE"
+							"Damage"	"10000"
+							"Target"	"TARGET"
+						}
+					}
+				}
 			}
 			"OnDestroy"			
 			{
@@ -148,8 +162,8 @@
 			}
 			"Properties"
             {
-                "MODIFIER_PROPERTY_FIXED_DAY_VISION"    "425"
-                "MODIFIER_PROPERTY_FIXED_NIGHT_VISION"    "425"
+                "MODIFIER_PROPERTY_FIXED_DAY_VISION"    "650"
+                "MODIFIER_PROPERTY_FIXED_NIGHT_VISION"    "650"
             }
             "States"
             {

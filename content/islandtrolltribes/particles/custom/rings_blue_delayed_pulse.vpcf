@@ -26,8 +26,9 @@
 		},
 		{
 			_class = "C_OP_InterpolateRadius"
-			m_nOpEndCapState = 0
 			m_flBias = 0.3
+			m_bDisableOperator = true
+			m_flEndScale = 2.0
 		},
 		{
 			_class = "C_OP_Decay"
@@ -36,13 +37,11 @@
 			_class = "C_OP_ColorInterpolate"
 			m_flFadeStartTime = 0.1
 			m_ColorFade = [ 142, 200, 200, 255 ]
+			m_flFadeEndTime = 2.0
 		},
 		{
 			_class = "C_OP_FadeInSimple"
 			m_flFadeInTime = 0.4
-		},
-		{
-			_class = "C_OP_PositionLock"
 		},
 		{
 			_class = "C_OP_RampScalarLinearSimple"
@@ -52,7 +51,7 @@
 		},
 		{
 			_class = "C_OP_FadeOutSimple"
-			m_flFadeOutTime = 0.2
+			m_flFadeOutTime = 0.8
 		},
 	]
 	m_Initializers = 
@@ -64,8 +63,8 @@
 		},
 		{
 			_class = "C_INIT_RandomRadius"
-			m_flRadiusMax = 125.0
-			m_flRadiusMin = 125.0
+			m_flRadiusMax = 150.0
+			m_flRadiusMin = 150.0
 		},
 		{
 			_class = "C_INIT_InitialVelocityNoise"
@@ -107,4 +106,5 @@
 			m_bDisableOperator = true
 		},
 	]
+	m_flConstantRadius = 10.0
 }

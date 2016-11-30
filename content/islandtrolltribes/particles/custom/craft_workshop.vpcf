@@ -90,7 +90,7 @@
 	m_Children = 
 	[
 		{
-			m_ChildRef = resource:"particles/custom/craft_workshop_sparks2.vpcf"
+			m_ChildRef = resource:"particles/custom/craft_workshop_sparks.vpcf"
 		},
 		{
 			m_ChildRef = resource:"particles/custom/craft_workshop_miniflare.vpcf"
