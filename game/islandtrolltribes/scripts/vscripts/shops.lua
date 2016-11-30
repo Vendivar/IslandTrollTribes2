@@ -130,9 +130,12 @@ function TieShopToUnit( unit )
           if not full or (full and item:IsStackable() and exists)then
             Containers:print("Shop:OnRightClick", playerID, container, unit, item:GetEntityIndex(), slot)
 
-            local item = container:BuyItem(playerID, unit, item)
-            Containers:AddItemToUnit(unit, item)
-            item:SetPurchaseTime(0) --disables the 10 second full price refund
+            local bought_item = container:BuyItem(playerID, unit, item)
+
+            if bought_item then
+              Containers:AddItemToUnit(unit, bought_item)
+              bought_item:SetPurchaseTime(0) --disables the 10 second full price refund
+            end
           end
         end,
 

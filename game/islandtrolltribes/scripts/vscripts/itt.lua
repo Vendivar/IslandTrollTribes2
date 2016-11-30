@@ -269,12 +269,12 @@ end
  --disables rosh pit
 function UnblockMammoth()
     print("Trying to delete any old bosses")
-   
+
 	if (duckBoss ~= nil)  then
 	duckBoss:AddNoDraw()
 	duckBoss:ForceKill(true)
 	end
-	
+
     mammothBoss = CreateUnitByName("npc_boss_mammoth", Vector(0,0,10), true, nil, nil, DOTA_TEAM_NEUTRALS)
 end
 
@@ -673,7 +673,7 @@ function ITT:OnPlayerConnectFull(keys)
             if level == 6 then
                 local particleName = "particles/units/heroes/hero_keeper_of_the_light/keeper_of_the_light_spirit_form_ambient.vpcf"
                 hero.subclassAvailableParticle = ParticleManager:CreateParticleForTeam(particleName, PATTACH_ABSORIGIN_FOLLOW, hero, hero:GetTeamNumber())
-				
+
 				local player = PlayerResource:GetPlayer(hero:GetPlayerID())
 				hero.subclassAvailableParticle2 = ParticleManager:CreateParticle("particles/custom/sub_select_ready.vpcf", PATTACH_EYES_FOLLOW, player, player)
 				ParticleManager:SetParticleControl(hero.subclassAvailableParticle2, 1, Vector(1,0,0))

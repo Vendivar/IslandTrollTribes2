@@ -148,11 +148,59 @@ GameRules.quests_table.all = {
         title = "Choose your subclass!",
         context = {
             type = "Time",
-			 track = function(hero, quest, obj)
+			track = function(hero, quest, obj)
                 local count = 0
                 if hero:HasSubClass() then
                     Quests.End(obj, hero, quest.id)
                 end
+            end
+        }
+    },
+    [20] = {
+        name = "Hook test",
+        title = "Learn an ability",
+        context = {
+            type = "Hook",
+            delay_start = 3,
+            from = 0,
+            to = 3,
+            event_type = "Standard",
+            event_name = "entity_killed",
+            event_func = function(hero, quest, killed, obj)
+                if killed:GetUnitName() == "npc_creep_elk_wild" then
+                    Quests.UpdateQuest(obj, hero, quest.context.current + 1, quest.id)
+                end
+            end
+        }
+    },
+    [22] = {
+        name = "Hook test2",
+        title = "Use an ability",
+        context = {
+            type = "Hook",
+            delay_start = 3,
+            from = 0,
+            to = 3,
+            event_type = "Standard",
+            event_name = "dota_player_used_ability",
+            event_func = function(hero, quest, itemName, obj)
+                Quests.UpdateQuest(obj, hero, quest.context.current + 1, quest.id)
+            end
+        }
+    },
+    [24] = {
+        name = "Hook test3",
+        title = "Use an item!",
+        context = {
+            type = "Hook",
+            delay_start = 10,
+            from = 0,
+            to = 3,
+            event_type = "Standard",
+            event_name = "dota_item_picked_up",
+            event_func = function(hero, quest, itemName, obj)
+                print(itemName)
+                Quests.UpdateQuest(obj, hero, quest.context.current + 1, quest.id)
             end
         }
     }

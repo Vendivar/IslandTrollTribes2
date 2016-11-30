@@ -113,6 +113,8 @@ function Quests:constructor()
     self.quests = GameRules.quests_table
     self.first_all_id = 1
     self.first_class_id = 100
+
+    self:BuildHooks()
 end
 
 function Quests:StartTracking(hero, quest)
@@ -127,14 +129,14 @@ function Quests:StartHook(hero, quest)
     -- These use a different function
     if quest.context.event_type == "Custom" then
         quest.context.event_hook_id = CustomGameEventManager:RegisterListener(quest.context.event_name, function(args)
-            PrintTable(args)
-            --quest.context.event_func
+            quest.context.event_func(args)
         end)
     else
-        quest.context.event_hook_id = ListenToGameEvent(quest.context.event_name, function(args)
-            PrintTable(args)
-            --quest.context.event_func
-        end, self)
+        quest.context.event_hook_id = ListenToGameEvent(quest.context.event_name, function(args, keys)
+            if self.hooks[quest.context.event_name] then
+                self.hooks[quest.context.event_name](args[1], args[2], keys)
+            end
+        end, {hero, quest})
     end
 end
 
@@ -249,4 +251,63 @@ function Quests:StartQuest(hero, type, quest, id) -- Abstracting here.
 
 
     self:StartTracking(hero, actual_quest)
+end
+
+function Quests:BuildHooks()
+    self.hooks = {}
+
+    self.hooks.dota_item_picked_up = function(hero, quest, keys)
+        local h = PlayerResource:GetSelectedHeroEntity(keys.PlayerID)
+        if h == hero then
+            quest.context.event_func(hero, quest, keys.itemname, self)
+        end
+    end
+
+    self.hooks.dota_money_changed = function(hero, quest, keys)
+        -- Doesn't work at all.
+        PrintTable(keys)
+    end
+
+    -- Doesn't work.
+    self.hooks.dota_player_learned_ability = function(hero, quest, keys)
+        PrintTable(keys)
+        local h = PlayerResource:GetSelectedHeroEntity(keys.player)
+        if h == hero then
+            quest.context.event_func(hero, quest, keys.abilityname, self)
+        end
+    end
+
+    -- Used for both abilities and items.
+    self.hooks.dota_player_used_ability = function(hero, quest, keys)
+        local h = PlayerResource:GetSelectedHeroEntity(keys.PlayerID)
+        if h == hero then
+            quest.context.event_func(hero, quest, keys.abilityname, self)
+        end
+    end
+
+    -- Does not have a playerID
+    self.hooks.dota_ability_channel_finished = function(hero, quest, keys)
+        print("dota_ability_channel_finished")
+        PrintTable(keys)
+    end
+
+    self.hooks.dota_player_killed = function(hero, quest, keys)
+        PrintTable(keys)
+    end
+
+    self.hooks.npc_spawned = function(hero, quest, keys)
+        PrintTable(keys)
+    end
+
+    self.hooks.tree_cut = function(hero, quest, keys)
+        PrintTable(keys)
+    end
+
+    self.hooks.entity_killed = function(hero, quest, keys)
+        local killedUnit = EntIndexToHScript(keys.entindex_killed)
+        local killer = EntIndexToHScript(keys.entindex_attacker or 0)
+        if killer == hero then
+            quest.context.event_func(hero, quest, killedUnit, self)
+        end
+    end
 end
