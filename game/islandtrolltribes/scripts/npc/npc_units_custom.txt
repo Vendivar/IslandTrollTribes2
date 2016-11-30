@@ -872,19 +872,19 @@
 		"SoundSet"	"Creep_Good_Melee"
 		"MinimapIconSize"	"250"
 		"HealthBarOffset"	"200"
-		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
+		"BoundsHullName"	"DOTA_HULL_SIZE_SMALL"
 		"RingRadius"	"100"
-		"ModelScale"	"0.65"
+		"ModelScale"	"0.55"
 		"precache"
 		{
 		}
 	
 		"Ability1"	""
 		"Ability2"	""
+		"Ability9" "ability_phased"
 		"Ability10"	"ability_building"
 		"Ability11"	"ability_cancel_building"
 		"Ability12"	"ability_itempen"
-		"Ability13" "ability_phased"
 		
 		"ArmorPhysical"	"0"
 		"MagicalResistance"	"0"

@@ -86,7 +86,7 @@ function Heat:Think( hero )
         Heat:Modify(hero, hero.HeatLoss)
 		
 		
-        if Heat:Get( hero ) == Heat.MAX and hero:HasModifier("modifier_frozen") then
+        if Heat:Get( hero ) == Heat.MAX and hero:HasModifier("modifier_cold2") then
 		hero:RemoveModifierByName("modifier_cold2")
 		end
         

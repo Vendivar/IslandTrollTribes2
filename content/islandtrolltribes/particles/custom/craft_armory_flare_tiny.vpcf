@@ -38,9 +38,6 @@
 			_class = "C_OP_FadeOutSimple"
 			m_flFadeOutTime = 1.0
 		},
-		{
-			_class = "C_OP_LockToBone"
-		},
 	]
 	m_Initializers = 
 	[
@@ -57,6 +54,7 @@
 		},
 		{
 			_class = "C_INIT_CreateOnModel"
+			m_bDisableOperator = true
 		},
 		{
 			_class = "C_INIT_PositionOffset"

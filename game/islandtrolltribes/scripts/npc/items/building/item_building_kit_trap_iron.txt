@@ -46,8 +46,15 @@
             "max_stacks"    "6"
         }
     }
-
-
+	"OnSpellStart"
+	{
+			"FireSound"
+			{
+				"EffectName"    "trap.iron.armc"
+				"Target"        "CASTER"
+			}
+			
+	}
     "OnChannelSucceeded"
     {
 

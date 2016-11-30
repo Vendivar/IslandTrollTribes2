@@ -142,14 +142,13 @@
 					
 					"DelayedAction"
 	            	{
-					"Delay"		"1.0"
+					"Delay"		"2.0"
 						"Action"
 						{
-							"Damage"
+						"ApplyModifier"
 							{
-								"Type"	"DAMAGE_TYPE_PURE"
-								"Damage"	"10000"
-								"Target"	"TARGET"
+								"Target"			"CASTER"
+								"ModifierName"		"modifier_visionreduction"
 							}
 						}
 					}
@@ -161,12 +160,25 @@
 						"Target"			"CASTER"
 						"ModifierName"		"modifier_cold2"
 					}
+					"RemoveModifier"
+					{
+						"Target"			"CASTER"
+						"ModifierName"		"modifier_visionreduction"
+					}
 				}
-				"Properties"
-	            {
-	                "MODIFIER_PROPERTY_FIXED_DAY_VISION"    "650"
-	                "MODIFIER_PROPERTY_FIXED_NIGHT_VISION"    "650"
-	            }
+				"OnDeath"			
+				{
+					"RemoveModifier"
+					{
+						"Target"			"CASTER"
+						"ModifierName"		"modifier_frozen"
+					}
+					"RemoveModifier"
+					{
+						"Target"			"CASTER"
+						"ModifierName"		"modifier_visionreduction"
+					}
+				}
 	            "States"
 	            {
 	                "MODIFIER_STATE_ROOTED" 			"MODIFIER_STATE_VALUE_ENABLED"
@@ -175,6 +187,45 @@
 	                "MODIFIER_STATE_COMMAND_RESTRICTED" "MODIFIER_STATE_VALUE_ENABLED"
 	            }
 	        }
+			
+		"modifier_visionreduction"
+	        {
+	            "IsDebuff"  "1"
+				"IsPurgable"       "0"
+				"IsHidden" "1"
+				"ThinkInterval" "3"
+				"OnIntervalThink"
+				{
+				"FireSound"
+					{
+						"EffectName"    "frozen"
+						"Target"        "CASTER"
+					}
+					
+				}
+				"OnDestroy"			
+				{
+					"RemoveModifier"
+					{
+						"Target"			"CASTER"
+						"ModifierName"		"modifier_visionreduction"
+					}
+				}
+				"OnDeath"
+				{
+				"RemoveModifier"
+					{
+						"Target"			"CASTER"
+						"ModifierName"		"modifier_visionreduction"
+					}
+				}
+				"Properties"
+	            {
+	                "MODIFIER_PROPERTY_FIXED_DAY_VISION"    "450"
+	                "MODIFIER_PROPERTY_FIXED_NIGHT_VISION"    "450"
+	            }
+	        }
+			
 			"modifier_cold2"
 			{
 	        "Attributes"       "MODIFIER_ATTRIBUTE_MULTIPLE"
@@ -2326,8 +2377,15 @@
 	            "max_stacks"    "6"
 	        }
 	    }
-	
-	
+		"OnSpellStart"
+		{
+				"FireSound"
+				{
+					"EffectName"    "trap.iron.armc"
+					"Target"        "CASTER"
+				}
+				
+		}
 	    "OnChannelSucceeded"
 	    {
 	
@@ -11848,8 +11906,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"herb_blue"
-		"Model"	"models/props_nature/mushroom_wild_02.vmdl"
-		"Effect"	"particles/units/heroes/hero_omniknight/omniknight_degen_aura.vpcf"
+		"Model"	"models/herb_special_blue.vmdl"
 		"ItemCost"	"12"
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
@@ -11896,8 +11953,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"herb_orange"
-		"Model"	"models/props_nature/mushroom_wild_02.vmdl"
-		"Effect"	"particles/dire_fx/fire_barracks_glow_d.vpcf"
+		"Model"	"models/herb_special_orange.vmdl"
 		"ItemCost"	"12"
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
@@ -11920,8 +11976,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"herb_purple"
-		"Model"	"models/props_nature/mushroom_wild_02.vmdl"
-		"Effect"	"particles/econ/items/kunkka/kunkka_weapon_shadow/kunkka_weapon_tidebringer_shadow_glow.vpcf"
+		"Model"	"models/herb_special_purple.vmdl"
 		"ItemCost"	"12"
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
@@ -11944,8 +11999,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"herb_yellow"
-		"Model"	"models/props_nature/mushroom_wild_02.vmdl"
-		"Effect"	"particles/econ/items/juggernaut/nomad_sword_grand_claive/jugg_weapon_glow_variation_grand_claive_glow.vpcf"
+		"Model"	"models/herb_special_yellow.vmdl"
 		"ItemCost"	"12"
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"

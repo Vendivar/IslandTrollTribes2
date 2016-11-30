@@ -15,7 +15,6 @@
 			_class = "C_OP_InterpolateRadius"
 			m_flEndScale = 0.0
 			m_flBias = 0.1
-			m_bDisableOperator = true
 		},
 		{
 			_class = "C_OP_FadeOutSimple"
@@ -23,9 +22,6 @@
 		},
 		{
 			_class = "C_OP_OscillateScalar"
-		},
-		{
-			_class = "C_OP_PositionLock"
 		},
 		{
 			_class = "C_OP_RemapVelocityToVector"
@@ -68,7 +64,7 @@
 	[
 		{
 			_class = "C_INIT_RingWave"
-			m_nOverrideCP = 1
+			m_nOverrideCP = 0
 			m_flParticlesPerOrbit = 3.0
 			m_flInitialRadius = 0.11
 			m_flInitialSpeedMin = 0.6

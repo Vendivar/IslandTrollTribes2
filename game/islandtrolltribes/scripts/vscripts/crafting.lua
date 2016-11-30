@@ -53,6 +53,8 @@ function ITT:CraftItem(event)
         end
 
         FireCombineParticle(unit)
+		FireCombineSound(unit)
+		FireCombineSoundLayer(unit)
 		print("firing particle",unit)
         unit:EmitSound("General.Combine")
     else
@@ -284,13 +286,17 @@ function FireCombineParticle( unit )
         local combineFX = ParticleManager:CreateParticle(particleName, PATTACH_ABSORIGIN_FOLLOW, unit)
         ParticleManager:SetParticleControl(combineFX, 0, unit:GetAbsOrigin())
         ParticleManager:SetParticleControl(combineFX, 1, unit:GetAbsOrigin())
+        ParticleManager:SetParticleControl(combineFX, 2, unit:GetAbsOrigin())
+        ParticleManager:SetParticleControl(combineFX, 3, unit:GetAbsOrigin())
+        ParticleManager:SetParticleControl(combineFX, 4, unit:GetAbsOrigin())
+        ParticleManager:SetParticleControl(combineFX, 5, unit:GetAbsOrigin())
     end
 end
 
 -- Associates a combination sound to each building
 function FireCombineSound( unit )
     local combineSounds = {
-        ["npc_building_mixing_pot"] = "craft.mixingpot",
+        ["npc_building_mixing_pot"] = "craft.mixing",
         ["npc_building_armory"] = "craft.armory",
         ["npc_building_tannery"] = "craft.tannery",
         ["npc_building_workshop"] = "craft.workshop",
@@ -300,7 +306,22 @@ function FireCombineSound( unit )
     local unitName = unit:GetUnitName()
     local soundName = combineSounds[unitName]
     if soundName then
-		EmitSoundOn( "freezing", unit )
+		EmitSoundOn( combineSounds, unit )
+    end
+end
+--Extra Layer Sounds
+function FireCombineSoundLayer( unit )
+    local combineSoundsL = {
+        ["npc_building_mixing_pot"] = "craft.mixingl",
+        ["npc_building_armory"] = "craft.armoryl",
+        ["npc_building_tannery"] = "craft.tanneryl",
+        ["npc_building_workshop"] = "craft.workshopl"
+    }
+
+    local unitName = unit:GetUnitName()
+    local soundName = combineSounds[unitName]
+    if soundName then
+		EmitSoundOn( combineSoundsL, unit )
     end
 end
 

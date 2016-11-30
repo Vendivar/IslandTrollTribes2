@@ -2,7 +2,7 @@
 {
 	_class = "CParticleSystemDefinition"
 	m_bShouldHitboxesFallbackToRenderBounds = false
-	m_nMaxParticles = 22
+	m_nMaxParticles = 220
 	m_BoundingBoxMin = [ -40.0, -150.0, -10.0 ]
 	m_BoundingBoxMax = [ 150.0, 20.0, 180.0 ]
 	m_flConstantLifespan = 0.3

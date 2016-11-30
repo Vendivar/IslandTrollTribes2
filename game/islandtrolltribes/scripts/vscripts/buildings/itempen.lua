@@ -32,7 +32,8 @@ function CheckBuilding(keys)
     -- Initialization
     building.items = {}
     building.nearby_buildings = {}
-    building.range = 200
+    building.range = 350
+	building:SetHullRadius(0.0)
 
     print("Actually starting now!")
     Timers:CreateTimer(DoUniqueString("item_gather_itempen"), {callback=Gather, endTime = 0.1}, keys)

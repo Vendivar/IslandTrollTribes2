@@ -140,14 +140,13 @@
 				
 				"DelayedAction"
             	{
-				"Delay"		"1.0"
+				"Delay"		"2.0"
 					"Action"
 					{
-						"Damage"
+					"ApplyModifier"
 						{
-							"Type"	"DAMAGE_TYPE_PURE"
-							"Damage"	"10000"
-							"Target"	"TARGET"
+							"Target"			"CASTER"
+							"ModifierName"		"modifier_visionreduction"
 						}
 					}
 				}
@@ -159,12 +158,25 @@
 					"Target"			"CASTER"
 					"ModifierName"		"modifier_cold2"
 				}
+				"RemoveModifier"
+				{
+					"Target"			"CASTER"
+					"ModifierName"		"modifier_visionreduction"
+				}
 			}
-			"Properties"
-            {
-                "MODIFIER_PROPERTY_FIXED_DAY_VISION"    "650"
-                "MODIFIER_PROPERTY_FIXED_NIGHT_VISION"    "650"
-            }
+			"OnDeath"			
+			{
+				"RemoveModifier"
+				{
+					"Target"			"CASTER"
+					"ModifierName"		"modifier_frozen"
+				}
+				"RemoveModifier"
+				{
+					"Target"			"CASTER"
+					"ModifierName"		"modifier_visionreduction"
+				}
+			}
             "States"
             {
                 "MODIFIER_STATE_ROOTED" 			"MODIFIER_STATE_VALUE_ENABLED"
@@ -173,6 +185,45 @@
                 "MODIFIER_STATE_COMMAND_RESTRICTED" "MODIFIER_STATE_VALUE_ENABLED"
             }
         }
+		
+	"modifier_visionreduction"
+        {
+            "IsDebuff"  "1"
+			"IsPurgable"       "0"
+			"IsHidden" "1"
+			"ThinkInterval" "3"
+			"OnIntervalThink"
+			{
+			"FireSound"
+				{
+					"EffectName"    "frozen"
+					"Target"        "CASTER"
+				}
+				
+			}
+			"OnDestroy"			
+			{
+				"RemoveModifier"
+				{
+					"Target"			"CASTER"
+					"ModifierName"		"modifier_visionreduction"
+				}
+			}
+			"OnDeath"
+			{
+			"RemoveModifier"
+				{
+					"Target"			"CASTER"
+					"ModifierName"		"modifier_visionreduction"
+				}
+			}
+			"Properties"
+            {
+                "MODIFIER_PROPERTY_FIXED_DAY_VISION"    "450"
+                "MODIFIER_PROPERTY_FIXED_NIGHT_VISION"    "450"
+            }
+        }
+		
 		"modifier_cold2"
 		{
         "Attributes"       "MODIFIER_ATTRIBUTE_MULTIPLE"

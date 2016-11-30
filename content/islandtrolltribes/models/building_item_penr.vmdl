@@ -57,42 +57,12 @@
 						m_HitBoxes = 
 						[
 							{
-								m_name = "Front Fence"
-								m_sSurfaceProperty = "porcelain"
-								m_nGroupId = 0
-								m_sBoneName = "Cube"
-								m_vMinBounds = [ 293.006897, 230.401001, 1.544 ]
-								m_vMaxBounds = [ 234.405533, -150.0, 77.199501 ]
-								m_bTranslationOnly = false
-								m_cRenderColor = [ 0, 0, 0, 0 ]
-							},
-							{
-								m_name = "Right Fence"
-								m_sSurfaceProperty = "porcelain"
-								m_nGroupId = 0
-								m_sBoneName = "Cube"
-								m_vMinBounds = [ -200.860001, 219.329849, 1.544 ]
-								m_vMaxBounds = [ 256.389008, 175.0, 77.199501 ]
-								m_bTranslationOnly = false
-								m_cRenderColor = [ 0, 0, 0, 0 ]
-							},
-							{
 								m_name = "Back Fence"
 								m_sSurfaceProperty = "porcelain"
 								m_nGroupId = 0
 								m_sBoneName = "Cube"
 								m_vMinBounds = [ -200.0, -148.852005, 1.544 ]
 								m_vMaxBounds = [ 255.291, -99.234398, 77.199501 ]
-								m_bTranslationOnly = false
-								m_cRenderColor = [ 0, 0, 0, 0 ]
-							},
-							{
-								m_name = "Left Fence"
-								m_sSurfaceProperty = "porcelain"
-								m_nGroupId = 0
-								m_sBoneName = "Cube"
-								m_vMinBounds = [ -215.440781, 230.400787, 1.544 ]
-								m_vMaxBounds = [ -172.352997, -150.0, 77.199501 ]
 								m_bTranslationOnly = false
 								m_cRenderColor = [ 0, 0, 0, 0 ]
 							},
@@ -171,7 +141,7 @@
 						m_flFadeOutTime = 0.2
 					}
 					m_folderName = ""
-					m_MotionFramesRootBone = "Cube"
+					m_MotionFramesRootBone = ""
 				},
 				{
 					m_Animationname = "Cube2"
@@ -211,7 +181,7 @@
 						m_flFadeOutTime = 0.2
 					}
 					m_folderName = ""
-					m_MotionFramesRootBone = "Cube"
+					m_MotionFramesRootBone = ""
 				},
 				{
 					m_Animationname = "Cube3"
@@ -251,7 +221,7 @@
 						m_flFadeOutTime = 0.2
 					}
 					m_folderName = ""
-					m_MotionFramesRootBone = "Cube"
+					m_MotionFramesRootBone = ""
 				},
 				{
 					m_Animationname = "Cube4"
@@ -291,7 +261,7 @@
 						m_flFadeOutTime = 0.2
 					}
 					m_folderName = ""
-					m_MotionFramesRootBone = "Cube"
+					m_MotionFramesRootBone = ""
 				},
 			]
 			m_sScripts = [  ]

@@ -2,10 +2,9 @@
 {
 	_class = "CParticleSystemDefinition"
 	m_bShouldHitboxesFallbackToRenderBounds = false
-	m_nMaxParticles = 320
-	m_flConstantRadius = 50.0
+	m_nMaxParticles = 3200
+	m_flConstantRadius = 500.0
 	m_ConstantColor = [ 252, 179, 84, 55 ]
-	m_nGroupID = 1
 	m_Renderers = 
 	[
 		{
@@ -18,12 +17,14 @@
 			m_flTextureVWorldSize = 100.0
 			m_flTextureVScrollRate = 100.0
 			m_nMaxTesselation = 1
+			m_bDisableOperator = true
 		},
 	]
 	m_Operators = 
 	[
 		{
 			_class = "C_OP_Decay"
+			m_bDisableOperator = true
 		},
 		{
 			_class = "C_OP_FadeOutSimple"
@@ -41,67 +42,14 @@
 			m_flFadeStartTime = 0.4
 		},
 		{
-			_class = "C_OP_RemapDirectionToCPToVector"
-			m_nCP = 2
-			m_flOpEndFadeOutTime = 0.1
-			m_flOpStartFadeOutTime = 0.1
-			m_nFieldOutput = 21
-			m_bNormalize = true
-		},
-		{
 			_class = "C_OP_FadeInSimple"
 			m_flFadeInTime = 0.2
-		},
-		{
-			_class = "C_OP_SetSingleControlPointPosition"
-			m_vecCP1Pos = [ 0.0, 0.0, 384.0 ]
-			m_nCP1 = 2
 		},
 		{
 			_class = "C_OP_InterpolateRadius"
 			m_flBias = 0.85
 			m_flEndScale = -16.0
 			m_flEndTime = 0.2
-		},
-		{
-			_class = "C_OP_BasicMovement"
-			m_Gravity = [ 0.0, 0.0, -1500.0 ]
-			m_flOpEndFadeInTime = 0.1
-			m_flOpStartFadeInTime = 0.1
-		},
-		{
-			_class = "C_OP_PositionLock"
-		},
-	]
-	m_Initializers = 
-	[
-		{
-			_class = "C_INIT_RingWave"
-			m_nControlPointNumber = 2
-			m_flInitialRadius = 0.2
-			m_bEvenDistribution = true
-			m_flParticlesPerOrbit = 23.0
-			m_nOverrideCP = 1
-			m_flInitialSpeedMin = 0.15
-			m_flInitialSpeedMax = 0.15
-		},
-	]
-	m_Emitters = 
-	[
-		{
-			_class = "C_OP_InstantaneousEmitter"
-			m_nParticlesToEmit = 24
-			m_bDisableOperator = true
-		},
-	]
-	m_ForceGenerators = 
-	[
-		{
-			_class = "C_OP_AttractToControlPoint"
-			m_vecComponentScale = [ 1.0, 1.0, 0.0 ]
-			m_fFalloffPower = 0.75
-			m_fForceAmount = -120000.0
-			m_bDisableOperator = true
 		},
 	]
 	m_Children = 
@@ -110,20 +58,14 @@
 			m_ChildRef = resource:"particles/custom/craft_armory_flare_tiny.vpcf"
 		},
 		{
-			m_ChildRef = resource:"particles/units/heroes/hero_omniknight/omniknight_purification_light.vpcf"
-		},
-		{
-			m_ChildRef = resource:"particles/units/heroes/hero_omniknight/omniknight_purification_light_b.vpcf"
+			m_ChildRef = resource:"particles/custom/craft_armory_flare_ground.vpcf"
 			m_flDelay = 0.15
-		},
-		{
-			m_ChildRef = resource:"particles/custom/pulse_slicely.vpcf"
 		},
 		{
 			m_ChildRef = resource:"particles/custom/hammers_cross_f4.vpcf"
 		},
 		{
-			m_ChildRef = resource:"particles/econ/items/legion/legion_weapon_voth_domosh/legion_commander_duel_dmg_flare.vpcf"
+			m_ChildRef = resource:"particles/custom/craft_armory_flare_medium.vpcf"
 		},
 		{
 			m_ChildRef = resource:"particles/custom/craft_armory_ring.vpcf"
@@ -135,4 +77,6 @@
 			m_ChildRef = resource:"particles/custom/craft_armory_flare_wide.vpcf"
 		},
 	]
+	m_BoundingBoxMin = [ -1000.0, -1000.0, -1000.0 ]
+	m_BoundingBoxMax = [ 1000.0, 1000.0, 1000.0 ]
 }

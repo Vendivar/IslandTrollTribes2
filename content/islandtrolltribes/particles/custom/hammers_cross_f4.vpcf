@@ -65,7 +65,7 @@
 			m_nAnimationScaleField = 19
 			m_nBodyGroupField = 19
 			m_nSubModelField = 19
-			m_bAnimated = true
+			m_nLOD = 1
 		},
 	]
 	m_Initializers = 
