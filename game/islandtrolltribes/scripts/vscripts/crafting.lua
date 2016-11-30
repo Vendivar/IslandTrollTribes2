@@ -306,9 +306,11 @@ function FireCombineSound( unit )
     local unitName = unit:GetUnitName()
     local soundName = combineSounds[unitName]
     if soundName then
-		EmitSoundOn( combineSounds, unit )
+		EmitSoundOnLocationWithCaster (unit:GetAbsOrigin(), soundName, unit)
     end
 end
+
+
 --Extra Layer Sounds
 function FireCombineSoundLayer( unit )
     local combineSoundsL = {
@@ -319,9 +321,9 @@ function FireCombineSoundLayer( unit )
     }
 
     local unitName = unit:GetUnitName()
-    local soundName = combineSounds[unitName]
+    local soundName = combineSoundsL[unitName]
     if soundName then
-		EmitSoundOn( combineSoundsL, unit )
+		EmitSoundOnLocationWithCaster (unit:GetAbsOrigin(), soundName, unit)
     end
 end
 

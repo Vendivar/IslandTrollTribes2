@@ -5,6 +5,7 @@
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"herb_blue"
 	"Model"	"models/herb_special_blue.vmdl"
+	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"ItemCost"	"12"
 	"ItemShopTags"	"consumable"
 	"ItemQuality"	"consumable"

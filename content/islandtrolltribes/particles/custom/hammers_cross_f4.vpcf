@@ -7,6 +7,7 @@
 		{
 			_class = "C_OP_BasicMovement"
 			m_fDrag = 0.015
+			m_bDisableOperator = true
 		},
 		{
 			_class = "C_OP_Decay"
@@ -19,9 +20,11 @@
 		},
 		{
 			_class = "C_OP_OscillateScalar"
+			m_bDisableOperator = true
 		},
 		{
 			_class = "C_OP_PositionLock"
+			m_bDisableOperator = true
 		},
 		{
 			_class = "C_OP_RemapVelocityToVector"
@@ -36,6 +39,7 @@
 		{
 			_class = "C_OP_MovementRotateParticleAroundAxis"
 			m_flRotRate = 120.0
+			m_bDisableOperator = true
 		},
 		{
 			_class = "C_OP_MovementRotateParticleAroundAxis"
@@ -116,4 +120,5 @@
 			m_ChildRef = resource:"particles/custom/hammers_cross_f3.vpcf"
 		},
 	]
+	m_nMaxParticles = 5
 }
