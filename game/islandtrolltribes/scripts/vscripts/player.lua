@@ -81,6 +81,7 @@ function ITT:OnClassSelected(event)
         hero:SetCustomHealthLabel( hero.Tribe.." Tribe", color[1], color[2], color[3] )
 
         ITT.Quests:Start(hero, "all")
+        ITT.Quests:Start(hero, hero:GetHeroClass())
 
     end, playerID)
 end

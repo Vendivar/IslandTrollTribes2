@@ -2,7 +2,7 @@
 {
 	_class = "CParticleSystemDefinition"
 	m_bShouldHitboxesFallbackToRenderBounds = false
-	m_nMaxParticles = 4
+	m_nMaxParticles = 40
 	m_ConstantColor = [ 169, 196, 255, 255 ]
 	m_Renderers = 
 	[
@@ -36,13 +36,6 @@
 			_class = "C_OP_Decay"
 		},
 		{
-			_class = "C_OP_PositionLock"
-			m_flEndTime_max = 0.3
-			m_flEndTime_min = 0.3
-			m_flStartTime_max = 0.2
-			m_flStartTime_min = 0.2
-		},
-		{
 			_class = "C_OP_BasicMovement"
 			m_Gravity = [ 0.0, 0.0, 10.0 ]
 		},
@@ -64,11 +57,6 @@
 			_class = "C_INIT_RandomLifeTime"
 			m_fLifetimeMin = 0.25
 			m_fLifetimeMax = 0.5
-		},
-		{
-			_class = "C_INIT_PositionOffset"
-			m_OffsetMin = [ 0.0, 0.0, -5.0 ]
-			m_OffsetMax = [ 0.0, 0.0, -5.0 ]
 		},
 	]
 	m_Emitters = 

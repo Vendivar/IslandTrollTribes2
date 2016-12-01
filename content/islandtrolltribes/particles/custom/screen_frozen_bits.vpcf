@@ -22,6 +22,12 @@
 	m_Operators = 
 	[
 		{
+			_class = "C_OP_EndCapDecay"
+		},
+		{
+			_class = "C_OP_Decay"
+		},
+		{
 			_class = "C_OP_BasicMovement"
 			m_fDrag = 1.0
 		},
@@ -46,17 +52,6 @@
 			_class = "C_OP_RampScalarLinearSimple"
 			m_Rate = 0.25
 			m_flEndTime = 60.0
-		},
-		{
-			_class = "C_OP_InheritFromParentParticles"
-			m_nFieldOutput = 1
-			m_nIncrement = 1000
-		},
-		{
-			_class = "C_OP_Decay"
-		},
-		{
-			_class = "C_OP_EndCapDecay"
 		},
 	]
 	m_Initializers = 

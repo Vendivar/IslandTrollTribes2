@@ -62,9 +62,6 @@
 			m_flDelay = 0.15
 		},
 		{
-			m_ChildRef = resource:"particles/custom/hammers_cross_f4.vpcf"
-		},
-		{
 			m_ChildRef = resource:"particles/custom/craft_armory_flare_medium.vpcf"
 		},
 		{
@@ -75,6 +72,9 @@
 		},
 		{
 			m_ChildRef = resource:"particles/custom/craft_armory_flare_wide.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/custom/hammer_down.vpcf"
 		},
 	]
 	m_BoundingBoxMin = [ -1000.0, -1000.0, -1000.0 ]

@@ -86,6 +86,7 @@
 			m_nFieldOutput = 21
 			m_bNormalize = true
 			m_vecOffsetAxis = [ 0.0, 1.0, 0.0 ]
+			m_bDisableOperator = true
 		},
 	]
 	m_Emitters = 
