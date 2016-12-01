@@ -339,7 +339,10 @@ function ITT:FilterExecuteOrder( filterTable )
             if queue then
                 print("Queued Item Collect")
                 OrderQueue:Put(unit, order)
+            else
+                OrderQueue:Clear(unit)
             end
+            -- ELse Clear the queue
 
             ExecuteOrderFromTable(order)
 
@@ -350,6 +353,9 @@ function ITT:FilterExecuteOrder( filterTable )
                     local pickedUp = PickupItem( unit, drop )
                     if not pickedUp then
                         SendErrorMessage(issuer, "#error_inventory_full")
+                    else
+                        print("Getting Next Order")
+                        local nextOrder = OrderQueue:Next(unit)
                     end
                     return false
                 end
