@@ -47,13 +47,4 @@
 			m_nParticlesToEmit = 400
 		},
 	]
-	m_Children = 
-	[
-		{
-			m_ChildRef = resource:"particles/custom/hammery_fly_2.vpcf"
-		},
-		{
-			m_ChildRef = resource:"particles/custom/hammery_fly_3.vpcf"
-		},
-	]
 }

@@ -12,6 +12,8 @@
 	"ItemShopTags"	"consumable"
 	"ItemQuality"	"consumable"
 	"ItemShareability"	"ITEM_FULLY_SHAREABLE_STACKING"
+    "MaxStacks" 			"6"
+    "ItemInitialCharges"    "1"
 	"ItemStackable"	"1"
 	"ItemPermanent"	"0"
 	"ItemDroppable"	"1"

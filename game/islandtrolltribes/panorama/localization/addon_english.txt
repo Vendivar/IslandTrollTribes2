@@ -293,16 +293,19 @@
         //  <h1>text</h1> header1, <h2>text</h2> header2
         //  <i> italic/underlined.
         //  Styles can be changed in custom_loading_screen.css
-        "loading_screen_change_text" "<h1>LATEST CHANGES</h1><i>Version 1.05</i><br>
-Buildings:<br>
-Tannery: New Model<br>
-All Buildings: Balanced HP/Armor<br><br>
-Items:<br>
-Tsunami Scroll: Now Applies Damage to Buildings<br>
-Disease Potion : Damage to Buildings<br>
-Disease Potion : Now properly diseases meat<br>
-Stoneskin Scroll: Armor is now set to +9<br>
-River Root: Adjusted drop model<br>"
+        "loading_screen_change_text" "<h1>LATEST CHANGES</h1><i>Version 1.06</i><br>
+<h2>Mechanics:</h2>
+New mechanic: Freezing: Now instead of instantly dieing from lack of heat,<br> you freeze for 60 seconds giving your team a chance to save you.<br>
+Bosses: The Mighty Mammoth now joins the fight, kill him if you can and you will be rewarded!<br>
+Shops: Prices raised slightly, and reduced maximum boats on the map by 1<br>
+Lots of bug fixes also included. Should no longer lose abilities, or have crafting issues.<br><br>
+<h2>Buildings:</h2><br>
+Item Storage: Added new item storage area! Store your items here and nearby buildings can access them!<br>
+All Buildings: New Crafting FX!<br><br>
+<h2>Items:</h2><br>
+Disease Potion: Works now.<br>
+Beehive/Essence of Bees: Bees bees bees<br>
+Special Herbs: New drop model.<br><br>"
 
         "loading_screen_tip_0"  "Press B to drop all held items."
         "loading_screen_tip_1"  "Don't forget to check your heat, if you freeze to death you will die!"

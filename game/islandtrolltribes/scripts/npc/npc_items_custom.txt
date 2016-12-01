@@ -10697,6 +10697,8 @@
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
 		"ItemShareability"	"ITEM_FULLY_SHAREABLE_STACKING"
+	    "MaxStacks" 			"6"
+	    "ItemInitialCharges"    "1"
 		"ItemStackable"	"1"
 		"ItemPermanent"	"0"
 		"ItemDroppable"	"1"
@@ -13010,6 +13012,7 @@
 		"Effect"	"particles/custom/dropped_item_normal.vpcf"
 		"AbilityCastRange"	"800"
 		"AbilityCastPoint"	"0.8"
+		"AbilityCooldown"	"5"
 		"ItemCost"	"14"
 		"ItemShopTags"	"consumable"
 		"ItemQuality"	"consumable"
@@ -13066,9 +13069,6 @@
 				"Target"	"TARGET"
 			}
 	
-			"SpendCharge"
-			{
-			}
 	
 		}
 	
@@ -13085,6 +13085,9 @@
 				"EffectName"	"item.softhit"
 				"Target"	"TARGET"
 			}	
+			"SpendCharge"
+			{
+			}
 		}
 	
 		"Custom"

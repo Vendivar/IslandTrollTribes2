@@ -10,6 +10,7 @@
 	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"AbilityCastRange"	"800"
 	"AbilityCastPoint"	"0.8"
+	"AbilityCooldown"	"5"
 	"ItemCost"	"14"
 	"ItemShopTags"	"consumable"
 	"ItemQuality"	"consumable"
@@ -66,9 +67,6 @@
 			"Target"	"TARGET"
 		}
 
-		"SpendCharge"
-		{
-		}
 
 	}
 
@@ -85,6 +83,9 @@
 			"EffectName"	"item.softhit"
 			"Target"	"TARGET"
 		}	
+		"SpendCharge"
+		{
+		}
 	}
 
 	"Custom"
