@@ -15,6 +15,7 @@ function ITT:CraftItem(event)
     local entity = event.entity
     local unit
 
+    local inventory_is_full = false
     print("Attempting to craft ",itemName," at ",section)
     if section == "Recipes" then
         unit = PlayerResource:GetSelectedHeroEntity(playerID)
@@ -32,6 +33,12 @@ function ITT:CraftItem(event)
             end
         end
 
+        -- If inventory is full, disable crafting
+        if GetNumItemsInInventory(unit) == 6 then
+            print("Inventory is full!")
+            inventory_is_full = true
+        end
+
         -- Disallow crafting on buildings under construction
         if not unit.state == "complete" then
             SendErrorMessage(playerID, "Building still under construction!")
@@ -39,7 +46,7 @@ function ITT:CraftItem(event)
     end
 
     local craftingItems = CanCombine(unit, section, itemName)
-    if craftingItems then
+    if craftingItems and not inventory_is_full then
         -- Clear the inventory items returned by the CanCombine aux
         ClearItems(craftingItems)
 
@@ -58,34 +65,51 @@ function ITT:CraftItem(event)
 		print("firing particle",unit)
         unit:EmitSound("General.Combine")
     else
-        print("Error, couldn't combine ",itemName)
+        if GetNumItemsInInventory(unit) == 6 and section ~= "Recipes" then
+            SendErrorMessage(playerID, "#error_inventory_full")
+        else
+            print("Error, couldn't combine ",itemName)
+        end
     end
 end
 
 function CanCombine( unit, section, recipeName )
     local requirements = GetRecipeForItem(section, recipeName)
 
-    local result = {}
-    local usedInts = {}
-    for itemName,num in pairs(requirements) do
-        local items = HasEnoughInInventory(unit, itemName, num, usedInts)
-        local usedInts = items[2]
-        if items[1] then
-            table.insert(result, {items[1], num})
-        else
-            if unit.itempens then
-                -- We have a chance!
-                local res = CheckItempens(unit, num - #items[3], itemName)
-                if res then
-                    table.insert(result, {items[3], num, res})
+    local result
+    local usedInts
+    local total_failure
+    for _, recipe in pairs(requirements) do
+        result = {}
+        usedInts = {}
+        local failure = false
+        total_failure = false
+        for itemName,num in pairs(recipe) do
+            if not failure then
+                local items = HasEnoughInInventory(unit, itemName, num, usedInts)
+                local usedInts = items[2]
+                if items[1] then
+                    table.insert(result, {items[1], num})
                 else
-                    return false
+                    if unit.itempens then
+                        -- We have a chance!
+                        local res = CheckItempens(unit, num - #items[3], itemName)
+                        if res then
+                            table.insert(result, {items[3], num, res})
+                        else
+                            failure = true
+                        end
+                    else
+                        failure = true
+                    end
                 end
             else
-                return false
+                total_failure = true
             end
         end
     end
+
+    if total_failure then return false end
 
     -- All the requirements passed, return the result to combine
     print("Can Combine "..recipeName)
@@ -95,17 +119,34 @@ end
 function CheckItempens(unit, num, itemName)
     local current = 0
     local itempens = {}
+    local used = {}
     for i, itempen in pairs(unit.itempens) do
         if itempen:IsNull() or not IsValidEntity(itempen) then -- Was it destroyed?
             table.remove(itempen, i)
         else
             -- Need to check if it's an alias.
-            local name = GetAliasForPen(itemName, itempen.items)
-            if itempen.items[name] and itempen.items[name].count > 0 then
-                current = current + itempen.items[name].count
-                table.insert(itempens, itempen)
-                if current >= num then
-                    return {itempens, name}
+            if string.match(itemName, "any_") then
+                for ind = 1, num do
+                    local name = GetAliasForPen(itemName, itempen.items, used)
+                    if itempen.items[name] and itempen.items[name].count > 0 then
+                        current = current + 1
+                        table.insert(itempens, {itempen, name, 1})
+
+                        if used[name] then used[name] = used[name] + 1
+                        else used[name] = 1 end
+
+                        if current >= num then
+                            return {itempens, itemName}
+                        end
+                    end
+                end
+            else
+                if itempen.items[itemName] and itempen.items[itemName].count > 0 then
+                    current = current + itempen.items[itemName].count
+                    table.insert(itempens, {itempen})
+                    if current >= num then
+                        return {itempens, itemName}
+                    end
                 end
             end
         end
@@ -163,13 +204,18 @@ function HasEnoughInInventory( unit, itemName, num, usedInts)
 end
 
 -- Returns an appropriate name for itempen usage.
-function GetAliasForPen(itemName, itempen)
+function GetAliasForPen(itemName, itempen, used)
     if string.match(itemName, "any_") then
         local aliasTable = GameRules.Crafting['Alias'][itemName]
 
+        PrintTable(used)
         for k,v in pairs(aliasTable) do
             if itempen[k] and itempen[k].count > 0 then
-                return k
+                if used[k] and itempen[k].count > used[k] then
+                    return k
+                elseif not used[k] then
+                    return k
+                end
             end
         end
 
@@ -239,22 +285,28 @@ function ClearItems( itemList )
 end
 
 function ClearItemsFromPen(pens, itemName, num)
-  for k,pen in pairs(pens) do
-      local len = num
-      local pen_items = pen.items[itemName].items
-      local count = pen.items[itemName].count
-      for i = 1, len do
-          if i <= count then
-              if not pen_items[i]:IsNull() then
-                  UTIL_RemoveImmediate(pen_items[i]:GetContainedItem())
-                  UTIL_RemoveImmediate(pen_items[i])
-                  num = num - 1
-              end
-          else
-              break
-          end
-      end
-  end
+    local name = itemName
+    for k,pen in pairs(pens) do
+        local len = num
+        if pen[2] then
+            name = pen[2]
+            len = pen[3]
+        end
+        pen = pen[1]
+        local pen_items = pen.items[name].items
+        local count = pen.items[name].count
+        for i = 1, len do
+            if i <= count then
+                if not pen_items[i]:IsNull() then
+                    UTIL_RemoveImmediate(pen_items[i]:GetContainedItem())
+                    UTIL_RemoveImmediate(pen_items[i])
+                    num = num - 1
+                end
+            else
+                break
+            end
+        end
+    end
 end
 
 function GetRandomAliasFor(aliasName)
@@ -330,11 +382,13 @@ end
 function GetRecipeForItem(section, itemName)
     local unitTable = GameRules.Crafting[section]
     -- Recipes are in 1,2,3... order
+    local recipes = {}
     for _,recipe in pairs(unitTable) do
         for recipeName,ingredients in pairs(recipe) do
             if recipeName==itemName then
-                return ingredients
+                table.insert(recipes, ingredients)
             end
         end
     end
+    return recipes
 end
