@@ -95,7 +95,7 @@ function Gather(keys)
         local item = v:GetContainedItem()
         local itemName = item:GetAbilityName()
         if allowed_items[itemName] then
-            if v.confirm then -- Only when confirmed, count them to our actual inventory.
+            if v.confirm == building:GetEntityIndex() then -- Only when confirmed, count them to our actual inventory.
                 if current_items[itemName] then
                     current_items[itemName] = current_items[itemName] + 1
                 else
@@ -105,12 +105,19 @@ function Gather(keys)
                 table.insert(actual_items[itemName], v)
             end
 
-            if v.counted and not v.confirm then -- Confirming position.
-                SetPosition(v, building.items[itemName].position)
+            if v.counted == building:GetEntityIndex() and not v.confirm then -- Confirming position.
+        		local grabFX = ParticleManager:CreateParticle("particles/econ/items/pugna/pugna_ward_ti5/pugna_ward_attack_light_ti_5.vpcf", PATTACH_OVERHEAD_FOLLOW, building)
+                ParticleManager:SetParticleControl(grabFX, 0, building:GetAbsOrigin())
+                ParticleManager:SetParticleControl(grabFX, 1, item:GetAbsOrigin())
+        		ParticleManager:SetParticleControl(grabFX, 2, building:GetAbsOrigin())
+        		ParticleManager:SetParticleControl(grabFX, 3, building:GetAbsOrigin())
+                ParticleManager:SetParticleControl(grabFX, 4, item:GetAbsOrigin())
+                EmitSoundOn( "itempen.grab", building )
+                SetPosition(v, building.items[itemName].position, building:GetEntityIndex())
             end
 
             if not v.counted then -- A new item!
-                v.counted = true
+                v.counted = building:GetEntityIndex()
                 v.confirm = false
 
                 local building_item = building.items[itemName]
@@ -208,7 +215,7 @@ function SendDataToClients(building, current_items)
     })
 end
 
-function SetPosition(item, position)
+function SetPosition(item, position, id)
     if item:GetVelocity():Length() > 0 then
         Timers:CreateTimer({
             callback = function()
@@ -217,7 +224,7 @@ function SetPosition(item, position)
                         return 0.2
                     else
                         item:SetOrigin(position)
-                        item.confirm = true
+                        item.confirm = id
                     end
                 end
             end
@@ -226,6 +233,6 @@ function SetPosition(item, position)
         if item:GetAbsOrigin() ~= position then
             item:SetOrigin(position)
         end
-        item.confirm = true
+        item.confirm = id
     end
 end
