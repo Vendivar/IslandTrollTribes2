@@ -109,10 +109,10 @@ function Gather(keys)
                 v.positioned = true
         		local grabFX = ParticleManager:CreateParticle("particles/econ/items/pugna/pugna_ward_ti5/pugna_ward_attack_light_ti_5.vpcf", PATTACH_OVERHEAD_FOLLOW, building)
                 ParticleManager:SetParticleControl(grabFX, 0, building:GetAbsOrigin())
-                ParticleManager:SetParticleControl(grabFX, 1, item:GetAbsOrigin())
+                ParticleManager:SetParticleControl(grabFX, 1, v:GetAbsOrigin())
         		ParticleManager:SetParticleControl(grabFX, 2, building:GetAbsOrigin())
         		ParticleManager:SetParticleControl(grabFX, 3, building:GetAbsOrigin())
-                ParticleManager:SetParticleControl(grabFX, 4, item:GetAbsOrigin())
+                ParticleManager:SetParticleControl(grabFX, 4, v:GetAbsOrigin())
                 EmitSoundOn( "itempen.grab", building )
                 SetPosition(v, building.items[itemName].position, building:GetEntityIndex())
             end
