@@ -55,6 +55,7 @@
 		},
 		{
 			_class = "C_INIT_CreateFromCPs"
+			m_bDisableOperator = true
 		},
 		{
 			_class = "C_INIT_PositionOffset"

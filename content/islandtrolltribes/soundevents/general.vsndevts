@@ -456,7 +456,7 @@
                             "value2"        "sounds/general/tannery_craft_3.vsnd"
                             "value3"        "sounds/general/tannery_craft_4.vsnd"
                             "value4"        "sounds/general/tannery_craft_5.vsnd"
-                            "value4"        "sounds/general/tannery_craft_6.vsnd"
+                            "value5"        "sounds/general/tannery_craft_6.vsnd"
 						}
                     "volume"            {   "value"     "10.00000"  }
                     "pitch_rand_min"    {   "value"     "-0.05000"  }

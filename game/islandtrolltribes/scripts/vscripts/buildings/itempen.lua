@@ -32,7 +32,7 @@ function CheckBuilding(keys)
     -- Initialization
     building.items = {}
     building.nearby_buildings = {}
-    building.range = 200
+    building.range = 400
 
     print("Actually starting now!")
     Timers:CreateTimer(DoUniqueString("item_gather_itempen"), {callback=Gather, endTime = 0.1}, keys)
@@ -63,7 +63,7 @@ local allowed_items = {
     item_hide_wolf = {pos = Vector(0, 90, 0), scale = 0.75},
     item_hide_jungle_bear = {pos = Vector(30, 90, 0), scale = 0.75},
     item_magic_raw = {pos = Vector(60, 90, 0), scale = 0.75},
-    --= {pos = Vector(90, 90, 0), scale = 0.75}
+    item_meat_cooked = {pos = Vector(90, 90, 0), scale = 0.75}
     --= {pos = Vector(90, 40, 0), scale = 0.75}
 }
 
