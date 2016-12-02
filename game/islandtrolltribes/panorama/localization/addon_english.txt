@@ -293,7 +293,7 @@
         //  <h1>text</h1> header1, <h2>text</h2> header2
         //  <i> italic/underlined.
         //  Styles can be changed in custom_loading_screen.css
-        "loading_screen_change_text" "<h1>LATEST CHANGES</h1><i>Version 1.06</i><br>
+        "loading_screen_change_text" "<h1>LATEST CHANGES</h1><i>Version 1.1.0</i><br>
 <h2>Mechanics:</h2>
 Freezing (NEW!): Now instead of instantly dieing from lack of heat, you freeze for 60 seconds giving your team a chance to save you.<br>
 Cooked Meat: Cooked Meat max stacks now is 8, and heal per use is now 35 (down from 50)<br>

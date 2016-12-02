@@ -63,8 +63,14 @@
 		"npc_building_tower_omni"				"Building Tower Omni"
 		"npc_clay_living"						"Clay Living"		
 		"npc_scout_ward"						"Scout Ward"
-		"npc_beehive_lesser"					"Lesser Beehive"
-	
+		"npc_beehive_lesser"					"Lesser Beehive"		
+		
+		
+// Bosses
+
+"npc_boss_mammoth"                                                                "Mighty Mammoth"
+
+
 
 // Unit Names
 		"npc_dota_creature_basic_zombie"		"Zombie"
@@ -91,7 +97,9 @@
 		"npc_creep_panther"						"Panther"
 		"npc_creep_panther_elder"				"Elder Panther"
 		"npc_creature_scroll_skeleton"			"Skeleton"
-		"npc_creep_mammoth"						"Mammoth"		
+		
+		
+
 		
 		"npc_bush_herb"							"Butsu Herb Bush"
 		"npc_bush_herb_blue"					"Blue Herb Bush"
@@ -182,7 +190,7 @@
 		"npc_building_omnitower"		"Omni Tower"
 		"npc_building_smoke_house"		"Smoke House"
 		"npc_building_spirit_ward"		"Spirit Ward"
-		"npc_building_storage_chest"	"Storage Chest"
+		"npc_building_storage_chest"	"Item Chest"
 		"npc_building_tannery"			"Tannery"
 		"npc_building_teleport_beacon"	"Teleport Beacon"
 		"npc_building_tent"				"Tent"
@@ -1491,44 +1499,44 @@
 "DOTA_Tooltip_Ability_ability_scout_destroyward_Description"		"Destroys target ward under your control within 400 range."
 "DOTA_Tooltip_Ability_ability_scout_enemyradar"		"Enemy Radar"
 "DOTA_Tooltip_Ability_ability_scout_enemyradar_Description"		"Pings nearby neutral and enemy units. Neutral units are displayed as blue pings while the hostile units are shown with red pings."
+"DOTA_Tooltip_ability_ability_scout_enemyradar_duration"                          "DURATION:"
 "DOTA_Tooltip_Ability_ability_scout_greaterreveal"		"Greater Reveal"
 "DOTA_Tooltip_Ability_ability_scout_greaterreveal_Description"		"A more powerful version of reveal giving enhanced range."
 "DOTA_Tooltip_ability_ability_scout_greaterreveal_duration"		"DURATION:"
 "DOTA_Tooltip_ability_ability_scout_greaterreveal_radius"		"RADIUS:"
 "DOTA_Tooltip_Ability_ability_scout_motionsensorradar"		"Motion Sensor Radar"
 "DOTA_Tooltip_Ability_ability_scout_motionsensorradar_Description"		"Takes 3 seconds to cast. Anything moving within the range in those 3 seconds is pinged. AOE increases with level. Pings everything from ships to fish to hawks."
-"DOTA_Tooltip_Ability_ability_scout_motionsensorradar_range"		"RANGE:"
+"DOTA_Tooltip_Ability_ability_scout_motionsensorradar_range"					  "RANGE:"
+"DOTA_Tooltip_ability_ability_scout_motionsensorradar_duration"                   "DURATION:"
 
 
 
-"DOTA_Tooltip_Ability_ability_scout_placeward"		"Place Ward"
+"DOTA_Tooltip_Ability_ability_scout_placeward"									"Place Ward"
 "DOTA_Tooltip_Ability_ability_scout_placeward_Description"						"Places a ward that gives vision up to 400 range away that lasts 120 seconds. Wards explode when stepped on and have timed life. You can only have up to 10 wards up at a time."
 "DOTA_Tooltip_ability_ability_scout_placeward_max_wards"                          "MAX WARDS:"
 "DOTA_Tooltip_ability_ability_scout_placeward_damage"                             "DAMAGE:"
 "DOTA_Tooltip_ability_ability_scout_placeward_radius"                             "RADIUS:"
-"DOTA_Tooltip_ability_ability_scout_placeward_activation_time"                    "ACTIVATION TIME:"
-"DOTA_Tooltip_ability_ability_scout_placeward_max_clay"                           "MAX CLAY:"
-"DOTA_Tooltip_ability_ability_scout_placeward_explode_delay"                      "EXPLODE DELAY:"
-"DOTA_Tooltip_ability_ability_scout_placeward_fade_time"                          "FADE TIME:"
-"DOTA_Tooltip_ability_ability_scout_placeward_vision_radius"                      "VISION RADIUS:"
-"DOTA_Tooltip_ability_ability_scout_placeward_vision_duration"                    "VISION DURATION:"
+"DOTA_Tooltip_ability_ability_scout_placeward_life_duration"                      "LIFE DURATION:"
 
 "DOTA_Tooltip_modifier_wardcount"                                                 "Ward Counter"
 "DOTA_Tooltip_modifier_wardcount_Description"                                     "You cant have more then 10 wards up at any point."
 
 
-	
+
+
+
+		
 
 
 
 
 "DOTA_Tooltip_Ability_ability_scout_wardthearea"						"Ward The Area"
-"DOTA_Tooltip_Ability_ability_scout_wardthearea"						"Ward The Area"
-"DOTA_Tooltip_Ability_ability_scout_wardthearea_Description"			"Places wards in the surrounding area. Wards explode when stepped on and have timed life."
-"DOTA_Tooltip_Ability_ability_scout_wardthearea_Description"			"Ward The Area"
+"DOTA_Tooltip_Ability_ability_scout_wardthearea_Description"			"Places wards randomly in the surrounding radius. Wards explode when stepped on and have timed life."
 "DOTA_Tooltip_ability_ability_scout_wardthearea_stepdamage"				"STEP DAMAGE:"
 "DOTA_Tooltip_Ability_ability_scout_wardthearea_wardlife"				"WARD LIFE:"
-"DOTA_Tooltip_Ability_ability_scout_wardthearea_max_wards"				"MAX NUMBER OF WARDS:"
+"DOTA_Tooltip_Ability_ability_scout_wardthearea_max_wards"				"AMOUNT OF WARDS:"
+"DOTA_Tooltip_ability_ability_scout_wardthearea_wards"					"AMOUNT OF WARDS:"
+"DOTA_Tooltip_ability_ability_scout_wardthearea_lifetime"				"LIFETIME:"
 
 
 
@@ -1536,8 +1544,6 @@
 
 "DOTA_Tooltip_ability_ability_scout_wardthearea_aoe"                              "AOE:"
 "DOTA_Tooltip_ability_ability_scout_wardthearea_radius"                           "RADIUS:"
-"DOTA_Tooltip_ability_ability_scout_wardthearea_explode_delay"                    "EXPLODE DELAY:"
-"DOTA_Tooltip_ability_ability_scout_wardthearea_fade_time"                        "FADE TIME:"
 "DOTA_Tooltip_ability_ability_scout_wardthearea_vision_radius"                    "VISION RADIUS:"
 	
 
@@ -2052,10 +2058,10 @@
 "DOTA_Tooltip_ability_item_boat_building_kit_armory_Description"		"A forge and anvil used to make a variety of weapons and equipment."
 "DOTA_Tooltip_ability_item_boat_building_kit_armory_Lore"		"The world's most advanced tools at your fingertips."
 "DOTA_Tooltip_ability_item_boat_building_kit_armory_Note0"		"Quick Build:\n    - Grabs nearby items on the ground to make selected item. If not all items are available, will still grab everything that was available. Items already in the building will be pushed to the bottom of the building's inventory."
-"DOTA_Tooltip_ability_item_boat_building_kit_chest_storage"		"Storage Chest Kit"
+"DOTA_Tooltip_ability_item_boat_building_kit_chest_storage"		"Item Chest Kit"
 "DOTA_Tooltip_ability_item_boat_building_kit_chest_storage_Description"		"Objects in this locked chest are safe from prying eyes and quick fingers."
 "DOTA_Tooltip_ability_item_boat_building_kit_chest_storage_Lore"		"What is a home, if not a place to dump your stuff while you get more stuff?"
-"DOTA_Tooltip_ability_item_boat_building_kit_chest_storage_Note0"		"Items in the storage hut cannot be accessed by anybody other than the person who placed the storage hut. This does not appear as an ability"
+"DOTA_Tooltip_ability_item_boat_building_kit_chest_storage_Note0"		"Items in the item chest cannot be accessed by anybody other than the person who placed the storage hut. This does not appear as an ability"
 "DOTA_Tooltip_ability_item_boat_building_kit_fire_basic"		"Camp Fire"
 "DOTA_Tooltip_ability_item_boat_building_kit_fire_basic_Description"		"A basic fire for keeping you warm as well as cooking food."
 "DOTA_Tooltip_ability_item_boat_building_kit_fire_basic_Lore"		"Always ask an adult to light it for you."
@@ -2409,9 +2415,9 @@
 
 
 
-"DOTA_Tooltip_ability_item_building_kit_itempen"                                  "Item Storage Pen Kit"
+"DOTA_Tooltip_ability_item_building_kit_itempen"                                  "Item Storage Kit"
 "DOTA_Tooltip_ability_item_building_kit_itempen_Description"                      "This is a building that will allow you to store your items in the open and let your buildings have acess to all items stored within for crafting purposes."
-	
+"DOTA_Tooltip_ability_item_building_kit_itempen_build_time"						   "BUILD TIME:"
 
 
 
@@ -2424,10 +2430,10 @@
 "DOTA_Tooltip_ability_item_building_kit_armory_Lore"		"The world's most advanced tools at your fingertips."
 "DOTA_Tooltip_ability_item_building_kit_armory_Note0"		"Quick Build:\n    - Grabs nearby items on the ground to make selected item. If not all items are available, will still grab everything that was available. Items already in the building will be pushed to the bottom of the building's inventory."
 
-"DOTA_Tooltip_ability_item_building_kit_chest_storage"		"Storage Chest Kit"
+"DOTA_Tooltip_ability_item_building_kit_chest_storage"		"Item Chest Kit"
 "DOTA_Tooltip_ability_item_building_kit_chest_storage_Description"		"Objects in this locked chest are safe from prying eyes and quick fingers."
 "DOTA_Tooltip_ability_item_building_kit_chest_storage_Lore"		"What is a home, if not a place to dump your stuff while you get more stuff?"
-"DOTA_Tooltip_ability_item_building_kit_chest_storage_Note0"		"Items in the storage hut cannot be accessed by anybody other than the person who placed the storage hut. This does not appear as an ability"
+"DOTA_Tooltip_ability_item_building_kit_chest_storage_Note0"		"Items in the item chest cannot be accessed by anybody other than the person who placed the storage hut. This does not appear as an ability"
 
 "DOTA_Tooltip_ability_item_building_kit_fire_basic"		"Camp Fire Kit"
 "DOTA_Tooltip_ability_item_building_kit_fire_basic_build_duration"		"BUILD DURATION:"
@@ -2486,7 +2492,7 @@
 "DOTA_Tooltip_ability_item_building_kit_spirit_ward_Description"		"An ungodly tower said to be able to bring allies back from the dead."
 "DOTA_Tooltip_ability_item_building_kit_spirit_ward_Lore"		"Some call it necromancy, others call it forward thinking!"
 "DOTA_Tooltip_ability_item_building_kit_spirit_ward_Note0"		"Revive:\n    - Takes a calculated amount of time to revive a fallen troll dependant on his level. Only one person can revive at a time. This ability can be used by anyone who can see the ward and is on the team that erected the ward."
-"DOTA_Tooltip_ability_item_building_kit_storage_chest"		"Storage Chest Kit"
+"DOTA_Tooltip_ability_item_building_kit_storage_chest"		"Item Chest Kit"
 "DOTA_Tooltip_ability_item_building_kit_storage_chest_build_duration"		"BUILD DURATION:"
 "DOTA_Tooltip_ability_item_building_kit_storage_chest_build_time"		"BUILD TIME:"
 "DOTA_Tooltip_ability_item_building_kit_storage_chest_Description"		""
@@ -2557,7 +2563,7 @@
 "DOTA_Tooltip_ability_item_clay_explosion_max_stacks"		"MAX STACKS:"
 "DOTA_Tooltip_ability_item_clay_living"		"Living Clay"
 
-"DOTA_Tooltip_ability_item_clay_living_Description"		"ACTIVE: Use - Places a ward with 400 vision. Deals 15 damage to any enemy unit that steps on it, then disappears. Lasts until stepped on. Acts as a sentry to friendly trolls. Lasts forever until a unit steps on it, dealing damage to that unit."
+"DOTA_Tooltip_ability_item_clay_living_Description"		"ACTIVE: Use - Places a ward with 400 vision. Deals damage to any enemy unit that steps on it, then disappears. Lasts until stepped on. Acts as a sentry to friendly trolls. Lasts forever until a unit steps on it, dealing damage to that unit."
 "DOTA_Tooltip_ability_item_clay_living_Lore"		"It seems to bubble and shift on it's own accord."
 "DOTA_Tooltip_ability_item_clay_living_max_stacks"		"MAX STACKS:"
 "DOTA_Tooltip_ability_item_clay_living_damage"		"COLLISION DAMAGE:"
@@ -3492,7 +3498,7 @@
 "DOTA_Tooltip_modifier_rested"                                                    "Rested"
 "DOTA_Tooltip_modifier_rested_Description"                                        "Can not use sleep again for a short time."
 
-
+"DOTA_Tooltip_ability_itempen"				"Drop your stuff inside the pen to have it be organized and to be accessed by other buildings."
 	
 
 "DOTA_Tooltip_modifier_fire_heat"  "Fire Warmth"

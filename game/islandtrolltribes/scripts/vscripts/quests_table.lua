@@ -628,26 +628,28 @@ GameRules.quests_table.mage = {
 
 GameRules.quests_table.priest = {
     [100] = {
-        name = "Test_Name",
-        title = "Test_Title",
+        name = "Priest_Quest_1",
+        title = "#Priest_Quest_1",
         context = {
             type = "Time",
+			delay_start = 10,
             from = 0,
-            to = 10
+            to = 30
         }
-    }
+	}
 }
 
 -- ############### SCOUT
 
 GameRules.quests_table.scout = {
     [100] = {
-        name = "Test_Name",
-        title = "Test_Title",
+        name = "Scout_Quest_1",
+        title = "#Scout_Quest_1",
         context = {
             type = "Time",
+			delay_start = 10,
             from = 0,
-            to = 10
+            to = 30
         }
     }
 }

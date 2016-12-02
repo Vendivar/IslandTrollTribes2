@@ -103,6 +103,7 @@
         <Image style="opacity:0;" src="file://{images}/items/boots_anabolic.png" />
         <Image style="opacity:0;" src="file://{images}/items/bow_blood_god.png" />
         <Image style="opacity:0;" src="file://{images}/items/building_kit_armory.png" />
+        <Image style="opacity:0;" src="file://{images}/items/building_kit_itempen.png" />
         <Image style="opacity:0;" src="file://{images}/items/building_kit_craftmaster.png" />
         <Image style="opacity:0;" src="file://{images}/items/building_kit_fire_mage.png" />
         <Image style="opacity:0;" src="file://{images}/items/building_kit_hatchery.png" />

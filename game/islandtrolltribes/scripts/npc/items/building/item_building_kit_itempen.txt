@@ -3,7 +3,7 @@
 	"ID"	"1155"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"item_sange_and_yasha"
+	"AbilityTextureName"	"building_kit_itempen"
 	"Model"	"models/props_debris/creep_camp001j.vmdl"
 	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"ItemCost"	"5"
