@@ -44,6 +44,14 @@ function PetFollow(event)
     for _,pet in pairs(pets) do
         pet:RemoveModifierByName("modifier_stay")
         ExecuteOrderFromTable({ UnitIndex = pet:GetEntityIndex(), OrderType = DOTA_UNIT_ORDER_MOVE_TO_TARGET, TargetIndex = hero:GetEntityIndex(), Queue = false})
+
+        -- ID from beastmaster quest table.
+        local quest_id = 106
+        if not Quests:IsFinished(hero, quest_id) then
+            if hero.quests[quest_id] then
+                Quests:End(hero, quest_id)
+            end
+        end
     end
 end
 
@@ -70,6 +78,14 @@ function PetStay(event)
 
         ability:ApplyDataDrivenModifier(hero, pet, "modifier_command_restrict", {})
         ability:ApplyDataDrivenModifier(hero, pet, "modifier_stay", {})
+
+        -- ID from beastmaster quest table.
+        local quest_id = 107
+        if not Quests:IsFinished(hero, quest_id) then
+            if hero.quests[quest_id] then
+                Quests:End(hero, quest_id)
+            end
+        end
     end
 end
 
@@ -85,6 +101,14 @@ function PetAttack(event)
         if pet:HasAttackCapability() then
             pet:RemoveModifierByName("modifier_stay")
             ExecuteOrderFromTable({ UnitIndex = pet:GetEntityIndex(), OrderType = DOTA_UNIT_ORDER_ATTACK_MOVE, Position = hero:GetAbsOrigin() + RandomVector(100), Queue = false})
+
+            -- ID from beastmaster quest table.
+            local quest_id = 109
+            if not Quests:IsFinished(hero, quest_id) then
+                if hero.quests[quest_id] then
+                    Quests:End(hero, quest_id)
+                end
+            end
         end
     end
 end

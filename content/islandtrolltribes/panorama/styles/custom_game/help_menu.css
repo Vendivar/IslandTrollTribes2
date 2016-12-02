@@ -92,6 +92,24 @@
   margin-bottom: 10px;
 }
 
+#Tutorial_btn {
+  align: right top;
+  margin-right: 100px;
+  padding: 10px;
+
+  background-image: url("s2r://panorama/images/class_picker/pick.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+#Tutorial_btn Label {
+  color: #fff;
+  font-size: 20px;
+  font-family: Radiance;
+}
+#Tutorial_btn.hover {
+  brightness: 2;
+}
+
 #Close_btn {
   align: right top;
   margin: 10px;
@@ -264,6 +282,6 @@
   border-style: solid;
   border-width: 50px 50px 0 0;
   border-color: #9e9e9e transparent transparent transparent;
-  margin-top: 10px;  
+  margin-top: 10px;
   margin-left: 30px;
 }

@@ -19,23 +19,23 @@ function Quests:Start(hero, type, id)
 
     if not id then
         if type == "all" then
-            id = self.first_all_id
+            id = Quests.first_all_id
         else
-            id = self.first_class_id
+            id = Quests.first_class_id
         end
         hero.current_quests[type] = id -- Only track main questlines
     end
 
-    local quest = self.quests[type][id]
+    local quest = Quests.quests[type][id]
     if not quest then return end
 
-    if id == self.first_all_id or id == self.first_class_id then
+    if id == Quests.first_all_id or id == Quests.first_class_id then
         print("Starting all quests for "..type)
         -- We are initializing all the delayed quests.
-        self:StartDelayed(hero, type)
+        Quests:StartDelayed(hero, type)
     end
 
-    self:StartNowOrDelayed(hero, type, quest, id)
+    Quests:StartNowOrDelayed(hero, type, quest, id)
 end
 
 -- Quests:UpdateQuest(hero, value ,id)
@@ -55,7 +55,7 @@ function Quests:UpdateQuest(hero, value, id)
     quest.subquest:SetTextReplaceValue(QUEST_TEXT_REPLACE_VALUE_CURRENT_VALUE, value)
 
     if value == quest.quest.context.to then
-        self:End(hero, id)
+        Quests:End(hero, id)
     end
 end
 
@@ -72,7 +72,7 @@ function Quests:End(hero, id)
     if not quest or quest.quest.finished then return end
 
     local type = quest.quest.type
-    local next_quest = self.quests[type][id + 1]
+    local next_quest = Quests.quests[type][id + 1]
     local in_questline = true
     if not next_quest then
         in_questline = false
@@ -96,8 +96,18 @@ function Quests:End(hero, id)
         -- If it's in our questline, start the next one.
         hero.current_quests[type] = id + 1
 
-        self:StartNowOrDelayed(hero, type, next_quest, id + 1)
+        Quests:StartNowOrDelayed(hero, type, next_quest, id + 1)
     end
+end
+
+function Quests:StopQuests(keys)
+    local hero = PlayerResource:GetSelectedHeroEntity(keys.playerID)
+    for k,v in pairs(hero.quests) do
+        local quest = hero.quests[k]
+        quest.quest:CompleteQuest()
+        quest.quest.finished = true
+    end
+    hero.quests_stopped = true
 end
 
 -- Check if a quest is finished.
@@ -110,18 +120,20 @@ end
 --- ############### DO NOT USE THESE DIRECTLY
 
 function Quests:constructor()
-    self.quests = GameRules.quests_table
-    self.first_all_id = 1
-    self.first_class_id = 100
+    Quests.quests = GameRules.quests_table
+    Quests.first_all_id = 1
+    Quests.first_class_id = 100
 
-    self:BuildHooks()
+    CustomGameEventManager:RegisterListener("stop_quests", Dynamic_Wrap(Quests, "StopQuests"))
+
+    Quests:BuildHooks()
 end
 
 function Quests:StartTracking(hero, quest)
     if quest.context.type == "Time" then
-        self:StartTimer(hero, quest)
+        Quests:StartTimer(hero, quest)
     elseif quest.context.type == "Hook" then
-        self:StartHook(hero, quest)
+        Quests:StartHook(hero, quest)
     end
 end
 
@@ -133,8 +145,8 @@ function Quests:StartHook(hero, quest)
         end)
     else
         quest.context.event_hook_id = ListenToGameEvent(quest.context.event_name, function(args, keys)
-            if self.hooks[quest.context.event_name] then
-                self.hooks[quest.context.event_name](args[1], args[2], keys)
+            if Quests.hooks[quest.context.event_name] then
+                Quests.hooks[quest.context.event_name](args[1], args[2], keys)
             end
         end, {hero, quest})
     end
@@ -144,7 +156,7 @@ function Quests:StartTimer(hero, quest)
     Timers:CreateTimer(DoUniqueString("quest_timer"), {
         endTime = 1.0,
         callback = function()
-            if not self:IsFinished(hero, quest.id) then
+            if not Quests:IsFinished(hero, quest.id) then
                 if quest.context.track then
                     quest.context.track(hero, quest, self)
                 else
@@ -154,7 +166,7 @@ function Quests:StartTimer(hero, quest)
                     else
                         val = quest.context.current - 1
                     end
-                    self:UpdateQuest(hero, val, quest.id)
+                    Quests:UpdateQuest(hero, val, quest.id)
                 end
                 return 1
             end
@@ -163,13 +175,13 @@ function Quests:StartTimer(hero, quest)
 end
 
 function Quests:StartDelayed(hero, type)
-    for k,v in pairs(self.quests[type]) do
-        if v.context.delay_start and v.context.delay_start > 0 and not self.quests[type][k - 1] then
+    for k,v in pairs(Quests.quests[type]) do
+        if v.context.delay_start and v.context.delay_start > 0 and not Quests.quests[type][k - 1] then
             -- Checks that it has a delayed start, and it's not in the middle of a questline.
             Timers:CreateTimer({
                 endTime = v.context.delay_start - GameRules:GetGameTime(),
                 callback = function()
-                    self:StartQuest(hero, type, v, k)
+                    Quests:StartQuest(hero, type, v, k)
                 end
             })
         end
@@ -182,17 +194,21 @@ function Quests:StartNowOrDelayed(hero, type, quest, id)
         Timers:CreateTimer({
             endTime = quest.context.delay_start - GameRules:GetGameTime(),
             callback = function()
-                self:StartQuest(hero, type, quest, id)
+                Quests:StartQuest(hero, type, quest, id)
             end
         })
     else
-        self:StartQuest(hero, type, quest, id)
+        Quests:StartQuest(hero, type, quest, id)
     end
 end
 
 function Quests:StartQuest(hero, type, quest, id) -- Abstracting here.
     if hero.quests[id] then -- Don't start it again!
         print("Quest has already started!")
+        return
+    end
+
+    if hero.quests_stopped then -- Stop starting new ones.
         return
     end
 
@@ -250,26 +266,26 @@ function Quests:StartQuest(hero, type, quest, id) -- Abstracting here.
     }
 
 
-    self:StartTracking(hero, actual_quest)
+    Quests:StartTracking(hero, actual_quest)
 end
 
 function Quests:BuildHooks()
-    self.hooks = {}
+    Quests.hooks = {}
 
-    self.hooks.dota_item_picked_up = function(hero, quest, keys)
+    Quests.hooks.dota_item_picked_up = function(hero, quest, keys)
         local h = PlayerResource:GetSelectedHeroEntity(keys.PlayerID)
         if h == hero then
             quest.context.event_func(hero, quest, keys.itemname, self)
         end
     end
 
-    self.hooks.dota_money_changed = function(hero, quest, keys)
+    Quests.hooks.dota_money_changed = function(hero, quest, keys)
         -- Doesn't work at all.
         PrintTable(keys)
     end
 
     -- Doesn't work.
-    self.hooks.dota_player_learned_ability = function(hero, quest, keys)
+    Quests.hooks.dota_player_learned_ability = function(hero, quest, keys)
         PrintTable(keys)
         local h = PlayerResource:GetSelectedHeroEntity(keys.player)
         if h == hero then
@@ -278,7 +294,7 @@ function Quests:BuildHooks()
     end
 
     -- Used for both abilities and items.
-    self.hooks.dota_player_used_ability = function(hero, quest, keys)
+    Quests.hooks.dota_player_used_ability = function(hero, quest, keys)
         local h = PlayerResource:GetSelectedHeroEntity(keys.PlayerID)
         if h == hero then
             quest.context.event_func(hero, quest, keys.abilityname, self)
@@ -286,24 +302,24 @@ function Quests:BuildHooks()
     end
 
     -- Does not have a playerID
-    self.hooks.dota_ability_channel_finished = function(hero, quest, keys)
+    Quests.hooks.dota_ability_channel_finished = function(hero, quest, keys)
         print("dota_ability_channel_finished")
         PrintTable(keys)
     end
 
-    self.hooks.dota_player_killed = function(hero, quest, keys)
+    Quests.hooks.dota_player_killed = function(hero, quest, keys)
         PrintTable(keys)
     end
 
-    self.hooks.npc_spawned = function(hero, quest, keys)
+    Quests.hooks.npc_spawned = function(hero, quest, keys)
         PrintTable(keys)
     end
 
-    self.hooks.tree_cut = function(hero, quest, keys)
+    Quests.hooks.tree_cut = function(hero, quest, keys)
         PrintTable(keys)
     end
 
-    self.hooks.entity_killed = function(hero, quest, keys)
+    Quests.hooks.entity_killed = function(hero, quest, keys)
         local killedUnit = EntIndexToHScript(keys.entindex_killed)
         local killer = EntIndexToHScript(keys.entindex_attacker or 0)
         if killer == hero then

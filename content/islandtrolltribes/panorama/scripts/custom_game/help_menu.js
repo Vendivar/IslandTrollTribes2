@@ -15,6 +15,14 @@ function SelectTab(num) {
     }
 }
 
+function OnHover(id) {
+    $(id).AddClass("hover");
+}
+
+function OnHoverOut(id) {
+    $(id).RemoveClass("hover");
+}
+
 function OnCloseHover() {
     $("#Close_btn").AddClass("hover");
 }
@@ -43,6 +51,18 @@ function OnTabHover(num) {
 
 function OnTabHoverOut(num) {
     tabs[num].RemoveClass("hover");
+}
+
+var stopped = false;
+function StopTutorial() {
+    if (stopped) {
+        return
+    }
+    GameEvents.SendCustomGameEventToServer("stop_quests", {
+        playerID: Players.GetLocalPlayer()
+    });
+    $("#Tutorial_btn").AddClass("hidden");
+    stopped = true;
 }
 
 (function() {

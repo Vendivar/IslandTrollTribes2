@@ -61,7 +61,10 @@ local allowed_items = {
     item_spirit_water = {pos = Vector(60, 40, 0), scale = 0.5},
     item_hide_elk = {pos = Vector(-30, 90, 0), scale = 0.75},
     item_hide_wolf = {pos = Vector(0, 90, 0), scale = 0.75},
-    item_hide_jungle_bear = {pos = Vector(30, 90, 0), scale = 0.75}
+    item_hide_jungle_bear = {pos = Vector(30, 90, 0), scale = 0.75},
+    item_magic_raw = {pos = Vector(60, 90, 0), scale = 0.75},
+    --= {pos = Vector(90, 90, 0), scale = 0.75}
+    --= {pos = Vector(90, 40, 0), scale = 0.75}
 }
 
 local crafting_buildings = {
@@ -137,7 +140,7 @@ function Gather(keys)
                     v:SetModelScale(allowed_items[itemName].scale)
                 end
             end
-        elseif not string.find(itemName, "_bush_") then
+        elseif not string.find(itemName, "_bush_") or not string.find(itemName, "_meat_") then
             if not v.launched then
                 v.launched = true
                 DropLaunch(building, item, 0.5, building:GetAbsOrigin() + RandomVector(400))

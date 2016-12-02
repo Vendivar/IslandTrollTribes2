@@ -10,6 +10,9 @@
         <Panel class="Help_Wrapper" hittest="false">
             <Panel class="Help_Header" hittest="false">
                 <Label class="Help_Title" text="Welcome to the Help Menu!" hittest="false" />
+                <Button id="Tutorial_btn" onactivate="StopTutorial()" onmouseover="OnHover('#Tutorial_btn')" onmouseout="OnHoverOut('#Tutorial_btn')">
+                    <Label text="#Stop_tutorial" />
+                </Button>
                 <Button id="Close_btn" onactivate="HideHelp()" onmouseover="OnCloseHover()" onmouseout="OnCloseHoverOut()"/>
                 <Button id="Arrow_btn" onactivate="ToggleArrows()" onmouseover="OnArrowHover()" onmouseout="OnArrowHoverOut()">
                     <Label text="?" />

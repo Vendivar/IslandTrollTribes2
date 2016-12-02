@@ -201,11 +201,10 @@
         "invalid_hypnosis"                       "Can't use on units that are not hypnotized."
 		"NoobTimeOver" 							"Noob time is now over! Respawning is now disabled! You must revive with a spirit ward!"
 		"error_toomanywards"					"Can't have more then 10 wards"
-		
         "teammate_frozen"                    "has frozen! You must have go to them and warm them up or they will die!"
-		
-		
-		
+
+
+
         "item_bush_thistle"                                          "Thistle Shrub"
         "item_bush_mushroom"                                         "Mushroom Colony"
         "item_bush_herb"                                             "Haisetsu Bush"
@@ -375,7 +374,7 @@ Special Herbs: New drop model.<br><br>"
 "Arrow_Toolkit" 	"Troll Toolkit"
 "Arrow_Subclass" 	"Subclass Selection"
 
-
+    "Stop_Tutorial" "Exit tutorial"
 
 		"Intro_Intro" "General Information"
 		"Intro_Core" "<h1>Basics:</h1>
