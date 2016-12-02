@@ -2,100 +2,65 @@
 {
 	_class = "CParticleSystemDefinition"
 	m_bShouldHitboxesFallbackToRenderBounds = false
-	m_nMaxParticles = 40
-	m_BoundingBoxMin =
-	[
-		-200.000000,
-		-200.000000,
-		-10.000000,
-	]
-	m_BoundingBoxMax =
-	[
-		200.000000,
-		200.000000,
-		10.000000,
-	]
-	m_flCullRadius = -1.000000
-	m_ConstantColor =
-	[
-		255,
-		255,
-		255,
-		75,
-	]
-	m_flNoDrawTimeToGoToSleep = 2.000000
+	m_nMaxParticles = 400
+	m_BoundingBoxMin = [ -200.0, -200.0, -200.0 ]
+	m_BoundingBoxMax = [ 200.0, 200.0, 200.0 ]
+	m_ConstantColor = [ 255, 255, 255, 75 ]
 	m_bShouldSort = false
-	m_Renderers =
+	m_Renderers = 
 	[
 		{
 			_class = "C_OP_RenderSprites"
 			m_nSequenceCombineMode = "SEQUENCE_COMBINE_MODE_USE_SEQUENCE_0"
-			m_flStartFadeSize = 0.575000
-			m_flEndFadeSize = 0.650000
-			m_flMaxSize = 0.750000
-			m_flOverbrightFactor = 2.000000
-			m_flAddSelfAmount = 1.000000
+			m_flStartFadeSize = -1.0
+			m_flEndFadeSize = -1.0
+			m_flMaxSize = -1.0
+			m_flOverbrightFactor = 2.0
+			m_flAddSelfAmount = 1.0
 			m_bSaturateColorPreAlphaBlend = false
 			m_hTexture = resource:"materials/particle/fire_particle_2/fire_particle_2.vtex"
-			m_flAnimationRate = 1.500000
+			m_flAnimationRate = 1.5
 		},
 	]
-	m_Operators =
+	m_Operators = 
 	[
 		{
 			_class = "C_OP_BasicMovement"
-			m_fDrag = 0.038000
-			m_Gravity =
-			[
-				0.000000,
-				0.000000,
-				150.000000,
-			]
+			m_fDrag = 0.038
+			m_Gravity = [ 0.0, 0.0, 150.0 ]
 		},
 		{
 			_class = "C_OP_FadeAndKill"
-			m_flEndFadeInTime = 0.450000
-			m_flStartAlpha = 0.000000
+			m_flEndFadeInTime = 0.45
+			m_flStartAlpha = 0.0
 		},
 		{
 			_class = "C_OP_InterpolateRadius"
-			m_flBias = 0.700000
-			m_flStartScale = 0.500000
+			m_flBias = 0.7
+			m_flStartScale = 0.5
 		},
 	]
-	m_Initializers =
+	m_Initializers = 
 	[
 		{
 			_class = "C_INIT_RandomLifeTime"
-			m_fLifetimeMax = 0.750000
-			m_fLifetimeMin = 0.400000
+			m_fLifetimeMax = 0.75
+			m_fLifetimeMin = 0.4
 		},
 		{
 			_class = "C_INIT_CreateWithinSphere"
-			m_fSpeedMax = 10.000000
+			m_fSpeedMax = 10.0
 		},
 		{
 			_class = "C_INIT_RandomRadius"
-			m_flRadiusMin = 36.000000
-			m_flRadiusMax = 44.000000
+			m_flRadiusMin = 36.0
+			m_flRadiusMax = 44.0
 		},
 		{
 			_class = "C_INIT_RandomColor"
 			m_nFieldOutput = 22
-			m_ColorMax =
-			[
-				85,
-				0,
-				255,
-				255,
-			]
-			m_ColorMin =
-			[
-				36,
-				14,
-				0,
-				255,
-			]
+			m_ColorMax = [ 85, 0, 255, 255 ]
+			m_ColorMin = [ 36, 14, 0, 255 ]
 		},
 		{
 			_class = "C_INIT_RandomRotation"
@@ -105,40 +70,30 @@
 		},
 		{
 			_class = "C_INIT_InitialVelocityNoise"
-			m_vecOutputMax =
-			[
-				83.000000,
-				43.000000,
-				88.000000,
-			]
-			m_vecOutputMin =
-			[
-				-43.000000,
-				-83.000000,
-				68.000000,
-			]
-			m_flNoiseScaleLoc = 0.000000
-			m_flNoiseScale = 0.200000
+			m_vecOutputMax = [ 83.0, 43.0, 88.0 ]
+			m_vecOutputMin = [ -43.0, -83.0, 68.0 ]
+			m_flNoiseScaleLoc = 0.0
+			m_flNoiseScale = 0.2
 		},
 	]
-	m_Emitters =
+	m_Emitters = 
 	[
 		{
 			_class = "C_OP_ContinuousEmitter"
-			m_flEmitRate = 1.000000
+			m_flEmitRate = 1.0
 		},
 		{
 			_class = "C_OP_NoiseEmitter"
-			m_flOutputMax = 2.000000
+			m_flOutputMax = 2.0
 		},
 	]
-	m_ForceGenerators =
+	m_ForceGenerators = 
 	[
 		{
 			_class = "C_OP_ExternalWindForce"
 		},
 	]
-	m_Children =
+	m_Children = 
 	[
 		{
 			m_ChildRef = resource:"particles/custom/mage_fire_component_1.vpcf"
@@ -156,10 +111,10 @@
 			m_ChildRef = resource:"particles/custom/mage_fire_component_5.vpcf"
 		},
 		{
-			m_ChildRef = resource:"particles/world_environmental_fx/fire_camp_01_smoke.vpcf"
+			m_ChildRef = resource:"particles/custom/fire_camp_01_smoke.vpcf"
 		},
 		{
-			m_ChildRef = resource:"particles/world_environmental_fx/fire_camp_01_light.vpcf"
+			m_ChildRef = resource:"particles/custom/fire_camp_01_light.vpcf"
 		},
 	]
 }

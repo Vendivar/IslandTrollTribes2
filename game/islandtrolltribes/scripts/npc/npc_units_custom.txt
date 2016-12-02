@@ -1515,48 +1515,6 @@
 	    "SharedWithTeammates" "1"
 	
 	}
-	"npc_clay_living"
-	{
-		"BaseClass"	"npc_dota_creature"
-		"Model"	"models/items/wards/d2lp_4_ward/d2lp_4_ward.vmdl"
-		"SoundSet"	"Creep_Good_Melee"
-		"HasInventory"	"1"
-		"MinimapIconSize"	"250"
-		"HealthBarOffset"	"100"		
-		"ModelScale"	"0.50"
-		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
-		"RingRadius"	"100"
-		"precache"
-		{
-		}
-	
-		"Ability1"	"ability_explode"
-		
-		"ArmorPhysical"	"5"
-		"MagicalResistance"	"0"
-		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
-		"BountyXP"	"0"
-		"BountyGoldMin"	"0"
-		"BountyGoldMax"	"0"
-		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"	"0"
-		"MovementTurnRate"	"0"
-		"StatusHealth"	"250"
-		"StatusHealthRegen"	"0"
-		"StatusMana"	"1"
-		"StatusManaRegen"	"0"
-		"TeamName"	"DOTA_TEAM_GOODGUYS"
-		"CombatClassDefend"	"DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
-		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
-		"VisionDaytimeRange"	"400"
-		"VisionNighttimeRange"	"350"
-	
-		// Building Size
-		//----------------------------------------------------------------
-		"ConstructionSize"			"1"
-		"BlockPathingSize"			"0"
-	    "SharedWithTeammates" "1"
-	}
 	"npc_scroll_boulder"
 	{
 		"BaseClass"	"npc_dota_creature"
@@ -2117,6 +2075,7 @@
 		"ConsideredHero"	"0"
 		"ModelScale"	"1.00"
 		"Model"	"models/heroes/lone_druid/spirit_bear.vmdl"
+		"SoundSet"					"LoneDruid_SpiritBear"
 		"Level"	"7"
 		"vscripts"	"units/ai/aggressive_neutral_ai.lua"
 		"Ability1"	"ability_wander"
@@ -2153,7 +2112,7 @@
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
 	    	"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"			"290"
+		"MovementSpeed"			"340"
 		"MovementTurnRate"	"0.5"
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"HealthBarOffset"	"140"
@@ -2170,6 +2129,7 @@
 		"ConsideredHero"	"0"
 		"ModelScale"	"1.10"
 		"Model"	"models/heroes/lone_druid/spirit_bear.vmdl"
+		"SoundSet"					"LoneDruid_SpiritBear"
 		"Level"	"13"
 		"Ability1"	"ability_npc_bash"
 		"Ability2"	"ability_wander"
@@ -2205,7 +2165,7 @@
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
 		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"	"320"
+		"MovementSpeed"	"325"
 		"MovementTurnRate"	"0.5"
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 		"HealthBarOffset"	"140"
@@ -2506,7 +2466,7 @@
 		"AttributeBaseAgility"	"0"
 		"AttributeAgilityGain"	"0"
 		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"	"500"
+		"MovementSpeed"	"440"
 		"MovementTurnRate"	"0.5"
 		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
 	        	"HealthBarOffset"	"140"
@@ -3667,6 +3627,50 @@
 		
 			}
 		}
+	"npc_scout_ward"
+	{
+		"BaseClass"	"npc_dota_creature"
+		"Model"	"models/items/wards/blood_seeker_ward/bloodseeker_ward.vmdl"
+		"SoundSet"	"Creep_Good_Melee"
+		"HasInventory"	"1"
+		"MinimapIconSize"	"250"
+		"HealthBarOffset"	"100"		
+		"ModelScale"	"0.80"
+		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
+		"RingRadius"	"100"
+		"precache"
+		{
+		}
+	
+		"Ability1"	"ability_scoutwardpassive"
+		"Ability2"	"ability_trap_passive"
+		"Ability10"	"ability_phased"
+		
+		"ArmorPhysical"	"1"
+		"MagicalResistance"	"0"
+		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
+		"BountyXP"	"0"
+		"BountyGoldMin"	"0"
+		"BountyGoldMax"	"0"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"	"0"
+		"MovementTurnRate"	"0"
+		"StatusHealth"	"50"
+		"StatusHealthRegen"	"0"
+		"StatusMana"	"1"
+		"StatusManaRegen"	"0"
+		"TeamName"	"DOTA_TEAM_GOODGUYS"
+		"CombatClassDefend"	"DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
+		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+		"VisionDaytimeRange"	"400"
+		"VisionNighttimeRange"	"350"
+	
+		// Building Size
+		//----------------------------------------------------------------
+		"ConstructionSize"			"1"
+		"BlockPathingSize"			"0"
+	    "SharedWithTeammates" "1"
+	}
 	"scout_ward"
 	{
 		"BaseClass"	"npc_dota_creature"
@@ -3712,6 +3716,50 @@
 		// Building Size
 		//----------------------------------------------------------------
 		"ConstructionSize"			"0"
+		"BlockPathingSize"			"0"
+	    "SharedWithTeammates" "1"
+	}
+	"npc_clay_living"
+	{
+		"BaseClass"	"npc_dota_creature"
+		"Model"	"models/items/wards/d2lp_4_ward/d2lp_4_ward.vmdl"
+		"SoundSet"	"Creep_Good_Melee"
+		"HasInventory"	"1"
+		"MinimapIconSize"	"250"
+		"HealthBarOffset"	"100"		
+		"ModelScale"	"0.50"
+		"BoundsHullName"	"DOTA_HULL_SIZE_HERO"
+		"RingRadius"	"100"
+		"precache"
+		{
+		}
+	
+		"Ability1"	"ability_livingclay"
+		"Ability2"	"ability_trap_passive"
+		"Ability10"	"ability_phased"
+		
+		"ArmorPhysical"	"1"
+		"MagicalResistance"	"0"
+		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
+		"BountyXP"	"0"
+		"BountyGoldMin"	"0"
+		"BountyGoldMax"	"0"
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"	"0"
+		"MovementTurnRate"	"0"
+		"StatusHealth"	"50"
+		"StatusHealthRegen"	"0"
+		"StatusMana"	"1"
+		"StatusManaRegen"	"0"
+		"TeamName"	"DOTA_TEAM_GOODGUYS"
+		"CombatClassDefend"	"DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
+		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+		"VisionDaytimeRange"	"400"
+		"VisionNighttimeRange"	"350"
+	
+		// Building Size
+		//----------------------------------------------------------------
+		"ConstructionSize"			"1"
 		"BlockPathingSize"			"0"
 	    "SharedWithTeammates" "1"
 	}

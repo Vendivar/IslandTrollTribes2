@@ -32,7 +32,7 @@ function CheckBuilding(keys)
     -- Initialization
     building.items = {}
     building.nearby_buildings = {}
-    building.range = 350
+    building.range = 400
 	building:SetHullRadius(0.0)
 
     print("Actually starting now!")
@@ -62,7 +62,8 @@ local allowed_items = {
     item_spirit_water = {pos = Vector(60, 40, 0), scale = 0.5},
     item_hide_elk = {pos = Vector(-30, 90, 0), scale = 0.75},
     item_hide_wolf = {pos = Vector(0, 90, 0), scale = 0.75},
-    item_hide_jungle_bear = {pos = Vector(30, 90, 0), scale = 0.75}
+    item_hide_jungle_bear = {pos = Vector(30, 90, 0), scale = 0.75},
+    item_magic_raw = {pos = Vector(60, 90, 0), scale = 0.75}
 }
 
 local crafting_buildings = {
@@ -104,6 +105,13 @@ function Gather(keys)
             end
 
             if v.counted and not v.confirm then -- Confirming position.
+		local grabFX = ParticleManager:CreateParticle("particles/econ/items/pugna/pugna_ward_ti5/pugna_ward_attack_light_ti_5.vpcf", PATTACH_OVERHEAD_FOLLOW, building)
+        ParticleManager:SetParticleControl(grabFX, 0, building:GetAbsOrigin())
+        ParticleManager:SetParticleControl(grabFX, 1, item:GetAbsOrigin())
+		ParticleManager:SetParticleControl(grabFX, 2, building:GetAbsOrigin())
+		ParticleManager:SetParticleControl(grabFX, 3, building:GetAbsOrigin())
+        ParticleManager:SetParticleControl(grabFX, 4, item:GetAbsOrigin())
+        EmitSoundOn( "itempen.grab", building )
                 SetPosition(v, building.items[itemName].position)
             end
 
@@ -141,7 +149,7 @@ function Gather(keys)
         elseif not string.find(itemName, "_bush_") then
             if not v.launched then
                 v.launched = true
-                DropLaunch(building, item, 0.5, building:GetAbsOrigin() + RandomVector(400))
+                DropLaunch(building, item, 0.5, building:GetAbsOrigin() + RandomVector(10))
             end
         end
     end

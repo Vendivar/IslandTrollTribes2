@@ -15,36 +15,37 @@
         "soundfile"            "soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"        
     }
 
-    "OnSpellStart"
-    {
-
-        "RunScript"
-        {
-            "ScriptFile"    "items/living_clay.lua"
-            "Function"      "PlaceClay"
+		"OnAbilityPhaseStart"
+	{
+		"RunScript"
+		{
+            "ScriptFile"    "heroes/scout/ward.lua"
+			"Function"      "PlaceWardCheck"
+			"Target"		"CASTER"
+		}
+	}
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+            "ScriptFile"    "heroes/scout/ward.lua"
+			"Function"      "PlaceWard"
             "Target"        "POINT"
-            "modifier_caster"   "modifier_living_clay_caster"
-            "modifier_tracker"   "modifier_living_clay_tracker"
-            "modifier_living_clay"   "modifier_living_clay"
-        }
-
-    }
+		}
+		"FireSound"
+		{
+			"EffectName"    "item.livingclayplace"
+			"Target"        "CASTER"
+		}      
+	}	
+	
     
     "Modifiers"
     {
-        "modifier_living_clay"
+        "modifier_wardcount"
         {
-            "States"
-            {
-                "MODIFIER_STATE_NO_HEALTH_BAR" "MODIFIER_STATE_VALUE_ENABLED"
-                "MODIFIER_STATE_NO_UNIT_COLLISION" "MODIFIER_STATE_VALUE_ENABLED"
-            }
-
-            "OnCreated"
-            {
-                "SpendCharge" {}
-            }
-
+		"IsHidden" "0"
+		"Passive" "1"
         }
     }
 
@@ -58,43 +59,22 @@
         "02"
         {
             "var_type"                  "FIELD_INTEGER"
-            "damage"                    "10"
+            "damage"                    "15"
         }
         "03"
         {
             "var_type"                  "FIELD_INTEGER"
-            "radius"                    "300"
+            "max_wards"                  "10"
+        }        
+		"04"
+        {
+            "var_type"                  	"FIELD_INTEGER"
+            "life_duration"                  "100 200 300"
         }
         "04"
         {
             "var_type"                  "FIELD_FLOAT"
-            "activation_time"           "0.5"
-        }
-        "05"
-        {
-            "var_type"                  "FIELD_INTEGER"
-            "max_clay"                  "10"
-        }
-        "06"
-        {
-            "var_type"                  "FIELD_FLOAT"
-            "explode_delay"             "0.1"
-        }
-        "07"
-        {
-            "var_type"                  "FIELD_FLOAT"
-            "fade_time"                 "2.0"
-        }
-        // Extra
-        "08"
-        {
-            "var_type"                  "FIELD_FLOAT"
-            "vision_radius"             "300"
-        }
-        "09"
-        {
-            "var_type"                  "FIELD_FLOAT"
-            "vision_duration"           "1.0"
+            "vision_radius"             "500"
         }
     }
 }

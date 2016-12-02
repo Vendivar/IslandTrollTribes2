@@ -1,6 +1,7 @@
 function RawMagicUse(keys)
     local caster = keys.caster
     local dieRoll = RandomInt(0, 100)
+    local nNewState = GameRules:State_Get()
 
     print("Test your luck! " .. dieRoll)
     if dieRoll <= 30 then -- 30% lose % hp
@@ -40,7 +41,7 @@ function RawMagicUse(keys)
         CreateItemOnPositionSync(caster:GetOrigin() + RandomVector(RandomInt(20,100)), item2)
         print("Lucky! Crystals!")
     else -- 20% disco duck
-        if (duckBoss == nil) and (mammothBoss == nil) then
+        if (duckBoss == nil) and (mammothBoss == nil) and nNewState == DOTA_GAMERULES_STATE_GAME_IN_PROGRES then
             duckBoss = CreateUnitByName("npc_boss_disco_duck", Vector(0,0,0), true, nil, nil, DOTA_TEAM_NEUTRALS)
             EmitGlobalSound("ancient.evil")
             print(duckBoss:GetClassname())

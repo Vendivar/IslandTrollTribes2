@@ -704,11 +704,10 @@ GameRules.quests_table.thief = {
 -- ############### HUNTER
 
 GameRules.quests_table.hunter = {
-    
-	[100] = {
+    [100] = {
         name = "Hunter_Quest_1",
         title = "#Hunter_Quest_1",
-        context = context = {
+		context = {
             type = "Hook",
             delay_start = 3,
             event_type = "Standard",
@@ -735,10 +734,10 @@ GameRules.quests_table.hunter = {
             delay_start = 50
         }
     },
-	[102] = {
+    [102] = {
         name = "Hunter_Quest_3",
-        title = "#Hunter_Quest_3",
-        context = context = {
+        title = "#Hunter_Quest_.",
+		context = {
             type = "Hook",
             delay_start = 3,
             event_type = "Standard",

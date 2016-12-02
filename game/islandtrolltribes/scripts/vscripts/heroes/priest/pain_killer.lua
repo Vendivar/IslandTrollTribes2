@@ -14,15 +14,18 @@ function PainKillerInit(keys)
 end
 
 
-function PainKillerBalmStart( event )
-    local target = event.target
-    local stacks = event.stacks
-    target:SetModifierStackCount("modifier_priest_painkillerbalm", target, stacks)
+function PainKillerBalmStart( keys )
+    local target = keys.target
+    local caster = keys.caster
+    local stacks = 20
+	print(target,caster,stacks)
+	target:SetModifierStackCount("modifier_priest_painkillerbalm", nil, 20)
 end
 
-function PainKillerBalmThink( event )
-    local target = event.target
-    local stacks = target:GetModifierStackCount("modifier_priest_painkillerbalm", target)
-
-    target:SetModifierStackCount("modifier_priest_painkillerbalm", target, stacks - 1)
+function PainKillerBalmThink( keys )
+    local target = keys.target
+    local caster = keys.caster
+    local curstacks = target:GetModifierStackCount("modifier_priest_painkillerbalm", caster)
+	print(target,caster,curstacks)
+	target:SetModifierStackCount("modifier_priest_painkillerbalm", nil, curstacks -1)
 end

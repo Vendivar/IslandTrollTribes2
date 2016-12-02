@@ -42,7 +42,13 @@
                   "Function"      "RestoreHeatThink"
                   "Radius"        "%radius"
 									"Heat"					"%heat"
-              }
+              }  
+			  "AttachEffect"
+                {
+                    "EffectName"    "particles/custom/mage_fire.vpcf"
+                    "Target"        "CASTER"
+                    "EffectAttachType"      "attach_origin"
+                }
           }
       }
 		// Internal Heat mechanic

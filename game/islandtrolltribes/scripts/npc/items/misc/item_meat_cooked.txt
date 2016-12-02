@@ -12,7 +12,7 @@
     "ItemQuality"    		"consumable"
     "ItemShareability"    	"ITEM_FULLY_SHAREABLE_STACKING"
     
-    "MaxStacks" 			"10"
+    "MaxStacks" 			"8"
     "ItemInitialCharges"    "1"
 
     "ItemPermanent"    		"0"
@@ -27,13 +27,13 @@
         "01"
         {
             "var_type"    	"FIELD_INTEGER"
-            "max_stacks"    "10"
+            "max_stacks"    "8"
         }
 
         "02"
         {
             "var_type"    	"FIELD_INTEGER"
-            "heal_amount"   "50"
+            "heal_amount"   "35"
         }
     }
 

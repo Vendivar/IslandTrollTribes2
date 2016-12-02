@@ -1,0 +1,102 @@
+"ability_livingclay"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityTextureName"	"living_clay"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AURA | DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	"Modifiers"
+	{
+		"aura_living_clay"
+		{
+			"IsHidden"	"1"
+			"Passive"	"1"
+			"Aura"	"modifier_living_clay"
+			"Aura_Radius"	"35"
+            "Aura_Teams"  "DOTA_UNIT_TARGET_TEAM_ENEMY"
+            "Aura_Types"  "DOTA_UNIT_TARGET_HERO"
+            //"Aura_Flags"  "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+			"Aura_ApplyToCaster"	"0"
+		}
+
+		"modifier_living_clay"
+		{
+			"IsPurgable"	"0"
+			"IsDebuff"	"1"
+			"IsHidden"	"1"
+			"Duration" "1"
+            "OnCreated" 
+            {
+                "FireEffect"
+                {
+                   "Target" "TARGET"
+                   "EffectName" "particles/custom/living_clay_burst.vpcf"
+                   "EffectAttachType" "follow_origin"
+                }
+                "ApplyModifier"
+                {
+                    "ModifierName"  "modifier_kill"
+					"Target"	"CASTER"
+                    "Duration"      "1"
+                }
+                
+                "ApplyModifier"
+                {
+                    "ModifierName"  "modifier_trap_reveal"
+					"Target"	"CASTER"
+                }
+                
+                "RunScript"
+                {
+                    "ScriptFile"    "items/living_clay.lua"
+                    "Function"      "LivingClayActivate"
+					"Target" 		"TARGET"
+					"Caster"		"CASTER"
+                }        
+				"FireSound"
+				{
+					"EffectName"    "item.livingclayactive"
+					"Target"        "CASTER"
+				}
+				"Damage"
+				{
+					"Type"	"DAMAGE_TYPE_MAGICAL"
+					"Damage"	"15"
+					"Target"
+					{
+						"Center"	"TARGET"
+						"Radius"	"30"
+						"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+						"Types"	"DOTA_UNIT_TARGET_HERO"
+					}
+
+				}
+            }
+		}
+        "modifier_trap_reveal"
+		{
+			"IsPurgable"	"0"
+			"IsDebuff"	"1"
+			"IsHidden"	"1"
+			"States"
+			{
+				"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_DISABLED"
+			}
+        }
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"damage"	"10"
+		}
+
+		"02"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"ensnare_duration"	"10"
+		}
+
+	}
+
+}

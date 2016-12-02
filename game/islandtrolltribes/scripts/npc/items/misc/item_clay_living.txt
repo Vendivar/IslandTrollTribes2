@@ -4,7 +4,7 @@
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_POINT"
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"clay_living"
-	"Model"	"models/particle/lion_attack_sphere.vmdl"
+	"Model"	"models/items/wards/d2lp_4_ward/d2lp_4_ward.vmdl"
 	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"AbilityCastRange"	"500"
 	"AbilityCastPoint"	"0.5"
@@ -32,47 +32,28 @@
 	    "particle"  "particles/units/heroes/hero_tiny/tiny_avalanche_projectile_explode.vpcf"
 	}
     
-    "OnAbilityPhaseStart"
-    {
-        "RunScript"
-        {
+	
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
             "ScriptFile"    "items/living_clay.lua"
-            "Function"      "CheckPosition"
+			"Function"      "PlaceClay"
             "Target"        "POINT"
-        }
-    }
-
-    "OnSpellStart"
-    {
-
-        "RunScript"
+		}
+		"FireSound"
+		{
+			"EffectName"    "item.livingclayplace"
+			"Target"        "CASTER"
+		}        
+        "SpendCharge" 
         {
-            "ScriptFile"    "items/living_clay.lua"
-            "Function"      "PlaceClay"
-            "Target"        "POINT"
-            "modifier_caster"   "modifier_living_clay_caster"
-            "modifier_tracker"   "modifier_living_clay_tracker"
-            "modifier_living_clay"   "modifier_living_clay"
         }
-
-    }
-    
-    "Modifiers"
+	}	
+	
+	    "Custom"
     {
-        "modifier_living_clay"
-        {
-            "States"
-            {
-                "MODIFIER_STATE_NO_HEALTH_BAR" "MODIFIER_STATE_VALUE_ENABLED"
-                "MODIFIER_STATE_NO_UNIT_COLLISION" "MODIFIER_STATE_VALUE_ENABLED"
-            }
-
-            "OnCreated"
-            {
-                "SpendCharge" {}
-            }
-
-        }
+        "ModelScale"    "0.55"
     }
 
 	"AbilitySpecial"
@@ -85,29 +66,14 @@
         "02"
 		{
 			"var_type"					"FIELD_INTEGER"
-			"damage"					"10"
+			"damage"					"15"
 		}
 		"03"
 		{
 			"var_type"					"FIELD_INTEGER"
-			"radius"				    "300"
-		}
-		"04"
-		{
-			"var_type"					"FIELD_FLOAT"
-			"activation_time"			"0.5"
-		}
-		"05"
-		{
-			"var_type"					"FIELD_INTEGER"
 			"max_clay"					"10"
 		}
-		"06"
-		{
-			"var_type"					"FIELD_FLOAT"
-			"explode_delay"				"0.1"
-		}
-		"07"
+		"04"
 		{
 			"var_type"					"FIELD_FLOAT"
 			"fade_time"					"2.0"

@@ -116,7 +116,7 @@ function ITT:OnSubclassChange(event)
     hero.subclass_leveled = level --Keep track of when the hero invested into a subclass
     if hero.subclassAvailableParticle then
         ParticleManager:DestroyParticle(hero.subclassAvailableParticle, false)
-        EmitSoundOnClient("SubSelected", PlayerResource:GetPlayer(playerID))
+        EmitSoundOnClient("SubSelected", hero)
         local subParticle = ParticleManager:CreateParticle("particles/custom/subclass_selection.vpcf", PATTACH_ABSORIGIN_FOLLOW, hero)
     end
     -- Change Vision range

@@ -2883,6 +2883,12 @@
 	                "Radius"        "%radius"
 									"Heat"					"%heat"
 	            }
+				  "AttachEffect"
+				{
+					"EffectName"    "particles/world_environmental_fx/fire_camp_01.vpcf"
+					"Target"        "CASTER"
+					"EffectAttachType"      "attach_origin"
+				}
 	        }
 	    }
 			// Internal Heat mechanic
@@ -2954,7 +2960,13 @@
 	                  "Function"      "RestoreHeatThink"
 	                  "Radius"        "%radius"
 										"Heat"					"%heat"
-	              }
+	              }  
+				  "AttachEffect"
+	                {
+	                    "EffectName"    "particles/custom/mage_fire.vpcf"
+	                    "Target"        "CASTER"
+	                    "EffectAttachType"      "attach_origin"
+	                }
 	          }
 	      }
 			// Internal Heat mechanic
@@ -15195,6 +15207,15 @@
 				"IsBuff"			"1"
 				"Attributes"       "MODIFIER_ATTRIBUTE_MULTIPLE" 
 	            "ThinkInterval" "2"
+	            "OnIntervalThink"
+					{
+						"RunScript"
+						{
+							"ScriptFile"	"heroes/priest/pain_killer.lua"
+							"Function"		"PainKillerBalmThink"
+							"Target"		"TARGET"
+						}
+					}
 				"OnCreated"
 				{
 					"RunScript"
@@ -15202,7 +15223,6 @@
 						"ScriptFile"	"heroes/priest/pain_killer.lua"
 						"Function"		"PainKillerBalmStart"
 						"Target"		"TARGET"
-						"stacks"		"%stacks"
 					}
 	                
 	                "FireSound"
@@ -15237,15 +15257,6 @@
 				{
 					"MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE" "-1"
 				}
-	            
-	            "OnIntervalThink"
-					{
-						"RunScript"
-						{
-							"ScriptFile"	"heroes/priest/pain_killer.lua"
-							"Function"		"PainKillerBalmThink"
-						}
-					}
 			}
 	    
 	    "modifier_priest_painkillerbalm_channel"
@@ -16788,6 +16799,108 @@
 		}
 	
 	}
+	"ability_scoutwardpassive"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"scout_ward"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AURA | DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"Modifiers"
+		{
+			"aura_scout_ward"
+			{
+				"IsHidden"	"1"
+				"Passive"	"1"
+				"Aura"	"modifier_scout_ward"
+				"Aura_Radius"	"35"
+	            "Aura_Teams"  "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	            "Aura_Types"  "DOTA_UNIT_TARGET_HERO"
+	            //"Aura_Flags"  "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+				"Aura_ApplyToCaster"	"0"
+			}
+	
+			"modifier_scout_ward"
+			{
+				"IsPurgable"	"0"
+				"IsDebuff"	"1"
+				"IsHidden"	"1"
+				"Duration" "1"
+	            "OnCreated" 
+	            {
+	                "FireEffect"
+	                {
+	                   "Target" "TARGET"
+	                   "EffectName" "particles/custom/scout_ward_burst.vpcf"
+	                   "EffectAttachType" "follow_origin"
+	                }
+	                "ApplyModifier"
+	                {
+	                    "ModifierName"  "modifier_kill"
+						"Target"	"CASTER"
+	                    "Duration"      "1"
+	                }
+	                
+	                "ApplyModifier"
+	                {
+	                    "ModifierName"  "modifier_trap_reveal"
+						"Target"	"CASTER"
+	                }
+	                
+	                "RunScript"
+	                {
+	                    "ScriptFile"    "items/scout_ward.lua"
+	                    "Function"      "LivingClayActivate"
+						"Target" 		"TARGET"
+						"Caster"		"CASTER"
+	                }        
+					"FireSound"
+					{
+						"EffectName"    "item.livingclayactive"
+						"Target"        "CASTER"
+					}
+					"Damage"
+					{
+						"Type"	"DAMAGE_TYPE_MAGICAL"
+						"Damage"	"15"
+						"Target"
+						{
+							"Center"	"TARGET"
+							"Radius"	"30"
+							"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+							"Types"	"DOTA_UNIT_TARGET_HERO"
+						}
+	
+					}
+	            }
+			}
+	        "modifier_trap_reveal"
+			{
+				"IsPurgable"	"0"
+				"IsDebuff"	"1"
+				"IsHidden"	"1"
+				"States"
+				{
+					"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_DISABLED"
+				}
+	        }
+		}
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"10"
+			}
+	
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"ensnare_duration"	"10"
+			}
+	
+		}
+	
+	}
 	"ability_scout_enemyradar"
 	{
 	    "BaseClass"             "ability_datadriven"
@@ -17016,36 +17129,37 @@
 	        "soundfile"            "soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"        
 	    }
 	
-	    "OnSpellStart"
-	    {
-	
-	        "RunScript"
-	        {
-	            "ScriptFile"    "items/living_clay.lua"
-	            "Function"      "PlaceClay"
+			"OnAbilityPhaseStart"
+		{
+			"RunScript"
+			{
+	            "ScriptFile"    "heroes/scout/ward.lua"
+				"Function"      "PlaceWardCheck"
+				"Target"		"CASTER"
+			}
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+	            "ScriptFile"    "heroes/scout/ward.lua"
+				"Function"      "PlaceWard"
 	            "Target"        "POINT"
-	            "modifier_caster"   "modifier_living_clay_caster"
-	            "modifier_tracker"   "modifier_living_clay_tracker"
-	            "modifier_living_clay"   "modifier_living_clay"
-	        }
-	
-	    }
+			}
+			"FireSound"
+			{
+				"EffectName"    "item.livingclayplace"
+				"Target"        "CASTER"
+			}      
+		}	
+		
 	    
 	    "Modifiers"
 	    {
-	        "modifier_living_clay"
+	        "modifier_wardcount"
 	        {
-	            "States"
-	            {
-	                "MODIFIER_STATE_NO_HEALTH_BAR" "MODIFIER_STATE_VALUE_ENABLED"
-	                "MODIFIER_STATE_NO_UNIT_COLLISION" "MODIFIER_STATE_VALUE_ENABLED"
-	            }
-	
-	            "OnCreated"
-	            {
-	                "SpendCharge" {}
-	            }
-	
+			"IsHidden" "0"
+			"Passive" "1"
 	        }
 	    }
 	
@@ -17059,43 +17173,17 @@
 	        "02"
 	        {
 	            "var_type"                  "FIELD_INTEGER"
-	            "damage"                    "10"
+	            "damage"                    "15"
 	        }
 	        "03"
 	        {
 	            "var_type"                  "FIELD_INTEGER"
-	            "radius"                    "300"
+	            "max_wards"                  "10"
 	        }
 	        "04"
 	        {
 	            "var_type"                  "FIELD_FLOAT"
-	            "activation_time"           "0.5"
-	        }
-	        "05"
-	        {
-	            "var_type"                  "FIELD_INTEGER"
-	            "max_clay"                  "10"
-	        }
-	        "06"
-	        {
-	            "var_type"                  "FIELD_FLOAT"
-	            "explode_delay"             "0.1"
-	        }
-	        "07"
-	        {
-	            "var_type"                  "FIELD_FLOAT"
-	            "fade_time"                 "2.0"
-	        }
-	        // Extra
-	        "08"
-	        {
-	            "var_type"                  "FIELD_FLOAT"
-	            "vision_radius"             "300"
-	        }
-	        "09"
-	        {
-	            "var_type"                  "FIELD_FLOAT"
-	            "vision_duration"           "1.0"
+	            "vision_radius"             "500"
 	        }
 	    }
 	}
@@ -18993,6 +19081,108 @@
 	            }
 	
 		    }
+		}
+	
+	}
+	"ability_livingclay"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"living_clay"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AURA | DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"Modifiers"
+		{
+			"aura_living_clay"
+			{
+				"IsHidden"	"1"
+				"Passive"	"1"
+				"Aura"	"modifier_living_clay"
+				"Aura_Radius"	"35"
+	            "Aura_Teams"  "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	            "Aura_Types"  "DOTA_UNIT_TARGET_HERO"
+	            //"Aura_Flags"  "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+				"Aura_ApplyToCaster"	"0"
+			}
+	
+			"modifier_living_clay"
+			{
+				"IsPurgable"	"0"
+				"IsDebuff"	"1"
+				"IsHidden"	"1"
+				"Duration" "1"
+	            "OnCreated" 
+	            {
+	                "FireEffect"
+	                {
+	                   "Target" "TARGET"
+	                   "EffectName" "particles/custom/living_clay_burst.vpcf"
+	                   "EffectAttachType" "follow_origin"
+	                }
+	                "ApplyModifier"
+	                {
+	                    "ModifierName"  "modifier_kill"
+						"Target"	"CASTER"
+	                    "Duration"      "1"
+	                }
+	                
+	                "ApplyModifier"
+	                {
+	                    "ModifierName"  "modifier_trap_reveal"
+						"Target"	"CASTER"
+	                }
+	                
+	                "RunScript"
+	                {
+	                    "ScriptFile"    "items/living_clay.lua"
+	                    "Function"      "LivingClayActivate"
+						"Target" 		"TARGET"
+						"Caster"		"CASTER"
+	                }        
+					"FireSound"
+					{
+						"EffectName"    "item.livingclayactive"
+						"Target"        "CASTER"
+					}
+					"Damage"
+					{
+						"Type"	"DAMAGE_TYPE_MAGICAL"
+						"Damage"	"15"
+						"Target"
+						{
+							"Center"	"TARGET"
+							"Radius"	"30"
+							"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+							"Types"	"DOTA_UNIT_TARGET_HERO"
+						}
+	
+					}
+	            }
+			}
+	        "modifier_trap_reveal"
+			{
+				"IsPurgable"	"0"
+				"IsDebuff"	"1"
+				"IsHidden"	"1"
+				"States"
+				{
+					"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_DISABLED"
+				}
+	        }
+		}
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"10"
+			}
+	
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"ensnare_duration"	"10"
+			}
+	
 		}
 	
 	}

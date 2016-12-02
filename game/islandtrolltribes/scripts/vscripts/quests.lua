@@ -79,7 +79,7 @@ function Quests:End(hero, id)
     end
 
     -- Quest complete!
-    EmitSoundOnClient("Tutorial.Quest.complete_01", PlayerResource:GetPlayer(hero:GetPlayerID()))
+    EmitSoundOnClient("quest.complete", PlayerResource:GetPlayer(hero:GetPlayerID()))
     quest.quest:CompleteQuest()
     quest.quest.finished = true
     print("Quest #"..id.." has ended.")

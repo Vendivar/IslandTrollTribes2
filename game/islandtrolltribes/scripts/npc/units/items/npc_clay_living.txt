@@ -13,9 +13,11 @@
 	{
 	}
 
-	"Ability1"	"ability_explode"
+	"Ability1"	"ability_livingclay"
+	"Ability2"	"ability_trap_passive"
+	"Ability10"	"ability_phased"
 	
-	"ArmorPhysical"	"5"
+	"ArmorPhysical"	"1"
 	"MagicalResistance"	"0"
 	"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
 	"BountyXP"	"0"
@@ -24,7 +26,7 @@
 	"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
 	"MovementSpeed"	"0"
 	"MovementTurnRate"	"0"
-	"StatusHealth"	"250"
+	"StatusHealth"	"50"
 	"StatusHealthRegen"	"0"
 	"StatusMana"	"1"
 	"StatusManaRegen"	"0"

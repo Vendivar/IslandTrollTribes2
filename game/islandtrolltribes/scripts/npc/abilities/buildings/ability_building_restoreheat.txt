@@ -43,6 +43,12 @@
                 "Radius"        "%radius"
 								"Heat"					"%heat"
             }
+			  "AttachEffect"
+			{
+				"EffectName"    "particles/world_environmental_fx/fire_camp_01.vpcf"
+				"Target"        "CASTER"
+				"EffectAttachType"      "attach_origin"
+			}
         }
     }
 		// Internal Heat mechanic

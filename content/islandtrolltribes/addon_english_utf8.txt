@@ -1364,8 +1364,8 @@
 "DOTA_Tooltip_ability_ability_priest_painkillerbalm_duration"		"DURATION:"
 "DOTA_Tooltip_ability_ability_priest_painkillerbalm_remove_interval"		"REMOVE INTERVAL:"
 "DOTA_Tooltip_ability_ability_priest_painkillerbalm_stacks"		"STACKS:"
-"DOTA_Tooltip_modifier_priest_painkillerbalm"                                     "Priest Painkillerbalm"
-"DOTA_Tooltip_modifier_priest_painkillerbalm_Description"                         ""
+"DOTA_Tooltip_modifier_priest_painkillerbalm"                                     "Painkiller Balm"
+"DOTA_Tooltip_modifier_priest_painkillerbalm_Description"                         "Gaining a reduction of all damage taken, tapering off over the duration. Each stack reduces damage taken by 1%%, for a total of 20%%. One stack is removed every 2 seconds"
 
 		
 
@@ -1496,9 +1496,12 @@
 "DOTA_Tooltip_Ability_ability_scout_motionsensorradar"		"Motion Sensor Radar"
 "DOTA_Tooltip_Ability_ability_scout_motionsensorradar_Description"		"Takes 3 seconds to cast. Anything moving within the range in those 3 seconds is pinged. AOE increases with level. Pings everything from ships to fish to hawks."
 "DOTA_Tooltip_Ability_ability_scout_motionsensorradar_range"		"RANGE:"
+
+
+
 "DOTA_Tooltip_Ability_ability_scout_placeward"		"Place Ward"
-"DOTA_Tooltip_Ability_ability_scout_placeward_Description"		"Places a ward up to 400 range away. Wards explode when stepped on and have timed life.\n\nSTEP DAMAGE: <font color='#777777'>10</font>"
-"DOTA_Tooltip_ability_ability_scout_placeward_max_stacks"                         "MAX STACKS:"
+"DOTA_Tooltip_Ability_ability_scout_placeward_Description"		"Places a ward that gives vision up to 400 range away. Wards explode when stepped on and have timed life. You can only have up to 10 wards up at a time."
+"DOTA_Tooltip_ability_ability_scout_placeward_max_wards"                          "MAX WARDS:"
 "DOTA_Tooltip_ability_ability_scout_placeward_damage"                             "DAMAGE:"
 "DOTA_Tooltip_ability_ability_scout_placeward_radius"                             "RADIUS:"
 "DOTA_Tooltip_ability_ability_scout_placeward_activation_time"                    "ACTIVATION TIME:"
@@ -1507,6 +1510,23 @@
 "DOTA_Tooltip_ability_ability_scout_placeward_fade_time"                          "FADE TIME:"
 "DOTA_Tooltip_ability_ability_scout_placeward_vision_radius"                      "VISION RADIUS:"
 "DOTA_Tooltip_ability_ability_scout_placeward_vision_duration"                    "VISION DURATION:"
+
+
+
+
+
+
+"DOTA_Tooltip_Ability_ability_scout_wardthearea"						"Ward The Area"
+"DOTA_Tooltip_Ability_ability_scout_wardthearea"						"Ward The Area"
+"DOTA_Tooltip_Ability_ability_scout_wardthearea_Description"			"Places wards in the surrounding area. Wards explode when stepped on and have timed life."
+"DOTA_Tooltip_Ability_ability_scout_wardthearea_Description"			"Ward The Area"
+"DOTA_Tooltip_ability_ability_scout_wardthearea_stepdamage"				"STEP DAMAGE:"
+"DOTA_Tooltip_Ability_ability_scout_wardthearea_wardlife"				"WARD LIFE:"
+"DOTA_Tooltip_Ability_ability_scout_wardthearea_max_wards"				"MAX NUMBER OF WARDS:"
+
+
+
+
 
 "DOTA_Tooltip_ability_ability_scout_wardthearea_aoe"                              "AOE:"
 "DOTA_Tooltip_ability_ability_scout_wardthearea_radius"                           "RADIUS:"
@@ -1547,15 +1567,6 @@
 "DOTA_Tooltip_ability_ability_scout_ward_lifetime"		"Scout Ward"
 "DOTA_Tooltip_ability_ability_scout_ward_lifetime_Description"		""
 "DOTA_Tooltip_ability_ability_scout_ward_lifetime_lifetime"		"LIFETIME:"
-"DOTA_Tooltip_Ability_ability_scout_wardthearea"		"Ward The Area"
-"DOTA_Tooltip_Ability_ability_scout_wardthearea"		"Ward The Area"
-"DOTA_Tooltip_Ability_ability_scout_wardthearea_Description"		"Places wards in the surrounding area. Wards explode when stepped on and have timed life.\n\nSTEP DAMAGE: <font color='#777777'>10</font>"
-"DOTA_Tooltip_Ability_ability_scout_wardthearea_Description"		"Ward The Area"
-"DOTA_Tooltip_ability_ability_scout_wardthearea_lifetime"		"LIFETIME:"
-"DOTA_Tooltip_ability_ability_scout_wardthearea_stepdamage"		"STEPDAMAGE:"
-"DOTA_Tooltip_Ability_ability_scout_wardthearea_wardlife"		"WARD LIFE:"
-"DOTA_Tooltip_Ability_ability_scout_wardthearea_wards"		"NUMBER OF WARDS:"
-
 
 // THEIF 
 
@@ -1940,7 +1951,7 @@
 "DOTA_Tooltip_ability_item_armor_battle_spell_resist"		"%+$spell_resist"
 "DOTA_Tooltip_ability_item_armor_battle_tick_rate"		"TICK RATE:"
 "DOTA_Tooltip_modifier_armor_battle"		"Battle Armor"
-"DOTA_Tooltip_modifier_armor_battle_Description"		"Gaining 20% magic resistance and +8 heat per 35 seconds and"
+"DOTA_Tooltip_modifier_armor_battle_Description"		"Gaining 20% magic resistance and +8 heat per 35 seconds and 9 armor."
 
 
 "DOTA_Tooltip_ability_item_axe_battle"		"Battle Axe"
@@ -2233,11 +2244,12 @@
 "DOTA_Tooltip_ability_item_boat_scroll_stoneskin_Description"		"ACTIVE: Stone Skin - Causes skin to turn to stone, greatly reducing incoming physical damage. Reverberation slows the attacks of enemies who strike during this time.\n<font color='#777777'>Hold ALT to view more information.</font>\n\nA scroll with pebbles that fall out when you unfold it, this parchment speaks of becoming one with stone."
 "DOTA_Tooltip_ability_item_boat_scroll_stoneskin_duration"		"DURATION:"
 "DOTA_Tooltip_ability_item_boat_scroll_stoneskin_Lore"		"Scroll of Stone to Flesh sold separately."
-"DOTA_Tooltip_ability_item_boat_scroll_stoneskin_Note0"		"CD 60s\nRange 450\nBoosts target's armor by 15 for 45 seconds. Slows attacking enemies by 10%%"
-"DOTA_Tooltip_ability_item_boat_scroll_stoneskin_range"		"RANGE:"
+"DOTA_Tooltip_ability_item_boat_scroll_stoneskin_Note0"		"CD 60s\nRange 450\nBoosts target's armor by for 45 seconds. Slows attacking enemies by 10%%"
+"DOTA_Tooltip_ability_item_boat_scroll_stoneskin_armor_bonus"		"ARMOR BONUS:"
+"DOTA_Tooltip_ability_item_boat_scroll_stoneskin_attack_speed_slow"		"%SLOW:"
 "DOTA_Tooltip_ability_item_boat_scroll_stoneskin_slow_debuff_duration"		"SLOW DEBUFF DURATION:"
-"DOTA_Tooltip_modifier_scroll_stoneskin_buff"		"Scroll Stoneskin Buff"
-"DOTA_Tooltip_modifier_scroll_stoneskin_buff_Description"		""
+"DOTA_Tooltip_modifier_scroll_stoneskin_buff"		"Stoneskin"
+"DOTA_Tooltip_modifier_scroll_stoneskin_buff_Description"		"Boosts target's armor by 9 for 45 seconds. Slows attacking enemies by 10%%"
 
 
 "DOTA_Tooltip_ability_item_boat_scroll_tsunami"		"Scroll of Tsunami"
@@ -2421,7 +2433,7 @@
 "DOTA_Tooltip_ability_item_building_kit_fire_mage"		"Mage Fire Kit"
 "DOTA_Tooltip_ability_item_building_kit_fire_mage_build_duration"		"BUILD DURATION:"
 "DOTA_Tooltip_ability_item_building_kit_fire_mage_build_time"		"BUILD TIME:"
-"DOTA_Tooltip_ability_item_building_kit_fire_mage_Description"		"A magical fire that functions like a campfire. Emits heat and cooks food."
+"DOTA_Tooltip_ability_item_building_kit_fire_mage_Description"		"A magical fire that functions like a campfire. Emits double the heat and cooks food."
 "DOTA_Tooltip_ability_item_building_kit_fire_mage_Lore"		"Almost as popular as Magic Missile."
 "DOTA_Tooltip_ability_item_building_kit_fire_mage_Note0"		"Restore Heat: (Autocast)\n    - Restores 16 heat/(time)\nCook Meat:\n    - Turns all corpses in 600 range into cooked meat.\nPack Up:\n    - Packs the building back into a mage fire kit.\nBurn Building: (Passive)\n    - Passively deals 20 damage/s to all buildings in 360 range."
 "DOTA_Tooltip_ability_item_building_kit_hatchery"		"Hatchery Kit"
@@ -2535,12 +2547,14 @@
 "DOTA_Tooltip_ability_item_building_kit_workshop_Note0"		"Quick Build:\n    - Grabs nearby items on the ground to make selected item. If not all items are available, will still grab everything that was available. Items already in the building will be pushed to the bottom of the building's inventory.\nQuick Drop:\n    - Drops everything the building is currently holding in a very close radius around it."
 
 "DOTA_Tooltip_ability_item_clay_explosion"		"Clay Explosion"
-"DOTA_Tooltip_ability_item_clay_explosion_Description"		""
+"DOTA_Tooltip_ability_item_clay_explosion_Description"		"Randomly spawns between 0 and 3 living clay items for you to use."
 "DOTA_Tooltip_ability_item_clay_explosion_max_stacks"		"MAX STACKS:"
 "DOTA_Tooltip_ability_item_clay_living"		"Living Clay"
-"DOTA_Tooltip_ability_item_clay_living_Description"		"ACTIVE: Use - Places a ward with 'x' vision. Deals 10 damage to any enemy unit that steps on it, then disappears. Lasts until stepped on. Acts as a sentry to friendly trolls. Lasts forever until a unit steps on it, dealing damage to that unit."
+
+"DOTA_Tooltip_ability_item_clay_living_Description"		"ACTIVE: Use - Places a ward with 400 vision. Deals 15 damage to any enemy unit that steps on it, then disappears. Lasts until stepped on. Acts as a sentry to friendly trolls. Lasts forever until a unit steps on it, dealing damage to that unit."
 "DOTA_Tooltip_ability_item_clay_living_Lore"		"It seems to bubble and shift on it's own accord."
 "DOTA_Tooltip_ability_item_clay_living_max_stacks"		"MAX STACKS:"
+"DOTA_Tooltip_ability_item_clay_living_damage"		"COLLISION DAMAGE:"
 "DOTA_Tooltip_modifier_living_clay"                                               "Living Clay"
 "DOTA_Tooltip_modifier_living_clay_Description"                                   ""
 
@@ -3075,9 +3089,9 @@
 "DOTA_Tooltip_ability_item_potion_drunk_drunk_speed"		"%SPEED REDUCTION:"
 "DOTA_Tooltip_ability_item_potion_drunk_Lore"		"A toast to the trolls that we fight best. We fight them best in a big gore fest. We'll kill 'em sitting, standing or even lying; hell, if they had wings we'd kill 'em flying."
 "DOTA_Tooltip_ability_item_potion_drunk_max_stacks"		"MAX STACKS:"
-"DOTA_Tooltip_ability_item_potion_drunk_Note0"		"Effects:\n-10% reduced move speed on target\n-50% reduced chance to hit on target.\n\n-Silences target\n9 seconds on trolls, 13 seconds on animals."
+"DOTA_Tooltip_ability_item_potion_drunk_Note0"		"Effects:\n-10% reduced move speed on target\n-50%% reduced chance to hit on target.\n\n-Silences target\n9 seconds on trolls, 13 seconds on animals."
 "DOTA_Tooltip_modifier_potion_drunk"		"Drunk!"
-"DOTA_Tooltip_modifier_potion_drunk_Description"		"You are drunk! You move 10% slower and a 50% reduced change to hit a target!"
+"DOTA_Tooltip_modifier_potion_drunk_Description"		"You are drunk! You move 10%% slower and a 50%% reduced change to hit a target!"
 
 
 "DOTA_Tooltip_ability_item_potion_elemental"		"Elemental Potion"
@@ -3686,7 +3700,7 @@
 
 
 "DOTA_Tooltip_modifier_cold2"		"Cold"
-"DOTA_Tooltip_modifier_cold2_Description"		"You have just been warmed up from being freezing but you are still slow from the cold."
+"DOTA_Tooltip_modifier_cold2_Description"		"You have just been warmed up from being freezing but you are still slow from the cold, moving 25%% slower until you get 100 heat."
 
 
 "DOTA_Tooltip_modifier_collision_check"		"Collision Check"
@@ -3710,15 +3724,106 @@
 
 
 
+"DOTA_Tooltip_modifier_frozen"                                              "Frozen!"
+"DOTA_Tooltip_modifier_frozen_Description" 									"You have frozen solid! You will die if a teammate does not warm you up!"
 
 
 
 
 
-
-// Tutorial Stuff
+// TUTORIAL STUFF
 
 "QuestKill" "Kill Elk. (%quest_current_value%/%quest_target_value%)"
+
+//All
+
+"All_Quest_1"		"Survive! Get a stick a tinder and a flint."
+"All_Quest_2"		"Home Sweet Home: Craft a campfire. (Press C)"
+"All_Quest_3"		"Home Sweet Home Pt. 2: Place your newly crafted camp fire"
+
+"All_Quest_1d"		"Agree upon a base location."
+"All_Quest_1c"		"Pick up 5 items"
+"All_Quest_2c"		"Now bring them back to your base!"
+
+"All_Quest_1e"		"Reach level 2 before 5 minutes."
+"All_Quest_2e"		"Reach level 3 before 7 minutes."
+"All_Quest_3e"		"Reach level 4 before 8 minutes."
+"All_Quest_4e"		"Reach level 5 before 10 minutes."
+"All_Quest_5e"		"Reach level 6 before 11 minutes."
+"All_Quest_6e"		"Choose your subclass! (Button on bottom right)"
+
+
+//GATHERER
+
+"Gatherer_Quest_1" 		"Use the item radar locate items for your team."
+"Gatherer_Quest_1a"		"Great! Remember where stuff is at if you can."
+"Gatherer_Quest_2"		"Now try using radar manipulations and it's abilities"		
+"Gatherer_Quest_3"		"Always actively use item radar throughout the game!"		
+"Gatherer_Quest_4"		"Build a storage area in your base (near the middle)"
+"Gatherer_Quest_5"		"Great! This will allow your team to advance better."
+"Gatherer_Quest_6"		"Remember nearby craft buildings can also use the item storage"		
+"Gatherer_Quest_7"		"Remember nearby craft buildings can also use the item storage"		
+"Gatherer_Quest_8"		"Since its been some time lets use item radar again"
+"Gatherer_Quest_9"		"Find the blue and red pings to collect 3 stone and 1 flint"		
+"Gatherer_Quest_10"		"Use those items you just got to craft a armory (C)"		
+"Gatherer_Quest_11"		"Great! Now you can start crafting weapons & armor."				
+"Gatherer_Quest_12"		"Let's start by making a good early game item."		
+"Gatherer_Quest_13"		"Let's gather flint and stone to make an iron axe."		
+"Gatherer_Quest_14"		"Find the blue and red pings to collect 2 stone and 2 flint"		
+"Gatherer_Quest_15"		"Now go back to base and put them into the armory/storage"
+"Gatherer_Quest_16"		"Craft two iron ingots"
+"Gatherer_Quest_17"		"Last thing we need is a bone or a stick there's usually one lying around."
+"Gatherer_Quest_18"		"Now craft an iron axe."
+"Gatherer_Quest_1d"		"Remember to stay active and gather items!"
+
+//Beastmaster
+
+"BM_Quest_1"		"Hunt! Get 2 hides for your team."
+"BM_Quest_2"		"You can sell the hides for money turn them into armor."
+"BM_Quest_1d"		"Beastmaster: Tame a pet"
+"BM_Quest_2d"		"Beastmaster: Command your pet (Follow)"
+"BM_Quest_3d"		"Beastmaster: Command your pet (Stay)"
+"BM_Quest_4d"		"Beastmaster: Grow your pet!"
+"BM_Quest_5d"		"Beastmaster: Command your pet (once grown) to attack"
+
+//MAGE
+
+"Mage_Quest_1"		"Find 2 tinders in the wild to help with hunting."
+"Mage_Quest_2"		"Find another tinder hit (C) to craft a 'Hunting net'"
+"Mage_Quest_3"		"Try your new net on a still elk to ensnare them!"
+"Mage_Quest_4"		"Use your new net on a still elk to ensnare them!"
+"Mage_Quest_5"		"Reach level 2 to get new abilities to help you hunt."
+"Mage_Quest_6"		"Use your new abilties on the elk with the net to kill!"
+
+//THIEF
+
+"Theif_Quest_1"			"Find 2 tinders in the wild to help with hunting."
+"Theif_Quest_2"			"Find another tinder hit (C) to craft a 'Hunting net'."
+"Theif_Quest_3"			"Use your new net on a still elk to ensnare them!"
+"Theif_Quest_4"			"Use your new net on a still elk to ensnare them!"
+"Theif_Quest_1d"		"See if you can find a theif bush."
+"Theif_Quest_2d"		"Read what the theif medal does then use it!" 
+"Theif_Quest_1c"		"Use your abilities to steal at least 3 items from an enemy island."
+"Theif_Quest_1e"		"Search the river and kill an enemy fire and use it."
+
+
+
+//HUNTER
+
+
+"Hunter_Quest_1d"	"Consider bringing a teammate along to help them level."
+"Hunter_Quest_1"	"Use the net ability and net an elk while killing two elks."
+"Hunter_Quest_2"	"Hunter: Reach level 2 to continue."
+"Hunter_Quest_3"	"Use the track while killing two elks."
+
+
+
+
+
+
+
+
+
 
 
 // HUD stuff
@@ -3754,9 +3859,9 @@
 "DOTA_Tooltip_ability_item_gold_bag"                                              "Gold Bag"
 "DOTA_Tooltip_ability_item_gold_bag_Description"                                  ""
 
-         "sleep_outside"                                          "Sleep Outside"
-        "DOTA_Tooltip_Ability_sleep_outside"                     "Sleep Outside"
-        "DOTA_Tooltip_Ability_sleep_outside_Description"         "Sleep outside and gain 20 energy but lose 20 heat!\nShould only be used as a worse case scenario to gain energy!"
+		"sleep_outside"                                          "Sleep Outside"
+        "DOTA_Tooltip_Ability_sleep_outside"					"Sleep <font color='#00CC00'>O</font>utside"
+        "DOTA_Tooltip_Ability_sleep_outside_Description"         "Sleep outside for 6 seconds and gain 20 energy but lose 20 heat!\nShould only be used as a worse case scenario to gain energy!"
         "DOTA_Tooltip_Ability_sleep_outside_rest_duration"       "REST DURATION:"
         "DOTA_Tooltip_Ability_sleep_outside_mana_restored"       "MANA RESTORED:"
         

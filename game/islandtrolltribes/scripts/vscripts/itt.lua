@@ -620,10 +620,12 @@ function ITT:SetHerosIntoEndScreen( teamID )
             local team = PlayerResource:GetTeam(playerID)
             if team == teamID then
                 local hero = PlayerResource:GetSelectedHeroEntity(playerID)
-                if hero:IsAlive() then
+                if hero:IsAlive() then				
+					hero:RemoveModifierByName("modifier_cold2")
+					hero:RemoveModifierByName("modifier_frozen")
                     hero:SetAbsOrigin(vec_start + vec_step * ind)
                     hero:SetAngles(0,-90,0)
-					hero:EndAnimation(hero)
+					EndAnimation(hero)
                     ind = ind + 1
                 end
             end

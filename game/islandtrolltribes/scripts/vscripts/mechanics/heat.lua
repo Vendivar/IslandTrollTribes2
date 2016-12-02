@@ -178,6 +178,11 @@ function Heat:CalculateLoss(hero)
         heatLoss = 0
    end
    
+  -- Stop heat loss when hit by cold spells
+	if hero:HasModifier("modifier_cold") then
+	heatLoss = heatLoss + 1/0.25
+    end
+   
     return heatLoss
 end
 

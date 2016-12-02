@@ -3,17 +3,11 @@
 	_class = "CParticleSystemDefinition"
 	m_bShouldHitboxesFallbackToRenderBounds = false
 	m_nMaxParticles = 18
-	m_flConstantRadius = 40.000000
-	m_flConstantLifespan = 1.300000
-	m_ConstantColor =
-	[
-		81,
-		255,
-		159,
-		100,
-	]
-	m_flConstantRotation = 80.000000
-	m_Renderers =
+	m_flConstantRadius = 40.0
+	m_flConstantLifespan = 1.3
+	m_ConstantColor = [ 81, 255, 159, 100 ]
+	m_flConstantRotation = 80.0
+	m_Renderers = 
 	[
 		{
 			_class = "C_OP_RenderRopes"
@@ -21,32 +15,32 @@
 			m_bAdditive = true
 			m_nOrientationType = 3
 			m_hTexture = resource:"materials/particle/beam_crack_02.vtex"
-			m_flRadiusScale = 0.500000
+			m_flRadiusScale = 0.5
 			m_flTextureVWorldSize = 333.333344
 			m_nMaxTesselation = 3
 			m_nMinTesselation = 3
 		},
 	]
-	m_Operators =
+	m_Operators = 
 	[
 		{
 			_class = "C_OP_Decay"
 		},
 		{
 			_class = "C_OP_InterpolateRadius"
-			m_flEndTime = 0.100000
-			m_flStartScale = 0.000000
-			m_flBias = 0.975000
+			m_flEndTime = 0.1
+			m_flStartScale = 0.0
+			m_flBias = 0.975
 		},
 		{
 			_class = "C_OP_LerpEndCapScalar"
-			m_flOutput = 0.000000
+			m_flOutput = 0.0
 			m_nFieldOutput = 16
-			m_flLerpTime = 3.000000
+			m_flLerpTime = 3.0
 		},
 		{
 			_class = "C_OP_FadeInSimple"
-			m_flFadeInTime = 0.100000
+			m_flFadeInTime = 0.1
 		},
 		{
 			_class = "C_OP_SpinUpdate"
@@ -56,47 +50,36 @@
 		},
 		{
 			_class = "C_OP_BasicMovement"
-			m_fDrag = 0.050000
-			m_Gravity =
-			[
-				0.000000,
-				0.000000,
-				50.000000,
-			]
+			m_fDrag = 0.05
+			m_Gravity = [ 0.0, 0.0, 50.0 ]
 		},
 		{
 			_class = "C_OP_ColorInterpolate"
-			m_ColorFade =
-			[
-				17,
-				80,
-				133,
-				255,
-			]
+			m_ColorFade = [ 17, 80, 133, 255 ]
 		},
 	]
-	m_Initializers =
+	m_Initializers = 
 	[
 		{
 			_class = "C_INIT_RandomRadius"
-			m_flRadiusMin = 14.000000
-			m_flRadiusMax = 16.000000
+			m_flRadiusMin = 14.0
+			m_flRadiusMax = 16.0
 		},
 		{
 			_class = "C_INIT_RandomYawFlip"
 		},
 		{
 			_class = "C_INIT_RingWave"
-			m_flParticlesPerOrbit = 14.000000
-			m_flInitialRadius = 10.000000
-			m_flInitialSpeedMin = 100.000000
-			m_flInitialSpeedMax = 100.000000
+			m_flParticlesPerOrbit = 14.0
+			m_flInitialRadius = 10.0
+			m_flInitialSpeedMin = 100.0
+			m_flInitialSpeedMax = 100.0
 			m_bEvenDistribution = true
 		},
 		{
 			_class = "C_INIT_RandomLifeTime"
-			m_fLifetimeMin = 1.000000
-			m_fLifetimeMax = 1.000000
+			m_fLifetimeMin = 1.0
+			m_fLifetimeMax = 1.0
 		},
 		{
 			_class = "C_INIT_RandomSequence"
@@ -110,18 +93,8 @@
 		{
 			_class = "C_INIT_PositionOffset"
 			m_bLocalCoords = true
-			m_OffsetMax =
-			[
-				0.000000,
-				0.000000,
-				5.000000,
-			]
-			m_OffsetMin =
-			[
-				0.000000,
-				0.000000,
-				5.000000,
-			]
+			m_OffsetMax = [ 0.0, 0.0, 5.0 ]
+			m_OffsetMin = [ 0.0, 0.0, 5.0 ]
 		},
 		{
 			_class = "C_INIT_RemapParticleCountToScalar"
@@ -134,22 +107,22 @@
 			m_nInputMin = 15
 			m_nInputMax = 17
 			m_nFieldOutput = 7
-			m_flOutputMin = 1.000000
-			m_flOutputMax = 0.000000
+			m_flOutputMin = 1.0
+			m_flOutputMax = 0.0
 			m_bScaleInitialRange = true
 		},
 	]
-	m_Emitters =
+	m_Emitters = 
 	[
 		{
 			_class = "C_OP_InstantaneousEmitter"
 			m_nParticlesToEmit = 18
 		},
 	]
-	m_Children =
+	m_Children = 
 	[
 		{
-			m_ChildRef = resource:"particles/units/heroes/hero_oracle/oracle_fatesedict_arc_glow.vpcf"
+			m_ChildRef = resource:"particles/custom/painkiller_glow.vpcf"
 		},
 	]
 }

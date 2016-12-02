@@ -88,6 +88,15 @@
 			"IsBuff"			"1"
 			"Attributes"       "MODIFIER_ATTRIBUTE_MULTIPLE" 
             "ThinkInterval" "2"
+            "OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/priest/pain_killer.lua"
+						"Function"		"PainKillerBalmThink"
+						"Target"		"TARGET"
+					}
+				}
 			"OnCreated"
 			{
 				"RunScript"
@@ -95,7 +104,6 @@
 					"ScriptFile"	"heroes/priest/pain_killer.lua"
 					"Function"		"PainKillerBalmStart"
 					"Target"		"TARGET"
-					"stacks"		"%stacks"
 				}
                 
                 "FireSound"
@@ -130,15 +138,6 @@
 			{
 				"MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE" "-1"
 			}
-            
-            "OnIntervalThink"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"heroes/priest/pain_killer.lua"
-						"Function"		"PainKillerBalmThink"
-					}
-				}
 		}
     
     "modifier_priest_painkillerbalm_channel"

@@ -46,6 +46,11 @@
         }
     }
 
+    "Custom"
+    {
+        "ModelScale"    "0.55"
+    }
+	
 	"OnSpellStart"
     {
         "RunScript"
