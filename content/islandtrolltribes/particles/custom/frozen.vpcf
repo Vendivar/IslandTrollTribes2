@@ -2,7 +2,7 @@
 {
 	_class = "CParticleSystemDefinition"
 	m_bShouldHitboxesFallbackToRenderBounds = false
-	m_nMaxParticles = 20
+	m_nMaxParticles = 2000
 	m_Children = 
 	[
 		{
@@ -22,4 +22,5 @@
 			m_ChildRef = resource:"particles/custom/frozen_component_2m.vpcf"
 		},
 	]
+	m_flConstantLifespan = 60.0
 }

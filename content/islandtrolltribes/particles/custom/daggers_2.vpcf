@@ -70,7 +70,6 @@
 			m_flInitialSpeedMin = 0.6
 			m_flInitialSpeedMax = 0.6
 			m_bEvenDistribution = true
-			m_bDisableOperator = true
 		},
 		{
 			_class = "C_INIT_RandomLifeTime"
@@ -81,7 +80,6 @@
 			_class = "C_INIT_Orient2DRelToCP"
 			m_nFieldOutput = 12
 			m_flRotOffset = 30.0
-			m_bDisableOperator = true
 		},
 		{
 			_class = "C_INIT_PositionOffset"

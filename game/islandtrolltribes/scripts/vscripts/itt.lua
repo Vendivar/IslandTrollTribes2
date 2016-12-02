@@ -232,7 +232,7 @@ function ITT:InitGameMode()
     self.Chat = Chat(playerList,TEAM_COLORS)
 
     -- Load Quests
-    self.Quests = Quests()
+    -- self.Quests = Quests()
 
     -- Check Syntax
     if (not GameRules.AbilityKV) or (not GameRules.ItemKV) or (not GameRules.UnitKV) or (not GameRules.HeroKV) then

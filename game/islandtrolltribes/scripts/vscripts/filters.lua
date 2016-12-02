@@ -90,8 +90,7 @@ function ITT:FilterExecuteOrder( filterTable )
 	
 	    if targetIndex and (order_type == DOTA_UNIT_ORDER_ATTACK_TARGET or order_type == DOTA_UNIT_ORDER_MOVE_TO_TARGET) then
         local target = EntIndexToHScript(targetIndex)
-		if target and IsHero == true and target:HasModifier("modifier_frozen") then
-			if order_type == DOTA_UNIT_ORDER_ATTACK_TARGET then
+		if target and target:IsHero() and target:HasModifier("modifier_frozen") then
 				local hero = PlayerResource:GetSelectedHeroEntity(issuer)				
 				local abilityName = "ability_warm_up"
 				local ability = hero:FindAbilityByName(abilityName)
@@ -103,7 +102,6 @@ function ITT:FilterExecuteOrder( filterTable )
 					hero:CastAbilityOnTarget(target, ability, hero:GetPlayerOwnerID())
 					 print(hero:GetName().."casting spell, "..ability:GetName()..", on "..target:GetName())
 				end
-            end
             return CONSUME_EVENT
         end
     end

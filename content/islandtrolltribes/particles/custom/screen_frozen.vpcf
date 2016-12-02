@@ -151,6 +151,7 @@
 	[
 		{
 			m_ChildRef = resource:"particles/custom/screen_frozen_bits.vpcf"
+			m_bDisableChild = true
 		},
 	]
 }

@@ -16,15 +16,12 @@
 					m_model = resource:"models/heroes/crystal_maiden/crystal_maiden_ice.vmdl"
 				},
 			]
-			m_bAnimated = true
-			m_bForceDrawInterlevedWithSiblings = true
 		},
 	]
 	m_Operators = 
 	[
 		{
 			_class = "C_OP_BasicMovement"
-			m_fDrag = 0.25
 		},
 		{
 			_class = "C_OP_InterpolateRadius"

@@ -201,7 +201,7 @@
         "invalid_hypnosis"                       "Can't use on units that are not hypnotized."
 		"NoobTimeOver" 							"Noob time is now over! Respawning is now disabled! You must revive with a spirit ward!"
 		"error_toomanywards"					"Can't have more then 10 wards"
-        "teammate_frozen"                    "has frozen! You must have go to them and warm them up or they will die!"
+        "teammate_frozen"                    "has frozen! Go to them and warm them up or they will die!"
 
 
 

@@ -51,8 +51,8 @@
 		},
 		{
 			_class = "C_INIT_RandomLifeTime"
-			m_fLifetimeMin = 0.2
-			m_fLifetimeMax = 0.3
+			m_fLifetimeMin = 0.4
+			m_fLifetimeMax = 0.6
 		},
 		{
 			_class = "C_INIT_RandomRotation"
