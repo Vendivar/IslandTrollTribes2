@@ -140,7 +140,7 @@ function Gather(keys)
         elseif not string.find(itemName, "_bush_") then
             if not v.launched then
                 v.launched = true
-                DropLaunch(building, item, 0.5, building:GetAbsOrigin() + RandomVector(100))
+                DropLaunch(building, item, 0.5, building:GetAbsOrigin() + RandomVector(400))
             end
         end
     end
