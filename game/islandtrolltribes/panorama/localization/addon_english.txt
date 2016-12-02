@@ -189,10 +189,10 @@
         "error_item_out_of_range"           "Item out of range to pick up."
         "error_pet_leash_range"              "Pet is being ordered too far away, returning to a safe range!"
         "error_must_target_allied_gravestone" "Must target an allied gravestone!"
-        "error_heat_low"                     "Your heat is too low! Get to a fire to warm up or you will die!"
-        "error_mana_low"                    "You've run out of mana and fell asleep outside!"
-        "error_frozen"                    "You have frozen! \nYou must have a teammate come to you and warm you up or you will die!"
-        "eat_raw_meat_channeling_is_in_progress" "Raw Meat Channeling is progress already."
+        "error_heat_low"                 		   "Your heat is too low! Get to a fire to warm up or you will die!"
+        "error_mana_low"                		   "You've run out of mana and fell asleep outside!"
+        "error_frozen"                 			   "You have frozen! \nYou must have a teammate come to you and warm you up or you will die!"
+        "eat_raw_meat_channeling_is_in_progress"	"Raw Meat Channeling is progress already."
         "error_already_rested"                  "You are already rested. Please wait a moment before resting again."
         "error_must_target_baby_animal"         "Must target a baby animal."
         "invalid_telegatherer_target"           "Must target a camp fire."
@@ -200,6 +200,7 @@
         "invalid_priest_target"                 "Can't use on self or priests."
         "invalid_hypnosis"                       "Can't use on units that are not hypnotized."
 		"NoobTimeOver" 							"Noob time is now over! Respawning is now disabled! You must revive with a spirit ward!"
+		"error_toomanywards"					"Can't have more then 10 wards"
 		
         "teammate_frozen"                    "has frozen! You must have go to them and warm them up or they will die!"
 		

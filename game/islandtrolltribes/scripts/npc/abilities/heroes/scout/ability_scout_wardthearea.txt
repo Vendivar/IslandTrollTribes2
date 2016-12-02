@@ -16,7 +16,7 @@
 	{
 		"RunScript"
 		{
-			"ScriptFile" "items/living_clay.lua"
+			"ScriptFile" "heroes/scout/ward.lua"
 			"Function"   "WardTheArea"
 		}
 		"FireSound"
@@ -26,17 +26,7 @@
 		}
 
 	}
-	"Modifiers"
-	{
-		"modifier_living_clay"
-        {
-            "States"
-            {
-                "MODIFIER_STATE_NO_HEALTH_BAR" "MODIFIER_STATE_VALUE_ENABLED"
-                "MODIFIER_STATE_NO_UNIT_COLLISION" "MODIFIER_STATE_VALUE_ENABLED"
-            }	
-        }
-	}
+	
 	"AbilitySpecial"
 	{
 		"01"
@@ -57,7 +47,7 @@
 		"04"
 		{
 			"var_type"	"FIELD_FLOAT"
-			"aoe"	"500"
+			"aoe"	"500 800 1200"
 		}
 		"05"
 		{

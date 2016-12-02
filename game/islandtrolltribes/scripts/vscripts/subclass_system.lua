@@ -117,6 +117,7 @@ function ITT:OnSubclassChange(event)
     if hero.subclassAvailableParticle then
         ParticleManager:DestroyParticle(hero.subclassAvailableParticle, false)
         EmitSoundOnClient("SubSelected", hero)
+		hero:EmitSound("SubSelected")
         local subParticle = ParticleManager:CreateParticle("particles/custom/subclass_selection.vpcf", PATTACH_ABSORIGIN_FOLLOW, hero)
     end
     -- Change Vision range

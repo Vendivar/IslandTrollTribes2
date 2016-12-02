@@ -61,7 +61,9 @@
         "npc_hero_priest_sage_spirit"           "Sage Spirit"
 		"npc_ghost"								"Ghost"
 		"npc_building_tower_omni"				"Building Tower Omni"
-		"npc_clay_living"						"Clay Living"
+		"npc_clay_living"						"Clay Living"		
+		"npc_scout_ward"						"Scout Ward"
+		"npc_beehive_lesser"					"Lesser Beehive"
 	
 
 // Unit Names
@@ -1500,7 +1502,7 @@
 
 
 "DOTA_Tooltip_Ability_ability_scout_placeward"		"Place Ward"
-"DOTA_Tooltip_Ability_ability_scout_placeward_Description"		"Places a ward that gives vision up to 400 range away. Wards explode when stepped on and have timed life. You can only have up to 10 wards up at a time."
+"DOTA_Tooltip_Ability_ability_scout_placeward_Description"						"Places a ward that gives vision up to 400 range away that lasts 120 seconds. Wards explode when stepped on and have timed life. You can only have up to 10 wards up at a time."
 "DOTA_Tooltip_ability_ability_scout_placeward_max_wards"                          "MAX WARDS:"
 "DOTA_Tooltip_ability_ability_scout_placeward_damage"                             "DAMAGE:"
 "DOTA_Tooltip_ability_ability_scout_placeward_radius"                             "RADIUS:"
@@ -1511,7 +1513,11 @@
 "DOTA_Tooltip_ability_ability_scout_placeward_vision_radius"                      "VISION RADIUS:"
 "DOTA_Tooltip_ability_ability_scout_placeward_vision_duration"                    "VISION DURATION:"
 
+"DOTA_Tooltip_modifier_wardcount"                                                 "Ward Counter"
+"DOTA_Tooltip_modifier_wardcount_Description"                                     "You cant have more then 10 wards up at any point."
 
+
+	
 
 
 

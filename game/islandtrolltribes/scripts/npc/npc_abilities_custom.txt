@@ -16828,7 +16828,7 @@
 	            {
 	                "FireEffect"
 	                {
-	                   "Target" "TARGET"
+	                   "Target"		 "CASTER"
 	                   "EffectName" "particles/custom/scout_ward_burst.vpcf"
 	                   "EffectAttachType" "follow_origin"
 	                }
@@ -16847,10 +16847,9 @@
 	                
 	                "RunScript"
 	                {
-	                    "ScriptFile"    "items/scout_ward.lua"
-	                    "Function"      "LivingClayActivate"
-						"Target" 		"TARGET"
-						"Caster"		"CASTER"
+						"ScriptFile"    "heroes/scout/ward.lua"
+	                    "Function"      "ScoutWardActivate"
+						"Target" 		"CASTER"
 	                }        
 					"FireSound"
 					{
@@ -16860,7 +16859,7 @@
 					"Damage"
 					{
 						"Type"	"DAMAGE_TYPE_MAGICAL"
-						"Damage"	"15"
+						"Damage"	"10"
 						"Target"
 						{
 							"Center"	"TARGET"
@@ -17158,8 +17157,10 @@
 	    {
 	        "modifier_wardcount"
 	        {
-			"IsHidden" "0"
-			"Passive" "1"
+			"IsHidden" 		"0"
+			"Passive" 		"1"
+			"TextureName"	"ability_scout_placeward"
+			"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT"
 	        }
 	    }
 	
@@ -17168,7 +17169,7 @@
 	        "01"
 	        {
 	            "var_type"  "FIELD_INTEGER"
-	            "max_stacks"    "6"
+	            "max_stacks"    "10"
 	        }
 	        "02"
 	        {
@@ -17179,6 +17180,11 @@
 	        {
 	            "var_type"                  "FIELD_INTEGER"
 	            "max_wards"                  "10"
+	        }        
+			"04"
+	        {
+	            "var_type"                  	"FIELD_INTEGER"
+	            "life_duration"                  "120"
 	        }
 	        "04"
 	        {
@@ -17381,7 +17387,7 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile" "items/living_clay.lua"
+				"ScriptFile" "heroes/scout/ward.lua"
 				"Function"   "WardTheArea"
 			}
 			"FireSound"
@@ -17391,17 +17397,7 @@
 			}
 	
 		}
-		"Modifiers"
-		{
-			"modifier_living_clay"
-	        {
-	            "States"
-	            {
-	                "MODIFIER_STATE_NO_HEALTH_BAR" "MODIFIER_STATE_VALUE_ENABLED"
-	                "MODIFIER_STATE_NO_UNIT_COLLISION" "MODIFIER_STATE_VALUE_ENABLED"
-	            }	
-	        }
-		}
+		
 		"AbilitySpecial"
 		{
 			"01"
@@ -17422,7 +17418,7 @@
 			"04"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"aoe"	"500"
+				"aoe"	"500 800 1200"
 			}
 			"05"
 			{

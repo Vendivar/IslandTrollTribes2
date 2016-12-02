@@ -27,7 +27,7 @@
             {
                 "FireEffect"
                 {
-                   "Target" "TARGET"
+                   "Target"		 "CASTER"
                    "EffectName" "particles/custom/scout_ward_burst.vpcf"
                    "EffectAttachType" "follow_origin"
                 }
@@ -46,10 +46,9 @@
                 
                 "RunScript"
                 {
-                    "ScriptFile"    "items/scout_ward.lua"
-                    "Function"      "LivingClayActivate"
-					"Target" 		"TARGET"
-					"Caster"		"CASTER"
+					"ScriptFile"    "heroes/scout/ward.lua"
+                    "Function"      "ScoutWardActivate"
+					"Target" 		"CASTER"
                 }        
 				"FireSound"
 				{
@@ -59,7 +58,7 @@
 				"Damage"
 				{
 					"Type"	"DAMAGE_TYPE_MAGICAL"
-					"Damage"	"15"
+					"Damage"	"10"
 					"Target"
 					{
 						"Center"	"TARGET"

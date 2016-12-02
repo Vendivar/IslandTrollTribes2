@@ -240,8 +240,6 @@ EmitSoundOn( "freezing", hero )
   
         end
     end
-	    			print("Freezing Indicator external")
-
 end
 
 function RemoveFreezingIndicator(hero)
@@ -273,10 +271,6 @@ EmitSoundOn( "freezing", hero )
 --  )
         end
     end	
-	
-			print("Frozen Indicator External")
-
-	
 end
 
 
