@@ -29,6 +29,7 @@ function PlaceWard( keys )
 	ScoutWard:AddNewModifier(caster, nil, "modifier_invisible",{duration = -1, hidden = true})	
 	ScoutWard:AddNewModifier(caster, nil, "modifier_kill", {duration = dur, hidden = false})
 	caster:SetModifierStackCount("modifier_wardcount", nil, curstacks + 1)
+	
 end
 
 
@@ -38,9 +39,15 @@ function ScoutWardActivate(keys)
 	local originalcaster = caster:GetOwner()
     local curstacks = originalcaster:GetModifierStackCount("modifier_wardcount", originalcaster)
 	caster:ForceKill(true)	
-	originalcaster:SetModifierStackCount("modifier_wardcount", nil, curstacks - 1)
 end
 
+function ScoutWardActivate2(keys)
+    local caster = keys.caster
+    local target = keys.target
+	local originalcaster = caster:GetOwner()
+    local curstacks = originalcaster:GetModifierStackCount("modifier_wardcount", originalcaster)
+	originalcaster:SetModifierStackCount("modifier_wardcount", nil, curstacks - 1)
+end
 
 
 function WardTheArea( keys )

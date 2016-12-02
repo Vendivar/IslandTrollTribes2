@@ -71,7 +71,7 @@
 		"04"
         {
             "var_type"                  	"FIELD_INTEGER"
-            "life_duration"                  "120"
+            "life_duration"                  "320"
         }
         "04"
         {

@@ -15,6 +15,15 @@
             "Aura_Types"  "DOTA_UNIT_TARGET_HERO"
             //"Aura_Flags"  "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 			"Aura_ApplyToCaster"	"0"
+			"OnDeath"
+			{
+                "RunScript"
+                {
+					"ScriptFile"    "heroes/scout/ward.lua"
+                    "Function"      "ScoutWardActivate2"
+					"Target" 		"CASTER"
+                }  
+			}	
 		}
 
 		"modifier_scout_ward"
@@ -28,7 +37,7 @@
                 "FireEffect"
                 {
                    "Target"		 "CASTER"
-                   "EffectName" "particles/custom/scout_ward_burst.vpcf"
+                   "EffectName" "particles/econ/items/lanaya/lanaya_epit_trap/templar_assassin_epit_trap_explode.vpcf"
                    "EffectAttachType" "follow_origin"
                 }
                 "ApplyModifier"
@@ -52,7 +61,7 @@
                 }        
 				"FireSound"
 				{
-					"EffectName"    "item.livingclayactive"
+					"EffectName"    "scout.wardactivate"
 					"Target"        "CASTER"
 				}
 				"Damage"

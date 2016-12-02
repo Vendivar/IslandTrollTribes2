@@ -1,7 +1,7 @@
 "item_clay_living"
 {
 	"ID"	"1098"
-	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_POINT"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
 	"BaseClass"	"item_datadriven"
 	"AbilityTextureName"	"clay_living"
 	"Model"	"models/items/wards/d2lp_4_ward/d2lp_4_ward.vmdl"
