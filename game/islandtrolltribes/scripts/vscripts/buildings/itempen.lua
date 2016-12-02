@@ -25,7 +25,7 @@ function CheckBuilding(keys)
     end
 
     if building:FindModifierByName("modifier_building_under_construction") then
-        print("Waiting for the construction!")
+        --print("Waiting for the construction!")
         return 0.2
     end
 
@@ -105,7 +105,8 @@ function Gather(keys)
                 table.insert(actual_items[itemName], v)
             end
 
-            if v.counted == building:GetEntityIndex() and not v.confirm then -- Confirming position.
+            if v.counted == building:GetEntityIndex() and not v.positioned and not v.confirm then -- Confirming position.
+                v.positioned = true
         		local grabFX = ParticleManager:CreateParticle("particles/econ/items/pugna/pugna_ward_ti5/pugna_ward_attack_light_ti_5.vpcf", PATTACH_OVERHEAD_FOLLOW, building)
                 ParticleManager:SetParticleControl(grabFX, 0, building:GetAbsOrigin())
                 ParticleManager:SetParticleControl(grabFX, 1, item:GetAbsOrigin())
@@ -118,7 +119,6 @@ function Gather(keys)
 
             if not v.counted then -- A new item!
                 v.counted = building:GetEntityIndex()
-                v.confirm = false
 
                 local building_item = building.items[itemName]
                 -- Add it to our inventory.
