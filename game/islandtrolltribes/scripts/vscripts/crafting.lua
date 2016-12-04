@@ -15,7 +15,6 @@ function ITT:CraftItem(event)
     local entity = event.entity
     local unit
 
-    local inventory_is_full = false
     print("Attempting to craft ",itemName," at ",section)
     if section == "Recipes" then
         unit = PlayerResource:GetSelectedHeroEntity(playerID)
@@ -33,12 +32,6 @@ function ITT:CraftItem(event)
             end
         end
 
-        -- If inventory is full, disable crafting
-        if GetNumItemsInInventory(unit) == 6 then
-            print("Inventory is full!")
-            inventory_is_full = true
-        end
-
         -- Disallow crafting on buildings under construction
         if not unit.state == "complete" then
             SendErrorMessage(playerID, "Building still under construction!")
@@ -46,12 +39,19 @@ function ITT:CraftItem(event)
     end
 
     local craftingItems = CanCombine(unit, section, itemName)
-    if craftingItems and not inventory_is_full then
+    if craftingItems then
         -- Clear the inventory items returned by the CanCombine aux
         ClearItems(craftingItems)
 
-        -- Create the resulting item
-        unit:AddItem(CreateItem(itemName, nil, nil))
+        if GetNumItemsInInventory(unit) == 6 then
+            local pos = unit:GetAbsOrigin() + RandomVector(200)
+            local item = CreateItem(itemName, nil, nil)
+            CreateItemOnPositionSync(unit:GetAbsOrigin(), item)
+            item:LaunchLoot(false, 200, 0.5, pos)
+        else
+            -- Create the resulting item
+            unit:AddItem(CreateItem(itemName, nil, nil))
+        end
 
         -- Fixes issue #238
         if itemName == "item_building_kit_fire_basic" then

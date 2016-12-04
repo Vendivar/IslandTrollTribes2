@@ -150,7 +150,10 @@ function Gather(keys)
         elseif not string.find(itemName, "_bush_") or not string.find(itemName, "_meat_") then
             if not v.launched then
                 v.launched = true
-                DropLaunch(building, item, 0.5, building:GetAbsOrigin() + RandomVector(400))
+                if (v:GetAbsOrigin() - building:GetAbsOrigin()):Length2D() < 150 then
+                    -- Only launch items that are too close to the itempen.
+                    DropLaunch(building, item, 0.5, building:GetAbsOrigin() + RandomVector(300))
+                end
             end
         end
     end
