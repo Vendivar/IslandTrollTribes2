@@ -117,6 +117,7 @@
         "modifier_axe_mage_masher_silent_strike"
         {
             "IsDebuff"    "1"
+            "AbilityTexture"    "silencer_curse_of_the_silent"
             "Properties"
             {
                 "MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"    "%mage_masher_silent_strike_dot"

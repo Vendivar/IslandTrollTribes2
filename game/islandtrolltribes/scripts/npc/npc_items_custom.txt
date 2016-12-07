@@ -964,7 +964,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"horn_mammoth"
-		"Model"	"models/props_gameplay/status_shield.vmdl"
+		"Model"	"models/horn_mammoth.vmdl"
 		"Effect"	"particles/custom/dropped_item_normal.vpcf"
 		"ItemCost"	"10"
 		"ItemShopTags"	"consumable"
@@ -977,7 +977,7 @@
 		"ItemDisassembleRule"	"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemKillable"	"1"
 		"ItemSellable"	"1"
-	
+		"AbilityCooldown"	"45"
 		"UIPickupSound"	"Item.PickUpGemShop"
 		"UIDropSound"	"Item.DropGemShop"
 		"WorldDropSound"	"Item.DropGemWorld"
@@ -1091,7 +1091,7 @@
 		
 		"Custom"
 		{
-			"ModelScale"	"1.5"
+			"ModelScale"	"1.2"
 		}
 	
 		"AbilitySpecial"
@@ -3221,6 +3221,7 @@
 	        "modifier_axe_mage_masher_silent_strike"
 	        {
 	            "IsDebuff"    "1"
+	            "AbilityTexture"    "silencer_curse_of_the_silent"
 	            "Properties"
 	            {
 	                "MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"    "%mage_masher_silent_strike_dot"
