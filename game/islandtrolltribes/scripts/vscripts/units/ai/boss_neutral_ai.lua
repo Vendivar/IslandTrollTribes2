@@ -40,7 +40,7 @@ function BossNeutralThink( thisEntity )
 		local targets = FindUnitsInRadius(
                             thisEntity:GetTeam(),
                             thisEntity:GetOrigin(),
-                            nil, 300,
+                            nil, 500,  --increased from 300 due to flea aura abuse
                             DOTA_UNIT_TARGET_TEAM_ENEMY,
                             DOTA_UNIT_TARGET_ALL,
                             DOTA_UNIT_TARGET_FLAG_FOW_VISIBLE + DOTA_UNIT_TARGET_FLAG_NO_INVIS,

@@ -6,7 +6,7 @@
     "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
     "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO"
     "AbilityCastPoint"          "0.0"
-    "AbilityCooldown"           "60"
+    "AbilityCooldown"           "30"
     "AbilityCastRange"          "0"
     "AbilityManaCost"           "40"
     "AoERadius"                 "%radius"

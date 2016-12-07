@@ -15,10 +15,6 @@
             "Aura_Types"  "DOTA_UNIT_TARGET_HERO"
             //"Aura_Flags"  "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 			"Aura_ApplyToCaster"	"0"
-            "States"
-			{
-				"MODIFIER_STATE_INVISIBLE"		"MODIFIER_STATE_VALUE_ENABLED"
-			}
 		}
 
 		"modifier_irontrap_ensnare"
@@ -57,6 +53,12 @@
                     "ModifierName"  "modifier_trap_stun"
 					"Target"	"TARGET"
                 }
+                "ApplyModifier"
+                {
+                    "ModifierName"  "modifier_irontrap_bleed"
+					"Target"	"TARGET"
+					"Duration" "10"
+                }
                 "RunScript"
                 {
                     "ScriptFile"    "items/trap_ensnare.lua"
@@ -90,7 +92,6 @@
 			"Duration"	"1.5"
 			"EffectName"	"particles/generic_gameplay/generic_stunned.vpcf"
 			"EffectAttachType"	"follow_overhead"
-			"Duration"	"0.1"
 			"IsDebuff"	"1"
 			"OverrideAnimation"	"ACT_DOTA_DISABLED"
 			"States"
@@ -99,6 +100,45 @@
 			}
 
 		}
+				
+		"modifier_irontrap_bleed"
+		{
+			"IsPurgable"	"0"
+			"IsDebuff"	"1"
+			"IsHidden"	"0"
+			"Duration" "15"
+			"ThinkInterval"	"1.0"
+			"OnIntervalThink"
+			{
+				"Random"
+				{
+					"Chance"	"30"
+					"OnSuccess"
+					{
+						"Damage"
+						{
+							"Type"   "DAMAGE_TYPE_PHYSICAL"
+							"Damage" "5"
+							"Target" "TARGET"
+						}
+						"FireEffect"
+						{
+						   "Target" "TARGET"
+						   "EffectName" "particles/custom/generic_hit_blood_2.vpcf"
+						   "EffectAttachType" "follow_origin"
+						}
+
+					}
+
+				}
+
+			}
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"-5"
+				"MODIFIER_PROPERTY_OVERRIDE_ANIMATION" "ACT_DOTA_INJURED"
+			}
+        }
 	}
 
 	"AbilitySpecial"

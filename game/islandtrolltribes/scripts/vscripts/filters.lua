@@ -296,7 +296,7 @@ function ITT:FilterExecuteOrder( filterTable )
         -- Buildings
         if IsCustomBuilding(unit) then
             local itemName = drop:GetContainedItem():GetAbilityName()
-            if (origin - position):Length2D() <= ITEM_TRANSFER_RANGE + 25 then
+            if (origin - position):Length2D() <= ITEM_TRANSFER_RANGE + 250 then
 
                 if itemName == "item_meat_raw" then
                     if unit:GetUnitName() == "npc_building_ensnare_trap" or unit:GetUnitName() == "npc_building_smoke_house" then

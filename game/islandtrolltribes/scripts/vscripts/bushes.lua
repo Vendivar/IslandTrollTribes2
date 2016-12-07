@@ -250,7 +250,7 @@ function CreateBushContainer(name, bush)
         OnLeftClick = function(playerID, container, unit, item, slot)
 
             if ContainerTransferItem(container, bush, unit, item) then
-                local hasTelegather = unit:HasModifier("modifier_telegather")
+                local hasTelegather = unit:HasModifier("modifier_herbtelegather")
                 if hasTelegather then
                     local didTeleport = TeleportItem(unit,item)
                 end
@@ -265,7 +265,7 @@ function CreateBushContainer(name, bush)
         OnRightClick = function(playerID, container, unit, item, slot)
             if ContainerTransferItem(container, bush, unit, item) then
                 unit:StartGesture(ACT_DOTA_ATTACK)
-                local hasTelegather = unit:HasModifier("modifier_telegather")
+                local hasTelegather = unit:HasModifier("modifier_herbtelegather")
                 if hasTelegather then
                     local didTeleport = TeleportItem(unit,item)
                 end
@@ -311,7 +311,7 @@ function CreateBushContainer(name, bush)
                             got_atleast_one = true
 
                             ContainerTransferItem(container, bush, unit, item)
-                            local hasTelegather = unit:HasModifier("modifier_telegather")
+                            local hasTelegather = unit:HasModifier("modifier_herbtelegather")
                             if hasTelegather then
                                 local didTeleport = TeleportItem(unit,item)
                             end
@@ -360,14 +360,14 @@ function TeleportItem(hero,originalItem)
     local newItem = CreateItem(originalItem:GetName(), nil, nil)
     local teleportSuccess = false
 
-    local telegatherBuff = hero:FindModifierByName("modifier_telegather")
+    local telegatherBuff = hero:FindModifierByName("modifier_herbtelegather")
     local telegatherAbility = telegatherBuff:GetAbility()
     local percentChance = telegatherAbility:GetSpecialValueFor("percent_chance")
    --print("Teleporting item : " .. telegatherAbility:GetAbilityName() .. ", " .. percentChance .."% chance")
 
-    local itemList = {"item_tinder", "item_flint", "item_stone", "item_stick", "item_bone", "item_meat_raw", "item_crystal_mana", "item_clay_ball", "item_river_root", "item_river_stem", "item_thistles", "item_acorn", "item_acorn_magic", "item_mushroom" }
+    local itemList = {"item_tinder", "item_flint", "item_stone", "item_stick", "item_bone", "item_meat_raw", "item_meat_cooked", "item_crystal_mana", "item_ball_clay", "item_hide_elk", "item_hide_wolf", "item_hide_bear", "item_magic_raw"}
     if hero:GetSubClass() == "herbal_master_telegatherer" then
-        itemList = {"item_herb_blue", "item_herb_butsu", "item_herb_orange", "item_herb_purple", "item_herb_yellow", "item_river_root", "item_river_stem", "item_spirit_water", "item_spirit_wind"}
+        itemList = {"item_herb_blue", "item_herb_butsu", "item_herb_orange", "item_herb_purple", "item_herb_yellow", "item_thistles", "item_river_root", "item_river_stem", "item_acorn", "item_acorn_magic", "item_mushroom", "item_spirit_water", "item_spirit_wind"}
     end
     for key,value in pairs(itemList) do
         if value == originalItem:GetName() then

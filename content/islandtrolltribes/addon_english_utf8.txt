@@ -61,7 +61,7 @@
         "npc_hero_priest_sage_spirit"           "Sage Spirit"
 		"npc_ghost"								"Ghost"
 		"npc_building_tower_omni"				"Building Tower Omni"
-		"npc_clay_living"						"Clay Living"		
+		"npc_clay_living"						"Living Clay"		
 		"npc_scout_ward"						"Scout Ward"
 		"npc_beehive_lesser"					"Lesser Beehive"		
 		
@@ -195,7 +195,7 @@
 		"npc_building_teleport_beacon"	"Teleport Beacon"
 		"npc_building_tent"				"Tent"
 		"npc_building_workshop"			"Workshop"
-		"npc_building_itempen" 			"Item Storage"
+		"npc_building_itempen" 			"Item Stockpile"
 		
 // Ships        
 
@@ -514,10 +514,11 @@
 "DOTA_Tooltip_Ability_ability_beastmaster_spiritofthebeast"		"Spirit of the Beast"
 "DOTA_Tooltip_Ability_ability_beastmaster_spiritofthebeast_bonus"		"%BONUS PER LEVEL:"
 "DOTA_Tooltip_Ability_ability_beastmaster_spiritofthebeast_chance"		"%CHANCE:"
-"DOTA_Tooltip_Ability_ability_beastmaster_spiritofthebeast_Description"		"PASSIVE - Deals 2 damage each time an enemy attacks the Beastmaster slowing their movement speed by 40% and attack speed by 5% (only affects animals)\nAlso gives an EXTRA chance per level to find baby animals. Also elk are attracted to the Beastmaster. Effect increases per level."
-"DOTA_Tooltip_modifier_spawn_chance"		"Spawn Chance"
-"DOTA_Tooltip_modifier_spawn_chance_Description"		""
-
+"DOTA_Tooltip_Ability_ability_beastmaster_spiritofthebeast_Description"		"PASSIVE - Deals 2 damage each time an enemy animal attacks the Beastmaster slowing their movement speed by 40% and attack speed by 5%\nAlso gives a passive extra chance per stack to find baby animals, and slow animals by 5%% per stack, increasing one stack per Beastmaster level.\n With this buff, elk are also attracted to the Beastmaster and are no longer panicked when attacked near him."
+"DOTA_Tooltip_modifier_spawn_chance"		"Spirit of the Beast"
+"DOTA_Tooltip_modifier_spawn_chance_Description"		"Chance per stack to increase slow amount and the chance a baby will spawn by 5%% to enemy animals."
+"DOTA_Tooltip_modifier_spiritofthebeastslow"                                      "Sprit of the Beast Attack Animal Attacker Slow"
+"DOTA_Tooltip_modifier_spiritofthebeastslow_Description"                          "Attacks are slowed by 40%%!"
 
 
 "DOTA_Tooltip_Ability_ability_beastmaster_spiritofthebeast_sub2"		"Spirit of the Beast"
@@ -680,13 +681,26 @@
 "DOTA_Tooltip_modifier_telegather"		"Telegather"
 "DOTA_Tooltip_modifier_telegather_Description"		""
 
+
+
+"DOTA_Tooltip_Ability_ability_gatherer_herbtelegather"		"Herb Telegather"
+"DOTA_Tooltip_Ability_ability_gatherer_herbtelegather_Description"		"The Herbmaster targets a friendly fire.\n\nFor the duration of the spell the Herbmaster has a chance to teleport any bush or herb items picked up back to the fire.\n\n<font color='#777777'>Hold ALT to view more information.</font>"
+"DOTA_Tooltip_Ability_ability_gatherer_herbtelegather_Note0" "Radar and Remote Telegatherers can teleport all naturally spawning items.\nHerbmaster Telegatherers can teleport all river and bush items."
+"DOTA_Tooltip_Ability_ability_gatherer_herbtelegather_duration"		"DURATION:"
+"DOTA_Tooltip_Ability_ability_gatherer_herbtelegather_percent_chance"		"PERCENT CHANCE:"
+"DOTA_Tooltip_modifier_herb_telegather"		"Herb Telegather"
+"DOTA_Tooltip_modifier_herb_telegather_Description"		"Teleporting herbs to the set fire location."
+
+
+
 "DOTA_Tooltip_ability_ability_gatherer_findherb"                                  "Find Herb"
-"DOTA_Tooltip_ability_ability_gatherer_findherb_Description"                      "Pings all Herb locations in an area. TOOL TIP IN WORK"
-"DOTA_Tooltip_ability_ability_gatherer_radarextender"                             "Radar extender passive"
-"DOTA_Tooltip_ability_ability_gatherer_radarextender_Description"                 "Radar ranged increased by "
+"DOTA_Tooltip_ability_ability_gatherer_findherb_Description"                      "Pings all herb locations in an area. Lets you specifically manipulate the radar to narrow down by each herb type."
+
+"DOTA_Tooltip_ability_ability_gatherer_radarextender"                             "Radar Extender"
+"DOTA_Tooltip_ability_ability_gatherer_radarextender_Description"                 "The Radar Telegather has all their radar based abilities range increased by 500"
 
 "DOTA_Tooltip_modifier_radar_extender"                                            "Radar Extender"
-"DOTA_Tooltip_modifier_radar_extender_Description"                                ""
+"DOTA_Tooltip_modifier_radar_extender_Description"                                "Radar range increased by 500"
 		
 		
 
@@ -1512,7 +1526,7 @@
 
 
 "DOTA_Tooltip_Ability_ability_scout_placeward"									"Place Ward"
-"DOTA_Tooltip_Ability_ability_scout_placeward_Description"						"Places a ward that gives vision up to 400 range away that lasts 120 seconds. Wards explode when stepped on and have timed life. You can only have up to 10 wards up at a time."
+"DOTA_Tooltip_Ability_ability_scout_placeward_Description"						"Places a ward that gives vision up to 400 range away. Wards explode when stepped on and have timed life. You can only have up to 10 wards up at a time."
 "DOTA_Tooltip_ability_ability_scout_placeward_max_wards"                          "MAX WARDS:"
 "DOTA_Tooltip_ability_ability_scout_placeward_damage"                             "DAMAGE:"
 "DOTA_Tooltip_ability_ability_scout_placeward_radius"                             "RADIUS:"
@@ -1946,10 +1960,6 @@
 "DOTA_Tooltip_modifier_spell_immunity_block"                                      "Spell Immunity Block"
 "DOTA_Tooltip_modifier_spell_immunity_block_Description"                          ""
 
-"DOTA_Tooltip_modifier_shield_battle_debuff"                                      "Battle Shield Debuff"
-"DOTA_Tooltip_modifier_shield_battle_debuff_Description"                          ""
-"DOTA_Tooltip_ability_item_shield_battle_bash_damage"                             "BASH DAMAGE:"
-
 		
 
 
@@ -2016,10 +2026,14 @@
 "DOTA_Tooltip_ability_item_ball_clay_Note0"		"\n\n-Hatchery Transmutable-"
 
 
-"DOTA_Tooltip_ability_item_beehive"		"Bee Hive"
-"DOTA_Tooltip_ability_item_beehive_Description"		"ACTIVE: Throw Beehive - Use to throw swarm of angry bees.\n\nIf you are brave enough you can carry this beehive "
-"DOTA_Tooltip_ability_item_beehive_Lore"		"Just like you suspected, it's swarming with bees."
-"DOTA_Tooltip_ability_item_beehive_Note0"		"WHAT"
+"DOTA_Tooltip_ability_item_beehive"							"Bee Hive"
+"DOTA_Tooltip_ability_item_beehive_Description"				"ACTIVE: Throw Beehive - Use to throw swarm of angry bees.\n\nIf you are brave enough you can carry this beehive "
+"DOTA_Tooltip_ability_item_beehive_Lore"					"Just like you suspected, it's swarming with bees."
+"DOTA_Tooltip_ability_item_beehive_Note0"					"WHAT"	
+"DOTA_Tooltip_ability_item_beehive_damage"					"DAMAGE:"
+"DOTA_Tooltip_ability_item_beehive_duration"				"DURATION:"
+
+		
 "DOTA_Tooltip_modifier_beehive_attack"                                            "Beehive Attack"
 "DOTA_Tooltip_modifier_beehive_attack_Description"                                ""
 "DOTA_Tooltip_modifier_lesserbeehivebeesaura"                                     "Lesser Beehive"
@@ -2106,6 +2120,10 @@
 "DOTA_Tooltip_ability_ability_ensnaretrap_ensnare_damage_per_second"              "DAMAGE PER SECOND:"
 "DOTA_Tooltip_ability_ability_ensnaretrap_ensnare_burn_radius"                    "BURN RADIUS:"
 "DOTA_Tooltip_ability_ability_ensnaretrap_ensnare_ensnare_duration"               "ENSNARE DURATION:"
+"DOTA_Tooltip_modifier_ensnaretrap_slow"                                          "Ensnare Trap Slow"
+"DOTA_Tooltip_modifier_ensnaretrap_slow_Description"                              "Covered in brambled vines you are slowed by 15%% for 10 seconds"
+
+		
 
 "DOTA_Tooltip_ability_ability_irontrap_ensnare"                                   "Ability Irontrap Ensnare"
 "DOTA_Tooltip_ability_ability_irontrap_ensnare_Description"                       ""
@@ -2415,7 +2433,7 @@
 
 
 
-"DOTA_Tooltip_ability_item_building_kit_itempen"                                  "Item Storage Kit"
+"DOTA_Tooltip_ability_item_building_kit_itempen"                                  "Item Stockpile Kit"
 "DOTA_Tooltip_ability_item_building_kit_itempen_Description"                      "This is a building that will allow you to store your items in the open and let your buildings have acess to all items stored within for crafting purposes."
 "DOTA_Tooltip_ability_item_building_kit_itempen_build_time"						   "BUILD TIME:"
 
@@ -2434,6 +2452,15 @@
 "DOTA_Tooltip_ability_item_building_kit_chest_storage_Description"		"Objects in this locked chest are safe from prying eyes and quick fingers."
 "DOTA_Tooltip_ability_item_building_kit_chest_storage_Lore"		"What is a home, if not a place to dump your stuff while you get more stuff?"
 "DOTA_Tooltip_ability_item_building_kit_chest_storage_Note0"		"Items in the item chest cannot be accessed by anybody other than the person who placed the storage hut. This does not appear as an ability"
+
+"DOTA_Tooltip_ability_item_building_kit_storage_chest"					"Item Chest Kit"
+"DOTA_Tooltip_ability_item_building_kit_storage_chest_Description"		"Use to build a storage chest that holds 6 items. Objects in this locked chest are safe from prying eyes and quick fingers."
+"DOTA_Tooltip_ability_item_building_kit_storage_chest_Lore"				"What is a home, if not a place to dump your stuff while you get more stuff?"
+"DOTA_Tooltip_ability_item_building_kit_storage_chest_Note0"			"Items in the item chest cannot be accessed by anybody other than the person who placed the storage hut. This does not appear as an ability"
+"DOTA_Tooltip_ability_item_building_kit_storage_chest_build_duration"	"BUILD DURATION:"
+"DOTA_Tooltip_ability_item_building_kit_storage_chest_build_time"		"BUILD TIME:"
+"DOTA_Tooltip_ability_item_building_kit_storage_chest_Description"		""
+
 
 "DOTA_Tooltip_ability_item_building_kit_fire_basic"		"Camp Fire Kit"
 "DOTA_Tooltip_ability_item_building_kit_fire_basic_build_duration"		"BUILD DURATION:"
@@ -2454,20 +2481,24 @@
 "DOTA_Tooltip_ability_item_building_kit_hatchery_Description"		"A nursery for hawk eggs. Certain ingredients will effect the power and species of the flying creature that is born."
 "DOTA_Tooltip_ability_item_building_kit_hatchery_Lore"		"Eugenics 101."
 "DOTA_Tooltip_ability_item_building_kit_hatchery_Note0"		"Hatch Egg:\n    - The first inventory slot must contain a hawk egg. The other 5 slots must contain items labeled with 'hatchery transmutable'"
-"DOTA_Tooltip_ability_item_building_kit_hut_basic"		"Troll Hut Kit"
-"DOTA_Tooltip_ability_item_building_kit_hut_basic_Description"		"A comfy hut that allows a good night's sleep."
-"DOTA_Tooltip_ability_item_building_kit_hut_basic_Lore"		"The hut whispers something about your mother.."
-"DOTA_Tooltip_ability_item_building_kit_hut_basic_Note0"		"Rest:\n    - Puts someone to sleep to restore 200 energy."
+
 "DOTA_Tooltip_ability_item_building_kit_hut_mud"		"Mud Hut Kit"
 "DOTA_Tooltip_ability_item_building_kit_hut_mud_build_duration"		"BUILD DURATION:"
 "DOTA_Tooltip_ability_item_building_kit_hut_mud_build_time"		"BUILD TIME:"
-"DOTA_Tooltip_ability_item_building_kit_hut_mud_Description"		"An insulated hut that allows a good night's sleep."
+"DOTA_Tooltip_ability_item_building_kit_hut_mud_Description"		"An insulated hut that allows a good night's sleep.\nGives 200 energy when resting in this."
 "DOTA_Tooltip_ability_item_building_kit_hut_mud_Lore"		"Much quieter than the Troll Hut."
 "DOTA_Tooltip_ability_item_building_kit_hut_mud_Note0"		"Rest:\n    - Puts someone to sleep to restore 200 energy."
+
+
 "DOTA_Tooltip_ability_item_building_kit_hut_troll"		"Troll Hut Kit"
+"DOTA_Tooltip_ability_item_building_kit_hut_troll_Description"		"A comfy hut that allows a good night's sleep.\nGives 200 energy when resting in this."
+"DOTA_Tooltip_ability_item_building_kit_hut_troll_Lore"		"The hut whispers something about your mother.."
+"DOTA_Tooltip_ability_item_building_kit_hut_troll_Note0"		"Rest:\n    - Puts someone to sleep to restore 200 energy."
 "DOTA_Tooltip_ability_item_building_kit_hut_troll_build_duration"		"BUILD DURATION:"
 "DOTA_Tooltip_ability_item_building_kit_hut_troll_build_time"		"BUILD TIME:"
-"DOTA_Tooltip_ability_item_building_kit_hut_troll_Description"		""
+
+
+
 "DOTA_Tooltip_ability_item_building_kit_hut_witch_doctor"		"Witch Doctor's Hut Kit"
 "DOTA_Tooltip_ability_item_building_kit_hut_witch_doctor_build_duration"		"BUILD DURATION:"
 "DOTA_Tooltip_ability_item_building_kit_hut_witch_doctor_build_time"		"BUILD TIME:"
@@ -2492,14 +2523,11 @@
 "DOTA_Tooltip_ability_item_building_kit_spirit_ward_Description"		"An ungodly tower said to be able to bring allies back from the dead."
 "DOTA_Tooltip_ability_item_building_kit_spirit_ward_Lore"		"Some call it necromancy, others call it forward thinking!"
 "DOTA_Tooltip_ability_item_building_kit_spirit_ward_Note0"		"Revive:\n    - Takes a calculated amount of time to revive a fallen troll dependant on his level. Only one person can revive at a time. This ability can be used by anyone who can see the ward and is on the team that erected the ward."
-"DOTA_Tooltip_ability_item_building_kit_storage_chest"		"Item Chest Kit"
-"DOTA_Tooltip_ability_item_building_kit_storage_chest_build_duration"		"BUILD DURATION:"
-"DOTA_Tooltip_ability_item_building_kit_storage_chest_build_time"		"BUILD TIME:"
-"DOTA_Tooltip_ability_item_building_kit_storage_chest_Description"		""
+
 "DOTA_Tooltip_ability_item_building_kit_tannery"		"Tannery Kit"
 "DOTA_Tooltip_ability_item_building_kit_tannery_build_duration"		"BUILD DURATION:"
 "DOTA_Tooltip_ability_item_building_kit_tannery_build_time"		"BUILD TIME:"
-"DOTA_Tooltip_ability_item_building_kit_tannery_Description"		"Used to make basic equipment."
+"DOTA_Tooltip_ability_item_building_kit_tannery_Description"		"Used to make basic equipment out of hides. Great for gearing up quickly!"
 "DOTA_Tooltip_ability_item_building_kit_tannery_Lore"		"Smells like jerky."
 "DOTA_Tooltip_ability_item_building_kit_tannery_Note0"		"Make Gloves:\n    - Makes gloves from two of the same hide in it's inventory.\nMake Boots:\n    - Makes boots from two of the same hide in it's inventory.\nMake Coat:\n    - Makes a coat from three of the same hide in it's inventory."
 "DOTA_Tooltip_ability_item_building_kit_teleport_beacon"		"Teleport Beacon Kit"
@@ -2508,20 +2536,23 @@
 "DOTA_Tooltip_ability_item_building_kit_teleport_beacon_Description"		"A building that can teleport any unit within range to it's exact adjacent spot on the other side of the tower. Useful for gathering or exploring across impassable terrain."
 "DOTA_Tooltip_ability_item_building_kit_teleport_beacon_Lore"		"A careful observer might ask where the troll's brother went."
 "DOTA_Tooltip_ability_item_building_kit_teleport_beacon_Note0"		"Teleport:\n    - Teleports an allied troll to the same position on the adjacent side of the tower. Range is determined by level of the beacon.\nUpgrade:\n    - Permanently levels up when a mana crystal is placed in it's inventory. The upgrade is permanent and consumes the mana crystal. Higher levels increase the range of the teleport.\n    - Level 1/2/3/4: 500/700/900/1100"
+
+
 "DOTA_Tooltip_ability_item_building_kit_tent"		"Tent Kit"
-"DOTA_Tooltip_ability_item_building_kit_tent_basic"		"Tent Kit"
-"DOTA_Tooltip_ability_item_building_kit_tent_basic_Description"		"A portable tent for comfortable napping on-the-go."
-"DOTA_Tooltip_ability_item_building_kit_tent_basic_Lore"		"This seems as good a spot as any.."
-"DOTA_Tooltip_ability_item_building_kit_tent_basic_Note0"		"Rest:\n    - Puts someone to sleep to restore 80 energy.\nPack Up:\n    - Packs the building into a tent kit.\n"
+"DOTA_Tooltip_ability_item_building_kit_tent_Description"		"A portable tent for comfortable napping on-the-go.\nGives 80 energy when resting in this tent."
+"DOTA_Tooltip_ability_item_building_kit_tent_Lore"		"This seems as good a spot as any.."
+"DOTA_Tooltip_ability_item_building_kit_tent_Note0"		"Rest:\n    - Puts someone to sleep to restore 80 energy.\nPack Up:\n    - Packs the building into a tent kit.\n"
 "DOTA_Tooltip_ability_item_building_kit_tent_build_duration"		"BUILD DURATION:"
 "DOTA_Tooltip_ability_item_building_kit_tent_build_time"		"BUILD TIME:"
-"DOTA_Tooltip_ability_item_building_kit_tent_Description"		""
+
+
 "DOTA_Tooltip_ability_item_building_kit_tower_omni"		"Omni-Defender Tower Kit"
 "DOTA_Tooltip_ability_item_building_kit_tower_omni_build_duration"		"BUILD DURATION:"
 "DOTA_Tooltip_ability_item_building_kit_tower_omni_build_time"		"BUILD TIME:"
 "DOTA_Tooltip_ability_item_building_kit_tower_omni_Description"		"A defensive structure used to defend a base or act as a forward outpost.\nCan use items given to it, such as scrolls, spears and potions.\nCan also store nearby raw meat."
 "DOTA_Tooltip_ability_item_building_kit_tower_omni_Lore"		"A newer model includes a gigantic all-seeing eye made of fire."
 "DOTA_Tooltip_ability_item_building_kit_tower_omni_Note0"		"Enemy Targetting:\n    - Allows autocasted use of items in the building's inventory.\n    - Range of 575 and only target trolls or creatures.\n    - Can only use items that would normally directly target creatures, such as scrolls, spears or offensive potions."
+
 "DOTA_Tooltip_ability_item_building_kit_trap_ensnare"		"Ensnare Trap Kit"
 "DOTA_Tooltip_ability_item_building_kit_trap_ensnare_build_duration"		"BUILD DURATION:"
 "DOTA_Tooltip_ability_item_building_kit_trap_ensnare_build_time"		"BUILD TIME:"
@@ -2547,8 +2578,8 @@
 "DOTA_Tooltip_ability_ability_ensnaretower_ensnare_Description"                   "Traps the target with a net, rendering it incapable of moving.\n\nImmobilizes enemy trolls for 3.25 seconds and 8 seconds on animals"
 "DOTA_Tooltip_ability_item_building_kit_tower_ensnare"                            "Ensnare Tower Kit"
 "DOTA_Tooltip_ability_item_building_kit_tower_ensnare_Description"                "Construct a tower which shoots enemies and ensnares them!"
-"DOTA_Tooltip_ability_ability_ensnaretower_ensnare_duration_hero"                 "DURATION HERO:"
-"DOTA_Tooltip_ability_ability_ensnaretower_ensnare_duration_animal"               "DURATION ANIMAL:"
+"DOTA_Tooltip_ability_ability_ensnaretower_ensnare_duration_hero"                 "HERO DURATION:"
+"DOTA_Tooltip_ability_ability_ensnaretower_ensnare_duration_animal"               "ANIMAL DURATION:"
 	
 
 "DOTA_Tooltip_ability_item_building_kit_workshop"		"Workshop Kit"
@@ -2575,25 +2606,32 @@
 	
 
 
-"DOTA_Tooltip_ability_item_cloak_camouflage"		"Camouflage Coat"
-"DOTA_Tooltip_ability_item_cloak_camouflage_all_stats"		"+$all"
-"DOTA_Tooltip_ability_item_cloak_camouflage_armor"		"+$armor"
-"DOTA_Tooltip_ability_item_cloak_camouflage_Description"		"ACTIVE: Invisibility - Use the cloak to hide yourself under a guise of invisibility.\nPASSIVE: Gives a bonus to armor, as well as heat every 35 seconds.\n\nThe fibers of this mysterious coat seem to reflect the adjacent side of the wearer. Can be used to hide in plain sight, however at the expense of precious heat and hunger."
-"DOTA_Tooltip_ability_item_cloak_camouflage_heat"		"HEAT PER TICK:"
-"DOTA_Tooltip_ability_item_cloak_camouflage_Lore"		"Keep absolutely still. Their vision is based on movement."
+"DOTA_Tooltip_ability_item_coat_camouflage"		"Camouflage Coat"
+"DOTA_Tooltip_ability_item_coat_camouflage_all_stats"		"+$all"
+"DOTA_Tooltip_ability_item_coat_camouflage_armor"		"+$armor"
+"DOTA_Tooltip_ability_item_coat_camouflage_Description"		"ACTIVE: Invisibility - Use the cloak to hide yourself under a guise of invisibility.\nPASSIVE: Gives a bonus to armor, as well as heat every 35 seconds.\n\nThe fibers of this mysterious coat seem to reflect the adjacent side of the wearer. Can be used to hide in plain sight, however at the expense of precious heat and hunger."
+"DOTA_Tooltip_ability_item_coat_camouflage_heat"		"HEAT PER TICK:"
+"DOTA_Tooltip_ability_item_coat_camouflage_Lore"		"Keep absolutely still. Their vision is based on movement."
+
+
+
 "DOTA_Tooltip_ability_item_cloak_fire"		"Cloak of Fire"
 "DOTA_Tooltip_ability_item_cloak_fire_Description"		"PASSIVE: Fire Cloak - Gives off immolation, burning all enemies nearby each second.\n\nBathes the user in flame, damaging all nearby enemies in melee range."
 "DOTA_Tooltip_ability_item_cloak_fire_immolation_damage"		"DAMAGE:"
 "DOTA_Tooltip_ability_item_cloak_fire_Lore"		"Comes with a warning label about preventing forest fires."
 "DOTA_Tooltip_ability_item_cloak_fire_tick_rate"		"TICK RATE:"
+"DOTA_Tooltip_ability_item_cloak_fire_armor"		"+$armor"
+
+
 "DOTA_Tooltip_ability_item_cloak_frost"		"Cloak of Frost"
 "DOTA_Tooltip_ability_item_cloak_frost_chance"		"CHANCE:"
-"DOTA_Tooltip_ability_item_cloak_frost_damage"		"+$armor"
+"DOTA_Tooltip_ability_item_cloak_frost_damage"		"DAMAGE:"
+"DOTA_Tooltip_ability_item_cloak_frost_armor"		"+$armor"	
 "DOTA_Tooltip_ability_item_cloak_frost_Description"		"PASSIVE: Frost Cloak - Gives a chance to slow an attacker and deal damage.\n\nA frozen mantle, it chills attackers on contact, slowing and dealing damage."
 "DOTA_Tooltip_ability_item_cloak_frost_Lore"		"Do not apply directly to the skin."
 "DOTA_Tooltip_ability_item_cloak_frost_slow"		"SLOW AMOUNT:"
-"DOTA_Tooltip_modifier_frost_armor_slow"                                          "Frost Armor Slow"
-"DOTA_Tooltip_modifier_frost_armor_slow_Description"                              ""
+"DOTA_Tooltip_modifier_frost_armor_slow"			"Frost Armor Slow"
+"DOTA_Tooltip_modifier_frost_armor_slow_Description"	"Moving and attacking slower."
 
 		
 "DOTA_Tooltip_ability_item_cloak_protection"		"Cloak of Protection"
@@ -2603,12 +2641,10 @@
 "DOTA_Tooltip_ability_item_cloak_protection_chance"		"CHANCE:"
 "DOTA_Tooltip_ability_item_cloak_protection_Description"		"PASSIVE: On being hit there is a chance that the wearer will block the damage and receive bonus damage and armor for 4 seconds.\n\nHidden magics within the cloak sometimes absorb all damage of a strike."
 "DOTA_Tooltip_ability_item_cloak_protection_Lore"		"Built Tonka tough."
-"DOTA_Tooltip_ability_item_cloak_protection_protect_duration"		"PROTECT DURATION:"
 "DOTA_Tooltip_modifier_cloakprotect"		"Cloak of Protection"
 "DOTA_Tooltip_modifier_cloakprotect_Description"		""
 "DOTA_Tooltip_modifier_cloakprotect_passive"		"Cloak of Protection Passive"
 "DOTA_Tooltip_modifier_cloakprotect_passive_Description"		""
-"DOTA_Tooltip_ability_item_cloak_protection_damage_blocked"                       "DAMAGE BLOCKED:"
 "DOTA_Tooltip_ability_item_cloak_protection_magic_resistance"                     "MAGIC RESISTANCE:"
 
 
@@ -2992,12 +3028,12 @@
 "DOTA_Tooltip_ability_item_net_basic_Note0"		                                  "CD 15s\nImmobilizes trolls for 5 seconds, or animals for 10 seconds."
 "DOTA_Tooltip_ability_item_net_max_stacks"		                                  "MAX STACKS:"
 "DOTA_Tooltip_ability_item_net_basic_duration_hero"                               "HERO DURATION:"
-"DOTA_Tooltip_ability_item_net_basic_duration_animal"                             "DURATION ANIMAL:"
+"DOTA_Tooltip_ability_item_net_basic_duration_animal"                             "ANIMAL DURATION:"
 "DOTA_Tooltip_ability_item_net_basic_damage"                                      "DAMAGE:"
 
 "DOTA_Tooltip_ability_item_net_hunting"                                           "Hunting Net"
 "DOTA_Tooltip_ability_item_net_hunting_Description"                               "Lob this on a elk. Be careful as this requires timing and precision!"
-"DOTA_Tooltip_ability_item_net_hunting_duration_animal"                           "DURATION ANIMAL:"
+"DOTA_Tooltip_ability_item_net_hunting_duration_animal"                           "ANIMAL DURATION:"
 "DOTA_Tooltip_ability_item_net_hunting_max_stacks"                                "MAX STACKS:"
 "DOTA_Tooltip_ability_item_net_hunting_radius"                                    "RADIUS:"
 
@@ -3287,6 +3323,10 @@
 "DOTA_Tooltip_modifier_shield_battle_spell_block"           "Battle Shield Spell Block"
 "DOTA_Tooltip_modifier_shield_battle_spell_block_Description"           "The next spell will be blocked!"
 
+"DOTA_Tooltip_modifier_shield_battle_debuff"                                      "Battle Shield Debuff"
+"DOTA_Tooltip_modifier_shield_battle_debuff_Description"                          ""
+"DOTA_Tooltip_ability_item_shield_battle_bash_damage"                             "BASH DAMAGE:"
+
 "DOTA_Tooltip_ability_item_shield_bone"		"Bone Shield"
 "DOTA_Tooltip_ability_item_shield_bone_armor"		"+$armor"
 "DOTA_Tooltip_ability_item_shield_bone_block_amount"		"BLOCK CHANCE:"
@@ -3437,7 +3477,7 @@
 "DOTA_Tooltip_ability_item_tinder"		"Tinder"
 "DOTA_Tooltip_ability_item_tinder_Description"		"Dry and flammable leaves used to start fires and piece together various tools."
 "DOTA_Tooltip_ability_item_tinder_Lore"		"Swipe left to match with hot locals in your area."
-"DOTA_Tooltip_ability_item_weapon_emp"		"EMP"
+"DOTA_Tooltip_ability_item_weapon_emp"		"EMP (Electromagic Pulse)"
 "DOTA_Tooltip_ability_item_weapon_emp_Description"		"ACTIVE: Detonate - The EMP goes off disabling all mechanical defence units in a large area around the caster.\n\nThrough all of your technical expertise you manage to fashion together an EMP that is quite devastating."
 "DOTA_Tooltip_ability_item_weapon_emp_Lore"		"Something feels distinctly ominous about it."
 "DOTA_Tooltip_ability_item_weapon_emp_Note0"		"Disables all mechanical structures in a 1000 AoE around caster.\nLasts 60 seconds"
@@ -3585,7 +3625,7 @@
 "DOTA_Tooltip_ability_ability_ensnare"		"Traps the target with a net, rendering it incapable of moving."
 "DOTA_Tooltip_ability_ability_ensnaretrap_ensnare"		"Ensnare"
 "DOTA_Tooltip_ability_ability_ensnaretrap_ensnare_Description"		"Encase the enemy in vines! Doing small damage over time and rooting them in place!"
-"DOTA_Tooltip_ability_ability_ensnaretrap_ensnare_duration_animal"		"DURATION ANIMAL:"
+"DOTA_Tooltip_ability_ability_ensnaretrap_ensnare_duration_animal"		"ANIMAL DURATION:"
 "DOTA_Tooltip_ability_ability_ensnaretrap_ensnare_duration_hero"		"HERO DURATION:"
 "DOTA_Tooltip_Ability_ability_get_corpse"		"Get Corpse"
 "DOTA_Tooltip_Ability_ability_get_corpse_Description"		"Picks up a nearby corpse. Can be auto-cast which will continuously pick up meat around the building until at full capacity (8 corpses) or until no more corpses remain."
@@ -3771,10 +3811,10 @@
 "Gatherer_Quest_1a"		"Great! Remember where stuff is at if you can."
 "Gatherer_Quest_2"		"Now try using radar manipulations and it's abilities"		
 "Gatherer_Quest_3"		"Always actively use item radar throughout the game!"		
-"Gatherer_Quest_4"		"Build a storage area in your base (near the middle)"
+"Gatherer_Quest_4"		"Build a item stockpile area in your base (near the middle)"
 "Gatherer_Quest_5"		"Great! This will allow your team to advance better."
-"Gatherer_Quest_6"		"Remember nearby craft buildings can also use the item storage"		
-"Gatherer_Quest_7"		"Remember nearby craft buildings can also use the item storage"		
+"Gatherer_Quest_6"		"Remember nearby craft buildings can also use the item stockpile"		
+"Gatherer_Quest_7"		"Remember nearby craft buildings can also use the item stockpile"		
 "Gatherer_Quest_8"		"Since its been some time lets use item radar again"
 "Gatherer_Quest_9"		"Find the blue and red pings to collect 3 stone and 1 flint"		
 "Gatherer_Quest_10"		"Use those items you just got to craft a armory (C)"		
@@ -3830,11 +3870,14 @@
 
 
 
+//PRIEST
+
+"Priest_Quest_1"			"Always try to keep your team safe."
 
 
+//SCOUT
 
-
-
+"Scout_Quest_1"			"Always try to keep your team alert of enimies."
 
 
 

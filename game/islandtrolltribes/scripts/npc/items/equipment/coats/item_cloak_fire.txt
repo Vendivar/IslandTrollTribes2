@@ -47,6 +47,10 @@
 
 			"EffectName"	"particles/econ/courier/courier_trail_international_2013_se/courier_international_2013_se_b.vpcf"
 			"EffectAttachType"	"follow_origin"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
+			}
 		}
 
 	}
@@ -63,6 +67,12 @@
 		{
 			"var_type"	"FIELD_INTEGER"
 			"tick_rate"	"1"
+		}
+
+		"03"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"armor"	"6"
 		}
 
 	}

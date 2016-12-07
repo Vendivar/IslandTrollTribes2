@@ -132,5 +132,18 @@
 	    }
 
 	}
-
+	
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"damage"	"5"
+		}
+		"02"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"duration"	"10"
+		}
+	}
 }

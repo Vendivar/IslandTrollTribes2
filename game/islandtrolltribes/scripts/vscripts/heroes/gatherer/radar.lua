@@ -27,6 +27,22 @@ function RadarTelegather(keys)
     end
 end
 
+
+function HerbRadarTelegather(keys)
+    local caster = keys.caster
+    local target = keys.target
+    local ability = keys.ability
+    local duration  = ability:GetSpecialValueFor("duration")
+    if target:GetUnitName() == "npc_building_fire_basic" or target:GetUnitName() == "npc_building_fire_mage" then
+        keys.caster.targetFire = target
+        ability:ApplyDataDrivenModifier(caster, caster, "modifier_herbtelegather", {duration = duration})
+        caster:EmitSound("Hero_ShadowShaman.Shackles.Cast")
+    else
+        SendErrorMessage(caster:GetPlayerOwnerID(),"#invalid_telegatherer_target")
+        caster:Interrupt()
+    end
+end
+
 -- ItemRadar, RadarManip
 -- ToggleOn RadarManip:         ItemRadar, RadarManip, Ability1, 2, 3, 4.
 function ToggleOnRadar( event )
@@ -130,7 +146,7 @@ function ToggleOnAdvancedRadar( event )
     local swapAbility = GetAbilityOnVisibleSlot(caster, 3)
     caster:SwapAbilities(swapAbility:GetAbilityName(), "ability_gatherer_advanced_radarmanipulations", false, true)
 
-    AdjustAbilityLayout(caster)
+    --AdjustAbilityLayout(caster)
 end
 
 

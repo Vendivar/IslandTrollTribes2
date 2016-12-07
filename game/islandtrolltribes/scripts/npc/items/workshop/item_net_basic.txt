@@ -113,6 +113,18 @@
             }
             "Duration"      "%duration_hero"
         }
+		
+			"ApplyModifier"
+        {
+            "ModifierName"  "modifier_truesight"
+            "Target"
+            {
+                "Center"    "TARGET"
+                "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+                "Types"     "DOTA_UNIT_TARGET_HERO"
+            }
+            "Duration"      "%duration_hero"
+        }
         
         "ApplyModifier"
         {

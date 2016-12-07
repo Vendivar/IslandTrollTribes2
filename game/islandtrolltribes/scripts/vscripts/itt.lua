@@ -734,10 +734,11 @@ function ITT:OnItemPickedUp(event)
     originalItem:SetPurchaser(hero)
 
     local hasTelegather = hero:HasModifier("modifier_telegather")
+    local hasHerbTelegather = hero:HasModifier("modifier_herbtelegather")
     local hasTelethief = hero:HasModifier("modifier_thief_telethief")
 
     -- Related to RadarTelegathererInit
-    if hasTelegather then
+    if hasTelegather or hasHerbTelegather then
         local didTeleport = TeleportItem(hero,originalItem)
     end
 
@@ -772,9 +773,9 @@ function TeleportItem(hero,originalItem)
     local percentChance = telegatherAbility:GetSpecialValueFor("percent_chance")
    --print("Teleporting item : " .. telegatherAbility:GetAbilityName() .. ", " .. percentChance .."% chance")
 
-    local itemList = {"item_tinder", "item_flint", "item_stone", "item_stick", "item_bone", "item_meat_raw", "item_crystal_mana", "item_clay_ball", "item_river_root", "item_river_stem", "item_thistles", "item_acorn", "item_acorn_magic", "item_mushroom" }
+    local itemList = {"item_tinder", "item_flint", "item_stone", "item_stick", "item_bone", "item_meat_raw", "item_meat_cooked", "item_crystal_mana", "item_ball_clay", "item_hide_elk", "item_hide_wolf", "item_hide_bear", "item_magic_raw"}
     if hero:GetSubClass() == "herbal_master_telegatherer" then
-        itemList = {"item_herb_blue", "item_herb_butsu", "item_herb_orange", "item_herb_purple", "item_herb_yellow", "item_river_root", "item_river_stem", "item_spirit_water", "item_spirit_wind"}
+        itemList = {"item_herb_blue", "item_herb_butsu", "item_herb_orange", "item_herb_purple", "item_herb_yellow", "item_thistles", "item_river_root", "item_river_stem", "item_acorn", "item_acorn_magic", "item_mushroom", "item_spirit_water", "item_spirit_wind"}
     end
     for key,value in pairs(itemList) do
         if value == originalItem:GetName() then

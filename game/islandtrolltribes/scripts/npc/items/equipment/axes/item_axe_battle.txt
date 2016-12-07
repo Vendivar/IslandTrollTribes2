@@ -9,7 +9,7 @@
     "Model"                     "models/items/faceless_void/battlefury/battlefury.vmdl"
     "Effect"	"particles/custom/dropped_item_normal.vpcf"
     
-    "AbilityCastRange"          "125"
+    "AbilityCastRange"          "150"
     "AbilityCastPoint"          "0.5"
     "AbilityCooldown"           "10.0"
     "AbilityChannelTime"        "0.5"

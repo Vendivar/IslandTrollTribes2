@@ -30,6 +30,11 @@
 	{
 		"particle_folder"	"particles/units/heroes/hero_viper"
 	}
+	"Custom"
+	{
+		"ModelScale"	"1.65"
+	}
+
 
 	"OnSpellStart"
 	{

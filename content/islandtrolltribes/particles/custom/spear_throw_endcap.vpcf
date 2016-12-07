@@ -43,7 +43,6 @@
 			m_LocalCoordinateSystemSpeedMin = [ 100.0, 0.0, 10.0 ]
 			m_fSpeedMax = 100.0
 			m_fSpeedMin = 100.0
-			m_nControlPointNumber = 3
 		},
 		{
 			_class = "C_INIT_RandomRadius"
@@ -62,12 +61,17 @@
 			_class = "C_INIT_RandomSequence"
 			m_nSequenceMin = 3
 		},
+		{
+			_class = "C_INIT_PositionOffset"
+			m_OffsetMin = [ 0.0, 0.0, 50.0 ]
+			m_OffsetMax = [ 0.0, 0.0, 50.0 ]
+		},
 	]
 	m_Emitters = 
 	[
 		{
 			_class = "C_OP_InstantaneousEmitter"
-			m_nParticlesToEmit = 3
+			m_nParticlesToEmit = 5
 		},
 	]
 }

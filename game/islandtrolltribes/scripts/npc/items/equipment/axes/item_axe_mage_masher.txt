@@ -6,10 +6,10 @@
     "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
     "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_TREE | DOTA_UNIT_TARGET_CUSTOM"
     "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_CUSTOM"
-    "AbilityCastRange"          "125"
+    "AbilityCastRange"          "150"
     "AbilityCastPoint"          "0.5"
     "AbilityCooldown"           "10.0"
-    "AbilityChannelTime"        "1.5"
+    "AbilityChannelTime"        "1.3"
  
     "Model"                     "models/items/antimage/arc_of_manta/arc_of_manta.vmdl"
     "Effect"	"particles/custom/dropped_item_normal.vpcf"

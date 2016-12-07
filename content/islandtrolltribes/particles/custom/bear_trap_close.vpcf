@@ -51,6 +51,7 @@
 		},
 		{
 			_class = "C_OP_PositionLock"
+			m_bDisableOperator = true
 		},
 		{
 			_class = "C_OP_LerpScalar"
@@ -86,6 +87,7 @@
 			_class = "C_INIT_PositionPlaceOnGround"
 			m_CollisionGroupName = "DEBRIS"
 			m_flMaxTraceLength = 2048.0
+			m_bDisableOperator = true
 		},
 		{
 			_class = "C_INIT_RandomRotation"
@@ -106,8 +108,8 @@
 	m_Children = 
 	[
 		{
-			m_ChildRef = resource:"particles/custom/blood_splurt.vpcf"
-			m_flDelay = 0.5
+			m_ChildRef = resource:"particles/custom/generic_hit_blood.vpcf"
+			m_flDelay = 0.7
 		},
 	]
 }

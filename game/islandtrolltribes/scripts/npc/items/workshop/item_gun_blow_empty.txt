@@ -20,4 +20,8 @@
 	"UIPickupSound"	"Item.PickUpGemShop"
 	"UIDropSound"	"Item.DropGemShop"
 	"WorldDropSound"	"Item.DropGemWorld"
+	"Custom"
+	{
+		"ModelScale"	"1.65"
+	}
 }

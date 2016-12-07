@@ -57,31 +57,31 @@
 		"01"
 		{
 			"var_type"	"FIELD_INTEGER"
-			"armor"	"9"
+			"all_stats"	"2"
 		}
-
+		
 		"02"
 		{
 			"var_type"	"FIELD_INTEGER"
-			"tick_rate"	"35"
+			"armor"	"9"
 		}
 
 		"03"
 		{
 			"var_type"	"FIELD_INTEGER"
-			"all_stats"	"2"
+			"magic_resist"	"20"
 		}
 
 		"04"
 		{
 			"var_type"	"FIELD_INTEGER"
-			"magic_resist"	"20"
+			"heat"	"8"
 		}
 
 		"05"
 		{
 			"var_type"	"FIELD_INTEGER"
-			"heat"	"8"
+			"tick_rate"	"35"
 		}
 
 	}

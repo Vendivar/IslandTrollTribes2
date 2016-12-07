@@ -1,0 +1,39 @@
+"ability_gatherer_conjureherb"
+{
+    "BaseClass"    			"ability_datadriven"
+    "AbilityBehavior"    	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "AbilityTextureName"    "ability_gatherer_radarmanipulations"
+    "MaxLevel"              "1"
+    "AbilityCastPoint"      "0.2"
+    "AbilityCooldown"       "%cooldown"
+	
+	"OnSpellStart"
+    {
+        "RunScript"
+        {
+            "ScriptFile"    "heroes/gatherer/conjureherb.lua"
+            "Function"      "Conjureherb"
+        }
+        "FireSound"
+        {
+            "EffectName"    "Hero_WitchDoctor.Voodoo_Restoration"
+            "Target"        "CASTER"
+        }
+    }
+
+    "AbilitySpecial"
+    {
+        "01"
+        {
+            "var_type"        "FIELD_INTEGER"
+            "cooldown"        "120 110 90 45"
+        }
+
+        "02"
+        {
+            "var_type"        "FIELD_INTEGER"
+            "range"            "2500"
+        }
+    }
+
+}

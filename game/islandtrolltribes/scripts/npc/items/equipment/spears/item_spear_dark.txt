@@ -14,7 +14,7 @@
     "ItemShareability"    "ITEM_FULLY_SHAREABLE_STACKING"
 
     "AbilityCastRange"              "800"
-    "AbilityCastPoint"              "0.5"
+    "AbilityCastPoint"              "0.35"
     "AbilityCooldown"               "2"
     "AbilitySharedCooldown"         "spear"
     
@@ -97,8 +97,8 @@
 
         "FireSound"
         {
-            "EffectName"    "Creep_Bad_Engine.Attack"
-            "Target"        "TARGET"
+            "EffectName"    "spear.throw"
+            "Target"    "CASTER"
         }
     }
 
@@ -138,9 +138,10 @@
 
         "FireSound"
         {
-            "EffectName"    "Creep_Bad_Engine.ProjectileImpact"
-            "Target"        "TARGET"
+            "EffectName"    "spear.impact"
+            "Target"    "TARGET"
         }
+
 
         "Random"
         {
@@ -159,7 +160,13 @@
                         "CASTER"    "attach_origin"
                         "CASTER"    "attach_origin"
                     }
-                }   
+                }
+				
+				"FireSound"
+				{
+					"EffectName"    "spear.success"
+					"Target"    "CASTER"
+				}				
             }
             "OnFailure"
             {

@@ -42,7 +42,7 @@
         "02"
         {
             "var_type"      "FIELD_INTEGER"
-            "heal_amount"   "40"
+            "heal_amount"   "45"
         }
     }
 

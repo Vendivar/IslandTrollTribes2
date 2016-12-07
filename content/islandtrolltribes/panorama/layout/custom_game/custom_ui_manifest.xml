@@ -11,7 +11,9 @@
       GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_TOP_HEROES, false );
       //GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_TOP_TIMEOFDAY, true );
       //GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_INVENTORY_ITEMS, false );      //Hides items to use panorama inventory replication
-
+	  
+	  GameUI.SetCameraDistance( 1500 ) //Added default zoom levels
+	  
       GameUI.CustomUIConfig().team_colors = {}
       GameUI.CustomUIConfig().team_colors[DOTATeam_t.DOTA_TEAM_GOODGUYS] = "#3455FF;"; // { 52, 85, 255 }  --      Blue
       GameUI.CustomUIConfig().team_colors[DOTATeam_t.DOTA_TEAM_BADGUYS] = "#ff3455;"; // { 255, 52, 85 }   --      Red

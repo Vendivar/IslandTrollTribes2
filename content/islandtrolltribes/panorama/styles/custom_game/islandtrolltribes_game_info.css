@@ -1,6 +1,6 @@
 .IttGameInfo
 {
-    width:100%;
+    width:95%;
     flow-children: down;
 }
  
@@ -26,7 +26,7 @@ Label
 #TitleName
 {
     color: #cccccc;
-    font-size: 64px;
+    font-size: 50px;
     margin-left: 16px;
     margin-top: -50px;
     text-transform: uppercase;
@@ -55,7 +55,15 @@ Label
 #ObjectiveHeader
 {
 	margin-top: 25px;
+	font-size: 28px;
 }
+
+#HowToPlayHeader
+{
+	margin-top: 55px;
+	font-size: 28px;
+}
+
 
 #FireRow
 {
@@ -77,21 +85,22 @@ Label
 
 #ResourcesRow
 {
-    margin-top: 40px;
+    margin-top: 70px;
 }
 
 #ResourcesImage
 {
     width: 340px;
     height: 256px;
-	margin-left: -35px;
+	margin-left: -45px;
+	margin-top: 55px;
 }
 
 #ResourcesText
 {
     margin-bottom: 150px;
-	margin-left: -40px;
-	margin-top: 30px;
+	margin-left: -30px;
+	margin-top: 20px;
 	text-align: left;
 }
 
@@ -109,13 +118,13 @@ Label
 
 #ItemsText
 {
-    margin-top: 50px;
+    margin-top: 80px;
 	text-align: left;
 }
 
 #TipsHeader
 {
-	margin-top: 28px;
+	margin-top: 100px;
 }
 
 #TipsRow

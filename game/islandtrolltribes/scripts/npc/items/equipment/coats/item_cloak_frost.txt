@@ -58,6 +58,10 @@
 				}
 
 			}
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
+			}
 
 		}
 
@@ -93,6 +97,12 @@
 		{
 			"var_type"	"FIELD_INTEGER"
 			"damage"	"16"
+		}
+
+		"04"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"armor"	"6"
 		}
 
 	}

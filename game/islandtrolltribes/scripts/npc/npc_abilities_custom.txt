@@ -3417,10 +3417,6 @@
 	            "Aura_Types"  "DOTA_UNIT_TARGET_HERO"
 	            //"Aura_Flags"  "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 				"Aura_ApplyToCaster"	"0"
-	            "States"
-				{
-					"MODIFIER_STATE_INVISIBLE"		"MODIFIER_STATE_VALUE_ENABLED"
-				}
 			}
 	
 			"modifier_trap_ensnare"
@@ -3465,6 +3461,13 @@
 	                    "ModifierName"  "modifier_trap_reveal"
 						"Target"	"CASTER"
 	                }
+					
+					"ApplyModifier"
+	                {
+	                    "ModifierName"  "modifier_ensnaretrap_slow"
+						"Duration" 		"10"
+						"Target"		"TARGET"
+	                }
 	                
 	                "RunScript"
 	                {
@@ -3491,6 +3494,19 @@
 				"States"
 				{
 					"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_DISABLED"
+				}
+	        }
+			
+			"modifier_ensnaretrap_slow"
+			{
+				"IsPurgable"	"0"
+				"IsDebuff"	"1"
+				"IsHidden"	"0"
+				"Duration" "10"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"-15"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"-15"
 				}
 	        }
 		}
@@ -3602,10 +3618,6 @@
 	            "Aura_Types"  "DOTA_UNIT_TARGET_HERO"
 	            //"Aura_Flags"  "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 				"Aura_ApplyToCaster"	"0"
-	            "States"
-				{
-					"MODIFIER_STATE_INVISIBLE"		"MODIFIER_STATE_VALUE_ENABLED"
-				}
 			}
 	
 			"modifier_irontrap_ensnare"
@@ -3644,6 +3656,12 @@
 	                    "ModifierName"  "modifier_trap_stun"
 						"Target"	"TARGET"
 	                }
+	                "ApplyModifier"
+	                {
+	                    "ModifierName"  "modifier_irontrap_bleed"
+						"Target"	"TARGET"
+						"Duration" "10"
+	                }
 	                "RunScript"
 	                {
 	                    "ScriptFile"    "items/trap_ensnare.lua"
@@ -3677,7 +3695,6 @@
 				"Duration"	"1.5"
 				"EffectName"	"particles/generic_gameplay/generic_stunned.vpcf"
 				"EffectAttachType"	"follow_overhead"
-				"Duration"	"0.1"
 				"IsDebuff"	"1"
 				"OverrideAnimation"	"ACT_DOTA_DISABLED"
 				"States"
@@ -3686,6 +3703,45 @@
 				}
 	
 			}
+					
+			"modifier_irontrap_bleed"
+			{
+				"IsPurgable"	"0"
+				"IsDebuff"	"1"
+				"IsHidden"	"0"
+				"Duration" "15"
+				"ThinkInterval"	"1.0"
+				"OnIntervalThink"
+				{
+					"Random"
+					{
+						"Chance"	"30"
+						"OnSuccess"
+						{
+							"Damage"
+							{
+								"Type"   "DAMAGE_TYPE_PHYSICAL"
+								"Damage" "5"
+								"Target" "TARGET"
+							}
+							"FireEffect"
+							{
+							   "Target" "TARGET"
+							   "EffectName" "particles/custom/generic_hit_blood_2.vpcf"
+							   "EffectAttachType" "follow_origin"
+							}
+	
+						}
+	
+					}
+	
+				}
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"-5"
+					"MODIFIER_PROPERTY_OVERRIDE_ANIMATION" "ACT_DOTA_INJURED"
+				}
+	        }
 		}
 	
 		"AbilitySpecial"
@@ -5673,7 +5729,7 @@
 	    "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
 	    "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO"
 	    "AbilityCastPoint"          "0.0"
-	    "AbilityCooldown"           "60"
+	    "AbilityCooldown"           "30"
 	    "AbilityCastRange"          "0"
 	    "AbilityManaCost"           "40"
 	    "AoERadius"                 "%radius"
@@ -6345,6 +6401,11 @@
 						"Damage"	"2"
 						"Type"	"DAMAGE_TYPE_MAGICAL"
 					}
+					"ApplyModifier"
+					{
+						"Target"	"ATTACKER"
+						"ModifierName"	"modifier_spiritofthebeastslow"
+					}
 	
 				}
 	
@@ -6355,7 +6416,6 @@
 				"IsHidden"	"1"
 				"Properties"
 				{
-					//"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"-40"
 					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"-5"
 				}
 	
@@ -6403,7 +6463,7 @@
 	
 			"modifier_spawn_chance"
 			{
-				"Hidden"	"1"
+				"IsHidden"	"0"
 				"OnCreated"
 				{
 					"RunScript"
@@ -6426,6 +6486,22 @@
 						"Remove"       "1"
 					}
 	
+				}
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"-5"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"-5"
+				}
+	
+			}
+			
+			"modifier_spiritofthebeastslow"
+			{
+				"IsHidden"	"0"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"-40"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"-40"
 				}
 	
 			}
@@ -7181,6 +7257,45 @@
 	        }
 	    }
 	}
+	"ability_gatherer_conjureherb"
+	{
+	    "BaseClass"    			"ability_datadriven"
+	    "AbilityBehavior"    	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	    "AbilityTextureName"    "ability_gatherer_radarmanipulations"
+	    "MaxLevel"              "1"
+	    "AbilityCastPoint"      "0.2"
+	    "AbilityCooldown"       "%cooldown"
+		
+		"OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"    "heroes/gatherer/conjureherb.lua"
+	            "Function"      "Conjureherb"
+	        }
+	        "FireSound"
+	        {
+	            "EffectName"    "Hero_WitchDoctor.Voodoo_Restoration"
+	            "Target"        "CASTER"
+	        }
+	    }
+	
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"        "FIELD_INTEGER"
+	            "cooldown"        "120 110 90 45"
+	        }
+	
+	        "02"
+	        {
+	            "var_type"        "FIELD_INTEGER"
+	            "range"            "2500"
+	        }
+	    }
+	
+	}
 	"ability_gatherer_findclayballcookedmeatorbone"
 	{
 	    "BaseClass"             "ability_datadriven"
@@ -7758,6 +7873,77 @@
 	            "range"            "2500"
 	        }
 	    }
+	}
+	"ability_gatherer_herbtelegather"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_CREEP"
+		"AbilityTextureName"	"ability_gatherer_herbtelegather"
+		"MaxLevel"	"3"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_4"
+		"AbilityCastPoint"	"0.5"
+		"AbilityCastRange"	"300"
+		"AbilityCooldown"	"120 120 120"
+		"AbilityManaCost"	"20 25 30"
+	    
+		"OnAbilityPhaseStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile" "heroes/gatherer/radar.lua"
+				"Function"   "RadarTelegatherInit"
+				"Target"     "TARGET"
+			}
+		}
+	    
+	    "OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile" "heroes/gatherer/radar.lua"
+				"Function"   "HerbRadarTelegather"
+				"Target"     "TARGET"
+			}
+		}
+	
+		"Modifiers"
+		{
+			"modifier_herbtelegather"
+			{
+				"OnCreated"
+				{
+					"AttachEffect"
+					{
+						"Target"	"CASTER"
+						"EffectName"	"particles/econ/generic/generic_buff_1/generic_buff_1.vpcf"
+						"EffectAttachType"	"follow_overhead"
+						"EffectLifeDurationScale"	"1"
+						"EffectColorA"	"255 255 0"
+					}
+	
+				}
+	
+			}
+	
+		}
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"duration"	"50.0 70.0 90.0"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"percent_chance"	"85.0 90.0 95.0"
+			}
+	
+		}
+	
 	}
 	"ability_gatherer_itemradar"
 	{
@@ -8513,7 +8699,17 @@
 	            }
 	            "Duration"      "%hero_duration"
 	        }
-	        
+	        "ApplyModifier"
+	        {
+	            "ModifierName"  "modifier_truesight"
+	            "Target"
+	            {
+	                "Center"    "TARGET"
+	                "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	                "Types"     "DOTA_UNIT_TARGET_HERO"
+	            }
+	            "Duration"      "%hero_duration"
+	        }
 	        "ApplyModifier"
 	        {
 	            "ModifierName"  "modifier_ensnare"

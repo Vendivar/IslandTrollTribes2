@@ -5,7 +5,7 @@
 	</styles>
 	<Panel class="IttGameInfo">
 		<Panel id="Title">
-			<Label id="TitleName" text="#addonname" />
+			<Label id="TitleName"  html="true" text="#addonname" />
 		</Panel>
 		<Label id="ObjectiveHeader" class="Header" html="true" text="#itt_game_info_header_objective" />
 		<Label id="BriefDescription" text="#itt_brief_description" />
@@ -36,6 +36,9 @@
 			<Label id="TipText10" class="TipText" html="true" text="#itt_game_info_tip10" />
 			<Label id="TipText11" class="TipText" html="true" text="#itt_game_info_tip11" />
 			<Label id="TipText12" class="TipText" html="true" text="#itt_game_info_tip12" />
+			<Label id="TipText13" class="TipText" html="true" text="#itt_game_info_tip13" />
+			<Label id="TipText14" class="TipText" html="true" text="#itt_game_info_tip14" />
+			<Label id="TipText15" class="TipText" html="true" text="#itt_game_info_tip15" />
 		</Panel>
 	</Panel>
 </root>

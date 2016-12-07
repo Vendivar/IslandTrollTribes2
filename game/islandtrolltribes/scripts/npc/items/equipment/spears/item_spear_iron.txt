@@ -15,7 +15,7 @@
     "ItemShareability"    "ITEM_FULLY_SHAREABLE_STACKING"
 
     "AbilityCastRange"              "700"
-    "AbilityCastPoint"              "0.5"
+    "AbilityCastPoint"              "0.35"
     "AbilityCooldown"               "8"
     "AbilitySharedCooldown"         "spear"
     
@@ -76,6 +76,11 @@
             "MoveSpeed"         "%projectile_speed"
 			"ProvidesVision" "0"
         }
+		"FireSound"
+        {
+            "EffectName"    "spear.throw"
+            "Target"    "CASTER"
+        }
     }
 
     "OnProjectileHitUnit"
@@ -110,6 +115,12 @@
             "Damage"    "%hurl_damage"
             "Type"      "DAMAGE_TYPE_PHYSICAL"
         }
+						
+	"FireSound"
+		{
+		"EffectName"    "spear.impact"
+		"Target"    "TARGET"
+		}
 
         "Random"
         {
@@ -129,6 +140,12 @@
                         "CASTER"    "attach_origin"
                     }
                 }   
+								
+				"FireSound"
+				{
+					"EffectName"    "spear.success"
+					"Target"    "CASTER"
+				}
             }
             "OnFailure"
             {

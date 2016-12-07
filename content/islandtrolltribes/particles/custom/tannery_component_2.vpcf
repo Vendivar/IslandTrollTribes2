@@ -2,7 +2,7 @@
 {
 	_class = "CParticleSystemDefinition"
 	m_bShouldHitboxesFallbackToRenderBounds = false
-	m_nMaxParticles = 40
+	m_nMaxParticles = 400
 	m_flConstantRadius = 56.0
 	m_ConstantColor = [ 0, 183, 138, 225 ]
 	m_Renderers = 
@@ -35,12 +35,6 @@
 			m_flStartScale = 0.5
 		},
 		{
-			_class = "C_OP_DistanceCull"
-			m_flDistance = 180.0
-			m_vecPointOffset = [ 0.0, 0.0, 64.0 ]
-			m_bDisableOperator = true
-		},
-		{
 			_class = "C_OP_ColorInterpolate"
 			m_ColorFade = [ 128, 0, 0, 255 ]
 			m_flFadeStartTime = 0.75
@@ -63,7 +57,6 @@
 			m_bSetOnce = true
 			m_nCP1 = 0
 			m_vecCP1Pos = [ 0.0, 0.0, 100.0 ]
-			m_bDisableOperator = true
 		},
 	]
 	m_Initializers = 

@@ -109,37 +109,31 @@
 	            "var_type"      "FIELD_INTEGER"
 	            "armor"         "5"
 	        }
-	
 	        "02"
-	        {
-	            "var_type"      "FIELD_INTEGER"
-	            "attack_speed"  "25"
-	        }
-	
-	        "03"
 	        {
 	            "var_type"      "FIELD_INTEGER"
 	            "all_stats"     "2"
 	        }
-	
-	        "04"
+	        "03"
 	        {
 	            "var_type"      "FIELD_INTEGER"
 	            "heat"          "2"
 	        }
-	
-	        "05"
+	        "04"
 	        {
 	            "var_type"      "FIELD_INTEGER"
 	            "tick_rate"     "35"
 	        }
-	
+	        "05"
+	        {
+	            "var_type"      "FIELD_INTEGER"
+	            "attack_speed"  "25"
+	        }
 	        "06"
 	        {
 	            "var_type"      "FIELD_INTEGER"
 	            "crit_chance"   "20"
 	        }
-	
 	        "07"
 	        {
 	            "var_type"      "FIELD_INTEGER"

@@ -22,6 +22,11 @@
 					"Damage"	"2"
 					"Type"	"DAMAGE_TYPE_MAGICAL"
 				}
+				"ApplyModifier"
+				{
+					"Target"	"ATTACKER"
+					"ModifierName"	"modifier_spiritofthebeastslow"
+				}
 
 			}
 
@@ -32,7 +37,6 @@
 			"IsHidden"	"1"
 			"Properties"
 			{
-				//"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"-40"
 				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"-5"
 			}
 
@@ -80,7 +84,7 @@
 
 		"modifier_spawn_chance"
 		{
-			"Hidden"	"1"
+			"IsHidden"	"0"
 			"OnCreated"
 			{
 				"RunScript"
@@ -103,6 +107,22 @@
 					"Remove"       "1"
 				}
 
+			}
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"-5"
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"-5"
+			}
+
+		}
+		
+		"modifier_spiritofthebeastslow"
+		{
+			"IsHidden"	"0"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"-40"
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"-40"
 			}
 
 		}

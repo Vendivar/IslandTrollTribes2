@@ -1,0 +1,71 @@
+"ability_gatherer_herbtelegather"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_CREEP"
+	"AbilityTextureName"	"ability_gatherer_herbtelegather"
+	"MaxLevel"	"3"
+	"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_4"
+	"AbilityCastPoint"	"0.5"
+	"AbilityCastRange"	"300"
+	"AbilityCooldown"	"120 120 120"
+	"AbilityManaCost"	"20 25 30"
+    
+	"OnAbilityPhaseStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile" "heroes/gatherer/radar.lua"
+			"Function"   "RadarTelegatherInit"
+			"Target"     "TARGET"
+		}
+	}
+    
+    "OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile" "heroes/gatherer/radar.lua"
+			"Function"   "HerbRadarTelegather"
+			"Target"     "TARGET"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_herbtelegather"
+		{
+			"OnCreated"
+			{
+				"AttachEffect"
+				{
+					"Target"	"CASTER"
+					"EffectName"	"particles/econ/generic/generic_buff_1/generic_buff_1.vpcf"
+					"EffectAttachType"	"follow_overhead"
+					"EffectLifeDurationScale"	"1"
+					"EffectColorA"	"255 255 0"
+				}
+
+			}
+
+		}
+
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"duration"	"50.0 70.0 90.0"
+		}
+		"02"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"percent_chance"	"85.0 90.0 95.0"
+		}
+
+	}
+
+}
