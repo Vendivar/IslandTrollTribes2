@@ -1,0 +1,52 @@
+<root>
+    <styles>
+        <include src="file://{resources}/styles/custom_game/arrow.css" />
+    </styles>
+    <scripts>
+        <include src="file://{resources}/scripts/custom_game/arrow.js" />
+    </scripts>
+    <Panel class="ArrowRoot" hittest="false">
+      <Panel id="Help_Arrows" hittest="false">
+        <Panel class="Arrow_ToggleArrows" hittest="false">
+          <Panel class="arrowhead_right" hittest="false" />
+          <Panel class="arrow_right" hittest="false" />
+        </Panel>
+        <Label class="Arrowtext_ToggleArrows" hittest="false" text="#Arrow_ToggleArrows" />
+        <Panel class="Arrow_Crafting" hittest="false">
+          <Panel class="arrowhead_left" hittest="false" />
+          <Panel class="arrow_left" hittest="false" />
+        </Panel>
+        <Label class="Arrowtext_Crafting" hittest="false" text="#Arrow_Crafting" />
+        <Panel class="Arrow_Heat" hittest="false">
+          <Panel class="arrow_down" hittest="false" />
+          <Panel class="arrowhead_down" hittest="false" />
+        </Panel>
+        <Label class="Arrowtext_Heat" hittest="false" text="#Arrow_Heat" />
+        <Panel class="Arrow_Meat" hittest="false">
+          <Panel class="arrow_down" hittest="false" />
+          <Panel class="arrowhead_down" hittest="false" />
+        </Panel>
+        <Label class="Arrowtext_Meat" hittest="false" text="#Arrow_Meat"/>
+        <Panel class="Arrow_Sleep" hittest="false">
+          <Panel class="arrow_down_sleep" hittest="false" />
+          <Panel class="arrowhead_down" hittest="false" />
+        </Panel>
+        <Label class="Arrowtext_Sleep" hittest="false" text="#Arrow_Sleep"/>
+        <Panel class="Arrow_Eat" hittest="false">
+          <Panel class="arrow_down_eat" hittest="false" />
+          <Panel class="arrowhead_down" hittest="false" />
+        </Panel>
+        <Label class="Arrowtext_Eat" hittest="false" text="#Arrow_Eat"/>
+        <Panel class="Arrow_DropMeat" hittest="false">
+          <Panel class="arrow_down_dropmeat" hittest="false" />
+          <Panel class="arrowhead_down" hittest="false" />
+        </Panel>
+        <Label class="Arrowtext_DropMeat" hittest="false" text="#Arrow_DropMeat"/>
+        <Panel class="Arrow_Subclass" hittest="false">
+          <Panel class="arrow_right" hittest="false" />
+          <Panel class="arrowhead_right" hittest="false" />
+        </Panel>
+        <Label class="Arrowtext_Subclass" hittest="false" text="#Arrow_Subclass"/>
+      </Panel>
+    </Panel>
+</root>

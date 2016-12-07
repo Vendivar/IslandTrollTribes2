@@ -50,11 +50,13 @@ function Quests:UpdateQuest(hero, value, id)
     local quest = hero.quests[id]
     if not quest then return end
 
-    quest.quest.context.current = value
-    quest.quest:SetTextReplaceValue(QUEST_TEXT_REPLACE_VALUE_CURRENT_VALUE, value)
-    quest.subquest:SetTextReplaceValue(QUEST_TEXT_REPLACE_VALUE_CURRENT_VALUE, value)
+    quest.context.current = value
+    local playerID = hero:GetPlayerID()
+    PlayerTables:SetTableValue("quests_"..playerID, id, {
+        current = value
+    })
 
-    if value == quest.quest.context.to then
+    if value == quest.context.to then
         Quests:End(hero, id)
     end
 end
@@ -69,9 +71,9 @@ end
 -- Also checks if the next quest in the questline only starts after a certain time.
 function Quests:End(hero, id)
     local quest = hero.quests[id]
-    if not quest or quest.quest.finished then return end
+    if not quest or quest.finished then return end
 
-    local type = quest.quest.type
+    local type = quest.type
     local next_quest = Quests.quests[type][id + 1]
     local in_questline = true
     if not next_quest then
@@ -80,15 +82,20 @@ function Quests:End(hero, id)
 
     -- Quest complete!
     EmitSoundOnClient("quest.complete", PlayerResource:GetPlayer(hero:GetPlayerID()))
-    quest.quest:CompleteQuest()
-    quest.quest.finished = true
+    quest.finished = true
+
+    local playerID = hero:GetPlayerID()
+    PlayerTables:SetTableValue("quests_"..playerID, id, {
+        finished = true
+    })
+
     print("Quest #"..id.." has ended.")
 
-    if quest.quest.context.type == "Hook" then
-        if quest.quest.context.event_type == "Custom" then
-            CustomGameEventManager:UnregisterListener(quest.quest.context.event_hook_id)
+    if quest.context.type == "Hook" then
+        if quest.context.event_type == "Custom" then
+            CustomGameEventManager:UnregisterListener(quest.context.event_hook_id)
         else
-            StopListeningToGameEvent(quest.quest.context.event_hook_id)
+            StopListeningToGameEvent(quest.context.event_hook_id)
         end
     end
 
@@ -102,11 +109,17 @@ end
 
 function Quests:StopQuests(keys)
     local hero = PlayerResource:GetSelectedHeroEntity(keys.playerID)
+
+    local IDs = {}
     for k,v in pairs(hero.quests) do
+        IDs[k] = {finished = true}
         local quest = hero.quests[k]
-        quest.quest:CompleteQuest()
-        quest.quest.finished = true
+        quest.finished = true
     end
+
+    local playerID = hero:GetPlayerID()
+    PlayerTables:SetTableValues("quests_"..playerID, IDs)
+
     hero.quests_stopped = true
 end
 
@@ -158,7 +171,7 @@ function Quests:StartTimer(hero, quest)
         callback = function()
             if not Quests:IsFinished(hero, quest.id) then
                 if quest.context.track then
-                    quest.context.track(hero, quest, self)
+                    quest.context.track(hero, quest)
                 else
                     local val
                     if quest.context.from < quest.context.to then
@@ -179,7 +192,7 @@ function Quests:StartDelayed(hero, type)
         if v.context.delay_start and v.context.delay_start > 0 and not Quests.quests[type][k - 1] then
             -- Checks that it has a delayed start, and it's not in the middle of a questline.
             Timers:CreateTimer({
-                endTime = v.context.delay_start - GameRules:GetGameTime(),
+                endTime = v.context.delay_start - (GameRules:GetGameTime() - hero.spawned_time),
                 callback = function()
                     Quests:StartQuest(hero, type, v, k)
                 end
@@ -190,7 +203,7 @@ end
 
 function Quests:StartNowOrDelayed(hero, type, quest, id)
     -- Check if it's delayed.
-    if quest.context.delay_start and quest.context.delay_start > 0 and GameRules:GetGameTime() < quest.context.delay_start then
+    if quest.context.delay_start and quest.context.delay_start > 0 and GameRules:GetGameTime() - hero.spawned_time < quest.context.delay_start then
         Timers:CreateTimer({
             endTime = quest.context.delay_start - GameRules:GetGameTime(),
             callback = function()
@@ -212,12 +225,6 @@ function Quests:StartQuest(hero, type, quest, id) -- Abstracting here.
         return
     end
 
-    local actual_quest = SpawnEntityFromTableSynchronous("quest", {
-      name = quest.name,
-      title = quest.title
-    })
-
-
     -- For progressive quests (with progress bars)
     -- Quest starts from "from"
     -- Ends in "to"
@@ -225,46 +232,47 @@ function Quests:StartQuest(hero, type, quest, id) -- Abstracting here.
 
     -- For quests that only have a single thing in them (no progress bar needed.)
     -- Leave out the "from" and "to" from the context.
+    if not quest.desc then quest.desc = "" end
+
+    local actual_quest = {
+      id = id,
+      title = quest.title,
+      desc = quest.desc,
+      context = quest.context,
+      finished = false,
+      type = type
+    }
 
     local show_progress = false
     if quest.context.from and quest.context.to then
         show_progress = true
-        quest.context.current = quest.context.from
+        actual_quest.context.current = quest.context.from
     end
 
-    actual_quest.context = quest.context
-    actual_quest.finished = false
-    actual_quest.type = type
-    actual_quest.id = id
-
-    local actual_subquest = SpawnEntityFromTableSynchronous("subquest_base", {
-      show_progress_bar = show_progress,
-      progress_bar_hue_shift = -119
-    })
-
-    actual_quest:AddSubquest(actual_subquest)
-
-    if show_progress then   -- Progress bar stuff.
-        actual_quest:SetTextReplaceValue(QUEST_TEXT_REPLACE_VALUE_CURRENT_VALUE, quest.context.from)
-        actual_subquest:SetTextReplaceValue(QUEST_TEXT_REPLACE_VALUE_CURRENT_VALUE, quest.context.from)
-
-        -- Progress bar can go in either direction.
-        if quest.context.from < quest.context.to then -- From left to right.
-            actual_quest:SetTextReplaceValue(QUEST_TEXT_REPLACE_VALUE_TARGET_VALUE, quest.context.to)
-            actual_subquest:SetTextReplaceValue(QUEST_TEXT_REPLACE_VALUE_TARGET_VALUE, quest.context.to)
-        else -- From right to left.
-            actual_quest:SetTextReplaceValue(QUEST_TEXT_REPLACE_VALUE_TARGET_VALUE, quest.context.from)
-            actual_subquest:SetTextReplaceValue(QUEST_TEXT_REPLACE_VALUE_TARGET_VALUE, quest.context.from)
-        end
-    end
+    actual_quest.show_progress = show_progress
 
     print("Quest #"..id.." has been started!")
     -- Track quests that have been started.
-    hero.quests[id] = {
-        quest = actual_quest,
-        subquest = actual_subquest
-    }
+    hero.quests[id] = actual_quest
 
+    local playerID = hero:GetPlayerID()
+    if not PlayerTables:TableExists("quests_"..playerID) then
+        PlayerTables:CreateTable("quests_"..playerID, {}, {playerID})
+    end
+
+    local progress_bar = false
+    if show_progress then
+        progress_bar = {
+            from = quest.context.from,
+            to = quest.context.to
+        }
+    end
+
+    PlayerTables:SetTableValue("quests_"..playerID, id, {
+        title = quest.title,
+        desc = quest.desc,
+        progress_bar = progress_bar
+    })
 
     Quests:StartTracking(hero, actual_quest)
 end
@@ -275,7 +283,7 @@ function Quests:BuildHooks()
     Quests.hooks.dota_item_picked_up = function(hero, quest, keys)
         local h = PlayerResource:GetSelectedHeroEntity(keys.PlayerID)
         if h == hero then
-            quest.context.event_func(hero, quest, keys.itemname, self)
+            quest.context.event_func(hero, quest, keys.itemname)
         end
     end
 
@@ -289,7 +297,7 @@ function Quests:BuildHooks()
         PrintTable(keys)
         local h = PlayerResource:GetSelectedHeroEntity(keys.player)
         if h == hero then
-            quest.context.event_func(hero, quest, keys.abilityname, self)
+            quest.context.event_func(hero, quest, keys.abilityname)
         end
     end
 
@@ -297,7 +305,7 @@ function Quests:BuildHooks()
     Quests.hooks.dota_player_used_ability = function(hero, quest, keys)
         local h = PlayerResource:GetSelectedHeroEntity(keys.PlayerID)
         if h == hero then
-            quest.context.event_func(hero, quest, keys.abilityname, self)
+            quest.context.event_func(hero, quest, keys.abilityname)
         end
     end
 
@@ -323,7 +331,7 @@ function Quests:BuildHooks()
         local killedUnit = EntIndexToHScript(keys.entindex_killed)
         local killer = EntIndexToHScript(keys.entindex_attacker or 0)
         if killer == hero then
-            quest.context.event_func(hero, quest, killedUnit, self)
+            quest.context.event_func(hero, quest, killedUnit)
         end
     end
 end

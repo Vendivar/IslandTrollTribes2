@@ -40,6 +40,7 @@ var mock_votes = [
   }
 ];
 
+var PlayerTables = GameUI.CustomUIConfig().PlayerTables;
 var custom_active = false;
 
 function onHover(cls) {
@@ -355,95 +356,95 @@ function VoteEnd() {
   })
 }
 
-function OnVoteConfirmed(vote) {
-  if (!vote.timer_up) {
-    var player_confirmed = Players.GetPlayerName(vote.player);
-    voted_players[vote.player] = {
-      player: player_confirmed,
-      settings: vote.settings
-    };
-
-    delete notvoted_players[vote.player];
-
-    setNotVoted();
-    setVoted();
+function addPlayer(player, settings) {
+  var player_confirmed = Players.GetPlayerName(player);
+  voted_players[player] = {
+    player: player_confirmed,
+    settings: settings
   }
-  else {
-    voted = true
+  $.Msg(voted_players);
 
-    $("#Gamemode_confirm").AddClass("hidden");
-    $("#Gamemode_confirmed").RemoveClass("hidden");
+  delete notvoted_players[player];
+
+  setNotVoted();
+  setVoted();
+}
+
+function EndingVoting(settings) {
+  $("#Gamemode_timer").AddClass("hidden");
+  $.Msg("Voting has ended!");
+  // Voting has ended!
+
+  VoteEnd();
+  $("#Gamemode_voted_header").text = $.Localize("#Gamemode_final_votes_header");
+
+  // Show settings.
+  var voted_settings = settings;
+  var custom_settings = settings.custom_settings;
+
+  // Map server's settings to local settings.
+  var map = {
+    "ALL_PICK": 1,
+    "ALL_RANDOM": 2,
+    "SAME_HERO": 3,
+    "FAST": 1,
+    "NORMAL": 2,
+    "SLOW": 3,
+    "noob_mode": "custom_noob",
+    "fixed_bush_spawning": "custom_fixedbush",
+    "norevive": "custom_norevive",
+    "noislandbosses": "custom_noislandbosses"
   }
 
-  if (vote.voting_ended) {
-    $("#Gamemode_timer").AddClass("hidden");
-    $.Msg("Voting has ended!");
-    // Voting has ended!
+  var mapped_settings = {};
+  mapped_settings[PICKS[map[voted_settings.pick_mode]]] = 1;
+  mapped_settings[SPEEDS[map[voted_settings.game_mode]]] = 1;
 
-    VoteEnd();
-    $("#Gamemode_voted_header").text = $.Localize("#Gamemode_final_votes_header");
-
-    // Show settings.
-    var voted_settings = vote.voted_settings;
-    var custom_settings = voted_settings.custom_settings;
-
-    // Map server's settings to local settings.
-    var map = {
-      "ALL_PICK": 1,
-      "ALL_RANDOM": 2,
-      "SAME_HERO": 3,
-      "FAST": 1,
-      "NORMAL": 2,
-      "SLOW": 3,
-      "noob_mode": "custom_noob",
-      "fixed_bush_spawning": "custom_fixedbush",
-      "norevive": "custom_norevive",
-      "noislandbosses": "custom_noislandbosses"
+  for (i in custom_settings) {
+    if (custom_settings[i] === 1) {
+      mapped_settings[map[i]] = 1;
     }
+  }
 
-    var mapped_settings = {};
-    mapped_settings[PICKS[map[voted_settings.pick_mode]]] = 1;
-    mapped_settings[SPEEDS[map[voted_settings.game_mode]]] = 1;
+  setVoted(mapped_settings);
 
-    for (i in custom_settings) {
-      if (custom_settings[i] === 1) {
-        mapped_settings[map[i]] = 1;
+  $.Schedule(3, function() {
+    // We only have to hide the gamemodes when we need the hero selection.
+    // This is also useful for testing.
+    if (voted_settings.pick_mode == "ALL_PICK") {
+      $("#Gamemode_container").AddClass("hidden");
+    }
+  });
+
+  // class_picker.js is handling the pick mode.
+}
+
+var listenerID;
+
+function IncomingData(table, changes, deletions) {
+  $.Msg(changes);
+  for (var key in changes) {
+    if (!isNaN(parseInt(key))) {  // Keys are playerIDs.
+      addPlayer(parseInt(key), changes[key]);
+    }
+    else {
+      if (key == "voting_ended" && changes[key]) {
+        EndingVoting(changes["voted_settings"]);
+        PlayerTables.UnsubscribeNetTableListener(listenerID);
+      }
+      else if (key == "timer_up" && changes[key]) {
+        voted = true;
+
+        $("#Gamemode_confirm").AddClass("hidden");
+        $("#Gamemode_confirmed").RemoveClass("hidden");
       }
     }
-
-    setVoted(mapped_settings);
-    //setPick(map[voted_settings.pick_mode], true);
-    //setSpeed(map[voted_settings.game_mode], true);
-
-    // Show custom options, regardless if they are actually set.
-    //custom_active = false;
-    //toggleCustom(true);
-
-    // Only change what you have to.
-    /*
-    var i = "";
-    var str = "";
-    for (var i in custom_settings) {
-      str = map[i];
-      if (settings[str] != custom_settings[i]) {
-        setCustomToggle(str, true);
-      }
-    }
-    */
-    $.Schedule(3, function() {
-      // We only have to hide the gamemodes when we need the hero selection.
-      // This is also useful for testing.
-      if (voted_settings.pick_mode == "ALL_PICK") {
-        $("#Gamemode_container").AddClass("hidden");
-      }
-    });
-
-    // class_picker.js is handling the pick mode.
   }
 }
 
 (function() {
-  GameEvents.Subscribe("vote_confirmed", OnVoteConfirmed);
+  // Changed voting from events to playertables. Better support for reconnection.
+  listenerID = PlayerTables.SubscribeNetTableListener("gamemode_votes", IncomingData);
 
   setPlayerList();
   setInitialTimer();

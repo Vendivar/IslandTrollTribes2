@@ -39,10 +39,6 @@ function OnArrowHoverOut() {
     $("#Arrow_btn").RemoveClass("hover");
 }
 
-function ToggleArrows() {
-    $("#Help_Arrows").ToggleClass("hidden");
-}
-
 function OnTabHover(num) {
     if (num !== activeTab) {
         tabs[num].AddClass("hover");
@@ -81,7 +77,6 @@ GameUI.CustomUIConfig().ToggleHelp = function() {
     }
     else {
         GameUI.DenyWheel();
-        $("#Help_Arrows").AddClass("hidden");
     }
 }
 

@@ -370,11 +370,14 @@ Special Herbs: New drop model.<br><br>"
 
 				//Help Menu
 
-
+"togglearrows"      "Toggle Help Arrows"
+"Arrow_ToggleArrows" "Toggle Help Arrows"
 "Arrow_Crafting"  	"Crafting Menu"
 "Arrow_Heat" 		"Heat Indicator"
 "Arrow_Meat" 		"Meat Stack Indicator"
-"Arrow_Toolkit" 	"Troll Toolkit"
+"Arrow_Sleep"   "Sleep"
+"Arrow_Eat"     "Eat Raw Meat"
+"Arrow_DropMeat" "Drop Raw Meat"
 "Arrow_Subclass" 	"Subclass Selection"
 
     "Stop_Tutorial" "Exit tutorial"

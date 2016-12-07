@@ -23,14 +23,15 @@ GameRules.quests_table.all = {
     [1] = { -- Global quests start from 1
         name = "#All_Quest_1",
         title = "#All_Quest_1",
+        desc = "Try to find a stick, a tinder and a flint from the wilds.",
         context = {
             type = "Time",
-            track = function(hero, quest, obj)
+            track = function(hero, quest)
                 local count = 0
                 if HasAnItem(hero, "item_stick") then count = count + 1 end
                 if HasAnItem(hero, "item_tinder") then count = count + 1 end
                 if HasAnItem(hero, "item_flint") then count = count + 1 end
-                Quests.UpdateQuest(obj, hero, count, quest.id)
+                Quests:UpdateQuest(hero, count, quest.id)
             end,
             from = 0,
             to = 3
@@ -41,9 +42,9 @@ GameRules.quests_table.all = {
         title = "#All_Quest_2",
         context = {
             type = "Time",
-            track = function(hero, quest, obj)
+            track = function(hero, quest)
                 if HasAnItem(hero, "item_building_kit_fire_basic") then
-                    Quests.End(obj, hero, quest.id)
+                    Quests:End(hero, quest.id)
                 end
             end
         }
@@ -67,16 +68,16 @@ GameRules.quests_table.all = {
             to = 45
         }
     },
-	
+
 --[7] = {
 --       name = "All_Quest_1c",
 --       title = "#All_Quest_1c",
 --       context = {
 --           type = "Time",
---			 track = function(hero, quest, obj)
+--			 track = function(hero, quest, )
 --                local count = 0
 --                if OnItemPickedUp then count = count + 1 end
---               Quests.UpdateQuest(obj, hero, count, quest.id)
+--               Quests:UpdateQuest(, hero, count, quest.id)
 --           end,
 --            delay_start = 40,
 --           from = 0,
@@ -93,15 +94,15 @@ GameRules.quests_table.all = {
 --            to = 15
  --       }
 --    },
-	
+
     [10] = {
         name = "All_Quest_1e",
         title = "#All_Quest_1e",
         context = {
             type = "Time",
-			 track = function(hero, quest, obj)
+			 track = function(hero, quest)
                  if hero:GetLevel() >= 2 then
-                     Quests.End(obj, hero, quest.id)
+                     Quests:End(hero, quest.id)
                  end
             end,
             delay_start = 50
@@ -112,9 +113,9 @@ GameRules.quests_table.all = {
         title = "#All_Quest_2e",
         context = {
             type = "Time",
-			track = function(hero, quest, obj)
+			track = function(hero, quest)
                 if hero:GetLevel() >= 3 then
-                     Quests.End(obj, hero, quest.id)
+                     Quests:End(hero, quest.id)
                 end
             end
         }
@@ -124,9 +125,9 @@ GameRules.quests_table.all = {
         title = "#All_Quest_3e",
         context = {
             type = "Time",
-			 track = function(hero, quest, obj)
+			 track = function(hero, quest)
                  if hero:GetLevel() >= 4 then
-                     Quests.End(obj, hero, quest.id)
+                     Quests:End(hero, quest.id)
                  end
             end
         }
@@ -136,9 +137,9 @@ GameRules.quests_table.all = {
         title = "#All_Quest_4e",
         context = {
             type = "Time",
-			 track = function(hero, quest, obj)
+			 track = function(hero, quest)
                 if hero:GetLevel() >= 5 then
-                    Quests.End(obj, hero, quest.id)
+                    Quests:End(hero, quest.id)
                 end
             end
         }
@@ -148,9 +149,9 @@ GameRules.quests_table.all = {
         title = "#All_Quest_5e",
         context = {
             type = "Time",
-			 track = function(hero, quest, obj)
+			 track = function(hero, quest)
                 if hero:GetLevel() >= 6 then
-                    Quests.End(obj, hero, quest.id)
+                    Quests:End(hero, quest.id)
                 end
             end
         }
@@ -160,10 +161,10 @@ GameRules.quests_table.all = {
         title = "#All_Quest_6e",
         context = {
             type = "Time",
-			track = function(hero, quest, obj)
+			track = function(hero, quest)
                 local count = 0
                 if hero:HasSubClass() then
-                    Quests.End(obj, hero, quest.id)
+                    Quests:End(hero, quest.id)
                 end
             end
         }
@@ -178,7 +179,7 @@ GameRules.quests_table.beastmaster = { -- Class quests start from 100
         title = "#BM_Quest_1",
         context = {
             type = "Time",
-            track = function(hero, quest, obj)
+            track = function(hero, quest)
                 local count = 0
                 if HasAnItem(hero, "item_hide_bear") then count = count + 1 end
                 if HasAnItem(hero, "item_hide_bear") then count = count + 1 end
@@ -186,14 +187,14 @@ GameRules.quests_table.beastmaster = { -- Class quests start from 100
                 if HasAnItem(hero, "item_hide_elk") then count = count + 1 end
                 if HasAnItem (hero, "item_hide_wolf") then count = count + 1 end
                 if HasAnItem (hero, "item_hide_wolf") then count = count + 1 end
-                Quests.UpdateQuest(obj, hero, count, quest.id)
+                Quests:UpdateQuest(hero, count, quest.id)
             end,
             delay_start = 35,
             from = 0,
             to = 2
-        }	
+        }
     },
-	
+
 	[101] = {
 		name = "BM_Quest_2",
         title = "#BM_Quest_2",
@@ -211,13 +212,11 @@ GameRules.quests_table.beastmaster = { -- Class quests start from 100
             delay_start = 3,
             event_type = "Standard",
             event_name = "dota_player_used_ability",
-            event_func = function(hero, quest, abilityName, obj)
-				if abilityName == "ability_beastmaster_tamepet" then
-                Quests.UpdateQuest(obj, hero, quest.context.current + 1, quest.id)
+            event_func = function(hero, quest, abilityName)
+    				if abilityName == "ability_beastmaster_tamepet" then
+                        Quests:End(hero, quest.id)
+        			end
 			end
-			end,			
-            from = 0,
-            to = 1
         }
     },
 
@@ -228,34 +227,29 @@ GameRules.quests_table.beastmaster = { -- Class quests start from 100
 				type = "Hook",
 				event_type = "Standard",
 				event_name = "dota_player_used_ability",
-				event_func = function(hero, quest, abilityName, obj)
-					if abilityName == "ability_beastmaster_pet_follow" then
-					Quests.UpdateQuest(obj, hero, quest.context.current + 1, quest.id)
+				event_func = function(hero, quest, abilityName)
+    				if abilityName == "ability_beastmaster_pet_follow" then
+    					Quests:End(hero, quest.id)
+    				end
 				end
-				end,			
-				from = 0,
-				to = 1
-			}	
+			}
 		},
-	
+
 	[107] = {
         name = "BM_Quest_3d",
         title = "#BM_Quest_3d",
         context = {
-				type = "Hook",
-				delay_start = 3,
-				event_type = "Standard",
-				event_name = "dota_player_used_ability",
-				event_func = function(hero, quest, abilityName, obj)
-					if abilityName == "ability_beastmaster_pet_stay" then
-					Quests.UpdateQuest(obj, hero, quest.context.current + 1, quest.id)
+			type = "Hook",
+			event_type = "Standard",
+			event_name = "dota_player_used_ability",
+			event_func = function(hero, quest, abilityName)
+				if abilityName == "ability_beastmaster_pet_stay" then
+					Quests:End(hero, quest.id)
 				end
-				end,			
-				from = 0,
-				to = 1
-			}	
+			end
+		}
     },
-	
+
     [108] = {
         name = "BM_Quest_4d",
         title = "#BM_Quest_4d",
@@ -265,24 +259,21 @@ GameRules.quests_table.beastmaster = { -- Class quests start from 100
             to = 50
         }
     },
-	
+
 	[109] = {
         name = "BM_Quest_5d",
         title = "#BM_Quest_5d",
-       context = {
-				type = "Hook",
-				delay_start = 3,
-				event_type = "Standard",
-				event_name = "dota_player_used_ability",
-				event_func = function(hero, quest, abilityName, obj)
-					if abilityName == "ability_beastmaster_pet_attack" then
+        context = {
+			type = "Hook",
+			event_type = "Standard",
+			event_name = "dota_player_used_ability",
+			event_func = function(hero, quest, abilityName)
+				if abilityName == "ability_beastmaster_pet_attack" then
 					print("used ability",abilityName)
-					Quests.UpdateQuest(obj, hero, quest.context.current + 1, quest.id)
+					Quests:End(hero, quest.id)
 				end
-				end,			
-				from = 0,
-				to = 1
-			}		
+			end
+		}
 	}
 }
 
@@ -299,16 +290,14 @@ GameRules.quests_table.gatherer = {
             delay_start = 3,
             event_type = "Standard",
             event_name = "dota_player_used_ability",
-            event_func = function(hero, quest, abilityName, obj)
+            event_func = function(hero, quest, abilityName)
 				if abilityName == "ability_gatherer_itemradar" then
-                Quests.UpdateQuest(obj, hero, quest.context.current + 1, quest.id)
+                    Quests:End(hero, quest.id)
+    			end
 			end
-			end,			
-            from = 0,
-            to = 1
         }
     },
-		
+
 	[101] = {
         name = "Gatherer_Quest_1",
         title = "#Gatherer_Quest_1a",
@@ -318,7 +307,7 @@ GameRules.quests_table.gatherer = {
             to = 10
         }
     },
-		
+
 	    [102] = {
         name = "Gatherer_Quest_2",
         title = "#Gatherer_Quest_2",
@@ -329,17 +318,17 @@ GameRules.quests_table.gatherer = {
             to = 2,
             event_type = "Standard",
             event_name = "dota_player_used_ability",
-			event_func = function(hero, quest, abilityName, obj)
-			local count =  quest.context.current
-			if abilityName == "ability_gatherer_findhide" then count = count + 1 end
-			if abilityName == "ability_gatherer_findclayballcookedmeatorbone" then count = count + 1 end
-			if abilityName == "ability_gatherer_findmushroomstickortinder" then count = count + 1 end
-                Quests.UpdateQuest(obj, hero, count, quest.id)
+			event_func = function(hero, quest, abilityName)
+    			local count =  quest.context.current
+    			if abilityName == "ability_gatherer_findhide" then count = count + 1 end
+    			if abilityName == "ability_gatherer_findclayballcookedmeatorbone" then count = count + 1 end
+    			if abilityName == "ability_gatherer_findmushroomstickortinder" then count = count + 1 end
+                Quests:UpdateQuest(hero, count, quest.id)
 			end
         }
     },
-	
-	
+
+
 	[103] = {
         name = "Gatherer_Quest_3",
         title = "#Gatherer_Quest_3",
@@ -349,25 +338,22 @@ GameRules.quests_table.gatherer = {
             to = 10
         }
     },
-	
+
 	[104] = {
         name = "Gatherer_Quest_4",
         title = "#Gatherer_Quest_4",
 		context = {
             type = "Hook",
-            delay_start = 1,
-            from = 0,
-            to = 1,
             event_type = "Standard",
             event_name = "dota_player_used_ability",
-			event_func = function(hero, quest, abilityName, obj)
-			if abilityName == "item_building_kit_itempen" then
-                Quests.UpdateQuest(obj, hero, quest.context.current + 1, quest.id)
-            end
+			event_func = function(hero, quest, abilityName)
+    			if abilityName == "item_building_kit_itempen" then
+                    Quests:End(hero, quest.id)
+                end
 			end,
         }
     },
-	
+
 	[105] = {
         name = "Gatherer_Quest_5",
         title = "#Gatherer_Quest_5",
@@ -404,38 +390,35 @@ GameRules.quests_table.gatherer = {
             to = 10
         }
     },
-	
-	
+
+
 	[109] = {
         name = "Gatherer_Quest_9",
         title = "#Gatherer_Quest_9",
         context = {
             type = "Time",
-            track = function(hero, quest, obj)
+            track = function(hero, quest)
                 local count = 0
                 if HasAnItem(hero, "item_flint") then count = count + 1 end
-                if HasAnItem(hero, "item_stone") then count = count + 1 end
-                if HasAnItem(hero, "item_stone") then count = count + 1 end
-                if HasAnItem(hero, "item_stone") then count = count + 1 end
-                Quests.UpdateQuest(obj, hero, count, quest.id)
+                local stones = HasAnItem(hero, "item_stone")
+                if stones then
+                    count = count + stones
+                end
+                Quests:UpdateQuest(hero, count, quest.id)
             end,
             from = 0,
             to = 4
-        }	
+        }
     },
 	[110] = {
         name = "Gatherer_Quest_10",
         title = "#Gatherer_Quest_10",
         context = {
             type = "Time",
-            track = function(hero, quest, obj)
-                local count = 0
-                if HasAnItem(hero, "item_building_kit_armory") then count = count + 1 end
-                Quests.UpdateQuest(obj, hero, count, quest.id)
+            track = function(hero, quest)
+                if HasAnItem(hero, "item_building_kit_armory") then Quests:End(hero, quest.id) end
             end,
-            from = 0,
-            to = 1
-        }	
+        }
     },
 	[111] = {
         name = "Gatherer_Quest_11",
@@ -454,7 +437,7 @@ GameRules.quests_table.gatherer = {
             from = 0,
             to = 15
         }
-    },	
+    },
 	[113] = {
         name = "Gatherer_Quest_13",
         title = "#Gatherer_Quest_13",
@@ -463,24 +446,26 @@ GameRules.quests_table.gatherer = {
             from = 0,
             to = 15
         }
-    },	
-	
+    },
+
 	[114] = {
         name = "Gatherer_Quest_14",
         title = "#Gatherer_Quest_14",
         context = {
             type = "Time",
-            track = function(hero, quest, obj)
+            track = function(hero, quest)
+                local flints = HasAnItem(hero, "item_flint")
+                local stones = HasAnItem(hero, "item_stone")
+
                 local count = 0
-                if HasAnItem(hero, "item_flint") then count = count + 1 end
-                if HasAnItem(hero, "item_flint") then count = count + 1 end
-                if HasAnItem(hero, "item_stone") then count = count + 1 end
-                if HasAnItem(hero, "item_stone") then count = count + 1 end
-                Quests.UpdateQuest(obj, hero, count, quest.id)
+                if flints then count = count + flints end
+                if stones then count = count + stones end
+
+                Quests:UpdateQuest(hero, count, quest.id)
             end,
             from = 0,
             to = 4
-        }	
+        }
     },
 	[115] = {
         name = "Gatherer_Quest_15",
@@ -490,17 +475,21 @@ GameRules.quests_table.gatherer = {
             from = 0,
             to = 15
         }
-    },	
+    },
 	[116] = {
         name = "Gatherer_Quest_16",
         title = "#Gatherer_Quest_16",
         context = {
         -- Hook for crafting two iron ingots
             type = "Time",
-            track = function(hero, quest, obj)
+            track = function(hero, quest)
 			local count =  quest.context.current
-                if HasAnItem(hero, "item_ingot_iron") then count = count + 1 end
-                Quests.UpdateQuest(obj, hero, count, quest.id)
+                local ingots = HasAnItem(hero, "item_ingot_iron")
+
+                local count = 0
+                if ingots then count = count + ingots end
+
+                Quests:UpdateQuest(hero, count, quest.id)
             end,
             from = 0,
             to = 2
@@ -521,15 +510,11 @@ GameRules.quests_table.gatherer = {
         context = {
             -- Hook for crafting iron axe
             type = "Time",
-            track = function(hero, quest, obj)
-                local count = 0
-                if HasAnItem(hero, "item_axe_iron") then count = count + 1 end
-                Quests.UpdateQuest(obj, hero, count, quest.id)
-            end,
-            from = 0,
-            to = 1
+            track = function(hero, quest)
+                if HasAnItem(hero, "item_axe_iron") then Quests:End(hero, quest.id) end
+            end
         }
-    },	
+    },
 	[120] = {
         name = "Gatherer_Quest_1d",
         title = "#Gatherer_Quest_1d",
@@ -540,21 +525,23 @@ GameRules.quests_table.gatherer = {
             to = 10
         }
     },
-	
+
 }
 
 -- ############### MAGE
 GameRules.quests_table.mage = {
-   [100] = { 
+   [100] = {
         name = "Mage_Quest_1",
         title = "#Mage_Quest_1",
         context = {
             type = "Time",
-            track = function(hero, quest, obj)
+            track = function(hero, quest)
+                local tinders = HasAnItem(hero, "item_tinder")
+
                 local count = 0
-                if HasAnItem(hero, "item_tinder") then count = count + 1 end
-                if HasAnItem(hero, "item_tinder") then count = count + 1 end
-                Quests.UpdateQuest(obj, hero, count, quest.id)
+                if tinders then count = count + tinders end
+
+                Quests:UpdateQuest(hero, count, quest.id)
             end,
             from = 0,
             to = 2
@@ -565,9 +552,9 @@ GameRules.quests_table.mage = {
         title = "#Mage_Quest_2",
         context = {
             type = "Time",
-            track = function(hero, quest, obj)
+            track = function(hero, quest)
                 if HasAnItem(hero, "item_net_hunting") then
-                    Quests.End(obj, hero, quest.id)
+                    Quests:End(hero, quest.id)
                 end
             end
         }
@@ -582,22 +569,22 @@ GameRules.quests_table.mage = {
             to = 3,
             event_type = "Standard",
             event_name = "dota_player_used_ability",
-			event_func = function(hero, quest, abilityName, obj)
-			if abilityName == "item_net_hunting" then
-                Quests.UpdateQuest(obj, hero, quest.context.current + 1, quest.id)
-            end
+			event_func = function(hero, quest, abilityName)
+    			if abilityName == "item_net_hunting" then
+                    Quests:UpdateQuest(hero, quest.context.current + 1, quest.id)
+                end
 			end,
         }
     },
-	
+
     [103] = {
         name = "Mage_Quest_5",
         title = "#Mage_Quest_5",
         context = {
             type = "Time",
-			 track = function(hero, quest, obj)
+			 track = function(hero, quest)
                  if hero:GetLevel() >= 2 then
-                     Quests.End(obj, hero, quest.id)
+                     Quests:End(hero, quest.id)
                  end
             end,
         }
@@ -612,16 +599,16 @@ GameRules.quests_table.mage = {
             to = 10,
             event_type = "Standard",
             event_name = "dota_player_used_ability",
-			event_func = function(hero, quest, abilityName, obj)
-			local count =  quest.context.current
-			if abilityName == "ability_mage_negativeblast" then count = count + 1 end
-			if abilityName == "item_net_hunting" then count = count + 1 end
-			if abilityName == "ability_mage_flamespray" then count = count + 1 end
-                Quests.UpdateQuest(obj, hero, count, quest.id)
+			event_func = function(hero, quest, abilityName)
+    			local count =  quest.context.current
+    			if abilityName == "ability_mage_negativeblast" then count = count + 1 end
+    			if abilityName == "item_net_hunting" then count = count + 1 end
+    			if abilityName == "ability_mage_flamespray" then count = count + 1 end
+                Quests:UpdateQuest(hero, count, quest.id)
 			end
         }
     },
-	
+
 }
 
 -- ############### PRIEST
@@ -657,16 +644,17 @@ GameRules.quests_table.scout = {
 -- ############### THIEF
 
 GameRules.quests_table.thief = {
-   [100] = { 
+   [100] = {
         name = "Thief_Quest_1",
         title = "#Thief_Quest_1.",
         context = {
             type = "Time",
-            track = function(hero, quest, obj)
+            track = function(hero, quest)
+                local tinders = HasAnItem(hero, "item_tinder")
+
                 local count = 0
-                if HasAnItem(hero, "item_tinder") then count = count + 1 end
-                if HasAnItem(hero, "item_tinder") then count = count + 1 end
-                Quests.UpdateQuest(obj, hero, count, quest.id)
+                if tinders then count = count + tinders end
+                Quests:UpdateQuest(hero, count, quest.id)
             end,
             from = 0,
             to = 2
@@ -677,9 +665,9 @@ GameRules.quests_table.thief = {
         title = "#Thief_Quest_2",
         context = {
             type = "Time",
-            track = function(hero, quest, obj)
+            track = function(hero, quest)
                 if HasAnItem(hero, "item_net_hunting") then
-                    Quests.End(obj, hero, quest.id)
+                    Quests:End(hero, quest.id)
                 end
             end
         }
@@ -694,10 +682,10 @@ GameRules.quests_table.thief = {
             to = 3,
             event_type = "Standard",
             event_name = "dota_player_used_ability",
-			event_func = function(hero, quest, abilityName, obj)
-			if abilityName == "item_net_hunting" then
-                Quests.UpdateQuest(obj, hero, quest.context.current + 1, quest.id)
-            end
+			event_func = function(hero, quest, abilityName)
+    			if abilityName == "item_net_hunting" then
+                    Quests:UpdateQuest(hero, quest.context.current + 1, quest.id)
+                end
 			end,
         }
     },
@@ -714,13 +702,13 @@ GameRules.quests_table.hunter = {
             delay_start = 3,
             event_type = "Standard",
             event_name = "dota_player_used_ability",
-            event_func = function(hero, quest, abilityName, obj)
+            event_func = function(hero, quest, abilityName)
 				if abilityName == "ability_hunter_ensnare" then
-                Quests.UpdateQuest(obj, hero, quest.context.current + 1, quest.id)
-			end
-			end,			
+                    Quests:UpdateQuest(hero, quest.context.current + 1, quest.id)
+    			end
+			end,
             from = 0,
-            to = 1
+            to = 2
         }
     },
 	[101] = {
@@ -728,9 +716,9 @@ GameRules.quests_table.hunter = {
         title = "#Hunter_Quest_2",
         context = {
             type = "Time",
-			 track = function(hero, quest, obj)
+			 track = function(hero, quest)
                  if hero:GetLevel() == 2 then
-                     Quests.End(obj, hero, quest.id)
+                     Quests:End(hero, quest.id)
                  end
             end,
             delay_start = 50
@@ -741,19 +729,18 @@ GameRules.quests_table.hunter = {
         title = "#Hunter_Quest_.",
 		context = {
             type = "Hook",
-            delay_start = 3,
             event_type = "Standard",
             event_name = "dota_player_used_ability",
-            event_func = function(hero, quest, abilityName, obj)
+            event_func = function(hero, quest, abilityName)
 				if abilityName == "ability_hunter_track" then
-                Quests.UpdateQuest(obj, hero, quest.context.current + 1, quest.id)
-			end
-			end,			
+                    Quests:UpdateQuest(hero, quest.context.current + 1, quest.id)
+    			end
+			end,
             from = 0,
-            to = 1
+            to = 2
         }
     },
-	[105] = { 
+	[105] = {
         name = "Hunter_Quest_1d",
         title = "#Hunter_Quest_1d",
         context = {

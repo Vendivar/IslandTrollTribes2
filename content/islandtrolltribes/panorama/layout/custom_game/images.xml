@@ -280,6 +280,11 @@
         <Image style="opacity:0;" src="file://{images}/crafting/minus.png" />
         <Image style="opacity:0;" src="file://{images}/crafting/plus.png" />
 
+        <Image style="opacity:0;" src="file://{images}/quests/progress_bar_bottom.png" />
+        <Image style="opacity:0;" src="file://{images}/quests/progress_bar_top.png" />
+        <Image style="opacity:0;" src="file://{images}/quests/quest_marker_nocircle.png" />
+        <Image style="opacity:0;" src="file://{images}/quests/quest_marker.png" />
+
         <Image style="opacity:0;" src="file://{images}/help_menu/background.png" />
         <Image style="opacity:0;" src="file://{images}/gamemode_selector/voting_gui_overlay3.png" />
 

@@ -359,16 +359,22 @@ function ReorderItems( caster )
 end
 
 function HasAnItem(unit, itemName)
+    local count = 0
     for i=0,5 do
         local item = unit:GetItemInSlot(i)
         if item then
             local name = item:GetAbilityName()
             if name == itemName then
-                return true
+                count = count + 1
             end
         end
     end
-    return false
+
+    if count > 0 then   -- Backwards-compatibility
+        return count
+    else
+        return false
+    end
 end
 
 ------------------------------------------------

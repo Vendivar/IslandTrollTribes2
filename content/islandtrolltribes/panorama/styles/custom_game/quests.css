@@ -1,0 +1,77 @@
+
+.QuestsRoot {
+    width: 100%;
+    height: 100%;
+}
+
+#QuestsMainPanel {
+    horizontal-align: right;
+    vertical-align: top;
+    margin: 100px;
+
+    flow-children: down;
+}
+
+.Quest {
+    width: 350px;
+    margin: 20px 0px;
+    padding-left: 40px;
+}
+
+.QuestContent {
+    margin-top: 4px;
+    flow-children: down;
+}
+
+.QuestIcon {
+    border: 3px solid #ffff1a;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+
+    x: -40px;
+
+    font-size: 20px;
+    font-family: Radiance;
+    color: #ffff1a;
+    text-align: center;
+
+    background-color: gradient(radial, 0% 0%, 0% 0%, 100% 100%, from(#696969), to(#000000));
+}
+
+.QuestHeader {
+    font-size: 20px;
+    font-family: Radiance;
+    color: #ffff1a;
+
+    text-shadow: 3px 3px 4px #000000;
+
+    margin-bottom: 10px;
+}
+
+.QuestDesc {
+    font-size: 16px;
+    font-family: Radiance;
+    color: #ffffff;
+
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.QuestProgressBarBg {
+    margin-left: 20px;
+    width: 200px;
+    height: 20px;
+
+    background-color: #103010;
+    border-radius: 10px;
+}
+
+.QuestProgressBar {
+    width: 100px;
+    height: 20px;
+
+    background-image: url("s2r://panorama/images/quests/progress_bar_top.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}

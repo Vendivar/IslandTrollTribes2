@@ -56,7 +56,7 @@ XP_PER_LEVEL_TABLE = {
  }
 
 -- If this is enabled the game is in testing mode, and as a result nobody can win
-GAME_TESTING_CHECK          = true
+-- GAME_TESTING_CHECK          = true
 
 -- This function initializes the game mode and is called before anyone loads into the game
 -- It can be used to pre-initialize any values/tables that will be needed later
@@ -232,7 +232,7 @@ function ITT:InitGameMode()
     self.Chat = Chat(playerList,TEAM_COLORS)
 
     -- Load Quests
-    -- self.Quests = Quests()
+    self.Quests = Quests()
 
     -- Check Syntax
     if (not GameRules.AbilityKV) or (not GameRules.ItemKV) or (not GameRules.UnitKV) or (not GameRules.HeroKV) then
@@ -620,7 +620,7 @@ function ITT:SetHerosIntoEndScreen( teamID )
             local team = PlayerResource:GetTeam(playerID)
             if team == teamID then
                 local hero = PlayerResource:GetSelectedHeroEntity(playerID)
-                if hero:IsAlive() then				
+                if hero:IsAlive() then
 					hero:RemoveModifierByName("modifier_cold2")
 					hero:RemoveModifierByName("modifier_frozen")
                     hero:SetAbsOrigin(vec_start + vec_step * ind)

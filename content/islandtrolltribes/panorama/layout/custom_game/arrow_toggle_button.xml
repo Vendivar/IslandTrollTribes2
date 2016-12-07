@@ -1,0 +1,13 @@
+<root class="Hidden">
+    <styles>
+        <include src="file://{resources}/styles/custom_game/arrow.css" />
+    </styles>
+    <scripts>
+        <include src="file://{resources}/scripts/custom_game/arrow_toggle_button.js" />
+    </scripts>
+    <Panel class="ArrowButtonRoot" hittest="false">
+        <Panel id="ArrowToggleButton" onactivate="ToggleArrows()">
+            <Label id="ArrowToggleIcon" text="#togglearrows"/>
+        </Panel>
+    </Panel>
+</root>

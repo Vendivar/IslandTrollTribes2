@@ -32,11 +32,19 @@ function ITT:StartVoting()
 
                 SetMode(settings)
 
+                PlayerTables:SetTableValues("gamemode_votes", {
+                    timer_up = true,
+                    voting_ended = true,
+                    voted_settings = settings
+                })
+
+                --[[
                 CustomGameEventManager:Send_ServerToAllClients("vote_confirmed", {
                     timer_up = true,
                     voting_ended = true,
                     voted_settings = settings
                 })
+                ]]
             end
         end
     })
@@ -46,6 +54,8 @@ function ITT:OnGameModeSelected(event)
     if voting_ended then return end
     if not ITT.Gamemodevoting then
         ITT.Gamemodevoting = {}
+
+        PlayerTables:CreateTable("gamemode_votes", {voting_ended = false}, true)
     end
 
     table.insert(ITT.Gamemodevoting, event.settings)
@@ -53,6 +63,8 @@ function ITT:OnGameModeSelected(event)
     if player_amount == 0 then
         for k,v in pairs(playerList) do player_amount = player_amount + 1 end
     end
+
+    PlayerTables:SetTableValue("gamemode_votes", event.PlayerID, event.settings)
 
     if #ITT.Gamemodevoting == player_amount then
         -- Count the votes and set the settings.
@@ -65,18 +77,27 @@ function ITT:OnGameModeSelected(event)
 
         voting_ended = true
 
+        --[[
         CustomGameEventManager:Send_ServerToAllClients("vote_confirmed", {
             player = event.PlayerID,
             settings = event.settings,
             voting_ended = true,
             voted_settings = settings
         })
+        ]]
+
+        PlayerTables:SetTableValues("gamemode_votes", {
+            voting_ended = true,
+            voted_settings = settings
+        })
     else
+        --[[
         CustomGameEventManager:Send_ServerToAllClients("vote_confirmed", {
             player = event.PlayerID,
             settings = event.settings,
             voting_ended = false
         })
+        ]]
     end
 end
 

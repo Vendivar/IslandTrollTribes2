@@ -53,6 +53,11 @@ function ITT:CraftItem(event)
             unit:AddItem(CreateItem(itemName, nil, nil))
         end
 
+        if itemName == "item_thistles_dark" then
+            print("Giving back dark rock")
+            unit:AddItem(CreateItem("item_rock_dark", nil, nil))
+        end
+
         -- Fixes issue #238
         if itemName == "item_building_kit_fire_basic" then
             print("Giving flint back for creating a fire")

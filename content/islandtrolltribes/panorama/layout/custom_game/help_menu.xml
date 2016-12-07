@@ -14,9 +14,6 @@
                     <Label text="#Stop_tutorial" />
                 </Button>
                 <Button id="Close_btn" onactivate="HideHelp()" onmouseover="OnCloseHover()" onmouseout="OnCloseHoverOut()"/>
-                <Button id="Arrow_btn" onactivate="ToggleArrows()" onmouseover="OnArrowHover()" onmouseout="OnArrowHoverOut()">
-                    <Label text="?" />
-                </Button>
             </Panel>
             <Panel id="Help_Tabs" hittest="false">
                 <Panel class="Help_Tab active" onactivate="SelectTab(0)" onmouseover="OnTabHover(0)" onmouseout="OnTabHoverOut(0)">
@@ -51,33 +48,6 @@
 					<Image id="ItemsImage" src="file://{images}/custom_game/game_info/itemx.psd" />
                 </Panel>
             </Panel>
-        </Panel>
-        <Panel id="Help_Arrows" hittest="false">
-          <Panel class="Arrow_Crafting" hittest="false">
-            <Panel class="arrowhead_left" hittest="false" />
-            <Panel class="arrow_left" hittest="false" />
-          </Panel>
-          <Label class="Arrowtext_Crafting" hittest="false" text="#Arrow_Crafting" />
-          <Panel class="Arrow_Heat" hittest="false">
-            <Panel class="arrow_down" hittest="false" />
-            <Panel class="arrowhead_down" hittest="false" />
-          </Panel>
-          <Label class="Arrowtext_Heat" hittest="false" text="#Arrow_Heat" />
-          <Panel class="Arrow_Meat" hittest="false">
-            <Panel class="arrow_down" hittest="false" />
-            <Panel class="arrowhead_down" hittest="false" />
-          </Panel>
-          <Label class="Arrowtext_Meat" hittest="false" text="#Arrow_Meat"/>
-          <Panel class="Arrow_Toolkit" hittest="false">
-            <Panel class="arrow_down" hittest="false" />
-            <Panel class="arrowhead_down" hittest="false" />
-          </Panel>
-          <Label class="Arrowtext_Toolkit" hittest="false" text="#Arrow_Toolkit"/>
-          <Panel class="Arrow_Subclass" hittest="false">
-            <Panel class="arrow_downright" hittest="false" />
-            <Panel class="arrowhead_downright" hittest="false" />
-          </Panel>
-          <Label class="Arrowtext_Subclass" hittest="false" text="#Arrow_Subclass"/>
         </Panel>
     </Panel>
 </root>

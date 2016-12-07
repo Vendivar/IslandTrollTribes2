@@ -1,0 +1,322 @@
+
+//-- Copied from custom_ui.css
+
+.ArrowButtonRoot
+{
+    vertical-align: top;
+    horizontal-align: right;
+    margin-right: 40px;
+    margin-top: 2px;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+#ArrowToggleButton
+{
+    padding: 4px;
+    width: 240px;
+    height: 40px;
+    vertical-align: top;
+    horizontal-align: right;
+
+    background-image: url("s2r://panorama/images/class_picker/pick.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+#ArrowToggleButton:hover {
+  brightness: 2;
+}
+
+#ArrowToggleIcon
+{
+    color: gradient( linear, 0% 0%, 0% 100%, from( #FFFFFF ), to( #686868 ) );
+    font-size: 16px;
+    font-family: Goudy Trajan Medium;
+    font-weight: bold;
+    text-align: center;
+    horizontal-align: center;
+    vertical-align: center;
+    text-shadow: 0px 0px 4px 4.0 #000000;
+    margin-left: 5px;
+}
+
+.Hidden
+{
+    visibility: collapse;
+    opacity: 0;
+}
+
+
+/*  ########### HELP ARROWS BELOW! ######### */
+
+.ArrowRoot {
+  width: 100%;
+  height: 100%;
+}
+
+#Help_Arrows {
+  width: 100%;
+  height: 100%;
+}
+
+.Arrow_ToggleArrows {
+  horizontal-align: right;
+  vertical-align: top;
+  x: -290px;
+  y: 12px;
+}
+
+.Arrowtext_ToggleArrows {
+  horizontal-align: right;
+  vertical-align: top;
+  x: -360px;
+  y: 30px;
+  color: gradient(linear, 0% 100%, 0% 0%, from(#f9f9f9), to(#939393));
+  font-size: 24px;
+
+  padding: 6px 50px;
+  border: 3px solid #2eb82e;
+  background-color: gradient(linear, 100% 100%, 0% 0%, from(#000000), to(#393939));
+}
+
+.Arrow_Crafting {
+  x: 40px;
+  y: 170px;
+  flow-children: right;
+}
+
+.Arrowtext_Crafting {
+  x: 200px;
+  y: 127px;
+  color: gradient(linear, 0% 100%, 0% 0%, from(#f9f9f9), to(#939393));
+  font-size: 24px;
+
+  padding: 6px 50px;
+  border: 3px solid #2eb82e;
+  background-color: gradient(linear, 100% 100%, 0% 0%, from(#000000), to(#393939));
+}
+
+.Arrow_Heat {
+  horizontal-align: center;
+  vertical-align: center;
+  x: -246px;
+  y: 200px;
+  flow-children: down;
+  margin-left: -40px;
+}
+.Arrowtext_Heat {
+  horizontal-align: center;
+  vertical-align: center;
+  x: -419px;
+  y: 150px;
+
+  color: gradient(linear, 0% 100%, 0% 0%, from(#f9f9f9), to(#939393));
+  font-size: 24px;
+
+  padding: 6px 50px;
+  border: 3px solid #2eb82e;
+  background-color: gradient(linear, 0% 0%, 100% 0%, from(#000000), to(#393939));
+}
+
+.Arrow_Meat {
+  horizontal-align: center;
+  vertical-align: center;
+  x: -205px;
+  y: 200px;
+
+  flow-children: down;
+  margin-left: -30px;
+}
+.Arrowtext_Meat {
+  horizontal-align: center;
+  vertical-align: center;
+  x: -67px;
+  y: 150px;
+
+  color: gradient(linear, 0% 100%, 0% 0%, from(#f9f9f9), to(#939393));
+  font-size: 24px;
+
+  padding: 6px 50px;
+  border: 3px solid #2eb82e;
+  background-color: gradient(linear, 100% 100%, 0% 0%, from(#000000), to(#393939));
+}
+
+.Arrow_Sleep {
+  vertical-align: center;
+  horizontal-align: right;
+  x: -175px;
+  y: 250px;
+
+  flow-children: down;
+}
+.Arrowtext_Sleep {
+  vertical-align: center;
+  horizontal-align: right;
+  x: -193px;
+  y: 175px;
+
+  color: gradient(linear, 0% 100%, 0% 0%, from(#f9f9f9), to(#939393));
+  font-size: 24px;
+
+  padding: 6px 50px;
+  border: 3px solid #2eb82e;
+  background-color: gradient(linear, 0% 0%, 100% 0%, from(#000000), to(#393939));
+}
+
+.Arrow_Eat {
+  vertical-align: center;
+  horizontal-align: right;
+  x: -125px;
+  y: 200px;
+
+  flow-children: down;
+}
+.Arrowtext_Eat {
+  vertical-align: center;
+  horizontal-align: right;
+  x: -143px;
+  y: 70px;
+
+  color: gradient(linear, 0% 100%, 0% 0%, from(#f9f9f9), to(#939393));
+  font-size: 24px;
+
+  padding: 6px 50px;
+  border: 3px solid #2eb82e;
+  background-color: gradient(linear, 0% 0%, 100% 0%, from(#000000), to(#393939));
+}
+
+.Arrow_DropMeat {
+  vertical-align: center;
+  horizontal-align: right;
+  x: -75px;
+  y: 150px;
+
+  flow-children: down;
+}
+.Arrowtext_DropMeat {
+  vertical-align: center;
+  horizontal-align: right;
+  x: -93px;
+  y: -30px;
+
+  color: gradient(linear, 0% 100%, 0% 0%, from(#f9f9f9), to(#939393));
+  font-size: 24px;
+
+  padding: 6px 50px;
+  border: 3px solid #2eb82e;
+  background-color: gradient(linear, 0% 0%, 100% 0%, from(#000000), to(#393939));
+}
+
+.Arrow_Subclass {
+  vertical-align: bottom;
+  horizontal-align: right;
+  x: -5%;
+  y: -2%;
+}
+.Arrowtext_Subclass {
+  vertical-align: bottom;
+  horizontal-align: right;
+  x: -12%;
+  y: -40px;
+
+  color: gradient(linear, 0% 100%, 0% 0%, from(#f9f9f9), to(#939393));
+  font-size: 24px;
+
+  padding: 6px 50px;
+  border: 3px solid #2eb82e;
+  background-color: gradient(linear, 100% 100%, 0% 0%, from(#000000), to(#393939));
+}
+
+
+.arrow_left {
+  width: 400px;
+  height: 20px;
+  background-color: gradient(linear, 100% 100%, 0% 0%, from(#000000), to(#393939));
+  border: 2px solid #2eb82e;
+  border-left: 0;
+  margin-left: 45px;
+}
+
+.arrow_down {
+  width: 20px;
+  height: 200px;
+  background-color: gradient(linear, 100% 100%, 0% 0%, from(#000000), to(#393939));
+  border: 2px solid #2eb82e;
+  margin-bottom: 45px;
+}
+
+.arrow_down_sleep {
+  width: 20px;
+  height: 200px;
+  background-color: gradient(linear, 100% 100%, 0% 0%, from(#000000), to(#393939));
+  border: 2px solid #2eb82e;
+  margin-bottom: 45px;
+}
+.arrow_down_eat {
+  width: 20px;
+  height: 300px;
+  background-color: gradient(linear, 100% 100%, 0% 0%, from(#000000), to(#393939));
+  border: 2px solid #2eb82e;
+  margin-bottom: 45px;
+}
+.arrow_down_dropmeat {
+  width: 20px;
+  height: 400px;
+  background-color: gradient(linear, 100% 100%, 0% 0%, from(#000000), to(#393939));
+  border: 2px solid #2eb82e;
+  margin-bottom: 45px;
+}
+
+.arrow_right {
+  width: 400px;
+  height: 20px;
+  background-color: gradient(linear, 100% 100%, 0% 0%, from(#000000), to(#393939));
+  border: 2px solid #2eb82e;
+  margin-right: 25px;
+}
+
+.arrowhead_right {
+  horizontal-align: right;
+  width: 1px;
+  height: 1px;
+  border-style: solid;
+  border-width: 25px 50px 25px 0;
+  border-color: transparent #2eb82e transparent transparent;
+  z-index: 1;
+}
+
+.arrowhead_left {
+  width: 1px;
+  height: 1px;
+  border-style: solid;
+  border-width: 25px 0 25px 50px;
+  border-color: transparent transparent transparent #2eb82e;
+  margin-top: 10px;
+  z-index: 1;
+}
+
+.arrowhead_down {
+  width: 1px;
+  height: 1px;
+  border-style: solid;
+  border-width: 0 25px 50px 25px;
+  border-color: transparent transparent #2eb82e transparent;
+  margin-left: 10px;
+}
+
+.arrowhead_right {
+  width: 1px;
+  height: 1px;
+  border-style: solid;
+  border-width: 25px 50px 25px 0;
+  border-color: transparent #2eb82e transparent transparent;
+  margin-top: 10px;
+  margin-left: 448px;
+  z-index: 1;
+}
+
+.hidden {
+  opacity: 0;
+  visibility: collapse;
+}

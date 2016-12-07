@@ -173,25 +173,29 @@ function TeamUpdate(keys) {
     }
 }
 
-function CheckVotes(vote) {
-    if (vote.voting_ended) {
+var listenerID;
+
+function IncomingData(tablename, changes, deletions) {
+    if (changes.voting_ended) {
         $.Schedule(3,function() {
-            if (vote.voted_settings.pick_mode == "ALL_PICK") {
+            if (changes.voted_settings.pick_mode == "ALL_PICK") {
                 $("#PicksContainer").RemoveClass("hidden");
             }
             else {
                 ChooseClass();
             }
         });
+        PlayerTables.UnsubscribeNetTableListener(listenerID);
     }
 }
 
+var PlayerTables = GameUI.CustomUIConfig().PlayerTables;
 (function () {
     $.Msg("Class Picker Load");
 
     $("#PicksContainer").AddClass("hidden");
 
-    GameEvents.Subscribe( "vote_confirmed", CheckVotes );
+    listenerID = PlayerTables.SubscribeNetTableListener("gamemode_votes", IncomingData)
     GameEvents.Subscribe( "team_update_class", TeamUpdate );
     GameEvents.Subscribe( "player_force_pick", ChooseClass );
 
