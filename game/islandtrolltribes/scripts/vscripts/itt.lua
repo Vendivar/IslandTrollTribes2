@@ -284,6 +284,7 @@ function ITT:KillMammoth()
 		mammothBoss:SetOrigin(Vector(5000,0,0 - 5))
 		mammothBoss:ForceKill(true)
 	end
+	
 	if (duckBoss ~= nil)  then
 		duckBoss:SetOrigin(Vector(5000,0,0 - 5))
 		duckBoss:ForceKill(true)
@@ -329,7 +330,7 @@ function ITT:OnEntityKilled(keys)
         {"npc_creep_panther_elder", {"item_bone", 100}, {"item_bone", 100}},
         {"npc_creep_hawk", {"item_bone", 100}, {"item_egg_hawk", 10}},
         {"npc_boss_mammoth", {"item_bone", 100},{"item_bone", 100},{"item_bone", 100},{"item_bone", 100}, {"item_horn_mammoth", 100}, {"item_horn_mammoth", 50}, {"item_spear_dark", 5}, {"item_spear_iron", 5}, {"item_axe_iron", 15}},
-        {"npc_boss_disco_duck", {"item_bone", 100},{"item_bone", 100},{"item_bone", 100},{"item_bone", 100}, {"item_potion_anabolic", 5}, {"item_crystal_mana", 20}, {"item_crystal_mana", 20}, {"item_spear_dark", 5}},
+        {"npc_boss_disco_duck", {"item_bone", 100},{"item_bone", 100},{"item_bone", 100},{"item_bone", 100}, {"item_potion_anabolic", 5}, {"item_crystal_mana", 20}, {"item_crystal_mana", 20}, {"item_crystal_mana", 20}, {"item_crystal_mana", 5}, {"item_spear_dark", 5}},
         {"npc_building_fire_basic", {"item_building_kit_fire_basic", 100}, {"item_flint", 10}}
     }
 
@@ -373,7 +374,7 @@ function ITT:OnEntityKilled(keys)
     end
 
     -- Creeps
-    if string.find(unitName, "creep") and not killedUnit.no_corpse then
+    if string.find(unitName, "creep") or string.find(unitName, "boss") and not killedUnit.no_corpse then
         local corpse = CreateUnitByName("npc_creep_corpse", killedUnit:GetAbsOrigin(), false, nil, nil, 0)
         corpse.killer = killer
 
@@ -546,34 +547,9 @@ function ITT:FixDropModels(dt)
     end
 end
 
---[=[
 
-What the hell is this for?????
-Those functions are not even declared anywhere.
-function ITT:OnBuildingThink()
 
-    -- Find all buildings
-    buildings = FindUnitsInRadius(DOTA_TEAM_BADGUYS,
-                                  Vector(0, 0, 0),
-                                  nil,
-                                  FIND_UNITS_EVERYWHERE,
-                                  DOTA_UNIT_TARGET_TEAM_BOTH,
-                                  DOTA_UNIT_TARGET_BUILDING,
-                                  DOTA_UNIT_TARGET_FLAG_NONE,
-                                  FIND_ANY_ORDER,
-                                  false)
-    --check each for their type, and run crafting with the corresponding table
-    for i, building in pairs(buildings) do
-        if building:GetUnitName() == "npc_building_armory" then
-            CraftItems(building, ARMORY_RECIPE_TABLE, ITEM_ALIAS_TABLE)
-        elseif building:GetUnitName() == "npc_building_workshop" then
-            CraftItems(building, WORKSHOP_RECIPE_TABLE, ITEM_ALIAS_TABLE)
-        elseif building:GetUnitName() == "npc_building_hut_witch_doctor" then
-            CraftItems(building, WDHUT_RECIPE_TABLE, ITEM_ALIAS_TABLE)
-        end
-    end
-end
---]=]
+
 -- This function checks if you won the game or not
 function ITT:CheckWinCondition()
     if GameRules:State_Get() ~= DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then return end

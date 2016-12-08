@@ -2003,8 +2003,8 @@
 "DOTA_Tooltip_ability_item_axe_mage_masher_mage_masher_silent_strike_dot"		"MAGE MASHER SILENT STRIKE DOT:"
 "DOTA_Tooltip_ability_item_axe_mage_masher_mage_masher_silent_strike_duration"		"MAGE MASHER SILENT STRIKE DURATION:"
 "DOTA_Tooltip_ability_item_axe_mage_masher_Note0"		"Can cut down trees."
-"DOTA_Tooltip_modifier_axe_mage_masher_silent_strike"		"Axe Mage Masher Silent Strike"
-"DOTA_Tooltip_modifier_axe_mage_masher_silent_strike_Description"		""
+"DOTA_Tooltip_modifier_axe_mage_masher_silent_strike"		"Mage Masher Silent Strike"
+"DOTA_Tooltip_modifier_axe_mage_masher_silent_strike_Description"		"Silenced!"
 
 "DOTA_Tooltip_ability_item_axe_steel"		"Steel Axe"
 "DOTA_Tooltip_ability_item_axe_steel_bonus_damage"		"+$damage"
@@ -2129,7 +2129,10 @@
 "DOTA_Tooltip_ability_ability_irontrap_ensnare_Description"                       ""
 "DOTA_Tooltip_ability_ability_irontrap_ensnare_damage"                            "DAMAGE:"
 "DOTA_Tooltip_ability_ability_irontrap_ensnare_stun_duration"                     "STUN DURATION:"
+"DOTA_Tooltip_modifier_irontrap_bleed"                                            "Irontrap Bleed"
+"DOTA_Tooltip_modifier_irontrap_bleed_Description"                                "You are bleeding and have a chance to bleed out 5 damage every second."
 
+		
 
 
 
@@ -3264,7 +3267,7 @@
 "DOTA_Tooltip_ability_item_scroll_fireball_damage"		"DAMAGE:"
 "DOTA_Tooltip_ability_item_scroll_fireball_Description"		"ACTIVE: Fireball - Shoots a massive fireball, dealing damage and stunning whoever it hits.\n<font color='#777777'>Hold ALT to view more information.</font>\n\nHot and fiery words burn through the parchment. They burn into your eyes and enlighten you to use this scroll to cast a magical fireball spell."
 "DOTA_Tooltip_ability_item_scroll_fireball_Lore"		"Build a man a fire, he'll be warm for a night. Set a man on fire, he'll be warm for the rest of his life."
-"DOTA_Tooltip_ability_item_scroll_fireball_Note0"		"CD 32s\nRange: 800\nFireball spell does 40 damage and 1.5s stun."
+"DOTA_Tooltip_ability_item_scroll_fireball_Note0"		"CD 32s\nRange: 800\nFireball spell does 40 damage and 1.5s stun to trolls and a 5s stun to creeps.."
 "DOTA_Tooltip_ability_item_scroll_fireball_range"		"RANGE:"
 "DOTA_Tooltip_ability_item_scroll_fireball_stun_duration"		"STUN DURATION:"
 "DOTA_Tooltip_ability_item_scroll_boulder"                                        "Boulder Scroll"
@@ -3789,7 +3792,8 @@
 
 //All
 
-"All_Quest_1"		"Survive! Get a stick a tinder and a flint."
+"All_Quest_1"		"Survival basics. Build a fire."
+"All_Quest_1_desc"  "Try to find a stick, a tinder and a flint from the wild."
 "All_Quest_2"		"Home Sweet Home: Craft a campfire. (Press C)"
 "All_Quest_3"		"Home Sweet Home Pt. 2: Place your newly crafted camp fire"
 
@@ -3811,7 +3815,7 @@
 "Gatherer_Quest_1a"		"Great! Remember where stuff is at if you can."
 "Gatherer_Quest_2"		"Now try using radar manipulations and it's abilities"		
 "Gatherer_Quest_3"		"Always actively use item radar throughout the game!"		
-"Gatherer_Quest_4"		"Build a item stockpile area in your base (near the middle)"
+"Gatherer_Quest_4"		"Gatherer: Build a item stockpile area in your base (near the middle)"
 "Gatherer_Quest_5"		"Great! This will allow your team to advance better."
 "Gatherer_Quest_6"		"Remember nearby craft buildings can also use the item stockpile"		
 "Gatherer_Quest_7"		"Remember nearby craft buildings can also use the item stockpile"		

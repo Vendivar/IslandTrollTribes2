@@ -60,14 +60,33 @@
 			"Damage"	"%damage"
 			"Type"	"DAMAGE_TYPE_MAGICAL"
 		}
+		
+		"ApplyModifier"
+		{
+			"Duration"	"7.5"
+			"ModifierName"	"%stun_duration_hero"
+			"Target"
+			{
+				"Center"	"TARGET"
+				"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Types"	"DOTA_UNIT_TARGET_HERO"
+			}
+
+		}
 
 		"ApplyModifier"
 		{
-			"Duration"	"%stun_duration"
-			"Target"	"TARGET"
+			"Duration"	"stun_duration_creep"
 			"ModifierName"	"modifier_stunned"
-		}
+			"Target"
+			{
+				"Center"	"TARGET"
+				"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Types"	"DOTA_UNIT_TARGET_CREEP"
+			}
 
+		}
+		
 		"FireEffect"
 		{
 			"Target"	"POINT"
@@ -98,6 +117,18 @@
 		}
 
 		"03"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"stun_duration_creep"	"5.0"
+		}
+		
+		"04"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"stun_duration_hero"	"1.5"
+		}
+		
+		"05"
 		{
 			"var_type"	"FIELD_FLOAT"
 			"stun_duration"	"1.5"

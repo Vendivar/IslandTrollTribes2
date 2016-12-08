@@ -8214,14 +8214,33 @@
 				"Damage"	"%damage"
 				"Type"	"DAMAGE_TYPE_MAGICAL"
 			}
+			
+			"ApplyModifier"
+			{
+				"Duration"	"7.5"
+				"ModifierName"	"%stun_duration_hero"
+				"Target"
+				{
+					"Center"	"TARGET"
+					"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types"	"DOTA_UNIT_TARGET_HERO"
+				}
+	
+			}
 	
 			"ApplyModifier"
 			{
-				"Duration"	"%stun_duration"
-				"Target"	"TARGET"
+				"Duration"	"stun_duration_creep"
 				"ModifierName"	"modifier_stunned"
-			}
+				"Target"
+				{
+					"Center"	"TARGET"
+					"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types"	"DOTA_UNIT_TARGET_CREEP"
+				}
 	
+			}
+			
 			"FireEffect"
 			{
 				"Target"	"POINT"
@@ -8252,6 +8271,18 @@
 			}
 	
 			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"stun_duration_creep"	"5.0"
+			}
+			
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"stun_duration_hero"	"1.5"
+			}
+			
+			"05"
 			{
 				"var_type"	"FIELD_FLOAT"
 				"stun_duration"	"1.5"
@@ -13311,7 +13342,7 @@
 	        {
 	            "ScriptFile"    "heroes/gatherer/ping.lua"
 	            "Function"      "PingUnitsInRange"
-	            "Units"         "npc_ship_merchant_1,npc_ship_merchant_2,npc_ship_merchant_3,npc_ship_merchant_4,npc_ship_merchant_5,npc_ship_merchant_6,npc_ship_merchant_7,npc_ship_transport,npc_building_spirit_ward"
+	            "Units"         "npc_ship_merchant_1,npc_ship_merchant_2,npc_ship_merchant_3,npc_ship_merchant_4,npc_ship_merchant_5,npc_ship_merchant_6,npc_ship_merchant_7"
 	            "Duration"      "1.0"
 	        }
 	        "RunScript"
@@ -13341,8 +13372,8 @@
 	                {
 	                    "ScriptFile"    "heroes/gatherer/ping.lua"
 	                    "Function"      "PingUnitsInRange"
-	                    "Units"         "npc_ship_merchant_1,npc_ship_merchant_2,npc_ship_merchant_3,npc_ship_merchant_4,npc_ship_merchant_5,npc_ship_merchant_6,npc_ship_merchant_7,npc_ship_transport"
-	                    "Duration"      "1.0"
+	                    "Units"         "npc_ship_merchant_1,npc_ship_merchant_2,npc_ship_merchant_3,npc_ship_merchant_4,npc_ship_merchant_5,npc_ship_merchant_6,npc_ship_merchant_7"
+	                    "Duration"      "1.5"
 	                }
 	            }
 	        }
@@ -13789,31 +13820,12 @@
 				}
 	
 			}
-	
+			
 			"Damage"
 			{
-				"Damage"	"30"
+				"Damage"	"20"
 				"Type"	"DAMAGE_TYPE_PHYSICAL"
-				"Target"
-				{
-					"Center"	"TARGET"
-					"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Types"	"DOTA_UNIT_TARGET_HERO"
-				}
-	
-			}
-	
-			"Damage"
-			{
-				"Damage"	"30"
-				"Type"	"DAMAGE_TYPE_PHYSICAL"
-				"Target"
-				{
-					"Center"	"TARGET"
-					"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Types"	"DOTA_UNIT_TARGET_CREEP"
-				}
-	
+				"Target"	"TARGET"
 			}
 	
 			"SpendCharge"

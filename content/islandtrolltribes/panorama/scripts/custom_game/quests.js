@@ -45,6 +45,8 @@ function AddQuest(id, quest) {
     text.AddClass("QuestDesc");
     text.text = $.Localize(quest.desc, text);
   }
+  
+    Game.EmitSound("quest.new")
 }
 
 function UpdateQuest(id, quest) {
@@ -53,6 +55,7 @@ function UpdateQuest(id, quest) {
 
     var panel = quests_table[id].mainpanel;
     panel.DeleteAsync(0);
+    Game.EmitSound("quest.complete")
     // End a quest
   }
   else {

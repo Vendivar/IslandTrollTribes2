@@ -12,6 +12,8 @@ function teamMemberUp(args) {
     playerName = playerName + " has"
   }
 
+    Game.EmitSound("revive2.layered")
+	
   var img = $.CreatePanel("DOTAHeroImage", line, "");
   img.AddClass("ReviveNotification_icon");
   img.heroimagestyle = "icon";
@@ -22,6 +24,9 @@ function teamMemberUp(args) {
   label.html = true;
   label.text = $.Localize("#ReviveMessage", label);
 
+    Game.EmitSound("revive2")
+	
+	
   $.Schedule(4, function(){
       line.DeleteAsync(0)
   });

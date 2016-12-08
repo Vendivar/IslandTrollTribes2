@@ -75,31 +75,12 @@
 			}
 
 		}
-
+		
 		"Damage"
 		{
-			"Damage"	"30"
+			"Damage"	"20"
 			"Type"	"DAMAGE_TYPE_PHYSICAL"
-			"Target"
-			{
-				"Center"	"TARGET"
-				"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-				"Types"	"DOTA_UNIT_TARGET_HERO"
-			}
-
-		}
-
-		"Damage"
-		{
-			"Damage"	"30"
-			"Type"	"DAMAGE_TYPE_PHYSICAL"
-			"Target"
-			{
-				"Center"	"TARGET"
-				"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-				"Types"	"DOTA_UNIT_TARGET_CREEP"
-			}
-
+			"Target"	"TARGET"
 		}
 
 		"SpendCharge"

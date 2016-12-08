@@ -15,6 +15,15 @@ function ability_revive:GetChannelTime()
     local reviveTime = CustomNetTables:GetTableValue("ability_revive",tostring(self:GetCaster():GetEntityIndex())).revivingTime
     if IsServer() then
         reviveTime = self.revivingTime
+		local channelParticle = ParticleManager:CreateParticle("particles/custom/spirit_ward_rez_green.vpcf", PATTACH_ABSORIGIN_FOLLOW, self)	
+		ParticleManager:SetParticleControl(channelParticle, 0, self:GetAbsOrigin())
+		ParticleManager:SetParticleControl(channelParticle, 1, Vector(reviveTime,0,0))
+		
+		
+		  Timers:CreateTimer(reviveTime, function()
+     ParticleManager:DestroyParticle(channelParticle,false)
+    end
+  )
         return reviveTime
     end
     return reviveTime
@@ -35,8 +44,6 @@ function ability_revive:OnChannelFinish( bInterrupted )
                 ITT:SetSubclassCosmetics(hero)
             end
             FindClearSpaceForUnit(hero, caster:GetAbsOrigin(), true)
-            caster:EmitSound("revive") 
-            caster:EmitSound("revive.layered") 
 			
 			 local id = hero:GetPlayerID()
 			CustomGameEventManager:Send_ServerToTeam(hero:GetTeam(), "team_member_up", {hero = PlayerResource:GetSelectedHeroName(id),player = id})

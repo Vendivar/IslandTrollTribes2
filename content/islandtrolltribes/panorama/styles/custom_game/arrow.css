@@ -63,19 +63,19 @@
 .Arrow_ToggleArrows {
   horizontal-align: right;
   vertical-align: top;
-  x: -290px;
-  y: 12px;
+  x: -190px;
+  y: 50px;	
 }
 
 .Arrowtext_ToggleArrows {
   horizontal-align: right;
   vertical-align: top;
-  x: -360px;
-  y: 30px;
+  x: -210px;
+  y: 165px;
   color: gradient(linear, 0% 100%, 0% 0%, from(#f9f9f9), to(#939393));
   font-size: 24px;
 
-  padding: 6px 50px;
+  padding: 6px 20px;
   border: 3px solid #2eb82e;
   background-color: gradient(linear, 100% 100%, 0% 0%, from(#000000), to(#393939));
 }
@@ -87,7 +87,7 @@
 }
 
 .Arrowtext_Crafting {
-  x: 200px;
+  x: 385px;
   y: 127px;
   color: gradient(linear, 0% 100%, 0% 0%, from(#f9f9f9), to(#939393));
   font-size: 24px;
@@ -109,7 +109,7 @@
   horizontal-align: center;
   vertical-align: center;
   x: -419px;
-  y: 150px;
+  y: 120px;
 
   color: gradient(linear, 0% 100%, 0% 0%, from(#f9f9f9), to(#939393));
   font-size: 24px;
@@ -131,13 +131,13 @@
 .Arrowtext_Meat {
   horizontal-align: center;
   vertical-align: center;
-  x: -67px;
-  y: 150px;
+  x: -100px;
+  y: 120px;
 
   color: gradient(linear, 0% 100%, 0% 0%, from(#f9f9f9), to(#939393));
   font-size: 24px;
 
-  padding: 6px 50px;
+  padding: 6px 20px;
   border: 3px solid #2eb82e;
   background-color: gradient(linear, 100% 100%, 0% 0%, from(#000000), to(#393939));
 }
@@ -146,7 +146,7 @@
   vertical-align: center;
   horizontal-align: right;
   x: -175px;
-  y: 250px;
+  y: 280px;
 
   flow-children: down;
 }
@@ -154,12 +154,12 @@
   vertical-align: center;
   horizontal-align: right;
   x: -193px;
-  y: 175px;
+  y: 204px;
 
   color: gradient(linear, 0% 100%, 0% 0%, from(#f9f9f9), to(#939393));
   font-size: 24px;
 
-  padding: 6px 50px;
+  padding: 6px 30px;
   border: 3px solid #2eb82e;
   background-color: gradient(linear, 0% 0%, 100% 0%, from(#000000), to(#393939));
 }
@@ -168,7 +168,7 @@
   vertical-align: center;
   horizontal-align: right;
   x: -125px;
-  y: 200px;
+  y: 246px;
 
   flow-children: down;
 }
@@ -176,12 +176,12 @@
   vertical-align: center;
   horizontal-align: right;
   x: -143px;
-  y: 70px;
+  y: 135px;
 
   color: gradient(linear, 0% 100%, 0% 0%, from(#f9f9f9), to(#939393));
   font-size: 24px;
 
-  padding: 6px 50px;
+  padding: 6px 30px;
   border: 3px solid #2eb82e;
   background-color: gradient(linear, 0% 0%, 100% 0%, from(#000000), to(#393939));
 }
@@ -190,7 +190,7 @@
   vertical-align: center;
   horizontal-align: right;
   x: -75px;
-  y: 150px;
+  y: 205px;
 
   flow-children: down;
 }
@@ -198,7 +198,31 @@
   vertical-align: center;
   horizontal-align: right;
   x: -93px;
-  y: -30px;
+  y: 55px;
+
+  color: gradient(linear, 0% 100%, 0% 0%, from(#f9f9f9), to(#939393));
+  font-size: 24px;
+
+  padding: 6px 20px;
+  border: 3px solid #2eb82e;
+  background-color: gradient(linear, 0% 0%, 100% 0%, from(#000000), to(#393939));
+}
+
+
+.Arrow_Panic {
+  vertical-align: center;
+  horizontal-align: right;
+  x: 220px;
+  y: 164px;
+
+  flow-children: down;
+}
+
+.Arrowtext_Panic {
+  vertical-align: center;
+  horizontal-align: right;
+  x: -43px;
+  y: -26px;
 
   color: gradient(linear, 0% 100%, 0% 0%, from(#f9f9f9), to(#939393));
   font-size: 24px;
@@ -211,7 +235,7 @@
 .Arrow_Subclass {
   vertical-align: bottom;
   horizontal-align: right;
-  x: -5%;
+  x: -3.5%;
   y: -2%;
 }
 .Arrowtext_Subclass {
@@ -230,7 +254,7 @@
 
 
 .arrow_left {
-  width: 400px;
+  width: 550px;
   height: 20px;
   background-color: gradient(linear, 100% 100%, 0% 0%, from(#000000), to(#393939));
   border: 2px solid #2eb82e;
@@ -240,7 +264,7 @@
 
 .arrow_down {
   width: 20px;
-  height: 200px;
+  height: 160px;
   background-color: gradient(linear, 100% 100%, 0% 0%, from(#000000), to(#393939));
   border: 2px solid #2eb82e;
   margin-bottom: 45px;
@@ -248,24 +272,34 @@
 
 .arrow_down_sleep {
   width: 20px;
-  height: 200px;
+  height: 150px;
   background-color: gradient(linear, 100% 100%, 0% 0%, from(#000000), to(#393939));
   border: 2px solid #2eb82e;
   margin-bottom: 45px;
 }
 .arrow_down_eat {
   width: 20px;
-  height: 300px;
+  height: 220px;
   background-color: gradient(linear, 100% 100%, 0% 0%, from(#000000), to(#393939));
   border: 2px solid #2eb82e;
   margin-bottom: 45px;
 }
 .arrow_down_dropmeat {
   width: 20px;
-  height: 400px;
+  height: 300px;
   background-color: gradient(linear, 100% 100%, 0% 0%, from(#000000), to(#393939));
   border: 2px solid #2eb82e;
   margin-bottom: 45px;
+}
+
+
+.arrow_down_panic {
+  width: 20px;
+  height: 380px;
+  background-color: gradient(linear, 100% 100%, 0% 0%, from(#000000), to(#393939));
+  border: 2px solid #2eb82e;
+  margin-bottom: 45px;
+  margin-right: 245px;
 }
 
 .arrow_right {
@@ -297,6 +331,15 @@
 }
 
 .arrowhead_down {
+  width: 1px;
+  height: 1px;
+  border-style: solid;
+  border-width: 0 25px 50px 25px;
+  border-color: transparent transparent #2eb82e transparent;
+  margin-left: 10px;
+}
+
+.arrowhead_up {
   width: 1px;
   height: 1px;
   border-style: solid;

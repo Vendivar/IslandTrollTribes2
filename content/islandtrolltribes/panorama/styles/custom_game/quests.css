@@ -5,9 +5,10 @@
 }
 
 #QuestsMainPanel {
-    horizontal-align: right;
+    horizontal-align: left;
     vertical-align: top;
-    margin: 100px;
+    margin-top: 60px;
+    margin-left: 70px;
 
     flow-children: down;
 }
@@ -24,7 +25,7 @@
 }
 
 .QuestIcon {
-    border: 3px solid #ffff1a;
+    border: 1.5px solid #000000;
     border-radius: 50%;
     width: 30px;
     height: 30px;
@@ -33,33 +34,36 @@
 
     font-size: 20px;
     font-family: Radiance;
-    color: #ffff1a;
+    color: gradient( linear, 0% 0%, 0% 100%, from( #C0C0C0  ), to( #686868  ) );
     text-align: center;
 
     background-color: gradient(radial, 0% 0%, 0% 0%, 100% 100%, from(#696969), to(#000000));
 }
 
 .QuestHeader {
-    font-size: 20px;
+    font-size: 18px;
     font-family: Radiance;
-    color: #ffff1a;
+    color: #B0E0E6;
 
-    text-shadow: 3px 3px 4px #000000;
+    text-shadow: 2px 2px 4px 3.0 #000000;
 
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .QuestDesc {
     font-size: 16px;
     font-family: Radiance;
-    color: #ffffff;
+    color: #B0E0E6;
+	
+	
+    text-shadow: 2px 2px 5px 2.5 #000000;
 
     margin-top: 10px;
-    margin-left: 20px;
+    margin-left: 0px;
 }
 
 .QuestProgressBarBg {
-    margin-left: 20px;
+    margin-left: 0px;
     width: 200px;
     height: 20px;
 

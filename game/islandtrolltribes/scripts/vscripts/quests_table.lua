@@ -23,7 +23,7 @@ GameRules.quests_table.all = {
     [1] = { -- Global quests start from 1
         name = "#All_Quest_1",
         title = "#All_Quest_1",
-        desc = "Try to find a stick, a tinder and a flint from the wilds.",
+        desc = "#All_Quest_1_desc",
         context = {
             type = "Time",
             track = function(hero, quest)
@@ -42,6 +42,7 @@ GameRules.quests_table.all = {
         title = "#All_Quest_2",
         context = {
             type = "Time",
+            delay_start = 5,
             track = function(hero, quest)
                 if HasAnItem(hero, "item_building_kit_fire_basic") then
                     Quests:End(hero, quest.id)
@@ -52,13 +53,30 @@ GameRules.quests_table.all = {
     [3] = {
         name = "All_Quest_3",
         title = "#All_Quest_3",
+        desc = "#All_Quest_3_desc",
+        context = {
+            type = "Hook",
+            event_type = "Standard",
+            event_name = "dota_player_used_ability",
+			event_func = function(hero, quest, abilityName)
+    			if abilityName == "item_building_kit_fire_basic" then
+                    Quests:End(hero, quest.id)
+                end
+			end,
+        }
+    },
+	
+    [4] = {
+        name = "All_Quest_4",
+        title = "#All_Quest_4",
         context = {
             type = "Time",
             from = 0,
-            to = 60
+            to = 15
         }
     },
-    [5] = {
+	
+    [7] = {
         name = "All_Quest_1d",
         title = "#All_Quest_1d",
         context = {
@@ -159,6 +177,7 @@ GameRules.quests_table.all = {
 	[15] = {
         name = "All_Quest_6e",
         title = "#All_Quest_6e",
+        desc = "#All_Quest_6e_desc",
         context = {
             type = "Time",
 			track = function(hero, quest)
@@ -256,7 +275,7 @@ GameRules.quests_table.beastmaster = { -- Class quests start from 100
         context = {
             type = "Time",
             from = 0,
-            to = 50
+            to = 100
         }
     },
 
@@ -287,7 +306,7 @@ GameRules.quests_table.gatherer = {
         title = "#Gatherer_Quest_1",
 		context = {
             type = "Hook",
-            delay_start = 3,
+            delay_start = 30,
             event_type = "Standard",
             event_name = "dota_player_used_ability",
             event_func = function(hero, quest, abilityName)
@@ -342,6 +361,7 @@ GameRules.quests_table.gatherer = {
 	[104] = {
         name = "Gatherer_Quest_4",
         title = "#Gatherer_Quest_4",
+        desc = "#Gatherer_Quest_4_desc",
 		context = {
             type = "Hook",
             event_type = "Standard",
@@ -384,14 +404,19 @@ GameRules.quests_table.gatherer = {
 	[108] = {
         name = "Gatherer_Quest_8",
         title = "#Gatherer_Quest_8",
+        desc = "#Gatherer_Quest_8_desc",
         context = {
-            type = "Time",
-            from = 0,
-            to = 10
+            type = "Hook",
+            delay_start = 3,
+            event_type = "Standard",
+            event_name = "dota_player_used_ability",
+            event_func = function(hero, quest, abilityName)
+				if abilityName == "ability_gatherer_itemradar" then
+                    Quests:End(hero, quest.id)
+    			end
+			end
         }
     },
-
-
 	[109] = {
         name = "Gatherer_Quest_9",
         title = "#Gatherer_Quest_9",
@@ -413,6 +438,7 @@ GameRules.quests_table.gatherer = {
 	[110] = {
         name = "Gatherer_Quest_10",
         title = "#Gatherer_Quest_10",
+        desc = "#Gatherer_Quest_10_desc",
         context = {
             type = "Time",
             track = function(hero, quest)
@@ -423,10 +449,16 @@ GameRules.quests_table.gatherer = {
 	[111] = {
         name = "Gatherer_Quest_11",
         title = "#Gatherer_Quest_11",
+        desc = "#Gatherer_Quest_11_desc",
         context = {
-            type = "Time",
-            from = 0,
-            to = 10
+            type = "Hook",
+            event_type = "Standard",
+            event_name = "dota_player_used_ability",
+			event_func = function(hero, quest, abilityName)
+    			if abilityName == "item_building_kit_armory" then
+                    Quests:End(hero, quest.id)
+                end
+			end,
         }
     },
 	[112] = {
@@ -451,6 +483,7 @@ GameRules.quests_table.gatherer = {
 	[114] = {
         name = "Gatherer_Quest_14",
         title = "#Gatherer_Quest_14",
+        desc = "#Gatherer_Quest_14_desc",
         context = {
             type = "Time",
             track = function(hero, quest)
@@ -480,19 +513,9 @@ GameRules.quests_table.gatherer = {
         name = "Gatherer_Quest_16",
         title = "#Gatherer_Quest_16",
         context = {
-        -- Hook for crafting two iron ingots
             type = "Time",
-            track = function(hero, quest)
-			local count =  quest.context.current
-                local ingots = HasAnItem(hero, "item_ingot_iron")
-
-                local count = 0
-                if ingots then count = count + ingots end
-
-                Quests:UpdateQuest(hero, count, quest.id)
-            end,
             from = 0,
-            to = 2
+            to = 20
         }
     },
 	[117] = {
@@ -514,13 +537,22 @@ GameRules.quests_table.gatherer = {
                 if HasAnItem(hero, "item_axe_iron") then Quests:End(hero, quest.id) end
             end
         }
+    },	
+	[119] = {
+        name = "Gatherer_Quest_19",
+        title = "#Gatherer_Quest_19",
+        context = {
+            type = "Time",
+            from = 0,
+            to = 10
+        }
     },
-	[120] = {
+	[121] = {
         name = "Gatherer_Quest_1d",
         title = "#Gatherer_Quest_1d",
         context = {
             type = "Time",
-			delay_start = 300,
+			delay_start = 600,
             from = 0,
             to = 10
         }
@@ -562,6 +594,7 @@ GameRules.quests_table.mage = {
     [102] = {
         name = "Mage_Quest_3",
         title = "#Mage_Quest_3",
+        desc = "#Mage_Quest_3_desc",
 		context = {
             type = "Hook",
             delay_start = 1,
@@ -592,6 +625,7 @@ GameRules.quests_table.mage = {
     [104] = {
         name = "Mage_Quest_6",
         title = "#Mage_Quest_6",
+        desc = "#Mage_Quest_6_desc",
         context = {
             type = "Hook",
             delay_start = 1,
@@ -726,7 +760,7 @@ GameRules.quests_table.hunter = {
     },
     [102] = {
         name = "Hunter_Quest_3",
-        title = "#Hunter_Quest_.",
+        title = "#Hunter_Quest_3",
 		context = {
             type = "Hook",
             event_type = "Standard",
@@ -740,7 +774,51 @@ GameRules.quests_table.hunter = {
             to = 2
         }
     },
+	
+	[103] = {
+        name = "Hunter_Quest_4",
+        title = "#Hunter_Quest_4",
+        desc = "#Hunter_Quest_4_desc",
+        context = {
+            type = "Time",
+            track = function(hero, quest)
+                local count = 0
+                if HasAnItem(hero, "item_stick") then count = count + 1 end
+                local stones = HasAnItem(hero, "item_stone")
+                if stones then
+                    count = count + stones
+                end
+                Quests:UpdateQuest(hero, count, quest.id)
+            end,
+            from = 0,
+            to = 3
+        }
+    },
+	[104] = {
+        name = "Hunter_Quest_5",
+        title = "#Hunter_Quest_5",
+        desc = "#Hunter_Quest_5_desc",
+        context = {
+            -- Hook for crafting iron axe
+            type = "Time",
+            track = function(hero, quest)
+                if HasAnItem(hero, "item_axe_stone") then Quests:End(hero, quest.id) end
+            end
+        }
+    },	
+	
 	[105] = {
+        name = "Hunter_Quest_6",
+        title = "#Hunter_Quest_6",
+        context = {
+            type = "Time",
+            delay_start = 5,
+            from = 0,
+            to = 20
+        }
+    },
+	
+	[115] = {
         name = "Hunter_Quest_1d",
         title = "#Hunter_Quest_1d",
         context = {
@@ -751,3 +829,4 @@ GameRules.quests_table.hunter = {
         }
     },
 }
+
