@@ -419,6 +419,9 @@ function ITT:OnEntityKilled(keys)
             local item = killedUnit:GetItemInSlot(i)
             if item and item:GetAbilityName() ~= "item_slot_locked" then
                 local clonedItem = CreateItem(item:GetName(), nil, nil)
+                if item:GetCurrentCharges() > 1 then
+                    clonedItem:SetCurrentCharges(item:GetCurrentCharges())
+                end
                 CreateItemOnPositionSync(points[numDrop],clonedItem)
                 clonedItem:LaunchLoot(false, 200, 0.75, points[numDrop])
                 item:RemoveSelf()
