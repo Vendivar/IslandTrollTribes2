@@ -8,8 +8,8 @@
     <Panel class="ArrowRoot" hittest="false">
       <Panel id="Help_Arrows" hittest="false">
         <Panel class="Arrow_ToggleArrows" hittest="false">
+          <Panel class="arrow_up" hittest="false" />
           <Panel class="arrowhead_up" hittest="false" />
-          <Panel class="arrow_down" hittest="false" />
         </Panel>
         <Label class="Arrowtext_ToggleArrows" hittest="false" text="#Arrow_ToggleArrows" />
         <Panel class="Arrow_Crafting" hittest="false">

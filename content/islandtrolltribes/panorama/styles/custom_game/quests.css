@@ -7,8 +7,9 @@
 #QuestsMainPanel {
     horizontal-align: left;
     vertical-align: top;
-    margin-top: 60px;
+    margin-top: 70px;
     margin-left: 70px;
+    z-index: 0;
 
     flow-children: down;
 }
@@ -17,6 +18,43 @@
     width: 350px;
     margin: 20px 0px;
     padding-left: 40px;
+    animation-name: quest_appear;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+}
+
+.Quest_Disappear {
+    x: 0px;
+    animation-name: quest_disappear;
+    animation-duration: 0.4s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+}
+
+@keyframes 'quest_appear' {
+  0% {
+    opacity: 0.0;
+  }
+  20% {
+    opacity: 1.0;
+    brightness: 1;
+  }
+  80% {
+    brightness: 5;
+  }
+  100% {
+    brightness: 1;
+  }
+}
+
+@keyframes 'quest_disappear' {
+  0% {
+    opacity: 1.0;
+  }
+  100% {
+    opacity: 0.0;
+  }
 }
 
 .QuestContent {
@@ -25,16 +63,16 @@
 }
 
 .QuestIcon {
-    border: 1.5px solid #000000;
+    border: 2px solid #B0B000;
     border-radius: 50%;
     width: 30px;
     height: 30px;
 
     x: -40px;
 
-    font-size: 20px;
+    font-size: 21px;
     font-family: Radiance;
-    color: gradient( linear, 0% 0%, 0% 100%, from( #C0C0C0  ), to( #686868  ) );
+    color: gradient( linear, 0% 0%, 0% 100%, from( #B0B000  ), to( #686868  ) );
     text-align: center;
 
     background-color: gradient(radial, 0% 0%, 0% 0%, 100% 100%, from(#696969), to(#000000));
@@ -47,23 +85,23 @@
 
     text-shadow: 2px 2px 4px 3.0 #000000;
 
-    margin-bottom: 5px;
+    margin-bottom: 15px;
 }
 
 .QuestDesc {
     font-size: 16px;
     font-family: Radiance;
     color: #B0E0E6;
-	
-	
+
+    line-height: 25px;
     text-shadow: 2px 2px 5px 2.5 #000000;
 
     margin-top: 10px;
-    margin-left: 0px;
+    margin-left: 20px;
 }
 
 .QuestProgressBarBg {
-    margin-left: 0px;
+    margin-left: 20px;
     width: 200px;
     height: 20px;
 

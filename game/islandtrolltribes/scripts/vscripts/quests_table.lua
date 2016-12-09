@@ -65,7 +65,7 @@ GameRules.quests_table.all = {
 			end,
         }
     },
-	
+
     [4] = {
         name = "All_Quest_4",
         title = "#All_Quest_4",
@@ -75,7 +75,7 @@ GameRules.quests_table.all = {
             to = 15
         }
     },
-	
+
     [7] = {
         name = "All_Quest_1d",
         title = "#All_Quest_1d",
@@ -537,7 +537,7 @@ GameRules.quests_table.gatherer = {
                 if HasAnItem(hero, "item_axe_iron") then Quests:End(hero, quest.id) end
             end
         }
-    },	
+    },
 	[119] = {
         name = "Gatherer_Quest_19",
         title = "#Gatherer_Quest_19",
@@ -761,20 +761,18 @@ GameRules.quests_table.hunter = {
     [102] = {
         name = "Hunter_Quest_3",
         title = "#Hunter_Quest_3",
-		context = {
+		    context = {
             type = "Hook",
             event_type = "Standard",
             event_name = "dota_player_used_ability",
             event_func = function(hero, quest, abilityName)
-				if abilityName == "ability_hunter_track" then
-                    Quests:UpdateQuest(hero, quest.context.current + 1, quest.id)
-    			end
-			end,
-            from = 0,
-            to = 2
+      		    if abilityName == "ability_hunter_track" then
+                    Quests:End(hero, quest.id)
+          		end
+      		end,
         }
     },
-	
+
 	[103] = {
         name = "Hunter_Quest_4",
         title = "#Hunter_Quest_4",
@@ -805,8 +803,8 @@ GameRules.quests_table.hunter = {
                 if HasAnItem(hero, "item_axe_stone") then Quests:End(hero, quest.id) end
             end
         }
-    },	
-	
+    },
+
 	[105] = {
         name = "Hunter_Quest_6",
         title = "#Hunter_Quest_6",
@@ -817,7 +815,7 @@ GameRules.quests_table.hunter = {
             to = 20
         }
     },
-	
+
 	[115] = {
         name = "Hunter_Quest_1d",
         title = "#Hunter_Quest_1d",
@@ -829,4 +827,3 @@ GameRules.quests_table.hunter = {
         }
     },
 }
-

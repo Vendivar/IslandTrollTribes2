@@ -63,15 +63,15 @@
 .Arrow_ToggleArrows {
   horizontal-align: right;
   vertical-align: top;
-  x: -190px;
-  y: 50px;	
+  x: -150px;
+  y: 40px;
 }
 
 .Arrowtext_ToggleArrows {
   horizontal-align: right;
   vertical-align: top;
-  x: -210px;
-  y: 165px;
+  x: -168px;
+  y: 202.5px;
   color: gradient(linear, 0% 100%, 0% 0%, from(#f9f9f9), to(#939393));
   font-size: 24px;
 
@@ -87,7 +87,7 @@
 }
 
 .Arrowtext_Crafting {
-  x: 385px;
+  x: 383px;
   y: 127px;
   color: gradient(linear, 0% 100%, 0% 0%, from(#f9f9f9), to(#939393));
   font-size: 24px;
@@ -131,7 +131,7 @@
 .Arrowtext_Meat {
   horizontal-align: center;
   vertical-align: center;
-  x: -100px;
+  x: -97px;
   y: 120px;
 
   color: gradient(linear, 0% 100%, 0% 0%, from(#f9f9f9), to(#939393));
@@ -154,7 +154,7 @@
   vertical-align: center;
   horizontal-align: right;
   x: -193px;
-  y: 204px;
+  y: 205px;
 
   color: gradient(linear, 0% 100%, 0% 0%, from(#f9f9f9), to(#939393));
   font-size: 24px;
@@ -176,7 +176,7 @@
   vertical-align: center;
   horizontal-align: right;
   x: -143px;
-  y: 135px;
+  y: 136px;
 
   color: gradient(linear, 0% 100%, 0% 0%, from(#f9f9f9), to(#939393));
   font-size: 24px;
@@ -235,14 +235,14 @@
 .Arrow_Subclass {
   vertical-align: bottom;
   horizontal-align: right;
-  x: -3.5%;
-  y: -2%;
+  x: -80px;
+  y: -20px;
 }
 .Arrowtext_Subclass {
   vertical-align: bottom;
   horizontal-align: right;
-  x: -12%;
-  y: -40px;
+  x: -224px;
+  y: -38px;
 
   color: gradient(linear, 0% 100%, 0% 0%, from(#f9f9f9), to(#939393));
   font-size: 24px;
@@ -310,8 +310,15 @@
   margin-right: 25px;
 }
 
+.arrow_up {
+  width: 20px;
+  height: 160px;
+  background-color: gradient(linear, 100% 100%, 0% 0%, from(#000000), to(#393939));
+  border: 2px solid #2eb82e;
+  margin-top: 48px;
+}
+
 .arrowhead_right {
-  horizontal-align: right;
   width: 1px;
   height: 1px;
   border-style: solid;
@@ -343,8 +350,8 @@
   width: 1px;
   height: 1px;
   border-style: solid;
-  border-width: 0 25px 50px 25px;
-  border-color: transparent transparent #2eb82e transparent;
+  border-width: 50px 25px 0 25px;
+  border-color: #2eb82e transparent transparent transparent;
   margin-left: 10px;
 }
 

@@ -137,9 +137,18 @@ function Quests:constructor()
     Quests.first_all_id = 1
     Quests.first_class_id = 100
 
+    CustomGameEventManager:RegisterListener("start_quests", Dynamic_Wrap(Quests, "StartQuests"))
     CustomGameEventManager:RegisterListener("stop_quests", Dynamic_Wrap(Quests, "StopQuests"))
 
     Quests:BuildHooks()
+end
+
+function Quests:StartQuests(keys)
+    local hero = PlayerResource:GetSelectedHeroEntity(keys.playerID)
+
+    hero.spawned_time = GameRules:GetGameTime()
+    Quests:Start(hero, "all")
+    Quests:Start(hero, hero:GetHeroClass())
 end
 
 function Quests:StartTracking(hero, quest)
@@ -268,13 +277,19 @@ function Quests:StartQuest(hero, type, quest, id) -- Abstracting here.
         }
     end
 
-    PlayerTables:SetTableValue("quests_"..playerID, id, {
-        title = quest.title,
-        desc = quest.desc,
-        progress_bar = progress_bar
-    })
+    Timers:CreateTimer({
+        endTime = 3,
+        callback = function()
+            if hero.quests_stopped then return end
+            PlayerTables:SetTableValue("quests_"..playerID, id, {
+                title = quest.title,
+                desc = quest.desc,
+                progress_bar = progress_bar
+            })
 
-    Quests:StartTracking(hero, actual_quest)
+            Quests:StartTracking(hero, actual_quest)
+        end
+    })
 end
 
 function Quests:BuildHooks()

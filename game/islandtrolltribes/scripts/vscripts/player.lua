@@ -79,11 +79,6 @@ function ITT:OnClassSelected(event)
         -- Health Label
         local color = ITT:ColorForTeam( team )
         hero:SetCustomHealthLabel( hero.Tribe.." Tribe", color[1], color[2], color[3] )
-
-        hero.spawned_time = GameRules:GetGameTime()
-        ITT.Quests:Start(hero, "all")
-	      ITT.Quests:Start(hero, hero:GetHeroClass())
-
     end, playerID)
 end
 

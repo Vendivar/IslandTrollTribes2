@@ -6,8 +6,7 @@
         <include src="file://{resources}/scripts/custom_game/quests.js" />
     </scripts>
     <Panel class="QuestsRoot" hittest="false">
-        <Panel id="QuestsMainPanel" hittest="false">
-
+        <Panel id="QuestsMainPanel" hittest="false" hittestchildren="false">
         </Panel>
     </Panel>
 </root>

@@ -45,8 +45,8 @@ function AddQuest(id, quest) {
     text.AddClass("QuestDesc");
     text.text = $.Localize(quest.desc, text);
   }
-  
-    Game.EmitSound("quest.new")
+
+  Game.EmitSound("quest.new")
 }
 
 function UpdateQuest(id, quest) {
@@ -54,7 +54,10 @@ function UpdateQuest(id, quest) {
     quests_table[id].finished = true;
 
     var panel = quests_table[id].mainpanel;
-    panel.DeleteAsync(0);
+    panel.AddClass("Quest_Disappear");
+    $.Schedule(0.4, function() {
+      panel.DeleteAsync(0);
+    });
     Game.EmitSound("quest.complete")
     // End a quest
   }
@@ -68,16 +71,17 @@ function UpdateQuest(id, quest) {
 }
 
 function IncomingData(table, changes, deletions) {
-  $.Msg(changes);
   for (var key in changes) {
     var id = parseInt(key);
     if (quests_table[id]) {
       // Update an existing quest.
-      UpdateQuest(key, changes[key])
+      UpdateQuest(key, changes[key]);
     }
     else {
-      // A new quest appears!
-      AddQuest(key, changes[key])
+      if (!changes[key].finished) {
+        // A new quest appears!
+        AddQuest(key, changes[key]);
+      }
     }
   }
 }

@@ -1,7 +1,16 @@
 var ArrowButton = $.GetContextPanel()
+
+var first_time = false;
 function ToggleArrows() {
     $.Msg("ToggleArrow");
     GameUI.CustomUIConfig().ToggleArrows();
+
+    if (!first_time) {
+        first_time = true;
+        GameEvents.SendCustomGameEventToServer("start_quests", {
+            playerID: Players.GetLocalPlayer()
+        });
+    }
 }
 
 (function () {
