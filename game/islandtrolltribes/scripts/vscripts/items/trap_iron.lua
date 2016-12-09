@@ -6,7 +6,7 @@ function MakeTrap( keys )
    -- ParticleManager:SetParticleControl( particle, 0, target_point )
    -- ParticleManager:SetParticleControl( particle, 1, Vector( 0.0, -30, 0.0 ) )
 
-	local dummy = CreateUnitByName("npc_building_trap_iron", target_point, false, caster, caster, caster:GetTeam())
+	CreateUnitByName("npc_building_trap_iron", target_point, true, caster, caster, caster:GetTeam())
 
 end
 

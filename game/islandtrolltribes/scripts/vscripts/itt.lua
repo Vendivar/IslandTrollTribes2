@@ -267,13 +267,8 @@ function ITT:InitGameMode()
 end
 
  --disables rosh pit
-function UnblockMammoth()
+function ITT:UnblockMammoth()
     print("Trying to delete any old bosses")
-
-	if (duckBoss ~= nil)  then
-	duckBoss:AddNoDraw()
-	duckBoss:ForceKill(true)
-	end
 
     mammothBoss = CreateUnitByName("npc_boss_mammoth", Vector(0,0,10), true, nil, nil, DOTA_TEAM_NEUTRALS)
 end
@@ -876,7 +871,7 @@ function ITT:OnGameRulesStateChange()
 
         GameRules:SetHeroRespawnEnabled( false )
         RandomUnpickedPlayers()
-        UnblockMammoth()
+        ITT:UnblockMammoth()
         EmitGlobalSound("get_ready")
        -- ShowCustomHeaderMessage("#NoobTimeOver", -1, -1, 5)
 		Notifications:TopToAll({text="#NoobTimeOver", image="file://{images}/materials/particle/alert.psd", duration=5.0})
