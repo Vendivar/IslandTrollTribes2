@@ -856,6 +856,10 @@ function ITT:OnGameRulesStateChange()
 
     if nNewState == DOTA_GAMERULES_STATE_HERO_SELECTION then
         SendToConsole("dota_camera_disable_zoom 1")
+		
+		SendToConsole("bind ENTER +EnterPressed")
+		SendToConsole("bind KP_ENTER +EnterPressed")
+		SetCameraDistanceOverride (1500)
 
         Spawns:Init()
         Timers(function() ITT:OnItemThink() return GameRules.GameModeSettings["GAME_ITEM_TICK_TIME"] end) --item_spawning.lua

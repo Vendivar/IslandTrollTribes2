@@ -7353,7 +7353,7 @@
 	    "ItemQuality"               "consumable"
 	    "ItemShareability"          "ITEM_FULLY_SHAREABLE"
 	    
-	    "MaxStacks"                 "1"
+	    "MaxStacks"                 "2"
 	    "ItemInitialCharges"        "1"
 	
 	    "ItemPermanent"             "0"
@@ -7399,6 +7399,11 @@
 	            "var_type"              "FIELD_FLOAT"
 	            "radius"                "650"
 	        }
+			"06"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"max_stacks"			"2"
+			}
 	    }
 	    "OnSpellStart"
 	    {
@@ -13094,7 +13099,7 @@
 	"item_beehive"
 	{
 		"ID"	"1107"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
 		"BaseClass"	"item_datadriven"
@@ -13237,6 +13242,11 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"duration"	"10"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"max_stacks"	"2"
 			}
 		}
 	}

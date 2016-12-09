@@ -120,10 +120,13 @@
 			m_ChildRef = resource:"particles/custom/daggers_2.vpcf"
 		},
 		{
-			m_ChildRef = resource:"particles/econ/items/ember_spirit/ember_spirit_ashes/ember_spirit_ashes_weapon_blur.vpcf"
+			m_ChildRef = resource:"particles/custom/tannery_component_7.vpcf"
 		},
 		{
 			m_ChildRef = resource:"particles/custom/shockwave_soft.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/custom/dagger_down.vpcf"
 		},
 	]
 }

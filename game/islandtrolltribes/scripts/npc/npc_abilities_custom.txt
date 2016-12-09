@@ -3340,7 +3340,6 @@
 					"MODIFIER_STATE_ROOTED"		"MODIFIER_STATE_VALUE_ENABLED"
 					"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_DISABLED"
 				}
-				
 	            "ThinkInterval" "0.5"
 	            "OnIntervalThink"
 	            {
@@ -3353,54 +3352,47 @@
 	            }
 	            "OnCreated" 
 	            {
-				"DelayedAction"
-	            	{
-						"Delay"		"1.0"
-						"Action"
-						{
-							"FireEffect"
-							{
-							   "Target" "TARGET"
-							   "EffectName" "particles/units/heroes/hero_treant/treant_overgrowth_vines.vpcf"
-							   "EffectAttachType" "follow_origin"
-							   "EffectRadius"   "35"
-							}
-							"ApplyModifier"
-							{
-								"ModifierName"  "modifier_kill"
-								"Target"	"CASTER"
-								"Duration"      "1"
-							}
-							
-							"ApplyModifier"
-							{
-								"ModifierName"  "modifier_trap_reveal"
-								"Target"	"CASTER"
-							}
-							
-							"ApplyModifier"
-							{
-								"ModifierName"  "modifier_ensnaretrap_slow"
-								"Duration" 		"10"
-								"Target"		"TARGET"
-							}
-							
-							"RunScript"
-							{
-								"ScriptFile"    "items/trap_ensnare.lua"
-								"Function"      "KillTrap"
-							}        
-							"FireSound"
-							{
-								"EffectName"    "Hero_Treant.Overgrowth.Cast"
-								"Target"        "CASTER"
-							}
-							"FireSound"
-							{
-								"EffectName"    "Hero_Treant.Overgrowth.Cast"
-								"Target"        "TARGET"
-							}
-						}
+	                "FireEffect"
+	                {
+	                   "Target" "TARGET"
+	                   "EffectName" "particles/units/heroes/hero_treant/treant_overgrowth_vines.vpcf"
+	                   "EffectAttachType" "follow_origin"
+	                   "EffectRadius"   "35"
+	                }
+	                "ApplyModifier"
+	                {
+	                    "ModifierName"  "modifier_kill"
+						"Target"	"CASTER"
+	                    "Duration"      "1"
+	                }
+	                
+	                "ApplyModifier"
+	                {
+	                    "ModifierName"  "modifier_trap_reveal"
+						"Target"	"CASTER"
+	                }
+					
+					"ApplyModifier"
+	                {
+	                    "ModifierName"  "modifier_ensnaretrap_slow"
+						"Duration" 		"10"
+						"Target"		"TARGET"
+	                }
+	                
+	                "RunScript"
+	                {
+	                    "ScriptFile"    "items/trap_ensnare.lua"
+	                    "Function"      "KillTrap"
+	                }        
+					"FireSound"
+					{
+						"EffectName"    "Hero_Treant.Overgrowth.Cast"
+						"Target"        "CASTER"
+					}
+					"FireSound"
+					{
+						"EffectName"    "Hero_Treant.Overgrowth.Cast"
+						"Target"        "TARGET"
 					}
 	            }
 			}
@@ -3549,60 +3541,53 @@
 					"MODIFIER_STATE_ROOTED"		"MODIFIER_STATE_VALUE_ENABLED"
 					"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_DISABLED"
 				}
-				"OnCreated" 
+	            "OnCreated" 
 	            {
-				"DelayedAction"
-	            	{
-						"Delay"		"1.0"
-						"Action"
-						{
-							"FireEffect"
-							{
-							   "Target" "TARGET"
-							   "EffectName" "particles/custom/bear_trap_close.vpcf"
-							   "EffectAttachType" "follow_origin"
-							}
-							"ApplyModifier"
-							{
-								"ModifierName"  "modifier_kill"
-								"Target"	"CASTER"
-								"Duration"      "0.2"
-							}
-							
-							"ApplyModifier"
-							{
-								"ModifierName"  "modifier_trap_reveal"
-								"Target"	"CASTER"
-							}
-							"ApplyModifier"
-							{
-								"ModifierName"  "modifier_trap_stun"
-								"Target"	"TARGET"
-							}
-							"ApplyModifier"
-							{
-								"ModifierName"  "modifier_irontrap_bleed"
-								"Target"	"TARGET"
-								"Duration" "10"
-							}
-							"RunScript"
-							{
-								"ScriptFile"    "items/trap_ensnare.lua"
-								"Function"      "KillTrap"
-							}
-							"Damage"
-							{
-								"Type"   "DAMAGE_TYPE_PHYSICAL"
-								"Damage" "55"
-								"Target" "TARGET"
-							}
-							"FireSound"
-							{
-								"EffectName"	"trap.iron"
-								"Target"		"TARGET"
-							}
-						}
-					}
+	                "FireEffect"
+	                {
+	                   "Target" "TARGET"
+	                   "EffectName" "particles/custom/bear_trap_close.vpcf"
+	                   "EffectAttachType" "follow_origin"
+	                }
+	                "ApplyModifier"
+	                {
+	                    "ModifierName"  "modifier_kill"
+						"Target"	"CASTER"
+	                    "Duration"      "0.2"
+	                }
+	                
+	                "ApplyModifier"
+	                {
+	                    "ModifierName"  "modifier_trap_reveal"
+						"Target"	"CASTER"
+	                }
+	                "ApplyModifier"
+	                {
+	                    "ModifierName"  "modifier_trap_stun"
+						"Target"	"TARGET"
+	                }
+	                "ApplyModifier"
+	                {
+	                    "ModifierName"  "modifier_irontrap_bleed"
+						"Target"	"TARGET"
+						"Duration" "10"
+	                }
+	                "RunScript"
+	                {
+	                    "ScriptFile"    "items/trap_ensnare.lua"
+	                    "Function"      "KillTrap"
+	                }
+	                "Damage"
+	                {
+	                    "Type"   "DAMAGE_TYPE_PHYSICAL"
+	                    "Damage" "55"
+	                    "Target" "TARGET"
+	                }
+	                "FireSound"
+	                {
+	                    "EffectName"	"trap.iron"
+	                    "Target"		"TARGET"
+	                }
 	            }
 			}
 	        "modifier_trap_reveal"

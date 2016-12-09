@@ -80,6 +80,7 @@
 			_class = "C_INIT_Orient2DRelToCP"
 			m_nFieldOutput = 12
 			m_flRotOffset = 30.0
+			m_bDisableOperator = true
 		},
 		{
 			_class = "C_INIT_PositionOffset"

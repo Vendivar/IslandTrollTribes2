@@ -110,7 +110,7 @@
 		"npc_bush_river"						"Bush"
 		"npc_bush_scout"						"Scout Bush"
 		"npc_bush_stash"						"Stash"
-		"npc_bush_thief"						"Theif Bush"
+		"npc_bush_thief"						"Thief Bush"
 		"npc_bush_thistle"						"Thistle Bush"
         
         "DOTA_Tooltip_ability_item_bush_mushroom"                                         "Mushroom Colony"
@@ -358,8 +358,8 @@
 "DOTA_Tooltip_Ability_ability_beastmaster_empathicrage_movespeed"		"%+MOVE SPEED PER CHARGE"
 "DOTA_Tooltip_modifier_empathicrage"		"Empathic Rage"
 "DOTA_Tooltip_modifier_empathicrage_Description"		""
-"DOTA_Tooltip_modifier_pet_empathicrage"                                          "Pet Empathicrage"
-"DOTA_Tooltip_modifier_pet_empathicrage_Description"                              ""
+"DOTA_Tooltip_modifier_pet_empathicrage"                                          "Empathic Rage"
+"DOTA_Tooltip_modifier_pet_empathicrage_Description"                              "When this pets dies near the beastmaster, he will receive a temporary buff to move speed and attack speed."
 
 "DOTA_Tooltip_modifer_empathicrage_buff"                                          "Modifer Empathicrage Buff"
 "DOTA_Tooltip_modifer_empathicrage_buff_Description"                              ""
@@ -527,7 +527,7 @@
 "DOTA_Tooltip_Ability_ability_beastmaster_spiritofthebeast_sub2_Description"		"PASSIVE - Deals 2 damage each time an enemy attacks the Beastmaster, slowing movement speed by 40% and attack speed by 5%.\nAlso gives a 30% chance and +5% per level to produce a Fawn, Wolf Pup or Bear Cub, with a maximum of 50%\nPets under Pack Leader Form's controll grow 35% faster.\nAlso gives an EXTRA chance per level to find baby animals. Also animals are attracted to the Beastmaster. Effect increases per level."
 "DOTA_Tooltip_Ability_ability_beastmaster_spiritofthebeast_sub2_Note0"		"Pets under Pack Leader Form's control grow 35% faster."
 "DOTA_Tooltip_modifier_spirit"		"Spirit of the Beast"
-"DOTA_Tooltip_modifier_spirit_Description"		""
+"DOTA_Tooltip_modifier_spirit_Description"		"Chance per stack to increase slow amount and the chance a baby will spawn by 5% to nearby enemy animals."
 
 
 "DOTA_Tooltip_Ability_ability_beastmaster_stay"		">Stay"
@@ -1594,7 +1594,7 @@
 "DOTA_Tooltip_ability_ability_scout_ward_lifetime_Description"		""
 "DOTA_Tooltip_ability_ability_scout_ward_lifetime_lifetime"		"LIFETIME:"
 
-// THEIF 
+// Thief 
 
 "DOTA_Tooltip_Ability_ability_thief_assassinate"		"Assassinate"
 "DOTA_Tooltip_ability_ability_thief_assassinate_damage_bonus"		"DAMAGE BONUS:"
@@ -1695,8 +1695,8 @@
 
 "DOTA_Tooltip_Ability_ability_thief_teleport"		"Teleport"
 "DOTA_Tooltip_Ability_ability_thief_teleport_Description"		"Short range blink with up to 600 distance. 200 minimum distance"
-"DOTA_Tooltip_ability_ability_thief_telethief"		"Tele-Theif"
-"DOTA_Tooltip_Ability_ability_thief_tele-thief"		"Tele-Theif"
+"DOTA_Tooltip_ability_ability_thief_telethief"		"Tele-Thief"
+"DOTA_Tooltip_Ability_ability_thief_tele-thief"		"Tele-Thief"
 "DOTA_Tooltip_ability_ability_thief_telethief_Description"		"Cast on a friendly fire. Items you pick up warp to the fire. However, with Telethief, the items only warp to the fire if you are near an enemy building. If this condition is met, it is 100% warp rate. Must be near enemy building for items to warp."
 "DOTA_Tooltip_ability_ability_thief_telethief_duration"		"DURATION:"
 "DOTA_Tooltip_ability_ability_thief_telethief_radius"		"RADIUS:"
@@ -3002,10 +3002,10 @@
 "DOTA_Tooltip_ability_item_meat_smoked_heal_amount"		"HEAL AMOUNT:"
 "DOTA_Tooltip_ability_item_meat_smoked_Lore"		"Hey hey hey, smoke meat every day."
 "DOTA_Tooltip_ability_item_meat_smoked_max_stacks"		"MAX  STACKS:"
-"DOTA_Tooltip_ability_item_medallion_theif"		"Medallion of the Theif"
-"DOTA_Tooltip_ability_item_medallion_theif_Description"		"ACTIVE: Blink - Teleport to the selected location which will also consume this item upon use.\n\nA strange medallion that, when worn by a thief, will cause random effects when hit. Any class can use it for a one-time 'Blink' ability. Consumed after use."
-"DOTA_Tooltip_ability_item_medallion_theif_Lore"		"It feels like some force is pulling the medallion away from you."
-"DOTA_Tooltip_ability_item_medallion_theif_Note0"		"All classes can use this item as a one shot blink item, after which the medallion perishes. Upon being hit (if the bearer is a thief), a random effect has a chance of being triggered. The effects are listed below:\nInvisibility\nSmoke Bomb\nStomp"
+"DOTA_Tooltip_ability_item_medallion_Thief"		"Medallion of the Thief"
+"DOTA_Tooltip_ability_item_medallion_Thief_Description"		"ACTIVE: Blink - Teleport to the selected location which will also consume this item upon use.\n\nA strange medallion that, when worn by a thief, will cause random effects when hit. Any class can use it for a one-time 'Blink' ability. Consumed after use."
+"DOTA_Tooltip_ability_item_medallion_Thief_Lore"		"It feels like some force is pulling the medallion away from you."
+"DOTA_Tooltip_ability_item_medallion_Thief_Note0"		"All classes can use this item as a one shot blink item, after which the medallion perishes. Upon being hit (if the bearer is a thief), a random effect has a chance of being triggered. The effects are listed below:\nInvisibility\nSmoke Bomb\nStomp"
 "DOTA_Tooltip_ability_item_medallion_thief"		"Thief Medallion"
 "DOTA_Tooltip_ability_item_medallion_thief_Description"		"A strange medallion that, when worn by a thief, will cause random effects when hit. Any class can use it for a one-time 'Blink' ability. Consumed after use."
 "DOTA_Tooltip_ability_item_medallion_thief_Lore"		"It feels like some force is pulling the medallion away from you."
@@ -3044,12 +3044,15 @@
 
 
 "DOTA_Tooltip_ability_item_potion_molotov"                                        "Molotov Cocktail"
-"DOTA_Tooltip_ability_item_potion_molotov_Description"                            "Throw this at an enemy camp to set it ablaze!!!"
+"DOTA_Tooltip_ability_item_potion_molotov_Description"                            "Throw this at an enemy camp to set it ablaze!\nOnly hits units on the same level ground."
 "DOTA_Tooltip_ability_item_potion_molotov_burn_dps"                               "BURN DPS:"
 "DOTA_Tooltip_ability_item_potion_molotov_duration_hero"                          "HERO DURATION:"
 "DOTA_Tooltip_ability_item_potion_molotov_duration_creep"                         "CREEP DURATION:"
 "DOTA_Tooltip_ability_item_potion_molotov_duration_building"                      "BUILDING DURATION:"
-"DOTA_Tooltip_ability_item_potion_molotov_radius"                                 "RADIUS:"
+"DOTA_Tooltip_ability_item_potion_molotov_radius"                                 "RADIUS:"	
+"DOTA_Tooltip_ability_item_potion_molotov_max_stacks"                             "MAX STACKS:"
+
+		
 
 	
 "DOTA_Tooltip_modifier_molotov_burn"                                              "Molotov Burn"
@@ -3263,15 +3266,25 @@
 "DOTA_Tooltip_ability_item_scroll_entangling_Note0"		"CD 60s\nRange 450\nImmobilizes target dealing 5 damage per second for 4 seconds on heroes and 8 seconds on normal enemies."
 "DOTA_Tooltip_ability_item_scroll_entangling_range"		"RANGE:"
 "DOTA_Tooltip_ability_item_scroll_entangling_tick_duration"		"TICK DURATION:"
+
+
 "DOTA_Tooltip_ability_item_scroll_fireball"		"Scroll of Fireball"
 "DOTA_Tooltip_ability_item_scroll_fireball_damage"		"DAMAGE:"
 "DOTA_Tooltip_ability_item_scroll_fireball_Description"		"ACTIVE: Fireball - Shoots a massive fireball, dealing damage and stunning whoever it hits.\n<font color='#777777'>Hold ALT to view more information.</font>\n\nHot and fiery words burn through the parchment. They burn into your eyes and enlighten you to use this scroll to cast a magical fireball spell."
 "DOTA_Tooltip_ability_item_scroll_fireball_Lore"		"Build a man a fire, he'll be warm for a night. Set a man on fire, he'll be warm for the rest of his life."
 "DOTA_Tooltip_ability_item_scroll_fireball_Note0"		"CD 32s\nRange: 800\nFireball spell does 40 damage and 1.5s stun to trolls and a 5s stun to creeps.."
 "DOTA_Tooltip_ability_item_scroll_fireball_range"		"RANGE:"
-"DOTA_Tooltip_ability_item_scroll_fireball_stun_duration"		"STUN DURATION:"
+"DOTA_Tooltip_ability_item_scroll_fireball_stun_duration_creep"                   "CREEP STUN DURATION:"
+"DOTA_Tooltip_ability_item_scroll_fireball_stun_duration_hero"                    "HERO STUN DURATION:"
+
+
 "DOTA_Tooltip_ability_item_scroll_boulder"                                        "Boulder Scroll"
 "DOTA_Tooltip_ability_item_scroll_boulder_Description"                            "Channel for 1.5 seconds to summon a boulder building at the point location. Upon landing it will knock back and deal damage in a small area stunning for 0.25 seconds. The building has 150 hp and 1 armor lasting for 25 seconds and  Recommended for emergency base defense! Once destroyed it is gone for good and has a 10% chance to drop 1 stone."
+
+
+				
+		
+		
 		
 "DOTA_Tooltip_ability_item_scroll_living_dead"		"Scroll of Living Dead"
 "DOTA_Tooltip_ability_item_scroll_living_dead_Description"		"ACTIVE: Summon Skeletons - Summons the spirits of two fallen heroes to attack enemies near the user.\n<font color='#777777'>Hold ALT to view more information.</font>\n\nAn ancient dusty scroll with chaotic writing speaks of raising the once living as foot-soldiers from the dead."
@@ -3794,48 +3807,58 @@
 
 "All_Quest_1"		"Survival basics. Build a fire."
 "All_Quest_1_desc"  "Try to find a stick, a tinder and a flint from the wild."
-"All_Quest_2"		"Home Sweet Home: Craft a campfire. (Press C)"
-"All_Quest_3"		"Home Sweet Home Pt. 2: Place your newly crafted camp fire"
 
-"All_Quest_1d"		"Agree upon a base location."
+"All_Quest_2"		"Home Sweet Home: Craft a campfire. (Press C)"
+"All_Quest_3"		"Home Sweet Home: Place your newly crafted camp fire"
+"All_Quest_3_desc"	"It may be a good idea to put this somewhere to scout out an area near your base if you already have a base fire."
+"All_Quest_4"		"Remember you can always pack up your camp fire and move it somewhere else."
+
+"All_Quest_1d"		"Try to agree upon a base location."
 "All_Quest_1c"		"Pick up 5 items"
 "All_Quest_2c"		"Now bring them back to your base!"
 
-"All_Quest_1e"		"Reach level 2 before 5 minutes."
-"All_Quest_2e"		"Reach level 3 before 7 minutes."
-"All_Quest_3e"		"Reach level 4 before 8 minutes."
-"All_Quest_4e"		"Reach level 5 before 10 minutes."
-"All_Quest_5e"		"Reach level 6 before 11 minutes."
+"All_Quest_1e"		"General: Reach level 2 before 5 minutes."
+"All_Quest_2e"		"General: Reach level 3 before 7 minutes."
+"All_Quest_3e"		"General: Reach level 4 before 8 minutes."
+"All_Quest_4e"		"General: Reach level 5 before 10 minutes."
+"All_Quest_5e"		"General: Reach level 6 before 11 minutes."
 "All_Quest_6e"		"Choose your subclass! (Button on bottom right)"
+"All_Quest_6e_desc"	"All subclasses are different improved versions of your current base class. Each one has its own pros and cons, choose the one that suits your current situation!"
 
 
 //GATHERER
 
-"Gatherer_Quest_1" 		"Use the item radar locate items for your team."
-"Gatherer_Quest_1a"		"Great! Remember where stuff is at if you can."
-"Gatherer_Quest_2"		"Now try using radar manipulations and it's abilities"		
-"Gatherer_Quest_3"		"Always actively use item radar throughout the game!"		
-"Gatherer_Quest_4"		"Gatherer: Build a item stockpile area in your base (near the middle)"
-"Gatherer_Quest_5"		"Great! This will allow your team to advance better."
-"Gatherer_Quest_6"		"Remember nearby craft buildings can also use the item stockpile"		
-"Gatherer_Quest_7"		"Remember nearby craft buildings can also use the item stockpile"		
-"Gatherer_Quest_8"		"Since its been some time lets use item radar again"
-"Gatherer_Quest_9"		"Find the blue and red pings to collect 3 stone and 1 flint"		
-"Gatherer_Quest_10"		"Use those items you just got to craft a armory (C)"		
-"Gatherer_Quest_11"		"Great! Now you can start crafting weapons & armor."				
-"Gatherer_Quest_12"		"Let's start by making a good early game item."		
-"Gatherer_Quest_13"		"Let's gather flint and stone to make an iron axe."		
-"Gatherer_Quest_14"		"Find the blue and red pings to collect 2 stone and 2 flint"		
-"Gatherer_Quest_15"		"Now go back to base and put them into the armory/storage"
-"Gatherer_Quest_16"		"Craft two iron ingots"
-"Gatherer_Quest_17"		"Last thing we need is a bone or a stick there's usually one lying around."
-"Gatherer_Quest_18"		"Now craft an iron axe."
-"Gatherer_Quest_1d"		"Remember to stay active and gather items!"
+"Gatherer_Quest_1" 			"Use the item radar locate items for your team."
+"Gatherer_Quest_1a"			"Great! Remember where stuff is at incase you can't get to them in time."
+"Gatherer_Quest_2"			"Now try using radar manipulations and it's abilities"		
+"Gatherer_Quest_3"			"Always actively use item radar throughout the game!"		
+"Gatherer_Quest_4"			"Gatherer: Build a item stockpile area in your base (near the middle)"
+"Gatherer_Quest_4_desc"		"It can be made from combinding a stick and another stick or bone."
+"Gatherer_Quest_5"			"Great! This will allow your team to advance better."
+"Gatherer_Quest_6"			"The item stockpile will automatically pick up nearby common items and organize them."		
+"Gatherer_Quest_7"			"Remember nearby craft buildings can also use the item stockpile automatically."		
+"Gatherer_Quest_8"			"Next we are going to try to make some gear."
+"Gatherer_Quest_8_desc"		"Use the item radar again."
+"Gatherer_Quest_9"			"Look for the blue and red pings to collect 3 stone and 1 flint"		
+"Gatherer_Quest_10"			"Use those items you just got to craft a armory (C)"			
+"Gatherer_Quest_10_desc"	"This building will be used for most of your offensive equipment"	
+"Gatherer_Quest_11"			"Place the armory near your item stockpile"
+"Gatherer_Quest_11_desc"	"There, it will be able to use the stockpile to help craft items for your team."	
+"Gatherer_Quest_12"			"Great! Let's start by making a good early game item."		
+"Gatherer_Quest_13"			"Let's gather flint and stone to make an iron axe."		
+"Gatherer_Quest_14"			"Use the item radar again, then find the blue and red pings to collect 2 stone and 2 flint."		
+"Gatherer_Quest_14_desc"	"To make things easier, toss the items in the item stockpile once you get them."		
+"Gatherer_Quest_15"			"Now go back to base and put them into the armory/storage."
+"Gatherer_Quest_16"			"Craft two iron ingots with the armory."
+"Gatherer_Quest_17"			"Last thing we need is a stick or a bone there's usually one lying around."
+"Gatherer_Quest_18"			"Now craft an iron axe and then take it for yourself or give it to a teammate."
+"Gatherer_Quest_19"			"Nice work!"
+"Gatherer_Quest_1d"			"Remember to stay active and gather items!"
 
 //Beastmaster
 
-"BM_Quest_1"		"Hunt! Get 2 hides for your team."
-"BM_Quest_2"		"You can sell the hides for money turn them into armor."
+"BM_Quest_1"		"Hunt! Get a hide for your team."
+"BM_Quest_2"		"You can sell the hides for money to a wandering merchant found in the rivers, or turn them into armor."
 "BM_Quest_1d"		"Beastmaster: Tame a pet"
 "BM_Quest_2d"		"Beastmaster: Command your pet (Follow)"
 "BM_Quest_3d"		"Beastmaster: Command your pet (Stay)"
@@ -3845,22 +3868,24 @@
 //MAGE
 
 "Mage_Quest_1"		"Find 2 tinders in the wild to help with hunting."
-"Mage_Quest_2"		"Find another tinder hit (C) to craft a 'Hunting net'"
+"Mage_Quest_2"		"Take the tinders you got and hit (C) to craft a 'Hunting net'"
 "Mage_Quest_3"		"Try your new net on a still elk to ensnare them!"
+"Mage_Quest_3_desc"	"Becareful as you can spook an elk if you get too close and it will be harder to net them."
 "Mage_Quest_4"		"Use your new net on a still elk to ensnare them!"
 "Mage_Quest_5"		"Reach level 2 to get new abilities to help you hunt."
-"Mage_Quest_6"		"Use your new abilties on the elk with the net to kill!"
+"Mage_Quest_6"		"Try your new abilties coupled with the net on the elk to help hunt them!"
+"Mage_Quest_6_desc"		"If you time your net correctly with your abilities it's very easy to solo creeps"
 
 //THIEF
 
-"Theif_Quest_1"			"Find 2 tinders in the wild to help with hunting."
-"Theif_Quest_2"			"Find another tinder hit (C) to craft a 'Hunting net'."
-"Theif_Quest_3"			"Use your new net on a still elk to ensnare them!"
-"Theif_Quest_4"			"Use your new net on a still elk to ensnare them!"
-"Theif_Quest_1d"		"See if you can find a theif bush."
-"Theif_Quest_2d"		"Read what the theif medal does then use it!" 
-"Theif_Quest_1c"		"Use your abilities to steal at least 3 items from an enemy island."
-"Theif_Quest_1e"		"Search the river and kill an enemy fire and use it."
+"Thief_Quest_1"			"Find 2 tinders in the wild to help with hunting."
+"Thief_Quest_2"			"Find another tinder hit (C) to craft a 'Hunting net'."
+"Thief_Quest_3"			"Use your new net on a still elk to ensnare them!"
+"Thief_Quest_4"			"Use your new net on a still elk to ensnare them!"
+"Thief_Quest_1d"		"See if you can find a Thief bush."
+"Thief_Quest_2d"		"Read what the Thief medal does then use it!" 
+"Thief_Quest_1c"		"Use your abilities to steal at least 3 items from an enemy island."
+"Thief_Quest_1e"		"Search the river and kill an enemy fire and use it."
 
 
 
@@ -3868,9 +3893,14 @@
 
 
 "Hunter_Quest_1d"	"Consider bringing a teammate along to help them level."
-"Hunter_Quest_1"	"Use the net ability and net an elk while killing two elks."
+"Hunter_Quest_1"	"Use the net ability on elks while hunting them."
 "Hunter_Quest_2"	"Hunter: Reach level 2 to continue."
 "Hunter_Quest_3"	"Use the track while killing two elks."
+"Hunter_Quest_4"    "Gearing up: Look for 2 stones and 1 stick while out killing."
+"Hunter_Quest_4_desc"    "Keep those resources so we can use them for the next step"
+"Hunter_Quest_5"	"Now take those items to the armory (once you have one) and make yourself a stone axe."
+"Hunter_Quest_5_desc"	"This will give you a quick boost to damage, and can also be used to chop trees."
+"Hunter_Quest_6"	"There are lots of other types of weapons you can equip, see what resources you have and decide how you will continue on."
 
 
 
@@ -3881,7 +3911,7 @@
 
 //SCOUT
 
-"Scout_Quest_1"			"Always try to keep your team alert of enimies."
+"Scout_Quest_1"			"Always try to keep your team alert of enemies."
 
 
 

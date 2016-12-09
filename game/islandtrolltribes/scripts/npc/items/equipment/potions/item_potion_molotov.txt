@@ -20,7 +20,7 @@
     "ItemQuality"               "consumable"
     "ItemShareability"          "ITEM_FULLY_SHAREABLE"
     
-    "MaxStacks"                 "1"
+    "MaxStacks"                 "2"
     "ItemInitialCharges"        "1"
 
     "ItemPermanent"             "0"
@@ -66,6 +66,11 @@
             "var_type"              "FIELD_FLOAT"
             "radius"                "650"
         }
+		"06"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"max_stacks"			"2"
+		}
     }
     "OnSpellStart"
     {
