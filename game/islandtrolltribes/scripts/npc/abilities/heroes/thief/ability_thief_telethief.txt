@@ -1,11 +1,11 @@
 "ability_thief_telethief"
 {
-	"BaseClass"	"ability_datadriven"
-	"AbilityTextureName"	"ability_thief_tele_thief"
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"ability_thief_tele_thief"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BUILDING"
-
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP"
+	"MaxLevel"						"1"
 	"AbilityCooldown"				"120"
 	"AbilityManaCost"				"30"
 	"AbilityCastRange"				"100"

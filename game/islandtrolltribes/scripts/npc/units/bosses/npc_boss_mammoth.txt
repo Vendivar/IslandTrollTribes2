@@ -1,7 +1,7 @@
 "npc_boss_mammoth"
 {
 	"BaseClass"	"npc_dota_creature"
-	"ConsideredHero"	"1"
+	"ConsideredHero"	"0"
 	"ModelScale"	"1.70"
 	"Model"	"models\heroes\magnataur\magnataur.vmdl"
 	"Level"	"20"

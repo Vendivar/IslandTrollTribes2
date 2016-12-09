@@ -12536,6 +12536,11 @@
 	    "UIDropSound"           "Item.DropGemShop"
 	    "WorldDropSound"        "Item.DropGemWorld"
 	
+		"Custom"
+		{
+			"ModelScale"	"0.7"
+		}
+		
 	    "AbilitySpecial"
 	    {
 	        "01"

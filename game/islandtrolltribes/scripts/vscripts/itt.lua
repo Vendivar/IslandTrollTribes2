@@ -274,13 +274,15 @@ function ITT:UnblockMammoth()
 end
 
 function ITT:KillMammoth()
-    print("Trying to move and delete mammoth")
-	if (mammothBoss ~= nil)  then
+    print("Trying to move and delete mammoth and duck")
+	if (mammothBoss ~= nil)  then	
+		print("Deleting Mammoth")
 		mammothBoss:SetOrigin(Vector(5000,0,0 - 5))
 		mammothBoss:ForceKill(true)
 	end
 	
 	if (duckBoss ~= nil)  then
+		print("Deleting Duck")
 		duckBoss:SetOrigin(Vector(5000,0,0 - 5))
 		duckBoss:ForceKill(true)
 	end

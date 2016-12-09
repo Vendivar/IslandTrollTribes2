@@ -25,7 +25,6 @@
 		},
 		{
 			_class = "C_OP_NormalLock"
-			m_bDisableOperator = true
 		},
 	]
 	m_Renderers = 

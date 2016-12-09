@@ -1589,96 +1589,6 @@
 		}
 	
 	}
-	"ability_mammoth_passive_hardened_skin"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityTextureName"	"ability_hunter_endurance"
-		"MaxLevel"	"1"
-		"precache"
-		{
-			"particle_folder"	"particles/units/heroes/hero_razor"
-			"particle_folder"	"particles/units/heroes/hero_disruptor"
-			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_queenofpain.vsndevts"
-		}
-	
-		"Modifiers"
-		{
-			"hunter_endurance_passive"
-			{
-				"Passive"	"1"
-				"IsPurgable"	"0"
-				"OnAttacked"
-				{
-					"Random"
-					{
-						"Chance"	"%chance"
-						"OnSuccess"
-						{
-							"RunScript"
-							{
-								"ScriptFile"	"units/mammoth.lua"
-								"Function"	"MammothBlockSuccess"
-								"Attacker"	"ATTACKER"
-							}
-	
-							"ApplyModifier"
-							{
-								"ModifierName"	"modifier_block_effect"
-								"Target"	"CASTER"
-							}
-	
-						}
-	
-					}
-	
-				}
-	
-			}
-	
-			"modifier_block_effect"
-			{
-				"IsHidden"	"1"
-				"IsPurgable"	"0"
-				"Duration"	"0.3"
-				"EffectName"	"particles/units/heroes/hero_dazzle/dazzle_armor_friend.vpcf"
-				"EffectAttachType"	"follow_overhead"
-			}
-	
-		}
-	
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_FLOAT"
-				"chance"	"50"
-			}
-	
-		}
-	
-	}
-	"ability_mammoth_passive_invul"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-		"AbilityTextureName"	"razor_plasma_field"
-		"Modifiers"
-		{
-			"modifier_mammoth_passive"
-			{
-				"Passive"	"1"
-				"IsHidden"	"1"
-	
-				"States"
-				{
-					"MODIFIER_STATE_MAGIC_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_NO_HEALTH_BAR"	"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_INVULNERABLE"	"MODIFIER_STATE_VALUE_ENABLED"
-				}
-			}
-		}
-	}
 	"ability_spiritspriteparticle"
 	{
 	    "BaseClass"         "ability_datadriven"
@@ -3430,6 +3340,7 @@
 					"MODIFIER_STATE_ROOTED"		"MODIFIER_STATE_VALUE_ENABLED"
 					"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_DISABLED"
 				}
+				
 	            "ThinkInterval" "0.5"
 	            "OnIntervalThink"
 	            {
@@ -3442,47 +3353,54 @@
 	            }
 	            "OnCreated" 
 	            {
-	                "FireEffect"
-	                {
-	                   "Target" "TARGET"
-	                   "EffectName" "particles/units/heroes/hero_treant/treant_overgrowth_vines.vpcf"
-	                   "EffectAttachType" "follow_origin"
-	                   "EffectRadius"   "35"
-	                }
-	                "ApplyModifier"
-	                {
-	                    "ModifierName"  "modifier_kill"
-						"Target"	"CASTER"
-	                    "Duration"      "1"
-	                }
-	                
-	                "ApplyModifier"
-	                {
-	                    "ModifierName"  "modifier_trap_reveal"
-						"Target"	"CASTER"
-	                }
-					
-					"ApplyModifier"
-	                {
-	                    "ModifierName"  "modifier_ensnaretrap_slow"
-						"Duration" 		"10"
-						"Target"		"TARGET"
-	                }
-	                
-	                "RunScript"
-	                {
-	                    "ScriptFile"    "items/trap_ensnare.lua"
-	                    "Function"      "KillTrap"
-	                }        
-					"FireSound"
-					{
-						"EffectName"    "Hero_Treant.Overgrowth.Cast"
-						"Target"        "CASTER"
-					}
-					"FireSound"
-					{
-						"EffectName"    "Hero_Treant.Overgrowth.Cast"
-						"Target"        "TARGET"
+				"DelayedAction"
+	            	{
+						"Delay"		"1.0"
+						"Action"
+						{
+							"FireEffect"
+							{
+							   "Target" "TARGET"
+							   "EffectName" "particles/units/heroes/hero_treant/treant_overgrowth_vines.vpcf"
+							   "EffectAttachType" "follow_origin"
+							   "EffectRadius"   "35"
+							}
+							"ApplyModifier"
+							{
+								"ModifierName"  "modifier_kill"
+								"Target"	"CASTER"
+								"Duration"      "1"
+							}
+							
+							"ApplyModifier"
+							{
+								"ModifierName"  "modifier_trap_reveal"
+								"Target"	"CASTER"
+							}
+							
+							"ApplyModifier"
+							{
+								"ModifierName"  "modifier_ensnaretrap_slow"
+								"Duration" 		"10"
+								"Target"		"TARGET"
+							}
+							
+							"RunScript"
+							{
+								"ScriptFile"    "items/trap_ensnare.lua"
+								"Function"      "KillTrap"
+							}        
+							"FireSound"
+							{
+								"EffectName"    "Hero_Treant.Overgrowth.Cast"
+								"Target"        "CASTER"
+							}
+							"FireSound"
+							{
+								"EffectName"    "Hero_Treant.Overgrowth.Cast"
+								"Target"        "TARGET"
+							}
+						}
 					}
 	            }
 			}
@@ -3631,53 +3549,60 @@
 					"MODIFIER_STATE_ROOTED"		"MODIFIER_STATE_VALUE_ENABLED"
 					"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_DISABLED"
 				}
-	            "OnCreated" 
+				"OnCreated" 
 	            {
-	                "FireEffect"
-	                {
-	                   "Target" "TARGET"
-	                   "EffectName" "particles/custom/bear_trap_close.vpcf"
-	                   "EffectAttachType" "follow_origin"
-	                }
-	                "ApplyModifier"
-	                {
-	                    "ModifierName"  "modifier_kill"
-						"Target"	"CASTER"
-	                    "Duration"      "0.2"
-	                }
-	                
-	                "ApplyModifier"
-	                {
-	                    "ModifierName"  "modifier_trap_reveal"
-						"Target"	"CASTER"
-	                }
-	                "ApplyModifier"
-	                {
-	                    "ModifierName"  "modifier_trap_stun"
-						"Target"	"TARGET"
-	                }
-	                "ApplyModifier"
-	                {
-	                    "ModifierName"  "modifier_irontrap_bleed"
-						"Target"	"TARGET"
-						"Duration" "10"
-	                }
-	                "RunScript"
-	                {
-	                    "ScriptFile"    "items/trap_ensnare.lua"
-	                    "Function"      "KillTrap"
-	                }
-	                "Damage"
-	                {
-	                    "Type"   "DAMAGE_TYPE_PHYSICAL"
-	                    "Damage" "55"
-	                    "Target" "TARGET"
-	                }
-	                "FireSound"
-	                {
-	                    "EffectName"	"trap.iron"
-	                    "Target"		"TARGET"
-	                }
+				"DelayedAction"
+	            	{
+						"Delay"		"1.0"
+						"Action"
+						{
+							"FireEffect"
+							{
+							   "Target" "TARGET"
+							   "EffectName" "particles/custom/bear_trap_close.vpcf"
+							   "EffectAttachType" "follow_origin"
+							}
+							"ApplyModifier"
+							{
+								"ModifierName"  "modifier_kill"
+								"Target"	"CASTER"
+								"Duration"      "0.2"
+							}
+							
+							"ApplyModifier"
+							{
+								"ModifierName"  "modifier_trap_reveal"
+								"Target"	"CASTER"
+							}
+							"ApplyModifier"
+							{
+								"ModifierName"  "modifier_trap_stun"
+								"Target"	"TARGET"
+							}
+							"ApplyModifier"
+							{
+								"ModifierName"  "modifier_irontrap_bleed"
+								"Target"	"TARGET"
+								"Duration" "10"
+							}
+							"RunScript"
+							{
+								"ScriptFile"    "items/trap_ensnare.lua"
+								"Function"      "KillTrap"
+							}
+							"Damage"
+							{
+								"Type"   "DAMAGE_TYPE_PHYSICAL"
+								"Damage" "55"
+								"Target" "TARGET"
+							}
+							"FireSound"
+							{
+								"EffectName"	"trap.iron"
+								"Target"		"TARGET"
+							}
+						}
+					}
 	            }
 			}
 	        "modifier_trap_reveal"
@@ -18996,12 +18921,12 @@
 	
 	"ability_thief_telethief"
 	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"ability_thief_tele_thief"
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"ability_thief_tele_thief"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BUILDING"
-	
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP"
+		"MaxLevel"						"1"
 		"AbilityCooldown"				"120"
 		"AbilityManaCost"				"30"
 		"AbilityCastRange"				"100"
