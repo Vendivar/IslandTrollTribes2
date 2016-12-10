@@ -94,7 +94,6 @@
 			m_nFieldOutput = 7
 			m_nInputMax = 32
 			m_nInputMin = 31
-			m_bDisableOperator = true
 		},
 		{
 			_class = "C_INIT_PositionOffset"
@@ -103,7 +102,7 @@
 		},
 		{
 			_class = "C_INIT_RandomRadius"
-			m_flRadiusMax = 128.0
+			m_flRadiusMax = 87.362
 			m_flRadiusMin = 32.0
 		},
 		{

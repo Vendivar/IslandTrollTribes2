@@ -102,7 +102,7 @@
 	[
 		{
 			_class = "C_OP_ContinuousEmitter"
-			m_flEmissionDuration = 0.1
+			m_flEmissionDuration = 5.0
 			m_flEmitRate = 505.0
 		},
 	]

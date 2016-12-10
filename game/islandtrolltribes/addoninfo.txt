@@ -40,7 +40,7 @@
         }
         "05"
         {
-            "Key"       "B"
+            "Key"       "P"
             "Command"   "+DropAllItems"
             "Name"      "Drop all items on the target point"
         }        

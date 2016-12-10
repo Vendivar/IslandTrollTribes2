@@ -26,12 +26,12 @@
 {
     overflow: clip scroll;
     width: 490px;
-    height: 40%;
+    height: 53.4%;
     flow-children: down;
     horizontal-align: right;
     vertical-align: center;
-    y: 10%;
-    x: 14px;
+    y: -2%;
+    x: -10px;
     z-index: 1;
 }
 

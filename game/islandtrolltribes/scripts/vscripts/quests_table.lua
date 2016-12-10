@@ -75,10 +75,22 @@ GameRules.quests_table.all = {
             to = 15
         }
     },
-
+	
     [7] = {
         name = "All_Quest_1d",
         title = "#All_Quest_1d",
+        desc = "#All_Quest_1d_desc",
+        context = {
+            type = "Time",
+            from = 0,
+            delay_start = 5,
+            to = 45
+        }
+    },    
+	[8] = {
+        name = "All_Quest_2d",
+        title = "#All_Quest_2d",
+        desc = "#All_Quest_2d_desc",
         context = {
             type = "Time",
             from = 0,
@@ -86,7 +98,7 @@ GameRules.quests_table.all = {
             to = 45
         }
     },
-
+	
 --[7] = {
 --       name = "All_Quest_1c",
 --       title = "#All_Quest_1c",
@@ -515,7 +527,7 @@ GameRules.quests_table.gatherer = {
         context = {
             type = "Time",
             from = 0,
-            to = 20
+            to = 50
         }
     },
 	[117] = {

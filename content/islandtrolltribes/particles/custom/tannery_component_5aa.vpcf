@@ -91,7 +91,6 @@
 			m_flRadius2 = 114.0
 			m_flOffset = 32.0
 			m_flParticleDensity = 93.0
-			m_bUseLocalCoords = true
 			m_bOffsetExistingPos = true
 		},
 		{

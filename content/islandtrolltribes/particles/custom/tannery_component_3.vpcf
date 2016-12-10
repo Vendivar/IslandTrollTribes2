@@ -76,9 +76,6 @@
 			_class = "C_INIT_RandomYawFlip"
 		},
 		{
-			_class = "C_INIT_CreateOnModel"
-		},
-		{
 			_class = "C_INIT_PositionOffset"
 			m_OffsetMax = [ 0.0, 0.0, 50.0 ]
 			m_OffsetMin = [ 0.0, 0.0, 50.0 ]

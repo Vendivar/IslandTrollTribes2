@@ -47,16 +47,6 @@
 			m_flFadeInTime = 0.2
 		},
 		{
-			_class = "C_OP_RemapDirectionToCPToVector"
-			m_flOpEndFadeInTime = 999.0
-			m_flOpStartFadeInTime = 999.0
-			m_flOffsetRot = -70.0
-			m_vecOffsetAxis = [ 0.0, 0.0, 1.0 ]
-			m_bNormalize = true
-			m_nFieldOutput = 21
-			m_bDisableOperator = true
-		},
-		{
 			_class = "C_OP_ColorInterpolate"
 			m_ColorFade = [ 43, 0, 0, 255 ]
 			m_flFadeStartTime = 0.1
