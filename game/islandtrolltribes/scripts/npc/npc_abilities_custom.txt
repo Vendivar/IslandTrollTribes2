@@ -6301,22 +6301,16 @@
 				"Aura"	"modifier_animal_slow"
 				"Aura_Radius"	"500"
 				"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-				"Aura_Types"	"DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_BASIC"
+				"Aura_Types"	"DOTA_UNIT_TARGET_CREEP"
 				"Aura_ApplyToCaster"	"0"
 				"OnAttacked"
 				{
-					"Damage"
+					"RunScript"
 					{
-						"Target"	"ATTACKER"
-						"Damage"	"2"
-						"Type"	"DAMAGE_TYPE_MAGICAL"
+						"ScriptFile" "heroes/beastmaster/spirit_of_the_beast.lua"
+						"Function"   "SpiritAttacked"
+						"Target" "ATTACKER"
 					}
-					"ApplyModifier"
-					{
-						"Target"	"ATTACKER"
-						"ModifierName"	"modifier_spiritofthebeastslow"
-					}
-	
 				}
 	
 			}

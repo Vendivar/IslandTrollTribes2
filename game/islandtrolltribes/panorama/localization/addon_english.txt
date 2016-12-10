@@ -296,24 +296,31 @@
         //  <h1>text</h1> header1, <h2>text</h2> header2
         //  <i> italic/underlined.
         //  Styles can be changed in custom_loading_screen.css
-        "loading_screen_change_text" "<h1>LATEST CHANGES</h1><i>Version 1.1.0</i><br>
-<h2>Mechanics:</h2>
-Freezing (NEW!): Now instead of instantly dieing from lack of heat, you freeze for 60 seconds giving your team a chance to save you.<br>
-Cooked Meat: Cooked Meat max stacks now is 8, and heal per use is now 35 (down from 50)<br>
-Bosses: The Mighty Mammoth now joins the fight, kill him if you can and you will be rewarded!<br>
-Shops: Prices raised slightly, and reduced maximum boats on the map by 1<br>
-Lots of bug fixes also included. Should no longer lose abilities, or have crafting issues.<br><br>
+        "loading_screen_change_text" "<h1>LATEST CHANGES</h1><i>Version 1.1.1</i><br>
+<h2>Mechanics:</h2><br>
+Quests (NEW!): Upon starting the game you are shown some helpful tips and quests, you can turn them off through the help menu.<br>
+On Death item stacks now are properly are preserved for what drops when you die.<br>
+'P' button now drops all carried items instead of 'B' button.<br><br>
+
 <h2>Abilities & Heroes:</h2>
-Scout: Wards and Clay now work properly.<br>
-Priest: Lots of spell fixes.<br>
-Beastmaster: Pet speeds raised.<br><br>
+Gatherer: Fixed telegathering for herbmaster and remote gatherer<br>
+Potential fix for losing abilities.<br><br>
+
 <h2>Buildings:</h2>
-Item Storage: Added new item storage area! Store your items here and nearby buildings can access them!<br>
-All Buildings: New Crafting FX!<br><br>
+Spirit Ward: Fixed revive sounds, Added revive particles<br>
+<br>
 <h2>Items:</h2>
-Disease Potion: Works now.<br>
-Beehive/Essence of Bees: Bees bees bees<br>
-Special Herbs: New drop model.<br><br>"
+Recipies: Fixed dark thistle recipie and adjusted early game trap recipies<br>
+Spears: New FX<br>
+Fireball Scroll: Added longer stun for creeps.<br>
+Cloak: Fixed armor values.<br>
+Horn of Mammoth: New model and now has unlimited useage.<br>
+Axes: Fixed range on tree cutting which prevented tree cutting.<br><br>"
+
+
+
+
+
 
         "loading_screen_tip_0"  "Press B to drop all held items."
         "loading_screen_tip_1"  "Don't forget to check your heat, if you freeze to death you will die!"

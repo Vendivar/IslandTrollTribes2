@@ -37,3 +37,18 @@ function AttractAnimal(keys)
         target:MoveToPositionAggressive(position)
 	end
 end
+
+
+
+function SpiritAttacked(keys)
+    local caster = keys.caster
+    local target = keys.target
+    local attacker = keys.attacker
+    local ability = keys.ability
+	
+		if not attacker:IsHero() then	
+		ApplyDamage({victim = attacker, attacker = caster, damage = 2, damage_type = DAMAGE_TYPE_MAGICAL, })		
+		attacker:AddNewModifier(caster, ability, "modifier_spiritofthebeastslow", {duration = 3, hidden = false})
+		end
+end
+

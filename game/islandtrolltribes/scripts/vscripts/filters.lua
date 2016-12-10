@@ -90,7 +90,7 @@ function ITT:FilterExecuteOrder( filterTable )
 	
 	    if targetIndex and (order_type == DOTA_UNIT_ORDER_ATTACK_TARGET or order_type == DOTA_UNIT_ORDER_MOVE_TO_TARGET) then
         local target = EntIndexToHScript(targetIndex)
-		if target and target:IsPlayer() and target:HasModifier("modifier_frozen") then
+		if target and target:IsHero() and target:HasModifier("modifier_frozen") then
 				local hero = PlayerResource:GetSelectedHeroEntity(issuer)				
 				local abilityName = "ability_warm_up"
 				local ability = hero:FindAbilityByName(abilityName)
