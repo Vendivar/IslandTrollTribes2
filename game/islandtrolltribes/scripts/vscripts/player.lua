@@ -209,16 +209,26 @@ function ITT:AdjustSkills( hero )
     if hero.subclass_leveled and hero.subclass_leveled > 6 then
 
         for level = 6, hero.subclass_leveled do
+		
             ITT:UnlearnAbilities(hero, class_skills, level)
             ITT:LearnAbilities(hero, class_skills, level)
         end
 
         hero.subclass_leveled = nil --Already subclassed, next time it will just adjust skills normally
     else
-        ITT:UnlearnAbilities(hero, class_skills, level)
+	    Timers:CreateTimer({
+      endTime = 0.1,
+      callback = function()
+         ITT:UnlearnAbilities(hero, class_skills, level)
+      end
+    })
+       	    Timers:CreateTimer({
+      endTime = 0.3,
+      callback = function()
         ITT:LearnAbilities(hero, class_skills, level)
+      end
+    })
     end
-
     AdjustAbilityLayout(hero)
     EnableSpellBookAbilities(hero)
     PrintAbilities(hero)

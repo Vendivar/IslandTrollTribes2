@@ -253,6 +253,20 @@
 }
 
 
+.General_Info {
+  vertical-align: center;
+  horizontal-align: center;
+  x: 124px;
+  y: -38px;
+
+  color: gradient(linear, 0% 100%, 0% 0%, from(#f9f9f9), to(#939393));
+  font-size: 24px;
+
+  padding: 6px 50px;
+  border: 3px solid #2eb82e;
+  background-color: gradient(linear, 100% 100%, 0% 0%, from(#000000), to(#393939));
+}
+
 .arrow_left {
   width: 550px;
   height: 20px;

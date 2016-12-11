@@ -2032,7 +2032,9 @@
 "DOTA_Tooltip_ability_item_beehive_Note0"					"WHAT"	
 "DOTA_Tooltip_ability_item_beehive_damage"					"DAMAGE:"
 "DOTA_Tooltip_ability_item_beehive_duration"				"DURATION:"
+"DOTA_Tooltip_ability_item_beehive_max_stacks"                                    "MAX STACKS:"
 
+		
 		
 "DOTA_Tooltip_modifier_beehive_attack"                                            "Beehive Attack"
 "DOTA_Tooltip_modifier_beehive_attack_Description"                                ""
@@ -2297,8 +2299,6 @@
 "DOTA_Tooltip_ability_item_boat_seed_magic_Note0"		"Creates a tree at target location."
 "DOTA_Tooltip_ability_item_boat_shield_basic"		"Basic Shield"
 "DOTA_Tooltip_ability_item_boat_shield_basic_armor"		"+$armor"
-"DOTA_Tooltip_ability_item_boat_shield_basic_block_amount"		"BLOCK CHANCE:"
-"DOTA_Tooltip_ability_item_boat_shield_basic_block_chance"		"BLOCK CHANCE:"
 "DOTA_Tooltip_ability_item_boat_shield_basic_block_damage_melee"		"BLOCK DAMAGE MELEE:"
 "DOTA_Tooltip_ability_item_boat_shield_basic_block_damage_ranged"		"BLOCK DAMAGE RANGED:"
 "DOTA_Tooltip_ability_item_boat_shield_basic_Description"		"PASSIVE: Provides armor, as well as giving a chance to block physical damage.\n\nA basic shield made of wood that can be upgraded in the Armory."
@@ -2306,7 +2306,6 @@
 "DOTA_Tooltip_ability_item_boat_shield_basic_spell_block"		"SPELL BLOCK:"
 "DOTA_Tooltip_ability_item_boat_shield_steel"		"Steel Shield"
 "DOTA_Tooltip_ability_item_boat_shield_steel_armor"		"+$armor"
-"DOTA_Tooltip_ability_item_boat_shield_steel_block_amount"		"BLOCK CHANCE:"
 "DOTA_Tooltip_ability_item_boat_shield_steel_block_chance"		"BLOCK CHANCE:"
 "DOTA_Tooltip_ability_item_boat_shield_steel_block_damage_melee"		"BLOCK DAMAGE MELEE:"
 "DOTA_Tooltip_ability_item_boat_shield_steel_block_damage_ranged"		"BLOCK DAMAGE RANGED:"
@@ -2561,7 +2560,6 @@
 "DOTA_Tooltip_ability_item_building_kit_trap_ensnare_build_time"		"BUILD TIME:"
 "DOTA_Tooltip_ability_item_building_kit_trap_ensnare_Description"		"A clever trap placed to aid the trapping of wild animals, or even an enemy troll if you ask nicely."
 "DOTA_Tooltip_ability_item_building_kit_trap_ensnare_Lore"		"Despised by animal-rights activists."
-"DOTA_Tooltip_ability_item_building_kit_trap_ensnare_Note0"		"Ensnare: (auto cast)\n    - Immobilizes trolls for 3.25s, animals for 8s.\n    - 10s cooldown.\nGet Corpse: (autocast)\n    - Picks up nearby corpse. Max 8."
 
 
 "DOTA_Tooltip_modifier_enemytargeting_Description"                                "Items loaded into this will automatically target an enemy and be used on them!"
@@ -3044,7 +3042,8 @@
 
 
 "DOTA_Tooltip_ability_item_potion_molotov"                                        "Molotov Cocktail"
-"DOTA_Tooltip_ability_item_potion_molotov_Description"                            "Throw this at an enemy camp to set it ablaze!\nOnly hits units on the same level ground."
+"DOTA_Tooltip_ability_item_potion_molotov_Description"                            "Throw this at an enemy camp to set it ablaze!\nOnly hits units on the same ground level."
+"DOTA_Tooltip_ability_item_potion_molotov_Lore"									  "Nothing says your gettin' raided like someone throwing a molotov cocktail into a home"
 "DOTA_Tooltip_ability_item_potion_molotov_burn_dps"                               "BURN DPS:"
 "DOTA_Tooltip_ability_item_potion_molotov_duration_hero"                          "HERO DURATION:"
 "DOTA_Tooltip_ability_item_potion_molotov_duration_creep"                         "CREEP DURATION:"
@@ -3806,14 +3805,18 @@
 //All
 
 "All_Quest_1"		"Survival basics. Build a fire."
-"All_Quest_1_desc"  "Try to find a stick, a tinder and a flint from the wild."
+"All_Quest_1_desc"  "Try to find a stick, a tinder and a flint from the wild. They will show up as items on the ground."
 
 "All_Quest_2"		"Home Sweet Home: Craft a campfire. (Press C)"
 "All_Quest_3"		"Home Sweet Home: Place your newly crafted camp fire"
 "All_Quest_3_desc"	"It may be a good idea to put this somewhere to scout out an area near your base if you already have a base fire."
 "All_Quest_4"		"Remember you can always pack up your camp fire and move it somewhere else."
 
-"All_Quest_1d"		"Try to agree upon a base location."
+"All_Quest_1d"			"Explore the island you've spawned on for a suitable base location."
+"All_Quest_1d_desc"		"Try to keep an eye out for things like bushes, the river where boats travel, and defendability of the location."
+"All_Quest_2d"			"Discuss with your team about placing your base in a spot that you think is best."
+"All_Quest_2d_desc"		"Try to agree upon a base location."
+
 "All_Quest_1c"		"Pick up 5 items"
 "All_Quest_2c"		"Now bring them back to your base!"
 

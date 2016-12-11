@@ -3,7 +3,7 @@ function RadarTelegatherInit(keys)
     local target = keys.target
     local ability = keys.ability
     local duration  = ability:GetSpecialValueFor("duration")
-    if target:GetUnitName() == "npc_building_fire_basic" then
+    if target:GetUnitName() == "npc_building_fire_basic" or target:GetUnitName() == "npc_building_fire_mage" then
         keys.caster.targetFire = target
     else
         SendErrorMessage(caster:GetPlayerOwnerID(),"#invalid_telegatherer_target")

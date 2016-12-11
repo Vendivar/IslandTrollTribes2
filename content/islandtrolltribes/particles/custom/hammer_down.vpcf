@@ -46,8 +46,8 @@
 	[
 		{
 			_class = "C_INIT_RandomLifeTime"
-			m_fLifetimeMin = 1.1
-			m_fLifetimeMax = 1.1
+			m_fLifetimeMin = 1.3
+			m_fLifetimeMax = 1.3
 		},
 		{
 			_class = "C_INIT_RandomAlpha"
@@ -91,5 +91,5 @@
 			m_nParticlesToEmit = 1
 		},
 	]
-	m_flConstantLifespan = 5.0
+	m_flConstantLifespan = 8.0
 }

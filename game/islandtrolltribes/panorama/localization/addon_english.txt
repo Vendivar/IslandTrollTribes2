@@ -131,13 +131,13 @@
         "mage_sub3_desc"    "The Dementia Master does not get many new spells, instead he focuses on increasing the power of his existing spells and creating new spells from raw magical runes.\n\nFunction: Combat, Special and RNG\nInitial Abilities: Mage Fire, Reduce Food, Giga Negative Blast, Quantum Null Damage\nLearnable Abilities: Metronome, Maddening Discharge, Dementia Mastery\nBase Damage: 15-15 / Cooldown: 1.75\nMovement Speed: 310"
 
         "gatherer_sub1_name" "Herbmaster Telegatherer"
-        "gatherer_sub1_desc" "The Herbmaster Telegatherer can mix potions on-the-go and send resources straight to a friendly camp fire from anywhere on the map.\n\n\n\n\nFunction: Collecting, and creating items, mixing potions.\nInitial Ability: Mix Herbs\nLearnable Ability: Telegather\nBase Damage: 14-14\nAttack Cooldown: 1.75\nMovement Speed: 325"
+        "gatherer_sub1_desc" "The Herbmaster Telegatherer refocuses his location finding abilities to the bushes and plants while also being able to mix potions on-the-go and send potion mixing resources straight to a friendly campfire from anywhere on the map.\n\n\nFunction: Collecting, and creating items, mixing potions.\nInitial Ability: Mix Herbs\nLearnable Ability: Telegather\nBase Damage: 14-14\nAttack Cooldown: 1.75\nMovement Speed: 325"
 
         "gatherer_sub2_name" "The Radar Telegatherer"
-        "gatherer_sub2_desc" "The Radar Telegatherer can discern different resources on the minimap and send them straight to a friendly camp fire from anywhere on the map.\n\n\n\nFunction: Finding, collecting, and creating items.\nInitial Abilities: Radar Manipulations, Radar\nLearnable Ability Telegather\nBase Damage: 14-14\nAttack Cooldown: 1.75\nMovement Speed: 325"
+        "gatherer_sub2_desc" "The Radar Telegatherer like his previous form, can discern different resources on the minimap but now from an even greater distance and with more specific filters and send them straight to a friendly camp fire from anywhere on the map.\n\nFunction: Finding, collecting, and creating items.\nInitial Abilities: Radar Manipulations, Radar\nLearnable Ability Telegather\nBase Damage: 14-14\nAttack Cooldown: 1.75\nMovement Speed: 325"
 
         "gatherer_sub3_name" "Remote Telegatherer"
-        "gatherer_sub3_desc" "What the Remote Telegatherer lacks in precision, he makes up for in raw gathering power. He can teleport nearby resources to his feet, and then send them all to a friendly camp fire.\n\n\n\nFunction: Find, collecting, and creating items\nInitial Ability: Item Warp\nLearnable Ability: Telegather\nBase Damage: 14-14\nAttack Cooldown: 1.75\nMovement Speed: 325"
+        "gatherer_sub3_desc" "What the Remote Telegatherer lacks in precision, he makes up for in raw gathering power.  Like a vaccum, he can teleport nearby resources to his feet, and then send them all to a friendly camp fire.\n\n\n\nFunction: Find, collecting, and creating items\nInitial Ability: Item Warp\nLearnable Ability: Telegather\nBase Damage: 14-14\nAttack Cooldown: 1.75\nMovement Speed: 325"
 
         "priest_sub1_name" "Booster"
         "priest_sub1_desc" "The Booster focuses on enhancing his allies with powerful magic so they can charge into battle wielding strength never before thought possible.\n\nFunction: Defensive Buffs, Combat Support\nInitial Abilities: The Glow, Resist All, Omnicure, Cure All\nLearnable Abilities: Pump Up, Lightning Shield, Fortitude, Troll Battle Call, Spirit Link, Map Magic, Angelic Elemental\nBase Damage: 14-14\nAttack Cooldown: 1.75\nMovement Speed: 300"
@@ -387,6 +387,7 @@ Axes: Fixed range on tree cutting which prevented tree cutting.<br><br>"
 "Arrow_DropMeat" "Drop Raw Meat"
 "Arrow_Panic" "Pa<font color='#00CC00'>N</font>ic"
 "Arrow_Subclass" 	"Subclass Selection"
+"General_Info" 	"Press 'P' to drop all items.<b><b>"
 
     "Stop_Tutorial" "Exit tutorial"
 
@@ -443,7 +444,7 @@ Every unsubbed class can chose to become one of three subclasses at level 6.<br>
 <h2>Gatherer</h2>
 Use: Locating items, large inventory, creating special buildings. <br><br>
 <h2>Subclasses:</h2> <br>
-<b>Herb Master Telegatherer:</b>  The Herbmaster Telegatherer can mix potions on-the-go and send resources straight to a friendly campfire from anywhere on the map. <br><br>
+<b>Herb Master Telegatherer:</b>  The Herbmaster Telegatherer refocuses his location finding abilities to the bushes and plants while also being able to mix potions on-the-go and send potion mixing resources straight to a friendly campfire from anywhere on the map. <br><br>
 <b>Radar Telegatherer:</b> The Radar Telegatherer can discern different resources on the minimap and send them straight to a friendly campfire from anywhere on the map.  <br><br>
 <b>Remote Gatherer:</b> What the Remote Telegatherer lacks in precision, he makes up for in raw gathering power. He can teleport nearby resources to his feet, and then send them all to a friendly campfire.  <br><br><br><br>
 

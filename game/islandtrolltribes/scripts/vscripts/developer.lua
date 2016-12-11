@@ -61,13 +61,13 @@ function ITT:ItemPen(playerID)
         ["item_stick"] = 3,
         ["item_tinder"] = 1,
         ["item_bone"] = 1,
-        ["item_flint"] = 1,
+        ["item_flint"] = 5,
         ["item_ball_clay"] = 1,
         ["item_crystal_mana"] = 1,
         ["item_mushroom"] = 1,
         ["item_ingot_steel"] = 1,
         ["item_ingot_iron"] = 1,
-        ["item_stone"] = 1,
+        ["item_stone"] = 5,
         ["item_river_root"] = 1,
         ["item_river_stem"] = 1,
         ["item_herb_purple"] = 1,
@@ -77,9 +77,9 @@ function ITT:ItemPen(playerID)
         ["item_herb_butsu"] = 1,
         ["item_spirit_wind"] = 1,
         ["item_spirit_water"] = 1,
-        ["item_hide_elk"] = 1,
-        ["item_hide_wolf"] = 1,
-        ["item_hide_jungle_bear"] = 1
+        ["item_hide_elk"] = 5,
+        ["item_hide_wolf"] = 5,
+        ["item_hide_jungle_bear"] = 5
     }
 
     for itemName,num in pairs(items) do
