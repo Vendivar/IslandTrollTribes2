@@ -140,8 +140,8 @@ function Gather(keys)
                 if item:GetCurrentCharges() > 1 then
                     CreateItemsFromStack(item:GetCurrentCharges(), itemName, building_item.position, allowed_items[itemName].scale)
 
-                    UTIL_RemoveImmediate(item)
-                    UTIL_RemoveImmediate(v)
+                    UTIL_Remove(item)
+                    UTIL_Remove(v)
                 else
                     v:SetOrigin(building_item.position)
                     v:SetModelScale(allowed_items[itemName].scale)

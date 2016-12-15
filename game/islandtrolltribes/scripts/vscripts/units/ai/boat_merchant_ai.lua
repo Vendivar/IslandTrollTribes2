@@ -34,13 +34,13 @@ function boatmerchantthink(thisEntity)
     if (thisEntity.state == "move") then
         if (distanceToWaypoint > 10) then
             thisEntity:MoveToPosition(waypointPos)
-            
+
         else
            thisEntity.state = "wait"
            thisEntity.endWait = GameRules:GetGameTime() + 15
 
         end
-    
+
     elseif (thisEntity.state == "wait") then
         if (waypointNum >= #path) then
 

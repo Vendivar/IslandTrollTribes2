@@ -94,6 +94,9 @@ function ITT:InitGameMode()
     GameRules:SetGoldTickTime( 60.0 )
     GameRules:SetGoldPerTick( 0 )
 
+    -- Forcepick hero to skip default hero selection.
+    GameRules:GetGameModeEntity():SetCustomGameForceHero("npc_dota_hero_huskar")
+
     -- Listeners
     ListenToGameEvent('player_connect_full', Dynamic_Wrap(ITT, 'OnPlayerConnectFull'), self)
     ListenToGameEvent( "npc_spawned", Dynamic_Wrap( ITT, "OnNPCSpawned" ), self )
@@ -275,12 +278,12 @@ end
 
 function ITT:KillMammoth()
     print("Trying to move and delete mammoth and duck")
-	if (mammothBoss ~= nil)  then	
+	if (mammothBoss ~= nil)  then
 		print("Deleting Mammoth")
 		mammothBoss:SetOrigin(Vector(5000,0,0 - 5))
 		mammothBoss:ForceKill(true)
 	end
-	
+
 	if (duckBoss ~= nil)  then
 		print("Deleting Duck")
 		duckBoss:SetOrigin(Vector(5000,0,0 - 5))
@@ -505,12 +508,12 @@ end
 
 function ITT:On_entity_hurt(data)
     --print("entity_hurt")
-    local attacker = EntIndexToHScript(data.entindex_attacker)
-    local killed = EntIndexToHScript(data.entindex_killed)
-    if (string.find(killed:GetUnitName(), "elk") or string.find(killed:GetUnitName(), "fish") or string.find(killed:GetUnitName(), "hawk")) then
-        killed.state = "flee"
+    --local attacker = EntIndexToHScript(data.entindex_attacker)
+    local hurt = EntIndexToHScript(data.entindex_killed)
+    if (string.find(hurt:GetUnitName(), "elk") or string.find(hurt:GetUnitName(), "fish") or string.find(hurt:GetUnitName(), "hawk")) then
+        hurt.state = "flee"
     end
-    --print("attacker: "..attacker:GetUnitName(), "killed: "..killed:GetUnitName())
+    --print("attacker: "..attacker:GetUnitName(), "hurt: "..hurt:GetUnitName())
 
 end
 
@@ -895,7 +898,7 @@ function ITT:OnGameRulesStateChange()
 
     if nNewState == DOTA_GAMERULES_STATE_HERO_SELECTION then
         SendToConsole("dota_camera_disable_zoom 1")
-		
+
 		SendToConsole("bind ENTER +EnterPressed")
 		SendToConsole("bind KP_ENTER +EnterPressed")
 

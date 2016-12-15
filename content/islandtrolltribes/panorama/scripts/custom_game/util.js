@@ -5,21 +5,20 @@ function LuaColor(color){
     return "rgb(" + [color[1], color[2], color[3]].join(",") + ")";
 }
 
-if (!Game.enterListeners) {
-    Game.enterListeners = {};
+if (!GameUI.enterListeners) {
+    GameUI.enterListeners = {};
 }
 
 Game.OnEnterPressed = function() {
-    $.Msg("Enter pressed!");
-    for (var key in Game.enterListeners) {
-        Game.enterListeners[key]();
+    for (var key in GameUI.enterListeners) {
+        GameUI.enterListeners[key]();
     }
 }
 
-function AddEnterListener(name, callback) {
-    Game.enterListeners[name] = callback;
+GameUI.AddEnterListener = function(name, callback) {
+    GameUI.enterListeners[name] = callback;
 }
 
-function RemoveEnterListener(name) {
-    delete Game.enterListeners[name];
+GameUI.RemoveEnterListener = function(name) {
+    delete GameUI.enterListeners[name];
 }

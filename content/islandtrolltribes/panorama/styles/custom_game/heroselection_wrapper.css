@@ -1,0 +1,157 @@
+
+.hidden {
+  visibility: collapse;
+}
+
+.Wrapper {
+    width: 100%;
+    height: 100%;
+    background-color: #101010;
+    z-index: 10;
+}
+
+#WrapperList {
+    width: 100%;
+    height: 100%;
+}
+
+#Wrapper_Hero {
+    transition: position 1s ease-in-out 0.0s;
+    x: 100%;
+}
+
+#Wrapper_Voting {
+    transition: position 1s ease-in-out 0.0s;
+    x: 0%;
+}
+
+#Wrapper_Chat {
+    x: 20px;
+    y: -20px;
+    vertical-align: bottom;
+    width: 200px;
+    height: 400px;
+}
+
+#RightBtn_Wrapper {
+    horizontal-align: right;
+    vertical-align: center;
+    padding-top: 40px;
+    height: 100px;
+    z-index: 1;
+}
+#RightBtn_Wrapper:hover {
+    brightness: 2;
+}
+
+#RightArrow {
+    width: 120px;
+    height: 30px;
+    margin-right: 40px;
+    border: 2px solid #e69900;
+    border-right: 0px;
+    background-color: #99cc00;
+}
+
+#RightArrowHeadBorder {
+    horizontal-align: right;
+    width: 1px;
+    height: 1px;
+    border-style: solid;
+    border-width: 35px 35px 35px 0;
+    border-color: transparent #e69900 transparent transparent;
+    margin-top: 15px;
+    margin-right: 7px;
+    z-index: 0;
+}
+
+#RightArrowHead {
+    horizontal-align: right;
+    width: 1px;
+    height: 1px;
+    border-style: solid;
+    border-width: 30px 30px 30px 0;
+    border-color: transparent #99cc00 transparent transparent;
+    margin-top: 15px;
+    margin-right: 10px;
+    z-index: 1;
+}
+
+#RightArrowText {
+    font-size: 15px;
+    color: #eeeeee;
+    y: -19px;
+    x: -1px;
+}
+
+#LeftBtn_Wrapper {
+    vertical-align: center;
+    padding-top: 40px;
+    height: 100px;
+    z-index: 1;
+}
+#LeftBtn_Wrapper:hover {
+    brightness: 2;
+}
+
+#LeftArrow {
+    width: 120px;
+    height: 30px;
+    border: 2px solid #e69900;
+    border-left: 0px;
+    background-color: #99cc00;
+    margin-left: 35px;
+    z-index: 1;
+}
+
+#LeftArrowHead {
+    width: 1px;
+    height: 1px;
+    border-style: solid;
+    border-width: 30px 0 30px 30px;
+    border-color: transparent transparent transparent #99cc00;
+    margin-top: 15px;
+    margin-left: 10px;
+    z-index: 1;
+}
+
+#LeftArrowHeadBorder {
+    width: 1px;
+    height: 1px;
+    border-style: solid;
+    border-width: 35px 0 35px 35px;
+    border-color: transparent transparent transparent #e69900;
+    margin-top: 15px;
+    margin-left: 6px;
+    z-index: 0;
+}
+
+#LeftArrowText {
+  font-size: 15px;
+  color: #eeeeee;
+  x: 50px;
+  y: -20px;
+}
+
+.first_appear {
+    animation-name: appear;
+    animation-duration: 3s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+}
+
+@keyframes 'appear' {
+    0% {
+        opacity: 0.0;
+    }
+    60% {
+        opacity: 1.0;
+        brightness: 1;
+    }
+    80% {
+        brightness: 3;
+    }
+    100% {
+        brightness: 1;
+    }
+}

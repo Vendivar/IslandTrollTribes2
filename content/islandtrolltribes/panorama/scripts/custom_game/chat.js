@@ -66,7 +66,7 @@ function OnCustomChatSay(args) {
   $.Msg("Chat loaded in!");
 
   GameEvents.Subscribe("custom_chat_say", OnCustomChatSay);
-  AddEnterListener("GameHudChatEnter", function() {
+  GameUI.AddEnterListener("GameHudChatEnter", function() {
     GameUI.ChatActivated = false;
     $("#GameChatEntryContainer").BLoadLayout("file://{resources}/layout/custom_game/chat.xml", true, true);
     $("#GameChatEntry").SetFocus();

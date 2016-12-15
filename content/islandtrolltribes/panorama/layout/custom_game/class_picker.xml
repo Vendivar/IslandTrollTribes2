@@ -18,40 +18,37 @@
 
                 <Panel id='beastmaster'>
                     <Image onactivate="Select('beastmaster')" onmouseover="MouseOver('beastmaster')" onmouseout="MouseOut('beastmaster')" id='btn_beastmaster' src="file://{images}/class_picker/beastmaster.png" />
-                    <Label id="beastmaster_players" class="PlayerText" text=""/>
+                    <Panel id="beastmaster_players" class="AvatarContainer"></Panel>
                 </Panel>
 
                 <Panel id='gatherer'>
                     <Image onactivate="Select('gatherer')" onmouseover="MouseOver('gatherer')" onmouseout="MouseOut('gatherer')" id='btn_gatherer' src="file://{images}/class_picker/gatherer.png" />
-                    <Panel id='gathererPlayers'>
-                        <Label id="gatherer_players" class="PlayerText2" text=""/>
-                        <Label id="gatherer_players2" class="PlayerText2" text=""/>
-                    </Panel>
+                    <Panel id="gatherer_players" class="AvatarContainer"></Panel>
                 </Panel>
 
                 <Panel id='hunter'>
                     <Image onactivate="Select('hunter')" onmouseover="MouseOver('hunter')" onmouseout="MouseOut('hunter')" id='btn_hunter' src="file://{images}/class_picker/hunter.png" />
-                    <Label id="hunter_players" class="PlayerText" text=""/>
+                    <Panel id="hunter_players" class="AvatarContainer"></Panel>
                 </Panel>
 
                 <Panel id='mage'>
                     <Image onactivate="Select('mage')" onmouseover="MouseOver('mage')" onmouseout="MouseOut('mage')" id='btn_mage' src="file://{images}/class_picker/mage.png" />
-                    <Label id="mage_players" class="PlayerText" text=""/>
+                    <Panel id="mage_players" class="AvatarContainer"></Panel>
                 </Panel>
 
                 <Panel id='priest'>
                     <Image onactivate="Select('priest')" onmouseover="MouseOver('priest')" onmouseout="MouseOut('priest')" id='btn_priest' src="file://{images}/class_picker/priest.png" />
-                    <Label id="priest_players" class="PlayerText" text=""/>
+                    <Panel id="priest_players" class="AvatarContainer"></Panel>
                 </Panel>
 
                 <Panel id='scout'>
                     <Image onactivate="Select('scout')" onmouseover="MouseOver('scout')" onmouseout="MouseOut('scout')" id='btn_scout' src="file://{images}/class_picker/scout.png" />
-                    <Label id="scout_players" class="PlayerText" text=""/>
+                    <Panel id="scout_players" class="AvatarContainer"></Panel>
                 </Panel>
 
                 <Panel id='thief'>
                     <Image onactivate="Select('thief')" onmouseover="MouseOver('thief')" onmouseout="MouseOut('thief')" id='btn_thief' src="file://{images}/class_picker/thief.png" />
-                    <Label id="thief_players" class="PlayerText" text=""/>
+                    <Panel id="thief_players" class="AvatarContainer"></Panel>
                 </Panel>
             </Panel>
 

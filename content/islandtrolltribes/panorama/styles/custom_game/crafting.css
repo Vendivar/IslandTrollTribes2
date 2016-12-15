@@ -216,12 +216,12 @@
 
 .GlowGold
 {
-    box-shadow: 0px 0px 100% gold;
+    box-shadow: 0px 0px 20% gold;
 }
 
 .GlowGreen
 {
-    box-shadow: 0px 0px 100% green;
+    box-shadow: 0px 0px 50% green;
 }
 
 .GlowBright

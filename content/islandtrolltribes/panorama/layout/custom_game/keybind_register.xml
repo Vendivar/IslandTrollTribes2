@@ -3,5 +3,5 @@
       <include src="file://{resources}/scripts/custom_game/util.js" />
       <include src="file://{resources}/scripts/custom_game/keybind_register.js" />
     </scripts>
-    <Panel hittest="false"/>
+    <Panel hittest="false"></Panel>
 </root>

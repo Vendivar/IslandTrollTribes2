@@ -22,22 +22,13 @@ local class_limits = {
 local same_team_classes = {}
 local team_classes = {}
 
+local hero_selection = {}
+
 --Handler for class selection at the beginning of the game
 function ITT:OnClassSelected(event)
     local playerID = event.PlayerID
     local class_name = event.selected_class
-    local player = PlayerResource:GetPlayer(playerID)
     local team = PlayerResource:GetTeam(playerID)
-
-    -- Pick mode handling
-    if GameRules.GameModeSettings["pick_mode"] == "ALL_RANDOM" then
-        class_name = "random"
-    elseif GameRules.GameModeSettings["pick_mode"] == "SAME_HERO" then
-        if not same_team_classes[team] then
-            same_team_classes[team] = classes[RandomInt(1,7)]
-        end
-        class_name = same_team_classes[team]
-    end
 
     -- Handle random selection
     if class_name == "random" then
@@ -62,16 +53,55 @@ function ITT:OnClassSelected(event)
 
     local hero_name = GameRules.ClassInfo['Classes'][class_name]
 
-    local player_name = PlayerResource:GetPlayerName(playerID)
-    if player_name == "" then player_name = "Player "..playerID end
+    if not PlayerTables:TableExists("hero_selection_picks") then
+        PlayerTables:CreateTable("hero_selection_picks", {}, true)
+    end
+    PlayerTables:SetTableValue("hero_selection_picks", playerID, class_name)
+
+    --local player_name = PlayerResource:GetPlayerName(playerID)
+    --if player_name == "" then player_name = "Player "..playerID end
 
     print("SelectClass "..hero_name)
 
-    CustomGameEventManager:Send_ServerToTeam(team, "team_update_class", { class_name = class_name, player_name = player_name})
+    --CustomGameEventManager:Send_ServerToTeam(team, "team_update_class", { class_name = class_name, player_name = player_name})
 
+    if ITT.voting_ended then
+        ITT:SpawnHero(hero_name, playerID)
+    else
+        hero_selection[playerID] = hero_name
+    end
+end
+
+function ITT:SpawnAlreadySelected()
+    for playerID, hero_name in pairs(hero_selection) do
+        ITT:SpawnHero(hero_name, playerID)
+    end
+end
+
+function ITT:SpawnRandoms(pickmode)
+    for playerID = 0, DOTA_MAX_TEAM_PLAYERS do
+        if PlayerResource:IsValidPlayerID(playerID) then
+            local class_name = classes[RandomInt(1,7)]
+            if pickmode == "SAME_HERO" then
+                local team = PlayerResource:GetTeam(playerID)
+                if not same_team_classes[team] then
+                    same_team_classes[team] = classes[RandomInt(1,7)]
+                end
+                class_name = same_team_classes[team]
+            end
+
+            local hero_name = GameRules.ClassInfo['Classes'][class_name]
+            ITT:SpawnHero(hero_name, playerID)
+        end
+    end
+end
+
+function ITT:SpawnHero(hero_name, playerID)
+    local team = PlayerResource:GetTeam(playerID)
     PrecacheUnitByNameAsync(hero_name, function()
-        local hero = CreateHeroForPlayer(hero_name, player)
-        print("[ITT] CreateHeroForPlayer: ",playerID,hero_name,team)
+        --local hero = CreateHeroForPlayer(hero_name, player)
+        local hero = PlayerResource:ReplaceHeroWith(playerID, hero_name, 0, 0)
+        print("[ITT] CreateHeroForPlayer: ", playerID, hero_name, team)
 
         -- Move to the first unassigned starting position for the assigned team-isle
         ITT:SetHeroIslandPosition(hero, team)
@@ -79,6 +109,10 @@ function ITT:OnClassSelected(event)
         -- Health Label
         local color = ITT:ColorForTeam( team )
         hero:SetCustomHealthLabel( hero.Tribe.." Tribe", color[1], color[2], color[3] )
+
+        if not PlayerTables:TableExists("pickingover_"..playerID) then
+            PlayerTables:CreateTable("pickingover_"..playerID, {over = true}, {playerID})
+        end
     end, playerID)
 end
 
@@ -106,15 +140,16 @@ end
 
 
 function ITT:OnHeroInGame( hero )
-
     -- Remove starting gold
     hero:SetGold(0, false)
 
-    -- Create locked slots
-    ITT:CreateLockedSlots(hero)
-
     -- Add Innate Skills
     ITT:AdjustSkills(hero)
+
+    if not ITT.voting_ended then return end
+
+    -- Create locked slots
+    ITT:CreateLockedSlots(hero)
 
     -- Initial Heat
     Heat:Start(hero)

@@ -11,6 +11,7 @@
     horizontal-align: center;
     vertical-align: top;
     width: 1495px;
+    opacity: 0;
 }
 
 #ScoreboardContainer

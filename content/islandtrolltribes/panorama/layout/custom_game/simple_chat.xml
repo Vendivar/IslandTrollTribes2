@@ -10,7 +10,7 @@
         var entry = $("#ChatEntry");
 
         $.GetContextPanel().RegisterListener = function(uniqueName) {
-            AddEnterListener(uniqueName, function() {
+            GameUI.AddEnterListener(uniqueName, function() {
                 //if (contentPanel.BCanSeeInParentScroll()) {
                     entry.SetFocus();
                 //}
@@ -18,7 +18,7 @@
         }
 
         function SubmitChat() {
-            GameEvents.SendCustomGameEventToServer("custom_chat_say", { message: $("#ChatEntry").text, isTeamChat: true });
+            GameEvents.SendCustomGameEventToServer("custom_chat_say", { message: $("#ChatEntry").text, isTeamChat: false });
 
             $("#ChatEntry").text = "";
         }
@@ -51,7 +51,7 @@
                 name: name,
                 color:  LuaColor(args.color),
                 message: args.message,
-                type: "(Team)"
+                type: ""
             });
         }
 
@@ -61,7 +61,7 @@
     <Panel class="Chat" hittest="false">
         <Panel id="ChatContent" hittest="false">
         </Panel>
-        <Label hittest="false" id="ChatEntryType" text="(Team)" />
+        <Label hittest="false" id="ChatEntryType" text="(All)" />
         <TextEntry
               id="ChatEntry"
               multiline="false"

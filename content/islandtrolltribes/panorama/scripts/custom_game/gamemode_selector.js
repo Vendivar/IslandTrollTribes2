@@ -116,6 +116,8 @@ function sendVote() {
 
   $("#Gamemode_confirm").AddClass("hidden");
   $("#Gamemode_confirmed").RemoveClass("hidden");
+
+  GameUI.Wrapper.Unlock();
 }
 
 var votingLeft = 60;
@@ -342,11 +344,12 @@ function setPlayerList() {
 
 var timeLeft = 3
 function VoteEnd() {
+  var label = $("#Gamemode_confirmed");
   if (timeLeft == 0) {
+    label.text = $.Localize("Gamemode_votingendnotimer");
     return;
   }
 
-  var label = $("#Gamemode_confirmed");
   label.SetDialogVariable("time", timeLeft);
   label.text = $.Localize("#Gamemode_votingend", label);
 
@@ -412,14 +415,12 @@ function EndingVoting(settings) {
     // We only have to hide the gamemodes when we need the hero selection.
     // This is also useful for testing.
     if (voted_settings.pick_mode == "ALL_PICK") {
-      $("#Gamemode_container").AddClass("hidden");
+      //$("#Gamemode_container").AddClass("hidden");
     }
   });
 
   // class_picker.js is handling the pick mode.
 }
-
-var listenerID;
 
 function IncomingData(table, changes, deletions) {
   $.Msg(changes);
@@ -430,7 +431,6 @@ function IncomingData(table, changes, deletions) {
     else {
       if (key == "voting_ended" && changes[key]) {
         EndingVoting(changes["voted_settings"]);
-        PlayerTables.UnsubscribeNetTableListener(listenerID);
       }
       else if (key == "timer_up" && changes[key]) {
         voted = true;
@@ -444,15 +444,14 @@ function IncomingData(table, changes, deletions) {
 
 (function() {
   // Changed voting from events to playertables. Better support for reconnection.
-  listenerID = PlayerTables.SubscribeNetTableListener("gamemode_votes", IncomingData);
+  GameUI.voteListenerID = PlayerTables.SubscribeNetTableListener("gamemode_votes", IncomingData);
 
   setPlayerList();
   setInitialTimer();
   $.GetContextPanel().SetFocus();
   GameUI.DenyWheel();
 
-  $("#GamemodeSelectionChat").BLoadLayout("file://{resources}/layout/custom_game/simple_chat.xml", false, false);
-  $("#GamemodeSelectionChat").RegisterListener("GamemodeSelectionEnter");
+  //$("#GamemodeSelectionChat").BLoadLayout("file://{resources}/layout/custom_game/simple_chat.xml", false, false);
 
   $.Msg("Gamemode selection loaded!");
 })()

@@ -303,8 +303,8 @@ function ClearItemsFromPen(pens, itemName, num)
         for i = 1, len do
             if i <= count then
                 if not pen_items[i]:IsNull() then
-                    UTIL_RemoveImmediate(pen_items[i]:GetContainedItem())
-                    UTIL_RemoveImmediate(pen_items[i])
+                    UTIL_Remove(pen_items[i]:GetContainedItem())
+                    UTIL_Remove(pen_items[i])
                     num = num - 1
                 end
             else

@@ -11,7 +11,7 @@ $("#btn_priest").picked = false
 $("#btn_scout").picked = false
 $("#btn_thief").picked = false
 
-function Select (argument) {
+function Select(argument) {
 
     $.Msg("Selected ",argument)
 
@@ -32,7 +32,7 @@ function Select (argument) {
     if (currentlySelected != "")
     {
         // If the currently selected was picked by someone else, don't update it
-        if (! $("#btn_"+currentlySelected).picked)
+        if (!$("#btn_"+currentlySelected).picked)
         {
             $("#vid_"+currentlySelected).visible = false;
             $("#btn_"+currentlySelected).SetImage( "s2r://panorama/images/class_picker/"+currentlySelected+".png" )
@@ -136,10 +136,17 @@ function ChooseClass() {
     $("#vid_thief").DeleteAsync( 0 )
 
     GameEvents.SendCustomGameEventToServer( "player_selected_class", { selected_class : currentlySelected } );
-    RemoveEnterListener("GamemodeSelectionEnter");  // For simple_chat
+}
+
+function SetPlayerAvatar(playerID, hero) {
+    var panel = $("#" + hero + "_players");
+    var avatar = $.CreatePanel("DOTAAvatarImage", panel, "");
+    avatar.AddClass("PlayerAvatar");
+    avatar.steamid = Game.GetPlayerInfo(playerID).player_steamid;
 }
 
 // Someone on the team has selected a class, check the class-per-team restriction and mark the button full
+/*
 function TeamUpdate(keys) {
     var class_name = keys.class_name
     var player_name = keys.player_name
@@ -172,20 +179,29 @@ function TeamUpdate(keys) {
         currentlySelected = ""
     }
 }
+*/
+function PickUpdate(table, changes, deletions) {
+    for (var playerID in changes) {
+        var hero = changes[playerID];
 
-var listenerID;
+        if (hero == "gatherer" && gatherers == 0) {
+            gatherers++;
+        }
+        else {
+            $("#btn_" + hero).SetImage( "s2r://panorama/images/class_picker/" + hero + "_full.png" )
+            $("#btn_" + hero).picked = true;
+        }
 
-function IncomingData(tablename, changes, deletions) {
-    if (changes.voting_ended) {
-        $.Schedule(3,function() {
-            if (changes.voted_settings.pick_mode == "ALL_PICK") {
-                $("#PicksContainer").RemoveClass("hidden");
+        SetPlayerAvatar(parseInt(playerID), hero);
+
+        if (currentlySelected == hero) {
+            if ($("#vid_" + currentlySelected)) {
+                $("#vid_" + currentlySelected).visible = false;
             }
-            else {
-                ChooseClass();
-            }
-        });
-        PlayerTables.UnsubscribeNetTableListener(listenerID);
+            $("#ClassText").text = "";
+            $("#SelectText").text = $.Localize("SelectText");
+            currentlySelected = "";
+        }
     }
 }
 
@@ -193,10 +209,8 @@ var PlayerTables = GameUI.CustomUIConfig().PlayerTables;
 (function () {
     $.Msg("Class Picker Load");
 
-    $("#PicksContainer").AddClass("hidden");
-
-    listenerID = PlayerTables.SubscribeNetTableListener("gamemode_votes", IncomingData)
-    GameEvents.Subscribe( "team_update_class", TeamUpdate );
+    GameUI.picklistenerID = PlayerTables.SubscribeNetTableListener("hero_selection_picks", PickUpdate);
+    //GameEvents.Subscribe( "team_update_class", TeamUpdate );
     GameEvents.Subscribe( "player_force_pick", ChooseClass );
 
 

@@ -8,8 +8,8 @@ function CookFood(keys)
             building:EmitSound("Hero_Lina.attack")
             local newItem = CreateItem("item_meat_cooked", nil, nil)
             CreateItemOnPositionSync(item:GetAbsOrigin(), newItem)
-            UTIL_RemoveImmediate(containedItem)
-            UTIL_RemoveImmediate(item)
+            UTIL_Remove(containedItem)
+            UTIL_Remove(item)
         end
     end
 end

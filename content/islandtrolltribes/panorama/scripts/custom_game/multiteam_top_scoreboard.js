@@ -1,12 +1,19 @@
 "use strict";
 
 var g_ScoreboardHandle = null;
+var PlayerTables = GameUI.CustomUIConfig().PlayerTables;
 
 function UpdateScoreboard()
 {
 	ScoreboardUpdater_SetScoreboardActive( g_ScoreboardHandle, true );
 
 	$.Schedule( 0.2, UpdateScoreboard );
+}
+
+function show(table, changes, deletions) {
+	if (changes.over) {
+		$("#TopBarScoreboard").style.opacity = 1.0;
+	}
 }
 
 function HeatUpdate(args) {
@@ -45,6 +52,7 @@ function HeatUpdate(args) {
 	};
 	g_ScoreboardHandle = ScoreboardUpdater_InitializeScoreboard( scoreboardConfig, $( "#MultiteamScoreboard" ) );
 
+	PlayerTables.SubscribeNetTableListener("pickingover_" + Players.GetLocalPlayer(), show);
 	GameEvents.Subscribe("scoreboard_heat_update", HeatUpdate);
 	UpdateScoreboard();
 })();

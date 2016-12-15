@@ -1,5 +1,6 @@
 var Root = $.GetContextPanel()
 var hero = Players.GetPlayerHeroEntityIndex( Game.GetLocalPlayerID() )
+var PlayerTables = GameUI.CustomUIConfig().PlayerTables;
 
 function CreateCraftingList()
 {
@@ -24,13 +25,19 @@ function CreateSectionByName(values, name, bFold) {
     }
 }
 
+function CheckForInit(table, changes, deletions) {
+  if (changes.over) {
+      hero = Players.GetPlayerHeroEntityIndex(Game.GetLocalPlayerID());
+      CreateCraftingList();
+  }
+}
+
 (function () {
     // Used to reset the checks.
     GameUI.events = {};
     GameUI.event_callBacks = {};
 
-    CreateCraftingList() //Entry point
-
+    PlayerTables.SubscribeNetTableListener("pickingover_" + Players.GetLocalPlayer(), CheckForInit);
 
     Hide() //Initially hidden
     GameEvents.Subscribe( "dota_player_update_hero_selection", Hide);

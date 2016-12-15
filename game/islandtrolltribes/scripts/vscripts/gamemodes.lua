@@ -1,14 +1,15 @@
 
 local player_amount = 0
-local voting_ended = false
+ITT.voting_ended = false
 function ITT:StartVoting()
     Timers:CreateTimer({
         endTime = 60,
         callback = function()
             if player_amount == 0 or player_amount > #ITT.Gamemodevoting then
-                voting_ended = true
-                -- Voting still on.
+                -- Voting hasn't ended.
+                ITT.voting_ended = true
                 print("Ending gamemode voting...")
+
                 local settings
                 if player_amount == 0 then
                     -- No votes have been cast yet, set default settings.
@@ -51,7 +52,7 @@ function ITT:StartVoting()
 end
 
 function ITT:OnGameModeSelected(event)
-    if voting_ended then return end
+    if ITT.voting_ended then return end
     if not ITT.Gamemodevoting then
         ITT.Gamemodevoting = {}
 
@@ -75,8 +76,7 @@ function ITT:OnGameModeSelected(event)
 
         SetMode(settings)
 
-        voting_ended = true
-
+        ITT.voting_ended = true
         --[[
         CustomGameEventManager:Send_ServerToAllClients("vote_confirmed", {
             player = event.PlayerID,
@@ -175,6 +175,17 @@ end
 
 function SetPickSettings(pickmode)
     GameRules.GameModeSettings["pick_mode"] = pickmode
+
+    Timers:CreateTimer({
+        endTime = 3.0,
+        callback = function()
+            if pickmode == "ALL_PICK" then
+                ITT:SpawnAlreadySelected()
+            else
+                ITT:SpawnRandoms(pickmode)
+            end
+        end
+    })
 end
 
 function SetGamemodeSettings(gamemode)

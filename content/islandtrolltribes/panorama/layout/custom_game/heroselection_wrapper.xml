@@ -1,0 +1,39 @@
+<root>
+  <styles>
+    <include src="file://{resources}/styles/custom_game/heroselection_wrapper.css" />
+  </styles>
+  <scripts>
+    <include src="file://{resources}/scripts/custom_game/heroselection_wrapper.js" />
+    <include src="file://{resources}/scripts/custom_game/util.js" />
+  </scripts>
+  <Panel class="Wrapper">
+    <Panel id="RightBtn_Wrapper" class="hidden" onactivate="GameUI.Wrapper.ToRight()">
+      <Panel id="RightArrowHeadBorder">
+      </Panel>
+      <Panel id="RightArrowHead">
+      </Panel>
+      <Panel id="RightArrow">
+      </Panel>
+      <Label id="RightArrowText" text="#ToHeroSelection">
+      </Label>
+    </Panel>
+    <Panel id="WrapperList">
+      <Panel id="Wrapper_Voting">
+      </Panel>
+      <Panel id="Wrapper_Hero">
+      </Panel>
+    </Panel>
+    <Panel id="Wrapper_Chat">
+    </Panel>
+    <Panel id="LeftBtn_Wrapper" class="hidden" onactivate="GameUI.Wrapper.ToLeft()">
+      <Panel id="LeftArrow">
+      </Panel>
+      <Panel id="LeftArrowHeadBorder">
+      </Panel>
+      <Panel id="LeftArrowHead">
+      </Panel>
+      <Label id="LeftArrowText" text="#ToVoting">
+      </Label>
+    </Panel>
+  </Panel>
+</root>

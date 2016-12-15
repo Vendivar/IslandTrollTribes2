@@ -343,6 +343,7 @@ Axes: Fixed range on tree cutting which prevented tree cutting.<br><br>"
                 "Gamemode_confirm" "Confirm vote"
                 "Gamemode_confirmed" "Voted!"
                 "Gamemode_votingend" "Voting has ended. Game starts in {s:time}..."
+								"Gamemode_votingendnotimer" "Game has already begun."
                 "Gamemode_notvoted_header" "Players that have not voted:"
                 "Gamemode_voted_header" "Votes:"
                 "Gamemode_final_votes_header" "Final votes"
@@ -370,10 +371,12 @@ Axes: Fixed range on tree cutting which prevented tree cutting.<br><br>"
                 "Gamemode_tooltip_icon_custom_norevive" "No Revive"
                 "Gamemode_tooltip_icon_custom_noislandbosses" "No Island Mini-Bosses"
 
-				"Gamemode_tooltip_normal_allpick" "NORMAL"
-				"Gamemode_fast_allpick" "FAST"
-				"Gamemode_slow_allpick" "SLOW"
+        				"Gamemode_tooltip_normal_allpick" "NORMAL"
+        				"Gamemode_fast_allpick" "FAST"
+        				"Gamemode_slow_allpick" "SLOW"
 
+                "ToHeroSelection" "To Hero Selection"
+                "ToVoting" "Back to Voting"
 
 				//Help Menu
 
