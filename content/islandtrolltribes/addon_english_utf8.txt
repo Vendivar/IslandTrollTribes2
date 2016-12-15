@@ -2438,6 +2438,7 @@
 "DOTA_Tooltip_ability_item_building_kit_itempen"                                  "Item Stockpile Kit"
 "DOTA_Tooltip_ability_item_building_kit_itempen_Description"                      "This is a building that will allow you to store your items in the open and let your buildings have acess to all items stored within for crafting purposes."
 "DOTA_Tooltip_ability_item_building_kit_itempen_build_time"						   "BUILD TIME:"
+"DOTA_Tooltip_ability_ability_itempen"				"Drop your stuff inside the pen to have it be organized and to be accessed by other buildings."
 
 
 
@@ -3344,31 +3345,24 @@
 
 "DOTA_Tooltip_ability_item_shield_bone"		"Bone Shield"
 "DOTA_Tooltip_ability_item_shield_bone_armor"		"+$armor"
-"DOTA_Tooltip_ability_item_shield_bone_block_amount"		"BLOCK CHANCE:"
+"DOTA_Tooltip_ability_item_shield_bone_block_amount"		"BLOCK AMOUNT:"
 "DOTA_Tooltip_ability_item_shield_bone_block_chance"		"BLOCK CHANCE:"
-"DOTA_Tooltip_ability_item_shield_bone_block_damage_melee"		"BLOCK DAMAGE MELEE:"
-"DOTA_Tooltip_ability_item_shield_bone_block_damage_ranged"		"BLOCK DAMAGE RANGED:"
 "DOTA_Tooltip_ability_item_shield_bone_Description"		"PASSIVE: Provides armor, as well as giving a chance to block physical damage.\n\nA veil of those already slain can protect the user from damage."
 "DOTA_Tooltip_ability_item_shield_bone_Lore"		"Brittle, yet bolstered."
-"DOTA_Tooltip_ability_item_shield_bone_spell_block"		"SPELL BLOCK:"
 "DOTA_Tooltip_ability_item_shield_iron"		"Iron Shield"
 "DOTA_Tooltip_ability_item_shield_iron_armor"		"+$armor"
-"DOTA_Tooltip_ability_item_shield_iron_block_amount"		"BLOCK CHANCE:"
+"DOTA_Tooltip_ability_item_shield_iron_block_amount"		"BLOCK AMOUNT:"
 "DOTA_Tooltip_ability_item_shield_iron_block_chance"		"BLOCK CHANCE:"
-"DOTA_Tooltip_ability_item_shield_iron_block_damage_melee"		"BLOCK DAMAGE MELEE:"
-"DOTA_Tooltip_ability_item_shield_iron_block_damage_ranged"		"BLOCK DAMAGE RANGED:"
 "DOTA_Tooltip_ability_item_shield_iron_Description"		"PASSIVE: Provides armor, as well as giving a chance to block physical damage.\n\nA sturdy shield capable of taking punishment."
 "DOTA_Tooltip_ability_item_shield_iron_Lore"		"Stylish AND useful!"
-"DOTA_Tooltip_ability_item_shield_iron_spell_block"		"SPELL BLOCK:"
 "DOTA_Tooltip_ability_item_shield_steel"		"Steel Shield"
 "DOTA_Tooltip_ability_item_shield_steel_armor"		"+$armor"
-"DOTA_Tooltip_ability_item_shield_steel_block_amount"		"BLOCK CHANCE:"
+"DOTA_Tooltip_ability_item_shield_steel_block_amount"		"BLOCK AMOUNT:"
 "DOTA_Tooltip_ability_item_shield_steel_block_chance"		"BLOCK CHANCE:"
-"DOTA_Tooltip_ability_item_shield_steel_block_damage_melee"		"BLOCK DAMAGE MELEE:"
-"DOTA_Tooltip_ability_item_shield_steel_block_damage_ranged"		"BLOCK DAMAGE RANGED:"
-"DOTA_Tooltip_ability_item_shield_steel_Description"		"PASSIVE: Provides armor, as well as giving a chance to block physical damage.\n\nAn impossibly strong material that can protect the wearer from almost anything."
+"DOTA_Tooltip_ability_item_shield_steel_block_damage_melee"		"BLOCK DAMAGE:"
+"DOTA_Tooltip_ability_item_shield_steel_Description"		"PASSIVE: Provides armor, as well as giving a chance to block physical damage. Also blocks a single spell every 75 seconds.\n\nAn impossibly strong material that can protect the wearer from almost anything."
 "DOTA_Tooltip_ability_item_shield_steel_Lore"		"Protection and elegance all rolled into one."
-"DOTA_Tooltip_ability_item_shield_steel_spell_block"		"SPELL BLOCK:"
+"DOTA_Tooltip_ability_item_shield_steel_spell_block_cd"		"SPELL BLOCK CD:"
 "DOTA_Tooltip_ability_item_ship_transport"		"Transport Ship"
 "DOTA_Tooltip_ability_item_ship_transport_Description"		"Special naval unit designed for exploration of the unknown.\nMust be built in water.\n<font color='#777777'>Hold ALT to view more information.</font>\n\nA fine ship built from the materials you had available. This would indeed safely transport you and your tribe to the desired destination."
 "DOTA_Tooltip_ability_item_ship_transport_Lore"		"Bring champagne for it's maiden voyage!"
@@ -3553,7 +3547,6 @@
 "DOTA_Tooltip_modifier_rested"                                                    "Rested"
 "DOTA_Tooltip_modifier_rested_Description"                                        "Can not use sleep again for a short time."
 
-"DOTA_Tooltip_ability_itempen"				"Drop your stuff inside the pen to have it be organized and to be accessed by other buildings."
 	
 
 "DOTA_Tooltip_modifier_fire_heat"  "Fire Warmth"

@@ -11746,6 +11746,11 @@
 			{
 				"var_type"		"FIELD_INTEGER"
 				"radius"		"350"
+			}		
+			"02"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"duration"		"30"
 			}
 		}
 	
@@ -11760,11 +11765,6 @@
 			{
 				"EffectName"	"mage.jealousy"
 				"Target" 		"CASTER"
-			}
-			"RemoveModifier"
-			{
-				"ModifierName"	"modifier_mage_jealousy_target"
-				"Target" 		"TARGET"
 			}
 	
 			"ApplyModifier"
@@ -11813,6 +11813,7 @@
 			{
 				"IsHidden"			"0"
 				"IsDebuff"			"1"
+				"Duration" 	"30"
 	
 				"EffectName"		"particles/econ/courier/courier_faceless_rex/cour_rex_ground_a.vpcf"
 				"EffectAttachType"	"follow_origin"
@@ -11831,12 +11832,18 @@
 							"CASTER"	"follow_origin"
 							"CASTER"	"follow_origin"
 						}
+					}				
+					"RemoveModifier"
+					{
+						"ModifierName"	"modifier_mage_jealousy_enemy"
+						"Target" 		"TARGET"
 					}
 				}
 	
 				"States"
 				{
 					"MODIFIER_STATE_SPECIALLY_DENIABLE"		"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_DOMINATED"				"MODIFIER_STATE_VALUE_ENABLED"
 				}
 			}
 	
@@ -11844,6 +11851,7 @@
 			{
 				"IsHidden"			"0"
 				"IsDebuff"			"1"
+				"IsPurgable" 		"1"
 	
 				"EffectName"		"particles/econ/courier/courier_faceless_rex/cour_rex_ground_a.vpcf"
 				"EffectAttachType"	"follow_origin"
@@ -11851,7 +11859,7 @@
 				"StatusEffectName" 		"particles/status_fx/status_effect_beserkers_call.vpcf" 	   
 				"StatusEffectPriority"  "10"
 	
-				"ThinkInterval"  "0.1"
+				"ThinkInterval"  "0.3"
 				"OnIntervalThink"
 				{
 					"RunScript"

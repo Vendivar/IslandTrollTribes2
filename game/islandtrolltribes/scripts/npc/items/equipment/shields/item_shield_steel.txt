@@ -30,6 +30,15 @@
 			"Passive"	"1"
 			"IsHidden"	"1"
 			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"ThinkInterval"  "1.0"
+            "OnIntervalThink"
+            {
+                "RunScript"
+                {
+                    "ScriptFile"    "items/battle_shield.lua"
+                    "Function"      "SteelSpellBlockThink"
+                }
+            }
 			"Properties"
 			{
 				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
@@ -38,15 +47,48 @@
 			"OnCreated"
 			{
 				"ApplyModifier"
-				{
-					"Target"	"CASTER"
-					"ModifierName"	"modifier_item_vanguard"
-				}
-
+					{
+						"Target"	"CASTER"
+						"ModifierName"	"modifier_item_vanguard"
+					}
 			}
 
 		}
+		"modifier_shield_steel_spell_block"
+        {
+			"TextureName"		"item_sphere"
+            "Passive"           "1"
+            "EffectName"        "particles/items_fx/black_king_bar_overhead.vpcf"
+            "EffectAttachType"  "follow_overhead"
 
+            "Aura"              "modifier_spell_block_check"
+            "Aura_Radius"       "32000"
+            "Aura_Teams"        "DOTA_UNIT_TARGET_TEAM_ENEMY"
+            "Aura_Types"        "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+            "Aura_Flags"        "DOTA_UNIT_TARGET_FLAG_NONE"
+            "Aura_ApplyToCaster" "0"
+        }
+
+        "modifier_spell_block_check"
+        {
+            "IsHidden"  "1"
+            "OnAbilityExecuted"
+            {
+                "RunScript"
+                {
+                    "ScriptFile"    "items/battle_shield.lua"
+                    "Function"      "SteelCheckSpellBlock"
+                }
+            }
+        }
+
+        "modifier_spell_immunity_block"
+        {
+            "States"
+            {
+                "MODIFIER_STATE_MAGIC_IMMUNE"  "MODIFIER_STATE_VALUE_ENABLED"
+            }
+        }
 	}
 
 	"AbilitySpecial"
@@ -68,30 +110,30 @@
 			"var_type"	"FIELD_INTEGER"
 			"block_amount"	"20"
 		}
-
+		
 		"04"
 		{
 			"var_type"	"FIELD_INTEGER"
-			"spell_block"	"1"
+			"block_damage_melee"	"20"
 		}
 
 		"05"
 		{
 			"var_type"	"FIELD_INTEGER"
-			"block_chance"	"10"
+			"block_damage_ranged"	"20"
 		}
-
+		
 		"06"
 		{
 			"var_type"	"FIELD_INTEGER"
-			"block_damage_melee"	"5"
+			"spell_block"	"1"
 		}
-
+		
 		"07"
 		{
 			"var_type"	"FIELD_INTEGER"
-			"block_damage_ranged"	"5"
-		}
+			"spell_block_cd"	"75"
+		}				
 
 	}
 

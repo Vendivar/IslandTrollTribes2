@@ -7,7 +7,7 @@
 	"Model"	"models/creeps/neutral_creeps/n_creep_ghost_b/n_creep_ghost_frost.vmdl"
 	"Ability1"	"ability_spirit_enchant"
 	"Ability2"	"ability_spirit_enchanttouch"
-	"Ability3"	""
+	"Ability3"	"ability_mage_jealousy"
 	"Ability4"	"ability_scout_scry"
 	"Ability5"	""
 	"Ability6"	""
