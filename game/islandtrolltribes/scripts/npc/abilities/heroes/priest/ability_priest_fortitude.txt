@@ -1,7 +1,7 @@
 "ability_priest_fortitude"
 {
 	"BaseClass"	"ability_datadriven"
-	"AbilityTextureName"	"ability_priest_fortitude"
+	"AbilityTextureName"	"custom/ability_priest_fortitude"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_3"
 	"AbilityCastPoint"	"0.5"

@@ -2,7 +2,7 @@
 	"ability_mage_darkgate"
 	{
 		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"ability_mage_darkgate"
+		"AbilityTextureName"	"custom/ability_mage_darkgate"
 		"MaxLevel" 						"1"
 	
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"

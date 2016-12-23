@@ -3,7 +3,7 @@
 	"ID"	"1021"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"herb_orange"
+	"AbilityTextureName"	"custom/herb_orange"
 	"Model"	"models/herb_special_orange.vmdl"
 	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"ItemCost"	"12"

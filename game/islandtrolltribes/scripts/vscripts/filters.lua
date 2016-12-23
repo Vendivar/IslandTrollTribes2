@@ -38,21 +38,14 @@ function ITT:FilterExecuteOrder( filterTable )
         -- Prevent moving to stash
         local hero = unit:IsRealHero() and unit or unit:GetOwner()
         if order_type == DOTA_UNIT_ORDER_MOVE_ITEM then
-            Timers:CreateTimer(0.03, function()
                 if hero:GetNumItemsInStash() >= 0 then
-                    for i=6,11 do
+                    for i=5,18 do
                         local item = hero:GetItemInSlot(i)
                         if item then
-                            hero:EjectItemFromStash(item)
-                            if hero:GetNumItemsInInventory() <= 5 then
-                                hero:AddItem(item)
-                            else
-                                item:GetContainer():SetAbsOrigin(hero:GetAbsOrigin())
-                            end
-                        end
-                    end
-                end
-            end)
+						SendErrorMessage(issuer, "#error_nicetry") return 
+						end
+					end
+				end
             return CONTINUE_PROCESSING_EVENT
         end
     end

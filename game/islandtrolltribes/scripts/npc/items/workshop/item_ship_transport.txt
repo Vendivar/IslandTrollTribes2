@@ -3,7 +3,7 @@
 	"ID"	"1109"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
 	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"ship_transport"
+	"AbilityTextureName"	"custom/ship_transport"
 	"Model"	"models/items/courier/corsair_ship/corsair_ship_flying.vmdl"
 	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"AbilityCastRange"	"800"

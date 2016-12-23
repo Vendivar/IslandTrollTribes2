@@ -3,7 +3,7 @@
     "ID"    				"1091"
     "AbilityBehavior"    	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "BaseClass"    			"item_datadriven"
-    "AbilityTextureName"    "meat_cooked"
+    "AbilityTextureName"	"custom/meat_cooked"
     "Model"    				"models/turkey_leg.vmdl"
     "Effect"    			"particles/custom/meat_smoke.vpcf"
     "AbilityCastPoint"    	"0.5"

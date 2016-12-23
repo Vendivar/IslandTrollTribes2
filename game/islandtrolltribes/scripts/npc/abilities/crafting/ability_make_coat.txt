@@ -1,7 +1,7 @@
 "ability_make_coat"
 {
     "BaseClass"             "ability_datadriven"
-    "AbilityTextureName"    "ability_building_makecloak"
+    "AbilityTextureName"	"custom/ability_building_makecloak"
     "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "MaxLevel"              "1"
     "AbilitySharedWithTeammates" "1"

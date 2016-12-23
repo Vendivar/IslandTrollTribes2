@@ -1,7 +1,7 @@
 "ability_scoutwardpassive"
 {
 	"BaseClass"	"ability_datadriven"
-	"AbilityTextureName"	"scout_ward"
+	"AbilityTextureName"	"custom/scout_ward"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AURA | DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 	"Modifiers"
 	{

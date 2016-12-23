@@ -1,7 +1,7 @@
 "ability_priest_painkillerbalm"
 {
 	"BaseClass"             		"ability_datadriven"
-	"AbilityTextureName"			"ability_priest_painkillerbalm"
+	"AbilityTextureName"	"custom/ability_priest_painkillerbalm"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_DONT_CANCEL_CHANNEL"
 	"AbilityCastAnimation"	        "ACT_DOTA_CAST_ABILITY_3"
 	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"

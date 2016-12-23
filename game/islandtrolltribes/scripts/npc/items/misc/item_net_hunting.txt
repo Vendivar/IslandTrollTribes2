@@ -3,7 +3,7 @@
     "ID"                        "1147"
     "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
     "BaseClass"                 "item_datadriven"
-    "AbilityTextureName"        "net_hunting"
+    "AbilityTextureName"	"custom/net_hunting"
     "Model"                     "models/particle/net.vmdl"
     "Effect"	"particles/custom/dropped_item_normal.vpcf"
     "AoERadius"                 "%radius"

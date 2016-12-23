@@ -342,11 +342,12 @@ function setPlayerList() {
   */
 }
 
-var timeLeft = 3
+var timeLeft = 5
 function VoteEnd() {
   var label = $("#Gamemode_confirmed");
   if (timeLeft == 0) {
     label.text = $.Localize("Gamemode_votingendnotimer");
+	GameUI.Wrapper.ToRight();
     return;
   }
 

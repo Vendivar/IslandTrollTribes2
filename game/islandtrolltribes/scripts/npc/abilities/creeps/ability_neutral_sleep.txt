@@ -3,7 +3,7 @@
 	"BaseClass"	"ability_datadriven"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 	"AbilityUnitTargetFlags"	"DOTA_UNIT_TARGET_ALL"
-	"AbilityTextureName"	"ability_building_rest"
+	"AbilityTextureName"	"custom/ability_building_rest"
 	"AbilityCastPoint"	"0.0"
 	"AbilityCooldown"	"0"
 	"AbilityCastRange"	"1000"

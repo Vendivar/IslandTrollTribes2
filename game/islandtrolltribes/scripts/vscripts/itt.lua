@@ -95,7 +95,8 @@ function ITT:InitGameMode()
     GameRules:SetGoldPerTick( 0 )
 
     -- Forcepick hero to skip default hero selection.
-    GameRules:GetGameModeEntity():SetCustomGameForceHero("npc_dota_hero_huskar")
+    GameRules:GetGameModeEntity():SetCustomGameForceHero("npc_dota_hero_wisp")
+
 
     -- Listeners
     ListenToGameEvent('player_connect_full', Dynamic_Wrap(ITT, 'OnPlayerConnectFull'), self)
@@ -736,6 +737,7 @@ function ITT:OnItemPickedUp(event)
         if buildings ~= null then
             print("Teleporting Item", originalItem:GetName())
             hero:RemoveItem(originalItem)
+			hero:EmitSound("Hero_Zuus.Attack")
             local itemPosition = targetFire:GetAbsOrigin() + RandomVector(RandomInt(100,150))
             CreateItemOnPositionSync(itemPosition,newItem)
             newItem:SetOrigin(itemPosition)
@@ -769,6 +771,7 @@ function TeleportItem(hero,originalItem)
                 local itemPosition = targetFire:GetAbsOrigin() + RandomVector(RandomInt(100,150))
                 CreateItemOnPositionSync(itemPosition,newItem)
                 newItem:SetOrigin(itemPosition)
+				hero:EmitSound("Hero_Zuus.Attack")
                 teleportSuccess = true
                 return teleportSuccess
             end
@@ -822,9 +825,17 @@ function ITT:OnPlayerGainedLevel(event)
 
     print("[ITT] OnPlayerLevelUp - Player "..playerID.." ("..class..") has reached level "..level)
 
+	hero.levelParticle = ParticleManager:CreateParticle("particles/custom/hero_levelup.vpcf", PATTACH_ABSORIGIN_FOLLOW, hero)
+	Sounds:EmitSoundOnClient(playerID, "Level.Up")
+	
     -- If the hero reached level 6 and hasn't unlocked a subclass, make the button clickable
     if level >= 6 and not hero:HasSubClass() then
-        CustomGameEventManager:Send_ServerToPlayer(player, "player_unlock_subclass", {})
+        CustomGameEventManager:Send_ServerToPlayer(player, "player_unlock_subclass", {className=class} )
+		  Timers:CreateTimer(.1, function()
+		CustomGameEventManager:Send_ServerToPlayer(player, "player_unlock_subclass", {className=class} )
+    end
+  )
+        
 
         if level == 6 then
             local particleName = "particles/units/heroes/hero_keeper_of_the_light/keeper_of_the_light_spirit_form_ambient.vpcf"
@@ -837,7 +848,6 @@ function ITT:OnPlayerGainedLevel(event)
 
     -- Update skills
     ITT:AdjustSkills( hero )
-	EnableSpellBookAbilities (hero)
 end
 
 function print_dropped_vecs(cmdname)

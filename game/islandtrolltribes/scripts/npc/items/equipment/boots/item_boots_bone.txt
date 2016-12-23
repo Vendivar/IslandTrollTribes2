@@ -3,7 +3,7 @@
 	"ID"	"1079"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"boots_bone"
+	"AbilityTextureName"	"custom/boots_bone"
 	"Model"	"models/items/kunkka/black_boots_of_the_voyager/black_boots_of_the_voyager.vmdl"
 	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"ItemCost"	"54"

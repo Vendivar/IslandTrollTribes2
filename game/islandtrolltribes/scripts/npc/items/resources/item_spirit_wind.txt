@@ -3,7 +3,7 @@
 	"ID"	"1034"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"spirit_wind"
+	"AbilityTextureName"	"custom/spirit_wind"
 	"Model"	"models/heroes/batrider/batrider_weapon.vmdl"
 	"Effect"	"particles/units/heroes/hero_razor/razor_plasmafield_glow.vpcf"
 	"ItemCost"	"6"

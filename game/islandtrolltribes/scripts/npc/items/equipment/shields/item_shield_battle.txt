@@ -9,7 +9,7 @@
     "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
     "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO"
     "BaseClass"                 "item_datadriven"
-    "AbilityTextureName"        "shield_battle"
+    "AbilityTextureName"		"custom/shield_battle"
     "Model"                     "models/heroes/chaos_knight/chaos_knight_shield.vmdl"
     "Effect"	"particles/custom/dropped_item_normal.vpcf"
 
@@ -36,86 +36,87 @@
 
     "AbilitySpecial"
     {
-        "01"
-        {
-            "var_type"      "FIELD_INTEGER"
-            "duration"      "5"
-        }
-        "02"
-        {
-            "var_type"      "FIELD_INTEGER"
-            "armor"         "10"
-        }
-        "03"
-        {
-            "var_type"      "FIELD_INTEGER"
-            "block_chance"  "10"
-        }
-        "04"
-        {
-            "var_type"      "FIELD_INTEGER"
-            "block_amount"  "20"
-        }
-        "05"
-        {
-            "var_type"      "FIELD_FLOAT"
-            "spellblock_cd" "75.0"
-        }
-        "06"
+		"01"
         {
             "var_type"      "FIELD_INTEGER"
             "bonus_int"     "1"
         }
-        "07"
+        "02"
         {
             "var_type"      "FIELD_INTEGER"
             "bonus_agi"     "1"
         }
-        "08"
+        "03"
         {
             "var_type"      "FIELD_INTEGER"
             "bonus_str"     "2"
         }
-        "09"
+        "04"
+        {
+            "var_type"      "FIELD_INTEGER"
+            "armor"         "10"
+        }
+        "05"
+        {
+            "var_type"      "FIELD_INTEGER"
+            "block_chance"  "10"
+        }
+        "06"
+        {
+            "var_type"      "FIELD_INTEGER"
+            "block_amount"  "20"
+        }
+        "07"
+        {
+            "var_type"      "FIELD_FLOAT"
+            "spellblock_cd" "75.0"
+        }
+
+        "08"
         {
             "var_type"      "FIELD_INTEGER"
             "bash_damage"     "25"
         }
-        "10"
+        "09"
 		{
 			"var_type"			"FIELD_FLOAT"
 			"wave_speed"		"2000.0"
 		}
-		"11"
+		"10"
 		{
 			"var_type"			"FIELD_INTEGER"
 			"wave_range_tooltip"	"200"
 		}
-		"12"
+		"11"
 		{
 			"var_type"			"FIELD_INTEGER"
 			"wave_width"		"250"
 		}
-		"13"
+		"12"
 		{
 			"var_type"			"FIELD_FLOAT"
 			"silence_duration"	"5"
 		}
-		"14"
+		"13"
 		{
 			"var_type"			"FIELD_FLOAT"
 			"knockback_distance_max"	"200"
 		}
-		"15"
+		"14"
 		{
 			"var_type"			"FIELD_FLOAT"
 			"knockback_duration"		"0.3"
 		}
-		"16"
+		"15"
 		{
 			"var_type"			"FIELD_INTEGER"
 			"knockback_height"		"0"
 		}
+		"16"
+        {
+            "var_type"      "FIELD_INTEGER"
+            "duration"      "5"
+        }
     }
 
     "precache"

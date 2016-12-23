@@ -5,7 +5,7 @@
 	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
 	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"potion_cure_all"
+	"AbilityTextureName"	"custom/potion_cure_all"
 	"Model"	"models/props_gameplay/bottle_blue.vmdl"
 	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"AbilityCastPoint"	"0.5"

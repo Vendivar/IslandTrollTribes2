@@ -232,6 +232,11 @@
 
 
         // Toolkit Abilities
+		
+		
+        "gold_panel"                                       "Earn gold by selling items to wandering merchants, hides are a quick way to make money!"
+		"DOTA_Tooltip_Ability_gold_panel"   				"Earn gold by selling items to wandering merchants, hides are a quick way to make money!"
+		
         "sleep_outside"                                          "Sleep Outside"
         "DOTA_Tooltip_Ability_sleep_outside"                     "Sleep <font color='#00CC00'>O</font>utside"
         "DOTA_Tooltip_Ability_sleep_outside_Description"         "Sleep outside and gain 20 energy but lose 20 heat and hp!\nShould only be used as a worse case scenario to gain energy!"
@@ -296,26 +301,22 @@
         //  <h1>text</h1> header1, <h2>text</h2> header2
         //  <i> italic/underlined.
         //  Styles can be changed in custom_loading_screen.css
-        "loading_screen_change_text" "<h1>LATEST CHANGES</h1><i>Version 1.1.1</i><br>
-<h2>Mechanics:</h2><br>
-Quests (NEW!): Upon starting the game you are shown some helpful tips and quests, you can turn them off through the help menu.<br>
-On Death item stacks now are properly are preserved for what drops when you die.<br>
-'P' button now drops all carried items instead of 'B' button.<br><br>
+        "loading_screen_change_text" "<h1>LATEST CHANGES</h1><i>Version 1.2.0</i><br>
+<h2>Mechanics:</h2>
+Various backend fixes.<br><br>
 
 <h2>Abilities & Heroes:</h2>
-Gatherer: Fixed telegathering for herbmaster and remote gatherer<br>
+Icons: Potential fix deployed.<br>
 Potential fix for losing abilities.<br><br>
 
 <h2>Buildings:</h2>
-Spirit Ward: Fixed revive sounds, Added revive particles<br>
-<br>
+N/A<br><br>
+
 <h2>Items:</h2>
-Recipies: Fixed dark thistle recipie and adjusted early game trap recipies<br>
-Spears: New FX<br>
-Fireball Scroll: Added longer stun for creeps.<br>
-Cloak: Fixed armor values.<br>
-Horn of Mammoth: New model and now has unlimited useage.<br>
-Axes: Fixed range on tree cutting which prevented tree cutting.<br><br>"
+Icons: Potential fix deployed<br><br>
+<h2>Other:</h2>
+Added gold indicator UI.<br>
+Continuing to try to fix 7.0 issues, please file bug reports via the Steam Workshop Bug disucssion (not the main page) or our forums.<br><br>"
 
 
 

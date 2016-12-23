@@ -100,16 +100,16 @@
 .Arrow_Heat {
   horizontal-align: center;
   vertical-align: center;
-  x: -246px;
-  y: 200px;
+  x: 46px;
+  y: 220px;
   flow-children: down;
   margin-left: -40px;
 }
 .Arrowtext_Heat {
   horizontal-align: center;
   vertical-align: center;
-  x: -419px;
-  y: 120px;
+  x: -129px;
+  y: 140px;
 
   color: gradient(linear, 0% 100%, 0% 0%, from(#f9f9f9), to(#939393));
   font-size: 24px;
@@ -122,8 +122,8 @@
 .Arrow_Meat {
   horizontal-align: center;
   vertical-align: center;
-  x: -205px;
-  y: 200px;
+  x: 95px;
+  y: 220px;
 
   flow-children: down;
   margin-left: -30px;
@@ -131,8 +131,8 @@
 .Arrowtext_Meat {
   horizontal-align: center;
   vertical-align: center;
-  x: -97px;
-  y: 120px;
+  x: 200px;
+  y: 140px;
 
   color: gradient(linear, 0% 100%, 0% 0%, from(#f9f9f9), to(#939393));
   font-size: 24px;

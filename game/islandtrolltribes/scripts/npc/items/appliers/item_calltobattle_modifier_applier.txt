@@ -3,7 +3,7 @@
 	"ID"	"1902"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"item_meat_modifier_applier"
+	"AbilityTextureName"	"custom/item_meat_modifier_applier"
 	"ItemBaseLevel"	"1"
 	"AbilityCastRange"	"9999"
 	"AbilityCastPoint"	"0.0"

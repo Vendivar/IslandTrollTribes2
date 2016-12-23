@@ -2,7 +2,7 @@
 {
 	"BaseClass"	"ability_datadriven"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
-	"AbilityTextureName"	"ability_beastmaster_spiritofthebeast"
+	"AbilityTextureName"	"custom/ability_beastmaster_spiritofthebeast"
 	"MaxLevel"	"1"
 	"Modifiers"
 	{
@@ -23,7 +23,6 @@
 					"Target" "ATTACKER"
 				}
 			}
-
 		}
 
 		"modifier_animal_slow"
@@ -32,6 +31,7 @@
 			"Properties"
 			{
 				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"-5"
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"-30"
 			}
 
 			"ThinkInterval"	"2"
@@ -39,7 +39,7 @@
 			{
 				"Random"
 				{
-					"Chance"	"50"
+					"Chance"	"30"
 					"OnSuccess"
 					{
 						"RunScript"
@@ -129,11 +129,21 @@
 			"var_type"	"FIELD_INTEGER"
 			"chance"	"5"
 		}
-            "01"
+		"02"
 		{
 			"var_type"	"FIELD_INTEGER"
-			"bonus"	"5"
+			"bonus"		"5"
 		}
-}
+		"03"
+		{
+			"var_type"		"FIELD_INTEGER"
+			"attackslow"	"-30"
+		}
+		"04"
+		{
+			"var_type"	"FIELD_INTEGER"
+			"attackerslow"	"-40"
+		}
+	}
 
 }

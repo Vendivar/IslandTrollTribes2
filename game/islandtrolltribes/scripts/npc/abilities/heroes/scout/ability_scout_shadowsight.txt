@@ -2,7 +2,7 @@
 {
 	"BaseClass"	"ability_datadriven"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityTextureName"	"ability_scout_shadowsight"    
+	"AbilityTextureName"	"custom/ability_scout_shadowsight"    
 	"AoERadius"               "%shadowsight_radius"
 	"MaxLevel"	"1"
 

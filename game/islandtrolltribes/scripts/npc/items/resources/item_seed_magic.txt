@@ -3,7 +3,7 @@
     "ID"                    "1093"
     "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT"
     "BaseClass"             "item_datadriven"
-    "AbilityTextureName"    "seed_magic"
+    "AbilityTextureName"	"custom/seed_magic"
     "Model"                 "models/props_gameplay/rune_regeneration01.vmdl"
     "Effect"	"particles/custom/dropped_item_normal.vpcf"
 

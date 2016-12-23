@@ -2,7 +2,7 @@
 {
 	"BaseClass"	"ability_datadriven"
     "AbilityBehavior"    	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
-	"AbilityTextureName"	"ability_mage_swap"
+	"AbilityTextureName"	"custom/ability_mage_swap"
 	"MaxLevel"	"1"
 	"AbilityCastPoint"	"0"
 	"OnToggleOn"

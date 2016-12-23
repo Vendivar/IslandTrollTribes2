@@ -77,7 +77,7 @@ function modifier_pet_grow:OnDestroy()
 			
 			local playerID = hero:GetPlayerOwnerID()
 			local player = PlayerResource:GetPlayer(playerID)
-			EmitSoundOnClient("Hero_Beastmaster.Call.Hawk", player)
+			Sounds:EmitSoundOnClient(playerID, "Hero_Beastmaster.Call.Hawk")
         end
     end
 end

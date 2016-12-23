@@ -3,7 +3,7 @@
 	"ID"	"1090"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"meat_diseased"
+	"AbilityTextureName"	"custom/meat_diseased"
 	"Model"	"models/particle/green_rocks.vmdl"
 	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"AbilityCastPoint"	"0.5"

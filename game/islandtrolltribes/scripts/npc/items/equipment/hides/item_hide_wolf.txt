@@ -3,7 +3,7 @@
 	"ID"	"1100"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"hide_wolf"
+	"AbilityTextureName"	"custom/hide_wolf"
 	"Model"	"models/heroes/lone_druid/lone_druid_claw_fx.vmdl"
 	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"ItemCost"	"26"

@@ -4,7 +4,7 @@
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_CREEP"
-	"AbilityTextureName"	"ability_gatherer_herbtelegather"
+	"AbilityTextureName"	"custom/ability_gatherer_herbtelegather"
 	"MaxLevel"	"3"
 	"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_4"
 	"AbilityCastPoint"	"0.5"

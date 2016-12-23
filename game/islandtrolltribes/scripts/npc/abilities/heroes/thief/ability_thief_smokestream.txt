@@ -2,7 +2,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityTextureName"	"ability_thief_smokestream"
+		"AbilityTextureName"	"custom/ability_thief_smokestream"
 		"AbilityCastPoint"	"0.1"
 		"AbilityCooldown"	"75.0"
 		"AbilityManaCost"	"0"

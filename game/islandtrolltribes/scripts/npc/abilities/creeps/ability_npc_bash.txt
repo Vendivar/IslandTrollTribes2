@@ -2,7 +2,7 @@
 {
 	"BaseClass"	"ability_datadriven"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-	"AbilityTextureName"	"ability_beastmaster_bash"
+	"AbilityTextureName"	"custom/ability_beastmaster_bash"
 	"MaxLevel"	"1"
 	"Modifiers"
 	{

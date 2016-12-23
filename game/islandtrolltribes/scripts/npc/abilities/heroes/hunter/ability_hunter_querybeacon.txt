@@ -2,7 +2,7 @@
 {
 	"BaseClass"	"ability_datadriven"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	"AbilityTextureName"	"ability_hunter_querybeacon"
+	"AbilityTextureName"	"custom/ability_hunter_querybeacon"
 	"AbilityCastPoint"	"0.2"
 	"AbilityCooldown"	"30.0"
 	"AbilityCastRange"  "5000"

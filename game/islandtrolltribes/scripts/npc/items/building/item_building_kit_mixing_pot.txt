@@ -3,7 +3,7 @@
 	"ID"	"1128"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"building_kit_mixing_pot"
+	"AbilityTextureName"	"custom/building_kit_mixing_pot"
 	"Model"	"models/props_debris/creep_camp001j.vmdl"
 	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"ItemCost"	"14"

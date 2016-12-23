@@ -1,7 +1,7 @@
 "ability_teleport"
 {
     "BaseClass"             "ability_lua"
-    "AbilityTextureName"    "ability_building_teleport"
+    "AbilityTextureName"	"custom/ability_building_teleport"
     "ScriptFile"            "buildings/ability_teleport.lua"
 
     "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"

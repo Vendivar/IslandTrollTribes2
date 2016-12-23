@@ -3,7 +3,7 @@
 	"ID"	"1092"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"magic_raw"
+	"AbilityTextureName"	"custom/magic_raw"
 	"Model"	"models/heroes/oracle/crystal_ball.vmdl"
 	"Effect"	"particles/econ/items/faceless_void/faceless_void_weapon_viridus/faceless_void_weapon_glow_viridus.vpcf"
 	"AbilityCastPoint"	"0.5"

@@ -2,7 +2,7 @@
 {
 	"BaseClass"	"ability_datadriven"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
-	"AbilityTextureName"	"ability_thief_assassinate"
+	"AbilityTextureName"	"custom/ability_thief_assassinate"
 	"AbilityCastPoint"	"0.4"
 	"AbilityCooldown"	"60.0"
 	"AbilityManaCost"	"30"

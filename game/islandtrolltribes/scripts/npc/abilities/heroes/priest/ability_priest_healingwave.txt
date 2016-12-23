@@ -1,7 +1,7 @@
 "ability_priest_healingwave"
 {
 	"BaseClass"	"ability_datadriven"
-	"AbilityTextureName"	"ability_priest_healingwave"
+	"AbilityTextureName"	"custom/ability_priest_healingwave"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT_TARGET"
 	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"

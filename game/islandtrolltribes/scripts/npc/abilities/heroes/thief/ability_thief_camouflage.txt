@@ -2,7 +2,7 @@
 "ability_thief_camouflage"
 {
     "BaseClass"                 "ability_datadriven"
-    "AbilityTextureName"        "ability_thief_camouflage"
+    "AbilityTextureName"	"custom/ability_thief_camouflage"
     "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
     "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_TREE | DOTA_UNIT_TARGET_BASIC"
     "MaxLevel"  "1"

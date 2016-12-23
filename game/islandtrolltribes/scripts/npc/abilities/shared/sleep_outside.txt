@@ -3,7 +3,7 @@
 	"BaseClass"	"ability_datadriven"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 	"AbilityUnitTargetFlags"	"DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
-	"AbilityTextureName"	"ability_building_rest"
+	"AbilityTextureName"	"custom/ability_building_rest"
 	"AbilityCastPoint"	"0.0"
 	"AbilityCooldown"	"10"
 	"AbilityManaCost"	"0"

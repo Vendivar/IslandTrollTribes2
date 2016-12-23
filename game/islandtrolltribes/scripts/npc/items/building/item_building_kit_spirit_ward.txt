@@ -3,7 +3,7 @@
 	"ID"	"1131"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"building_kit_Spirit_Ward"
+	"AbilityTextureName"	"custom/building_kit_Spirit_Ward"
 	"Model"	"models/props_debris/creep_camp001j.vmdl"
 	"Effect"	"particles/units/heroes/hero_witchdoctor/witchdoctor_ward_cast_staff_fire_d.vpcf"
 	"ItemCost"	"1"

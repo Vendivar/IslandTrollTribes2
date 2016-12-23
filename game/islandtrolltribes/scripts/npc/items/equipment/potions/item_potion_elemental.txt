@@ -3,7 +3,7 @@
 	"ID"	"1049"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"potion_elemental"
+	"AbilityTextureName"	"custom/potion_elemental"
 	"Model"	"models/potion_elemental.vmdl"
 	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"AbilityCastPoint"	"0.5"
@@ -62,6 +62,12 @@
 			"EffectName"	"potion.elemental"
 			"Target"	"CASTER"
 		}
+		
+         "FireSound"
+        {
+            "EffectName"	"lightning.shield"
+            "Target"	"CASTER"
+        }
 
 		"SpendCharge"
 		{

@@ -3,7 +3,7 @@
 	"BaseClass"	"ability_datadriven"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"AbilityUnitDamageType"	"DAMAGE_TYPE_PHYSICAL"
-	"AbilityTextureName"	"ability_beastmaster_criticalstrike"
+	"AbilityTextureName"	"custom/ability_beastmaster_criticalstrike"
 	"MaxLevel"	"1"
 	"precache"
 	{

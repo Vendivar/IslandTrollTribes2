@@ -3,7 +3,7 @@
 {
 	"BaseClass"	"ability_datadriven"
     "AbilityBehavior"    	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	"AbilityTextureName"	"ability_mage_dementiasummoning"
+	"AbilityTextureName"	"custom/ability_mage_dementiasummoning"
 	"MaxLevel"	"1"
 	"AbilityCastPoint"	"0"
 }

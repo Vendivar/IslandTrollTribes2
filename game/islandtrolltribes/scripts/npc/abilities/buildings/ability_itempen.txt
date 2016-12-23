@@ -2,7 +2,7 @@
 {
     "BaseClass"             "ability_datadriven"
     "AbilityBehavior"	    "DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	"AbilityTextureName"    "ability_building_packup"
+	"AbilityTextureName"	"custom/ability_building_packup"
     "AbilityManaCost"       "0"   
 	"AoERadius"               "1500"
 

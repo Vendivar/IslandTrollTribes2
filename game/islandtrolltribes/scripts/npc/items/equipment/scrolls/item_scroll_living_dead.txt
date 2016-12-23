@@ -3,7 +3,7 @@
 	"ID"	"1084"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"scroll_living_dead"
+	"AbilityTextureName"	"custom/scroll_living_dead"
 	"Model"	"models/scroll_undead.vmdl"
 	"Effect"	"particles/custom/skeleton_scroll.vpcf"
 	"AbilityCastPoint"	"0.5"

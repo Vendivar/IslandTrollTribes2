@@ -2,7 +2,7 @@
 {
     "BaseClass"             "ability_datadriven"
     "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-    "AbilityTextureName"    "ability_gatherer_findherbriver"
+    "AbilityTextureName"	"custom/ability_gatherer_findherbriver"
     "MaxLevel"              "1"
     "AbilityCastPoint"      "0"
 

@@ -3,7 +3,7 @@
 	"ID"	"1102"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"hide_jungle_bear"
+	"AbilityTextureName"	"custom/hide_jungle_bear"
 	"Model"	"models/heroes/lone_druid/lone_druid_claw_fx.vmdl"
 	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"ItemCost"	"30"

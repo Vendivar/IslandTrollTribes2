@@ -3,7 +3,7 @@
 	"ID"	"1007"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"acorn"
+	"AbilityTextureName"	"custom/acorn"
 	"Model"	"models/heroes/crystal_maiden/crystal_maiden_ice_debris_01.vmdl"
 	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"ItemCost"	"2"

@@ -9,7 +9,7 @@
 	"AbilityCooldown"	"10.0"
 	"AbilityChannelTime"	"3.0"
 	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"axe_flint"
+	"AbilityTextureName"	"custom/axe_flint"
 	"Model"	"models/items/tuskarr/ancestors_frozen_axe/ancestors_frozen_axe.vmdl"
 	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"ItemCost"	"10"

@@ -2,7 +2,7 @@
 {
     "BaseClass"             "ability_datadriven"
     "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT"
-    "AbilityTextureName"    "ability_scout_placeward"
+    "AbilityTextureName"	"custom/ability_scout_placeward"
     "MaxLevel"              "1"
     
     "AbilityCastRange"      "600"

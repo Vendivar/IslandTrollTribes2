@@ -1,7 +1,7 @@
 "ability_mage_freezingblast"
 {
 	"BaseClass"	"ability_datadriven"
-	"AbilityTextureName"	"ability_mage_freezingblast"
+	"AbilityTextureName"	"custom/ability_mage_freezingblast"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 	"AOERadius"	"300"
 	"AbilityCastPoint"	"0.0"

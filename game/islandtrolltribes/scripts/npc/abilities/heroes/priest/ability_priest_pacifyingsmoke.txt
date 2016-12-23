@@ -2,7 +2,7 @@
 {
 	"BaseClass"	"ability_datadriven"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	"AbilityTextureName"	"ability_priest_magicmist"
+	"AbilityTextureName"	"custom/ability_priest_magicmist"
 	"AbilityCastPoint"	"0.3"
 	"AbilityCooldown"	"35"
 	"AbilityCastRange"	"200"

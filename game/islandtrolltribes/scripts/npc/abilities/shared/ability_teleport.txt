@@ -1,6 +1,6 @@
 "ability_teleport"
 {
 	"BaseClass"	"ability_datadriven"
-	"AbilityTextureName"	"ability_building_teleport"
+	"AbilityTextureName"	"custom/ability_building_teleport"
     "MaxLevel" "1"
 }

@@ -3,7 +3,7 @@
 	"ID"	"1017"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"herb_butsu"
+	"AbilityTextureName"	"custom/herb_butsu"
 	"Model"	"models/props_nature/fern003.vmdl"
 	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"ItemCost"	"2"

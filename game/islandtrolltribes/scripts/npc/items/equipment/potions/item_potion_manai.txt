@@ -3,7 +3,7 @@
 	"ID"	"1040"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"potion_manai"
+	"AbilityTextureName"	"custom/potion_manai"
 	"Model"	"models/props_gameplay/salve_blue.vmdl"
 	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"AbilityCastPoint"	"0.5"

@@ -3,7 +3,7 @@
 	"ID"	"1037"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"potion_healingi"
+	"AbilityTextureName"	"custom/potion_healingi"
 	"Model"	"models/props_gameplay/salve.vmdl"
 	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"AbilityCastPoint"	"0.5"

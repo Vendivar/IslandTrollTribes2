@@ -3,7 +3,7 @@
 		"ID"	"1110"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK |DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"weapon_emp"
+		"AbilityTextureName"	"custom/weapon_emp"
 		"Model"	"models/heroes/juggernaut/jugg_healing_ward.vmdl"
 		"Effect"	"particles/custom/dropped_item_normal.vpcf"
 		"AbilityCastPoint"	"0.5"

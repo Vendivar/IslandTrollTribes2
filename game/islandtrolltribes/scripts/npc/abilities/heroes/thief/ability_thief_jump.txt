@@ -1,7 +1,7 @@
 	"ability_thief_jump"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"ability_thief_jump"
+		"AbilityTextureName"	"custom/ability_thief_jump"
         "AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityCastRange"	"600"
 		"AbilityCastPoint"	"0.4"

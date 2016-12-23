@@ -5,7 +5,7 @@
     "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
     "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
     "BaseClass"                 "item_datadriven"
-    "AbilityTextureName"        "stone"
+    "AbilityTextureName"	"custom/stone"
     "Model"                     "models/particle/tiny_rocks.vmdl"
     "Effect"	"particles/custom/dropped_item_normal.vpcf"
     

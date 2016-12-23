@@ -1,7 +1,7 @@
 "ability_livingclay"
 {
 	"BaseClass"	"ability_datadriven"
-	"AbilityTextureName"	"living_clay"
+	"AbilityTextureName"	"custom/living_clay"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AURA | DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 	"Modifiers"
 	{

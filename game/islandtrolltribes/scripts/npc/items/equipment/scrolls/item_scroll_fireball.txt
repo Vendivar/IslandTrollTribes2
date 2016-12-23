@@ -5,7 +5,7 @@
 	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
 	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"scroll_fireball"
+	"AbilityTextureName"	"custom/scroll_fireball"
 	"Model"	"models/props_gameplay/recipe.vmdl"
 	"Effect"	"particles/units/heroes/hero_clinkz/clinkz_body_arm_fire.vpcf"
 	"AbilityCastRange"	"%range"

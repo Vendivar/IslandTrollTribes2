@@ -2,7 +2,7 @@
 {
 	"BaseClass"	"ability_datadriven"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	"AbilityTextureName"	"ability_scout_wardthearea"
+	"AbilityTextureName"	"custom/ability_scout_wardthearea"
 	"AbilityCastPoint"	"0.2 0.2 0.2"
 	"AbilityCooldown"	"70 60 50"
 	"AbilityManaCost"	"10 10 10"

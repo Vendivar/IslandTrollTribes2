@@ -1,7 +1,7 @@
 "ability_priest_spiritbreak"
 {
 	"BaseClass"             		"ability_datadriven"
-	"AbilityTextureName"			"ability_priest_spiritbreak"
+	"AbilityTextureName"	"custom/ability_priest_spiritbreak"
 
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"

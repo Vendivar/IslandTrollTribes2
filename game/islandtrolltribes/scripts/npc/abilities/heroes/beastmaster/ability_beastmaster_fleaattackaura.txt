@@ -1,7 +1,7 @@
 "ability_beastmaster_fleaattackaura"
 {
     "BaseClass"             "ability_datadriven"
-    "AbilityTextureName"    "ability_beastmaster_fleaattackaura"
+    "AbilityTextureName"	"custom/ability_beastmaster_fleaattackaura"
     "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
     "MaxLevel"              "7" //Learned at  6 7 8 10 15 20 30
 

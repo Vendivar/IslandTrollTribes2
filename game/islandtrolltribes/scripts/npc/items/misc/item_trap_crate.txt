@@ -3,7 +3,7 @@
     "ID"                        "1405"
     "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_POINT"
     "BaseClass"                 "item_datadriven"
-    "AbilityTextureName"        "net_basic"
+    "AbilityTextureName"	"custom/net_basic"
     "Model"                     "models/props_debris/shop_set_cage001.vmdl"
     "Effect"	"particles/custom/dropped_item_normal.vpcf"
 

@@ -2,7 +2,7 @@
 {
 	"BaseClass"	"ability_datadriven"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	"AbilityTextureName"	"ability_mage_flamespray"
+	"AbilityTextureName"	"custom/ability_mage_flamespray"
 	"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
 	"AbilityCastPoint"	"0.2"
 	"AbilityCooldown"	"30"

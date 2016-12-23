@@ -1,7 +1,7 @@
 "ability_priest_rangedheal"
 {
 	"BaseClass"	"ability_datadriven"
-	"AbilityTextureName"	"ability_priest_rangedheal"
+	"AbilityTextureName"	"custom/ability_priest_rangedheal"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"

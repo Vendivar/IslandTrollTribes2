@@ -1,0 +1,26 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/custom_game/resource.css" />
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/resource.js" />
+	</scripts>
+	<script>
+		$.Msg( "Compiled Panorama Resource!" );
+	</script>
+	<Panel hittest="false" class='ResourcePanel'>
+		<Panel id="ResourceContainer" >
+			<Panel class="GoldPanel">
+				<Image hittest="false" id="GoldIcon" src="file://{images}/custom_game/gold_icon.png" />
+				<Label id="GoldText" text="" html="true" class="TitleFont" />
+			</Panel>
+			
+			<Panel class='UpkeepPanel'>
+				<Label id="UpkeepText" text="" html="true" class="TitleFont"/>
+			</Panel>
+		</Panel>
+		<Panel hittest="false" class='UpkeepPanelAnnounce'>
+			<Label hittest="false" id="UpkeepTextAnnounce" text="" html="true" class="TitleFont"/>
+		</Panel>
+	</Panel>
+</root>

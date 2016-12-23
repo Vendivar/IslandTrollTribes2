@@ -1,5 +1,5 @@
 "ability_ensnare"
 {
 	"BaseClass"	"ability_datadriven"
-	"AbilityTextureName"	"ability_building_ensnare"
+	"AbilityTextureName"	"custom/ability_building_ensnare"
 }

@@ -1,7 +1,7 @@
 "ability_mage_seizures"
 {
 	"BaseClass"             		"ability_datadriven"
-	"AbilityTextureName"			"ability_mage_seizures"
+	"AbilityTextureName"	"custom/ability_mage_seizures"
 	"MaxLevel" 						"1"
 
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"

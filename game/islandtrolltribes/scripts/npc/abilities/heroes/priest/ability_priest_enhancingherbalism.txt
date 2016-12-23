@@ -1,7 +1,7 @@
 "ability_priest_enhancingherbalism"
 {
 	"BaseClass"             		"ability_datadriven"
-	"AbilityTextureName"			"ability_priest_enhancingherbalism"
+	"AbilityTextureName"	"custom/ability_priest_enhancingherbalism"
 	"MaxLevel" 						"1"
 
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"

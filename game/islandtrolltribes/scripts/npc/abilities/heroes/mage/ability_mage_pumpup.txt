@@ -4,7 +4,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
-		"AbilityTextureName"	"ability_mage_pumpup"
+		"AbilityTextureName"	"custom/ability_mage_pumpup"
 		"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
 		"AbilityCastPoint"	"0.0"
 		"AbilityCooldown"	"30"

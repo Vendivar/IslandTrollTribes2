@@ -3,7 +3,7 @@
 	"ID"	"1016"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"gun_blow_empty"
+	"AbilityTextureName"	"custom/gun_blow_empty"
 	"Model"	"models/items/sniper/machine_gun_charlie/machine_gun_charlie_bullet.vmdl"
 	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"ItemCost"	"1"

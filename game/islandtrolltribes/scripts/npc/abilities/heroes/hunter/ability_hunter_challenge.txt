@@ -1,7 +1,7 @@
 "ability_hunter_challenge"
 {
 	"BaseClass"             		"ability_datadriven"
-	"AbilityTextureName"			"ability_hunter_challenge"
+	"AbilityTextureName"	"custom/ability_hunter_challenge"
 	"MaxLevel" 						"1"
 
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"

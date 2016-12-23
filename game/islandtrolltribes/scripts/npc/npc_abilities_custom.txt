@@ -2236,7 +2236,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityTextureName"	"ability_hunter_ensnare"
+		"AbilityTextureName"	"custom/ability_hunter_ensnare"
 		"AbilityCastPoint"	"0.0"
 		"AbilityCooldown"	"10"
 		"AbilityCastRange"	"700"
@@ -2595,7 +2595,7 @@
 	{
 	    "BaseClass"             "ability_datadriven"
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
-	    "AbilityTextureName"    "ability_building_cookmeat"
+	    "AbilityTextureName"	"custom/ability_building_cookmeat"
 	    "AbilityManaCost"       "0"
 	    "precache"
 	    {
@@ -2704,7 +2704,7 @@
 	{
 		"BaseClass"	            "ability_datadriven"
 		"AbilityBehavior"	    "DOTA_ABILITY_BEHAVIOR_POINT_TARGET"
-		"AbilityTextureName"    "ability_building_droprawmeat"
+		"AbilityTextureName"	"custom/ability_building_droprawmeat"
 		"MaxLevel"	            "1"
 		"AbilityCastPoint"	    "0"
 		"AbilityCastRange"	    "950"
@@ -2723,7 +2723,7 @@
 	"ability_building_enemytargetting"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"ability_building_enemytargetting"
+		"AbilityTextureName"	"custom/ability_building_enemytargetting"
 		"AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	    "MaxLevel"              "1"
 	
@@ -2752,7 +2752,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
-		"AbilityTextureName"	"ability_building_restoreheat"
+		"AbilityTextureName"	"custom/ability_building_restoreheat"
 	
 		"AbilityCastRange"	"290" //To show the range when hovering over the ability
 	
@@ -2830,7 +2830,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
-		"AbilityTextureName"	"ability_building_restoreheat"
+		"AbilityTextureName"	"custom/ability_building_restoreheat"
 	
 		"AbilityCastRange"	"290" //To show the range when hovering over the ability
 	
@@ -2905,7 +2905,7 @@
 	"ability_burn_building"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"ability_building_burnbuilding"
+		"AbilityTextureName"	"custom/ability_building_burnbuilding"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"precache"
 		{
@@ -2992,7 +2992,7 @@
 	"ability_burn_building_magic"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"Burn_Building_Magic"
+		"AbilityTextureName"	"custom/Burn_Building_Magic"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"OnSpellStart"
 		{
@@ -3066,7 +3066,7 @@
 	{
 	    "BaseClass"             "ability_datadriven"
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-	    "AbilityTextureName"    "ability_building_cancel"
+	    "AbilityTextureName"	"custom/ability_building_cancel"
 	    "AbilityCooldown"       "5.0"
 	    "AbilityChannelTime"    "1.0"
 	    "AbilityManaCost"       "0"
@@ -3096,7 +3096,7 @@
 	"ability_ensnaretower_ensnare"
 	{
 	    "BaseClass"                     "ability_datadriven"
-	    "AbilityTextureName"            "ability_ensnaretrap_ensnare"
+	    "AbilityTextureName"	"custom/ability_ensnaretrap_ensnare"
 	    "MaxLevel"                      "1"
 	
 	    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
@@ -3313,7 +3313,7 @@
 	"ability_ensnaretrap_ensnare"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"trap_ensnare"
+		"AbilityTextureName"	"custom/trap_ensnare"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AURA | DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"Modifiers"
 		{
@@ -3443,7 +3443,7 @@
 	"ability_get_corpse"
 	{
 	    "BaseClass"             "ability_datadriven"
-	    "AbilityTextureName"    "ability_building_getcorpse"
+	    "AbilityTextureName"	"custom/ability_building_getcorpse"
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
 	    "MaxLevel"              "1"
 	    "AbilityCooldown"       "10.5"
@@ -3495,7 +3495,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityTextureName"	"ability_building_hatchegg"
+		"AbilityTextureName"	"custom/ability_building_hatchegg"
 	    "MaxLevel"              "1"
 		"Precache"
 		{
@@ -3514,7 +3514,7 @@
 	"ability_irontrap_ensnare"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"trap_ensnare"
+		"AbilityTextureName"	"custom/trap_ensnare"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AURA | DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"Modifiers"
 		{
@@ -3674,7 +3674,7 @@
 	{
 	    "BaseClass"             "ability_datadriven"
 	    "AbilityBehavior"	    "DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityTextureName"    "ability_building_packup"
+		"AbilityTextureName"	"custom/ability_building_packup"
 	    "AbilityManaCost"       "0"   
 		"AoERadius"               "1500"
 	
@@ -3699,7 +3699,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-		"AbilityTextureName"	"ability_priest_theglow"
+		"AbilityTextureName"	"custom/ability_priest_theglow"
 		"MaxLevel"	"1"
 	    "precache"
 	    {
@@ -3755,7 +3755,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityTextureName"	"ability_building_packup"
+		"AbilityTextureName"	"custom/ability_building_packup"
 		"AbilityCooldown"	"0.0"
 		"AbilityCastPoint"	"0.5"
 		"AbilityManaCost"	"0"
@@ -3779,7 +3779,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityTextureName"	"ability_building_quickbuildarmory"
+		"AbilityTextureName"	"custom/ability_building_quickbuildarmory"
 		"MaxLevel"	"1"
 	
 	    "AbilityCastRange"     "%radius"
@@ -3808,7 +3808,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityTextureName"	"ability_building_quickbuildwitchdoctorshut"
+		"AbilityTextureName"	"custom/ability_building_quickbuildwitchdoctorshut"
 		"MaxLevel"	"1"
 	
 	    "AbilityCastRange"     "%radius"
@@ -3836,7 +3836,7 @@
 	"ability_quick_build_workshop"
 	{
 	    "BaseClass"            "ability_datadriven"
-	    "AbilityTextureName"   "ability_building_quickbuildworkshop"
+	    "AbilityTextureName"	"custom/ability_building_quickbuildworkshop"
 	    "AbilityBehavior"      "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	    "MaxLevel"             "1"
 	
@@ -3866,7 +3866,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT_TARGET"
-		"AbilityTextureName"	"ability_building_quickdrop"
+		"AbilityTextureName"	"custom/ability_building_quickdrop"
 	    "AbilityCastRange"          "500"
 		"MaxLevel"	"1"
 		"OnSpellStart"
@@ -3886,7 +3886,7 @@
 	    "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 	    "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO"
 	    "AbilityUnitTargetFlags"    "DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
-	    "AbilityTextureName"        "ability_building_rest"
+	    "AbilityTextureName"	"custom/ability_building_rest"
 	    "AbilityCastPoint"          "0.0"
 	    "AbilityCooldown"           "0"
 	    "AbilityCastRange"          "%cast_range"
@@ -4001,7 +4001,7 @@
 	"ability_revive"
 	{
 	    "BaseClass"             "ability_lua"
-		"AbilityTextureName"	"ability_building_revive"
+		"AbilityTextureName"	"custom/ability_building_revive"
 	    "ScriptFile"            "buildings/ability_revive.lua"
 	
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
@@ -4030,7 +4030,7 @@
 	{
 	    "BaseClass"             "ability_datadriven"
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
-	    "AbilityTextureName"    "ability_building_smokemeat"
+	    "AbilityTextureName"	"custom/ability_building_smokemeat"
 	    "MaxLevel"              "1"
 	    "AbilityChannelTime"    "15"
 	    "AbilityCooldown"       "16"
@@ -4141,7 +4141,7 @@
 	"ability_teleport"
 	{
 	    "BaseClass"             "ability_lua"
-	    "AbilityTextureName"    "ability_building_teleport"
+	    "AbilityTextureName"	"custom/ability_building_teleport"
 	    "ScriptFile"            "buildings/ability_teleport.lua"
 	
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
@@ -4283,7 +4283,7 @@
 	"ability_make_boots"
 	{
 	    "BaseClass"             "ability_datadriven"
-	    "AbilityTextureName"    "ability_building_makeboots"
+	    "AbilityTextureName"	"custom/ability_building_makeboots"
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	    "MaxLevel"              "1"
 		"AbilitySharedWithTeammates" "1"
@@ -4302,7 +4302,7 @@
 	"ability_make_coat"
 	{
 	    "BaseClass"             "ability_datadriven"
-	    "AbilityTextureName"    "ability_building_makecloak"
+	    "AbilityTextureName"	"custom/ability_building_makecloak"
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	    "MaxLevel"              "1"
 	    "AbilitySharedWithTeammates" "1"
@@ -4320,7 +4320,7 @@
 	"ability_make_gloves"
 	{
 	    "BaseClass"             "ability_datadriven"
-	    "AbilityTextureName"    "ability_building_makegloves"
+	    "AbilityTextureName"	"custom/ability_building_makegloves"
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	    "MaxLevel"              "1"
 	    "AbilitySharedWithTeammates" "1"
@@ -4444,7 +4444,7 @@
 	"ability_ensnare"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"ability_building_ensnare"
+		"AbilityTextureName"	"custom/ability_building_ensnare"
 	}
 	"ability_greentint"
 	{
@@ -4466,7 +4466,7 @@
 	"ability_hawks_evolution"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"ability_building_hatchegg"
+		"AbilityTextureName"	"custom/ability_building_hatchegg"
 	    "MaxLevel"              "1"
 	}
 	"ability_lizard_poisonattack"
@@ -4528,7 +4528,7 @@
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"AbilityUnitTargetFlags"	"DOTA_UNIT_TARGET_ALL"
-		"AbilityTextureName"	"ability_building_rest"
+		"AbilityTextureName"	"custom/ability_building_rest"
 		"AbilityCastPoint"	"0.0"
 		"AbilityCooldown"	"0"
 		"AbilityCastRange"	"1000"
@@ -4601,7 +4601,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-		"AbilityTextureName"	"ability_beastmaster_bash"
+		"AbilityTextureName"	"custom/ability_beastmaster_bash"
 		"MaxLevel"	"1"
 		"Modifiers"
 		{
@@ -4822,7 +4822,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityTextureName"	"ability_beastmaster_bash"
+		"AbilityTextureName"	"custom/ability_beastmaster_bash"
 		"MaxLevel"	"1"
 		"precache"
 		{
@@ -4888,7 +4888,7 @@
 	"ability_beastmaster_bearform"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"ability_beastmaster_bearform"
+		"AbilityTextureName"	"custom/ability_beastmaster_bearform"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityCastPoint"	"0.5"
 		"AbilityCooldown"	"5"
@@ -5097,7 +5097,7 @@
 	"ability_beastmaster_calltobattle"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"ability_beastmaster_calltobattle"
+		"AbilityTextureName"	"custom/ability_beastmaster_calltobattle"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityCastPoint"	"0.2"
 		"AbilityCooldown"	"20"
@@ -5148,7 +5148,7 @@
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_PHYSICAL"
-		"AbilityTextureName"	"ability_beastmaster_criticalstrike"
+		"AbilityTextureName"	"custom/ability_beastmaster_criticalstrike"
 		"MaxLevel"	"1"
 		"precache"
 		{
@@ -5233,7 +5233,7 @@
 	"ability_beastmaster_elkform"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"ability_beastmaster_elkform"
+		"AbilityTextureName"	"custom/ability_beastmaster_elkform"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityCastPoint"	"0.5"
 		"AbilityCooldown"	"5"
@@ -5447,7 +5447,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityTextureName"	"ability_beastmaster_empathicrage"
+		"AbilityTextureName"	"custom/ability_beastmaster_empathicrage"
 		"MaxLevel"	"1"
 	
 		"Modifiers"
@@ -5482,7 +5482,7 @@
 	"ability_beastmaster_fleaattackaura"
 	{
 	    "BaseClass"             "ability_datadriven"
-	    "AbilityTextureName"    "ability_beastmaster_fleaattackaura"
+	    "AbilityTextureName"	"custom/ability_beastmaster_fleaattackaura"
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	    "MaxLevel"              "7" //Learned at  6 7 8 10 15 20 30
 	
@@ -5634,7 +5634,7 @@
 	"ability_beastmaster_fowlplay"
 	{
 	    "BaseClass"                 "ability_datadriven"
-	    "AbilityTextureName"        "ability_beastmaster_fowlplay"
+	    "AbilityTextureName"	"custom/ability_beastmaster_fowlplay"
 	    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	    "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
 	    "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO"
@@ -5745,7 +5745,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityTextureName"	"ability_beastmaster_howl"
+		"AbilityTextureName"	"custom/ability_beastmaster_howl"
 		"AbilityCastPoint"	"0.0"
 		"AbilityCooldown"	"7"
 		"AbilityCastRange"	"0"
@@ -5837,7 +5837,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityTextureName"	"ability_beastmaster_magicimmunity"
+		"AbilityTextureName"	"custom/ability_beastmaster_magicimmunity"
 		"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
 		"AbilityCastPoint"	"0.3"
 		"AbilityCooldown"	"40"
@@ -5900,7 +5900,7 @@
 	"ability_beastmaster_normalform"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"ability_beastmaster_normalform"
+		"AbilityTextureName"	"custom/ability_beastmaster_normalform"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityCastPoint"	"0.5"
 		"AbilityCooldown"	"5"
@@ -5994,7 +5994,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 	    "AbilityBehavior"    	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
-		"AbilityTextureName"	"ability_mage_swap"
+		"AbilityTextureName"	"custom/ability_mage_swap"
 		"MaxLevel"	"1"
 		"AbilityCastPoint"	"0"
 	
@@ -6035,7 +6035,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
-		"AbilityTextureName"	"ability_beastmaster_ram"
+		"AbilityTextureName"	"custom/ability_beastmaster_ram"
 		"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
 		"AbilityCastPoint"	"0.0"
 		"AbilityCastRange"	"1400"
@@ -6116,7 +6116,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityTextureName"	"ability_beastmaster_shortness"
+		"AbilityTextureName"	"custom/ability_beastmaster_shortness"
 		"MaxLevel"	"1"
 		"precache"
 		{
@@ -6189,7 +6189,7 @@
 	"ability_beastmaster_slam"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"ability_beastmaster_slam"
+		"AbilityTextureName"	"custom/ability_beastmaster_slam"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityCastAnimation"	"1"
 		"AbilityCastPoint"	"0.5"
@@ -6291,7 +6291,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
-		"AbilityTextureName"	"ability_beastmaster_spiritofthebeast"
+		"AbilityTextureName"	"custom/ability_beastmaster_spiritofthebeast"
 		"MaxLevel"	"1"
 		"Modifiers"
 		{
@@ -6312,7 +6312,6 @@
 						"Target" "ATTACKER"
 					}
 				}
-	
 			}
 	
 			"modifier_animal_slow"
@@ -6321,6 +6320,7 @@
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"-5"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"-30"
 				}
 	
 				"ThinkInterval"	"2"
@@ -6328,7 +6328,7 @@
 				{
 					"Random"
 					{
-						"Chance"	"50"
+						"Chance"	"30"
 						"OnSuccess"
 						{
 							"RunScript"
@@ -6418,12 +6418,22 @@
 				"var_type"	"FIELD_INTEGER"
 				"chance"	"5"
 			}
-	            "01"
+			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus"	"5"
+				"bonus"		"5"
 			}
-	}
+			"03"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"attackslow"	"-30"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"attackerslow"	"-40"
+			}
+		}
 	
 	}
 	"ability_beastmaster_tamepet"
@@ -6434,7 +6444,7 @@
 	    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
 	    "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 	    "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_BASIC"
-	    "AbilityTextureName"        "ability_beastmaster_tamepet"
+	    "AbilityTextureName"	"custom/ability_beastmaster_tamepet"
 	    "AbilityCastAnimation"      "ACT_DOTA_CAST_ABILITY_2"
 	    "MaxLevel"                  "1"
 	    "AnimationPlaybackRate"     "0.6"
@@ -6481,7 +6491,7 @@
 	    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
 	    "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 	    "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_BASIC"
-	    "AbilityTextureName"        "ability_beastmaster_tamepet"
+	    "AbilityTextureName"	"custom/ability_beastmaster_tamepet"
 	    "AbilityCastAnimation"      "ACT_DOTA_ATTACK"
 	    "MaxLevel"                  "1"
 	    
@@ -6522,7 +6532,7 @@
 	"ability_beastmaster_wolfform"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"ability_beastmaster_wolfform"
+		"AbilityTextureName"	"custom/ability_beastmaster_wolfform"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityCastPoint"	"0.5"
 		"AbilityCooldown"	"5"
@@ -7139,7 +7149,7 @@
 	{
 	    "BaseClass"             "ability_datadriven"
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-	    "AbilityTextureName"    "ability_gatherer_advanced_radarmanipulations" //TODO: Icon
+	    "AbilityTextureName"	"custom/ability_gatherer_advanced_radarmanipulations" //TODO: Icon
 	    "MaxLevel"              "1"
 	    "AbilityCastPoint"      "0"
 	
@@ -7165,7 +7175,7 @@
 	{
 	    "BaseClass"    			"ability_datadriven"
 	    "AbilityBehavior"    	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	    "AbilityTextureName"    "ability_gatherer_radarmanipulations"
+	    "AbilityTextureName"	"custom/ability_gatherer_radarmanipulations"
 	    "MaxLevel"              "1"
 	    "AbilityCastPoint"      "0.2"
 	    "AbilityCooldown"       "%cooldown"
@@ -7204,7 +7214,7 @@
 	{
 	    "BaseClass"             "ability_datadriven"
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-	    "AbilityTextureName"    "ability_gatherer_findclayballcookedmeatorbone"
+	    "AbilityTextureName"	"custom/ability_gatherer_findclayballcookedmeatorbone"
 	    "MaxLevel"              "1"
 	    "AbilityCastPoint"      "0"
 	
@@ -7252,7 +7262,7 @@
 	{
 	    "BaseClass"             "ability_datadriven"
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-	    "AbilityTextureName"    "ability_gatherer_findflint"
+	    "AbilityTextureName"	"custom/ability_gatherer_findflint"
 	    "MaxLevel"              "1"
 	    "AbilityCastPoint"      "0"
 	
@@ -7300,7 +7310,7 @@
 	{
 	    "BaseClass"    			"ability_datadriven"
 	    "AbilityBehavior"    	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE"
-	    "AbilityTextureName"    "ability_gatherer_radarmanipulations"
+	    "AbilityTextureName"	"custom/ability_gatherer_radarmanipulations"
 	    "MaxLevel"    			"1"
 	    "AbilityCastPoint"    	"0"
 	
@@ -7339,7 +7349,7 @@
 	{
 	    "BaseClass"             "ability_datadriven"
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-	    "AbilityTextureName"    "ability_gatherer_findherbbutsu"
+	    "AbilityTextureName"	"custom/ability_gatherer_findherbbutsu"
 	    "MaxLevel"              "1"
 	    "AbilityCastPoint"      "0"
 	
@@ -7387,7 +7397,7 @@
 	{
 	    "BaseClass"             "ability_datadriven"
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-	    "AbilityTextureName"    "ability_gatherer_findherbmushroom"
+	    "AbilityTextureName"	"custom/ability_gatherer_findherbmushroom"
 	    "MaxLevel"              "1"
 	    "AbilityCastPoint"      "0"
 	
@@ -7435,7 +7445,7 @@
 	{
 	    "BaseClass"             "ability_datadriven"
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-	    "AbilityTextureName"    "ability_gatherer_findherbriver"
+	    "AbilityTextureName"	"custom/ability_gatherer_findherbriver"
 	    "MaxLevel"              "1"
 	    "AbilityCastPoint"      "0"
 	
@@ -7483,7 +7493,7 @@
 	{
 	    "BaseClass"             "ability_datadriven"
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-	    "AbilityTextureName"    "ability_gatherer_findherbspecial"
+	    "AbilityTextureName"	"custom/ability_gatherer_findherbspecial"
 	    "MaxLevel"              "1"
 	    "AbilityCastPoint"      "0"
 	
@@ -7531,7 +7541,7 @@
 	{
 	    "BaseClass"             "ability_datadriven"
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-	    "AbilityTextureName"    "ability_gatherer_findhide"
+	    "AbilityTextureName"	"custom/ability_gatherer_findhide"
 	    "MaxLevel"              "1"
 	    "AbilityCastPoint"      "0"
 	
@@ -7579,7 +7589,7 @@
 	{
 	    "BaseClass"              "ability_datadriven"
 	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-	    "AbilityTextureName"     "ability_gatherer_findmagic"
+	    "AbilityTextureName"	"custom/ability_gatherer_findmagic"
 	    "MaxLevel"               "1"
 	    "AbilityCastPoint"       "0"
 	
@@ -7627,7 +7637,7 @@
 	{
 	    "BaseClass"                 "ability_datadriven"
 	    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-	    "AbilityTextureName"        "ability_gatherer_findmanacrystalorstone"
+	    "AbilityTextureName"	"custom/ability_gatherer_findmanacrystalorstone"
 	    "MaxLevel"                  "1"
 	    "AbilityCastPoint"          "0"
 	
@@ -7677,7 +7687,7 @@
 	{
 	    "BaseClass"             "ability_datadriven"
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-	    "AbilityTextureName"    "ability_gatherer_findmushroomstickortinder"
+	    "AbilityTextureName"	"custom/ability_gatherer_findmushroomstickortinder"
 	    "MaxLevel"              "1"
 	    "AbilityCastPoint"      "0"
 	    "AbilityCooldown"       "45"
@@ -7734,7 +7744,7 @@
 	{
 	    "BaseClass"             "ability_datadriven"
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-	    "AbilityTextureName"    "ability_gatherer_findthistles"
+	    "AbilityTextureName"	"custom/ability_gatherer_findthistles"
 	    "MaxLevel"              "1"
 	    "AbilityCastPoint"      "0"
 	
@@ -7784,7 +7794,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_CREEP"
-		"AbilityTextureName"	"ability_gatherer_herbtelegather"
+		"AbilityTextureName"	"custom/ability_gatherer_herbtelegather"
 		"MaxLevel"	"3"
 		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_4"
 		"AbilityCastPoint"	"0.5"
@@ -7853,7 +7863,7 @@
 	{
 	    "BaseClass"             "ability_datadriven"
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	    "AbilityTextureName"    "ability_gatherer_itemradar"
+	    "AbilityTextureName"	"custom/ability_gatherer_itemradar"
 	    "MaxLevel"              "1"
 	    "AbilityCastPoint"      "0.1"
 	
@@ -7879,7 +7889,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityTextureName"	"ability_gatherer_itemwarp"
+		"AbilityTextureName"	"custom/ability_gatherer_itemwarp"
 		"MaxLevel"	"3"
 		"AbilityCastPoint"	"0"
 		"AbilityCastRange"  "%range"
@@ -7924,7 +7934,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityTextureName"	"ability_gatherer_mixherbs"
+		"AbilityTextureName"	"custom/ability_gatherer_mixherbs"
 		"MaxLevel"	"1"
 		"AbilityCastPoint"	"0"
 		"precache"
@@ -7952,7 +7962,7 @@
 	{
 	    "BaseClass"             "ability_datadriven"
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	    "AbilityTextureName"    ""
+	    "AbilityTextureName"	"custom/ability_pet_collect_items"
 	    "MaxLevel"              "1"
 	    "AbilityCastPoint"      "0"
 	
@@ -7971,7 +7981,7 @@
 	{
 	    "BaseClass"    			"ability_datadriven"
 	    "AbilityBehavior"    	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE"
-	    "AbilityTextureName"    "ability_gatherer_radarmanipulations"
+	    "AbilityTextureName"	"custom/ability_gatherer_radarmanipulations"
 	    "MaxLevel"    			"3"
 	    "AbilityCastPoint"    	"0"
 	
@@ -7999,7 +8009,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_CREEP"
-		"AbilityTextureName"	"ability_gatherer_telegather"
+		"AbilityTextureName"	"custom/ability_gatherer_telegather"
 		"MaxLevel"	"3"
 		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_4"
 		"AbilityCastPoint"	"0.5"
@@ -8071,7 +8081,7 @@
 	"ability_hunter_challenge"
 	{
 		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"ability_hunter_challenge"
+		"AbilityTextureName"	"custom/ability_hunter_challenge"
 		"MaxLevel" 						"1"
 	
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
@@ -8220,7 +8230,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityTextureName"	"ability_hunter_demoralizingwarcry"
+		"AbilityTextureName"	"custom/ability_hunter_demoralizingwarcry"
 		"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
 		"AbilityCastPoint"	"0.0 0.0 0.0 0.0"
 		"AbilityCooldown"	"40"
@@ -8367,7 +8377,7 @@
 	    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 	    "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
 	    "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO"
-	    "AbilityTextureName"        "ability_hunter_dysenterytrack"
+	    "AbilityTextureName"		"custom/ability_hunter_dysenterytrack"
 	    "AbilityCastAnimation"      "ACT_DOTA_ATTACK"
 	    "AbilityCastPoint"          "0.0"
 	    "AbilityCooldown"           "35"
@@ -8454,7 +8464,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityTextureName"	"ability_hunter_endurance"
+		"AbilityTextureName"	"custom/ability_hunter_endurance"
 		"MaxLevel"	"1"
 		"precache"
 		{
@@ -8538,7 +8548,7 @@
 	    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 	    "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
 	    "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	    "AbilityTextureName"        "ability_hunter_ensnare"
+	    "AbilityTextureName"	"custom/ability_hunter_ensnare"
 	    "MaxLevel"                  "1"
 	
 	    "AbilityCooldown"           "10"
@@ -8674,7 +8684,7 @@
 	    "AbilityBehavior"    		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	    "AbilityUnitTargetTeam"    	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 	    "AbilityUnitTargetType"    	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	    "AbilityTextureName"    	"ability_hunter_giantswing"
+	    "AbilityTextureName"	"custom/ability_hunter_giantswing"
 	    "MaxLevel"    				"3"
 	    "precache"
 	    {
@@ -8778,7 +8788,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityTextureName"	"ability_hunter_greatertrack"
+		"AbilityTextureName"	"custom/ability_hunter_greatertrack"
 		"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
 		"AbilityCastPoint"	"0.0"
 		"AbilityCooldown"	"35"
@@ -8916,7 +8926,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityTextureName"	"ability_hunter_placetrackingbeacon"
+		"AbilityTextureName"	"custom/ability_hunter_placetrackingbeacon"
 		"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
 		"AbilityCastPoint"	"0.0 0.0 0.0"
 		"AbilityCooldown"	"45.0 40.0 35.0"
@@ -9065,7 +9075,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityTextureName"	"ability_hunter_querybeacon"
+		"AbilityTextureName"	"custom/ability_hunter_querybeacon"
 		"AbilityCastPoint"	"0.2"
 		"AbilityCooldown"	"30.0"
 		"AbilityCastRange"  "5000"
@@ -9094,7 +9104,7 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_MECHANICAL"
 		"AbilityUnitTargetFlags" "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-		"AbilityTextureName"	"ability_hunter_sniff"
+		"AbilityTextureName"	"custom/ability_hunter_sniff"
 		"AbilityCastAnimation"	"ACT_DOTA_IDLE"
 		"AbilityCastPoint"	"0.0 0.0 0.0"
 		"AbilityCooldown"	"45.0 40.0 35.0"
@@ -9277,7 +9287,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityTextureName"	"ability_hunter_track"
+		"AbilityTextureName"	"custom/ability_hunter_track"
 		"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
 		"AbilityCastPoint"	"0.0 0.0 0.0"
 		"AbilityCooldown"	"45.0 40.0 35.0"
@@ -9421,7 +9431,7 @@
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY | DOTA_UNIT_TARGET_TEAM_ENEMY"
 	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	"AbilityTextureName"	"ability_mage_anger"
+	"AbilityTextureName"	"custom/ability_mage_anger"
 	"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
 	"AbilityCastPoint"	"0.5"
 	"AbilityCooldown"	"12"
@@ -9430,7 +9440,6 @@
 	"MaxLevel"	"1"
 	"precache"
 	{
-		"particles"	"particles/econ/items/drow/drow_head_mania/mask_of_madness_mania_glow.vpcf"
 		"particles"	"particles/econ/items/drow/drow_head_mania/mask_of_madness_mania_glow.vpcf"
 		"soundfile"	"sounds/weapons/hero/axe/battle_hunger.vsnd"
 	}
@@ -9508,7 +9517,7 @@
 	"ability_mage_chainlightning"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"ability_mage_chainlightning"
+		"AbilityTextureName"	"custom/ability_mage_chainlightning"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
@@ -9563,7 +9572,7 @@
 		"ability_mage_darkgate"
 		{
 			"BaseClass"             		"ability_datadriven"
-			"AbilityTextureName"			"ability_mage_darkgate"
+			"AbilityTextureName"	"custom/ability_mage_darkgate"
 			"MaxLevel" 						"1"
 		
 			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
@@ -9727,7 +9736,7 @@
 		"BaseClass"					"ability_datadriven"
 		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"	
-		"AbilityTextureName"		"ability_mage_defenderenergy"
+		"AbilityTextureName"	"custom/ability_mage_defenderenergy"
 	
 		"AbilityCastPoint"			"0"
 		"AOERadius"					"%radius"
@@ -10001,7 +10010,7 @@
 	{
 	    "BaseClass"             "ability_datadriven"
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-	    "AbilityTextureName"    "ability_mage_activerunes"
+	    "AbilityTextureName"	"custom/ability_mage_activerunes"
 	    "MaxLevel"              "1"
 	    "AbilityCastPoint"      "0"
 	
@@ -10227,7 +10236,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 	    "AbilityBehavior"    	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityTextureName"	"ability_mage_dementiasummoning"
+		"AbilityTextureName"	"custom/ability_mage_dementiasummoning"
 		"MaxLevel"	"1"
 		"AbilityCastPoint"	"0"
 	}
@@ -10237,7 +10246,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityTextureName"	"ability_mage_depress"
+		"AbilityTextureName"	"custom/ability_mage_depress"
 		"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
 		"AbilityCastPoint"		"1.0"
 		"AbilityCooldown"		"20"
@@ -10432,7 +10441,7 @@
 	"ability_mage_depressionaura"
 	{
 		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"ability_mage_depressionaura"
+		"AbilityTextureName"	"custom/ability_mage_depressionaura"
 		"MaxLevel" 						"1"
 	
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_AURA | DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -10521,7 +10530,7 @@
 	"ability_mage_depressionorb"
 	{
 		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"ability_mage_depressionorb"
+		"AbilityTextureName"	"custom/ability_mage_depressionorb"
 		"MaxLevel" 						"1"
 	
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
@@ -10657,7 +10666,7 @@
 	"ability_mage_dreameater"
 	{
 		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"ability_mage_dreameater"
+		"AbilityTextureName"	"custom/ability_mage_dreameater"
 	
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -10773,7 +10782,7 @@
 	"ability_mage_electromagnet"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"ability_mage_electromagnet"
+		"AbilityTextureName"	"custom/ability_mage_electromagnet"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityCastPoint"	"0.0"
 		"AbilityChannelTime"	"2"
@@ -11028,7 +11037,7 @@
 	"ability_mage_eruption"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"ability_mage_eruption"
+		"AbilityTextureName"	"custom/ability_mage_eruption"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityCastPoint"	"0.0"
 		"AbilityCooldown"	"10"
@@ -11125,7 +11134,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityTextureName"	"ability_mage_flamespray"
+		"AbilityTextureName"	"custom/ability_mage_flamespray"
 		"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
 		"AbilityCastPoint"	"0.2"
 		"AbilityCooldown"	"30"
@@ -11224,7 +11233,7 @@
 	"ability_mage_forkedlightning"
 	{
 		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"ability_mage_forkedlightning"
+		"AbilityTextureName"	"custom/ability_mage_forkedlightning"
 		"MaxLevel" 						"1"
 	
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
@@ -11283,7 +11292,7 @@
 	"ability_mage_freezingblast"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"ability_mage_freezingblast"
+		"AbilityTextureName"	"custom/ability_mage_freezingblast"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AOERadius"	"300"
 		"AbilityCastPoint"	"0.0"
@@ -11409,7 +11418,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityTextureName"	"ability_mage_giganegativeblast"
+		"AbilityTextureName"	"custom/ability_mage_giganegativeblast"
 		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_YES"
 		"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
 		"AbilityCastPoint"	"0.0"
@@ -11589,7 +11598,7 @@
 	"ability_mage_hypnosis"
 	{
 		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"ability_mage_hypnosis"
+		"AbilityTextureName"	"custom/ability_mage_hypnosis"
 	
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -11716,7 +11725,7 @@
 	"ability_mage_jealousy"
 	{
 		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"ability_mage_jealousy"
+		"AbilityTextureName"	"custom/ability_mage_jealousy"
 		"MaxLevel" 						"1"
 	
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
@@ -11888,7 +11897,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityTextureName"	"ability_mage_maddeningdischarge"
+		"AbilityTextureName"	"custom/ability_mage_maddeningdischarge"
 		"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
 		"AbilityCastPoint"	"0.2"
 		"AbilityCooldown"	"30"
@@ -12087,7 +12096,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityTextureName"	"ability_mage_magefire"
+		"AbilityTextureName"	"custom/ability_mage_magefire"
 		"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
 		"AbilityCastPoint"	"0.0"
 		"AbilityCooldown"	"150"
@@ -12118,7 +12127,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
-		"AbilityTextureName"	"ability_mage_metronome"
+		"AbilityTextureName"	"custom/ability_mage_metronome"
 		"AbilityCastPoint"	"0.5"
 		"AbilityCooldown"	"45"
 		"AbilityCastRange"	"700"
@@ -12187,7 +12196,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityTextureName"	"ability_mage_negativeblast"
+		"AbilityTextureName"	"custom/ability_mage_negativeblast"
 		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_YES"
 		"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
 		"AbilityCastPoint"	"0.0"
@@ -12370,7 +12379,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityTextureName"	"ability_mage_nulldamage"
+		"AbilityTextureName"	"custom/ability_mage_nulldamage"
 		"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
 		"AbilityCastPoint"	"0.0"
 		"AbilityCooldown"	"30"
@@ -12574,7 +12583,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
-		"AbilityTextureName"	"ability_mage_pumpup"
+		"AbilityTextureName"	"custom/ability_mage_pumpup"
 		"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
 		"AbilityCastPoint"	"0.0"
 		"AbilityCooldown"	"30"
@@ -12724,7 +12733,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityTextureName"	"ability_mage_quantumnulldamage"
+		"AbilityTextureName"	"custom/ability_mage_quantumnulldamage"
 		"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
 		"AbilityCastPoint"	"0.0 0.0 0.0 0.0"
 		"AbilityCooldown"	"30"
@@ -12930,7 +12939,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
-		"AbilityTextureName"	"ability_mage_reducefood"
+		"AbilityTextureName"	"custom/ability_mage_reducefood"
 		"AbilityCooldown"	"5"
 		"AbilityCastRange"	"800"
 		"AbilityManaCost"	"10"
@@ -12972,7 +12981,7 @@
 	"ability_mage_seizures"
 	{
 		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"ability_mage_seizures"
+		"AbilityTextureName"	"custom/ability_mage_seizures"
 		"MaxLevel" 						"1"
 	
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
@@ -13124,7 +13133,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 	    "AbilityBehavior"    	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
-		"AbilityTextureName"	"ability_mage_swap"
+		"AbilityTextureName"	"custom/ability_mage_swap"
 		"MaxLevel"	"1"
 		"AbilityCastPoint"	"0"
 		"OnToggleOn"
@@ -13160,7 +13169,7 @@
 	"ability_mage_splittingfire"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"ability_mage_splittingfire"
+		"AbilityTextureName"	"custom/ability_mage_splittingfire"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityCastPoint"	"0.0"
 		"AbilityCooldown"	"50"
@@ -13353,7 +13362,7 @@
 	"ability_mage_stormearthfire"
 	{
 		"BaseClass"				"ability_datadriven"
-		"AbilityTextureName"	"ability_mage_stormearthfire"
+		"AbilityTextureName"	"custom/ability_mage_stormearthfire"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityCastAnimation" 	"ACT_DOTA_CHANNEL_ABILITY_4"
 		"AbilityCastPoint"		"0.0"
@@ -13475,7 +13484,7 @@
 		{
 		    "BaseClass"             "ability_datadriven"
 		    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
-		    "AbilityTextureName"    "ability_mage_stupefyingfield"
+		    "AbilityTextureName"	"custom/ability_mage_stupefyingfield"
 		    "AbilityCastAnimation"  "ACT_DOTA_CAST_ABILITY_4"
 		    "AbilityCastPoint"      "0.5"
 		    "AbilityCooldown"       "20"
@@ -13638,7 +13647,7 @@
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityCastAnimation"	        "ACT_DOTA_CAST_ABILITY_1"
-		"AbilityTextureName"			"ability_priest_angelicelemental"
+		"AbilityTextureName"	"custom/ability_priest_angelicelemental"
 		"AbilityCastPoint"				"0.5"
 		"AbilityCastRange"				"3000"
 		"AbilityCooldown"				"35"
@@ -13791,7 +13800,7 @@
 	"ability_priest_bloodfrenzy"
 	{
 		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"ability_priest_bloodfrenzy"
+		"AbilityTextureName"	"custom/ability_priest_bloodfrenzy"
 		"MaxLevel" 						"1"
 	
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
@@ -13885,7 +13894,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityTextureName"	"ability_priest_cureall"
+		"AbilityTextureName"	"custom/ability_priest_cureall"
 		"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
 		"AbilityCastPoint"	"0.2"
 		"AbilityCooldown"	"20"
@@ -13932,7 +13941,7 @@
 	"ability_priest_enhancingherbalism"
 	{
 		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"ability_priest_enhancingherbalism"
+		"AbilityTextureName"	"custom/ability_priest_enhancingherbalism"
 		"MaxLevel" 						"1"
 	
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
@@ -14105,7 +14114,7 @@
 	"ability_priest_fortitude"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"ability_priest_fortitude"
+		"AbilityTextureName"	"custom/ability_priest_fortitude"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_3"
 		"AbilityCastPoint"	"0.5"
@@ -14201,7 +14210,7 @@
 	"ability_priest_healingwave"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"ability_priest_healingwave"
+		"AbilityTextureName"	"custom/ability_priest_healingwave"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT_TARGET"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
@@ -14280,7 +14289,7 @@
 	"ability_priest_increasemetabolism"
 	{
 		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"ability_priest_increasemetabolism"
+		"AbilityTextureName"	"custom/ability_priest_increasemetabolism"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
@@ -14408,7 +14417,7 @@
 	"ability_priest_lightgate"
 	{
 		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"ability_priest_lightgate"
+		"AbilityTextureName"	"custom/ability_priest_lightgate"
 		"MaxLevel" 						"1"
 	
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
@@ -14573,7 +14582,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
-		"AbilityTextureName"	"ability_priest_lightningshield"
+		"AbilityTextureName"	"custom/ability_priest_lightningshield"
 		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_2"
 		"AbilityCastPoint"	"0.3"
 		"AbilityCooldown"	"30"
@@ -14661,7 +14670,7 @@
 	"ability_priest_mapmagic"
 	{
 		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"ability_priest_mapmagic"
+		"AbilityTextureName"	"custom/ability_priest_mapmagic"
 		"MaxLevel" 						"1"
 	
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
@@ -14713,7 +14722,7 @@
 	"ability_priest_maximumfervor"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"ability_priest_maximumfervor"
+		"AbilityTextureName"	"custom/ability_priest_maximumfervor"
 		"MaxLevel" 						"1"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_4"
@@ -14851,7 +14860,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
-		"AbilityTextureName"	"ability_priest_mixhealth"
+		"AbilityTextureName"	"custom/ability_priest_mixhealth"
 		"AbilityCastPoint"	"0.3"
 		"AbilityCooldown"	"30"
 		"AbilityCastRange"	"600"
@@ -14954,7 +14963,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
-		"AbilityTextureName"	"ability_priest_mixenergy"
+		"AbilityTextureName"	"custom/ability_priest_mixenergy"
 		"AbilityCastPoint"	"0.3"
 		"AbilityCooldown"	"30"
 		"AbilityCastRange"	"600"
@@ -15023,7 +15032,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
-		"AbilityTextureName"	"ability_priest_mixhealth"
+		"AbilityTextureName"	"custom/ability_priest_mixhealth"
 		"AbilityCastPoint"	"0.3"
 		"AbilityCooldown"	"30"
 		"AbilityCastRange"	"600"
@@ -15090,7 +15099,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
-		"AbilityTextureName"	"ability_priest_mixheat"
+		"AbilityTextureName"	"custom/ability_priest_mixheat"
 		"AbilityCastPoint"	"0.3"
 		"AbilityCooldown"	"30"
 		"AbilityCastRange"	"600"
@@ -15164,7 +15173,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityTextureName"	"ability_priest_omnicure"
+		"AbilityTextureName"	"custom/ability_priest_omnicure"
 		"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
 		"AbilityCastPoint"	"0.2"
 		"AbilityCooldown"	"15"
@@ -15194,7 +15203,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityTextureName"	"ability_priest_magicmist"
+		"AbilityTextureName"	"custom/ability_priest_magicmist"
 		"AbilityCastPoint"	"0.3"
 		"AbilityCooldown"	"35"
 		"AbilityCastRange"	"200"
@@ -15228,7 +15237,7 @@
 	"ability_priest_painkillerbalm"
 	{
 		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"ability_priest_painkillerbalm"
+		"AbilityTextureName"	"custom/ability_priest_painkillerbalm"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_DONT_CANCEL_CHANNEL"
 		"AbilityCastAnimation"	        "ACT_DOTA_CAST_ABILITY_3"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
@@ -15411,7 +15420,7 @@
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
 	    "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 	    "AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO"
-	    "AbilityTextureName"    "ability_mage_pumpup"
+	    "AbilityTextureName"	"custom/ability_mage_pumpup"
 	    "AbilityCastAnimation"  "ACT_DOTA_ATTACK"
 	    "AbilityCastPoint"      "0.0"
 	    "AbilityCooldown"       "30"
@@ -15536,7 +15545,7 @@
 	"ability_priest_rangedheal"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"ability_priest_rangedheal"
+		"AbilityTextureName"	"custom/ability_priest_rangedheal"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
@@ -15646,7 +15655,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
-		"AbilityTextureName"	"ability_priest_replenish"
+		"AbilityTextureName"	"custom/ability_priest_replenish"
 		"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
 		"AbilityCastPoint"	"0.5"
 		"AbilityCooldown"	"50"
@@ -15770,7 +15779,7 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
 		"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
-		"AbilityTextureName"	"ability_priest_resistall"
+		"AbilityTextureName"	"custom/ability_priest_resistall"
 		"MaxLevel" 						"1"
 		
 		// Casting
@@ -15877,7 +15886,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
-		"AbilityTextureName"	"ability_priest_resistall"
+		"AbilityTextureName"	"custom/ability_priest_resistall"
 		"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
 		"AbilityCastPoint"	"0.3"
 		"AbilityCooldown"	"40"
@@ -15946,7 +15955,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityTextureName"	"ability_priest_selfpreservation"
+		"AbilityTextureName"	"custom/ability_priest_selfpreservation"
 		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_3"
 		"AbilityCastPoint"	"0.0"
 		"AbilityCooldown"	"40"
@@ -16103,7 +16112,7 @@
 	"ability_priest_spiritbreak"
 	{
 		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"ability_priest_spiritbreak"
+		"AbilityTextureName"	"custom/ability_priest_spiritbreak"
 	
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
@@ -16180,7 +16189,7 @@
 	"ability_priest_spiritlink"
 	{
 		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"ability_priest_spiritlink"
+		"AbilityTextureName"	"custom/ability_priest_spiritlink"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityCooldown"				"130"
 		"AbilityManaCost"				"20"
@@ -16268,7 +16277,7 @@
 	"ability_priest_spiritwalk"
 	{
 		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"ability_priest_spiritwalk"
+		"AbilityTextureName"	"custom/ability_priest_spiritwalk"
 	
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityChannelTime"			"90"
@@ -16455,7 +16464,7 @@
 	"ability_priest_sprayhealing"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"ability_priest_sprayhealing"
+		"AbilityTextureName"	"custom/ability_priest_sprayhealing"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
 		"AOERadius"	"400"
@@ -16576,7 +16585,7 @@
 	"ability_priest_tearspirit"
 	{
 		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"ability_priest_tearspirit"
+		"AbilityTextureName"	"custom/ability_priest_tearspirit"
 	
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -16669,7 +16678,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityTextureName"	"ability_priest_theglow"
+		"AbilityTextureName"	"custom/ability_priest_theglow"
 		"MaxLevel"	"1"
 	    "precache"
 	    {
@@ -16757,7 +16766,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 	    "AbilityBehavior"    	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
-		"AbilityTextureName"	"ability_mage_swap"
+		"AbilityTextureName"	"custom/ability_mage_swap"
 		"MaxLevel"	"1"
 		"AbilityCastPoint"	"0"
 		"OnToggleOn"
@@ -16794,7 +16803,7 @@
 	"ability_priest_trollbattlecall"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"ability_priest_trollbattlecall"
+		"AbilityTextureName"	"custom/ability_priest_trollbattlecall"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_4"
 		"AbilityCastPoint"	"1.0"
@@ -16910,7 +16919,7 @@
 	"ability_scoutwardpassive"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"scout_ward"
+		"AbilityTextureName"	"custom/scout_ward"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AURA | DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"Modifiers"
 		{
@@ -17021,7 +17030,7 @@
 	{
 	    "BaseClass"             "ability_datadriven"
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	    "AbilityTextureName"    "ability_scout_enemyradar"
+	    "AbilityTextureName"	"custom/ability_scout_enemyradar"
 	    "AbilityCastPoint"      "0.2"
 	    "AbilityCooldown"       "20"
 	    "AbilityManaCost"       "0"
@@ -17051,7 +17060,7 @@
 	{
 	    "BaseClass"                 "ability_datadriven"
 	    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	    "AbilityTextureName"        "ability_scout_greaterreveal"
+	    "AbilityTextureName"	"custom/ability_scout_greaterreveal"
 	
 	    "AbilityCastPoint"          "0.2"
 	    "AbilityCooldown"           "20"
@@ -17132,7 +17141,7 @@
 	{
 	    "BaseClass" "ability_datadriven"
 	    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
-	    "AbilityTextureName"    "ability_scout_motionsensorradar"
+	    "AbilityTextureName"	"custom/ability_scout_motionsensorradar"
 	    "AbilityCastPoint"  "0.4 0.4 0.4"
 	    "AbilityCooldown"   "60.0 60.0 60.0"
 	    "AbilityManaCost"   "0 0 0"
@@ -17232,7 +17241,7 @@
 	{
 	    "BaseClass"             "ability_datadriven"
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT"
-	    "AbilityTextureName"    "ability_scout_placeward"
+	    "AbilityTextureName"	"custom/ability_scout_placeward"
 	    "MaxLevel"              "1"
 	    
 	    "AbilityCastRange"      "600"
@@ -17314,7 +17323,7 @@
 	{
 	    "BaseClass"             "ability_datadriven"
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	    "AbilityTextureName"    "ability_scout_reveal"
+	    "AbilityTextureName"	"custom/ability_scout_reveal"
 	    "AbilityCastPoint"      "0.2"
 	    "AbilityCooldown"       "20"
 	    "AbilityManaCost"       "10"
@@ -17396,7 +17405,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
-		"AbilityTextureName"	"ability_scout_wardthearea"
+		"AbilityTextureName"	"custom/ability_scout_wardthearea"
 		"AbilityCastPoint"	"0.2 0.2 0.2"
 		"AbilityCooldown"	"70 60 50"
 		"AbilityManaCost"	"10 10 10"
@@ -17444,7 +17453,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityTextureName"	"ability_scout_shadowsight"    
+		"AbilityTextureName"	"custom/ability_scout_shadowsight"    
 		"AoERadius"               "%shadowsight_radius"
 		"MaxLevel"	"1"
 	
@@ -17490,7 +17499,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityTextureName"	"ability_scout_wardthearea"
+		"AbilityTextureName"	"custom/ability_scout_wardthearea"
 		"AbilityCastPoint"	"0.2 0.2 0.2"
 		"AbilityCooldown"	"70 60 50"
 		"AbilityManaCost"	"10 10 10"
@@ -17648,7 +17657,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
-		"AbilityTextureName"	"ability_thief_assassinate"
+		"AbilityTextureName"	"custom/ability_thief_assassinate"
 		"AbilityCastPoint"	"0.4"
 		"AbilityCooldown"	"60.0"
 		"AbilityManaCost"	"30"
@@ -17752,7 +17761,7 @@
 	    {
 	        "BaseClass"	"ability_datadriven"
 	        "AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	        "AbilityTextureName"	"ability_thief_blur"
+	        "AbilityTextureName"	"custom/ability_thief_blur"
 	        "AbilityCastPoint"	"0.1"
 	        "AbilityCooldown"	"60.0"
 	        "AbilityManaCost"	"10"
@@ -17857,7 +17866,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"TargetTeams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"TargetTypes"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
-		"AbilityTextureName"	"ability_thief_blur"
+		"AbilityTextureName"	"custom/ability_thief_blur"
 		"Precache"
 		{
 			"particle"	"particles/units/heroes/hero_riki/riki_smokebomb_b.vpcf"
@@ -17932,7 +17941,7 @@
 	"ability_thief_camouflage"
 	{
 	    "BaseClass"                 "ability_datadriven"
-	    "AbilityTextureName"        "ability_thief_camouflage"
+	    "AbilityTextureName"	"custom/ability_thief_camouflage"
 	    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 	    "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_TREE | DOTA_UNIT_TARGET_BASIC"
 	    "MaxLevel"  "1"
@@ -18041,7 +18050,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
-		"AbilityTextureName"	"ability_thief_cloak"
+		"AbilityTextureName"	"custom/ability_thief_cloak"
 		"AbilityCastPoint"	"0.4 0.4 0.4"
 		"AbilityCooldown"	"60.0 60.0 60.0"
 		"AbilityManaCost"	"0 0 0"
@@ -18117,7 +18126,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
-		"AbilityTextureName"	"ability_thief_cloak"
+		"AbilityTextureName"	"custom/ability_thief_cloak"
 		"AbilityCastPoint"	"0.4"
 		"AbilityCooldown"	"60.0"
 		"AbilityManaCost"	"0"
@@ -18221,7 +18230,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_BOTH"
 	    "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_ALL"
-		"AbilityTextureName"	"ability_thief_cloak"
+		"AbilityTextureName"	"custom/ability_thief_cloak"
 		"AbilityCastPoint"	"0"
 		"AbilityCooldown"	"0"
 		"AbilityManaCost"	"0 0 0"
@@ -18288,7 +18297,7 @@
 	"ability_thief_jump"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"ability_thief_jump"
+		"AbilityTextureName"	"custom/ability_thief_jump"
         "AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityCastRange"	"600"
 		"AbilityCastPoint"	"0.4"
@@ -18383,7 +18392,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityTextureName"	"ability_thief_netherfade"
+		"AbilityTextureName"	"custom/ability_thief_netherfade"
 		"AbilityCastPoint"	"0.1"
 		"AbilityCooldown"	"90.0"
 		"AbilityManaCost"	"15"
@@ -18454,7 +18463,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET  | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
-		"AbilityTextureName"	"ability_priest_magicmist"
+		"AbilityTextureName"	"custom/ability_priest_magicmist"
 		"AbilityCastPoint"	"0"
 		"AbilityCooldown"	"0"
 		"AbilityCastRange"	"900"
@@ -18488,7 +18497,7 @@
 	"ability_thief_planningphase"
 	{
 	    "BaseClass"             "ability_datadriven"
-	    "AbilityTextureName"    "ability_thief_planningphase"
+	    "AbilityTextureName"	"custom/ability_thief_planningphase"
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
 	    "AbilityCastPoint"      "0.0"
 	    "AbilityChannelTime"    "10.0"
@@ -18697,7 +18706,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityTextureName"	"ability_thief_smokestream"
+		"AbilityTextureName"	"custom/ability_thief_smokestream"
 		"AbilityCastPoint"	"0.1"
 		"AbilityCooldown"	"75.0"
 		"AbilityManaCost"	"0"
@@ -18853,7 +18862,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
-		"AbilityTextureName"	"ability_thief_teleport"
+		"AbilityTextureName"	"custom/ability_thief_teleport"
 		"AbilityCastRange"	"600"
 		"AbilityCastPoint"	"0.4"
 		"AbilityCooldown"	"30.0"
@@ -18909,7 +18918,7 @@
 	"ability_thief_telethief"
 	{
 		"BaseClass"						"ability_datadriven"
-		"AbilityTextureName"			"ability_thief_tele_thief"
+		"AbilityTextureName"	"custom/ability_thief_tele_thief"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP"
@@ -18971,7 +18980,7 @@
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_PHYSICAL"
-		"AbilityTextureName"	"ability_thief_throwingknife"
+		"AbilityTextureName"	"custom/ability_thief_throwingknife"
 		"AbilityCastPoint"	"0.4"
 		"AbilityCastRange"	"800"
 		"AbilityCooldown"	"30.0"
@@ -19200,7 +19209,7 @@
 	"ability_livingclay"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"living_clay"
+		"AbilityTextureName"	"custom/living_clay"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AURA | DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"Modifiers"
 		{
@@ -19853,7 +19862,7 @@
 	"ability_duel"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"ability_building_duel"
+		"AbilityTextureName"	"custom/ability_building_duel"
 	    "MaxLevel"              "1"
 	}
 	"ability_gravestone"
@@ -20054,7 +20063,7 @@
 	"ability_mix"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"ability_building_mix"
+		"AbilityTextureName"	"custom/ability_building_mix"
 	    "MaxLevel"              "1"
 	}
 	"ability_rest_big"
@@ -20064,7 +20073,7 @@
 	    "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 	    "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO"
 	    "AbilityUnitTargetFlags"    "DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
-	    "AbilityTextureName"        "ability_building_rest"
+	    "AbilityTextureName"	"custom/ability_building_rest"
 	    "AbilityCastPoint"          "0.0"
 	    "AbilityCooldown"           "0"
 	    "AbilityCastRange"          "%cast_range"
@@ -20176,7 +20185,7 @@
 	"ability_teleport"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"ability_building_teleport"
+		"AbilityTextureName"	"custom/ability_building_teleport"
 	    "MaxLevel" "1"
 	}
 	"ability_warm_up"
@@ -20550,7 +20559,7 @@
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"AbilityUnitTargetFlags"	"DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
-		"AbilityTextureName"	"ability_building_rest"
+		"AbilityTextureName"	"custom/ability_building_rest"
 		"AbilityCastPoint"	"0.0"
 		"AbilityCooldown"	"10"
 		"AbilityManaCost"	"0"

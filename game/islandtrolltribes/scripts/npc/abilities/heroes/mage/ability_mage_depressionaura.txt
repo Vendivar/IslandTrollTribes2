@@ -1,7 +1,7 @@
 "ability_mage_depressionaura"
 {
 	"BaseClass"             		"ability_datadriven"
-	"AbilityTextureName"			"ability_mage_depressionaura"
+	"AbilityTextureName"	"custom/ability_mage_depressionaura"
 	"MaxLevel" 						"1"
 
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_AURA | DOTA_ABILITY_BEHAVIOR_PASSIVE"

@@ -4,7 +4,7 @@
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
-	"AbilityTextureName"	"ability_priest_lightningshield"
+	"AbilityTextureName"	"custom/ability_priest_lightningshield"
 	"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_2"
 	"AbilityCastPoint"	"0.3"
 	"AbilityCooldown"	"30"

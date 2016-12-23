@@ -8,7 +8,7 @@
 	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
 	"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
-	"AbilityTextureName"	"ability_priest_resistall"
+	"AbilityTextureName"	"custom/ability_priest_resistall"
 	"MaxLevel" 						"1"
 	
 	// Casting

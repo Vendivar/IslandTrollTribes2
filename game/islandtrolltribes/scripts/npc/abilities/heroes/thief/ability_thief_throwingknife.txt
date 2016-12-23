@@ -3,7 +3,7 @@
 	"BaseClass"	"ability_datadriven"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
 	"AbilityUnitDamageType"	"DAMAGE_TYPE_PHYSICAL"
-	"AbilityTextureName"	"ability_thief_throwingknife"
+	"AbilityTextureName"	"custom/ability_thief_throwingknife"
 	"AbilityCastPoint"	"0.4"
 	"AbilityCastRange"	"800"
 	"AbilityCooldown"	"30.0"

@@ -4,7 +4,7 @@
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	"AbilityTextureName"	"ability_hunter_ensnare"
+	"AbilityTextureName"	"custom/ability_hunter_ensnare"
 	"AbilityCastPoint"	"0.0"
 	"AbilityCooldown"	"10"
 	"AbilityCastRange"	"700"

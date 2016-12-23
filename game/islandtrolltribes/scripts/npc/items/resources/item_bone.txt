@@ -3,7 +3,7 @@
 	"ID"	"1005"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"bone"
+	"AbilityTextureName"	"custom/bone"
 	"Model"	"models/props_bones/bone002.vmdl"
 	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"ItemCost"	"2"

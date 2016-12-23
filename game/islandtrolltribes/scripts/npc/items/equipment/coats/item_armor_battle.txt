@@ -4,7 +4,7 @@
 	"ID"	"1069"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"armor_battle"
+	"AbilityTextureName"	"custom/armor_battle"
 	"Model"	"models/props_items/assault_cuirass.vmdl"
 	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"ItemCost"	"104"

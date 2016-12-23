@@ -1,7 +1,7 @@
 "ability_priest_sprayhealing"
 {
 	"BaseClass"	"ability_datadriven"
-	"AbilityTextureName"	"ability_priest_sprayhealing"
+	"AbilityTextureName"	"custom/ability_priest_sprayhealing"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT"
 	"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
 	"AOERadius"	"400"

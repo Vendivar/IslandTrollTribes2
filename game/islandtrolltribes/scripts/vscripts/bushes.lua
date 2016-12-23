@@ -226,6 +226,7 @@ function AddBushGlow(entity)
     end
 end
 
+
 function RemoveBushGlow(entity)
     if entity.whiteGlowParticle then
         ParticleManager:DestroyParticle(entity.whiteGlowParticle, true)
@@ -250,11 +251,8 @@ function CreateBushContainer(name, bush)
         OnLeftClick = function(playerID, container, unit, item, slot)
 
             if ContainerTransferItem(container, bush, unit, item) then
-                local hasTelegather = unit:HasModifier("modifier_herbtelegather")
-                if hasTelegather then
-                    local didTeleport = TeleportItem(unit,item)
-                end
                 unit:StartGesture(ACT_DOTA_ATTACK)
+				unit:EmitSound("bush.rustle")
             else
                 SendErrorMessage(playerID, "#error_inventory_full")
             end
@@ -265,10 +263,7 @@ function CreateBushContainer(name, bush)
         OnRightClick = function(playerID, container, unit, item, slot)
             if ContainerTransferItem(container, bush, unit, item) then
                 unit:StartGesture(ACT_DOTA_ATTACK)
-                local hasTelegather = unit:HasModifier("modifier_herbtelegather")
-                if hasTelegather then
-                    local didTeleport = TeleportItem(unit,item)
-                end
+				unit:EmitSound("bush.rustle")
             else
                 SendErrorMessage(playerID, "#error_inventory_full")
             end
@@ -280,7 +275,7 @@ function CreateBushContainer(name, bush)
             if button == 1 then
                 local items = container:GetAllItems()
                 unit:StartGesture(ACT_DOTA_ATTACK)
-
+				unit:EmitSound("bush.rustle")
                 local got_atleast_one = false
                 local atleast_one_left = false
                 local stack_full = false
@@ -311,12 +306,9 @@ function CreateBushContainer(name, bush)
                             got_atleast_one = true
 
                             ContainerTransferItem(container, bush, unit, item)
-                            local hasTelegather = unit:HasModifier("modifier_telegather")
-							local hasHerbTelegather = hero:HasModifier("modifier_herbtelegather")
-                            if hasTelegather then
+                            if unit:HasModifier("modifier_telegather") then
                                 local didTeleport = TeleportItem(unit,item)
-                            end                            
-							if hasHerbTelegather then
+                            elseif unit:HasModifier("modifier_herbtelegather") then
                                 local didTeleport = TeleportItemHerb(unit,item)
                             end
                         end
@@ -370,9 +362,6 @@ function TeleportItem(hero,originalItem)
    --print("Teleporting item : " .. telegatherAbility:GetAbilityName() .. ", " .. percentChance .."% chance")
 
     local itemList = {"item_tinder", "item_flint", "item_stone", "item_stick", "item_bone", "item_meat_raw", "item_meat_cooked", "item_crystal_mana", "item_ball_clay", "item_hide_elk", "item_hide_wolf", "item_hide_bear", "item_magic_raw"}
-    if hero:GetSubClass() == "herbal_master_telegatherer" then
-        itemList = {"item_herb_blue", "item_herb_butsu", "item_herb_orange", "item_herb_purple", "item_herb_yellow", "item_thistles", "item_river_root", "item_river_stem", "item_acorn", "item_acorn_magic", "item_mushroom", "item_spirit_water", "item_spirit_wind"}
-    end
     for key,value in pairs(itemList) do
         if value == originalItem:GetName() then
             local diceRoll = RandomFloat(0,100)
@@ -383,6 +372,7 @@ function TeleportItem(hero,originalItem)
                 local itemPosition = targetFire:GetAbsOrigin() + RandomVector(RandomInt(100,150))
                 CreateItemOnPositionSync(itemPosition,newItem)
                 newItem:SetOrigin(itemPosition)
+				hero:EmitSound("Hero_Zuus.Attack")
                 teleportSuccess = true
                 return teleportSuccess
             end
@@ -403,10 +393,8 @@ function TeleportItemHerb(hero,originalItem)
     local percentChance = telegatherAbility:GetSpecialValueFor("percent_chance")
    --print("Teleporting item : " .. telegatherAbility:GetAbilityName() .. ", " .. percentChance .."% chance")
 
-    local itemList = {"item_tinder", "item_flint", "item_stone", "item_stick", "item_bone", "item_meat_raw", "item_meat_cooked", "item_crystal_mana", "item_ball_clay", "item_hide_elk", "item_hide_wolf", "item_hide_bear", "item_magic_raw"}
-    if hero:GetSubClass() == "herbal_master_telegatherer" then
-        itemList = {"item_herb_blue", "item_herb_butsu", "item_herb_orange", "item_herb_purple", "item_herb_yellow", "item_thistles", "item_river_root", "item_river_stem", "item_acorn", "item_acorn_magic", "item_mushroom", "item_spirit_water", "item_spirit_wind"}
-    end
+    local itemList = {"item_herb_blue", "item_herb_butsu", "item_herb_orange", "item_herb_purple", "item_herb_yellow", "item_thistles", "item_river_root", "item_river_stem", "item_acorn", "item_acorn_magic", "item_mushroom", "item_spirit_water", "item_spirit_wind"}
+   
     for key,value in pairs(itemList) do
         if value == originalItem:GetName() then
             local diceRoll = RandomFloat(0,100)
@@ -417,6 +405,7 @@ function TeleportItemHerb(hero,originalItem)
                 local itemPosition = targetFire:GetAbsOrigin() + RandomVector(RandomInt(100,150))
                 CreateItemOnPositionSync(itemPosition,newItem)
                 newItem:SetOrigin(itemPosition)
+				hero:EmitSound("Hero_Zuus.Attack")
                 teleportSuccess = true
                 return teleportSuccess
             end

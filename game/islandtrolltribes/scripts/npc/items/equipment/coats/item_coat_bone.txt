@@ -3,7 +3,7 @@
 	"ID"	"1066"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"coat_bone"
+	"AbilityTextureName"	"custom/coat_bone"
 	"Model"	"models/coat_bone.vmdl"
 	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"ItemCost"	"74"

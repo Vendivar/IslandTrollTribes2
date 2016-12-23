@@ -1,7 +1,7 @@
 "ability_beastmaster_bearform"
 {
 	"BaseClass"	"ability_datadriven"
-	"AbilityTextureName"	"ability_beastmaster_bearform"
+	"AbilityTextureName"	"custom/ability_beastmaster_bearform"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	"AbilityCastPoint"	"0.5"
 	"AbilityCooldown"	"5"

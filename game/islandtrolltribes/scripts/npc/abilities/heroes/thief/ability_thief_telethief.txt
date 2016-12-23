@@ -1,7 +1,7 @@
 "ability_thief_telethief"
 {
 	"BaseClass"						"ability_datadriven"
-	"AbilityTextureName"			"ability_thief_tele_thief"
+	"AbilityTextureName"	"custom/ability_thief_tele_thief"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP"

@@ -3,7 +3,7 @@
 	"ID"	"1111"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"item_medallion_of_courage"
+	"AbilityTextureName"	"custom/item_medallion_of_courage"
 	"Model"	"models/props_gameplay/status_shield.vmdl"
 	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"ItemCost"	"10"

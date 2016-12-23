@@ -2,7 +2,7 @@
 {
 	"BaseClass"	"ability_datadriven"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	"AbilityTextureName"	"ability_building_quickbuildwitchdoctorshut"
+	"AbilityTextureName"	"custom/ability_building_quickbuildwitchdoctorshut"
 	"MaxLevel"	"1"
 
     "AbilityCastRange"     "%radius"

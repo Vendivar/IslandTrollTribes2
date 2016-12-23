@@ -4,7 +4,7 @@
 		"ID"	"1142"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"acorn_magic"
+		"AbilityTextureName"	"custom/acorn_magic"
 		"Model"	"models/heroes/crystal_maiden/crystal_maiden_ice_debris_01.vmdl"
 		"Effect"	"particles/units/heroes/hero_omniknight/omniknight_degen_aura_c.vpcf"
 		"AbilityCastPoint"	"0.5"

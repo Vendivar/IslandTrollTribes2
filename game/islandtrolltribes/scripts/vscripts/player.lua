@@ -1,4 +1,3 @@
-
 local classes = {
     [1] = "hunter",
     [2] = "gatherer",
@@ -102,6 +101,8 @@ function ITT:SpawnHero(hero_name, playerID)
         --local hero = CreateHeroForPlayer(hero_name, player)
         local hero = PlayerResource:ReplaceHeroWith(playerID, hero_name, 0, 0)
         print("[ITT] CreateHeroForPlayer: ", playerID, hero_name, team)
+		
+
 
         -- Move to the first unassigned starting position for the assigned team-isle
         ITT:SetHeroIslandPosition(hero, team)
@@ -167,6 +168,11 @@ function ITT:OnHeroInGame( hero )
 
     -- Adjust Stats
     Stats:ModifyBonuses(hero)
+	
+	--Remove Talents
+	ITT:RemoveTalents(hero)
+	
+	--Secondary adjustments
 
     -- This handles spawning heroes through dota_bot_populate
     --[[if PlayerResource:IsFakeClient(hero:GetPlayerID()) then
@@ -174,6 +180,21 @@ function ITT:OnHeroInGame( hero )
             ITT:SetHeroIslandPosition(hero, hero:GetTeamNumber())
         end)
     end]]
+end
+
+function ITT:RemoveTalents( hero )
+	--Remove talent abilities that mess up ability index
+		for i=0, 23 do
+		  local ability = hero:GetAbilityByIndex(i)
+		  if ability then
+			local abilityName = ability:GetAbilityName()
+			if string.find(abilityName, "special") then
+			  hero:RemoveAbility(abilityName)
+			end
+		  end
+		end
+		
+		print("removing talent",abilityName,hero)
 end
 
 function ITT:OnHeroRespawn( hero )
@@ -210,6 +231,7 @@ function ITT:CreateLockedSlots(hero)
         hero:SwapItems(0, lockN)
         lockN = lockN -1
     end
+	
 end
 
 function ITT:CreateLockedSlotsForUnits(unit, lockedSlotCount)
@@ -229,6 +251,7 @@ function ITT:AdjustSkills( hero )
     local level = hero:GetLevel() --Level determines what skills to add or levelup
     hero:SetAbilityPoints(0) --All abilities are learned innately
 
+	
     -- If the hero has a subclass, use that table instead
     if hero:HasSubClass() then
         class = hero:GetSubClass()
@@ -236,7 +259,7 @@ function ITT:AdjustSkills( hero )
 
     local class_skills = skillProgressionTable[class]
     if not class_skills then
-        print("ERROR: No 'SkillProgression' table found for"..class.."!")
+        print("ERROR: No 'SkillProgression' table found for",class,"!")
         return
     end
 
@@ -257,16 +280,22 @@ function ITT:AdjustSkills( hero )
          ITT:UnlearnAbilities(hero, class_skills, level)
       end
     })
-       	    Timers:CreateTimer({
+		Timers:CreateTimer({
       endTime = 0.3,
       callback = function()
         ITT:LearnAbilities(hero, class_skills, level)
       end
     })
     end
-    AdjustAbilityLayout(hero)
-    EnableSpellBookAbilities(hero)
-    PrintAbilities(hero)
+	
+	Timers:CreateTimer({
+      endTime = 0.5,
+      callback = function()
+		AdjustAbilityLayout(hero)
+		EnableSpellBookAbilities(hero)
+		PrintAbilities(hero)
+      end
+    })
 
     PlayerResource:RefreshSelection()
 end
@@ -342,13 +371,27 @@ function EnableSpellBookAbilities(hero)
 
             if toggleAbilityName then
                 local spellBookAbility = hero:FindAbilityByName(toggleAbilityName)
-                ToggleOn(spellBookAbility)
-                ToggleOff(spellBookAbility)
+				SpellBookTrickery(hero,spellBookAbility)
             end
         end
     })
 end
 
+
+
+function SpellBookTrickery(hero,spellBookAbility )
+	Timers:CreateTimer(1, function()
+        spellBookAbility:ToggleAbility()
+    end
+  )
+  
+  	Timers:CreateTimer(2, function()
+        spellBookAbility:ToggleAbility()
+    end
+  )
+  
+  print("casting",spellBookAbility,"on",hero)
+end
 
 ---------------------------------------------------------------------------
 -- Gets a list of playerIDs on a team

@@ -3,7 +3,7 @@
 	"ID"	"1059"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"gloves_bone"
+	"AbilityTextureName"	"custom/gloves_bone"
 	"Model"	"models/items/clinkz/clinkz_skeleton_hands/clinkz_skeleton_hands.vmdl"
 	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"ItemCost"	"54"

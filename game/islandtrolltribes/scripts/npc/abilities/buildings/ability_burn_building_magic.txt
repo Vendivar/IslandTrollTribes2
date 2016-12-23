@@ -1,7 +1,7 @@
 "ability_burn_building_magic"
 {
 	"BaseClass"	"ability_datadriven"
-	"AbilityTextureName"	"Burn_Building_Magic"
+	"AbilityTextureName"	"custom/Burn_Building_Magic"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"OnSpellStart"
 	{

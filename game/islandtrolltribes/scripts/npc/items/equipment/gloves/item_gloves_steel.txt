@@ -3,7 +3,7 @@
 	"ID"	"1061"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"gloves_steel"
+	"AbilityTextureName"	"custom/gloves_steel"
 	"Model"	"models/heroes/clinkz/clinkz_gloves.vmdl"
 	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"ItemCost"	"78"

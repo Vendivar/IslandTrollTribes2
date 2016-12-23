@@ -5,7 +5,7 @@
 	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
 	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"bow_blood_god"
+	"AbilityTextureName"	"custom/bow_blood_god"
 	"Model"	"models/items/clinkz/runic_bow_of_corruption/runic_bow_of_corruption.vmdl"
 	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"AbilityCastRange"	"800"

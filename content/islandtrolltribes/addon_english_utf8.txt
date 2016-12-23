@@ -513,8 +513,11 @@
 
 "DOTA_Tooltip_Ability_ability_beastmaster_spiritofthebeast"		"Spirit of the Beast"
 "DOTA_Tooltip_Ability_ability_beastmaster_spiritofthebeast_bonus"		"%BONUS PER LEVEL:"
-"DOTA_Tooltip_Ability_ability_beastmaster_spiritofthebeast_chance"		"%CHANCE:"
-"DOTA_Tooltip_Ability_ability_beastmaster_spiritofthebeast_Description"		"PASSIVE - Deals 2 damage each time an enemy animal attacks the Beastmaster slowing their movement speed by 40% and attack speed by 5%\nAlso gives a passive extra chance per stack to find baby animals, and slow animals by 5%% per stack, increasing one stack per Beastmaster level.\n With this buff, elk are also attracted to the Beastmaster and are no longer panicked when attacked near him."
+"DOTA_Tooltip_Ability_ability_beastmaster_spiritofthebeast_chance"		"%BABY CHANCE:"
+"DOTA_Tooltip_Ability_ability_beastmaster_spiritofthebeast_attackslow"		"%AURA SLOW:"
+"DOTA_Tooltip_Ability_ability_beastmaster_spiritofthebeast_attackerslow"		"%ATTACKER SLOW:"
+"DOTA_Tooltip_Ability_ability_beastmaster_spiritofthebeast_Description"		"PASSIVE - Deals 2 damage each time an enemy animal attacks the Beastmaster slowing their movement speed by 40% and attack speed by 5%\nAlso gives a passive ability to slow nearby animals and give an extra chance per stack slow the creature and to find their baby animals by 5%% per stack, increasing one stack per Beastmaster level.\n With this buff, elk are also attracted to the Beastmaster and are no longer panicked when attacked near him."
+"DOTA_Tooltip_Ability_ability_beastmaster_spiritofthebeast_Lore"		"The beastmaster is one with the wild and all creatures both fear and respect him. If they don't they soon learn.."
 "DOTA_Tooltip_modifier_spawn_chance"		"Spirit of the Beast"
 "DOTA_Tooltip_modifier_spawn_chance_Description"		"Chance per stack to increase slow amount and the chance a baby will spawn by 5%% to enemy animals."
 "DOTA_Tooltip_modifier_spiritofthebeastslow"                                      "Sprit of the Beast Attack Animal Attacker Slow"
@@ -543,8 +546,8 @@
 
 		"DOTA_Tooltip_ability_ability_beastmaster_tamepet_max_pets"                       "MAX PETS:"
 		"DOTA_Tooltip_ability_ability_beastmaster_tamepet_leash_range"                    "LEASH RANGE:"
-		"DOTA_Tooltip_ability_ability_beastmaster_tamepet_grow_young"                     "GROW YOUNG:"
-		"DOTA_Tooltip_ability_ability_beastmaster_tamepet_grow_adult"                     "GROW ADULT:"
+		"DOTA_Tooltip_ability_ability_beastmaster_tamepet_grow_young"                     "GROW TO YOUNG:"
+		"DOTA_Tooltip_ability_ability_beastmaster_tamepet_grow_adult"                     "GROW TO ADULT:"
 
 		"DOTA_Tooltip_ability_ability_beastmaster_tamepet2_max_pets"                      "MAX PETS:"
 		"DOTA_Tooltip_ability_ability_beastmaster_tamepet2_leash_range"                   "LEASH RANGE:"
@@ -679,7 +682,7 @@
 "DOTA_Tooltip_Ability_ability_gatherer_telegather_duration"		"DURATION:"
 "DOTA_Tooltip_Ability_ability_gatherer_telegather_percent_chance"		"PERCENT CHANCE:"
 "DOTA_Tooltip_modifier_telegather"		"Telegather"
-"DOTA_Tooltip_modifier_telegather_Description"		""
+"DOTA_Tooltip_modifier_telegather_Description"		"Chance to teleport naturally occuring items straight to the set fire location"
 
 
 
@@ -688,8 +691,8 @@
 "DOTA_Tooltip_Ability_ability_gatherer_herbtelegather_Note0" "Radar and Remote Telegatherers can teleport all naturally spawning items.\nHerbmaster Telegatherers can teleport all river and bush items."
 "DOTA_Tooltip_Ability_ability_gatherer_herbtelegather_duration"		"DURATION:"
 "DOTA_Tooltip_Ability_ability_gatherer_herbtelegather_percent_chance"		"PERCENT CHANCE:"
-"DOTA_Tooltip_modifier_herb_telegather"		"Herb Telegather"
-"DOTA_Tooltip_modifier_herb_telegather_Description"		"Teleporting herbs to the set fire location."
+"DOTA_Tooltip_modifier_herbtelegather"		"Herb Telegather"
+"DOTA_Tooltip_modifier_herbtelegather_Description"		"Chance to teleport all herbs to the straight to the set fire location."
 
 
 
@@ -905,7 +908,9 @@
 "DOTA_Tooltip_modifier_mage_jealousy_enemy_Description"		"Affected by Jealousy. Can not stop attacking current target!"
 "DOTA_Tooltip_modifier_mage_jealousy_target"	"Jealousy"
 "DOTA_Tooltip_modifier_mage_jealousy_target_Description"	"Your allies are jealous and can't stop attacking you!"
+"DOTA_Tooltip_ability_ability_mage_jealousy_duration"                             "DURATION:"
 
+		
 
 
 "DOTA_Tooltip_Ability_ability_mage_karune"		"Ka Rune"
@@ -1211,7 +1216,7 @@
 "DOTA_Tooltip_Ability_ability_hunter_sniff_Description"		"Target a recently killed creature's bone or hide to reveal a trail to the enemy by creating physical footprints on the ground that the Tracker can follow."
 "DOTA_Tooltip_Ability_ability_hunter_stayingpower"		"Staying Power"
 "DOTA_Tooltip_Ability_ability_hunter_stayingpower_block_chance"		"BLOCK CHANCE:"
-"DOTA_Tooltip_Ability_ability_hunter_stayingpower_block_damage"		"BLOCK DAMAGE:"
+"DOTA_Tooltip_Ability_ability_hunter_stayingpower_block_damage"		"BLOCK AMOUNT:"
 "DOTA_Tooltip_Ability_ability_hunter_stayingpower_bonus_armor"		"BONUS ARMOR:"
 "DOTA_Tooltip_Ability_ability_hunter_stayingpower_bonus_magic"		"BONUS MAGIC RESISTANCE:"
 "DOTA_Tooltip_Ability_ability_hunter_stayingpower_bonus_resist"		"BONUS DAMAGE RESISTANCE:"
@@ -2299,16 +2304,12 @@
 "DOTA_Tooltip_ability_item_boat_seed_magic_Note0"		"Creates a tree at target location."
 "DOTA_Tooltip_ability_item_boat_shield_basic"		"Basic Shield"
 "DOTA_Tooltip_ability_item_boat_shield_basic_armor"		"+$armor"
-"DOTA_Tooltip_ability_item_boat_shield_basic_block_damage_melee"		"BLOCK DAMAGE MELEE:"
-"DOTA_Tooltip_ability_item_boat_shield_basic_block_damage_ranged"		"BLOCK DAMAGE RANGED:"
 "DOTA_Tooltip_ability_item_boat_shield_basic_Description"		"PASSIVE: Provides armor, as well as giving a chance to block physical damage.\n\nA basic shield made of wood that can be upgraded in the Armory."
 "DOTA_Tooltip_ability_item_boat_shield_basic_Lore"		"If it ain't wood, it ain't good."
 "DOTA_Tooltip_ability_item_boat_shield_basic_spell_block"		"SPELL BLOCK:"
 "DOTA_Tooltip_ability_item_boat_shield_steel"		"Steel Shield"
 "DOTA_Tooltip_ability_item_boat_shield_steel_armor"		"+$armor"
 "DOTA_Tooltip_ability_item_boat_shield_steel_block_chance"		"BLOCK CHANCE:"
-"DOTA_Tooltip_ability_item_boat_shield_steel_block_damage_melee"		"BLOCK DAMAGE MELEE:"
-"DOTA_Tooltip_ability_item_boat_shield_steel_block_damage_ranged"		"BLOCK DAMAGE RANGED:"
 "DOTA_Tooltip_ability_item_boat_shield_steel_Description"		"PASSIVE: Provides armor, as well as giving a chance to block physical damage.\n\nAn impossibly strong material that can protect the wearer from almost anything."
 "DOTA_Tooltip_ability_item_boat_shield_steel_Lore"		"Protection and elegance all rolled into one."
 "DOTA_Tooltip_ability_item_boat_shield_steel_spell_block"		"SPELL BLOCK:"
@@ -3312,20 +3313,15 @@
 "DOTA_Tooltip_ability_item_seed_magic_Note0"		"Creates a tree at target location."
 "DOTA_Tooltip_ability_item_shield_basic"		"Basic Shield"
 "DOTA_Tooltip_ability_item_shield_basic_armor"		"+$armor"
-"DOTA_Tooltip_ability_item_shield_basic_block_amount"		"BLOCK CHANCE:"
+"DOTA_Tooltip_ability_item_shield_basic_block_amount"		"BLOCK AMOUNT:"
 "DOTA_Tooltip_ability_item_shield_basic_block_chance"		"BLOCK CHANCE:"
-"DOTA_Tooltip_ability_item_shield_basic_block_damage_melee"		"BLOCK DAMAGE MELEE:"
-"DOTA_Tooltip_ability_item_shield_basic_block_damage_ranged"		"BLOCK DAMAGE RANGED:"
 "DOTA_Tooltip_ability_item_shield_basic_Description"		"PASSIVE: Provides armor, as well as giving a chance to block physical damage.\n\nA basic shield made of wood that can be upgraded in the Armory."
 "DOTA_Tooltip_ability_item_shield_basic_Lore"		"If it ain't wood, it ain't good."
-"DOTA_Tooltip_ability_item_shield_basic_spell_block"		"SPELL BLOCK:"
 "DOTA_Tooltip_ability_item_shield_battle"		"Battle Shield"
 "DOTA_Tooltip_ability_item_shield_battle_armor"		"+$armor"
 "DOTA_Tooltip_ability_item_shield_battle_block_amount"		"BLOCK AMOUNT:"
 "DOTA_Tooltip_ability_item_shield_battle_block_chance"		"BLOCK CHANCE:"
 "DOTA_Tooltip_ability_item_shield_battle_block_cooldown"		"BLOCK COOLDOWN:"
-"DOTA_Tooltip_ability_item_shield_battle_block_damage_melee"		"BLOCK DAMAGE MELEE:"
-"DOTA_Tooltip_ability_item_shield_battle_block_damage_ranged"		"BLOCK DAMAGE RANGED:"
 "DOTA_Tooltip_ability_item_shield_battle_bonus_agi"		"+$AGI"
 "DOTA_Tooltip_ability_item_shield_battle_bonus_int"		"+$INT"
 "DOTA_Tooltip_ability_item_shield_battle_bonus_str"		"+$STR"
@@ -3359,7 +3355,6 @@
 "DOTA_Tooltip_ability_item_shield_steel_armor"		"+$armor"
 "DOTA_Tooltip_ability_item_shield_steel_block_amount"		"BLOCK AMOUNT:"
 "DOTA_Tooltip_ability_item_shield_steel_block_chance"		"BLOCK CHANCE:"
-"DOTA_Tooltip_ability_item_shield_steel_block_damage_melee"		"BLOCK DAMAGE:"
 "DOTA_Tooltip_ability_item_shield_steel_Description"		"PASSIVE: Provides armor, as well as giving a chance to block physical damage. Also blocks a single spell every 75 seconds.\n\nAn impossibly strong material that can protect the wearer from almost anything."
 "DOTA_Tooltip_ability_item_shield_steel_Lore"		"Protection and elegance all rolled into one."
 "DOTA_Tooltip_ability_item_shield_steel_spell_block_cd"		"SPELL BLOCK CD:"

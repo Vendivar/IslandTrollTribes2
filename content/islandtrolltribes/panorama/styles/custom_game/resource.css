@@ -1,0 +1,155 @@
+.ResourcePanel
+{
+	height: 100%;
+	width: 100%;
+}
+
+#ResourceContainer
+{
+    width: 450px;
+    height: 45px;
+	flow-children: right;
+
+	horizontal-align: middle;
+	margin-left: 1620px;
+	margin-top: 880px;
+	padding: 5px;
+}
+
+.Hidden 
+{ 
+    visibility: collapse;
+    opacity: 0;
+}
+
+#LumberText
+{
+	color: green;
+    font-size: 16px;
+    font-family: Radiance;
+  	font-weight: bold;
+    text-align: center;
+    text-shadow: 0px 0px 3px 3.0 #000000;
+	
+	padding-left: 5px;
+	horizontal-align: right;
+}
+
+#GoldIcon{
+	margin-top: 3px; 
+	width: 20px;  
+	height: 25px;   
+	background-image: url("s2r://panorama/images/custom_game/gold_icon.png"); 
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+
+#GoldText{
+	color: gold;
+    font-size: 20px;
+    font-family: Radiance;
+  	font-weight: bold;
+    text-align: center;
+    text-shadow: 0px 0px 3px 3.0 #000000;
+	
+	padding-left: 5px;
+	horizontal-align: right;
+}
+
+.GoldPanel, .FoodPanel, .LumberPanel, .UpkeepPanel
+{
+    width: 100px;
+    height: 80px;
+
+    border-right: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+	
+	background-color: black );
+	box-shadow: inset 0 0 5px #333333; 
+	margin-right: 5px;
+	padding: 5px;
+	flow-children: right;
+	border-radius: 8px;
+} 
+
+.GoldPanel:hover, .LumberPanel:hover, .FoodPanel:hover, .UpkeepPanel:hover
+{
+	box-shadow: inset 0 0 5px #777777; 
+	transition-property: box-shadow;
+	transition-duration: 0.2s;
+	transition-timing-function: linear;
+}
+
+#UpkeepText 
+{
+    font-size: 16px;
+  	font-family: Radiance;
+  	font-weight: bold;
+    text-shadow: 4px 4px 4px #000000;
+
+	vertical-align: middle;
+	horizontal-align: middle;
+}
+
+#LumberIcon 
+{	
+	width: 26px; 
+	height: 30px;  
+	background-image: url("s2r://panorama/images/custom_game/lumber_icon.png"); 
+	background-size: 100% 100%;
+}
+
+#FoodText
+{
+	font-size: 16px;
+    font-family: Radiance;
+  	font-weight: bold;
+    text-align: center;
+    text-shadow: 0px 0px 3px 2.0 #000000;
+	
+	padding-left: 5px;
+	horizontal-align: right;
+}
+
+#FoodIcon 
+{	
+	width: 26px; 
+	height: 30px;  
+	background-image: url("s2r://panorama/images/custom_game/food_icon.png"); 
+	background-size: 100% 100%;
+}
+
+.UpkeepPanelAnnounce
+{
+	width: 500px;
+    height: 200px;
+
+    horizontal-align: center;
+    vertical-align: top;
+}
+
+#UpkeepTextAnnounce
+{
+    font-size: 50px;
+  	font-family: Radiance;
+  	font-weight: bold;
+    text-shadow: 4px 4px 4px #000000;
+
+    margin-top: 80px;
+    horizontal-align: center;
+}
+
+.Red
+{
+	color: #ff0000;
+}
+
+.Green
+{
+	color: #00ff00;
+}
+
+.Yellow
+{
+	color: #ffff00;
+}

@@ -163,6 +163,7 @@ function PetThink( event )
     if pet:FindModifierByName("modifier_command_restrict") then
         if pet:GetRangeToUnit(hero) < pet.leashRange then
             pet:RemoveModifierByName("modifier_command_restrict")
+			--RemovePetRangeIndicator(hero)
         else
             ExecuteOrderFromTable({ UnitIndex = pet:GetEntityIndex(), OrderType = DOTA_UNIT_ORDER_MOVE_TO_TARGET, TargetIndex = hero:GetEntityIndex(), Queue = false})
             return
@@ -178,9 +179,10 @@ function PetThink( event )
         local ability = pet:FindAbilityByName("ability_pet")
         ability:ApplyDataDrivenModifier(pet, pet, "modifier_command_restrict", {})
 
-        -- EmitSoundOn( "General.Ping", pet )
+		--AddPetRangeIndicator(hero)
+			  
+		Notifications:Bottom(hero:GetPlayerID(), {text="#error_pet_leash_range", duration=5, style={color="red", ["font-size"]="25px"}})
         local particle = ParticleManager:CreateParticle("particles/custom/alert.vpcf", PATTACH_ABSORIGIN_FOLLOW, pet)
-        --  SendErrorMessage(pID, "#error_pet_leash_range")
         return
     end
 
@@ -194,6 +196,25 @@ function PetThink( event )
 end
 
 ------------------------------------------------------------
+
+function AddPetRangeIndicator(hero)
+if not hero.pet_indicator then
+Timers(function()
+		Sounds:EmitSoundOnClient(hero:GetPlayerID(), "notification.warning")
+		return 6.0
+	  end)
+	end
+end
+
+
+function RemovePetRangeIndicator(hero)
+
+if hero.pet_indicator then
+        hero.pet_indicator = nil
+    end	
+end
+
+
 
 function HealPet(keys)
     local caster = keys.caster

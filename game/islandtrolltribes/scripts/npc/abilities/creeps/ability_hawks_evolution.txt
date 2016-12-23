@@ -1,6 +1,6 @@
 "ability_hawks_evolution"
 {
 	"BaseClass"	"ability_datadriven"
-	"AbilityTextureName"	"ability_building_hatchegg"
+	"AbilityTextureName"	"custom/ability_building_hatchegg"
     "MaxLevel"              "1"
 }

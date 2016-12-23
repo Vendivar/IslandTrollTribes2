@@ -3,7 +3,7 @@
 	"ID"	"1096"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"gem_of_knowledge"
+	"AbilityTextureName"	"custom/gem_of_knowledge"
 	"Model"	"models/props_gameplay/gem01.vmdl"
 	"Effect"	"particles/generic_gameplay/dropped_gem.vpcf"
 	"ItemCost"	"52"

@@ -2,7 +2,7 @@
 {
 	"BaseClass"	"ability_datadriven"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	"AbilityTextureName"	"ability_gatherer_mixherbs"
+	"AbilityTextureName"	"custom/ability_gatherer_mixherbs"
 	"MaxLevel"	"1"
 	"AbilityCastPoint"	"0"
 	"precache"

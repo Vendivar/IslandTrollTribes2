@@ -1,7 +1,7 @@
 "ability_burn_building"
 {
 	"BaseClass"	"ability_datadriven"
-	"AbilityTextureName"	"ability_building_burnbuilding"
+	"AbilityTextureName"	"custom/ability_building_burnbuilding"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"precache"
 	{

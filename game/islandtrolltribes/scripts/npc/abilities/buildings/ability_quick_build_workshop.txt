@@ -1,7 +1,7 @@
 "ability_quick_build_workshop"
 {
     "BaseClass"            "ability_datadriven"
-    "AbilityTextureName"   "ability_building_quickbuildworkshop"
+    "AbilityTextureName"	"custom/ability_building_quickbuildworkshop"
     "AbilityBehavior"      "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "MaxLevel"             "1"
 

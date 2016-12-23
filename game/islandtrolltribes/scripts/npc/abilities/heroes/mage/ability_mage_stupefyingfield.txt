@@ -3,7 +3,7 @@
 	{
 	    "BaseClass"             "ability_datadriven"
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
-	    "AbilityTextureName"    "ability_mage_stupefyingfield"
+	    "AbilityTextureName"	"custom/ability_mage_stupefyingfield"
 	    "AbilityCastAnimation"  "ACT_DOTA_CAST_ABILITY_4"
 	    "AbilityCastPoint"      "0.5"
 	    "AbilityCooldown"       "20"

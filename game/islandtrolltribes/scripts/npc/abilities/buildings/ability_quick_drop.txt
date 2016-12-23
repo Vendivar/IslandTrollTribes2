@@ -2,7 +2,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT_TARGET"
-		"AbilityTextureName"	"ability_building_quickdrop"
+		"AbilityTextureName"	"custom/ability_building_quickdrop"
 	    "AbilityCastRange"          "500"
 		"MaxLevel"	"1"
 		"OnSpellStart"

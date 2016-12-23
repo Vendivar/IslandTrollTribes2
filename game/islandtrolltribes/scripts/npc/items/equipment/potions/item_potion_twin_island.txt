@@ -3,7 +3,7 @@
 	"ID"	"1052"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"potion_twin_island"
+	"AbilityTextureName"	"custom/potion_twin_island"
 	"Model"	"models/props_gameplay/bottle_mango001.vmdl"
 	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"AbilityCastPoint"	"0.2"

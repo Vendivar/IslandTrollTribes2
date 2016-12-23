@@ -3,7 +3,7 @@
 	"ID"	"1098"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
 	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"clay_living"
+	"AbilityTextureName"	"custom/clay_living"
 	"Model"	"models/items/wards/d2lp_4_ward/d2lp_4_ward.vmdl"
 	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"AbilityCastRange"	"500"

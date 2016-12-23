@@ -4,6 +4,7 @@
 	</styles>
 	<scripts>
 		<include src="file://{resources}/scripts/toolkit.js" />
+		<include src="file://{resources}/scripts/custom_game/sounds.js" />
 	</scripts>
 	<Panel class="ToolkitRoot" hittest="false">
 		<Panel class="ToolkitContainer">

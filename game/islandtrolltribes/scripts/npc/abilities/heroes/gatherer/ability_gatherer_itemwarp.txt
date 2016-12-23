@@ -2,7 +2,7 @@
 {
 	"BaseClass"	"ability_datadriven"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	"AbilityTextureName"	"ability_gatherer_itemwarp"
+	"AbilityTextureName"	"custom/ability_gatherer_itemwarp"
 	"MaxLevel"	"3"
 	"AbilityCastPoint"	"0"
 	"AbilityCastRange"  "%range"

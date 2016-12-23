@@ -3,7 +3,7 @@
 	"ID"	"1009"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"ingot_steel"
+	"AbilityTextureName"	"custom/ingot_steel"
 	"Model"	"models/props_magic/bad_crystals002.vmdl"
 	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"ItemCost"	"28" 

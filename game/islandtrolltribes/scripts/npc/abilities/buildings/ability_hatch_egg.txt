@@ -2,7 +2,7 @@
 {
 	"BaseClass"	"ability_datadriven"
 	"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	"AbilityTextureName"	"ability_building_hatchegg"
+	"AbilityTextureName"	"custom/ability_building_hatchegg"
     "MaxLevel"              "1"
 	"Precache"
 	{

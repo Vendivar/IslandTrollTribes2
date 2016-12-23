@@ -3,7 +3,7 @@
 	"ID"	"1152"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"horn_mammoth"
+	"AbilityTextureName"	"custom/horn_mammoth"
 	"Model"	"models/horn_mammoth.vmdl"
 	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"ItemCost"	"10"

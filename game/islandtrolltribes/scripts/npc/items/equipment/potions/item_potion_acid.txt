@@ -5,7 +5,7 @@
 	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
 	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"potion_acid"
+	"AbilityTextureName"	"custom/potion_acid"
 	"Model"	"models/props_gameplay/salve_red.vmdl"
 	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"AbilityCastRange"	"800"

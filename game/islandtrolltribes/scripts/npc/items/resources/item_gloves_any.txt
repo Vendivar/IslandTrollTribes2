@@ -3,7 +3,7 @@
 	"ID"	"1303"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"gloves_any"
+	"AbilityTextureName"	"custom/gloves_any"
 	"Model"	" "
 	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"ItemCost"	"2"

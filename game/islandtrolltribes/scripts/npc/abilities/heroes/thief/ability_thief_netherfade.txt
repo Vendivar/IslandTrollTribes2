@@ -2,7 +2,7 @@
 {
 	"BaseClass"	"ability_datadriven"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	"AbilityTextureName"	"ability_thief_netherfade"
+	"AbilityTextureName"	"custom/ability_thief_netherfade"
 	"AbilityCastPoint"	"0.1"
 	"AbilityCooldown"	"90.0"
 	"AbilityManaCost"	"15"

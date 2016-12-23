@@ -8,12 +8,12 @@
     {
         "modifier_heat_passive"
         {
-            "TextureName"   "item_heat_modifier_applier"
+           "TextureName"	"custom/heat_modifier"
         }
 
         "modifier_meat_passive"
         {
-            "TextureName"   "item_meat_modifier_applier"
+           "TextureName"	"custom/meat_modifier"
         }
 
         "modifier_hunger_mana"
@@ -101,7 +101,7 @@
         {
 			"StatusEffectName" "particles/custom/status_frozen.vpcf"
             "StatusEffectPriority" "10"
-            "TextureName"           "frozen"
+            "TextureName"           "custom/frozen"
             "IsDebuff"  "1"
 			"IsPurgable"       "0"
             "OnCreated"

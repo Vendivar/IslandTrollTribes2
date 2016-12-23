@@ -3,7 +3,7 @@
 	"ID"	"1011"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"ball_clay"
+	"AbilityTextureName"	"custom/ball_clay"
 	"Model"	"models/particle/tiny_simrocks.vmdl"
 	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"ItemCost"	"2"

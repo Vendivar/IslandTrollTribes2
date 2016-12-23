@@ -3,7 +3,7 @@
 	"ID"	"1019"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"herb_yellow"
+	"AbilityTextureName"	"custom/herb_yellow"
 	"Model"	"models/herb_special_yellow.vmdl"
 	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"ItemCost"	"12"

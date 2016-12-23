@@ -75,20 +75,13 @@
 			"var_type"	"FIELD_INTEGER"
 			"spell_block"	"0"
 		}
-
 		"05"
-		{
-			"var_type"	"FIELD_INTEGER"
-			"block_chance"	"10"
-		}
-
-		"06"
 		{
 			"var_type"	"FIELD_INTEGER"
 			"block_damage_melee"	"15"
 		}
 
-		"07"
+		"06"
 		{
 			"var_type"	"FIELD_INTEGER"
 			"block_damage_ranged"	"15"

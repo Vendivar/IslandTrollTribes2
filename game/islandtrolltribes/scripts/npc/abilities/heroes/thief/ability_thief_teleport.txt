@@ -2,7 +2,7 @@
 {
 	"BaseClass"	"ability_datadriven"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
-	"AbilityTextureName"	"ability_thief_teleport"
+	"AbilityTextureName"	"custom/ability_thief_teleport"
 	"AbilityCastRange"	"600"
 	"AbilityCastPoint"	"0.4"
 	"AbilityCooldown"	"30.0"

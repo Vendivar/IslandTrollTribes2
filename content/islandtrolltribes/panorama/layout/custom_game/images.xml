@@ -19,6 +19,9 @@
         <Image style="opacity:0;" src="file://{images}/class_picker/thief_full.png" />
         <Image style="opacity:0;" src="file://{images}/class_picker/thief_hover.png" />
         <Image style="opacity:0;" src="file://{images}/class_picker/pick_hover.png" />
+		
+		
+        <Image style="opacity:0;" src="file://{images}/custom_game/gold_icon.png" />
 
         <Image style="opacity:0;" src="file://{images}/subclass_picker/levelup.png" />
         <Image style="opacity:0;" src="file://{images}/subclass_picker/levelupbloom.png" />

@@ -3,7 +3,7 @@
 "ability_ensnaretower_ensnare"
 {
     "BaseClass"                     "ability_datadriven"
-    "AbilityTextureName"            "ability_ensnaretrap_ensnare"
+    "AbilityTextureName"	"custom/ability_ensnaretrap_ensnare"
     "MaxLevel"                      "1"
 
     "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"

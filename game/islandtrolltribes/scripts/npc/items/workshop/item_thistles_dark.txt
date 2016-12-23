@@ -3,7 +3,7 @@
 	"ID"	"1015"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE| DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"thistles_dark"
+	"AbilityTextureName"	"custom/thistles_dark"
 	"Model"	"models/props_nature/cattails001.vmdl"
 	"Effect"	"particles/units/heroes/hero_dark_seer/dark_seer_surge_h.vpcf"
 	"ItemCost"	"1"

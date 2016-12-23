@@ -10,7 +10,7 @@
 	"AbilityCooldown"	"10.0"
 	"AbilityChannelTime"	"2.0"
 	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"axe_stone"
+	"AbilityTextureName"	"custom/axe_stone"
 	"Model"	"models/axe_stone.vmdl"
 	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"ItemCost"	"14"

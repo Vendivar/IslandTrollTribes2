@@ -5,7 +5,7 @@
     "AbilityUnitTargetTeam"  "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
     "AbilityUnitTargetType"  "DOTA_UNIT_TARGET_HERO"
 	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"potion_anti_magic"
+	"AbilityTextureName"	"custom/potion_anti_magic"
 	"Model"	"models/potion_acid.vmdl"
 	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"AbilityCastPoint"	"0.5"

@@ -3,7 +3,7 @@
 	"ID"	"1001"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"tinder"
+	"AbilityTextureName"	"custom/tinder"
 	"Model"	"models/props_gameplay/tango.vmdl"
 	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"ItemCost"	"2"

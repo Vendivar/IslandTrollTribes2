@@ -3,7 +3,7 @@
     "ID"    "1103"
     "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "BaseClass" "item_datadriven"
-    "AbilityTextureName"    "compass_sonar"
+    "AbilityTextureName"	"custom/compass_sonar"
     "Model" "models/items/rattletrap/cog_tesla/cog_tesla.vmdl"
     "Effect"    "particles/custom/dropped_item_normal.vpcf"
     "AbilityCooldown"   "35"

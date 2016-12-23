@@ -1,7 +1,7 @@
 "ability_priest_spiritlink"
 {
 	"BaseClass"             		"ability_datadriven"
-	"AbilityTextureName"			"ability_priest_spiritlink"
+	"AbilityTextureName"	"custom/ability_priest_spiritlink"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	"AbilityCooldown"				"130"
 	"AbilityManaCost"				"20"

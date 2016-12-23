@@ -1,7 +1,7 @@
 "ability_thief_planningphase"
 {
     "BaseClass"             "ability_datadriven"
-    "AbilityTextureName"    "ability_thief_planningphase"
+    "AbilityTextureName"	"custom/ability_thief_planningphase"
     "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
     "AbilityCastPoint"      "0.0"
     "AbilityChannelTime"    "10.0"

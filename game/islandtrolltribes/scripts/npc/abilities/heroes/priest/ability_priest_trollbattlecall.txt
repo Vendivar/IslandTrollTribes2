@@ -1,7 +1,7 @@
 "ability_priest_trollbattlecall"
 {
 	"BaseClass"	"ability_datadriven"
-	"AbilityTextureName"	"ability_priest_trollbattlecall"
+	"AbilityTextureName"	"custom/ability_priest_trollbattlecall"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_4"
 	"AbilityCastPoint"	"1.0"

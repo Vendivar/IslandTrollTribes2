@@ -6,7 +6,7 @@
     "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
     "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
     "BaseClass"    "item_datadriven"
-    "AbilityTextureName"    "spear_basic"
+    "AbilityTextureName"	"custom/spear_basic"
     "Model"    "models/creeps/neutral_creeps/n_creep_gnoll/n_creep_gnoll_spear.vmdl"
     "Effect"	"particles/custom/dropped_item_normal.vpcf"
     "ItemCost"    "10"

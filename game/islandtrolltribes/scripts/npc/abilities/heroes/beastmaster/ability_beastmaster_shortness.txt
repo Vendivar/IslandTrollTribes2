@@ -2,7 +2,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityTextureName"	"ability_beastmaster_shortness"
+		"AbilityTextureName"	"custom/ability_beastmaster_shortness"
 		"MaxLevel"	"1"
 		"precache"
 		{

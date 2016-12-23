@@ -1,7 +1,7 @@
 "ability_priest_spiritwalk"
 {
 	"BaseClass"             		"ability_datadriven"
-	"AbilityTextureName"			"ability_priest_spiritwalk"
+	"AbilityTextureName"	"custom/ability_priest_spiritwalk"
 
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	"AbilityChannelTime"			"90"

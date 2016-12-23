@@ -2,7 +2,7 @@
 {
     "BaseClass"             "ability_datadriven"
     "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
-    "AbilityTextureName"    "ability_building_cookmeat"
+    "AbilityTextureName"	"custom/ability_building_cookmeat"
     "AbilityManaCost"       "0"
     "precache"
     {

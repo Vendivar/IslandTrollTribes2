@@ -51,12 +51,14 @@ function PassiveNeutralThink(thisEntity)
 			thisEntity.wander_wait_time = GameRules:GetGameTime() + RandomFloat(thisEntity.MinWaitTime, thisEntity.MaxWaitTime)
 		end
 	elseif thisEntity.state == "flee" then
-		if GameRules:GetGameTime() >= thisEntity.flee_wait_time and not thisEntity:HasModifier("modifier_spawn_chance") then
+		if GameRules:GetGameTime() >= thisEntity.flee_wait_time then
+		--if GameRules:GetGameTime() >= thisEntity.flee_wait_time and not thisEntity:HasModifier("modifier_spawn_chance") then
 			local fleeTime = RandomFloat(thisEntity.MinWaitTime, thisEntity.MaxWaitTime)
 			local item = CreateItem("item_apply_modifiers", thisEntity, thisEntity)
+			if not thisEntity:HasModifier("modifier_spawn_chance") then
 			item:ApplyDataDrivenModifier(thisEntity, thisEntity, "modifier_creeppanic", {duration = fleeTime})
 			--thisEntity:AddNewModifier(thisEntity, thisEntity, "modifier_bloodseeker_thirst_speed", { duration = thisEntity.flee_wait_time })
-
+			end
 			thisEntity.flee_wait_time = GameRules:GetGameTime() + fleeTime
 
 			local newPosition = thisEntity:GetAbsOrigin() + RandomVector(thisEntity.FleeDistance)

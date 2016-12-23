@@ -1,7 +1,7 @@
 "ability_mage_depressionorb"
 {
 	"BaseClass"             		"ability_datadriven"
-	"AbilityTextureName"			"ability_mage_depressionorb"
+	"AbilityTextureName"	"custom/ability_mage_depressionorb"
 	"MaxLevel" 						"1"
 
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"

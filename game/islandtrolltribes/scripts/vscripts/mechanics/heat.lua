@@ -260,7 +260,6 @@ EmitSoundOn( "freezing", hero )
             hero.frozen_indicator = ParticleManager:CreateParticleForPlayer("particles/custom/screen_frozen_indicator.vpcf", PATTACH_EYES_FOLLOW, player, player)
             ParticleManager:SetParticleControl(hero.frozen_indicator, 1, Vector(1,0,0))
             SendFrozenMessage(hero:GetPlayerID(), "#error_frozen")
-			EmitSoundOnClient("Hero_Beastmaster.Call.Hawk", player)
 			print("Frozen Indicator Internal")
 
 --	  Timers:CreateTimer(0.5, function()

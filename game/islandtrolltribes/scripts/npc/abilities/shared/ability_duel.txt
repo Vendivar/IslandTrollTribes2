@@ -1,6 +1,6 @@
 "ability_duel"
 {
 	"BaseClass"	"ability_datadriven"
-	"AbilityTextureName"	"ability_building_duel"
+	"AbilityTextureName"	"custom/ability_building_duel"
     "MaxLevel"              "1"
 }

@@ -2,7 +2,7 @@
 {
     "BaseClass"             "ability_datadriven"
     "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-    "AbilityTextureName"    "ability_gatherer_advanced_radarmanipulations" //TODO: Icon
+    "AbilityTextureName"	"custom/ability_gatherer_advanced_radarmanipulations" //TODO: Icon
     "MaxLevel"              "1"
     "AbilityCastPoint"      "0"
 

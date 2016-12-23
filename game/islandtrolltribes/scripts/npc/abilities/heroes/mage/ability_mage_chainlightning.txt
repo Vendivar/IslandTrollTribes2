@@ -1,7 +1,7 @@
 "ability_mage_chainlightning"
 {
 	"BaseClass"	"ability_datadriven"
-	"AbilityTextureName"	"ability_mage_chainlightning"
+	"AbilityTextureName"	"custom/ability_mage_chainlightning"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"

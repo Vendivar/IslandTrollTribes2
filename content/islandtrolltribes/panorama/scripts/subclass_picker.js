@@ -1,5 +1,5 @@
 "use strict";
-
+var first_time = false;
 var subclassPickerVisible;
 var locked = Players.GetLevel(Game.GetLocalPlayerID()) < 6;
 var class_name;
@@ -16,10 +16,13 @@ function UnlockSubclassPick() {
     $.Msg("Player ",Players.GetLocalPlayer()," unlocked subclass")
     $("#TogglePicker").RemoveClass("Locked")
     $("#TogglePicker").AddClass("Unlocked")
+	var hero_name = Entities.GetUnitName(Players.GetPlayerHeroEntityIndex( Players.GetLocalPlayer() ))
+    class_name = heroToClass[hero_name]
     locked = false;
 }
 
 function ShowSubclassPick() {
+		
     $("#SubclassTitle1").text = $.Localize(class_name+"_sub1_name")
     $("#SubclassTitle2").text = $.Localize(class_name+"_sub2_name")
     $("#SubclassTitle3").text = $.Localize(class_name+"_sub3_name")

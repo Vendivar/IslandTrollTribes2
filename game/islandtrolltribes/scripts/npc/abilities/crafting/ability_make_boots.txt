@@ -1,7 +1,7 @@
 "ability_make_boots"
 {
     "BaseClass"             "ability_datadriven"
-    "AbilityTextureName"    "ability_building_makeboots"
+    "AbilityTextureName"	"custom/ability_building_makeboots"
     "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "MaxLevel"              "1"
 	"AbilitySharedWithTeammates" "1"

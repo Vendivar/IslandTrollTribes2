@@ -3,7 +3,7 @@
 	"ID"	"1013"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"river_stem"
+	"AbilityTextureName"	"custom/river_stem"
 	"Model"	"models/props_nature/mushroom_wild_02.vmdl"
 	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"ItemCost"	"3"

@@ -2,7 +2,7 @@
     {
         "BaseClass"	"ability_datadriven"
         "AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-        "AbilityTextureName"	"ability_thief_blur"
+        "AbilityTextureName"	"custom/ability_thief_blur"
         "AbilityCastPoint"	"0.1"
         "AbilityCooldown"	"60.0"
         "AbilityManaCost"	"10"

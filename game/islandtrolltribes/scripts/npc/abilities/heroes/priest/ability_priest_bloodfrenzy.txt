@@ -1,7 +1,7 @@
 "ability_priest_bloodfrenzy"
 {
 	"BaseClass"             		"ability_datadriven"
-	"AbilityTextureName"			"ability_priest_bloodfrenzy"
+	"AbilityTextureName"	"custom/ability_priest_bloodfrenzy"
 	"MaxLevel" 						"1"
 
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"

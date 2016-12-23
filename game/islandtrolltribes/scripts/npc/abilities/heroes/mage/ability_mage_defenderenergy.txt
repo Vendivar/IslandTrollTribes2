@@ -3,7 +3,7 @@
 	"BaseClass"					"ability_datadriven"
 	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT"
 	"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"	
-	"AbilityTextureName"		"ability_mage_defenderenergy"
+	"AbilityTextureName"	"custom/ability_mage_defenderenergy"
 
 	"AbilityCastPoint"			"0"
 	"AOERadius"					"%radius"

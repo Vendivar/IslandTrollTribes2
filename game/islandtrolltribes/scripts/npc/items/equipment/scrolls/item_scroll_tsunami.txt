@@ -3,7 +3,7 @@
 	"ID"	"1089"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
 	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"scroll_tsunami"
+	"AbilityTextureName"	"custom/scroll_tsunami"
 	"Model"	"models/props_gameplay/tpscroll01.vmdl"
 	"Effect"	"particles/custom/tsunami_swirl.vpcf"
 	"AbilityCastRange"	"600"

@@ -2,7 +2,7 @@
 {
     "BaseClass" "ability_datadriven"
     "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
-    "AbilityTextureName"    "ability_scout_motionsensorradar"
+    "AbilityTextureName"	"custom/ability_scout_motionsensorradar"
     "AbilityCastPoint"  "0.4 0.4 0.4"
     "AbilityCooldown"   "60.0 60.0 60.0"
     "AbilityManaCost"   "0 0 0"

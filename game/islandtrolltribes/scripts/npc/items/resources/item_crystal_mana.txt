@@ -3,7 +3,7 @@
 	"ID"	"1008"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"crystal_mana"
+	"AbilityTextureName"	"custom/crystal_mana"
 	"Model"	"models/particle/ice_shards.vmdl"
 	"Effect"	"particles/econ/courier/courier_faceless_rex/cour_rex_weapon_glow.vpcf"
 	"ItemCost"	"6"

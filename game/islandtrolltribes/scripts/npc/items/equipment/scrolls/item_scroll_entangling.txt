@@ -5,7 +5,7 @@
 	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
 	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"scroll_entangling"
+	"AbilityTextureName"	"custom/scroll_entangling"
 	"Model"	"models/props_gameplay/tpscroll01.vmdl"
 	"Effect"	"particles/units/heroes/hero_enchantress/enchantress_enchant_slow_grass_long.vpcf"
 	"AbilityCastRange"	"%range"

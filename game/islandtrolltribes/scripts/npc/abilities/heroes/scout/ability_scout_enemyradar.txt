@@ -2,7 +2,7 @@
 {
     "BaseClass"             "ability_datadriven"
     "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-    "AbilityTextureName"    "ability_scout_enemyradar"
+    "AbilityTextureName"	"custom/ability_scout_enemyradar"
     "AbilityCastPoint"      "0.2"
     "AbilityCooldown"       "20"
     "AbilityManaCost"       "0"

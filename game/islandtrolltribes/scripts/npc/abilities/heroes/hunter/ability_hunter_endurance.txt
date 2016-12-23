@@ -2,7 +2,7 @@
 {
 	"BaseClass"	"ability_datadriven"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityTextureName"	"ability_hunter_endurance"
+	"AbilityTextureName"	"custom/ability_hunter_endurance"
 	"MaxLevel"	"1"
 	"precache"
 	{

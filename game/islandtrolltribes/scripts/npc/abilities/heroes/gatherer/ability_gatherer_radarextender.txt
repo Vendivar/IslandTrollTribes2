@@ -2,7 +2,7 @@
 {
     "BaseClass"             "ability_datadriven"
     "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-    "AbilityTextureName"    ""
+    "AbilityTextureName"	"custom/ability_pet_collect_items"
     "MaxLevel"              "1"
     "AbilityCastPoint"      "0"
 

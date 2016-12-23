@@ -5,7 +5,7 @@
     "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
     "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
     "BaseClass"    "item_datadriven"
-    "AbilityTextureName"    "spear_poison_refined"
+    "AbilityTextureName"	"custom/spear_poison_refined"
     "Model"    "models/heroes/enchantress/enchantress_spear.vmdl"
     "Effect"	"particles/custom/dropped_item_normal.vpcf"
     "ItemCost"    "18"

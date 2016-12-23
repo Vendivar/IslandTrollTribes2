@@ -3,7 +3,7 @@
 	"ID"	"1098"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_POINT"
 	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"item_clay_living"
+	"AbilityTextureName"	"custom/clay_living"
 	"Model"	"models/particle/lion_attack_sphere.vmdl"
 	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"AbilityCastRange"	"500"
