@@ -2207,7 +2207,7 @@
 		"ID"	"1119"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"custom/item_building_kit_tent_basic"
+		"AbilityTextureName"	"custom/building_kit_tent_basic"
 		"Model"	"models/props_debris/creep_camp001j.vmdl"
 		"Effect"	"particles/custom/dropped_item_normal.vpcf"
 		"ItemCost"	"10"
@@ -3106,7 +3106,7 @@
 	{
 	    "ID"                        "1026"
 	    "BaseClass"                 "item_datadriven"
-	    "AbilityTextureName"        "axe_mage_masher"
+	    "AbilityTextureName"		"custom/axe_mage_masher"
 	    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 	    "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_TREE | DOTA_UNIT_TARGET_CUSTOM"
 	    "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_CUSTOM"

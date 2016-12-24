@@ -181,7 +181,10 @@ function TeamUpdate(keys) {
 }
 */
 function PickUpdate(table, changes, deletions) {
+	
+
     for (var playerID in changes) {
+		if (Players.GetTeam(parseInt(playerID)) === Players.GetTeam(Game.GetLocalPlayerID())) {
         var hero = changes[playerID];
 
         if (hero == "gatherer" && gatherers == 0) {
@@ -203,6 +206,7 @@ function PickUpdate(table, changes, deletions) {
             currentlySelected = "";
         }
     }
+	}
 }
 
 var PlayerTables = GameUI.CustomUIConfig().PlayerTables;

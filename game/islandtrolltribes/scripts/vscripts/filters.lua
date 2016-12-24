@@ -35,17 +35,33 @@ function ITT:FilterExecuteOrder( filterTable )
             end
         end
 
-        -- Prevent moving to stash
+	-- Prevent moving to stash
         local hero = unit:IsRealHero() and unit or unit:GetOwner()
         if order_type == DOTA_UNIT_ORDER_MOVE_ITEM then
-                if hero:GetNumItemsInStash() >= 0 then
-                    for i=5,18 do
+		Timers:CreateTimer(function()
+                    for i=6,10 do
                         local item = hero:GetItemInSlot(i)
                         if item then
-						SendErrorMessage(issuer, "#error_nicetry") return 
+						unit:DropItemAtPositionImmediate(item, unit:GetAbsOrigin())
+						SendErrorMessage(issuer, "#error_backpack_disabled")
 						end
 					end
-				end
+				end)
+            Timers:CreateTimer(0.03, function()
+                if hero:GetNumItemsInStash() >= 0 then
+                    for i=6,15 do
+                        local item = hero:GetItemInSlot(i)
+                        if item then
+                            hero:EjectItemFromStash(item)
+                            if hero:GetNumItemsInInventory() <= 5 then
+                                hero:AddItem(item)
+                            else
+                                item:GetContainer():SetAbsOrigin(hero:GetAbsOrigin())
+                            end
+                        end
+                    end
+                end
+            end)
             return CONTINUE_PROCESSING_EVENT
         end
     end

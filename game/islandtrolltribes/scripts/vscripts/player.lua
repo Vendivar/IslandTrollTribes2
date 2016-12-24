@@ -55,7 +55,7 @@ function ITT:OnClassSelected(event)
     if not PlayerTables:TableExists("hero_selection_picks") then
         PlayerTables:CreateTable("hero_selection_picks", {}, true)
     end
-    PlayerTables:SetTableValue("hero_selection_picks", playerID, class_name)
+    PlayerTables:SetTableValue("hero_selection_picks", playerID, class_name, team)
 
     --local player_name = PlayerResource:GetPlayerName(playerID)
     --if player_name == "" then player_name = "Player "..playerID end
@@ -231,6 +231,12 @@ function ITT:CreateLockedSlots(hero)
         hero:SwapItems(0, lockN)
         lockN = lockN -1
     end
+--	local item = spawnedUnit:AddItemByName("item_slot_locked")
+--	spawnedUnit:SwapItems(0, 6)
+--	local item2 = spawnedUnit:AddItemByName("item_slot_locked")
+--	spawnedUnit:SwapItems(0, 7)
+--	local item3 = spawnedUnit:AddItemByName("item_slot_locked")
+--	spawnedUnit:SwapItems(0, 8)
 	
 end
 
