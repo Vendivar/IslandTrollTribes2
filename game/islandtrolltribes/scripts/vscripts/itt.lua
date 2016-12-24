@@ -272,9 +272,21 @@ end
 
  --disables rosh pit
 function ITT:UnblockMammoth()
-    print("Trying to delete any old bosses")
-
     mammothBoss = CreateUnitByName("npc_boss_mammoth", Vector(0,0,10), true, nil, nil, DOTA_TEAM_NEUTRALS)
+end
+
+function ITT:ClearGhosts()
+local unitList = "npc_dota_hero_wisp"
+local foundUnits = Entities:FindAllByClassnameWithin("npc_dota_creature", Vector(0,0,0), 10000)
+
+    if #foundUnits > 0 then
+        print("found some ghosts")
+        for _,foundUnit in pairs(foundUnits) do 
+			if foundUnit:GetUnitName() == "npc_dota_hero_wisp" then		
+			print("clearing ghost",foundunit)
+			end
+        end
+    end
 end
 
 function ITT:KillMammoth()
@@ -601,12 +613,14 @@ function ITT:SetHerosIntoEndScreen( teamID )
             if team == teamID then
                 local hero = PlayerResource:GetSelectedHeroEntity(playerID)
                 if hero:IsAlive() then
+					EndAnimation(hero)
+					hero:Stop()
 					hero:RemoveModifierByName("modifier_cold2")
 					hero:RemoveModifierByName("modifier_frozen")
                     hero:SetAbsOrigin(vec_start + vec_step * ind)
                     hero:SetAngles(0,-90,0)
-					EndAnimation(hero)
-                    ind = ind + 1
+                    ind = ind + 1    
+					StartAnimation(hero, {duration=30, activity=ACT_DOTA_VICTORY, rate=1})
                 end
             end
         end
@@ -929,6 +943,7 @@ function ITT:OnGameRulesStateChange()
         GameRules:SetHeroRespawnEnabled( false )
         RandomUnpickedPlayers()
         ITT:UnblockMammoth()
+		ITT:ClearGhosts()
         EmitGlobalSound("get_ready")
        -- ShowCustomHeaderMessage("#NoobTimeOver", -1, -1, 5)
 		Notifications:TopToAll({text="#NoobTimeOver", image="file://{images}/materials/particle/alert.psd", duration=5.0})

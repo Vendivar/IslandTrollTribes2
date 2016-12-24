@@ -3,7 +3,7 @@
 {
 	"BaseClass"             "ability_datadriven"
     "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-    "AbilityTextureName"    "ability_beastmaster_releasepet"
+    "AbilityTextureName"    "custom/ability_beastmaster_releasepet"
     "AbilityCastPoint"      "0"
     "AbilityCooldown"       "0"
     "AbilityManaCost"       "0"

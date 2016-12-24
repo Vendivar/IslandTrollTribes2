@@ -48,7 +48,7 @@ function SpiritAttacked(keys)
 	
 		if not attacker:IsHero() then	
 		ApplyDamage({victim = attacker, attacker = caster, damage = 2, damage_type = DAMAGE_TYPE_MAGICAL, })		
-		attacker:AddNewModifier(caster, ability, "modifier_spiritofthebeastslow", {duration = 3, hidden = false})
+		ability:ApplyDataDrivenModifier(caster, attacker, 'modifier_spiritofthebeastslow', {duration = 3})
 		end
 end
 

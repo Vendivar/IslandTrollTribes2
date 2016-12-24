@@ -411,7 +411,7 @@
 	    "IdleSoundLoop" ""
 	    "VoiceFile" ""
 
-	    "Ability1" "dummy_passive"
+	    "Ability1" ""
 		"Ability2" ""
 		"Ability3" ""
 		"Ability4" ""
@@ -423,5 +423,8 @@
 		"StatusHealth"	"150000"
 		"VisionDaytimeRange" "0"
 		"VisionNighttimeRange" "0"
+		"MinimapIcon"				"minimap_boat"
+		"MinimapIconSize"			"0"
+		"MinimapDisableTint"		"1"
 	}
 }

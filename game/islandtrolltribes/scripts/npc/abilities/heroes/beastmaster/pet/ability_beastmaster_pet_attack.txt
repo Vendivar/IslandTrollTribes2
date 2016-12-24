@@ -3,7 +3,7 @@
 {
     "BaseClass"             "ability_datadriven"
     "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE | DOTA_ABILITY_BEHAVIOR_TOGGLE"
-    "AbilityTextureName"    "ability_beastmaster_pet_attack"
+    "AbilityTextureName"    "custom/ability_beastmaster_pet_attack"
     "AbilityCastPoint"      "0"
     "AbilityCooldown"       "0"
     "AbilityManaCost"       "0"

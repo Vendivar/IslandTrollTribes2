@@ -16,3 +16,14 @@ function KillTrap ( keys )
 	caster:AddEffects(EF_NODRAW) --Hide it, so that it's still accessible after this script
     caster:ForceKill(true)
 end
+
+function TrapCheck ( keys )
+    local target = keys.target
+    local caster = keys.caster
+	local ability = keys.ability
+
+    if not (string.find(target:GetUnitName(), "elk") or string.find(target:GetUnitName(), "fish") or string.find(target:GetUnitName(), "hawk")) then
+	ability:ApplyDataDrivenModifier(caster, target, 'modifier_trap_ensnare', {})
+	print("found target for trap")
+	end
+end

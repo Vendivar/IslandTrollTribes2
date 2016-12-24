@@ -4,6 +4,8 @@
 	"ConsideredHero"	"0"
 	"ModelScale"	"0.40"
 	"Model"	"models/creeps/neutral_creeps/n_creep_thunder_lizard/n_creep_thunder_lizard_big.vmdl"
+	"SoundSet"					"Lizard"
+	"GameSoundsFile"               "soundevents/creeps.vsndevts"
 	"Level"	"7"
 	"vscripts"	"units/ai/aggressive_neutral_ai.lua"
 	"Ability1"	"ability_lizard_poisonattack"

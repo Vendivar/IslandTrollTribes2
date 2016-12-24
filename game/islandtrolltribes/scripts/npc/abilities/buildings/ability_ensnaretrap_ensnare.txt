@@ -9,12 +9,26 @@
 		{
 			"IsHidden"	"1"
 			"Passive"	"1"
-			"Aura"	"modifier_trap_ensnare"
+			"Aura"	"modifier_trap_ensnare_check"
 			"Aura_Radius"	"35"
             "Aura_Teams"  "DOTA_UNIT_TARGET_TEAM_ENEMY"
             "Aura_Types"  "DOTA_UNIT_TARGET_HERO"
             //"Aura_Flags"  "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 			"Aura_ApplyToCaster"	"0"
+		}
+		
+		"modifier_trap_ensnare_check"
+		{
+		"IsHidden"	"1"
+		 "OnCreated" 
+            {
+			"RunScript"
+                {
+                    "ScriptFile"    "items/trap_ensnare.lua"
+                    "Function"      "TrapCheck"
+					"Target"         "TARGET"
+                }
+			}
 		}
 
 		"modifier_trap_ensnare"

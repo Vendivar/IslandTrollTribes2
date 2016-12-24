@@ -178,7 +178,7 @@
         "error_cant_carry_more_boots"			"Can not carry any more boots."
         "error_cant_carry_more_gloves"			"Can not carry any more gloves."
         "error_cant_carry_more_coat"			"Can not carry any more coats."
-        "error_cant_carry_more_axesshields"  	Can not carry any more axes or shields."
+        "error_cant_carry_more_axesshields"  	"Can not carry any more axes or shields."
         "error_cant_carry_more_axes"			"Can not carry any more axes."
         "error_cant_carry_more_scrolls"			"Can not carry any more scrolls."
         "error_cant_drop"						"Can't drop here."
@@ -302,10 +302,11 @@
         //  <h1>text</h1> header1, <h2>text</h2> header2
         //  <i> italic/underlined.
         //  Styles can be changed in custom_loading_screen.css
-        "loading_screen_change_text" "<h1>LATEST CHANGES</h1><i>Version 1.2.1</i><br>
+        "loading_screen_change_text" "<h1>LATEST CHANGES</h1><i>Version 1.2.2</i><br>
 <h2>Mechanics:</h2>
-Voting / Hero Pick Fixed<br>
+Voting and Hero Pick Fixed<br>
 Backpack Disabled<br>
+Added new creep sounds<br>
 Various backend fixes.<br><br>
 
 <h2>Abilities & Heroes:</h2>
@@ -313,13 +314,14 @@ Icons: Potential fix deployed.<br>
 Potential fix for losing abilities.<br><br>
 
 <h2>Buildings:</h2>
-N/A<br><br>
+Spirit Ward: Added sound effect<br><br>
 
 <h2>Items:</h2>
 Icons: Potential fix deployed<br><br>
 <h2>Other:</h2>
+Traps: Now traps properly go off on creeps.<br>
 Added gold indicator UI.<br>
-Continuing to try to fix 7.0 issues, please file bug reports via the Steam Workshop Bug disucssion (not the main page) or our forums.<br><br>"
+There might be a small amount of 7.0 issues, please file bug reports via the Steam Workshop Bug disucssion (not the main page) or our forums.<br><br>"
 
 
 
@@ -347,7 +349,7 @@ Continuing to try to fix 7.0 issues, please file bug reports via the Steam Works
                 "Gamemode_confirm" "Confirm vote"
                 "Gamemode_confirmed" "Voted!"
                 "Gamemode_votingend" "Voting has ended. Game starts in {s:time}..."
-								"Gamemode_votingendnotimer" "Game has already begun."
+				"Gamemode_votingendnotimer" "Game has already begun."
                 "Gamemode_notvoted_header" "Players that have not voted:"
                 "Gamemode_voted_header" "Votes:"
                 "Gamemode_final_votes_header" "Final votes"

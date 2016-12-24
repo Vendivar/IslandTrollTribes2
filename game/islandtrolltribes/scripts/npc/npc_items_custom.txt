@@ -2496,6 +2496,21 @@
 	        {
 	            "var_type"    "FIELD_INTEGER"
 	            "max_stacks"    "6"
+	        }		
+			"02"
+	        {
+	            "var_type"    "FIELD_INTEGER"
+	            "step_damage"    "5"
+	        }
+			"03"
+	        {
+	            "var_type"    "FIELD_INTEGER"
+	            "slow_duration"    "10"
+	        }		
+			"04"
+	        {
+	            "var_type"    "FIELD_INTEGER"
+	            "slow_amount"    "15"
 	        }
 	    }
 	
@@ -2567,6 +2582,16 @@
 	        {
 	            "var_type"    "FIELD_INTEGER"
 	            "max_stacks"    "6"
+	        }
+			"02"
+	        {
+	            "var_type"    "FIELD_INTEGER"
+	            "bleed_damage"    "5"
+	        }
+			"03"
+	        {
+	            "var_type"    "FIELD_INTEGER"
+	            "step_damage"    "55"
 	        }
 	    }
 		"OnSpellStart"

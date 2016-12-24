@@ -4,6 +4,7 @@
 	"ConsideredHero"	"0"
 	"ModelScale"	"1.25"
 	"Model"	"models/heroes/lycan/summon_wolves.vmdl"
+	"SoundSet"					"Lycan_Wolf"
 	"Level"	"6"
 	"vscripts"	"units/ai/aggressive_neutral_ai.lua"
 	"Ability1"	"ability_wander"

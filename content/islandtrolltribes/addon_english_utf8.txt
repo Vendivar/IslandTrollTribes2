@@ -131,7 +131,7 @@
 		"DOTA_Tooltip_ability_item_bush_herb_yellow"                                      "Yellow Herb Bush"
 		"DOTA_Tooltip_ability_item_bush_herb_yellow_Description"                          ""
 
-		"DOTA_Tooltip_ability_item_bush_river"                                            "Water Bush"
+		"DOTA_Tooltip_ability_item_bush_river"                                            "River Bush"
 		"DOTA_Tooltip_ability_item_bush_river_Description"                                ""
 
 		"DOTA_Tooltip_ability_item_bush_scout"                                            "Scout Bush"
@@ -2963,7 +2963,10 @@
 "DOTA_Tooltip_modifier_horn_debuff"                                               "Horn of the Mammoth Debuff"
 "DOTA_Tooltip_modifier_horn_debuff_Description"                                   "Losing 10%% movespeed, 3 armor and 5 to all stats!"
 
-		
+"DOTA_Tooltip_modifier_stunned"                                                   "Stunned"
+"DOTA_Tooltip_modifier_stunned_Description"                                       ""
+
+	
 
 
 
@@ -3975,19 +3978,5 @@
         
 		"DOTA_Chat_Item_Spotted" "[ALLIES] <font color='%s1'>%s2</font> dropped here."
 		"DOTA_Chat_Item_Alert" "[ALLIES] Gather for <font color='%s1'>%s2</font> here."
-        
-		"DOTA_Modifier_Alert"		"[ALLIES] %s1: Affected by: <font color='%s2'>%s3%s4</font>"
-		"DOTA_Modifier_Alert_Enemy"	"[ALLIES] %s1: Enemy <font color='%s5'>%s6</font> affected by: <font color='%s2'>%s3%s4</font>"
-		"DOTA_EnemyAbility_Ping"				"[ALLIES] %s1: Beware <font color='%s2'>%s3</font> %s4%s5"
-        "DOTA_Ability_Ping_Unlearned"			"[ALLIES] %s1: %s2 %s3Not Learned"
-		"DOTA_Ability_Ping_Ready"				"[ALLIES] %s1: %s2 %s3Ready ( Level %s4 )"
-		"DOTA_Ability_Ping_ReadyPassive"		"[ALLIES] %s1: %s2 %s3Passive ( Level %s4 )"
-		"DOTA_Ability_Ping_Mana"				"[ALLIES] %s1: %s2 %s3Not Enough Mana ( Need %s4 more )"
-		"DOTA_Ability_Ping_Cooldown"			"[ALLIES] %s1: %s2 %s3On Cooldown ( %s4 seconds remain )"		
-		"DOTA_Ability_Ping_Cooldown_No_Time"	"[ALLIES] %s1: %s2 %s3On Cooldown"	
-		"DOTA_Item_Ping_Ready"					"[ALLIES] %s1: <font color='%s2'>%s3</font> %s4Ready"
-		"DOTA_Item_Ping_ReadyPassive"			"[ALLIES] %s1: <font color='%s2'>%s3</font> %s4Ready"
-		"DOTA_Item_Ping_Mana"					"[ALLIES] %s1: <font color='%s2'>%s3</font> %s4Not Enough Mana ( Need %s5 more )"
-		"DOTA_Item_Ping_Cooldown"				"[ALLIES] %s1: <font color='%s2'>%s3</font> %s4On Cooldown ( %s5 seconds remain )"
 	}
 }

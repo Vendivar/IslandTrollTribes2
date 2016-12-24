@@ -3,7 +3,7 @@
 {
 	"BaseClass"             "ability_datadriven"
     "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-    "AbilityTextureName"    "ability_beastmaster_sleep"
+    "AbilityTextureName"    "custom/ability_beastmaster_sleep"
     "AbilityCastPoint"      "0"
     "AbilityCooldown"       "30"
     "AbilityManaCost"       "0"

@@ -3321,12 +3321,26 @@
 			{
 				"IsHidden"	"1"
 				"Passive"	"1"
-				"Aura"	"modifier_trap_ensnare"
+				"Aura"	"modifier_trap_ensnare_check"
 				"Aura_Radius"	"35"
 	            "Aura_Teams"  "DOTA_UNIT_TARGET_TEAM_ENEMY"
 	            "Aura_Types"  "DOTA_UNIT_TARGET_HERO"
 	            //"Aura_Flags"  "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 				"Aura_ApplyToCaster"	"0"
+			}
+			
+			"modifier_trap_ensnare_check"
+			{
+			"IsHidden"	"1"
+			 "OnCreated" 
+	            {
+				"RunScript"
+	                {
+	                    "ScriptFile"    "items/trap_ensnare.lua"
+	                    "Function"      "TrapCheck"
+						"Target"         "TARGET"
+	                }
+				}
 			}
 	
 			"modifier_trap_ensnare"
@@ -3522,12 +3536,26 @@
 			{
 				"IsHidden"	"1"
 				"Passive"	"1"
-				"Aura"	"modifier_irontrap_ensnare"
+				"Aura"	"modifier_irontrap_ensnare_check"
 				"Aura_Radius"	"35"
 	            "Aura_Teams"  "DOTA_UNIT_TARGET_TEAM_ENEMY"
 	            "Aura_Types"  "DOTA_UNIT_TARGET_HERO"
 	            //"Aura_Flags"  "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 				"Aura_ApplyToCaster"	"0"
+			}
+			
+			"modifier_irontrap_ensnare_check"
+			{
+			"IsHidden"	"1"
+			 "OnCreated" 
+	            {
+				"RunScript"
+	                {
+	                    "ScriptFile"    "items/trap_iron.lua"
+	                    "Function"      "TrapCheck"
+						"Target"         "TARGET"
+	                }
+				}
 			}
 	
 			"modifier_irontrap_ensnare"
@@ -3732,7 +3760,7 @@
 	{
 	    "BaseClass"             "ability_datadriven"
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
-	    "AbilityTextureName"    "ability_building_packup"
+	    "AbilityTextureName"    "custom/ability_building_packup"
 	    "AbilityCooldown"       "1.0"
 	    "AbilityChannelTime"    "1.0"
 	    "AbilityManaCost"       "0"
@@ -6320,7 +6348,7 @@
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"-5"
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"-30"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"-15"
 				}
 	
 				"ThinkInterval"	"2"
@@ -6725,7 +6753,7 @@
 	{
 	    "BaseClass"             "ability_datadriven"
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE | DOTA_ABILITY_BEHAVIOR_TOGGLE"
-	    "AbilityTextureName"    "ability_beastmaster_pet_attack"
+	    "AbilityTextureName"    "custom/ability_beastmaster_pet_attack"
 	    "AbilityCastPoint"      "0"
 	    "AbilityCooldown"       "0"
 	    "AbilityManaCost"       "0"
@@ -6754,7 +6782,7 @@
 	{
 		"BaseClass"             "ability_datadriven"
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE | DOTA_ABILITY_BEHAVIOR_TOGGLE"
-	    "AbilityTextureName"    "ability_beastmaster_pet_follow"
+	    "AbilityTextureName"    "custom/ability_beastmaster_pet_follow"
 	    "AbilityCastPoint"      "0"
 	    "AbilityCooldown"       "0"
 	    "AbilityManaCost"       "0"
@@ -6783,7 +6811,7 @@
 	{
 		"BaseClass"             "ability_datadriven"
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE | DOTA_ABILITY_BEHAVIOR_TOGGLE"
-	    "AbilityTextureName"    "ability_beastmaster_pet_stay"
+	    "AbilityTextureName"    "custom/ability_beastmaster_pet_stay"
 	    "AbilityCastPoint"      "0"
 	    "AbilityCooldown"       "0"
 	    "AbilityManaCost"       "0"
@@ -6963,7 +6991,7 @@
 	{
 		"BaseClass"             "ability_datadriven"
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE | DOTA_ABILITY_BEHAVIOR_TOGGLE"
-	    "AbilityTextureName"    "ability_pet_collect_items"
+	    "AbilityTextureName"    "custom/ability_pet_collect_items"
 	    "AbilityCastPoint"      "0"
 	    "AbilityCooldown"       "0"
 	    "AbilityManaCost"       "0"
@@ -7022,7 +7050,7 @@
 	{
 		"BaseClass"             "ability_datadriven"
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-	    "AbilityTextureName"    "ability_beastmaster_releasepet"
+	    "AbilityTextureName"    "custom/ability_beastmaster_releasepet"
 	    "AbilityCastPoint"      "0"
 	    "AbilityCooldown"       "0"
 	    "AbilityManaCost"       "0"
@@ -7042,7 +7070,7 @@
 	{
 		"BaseClass"             "ability_datadriven"
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	    "AbilityTextureName"    "ability_beastmaster_sleep"
+	    "AbilityTextureName"    "custom/ability_beastmaster_sleep"
 	    "AbilityCastPoint"      "0"
 	    "AbilityCooldown"       "30"
 	    "AbilityManaCost"       "0"
@@ -20317,6 +20345,7 @@
 			"dummy_modifier"
 			{
 				"Passive"	"1"
+				"IsHidden"	"1"
 				"States"
 				{
 					"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
@@ -20340,6 +20369,7 @@
 			"dummy_modifier"
 			{
 				"Passive"	"1"
+				"IsHidden"	"1"
 				"States"
 				{
 					"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"

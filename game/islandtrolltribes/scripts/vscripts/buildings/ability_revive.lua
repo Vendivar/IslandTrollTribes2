@@ -18,9 +18,10 @@ function ability_revive:GetChannelTime()
 		local channelParticle = ParticleManager:CreateParticle("particles/custom/spirit_ward_rez_green.vpcf", PATTACH_ABSORIGIN_FOLLOW, self)	
 		ParticleManager:SetParticleControl(channelParticle, 0, self:GetAbsOrigin())
 		ParticleManager:SetParticleControl(channelParticle, 1, Vector(reviveTime,0,0))
-		
+		EmitSoundOn( "spiritward.revive.channel", self )
 		
 		  Timers:CreateTimer(reviveTime, function()
+	
      ParticleManager:DestroyParticle(channelParticle,false)
     end
   )

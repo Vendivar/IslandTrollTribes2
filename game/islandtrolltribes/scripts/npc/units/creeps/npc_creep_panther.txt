@@ -5,6 +5,8 @@
 	"ModelScale"	"1.00"
 	"Model"	"models/heroes/beastmaster/beastmaster_beast.vmdl"
 	"Level"	"10"
+	"SoundSet"					"Panther"
+	"GameSoundsFile"               "soundevents/creeps.vsndevts"
 	"vscripts"	"units/ai/aggressive_neutral_ai.lua"
 	"Ability1"	""
 	"Ability2"	""

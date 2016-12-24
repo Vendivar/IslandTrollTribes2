@@ -4,6 +4,7 @@
 	"ConsideredHero"	"0"
 	"ModelScale"	"0.85"
 	"Model"	"models/items/lycan/ultimate/sirius_curse/sirius_curse.vmdl"
+	"SoundSet"					"Lycan_Wolf"
 	"Level"	"12"
 	"Ability1"	"ability_wolf_lifesteal"
 	"Ability2"	"ability_wander"
