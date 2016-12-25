@@ -1,8 +1,6 @@
 "use strict";
 
 (function () {
-	$('#UpkeepText').AddClass('Green');
-	$('#UpkeepText').text = $.Localize( "#no_upkeep" );
 	UpdateGold();
 })();
 

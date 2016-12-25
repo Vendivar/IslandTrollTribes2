@@ -1,0 +1,10 @@
+<root>
+    <styles>
+        <include src="file://{resources}/styles/custom_game/toolkit_container.css" />
+    </styles>
+    <Panel class="ToolkitRoot" hittest="false">
+        <Panel id="ToolkitRootBody">
+            <Label id="HelpToggleIcon" text="?"/>
+        </Panel>
+    </Panel>
+</root>

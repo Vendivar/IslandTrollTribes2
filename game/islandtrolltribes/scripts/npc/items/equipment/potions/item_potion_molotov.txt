@@ -10,7 +10,7 @@
     "Effect"                    "particles/custom/dropped_item_normal.vpcf"
     "AoERadius"                 "650"
     "AbilityCastRange"          "1200"
-    "AbilityChannelTime"        "2.5"
+    "AbilityChannelTime"        "1.5"
     "AbilityCastPoint"          "0"
     "AbilityCastAnimation"      "ACT_DOTA_ATTACK"
     "AbilityCooldown"           "25"

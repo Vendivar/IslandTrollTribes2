@@ -227,6 +227,7 @@
 		"modifier_cold2"
 		{
         "Attributes"       "MODIFIER_ATTRIBUTE_MULTIPLE"
+		"TextureName"           "custom/frozen"
 		"EffectName" "particles/generic_gameplay/generic_slowed_cold.vpcf"
 		"StatusEffectName" "particles/status_fx/status_effect_frost_lich.vpcf"
 			"IsDebuff"	"1"

@@ -7,7 +7,7 @@
     </scripts>
     <Panel class="HelpButtonRoot" hittest="false">
         <Panel id="HelpToggleButton" onactivate="ToggleHelp()">
-            <Label id="HelpToggleIcon" text="?"/>
+            <Label id="HelpToggleIcon" text="#Toggle_Help"/>
         </Panel>
     </Panel>
 </root>

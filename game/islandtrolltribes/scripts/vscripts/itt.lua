@@ -275,19 +275,6 @@ function ITT:UnblockMammoth()
     mammothBoss = CreateUnitByName("npc_boss_mammoth", Vector(0,0,10), true, nil, nil, DOTA_TEAM_NEUTRALS)
 end
 
-function ITT:ClearGhosts()
-local unitList = "npc_dota_hero_wisp"
-local foundUnits = Entities:FindAllByClassnameWithin("npc_dota_creature", Vector(0,0,0), 10000)
-
-    if #foundUnits > 0 then
-        print("found some ghosts")
-        for _,foundUnit in pairs(foundUnits) do 
-			if foundUnit:GetUnitName() == "npc_dota_hero_wisp" then		
-			print("clearing ghost",foundunit)
-			end
-        end
-    end
-end
 
 function ITT:KillMammoth()
     print("Trying to move and delete mammoth and duck")
@@ -669,12 +656,7 @@ function ITT:OnPlayerConnectFull(keys)
             if level == 6 then
                 local particleName = "particles/units/heroes/hero_keeper_of_the_light/keeper_of_the_light_spirit_form_ambient.vpcf"
                 hero.subclassAvailableParticle = ParticleManager:CreateParticleForTeam(particleName, PATTACH_ABSORIGIN_FOLLOW, hero, hero:GetTeamNumber())
-
-				local player = PlayerResource:GetPlayer(hero:GetPlayerID())
-				hero.subclassAvailableParticle2 = ParticleManager:CreateParticle("particles/custom/sub_select_ready.vpcf", PATTACH_EYES_FOLLOW, player, player)
-				ParticleManager:SetParticleControl(hero.subclassAvailableParticle2, 1, Vector(1,0,0))
-
-
+			
                 EmitSoundOnClient("SubSelectReady", PlayerResource:GetPlayer(playerID))
             end
         end
@@ -943,7 +925,6 @@ function ITT:OnGameRulesStateChange()
         GameRules:SetHeroRespawnEnabled( false )
         RandomUnpickedPlayers()
         ITT:UnblockMammoth()
-		ITT:ClearGhosts()
         EmitGlobalSound("get_ready")
        -- ShowCustomHeaderMessage("#NoobTimeOver", -1, -1, 5)
 		Notifications:TopToAll({text="#NoobTimeOver", image="file://{images}/materials/particle/alert.psd", duration=5.0})

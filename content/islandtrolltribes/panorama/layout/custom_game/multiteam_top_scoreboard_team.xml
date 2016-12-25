@@ -29,7 +29,7 @@
 				<Panel hittest="false" id="TeamDarkenWash" />
 				<Panel hittest="false" id="LogoAndScore">
 					<Panel hittest="false" id="TeamLogo" />
-					<Label hittest="false" id="TeamScore" text="999"/>
+					<Label hittest="false" id="TeamScore" text=""/>
 				</Panel>
 			</Panel>
 		</Panel>

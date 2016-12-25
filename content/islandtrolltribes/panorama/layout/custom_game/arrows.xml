@@ -8,8 +8,8 @@
     <Panel class="ArrowRoot" hittest="false">
       <Panel id="Help_Arrows" hittest="false">
         <Panel class="Arrow_ToggleArrows" hittest="false">
-          <Panel class="arrow_up" hittest="false" />
-          <Panel class="arrowhead_up" hittest="false" />
+          <Panel class="arrow_right" hittest="false" />
+          <Panel class="arrowhead_right" hittest="false" />
         </Panel>
         <Label class="Arrowtext_ToggleArrows" hittest="false" text="#Arrow_ToggleArrows" />
         <Panel class="Arrow_Crafting" hittest="false">
@@ -47,11 +47,7 @@
           <Panel class="arrowhead_down" hittest="false" />
         </Panel>
         <Label class="Arrowtext_Panic" hittest="false" text="#Arrow_Panic"  html="true"/>
-        <Panel class="Arrow_Subclass" hittest="false">
-          <Panel class="arrow_right" hittest="false" />
-          <Panel class="arrowhead_right" hittest="false" />
-        </Panel>
-        <Label class="Arrowtext_Subclass" hittest="false" text="#Arrow_Subclass"/>
+        
       </Panel>
     </Panel>
 </root>

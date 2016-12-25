@@ -21,3 +21,4 @@ function ToggleArrows() {
         ArrowButton.AddClass("Hidden")
     }
 })();
+

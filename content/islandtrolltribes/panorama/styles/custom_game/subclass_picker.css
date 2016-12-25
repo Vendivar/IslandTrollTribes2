@@ -1,7 +1,9 @@
 .SubclassRoot
 {
     width: 100%;
-    height: 100%;
+    height: 100%;	
+	
+	
 }
 
 .Hidden
@@ -12,10 +14,18 @@
 
 #TogglePicker
 {
-    width: 80px;
-    height: 80px;
-    horizontal-align: right;
-    vertical-align: bottom; 
+    width: 185px;
+    height: 55px;
+	horizontal-align: right;
+	margin-right: 85px;
+	margin-top: 765px;
+	vertical-align: center;
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #9a881f  ), to( #b4a32d  ) );
+    border: 5px solid #b4a32d;
+	box-shadow: #ffffff80 4px 4px 8px 0px; 
+	box-shadow: fill #ffffff80 4px 4px 8px 0px; 
+	box-shadow: inset #333333b0 0px 0px 8px 12px; 
+    border-radius: 10px;
 }
 
 .Hover
@@ -27,12 +37,34 @@
 
 .Locked
 {
-    saturation: 0;
+	opacity: 0;
 }
 
 .Unlocked
 {
-    saturation: 1;
+	opacity: 1;
+	animation-name: sub_ready;
+    animation-duration: 2s;
+    animation-iteration-count: 50;
+    animation-timing-function: linear;
+}
+
+@keyframes 'sub_ready' {
+  0% {
+    brightness: 1;
+  }
+  20% {
+   brightness: 2;
+  }
+  50% {
+    brightness: 3;
+  }
+  80% {
+    brightness: 2;
+  }
+  100% {
+    brightness: 1;
+  }
 }
 
 #CloseButton
@@ -109,4 +141,18 @@
     text-align: left;
     padding: 25px 20px 0px 5px;
     text-shadow: 0px 0px 3px 3.0 #000000;
+}
+
+.SubclassReadyTitle
+{
+    
+	horizontal-align: right;
+	margin-right: 95px;
+	margin-top: 905px;
+    color: gradient( linear, 0% 0%, 0% 100%, from( #edecea  ), to( #e5e4dc  ) );
+    font-size: 18px;
+    font-family: Goudy Trajan Medium;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 0px 0px 2px 2.5 #000000;
 }

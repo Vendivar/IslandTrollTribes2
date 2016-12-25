@@ -6,8 +6,8 @@
 
 #TopBarScoreboard
 {
-    margin-top: 1px;
-    margin-left: 210px;
+    margin-top: -2px;
+    margin-left: 160px;
     horizontal-align: center;
     vertical-align: top;
     width: 1495px;
@@ -25,7 +25,7 @@
 {
     horizontal-align: left;
     vertical-align: top;
-    height: 55px;
+    height: 67px;
     width: 100%;
     flow-children: right;
 }
@@ -48,7 +48,7 @@
 #RightSideTeams
 {
     horizontal-align: right;
-    padding-left: 0px;
+    padding-left: -75px;
     width: 50%;
     height: 100%;
     flow-children: right;
@@ -56,7 +56,7 @@
 
 .ScoreboardTeamWrapper
 {
-    width: 285px;
+    width: 300px;
     height: 100%;
     vertical-align: top;
     horizontal-align: left;
@@ -64,11 +64,12 @@
 
 #ScoreboardTeam
 {
-    padding-left: -5px;
+    padding-left: 25px;
     padding-right: 25px;
     flow-children: right;
     width: 100%;
     height: 100%;
+	
 }
 
 .ScoreboardTeamWrapper.local_player_team #ScoreboardTeam
@@ -78,7 +79,8 @@
 #LogoAndScore
 {
     height: 100%;
-    width: 60px;
+    width: 50px;
+    margin-top: 3px;
 }
 
 #TeamScore
@@ -87,7 +89,7 @@
     vertical-align: top;
     margin-top: 3px;
     color: white;
-    font-size: 28px;
+    font-size: 35px;
     font-weight: bold;
     text-shadow: 1px 1px 1px black;
     margin-bottom: -2px;
@@ -110,6 +112,11 @@
     flow-children: right;
     width: 100%;
     height: 100%;
+    background-color: #000000f0;
+	border: 4px solid #111111FF;
+    border-radius: 5px;
+	margin-right: -5px;
+	margin-left: 5px;
 }
 
 #TeamColorBar
@@ -148,7 +155,7 @@
 
 .ScoreboardPlayerWrapper
 {
-    width: 36px;
+    width: 50px;
     height: 100%;
 }
 
@@ -210,8 +217,8 @@
 
 DOTAAvatarImage
 {
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
     background-color: black;
     border: 2px solid black;
 }
@@ -274,7 +281,7 @@ DOTAAvatarImage
 }
 #HealthBar
 {
-    background-color: red;
+    background-color: green;
     width: 100%;
     height: 100%;
     visibility: collapse;
@@ -306,7 +313,7 @@ DOTAAvatarImage
 }
 #HeatBar
 {
-    background-color: orange;
+    background-color: red;
     width: 50%;
     height: 100%;
     visibility: collapse;

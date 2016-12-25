@@ -9,7 +9,8 @@
         $.Msg( "Compiled Panorama Subclass Picker!" );
     </script>
     <Panel hittest="false" class="SubclassRoot">
-        <Image onactivate="TogglePicker()" onmouseover="MouseOverPicker()" onmouseout="MouseOutPicker()" id="TogglePicker" src="file://{images}/subclass_picker/levelup.png" />
+        <Image onactivate="TogglePicker()" onmouseover="MouseOverPicker()" onmouseout="MouseOutPicker()" id="TogglePicker" />
+		<Label id="SubclassReadyTitle" class="SubclassReadyTitle" onmouseover="MouseOverPicker()" onmouseout="MouseOutPicker()" text="#SubclassReadyText"/>
 
         <Panel id="SubclassPicker">
             <Image src="file://{images}/subclass_picker/background.png" />

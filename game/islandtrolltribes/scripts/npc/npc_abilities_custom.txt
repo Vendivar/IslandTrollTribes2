@@ -5116,7 +5116,7 @@
 	        "5"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"degen_rate"	"-150"
+				"degen_rate2"	"-1.5"
 			}
 	        
 		}
@@ -5456,17 +5456,17 @@
 				"var_type"	"FIELD_FLOAT"
 				"move_speed"	"35"
 			}
-	
 			"04"
-			{
-				"var_type"	"FIELD_FLOAT"
-				"degen_rate"	"-120"
-			}
-			"05"
 			{
 				"var_type"	"FIELD_FLOAT"
 				"magic_resist"	"25"
 			}
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"degen_rate2"	"-1.3"
+			}
+	
 	
 		}
 	
@@ -6668,7 +6668,7 @@
 				"ModelName"	    "models/heroes/lycan/lycan_wolf.vmdl"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"-1.3"
+					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"-1.4"
 					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed"
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"%move_speed"
 					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%attack_damage"
@@ -6743,7 +6743,7 @@
 	        "04"
 	        {
 				"var_type"	"FIELD_FLOAT"
-				"degen_rate"	"-135"
+				"degen_rate2"	"-1.4"
 			}
 		}
 	

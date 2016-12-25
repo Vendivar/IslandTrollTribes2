@@ -76,7 +76,7 @@
 
 		"ApplyModifier"
 		{
-			"Duration"	"stun_duration_creep"
+			"Duration"	"%stun_duration_creep"
 			"ModifierName"	"modifier_stunned"
 			"Target"
 			{

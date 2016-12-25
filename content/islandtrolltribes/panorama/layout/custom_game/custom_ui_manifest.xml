@@ -9,6 +9,7 @@
       GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_TOP_HEROES, false );
       //GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_TOP_TIMEOFDAY, true );
       //GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_INVENTORY_ITEMS, false );      //Hides items to use panorama inventory replication
+	  GameUI.SetDefaultUIEnabled(  DotaDefaultUIElement_t.DOTA_DEFAULT_UI_TOP_BAR_BACKGROUND , false );
 
 	  GameUI.SetCameraDistance( 1500 ) //Added default zoom levels
 
@@ -34,8 +35,10 @@
         <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/death_notification.xml" />
         <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/revive_notification.xml" />
         <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/subclass_picker.xml" />
-        <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/toolkit.xml" />
         <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/building_helper.xml" />
+        <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/toolkit_container.xml" />
+        <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/toolkit.xml" />
+        <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/resource.xml" />
         <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/arrows.xml" />
         <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/arrow_toggle_button.xml" />
         <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/help_toggle_button.xml" />
@@ -53,7 +56,6 @@
         <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/containers/container_base.xml" />
         <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/modmaker/modmaker.xml" />
         <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/selection.xml" />
-        <CustomUIElement type="Hud"                 layoutfile="file://{resources}/layout/custom_game/resource.xml" />
 
         <CustomUIElement type="GameInfo"            layoutfile="file://{resources}/layout/custom_game/images.xml" />
     </Panel>

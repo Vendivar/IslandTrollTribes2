@@ -102,6 +102,7 @@
         "RandomClass"          "Random Class"
 
         "SubclassSelectText"   "Choose Subclass"
+        "SubclassReadyText"   "Choose Subclass!"
 
         "hunter_sub1_name" "Tracker"
         "hunter_sub1_desc" "The Tracker is an expert at locating, following, and locking down unsuspecting prey. He can use his several tracking skills to locate and keep tabs on unseen enemies.\n\n\nFunction: Hunting, Combat, Tracking Enemies Initial Ability: Ensnare\nLearnable Abilities: Greater Track, Dysentery Track, Sniff, Hide Tracking Beacon, Query Beacon\nBase Damage: 18-18\nAttack Cooldown: 1.75\nMovement Speed: 350"
@@ -304,9 +305,10 @@
         //  Styles can be changed in custom_loading_screen.css
         "loading_screen_change_text" "<h1>LATEST CHANGES</h1><i>Version 1.2.2</i><br>
 <h2>Mechanics:</h2>
-Voting and Hero Pick Fixed<br>
+Voting and hero pick fixed.<br>
 Backpack Disabled<br>
-Added new creep sounds<br>
+Added new creep sounds.<br>'
+Possible gravestone fix.<br>
 Various backend fixes.<br><br>
 
 <h2>Abilities & Heroes:</h2>
@@ -397,6 +399,7 @@ There might be a small amount of 7.0 issues, please file bug reports via the Ste
 "Arrow_Panic" "Pa<font color='#00CC00'>N</font>ic"
 "Arrow_Subclass" 	"Subclass Selection"
 "General_Info" 	"Press 'P' to drop all items.<b><b>"
+"Toggle_Help" "Toggle Help"
 
     "Stop_Tutorial" "Exit tutorial"
 
@@ -406,7 +409,7 @@ There might be a small amount of 7.0 issues, please file bug reports via the Ste
 • Crafting<br>
 • Combat<br><br><br>
 <h2>Surviving your first night:</h2><br>
-It is important to help your team to gather the components required to build a fire. Alongside that it is important to set up your teams base! You can have any number of bases you choose but it is good to start with one solid one.<br><br>
+It is important to help your team to gather the components required to build a fire. Alongside that it is important to set up your teams base! You can have any number of bases you choose but it is good to start with one solid one. Remember! There's more then the wild to worry about! The enemy team can come for you at any moment!<br><br>
 <h2>Crafting:</h2><br>
 The resources you find in world can be crafted into a number of helpful things that will propel your team into victory. You can take a look at the master crafting menu by pressing C or by clicking on the tab on the left side of the screen.<br><br>
 <h2>Combat:</h2><br>

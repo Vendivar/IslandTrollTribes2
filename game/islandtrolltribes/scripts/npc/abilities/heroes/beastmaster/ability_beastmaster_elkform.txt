@@ -196,17 +196,17 @@
 			"var_type"	"FIELD_FLOAT"
 			"move_speed"	"35"
 		}
-
 		"04"
-		{
-			"var_type"	"FIELD_FLOAT"
-			"degen_rate"	"-120"
-		}
-		"05"
 		{
 			"var_type"	"FIELD_FLOAT"
 			"magic_resist"	"25"
 		}
+		"05"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"degen_rate2"	"-1.3"
+		}
+
 
 	}
 

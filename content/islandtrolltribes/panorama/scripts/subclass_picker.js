@@ -16,6 +16,8 @@ function UnlockSubclassPick() {
     $.Msg("Player ",Players.GetLocalPlayer()," unlocked subclass")
     $("#TogglePicker").RemoveClass("Locked")
     $("#TogglePicker").AddClass("Unlocked")
+    $("#SubclassReadyTitle").RemoveClass("Locked")
+    $("#SubclassReadyTitle").AddClass("Unlocked")
 	var hero_name = Entities.GetUnitName(Players.GetPlayerHeroEntityIndex( Players.GetLocalPlayer() ))
     class_name = heroToClass[hero_name]
     locked = false;
@@ -38,6 +40,7 @@ function ShowSubclassPick() {
 
 function ChooseSubclass(num) {
     GameEvents.SendCustomGameEventToServer( "player_selected_subclass", { subclassID : num } );
+    $("#SubclassReadyTitle").AddClass("Hidden")
     $("#SubclassPicker").AddClass("Hidden")
     $("#TogglePicker").AddClass("Hidden") //Could be made into a different image/button for subclass-related stuff
 }
@@ -64,12 +67,14 @@ function TogglePicker() {
     {
         $("#SubclassPicker").RemoveClass("Hidden")
         $("#TogglePicker").AddClass("Hover")
+        $("#SubclassReadyTitle").AddClass("Hover")
         ShowSubclassPick()
     }
     else
     {
         $("#SubclassPicker").AddClass("Hidden")
         $("#TogglePicker").RemoveClass("Hover")
+        $("#SubclassReadyTitle").RemoveClass("Hover")
     }
 }
 
@@ -79,12 +84,14 @@ function ClosePicker() {
     subclassPickerVisible = false;
     $("#SubclassPicker").AddClass("Hidden")
     $("#TogglePicker").RemoveClass("Hover")
+    $("#SubclassReadyTitle").RemoveClass("Hover")
 }
 
 function MouseOverPicker() {
     if (!subclassPickerVisible && !locked)
     {
         $("#TogglePicker").AddClass("Hover")
+        $("#SubclassReadyTitle").AddClass("Hover")
     }
 }
 
@@ -92,6 +99,7 @@ function MouseOutPicker() {
     if (!subclassPickerVisible && !locked)
     {
         $("#TogglePicker").RemoveClass("Hover")
+        $("#SubclassReadyTitle").RemoveClass("Hover")
     }
 }
 
@@ -99,6 +107,7 @@ function MouseOutPicker() {
     $.Msg("Subclass Picker Load")
 
     $("#TogglePicker").AddClass("Locked")
+    $("#SubclassReadyTitle").AddClass("Locked")
     $("#SubclassPicker").AddClass("Hidden")
     subclassPickerVisible = false;
     

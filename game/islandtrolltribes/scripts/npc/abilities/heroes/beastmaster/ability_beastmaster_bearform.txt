@@ -201,7 +201,7 @@
         "5"
 		{
 			"var_type"	"FIELD_FLOAT"
-			"degen_rate"	"-150"
+			"degen_rate2"	"-1.5"
 		}
         
 	}

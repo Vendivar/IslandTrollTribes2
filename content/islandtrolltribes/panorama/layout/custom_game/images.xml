@@ -22,6 +22,7 @@
 		
 		
         <Image style="opacity:0;" src="file://{images}/custom_game/gold_icon.png" />
+        <Image style="opacity:0;" src="file://{images}/toolkit/toolkit_hud.png" />
 
         <Image style="opacity:0;" src="file://{images}/subclass_picker/levelup.png" />
         <Image style="opacity:0;" src="file://{images}/subclass_picker/levelupbloom.png" />
@@ -466,16 +467,6 @@
 <Image style="opacity:0;" src="file://{images}/spellicons/ability_thief_tele_thief.png" />
 <Image style="opacity:0;" src="file://{images}/spellicons/ability_thief_throwingknife.png" />
 <Image style="opacity:0;" src="file://{images}/spellicons/generic_stun.png" />
-<Image style="opacity:0;" src="file://{images}/spellicons/WC3_blade_dance.png" />
-<Image style="opacity:0;" src="file://{images}/spellicons/WC3_blade_fury.png" />
-<Image style="opacity:0;" src="file://{images}/spellicons/WC3_Endurance.png" />
-<Image style="opacity:0;" src="file://{images}/spellicons/WC3_mirror_image.png" />
-<Image style="opacity:0;" src="file://{images}/spellicons/WC3_peon.png" />
-<Image style="opacity:0;" src="file://{images}/spellicons/WC3_Peonbuild.png" />
-<Image style="opacity:0;" src="file://{images}/spellicons/WC3_reincarnation.png" />
-<Image style="opacity:0;" src="file://{images}/spellicons/WC3_shockwave.png" />
-<Image style="opacity:0;" src="file://{images}/spellicons/WC3_Warstomp.png" />
-<Image style="opacity:0;" src="file://{images}/spellicons/WC3_Wind_Walk.png" />
 
 
 

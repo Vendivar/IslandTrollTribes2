@@ -1,4 +1,3 @@
-
 "item_thistles"
 {
 	"ID"	"1014"

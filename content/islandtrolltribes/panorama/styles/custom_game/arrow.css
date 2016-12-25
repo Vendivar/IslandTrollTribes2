@@ -6,7 +6,7 @@
     vertical-align: top;
     horizontal-align: right;
     margin-right: 40px;
-    margin-top: 2px;
+    margin-top: 50px;
     width: 100%;
     height: 100%;
     z-index: 1;
@@ -14,11 +14,13 @@
 
 #ArrowToggleButton
 {
-    padding: 4px;
-    width: 240px;
-    height: 40px;
-    vertical-align: top;
+    padding: 0px;
+    width: 110px;
+    height: 50px;
+    vertical-align: bottom;
     horizontal-align: right;
+    margin-bottom: -4px;
+    margin-right: 116px;
 
     background-image: url("s2r://panorama/images/class_picker/pick.png");
     background-size: 100% 100%;
@@ -31,7 +33,7 @@
 #ArrowToggleIcon
 {
     color: gradient( linear, 0% 0%, 0% 100%, from( #FFFFFF ), to( #686868 ) );
-    font-size: 16px;
+    font-size: 13px;
     font-family: Goudy Trajan Medium;
     font-weight: bold;
     text-align: center;
@@ -61,17 +63,17 @@
 }
 
 .Arrow_ToggleArrows {
+  vertical-align: bottom;
   horizontal-align: right;
-  vertical-align: top;
-  x: -150px;
-  y: 40px;
+  x: -280px;
+  y: -15px;
 }
 
 .Arrowtext_ToggleArrows {
   horizontal-align: right;
-  vertical-align: top;
-  x: -168px;
-  y: 202.5px;
+  vertical-align: bottom;
+  x: -495px;
+  y: -15px;
   color: gradient(linear, 0% 100%, 0% 0%, from(#f9f9f9), to(#939393));
   font-size: 24px;
 
@@ -87,8 +89,8 @@
 }
 
 .Arrowtext_Crafting {
-  x: 383px;
-  y: 127px;
+  x: 385px;
+  y: 145px;
   color: gradient(linear, 0% 100%, 0% 0%, from(#f9f9f9), to(#939393));
   font-size: 24px;
 
@@ -100,16 +102,16 @@
 .Arrow_Heat {
   horizontal-align: center;
   vertical-align: center;
-  x: 46px;
-  y: 220px;
+  x: 56px;
+  y: 250px;
   flow-children: down;
   margin-left: -40px;
 }
 .Arrowtext_Heat {
   horizontal-align: center;
   vertical-align: center;
-  x: -129px;
-  y: 140px;
+  x: -100px;
+  y: 170px;
 
   color: gradient(linear, 0% 100%, 0% 0%, from(#f9f9f9), to(#939393));
   font-size: 24px;
@@ -123,7 +125,7 @@
   horizontal-align: center;
   vertical-align: center;
   x: 95px;
-  y: 220px;
+  y: 250px;
 
   flow-children: down;
   margin-left: -30px;
@@ -131,8 +133,8 @@
 .Arrowtext_Meat {
   horizontal-align: center;
   vertical-align: center;
-  x: 200px;
-  y: 140px;
+  x: 184px;
+  y: 170px;
 
   color: gradient(linear, 0% 100%, 0% 0%, from(#f9f9f9), to(#939393));
   font-size: 24px;
@@ -145,16 +147,16 @@
 .Arrow_Sleep {
   vertical-align: center;
   horizontal-align: right;
-  x: -175px;
-  y: 280px;
+  x: -235px;
+  y: 320px;
 
   flow-children: down;
 }
 .Arrowtext_Sleep {
   vertical-align: center;
   horizontal-align: right;
-  x: -193px;
-  y: 205px;
+  x: -235px;
+  y: 240px;
 
   color: gradient(linear, 0% 100%, 0% 0%, from(#f9f9f9), to(#939393));
   font-size: 24px;
@@ -167,16 +169,16 @@
 .Arrow_Eat {
   vertical-align: center;
   horizontal-align: right;
-  x: -125px;
-  y: 246px;
+  x: -175px;
+  y: 286px;
 
   flow-children: down;
 }
 .Arrowtext_Eat {
   vertical-align: center;
   horizontal-align: right;
-  x: -143px;
-  y: 136px;
+  x: -175px;
+  y: 175px;
 
   color: gradient(linear, 0% 100%, 0% 0%, from(#f9f9f9), to(#939393));
   font-size: 24px;
@@ -189,16 +191,16 @@
 .Arrow_DropMeat {
   vertical-align: center;
   horizontal-align: right;
-  x: -75px;
-  y: 205px;
+  x: -120px;
+  y: 245px;
 
   flow-children: down;
 }
 .Arrowtext_DropMeat {
   vertical-align: center;
   horizontal-align: right;
-  x: -93px;
-  y: 55px;
+  x: -120px;
+  y: 93px;
 
   color: gradient(linear, 0% 100%, 0% 0%, from(#f9f9f9), to(#939393));
   font-size: 24px;
@@ -212,8 +214,8 @@
 .Arrow_Panic {
   vertical-align: center;
   horizontal-align: right;
-  x: 220px;
-  y: 164px;
+  x: 180px;
+  y: 220px;
 
   flow-children: down;
 }
@@ -221,8 +223,8 @@
 .Arrowtext_Panic {
   vertical-align: center;
   horizontal-align: right;
-  x: -43px;
-  y: -26px;
+  x: -65px;
+  y: 14px;
 
   color: gradient(linear, 0% 100%, 0% 0%, from(#f9f9f9), to(#939393));
   font-size: 24px;
@@ -235,19 +237,19 @@
 .Arrow_Subclass {
   vertical-align: bottom;
   horizontal-align: right;
-  x: -80px;
-  y: -20px;
+  x: -280px;
+  y: -150px;
 }
 .Arrowtext_Subclass {
   vertical-align: bottom;
   horizontal-align: right;
-  x: -224px;
-  y: -38px;
+  x: -473px;
+  y: -150px;
 
   color: gradient(linear, 0% 100%, 0% 0%, from(#f9f9f9), to(#939393));
   font-size: 24px;
 
-  padding: 6px 50px;
+  padding: 6px 35px;
   border: 3px solid #2eb82e;
   background-color: gradient(linear, 100% 100%, 0% 0%, from(#000000), to(#393939));
 }
@@ -309,7 +311,7 @@
 
 .arrow_down_panic {
   width: 20px;
-  height: 380px;
+  height: 350px;
   background-color: gradient(linear, 100% 100%, 0% 0%, from(#000000), to(#393939));
   border: 2px solid #2eb82e;
   margin-bottom: 45px;

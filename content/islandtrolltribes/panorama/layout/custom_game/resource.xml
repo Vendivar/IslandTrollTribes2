@@ -7,6 +7,8 @@
 	</scripts>
 	<script>
 		$.Msg( "Compiled Panorama Resource!" );
+	var top = $.GetContextPanel().GetParent().GetParent().GetParent();
+    top.FindChild("HUDElements").FindChild("quickstats").style.visibility = "collapse";
 	</script>
 	<Panel hittest="false" class='ResourcePanel'>
 		<Panel id="ResourceContainer" >
@@ -18,9 +20,6 @@
 			<Panel class='UpkeepPanel'>
 				<Label id="UpkeepText" text="" html="true" class="TitleFont"/>
 			</Panel>
-		</Panel>
-		<Panel hittest="false" class='UpkeepPanelAnnounce'>
-			<Label hittest="false" id="UpkeepTextAnnounce" text="" html="true" class="TitleFont"/>
 		</Panel>
 	</Panel>
 </root>

@@ -14,34 +14,29 @@
 
 #HelpToggleButton
 {
-    padding: 4px;
-    margin-left: -8px;
-    width: 40px;
-    height: 64px;
-    background-color: #25292f;
-    vertical-align: top;
-    horizontal-align: left;
-    transform: translateY( 50% );
-    transform: translateY( 150px );
-    transition-delay: 0.5s;
-    transition-duration: 0.7s;
-    transition-property: transform, box-shadow, opacity;
-    transition-timing-function: ease-in;
-    box-shadow: fill #00000088 -4px -4px 8px 8px;
-    border-radius: 8px;
+    padding: 0px;
+    width: 110px;
+    height: 50px;
+    vertical-align: bottom;
+    horizontal-align: right;
+    margin-bottom: -4px;
+    margin-right: 45px;
+
+    background-image: url("s2r://panorama/images/class_picker/pick.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
 }
 
 #HelpToggleIcon
 {
-    color: gradient( linear, 0% 0%, 0% 100%, from( #E0E0E0 ), to( #686868 ) );
-    font-size: 32px;
+    color: gradient( linear, 0% 0%, 0% 100%, from( #FFFFFF ), to( #686868 ) );
+    font-size: 13px;
     font-family: Goudy Trajan Medium;
     font-weight: bold;
     text-align: center;
     horizontal-align: center;
     vertical-align: center;
     text-shadow: 0px 0px 4px 4.0 #000000;
-    opacity: 0.4;
     margin-left: 5px;
 }
 
