@@ -124,7 +124,7 @@
 "ability_mage_dementia_runes_invoked"
 {
     "BaseClass"                 "ability_datadriven"
-    "AbilityTextureName"        "ability_mage_dementiarunes"
+    "AbilityTextureName"        "custom/ability_mage_dementiarunes"
     "MaxLevel"                  "1"
 
     "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"

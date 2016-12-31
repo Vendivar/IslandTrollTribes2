@@ -18,6 +18,26 @@
                 "MODIFIER_STATE_NO_HEALTH_BAR"  "MODIFIER_STATE_VALUE_ENABLED"
             }
         }
-    }
+		
+		"modifier_tombstone"
+		{
+            "Passive"   "1"
+            "IsHidden" "1"
+			"OnCreated"
+			{
+				"FireEffect"
+				{
+					"Target"	"CASTER"
+					"EffectName"	"particles/custom/tombstone_spawnspawn.vpcf"
+					"EffectAttachType"	"follow_origin"
+				}
+				"FireSound"
+				{
+					"EffectName"	"tombstone.spawn"
+					"Target"		"CASTER"
+				}
+			}
+		}
+	}
 }
 

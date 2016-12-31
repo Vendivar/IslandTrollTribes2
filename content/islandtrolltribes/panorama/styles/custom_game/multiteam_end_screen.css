@@ -71,7 +71,8 @@
   margin-top: 100px;
   margin-right: 200px;
   flow-children: down;
-  horizontal-align: right;
+    vertical-align: top;
+    horizontal-align: right;
 	flow-children: down;
 }
 

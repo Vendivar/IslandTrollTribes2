@@ -3,7 +3,7 @@
 	"ID"	"1057"
 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"BaseClass"	"item_datadriven"
-	"AbilityTextureName"	"item_gloves_of_haste"
+	"AbilityTextureName"	"custom/gloves_wolf"
 	"Model"	"models/items/kunkka/singsingkunkkaset_gloves/singsingkunkkaset_gloves.vmdl"
 	"Effect"	"particles/custom/dropped_item_normal.vpcf"
 	"ItemCost"	"52"
@@ -46,8 +46,8 @@
 	"Modifiers"
 	{
 		"modifier_gloves_wolf"
-		"TextureName"           "item_gloves_wolf"
 		{
+			"TextureName"           "custom/gloves_wolf"
 			"Passive"	"1"
 			"IsHidden"	"0"
 			"Properties"

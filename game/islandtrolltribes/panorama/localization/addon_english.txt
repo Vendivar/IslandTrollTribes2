@@ -223,14 +223,15 @@
         "item_bush_thief"                                            "Thief Bush"
 
 
-        "npc_ship_merchant_1"                                              "Orc Juggernaut"
-        "npc_ship_merchant_2"                                              "Orc Transport Ship"
-        "npc_ship_merchant_3"                                              "Human Transport Ship"
-        "npc_ship_merchant_4"                                              "Night Elf Frigate"
-        "npc_ship_merchant_5"                                              "Orc Frigate"
-        "npc_ship_merchant_6"                                              "Human Frigate"
-        "npc_ship_merchant_7"                                              "Undead Transport Ship"
-        "compass_used" "used the sonar compass - now pinging merchant ships"
+		"npc_ship_merchant_1"                                              "Mystic Traveller"
+        "npc_ship_merchant_2"                                              "Squawks the Wise"
+        "npc_ship_merchant_3"                                              "Wares McGee"
+        "npc_ship_merchant_4"                                              "Samma the War Hardened"
+        "npc_ship_merchant_5"                                              "Tholyr & Chris P."
+        "npc_ship_merchant_6"                                              "Warnox the Fortified"
+        "npc_ship_merchant_7"                                              "Karalar The Precice"
+		
+        "compass_used" "used the sonar compass - now pinging merchant ships."
 
 
         // Toolkit Abilities
@@ -303,12 +304,12 @@
         //  <h1>text</h1> header1, <h2>text</h2> header2
         //  <i> italic/underlined.
         //  Styles can be changed in custom_loading_screen.css
-        "loading_screen_change_text" "<h1>LATEST CHANGES</h1><i>Version 1.2.2</i><br>
+        "loading_screen_change_text" "<h1>LATEST CHANGES</h1><i>Version 1.2.4</i><br>
 <h2>Mechanics:</h2>
 Voting and hero pick fixed.<br>
-Backpack Disabled<br>
-Added new creep sounds.<br>'
-Possible gravestone fix.<br>
+Backpack disabled.<br>
+Added new creep sounds.<br>
+Gravestone size increased.<br>
 Various backend fixes.<br><br>
 
 <h2>Abilities & Heroes:</h2>
@@ -316,14 +317,15 @@ Icons: Potential fix deployed.<br>
 Potential fix for losing abilities.<br><br>
 
 <h2>Buildings:</h2>
-Spirit Ward: Added sound effect<br><br>
+Spirit Ward: Added sound effect.<br>
+Gravestone: Added effects and reduced targetbox size.<br><br>
 
 <h2>Items:</h2>
-Icons: Potential fix deployed<br><br>
+Fixed glove abuse.<br><br>
 <h2>Other:</h2>
 Traps: Now traps properly go off on creeps.<br>
-Added gold indicator UI.<br>
-There might be a small amount of 7.0 issues, please file bug reports via the Steam Workshop Bug disucssion (not the main page) or our forums.<br><br>"
+Revamped UI.<br>
+Please file bug reports via our forums or the bug discussion topic on the Steam Workshop (Not the main page.)<br><br>"
 
 
 

@@ -7,7 +7,7 @@
     
     "Custom"
     {
-        "ModelScale"    "1.5"
+        "ModelScale"    "1.0"
     }
     
     "ItemInitialCharges"    "0"

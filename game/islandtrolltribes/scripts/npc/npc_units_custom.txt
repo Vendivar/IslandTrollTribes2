@@ -3351,9 +3351,9 @@
 	"gravestone"
 	{
 	    "BaseClass"         "npc_dota_creature"
-	    "Model"             "models/heroes/phantom_assassin/arcana_tombstone.vmdl"
+	    "Model"             "models/gravestone_old.vmdl"
 	    "Level"             "1"
-	    "ModelScale"        "1.65"
+	    "ModelScale"        "0.7"
 	    "Ability1"          "ability_gravestone"
 	    "ArmorPhysical"     "0"
 	    "MagicalResistance" "0"

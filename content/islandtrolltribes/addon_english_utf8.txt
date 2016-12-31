@@ -60,7 +60,7 @@
 		"npc_hero_priest_sage"					"Sage"		
         "npc_hero_priest_sage_spirit"           "Sage Spirit"
 		"npc_ghost"								"Ghost"
-		"npc_building_tower_omni"				"Building Tower Omni"
+		"npc_building_tower_omni"				"Omni Defender Tower"
 		"npc_clay_living"						"Living Clay"		
 		"npc_scout_ward"						"Scout Ward"
 		"npc_beehive_lesser"					"Lesser Beehive"		
@@ -147,13 +147,13 @@
 		"DOTA_Tooltip_ability_item_bush_thistle_Description"                              ""
    
         
-        "npc_ship_merchant_1"                                              "Orc Juggernaut"
-        "npc_ship_merchant_2"                                              "Orc Transport Ship"
-        "npc_ship_merchant_3"                                              "Human Transport Ship"
-        "npc_ship_merchant_4"                                              "Night Elf Frigate"
-        "npc_ship_merchant_5"                                              "Orc Frigate"
-        "npc_ship_merchant_6"                                              "Human Frigate"
-        "npc_ship_merchant_7"                                              "Undead Transport Ship"
+        "npc_ship_merchant_1"                                              "Mystic Traveller"
+        "npc_ship_merchant_2"                                              "Squawks the Wise"
+        "npc_ship_merchant_3"                                              "Wares McGee"
+        "npc_ship_merchant_4"                                              "Samma the War Hardened"
+        "npc_ship_merchant_5"                                              "Tholyr and Chris P."
+        "npc_ship_merchant_6"                                              "Warnox the Fortified"
+        "npc_ship_merchant_7"                                              "Karalar The Precice"
 
         
         
@@ -294,16 +294,6 @@
 "DOTA_Tooltip_Ability_ability_beastmaster_bash_Description"		"A fearsome bear with an enormous size, it grants a 20% chance to bash its target for 1 second."
 
 
-"DOTA_Tooltip_Ability_ability_beastmaster_bearform"		"Shapeshift to Bear Form"
-"DOTA_Tooltip_ability_ability_beastmaster_bearform_attack_speed"		"%ATTACK SPEED:"
-"DOTA_Tooltip_ability_ability_beastmaster_bearform_attack_damage"		"+DAMAGE BONUS:"
-"DOTA_Tooltip_ability_ability_beastmaster_bearform_health_bonus"		"HEALTH BONUS:"
-"DOTA_Tooltip_ability_ability_beastmaster_bearform_move_speed"		    "%MOVE SPEED:"
-"DOTA_Tooltip_ability_ability_beastmaster_bearform_degen_rate"	    "%ENERGY DEGEN RATE:"
-"DOTA_Tooltip_Ability_ability_beastmaster_bearform_Description"		"Shapeshifts into a Bear. Drains energy at a faster rate. Gains additional abilities."
-"DOTA_Tooltip_Ability_ability_beastmaster_bearform_Note0"		    "The bonus HP is +50 HP ontop of your max HP. By shapeshifting back if you have less then 50 HP you will die upon being shapeshifted."
-
-
 "DOTA_Tooltip_Ability_ability_beastmaster_calltobattle"		"Call to Battle"
 "DOTA_Tooltip_Ability_ability_beastmaster_calltobattle_armor"		"ARMOR:"
 "DOTA_Tooltip_Ability_ability_beastmaster_calltobattle_damage"		"%DAMAGE:"
@@ -317,6 +307,71 @@
 "DOTA_Tooltip_modifier_calltobattle_Description"                                  "You are called to battle!"
 
 
+
+"DOTA_Tooltip_Ability_ability_beastmaster_howl"		"Wolf Howl"
+"DOTA_Tooltip_ability_ability_beastmaster_howl_armor_reduction"		"ARMOR REDUCTION:"
+"DOTA_Tooltip_ability_ability_beastmaster_howl_attack_speed"		"%ATTACK SPEED REDUCTION:"
+"DOTA_Tooltip_Ability_ability_beastmaster_howl_Description"		"Reduces the armor and attack speed of enemies within range."
+"DOTA_Tooltip_ability_ability_beastmaster_howl_radius"		"RADIUS:"
+"DOTA_Tooltip_modifier_howl"		"Howl"
+"DOTA_Tooltip_modifier_howl_Description"		"Under the effect of howl. Losing -4 armor and -15% attack speed."
+"DOTA_Tooltip_modifier_hunter_challenge_caster"		"Hunter Challenge Caster"
+
+
+"DOTA_Tooltip_Ability_ability_beastmaster_magicimmunity"		"Elk Magic Immunity"
+"DOTA_Tooltip_Ability_ability_beastmaster_magicimmunity_Description"		"Become completely magic immune for a duration."
+"DOTA_Tooltip_ability_ability_beastmaster_magicimmunity_duration"		"DURATION:"
+
+
+"DOTA_Tooltip_Ability_ability_beastmaster_elkform"		            "Shapeshift to Elk form"
+"DOTA_Tooltip_ability_ability_beastmaster_elkform_attack_damage"	"ATTACK DAMAGE:"
+"DOTA_Tooltip_ability_ability_beastmaster_elkform_attack_speed"		"%ATTACK SPEED:"
+"DOTA_Tooltip_ability_ability_beastmaster_elkform_magic_resist"		"%MAGIC RESIST:"
+"DOTA_Tooltip_ability_ability_beastmaster_elkform_degen_rate2"		"ENERGY PER SECOND:"
+"DOTA_Tooltip_Ability_ability_beastmaster_elkform_Description"		"Shapeshifts into an Elk, altering the shape shifter's stats and granting additional abilities. While in this form energy is drained at an accelerated rate."
+"DOTA_Tooltip_ability_ability_beastmaster_elkform_move_speed"		"%MOVE SPEED:"
+"DOTA_Tooltip_modifier_elkform"		"Elkform"
+"DOTA_Tooltip_modifier_elkform_Description"		"Gaining +35 move speed, -4 damage, +10% attack speed, and +25% magic resistance while losing energy at 1.3 mana per second"
+
+
+"DOTA_Tooltip_Ability_ability_beastmaster_wolfform"		"Shapeshift to Wolf Form"
+"DOTA_Tooltip_ability_ability_beastmaster_wolfform_attack_damage"		"+ATTACK DAMAGE:"
+"DOTA_Tooltip_ability_ability_beastmaster_wolfform_attack_speed"		"%ATTACK SPEED:"
+"DOTA_Tooltip_ability_ability_beastmaster_wolfform_degen_rate2"			"ENERGY PER SECOND:"
+"DOTA_Tooltip_ability_ability_beastmaster_wolfform_move_speed"		"%MOVE SPEED:"
+"DOTA_Tooltip_Ability_ability_beastmaster_wolfform_Description"		"Shapeshifts into a Wolf, altering the shape shifter's stats and granting additional abilities. While in this form energy is drained at an accelerated rate."
+"DOTA_Tooltip_modifier_wolfform"		                            "Wolf Form"
+"DOTA_Tooltip_modifier_wolfform_Description"		                "Gaining +10 move speed, +2 damage, +5% attack speed, while losing energy at an rate of 1.4 mana per second."
+
+"DOTA_Tooltip_Ability_ability_beastmaster_bearform"		"Shapeshift to Bear Form"
+"DOTA_Tooltip_ability_ability_beastmaster_bearform_attack_speed"		"%ATTACK SPEED:"
+"DOTA_Tooltip_ability_ability_beastmaster_bearform_attack_damage"		"+DAMAGE BONUS:"
+"DOTA_Tooltip_ability_ability_beastmaster_bearform_health_bonus"		"HEALTH BONUS:"
+"DOTA_Tooltip_ability_ability_beastmaster_bearform_move_speed"		    "%MOVE SPEED:"
+"DOTA_Tooltip_ability_ability_beastmaster_bearform_degen_rate2"	    "ENERGY PER SECOND:"
+"DOTA_Tooltip_Ability_ability_beastmaster_bearform_Description"		"Shapeshifts into a Bear, altering the shape shifter's stats and granting additional abilities. While in this form energy is drained at an accelerated rate."
+"DOTA_Tooltip_Ability_ability_beastmaster_bearform_Note0"		    "The bonus HP is +50 HP ontop of your max HP. By shapeshifting back if you have less then 50 HP you will die upon being shapeshifted."
+"DOTA_Tooltip_Ability_ability_modifier_bear_slam_slow"		"Slammed"
+"DOTA_Tooltip_Ability_ability_modifier_bear_slam_slow_Description"		"Movement and attack speed slowed by 50%."
+"DOTA_Tooltip_Ability_ability_modifier_beastmaster_shortness_evasion"		"Shortness"
+"DOTA_Tooltip_Ability_ability_modifier_beastmaster_shortness_evasion_Description"		"Evasion increased by 18%."
+"DOTA_Tooltip_Ability_ability_modifier_beastmaster_wolfform"		"Wolf Form"
+"DOTA_Tooltip_Ability_ability_modifier_beastmaster_wolfform_Description"		"In Wolf Form. Gained +10% movespeed, +2 bonus damage, and +5% attack speed. Energy loss accelerated by 1.4 mana per second while in this form."
+"DOTA_Tooltip_Ability_ability_modifier_elk_immunity"		"(Elk) Magic Immunity"
+"DOTA_Tooltip_Ability_ability_modifier_elk_immunity_Description"		"Immune to all magic."
+"DOTA_Tooltip_Ability_ability_modifier_elkform"		"Elk Form."
+"DOTA_Tooltip_Ability_ability_modifier_elkform_Description"		"In Elk Form. Gained 35% move speed, -4 bonus damage, +10% attack speed, and +50 bonus HP, and 25% magic resistance. Energy loss accelerated by 1.3 mana per second while in this form."
+
+
+"DOTA_Tooltip_modifier_bearform"		"Bear Form"
+"DOTA_Tooltip_modifier_bearform_Description"		"In bear form. Gained +7 bonus damage, -10% attack speed, and +50 bonus HP. Energy loss accelerated by 1.4 mana per second while in this form."
+
+
+
+"DOTA_Tooltip_Ability_ability_beastmaster_normalform"		"Shapeshift to Normal form"
+"DOTA_Tooltip_Ability_ability_beastmaster_normalform_Description"		"Return to the shapeshifter's normal form."
+"DOTA_Tooltip_Ability_ability_beastmaster_normalform_Note0"		"Return to base form"
+
 "DOTA_Tooltip_Ability_ability_beastmaster_criticalstrike"		            "Wolf Critical strike"
 "DOTA_Tooltip_ability_ability_beastmaster_criticalstrike_crit_bonus"		"%CRIT BONUS:"
 "DOTA_Tooltip_ability_ability_beastmaster_criticalstrike_crit_chance"		"%CRIT CHANCE:"
@@ -326,29 +381,6 @@
 "DOTA_Tooltip_modifier_wolf_lifesteal"		"Lifesteal"
 "DOTA_Tooltip_modifier_wolf_lifesteal_Description"		""
 
-
-
-"DOTA_Tooltip_Ability_ability_beastmaster_elkform"		            "Shapeshift to Elk form"
-"DOTA_Tooltip_ability_ability_beastmaster_elkform_attack_damage"	"ATTACK DAMAGE:"
-"DOTA_Tooltip_ability_ability_beastmaster_elkform_attack_speed"		"%ATTACK SPEED:"
-"DOTA_Tooltip_ability_ability_beastmaster_elkform_magic_resist"		"%MAGIC RESIST:"
-"DOTA_Tooltip_ability_ability_beastmaster_elkform_degen_rate"		"%ENERGY DEGEN RATE:"
-"DOTA_Tooltip_Ability_ability_beastmaster_elkform_Description"		"Shapeshifts into an Elk altering the shape shifter's stats. Drains energy at a 2x rate."
-"DOTA_Tooltip_ability_ability_beastmaster_elkform_move_speed"		"%MOVE SPEED:"
-"DOTA_Tooltip_modifier_elkform"		"Elkform"
-"DOTA_Tooltip_modifier_elkform_Description"		"Gaining +35 move speed, -4 damage, +10% attack speed, and +25% magic resistance while losing energy at 2x rate"
-
-
-"DOTA_Tooltip_Ability_ability_beastmaster_wolfform"		"Shapeshift to Wolf Form"
-"DOTA_Tooltip_ability_ability_beastmaster_wolfform_attack_damage"		"+ATTACK DAMAGE:"
-"DOTA_Tooltip_ability_ability_beastmaster_wolfform_attack_speed"		"%ATTACK SPEED:"
-"DOTA_Tooltip_ability_ability_beastmaster_wolfform_degen_rate"			"%ENERGY DEGEN RATE:"
-
-	
-"DOTA_Tooltip_ability_ability_beastmaster_wolfform_move_speed"		"%MOVE SPEED:"
-"DOTA_Tooltip_Ability_ability_beastmaster_wolfform_Description"		"Shapeshifts into a Wolf. Drains energy at a faster rate. Gains additional abilities."
-"DOTA_Tooltip_modifier_wolfform"		                            "Wolf Form"
-"DOTA_Tooltip_modifier_wolfform_Description"		                "Gaining +10 move speed, +2 damage, +5% attack speed, while losing energy at an rate of -2x"
 
 
 "DOTA_Tooltip_Ability_ability_beastmaster_empathicrage"		"Empathic Rage"
@@ -393,26 +425,6 @@
 
 "DOTA_Tooltip_modifier_fowlplay"		"Fowl play"
 "DOTA_Tooltip_modifier_fowlplay_Description"		"Being affected by fowl play and are unable to attack or cast!"
-
-
-"DOTA_Tooltip_Ability_ability_beastmaster_howl"		"Wolf Howl"
-"DOTA_Tooltip_ability_ability_beastmaster_howl_armor_reduction"		"ARMOR REDUCTION:"
-"DOTA_Tooltip_ability_ability_beastmaster_howl_attack_speed"		"%ATTACK SPEED REDUCTION:"
-"DOTA_Tooltip_Ability_ability_beastmaster_howl_Description"		"Reduces the armor and attack speed of enemies within range."
-"DOTA_Tooltip_ability_ability_beastmaster_howl_radius"		"RADIUS:"
-"DOTA_Tooltip_modifier_howl"		"Howl"
-"DOTA_Tooltip_modifier_howl_Description"		"Under the effect of howl. Losing -4 armor and -15% attack speed."
-"DOTA_Tooltip_modifier_hunter_challenge_caster"		"Hunter Challenge Caster"
-
-
-"DOTA_Tooltip_Ability_ability_beastmaster_magicimmunity"		"Elk Magic Immunity"
-"DOTA_Tooltip_Ability_ability_beastmaster_magicimmunity_Description"		"Become completely magic immune for a duration."
-"DOTA_Tooltip_ability_ability_beastmaster_magicimmunity_duration"		"DURATION:"
-
-
-"DOTA_Tooltip_Ability_ability_beastmaster_normalform"		"Shapeshift to Normal form"
-"DOTA_Tooltip_Ability_ability_beastmaster_normalform_Description"		"Return to the shapeshifter's normal form."
-"DOTA_Tooltip_Ability_ability_beastmaster_normalform_Note0"		"Return to base form"
 
 
 "DOTA_Tooltip_ability_ability_pet_release"                                        "Pet Release"
@@ -563,16 +575,7 @@
 		
 
 
-"DOTA_Tooltip_Ability_ability_modifier_bear_slam_slow"		"Slammed"
-"DOTA_Tooltip_Ability_ability_modifier_bear_slam_slow_Description"		"Movement and attack speed slowed by 50%."
-"DOTA_Tooltip_Ability_ability_modifier_beastmaster_shortness_evasion"		"Shortness"
-"DOTA_Tooltip_Ability_ability_modifier_beastmaster_shortness_evasion_Description"		"Evasion increased by 18%."
-"DOTA_Tooltip_Ability_ability_modifier_beastmaster_wolfform"		"Wolf Form"
-"DOTA_Tooltip_Ability_ability_modifier_beastmaster_wolfform_Description"		"In Wolf Form. Gained +10% movespeed, +2 bonus damage, and +5% attack speed. Energy loss accelerated by 2x while in this form."
-"DOTA_Tooltip_Ability_ability_modifier_elk_immunity"		"(Elk) Magic Immunity"
-"DOTA_Tooltip_Ability_ability_modifier_elk_immunity_Description"		"Immune to all magic."
-"DOTA_Tooltip_Ability_ability_modifier_elkform"		"Elk Form."
-"DOTA_Tooltip_Ability_ability_modifier_elkform_Description"		"In Elk Form. Gained 35% move speed, -4 bonus damage, +10% attack speed, and +50 bonus HP, and 25% magic resistance."
+
 "DOTA_Tooltip_Ability_ability_modifier_empathicrage"		"Empathic Rage"
 "DOTA_Tooltip_Ability_ability_modifier_empathicrage_Description"		"Attack speed and movement speed increased."
 
@@ -598,8 +601,6 @@
 "DOTA_Tooltip_modifier_bear_bash_Description"		"Stunned for 1 second."
 "DOTA_Tooltip_modifier_bear_bash_passive"		"Bear Bash Passive"
 "DOTA_Tooltip_modifier_bear_bash_passive_Description"		"Chance to bash"
-"DOTA_Tooltip_modifier_bearform"		"Bear Form"
-"DOTA_Tooltip_modifier_bearform_Description"		"In bear form. Gained +7 bonus damage, -10% attack speed, and +50 bonus HP. Energy loss accelerated by 2x while in this form."
 "DOTA_Tooltip_modifier_beastmaster_shortness_evasion"		"Shortness Evasion"
 "DOTA_Tooltip_modifier_beastmaster_shortness_evasion_Description"		"Reduced size granting 18% chance to evade a physical attack."
 
@@ -2120,6 +2121,10 @@
 "DOTA_Tooltip_ability_item_boat_building_kit_trap_ensnare"		"Ensnare Trap Kit"
 "DOTA_Tooltip_ability_item_boat_building_kit_trap_ensnare_Description"		"A clever trap placed to aid the trapping of wild animals, or even an enemy troll if you ask nicely."
 "DOTA_Tooltip_ability_item_boat_building_kit_trap_ensnare_Lore"		"Despised by animal-rights activists."
+
+
+
+
 "DOTA_Tooltip_modifier_trap_ensnare"                                              "Ensnared!"
 "DOTA_Tooltip_modifier_trap_ensnare_Description"                                  "Entangled in vines for 2 seconds and taking damage over time!"
 "DOTA_Tooltip_ability_ability_ensnaretrap_ensnare_range"                          "RANGE:"
@@ -2129,8 +2134,14 @@
 "DOTA_Tooltip_ability_ability_ensnaretrap_ensnare_ensnare_duration"               "ENSNARE DURATION:"
 "DOTA_Tooltip_modifier_ensnaretrap_slow"                                          "Ensnare Trap Slow"
 "DOTA_Tooltip_modifier_ensnaretrap_slow_Description"                              "Covered in brambled vines you are slowed by 15%% for 10 seconds"
+"DOTA_Tooltip_ability_item_building_kit_trap_ensnare_step_damage"                 "STEP DAMAGE:"
+"DOTA_Tooltip_ability_item_building_kit_trap_ensnare_slow_duration"               "SLOW DURATION:"
+"DOTA_Tooltip_ability_item_building_kit_trap_ensnare_slow_amount"                 "SLOW AMOUNT:"
 
-		
+"DOTA_Tooltip_ability_item_building_kit_trap_iron_bleed_damage"                   "BLEED DAMAGE:"
+"DOTA_Tooltip_ability_item_building_kit_trap_iron_step_damage"                    "STEP DAMAGE:"
+
+			
 
 "DOTA_Tooltip_ability_ability_irontrap_ensnare"                                   "Ability Irontrap Ensnare"
 "DOTA_Tooltip_ability_ability_irontrap_ensnare_Description"                       ""
@@ -2830,25 +2841,22 @@
 "DOTA_Tooltip_ability_item_gloves_wolf_heat"		"HEAT PER TICK:"
 "DOTA_Tooltip_ability_item_gloves_wolf_Lore"		"Moist and smelly inside."
 "DOTA_Tooltip_ability_item_gloves_wolf_tick_rate"		"TICK RATE:"
-"DOTA_Tooltip_item_gloves_wolf"                                                   "Wolf Skin Gloves"
-"DOTA_Tooltip_item_gloves_wolf_Description"                                       "Gaining a bonus to armor and attack speed, as well as heat every 35 seconds."
-
 	
 
 "DOTA_Tooltip_modifier_gloves_battle"		"Battle Gloves"
-"DOTA_Tooltip_modifier_gloves_battle_Description"		""
-"DOTA_Tooltip_modifier_gloves_bear"		"Bear Gloves"
-"DOTA_Tooltip_modifier_gloves_bear_Description"		""
+"DOTA_Tooltip_modifier_gloves_battle_Description"		"Gaining a bonus to armor and attack speed, as well as heat every 35 seconds."
+"DOTA_Tooltip_modifier_gloves_bear"		"Bear Skin Gloves"
+"DOTA_Tooltip_modifier_gloves_bear_Description"		"Gaining a bonus to armor and attack speed, as well as heat every 35 seconds."
 "DOTA_Tooltip_modifier_gloves_bone"		"Bone Gloves"
-"DOTA_Tooltip_modifier_gloves_bone_Description"		""
-"DOTA_Tooltip_modifier_gloves_elk"		"Elk Gloves"
-"DOTA_Tooltip_modifier_gloves_elk_Description"		""
+"DOTA_Tooltip_modifier_gloves_bone_Description"		"Gaining a bonus to armor and attack speed, as well as heat every 35 seconds."
+"DOTA_Tooltip_modifier_gloves_elk"		"Elk Skin Gloves"
+"DOTA_Tooltip_modifier_gloves_elk_Description"		"Gaining a bonus to armor and attack speed, as well as heat every 35 seconds."
 "DOTA_Tooltip_modifier_gloves_iron"		"Iron Gloves"
-"DOTA_Tooltip_modifier_gloves_iron_Description"		""
+"DOTA_Tooltip_modifier_gloves_iron_Description"		"Gaining a bonus to armor and attack speed, as well as heat every 35 seconds."
 "DOTA_Tooltip_modifier_gloves_steel"		"Steel Gloves"
-"DOTA_Tooltip_modifier_gloves_steel_Description"		""
-"DOTA_Tooltip_modifier_gloves_wolf"		"Wolf Gloves"
-"DOTA_Tooltip_modifier_gloves_wolf_Description"		""
+"DOTA_Tooltip_modifier_gloves_steel_Description"		"Gaining a bonus to armor and attack speed, as well as heat every 35 seconds."
+"DOTA_Tooltip_modifier_gloves_wolf"		"Wolf Skin Gloves"
+"DOTA_Tooltip_modifier_gloves_wolf_Description"		"Gaining a bonus to armor and attack speed, as well as heat every 35 seconds."
 
 
 

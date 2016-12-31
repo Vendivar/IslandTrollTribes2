@@ -16,7 +16,7 @@ end
 -- decayTimeInSec: # of seconds before meat dissapears
 -- meatCreateTimestamp: Gametime timestamp of when the meat is created. This is used for create copies of meat with correct decay timers (picking up a meat with full meat means we need to copy)
 function CreateRawMeatAtLoc(position, stacks, decayTimeInSec, meatCreateTimestamp)
-    local points = GenerateNumPointsAround(stacks, position, 32)
+    local points = GenerateNumPointsAround(stacks, position, 80)
     for i= 1, stacks, 1 do
         local newItem = CreateItem("item_meat_raw", nil, nil)
         local physicalItem =  CreateItemOnPositionSync(points[i], newItem)

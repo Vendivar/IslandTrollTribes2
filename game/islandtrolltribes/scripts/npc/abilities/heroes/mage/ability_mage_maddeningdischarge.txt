@@ -49,7 +49,7 @@
 	{
 			"FireSound"
 			{
-				"EffectName"	 "Hero_Silencer.LastWord.Target"
+				"EffectName"	 "mage.maddeningdischarge"
 				"Target"	"TARGET"
 			}
 		"FireEffect"

@@ -2802,7 +2802,7 @@
 	    
 	    "Custom"
 	    {
-	        "ModelScale"    "1.5"
+	        "ModelScale"    "1.0"
 	    }
 	    
 	    "ItemInitialCharges"    "0"
@@ -5027,7 +5027,7 @@
 		"ID"	"1058"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_gloves_of_haste"
+		"AbilityTextureName"	"custom/gloves_bear"
 		"Model"	"models/items/kunkka/singsingkunkkaset_gloves/singsingkunkkaset_gloves.vmdl"
 		"Effect"	"particles/custom/dropped_item_normal.vpcf"
 		"ItemCost"	"62"
@@ -5071,6 +5071,7 @@
 		{
 			"modifier_gloves_bear"
 			{
+				"TextureName"           "custom/gloves_bear"
 				"Passive"	"1"
 				"IsHidden"	"0"
 				"Properties"
@@ -5219,7 +5220,7 @@
 		"ID"	"1056"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_gloves_of_haste"
+		"AbilityTextureName"	"custom/gloves_elk"
 		"Model"	"models/items/kunkka/singsingkunkkaset_gloves/singsingkunkkaset_gloves.vmdl"
 		"Effect"	"particles/custom/dropped_item_normal.vpcf"
 		"ItemCost"	"38"
@@ -5263,6 +5264,7 @@
 		{
 			"modifier_gloves_elk"
 			{
+				"TextureName"           "custom/gloves_elk"
 				"Passive"	"1"
 				"IsHidden"	"0"
 				"Properties"
@@ -5337,6 +5339,7 @@
 		{
 			"modifier_gloves_iron"
 			{
+				"TextureName"           "custom/gloves_iron"
 				"Passive"	"1"
 				"IsHidden"	"0"
 				"Properties"
@@ -5411,6 +5414,7 @@
 		{
 			"modifier_gloves_steel"
 			{
+				"TextureName"           "custom/gloves_steel"
 				"Passive"	"1"
 				"IsHidden"	"0"
 				"Properties"
@@ -5463,7 +5467,7 @@
 		"ID"	"1057"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_gloves_of_haste"
+		"AbilityTextureName"	"custom/gloves_wolf"
 		"Model"	"models/items/kunkka/singsingkunkkaset_gloves/singsingkunkkaset_gloves.vmdl"
 		"Effect"	"particles/custom/dropped_item_normal.vpcf"
 		"ItemCost"	"52"
@@ -5506,8 +5510,8 @@
 		"Modifiers"
 		{
 			"modifier_gloves_wolf"
-			"TextureName"           "item_gloves_wolf"
 			{
+				"TextureName"           "custom/gloves_wolf"
 				"Passive"	"1"
 				"IsHidden"	"0"
 				"Properties"

@@ -25,6 +25,7 @@
 	{
 		"modifier_gloves_steel"
 		{
+			"TextureName"           "custom/gloves_steel"
 			"Passive"	"1"
 			"IsHidden"	"0"
 			"Properties"
