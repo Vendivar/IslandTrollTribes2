@@ -38,7 +38,7 @@ function TsunamiDestroyFire(keys)
 	local caster = keys.caster
 	
     if string.find(target:GetUnitName(), "npc_building_") then
-        DamageBuilding(target, 25, nil, caster)
+        DamageBuilding(target, 10, nil, caster)
     end
 	
 	if (string.match(targetName,"_fire")) then

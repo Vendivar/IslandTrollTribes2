@@ -106,10 +106,10 @@ function ITT:FilterExecuteOrder( filterTable )
 				if not ability then
 					ability = TeachAbility(hero, abilityName, 1)
 				end
-				if ability:IsFullyCastable() then
+				if ability:IsFullyCastable() and hero:IsRealHero() then
 					hero:SetCursorCastTarget(target)
 					hero:CastAbilityOnTarget(target, ability, hero:GetPlayerOwnerID())
-					 print(hero:GetName().."casting spell, "..ability:GetName()..", on "..target:GetName())
+					 print(hero:GetName().."casting spell, "..ability:GetName()..", on "..target:GetName()) 
 				end
             return CONSUME_EVENT
         end

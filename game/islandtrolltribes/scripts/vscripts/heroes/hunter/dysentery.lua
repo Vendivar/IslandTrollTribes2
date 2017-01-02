@@ -9,5 +9,6 @@ function DysenteryTrackThink(event)
     ParticleManager:SetParticleControl(particle, 0, target:GetAbsOrigin())
     ParticleManager:SetParticleControl(particle, 15, Vector(139,69,19))
 
+	AddFOWViewer(caster:GetTeamNumber(), target:GetAbsOrigin(), 50, fadeTime, false)
     Timers:CreateTimer(fadeTime, function() ParticleManager:DestroyParticle(particle, false) end)
 end

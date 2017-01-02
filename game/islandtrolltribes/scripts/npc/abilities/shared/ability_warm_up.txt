@@ -17,7 +17,6 @@
 
 	"OnSpellStart"
 	{		
-	
 		"ApplyModifier"
 		{
 			"Target"			"TARGET"
@@ -29,13 +28,6 @@
 			"EffectName"    	"Hero_Tidehunter.Idle_bite"
 			"Target"        	"CASTER"
 		}
-		
-		"RemoveModifier"
-		{
-			"Target"			"CASTER"
-			"ModifierName"		"modifier_warmup"
-		}	
-		
 	}
 	
 	"OnChannelSucceeded"
@@ -73,6 +65,7 @@
 			"Passive"    "1"
 			"IsHidden"   "0"
 			"IsPurgable" "0"
+			"Duration" "10"
 			
 			"ThinkInterval"	"1.0"
 			"OnIntervalThink"

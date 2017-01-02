@@ -12,7 +12,6 @@
 	"AbilityCastRange"	"700"
 	"AbilityManaCost"	"0"
 	"MaxLevel"	"1"
-	"RequiredLevel"	"%required_level"
 	"precache"
 	{
 		"particle"	"particles/econ/courier/courier_trail_fungal/courier_trail_fungal_e.vpcf"

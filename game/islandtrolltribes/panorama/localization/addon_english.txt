@@ -304,7 +304,7 @@
         //  <h1>text</h1> header1, <h2>text</h2> header2
         //  <i> italic/underlined.
         //  Styles can be changed in custom_loading_screen.css
-        "loading_screen_change_text" "<h1>LATEST CHANGES</h1><i>Version 1.2.4</i><br>
+        "loading_screen_change_text" "<h1>LATEST CHANGES</h1><i>Version 1.2.5</i><br>
 <h2>Mechanics:</h2>
 Voting and hero pick fixed.<br>
 Backpack disabled.<br>
@@ -314,14 +314,17 @@ Various backend fixes.<br><br>
 
 <h2>Abilities & Heroes:</h2>
 Icons: Potential fix deployed.<br>
-Potential fix for losing abilities.<br><br>
+Potential fix for losing abilities.<br>
+Dysntery Track: Added fx and small vision for trail.<br>
+Tracking Beacon: Added additional ability levels.<br><br>
 
 <h2>Buildings:</h2>
 Spirit Ward: Added sound effect.<br>
 Gravestone: Added effects and reduced targetbox size.<br><br>
 
 <h2>Items:</h2>
-Fixed glove abuse.<br><br>
+Fixed glove abuse.<br>
+Fixed tsunami scroll damage.<br><br>
 <h2>Other:</h2>
 Traps: Now traps properly go off on creeps.<br>
 Revamped UI.<br>

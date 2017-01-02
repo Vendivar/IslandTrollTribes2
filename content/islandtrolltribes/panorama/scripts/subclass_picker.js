@@ -43,6 +43,7 @@ function ChooseSubclass(num) {
     $("#SubclassReadyTitle").AddClass("Hidden")
     $("#SubclassPicker").AddClass("Hidden")
     $("#TogglePicker").AddClass("Hidden") //Could be made into a different image/button for subclass-related stuff
+	locked = true;
 }
 
 function MouseOver(num) {

@@ -10,7 +10,7 @@
 	"AbilityCooldown"	"45.0 40.0 35.0"
 	"AbilityCastRange"	"700"
 	"AbilityManaCost"	"0"
-	"MaxLevel"	"1"
+	"MaxLevel"	"3"
 	"RequiredLevel"	"%required_level"
 	"precache"
 	{

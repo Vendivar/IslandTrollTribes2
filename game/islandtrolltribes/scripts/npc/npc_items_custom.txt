@@ -2943,7 +2943,7 @@
 	        "01"
 	        {
 	            "var_type"      "FIELD_INTEGER"
-	            "bonus_damage"  "9"
+	            "bonus_damage"  "18"
 	        }
 	
 	        "02"
@@ -8578,7 +8578,7 @@
 			"DeleteOnHit"	"0"
 			"Damage"
 			{
-				"Damage"	"25"
+				"Damage"	"15"
 				"Target"	"TARGET"
 				"Type"		"DAMAGE_TYPE_MAGICAL"
 			}

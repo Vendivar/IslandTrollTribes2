@@ -1,12 +1,12 @@
 "ability_hunter_dysenterytrack"
 {
     "BaseClass"                 "ability_datadriven"
-    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
     "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
     "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO"
     "AbilityTextureName"		"custom/ability_hunter_dysenterytrack"
     "AbilityCastAnimation"      "ACT_DOTA_ATTACK"
-    "AbilityCastPoint"          "0.0"
+    "AbilityCastPoint"          "0.5"
     "AbilityCooldown"           "35"
     "AbilityCastRange"          "700"
     "AbilityManaCost"           "0"
@@ -39,15 +39,15 @@
         "TrackingProjectile"
         {
             "Target"         "TARGET"
-            "EffectName"     "particles/units/heroes/hero_tinker/tinker_missile.vpcf"
+            "EffectName"     "particles/custom/unstable_concoction_projectile.vpcf"
             "Dodgeable"      "0"
             "ProvidesVision" "0"
-            "MoveSpeed"      "2000"
+            "MoveSpeed"      "1000"
         }
-        "FireSound"
+		"FireSound"
         {
-            "EffectName"        "Hero_Venomancer.PoisonNova"
-            "Target"            "TARGET"
+            "EffectName"            "molotov.pre"
+            "Target"                "CASTER"
         }
     }
 
@@ -65,7 +65,13 @@
         {
             "EffectName"    "Hero_Venomancer.PoisonNova"
             "Target"        "TARGET"
-        }
+        }		
+		"FireEffect"
+		{
+			"EffectName"    	"particles/custom/viscousgoo.vpcf"
+			"EffectAttachType"  "follow_origin"
+			"Target"    		"TARGET"
+		}
     }
 
     "Modifiers"
@@ -83,7 +89,13 @@
                     "Function"      "DysenteryTrackThink"
                     "Fade"          "%trail_fade_time"
                 }
-            }    
+			} 
+			"AttachEffect"
+			{
+				"EffectName"    	"particles/custom/viscousgoo_drips.vpcf"
+				"EffectAttachType"  "follow_origin"
+				"Target"    		"TARGET"
+			}			
         }
     }
 }

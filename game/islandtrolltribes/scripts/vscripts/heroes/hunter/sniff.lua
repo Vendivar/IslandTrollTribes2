@@ -4,7 +4,7 @@ function SniffInit(keys)
     local ability = keys.ability
     if string.find(target:GetUnitName(), "corpse") then
     else
-        SendErrorMessage(caster:GetPlayerOwnerID(),"#invalid_telegatherer_target")
+        SendErrorMessage(caster:GetPlayerOwnerID(),"#invalid_sniff_target")
         caster:Interrupt()
         ability:StartCooldown(1.0)
     end
