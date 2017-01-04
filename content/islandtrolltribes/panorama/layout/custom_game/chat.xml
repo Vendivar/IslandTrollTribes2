@@ -40,6 +40,7 @@
             multiline="true"
             textmode="normal"
             oninputsubmit="SubmitGameChat()"
+            ontabforward="ChangeMode()"
             maxchars="256"
             oncancel="HideGameChat()"
             onblur="HideGameChat()"

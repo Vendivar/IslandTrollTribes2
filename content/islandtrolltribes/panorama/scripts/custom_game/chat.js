@@ -40,6 +40,17 @@ function AddChatLine(playerName, steamid, color, message, isTeamChat) {
     });
 }
 
+function ChangeMode() {
+    if (GameUI.teamChat) {
+        GameUI.teamChat = false;
+        $("#GameChatEntryType").text = "(ALL) ";
+    }
+    else {
+        GameUI.teamChat = true;
+        $("#GameChatEntryType").text = "(TEAM) ";
+    }
+}
+
 function OnCustomChatSay(args) {
     var color = LuaColor(args.color);
     $.Msg("Message arrived!");

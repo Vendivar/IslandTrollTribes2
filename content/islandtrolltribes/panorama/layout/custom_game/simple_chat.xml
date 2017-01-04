@@ -17,8 +17,19 @@
             });
         }
 
+        function ChangeMode() {
+            if (GameUI.teamChat) {
+                GameUI.teamChat = false;
+                $("#ChatEntryType").text = "(All)";
+            }
+            else {
+                GameUI.teamChat = true;
+                $("#ChatEntryType").text = "(Team)";
+            }
+        }
+
         function SubmitChat() {
-            GameEvents.SendCustomGameEventToServer("custom_chat_say", { message: $("#ChatEntry").text, isTeamChat: false });
+            GameEvents.SendCustomGameEventToServer("custom_chat_say", { message: $("#ChatEntry").text, isTeamChat: GameUI.teamChat });
 
             $("#ChatEntry").text = "";
         }
@@ -61,12 +72,13 @@
     <Panel class="Chat" hittest="false">
         <Panel id="ChatContent" hittest="false">
         </Panel>
-        <Label hittest="false" id="ChatEntryType" text="(All)" />
+        <Label hittest="false" id="ChatEntryType" text="(All) Press Tab to change." />
         <TextEntry
               id="ChatEntry"
               multiline="false"
               textmode="normal"
               oninputsubmit="SubmitChat()"
+              ontabforward="ChangeMode()"
               maxchars="256"
               placeholder="#ChatPlaceholder"/>
     </Panel>

@@ -6,6 +6,7 @@ var PlayerTables = GameUI.CustomUIConfig().PlayerTables;
 
   $("#Wrapper_Chat").BLoadLayout("file://{resources}/layout/custom_game/simple_chat.xml", false, false);
   $("#Wrapper_Chat").RegisterListener("GamemodeSelectionEnter");
+  GameUI.teamChat = false;
 
   PlayerTables.SubscribeNetTableListener("pickingover_" + Players.GetLocalPlayer(), PickingOver);
 

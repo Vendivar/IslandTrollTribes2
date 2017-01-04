@@ -181,32 +181,31 @@ function TeamUpdate(keys) {
 }
 */
 function PickUpdate(table, changes, deletions) {
-	
-
     for (var playerID in changes) {
-		if (Players.GetTeam(parseInt(playerID)) === Players.GetTeam(Game.GetLocalPlayerID())) {
-        var hero = changes[playerID];
+        var id = parseInt(playerID);
+        if (Players.GetTeam(id) === Players.GetTeam(Game.GetLocalPlayerID())) {
+            var hero = changes[playerID];
 
-        if (hero == "gatherer" && gatherers == 0) {
-            gatherers++;
-        }
-        else {
-            $("#btn_" + hero).SetImage( "s2r://panorama/images/class_picker/" + hero + "_full.png" )
-            $("#btn_" + hero).picked = true;
-        }
-
-        SetPlayerAvatar(parseInt(playerID), hero);
-
-        if (currentlySelected == hero) {
-            if ($("#vid_" + currentlySelected)) {
-                $("#vid_" + currentlySelected).visible = false;
+            if (hero == "gatherer" && gatherers == 0) {
+                gatherers++;
             }
-            $("#ClassText").text = "";
-            $("#SelectText").text = $.Localize("SelectText");
-            currentlySelected = "";
+            else {
+                $("#btn_" + hero).SetImage( "s2r://panorama/images/class_picker/" + hero + "_full.png" )
+                $("#btn_" + hero).picked = true;
+            }
+
+            SetPlayerAvatar(id, hero);
+
+            if (currentlySelected == hero) {
+                if ($("#vid_" + currentlySelected)) {
+                    $("#vid_" + currentlySelected).visible = false;
+                }
+                $("#ClassText").text = "";
+                $("#SelectText").text = $.Localize("SelectText");
+                currentlySelected = "";
+            }
         }
     }
-	}
 }
 
 var PlayerTables = GameUI.CustomUIConfig().PlayerTables;

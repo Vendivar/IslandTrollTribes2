@@ -42,12 +42,11 @@
           <Panel class="arrowhead_down" hittest="false" />
         </Panel>
         <Label class="Arrowtext_DropMeat" hittest="false" text="#Arrow_DropMeat"/>
-		 <Panel class="Arrow_Panic" hittest="false">
+		<Panel class="Arrow_Panic" hittest="false">
           <Panel class="arrow_down_panic" hittest="false" />
           <Panel class="arrowhead_down" hittest="false" />
         </Panel>
         <Label class="Arrowtext_Panic" hittest="false" text="#Arrow_Panic"  html="true"/>
-        
       </Panel>
     </Panel>
 </root>

@@ -133,7 +133,7 @@
 .Arrowtext_Meat {
   horizontal-align: center;
   vertical-align: center;
-  x: 184px;
+  x: 185px;
   y: 170px;
 
   color: gradient(linear, 0% 100%, 0% 0%, from(#f9f9f9), to(#939393));
@@ -147,16 +147,16 @@
 .Arrow_Sleep {
   vertical-align: center;
   horizontal-align: right;
-  x: -235px;
-  y: 320px;
+  x: -175px;
+  y: 280px;
 
   flow-children: down;
 }
 .Arrowtext_Sleep {
   vertical-align: center;
   horizontal-align: right;
-  x: -235px;
-  y: 240px;
+  x: -175px;
+  y: 162px;
 
   color: gradient(linear, 0% 100%, 0% 0%, from(#f9f9f9), to(#939393));
   font-size: 24px;
@@ -169,16 +169,16 @@
 .Arrow_Eat {
   vertical-align: center;
   horizontal-align: right;
-  x: -175px;
-  y: 286px;
+  x: -124px;
+  y: 246px;
 
   flow-children: down;
 }
 .Arrowtext_Eat {
   vertical-align: center;
   horizontal-align: right;
-  x: -175px;
-  y: 175px;
+  x: -124px;
+  y: 93px;
 
   color: gradient(linear, 0% 100%, 0% 0%, from(#f9f9f9), to(#939393));
   font-size: 24px;
@@ -191,16 +191,16 @@
 .Arrow_DropMeat {
   vertical-align: center;
   horizontal-align: right;
-  x: -120px;
-  y: 245px;
+  x: -75px;
+  y: 205px;
 
   flow-children: down;
 }
 .Arrowtext_DropMeat {
   vertical-align: center;
   horizontal-align: right;
-  x: -120px;
-  y: 93px;
+  x: -75px;
+  y: 25px;
 
   color: gradient(linear, 0% 100%, 0% 0%, from(#f9f9f9), to(#939393));
   font-size: 24px;
@@ -214,8 +214,8 @@
 .Arrow_Panic {
   vertical-align: center;
   horizontal-align: right;
-  x: 180px;
-  y: 220px;
+  x: 220px;
+  y: 180px;
 
   flow-children: down;
 }
@@ -223,8 +223,8 @@
 .Arrowtext_Panic {
   vertical-align: center;
   horizontal-align: right;
-  x: -65px;
-  y: 14px;
+  x: -25.5px;
+  y: -38px;
 
   color: gradient(linear, 0% 100%, 0% 0%, from(#f9f9f9), to(#939393));
   font-size: 24px;

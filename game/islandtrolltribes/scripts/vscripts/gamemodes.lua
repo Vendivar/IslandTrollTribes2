@@ -5,6 +5,11 @@ function ITT:StartVoting()
     Timers:CreateTimer({
         endTime = 60,
         callback = function()
+            if not ITT.Gamemodevoting then
+                ITT.Gamemodevoting = {}
+                PlayerTables:CreateTable("gamemode_votes", {voting_ended = false}, true)
+            end
+
             if player_amount == 0 or player_amount > #ITT.Gamemodevoting then
                 -- Voting hasn't ended.
                 ITT.voting_ended = true
