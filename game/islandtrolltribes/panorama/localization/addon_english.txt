@@ -114,7 +114,7 @@
         "hunter_sub3_desc" "The Juggernaut specializes in taking hits and defensive tactics, while still maintaining the ability to pack a punch. His policy on battle is that the best offense is a good defense.\n\n\n\n\nFunction: Defensive Combat\nInitial Abilities: Ensnare\nLearnable Abilities: Staying Power\nBase Damage: 16-16\nAttack Cooldown: 1.75\nMovement Speed: 300"
 
         "beastmaster_sub1_name" "Pack Leader"
-        "beastmaster_sub1_desc" "The Pack Leader is a form of true dedication to one's fellow animal, and because of this he can control more than one pet, while focusing on enhancing them rather than himself.\n\n\n\nInitial Abilities: Spirit of the Beast, Tame Pet\nLearnable Abilities: Call to Battle, Empathic Rage\nBase damage: 16-16\nAttack Cooldown: 1.70\nMovement Speed: 340"
+        "beastmaster_sub1_desc" "The Pack Leader is a form of true dedication to one's fellow animal, and because of this he can control more than one pet, while focusing on enhancing them rather than himself.\n\n\n\nInitial Abilities: Spirit of the Beast, Tame Pet\nLearnable Abilities: Call to Battle, Empathic Rage\nBase damage: 16-16\nAttack Cooldown: 1.90\nMovement Speed: 340"
 
         "beastmaster_sub2_name" "Chicken Form"
         "beastmaster_sub2_desc" "The Chicken Form Beastmaster abandons his fragile companion, instead focusing on harrowing the enemy. The Chicken does not directly attack, however several useful abilities make him very potent in combat.\n\n\n\nInitial Ability: Flea Aura Attack\nLearnable Abilities: Shortness, Fowl Play\nBase damage: 1\nAttack Cooldown: 30.00\nMovement Speed: 290"
@@ -206,7 +206,8 @@
         "invalid_hypnosis"                       "Can't use on units that are not hypnotized."
 		"NoobTimeOver" 							"Noob time is now over! Respawning is now disabled! You must revive with a spirit ward!"
 		"error_toomanywards"					"Can't have more then 10 wards"
-        "teammate_frozen"                    "has frozen! Go to them and warm them up or they will die!"
+        "teammate_frozen"                    	"has frozen! Go to them and warm them up or they will die!"
+        "error_telegather_cooldown"				"Telegather must recharge."
 
 
 
@@ -310,13 +311,15 @@ Voting and hero pick fixed.<br>
 Backpack disabled.<br>
 Added new creep sounds.<br>
 Gravestone size increased.<br>
-Various backend fixes.<br><br>
+Various backend fixes.<br>
+Crafting: Fix for naughty crafting.<br><br>
 
 <h2>Abilities & Heroes:</h2>
-Icons: Potential fix deployed.<br>
+Planning phase damage now properly expires.<br>
 Potential fix for losing abilities.<br>
-Dysntery Track: Added fx and small vision for trail.<br>
-Tracking Beacon: Added additional ability levels.<br><br>
+Hunter: Dysntery Track: Added fx and small vision for trail.<br>
+Hunter: Tracking Beacon: Added additional ability levels.<br>
+Theif: Tele-Thief working properly now.<br><br>
 
 <h2>Buildings:</h2>
 Spirit Ward: Added sound effect.<br>

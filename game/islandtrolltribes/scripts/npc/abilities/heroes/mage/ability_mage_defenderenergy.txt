@@ -18,8 +18,8 @@
 		"precache"
 	{
 		"particle_folder"	"particles/units/heroes/hero_wisp"
-		"soundfile"	"sounds/weapons/hero/axe/battle_hunger.vsnd"
-        "soundfile" "soundevents/spells.vsndevts"
+		"soundfile"			"sounds/weapons/hero/axe/battle_hunger.vsnd"
+        "soundfile" 		"soundevents/spells.vsndevts"
 	}
 	
 	"AbilitySpecial"
@@ -206,7 +206,7 @@
 				
 				"FireEffect"
 				{
-					"EffectName"		"particles/units/heroes/hero_wisp/wisp_base_attack_explosion.vpc"
+					"EffectName"		"particles/units/heroes/hero_wisp/wisp_base_attack_explosion.vpcf"
 					"EffectAttachType"	"attach_hitloc"
 					"Target"			"TARGET"
 				}

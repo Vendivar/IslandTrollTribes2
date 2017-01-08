@@ -79,4 +79,5 @@
 			m_ChildRef = resource:"particles/custom/craft_armory_component_2.vpcf"
 		},
 	]
+	m_flConstantLifespan = 10.0
 }

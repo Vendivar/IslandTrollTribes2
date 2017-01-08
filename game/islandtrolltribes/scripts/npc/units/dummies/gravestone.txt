@@ -2,6 +2,7 @@
 {
     "BaseClass"         "npc_dota_creature"
     "Level"             "1"
+	"Model"				"models/gravestone_old.vmdl"
     "Ability1"          "ability_gravestone"
     "ArmorPhysical"     "0"
     "MagicalResistance" "0"

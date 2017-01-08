@@ -151,7 +151,7 @@
         "npc_ship_merchant_2"                                              "Squawks the Wise"
         "npc_ship_merchant_3"                                              "Wares McGee"
         "npc_ship_merchant_4"                                              "Samma the War Hardened"
-        "npc_ship_merchant_5"                                              "Tholyr and Chris P."
+        "npc_ship_merchant_5"                                              "Tholyr & Chris P."
         "npc_ship_merchant_6"                                              "Warnox the Fortified"
         "npc_ship_merchant_7"                                              "Karalar The Precice"
 
@@ -944,6 +944,8 @@
 
 "DOTA_Tooltip_Ability_ability_mage_magefire"		"Mage Fire"
 "DOTA_Tooltip_Ability_ability_mage_magefire_Description"		"Conjures a Mage Fire that heats up faster, has better range and burns down enemy buildings faster. Restores heat at double the rate of normal Fire Lasts 30 seconds."
+"DOTA_Tooltip_modifier_mage_fire_heat"                                            "Mage Fire Heat"
+"DOTA_Tooltip_modifier_mage_fire_heat_Description"                                "Gaining double the heat rate of a normal fire."
 
 
 "DOTA_Tooltip_Ability_ability_mage_metronome"		"Metronome"
@@ -1165,11 +1167,12 @@
 
 "DOTA_Tooltip_Ability_ability_hunter_dysenterytrack"		"Dysentery Track"
 "DOTA_Tooltip_ability_ability_hunter_dysenterytrack_cooldown"		"COOLDOWN:"
-"DOTA_Tooltip_Ability_ability_hunter_dysenterytrack_Description"		"Creates physical footprints on the ground that the Tracker can follow."
+"DOTA_Tooltip_Ability_ability_hunter_dysenterytrack_Description"		"Creates physical matter... on the ground that the Tracker can follow."
+"DOTA_Tooltip_Ability_ability_hunter_dysenterytrack_Lore"		"Its something."
 "DOTA_Tooltip_ability_ability_hunter_dysenterytrack_duration"		"DURATION:"
 "DOTA_Tooltip_ability_ability_hunter_dysenterytrack_trail_fade_time"		"TRAIL FADE TIME:"
 "DOTA_Tooltip_modifier_dynsentery_track"		"Dynsentery Track"
-"DOTA_Tooltip_modifier_dynsentery_track_Description"		""
+"DOTA_Tooltip_modifier_dynsentery_track_Description"		"You can't help whats coming out and they can follow it..."
 
 
 "DOTA_Tooltip_Ability_ability_hunter_endurance"		"Endurance"
@@ -1214,7 +1217,7 @@
 "DOTA_Tooltip_Ability_ability_hunter_querybeacon"		"Query Beacon"
 "DOTA_Tooltip_Ability_ability_hunter_querybeacon_Description"		"Pings the location of the tracking beacon."
 "DOTA_Tooltip_Ability_ability_hunter_sniff"		"Sniff"
-"DOTA_Tooltip_Ability_ability_hunter_sniff_Description"		"Target a recently killed creature's bone or hide to reveal a trail to the enemy by creating physical footprints on the ground that the Tracker can follow."
+"DOTA_Tooltip_Ability_ability_hunter_sniff_Description"		"Target a recently killed creature's corpse to reveal a trail to the enemy by creating physical footprints on the ground that the Tracker can follow."
 "DOTA_Tooltip_Ability_ability_hunter_stayingpower"		"Staying Power"
 "DOTA_Tooltip_Ability_ability_hunter_stayingpower_block_chance"		"BLOCK CHANCE:"
 "DOTA_Tooltip_Ability_ability_hunter_stayingpower_block_damage"		"BLOCK AMOUNT:"
@@ -1678,7 +1681,7 @@
 "DOTA_Tooltip_Ability_ability_thief_netherfade_Description"		"Causes the Contortionist to be banished rendering him immune to physical damage. While nether faded the Contortionist takes 55% increased damage from spells."
 "DOTA_Tooltip_ability_ability_thief_netherfade_duration"		"DURATION:"
 "DOTA_Tooltip_modifier_netherfade"		"Netherfaded"
-"DOTA_Tooltip_modifier_netherfade_Description"		"Immune to physical attack but taking 55% extra damage from spells."
+"DOTA_Tooltip_modifier_netherfade_Description"		"Immune to physical attack but taking 55%% extra damage from spells."
 
 
 
@@ -2087,8 +2090,8 @@
 "DOTA_Tooltip_ability_item_boat_building_kit_fire_basic"		"Camp Fire"
 "DOTA_Tooltip_ability_item_boat_building_kit_fire_basic_Description"		"A basic fire for keeping you warm as well as cooking food."
 "DOTA_Tooltip_ability_item_boat_building_kit_fire_basic_Lore"		"Always ask an adult to light it for you."
-"DOTA_Tooltip_ability_item_boat_building_kit_fire_basic_Note0"		"Restore Heat: (Autocast)\nRestores 8 heat/(time)\nCook Meat:\nTurns all corpses in 600 range into cooked meat.\nPack Up:\nPacks the building back into a fire kit.\nBurn Building: (Passive)\nPassively deals 7 damage/s to all buildings in 125 range."
-"DOTA_Tooltip_ability_item_boat_building_kit_fire_basic_Note0"		"Restore Heat: (Autocast)\n    - Restores 8 heat/(time)\nCook Meat:\n    - Turns all corpses in 600 range into cooked meat.\nPack Up:\n    - Packs the building back into a fire kit.\nBurn Building: (Passive)\n    - Passively deals 7 damage/s to all buildings in 125 range."
+"DOTA_Tooltip_ability_item_boat_building_kit_fire_basic_Note0"		"Restore Heat: (Autocast)\nRestores 8 heat/(time)\nCook Meat:\nTurns all corpses in 600 range into cooked meat.\nPack Up:\nPacks the building back into a fire kit.\nBurn Building: (Passive)"
+"DOTA_Tooltip_ability_item_boat_building_kit_fire_basic_Note0"		"Restore Heat: (Autocast)\n    - Restores 8 heat/(time)\nCook Meat:\n    - Turns all corpses in 600 range into cooked meat.\nPack Up:\n    - Packs the building back into a fire kit.\nBurn Building: (Passive)"
 "DOTA_Tooltip_ability_item_boat_building_kit_hut_basic"		"Troll Hut Kit"
 "DOTA_Tooltip_ability_item_boat_building_kit_hut_basic_Description"		"A comfy hut that allows a good night's sleep."
 "DOTA_Tooltip_ability_item_boat_building_kit_hut_basic_Lore"		"The hut whispers something about your mother.."
@@ -2306,7 +2309,7 @@
 "DOTA_Tooltip_ability_item_boat_scroll_tsunami"		"Scroll of Tsunami"
 "DOTA_Tooltip_ability_item_boat_scroll_tsunami_Description"		"ACTIVE: Tsunami - Conjurers a wave which crashes forward in a line, damaging foes. Does extra damage to mechanical units. Puts out fires.\n<font color='#777777'>Hold ALT to view more information.</font>\n\nWhile looking upon this paper you see swirling runes that denote the method to call upon the forces of wind and water."
 "DOTA_Tooltip_ability_item_boat_scroll_tsunami_Lore"		"An old tale speaks of fishermen who go to work at dawn, only to come back to their entire village destroyed by this spell."
-"DOTA_Tooltip_ability_item_boat_scroll_tsunami_Note0"		"CD 8s\nRange 600/300 in final area (cone)\nWave crashes to point for 25 damage to enemy units in an area, bonus inflicted on structures or mechanical units. Maximum total damage dealt is 200.\nExtinguishes fires."
+"DOTA_Tooltip_ability_item_boat_scroll_tsunami_Note0"		"CD 8s\nRange 600/300 in final area (cone)\nWave crashes to point for 15 damage to enemy units in an area, bonus inflicted on structures or mechanical units. Maximum total damage dealt is 200.\nExtinguishes fires and removes traps."
 "DOTA_Tooltip_ability_item_boat_scroll_tsunami_range"		"RANGE MAX:"
 "DOTA_Tooltip_ability_item_boat_seed_magic"		"Magic Seed"
 "DOTA_Tooltip_ability_item_boat_seed_magic_Description"		"ACTIVE: Conjure Tree - Spontaneously grows a tree in the designated spot.\n\nThis seed has mystical powers about it that cause rapid growth about itself when used."

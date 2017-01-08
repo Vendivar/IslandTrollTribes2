@@ -39,7 +39,7 @@ function ITT:CraftItem(event)
     end
 
     local craftingItems = CanCombine(unit, section, itemName)
-    if craftingItems then
+    if craftingItems and not unit:HasModifier("modifier_recentlycrafted") and not unit:HasModifier("modifier_building_under_construction") then
         -- Clear the inventory items returned by the CanCombine aux
         ClearItems(craftingItems)
 
@@ -67,6 +67,9 @@ function ITT:CraftItem(event)
         FireCombineParticle(unit)
 		FireCombineSound(unit)
 		FireCombineSoundLayer(unit)
+		local item = CreateItem("item_apply_modifiers", unit, unit)
+		item:ApplyDataDrivenModifier(unit, unit, "modifier_recentlycrafted", {duration = 1})
+		
 		print("firing particle",unit)
         unit:EmitSound("General.Combine")
     else

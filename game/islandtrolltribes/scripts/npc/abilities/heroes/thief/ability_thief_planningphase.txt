@@ -113,6 +113,7 @@
             "IsHidden"      "1"
             "IsPurgable"    "0"
             "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Duration" 		"17"
 
             "EffectName"    "particles\units\heroes\hero_ogre_magi\ogre_magi_bloodlust_buff.vpcf"
             "EffectAttachType"    "follow_overhead"

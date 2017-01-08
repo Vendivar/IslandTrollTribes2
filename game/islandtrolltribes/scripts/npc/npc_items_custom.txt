@@ -241,6 +241,21 @@
 				}
 	
 			}
+			"modifier_recentlycrafted"
+	        {
+	            "IsDebuff"  "1"
+				"IsPurgable"       "0"
+				"IsHidden" "1"
+	
+	        }
+			"modifier_recentlytelethiefed"
+	        {
+				"TextureName"           "custom/ability_thief_tele_thief"
+	            "IsDebuff"  "1"
+				"IsPurgable"       "0"
+				"IsHidden" "0"
+	
+	        }
 	        ////////////////////////////////////////////////////////
 	        //                  Subclass Stats                    //
 	        ////////////////////////////////////////////////////////
@@ -256,7 +271,7 @@
 	                "MODIFIER_PROPERTY_MANA_BONUS"   "13" 
 	
 	                "MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"      "2"
-	                "MODIFIER_PROPERTY_BASE_ATTACK_TIME_CONSTANT"   "1.70"
+	                "MODIFIER_PROPERTY_BASE_ATTACK_TIME_CONSTANT"   "1.9"
 	                "MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"    "40"
 	            }
 	        }
@@ -6132,13 +6147,6 @@
 	            "MoveSpeed" "900"
 	            "ProvidesVision" "False"
 	        }
-	
-	        // Can't use SpendCharge before the projectile hits otherwise we lose the ability effects
-	        "RunScript"
-	        {
-	            "ScriptFile"    "items/potion_disease.lua"
-	            "Function"      "SpendCharge"
-	        }
 	    }
 	
 	    "OnProjectileHitUnit"
@@ -6161,6 +6169,11 @@
 	            "ScriptFile"    "items/potion_disease.lua"
 	            "Function"      "Remove"
 	        }
+			
+	
+			"SpendCharge"
+			{
+			}
 	    }
 	
 	    "Modifiers"

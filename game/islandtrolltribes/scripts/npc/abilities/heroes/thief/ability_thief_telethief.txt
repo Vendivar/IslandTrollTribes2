@@ -1,32 +1,19 @@
 "ability_thief_telethief"
 {
 	"BaseClass"						"ability_datadriven"
-	"AbilityTextureName"	"custom/ability_thief_tele_thief"
+	"AbilityTextureName"			"custom/ability_thief_tele_thief"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP"
 	"MaxLevel"						"1"
+    "AbilityCastPoint"				"0.5"
 	"AbilityCooldown"				"120"
 	"AbilityManaCost"				"30"
-	"AbilityCastRange"				"100"
+	"AbilityCastRange"				"200"
 
 	"precache"
 	{
 		"soundfile"				"sounds/weapons/hero/queenofpain/blink_in.vsnd"
-	}
-
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"		"FIELD_INTEGER"
-			"radius"		"300"
-		}
-		"02"
-		{
-			"var_type"		"FIELD_INTEGER"
-			"duration"		"140"
-		}
 	}
 
 	"FireSound"
@@ -47,6 +34,12 @@
 			"mana_cost"		"%AbilityManaCost"
 			"radius"		"%radius"
 		}
+		"FireEffect"
+		{
+			"EffectName"		"particles/custom/teletheif.vpcf"
+			"EffectAttachType"	"follow_origin"
+			"Target"			"CASTER"
+		}
 	}
 
 	"Modifiers"
@@ -55,6 +48,44 @@
 		{
 			"IsHidden"			"0"
 			"IsBuff"			"1"
+			"OnCreated"
+			{
+				"AttachEffect"
+				{
+					"Target"	"CASTER"
+					"EffectName"	"particles/econ/generic/generic_buff_1/generic_buff_1.vpcf"
+					"EffectAttachType"	"follow_overhead"
+					"EffectLifeDurationScale"	"1"
+					"EffectColorA"	"25 25 255"
+				}
+				"FireSound"
+				{
+					"EffectName"   	"thief.telegather"
+					"Target"        "CASTER"
+				}
+
+			}
 		}
 	}
+	
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"		"FIELD_INTEGER"
+			"radius"		"500"
+		}
+		"02"
+		{
+			"var_type"		"FIELD_INTEGER"
+			"duration"		"140"
+		}
+		
+		"03"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"telecooldown"		"5"
+		}
+	}
+
 }

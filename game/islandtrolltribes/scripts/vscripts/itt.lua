@@ -725,24 +725,48 @@ function ITT:OnItemPickedUp(event)
 	
     -- Related to TeleThiefInit
     if hasTelethief then
-
-        local newItem = CreateItem(originalItem:GetName(), nil, nil)
-        local fireLocation = hero.fire_location
-
-        local radius = hero.radius
-        local buildings = FindUnitsInRadius(teamNumber, unit:GetAbsOrigin(), nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BUILDING, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
-
-        if buildings ~= null then
-            print("Teleporting Item", originalItem:GetName())
-            hero:RemoveItem(originalItem)
-			hero:EmitSound("Hero_Zuus.Attack")
-            local itemPosition = targetFire:GetAbsOrigin() + RandomVector(RandomInt(100,150))
-            CreateItemOnPositionSync(itemPosition,newItem)
-            newItem:SetOrigin(itemPosition)
-        else
-            print("Did not find enemy buildings")
-        end
+        local didTeleport = TeleportItemTeletheif(hero,originalItem)
     end
+end
+
+function TeleportItemTeletheif(hero,originalItem)
+    local targetFire = hero.targetFire
+    local newItem = CreateItem(originalItem:GetName(), nil, nil)
+    local teleportSuccess = false
+    local teamNumber = hero:GetTeamNumber()
+    local telegatherBuff = hero:FindModifierByName("modifier_thief_telethief")
+    local telegatherAbility = telegatherBuff:GetAbility()
+    local percentChance = 100
+   --print("Teleporting item : " .. telegatherAbility:GetAbilityName() .. ", " .. percentChance .."% chance")
+
+    local itemList = {"item_tinder", "item_flint", "item_stone", "item_stick", "item_bone", "item_meat_raw", "item_meat_cooked", "item_crystal_mana", "item_ball_clay", "item_hide_elk", "item_hide_wolf", "item_hide_bear", "item_magic_raw", "item_herb_blue", "item_herb_butsu", "item_herb_orange", "item_herb_purple", "item_herb_yellow", "item_thistles", "item_river_root", "item_river_stem", "item_acorn", "item_acorn_magic", "item_mushroom", "item_spirit_water", "item_spirit_wind"}
+	local buildings = FindUnitsInRadius(teamNumber, hero:GetAbsOrigin(), nil, 500, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BUILDING, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
+    
+	local casterOrigin = hero:GetOrigin()
+    local units = FindUnitsInRadius(teamNumber, casterOrigin, nil, 550, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, 0, false)
+	
+	if  hero:HasModifier("modifier_recentlytelethiefed") then
+	SendErrorMessage(hero:GetPlayerOwnerID(),"#error_telegather_cooldown")
+	end
+	if  not hero:HasModifier("modifier_recentlytelethiefed") then
+		for _,enemy in pairs(units) do
+			for key,value in pairs(itemList) do
+				if value == originalItem:GetName() then
+						--print( "Teleporting Item", originalItem:GetName())
+						hero:RemoveItem(originalItem)
+						local itemPosition = targetFire:GetAbsOrigin() + RandomVector(RandomInt(100,150))
+						CreateItemOnPositionSync(itemPosition,newItem)
+						newItem:SetOrigin(itemPosition)
+						hero:EmitSound("Hero_Zuus.Attack")
+						local item = CreateItem("item_apply_modifiers", hero, hero)
+						item:ApplyDataDrivenModifier(hero, hero, "modifier_recentlytelethiefed", {duration = 5.0})
+						teleportSuccess = true
+						return teleportSuccess
+				end
+			end
+			return teleportSuccess
+		end
+	end
 end
 
 function TeleportItem(hero,originalItem)

@@ -57,11 +57,9 @@
 			m_flParticlesPerOrbit = 64.0
 			m_bEvenDistribution = true
 			m_flInitialRadius = 100.0
-			m_nControlPointNumber = 2
 		},
 		{
 			_class = "C_INIT_PositionOffset"
-			m_nControlPointNumber = 2
 			m_OffsetMin = [ 0.0, 0.0, -100.0 ]
 			m_OffsetMax = [ 0.0, 0.0, -100.0 ]
 		},
@@ -74,7 +72,6 @@
 			m_flRadius2 = 10.0
 			m_flRadius1 = 5.0
 			m_nComponent2 = 2
-			m_nControlPointNumber = 2
 		},
 		{
 			_class = "C_INIT_OffsetVectorToVector"

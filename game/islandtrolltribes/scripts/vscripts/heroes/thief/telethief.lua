@@ -9,6 +9,7 @@ function TeleThiefStart( event )
 
     if target:GetUnitName() == "npc_building_fire_basic" or target:GetUnitName() == "npc_building_fire_mage" then
         caster.fire_location = target:GetAbsOrigin()
+        event.caster.targetFire = target
         caster.radius = event.radius
         caster:RemoveModifierByName(modifier)
         ability:ApplyDataDrivenModifier(caster, caster, modifier, {duration = dur})

@@ -58,13 +58,6 @@
             "MoveSpeed" "900"
             "ProvidesVision" "False"
         }
-
-        // Can't use SpendCharge before the projectile hits otherwise we lose the ability effects
-        "RunScript"
-        {
-            "ScriptFile"    "items/potion_disease.lua"
-            "Function"      "SpendCharge"
-        }
     }
 
     "OnProjectileHitUnit"
@@ -87,6 +80,11 @@
             "ScriptFile"    "items/potion_disease.lua"
             "Function"      "Remove"
         }
+		
+
+		"SpendCharge"
+		{
+		}
     }
 
     "Modifiers"

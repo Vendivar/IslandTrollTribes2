@@ -1,0 +1,18 @@
+"ability_recentlycrafted"
+{
+    "BaseClass"             "ability_datadriven"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+    "AbilityTextureName"	"custom/ability_building_cancel"
+
+    "AbilitySharedWithTeammates" "1"
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"	"FIELD_FLOAT"
+			"duration"	"2.0"
+		}
+	}
+
+}
