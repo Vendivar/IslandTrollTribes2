@@ -89,7 +89,6 @@ function ShowTheSpellBook(caster, spellbook)
             end
         end
     end
-    AdjustAbilityLayout(caster)
     ReorderAbilities(caster, spellbook)
 end
 

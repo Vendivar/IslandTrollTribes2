@@ -159,10 +159,12 @@ function ITT:OnHeroInGame( hero )
     TeachAbility(hero, "ability_drop_items")
 
     -- Init Meat, Health and Energy Loss
-    ApplyModifier(hero, "modifier_meat_passive")
-    ApplyModifier(hero, "modifier_hunger_health")
-    ApplyModifier(hero, "modifier_hunger_mana")
-
+	
+	local item = CreateItem("item_apply_modifiers", hero, hero)
+	item:ApplyDataDrivenModifier(hero, hero, "modifier_meat_passive")
+	item:ApplyDataDrivenModifier(hero, hero, "modifier_hunger_health")
+	item:ApplyDataDrivenModifier(hero, hero, "modifier_hunger_mana")
+	
     -- Set Wearables
     ITT:SetDefaultCosmetics(hero)
 
@@ -208,7 +210,7 @@ function ITT:OnHeroRespawn( hero )
     -- Restart Meat tracking
     ApplyModifier(hero, "modifier_meat_passive")
 
-    AdjustAbilityLayout(hero)
+    
 
     -- Kill grave
     if hero.grave then
@@ -297,7 +299,6 @@ function ITT:AdjustSkills( hero )
 	Timers:CreateTimer({
       endTime = 0.5,
       callback = function()
-		AdjustAbilityLayout(hero)
 		EnableSpellBookAbilities(hero)
 		PrintAbilities(hero)
       end

@@ -78,7 +78,7 @@
 		"npc_bush_river"						"River Root Bush"
 		"npc_bush_scout"						"Scout Bush"
 		"npc_bush_stash"						"Hidden Stash"
-		"npc_bush_thief"						"Theif Bush"
+		"npc_bush_thief"						"Thief Bush"
 		"npc_bush_thistle"						"Thistle Bush"
 
 
@@ -305,7 +305,7 @@
         //  <h1>text</h1> header1, <h2>text</h2> header2
         //  <i> italic/underlined.
         //  Styles can be changed in custom_loading_screen.css
-        "loading_screen_change_text" "<h1>LATEST CHANGES</h1><i>Version 1.2.5</i><br>
+        "loading_screen_change_text" "<h1>LATEST CHANGES</h1><i>Version 1.2.5g</i><br>
 <h2>Mechanics:</h2>
 Voting and hero pick fixed.<br>
 Backpack disabled.<br>
@@ -315,11 +315,12 @@ Various backend fixes.<br>
 Crafting: Fix for naughty crafting.<br><br>
 
 <h2>Abilities & Heroes:</h2>
-Planning phase damage now properly expires.<br>
 Potential fix for losing abilities.<br>
 Hunter: Dysntery Track: Added fx and small vision for trail.<br>
 Hunter: Tracking Beacon: Added additional ability levels.<br>
-Theif: Tele-Thief working properly now.<br><br>
+Thief: Planning phase damage now properly expires.<br>
+Thief: Tele-Thief working properly now and added fx.<br>
+Priest: Fix for spray healing<br><br>
 
 <h2>Buildings:</h2>
 Spirit Ward: Added sound effect.<br>

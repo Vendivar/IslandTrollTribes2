@@ -200,7 +200,7 @@ function ITT:InitGameMode()
     local timeTxt = string.gsub(string.gsub(GetSystemTime(), ':', ''), '0','')
     math.randomseed(tonumber(timeTxt))
 
-    GameRules.APPLIER = CreateItem("item_apply_modifiers", nil, nil)
+  --  GameRules.APPLIER = CreateItem("item_apply_modifiers", nil, nil)
 
     -- Custom Stats for STR/AGI/INT
     Stats:Init()
@@ -256,7 +256,7 @@ function ITT:InitGameMode()
     MapModels()
 
     -- Allow cosmetic swapping
-    SendToServerConsole( "dota_combine_models 0" )
+    --SendToServerConsole( "dota_combine_models 0" )
 
     -- Lua Modifiers
     LinkLuaModifier("modifier_chicken_form", "heroes/beastmaster/subclass_modifiers.lua", LUA_MODIFIER_MOTION_NONE)
@@ -265,7 +265,6 @@ function ITT:InitGameMode()
     LinkLuaModifier("modifier_model_scale", "libraries/modifiers/modifier_model_scale", LUA_MODIFIER_MOTION_NONE)
     LinkLuaModifier("modifier_minimap", "libraries/modifiers/modifier_minimap", LUA_MODIFIER_MOTION_NONE)
     LinkLuaModifier("modifier_wearable_visuals", "libraries/modifiers/modifier_wearable_visuals", LUA_MODIFIER_MOTION_NONE)
-	LinkLuaModifier("modifier_charges", "libraries/modifiers/modifier_charges", LUA_MODIFIER_MOTION_NONE)
 
     print('[ITT] Done loading gamemode!')
 end

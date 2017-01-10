@@ -18,14 +18,14 @@
     {
         "01"
         {
-            "var_type"    "FIELD_INTEGER"
-            "damage"      "1.2 2.3 3.4 5.5 6.6 7.7 10"
+            "var_type"    "FIELD_FLOAT"
+            "damage"      "2.5 3.5 4.5 5.5 8.5 10 12"
         }
 
         "02"
         {
             "var_type"    "FIELD_FLOAT"
-            "cooldown"    "2.4 2.35 2.3 2.2 2.0 1.8 1.5"
+            "cooldown"    "1.6 1.4 1.2 1.0 0.9 0.8 0.7"
         }
 
         "03"

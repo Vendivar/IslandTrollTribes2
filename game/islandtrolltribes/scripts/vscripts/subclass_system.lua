@@ -31,7 +31,8 @@ function ITT:SetDefaultCosmetics(hero)
         RemoveAllWearables(hero) --Could be replaced by adding "DisableWearables" "1" on every hero
         hero.wearables = {}
         for _,modelName in pairs(defaultWearables) do
-            hero:AttachWearable(modelName)
+            hero:AttachWearable(modelName)			
+		print("attaching wearables for",hero,modelName)
         end
     else
         ITT:SetDefaultWearables(hero)
@@ -61,7 +62,7 @@ end
 -- Create a wearable model unit to follow the hero entity
 function CDOTA_BaseNPC_Hero:AttachWearable(modelPath)
     local wearable = CreateUnitByName("wearable_model", Vector(0, 0, 0), false, nil, nil, DOTA_TEAM_NOTEAM)
-
+	print("2attaching wearables for",hero)
     local oldSet = wearable.SetModel
     wearable.SetModel = function(self, model)
         oldSet(self, model)
@@ -133,7 +134,9 @@ function ITT:OnSubclassChange(event)
     end
     -- Give bonus attack, mana, health, attack rate and MS
     local modifier_name = "modifier_"..class.."_"..new_name
-    ApplyModifier(hero, modifier_name)
+	
+	local item = CreateItem("item_apply_modifiers", hero, hero)
+	item:ApplyDataDrivenModifier(hero, hero, modifier_name)
     hero.subclassModifierName = modifier_name
 
     -- Handle MODIFIER_PROPERTY_MODEL_CHANGE
@@ -175,7 +178,6 @@ function ITT:OnSubclassChange(event)
     Timers:CreateTimer({
       endTime = 0.1,
       callback = function()
-        AdjustAbilityLayout(hero)
       end
     })
 

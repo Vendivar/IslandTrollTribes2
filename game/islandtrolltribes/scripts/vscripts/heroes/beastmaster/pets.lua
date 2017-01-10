@@ -24,7 +24,6 @@ function PetRelease( event )
         TeachAbility(pet, "ability_baby_animal")
     end
 
-    AdjustAbilityLayout(pet)
 
     -- Disable abilities on BM only if it doesnt have another pet active
     RemovePetFromTable(hero, pet)
@@ -265,6 +264,5 @@ function CheckBeastmasterPetCount( hero )
         hero:RemoveAbility("ability_beastmaster_pet_stay")
         hero:RemoveAbility("ability_beastmaster_pet_attack")
 
-        AdjustAbilityLayout(hero)
     end
 end

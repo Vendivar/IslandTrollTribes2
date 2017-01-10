@@ -5545,14 +5545,14 @@
 	    {
 	        "01"
 	        {
-	            "var_type"    "FIELD_INTEGER"
-	            "damage"      "1.2 2.3 3.4 5.5 6.6 7.7 10"
+	            "var_type"    "FIELD_FLOAT"
+	            "damage"      "2.5 3.5 4.5 5.5 8.5 10 12"
 	        }
 	
 	        "02"
 	        {
 	            "var_type"    "FIELD_FLOAT"
-	            "cooldown"    "2.4 2.35 2.3 2.2 2.0 1.8 1.5"
+	            "cooldown"    "1.6 1.4 1.2 1.0 0.9 0.8 0.7"
 	        }
 	
 	        "03"
@@ -16542,12 +16542,6 @@
 	 
 		"OnSpellStart"
 		{
-			"LinearProjectile"
-			{
-				"Target"	"POINT"
-				"MoveSpeed"	"600"
-				"ProvidesVision"	"false"
-			} 
 	        "FireSound"
 	        {
 	            "EffectName" "Hero_Omniknight.Purification"
@@ -16578,44 +16572,45 @@
 	                "01" "%radius 0 0"
 	            }
 	        }
-	        
-		}
-	
-		"OnProjectileFinish"
-		{
+			
 			"ApplyModifier"
 			{
 				"Target"	"CASTER"
 				"ModifierName"	"modifier_exclude_caster"
-				"Duration"	"5"
+				"Duration"	"1"
 			}
-	
-			"Heal"
+			"ActOnTargets"
 			{
 				"Target"
 				{
-					"Center"	"POINT"
-					"Radius"	"400"
-					"Teams"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-					"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+					"Center"  			"POINT"
+					"Radius"			"%radius"
+					"Teams" 			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+					"Types" 			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 				}
+				"Action"
+				{
+					"Heal"
+						{
+							"Target"
+							{
+								"Center"	"POINT"
+								"Radius"	"400"
+								"Teams"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+								"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+							}
 	
-				"HealAmount"	"50"
+							"HealAmount"	"50"
+						}
+				}
 			}
-	
-			"RemoveModifier"
-			{
-				"Target"	"CASTER"
-				"ModifierName"	"modifier_exclude_caster"
-			}
-	
 		}
 	
 		"Modifiers"
 		{
 			"modifier_exclude_caster"
 			{
-				"IsHidden"	"0"
+				"IsHidden"	"1"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_DISABLE_HEALING"	"1"

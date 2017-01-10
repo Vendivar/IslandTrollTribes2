@@ -16,10 +16,11 @@
 		"AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"
 		"AttributeBaseStrength"	"0"
 		"AttributeBaseIntelligence" "0"
-		"StatusHealth"	"150000"
+		"StatusHealth"	"250"
 		"VisionDaytimeRange" "0"
 		"VisionNighttimeRange" "0"
 		"MinimapIcon"				"minimap_boat"
 		"MinimapIconSize"			"0"
 		"MinimapDisableTint"		"1"
+		"DisableWearables" "1"
 	}

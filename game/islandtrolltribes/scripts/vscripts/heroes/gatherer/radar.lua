@@ -82,7 +82,6 @@ function ToggleOnRadar( event )
         end
     end
 
-    AdjustAbilityLayout(caster)
 end
 
 -- Turns the layout back to normal
@@ -146,7 +145,6 @@ function ToggleOnAdvancedRadar( event )
     local swapAbility = GetAbilityOnVisibleSlot(caster, 3)
     caster:SwapAbilities(swapAbility:GetAbilityName(), "ability_gatherer_advanced_radarmanipulations", false, true)
 
-    --AdjustAbilityLayout(caster)
 end
 
 
@@ -180,5 +178,4 @@ function ToggleOnHerbRadar( event )
     local swapAbility = GetAbilityOnVisibleSlot(caster, 3)
     caster:SwapAbilities(swapAbility:GetAbilityName(), "ability_gatherer_findherb", false, true)
 
-    AdjustAbilityLayout(caster)
 end
