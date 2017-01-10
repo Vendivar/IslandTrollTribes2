@@ -20,6 +20,7 @@ LinkLuaModifier("modifier_pack_leader", "heroes/beastmaster/pack_leader.lua", LU
 function SetModel(keys)
     local target = keys.target
     local duration = keys.Duration
-    ApplyModifier(target,"modifier_pack_leader")
-    ApplyModifier(target,"modifier_packleader")
+local item = CreateItem("item_apply_modifiers", target, target)
+item:ApplyDataDrivenModifier(target, target, "modifier_pack_leader", {})
+item:ApplyDataDrivenModifier(target, target, "modifier_packleader", {})
 end

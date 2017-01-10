@@ -19,8 +19,9 @@ LinkLuaModifier("modifier_fowlplay_chicken", "heroes/beastmaster/fowlplay.lua", 
 
 function SetModel(keys)
     local target = keys.target
-    local duration = keys.Duration
-    ApplyModifier(target,"modifier_fowlplay_chicken")
+    local duration = keys.Duration	
+	local item = CreateItem("item_apply_modifiers", target, target)
+	item:ApplyDataDrivenModifier(target, target, "modifier_fowlplay_chicken", {})
     Timers:CreateTimer(DoUniqueString("fowlplay"),{callback=ResetModel, endTime = duration}, target)
 end
 

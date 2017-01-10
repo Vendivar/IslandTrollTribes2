@@ -37,8 +37,6 @@ function ability_beastmaster_tamepet:OnSpellStart()
                 TeachAbility(pet, "ability_baby_animal")
             end
 
-            AdjustAbilityLayout(pet)
-            AdjustAbilityLayout(caster)
             caster.pets = {}
         end
     end
@@ -76,8 +74,6 @@ function ability_beastmaster_tamepet:OnSpellStart()
     -- Attack gets added on the first growth
     --TeachAbility(caster, "ability_beastmaster_pet_attack")
 
-    AdjustAbilityLayout(caster)
-    AdjustAbilityLayout(newPet)
 
     -- Add to the list of pets
     table.insert(caster.pets, newPet)
