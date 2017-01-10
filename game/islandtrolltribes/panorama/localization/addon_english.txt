@@ -307,6 +307,8 @@
         //  Styles can be changed in custom_loading_screen.css
         "loading_screen_change_text" "<h1>LATEST CHANGES</h1><i>Version 1.2.5g</i><br>
 <h2>Mechanics:</h2>
+GAINED DEDICATED SERVERS <br>
+FIXED NASTY LEVEL UP CRASH FROM DEDICATED SERVERS<br>
 Voting and hero pick fixed.<br>
 Backpack disabled.<br>
 Added new creep sounds.<br>

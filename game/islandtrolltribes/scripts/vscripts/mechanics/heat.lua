@@ -11,7 +11,7 @@ function Heat:Start(hero)
     Heat:loadSettings()
     hero.HeatLoss = -1/3 --Per second
 	local item = CreateItem("item_apply_modifiers", hero, hero)
-	item:ApplyDataDrivenModifier(hero, hero, "modifier_heat_passive")
+	item:ApplyDataDrivenModifier(hero, hero, "modifier_heat_passive", {})
     Heat:Set(hero, Heat.MAX)
     Heat:Think(hero)
 end

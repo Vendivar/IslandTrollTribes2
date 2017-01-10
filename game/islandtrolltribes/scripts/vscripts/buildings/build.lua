@@ -156,8 +156,10 @@ function Build( event )
     	unit:RemoveModifierByName("modifier_invulnerable")
 
     	-- Particle effect
-    	ApplyModifier(unit, "modifier_construction")
-    	ApplyModifier(unit, "modifier_building_under_construction")
+		
+	local item = CreateItem("item_apply_modifiers", unit, unit)
+	item:ApplyDataDrivenModifier(unit, unit, "modifier_construction", {})
+	item:ApplyDataDrivenModifier(unit, unit, "modifier_building_under_construction", {})
 
     	if IsValidEntity(ability) and ability:IsItem() and ability:GetCurrentCharges() == 0 then
     		ability:RemoveSelf()

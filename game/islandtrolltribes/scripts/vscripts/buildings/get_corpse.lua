@@ -3,7 +3,8 @@ function GetCorpses( event )
     local caster = event.caster
     local range = ability:GetCastRange()
     if not caster:HasModifier("modifier_meat_passive") then
-        ApplyModifier(caster, "modifier_meat_passive")
+		local item = CreateItem("item_apply_modifiers", caster, caster)
+		item:ApplyDataDrivenModifier(caster, caster, "modifier_meat_passive", {})
     end
     local meatStacks = GetMeatRawStackCount(caster)
     if (meatStacks < 10) then
@@ -13,13 +14,13 @@ function GetCorpses( event )
                 local item = drop:GetContainedItem()
                 local itemName = item:GetAbilityName()
                 if itemName == "item_meat_raw" then
-                 local position = drop:GetAbsOrigin()
-            local meatParticle = ParticleManager:CreateParticle("particles/units/heroes/hero_life_stealer/life_stealer_infest_cast.vpcf", PATTACH_ABSORIGIN, caster)
-        ParticleManager:SetParticleControl( meatParticle, 0, drop:GetAbsOrigin() )
-        ParticleManager:SetParticleControl( meatParticle, 1, caster:GetAbsOrigin() )
-        ParticleManager:SetParticleControl( meatParticle, 2, drop:GetAbsOrigin() )
-        ParticleManager:SetParticleControl( meatParticle, 3, drop:GetAbsOrigin() )
-                    meatStacks = meatStacks + 1
+					local position = drop:GetAbsOrigin()
+					local meatParticle = ParticleManager:CreateParticle("particles/units/heroes/hero_life_stealer/life_stealer_infest_cast.vpcf", PATTACH_ABSORIGIN, caster)
+					ParticleManager:SetParticleControl( meatParticle, 0, drop:GetAbsOrigin() )
+					ParticleManager:SetParticleControl( meatParticle, 1, caster:GetAbsOrigin() )
+					ParticleManager:SetParticleControl( meatParticle, 2, drop:GetAbsOrigin() )
+					ParticleManager:SetParticleControl( meatParticle, 3, drop:GetAbsOrigin() )
+					meatStacks = meatStacks + 1
                     caster:EmitSound("Hero_LifeStealer.Assimilate.Target")
                     caster:SetModifierStackCount("modifier_meat_passive", nil, meatStacks)
                     drop:RemoveSelf()

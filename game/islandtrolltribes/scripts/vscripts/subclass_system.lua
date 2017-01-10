@@ -136,7 +136,7 @@ function ITT:OnSubclassChange(event)
     local modifier_name = "modifier_"..class.."_"..new_name
 	
 	local item = CreateItem("item_apply_modifiers", hero, hero)
-	item:ApplyDataDrivenModifier(hero, hero, modifier_name)
+	item:ApplyDataDrivenModifier(hero, hero, modifier_name, {})
     hero.subclassModifierName = modifier_name
 
     -- Handle MODIFIER_PROPERTY_MODEL_CHANGE
@@ -174,13 +174,6 @@ function ITT:OnSubclassChange(event)
     -- Update skills
     ITT:AdjustSkills( hero )
 
-    -- Lets adjust the layout just in case, with a delay.
-    Timers:CreateTimer({
-      endTime = 0.1,
-      callback = function()
-      end
-    })
-
     -- Change the default wearables by new ones for that class
     local defaultWearables = subclassTable['defaults']
     local newWearables = subclassInfo[new_name]['Wearables']
@@ -192,6 +185,11 @@ function ITT:OnSubclassChange(event)
     for slot,modelName in pairs(defaultWearables) do
         SwapWearable(hero, defaultWearables[slot], newWearables[slot])
     end
+	
+	if IsDedicatedServer() then
+		ITT:SetSubclassCosmeticsDedicated(hero)
+	end
+	
 end
 
 function PostSubclassSelectActions(hero)
@@ -270,7 +268,21 @@ function ITT:SetSubclassCosmetics(hero)
         SwapWearable(hero, wearableSetInUse[slot], subclassWearables[slot])
     end
 end
-------------------------------------------------------
+
+
+function ITT:SetSubclassCosmeticsDedicated(hero)
+
+    local subclassName = hero:GetSubClass()
+    local heroClassName = hero:GetHeroClass()
+    local subclassWearables = GameRules.ClassInfo['SubClasses'][subclassName]["Wearables"]
+
+    if IsDedicatedServer() then
+        for _,modelName in pairs(subclassWearables) do
+            hero:AttachWearable(modelName)			
+        end
+	end
+end
+
 
 -- Swaps a target model for another
 function SwapWearable( unit, target_model, new_model )
