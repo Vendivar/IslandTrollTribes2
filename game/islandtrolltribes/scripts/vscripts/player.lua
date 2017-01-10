@@ -208,8 +208,8 @@ function ITT:OnHeroRespawn( hero )
     Heat:Start(hero)
 
     -- Restart Meat tracking
-    ApplyModifier(hero, "modifier_meat_passive")
-
+		local item = CreateItem("item_apply_modifiers", hero, hero)
+		item:ApplyDataDrivenModifier(hero, hero, "modifier_meat_passive", {})
     
 
     -- Kill grave

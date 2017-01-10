@@ -31,8 +31,7 @@ function ITT:SetDefaultCosmetics(hero)
         RemoveAllWearables(hero) --Could be replaced by adding "DisableWearables" "1" on every hero
         hero.wearables = {}
         for _,modelName in pairs(defaultWearables) do
-            hero:AttachWearable(modelName)			
-		print("attaching wearables for",hero,modelName)
+            hero:AttachWearable(modelName)
         end
     else
         ITT:SetDefaultWearables(hero)
@@ -62,7 +61,7 @@ end
 -- Create a wearable model unit to follow the hero entity
 function CDOTA_BaseNPC_Hero:AttachWearable(modelPath)
     local wearable = CreateUnitByName("wearable_model", Vector(0, 0, 0), false, nil, nil, DOTA_TEAM_NOTEAM)
-	print("2attaching wearables for",hero)
+
     local oldSet = wearable.SetModel
     wearable.SetModel = function(self, model)
         oldSet(self, model)
@@ -134,7 +133,6 @@ function ITT:OnSubclassChange(event)
     end
     -- Give bonus attack, mana, health, attack rate and MS
     local modifier_name = "modifier_"..class.."_"..new_name
-	
 	local item = CreateItem("item_apply_modifiers", hero, hero)
 	item:ApplyDataDrivenModifier(hero, hero, modifier_name, {})
     hero.subclassModifierName = modifier_name
@@ -172,7 +170,8 @@ function ITT:OnSubclassChange(event)
     PostSubclassSelectActions(hero)
 
     -- Update skills
-    ITT:AdjustSkills( hero )
+	
+    -- Lets adjust the layout just in case, with a delay.
 
     -- Change the default wearables by new ones for that class
     local defaultWearables = subclassTable['defaults']
@@ -185,11 +184,6 @@ function ITT:OnSubclassChange(event)
     for slot,modelName in pairs(defaultWearables) do
         SwapWearable(hero, defaultWearables[slot], newWearables[slot])
     end
-	
-	if IsDedicatedServer() then
-		ITT:SetSubclassCosmeticsDedicated(hero)
-	end
-	
 end
 
 function PostSubclassSelectActions(hero)
@@ -268,21 +262,7 @@ function ITT:SetSubclassCosmetics(hero)
         SwapWearable(hero, wearableSetInUse[slot], subclassWearables[slot])
     end
 end
-
-
-function ITT:SetSubclassCosmeticsDedicated(hero)
-
-    local subclassName = hero:GetSubClass()
-    local heroClassName = hero:GetHeroClass()
-    local subclassWearables = GameRules.ClassInfo['SubClasses'][subclassName]["Wearables"]
-
-    if IsDedicatedServer() then
-        for _,modelName in pairs(subclassWearables) do
-            hero:AttachWearable(modelName)			
-        end
-	end
-end
-
+------------------------------------------------------
 
 -- Swaps a target model for another
 function SwapWearable( unit, target_model, new_model )

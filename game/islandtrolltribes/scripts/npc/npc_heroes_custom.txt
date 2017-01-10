@@ -47,7 +47,7 @@
 		"StatusManaRegen"	"0.0"
 		"VisionDaytimeRange"	"1400"
 		"VisionNighttimeRange"	"675"
-		"DisableWearables" "1"
+		"DisableWearables" "0"
 	}
 	"npc_dota_hero_shadow_shaman"
 	{
@@ -100,7 +100,6 @@
 		"StatusManaRegen"	"0.0"
 		"VisionDaytimeRange"	"1800"
 		"VisionNighttimeRange"	"900"
-		"DisableWearables" "1"
 	}
 	"npc_dota_hero_huskar"
 	{
