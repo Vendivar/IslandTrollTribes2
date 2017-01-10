@@ -45,5 +45,4 @@
 	"StatusManaRegen"	"0.0"
 	"VisionDaytimeRange"	"1400"
 	"VisionNighttimeRange"	"675"
-	"DisableWearables" "0"
 }

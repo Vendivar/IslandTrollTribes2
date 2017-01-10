@@ -192,7 +192,9 @@ function ITT:Dev( playerID )
         GameRules:GetGameModeEntity():SetFogOfWarDisabled(true)
     else
         Heat:Start(hero)
-        ApplyModifier(hero, "modifier_hunger")
+		
+		local item = CreateItem("item_apply_modifiers", hero, hero)
+		item:ApplyDataDrivenModifier(hero, hero, "modifier_hunger", {})
         GameRules:GetGameModeEntity():SetFogOfWarDisabled(false)
     end
 

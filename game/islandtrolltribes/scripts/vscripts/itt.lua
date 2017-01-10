@@ -256,7 +256,7 @@ function ITT:InitGameMode()
     MapModels()
 
     -- Allow cosmetic swapping
-    --SendToServerConsole( "dota_combine_models 0" )
+    --SendToServerConsole( "dota_combine_models 1" )
 
     -- Lua Modifiers
     LinkLuaModifier("modifier_chicken_form", "heroes/beastmaster/subclass_modifiers.lua", LUA_MODIFIER_MOTION_NONE)
@@ -844,7 +844,7 @@ function ITT:OnPlayerGainedLevel(event)
     local class = hero:GetHeroClass()
     local level = event.level
 
-    print("[ITT] OnPlayerLevelUp - Player "..playerID.." ("..class..") has reached level "..level)
+  --  print("[ITT] OnPlayerLevelUp - Player "..playerID.." ("..class..") has reached level "..level)
 
 	hero.levelParticle = ParticleManager:CreateParticle("particles/custom/hero_levelup.vpcf", PATTACH_ABSORIGIN_FOLLOW, hero)
 	Sounds:EmitSoundOnClient(playerID, "Level.Up")
@@ -868,7 +868,7 @@ function ITT:OnPlayerGainedLevel(event)
     end
 
     -- Update skills
-    ITT:AdjustSkills( hero )
+    ITT:AdjustSkills(hero)
 end
 
 function print_dropped_vecs(cmdname)

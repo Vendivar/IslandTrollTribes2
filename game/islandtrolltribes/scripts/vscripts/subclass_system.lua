@@ -28,10 +28,11 @@ function ITT:SetDefaultCosmetics(hero)
     local hideSlots = GameRules.ClassInfo['SubClasses'][hero:GetHeroClass()]['hide']
 
     if IsDedicatedServer() then
-        RemoveAllWearables(hero) --Could be replaced by adding "DisableWearables" "1" on every hero
+       -- RemoveAllWearables(hero) --Could be replaced by adding "DisableWearables" "1" on every hero
         hero.wearables = {}
         for _,modelName in pairs(defaultWearables) do
-            hero:AttachWearable(modelName)
+            hero:AttachWearable(modelName)			
+		print("attaching wearables for",hero,modelName)
         end
     else
         ITT:SetDefaultWearables(hero)
@@ -61,7 +62,7 @@ end
 -- Create a wearable model unit to follow the hero entity
 function CDOTA_BaseNPC_Hero:AttachWearable(modelPath)
     local wearable = CreateUnitByName("wearable_model", Vector(0, 0, 0), false, nil, nil, DOTA_TEAM_NOTEAM)
-
+	print("2attaching wearables for",hero)
     local oldSet = wearable.SetModel
     wearable.SetModel = function(self, model)
         oldSet(self, model)
@@ -133,8 +134,9 @@ function ITT:OnSubclassChange(event)
     end
     -- Give bonus attack, mana, health, attack rate and MS
     local modifier_name = "modifier_"..class.."_"..new_name
+	
 	local item = CreateItem("item_apply_modifiers", hero, hero)
-	item:ApplyDataDrivenModifier(hero, hero, modifier_name)
+	item:ApplyDataDrivenModifier(hero, hero, modifier_name, {})
     hero.subclassModifierName = modifier_name
 
     -- Handle MODIFIER_PROPERTY_MODEL_CHANGE
@@ -170,15 +172,9 @@ function ITT:OnSubclassChange(event)
     PostSubclassSelectActions(hero)
 
     -- Update skills
-	
-    -- Lets adjust the layout just in case, with a delay.
+    ITT:AdjustSkills(hero)
 
     -- Lets adjust the layout just in case, with a delay.
-    Timers:CreateTimer({
-      endTime = 0.1,
-      callback = function()
-      end
-    })
 
     -- Change the default wearables by new ones for that class
     local defaultWearables = subclassTable['defaults']
@@ -233,7 +229,7 @@ function ITT:ResetSubclass(playerID)
     hero.subclass = nil
 
     -- Update skills
-    ITT:AdjustSkills( hero )
+    ITT:AdjustSkills(hero)
 
     -- Handle model change modifier
     if hero.modelChangeModifierName then

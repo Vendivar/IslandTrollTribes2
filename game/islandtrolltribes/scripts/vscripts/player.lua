@@ -253,7 +253,7 @@ end
 
 -- Sets the hero skills for the level as defined in the 'SkillProgression' class_info.kv
 -- Called on spawn and every time a hero gains a level or chooses a subclass
-function ITT:AdjustSkills( hero )
+function ITT:AdjustSkills(hero)
     local skillProgressionTable = GameRules.ClassInfo['SkillProgression']
     local class = hero:GetHeroClass()
     local level = hero:GetLevel() --Level determines what skills to add or levelup
@@ -276,8 +276,18 @@ function ITT:AdjustSkills( hero )
 
         for level = 6, hero.subclass_leveled do
 		
-            ITT:UnlearnAbilities(hero, class_skills, level)
-            ITT:LearnAbilities(hero, class_skills, level)
+            Timers:CreateTimer({
+      endTime = 0.1,
+      callback = function()
+         ITT:UnlearnAbilities(hero, class_skills, level)
+      end
+    })
+		Timers:CreateTimer({
+      endTime = 0.3,
+      callback = function()
+        ITT:LearnAbilities(hero, class_skills, level)
+      end
+    })
         end
 
         hero.subclass_leveled = nil --Already subclassed, next time it will just adjust skills normally
@@ -300,7 +310,7 @@ function ITT:AdjustSkills( hero )
       endTime = 0.5,
       callback = function()
 		EnableSpellBookAbilities(hero)
-		PrintAbilities(hero)
+		--PrintAbilities(hero)
       end
     })
 
