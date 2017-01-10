@@ -134,7 +134,7 @@ function ITT:OnSubclassChange(event)
     -- Give bonus attack, mana, health, attack rate and MS
     local modifier_name = "modifier_"..class.."_"..new_name
 	local item = CreateItem("item_apply_modifiers", hero, hero)
-	item:ApplyDataDrivenModifier(hero, hero, modifier_name, {})
+	item:ApplyDataDrivenModifier(hero, hero, modifier_name)
     hero.subclassModifierName = modifier_name
 
     -- Handle MODIFIER_PROPERTY_MODEL_CHANGE
@@ -172,6 +172,13 @@ function ITT:OnSubclassChange(event)
     -- Update skills
 	
     -- Lets adjust the layout just in case, with a delay.
+
+    -- Lets adjust the layout just in case, with a delay.
+    Timers:CreateTimer({
+      endTime = 0.1,
+      callback = function()
+      end
+    })
 
     -- Change the default wearables by new ones for that class
     local defaultWearables = subclassTable['defaults']

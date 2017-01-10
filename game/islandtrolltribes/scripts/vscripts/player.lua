@@ -161,9 +161,9 @@ function ITT:OnHeroInGame( hero )
     -- Init Meat, Health and Energy Loss
 	
 	local item = CreateItem("item_apply_modifiers", hero, hero)
-	item:ApplyDataDrivenModifier(hero, hero, "modifier_meat_passive", {})
-	item:ApplyDataDrivenModifier(hero, hero, "modifier_hunger_health", {})
-	item:ApplyDataDrivenModifier(hero, hero, "modifier_hunger_mana", {})
+	item:ApplyDataDrivenModifier(hero, hero, "modifier_meat_passive")
+	item:ApplyDataDrivenModifier(hero, hero, "modifier_hunger_health")
+	item:ApplyDataDrivenModifier(hero, hero, "modifier_hunger_mana")
 	
     -- Set Wearables
     ITT:SetDefaultCosmetics(hero)

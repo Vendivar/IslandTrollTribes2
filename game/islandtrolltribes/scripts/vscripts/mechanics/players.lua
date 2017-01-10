@@ -22,3 +22,11 @@ function RandomUnpickedPlayers()
         end
     end
 end
+
+------------------------------------------------
+--            Global item applier             --
+------------------------------------------------
+
+function ApplyModifier( unit, modifier_name )
+    GameRules.APPLIER:ApplyDataDrivenModifier(unit, unit, modifier_name, {})
+end
