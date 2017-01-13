@@ -256,7 +256,7 @@ function ITT:InitGameMode()
     MapModels()
 
     -- Allow cosmetic swapping
-    --SendToServerConsole( "dota_combine_models 1" )
+    SendToServerConsole( "dota_combine_models 1" )
 
     -- Lua Modifiers
     LinkLuaModifier("modifier_chicken_form", "heroes/beastmaster/subclass_modifiers.lua", LUA_MODIFIER_MOTION_NONE)

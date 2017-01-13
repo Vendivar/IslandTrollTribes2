@@ -22,5 +22,4 @@ function SetModel(keys)
     local duration = keys.Duration
 local item = CreateItem("item_apply_modifiers", target, target)
 item:ApplyDataDrivenModifier(target, target, "modifier_pack_leader", {})
-item:ApplyDataDrivenModifier(target, target, "modifier_packleader", {})
 end

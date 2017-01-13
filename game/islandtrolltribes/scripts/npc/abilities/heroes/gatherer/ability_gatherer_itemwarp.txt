@@ -26,6 +26,12 @@
 		    "Function"      "WarpItems"
 		    "Range"         "%range"
 		}
+		"RunScript"
+		{
+		    "ScriptFile"    "heroes/gatherer/itemwarp.lua"
+		    "Function"      "WarpItems"
+		    "Range"         "%range"
+		}
 	}
 
 	"AbilitySpecial"

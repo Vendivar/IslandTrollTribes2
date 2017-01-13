@@ -57,7 +57,7 @@
 "tower_ensnare_troll_ghost"
 {
 	"BaseClass"	 "npc_dota_creature"
-	"Model"		 "models/tower_ensnare_test.vmdl"
+	"Model"		 "models/tower_ensnare.vmdl"
 	"ModelScale" "0.5"
 }
 
