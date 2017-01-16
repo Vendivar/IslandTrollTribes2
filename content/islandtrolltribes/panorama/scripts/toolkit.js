@@ -33,9 +33,11 @@ function DropAllItems() {
 
 (function () {
     $.Msg("Toolkit Load");
-	Game.AddCommand("+TogglePanic", function() {Cast("panic")}, "", 0);
+    Game.AddCommand("+TogglePanic", function() {Cast("panic")}, "", 0);
     //Game.AddCommand("+DropAllItems", DropAllItems, "", 0);
     Game.AddCommand("+DropAllItems", function() {Cast("dropallitems")}, "", 0);
-	Game.AddCommand("SleepOutside", function() {Cast("sleep_outside")}, "", 0);
-	GameUI.SetCameraDistance( 1500 ) //Added default zoom levels
+    Game.AddCommand("SleepOutside", function() {Cast("sleep_outside")}, "", 0);
+    Game.AddCommand("DropRawMeat", function() {Cast("drop_meat")}, "", 0);
+    Game.AddCommand("DropAllRawMeat", function() {Cast("drop_all_meat")}, "", 0);
+    GameUI.SetCameraDistance( 1500 ) //Added default zoom levels
 })();

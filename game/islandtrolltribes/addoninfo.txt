@@ -1,60 +1,72 @@
 "AddonInfo"
 {
 	"maps"         "itt_quad itt_trio"
-    "IsPlayable"    "1"
-    "itt_trio"
-    {
-        "MaxPlayers" "9"
-    }
+	"IsPlayable"    "1"
+	"itt_trio"
+	{
+		"MaxPlayers" "9"
+	}
 
-    "itt_quad"
-    {
-        "MaxPlayers" "16"
-    }
+	"itt_quad"
+	{
+		"MaxPlayers" "16"
+	}
 
-    "Default_Keys"
-    {
-		    "01"
-	      {
-	          "Key"       "C"
-	          "Command"   "+ToggleCraft"
-	          "Name"      "Show/Hide the crafting UI"
-	      }
-				"02"
-				{
-		    		"Key"		"Enter"
-		    		"Command"	"+EnterPressed"
-		    		"Name"		"For Custom chat"
-				}
-				"03"
-	      {
-	          "Key"       "L"
-	          "Command"   "+ToggleHelp"
-	          "Name"      "Show/Hide the help UI"
-	      }
-				"04"
-	      {
-	          "Key"       "N"
-	          "Command"   "+TogglePanic"
-	          "Name"      "Toggle your Panic"
-	      }
-		    "05"
-	      {
-	          "Key"       "P"
-	          "Command"   "+DropAllItems"
-	          "Name"      "Drop all items on the target point"
-	      }
-				"06"
-				{
-		    		"Key"		"kp_enter"
-		    		"Command"	"+EnterPressed"
-		    		"Name"		"For Custom chat"
-				}
-				"07"
-				{
-		    		"Key"		"O"
-		    		"Command"	"SleepOutside"
-		    		"Name"		"For Sleep Outside"
-				}
-    }
+	"Default_Keys"
+	{
+		"01"
+		{
+			"Key"       "C"
+			"Command"   "+ToggleCraft"
+			"Name"      "Show/Hide the crafting UI"
+		}
+		"02"
+		{
+			"Key"		"Enter"
+			"Command"	"+EnterPressed"
+			"Name"		"For Custom chat"
+		}
+		"03"
+		{
+			"Key"       "L"
+			"Command"   "+ToggleHelp"
+			"Name"      "Show/Hide the help UI"
+		}
+		"04"
+		{
+			"Key"       "N"
+			"Command"   "+TogglePanic"
+			"Name"      "Toggle your Panic"
+		}
+		"05"
+		{
+			"Key"       "P"
+			"Command"   "+DropAllItems"
+			"Name"      "Drop all items on the target point"
+		}
+		"06"
+		{
+			"Key"		"kp_enter"
+			"Command"	"+EnterPressed"
+			"Name"		"For Custom chat"
+		}
+		"07"
+		{
+			"Key"		"O"
+			"Command"	"SleepOutside"
+			"Name"		"For Sleep Outside"
+		}
+		"09"
+		{
+			"Key"		"M"
+			"Command"	"DropRawMeat"
+			"Name"		"For Drop Raw Meat"
+		}
+		"10"
+		{
+			"Key"		"K"
+			"Command"	"DropAllRawMeat"
+			"Name"		"For Drop All Raw Meat"
+		}
+	}
 }
