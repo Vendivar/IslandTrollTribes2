@@ -11917,6 +11917,22 @@
 					"MODIFIER_STATE_SPECIALLY_DENIABLE"		"MODIFIER_STATE_VALUE_ENABLED"
 					"MODIFIER_STATE_DOMINATED"				"MODIFIER_STATE_VALUE_ENABLED"
 				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"   "heroes/mage/jealousy.lua"
+						"Function"     "JealousyEnd"
+					}
+				}
+				"OnDeath"
+				{
+					"RunScript"
+					{
+						"ScriptFile"   "heroes/mage/jealousy.lua"
+						"Function"     "JealousyEnd"
+					}
+				}
 			}
 	
 			"modifier_mage_jealousy_enemy"
@@ -11924,6 +11940,7 @@
 				"IsHidden"			"0"
 				"IsDebuff"			"1"
 				"IsPurgable" 		"1"
+				"Duration" 	"30"
 	
 				"EffectName"		"particles/econ/courier/courier_faceless_rex/cour_rex_ground_a.vpcf"
 				"EffectAttachType"	"follow_origin"
@@ -11940,6 +11957,15 @@
 						"Function"     "Jealousy"
 	
 						"modifier"		"modifier_mage_jealousy_enemy"
+					}
+				}
+	
+				"OnDeath"
+				{
+					"RunScript"
+					{
+						"ScriptFile"   "heroes/mage/jealousy.lua"
+						"Function"     "JealousyEnd"
 					}
 				}
 	
@@ -14276,7 +14302,7 @@
 		"AbilityTextureName"	"custom/ability_priest_healingwave"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT_TARGET"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
 		"AbilityCastPoint"	"0.2"
 		"AbilityCooldown"	"60"
 		"AbilityCastRange"	"3000"
@@ -15611,7 +15637,7 @@
 		"AbilityTextureName"	"custom/ability_priest_rangedheal"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
 		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_3"
 		"AbilityCastPoint"	"0.2"
 		"AbilityCooldown"	"20"
@@ -15717,7 +15743,7 @@
 		"BaseClass"	"ability_datadriven"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
 		"AbilityTextureName"	"custom/ability_priest_replenish"
 		"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
 		"AbilityCastPoint"	"0.5"
@@ -15798,7 +15824,7 @@
 				{
 					"RemoveModifier"
 					{
-						"Target"	"UNIT"
+						"Target"	"TARGET"
 						"ModifierName"	"modifier_replenish"
 					}
 	
@@ -16592,7 +16618,7 @@
 					"Center"  			"POINT"
 					"Radius"			"%radius"
 					"Teams" 			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-					"Types" 			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+					"Types" 			"DOTA_UNIT_TARGET_HERO"
 				}
 				"Action"
 				{
@@ -16603,7 +16629,7 @@
 								"Center"	"POINT"
 								"Radius"	"400"
 								"Teams"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-								"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+								"Types"	"DOTA_UNIT_TARGET_HERO"
 							}
 	
 							"HealAmount"	"50"

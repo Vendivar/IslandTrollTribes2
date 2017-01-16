@@ -130,6 +130,22 @@
 				"MODIFIER_STATE_SPECIALLY_DENIABLE"		"MODIFIER_STATE_VALUE_ENABLED"
 				"MODIFIER_STATE_DOMINATED"				"MODIFIER_STATE_VALUE_ENABLED"
 			}
+			"OnDestroy"
+			{
+				"RunScript"
+				{
+					"ScriptFile"   "heroes/mage/jealousy.lua"
+					"Function"     "JealousyEnd"
+				}
+			}
+			"OnDeath"
+			{
+				"RunScript"
+				{
+					"ScriptFile"   "heroes/mage/jealousy.lua"
+					"Function"     "JealousyEnd"
+				}
+			}
 		}
 
 		"modifier_mage_jealousy_enemy"
@@ -137,6 +153,7 @@
 			"IsHidden"			"0"
 			"IsDebuff"			"1"
 			"IsPurgable" 		"1"
+			"Duration" 	"30"
 
 			"EffectName"		"particles/econ/courier/courier_faceless_rex/cour_rex_ground_a.vpcf"
 			"EffectAttachType"	"follow_origin"
@@ -153,6 +170,15 @@
 					"Function"     "Jealousy"
 
 					"modifier"		"modifier_mage_jealousy_enemy"
+				}
+			}
+
+			"OnDeath"
+			{
+				"RunScript"
+				{
+					"ScriptFile"   "heroes/mage/jealousy.lua"
+					"Function"     "JealousyEnd"
 				}
 			}
 

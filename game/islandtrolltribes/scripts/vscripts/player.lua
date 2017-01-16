@@ -144,6 +144,9 @@ function ITT:OnHeroInGame( hero )
     -- Remove starting gold
     hero:SetGold(0, false)
 
+	--Remove Talents
+	ITT:RemoveTalents(hero)
+	
     -- Add Innate Skills
     ITT:AdjustSkills(hero)
 
@@ -171,8 +174,6 @@ function ITT:OnHeroInGame( hero )
     -- Adjust Stats
     Stats:ModifyBonuses(hero)
 	
-	--Remove Talents
-	ITT:RemoveTalents(hero)
 	
 	--Secondary adjustments
 
@@ -223,6 +224,9 @@ end
 -- This means that players do not need to manually reshuffle them to craft
 function ITT:CreateLockedSlots(hero)
 
+--Backpack slots lockout
+
+--Class specific slot lockout
     local lockedSlotsTable = GameRules.ClassInfo['LockedSlots']
     local className = hero:GetHeroClass()
     local lockedSlotNumber = lockedSlotsTable[className]
@@ -239,6 +243,8 @@ function ITT:CreateLockedSlots(hero)
 --	spawnedUnit:SwapItems(0, 7)
 --	local item3 = spawnedUnit:AddItemByName("item_slot_locked")
 --	spawnedUnit:SwapItems(0, 8)
+
+
 	
 end
 

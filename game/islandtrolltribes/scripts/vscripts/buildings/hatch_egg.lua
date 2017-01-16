@@ -55,8 +55,8 @@ function TameBird(newPet,hero)
                 TeachAbility(pet, "ability_baby_animal")
             end
 
-            AdjustAbilityLayout(pet)
-            AdjustAbilityLayout(hero)
+            --AdjustAbilityLayout(pet)
+            --AdjustAbilityLayout(hero)
             table.remove(hero.pets, 1)
         end
     end
