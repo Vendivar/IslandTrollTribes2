@@ -59,14 +59,8 @@
 		"09"
 		{
 			"Key"		"B"
-			"Command"	"DropRawMeat"
-			"Name"		"For Drop Raw Meat"
-		}
-		"10"
-		{
-			"Key"		"H"
 			"Command"	"DropAllRawMeat"
-			"Name"		"For Drop All Raw Meat"
+			"Name"		"For Drop Raw Meat"
 		}
 	}
 }
