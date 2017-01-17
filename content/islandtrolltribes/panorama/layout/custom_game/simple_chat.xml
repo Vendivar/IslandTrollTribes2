@@ -54,15 +54,18 @@
 
         function OnChatSay(args) {
             var name = Players.GetPlayerName(args.player);
+            var type = "";
             if (args.name) {
                 name = args.name;
             }
-
+            if (args.isTeam) {
+                type = "(TEAM) ";
+            }
             AddChatLine("#ChatLine", {
                 name: name,
                 color:  LuaColor(args.color),
                 message: args.message,
-                type: ""
+                type: type
             });
         }
 
