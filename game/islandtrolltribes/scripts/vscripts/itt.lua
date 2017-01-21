@@ -738,7 +738,7 @@ function TeleportItemTeletheif(hero,originalItem)
     local percentChance = 100
    --print("Teleporting item : " .. telegatherAbility:GetAbilityName() .. ", " .. percentChance .."% chance")
 
-    local itemList = {"item_tinder", "item_flint", "item_stone", "item_stick", "item_bone", "item_meat_raw", "item_meat_cooked", "item_crystal_mana", "item_ball_clay", "item_hide_elk", "item_hide_wolf", "item_hide_bear", "item_magic_raw", "item_herb_blue", "item_herb_butsu", "item_herb_orange", "item_herb_purple", "item_herb_yellow", "item_thistles", "item_river_root", "item_river_stem", "item_acorn", "item_acorn_magic", "item_mushroom", "item_spirit_water", "item_spirit_wind"}
+    local itemList = {"item_tinder", "item_flint", "item_stone", "item_stick", "item_bone", "item_meat_raw",  "item_crystal_mana", "item_ball_clay", "item_hide_elk", "item_hide_wolf", "item_hide_bear", "item_magic_raw", "item_herb_blue", "item_herb_butsu", "item_herb_orange", "item_herb_purple", "item_herb_yellow", "item_thistles", "item_river_root", "item_river_stem", "item_acorn", "item_acorn_magic", "item_mushroom", "item_spirit_water", "item_spirit_wind"}
 	local buildings = FindUnitsInRadius(teamNumber, hero:GetAbsOrigin(), nil, 500, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BUILDING, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
     
 	local casterOrigin = hero:GetOrigin()
@@ -778,7 +778,7 @@ function TeleportItem(hero,originalItem)
     local percentChance = telegatherAbility:GetSpecialValueFor("percent_chance")
    --print("Teleporting item : " .. telegatherAbility:GetAbilityName() .. ", " .. percentChance .."% chance")
 
-    local itemList = {"item_tinder", "item_flint", "item_stone", "item_stick", "item_bone", "item_meat_raw", "item_meat_cooked", "item_crystal_mana", "item_ball_clay", "item_hide_elk", "item_hide_wolf", "item_hide_bear", "item_magic_raw"}
+    local itemList = {"item_tinder", "item_flint", "item_stone", "item_stick", "item_bone", "item_meat_raw",  "item_crystal_mana", "item_ball_clay", "item_hide_elk", "item_hide_wolf", "item_hide_bear", "item_magic_raw"}
     if hero:GetSubClass() == "herbal_master_telegatherer" then
         itemList = {"item_herb_blue", "item_herb_butsu", "item_herb_orange", "item_herb_purple", "item_herb_yellow", "item_thistles", "item_river_root", "item_river_stem", "item_acorn", "item_acorn_magic", "item_mushroom", "item_spirit_water", "item_spirit_wind"}
     end
@@ -813,7 +813,7 @@ function TeleportItemHerb(hero,originalItem)
     local percentChance = telegatherAbility:GetSpecialValueFor("percent_chance")
    --print("Teleporting item : " .. telegatherAbility:GetAbilityName() .. ", " .. percentChance .."% chance")
 
-    local itemList = {"item_tinder", "item_flint", "item_stone", "item_stick", "item_bone", "item_meat_raw", "item_meat_cooked", "item_crystal_mana", "item_ball_clay", "item_hide_elk", "item_hide_wolf", "item_hide_bear", "item_magic_raw"}
+    local itemList = {"item_tinder", "item_flint", "item_stone", "item_stick", "item_bone", "item_meat_raw",  "item_crystal_mana", "item_ball_clay", "item_hide_elk", "item_hide_wolf", "item_hide_bear", "item_magic_raw"}
     if hero:GetSubClass() == "herbal_master_telegatherer" then
         itemList = {"item_herb_blue", "item_herb_butsu", "item_herb_orange", "item_herb_purple", "item_herb_yellow", "item_thistles", "item_river_root", "item_river_stem", "item_acorn", "item_acorn_magic", "item_mushroom", "item_spirit_water", "item_spirit_wind"}
     end

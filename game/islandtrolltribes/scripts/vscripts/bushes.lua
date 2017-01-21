@@ -252,7 +252,7 @@ function CreateBushContainer(name, bush)
 
             if ContainerTransferItem(container, bush, unit, item) then
                 unit:StartGesture(ACT_DOTA_ATTACK)
-		unit:EmitSound("bush.rustle")
+				unit:EmitSound("bush.rustle")
             else
                 SendErrorMessage(playerID, "#error_inventory_full")
             end
@@ -263,7 +263,7 @@ function CreateBushContainer(name, bush)
         OnRightClick = function(playerID, container, unit, item, slot)
             if ContainerTransferItem(container, bush, unit, item) then
                 unit:StartGesture(ACT_DOTA_ATTACK)
-		unit:EmitSound("bush.rustle")
+				unit:EmitSound("bush.rustle")
             else
                 SendErrorMessage(playerID, "#error_inventory_full")
             end
@@ -274,6 +274,8 @@ function CreateBushContainer(name, bush)
         OnButtonPressed = function(playerID, container, unit, button, buttonName)
             if button == 1 then
                 local items = container:GetAllItems()
+                unit:StartGesture(ACT_DOTA_ATTACK)
+				unit:EmitSound("bush.rustle")
                 local got_atleast_one = false
                 local atleast_one_left = false
                 local stack_full = false
@@ -315,10 +317,7 @@ function CreateBushContainer(name, bush)
                     end
                 end
 
-                if got_atleast_one then
-                    unit:StartGesture(ACT_DOTA_ATTACK)
-                    unit:EmitSound("bush.rustle")
-                else
+                if not got_atleast_one then
                     SendErrorMessage(playerID, "#error_inventory_full")
                 end
 
@@ -356,7 +355,7 @@ function TeleportItem(hero,originalItem)
     local targetFire = hero.targetFire
     local newItem = CreateItem(originalItem:GetName(), nil, nil)
     local teleportSuccess = false
-
+ 
     local telegatherBuff = hero:FindModifierByName("modifier_telegather")
     local telegatherAbility = telegatherBuff:GetAbility()
     local percentChance = telegatherAbility:GetSpecialValueFor("percent_chance")
@@ -373,7 +372,7 @@ function TeleportItem(hero,originalItem)
                 local itemPosition = targetFire:GetAbsOrigin() + RandomVector(RandomInt(100,150))
                 CreateItemOnPositionSync(itemPosition,newItem)
                 newItem:SetOrigin(itemPosition)
-		hero:EmitSound("Hero_Zuus.Attack")
+				hero:EmitSound("Hero_Zuus.Attack")
                 teleportSuccess = true
                 return teleportSuccess
             end
@@ -388,14 +387,14 @@ function TeleportItemHerb(hero,originalItem)
     local targetFire = hero.targetFire
     local newItem = CreateItem(originalItem:GetName(), nil, nil)
     local teleportSuccess = false
-
+ 
     local herbtelegatherBuff = hero:FindModifierByName("modifier_herbtelegather")
     local telegatherAbility = herbtelegatherBuff:GetAbility()
     local percentChance = telegatherAbility:GetSpecialValueFor("percent_chance")
    --print("Teleporting item : " .. telegatherAbility:GetAbilityName() .. ", " .. percentChance .."% chance")
 
     local itemList = {"item_herb_blue", "item_herb_butsu", "item_herb_orange", "item_herb_purple", "item_herb_yellow", "item_thistles", "item_river_root", "item_river_stem", "item_acorn", "item_acorn_magic", "item_mushroom", "item_spirit_water", "item_spirit_wind"}
-
+   
     for key,value in pairs(itemList) do
         if value == originalItem:GetName() then
             local diceRoll = RandomFloat(0,100)
@@ -406,7 +405,7 @@ function TeleportItemHerb(hero,originalItem)
                 local itemPosition = targetFire:GetAbsOrigin() + RandomVector(RandomInt(100,150))
                 CreateItemOnPositionSync(itemPosition,newItem)
                 newItem:SetOrigin(itemPosition)
-		hero:EmitSound("Hero_Zuus.Attack")
+				hero:EmitSound("Hero_Zuus.Attack")
                 teleportSuccess = true
                 return teleportSuccess
             end
