@@ -1,0 +1,538 @@
+"addon"
+{
+    "Language"      "Russian"
+    "Tokens"
+    {
+        "addon_game_name"   "Island Troll Tribes"
+        "addonname"         "Island Troll Tribes"
+        "addonname"                                 "Добро пожаловать в: <br>Island Troll Tribes 2!"
+        "itt_game_info_header_objective"            "Цели:"
+        "itt_brief_description"                     "Выживать, строить, и уничтожить своих противников! Последняя выжившая команда побеждает!                                                                                      "
+        "itt_game_info_header_how_to_play"          "Как играть:"
+        "itt_game_info_fire"                        "Сначала нужно сделать<span class='red'>костёр</span> чтобы оставаться <span class='red'>в тепле</span>.<br><br> При недостаточном количестве<span class='red'>тепла</span>, счётчик <span class='red'>тепла</span> достигает <span class='red'>0</span> и вы <span class='blue'>замораживаетесь</span> на смерть!<br><br>Вы можете развести костёр, если найдёте трут, палку, кремень на карте, а затем откроете крафт-меню, нажав латинскую 'C' или на меню в левой верхней части экрана, и нажмёте на иконку комплекта для разведения костра."
+        "itt_game_info_resources"                   "Начните создавать своё племя с<br> <span class='gold'>построек</span> и <span class='xp'>ресурсов</span>.<br><br><br><span class='xp'>Ресурсы</span> могут быть найдены в случайных местах на карте. Поднимайте их и приносите на свою базу!<br><br><br> Смотрите <span class='gold'>в крафт-меню</span> чтобы увидеть,<br>что нужно скрафтить!<br><br><br>Имейте в виду, что враг может проникнуть на базу и похитить ваши <span class='gold'>ресурсы</span>!"
+        "itt_game_info_items"                       "Craft <span class='gold'>оружие</span> и <span class='gold'>зелья</span> дают преимущество в бою!<br><br>У тролля ограниченное количество слотов, так что выбирать надо с умом.<br><br>Разные ситуации требуют<br> разные предметы."
+        "itt_game_info_tips_header"                 "Подсказки:"
+        "itt_game_info_tip01"                       "<li>Самый быстрый способ бросить все свои предметы на змелю - нажав латинскую 'P'<br><br>"
+        "itt_game_info_tip02"                       "<li>Если счётчик тепла достигнет 0, вы заморозитесь. В течение 60 секунд союзный тролль может разморозить вас.<br><br>"
+        "itt_game_info_tip03"                       "<li>Постройте склад и убедитесь, что он стоит в центре, чтобы поставить вокруг него остальные постройки.<br>"
+        "itt_game_info_tip04"                       "<li>Смерть - не конец, ваши союзники могут построить воскрешающий тотем и воскресить вас.<br><br>"
+        "itt_game_info_tip05"                       "<li>Следите за статами своей команды. Предупреждайте, если им что-то вскоре понадобится.<br>"
+        "itt_game_info_tip06"                       "<li>Старайтесь не стоять подолгу на базе, почти всегда вы можете искать и приносить полезные предметы.<br>"
+        "itt_game_info_tip07"                       "<li>Никогда не начинайте бой, если у вас нет шансов.<br>"
+        "itt_game_info_tip08"                       "<li>Скорость, стратегия и предметы - ключи к победе.<br>"
+        "itt_game_info_tip09"                       "<li>Не забывайте открывать крафт-меню, нажимая латинскую 'C' или кнопку в левом верхнем углу. Посмотрите всё, что можно скрафтить!<br><br>"
+        "itt_game_info_tip10"                       "<li>Готовьтесь к ранней обороне! Поставьте ловушки и башни как можно скорее, чтобы было куда отступать.<br>"
+        "itt_game_info_tip11"                       "<li>Любая стратегия контрится, следите за своими врагами и планируйте свои действия наперёд."
+        "itt_game_info_tip12"                       "<li>Лодки торговцев частенько проходят по рекам. Продавать шкуры особенно выгодно.<br>"
+		"itt_game_info_tip13"						"<li>Мастер крафта в центре карты может выручить, если в команде нет тролля с достаточным количеством слотов.<br>"
+		"itt_game_info_tip14"						"<li>Если кажется, что вы собрали все предметы и убили всех животных на острове, попробуйте поискать на соседнем.<br><br>"
+		"itt_game_info_tip15"						"<li>Не пренебрегайте мамонтом, он очень сильный и для того, чтобы его одолеть, нужна вся команда, однако в награду даются сильные предметы."
+
+
+		"DOTA_GoodGuys"   							"Северное племя"
+		"DOTA_BadGuys"    							"Восточное племя"
+		"DOTA_Custom1"    							"Западное племя"
+		"DOTA_Custom2"    							"Южное племя"
+
+		"itt_craft_menu" 							"Крафт-меню"
+
+	// Building Names
+
+		"npc_building_armory"			"Арсенал"
+		"npc_building_craftmaster"		"Мастер крафта"
+		"npc_building_emp"				"ЭМИ"
+		"npc_building_ensnare_trap"		"Ловушка с сеткой"
+		"npc_building_tower_ensnare"    "Башня с сеткой"
+		"npc_scroll_boulder"            "Boulder Scroll"
+        "npc_building_trap_ensnare"     "Ловушка с сеткой"
+		"npc_building_trap_iron"        "Железная ловушка"
+		"npc_building_trap_metal"		"Металлическая ловушка"
+
+
+
+		"npc_building_fire_basic"		"Простой костёр"
+		"npc_building_fire_mage"		"Магический костёр"
+		"npc_building_hatchery"			"Инкубатор"
+		"npc_building_hut_mud"			"Хата из грязи"
+		"npc_building_hut_troll"		"Хата тролля"
+		"npc_building_hut_witch_doctor"	"Хата знахаря"
+		"npc_building_mixing_pot"			"Горшок для варки"
+		"npc_building_omnitower"		"Универсальная башня"
+		"npc_building_smoke_house"		"Коптильня"
+		"npc_building_spirit_ward"		"Воскрешающий тотем"
+		"npc_building_storage_chest"	"Сундук"
+		"npc_building_tannery"			"Дубильня"
+		"npc_building_teleport_beacon"	"Телепортирующий маяк"
+		"npc_building_tent"				"Палатка"
+		"npc_building_workshop"			"Мастерская"
+
+
+
+		"npc_bush_herb"							"Куст Хэйсэтсу"
+		"npc_bush_herb_blue"					"Куст Синей Травы"
+		"npc_bush_herb_orange"					"Куст Оранжевой Травы"
+		"npc_bush_herb_purple"					"Куст Фиолетовой Травы"
+		"npc_bush_herb_yellow"					"Куст Жёлтой Травы"
+		"npc_bush_mushroom"						"Грибная Колония"
+		"npc_bush_river"						"River Root Bush ????"
+		"npc_bush_scout"						"Куст Скаута"
+		"npc_bush_stash"						"Тайник"
+		"npc_bush_thief"						"Куст Вора"
+		"npc_bush_thistle"						"Куст Чертополоха"
+
+
+        "SelectText"        "Выбрать класс"
+
+        "Description_hunter"    "Тролль, специализирующийся на физическом бою.\n\nТролль с самой большой силой в игре.\n\nЕго способности позволяют отслеживать и ловить добычу, будь это вражеский тролль, или олень для получения еды и опыта.\n\nСлотов: 3\nСложнсть: Простой\n\nПреимущества:\nЛегко охотится\nНаибольшее количество физического урона\nБоевые способности\n\nНедостатки:\nМало слотов\nМаленькое количество способностей"
+        "Description_gatherer"  "Тролль, специализирующийся на сборе ресурсов.\n\nСлабый и медленный, но это компенсируется 6 слотами.\n\nЕго способности позволяют ему отмечать ресурсы на карте, чтобы их было проще собирать.\n\nСлотов: 6\nСложность: Средний\n\nПреимущества:\nЕдинственный тролль с 6 слотами\nСильный в поздних стадиях игры\nНаходит редкие ресурсы без особых усилий\n\nНедостатки:\nНизкий физический урон\nНет боевых способностей"
+        "Description_scout"     "Тролль, специализирующийся на нахождении животных и врагов.\n\nСлабый, но это компенсируется способностью быстро находить цель, чтобы её убить.\n\nЕго способности позволяют ему отмечать на большой части карты врагов и животных.\n\nСлотов: 5\nСложность: Средний\n\nПреимущества:\nМожет быстро находить врагов и животных\nДостаточно много слотов\nМожет просвечивать большие части карты для эффективной охоты и сбора ресурсов\n\nНедостатки:\nНизкий физический урон\nНет способностей с уроном или негативными эффектами"
+        "Description_thief"     "Тролль, специализирующийся на безнаказанном воровстве.\n\nСлабый, но почти неубиваемый.\n\nЕго способности позвозляют ему телепортироваться на короткие дистанции и становится невидимым, чтобы воровать ресурсы противников.\n\nСлотов: 5\nСложность: Средний\n\nПреимущества:\nВысокий потенциал для раздражения врагов и похищения их ресурсов.\nДостаточно много слотов\nЛучшее зрение в темноте\n\nНедостатки:\nНизкий физический урон\nНет способностей с уроном или негативными эффектами"
+        "Description_priest"    "Тролль, специализирующийся на вспомогательной магии.\n\nСлабый и медленный, но это быстро компенсируется активными способностями.\n\nЕго способности дают активные эффекты союзникам, лечат их, что делает его намного сильней, чем он и его статы.\n\nСлотов: 4\nСложность: Сложный\n\nПреимущества:\nБафы позволяют наносить больше урона, чем ожидают враги\nМожет излечить болзень или дать временный иммунитет к магии\nПассивная аура помогает выживать\n\nНедостатки:\nСпособности тратят энергию, что может убить при неправильном использовании\nНет боевых способностей"
+        "Description_mage"      "Тролль, специализирующийся на  боевой магии.\n\nСлабый и медленный, но это компенсируется количеством магического урона.\n\nЕго способности дают негативные эффекты и наносят магичекий урон противникам.\n\nСлотов: 4\nСложность: Тяжелый\n\nПреимущества:\nМожет сильно замедлять и наносить урон противникам\nСильный в ранней стадии игры\nЛегко охотится\n\nНедостатки:\nСпособности тратят энергию, что может убить при неправильном использовании\nНизкий физический урон"
+        "Description_beastmaster" "Тролль, специализирующийся на приручении животных.\n\nФизически сильный и быстрый.\n\nЕго способности ограничены, но он может приручать животных, есть пассивное умение, замедляющее животных вокруг и постепенно наносящее им урон.\n\nСлотов: 4\nСложность: Простой\n\nПреимущества:\nВторой по количеству физического урона\nМожет приручать животных для большего урона\nЗамедляет и наносит урон животным\n\nНедостатки:\nМаленькое количество способностей\nНе получает способности с каждым уровнем"
+
+        "Select_hunter"        "Выбрать Охотника"
+        "Select_gatherer"      "Выбрать Сборщика"
+        "Select_scout"         "Выбрать Разведчика"
+        "Select_thief"         "Выбрать Вора"
+        "Select_priest"        "Выбрать Священника"
+        "Select_mage"          "Выбрать Мага"
+        "Select_beastmaster"   "Выбрать Повелителя Зверей"
+        "RandomClass"          "Случайный Класс"
+
+        "SubclassSelectText"   "Выбрать сабкласс"
+        "SubclassReadyText"   "Выберите сабкласс!"
+
+        "hunter_sub1_name" "Ищейка"
+        "hunter_sub1_desc" "Ищейка - эксперт в нахождении, приследовании, демобилизации добычы. Он может использовать несколько способностей, чтобы находить врагов и следить за ними.\n\n\nФункции: Охота, Бой, Нахождение Противников Изначальная способность: Сетка\nИзучаемые способности: Усовершенствованный след, Дизентерийный след, Нюх, Спрятать жучок, Отследить жучок\Базовый урон: 18-18\nЗадержка атаки: 1.75\nСкорость: 350"
+
+        "hunter_sub2_name" "Warrior"
+        "hunter_sub2_desc" "The Warrior's axes thirst for blood. He excels at beating his foes to a bloody pulp. He is the epitome of offensive combat and is always willing to prove it. Through use of his cleave and his endurance he is a foe to be recokned with.\n\n\nFunction: Offensive Combat\nInitial Abilities: Ensnare, Endurance\nLearnable Ability: Giant Swing\nBase Damage: 20-20\nAttack Cooldown: 1.65\nMovement Speed: 300"
+
+        "hunter_sub3_name" "Juggernaut"
+        "hunter_sub3_desc" "The Juggernaut specializes in taking hits and defensive tactics, while still maintaining the ability to pack a punch. His policy on battle is that the best offense is a good defense.\n\n\n\n\nFunction: Defensive Combat\nInitial Abilities: Ensnare\nLearnable Abilities: Staying Power\nBase Damage: 16-16\nAttack Cooldown: 1.75\nMovement Speed: 300"
+
+        "beastmaster_sub1_name" "Pack Leader"
+        "beastmaster_sub1_desc" "The Pack Leader is a form of true dedication to one's fellow animal, and because of this he can control more than one pet, while focusing on enhancing them rather than himself.\n\n\n\nInitial Abilities: Spirit of the Beast, Tame Pet\nLearnable Abilities: Call to Battle, Empathic Rage\nBase damage: 16-16\nAttack Cooldown: 1.90\nMovement Speed: 340"
+
+        "beastmaster_sub2_name" "Chicken Form"
+        "beastmaster_sub2_desc" "The Chicken Form Beastmaster abandons his fragile companion, instead focusing on harrowing the enemy. The Chicken does not directly attack, however several useful abilities make him very potent in combat.\n\n\n\nInitial Ability: Flea Aura Attack\nLearnable Abilities: Shortness, Fowl Play\nBase damage: 1\nAttack Cooldown: 30.00\nMovement Speed: 290"
+
+        "beastmaster_sub3_name" "Shapeshifter"
+        "beastmaster_sub3_desc" "The Shapeshifter forgoes his bond with the beast and instead chooses to become one. Can shift into several forms, each with it's own set of skills to accomodate any situation.\n\n\n\nInitial Abilities: Shapeshift to Normal Form, Shapeshift to Elk Form\nLearnable Abilities: Shapeshift to Wolf Form, Shapeshift to Bear Form\nBase damage: 18-18\nAttack Cooldown: 1.75\nMovement Speed: 340"
+
+        "mage_sub1_name" "Elementalist"
+        "mage_sub1_desc"    "The Elementalist is a pure offensive powerhouse weilding the power of the elements that focuses on calling on the destructive forces of nature itself to burn, shock and freeze foes.\n\nFunction: Combat, Nuker\n\nInitial Abilities: Pump Up, Mage Fire.\nLearnable Abilities: Eruption, Splitting Fire, Defender Energy, Electromagnet, Chain Lightning, Freezing Blast, Storm Earth and Fire\nBase Damage: 15-15 / Cooldown: 1.75\nMovement Speed: 310"
+
+        "mage_sub2_name" "Hypnotist"
+        "mage_sub2_desc"    "The Hypnotist uses dark magic to attack the minds of his enemies and disable foes into submission while depleting their energy and will to fight.\n\nFunction: Combat, Energy Destruction\nInitial Abilities: Null Damage, Reduce Food, Mage Fire\n\nLearnable Abilities: Hypnosis, Dream Eater, Anger, Depression Orb, Depression Aura, Jealousy, Seizures, Stupefying Field\nBase Damage: 15-15 / Cooldown: 1.75\nMovement Speed: 310"
+
+        "mage_sub3_name"  "Dementia Master"
+        "mage_sub3_desc"    "The Dementia Master does not get many new spells, instead he focuses on increasing the power of his existing spells and creating new spells from raw magical runes.\n\nFunction: Combat, Special and RNG\nInitial Abilities: Mage Fire, Reduce Food, Giga Negative Blast, Quantum Null Damage\nLearnable Abilities: Metronome, Maddening Discharge, Dementia Mastery\nBase Damage: 15-15 / Cooldown: 1.75\nMovement Speed: 310"
+
+        "gatherer_sub1_name" "Herbmaster Telegatherer"
+        "gatherer_sub1_desc" "The Herbmaster Telegatherer refocuses his location finding abilities to the bushes and plants while also being able to mix potions on-the-go and send potion mixing resources straight to a friendly campfire from anywhere on the map.\n\n\nFunction: Collecting, and creating items, mixing potions.\nInitial Ability: Mix Herbs\nLearnable Ability: Telegather\nBase Damage: 14-14\nAttack Cooldown: 1.75\nMovement Speed: 325"
+
+        "gatherer_sub2_name" "The Radar Telegatherer"
+        "gatherer_sub2_desc" "The Radar Telegatherer like his previous form, can discern different resources on the minimap but now from an even greater distance and with more specific filters and send them straight to a friendly camp fire from anywhere on the map.\n\nFunction: Finding, collecting, and creating items.\nInitial Abilities: Radar Manipulations, Radar\nLearnable Ability Telegather\nBase Damage: 14-14\nAttack Cooldown: 1.75\nMovement Speed: 325"
+
+        "gatherer_sub3_name" "Remote Telegatherer"
+        "gatherer_sub3_desc" "What the Remote Telegatherer lacks in precision, he makes up for in raw gathering power.  Like a vaccum, he can teleport nearby resources to his feet, and then send them all to a friendly camp fire.\n\n\n\nFunction: Find, collecting, and creating items\nInitial Ability: Item Warp\nLearnable Ability: Telegather\nBase Damage: 14-14\nAttack Cooldown: 1.75\nMovement Speed: 325"
+
+        "priest_sub1_name" "Booster"
+        "priest_sub1_desc" "The Booster focuses on enhancing his allies with powerful magic so they can charge into battle wielding strength never before thought possible.\n\nFunction: Defensive Buffs, Combat Support\nInitial Abilities: The Glow, Resist All, Omnicure, Cure All\nLearnable Abilities: Pump Up, Lightning Shield, Fortitude, Troll Battle Call, Spirit Link, Map Magic, Angelic Elemental\nBase Damage: 14-14\nAttack Cooldown: 1.75\nMovement Speed: 300"
+
+        "priest_sub2_name" "Master Healer"
+        "priest_sub2_desc" "The Master Healer excels at keeping his allies alive and healthy, while also managing their well-being so that they are ready for battle at any moment.\n\nFunction: Survival, Combat Support\nInitial Abilities: The Glow, Resist All, Omnicure, Cure All\nLearnable Abilities: Healing Spray, Healing Wave, Self\nPreservation, Mix Health, Ranged Heal, Replenish\nBase Damage: 14-14\nAttack Cooldown: 1.75\nMovement Speed: 300"
+
+        "priest_sub3_name" "Shaman"
+        "priest_sub3_desc" "The Shaman utilizes spiritual magic and herbalism to support his allies. He can also leave his body for short periods of time to scout around.\n\nFunction: Combat Support, Healing\nInitial Abilities: The Glow, Resist All, Cure All, Pacifing Smoke.\nLearnable Abilities: Increase Metabolism, Maximum Fervor, Pain Killer Balm, Enhancing Herbalism, Spirit Walk\nBase Damage: 14-14 / Cooldown: 1.75\nMovement Speed: 300"
+
+        "scout_sub1_name" "Observer"
+        "scout_sub1_desc" "The Observer can place wards in a large area around himself, giving vision to his allies of large sections of the map for long periods of time without much setup time, in addition to having a massive reveal.\n\n\n\nFunction: Reconnaissance\nInitial Ability: Greater Reveal\nLearnable Ability: Ward the Area\nBase Damage: 16-16\nAttack Cooldown: 1.70\nMovement Speed: 325"
+
+        "scout_sub2_name" "The Radar Scout"
+        "scout_sub2_desc" "The Radar Scout is the master of detection, able to automatically spot moving creatures that trigger his radar, as well as see otherwise invisible units.\n\n\n\n\nFunction Enemy: Detection\nInitial Abilities: Enemy Radar, Shadow Sight\nLearnable Ability: Motion Sensor Radar\nBase Damage: 16-16\nAttack Cooldown: 1.70\nMovement Speed: 315"
+
+        "scout_sub3_name" "Spy"
+        "scout_sub3_desc" "The Spy excels at foreseeing assaults by enemy trolls. His vision can bounce from wards to enemies, and can potentially reveal an entire island with careful ward placement.\n\n\nFunction: Reconnaissance, Enemy Detection\nInitial Abilities: Place Ward, Destroy Ward\nLearnable Abilities: Scry\nBase Damage: 16-16\nAttack Cooldown: 1.70\nMovement Speed: 335"
+
+        "thief_sub1_name" "Escape Artist"
+        "thief_sub1_desc" "The Escape Artist is an expert at getting in and out of anywhere, and fast. His mobility-themed skills make him very hard to catch, and very hard to get away from.\n\n\n\nFunction: Stealing, Escape\nInitial Abilities: Teleport, Cloak\nLearnable Ability: Jump, Camouflage, Blur\nBase Damage: 16-16\nAttack Cooldown: 1.75\nMovement Speed: 330"
+
+        "thief_sub2_name" "Contortionist"
+        "thief_sub2_desc" "The Contortionist is skilled in the art of infiltration. He can sabotage and steal from enemy bases and disappear before they even know what hit them.\n\n\n\n\nFunction: Harassment, Stealing\nInitial Abilities: Teleport, Cloak\nLearnable Ability: Smoke Stream, Tele-Thief, Nether Fade\nBase Damage: 15-15\nAttack Cooldown: 1.75\nMovement Speed: 310"
+
+        "thief_sub3_name" "Assassin"
+        "thief_sub3_desc" "The Assassin has one simple task: to end the lives of enemy trolls. Focused on combat, the Assassin can make an enemy's simple mistake their downfall.\n\n\n\n\nFunction: Harassment, Combat\nInitial Abilities: Teleport, Cloak\nLearnable Ability: Throwing Knife, Planning Phase, Assassinate\nBase Damage: 18-18\nAttack Cooldown: 1.85\nMovement Speed: 310"
+
+        "pet_grow"                           "Your pet has grown!"
+
+        "error_nicetry"							"Nice try."
+        "error_inventory_full"					"Inventory is full."
+        "error_backpack_disabled"				"Backpack is disabled. Dropping item to the ground."
+        "error_cant_teleport_without_vision" 	"Can not teleport to a location without vision. Do you want to end up inside a wall?"
+        "error_cant_attack_air"					"Can not attack air units. Try using ensnare to bring down the hawks."
+        "error_cant_cancel"						"Can't cancel ressurection in progress!"
+        "error_cant_carry_more_raw_meat"		"Can not carry any more raw meat"
+        "error_cant_carry_more_boots"			"Can not carry any more boots."
+        "error_cant_carry_more_gloves"			"Can not carry any more gloves."
+        "error_cant_carry_more_coat"			"Can not carry any more coats."
+        "error_cant_carry_more_axesshields"  	"Can not carry any more axes or shields."
+        "error_cant_carry_more_axes"			"Can not carry any more axes."
+        "error_cant_carry_more_scrolls"			"Can not carry any more scrolls."
+        "error_cant_drop"						"Can't drop here."
+        "error_chicken_cant_carry_axes"			"Chickens can not carry any axes."
+        "error_not_enough_hides"				"Not enough of same hide to craft item."
+        "error_no_meat_to_eat"					"No raw meat to eat."
+        "error_no_meat_to_drop"					"No raw meat to drop."
+        "error_no_mana"							"Not enough mana."
+        "error_not_enough_gold"					"Not enough gold."
+        "error_invalid_build_position"			"Can't build there."
+        "error_only_beastmaster"				"Only beastmaster can build the hatchery."
+        "error_item_out_of_range"				"Item out of range to pick up."
+        "error_pet_leash_range"					"Pet is being ordered too far away, returning to a safe range!"
+        "error_must_target_allied_gravestone" 	"Must target an allied gravestone!"
+        "error_heat_low"						"Your heat is too low! Get to a fire to warm up or you will die!"
+        "error_mana_low"						"You've run out of energy and fell asleep outside!"
+        "error_frozen"							"You have frozen! \nYou must have a teammate come to you and warm you up or you will die!"
+        "eat_raw_meat_channeling_is_in_progress"	"Raw Meat Channeling is progress already."
+        "error_already_rested"                  "You are already rested. Please wait a moment before resting again."
+        "error_must_target_baby_animal"         "Must target a baby animal."
+        "invalid_telegatherer_target"           "Must target a camp fire."
+        "invalid_sniff_target"                  "Must target a corpse."
+        "invalid_priest_target"                 "Can't use on self or priests."
+        "invalid_hypnosis"                       "Can't use on units that are not hypnotized."
+		"NoobTimeOver" 							"Noob time is now over! Respawning is now disabled! You must revive with a spirit ward!"
+		"error_toomanywards"					"Can't have more then 10 wards"
+        "teammate_frozen"                    	"has frozen! Go to them and warm them up or they will die!"
+        "error_telegather_cooldown"				"Telegather must recharge."
+
+
+
+        "item_bush_thistle"                                          "Thistle Shrub"
+        "item_bush_mushroom"                                         "Mushroom Colony"
+        "item_bush_herb"                                             "Haisetsu Bush"
+        "item_bush_herb_blue"                                        "Blue Herb Bush"
+        "item_bush_herb_orange"                                      "Orange Herb Bush"
+        "item_bush_herb_purple"                                      "Purple Herb Bush"
+        "item_bush_herb_yellow"                                      "Yellow Herb Bush"
+        "item_bush_river"                                            "Water Bush"
+        "item_bush_scout"                                            "Scout Bush"
+        "item_bush_stash"                                            "Hidden Stash"
+        "item_bush_thief"                                            "Thief Bush"
+
+
+		"npc_ship_merchant_1"                                              "Mystic Traveller"
+        "npc_ship_merchant_2"                                              "Squawks the Wise"
+        "npc_ship_merchant_3"                                              "Wares McGee"
+        "npc_ship_merchant_4"                                              "Samma the War Hardened"
+        "npc_ship_merchant_5"                                              "Tholyr & Chris P."
+        "npc_ship_merchant_6"                                              "Warnox the Fortified"
+        "npc_ship_merchant_7"                                              "Karalar The Precice"
+		
+        "compass_used" "used the sonar compass - now pinging merchant ships."
+
+
+        // Toolkit Abilities
+		
+		
+        "gold_panel"                                       "Earn gold by selling items to wandering merchants, hides are a quick way to make money!"
+		"DOTA_Tooltip_Ability_gold_panel"   				"Earn gold by selling items to wandering merchants, hides are a quick way to make money!"
+		
+        "sleep_outside"                                          "Sleep Outside"
+        "DOTA_Tooltip_Ability_sleep_outside"                     "Sleep <font color='#00CC00'>O</font>utside"
+        "DOTA_Tooltip_Ability_sleep_outside_Description"         "Sleep outside and gain 20 energy but lose 20 heat and hp!\nShould only be used as a worse case scenario to gain energy!"
+        "DOTA_Tooltip_Ability_sleep_outside_rest_duration"       "REST DURATION:"
+        "DOTA_Tooltip_Ability_sleep_outside_mana_restored"       "MANA RESTORED:"
+
+        "eat_meat"                                       "Eat\nRaw Meat"
+
+        "DOTA_Tooltip_Ability_eat_meat"                  "Eat Raw Meat"
+        "DOTA_Tooltip_Ability_eat_meat_Description"      "Eat the raw meat your troll is currently holding (seen in the buff bar) once per use of this ability. You will eat it over time (channeling) gaining a total of 15 health over 1.5 seconds."
+        "DOTA_Tooltip_Ability_eat_meat_channel_time"     "EAT TIME:"
+        "DOTA_Tooltip_Ability_eat_meat_heal_amount"      "HEALTH RESTORED:"
+
+        "drop_meat"     "Drop\nRaw Meat"
+
+        "DOTA_Tooltip_Ability_drop_meat"                  "Drop Raw Meat"
+        "DOTA_Tooltip_Ability_drop_meat_Description"                  "Drop one raw meat per use that your troll is currently holding. <font color='#00CC00'>Right click</font> to drop all carried meat. It will go to the ground once this ability is used."
+
+        "drop_all_meat" "Drop\nAll Raw Meat"
+
+        "DOTA_Tooltip_Ability_drop_all_meat"                            "Drop All Raw Meat"
+        "DOTA_Tooltip_Ability_drop_all_meat_Description"                  "Drop all raw meat your troll is currently holding. It will go to the ground once this ability is used. This is best used near a camp fire where the raw meat can quickly be cooked into cooked meat."
+
+        "panic"         "\nPanic!"
+
+        "ChatLine" "{s:type}<b><font color='{s:color}'>{s:name}</font></b>: {s:message}"
+        "ChatPlaceholder" "Type here..."
+
+        "DeathMessage" "{s:name} died..."
+        "ReviveMessage" "{s:name} been revived!"
+
+        "DOTA_Tooltip_Ability_Panic" "<font color='#00CC00'>P</font>anic"
+        "DOTA_Tooltip_Ability_Panic_Description"         "Use this ability to send your troll into a panic to gain attack damage and move speed! Be warned, during your state of frenzy you take increased damage."
+        "DOTA_Tooltip_Ability_Panic_attack_speed"       "ATTACK SPEED:"
+        "DOTA_Tooltip_Ability_Panic_move_speed"         "MOVE SPEED:"
+        "DOTA_Tooltip_Ability_Panic_incoming_damage"    "INCOMING DAMAGE:"
+
+// Find help button and do heLp
+
+"HelpToggleIcon" "H"
+"HelpToggleButton" "He<font color='#00CC00'>L</font>p"
+
+//Boss Lines
+
+"es_test" "test test test test <font color='#00CC00'>TEST</font>"
+
+
+
+
+
+
+
+
+
+
+
+        // Usage
+        //  <br> for break lines
+        //  • for bullets
+        //  <font color='#hex'>text</font> for color
+        //  <b>text</b> for bold,
+        //  <h1>text</h1> header1, <h2>text</h2> header2
+        //  <i> italic/underlined.
+        //  Styles can be changed in custom_loading_screen.css
+        "loading_screen_change_text" "<h1>LATEST CHANGES</h1><i>Version 1.2.6</i><br>
+<h2>Mechanics:</h2>
+Voting and hero pick fixed.<br>
+Backpack disabled.<br>
+Added new creep sounds.<br>
+Gravestone size increased.<br>
+Various backend fixes.<br>
+Crafting: Fix for naughty crafting. Fixed master crafter recipie.<br><br>
+
+<h2>Abilities & Heroes:</h2>
+Gatherer: Possible fix for item warm not working<br>
+Thief: Planning phase damage now properly expires.<br>
+Thief: Tele-Thief working properly now and added fx.<br>
+Priest: Fix for spray healing.<br>
+Priest: Added missing debuffs for cure spells.<br>
+
+<h2>Buildings:</h2>
+Spirit Ward: Added sound effect.<br>
+Gravestone: Added effects and reduced targetbox size.<br><br>
+
+<h2>Items:</h2>
+Fixed glove abuse.<br>
+Fixed tsunami scroll damage.<br><br>
+
+<h2>Other:</h2>
+Traps: Now traps properly go off on creeps.<br>
+Revamped UI.<br>
+Please file bug reports via our forums or the bug discussion topic on the Steam Workshop (Not the main page.)<br><br>"
+
+
+
+
+
+
+        "loading_screen_tip_0"  "Press P to drop all held items."
+        "loading_screen_tip_1"  "Don't forget to check your heat, if you freeze to death you will die!"
+        "loading_screen_tip_2"  "Be careful you dont run low on energy or you will pass out!"
+        "loading_screen_tip_3"  "Help report bugs and issues at forums.sideshopgames.com"
+
+                //Gamemodes
+
+                "Gamemode_header" "Game mode Voting"
+                "Gamemode_fast" "Fast"
+                "Gamemode_normal" "Normal"
+                "Gamemode_slow" "Slow"
+                "Gamemode_customheader_enable" "Enable custom options"
+                "Gamemode_customheader_disable" "Disable custom options"
+                "Gamemode_noobmode" "Noob Mode"
+                "Gamemode_fixedbush" "Fixed bush spawning"
+                "Gamemode_norevive" "No revive"
+                "Gamemode_notrees" "No Trees"
+                "Gamemode_noislandbosses" "No Mini-bosses"
+                "Gamemode_confirm" "Confirm vote"
+                "Gamemode_confirmed" "Voted!"
+                "Gamemode_votingend" "Voting has ended. Game starts in {s:time}..."
+				"Gamemode_votingendnotimer" "Game has already begun."
+                "Gamemode_notvoted_header" "Players that have not voted:"
+                "Gamemode_voted_header" "Votes:"
+                "Gamemode_final_votes_header" "Final votes"
+                "Gamemode_player_line" "{s:player}<br />
+                  {s:speed}"
+               // {s:speed} {s:pick}"
+                "Gamemode_allpick" "All pick"
+                "Gamemode_allrandom" "All random"
+                "Gamemode_samehero" "Same Hero"
+                "Gamemode_timer" "Voting will end in {s:time}..."
+
+                "Gamemode_tooltip_speed_1" "Fast Mode: Good for quick games.<p>[2x Faster Heat] Regen<p>[2x Faster] Creep Spawning<p>[2x Faster] Heat/Health/Energy degeneration"
+                "Gamemode_tooltip_speed_2" "Normal Mode (Default Setting): Good for a regular match.<p>Normal Heat Regen<p>Normal Creep Spawning<p>Normal Heat/Health/Energy degeneration"
+                "Gamemode_tooltip_speed_3" "Slow Mode: Good for a long lasting game.<p>[2x Slower] Heat Regen<p>[2x Slower] Creep Spawning<p>[2x Slower] Heat/Health/Energy degeneration"
+                "Gamemode_tooltip_pick_1" "All Pick (Default)"
+                "Gamemode_tooltip_pick_2" "All Random - Everyone gets a random hero."
+                "Gamemode_tooltip_pick_3" "All Same - Every team gets a random hero."
+                "Gamemode_tooltip_custom_options" "Enable Custom Options"
+                "Gamemode_tooltip_custom_noob" "Noob Mode - Prevents dying from lack of heat."
+                "Gamemode_tooltip_custom_fixedbush" "Bushes spawn in the same locations every game instead of being spontaniously placed"
+                "Gamemode_tooltip_custom_norevive" "No Revive"
+                "Gamemode_tooltip_custom_noislandbosses" "No Island Mini-Bosses"
+                "Gamemode_tooltip_icon_custom_noob" "Noob Mode"
+                "Gamemode_tooltip_icon_custom_fixedbush" "Fixed Bushes"
+                "Gamemode_tooltip_icon_custom_norevive" "No Revive"
+                "Gamemode_tooltip_icon_custom_noislandbosses" "No Island Mini-Bosses"
+
+        				"Gamemode_tooltip_normal_allpick" "NORMAL"
+        				"Gamemode_fast_allpick" "FAST"
+        				"Gamemode_slow_allpick" "SLOW"
+
+                "ToHeroSelection" "To Hero Selection"
+                "ToVoting" "Back to Voting"
+
+				//Help Menu
+
+"togglearrows"      "Toggle Help Arrows"
+"Arrow_ToggleArrows" "Toggle Help Arrows"
+"Arrow_Crafting"  	"Crafting Menu"
+"Arrow_Heat" 		"Heat Indicator"
+"Arrow_Meat" 		"Meat Stack Indicator"
+"Arrow_Sleep"   "Sleep <font color='#00CC00'>O</font>utside"
+"Arrow_Eat"     "Eat Raw Meat"
+"Arrow_DropMeat" "Drop Raw Meat"
+"Arrow_Panic" "Pa<font color='#00CC00'>N</font>ic"
+"Arrow_Subclass" 	"Subclass Selection"
+"General_Info" 	"Press 'P' to drop all items.<b><b>"
+"Toggle_Help" "Toggle Help"
+
+    "Stop_Tutorial" "Exit tutorial"
+
+		"Intro_Intro" "General Information"
+		"Intro_Core" "<h1>Basics:</h1>
+• Surviving your first night<br>
+• Crafting<br>
+• Combat<br><br><br>
+<h2>Surviving your first night:</h2><br>
+It is important to help your team to gather the components required to build a fire. Alongside that it is important to set up your teams base! You can have any number of bases you choose but it is good to start with one solid one. Remember! There's more then the wild to worry about! The enemy team can come for you at any moment!<br><br>
+<h2>Crafting:</h2><br>
+The resources you find in world can be crafted into a number of helpful things that will propel your team into victory. You can take a look at the master crafting menu by pressing C or by clicking on the tab on the left side of the screen.<br><br>
+<h2>Combat:</h2><br>
+Combat can be carried out in a wide variety of ways. Outsmarting your oppenent through use of traps or towers, or using items or spells that can slow, stun, or drain your oppenents energy."
+
+
+		"Buildings_Intro" "Building Information"
+		"Buildings_Core" "Island Troll Tribes extensively uses buildings for creating items and managing player stats. Most buildings are created in the inventory of a troll from the merging of items in the right order. Once a building is created in the inventory of a troll, it will be in the form of a construction kit which the troll can then place at a buildable location. <br><br>
+<h1>Stat Management:</h1>
+• Fire - Heat restoration, meat cooking, view of area and blocking paths. <br>
+• Mage Fire - Advanced heat restoration and meat cooking. <br>
+• Tent - Portable energy restoration. <br>
+• Troll Hut - Stationary energy restoration and item storage. <br>
+• Mud Hut - Stationary energy restoration and item storage. <br><br>
+<h1>Storage:</h1>
+• Storage Hut - Private item storage. <br>
+• Smoke House - Public item storage and corpse storage. <br>
+• Troll Hut - Stationary energy restoration and item storage. <br>
+• Mud Hut - Stationary energy restoration and item storage. <br><br>
+<h1>Crafting:</h1>
+• Armory - Creating weapons, armor, and tools for other items. <br>
+• Tannery - Creating boots, gloves and armor. <br>
+• Workshop - Creating special and high tier items. <br>
+• Witch Doctor's Hut - Creating magic spells, magic items and special buildings. <br>
+• Mixing Pot - Creates potions from herbs. <br><br>
+<h1>Defensive:</h1>
+• Omnitower - Full sized powerful and customizable defense. Holds up to 3 'Offensive' items (e.g. Nets, Spears) <br>
+• Ensnare Tower - Tiny light defense with nets.<br>
+• Iron Trap - A metal trap that can be placed on the ground. When stepped on it stuns the enemy and deals high damage. <br>
+• <u>Ensnare Trap</u> - A twine based trap that prevents the user from moving while dealing a small amount of damage. <br><br>
+<h1>Special:</h1>
+• Spirit Ward - Revives fallen players. <br>
+• Teleport Beacon - Teleport players over terrain. <br>
+• Hatchery - Turns hawk eggs and other items into flying pets that a beastmaster can tame. <br>
+• Craftmaster - Crafting inventory items if low on inventory space. The NPC Craftmaster is found at the center of the map just below the boss area.<br>"
+
+"Classes_Intro" "Classes Information"
+"Classes_Core" "The 'base class' is just the theoretical foundation that all classes are based on. All classes(including subclasses) have the same base armor and health/energy but different attributes per tier causing the health/energy and armor to be different. The math behind this is every class starts with 192 health/energy but it is increased by 8 per skill point in strength/intelligence respectively. Armor is increased by 1 per 10 agility and movement speed is 5 per agility but the base varies between classes and subclasses. Each class shares the same subclass system and several base skills.<br><br>
+
+<h1>Subclasses:</h1><br>
+Every unsubbed class can chose to become one of three subclasses at level 6.<br><br>
+
+<h1>Class rundown:</h1><br>
+<h2>Gatherer</h2>
+Use: Locating items, large inventory, creating special buildings. <br><br>
+<h2>Subclasses:</h2> <br>
+<b>Herb Master Telegatherer:</b>  The Herbmaster Telegatherer refocuses his location finding abilities to the bushes and plants while also being able to mix potions on-the-go and send potion mixing resources straight to a friendly campfire from anywhere on the map. <br><br>
+<b>Radar Telegatherer:</b> The Radar Telegatherer can discern different resources on the minimap and send them straight to a friendly campfire from anywhere on the map.  <br><br>
+<b>Remote Gatherer:</b> What the Remote Telegatherer lacks in precision, he makes up for in raw gathering power. He can teleport nearby resources to his feet, and then send them all to a friendly campfire.  <br><br><br><br>
+
+<h2>Hunter</h2>
+Use: A troll specialized in physical combat. His strength is unrivaled by any other troll. His abilities allow him to track and ensnare enemies to prevent their escape for easy meat and xp. <br><br>
+<h2>Subclasses:</h2> <br>
+<b>Tracker:</b> The Tracker is an expert at locating, following, and locking down unsuspecting prey. He can use his several tracking skills to locate and keep tabs on unseen enemies.</h2>  <br><br>
+<b>Warrior:</b> The Warrior's axes thirst for blood. He excels at beating his foes to a bloody pulp. He is the epitome of offensive combat and is always willing to prove it.  <br><br>
+<b>Juggernaut:</b> The Juggernaut specializes in taking hits and defensive tactics, while still maintaining the ability to pack a punch. His policy on battle is that the best offense is a good defense.</h2>  <br><br><br><br>
+
+<h2>Mage</h2>
+Use: A troll specialized in offensive magic. Weak and slow but this is easily substituted by huge magical damage output. His abilities allow him to debuff and damage enemies. <br><br>
+<h2>Subclasses:</h2> <br>
+<b>Elementalist:</b> The Elementalist is a pure offensive powerhouse that focuses on calling on the destructive forces of nature itself to burn, shock and freeze foes.  <br><br>
+<b>Hypnotist:</b> The Hypnotist uses dark magic to attack the minds of his enemies and disable foes into submission while depleting their energy and will to fight. <br><br>
+<b>Dementia Master:</b> The Dementia Master does not get many new spells, instead he focuses on increasing the power of his existing spells and creating new spells from raw magical runes. <br><br><br><br>
+
+<h2>Scout</h2>
+Use: A troll specialized in finding enemies and animals. Weak but makes up for it with his ability to level fairly fast by finding things to kill. His abilities allow him to ping animals/enemies and reveal large areas. <br><br>
+<h2>Subclasses:</h2>
+<b>Observer:</b> The Observer can place wards in a large area around himself, giving vision to his allies of large sections of the map for long periods of time without much setup time, in addition to having a massive reveal.  <br><br>
+<b>Radar Scout:</b> The Radar Scout is the master of detection, able to automatically spot moving creatures that trigger his radar, as well as see otherwise invisible units.  <br><br>
+<b>Spy:</b> The Spy excels at foreseeing assaults by enemy trolls. His vision can bounce from wards to enemies, and can potentially reveal an entire island with careful ward placement.<  <br><br><br><br>
+
+<h2>Thief</h2>
+Use: A troll specialized in stealing and escaping. Weak but is very hard to kill. His abilities allow him to blink to an area he can see and go invisible, allowing him to steal items from enemy bases early-on with little risk.<br><br>
+<h2>Subclasses:</h2> <br>
+<b>Escape Artist:</b> The Escape Artist is an expert at getting in and out of anywhere, and fast. His mobility-themed skills make him very hard to catch, and very hard to get away from.  <br><br>
+<b>Contortionist:</b> The Contortionist is skilled in the art of infiltration. He can sabotage and steal from enemy bases and disappear before they even know what hit them.  <br><br>
+<b>Assassin:</b> The Assassin has one simple task: to end the lives of enemy trolls. Focused on combat, the Assassin can make an enemy's simple mistake their downfall.  <br><br><br><br>
+
+<h2>Beastmaster</h2>
+Use: A troll specialized in animal fury. Physically strong and fast. His abilities are limited but he can tame creatures to fight for him, and has a passive which slows nearby animals and deals minor damage to them. <br><br>
+<h2>Tips:</h2><br>-Dont be selfish with exp, sharing is caring.<br>-As a beastmaster your main concerns are supplying your team with a steady flow of meat and gold.<br>-Be very careful in managing your pets as it can be a massive experience boost for the enemy team.<br><br>
+<h2>Subclasses:</h2> <br>
+<b>Pack Leader:</b> The Pack Leader is a form of true dedication to one's fellow animal, able to control more than one pet while focusing on enhancing them rather than himself.  <br><br>
+<b>Chicken Form:</b> The Chicken Form Beastmaster abandons his fragile companion, instead focusing on harrowing the enemy. The Chicken does not directly attack, however several useful abilities make him very potent in combat.  <br><br>
+<b>Shapeshifter:</b> The Shapeshifter forgoes his bond with the beast and instead chooses to become one. Can shift into several forms, each with it's own set of skills to accomodate any situation.  <br><br><br><br>
+
+<h2>Priest</h2>
+Use: A troll specialized in beneficial magic. Weak and slow but this can easily be changed by buffing himself. His abilities allow him to buff, cure, and protect his allies or himself making him much stronger than his stats imply.<br><br>
+<h2>Subclasses:</h2> <br>
+<b>Booster:</b> The Booster focuses on enhancing his allies with powerful magic so they can charge into battle wieilding strength never before thought possible.  <br><br>
+<b>Master Healer:</b> The Master Healer excels at keeping his allies alive and healthy, while also managing their well-being so that they are ready for battle at any moment.  <br><br>
+<b>Shaman:</b> The Shaman utilizes spiritual magic and herbalism to support his allies. He can also leave his body for short periods of time to scout around in the spiritual realm. <br><br><br><br>"
+
+
+
+		"Creeps_Intro" "Animal Information"
+		"Creeps_Core" "There are various animals to be found, some are dangerous and some are not.<br><br>
+
+<h1>Pet Animals:</h1>
+Fawn: Can mature into Elk (Pet) -> and Adult Elk <br>
+Wolf Pup: Can mature into Jungle Wolf -> and into Adult Jungle Wolf <br>
+Bear Cub: Can mature into Jungle Bear -> and into Adult Jungle Bear <br><br>
+<h1>Passive Animals:</h1>
+Fish <br>
+Green Fish <br>
+Elk <br>
+Hawk  <br><br>
+<h1>Hostile Animals:</h1>
+Jungle Wolfs <br>
+Jungle Bears <br>
+Lizard <br>
+Panthers  <br><br>
+<h1>Bosses:</h1>
+Mammoth<br>
+"
+    }
+}

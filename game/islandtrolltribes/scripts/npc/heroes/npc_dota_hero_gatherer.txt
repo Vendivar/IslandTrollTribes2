@@ -4,7 +4,7 @@
 
 	"override_hero"	"npc_dota_hero_shadow_shaman"
 	"url"	"Shadow Shaman"
-	"AbilityLayout"	"4"
+	"AbilityLayout"	"6"
 	"Ability1"	"ability_gatherer_itemradar"
 	"Ability2"	"ability_gatherer_radarmanipulations"
 	"Ability3"	""
@@ -49,4 +49,5 @@
 	"StatusManaRegen"	"0.0"
 	"VisionDaytimeRange"	"1800"
 	"VisionNighttimeRange"	"900"
+	"DisableWearables" "1"
 }

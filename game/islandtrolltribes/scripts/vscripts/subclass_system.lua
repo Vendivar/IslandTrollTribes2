@@ -27,15 +27,14 @@ function ITT:SetDefaultCosmetics(hero)
     local defaultWearables = GameRules.ClassInfo['SubClasses'][hero:GetHeroClass()]['defaults']
     local hideSlots = GameRules.ClassInfo['SubClasses'][hero:GetHeroClass()]['hide']
 
-    if IsDedicatedServer() then
-       -- RemoveAllWearables(hero) --Could be replaced by adding "DisableWearables" "1" on every hero
+    if IsServer() then
+		--RemoveAllWearables(hero) --Could be replaced by adding "DisableWearables" "1" on every hero (FUNCTION IS BROKEN FOR THE REMOVAL PART, CRASHES ON LEVEL UP)
         hero.wearables = {}
         for _,modelName in pairs(defaultWearables) do
             hero:AttachWearable(modelName)			
 		print("attaching wearables for",hero,modelName)
         end
     else
-        ITT:SetDefaultWearables(hero)
 
         -- Handle Hunter hidden wearables
         Timers:CreateTimer(function()
@@ -75,22 +74,6 @@ function CDOTA_BaseNPC_Hero:AttachWearable(modelPath)
     table.insert(self.wearables, wearable)
 
     return wearable
-end
-
---Reset default wearables and doesn't hide wearables
-function ITT:SetDefaultWearables(hero)
-    local defaultWearables = GameRules.ClassInfo['SubClasses'][hero:GetHeroClass()]['defaults']
-    local currentWearableList = GetCurrentlyWornWearables(hero)
-    for _,wearable in pairs(currentWearableList) do
-        local modelName = wearable:GetModelName()
-        if modelName ~="" then
-            local slotName = modelmap[modelName] or "weapon" --Default main weapons don't have an item_slot in items_game.txt
-            local defaultModelName = defaultWearables[slotName]
-            if modelName and defaultModelName and modelName ~= defaultModelName then
-                SwapWearable(hero, modelName, defaultModelName)
-            end
-        end
-    end
 end
 
 function ITT:OnSubclassChange(event)
@@ -183,10 +166,14 @@ function ITT:OnSubclassChange(event)
     if not defaultWearables or not newWearables then
         return
     end
-
-    for slot,modelName in pairs(defaultWearables) do
-        SwapWearable(hero, defaultWearables[slot], newWearables[slot])
-    end
+	
+    HideWearables(hero)
+	
+		hero.wearables = {}
+        for _,modelName in pairs(newWearables) do
+		hero:AttachWearable(modelName)			
+		print("attaching wearables for",hero,modelName)
+        end
 end
 
 function PostSubclassSelectActions(hero)
@@ -210,80 +197,7 @@ function PostSubclassSelectActions(hero)
     end
 end
 
--- Change the current wearables by defaults
-function ITT:ResetSubclass(playerID)
-    local hero = PlayerResource:GetSelectedHeroEntity(playerID)
-    local class = hero:GetHeroClass()
-    local subclass = hero:GetSubClass()
-    print("Current class and subclass:",class, subclass)
-
-    local subclassInfo = GameRules.ClassInfo['SubClasses']
-    local subclassTable = subclassInfo[class]
-
-    local subclassTable = subclassInfo[class]
-    local subclassInfo = GameRules.ClassInfo['SubClasses']
-    local defaultWearables = subclassTable['defaults']
-    local currentWearables = subclassInfo[subclass]['Wearables']
-
-    print("Resetting subclass")
-    hero.subclass = nil
-
-    -- Update skills
-    ITT:AdjustSkills(hero)
-
-    -- Handle model change modifier
-    if hero.modelChangeModifierName then
-        hero:RemoveModifierByName(hero.modelChangeModifierName)
-        hero.modelChangeModifierName = nil
-    end
-
-    -- Remove subclass stats
-    if (hero.subclassModifierName) then
-        hero:RemoveModifierByName(hero.subclassModifierName)
-        hero.subclassModifierName = nil
-    end
-
-    if not defaultWearables or not currentWearables then
-        return
-    end
-
-    for slot,modelName in pairs(defaultWearables) do
-        SwapWearable(hero, currentWearables[slot], defaultWearables[slot])
-    end
-end
-
-function ITT:SetSubclassCosmetics(hero)
-    local subclassName = hero:GetSubClass()
-    local heroClassName = hero:GetHeroClass()
-    print("Subclass name:"..subclassName..", hero class: "..heroClassName)
-    if subclassName == "none" then return end
-    local subclassWearables = GameRules.ClassInfo['SubClasses'][subclassName]["Wearables"]
-    local wearableSetInUse =  GameRules.ClassInfo['SubClasses'][heroClassName]["defaults"]
-    if not subclassWearables or not wearableSetInUse then return end --Some subclasses don't have wearables
-
-    for slot,_ in pairs (wearableSetInUse) do --values for slot: weapon, offhand_weapon, head, shoulder, arms
-        SwapWearable(hero, wearableSetInUse[slot], subclassWearables[slot])
-    end
-end
 ------------------------------------------------------
-
--- Swaps a target model for another
-function SwapWearable( unit, target_model, new_model )
-    local currentWearableList = GetCurrentlyWornWearables(unit)
-    local wearable = FindWearableByModelName(currentWearableList, target_model)
-    if new_model then
-        wearable:SetModel( new_model )
-        print("Swapped Wearable ",target_model,"->",new_model)
-        -- If the original wearable was hidden, and we are replacing it by a new one, reveal it
-        if wearable.hidden then
-            print("Set Wearable revealed")
-            wearable:RemoveEffects(EF_NODRAW)
-        end
-    else
-        print("Couldn't find a wearable to swap from ", target_model)
-    end
-    return
-end
 
 function FindWearableByModelName(wearableList, modelName)
     for _,wearable in pairs(wearableList) do
@@ -330,7 +244,7 @@ end
 function RemoveAllWearables( hero )
     local wearables = hero:GetChildren()
     for _,v in pairs(wearables) do
-        if v:GetClassname() == "dota_item_wearable" then
+        if v:GetClassname() == "dota_item_wearable" and IsValidEntity(v) then
             if v:GetMoveParent() == hero then
                 if v:GetModelName() == "models/pets/armadillo/armadillo.vmdl" then
                     v:AddEffects(EF_NODRAW)

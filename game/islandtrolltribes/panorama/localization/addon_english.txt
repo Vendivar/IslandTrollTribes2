@@ -305,33 +305,22 @@
         //  <h1>text</h1> header1, <h2>text</h2> header2
         //  <i> italic/underlined.
         //  Styles can be changed in custom_loading_screen.css
-        "loading_screen_change_text" "<h1>LATEST CHANGES</h1><i>Version 1.2.6</i><br>
+        "loading_screen_change_text" "<h1>LATEST CHANGES</h1><i>Version 1.2.7</i><br>
 <h2>Mechanics:</h2>
-Voting and hero pick fixed.<br>
-Backpack disabled.<br>
-Added new creep sounds.<br>
-Gravestone size increased.<br>
-Various backend fixes.<br>
-Crafting: Fix for naughty crafting. Fixed master crafter recipie.<br><br>
+Backpack and talents removed.<br>
+Additional cliff build spots removed.<br><br>
 
 <h2>Abilities & Heroes:</h2>
-Gatherer: Possible fix for item warm not working<br>
-Thief: Planning phase damage now properly expires.<br>
-Thief: Tele-Thief working properly now and added fx.<br>
-Priest: Fix for spray healing.<br>
-Priest: Added missing debuffs for cure spells.<br>
+Fixed cosmetic issue. As a result beastmaster and gatherer may be missing heads.<br><br>
 
 <h2>Buildings:</h2>
-Spirit Ward: Added sound effect.<br>
-Gravestone: Added effects and reduced targetbox size.<br><br>
+Hatchery: Temporarily Removed.<br><br>
 
 <h2>Items:</h2>
-Fixed glove abuse.<br>
-Fixed tsunami scroll damage.<br><br>
+N/A<br><br>
 
 <h2>Other:</h2>
-Traps: Now traps properly go off on creeps.<br>
-Revamped UI.<br>
+N/A<br>
 Please file bug reports via our forums or the bug discussion topic on the Steam Workshop (Not the main page.)<br><br>"
 
 
