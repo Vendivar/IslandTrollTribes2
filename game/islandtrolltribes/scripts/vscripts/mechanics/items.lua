@@ -381,29 +381,7 @@ end
 --               Layout manipulation          --
 ------------------------------------------------
 
-function SetAbilityLayout( unit, layout_size )
-    unit:RemoveModifierByName("modifier_ability_layout4")
-    unit:RemoveModifierByName("modifier_ability_layout5")
-    unit:RemoveModifierByName("modifier_ability_layout6")
 
-    ApplyModifier(unit, "modifier_ability_layout"..layout_size)
-end
-
-function AdjustAbilityLayout( unit )
-    Timers:CreateTimer({
-      callback = function()
-        local required_layout_size = GetVisibleAbilityCount(unit)
-
-        if required_layout_size > 6 then
-            required_layout_size = 6
-        elseif required_layout_size < 4 then
-            required_layout_size = 4
-        end
-
-        SetAbilityLayout(unit, required_layout_size)
-      end
-    })
-end
 
 function GetVisibleAbilityCount( unit )
     local count = 0

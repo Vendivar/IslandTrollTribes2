@@ -7,4 +7,5 @@
 	"Ability4"	"tool_toggle_rot"
 	"Ability5"	"tool_reverse"
 	"AbilityLayout"	"5"
+	"DisableWearables" "1"
 }

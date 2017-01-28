@@ -47,6 +47,7 @@
 		"StatusManaRegen"	"0.0"
 		"VisionDaytimeRange"	"1400"
 		"VisionNighttimeRange"	"675"
+		"DisableWearables" "1"
 	}
 	"npc_dota_hero_shadow_shaman"
 	{
@@ -54,7 +55,7 @@
 	
 		"override_hero"	"npc_dota_hero_shadow_shaman"
 		"url"	"Shadow Shaman"
-		"AbilityLayout"	"4"
+		"AbilityLayout"	"6"
 		"Ability1"	"ability_gatherer_itemradar"
 		"Ability2"	"ability_gatherer_radarmanipulations"
 		"Ability3"	""
@@ -99,6 +100,7 @@
 		"StatusManaRegen"	"0.0"
 		"VisionDaytimeRange"	"1800"
 		"VisionNighttimeRange"	"900"
+		"DisableWearables" "1"
 	}
 	"npc_dota_hero_huskar"
 	{
@@ -143,6 +145,7 @@
 		"StatusManaRegen"	"0.0"
 		"VisionDaytimeRange"	"1000"
 		"VisionNighttimeRange"	"500"
+		"DisableWearables" "1"
 	}
 	"npc_dota_hero_witch_doctor"
 	{
@@ -150,7 +153,7 @@
 	
 		"override_hero"	"npc_dota_hero_witch_doctor"
 		"url"	"Witch Doctor"
-		"AbilityLayout"	"5"
+		"AbilityLayout"	"6"
 		"Ability1"	"ability_mage_spellbook_toggle"
 		"Ability2"	"ability_mage_nulldamage"
 		"Ability3"	"ability_mage_pumpup"
@@ -193,6 +196,7 @@
 		"StatusManaRegen"	"0.0"
 		"VisionDaytimeRange"	"950"
 		"VisionNighttimeRange"	"500"
+		"DisableWearables" "1"
 	}
 	"npc_dota_hero_dazzle"
 	{
@@ -291,6 +295,7 @@
 		"StatusManaRegen"	"0.0"
 		"VisionDaytimeRange"	"1300"
 		"VisionNighttimeRange"	"1300"
+		"DisableWearables" "1"
 	}
 	"npc_dota_hero_sniper_test"
 	{
@@ -380,6 +385,7 @@
 		"StatusManaRegen"	"0.0"
 		"VisionDaytimeRange"	"800"
 		"VisionNighttimeRange"	"1800"
+		"DisableWearables" "1"
 	}
 	"npc_dota_hero_tinker_bro"
 	{
@@ -401,6 +407,7 @@
 		"Ability4"	"tool_toggle_rot"
 		"Ability5"	"tool_reverse"
 		"AbilityLayout"	"5"
+		"DisableWearables" "1"
 	}
 	"npc_dota_hero_wisp"
 	{
@@ -420,11 +427,12 @@
 		"AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"
 		"AttributeBaseStrength"	"0"
 		"AttributeBaseIntelligence" "0"
-		"StatusHealth"	"150000"
+		"StatusHealth"	"250"
 		"VisionDaytimeRange" "0"
 		"VisionNighttimeRange" "0"
 		"MinimapIcon"				"minimap_boat"
 		"MinimapIconSize"			"0"
 		"MinimapDisableTint"		"1"
+		"DisableWearables" "1"
 	}
 }

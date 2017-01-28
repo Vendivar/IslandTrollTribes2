@@ -144,6 +144,9 @@ function ITT:OnHeroInGame( hero )
     -- Remove starting gold
     hero:SetGold(0, false)
 
+	--Remove Talents
+	ITT:RemoveTalents(hero)
+	
     -- Add Innate Skills
     ITT:AdjustSkills(hero)
 
@@ -159,18 +162,18 @@ function ITT:OnHeroInGame( hero )
     TeachAbility(hero, "ability_drop_items")
 
     -- Init Meat, Health and Energy Loss
-    ApplyModifier(hero, "modifier_meat_passive")
-    ApplyModifier(hero, "modifier_hunger_health")
-    ApplyModifier(hero, "modifier_hunger_mana")
-
+	
+	local item = CreateItem("item_apply_modifiers", hero, hero)
+	item:ApplyDataDrivenModifier(hero, hero, "modifier_meat_passive", {})
+	item:ApplyDataDrivenModifier(hero, hero, "modifier_hunger_health", {})
+	item:ApplyDataDrivenModifier(hero, hero, "modifier_hunger_mana", {})
+	
     -- Set Wearables
     ITT:SetDefaultCosmetics(hero)
 
     -- Adjust Stats
     Stats:ModifyBonuses(hero)
 	
-	--Remove Talents
-	ITT:RemoveTalents(hero)
 	
 	--Secondary adjustments
 
@@ -206,9 +209,9 @@ function ITT:OnHeroRespawn( hero )
     Heat:Start(hero)
 
     -- Restart Meat tracking
-    ApplyModifier(hero, "modifier_meat_passive")
-
-    AdjustAbilityLayout(hero)
+		local item = CreateItem("item_apply_modifiers", hero, hero)
+		item:ApplyDataDrivenModifier(hero, hero, "modifier_meat_passive", {})
+    
 
     -- Kill grave
     if hero.grave then
@@ -221,6 +224,9 @@ end
 -- This means that players do not need to manually reshuffle them to craft
 function ITT:CreateLockedSlots(hero)
 
+--Backpack slots lockout
+
+--Class specific slot lockout
     local lockedSlotsTable = GameRules.ClassInfo['LockedSlots']
     local className = hero:GetHeroClass()
     local lockedSlotNumber = lockedSlotsTable[className]
@@ -237,6 +243,8 @@ function ITT:CreateLockedSlots(hero)
 --	spawnedUnit:SwapItems(0, 7)
 --	local item3 = spawnedUnit:AddItemByName("item_slot_locked")
 --	spawnedUnit:SwapItems(0, 8)
+
+
 	
 end
 
@@ -251,7 +259,7 @@ end
 
 -- Sets the hero skills for the level as defined in the 'SkillProgression' class_info.kv
 -- Called on spawn and every time a hero gains a level or chooses a subclass
-function ITT:AdjustSkills( hero )
+function ITT:AdjustSkills(hero)
     local skillProgressionTable = GameRules.ClassInfo['SkillProgression']
     local class = hero:GetHeroClass()
     local level = hero:GetLevel() --Level determines what skills to add or levelup
@@ -274,8 +282,18 @@ function ITT:AdjustSkills( hero )
 
         for level = 6, hero.subclass_leveled do
 		
-            ITT:UnlearnAbilities(hero, class_skills, level)
-            ITT:LearnAbilities(hero, class_skills, level)
+            Timers:CreateTimer({
+      endTime = 0.1,
+      callback = function()
+         ITT:UnlearnAbilities(hero, class_skills, level)
+      end
+    })
+		Timers:CreateTimer({
+      endTime = 0.3,
+      callback = function()
+        ITT:LearnAbilities(hero, class_skills, level)
+      end
+    })
         end
 
         hero.subclass_leveled = nil --Already subclassed, next time it will just adjust skills normally
@@ -297,9 +315,8 @@ function ITT:AdjustSkills( hero )
 	Timers:CreateTimer({
       endTime = 0.5,
       callback = function()
-		AdjustAbilityLayout(hero)
 		EnableSpellBookAbilities(hero)
-		PrintAbilities(hero)
+		--PrintAbilities(hero)
       end
     })
 

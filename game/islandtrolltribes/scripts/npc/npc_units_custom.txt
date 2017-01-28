@@ -546,8 +546,7 @@
 	    "BoundsHullName"    "DOTA_HULL_SIZE_HERO"
 	    "RingRadius"    "100"
 	
-	    "Ability1"  "ability_duel"
-	    "Ability2"  "ability_quick_drop"
+	    "Ability1"  "ability_quick_drop"
 	    "Ability9"  "ability_craftmaster"
 	    "Ability10" "ability_building"
 	    "Ability11" "ability_cancel_building"
@@ -1280,7 +1279,7 @@
 	"tower_ensnare_troll_ghost"
 	{
 		"BaseClass"	 "npc_dota_creature"
-		"Model"		 "models/tower_ensnare_test.vmdl"
+		"Model"		 "models/tower_ensnare.vmdl"
 		"ModelScale" "0.5"
 	}
 	
@@ -3235,9 +3234,11 @@
 	"dummy_caster_smokestream"
 	{
 		"BaseClass"	"npc_dota_creature"
+	    "Model"                     "models/development/invisiblebox.vmdl"  
 		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
 		"VisionDaytimeRange"	"0"
 		"VisionNighttimeRange"	"0"
+	    "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_NONE"	
 		"Ability1"	"ability_thief_smokecombatprevention"
 		"Ability2"	""
 		"Ability3"	""

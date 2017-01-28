@@ -11,7 +11,7 @@
     
     "AbilityCastRange"          "1000"
     "AbilityCastPoint"          "0.4"
-    "AbilityCooldown"           "1.0"
+    "AbilityCooldown"           "5.0"
 
     "ItemCost"                  "6"
     "ItemShopTags"              "consumable"
@@ -56,13 +56,6 @@
             "EffectName"    "Hero_EarthSpirit.StoneRemnant.Destroy"
             "Target"        "TARGET"
         }
-
-        // Can't use SpendCharge before the projectile hits otherwise we lose the ability effects
-        "RunScript"
-        {
-            "ScriptFile"    "items/stone.lua"
-            "Function"      "Hide"
-        }
     }
 
     "OnProjectileHitUnit"
@@ -96,12 +89,8 @@
                 "Types"     "DOTA_UNIT_TARGET_BASIC"
             }
             "Duration"      "%stun_creep"
-        }
-        "RunScript"
-        {
-            "ScriptFile"    "items/stone.lua"
-            "Function"      "Remove"
-        }
+        }		
+        "SpendCharge" {}
     }
 
     "Modifiers"

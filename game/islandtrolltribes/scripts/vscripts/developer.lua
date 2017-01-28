@@ -20,7 +20,8 @@ CHEAT_CODES = {
     ["spawnstats"] = function( ... ) ITT:SpawnStats(...) end,
     ["gg_end"] = function( ... ) GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS) end,
     ["lvlup"] = function(...) ITT:LvlUp(...) end,
-    ["itempen"] = function(...) ITT:ItemPen(...) end
+    ["itempen"] = function(...) ITT:ItemPen(...) end,
+    ["debug_c"] = function(...) ITT:DebugCalls(...) end
 }
 
 PLAYER_COMMANDS = {
@@ -192,7 +193,9 @@ function ITT:Dev( playerID )
         GameRules:GetGameModeEntity():SetFogOfWarDisabled(true)
     else
         Heat:Start(hero)
-        ApplyModifier(hero, "modifier_hunger")
+		
+		local item = CreateItem("item_apply_modifiers", hero, hero)
+		item:ApplyDataDrivenModifier(hero, hero, "modifier_hunger", {})
         GameRules:GetGameModeEntity():SetFogOfWarDisabled(false)
     end
 
@@ -571,4 +574,25 @@ function ITT:SpawnStats()
         end
     end
     print("=========Spawning stats============")
+end
+
+
+function ITT:DebugCalls()
+    if not GameRules.DebugCalls then
+        print("Starting DebugCalls")
+        GameRules.DebugCalls = true
+
+        debug.sethook(function(...)
+            local info = debug.getinfo(2)
+            local src = tostring(info.short_src)
+            local name = tostring(info.name)
+            if name ~= "__index" then
+                print("Call: ".. src .. " -- " .. name)
+            end
+        end, "c")
+    else
+        print("Stopped DebugCalls")
+        GameRules.DebugCalls = false
+        debug.sethook(nil, "c")
+    end
 end

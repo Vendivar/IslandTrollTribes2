@@ -31,10 +31,15 @@ function TameBird(newPet,hero)
         -- We do the entire lua code in case the other pet is stunned or can't cast the release spell for any reason
         local pet = hero.pets[1]
         local canKeep = false
-        if hero:GetSubClass() == "pack_leader" and #hero.pets < 2 then
+		local isSubClass = hero:HasSubClass()
+        if hero:GetSubClass() == "pack_leader" and #hero.pets < 1 then
             canKeep = true
-        elseif hero:GetSubClass() ~= "pack_leader" and #hero.pets < 1 then
+        elseif not isSubClass and #hero.pets == 0 then
             canKeep = true
+        elseif hero:GetSubClass() == "chicken_form" then
+            canKeep = false
+        elseif hero:GetSubClass() == "shapeshifter" then
+            canKeep = false
         end
 
         if not canKeep and pet and IsValidAlive(pet) then
@@ -55,8 +60,8 @@ function TameBird(newPet,hero)
                 TeachAbility(pet, "ability_baby_animal")
             end
 
-            AdjustAbilityLayout(pet)
-            AdjustAbilityLayout(hero)
+            --AdjustAbilityLayout(pet)
+            --AdjustAbilityLayout(hero)
             table.remove(hero.pets, 1)
         end
     end

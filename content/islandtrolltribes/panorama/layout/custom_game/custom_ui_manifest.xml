@@ -18,11 +18,34 @@
       GameUI.CustomUIConfig().team_colors[DOTATeam_t.DOTA_TEAM_BADGUYS] = "#ff3455;"; // { 255, 52, 85 }   --      Red
       GameUI.CustomUIConfig().team_colors[DOTATeam_t.DOTA_TEAM_CUSTOM_1] = "#65d413;"; // { 101, 212, 19 } --      Green
       GameUI.CustomUIConfig().team_colors[DOTATeam_t.DOTA_TEAM_CUSTOM_2] = "#F3C909;"; // { 243, 201, 9 }  --      Yellow
+	  
+		var newUI = $.GetContextPanel().GetParent().GetParent().FindChildTraverse("HUDElements").FindChildTraverse("lower_hud").FindChildTraverse("center_with_stats").FindChildTraverse("center_block");
+
+        //Use this line if you want to keep 4 ability minimum size, and only use 160 if you want ~2 ability min size
+        newUI.FindChildTraverse("AbilitiesAndStatBranch").style.minWidth = "284px";
+        //newUI.FindChildTraverse("AbilitiesAndStatBranch").style.minWidth = "160px";
+
+        newUI.FindChildTraverse("StatBranch").style.visibility = "collapse";
+        //you are not spawning the talent UI, fuck off (Disabling mouseover and onactivate)
+        //We also don't want to crash, valve plz
+        newUI.FindChildTraverse("StatBranch").SetPanelEvent("onmouseover", function(){});
+        newUI.FindChildTraverse("StatBranch").SetPanelEvent("onactivate", function(){});
+
+        //Fuck that levelup button
+        newUI.FindChildTraverse("level_stats_frame").style.visibility = "collapse";
+
+        //fuck backpack UI (We have Lua filling these slots with junk, and if the player can't touch them it should be effectively disabled)
+        newUI.FindChildTraverse("inventory").FindChildTraverse("inventory_items").FindChildTraverse("inventory_backpack_list").style.visibility = "collapse";
+		
+		//I dont need KDA
+		$.GetContextPanel().GetParent().GetParent().GetParent().FindChild("HUDElements").FindChild("quickstats").style.visibility = "collapse";
+		
     </script>
     <scripts>
         <include src="file://{resources}/scripts/playertables/playertables_base.js" />
         <include src="file://{resources}/scripts/custom_game_ui_expanded.js" />
     </scripts>
+
     <Panel>
         <CustomUIElement type="GameInfo"            layoutfile="file://{resources}/layout/custom_game/islandtrolltribes_game_info.xml" />
         <CustomUIElement type="HudTopBar"			layoutfile="file://{resources}/layout/custom_game/multiteam_top_scoreboard.xml" />

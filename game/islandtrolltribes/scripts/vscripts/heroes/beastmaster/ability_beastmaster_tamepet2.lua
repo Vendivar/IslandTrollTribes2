@@ -36,8 +36,6 @@ function ability_beastmaster_tamepet2:OnSpellStart()
             if ability_beastmaster_tamepet2:IsValidPetName( pet1 ) then
                 TeachAbility(pet1, "ability_baby_animal")
             end
-
-            AdjustAbilityLayout(pet1)
             table.remove(caster.pets, 1)
         end
     end
@@ -76,8 +74,6 @@ function ability_beastmaster_tamepet2:OnSpellStart()
     -- Attack gets added on the first growth
     --TeachAbility(caster, "ability_beastmaster_pet_attack")
 
-    AdjustAbilityLayout(caster)
-    AdjustAbilityLayout(newPet)
 
     -- Add to the list of pets
     table.insert(caster.pets, newPet)

@@ -22,12 +22,6 @@
  
 	"OnSpellStart"
 	{
-		"LinearProjectile"
-		{
-			"Target"	"POINT"
-			"MoveSpeed"	"600"
-			"ProvidesVision"	"false"
-		} 
         "FireSound"
         {
             "EffectName" "Hero_Omniknight.Purification"
@@ -58,44 +52,45 @@
                 "01" "%radius 0 0"
             }
         }
-        
-	}
-
-	"OnProjectileFinish"
-	{
+		
 		"ApplyModifier"
 		{
 			"Target"	"CASTER"
 			"ModifierName"	"modifier_exclude_caster"
-			"Duration"	"5"
+			"Duration"	"1"
 		}
-
-		"Heal"
+		"ActOnTargets"
 		{
 			"Target"
 			{
-				"Center"	"POINT"
-				"Radius"	"400"
-				"Teams"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-				"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+				"Center"  			"POINT"
+				"Radius"			"%radius"
+				"Teams" 			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Types" 			"DOTA_UNIT_TARGET_HERO"
 			}
+			"Action"
+			{
+				"Heal"
+					{
+						"Target"
+						{
+							"Center"	"POINT"
+							"Radius"	"400"
+							"Teams"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+							"Types"	"DOTA_UNIT_TARGET_HERO"
+						}
 
-			"HealAmount"	"50"
+						"HealAmount"	"50"
+					}
+			}
 		}
-
-		"RemoveModifier"
-		{
-			"Target"	"CASTER"
-			"ModifierName"	"modifier_exclude_caster"
-		}
-
 	}
 
 	"Modifiers"
 	{
 		"modifier_exclude_caster"
 		{
-			"IsHidden"	"0"
+			"IsHidden"	"1"
 			"Properties"
 			{
 				"MODIFIER_PROPERTY_DISABLE_HEALING"	"1"

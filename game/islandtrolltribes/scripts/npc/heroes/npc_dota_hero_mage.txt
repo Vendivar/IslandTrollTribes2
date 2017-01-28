@@ -4,7 +4,7 @@
 
 	"override_hero"	"npc_dota_hero_witch_doctor"
 	"url"	"Witch Doctor"
-	"AbilityLayout"	"5"
+	"AbilityLayout"	"6"
 	"Ability1"	"ability_mage_spellbook_toggle"
 	"Ability2"	"ability_mage_nulldamage"
 	"Ability3"	"ability_mage_pumpup"
@@ -47,4 +47,5 @@
 	"StatusManaRegen"	"0.0"
 	"VisionDaytimeRange"	"950"
 	"VisionNighttimeRange"	"500"
+	"DisableWearables" "1"
 }

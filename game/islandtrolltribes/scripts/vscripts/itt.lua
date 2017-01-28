@@ -131,7 +131,7 @@ function ITT:InitGameMode()
     GameMode:SetModifyGoldFilter( Dynamic_Wrap( ITT, "FilterGold" ), self )
 
     -- Don't end the game if everyone is unassigned
-    SendToServerConsole("dota_surrender_on_disconnect 0")
+    --SendToServerConsole("dota_surrender_on_disconnect 0")
 
     -- Increase time to load and start even if not all players loaded
     SendToServerConsole("dota_wait_for_players_to_load_timeout 240")
@@ -200,7 +200,7 @@ function ITT:InitGameMode()
     local timeTxt = string.gsub(string.gsub(GetSystemTime(), ':', ''), '0','')
     math.randomseed(tonumber(timeTxt))
 
-    GameRules.APPLIER = CreateItem("item_apply_modifiers", nil, nil)
+  --  GameRules.APPLIER = CreateItem("item_apply_modifiers", nil, nil)
 
     -- Custom Stats for STR/AGI/INT
     Stats:Init()
@@ -256,7 +256,7 @@ function ITT:InitGameMode()
     MapModels()
 
     -- Allow cosmetic swapping
-    SendToServerConsole( "dota_combine_models 0" )
+    SendToServerConsole( "dota_combine_models 1" )
 
     -- Lua Modifiers
     LinkLuaModifier("modifier_chicken_form", "heroes/beastmaster/subclass_modifiers.lua", LUA_MODIFIER_MOTION_NONE)
@@ -265,7 +265,6 @@ function ITT:InitGameMode()
     LinkLuaModifier("modifier_model_scale", "libraries/modifiers/modifier_model_scale", LUA_MODIFIER_MOTION_NONE)
     LinkLuaModifier("modifier_minimap", "libraries/modifiers/modifier_minimap", LUA_MODIFIER_MOTION_NONE)
     LinkLuaModifier("modifier_wearable_visuals", "libraries/modifiers/modifier_wearable_visuals", LUA_MODIFIER_MOTION_NONE)
-	LinkLuaModifier("modifier_charges", "libraries/modifiers/modifier_charges", LUA_MODIFIER_MOTION_NONE)
 
     print('[ITT] Done loading gamemode!')
 end
@@ -739,7 +738,7 @@ function TeleportItemTeletheif(hero,originalItem)
     local percentChance = 100
    --print("Teleporting item : " .. telegatherAbility:GetAbilityName() .. ", " .. percentChance .."% chance")
 
-    local itemList = {"item_tinder", "item_flint", "item_stone", "item_stick", "item_bone", "item_meat_raw", "item_meat_cooked", "item_crystal_mana", "item_ball_clay", "item_hide_elk", "item_hide_wolf", "item_hide_bear", "item_magic_raw", "item_herb_blue", "item_herb_butsu", "item_herb_orange", "item_herb_purple", "item_herb_yellow", "item_thistles", "item_river_root", "item_river_stem", "item_acorn", "item_acorn_magic", "item_mushroom", "item_spirit_water", "item_spirit_wind"}
+    local itemList = {"item_tinder", "item_flint", "item_stone", "item_stick", "item_bone", "item_meat_raw",  "item_crystal_mana", "item_ball_clay", "item_hide_elk", "item_hide_wolf", "item_hide_bear", "item_magic_raw", "item_herb_blue", "item_herb_butsu", "item_herb_orange", "item_herb_purple", "item_herb_yellow", "item_thistles", "item_river_root", "item_river_stem", "item_acorn", "item_acorn_magic", "item_mushroom", "item_spirit_water", "item_spirit_wind"}
 	local buildings = FindUnitsInRadius(teamNumber, hero:GetAbsOrigin(), nil, 500, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BUILDING, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
     
 	local casterOrigin = hero:GetOrigin()
@@ -779,7 +778,7 @@ function TeleportItem(hero,originalItem)
     local percentChance = telegatherAbility:GetSpecialValueFor("percent_chance")
    --print("Teleporting item : " .. telegatherAbility:GetAbilityName() .. ", " .. percentChance .."% chance")
 
-    local itemList = {"item_tinder", "item_flint", "item_stone", "item_stick", "item_bone", "item_meat_raw", "item_meat_cooked", "item_crystal_mana", "item_ball_clay", "item_hide_elk", "item_hide_wolf", "item_hide_bear", "item_magic_raw"}
+    local itemList = {"item_tinder", "item_flint", "item_stone", "item_stick", "item_bone", "item_meat_raw",  "item_crystal_mana", "item_ball_clay", "item_hide_elk", "item_hide_wolf", "item_hide_bear", "item_magic_raw"}
     if hero:GetSubClass() == "herbal_master_telegatherer" then
         itemList = {"item_herb_blue", "item_herb_butsu", "item_herb_orange", "item_herb_purple", "item_herb_yellow", "item_thistles", "item_river_root", "item_river_stem", "item_acorn", "item_acorn_magic", "item_mushroom", "item_spirit_water", "item_spirit_wind"}
     end
@@ -814,7 +813,7 @@ function TeleportItemHerb(hero,originalItem)
     local percentChance = telegatherAbility:GetSpecialValueFor("percent_chance")
    --print("Teleporting item : " .. telegatherAbility:GetAbilityName() .. ", " .. percentChance .."% chance")
 
-    local itemList = {"item_tinder", "item_flint", "item_stone", "item_stick", "item_bone", "item_meat_raw", "item_meat_cooked", "item_crystal_mana", "item_ball_clay", "item_hide_elk", "item_hide_wolf", "item_hide_bear", "item_magic_raw"}
+    local itemList = {"item_tinder", "item_flint", "item_stone", "item_stick", "item_bone", "item_meat_raw",  "item_crystal_mana", "item_ball_clay", "item_hide_elk", "item_hide_wolf", "item_hide_bear", "item_magic_raw"}
     if hero:GetSubClass() == "herbal_master_telegatherer" then
         itemList = {"item_herb_blue", "item_herb_butsu", "item_herb_orange", "item_herb_purple", "item_herb_yellow", "item_thistles", "item_river_root", "item_river_stem", "item_acorn", "item_acorn_magic", "item_mushroom", "item_spirit_water", "item_spirit_wind"}
     end
@@ -845,7 +844,7 @@ function ITT:OnPlayerGainedLevel(event)
     local class = hero:GetHeroClass()
     local level = event.level
 
-    print("[ITT] OnPlayerLevelUp - Player "..playerID.." ("..class..") has reached level "..level)
+  --  print("[ITT] OnPlayerLevelUp - Player "..playerID.." ("..class..") has reached level "..level)
 
 	hero.levelParticle = ParticleManager:CreateParticle("particles/custom/hero_levelup.vpcf", PATTACH_ABSORIGIN_FOLLOW, hero)
 	Sounds:EmitSoundOnClient(playerID, "Level.Up")
@@ -869,7 +868,7 @@ function ITT:OnPlayerGainedLevel(event)
     end
 
     -- Update skills
-    ITT:AdjustSkills( hero )
+    ITT:AdjustSkills(hero)
 end
 
 function print_dropped_vecs(cmdname)

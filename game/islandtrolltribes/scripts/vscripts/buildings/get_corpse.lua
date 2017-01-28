@@ -3,7 +3,8 @@ function GetCorpses( event )
     local caster = event.caster
     local range = ability:GetCastRange()
     if not caster:HasModifier("modifier_meat_passive") then
-        ApplyModifier(caster, "modifier_meat_passive")
+		local item = CreateItem("item_apply_modifiers", caster, caster)
+		item:ApplyDataDrivenModifier(caster, caster, "modifier_meat_passive", {})
     end
     local meatStacks = GetMeatRawStackCount(caster)
     if (meatStacks < 10) then
