@@ -50,7 +50,7 @@ function ITT:CraftItem(event)
             item:LaunchLoot(false, 200, 0.5, pos)
         else
             -- Create the resulting item
-            unit:AddItem(CreateItem(itemName, nil, nil))
+            GiveItemStack(unit, itemName)
         end
 
         if itemName == "item_thistles_dark" then
@@ -65,12 +65,12 @@ function ITT:CraftItem(event)
         end
 
         FireCombineParticle(unit)
-		FireCombineSound(unit)
-		FireCombineSoundLayer(unit)
-		local item = CreateItem("item_apply_modifiers", unit, unit)
-		item:ApplyDataDrivenModifier(unit, unit, "modifier_recentlycrafted", {duration = 1})
-		
-		print("firing particle",unit)
+	FireCombineSound(unit)
+	FireCombineSoundLayer(unit)
+	local item = CreateItem("item_apply_modifiers", unit, unit)
+	item:ApplyDataDrivenModifier(unit, unit, "modifier_recentlycrafted", {duration = 1})
+
+	print("firing particle",unit)
         unit:EmitSound("General.Combine")
     else
         if GetNumItemsInInventory(unit) == 6 and section ~= "Recipes" then

@@ -108,7 +108,7 @@
         "hunter_sub1_desc" "The Tracker is an expert at locating, following, and locking down unsuspecting prey. He can use his several tracking skills to locate and keep tabs on unseen enemies.\n\n\nFunction: Hunting, Combat, Tracking Enemies Initial Ability: Ensnare\nLearnable Abilities: Greater Track, Dysentery Track, Sniff, Hide Tracking Beacon, Query Beacon\nBase Damage: 18-18\nAttack Cooldown: 1.75\nMovement Speed: 350"
 
         "hunter_sub2_name" "Warrior"
-        "hunter_sub2_desc" "The Warrior's axes thirst for blood. He excels at beating his foes to a bloody pulp. He is the epitome of offensive combat and is always willing to prove it. Through use of his cleave and his endurance he is a foe to be recokned with.\n\n\nFunction: Offensive Combat\nInitial Abilities: Ensnare, Endurance\nLearnable Ability: Giant Swing\nBase Damage: 20-20\nAttack Cooldown: 1.65\nMovement Speed: 300"
+        "hunter_sub2_desc" "The Warrior's axes thirst for blood. He excels at beating his foes to a bloody pulp. He is the epitome of offensive combat and is always willing to prove it. Through use of his cleave and his endurance he is a foe to be reckoned with.\n\n\nFunction: Offensive Combat\nInitial Abilities: Ensnare, Endurance\nLearnable Ability: Giant Swing\nBase Damage: 20-20\nAttack Cooldown: 1.65\nMovement Speed: 300"
 
         "hunter_sub3_name" "Juggernaut"
         "hunter_sub3_desc" "The Juggernaut specializes in taking hits and defensive tactics, while still maintaining the ability to pack a punch. His policy on battle is that the best offense is a good defense.\n\n\n\n\nFunction: Defensive Combat\nInitial Abilities: Ensnare\nLearnable Abilities: Staying Power\nBase Damage: 16-16\nAttack Cooldown: 1.75\nMovement Speed: 300"
@@ -123,7 +123,7 @@
         "beastmaster_sub3_desc" "The Shapeshifter forgoes his bond with the beast and instead chooses to become one. Can shift into several forms, each with it's own set of skills to accomodate any situation.\n\n\n\nInitial Abilities: Shapeshift to Normal Form, Shapeshift to Elk Form\nLearnable Abilities: Shapeshift to Wolf Form, Shapeshift to Bear Form\nBase damage: 18-18\nAttack Cooldown: 1.75\nMovement Speed: 340"
 
         "mage_sub1_name" "Elementalist"
-        "mage_sub1_desc"    "The Elementalist is a pure offensive powerhouse weilding the power of the elements that focuses on calling on the destructive forces of nature itself to burn, shock and freeze foes.\n\nFunction: Combat, Nuker\n\nInitial Abilities: Pump Up, Mage Fire.\nLearnable Abilities: Eruption, Splitting Fire, Defender Energy, Electromagnet, Chain Lightning, Freezing Blast, Storm Earth and Fire\nBase Damage: 15-15 / Cooldown: 1.75\nMovement Speed: 310"
+        "mage_sub1_desc"    "The Elementalist is a pure offensive powerhouse wielding the power of the elements that focuses on calling on the destructive forces of nature itself to burn, shock and freeze foes.\n\nFunction: Combat, Nuker\n\nInitial Abilities: Pump Up, Mage Fire.\nLearnable Abilities: Eruption, Splitting Fire, Defender Energy, Electromagnet, Chain Lightning, Freezing Blast, Storm Earth and Fire\nBase Damage: 15-15 / Cooldown: 1.75\nMovement Speed: 310"
 
         "mage_sub2_name" "Hypnotist"
         "mage_sub2_desc"    "The Hypnotist uses dark magic to attack the minds of his enemies and disable foes into submission while depleting their energy and will to fight.\n\nFunction: Combat, Energy Destruction\nInitial Abilities: Null Damage, Reduce Food, Mage Fire\n\nLearnable Abilities: Hypnosis, Dream Eater, Anger, Depression Orb, Depression Aura, Jealousy, Seizures, Stupefying Field\nBase Damage: 15-15 / Cooldown: 1.75\nMovement Speed: 310"
@@ -147,7 +147,7 @@
         "priest_sub2_desc" "The Master Healer excels at keeping his allies alive and healthy, while also managing their well-being so that they are ready for battle at any moment.\n\nFunction: Survival, Combat Support\nInitial Abilities: The Glow, Resist All, Omnicure, Cure All\nLearnable Abilities: Healing Spray, Healing Wave, Self\nPreservation, Mix Health, Ranged Heal, Replenish\nBase Damage: 14-14\nAttack Cooldown: 1.75\nMovement Speed: 300"
 
         "priest_sub3_name" "Shaman"
-        "priest_sub3_desc" "The Shaman utilizes spiritual magic and herbalism to support his allies. He can also leave his body for short periods of time to scout around.\n\nFunction: Combat Support, Healing\nInitial Abilities: The Glow, Resist All, Cure All, Pacifing Smoke.\nLearnable Abilities: Increase Metabolism, Maximum Fervor, Pain Killer Balm, Enhancing Herbalism, Spirit Walk\nBase Damage: 14-14 / Cooldown: 1.75\nMovement Speed: 300"
+        "priest_sub3_desc" "The Shaman utilizes spiritual magic and herbalism to support his allies. He can also leave his body for short periods of time to scout around.\n\nFunction: Combat Support, Healing\nInitial Abilities: The Glow, Resist All, Cure All, Pacifying Smoke.\nLearnable Abilities: Increase Metabolism, Maximum Fervor, Pain Killer Balm, Enhancing Herbalism, Spirit Walk\nBase Damage: 14-14 / Cooldown: 1.75\nMovement Speed: 300"
 
         "scout_sub1_name" "Observer"
         "scout_sub1_desc" "The Observer can place wards in a large area around himself, giving vision to his allies of large sections of the map for long periods of time without much setup time, in addition to having a massive reveal.\n\n\n\nFunction: Reconnaissance\nInitial Ability: Greater Reveal\nLearnable Ability: Ward the Area\nBase Damage: 16-16\nAttack Cooldown: 1.70\nMovement Speed: 325"
@@ -171,11 +171,12 @@
 
         "error_nicetry"							"Nice try."
         "error_inventory_full"					"Inventory is full."
+        "error_bush_empty"					"The bush is empty."
         "error_backpack_disabled"				"Backpack is disabled. Dropping item to the ground."
         "error_cant_teleport_without_vision" 	"Can not teleport to a location without vision. Do you want to end up inside a wall?"
         "error_cant_attack_air"					"Can not attack air units. Try using ensnare to bring down the hawks."
-        "error_cant_cancel"						"Can't cancel ressurection in progress!"
-        "error_cant_carry_more_raw_meat"		"Can not carry any more raw meat"
+        "error_cant_cancel"						"Can't cancel resurrection in progress!"
+        "error_cant_carry_more_raw_meat"		"Can not carry any more raw meat."
         "error_cant_carry_more_boots"			"Can not carry any more boots."
         "error_cant_carry_more_gloves"			"Can not carry any more gloves."
         "error_cant_carry_more_coat"			"Can not carry any more coats."
@@ -183,6 +184,7 @@
         "error_cant_carry_more_axes"			"Can not carry any more axes."
         "error_cant_carry_more_scrolls"			"Can not carry any more scrolls."
         "error_cant_drop"						"Can't drop here."
+        "error_can_only_cast_on_self"			"Can only cast on yourself."
         "error_chicken_cant_carry_axes"			"Chickens can not carry any axes."
         "error_not_enough_hides"				"Not enough of same hide to craft item."
         "error_no_meat_to_eat"					"No raw meat to eat."
@@ -192,12 +194,13 @@
         "error_invalid_build_position"			"Can't build there."
         "error_only_beastmaster"				"Only beastmaster can build the hatchery."
         "error_item_out_of_range"				"Item out of range to pick up."
+        "error_player_out_of_range"				"Player is out of range."
         "error_pet_leash_range"					"Pet is being ordered too far away, returning to a safe range!"
         "error_must_target_allied_gravestone" 	"Must target an allied gravestone!"
         "error_heat_low"						"Your heat is too low! Get to a fire to warm up or you will die!"
         "error_mana_low"						"You've run out of energy and fell asleep outside!"
         "error_frozen"							"You have frozen! \nYou must have a teammate come to you and warm you up or you will die!"
-        "eat_raw_meat_channeling_is_in_progress"	"Raw Meat Channeling is progress already."
+        "eat_raw_meat_channeling_is_in_progress"	"Raw Meat Channeling is in progress already."
         "error_already_rested"                  "You are already rested. Please wait a moment before resting again."
         "error_must_target_baby_animal"         "Must target a baby animal."
         "invalid_telegatherer_target"           "Must target a camp fire."
@@ -224,26 +227,26 @@
         "item_bush_thief"                                            "Thief Bush"
 
 
-		"npc_ship_merchant_1"                                              "Mystic Traveller"
+		"npc_ship_merchant_1"                                              "Mystic Traveler"
         "npc_ship_merchant_2"                                              "Squawks the Wise"
         "npc_ship_merchant_3"                                              "Wares McGee"
         "npc_ship_merchant_4"                                              "Samma the War Hardened"
         "npc_ship_merchant_5"                                              "Tholyr & Chris P."
         "npc_ship_merchant_6"                                              "Warnox the Fortified"
         "npc_ship_merchant_7"                                              "Karalar The Precice"
-		
+
         "compass_used" "used the sonar compass - now pinging merchant ships."
 
 
         // Toolkit Abilities
-		
-		
+
+
         "gold_panel"                                       "Earn gold by selling items to wandering merchants, hides are a quick way to make money!"
 		"DOTA_Tooltip_Ability_gold_panel"   				"Earn gold by selling items to wandering merchants, hides are a quick way to make money!"
-		
+
         "sleep_outside"                                          "Sleep Outside"
         "DOTA_Tooltip_Ability_sleep_outside"                     "Sleep <font color='#00CC00'>O</font>utside"
-        "DOTA_Tooltip_Ability_sleep_outside_Description"         "Sleep outside and gain 20 energy but lose 20 heat and hp!\nShould only be used as a worse case scenario to gain energy!"
+        "DOTA_Tooltip_Ability_sleep_outside_Description"         "Sleep outside for 6 seconds to gain 80 energy but lose 20 heat and 20 health!\nShould only be used as a worse case scenario to gain energy!"
         "DOTA_Tooltip_Ability_sleep_outside_rest_duration"       "REST DURATION:"
         "DOTA_Tooltip_Ability_sleep_outside_mana_restored"       "MANA RESTORED:"
 
@@ -257,7 +260,7 @@
         "drop_meat"     "Drop\nRaw Meat"
 
         "DOTA_Tooltip_Ability_drop_meat"                  "Drop Raw Meat"
-        "DOTA_Tooltip_Ability_drop_meat_Description"                  "Drop one raw meat per use that your troll is currently holding. <font color='#00CC00'>Right click</font> to drop all carried meat. It will go to the ground once this ability is used."
+        "DOTA_Tooltip_Ability_drop_meat_Description"                  "Drop one raw meat per use that your troll is currently holding. <font color='#00CC00'>Right click</font> or press <font color='#00CC00'>B</font> to drop all carried raw meat. It will go to the ground once this ability is used."
 
         "drop_all_meat" "Drop\nAll Raw Meat"
 
@@ -273,7 +276,7 @@
         "ReviveMessage" "{s:name} been revived!"
 
         "DOTA_Tooltip_Ability_Panic" "<font color='#00CC00'>P</font>anic"
-        "DOTA_Tooltip_Ability_Panic_Description"         "Use this ability to send your troll into a panic to gain attack damage and move speed! Be warned, during your state of frenzy you take increased damage."
+        "DOTA_Tooltip_Ability_Panic_Description"         "Use this ability to send your troll into a panic to gain attack speed and move speed! Be warned, during your state of frenzy you take increased damage."
         "DOTA_Tooltip_Ability_Panic_attack_speed"       "ATTACK SPEED:"
         "DOTA_Tooltip_Ability_Panic_move_speed"         "MOVE SPEED:"
         "DOTA_Tooltip_Ability_Panic_incoming_damage"    "INCOMING DAMAGE:"

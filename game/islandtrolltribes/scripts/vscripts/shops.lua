@@ -32,7 +32,7 @@ function SpawnBoat(pathNum)
     local spawnOrigin = initialWaypoint:GetOrigin()
 
     local merchantNum = RandomInt(1, #SHOP_UNIT_NAME_LIST)
-    unitName = SHOP_UNIT_NAME_LIST[merchantNum]
+    local unitName = SHOP_UNIT_NAME_LIST[merchantNum]
 
     local shopUnit = CreateUnitByName(unitName, spawnOrigin, false, nil, nil, DOTA_TEAM_NEUTRALS)
     shopUnit.path = path

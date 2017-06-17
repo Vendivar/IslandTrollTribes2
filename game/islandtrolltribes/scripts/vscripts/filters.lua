@@ -42,11 +42,11 @@ function ITT:FilterExecuteOrder( filterTable )
                     for i=6,10 do
                         local item = hero:GetItemInSlot(i)
                         if item then
-						unit:DropItemAtPositionImmediate(item, unit:GetAbsOrigin())
-						SendErrorMessage(issuer, "#error_backpack_disabled")
-						end
-					end
-				end)
+				unit:DropItemAtPositionImmediate(item, unit:GetAbsOrigin())
+				SendErrorMessage(issuer, "#error_backpack_disabled")
+			end
+		    end
+		end)
             Timers:CreateTimer(0.03, function()
                 if hero:GetNumItemsInStash() >= 0 then
                     for i=6,15 do
@@ -79,10 +79,13 @@ function ITT:FilterExecuteOrder( filterTable )
     end
 
 	--Scan Disable
-	if order_type == DOTA_UNIT_ORDER_RADAR or order_type == DOTA_UNIT_ORDER_GLYPH then SendErrorMessage(issuer, "#error_nicetry") return end
-	
-	
-	
+        if order_type == DOTA_UNIT_ORDER_RADAR or order_type == DOTA_UNIT_ORDER_GLYPH then
+                SendErrorMessage(issuer, "#error_nicetry")
+                return
+        end
+
+
+
     ------------------------------------------------
     --    		      Rez Uncancel		  	      --
     ------------------------------------------------
@@ -96,11 +99,11 @@ function ITT:FilterExecuteOrder( filterTable )
     ------------------------------------------------
     --          Warm up teammate       --
     ------------------------------------------------
-	
+
 	    if targetIndex and (order_type == DOTA_UNIT_ORDER_ATTACK_TARGET or order_type == DOTA_UNIT_ORDER_MOVE_TO_TARGET) then
         local target = EntIndexToHScript(targetIndex)
 		if target and target:IsHero() and target:HasModifier("modifier_frozen") then
-				local hero = PlayerResource:GetSelectedHeroEntity(issuer)				
+				local hero = PlayerResource:GetSelectedHeroEntity(issuer)
 				local abilityName = "ability_warm_up"
 				local ability = hero:FindAbilityByName(abilityName)
 				if not ability then
@@ -109,7 +112,7 @@ function ITT:FilterExecuteOrder( filterTable )
 				if ability:IsFullyCastable() and hero:IsRealHero() then
 					hero:SetCursorCastTarget(target)
 					hero:CastAbilityOnTarget(target, ability, hero:GetPlayerOwnerID())
-					 print(hero:GetName().."casting spell, "..ability:GetName()..", on "..target:GetName()) 
+					 print(hero:GetName().."casting spell, "..ability:GetName()..", on "..target:GetName())
 				end
             return CONSUME_EVENT
         end
@@ -129,7 +132,7 @@ function ITT:FilterExecuteOrder( filterTable )
                         order_type == DOTA_UNIT_ORDER_ATTACK_MOVE) then
         local target = EntIndexToHScript(targetIndex)
         if target and target.HasFlyMovementCapability and IsFlyingUnit(target) then
-			if order_type == DOTA_UNIT_ORDER_ATTACK_TARGET then
+	    if order_type == DOTA_UNIT_ORDER_ATTACK_TARGET then
                 SendErrorMessage(issuer, "#error_cant_attack_air")
             end
             return CONSUME_EVENT
@@ -149,7 +152,7 @@ function ITT:FilterExecuteOrder( filterTable )
         if not CanTakeItem(target) then
             SendErrorMessage(issuer, "#error_inventory_full")
             return CONSUME_EVENT
-    end
+        end
 
         if rangeToTarget <= ITEM_TRANSFER_RANGE then
             TransferItem(unit, target, item)
@@ -259,7 +262,7 @@ function ITT:FilterExecuteOrder( filterTable )
                     DropLaunch(unit, item, 0.75, point)
                     unit:Stop()
                 else
-                    SendErrorMessage(issuer, "#Can't drop the item here")
+                    SendErrorMessage(issuer, "#error_cant_drop")
                 end
             else
                 -- Move towards the position and drop the item at the extended range
@@ -364,13 +367,31 @@ function ITT:FilterExecuteOrder( filterTable )
     --       Teleport Beacon Range Handling       --
     ------------------------------------------------
     if order_type == DOTA_UNIT_ORDER_CAST_TARGET then
-        if unit:GetUnitName() == "npc_building_teleport_beacon" then
+        local unitName = unit:GetUnitName()
+        if unitName == "npc_building_teleport_beacon" then
             local targetEntity = EntIndexToHScript(targetIndex)
             -- Since the spell targetting is handled in KV, don't have to do any checks here... ?
             local ability_being_cast = EntIndexToHScript(abilityIndex)
             if ability_being_cast:GetAbilityName() == "ability_teleport" then
                 if (unit:GetOrigin() - targetEntity:GetOrigin()):Length2D() > ability_being_cast:GetCastRange() then
                     -- Out of range, we can't continue or the spell will be "queued" and cast when the unit is in range
+                    SendErrorMessage(issuer, "#error_player_out_of_range")
+                    return false
+                end
+            end
+        end
+
+        if unitName == "npc_building_hut_mud" or unitName == "npc_building_hut_troll" or unitName == "npc_building_tent" then
+            local targetEntity = EntIndexToHScript(targetIndex)
+            local ability_being_cast = EntIndexToHScript(abilityIndex)
+            if string.match(ability_being_cast:GetAbilityName(), "rest_") then
+                if issuer ~= targetEntity:GetPlayerOwnerID() then
+                    SendErrorMessage(issuer, "#error_can_only_cast_on_self")
+                    return false
+                end
+                if (unit:GetOrigin() - targetEntity:GetOrigin()):Length2D() > ability_being_cast:GetCastRange() then
+                    -- TODO: move player just into range of the building instead of erroring
+                    SendErrorMessage(issuer, "#error_player_out_of_range")
                     return false
                 end
             end

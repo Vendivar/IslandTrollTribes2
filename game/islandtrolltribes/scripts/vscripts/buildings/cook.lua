@@ -38,24 +38,34 @@ function SmokeMeat( keys )
     local building = keys.caster
 
     local cooked_meat = building:FindItemByName("item_meat_cooked")
-    if cooked_meat then
+    local diseased_meat = building:FindItemByName("item_meat_diseased")
+    local meat_to_smoke = cooked_meat
 
+    -- Prioritize smoking diseased meat over cooked meat
+    if diseased_meat then
+        meat_to_smoke = diseased_meat
+    end
+
+    if meat_to_smoke then
         -- First remove the cooked meat, makes space for the smoked
-        local charges = cooked_meat:GetCurrentCharges()
+        local charges = meat_to_smoke:GetCurrentCharges()
         if charges <= 1 then
-            cooked_meat:RemoveSelf()
+            meat_to_smoke:RemoveSelf()
         else
-            cooked_meat:SetCurrentCharges(charges - 1)
+            meat_to_smoke:SetCurrentCharges(charges - 1)
         end
 
         local smoked_meat = GiveItemStack(building, "item_meat_smoked")
-        if smoked_meat then
-            building:EmitSound("Hero_Lina.attack")
-
-        -- Item can't be stacked but we just consumed a cooked meat for nothing.
-        else
+        building:EmitSound("Hero_Lina.attack")
+        if not smoked_meat then
+            -- Item can't be stacked but we just consumed a cooked meat for nothing.
             print("Smoked Meat could not be created on "..building:GetUnitName())
             -- We can either ignore this or eject a smoked meat outside of the building
+            -- Alternatively: check for cooked meat, attempt to give the building a smoked meat, and only take a cooked meat if a smoked one was given
+            -- Eject a smoked meat, since we took a cooked one
+            local item = CreateItem("item_meat_smoked", nil, nil)
+            local loc = building:GetAbsOrigin() + RandomVector(200)
+            DropLaunch(building, item, 0.5, loc)
         end
     end
 end
