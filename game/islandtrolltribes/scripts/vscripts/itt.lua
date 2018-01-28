@@ -435,6 +435,7 @@ function ITT:OnEntityKilled(keys)
         local time = math.floor(GameRules:GetGameTime())
         if time > GAME_PERIOD_GRACE or GameRules.GameModeSettings["custom"]["norevive"] then
             killedUnit.grave = CreateUnitByName("gravestone", killedUnit:GetAbsOrigin(), false, killedUnit, killedUnit, killedUnit:GetTeamNumber())
+            killedUnit.grave:SetTeam(killedUnit:GetTeam())
             killedUnit.grave.hero = killedUnit
 			killedUnit.deathParticle = ParticleManager:CreateParticle("particles/custom/tombstone_spawnspawn.vpcf", PATTACH_ABSORIGIN_FOLLOW, killedUnit)
 			killedUnit:EmitSound("tombstone.spawn")
